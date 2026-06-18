@@ -18,7 +18,8 @@
       "mcp__Claude_in_Chrome__get_page_text",
       "Bash(cd \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development\" && ls)",
       "Bash(npx create-next-app@latest beauticate-next --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-turbopack)",
-      "Bash(which node *)"
+      "Bash(which node *)",
+      "Bash(npm --version)"
     ]
   }
 }
