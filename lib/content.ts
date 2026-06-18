@@ -55,6 +55,11 @@ export function getArticleBySlug(slugParts: string[]): {
   }
 }
 
+function isPublished(a: { frontmatter: ArticleFrontmatter } | null): boolean {
+  if (!a) return false
+  return a.frontmatter.published !== false
+}
+
 export function getArticlesByCategory(category: string, subcategory?: string) {
   const allSlugs = getArticleSlugs()
   return allSlugs
@@ -63,7 +68,7 @@ export function getArticlesByCategory(category: string, subcategory?: string) {
       return parts[0] === category
     })
     .map(parts => getArticleBySlug(parts))
-    .filter(Boolean)
+    .filter(isPublished)
     .sort((a, b) =>
       new Date(b!.frontmatter.date_published).getTime() -
       new Date(a!.frontmatter.date_published).getTime()
@@ -74,6 +79,7 @@ export function getFeaturedArticles(limit = 6) {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
     .filter(a => a?.frontmatter.is_featured)
     .slice(0, limit)
 }
@@ -85,6 +91,7 @@ export function getRelatedArticles(
   limit = 4
 ) {
   return getArticlesByCategory(category)
+    .filter(isPublished)
     .filter(a => a?.frontmatter.slug !== currentSlug)
     .sort((a, b) => {
       const aMatches = a!.frontmatter.tags.filter(t => tags.includes(t)).length

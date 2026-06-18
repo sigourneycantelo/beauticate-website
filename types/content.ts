@@ -48,6 +48,7 @@ export interface ArticleFrontmatter {
   youtube_embed?: string
 
   // Editorial flags
+  published?: boolean          // false = draft/hidden; omitting defaults to published
   is_featured?: boolean
   featured?: boolean
   editorial_flag?: string
