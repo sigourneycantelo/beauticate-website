@@ -1,0 +1,68 @@
+import Image from 'next/image'
+import type { ProductLink } from '@/types/content'
+import type { ShopifyProduct } from '@/types/shopify'
+import AddToCartButton from '@/components/shop/AddToCartButton'
+
+interface Props {
+  product: ProductLink
+  shopProduct?: ShopifyProduct
+}
+
+export default function ProductEmbed({ product, shopProduct }: Props) {
+  if (product.type === 'dead') return null
+
+  const price = shopProduct?.priceRange?.minVariantPrice
+    ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
+        .format(parseFloat(shopProduct.priceRange.minVariantPrice.amount))
+    : null
+
+  if (product.type === 'shop' && shopProduct) {
+    const variant = shopProduct.variants?.edges?.[0]?.node
+    return (
+      <div className="my-6 border border-cream-200 p-4 flex gap-4 items-start">
+        {shopProduct.images?.edges?.[0]?.node && (
+          <div className="relative w-24 h-24 flex-none bg-cream-100">
+            <Image
+              src={shopProduct.images.edges[0].node.url}
+              alt={shopProduct.images.edges[0].node.altText ?? shopProduct.title}
+              fill className="object-cover"
+            />
+          </div>
+        )}
+        <div className="flex-1 min-w-0">
+          <p className="text-xs text-charcoal-light mb-1">{shopProduct.vendor}</p>
+          <p className="font-medium text-sm mb-1 leading-tight">{shopProduct.title}</p>
+          {price && <p className="text-sm text-gold mb-3">{price}</p>}
+          {variant && (
+            <AddToCartButton
+              variantId={variant.id}
+              variantTitle={variant.title}
+              productTitle={shopProduct.title}
+              productImage={shopProduct.images?.edges?.[0]?.node}
+              price={variant.price}
+            />
+          )}
+        </div>
+      </div>
+    )
+  }
+
+  // affiliate or external
+  const href = product.type === 'affiliate' || product.type === 'external' ? product.url : '#'
+  return (
+    <div className="my-6 border border-cream-200 p-4 flex gap-4 items-center justify-between">
+      <div>
+        <p className="text-xs text-charcoal-light mb-1">{product.retailer ?? ''}</p>
+        <p className="font-medium text-sm">{product.name}</p>
+      </div>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        className="btn-secondary text-xs whitespace-nowrap"
+      >
+        {product.type === 'affiliate' ? 'Shop Now' : 'View Product'} →
+      </a>
+    </div>
+  )
+}
