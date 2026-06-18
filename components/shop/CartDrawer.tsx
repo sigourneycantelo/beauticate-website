@@ -8,7 +8,7 @@ export default function CartDrawer() {
 
   if (!isOpen) return null
 
-  const lines = cart?.lines?.edges?.map(e => e.node) ?? []
+  const lines = cart?.lines?.nodes ?? []
   const total = cart?.cost?.totalAmount
     ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
         .format(parseFloat(cart.cost.totalAmount.amount))

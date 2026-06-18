@@ -1,10 +1,11 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 
-const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!
-const STOREFRONT_TOKEN = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!
-const API_URL = `https://${STORE_DOMAIN}/api/2024-10/graphql.json`
+const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
+const STOREFRONT_TOKEN = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
+const API_URL = STORE_DOMAIN ? `https://${STORE_DOMAIN}/api/2024-10/graphql.json` : ''
 
 async function shopifyFetch<T>(query: string, variables?: object): Promise<T> {
+  if (!STORE_DOMAIN || !STOREFRONT_TOKEN) return { data: null } as T
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
@@ -61,7 +62,7 @@ export async function getProductByHandle(handle: string): Promise<ShopifyProduct
       product(handle: $handle) { ...ProductFields }
     }
   `, { handle })
-  return data.product
+  return (data as any)?.product ?? null
 }
 
 export async function getProductsByHandles(handles: string[]): Promise<ShopifyProduct[]> {
@@ -78,7 +79,7 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
       }
     }
   `, { first })
-  return data.products.nodes
+  return (data as any)?.products?.nodes ?? []
 }
 
 // ─── Collections ─────────────────────────────────────────────────────────────
@@ -94,7 +95,7 @@ export async function getCollectionByHandle(handle: string): Promise<ShopifyColl
       }
     }
   `, { handle })
-  return data.collection
+  return (data as any)?.collection ?? null
 }
 
 export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
@@ -113,7 +114,7 @@ export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
       }
     }
   `, { first })
-  return data.collections.nodes
+  return (data as any)?.collections?.nodes ?? []
 }
 
 // ─── Cart ────────────────────────────────────────────────────────────────────

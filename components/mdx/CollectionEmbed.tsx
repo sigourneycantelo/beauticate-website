@@ -7,7 +7,7 @@ interface Props { handle: string; title?: string }
 export default async function CollectionEmbed({ handle, title }: Props) {
   const collection = await getCollectionByHandle(handle)
   if (!collection) return null
-  const products = collection.products?.edges?.slice(0, 4).map((e: any) => e.node) ?? []
+  const products = collection.products?.nodes?.slice(0, 4) ?? []
 
   return (
     <div className="my-8 border-t border-b border-cream-200 py-8">

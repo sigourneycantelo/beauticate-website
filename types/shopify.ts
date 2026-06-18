@@ -58,10 +58,11 @@ export interface ShopifyCollection {
 export interface CartLine {
   id: string
   quantity: number
+  cost: { totalAmount: ShopifyPrice }
   merchandise: {
     id: string
     title: string
-    product: Pick<ShopifyProduct, 'id' | 'handle' | 'title' | 'featuredImage'>
+    product: Pick<ShopifyProduct, 'id' | 'handle' | 'title' | 'featuredImage' | 'vendor'>
     price: ShopifyPrice
     selectedOptions: { name: string; value: string }[]
   }
