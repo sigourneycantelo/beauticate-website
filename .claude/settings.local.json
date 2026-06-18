@@ -25,7 +25,11 @@
       "WebFetch(domain:www.beauticate.com)",
       "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/01/brown-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-dark.png')",
       "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/01/white-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-white.png')",
-      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/04/shop-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-shop.png')"
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/04/shop-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-shop.png')",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/2-1.jpg -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/content/beauty-style/makeup/brow-mistakes-most-women-make/hero.jpg')",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/2026-Website-Feature-Images-5.jpg -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/content/living/giving-back-became-non-negotiable/hero.jpg')",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/2026-Website-Feature-Images-2-1.jpg -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/content/destinations/where-family-memories-are-made/hero.jpg')",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2025/02/38363818-1739270093542-7154f374420cb-scaled.jpg -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/content/wellness/health/sacred-six-stress-sanity-sacred-rituals/hero.jpg')"
     ]
   }
 }
