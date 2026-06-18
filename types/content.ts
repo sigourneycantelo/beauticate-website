@@ -29,31 +29,30 @@ export interface ArticleFrontmatter {
 
   // SEO
   seo_title?: string
-  meta_description: string
+  seo_description?: string
+  meta_description?: string         // legacy alias
   canonical_url?: string
-  robots?: string
   og_title?: string
   og_description?: string
   og_image?: string
 
   // AEO
-  schema_type: 'Article' | 'HowTo' | 'FAQPage' | 'Review' | 'NewsArticle'
+  schema_type?: 'Article' | 'HowTo' | 'FAQPage' | 'Review' | 'NewsArticle'
   faqs?: FAQ[]
   reading_time?: number
 
   // Commerce
-  related_products?: string[]       // Shopify product handles
-  related_collections?: string[]    // Shopify collection handles (for Shop by Moment)
-  social_origin?: {
-    platform: 'instagram' | 'tiktok' | 'pinterest' | 'podcast'
-    caption?: string
-    url?: string
-  }
+  product_links?: ProductLink[]
+  related_products?: string[]
+  related_collections?: string[]
+  youtube_embed?: string
 
   // Editorial flags
-  featured?: boolean                // surface on homepage hero
-  sigourneys_edit?: boolean         // include in Sigourney's Edit
-  sponsored?: boolean               // disclosure
+  is_featured?: boolean
+  featured?: boolean
+  editorial_flag?: string
+  sigourneys_edit?: boolean
+  sponsored?: boolean
   affiliate_disclosure?: boolean
 }
 

@@ -20,7 +20,8 @@
       "Bash(npx create-next-app@latest beauticate-next --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-turbopack)",
       "Bash(which node *)",
       "Bash(npm --version)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npm install *)"
     ]
   }
 }

@@ -13,10 +13,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { frontmatter: f } = article
   return {
     title: f.seo_title ?? f.title,
-    description: f.meta_description,
+    description: f.seo_description,
     openGraph: {
-      title: f.og_title ?? f.title,
-      description: f.og_description ?? f.meta_description,
+      title: f.title,
+      description: f.seo_description,
       images: f.og_image ? [f.og_image] : [],
       type: 'article',
       publishedTime: f.date_published,

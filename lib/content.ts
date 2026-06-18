@@ -44,9 +44,9 @@ export function getArticleBySlug(slugParts: string[]): {
   const raw = fs.readFileSync(mdxPath, 'utf-8')
   const { data, content } = matter(raw)
 
-  const products = fs.existsSync(productsPath)
-    ? JSON.parse(fs.readFileSync(productsPath, 'utf-8'))
-    : []
+  // product_links live in frontmatter; fall back to products.json for legacy articles
+  const products = (data.product_links as import('@/types/content').ProductLink[] | undefined)
+    ?? (fs.existsSync(productsPath) ? JSON.parse(fs.readFileSync(productsPath, 'utf-8')) : [])
 
   return {
     frontmatter: data as ArticleFrontmatter,
@@ -74,7 +74,7 @@ export function getFeaturedArticles(limit = 6) {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
-    .filter(a => a?.frontmatter.featured)
+    .filter(a => a?.frontmatter.is_featured)
     .slice(0, limit)
 }
 
