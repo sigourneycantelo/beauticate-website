@@ -22,7 +22,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       {/* Hero */}
       {f.featured_image && (
         <div className="relative h-[50vh] md:h-[60vh] bg-cream-100">
-          <Image src={f.featured_image} alt={f.featured_image_alt ?? f.title} fill className="object-cover" priority />
+          <Image src={f.featured_image} alt={f.featured_image_alt ?? f.title} fill className="object-cover object-top" priority />
         </div>
       )}
 
