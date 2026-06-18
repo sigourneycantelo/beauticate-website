@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const SOCIAL_LINKS = [
   { label: 'Instagram', href: 'https://www.instagram.com/beauticate/' },
@@ -29,7 +30,15 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <p className="font-serif text-2xl mb-3">Beauticate</p>
+            <Link href="/" className="inline-block mb-4">
+              <Image
+                src="/logo-white.png"
+                alt="Beauticate"
+                width={160}
+                height={22}
+                className="h-7 w-auto"
+              />
+            </Link>
             <p className="text-sm text-cream/70 leading-relaxed">
               Elevating beauty, wellness, and lifestyle with trusted tips, expert voices, and stories that inspire.
             </p>

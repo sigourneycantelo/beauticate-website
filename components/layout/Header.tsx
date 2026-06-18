@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import CartButton from '@/components/shop/CartButton'
 import SearchBar from '@/components/shared/SearchBar'
@@ -49,8 +50,15 @@ export default function Header() {
       <div className="max-w-wide mx-auto px-4 flex items-center justify-between h-16 md:h-20">
 
         {/* Logo */}
-        <Link href="/" className="font-serif text-2xl tracking-wide">
-          Beauticate
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-dark.png"
+            alt="Beauticate"
+            width={160}
+            height={22}
+            priority
+            className="h-7 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

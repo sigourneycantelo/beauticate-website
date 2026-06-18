@@ -21,7 +21,11 @@
       "Bash(which node *)",
       "Bash(npm --version)",
       "Bash(npm run *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "WebFetch(domain:www.beauticate.com)",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/01/brown-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-dark.png')",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/01/white-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-white.png')",
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/04/shop-logo.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-shop.png')"
     ]
   }
 }
