@@ -34,7 +34,25 @@
       "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/Kerrie-Simone.jpg -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/content/beauty-style/makeup/brow-mistakes-most-women-make/simone-aspinall.jpg')",
       "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/Kuching-Food-Aid-Donation.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/content/living/giving-back-became-non-negotiable/kuching-food-aid-donation.png')",
       "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/Kuching-donation-2.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/content/living/giving-back-became-non-negotiable/kuching-donation-2.png')",
-      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/Kuching-Aid-Food-Donation.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/content/living/giving-back-became-non-negotiable/kuching-aid-food-donation.png')"
+      "Bash(curl -sL https://www.beauticate.com/wp-content/uploads/2026/06/Kuching-Aid-Food-Donation.png -o '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/content/living/giving-back-became-non-negotiable/kuching-aid-food-donation.png')",
+      "WebFetch(domain:beauticate.com)",
+      "Bash(curl -s \"https://www.beauticate.com/beauty-style/fragrance/fathers-day-fragrance/\")",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36\" \"https://www.beauticate.com/beauty-style/fragrance/fathers-day-fragrance/\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.beauticate.com/beauty-style/fragrance/fathers-day-fragrance/\")",
+      "Bash(python3)",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://www.beauticate.com/beauty-style/fragrance/fathers-day-fragrance/\")",
+      "Read(//tmp/**)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art1.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art2.html)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art3.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art4.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art5.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art6.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art7.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art8.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art9.html)",
+      "Bash(python3 /tmp/extract_article.py /tmp/art10.html)"
     ]
   }
 }
