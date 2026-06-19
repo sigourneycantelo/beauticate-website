@@ -50,6 +50,7 @@ export interface ArticleFrontmatter {
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
   is_featured?: boolean
+  is_news?: boolean            // true = NewsArticle schema + Google News signals
   featured?: boolean
   editorial_flag?: string
   sigourneys_edit?: boolean

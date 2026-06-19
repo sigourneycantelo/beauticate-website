@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-AU" className={`${ebGaramond.variable} ${centuryGothic.variable}`}>
       <body>
         <CartProvider>
-          <AnnouncementBar message="THE BEAUTIFUL INSIDE PODCAST HAS LAUNCHED — LISTEN HERE" href="/vodcast" />
+          <AnnouncementBar message="Shop the Beauticate Edit — curated beauty, wellness & style" href="/shop" />
           <Header />
           <main id="main">{children}</main>
           <Footer />

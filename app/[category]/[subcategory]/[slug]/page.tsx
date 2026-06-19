@@ -3,6 +3,8 @@ import { getProductsByHandles } from '@/lib/shopify'
 import ArticlePage from '@/components/article/ArticlePage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { buildArticleMetadata, buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo'
+import Script from 'next/script'
 
 interface Props { params: Promise<{ category: string; subcategory: string; slug: string }> }
 
@@ -10,19 +12,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, subcategory, slug } = await params
   const article = getArticleBySlug([category, subcategory, slug])
   if (!article) return {}
-  const { frontmatter: f } = article
-  return {
-    title: f.seo_title ?? f.title,
-    description: f.seo_description,
-    openGraph: {
-      title: f.title,
-      description: f.seo_description,
-      images: f.og_image ? [f.og_image] : [],
-      type: 'article',
-      publishedTime: f.date_published,
-      modifiedTime: f.date_modified,
-    },
-  }
+  const url = `/${category}/${subcategory}/${slug}`
+  return buildArticleMetadata(article.frontmatter, url)
 }
 
 export default async function ArticleRoute({ params }: Props) {
@@ -30,19 +21,42 @@ export default async function ArticleRoute({ params }: Props) {
   const article = getArticleBySlug([category, subcategory, slug])
   if (!article) notFound()
 
+  const { frontmatter: f, content, products } = article
+
   const shopProducts = await getProductsByHandles(
-    article.products.filter(p => p.type === 'shop').map(p => p.handle!)
+    products.filter(p => p.type === 'shop').map(p => p.handle!)
   )
 
-  const related = getRelatedArticles(slug, category, article.frontmatter.tags)
+  const related = getRelatedArticles(slug, category, f.tags ?? [])
+
+  const url = `/${category}/${subcategory}/${slug}`
+  const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })))
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: category.replace(/-/g, ' '), url: `/${category}` },
+    ...(subcategory ? [{ name: subcategory.replace(/-/g, ' '), url: `/${category}/${subcategory}` }] : []),
+    { name: f.title, url },
+  ])
 
   return (
-    <ArticlePage
-      frontmatter={article.frontmatter}
-      content={article.content}
-      productLinks={article.products}
-      shopProducts={shopProducts}
-      relatedArticles={related as any}
-    />
+    <>
+      <Script
+        id="schema-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <Script
+        id="schema-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <ArticlePage
+        frontmatter={f}
+        content={content}
+        productLinks={products}
+        shopProducts={shopProducts}
+        relatedArticles={related as any}
+      />
+    </>
   )
 }
