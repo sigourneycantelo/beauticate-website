@@ -52,7 +52,8 @@
       "Bash(python3 /tmp/extract_article.py /tmp/art7.html)",
       "Bash(python3 /tmp/extract_article.py /tmp/art8.html)",
       "Bash(python3 /tmp/extract_article.py /tmp/art9.html)",
-      "Bash(python3 /tmp/extract_article.py /tmp/art10.html)"
+      "Bash(python3 /tmp/extract_article.py /tmp/art10.html)",
+      "Bash(npx tsc *)"
     ]
   }
 }

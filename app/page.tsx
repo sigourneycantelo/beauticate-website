@@ -4,7 +4,6 @@ import { getFeaturedArticles, getArticlesByCategory } from '@/lib/content'
 import EditorialGrid from '@/components/article/EditorialGrid'
 import StoryStrip from '@/components/article/StoryStrip'
 import TheCollective from '@/components/shared/TheCollective'
-import EmailSignup from '@/components/shared/EmailSignup'
 import SocialFeed from '@/components/shared/SocialFeed'
 
 export default async function HomePage() {
@@ -50,14 +49,11 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ── Story strip — latest articles, social-card style ──────── */}
-      <StoryStrip articles={editorialArticles as any} />
+      {/* ── Story strip — first 3 articles, social-card style ─────── */}
+      <StoryStrip articles={editorialArticles.slice(0, 3) as any} />
 
-      {/* ── Newsletter bar ────────────────────────────────────────── */}
-      <NewsletterBar />
-
-      {/* ── Editorial grid ────────────────────────────────────────── */}
-      <EditorialGrid articles={editorialArticles as any} />
+      {/* ── Editorial grid — articles 4–8 (no overlap with strip) ─── */}
+      <EditorialGrid articles={editorialArticles.slice(3) as any} />
 
       {/* ── Divider label ─────────────────────────────────────────── */}
       <SectionDivider label="Beauty & Style" href="/beauty-style" />
@@ -81,45 +77,92 @@ export default async function HomePage() {
       {/* ── Social feed (Curatedio) ───────────────────────────────── */}
       <SocialFeed title="Follow Along" />
 
-      {/* ── Email signup ──────────────────────────────────────────── */}
-      <EmailSignup />
+      {/* ── Insiders newsletter ───────────────────────────────────── */}
+      <InsidersSignup />
     </>
   )
 }
 
 // ── Sub-components ────────────────────────────────────────────────
 
-function NewsletterBar() {
+function InsidersSignup() {
+  const perks = [
+    { icon: '✦', label: 'Weekly edit', detail: 'Beauty, wellness & style picks curated by our editors' },
+    { icon: '✦', label: 'First access', detail: 'Events, launches, and collective drops before anyone else' },
+    { icon: '✦', label: 'Insider intel', detail: 'What the experts are actually buying, using, and loving' },
+    { icon: '✦', label: 'No noise', detail: 'One beautifully edited email. Never spam.' },
+  ]
   return (
-    <div className="bg-cream border-b border-cream-200 py-5 px-4">
-      <div className="max-w-wide mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="text-center sm:text-left">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase font-bold mb-0.5">Join Beauticate Insiders</p>
-          <p className="font-serif text-sm text-charcoal-light">
-            Beauty, wellness, style, living, destinations — curated weekly.
+    <section className="bg-charcoal text-cream">
+      <div className="max-w-wide mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+        {/* Left — text */}
+        <div>
+          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-cream/50 mb-4">
+            Beauticate Insiders
+          </p>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight lowercase mb-6">
+            the edit, delivered.
+          </h2>
+          <p className="font-serif text-lg text-cream/70 leading-relaxed mb-10">
+            Join thousands of women who trust Beauticate to cut through the noise — beauty, wellness, style and living, once a week.
+          </p>
+
+          <ul className="space-y-5 mb-10">
+            {perks.map(p => (
+              <li key={p.label} className="flex items-start gap-3">
+                <span className="text-gold mt-1 text-xs flex-none">{p.icon}</span>
+                <div>
+                  <span className="font-sans text-[10px] tracking-[0.2em] uppercase font-bold block mb-0.5">{p.label}</span>
+                  <span className="font-serif text-sm text-cream/60">{p.detail}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <form action="/api/subscribe" method="POST" className="flex flex-col sm:flex-row gap-0 max-w-md">
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              className="flex-1 px-5 py-4 bg-transparent border border-cream/20 text-cream font-serif text-sm placeholder:text-cream/30 focus:outline-none focus:border-cream/50"
+            />
+            <button
+              type="submit"
+              className="px-6 py-4 bg-gold text-cream font-sans text-[10px] tracking-[0.25em] uppercase font-bold hover:bg-gold/80 transition-colors whitespace-nowrap"
+            >
+              Join Insiders
+            </button>
+          </form>
+          <p className="font-serif text-xs text-cream/30 mt-3">
+            Unsubscribe anytime. No spam, ever.
           </p>
         </div>
-        <form
-          action="/api/subscribe"
-          method="POST"
-          className="flex gap-0 w-full sm:w-auto"
-        >
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="Your email"
-            className="flex-1 sm:w-56 px-4 py-2.5 border border-charcoal/20 bg-transparent text-sm font-serif placeholder:text-charcoal-light/60 focus:outline-none focus:border-charcoal"
-          />
-          <button
-            type="submit"
-            className="px-5 py-2.5 bg-charcoal text-cream font-sans text-[10px] tracking-[0.2em] uppercase font-bold hover:bg-charcoal-light transition-colors whitespace-nowrap"
-          >
-            Subscribe
-          </button>
-        </form>
+
+        {/* Right — editorial pull quotes / social proof */}
+        <div className="hidden md:flex flex-col gap-5">
+          <div className="border border-cream/10 p-6">
+            <p className="font-serif text-xl italic leading-relaxed text-cream/80 mb-4">
+              "The one newsletter I actually open every week."
+            </p>
+            <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/40">— Beauticate reader</span>
+          </div>
+          <div className="border border-cream/10 p-6">
+            <p className="font-serif text-xl italic leading-relaxed text-cream/80 mb-4">
+              "Finally a beauty edit that doesn't feel overwhelming — just the best of the best."
+            </p>
+            <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-cream/40">— Beauticate reader</span>
+          </div>
+          <div className="bg-cream/5 p-6 text-center">
+            <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-cream/40 mb-2">Community</p>
+            <p className="font-serif text-4xl text-gold mb-1">40k+</p>
+            <p className="font-serif text-sm text-cream/50">women in our community</p>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </section>
   )
 }
 

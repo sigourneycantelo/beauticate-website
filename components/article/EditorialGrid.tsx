@@ -134,8 +134,8 @@ export default function EditorialGrid({ articles, title }: Props) {
         </div>
       )}
 
-      {/* Row 3: optional 4th–5th cards */}
-      {a6 && (
+      {/* Row 3: only render if we have a full pair or triple (no orphan singles) */}
+      {a6 && a7 && (
         <>
           <div className="border-t border-cream-200 mb-10" />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
