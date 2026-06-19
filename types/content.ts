@@ -49,6 +49,7 @@ export interface ArticleFrontmatter {
 
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
+  reviewed?: boolean           // true = SEO/AEO review done; used by /admin/review-queue
   is_featured?: boolean
   is_news?: boolean            // true = NewsArticle schema + Google News signals
   featured?: boolean
