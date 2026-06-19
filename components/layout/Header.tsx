@@ -50,7 +50,7 @@ const NAV_ITEMS = [
   { label: 'About', href: '/about-beauticate' },
 ]
 
-const NAV_LINK = 'font-sans text-[11px] tracking-[0.18em] uppercase font-bold hover:text-gold transition-colors'
+const NAV_LINK = 'font-sans text-[12.5px] tracking-[0.16em] uppercase hover:text-gold transition-colors'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const COLLECTIVE = [
   { name: 'Sigourney Cantelo', role: 'Founder & Publisher', photo: '/images/collective/sigourney-cantelo.jpg' },
@@ -19,27 +20,39 @@ const COLLECTIVE = [
 
 export default function TheCollective() {
   return (
-    <section className="max-w-wide mx-auto px-4 py-12 border-t border-cream-200">
-      <h2 className="text-center mb-2">The Beauticate Collective</h2>
-      <p className="text-center text-charcoal-light text-sm mb-10 max-w-md mx-auto">
-        The editors, experts, and trusted voices behind every recommendation.
-      </p>
-      <div className="flex flex-wrap justify-center gap-8">
-        {COLLECTIVE.map(m => (
-          <div key={m.name} className="text-center w-28">
-            <div className="w-20 h-20 rounded-full mx-auto mb-3 overflow-hidden bg-cream-100 relative">
+    <section className="bg-charcoal py-16 md:py-20">
+      <div className="max-w-wide mx-auto px-4">
+        <div className="flex items-end justify-between mb-10">
+          <div>
+            <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-cream/40 mb-2">Meet the team</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-cream lowercase">the beauticate collective</h2>
+          </div>
+          <Link href="/about-beauticate"
+            className="hidden md:inline font-sans text-[10px] tracking-[0.2em] uppercase text-cream/40 hover:text-cream transition-colors">
+            About us →
+          </Link>
+        </div>
+
+        {/* Portrait cards — horizontal scroll on mobile, 7-col grid on desktop */}
+        <div className="flex gap-3 overflow-x-auto md:overflow-visible md:grid md:grid-cols-7 pb-2 md:pb-0">
+          {COLLECTIVE.map(m => (
+            <div key={m.name} className="group relative flex-none w-[140px] md:w-auto aspect-[3/4] overflow-hidden bg-charcoal-light cursor-default">
               <Image
                 src={m.photo}
                 alt={m.name}
                 fill
-                className="object-cover object-top"
-                sizes="80px"
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                sizes="(max-width: 768px) 140px, 14vw"
               />
+              {/* lower-third gradient */}
+              <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <p className="font-sans text-[9px] tracking-[0.16em] uppercase text-cream/50 mb-0.5">{m.role}</p>
+                <p className="font-serif text-cream text-sm leading-snug lowercase">{m.name.toLowerCase()}</p>
+              </div>
             </div>
-            <p className="text-sm font-medium leading-snug">{m.name}</p>
-            <p className="text-xs text-charcoal-light mt-0.5">{m.role}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   )

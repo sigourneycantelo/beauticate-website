@@ -35,13 +35,18 @@ function StoryCard({ article }: { article: Article }) {
           sizes="260px"
         />
       )}
-      {/* gradient + text overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 p-4">
-        <p className="font-serif text-cream text-lg leading-snug lowercase">
+      {/* lower-third gradient box — text always readable */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-charcoal/80 via-charcoal/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+        {f.category && (
+          <span className="font-sans text-[10px] tracking-[0.16em] uppercase text-cream/60 block mb-1.5">
+            {f.subcategory ?? f.category}
+          </span>
+        )}
+        <p className="font-serif text-cream text-lg md:text-xl leading-snug lowercase">
           {f.title.toLowerCase()}
         </p>
-        <span className="mt-2 inline-block text-cream/70 text-lg leading-none group-hover:text-cream transition-colors">→</span>
+        <span className="mt-2 inline-block text-cream/60 text-base leading-none group-hover:text-cream transition-colors">→</span>
       </div>
     </Link>
   )

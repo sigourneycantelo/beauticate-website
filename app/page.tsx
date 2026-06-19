@@ -52,6 +52,9 @@ export default async function HomePage() {
       {/* ── Story strip — first 3 articles, social-card style ─────── */}
       <StoryStrip articles={editorialArticles.slice(0, 3) as any} />
 
+      {/* ── Social feed — compact strip, high up ─────────────────── */}
+      <SocialFeed title="Follow Along" compact />
+
       {/* ── Editorial grid — articles 4–8 (no overlap with strip) ─── */}
       <EditorialGrid articles={editorialArticles.slice(3) as any} />
 
@@ -73,9 +76,6 @@ export default async function HomePage() {
 
       {/* ── The Beauticate Collective ──────────────────────────────── */}
       <TheCollective />
-
-      {/* ── Social feed (Curatedio) ───────────────────────────────── */}
-      <SocialFeed title="Follow Along" />
 
       {/* ── Insiders newsletter ───────────────────────────────────── */}
       <InsidersSignup />

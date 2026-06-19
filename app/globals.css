@@ -17,20 +17,32 @@
     font-family: var(--font-serif);
   }
 
-  /* Editorial typography — serif body, sans navigation */
-  h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight; }
-  h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight; }
-  h3 { @apply font-serif text-xl md:text-2xl leading-snug; }
-  h4 { @apply font-sans text-xs tracking-[0.2em] uppercase font-light; }
+  /* Editorial typography — serif body, sans navigation, lowercase headings */
+  h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight lowercase; }
+  h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight lowercase; }
+  h3 { @apply font-serif text-xl md:text-2xl leading-snug lowercase; }
+  h4 { @apply font-sans text-xs tracking-[0.2em] uppercase; }
 
   p  { @apply font-serif text-base md:text-lg leading-relaxed; }
 
   /* Navigation labels always sans, caps, wide tracking */
   nav a, .nav-label {
     font-family: var(--font-sans);
-    @apply uppercase tracking-[0.15em] text-xs font-bold;
+    @apply uppercase tracking-[0.16em] text-[12.5px];
   }
 }
+
+/* ── Curator.io overrides ─────────────────────────────────────────
+   Neutralise platform brand colours so the feed feels native to
+   Beauticate's palette. YouTube red → charcoal, all source icons
+   become monochrome. */
+.crt-source-icon,
+.crt-source-icon svg,
+[class*="crt-source-youtube"] svg,
+[class*="crt-social-icon"] { color: #2c2c2c !important; fill: #2c2c2c !important; }
+/* YouTube red background pill */
+[class*="youtube"] .crt-source-icon,
+.crt-source-youtube { background-color: #2c2c2c !important; }
 
 @layer components {
   .btn-primary {
