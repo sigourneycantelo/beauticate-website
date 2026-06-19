@@ -90,7 +90,8 @@
       "Bash(node scripts/enrich-seo.mjs)",
       "Bash(node scripts/strip-shortcodes.mjs)",
       "Bash(node scripts/fix-entities.mjs)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(node scripts/clean-articles.mjs)"
     ]
   }
 }
