@@ -4,7 +4,7 @@ import { getFeaturedArticles, getArticlesByCategory } from '@/lib/content'
 import EditorialGrid from '@/components/article/EditorialGrid'
 import TheCollective from '@/components/shared/TheCollective'
 import EmailSignup from '@/components/shared/EmailSignup'
-import InstagramFeed from '@/components/shared/InstagramFeed'
+import SocialFeed from '@/components/shared/SocialFeed'
 
 export default async function HomePage() {
   const [featured, beautyArticles, wellnessArticles, interviewArticles] = await Promise.all([
@@ -74,8 +74,8 @@ export default async function HomePage() {
       {/* ── The Beauticate Collective ──────────────────────────────── */}
       <TheCollective />
 
-      {/* ── Instagram feed ────────────────────────────────────────── */}
-      <InstagramFeed />
+      {/* ── Social feed (Curatedio) ───────────────────────────────── */}
+      <SocialFeed title="Follow Along" />
 
       {/* ── Email signup ──────────────────────────────────────────── */}
       <EmailSignup />

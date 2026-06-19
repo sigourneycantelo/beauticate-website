@@ -4,7 +4,7 @@
 
 :root {
   --font-serif: 'EB Garamond', Georgia, serif;
-  --font-sans:  'Josefin Sans', system-ui, sans-serif;
+  --font-sans:  'Century Gothic', 'Josefin Sans', system-ui, sans-serif;
 }
 
 @layer base {

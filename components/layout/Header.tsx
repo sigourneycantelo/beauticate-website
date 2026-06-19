@@ -6,23 +6,24 @@ import CartButton from '@/components/shop/CartButton'
 import SearchBar from '@/components/shared/SearchBar'
 
 const NAV_ITEMS = [
+  { label: 'Shop', href: '/shop' },
   {
-    label: 'Interviews',
-    href: '/interviews',
-    children: [
-      { label: 'Creatives', href: '/interviews/creatives' },
-      { label: 'Founders', href: '/interviews/founders' },
-      { label: 'Tastemakers', href: '/interviews/tastemakers' },
-    ],
-  },
-  {
-    label: 'Beauty & Style',
+    label: 'Beauty',
     href: '/beauty-style',
     children: [
       { label: 'Skin Care', href: '/beauty-style/skin-care' },
       { label: 'Makeup', href: '/beauty-style/makeup' },
-      { label: 'Hair', href: '/beauty-style/hair' },
       { label: 'Fragrance', href: '/beauty-style/fragrance' },
+      { label: 'Hair', href: '/beauty-style/hair' },
+    ],
+  },
+  {
+    label: 'Style',
+    href: '/beauty-style/style',
+    children: [
+      { label: 'Fashion', href: '/beauty-style/fashion' },
+      { label: 'Accessories', href: '/beauty-style/accessories' },
+      { label: 'Shopping Edits', href: '/beauty-style/shopping-edits' },
     ],
   },
   {
@@ -37,8 +38,16 @@ const NAV_ITEMS = [
   { label: 'Destinations', href: '/destinations' },
   { label: 'Living', href: '/living' },
   { label: 'Vodcast', href: '/vodcast' },
-  { label: "Sigourney's Edit", href: '/sigourneys-edit' },
-  { label: 'Shop', href: '/shop' },
+  {
+    label: 'Interviews',
+    href: '/interviews',
+    children: [
+      { label: 'Creatives', href: '/interviews/creatives' },
+      { label: 'Founders', href: '/interviews/founders' },
+      { label: 'Tastemakers', href: '/interviews/tastemakers' },
+    ],
+  },
+  { label: 'About', href: '/about-beauticate' },
 ]
 
 const NAV_LINK = 'font-sans text-[11px] tracking-[0.18em] uppercase font-bold hover:text-gold transition-colors'

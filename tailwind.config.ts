@@ -11,10 +11,10 @@ const config: Config = {
       colors: {
         // Beauticate brand colours — update with exact hex once confirmed
         cream: {
-          50:  '#fdfcf9',
-          100: '#faf7f0',
-          200: '#f4ede0',
-          DEFAULT: '#f4ede0',
+          50:  '#ffffff',
+          100: '#fafafa',
+          200: '#ebebeb',
+          DEFAULT: '#ffffff',
         },
         charcoal: {
           DEFAULT: '#1a1a1a',
