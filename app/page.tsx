@@ -109,8 +109,8 @@ function InsidersSignup() {
           <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-cream/50 mb-4">
             Beauticate Insiders
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight lowercase mb-6">
-            the edit, delivered.
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+            The Edit, Delivered.
           </h2>
           <p className="font-serif text-lg text-cream/70 leading-relaxed mb-10">
             Join thousands of women who trust Beauticate to cut through the noise — beauty, wellness, style and living, once a week.

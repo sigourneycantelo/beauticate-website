@@ -43,8 +43,8 @@ function StoryCard({ article }: { article: Article }) {
             {f.subcategory ?? f.category}
           </span>
         )}
-        <p className="font-serif text-cream text-lg md:text-xl leading-snug lowercase">
-          {f.title.toLowerCase()}
+        <p className="font-serif text-cream text-lg md:text-xl leading-snug">
+          {f.title}
         </p>
         <span className="mt-2 inline-block text-cream/60 text-base leading-none group-hover:text-cream transition-colors">→</span>
       </div>

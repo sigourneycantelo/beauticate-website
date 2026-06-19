@@ -17,10 +17,10 @@
     font-family: var(--font-serif);
   }
 
-  /* Editorial typography — serif body, sans navigation, lowercase headings */
-  h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight lowercase; }
-  h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight lowercase; }
-  h3 { @apply font-serif text-xl md:text-2xl leading-snug lowercase; }
+  /* Editorial typography — serif body, sans navigation */
+  h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight; }
+  h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight; }
+  h3 { @apply font-serif text-xl md:text-2xl leading-snug; }
   h4 { @apply font-sans text-xs tracking-[0.2em] uppercase; }
 
   p  { @apply font-serif text-base md:text-lg leading-relaxed; }
@@ -31,6 +31,16 @@
     @apply uppercase tracking-[0.16em] text-[12.5px];
   }
 }
+
+/* ── Curator.io overrides ─────────────────────────────────────────
+   Font: EB Garamond throughout the widget for consistency with site. */
+#curator-feed-default-feed-layout,
+[id^="curator-feed"],
+.crt-widget,
+.crt-post,
+.crt-post-text,
+.crt-post-username,
+.crt-post-fullname { font-family: var(--font-serif) !important; }
 
 /* ── Curator.io overrides ─────────────────────────────────────────
    Neutralise platform brand colours so the feed feels native to

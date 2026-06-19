@@ -48,7 +48,7 @@ export default function TheCollective() {
               <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-3">
                 <p className="font-sans text-[9px] tracking-[0.16em] uppercase text-cream/50 mb-0.5">{m.role}</p>
-                <p className="font-serif text-cream text-sm leading-snug lowercase">{m.name.toLowerCase()}</p>
+                <p className="font-serif text-cream text-sm leading-snug">{m.name}</p>
               </div>
             </div>
           ))}
