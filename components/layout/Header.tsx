@@ -47,7 +47,7 @@ const NAV_ITEMS = [
       { label: 'Tastemakers', href: '/interviews/tastemakers' },
     ],
   },
-  { label: 'About', href: '/about-beauticate' },
+  { label: 'About', href: '/about' },
 ]
 
 const NAV_LINK = 'font-sans text-[12.5px] tracking-[0.16em] uppercase hover:text-gold transition-colors'

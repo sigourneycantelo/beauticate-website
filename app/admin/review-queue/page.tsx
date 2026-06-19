@@ -178,8 +178,10 @@ export default function ReviewQueuePage() {
                     } ${item.needsRewrite ? 'bg-pink-50/20' : ''}`}
                   >
                     <td className="py-2.5 px-4">
-                      <div className="font-medium text-gray-900 leading-snug max-w-[280px] text-sm">{item.title}</div>
-                      <div className="text-xs text-gray-400 mt-0.5 truncate max-w-[280px]">{item.slug}</div>
+                      <Link href={item.path} target="_blank" className="group">
+                        <div className="font-medium text-gray-900 leading-snug max-w-[280px] text-sm group-hover:text-gold transition-colors">{item.title}</div>
+                        <div className="text-xs text-gray-400 mt-0.5 truncate max-w-[280px]">{item.slug}</div>
+                      </Link>
                     </td>
                     <td className="py-2.5 px-4 text-xs text-gray-500 whitespace-nowrap">
                       <span className="capitalize">{item.category.replace(/-/g, ' ')}</span>
