@@ -89,7 +89,8 @@
       "Bash(gh repo *)",
       "Bash(node scripts/enrich-seo.mjs)",
       "Bash(node scripts/strip-shortcodes.mjs)",
-      "Bash(node scripts/fix-entities.mjs)"
+      "Bash(node scripts/fix-entities.mjs)",
+      "Bash(npx next *)"
     ]
   }
 }

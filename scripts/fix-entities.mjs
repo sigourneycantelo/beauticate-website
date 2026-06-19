@@ -11,6 +11,7 @@ function findMdx(dir, results = []) {
 }
 
 const ENTITIES = {
+  '&#038;': '&',
   '&amp;': '&',
   '&nbsp;': ' ',
   '&lt;': '<',

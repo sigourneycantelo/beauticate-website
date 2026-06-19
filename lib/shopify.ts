@@ -121,7 +121,8 @@ export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
 
 // ─── Cart ────────────────────────────────────────────────────────────────────
 
-export async function createCart(): Promise<Cart> {
+export async function createCart(): Promise<Cart | null> {
+  if (!STORE_DOMAIN || !CLIENT_ID || !CLIENT_SECRET) return null
   const data = await shopifyFetch<{ cartCreate: { cart: Cart } }>(`
     mutation CreateCart {
       cartCreate {
@@ -146,7 +147,7 @@ export async function createCart(): Promise<Cart> {
       }
     }
   `)
-  return data.cartCreate.cart
+  return (data as any)?.cartCreate?.cart ?? null
 }
 
 export async function addToCart(cartId: string, variantId: string, quantity = 1): Promise<Cart> {
