@@ -102,46 +102,42 @@ export default function EditorialGrid({ articles, title }: Props) {
   const [a0, a1, a2, a3, a4, a5, a6, a7] = articles
 
   return (
-    <section className="max-w-wide mx-auto px-4 py-12">
+    <section className="max-w-wide mx-auto px-4 py-8">
       {title && (
         <div className="flex items-center justify-between border-b border-cream-200 pb-4 mb-10">
           <h2 className="font-sans text-[11px] tracking-[0.25em] uppercase font-bold">{title}</h2>
         </div>
       )}
 
-      {/* Row 1: hero (tall, left) + 2 squares (right column, stacked) */}
-      {a0 && (
-        <div className="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-8 mb-10">
+      {/* Row 1: hero (tall, left) + 2 squares (right column, stacked)
+          Only render if we have at least 2 right-column cards — otherwise
+          the hero would float alone. Fall through to the 3-col grid instead. */}
+      {a0 && a1 && (
+        <div className="grid grid-cols-1 md:grid-cols-[55fr_45fr] gap-1 mb-1">
           <HeroCard article={a0} />
-          <div className="grid grid-rows-2 gap-8">
+          <div className="grid grid-rows-2 gap-1">
             {a1 && <Card article={a1} showExcerpt />}
             {a2 && <Card article={a2} showExcerpt />}
           </div>
         </div>
       )}
 
-      {/* Thin divider between rows */}
-      {a3 && <div className="border-t border-cream-200 mb-10" />}
-
       {/* Row 2: 3 equal square cards */}
-      {a3 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-10">
-          {[a3, a4, a5].filter(Boolean).map((a, i) => (
+      {(a0 && !a1 ? [a0, a3, a4] : [a3, a4, a5]).filter(Boolean).length > 0 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 mt-1">
+          {(a0 && !a1 ? [a0, a3, a4] : [a3, a4, a5]).filter(Boolean).map((a, i) => (
             <Card key={i} article={a!} showExcerpt />
           ))}
         </div>
       )}
 
-      {/* Row 3: only render if we have a full pair or triple (no orphan singles) */}
+      {/* Row 3: only render if we have at least 2 cards (no orphan singles) */}
       {a6 && a7 && (
-        <>
-          <div className="border-t border-cream-200 mb-10" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[a6, a7].filter(Boolean).map((a, i) => (
-              <Card key={i} article={a!} />
-            ))}
-          </div>
-        </>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 mt-1">
+          {[a6, a7].filter(Boolean).map((a, i) => (
+            <Card key={i} article={a!} />
+          ))}
+        </div>
       )}
     </section>
   )

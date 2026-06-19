@@ -18,9 +18,13 @@ export default async function HomePage() {
   const hero = featured.find(a => a?.frontmatter.featured_image)
   const editorialArticles = featured.filter(a => a?.frontmatter.featured_image)
 
-  // Story strip: most-recent articles NOT already in the editorial grid
-  const editorialSlugs = editorialArticles.map(a => a!.frontmatter.slug)
-  const storyArticles = getAllArticles(4, editorialSlugs)
+  // Story strip: 4 most-recent articles with images
+  const storySlugs = editorialArticles.slice(0, 4).map(a => a!.frontmatter.slug)
+  const storyArticles = getAllArticles(4, [])
+
+  // Editorial grid: all articles except the ones in the story strip, min 5 to fill the layout
+  const storySlugsSet = new Set(storyArticles.map(a => a!.frontmatter.slug))
+  const gridArticles = getAllArticles(10, []).filter(a => !storySlugsSet.has(a!.frontmatter.slug))
 
   return (
     <>
@@ -59,8 +63,8 @@ export default async function HomePage() {
       {/* ── Social feed — compact strip, high up ─────────────────── */}
       <SocialFeed title="Follow Along" compact />
 
-      {/* ── Editorial grid — articles 4–8 (no overlap with strip) ─── */}
-      <EditorialGrid articles={editorialArticles.slice(3) as any} />
+      {/* ── Editorial grid — no overlap with story strip ─────────── */}
+      <EditorialGrid articles={gridArticles as any} />
 
       {/* ── Divider label ─────────────────────────────────────────── */}
       <SectionDivider label="Beauty & Style" href="/beauty-style" />
