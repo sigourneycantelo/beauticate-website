@@ -46,9 +46,15 @@ export default async function InterviewsPage() {
         <h1 className="font-serif text-4xl md:text-5xl text-charcoal leading-tight mb-5">
           The people shaping beauty
         </h1>
-        <p className="font-serif text-lg text-charcoal/60 max-w-xl mx-auto leading-relaxed">
+        <p className="font-serif text-lg text-charcoal/60 max-w-xl mx-auto leading-relaxed mb-6">
           Makeup artists, dermatologists, founders, models, tastemakers — the experts and icons Sigourney has spent 25 years getting to know.
         </p>
+        <Link
+          href="/interviews/a-z"
+          className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal border-b border-charcoal/30 pb-0.5 hover:text-gold hover:border-gold transition-colors"
+        >
+          Browse A–Z index
+        </Link>
       </section>
 
       {/* Hero interview */}
