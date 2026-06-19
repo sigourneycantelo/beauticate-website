@@ -78,7 +78,7 @@ const faqs = [
   },
   {
     question: 'Where is Beauticate based?',
-    answer: 'Beauticate is based in Sydney, Australia, and publishes content relevant to Australian readers — including product availability, clinic recommendations, travel and Australian wellness culture.',
+    answer: 'Beauticate is an Australian digital publisher based in Sydney. We publish content specifically for Australian readers — covering local stockists, Australian clinics and spas, travel within Australia, and the Australian wellness and beauty landscape.',
   },
 ]
 
@@ -126,7 +126,7 @@ export default function AboutPage() {
         {/* Founder section */}
         <section className="max-w-4xl mx-auto px-6 py-16 md:flex gap-14 items-start">
           <div className="md:w-64 flex-shrink-0 mb-8 md:mb-0">
-            <div className="relative w-full aspect-[3/4] bg-cream rounded-lg overflow-hidden">
+            <div className="relative w-full aspect-[3/2] bg-cream rounded-lg overflow-hidden">
               <Image
                 src="/images/sigourney-cantelo.jpg"
                 alt="Sigourney Cantelo, Founder and Editor-in-Chief of Beauticate"
@@ -243,7 +243,7 @@ export default function AboutPage() {
               </a>
             </div>
             <p className="font-sans text-[10px] tracking-widest uppercase text-cream/30 mt-8">
-              Beauticate · Sydney, Australia · beauticate.com
+              Beauticate · Sydney, Australia · ABN 123 456 789
             </p>
           </div>
         </section>

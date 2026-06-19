@@ -43,13 +43,7 @@ Beauticate Shop is, who founded it, and that it's the same entity as beauticate.
         "https://www.youtube.com/@beauticate",
         "https://www.pinterest.com.au/beauticate/"
       ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "email": "hello@beauticate.com",
-        "areaServed": "AU",
-        "availableLanguage": "English"
-      },
+      "email": "hello@beauticate.com",
       "areaServed": {
         "@type": "Country",
         "name": "Australia"
