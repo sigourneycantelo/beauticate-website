@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getFeaturedArticles, getArticlesByCategory } from '@/lib/content'
 import EditorialGrid from '@/components/article/EditorialGrid'
+import StoryStrip from '@/components/article/StoryStrip'
 import TheCollective from '@/components/shared/TheCollective'
 import EmailSignup from '@/components/shared/EmailSignup'
 import SocialFeed from '@/components/shared/SocialFeed'
@@ -48,6 +49,9 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* ── Story strip — latest articles, social-card style ──────── */}
+      <StoryStrip articles={editorialArticles as any} />
 
       {/* ── Newsletter bar ────────────────────────────────────────── */}
       <NewsletterBar />

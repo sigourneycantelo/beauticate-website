@@ -1,17 +1,11 @@
 'use client'
 import Script from 'next/script'
 
-// Replace FEED_ID with your Curatedio feed ID from the dashboard
-// (Settings → Embed → copy the ID from the embed code snippet)
-const FEED_ID = process.env.NEXT_PUBLIC_CURATEDIO_FEED_ID ?? ''
-
 interface Props {
   title?: string
 }
 
 export default function SocialFeed({ title = 'Follow Along' }: Props) {
-  if (!FEED_ID) return null
-
   return (
     <section className="max-w-wide mx-auto px-4 py-12 border-t border-cream-200">
       {title && (
@@ -28,12 +22,15 @@ export default function SocialFeed({ title = 'Follow Along' }: Props) {
         </div>
       )}
 
-      {/* Curatedio widget */}
-      <div id={`curatedio-feed-${FEED_ID}`} />
+      <div id="curator-feed-default-feed-layout">
+        <a href="https://curator.io" target="_blank" rel="noopener noreferrer" className="crt-logo crt-tag">
+          Powered by Curator.io
+        </a>
+      </div>
       <Script
-        src={`https://app.curatedio.com/widget.js`}
-        data-feed={FEED_ID}
+        id="curator-feed"
         strategy="lazyOnload"
+        src="https://cdn.curator.io/published/3e5bafe4-bd3c-4e90-a57b-706d1269db2a.js"
       />
     </section>
   )
