@@ -91,7 +91,8 @@
       "Bash(node scripts/strip-shortcodes.mjs)",
       "Bash(node scripts/fix-entities.mjs)",
       "Bash(npx next *)",
-      "Bash(node scripts/clean-articles.mjs)"
+      "Bash(node scripts/clean-articles.mjs)",
+      "Bash(node scripts/fix-broken-links.mjs)"
     ]
   }
 }
