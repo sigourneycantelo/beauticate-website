@@ -66,7 +66,29 @@
       "Bash(curl -s \"http://localhost:3000/api/cart\" -X POST -H \"Content-Type: application/json\" -d '{\"action\":\"create\"}')",
       "Bash(node scripts/migrate-articles.mjs)",
       "Bash(curl -s \"https://www.beauticate.com/wp-json/wp/v2/posts?slug=sigourneys-sleep-edit&_fields=content\")",
-      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(repr\\(d[0]['content']['rendered'][:500]\\) if d else 'not found'\\)\")"
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(repr\\(d[0]['content']['rendered'][:500]\\) if d else 'not found'\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(node scripts/migrate-phase1.mjs)",
+      "Bash(node -e \"import\\('@anthropic-ai/sdk'\\).then\\(m => console.log\\('ok', Object.keys\\(m\\)\\)\\)\")",
+      "Bash(node scripts/fix-images.mjs masks-for-stressed-skin)",
+      "Bash(node scripts/fix-images.mjs red-light-therapy-hair-thinning)",
+      "Bash(node scripts/fix-images.mjs lazy-girls-guide-summer-entertaining)",
+      "Bash(wait)",
+      "Bash(brew install *)",
+      "Bash(cp \"/Users/sigourneycantelo/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/DD9E4727-DB0E-4E03-BA0F-C1127781E64A/Dougs-Report-beauticate-com.docx\" /tmp/report1.docx)",
+      "Bash(cp \"/Users/sigourneycantelo/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/F11B0030-DF43-4014-90CC-76CBEA598DA2/Dougs-Report-beauticate-shop \\(1\\).docx\" /tmp/report2.docx)",
+      "mcp__2b00369b-d974-4891-8822-11c4375dd506__search_files",
+      "mcp__2b00369b-d974-4891-8822-11c4375dd506__read_file_content",
+      "Bash(node scripts/fix-images.mjs)",
+      "Bash(curl -L \"https://www.dropbox.com/scl/fi/byo0q0sfilt70do6aur2k/SigAboutUsPortrait.jpg?rlkey=vvqg1nr5naezfwezo5o2071fv&dl=1\" -o /tmp/sig-portrait.jpg)",
+      "Bash(sips -s formatOptions best --resampleWidth 1200 /tmp/sig-portrait.jpg --out /tmp/sig-bw.jpg)",
+      "Bash(sips -m \"/System/Library/ColorSync/Profiles/Gray Gamma 2.2 Profile.icc\" /tmp/sig-bw.jpg --out \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/images/sigourney-cantelo.jpg\")",
+      "Bash(mkdir -p \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/images\" && ls /System/Library/ColorSync/Profiles/ | grep -i gray)",
+      "Bash(sips -m '/System/Library/ColorSync/Profiles/Generic Gray Gamma 2.2 Profile.icc' /tmp/sig-portrait.jpg --out '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/images/sigourney-cantelo.jpg')",
+      "Bash(sips -g pixelWidth -g pixelHeight '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/images/sigourney-cantelo.jpg')",
+      "Bash(gh repo *)",
+      "Bash(node scripts/enrich-seo.mjs)",
+      "Bash(node scripts/strip-shortcodes.mjs)"
     ]
   }
 }

@@ -32,8 +32,8 @@ const nextConfig: NextConfig = {
       },
       // Legacy pages
       {
-        source: '/about',
-        destination: '/about-beauticate',
+        source: '/about-beauticate',
+        destination: '/about',
         permanent: true,
       },
     ]
