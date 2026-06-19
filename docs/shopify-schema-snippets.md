@@ -19,6 +19,8 @@ Beauticate Shop is, who founded it, and that it's the same entity as beauticate.
       "@type": "Organization",
       "@id": "https://beauticate.shop/#organization",
       "name": "Beauticate",
+      "legalName": "Cantelo Corporation Pty Ltd",
+      "taxID": "71 105 175 317",
       "url": "https://beauticate.shop",
       "logo": {
         "@type": "ImageObject",

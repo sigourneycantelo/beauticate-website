@@ -243,7 +243,7 @@ export default function AboutPage() {
               </a>
             </div>
             <p className="font-sans text-[10px] tracking-widest uppercase text-cream/30 mt-8">
-              Beauticate · Sydney, Australia · ABN 123 456 789
+              Cantelo Corporation Pty Ltd · ABN 71 105 175 317
             </p>
           </div>
         </section>
