@@ -53,7 +53,13 @@
       "Bash(python3 /tmp/extract_article.py /tmp/art8.html)",
       "Bash(python3 /tmp/extract_article.py /tmp/art9.html)",
       "Bash(python3 /tmp/extract_article.py /tmp/art10.html)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(identify public/logo-dark.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight public/logo-dark.png)",
+      "Bash(find \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/5. Design & Branding\" -iname \"*.png\" -o -iname \"*.svg\" 2>/dev/null | grep -i logo | head -20)",
+      "Bash(cp \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/5. Design & Branding/Beauticate Logo 2020/Beauticate Logo.png\" \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-dark.png\")",
+      "Bash(sips -s format png --addIcon \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-dark.png\")",
+      "Bash(convert \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-dark.png\" -fuzz 5% -transparent white \"/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/logo-dark.png\")"
     ]
   }
 }

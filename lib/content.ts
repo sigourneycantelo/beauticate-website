@@ -84,6 +84,22 @@ export function getFeaturedArticles(limit = 6) {
     .slice(0, limit)
 }
 
+// Returns all published articles with images, sorted by date (newest first).
+// Use excludeSlugs to avoid repeating articles already shown elsewhere on the page.
+export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
+  const allSlugs = getArticleSlugs()
+  return allSlugs
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.featured_image)
+    .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
+    .sort((a, b) =>
+      new Date(b!.frontmatter.date_published).getTime() -
+      new Date(a!.frontmatter.date_published).getTime()
+    )
+    .slice(0, limit)
+}
+
 export function getRelatedArticles(
   currentSlug: string,
   category: string,

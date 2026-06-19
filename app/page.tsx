@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getFeaturedArticles, getArticlesByCategory } from '@/lib/content'
+import { getFeaturedArticles, getArticlesByCategory, getAllArticles } from '@/lib/content'
 import EditorialGrid from '@/components/article/EditorialGrid'
 import StoryStrip from '@/components/article/StoryStrip'
 import TheCollective from '@/components/shared/TheCollective'
@@ -17,6 +17,10 @@ export default async function HomePage() {
   // Hero = first featured article with an image
   const hero = featured.find(a => a?.frontmatter.featured_image)
   const editorialArticles = featured.filter(a => a?.frontmatter.featured_image)
+
+  // Story strip: most-recent articles NOT already in the editorial grid
+  const editorialSlugs = editorialArticles.map(a => a!.frontmatter.slug)
+  const storyArticles = getAllArticles(4, editorialSlugs)
 
   return (
     <>
@@ -49,8 +53,8 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ── Story strip — first 3 articles, social-card style ─────── */}
-      <StoryStrip articles={editorialArticles.slice(0, 3) as any} />
+      {/* ── Story strip — 4 recent articles not in the editorial grid  */}
+      <StoryStrip articles={storyArticles as any} />
 
       {/* ── Social feed — compact strip, high up ─────────────────── */}
       <SocialFeed title="Follow Along" compact />

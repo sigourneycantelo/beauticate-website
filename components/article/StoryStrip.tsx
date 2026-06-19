@@ -53,13 +53,13 @@ function StoryCard({ article }: { article: Article }) {
 }
 
 export default function StoryStrip({ articles }: Props) {
-  const cards = articles.filter(a => a?.frontmatter.featured_image).slice(0, 3)
+  const cards = articles.filter(a => a?.frontmatter.featured_image).slice(0, 4)
   if (!cards.length) return null
 
   return (
     <div className="max-w-wide mx-auto px-4 py-10">
-      {/* 3-col grid on all sizes — horizontal scroll only on small mobile */}
-      <div className="grid grid-cols-3 gap-3 md:gap-5">
+      {/* 4-col tight grid — social feed feel, no gaps */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
         {cards.map((a, i) => (
           <StoryCard key={i} article={a} />
         ))}

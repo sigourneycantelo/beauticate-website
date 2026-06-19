@@ -66,10 +66,10 @@ export default function Header() {
           <Image
             src="/logo-dark.png"
             alt="Beauticate"
-            width={180}
-            height={26}
+            width={360}
+            height={49}
             priority
-            className="h-8 w-auto"
+            className="h-8 w-auto mix-blend-multiply"
           />
         </Link>
 

@@ -24,43 +24,42 @@ function articleHref(f: Article['frontmatter']) {
   return `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 }
 
-function CategoryLabel({ category }: { category: string }) {
+function CategoryLabel({ category, cream }: { category: string; cream?: boolean }) {
   return (
-    <span className="font-sans text-[10px] tracking-[0.22em] uppercase text-charcoal-light">
+    <span className={`font-sans text-[10px] tracking-[0.16em] uppercase ${cream ? 'text-cream/60' : 'text-charcoal-light'}`}>
       {category.replace(/-/g, ' ')}
     </span>
   )
 }
 
-// Large card — hero slot, portrait/square image with text below
+// Large card — tall portrait, full-bleed with lower-third text overlay
 function HeroCard({ article }: { article: Article }) {
   const f = article.frontmatter
   return (
-    <Link href={articleHref(f)} className="group block">
-      <div className="relative overflow-hidden aspect-[4/5] bg-cream-100">
-        {f.featured_image && (
-          <Image
-            src={f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 55vw"
-            priority
-          />
-        )}
-        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/15 transition-colors duration-500" />
-      </div>
-      <div className="pt-4 pb-2">
-        <CategoryLabel category={f.category} />
-        <h2 className="font-serif text-2xl md:text-3xl leading-snug mt-1.5 group-hover:text-charcoal-light transition-colors">
+    <Link href={articleHref(f)} className="group relative block overflow-hidden aspect-[4/5] bg-cream-100">
+      {f.featured_image && (
+        <Image
+          src={f.featured_image}
+          alt={f.featured_image_alt ?? f.title}
+          fill
+          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 55vw"
+          priority
+        />
+      )}
+      <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-charcoal/85 via-charcoal/35 to-transparent" />
+      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
+      <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+        <CategoryLabel category={f.subcategory ?? f.category} cream />
+        <h2 className="font-serif text-2xl md:text-3xl text-cream leading-snug mt-1.5">
           {f.title}
         </h2>
         {f.excerpt && (
-          <p className="font-serif text-base text-charcoal-light mt-2 line-clamp-2 leading-relaxed">
+          <p className="font-serif text-sm text-cream/70 mt-2 line-clamp-2 leading-relaxed hidden md:block">
             {f.excerpt}
           </p>
         )}
-        <span className="inline-block mt-4 font-sans text-[10px] tracking-[0.22em] uppercase border-b border-charcoal pb-0.5 group-hover:border-charcoal-light group-hover:text-charcoal-light transition-colors">
+        <span className="inline-block mt-4 font-sans text-[10px] tracking-[0.22em] uppercase text-cream/60 border-b border-cream/30 pb-0.5 group-hover:text-cream group-hover:border-cream transition-colors">
           Read More
         </span>
       </div>
@@ -68,30 +67,29 @@ function HeroCard({ article }: { article: Article }) {
   )
 }
 
-// Standard card — square image, always consistent
+// Standard card — square image with lower-third overlay
 function Card({ article, showExcerpt = false }: { article: Article; showExcerpt?: boolean }) {
   const f = article.frontmatter
   return (
-    <Link href={articleHref(f)} className="group block">
-      <div className="relative overflow-hidden aspect-square bg-cream-100">
-        {f.featured_image && (
-          <Image
-            src={f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        )}
-        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/15 transition-colors duration-500" />
-      </div>
-      <div className="pt-3">
-        <CategoryLabel category={f.category} />
-        <h3 className="font-serif text-lg leading-snug mt-1 group-hover:text-charcoal-light transition-colors">
+    <Link href={articleHref(f)} className="group relative block overflow-hidden aspect-square bg-cream-100">
+      {f.featured_image && (
+        <Image
+          src={f.featured_image}
+          alt={f.featured_image_alt ?? f.title}
+          fill
+          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+      )}
+      <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-charcoal/85 via-charcoal/35 to-transparent" />
+      <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+        <CategoryLabel category={f.subcategory ?? f.category} cream />
+        <h3 className="font-serif text-lg leading-snug mt-1 text-cream">
           {f.title}
         </h3>
         {showExcerpt && f.excerpt && (
-          <p className="font-serif text-sm text-charcoal-light mt-1 line-clamp-2 leading-relaxed">{f.excerpt}</p>
+          <p className="font-serif text-xs text-cream/60 mt-1 line-clamp-2 leading-relaxed hidden md:block">{f.excerpt}</p>
         )}
       </div>
     </Link>
