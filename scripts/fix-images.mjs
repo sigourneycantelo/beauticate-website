@@ -30,17 +30,22 @@ function fetchText(url) {
 function fetchJson(url) { return fetchText(url).then(JSON.parse) }
 
 function downloadFile(url, destPath) {
+  // Only handle https URLs — http URLs get upgraded, others skipped
+  if (!url || (!url.startsWith('https://') && !url.startsWith('http://'))) return Promise.resolve(false)
+  const safeUrl = url.startsWith('http://') ? url.replace('http://', 'https://') : url
   return new Promise(resolve => {
-    const req = https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
-      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        req.destroy()
-        return downloadFile(res.headers.location, destPath).then(resolve)
-      }
-      if (res.statusCode !== 200) { resolve(false); return }
-      const file = createWriteStream(destPath)
-      res.pipe(file)
-      file.on('finish', () => { file.close(); resolve(true) })
-    }).on('error', () => resolve(false))
+    try {
+      const req = https.get(safeUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
+        if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+          req.destroy()
+          return downloadFile(res.headers.location, destPath).then(resolve)
+        }
+        if (res.statusCode !== 200) { resolve(false); return }
+        const file = createWriteStream(destPath)
+        res.pipe(file)
+        file.on('finish', () => { file.close(); resolve(true) })
+      }).on('error', () => resolve(false))
+    } catch { resolve(false) }
   })
 }
 
@@ -217,14 +222,17 @@ async function run() {
   for (const f of targets) {
     const name = f.split('/content/')[1] ?? f
     process.stdout.write(`  ${name}... `)
-    const r = await fixArticle(f)
+    let r
+    try { r = await fixArticle(f) } catch (e) { r = { status: 'CRASH', error: e.message } }
 
     if (r.status === 'OK') {
       const tag = r.downloaded > 0 ? `✓ ${r.downloaded}/${r.total} images downloaded` : `— no new images`
       console.log(tag + (r.hasHero ? ', hero set' : ', no hero'))
       if (r.downloaded > 0) fixed++
+    } else if (r.status === 'SKIP_HAS_IMAGE') {
+      // silently skip — already done
     } else {
-      console.log(`✗ ${r.status}`)
+      console.log(`✗ ${r.status}${r.error ? ': ' + r.error.substring(0,80) : ''}`)
       errors.push(name)
     }
     await new Promise(r => setTimeout(r, 200))
