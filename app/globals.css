@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --font-serif: 'Georgia', serif;
-  --font-sans: system-ui, sans-serif;
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans:  'Josefin Sans', system-ui, sans-serif;
 }
 
 @layer base {
@@ -14,23 +14,49 @@
 
   body {
     @apply bg-cream text-charcoal antialiased;
+    font-family: var(--font-serif);
   }
 
-  /* Mobile-first typography scale */
-  h1 { @apply font-serif text-3xl md:text-4xl lg:text-5xl leading-tight; }
-  h2 { @apply font-serif text-2xl md:text-3xl leading-tight; }
+  /* Editorial typography — serif body, sans navigation */
+  h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight; }
+  h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight; }
   h3 { @apply font-serif text-xl md:text-2xl leading-snug; }
-  h4 { @apply font-sans text-base md:text-lg font-semibold tracking-wide uppercase; }
+  h4 { @apply font-sans text-xs tracking-[0.2em] uppercase font-light; }
+
+  p  { @apply font-serif text-base md:text-lg leading-relaxed; }
+
+  /* Navigation labels always sans, caps, wide tracking */
+  nav a, .nav-label {
+    font-family: var(--font-sans);
+    @apply uppercase tracking-[0.15em] text-xs font-light;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-charcoal text-cream text-sm font-sans tracking-widest uppercase transition-colors hover:bg-charcoal-light;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-charcoal text-cream text-xs font-sans tracking-[0.2em] uppercase transition-colors hover:bg-charcoal-light;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-charcoal text-charcoal text-sm font-sans tracking-widest uppercase transition-colors hover:bg-charcoal hover:text-cream;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-charcoal text-charcoal text-xs font-sans tracking-[0.2em] uppercase transition-colors hover:bg-charcoal hover:text-cream;
   }
   .btn-gold {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-gold text-cream text-sm font-sans tracking-widest uppercase transition-colors hover:bg-gold-light;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-gold text-cream text-xs font-sans tracking-[0.2em] uppercase transition-colors hover:bg-gold-light;
+  }
+
+  /* Article card with goop/SheerLuxe-style image hover */
+  .card-image-wrap {
+    @apply relative overflow-hidden;
+  }
+  .card-image-wrap img {
+    @apply transition-transform duration-700 ease-out group-hover:scale-105;
+  }
+  .card-image-wrap::after {
+    content: '';
+    @apply absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-500;
+  }
+
+  /* Editorial label style (category tags) */
+  .label-editorial {
+    @apply font-sans text-[10px] tracking-[0.25em] uppercase text-charcoal-light;
   }
 }

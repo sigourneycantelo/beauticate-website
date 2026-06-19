@@ -62,23 +62,23 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-6">
+        <nav className="hidden lg:flex items-center gap-7">
           {NAV_ITEMS.map(item => (
             <div key={item.href} className="relative group">
               <Link
                 href={item.href}
-                className="text-sm font-sans tracking-wide hover:text-gold transition-colors"
+                className="font-sans text-[11px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors"
               >
                 {item.label}
               </Link>
               {item.children && (
-                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                  <div className="bg-cream border border-cream-200 shadow-sm min-w-40 py-2">
+                <div className="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="bg-cream border border-cream-200 shadow-sm min-w-44 py-3">
                     {item.children.map(child => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2 text-sm hover:text-gold transition-colors"
+                        className="block px-5 py-2 font-sans text-[10px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors"
                       >
                         {child.label}
                       </Link>
@@ -138,13 +138,13 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="block px-4 py-3 border-b border-cream-200 text-sm tracking-wide"
+              className="block px-6 py-4 border-b border-cream-200 font-sans text-[11px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </Link>
           ))}
-          <Link href="/account" className="block px-4 py-3 text-sm tracking-wide" onClick={() => setMenuOpen(false)}>
+          <Link href="/account" className="block px-6 py-4 font-sans text-[11px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors" onClick={() => setMenuOpen(false)}>
             My Account
           </Link>
         </nav>

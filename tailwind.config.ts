@@ -38,10 +38,15 @@ const config: Config = {
         DEFAULT: {
           css: {
             color: '#1a1a1a',
+            fontFamily: 'var(--font-serif)',
+            fontSize: '1.125rem',
+            lineHeight: '1.8',
             a: { color: '#b8965a', '&:hover': { color: '#8a6e3f' } },
-            h1: { fontFamily: 'var(--font-serif)' },
-            h2: { fontFamily: 'var(--font-serif)' },
+            h1: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' },
+            h2: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em' },
             h3: { fontFamily: 'var(--font-serif)' },
+            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '0.7rem', fontWeight: '300' },
+            p:  { fontFamily: 'var(--font-serif)' },
           },
         },
       },
