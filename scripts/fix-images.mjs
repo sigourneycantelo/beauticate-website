@@ -80,6 +80,14 @@ function findAllMdx(dir = join(ROOT, 'content'), results = []) {
   return results
 }
 
+async function getFeaturedMediaUrl(mediaId) {
+  if (!mediaId) return ''
+  try {
+    const m = await fetchJson(`https://www.beauticate.com/wp-json/wp/v2/media/${mediaId}?_fields=source_url`)
+    return m.source_url ?? ''
+  } catch { return '' }
+}
+
 async function fixArticle(mdxPath) {
   const raw = readFileSync(mdxPath, 'utf-8')
   const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/m)
@@ -88,6 +96,10 @@ async function fixArticle(mdxPath) {
   let yaml = fmMatch[1]
   let body = fmMatch[2]
 
+  // Skip if already has a featured image
+  const existingImage = yaml.match(/^featured_image:\s*"([^"]+)"/m)?.[1]
+  if (existingImage && existingImage.length > 5) return { status: 'SKIP_HAS_IMAGE' }
+
   const slugMatch = yaml.match(/^slug:\s*"?([^"\n]+)"?/m)
   const slug = slugMatch?.[1] ?? mdxPath.split('/').slice(-2, -1)[0]
   const categoryMatch = yaml.match(/^category:\s*"?([^"\n]+)"?/m)
@@ -95,8 +107,8 @@ async function fixArticle(mdxPath) {
   const category = categoryMatch?.[1] ?? 'beauty-style'
   const subcategory = subcatMatch?.[1] ?? 'beauty-tips'
 
-  // Fetch article from WP
-  const apiUrl = `https://www.beauticate.com/wp-json/wp/v2/posts?slug=${slug}&_fields=content,yoast_head_json`
+  // Fetch article from WP — include featured_media ID this time
+  const apiUrl = `https://www.beauticate.com/wp-json/wp/v2/posts?slug=${slug}&_fields=content,yoast_head_json,featured_media`
   let post
   try {
     const data = await fetchJson(apiUrl)
@@ -105,7 +117,9 @@ async function fixArticle(mdxPath) {
   if (!post) return { slug, status: 'NOT_FOUND' }
 
   const html = post.content?.rendered ?? ''
+  // Priority: OG image → featured_media API → first body image
   const ogImage = post.yoast_head_json?.og_image?.[0]?.url ?? ''
+  const featuredMediaUrl = ogImage ? '' : await getFeaturedMediaUrl(post.featured_media)
   const bodyImages = extractBodyImages(html)
 
   const imgDir = join(ROOT, 'public', 'content', category, subcategory, slug)
@@ -115,8 +129,8 @@ async function fixArticle(mdxPath) {
   const urlToLocal = {}
   let downloaded = 0
 
-  // Hero: prefer OG image, fall back to first body image
-  const heroSrc = ogImage || bodyImages[0]?.src
+  // Hero: prefer OG image → featured_media → first body image
+  const heroSrc = ogImage || featuredMediaUrl || bodyImages[0]?.src
   if (heroSrc) {
     const heroPath = join(imgDir, 'hero.jpg')
     if (!existsSync(heroPath)) {

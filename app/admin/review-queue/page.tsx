@@ -11,6 +11,7 @@ interface ReviewItem {
   reviewed: boolean
   autoEnriched: boolean
   autoFaqs: boolean
+  hasYoutube: boolean
   readingTime?: number
   issues: string[]
   path: string
@@ -26,6 +27,7 @@ function getReviewItems(): ReviewItem[] {
 
       const autoEnriched = raw.auto_enriched === true
       const autoFaqs = raw.auto_faqs === true
+      const hasYoutube = !!f.youtube_embed
       const readingTime = raw.reading_time as number | undefined
 
       const issues: string[] = []
@@ -46,6 +48,7 @@ function getReviewItems(): ReviewItem[] {
         reviewed: f.reviewed === true,
         autoEnriched,
         autoFaqs,
+        hasYoutube,
         readingTime,
         issues,
         path: `/${parts.join('/')}`,
@@ -121,6 +124,7 @@ export default function ReviewQueuePage() {
                   <th className="text-left py-3 px-4 font-normal">Category</th>
                   <th className="text-left py-3 px-4 font-normal whitespace-nowrap">Published</th>
                   <th className="text-left py-3 px-4 font-normal">Read</th>
+                  <th className="text-left py-3 px-4 font-normal" title="YouTube video added">YT</th>
                   <th className="text-left py-3 px-4 font-normal">Status</th>
                   <th className="text-left py-3 px-4 font-normal min-w-[220px]">Needs</th>
                   <th className="py-3 px-4 font-normal w-12"></th>
@@ -145,6 +149,12 @@ export default function ReviewQueuePage() {
                     </td>
                     <td className="py-3 px-4 text-xs text-gray-400 whitespace-nowrap">
                       {item.readingTime ? `${item.readingTime} min` : '—'}
+                    </td>
+                    <td className="py-3 px-4 text-center" title={item.hasYoutube ? 'YouTube video added' : 'No YouTube video yet'}>
+                      {item.hasYoutube
+                        ? <span className="text-red-500 text-sm">▶</span>
+                        : <span className="text-gray-200 text-sm" title="Add youtube_embed to frontmatter">○</span>
+                      }
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex flex-col gap-1">

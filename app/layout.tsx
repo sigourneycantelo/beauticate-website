@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { EB_Garamond } from 'next/font/google'
 import localFont from 'next/font/local'
+import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/layout/Header'
 
@@ -49,10 +50,70 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
+// Organisation + Person schema — tells AI engines exactly who Beauticate is.
+// Doug's report: "single biggest unlock for named AI citation" — Brand 58→70+ expected.
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.beauticate.com/#organization',
+      name: 'Beauticate',
+      url: 'https://www.beauticate.com',
+      logo: { '@type': 'ImageObject', url: 'https://www.beauticate.com/logo-dark.png' },
+      foundingDate: '2014',
+      description: 'Beauticate is an Australian beauty, wellness and lifestyle publisher founded by Sigourney Cantelo. Trusted by 3.1 million readers monthly.',
+      inLanguage: 'en-AU',
+      areaServed: 'AU',
+      sameAs: [
+        'https://www.instagram.com/beauticate/',
+        'https://www.facebook.com/beauticate',
+        'https://www.linkedin.com/company/beauticate.com',
+        'https://www.youtube.com/@beauticate',
+        'https://www.pinterest.com.au/beauticate/',
+        'https://beauticate.shop',
+      ],
+    },
+    {
+      '@type': 'Person',
+      '@id': 'https://www.beauticate.com/#sigourney-cantelo',
+      name: 'Sigourney Cantelo',
+      jobTitle: 'Founder & Editor-in-Chief',
+      worksFor: { '@id': 'https://www.beauticate.com/#organization' },
+      url: 'https://www.beauticate.com/about-beauticate',
+      sameAs: [
+        'https://www.instagram.com/sigourney.cantelo/',
+        'https://www.linkedin.com/in/sigourneycantelo/',
+      ],
+      knowsAbout: ['Beauty', 'Wellness', 'Lifestyle', 'Skincare', 'Fashion'],
+      alumniOf: 'Vogue Australia',
+      description: 'Sigourney Cantelo is the founder of Beauticate and a 25-year veteran beauty journalist, former Vogue Australia Beauty & Health Director.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://www.beauticate.com/#website',
+      url: 'https://www.beauticate.com',
+      name: 'Beauticate',
+      publisher: { '@id': 'https://www.beauticate.com/#organization' },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: 'https://www.beauticate.com/search?q={search_term_string}' },
+        'query-input': 'required name=search_term_string',
+      },
+    },
+  ],
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" className={`${ebGaramond.variable} ${centuryGothic.variable}`}>
       <body>
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+          strategy="beforeInteractive"
+        />
         <CartProvider>
           <AnnouncementBar message="Shop the Beauticate Edit — curated beauty, wellness & style" href="/shop" />
           <Header />
