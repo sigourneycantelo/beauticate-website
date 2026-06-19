@@ -88,7 +88,8 @@
       "Bash(sips -g pixelWidth -g pixelHeight '/Users/sigourneycantelo/Library/CloudStorage/GoogleDrive-sigourney@beauticate.com/My Drive/BEAUTICATE/7. Web Development/beauticate-website/public/images/sigourney-cantelo.jpg')",
       "Bash(gh repo *)",
       "Bash(node scripts/enrich-seo.mjs)",
-      "Bash(node scripts/strip-shortcodes.mjs)"
+      "Bash(node scripts/strip-shortcodes.mjs)",
+      "Bash(node scripts/fix-entities.mjs)"
     ]
   }
 }
