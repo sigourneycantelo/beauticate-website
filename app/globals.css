@@ -28,7 +28,7 @@
   /* Navigation labels always sans, caps, wide tracking */
   nav a, .nav-label {
     font-family: var(--font-sans);
-    @apply uppercase tracking-[0.15em] text-xs font-light;
+    @apply uppercase tracking-[0.15em] text-xs font-bold;
   }
 }
 

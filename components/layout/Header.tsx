@@ -67,7 +67,7 @@ export default function Header() {
             <div key={item.href} className="relative group">
               <Link
                 href={item.href}
-                className="font-sans text-[11px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors"
+                className="font-sans text-[11px] tracking-[0.18em] uppercase font-bold hover:text-gold transition-colors"
               >
                 {item.label}
               </Link>
@@ -78,7 +78,7 @@ export default function Header() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-5 py-2 font-sans text-[10px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors"
+                        className="block px-5 py-2 font-sans text-[10px] tracking-[0.18em] uppercase font-bold hover:text-gold transition-colors"
                       >
                         {child.label}
                       </Link>
@@ -138,13 +138,13 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="block px-6 py-4 border-b border-cream-200 font-sans text-[11px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors"
+              className="block px-6 py-4 border-b border-cream-200 font-sans text-[11px] tracking-[0.18em] uppercase font-bold hover:text-gold transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
             </Link>
           ))}
-          <Link href="/account" className="block px-6 py-4 font-sans text-[11px] tracking-[0.18em] uppercase font-light hover:text-gold transition-colors" onClick={() => setMenuOpen(false)}>
+          <Link href="/account" className="block px-6 py-4 font-sans text-[11px] tracking-[0.18em] uppercase font-bold hover:text-gold transition-colors" onClick={() => setMenuOpen(false)}>
             My Account
           </Link>
         </nav>

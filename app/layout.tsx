@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, Josefin_Sans } from 'next/font/google'
+import { EB_Garamond } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
 import Header from '@/components/layout/Header'
 
@@ -12,13 +13,16 @@ const ebGaramond = EB_Garamond({
   style: ['normal', 'italic'],
 })
 
-// Josefin Sans — Century Gothic stand-in for navigation & UI caps
-// Swap for next/font/local once Century Gothic files are uploaded
-const josefinSans = Josefin_Sans({
-  subsets: ['latin'],
+// Century Gothic — navigation, UI labels, all-caps headings
+const centuryGothic = localFont({
+  src: [
+    { path: '../public/fonts/century-gothic.ttf',             weight: '400', style: 'normal' },
+    { path: '../public/fonts/century-gothic-italic.ttf',      weight: '400', style: 'italic' },
+    { path: '../public/fonts/century-gothic-bold.ttf',        weight: '700', style: 'normal' },
+    { path: '../public/fonts/century-gothic-bold-italic.ttf', weight: '700', style: 'italic' },
+  ],
   variable: '--font-sans',
   display: 'swap',
-  weight: ['300', '400', '600'],
 })
 import Footer from '@/components/layout/Footer'
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
@@ -47,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${ebGaramond.variable} ${josefinSans.variable}`}>
+    <html lang="en-AU" className={`${ebGaramond.variable} ${centuryGothic.variable}`}>
       <body>
         <CartProvider>
           <AnnouncementBar message="THE BEAUTIFUL INSIDE PODCAST HAS LAUNCHED — LISTEN HERE" href="/vodcast" />
