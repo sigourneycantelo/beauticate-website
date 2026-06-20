@@ -9,7 +9,7 @@ const ebGaramond = EB_Garamond({
   subsets: ['latin'],
   variable: '--font-serif',
   display: 'swap',
-  weight: ['400', '500'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
 })
 

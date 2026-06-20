@@ -6,9 +6,12 @@ import type { ShopifyProduct } from '@/types/shopify'
 import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
 import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
+import Portrait from '@/components/mdx/Portrait'
 import ArticleGrid from './ArticleGrid'
-
-const mdxComponents = { YouTubeEmbed, ProductEmbed }
+import AuthorByline from './AuthorByline'
+import { resolveSchemaType } from '@/lib/seo'
+import CollectionEmbed from '@/components/mdx/CollectionEmbed'
+import PullQuote from '@/components/mdx/PullQuote'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -20,6 +23,15 @@ interface Props {
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
+
+  // Inline product card usable in MDX as <InlineProduct handle="reboot" />
+  function InlineProduct({ handle }: { handle: string }) {
+    const shopProduct = shopProductMap[handle]
+    const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
+    return <ProductEmbed product={productLink} shopProduct={shopProduct} />
+  }
+
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote }
 
   return (
     <article>
@@ -51,12 +63,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {f.excerpt && <p className="text-lg text-charcoal-light mb-6 leading-relaxed">{f.excerpt}</p>}
 
         {/* Meta */}
-        <div className="flex items-center gap-4 text-xs text-charcoal-light mb-10 pb-6 border-b border-cream-200">
-          <span>By {f.author}</span>
-          <span>{new Date(f.date_published).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-          {f.reading_time && <span>{f.reading_time} min read</span>}
-          {f.affiliate_disclosure && <span className="text-gold">Affiliate links</span>}
-        </div>
+        <AuthorByline
+          name={f.author ?? 'Beauticate Editorial'}
+          date={f.date_published}
+          readingTime={f.reading_time}
+          affiliateDisclosure={f.affiliate_disclosure}
+          showDate={resolveSchemaType(f) === 'NewsArticle'}
+        />
 
         {/* Body */}
         <div className="prose prose-lg max-w-none">

@@ -1,17 +1,43 @@
 import type { ArticleFrontmatter } from '@/types/content'
+import { getAuthor, buildPersonSchema } from '@/lib/authors'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 const SITE_NAME = 'Beauticate'
 const PUBLISHER_LOGO = `${SITE_URL}/logo-dark.png`
 
-export type SchemaType = 'Article' | 'NewsArticle' | 'ReviewNaN' | 'HowTo' | 'FAQPage'
+const ORGANIZATION_SCHEMA = {
+  '@type': 'Organization',
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: { '@type': 'ImageObject', url: PUBLISHER_LOGO },
+  sameAs: [
+    'https://www.instagram.com/beauticate/',
+    'https://au.pinterest.com/beauticate/',
+    'https://www.facebook.com/beauticate/',
+    'https://x.com/Beauticate',
+    'https://www.youtube.com/channel/UCfuyyVnNfbiwoCH1NZK_aJw',
+    'https://www.tiktok.com/@sigourneycantelo',
+  ],
+}
 
-// Determine schema type from frontmatter tags/category
+export type SchemaType = 'Article' | 'NewsArticle' | 'Review' | 'HowTo' | 'FAQPage'
+
 export function resolveSchemaType(f: ArticleFrontmatter): SchemaType {
   const tags = (f.tags ?? []).join(' ').toLowerCase()
   const title = f.title.toLowerCase()
-  if (f.is_news || tags.includes('news') || tags.includes('trending')) return 'NewsArticle'
-  if (tags.includes('review') || title.includes('review') || title.includes('we tried')) return 'ReviewNaN'
+  const category = (f.category ?? '').toLowerCase()
+  const subcategory = (f.subcategory ?? '').toLowerCase()
+  // NewsArticle: explicitly flagged, or interviews, travel/destinations, news/trending tags
+  if (
+    f.is_news ||
+    category === 'interviews' ||
+    category === 'destinations' ||
+    subcategory === 'travel' ||
+    tags.includes('news') ||
+    tags.includes('trending') ||
+    tags.includes('interview')
+  ) return 'NewsArticle'
+  if (tags.includes('review') || title.includes('review') || title.includes('we tried')) return 'Review'
   if (title.includes('how to') || title.includes('guide') || tags.includes('how-to')) return 'HowTo'
   return 'Article'
 }
@@ -21,61 +47,49 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
   const articleUrl = `${SITE_URL}${url}`
   const imageUrl = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
 
-  const base = {
-    '@context': 'https://schema.org',
-    '@type': schemaType === 'ReviewNaN' ? 'Article' : schemaType,
+  const authorData = f.author ? getAuthor(f.author) : undefined
+  const authorSchema = authorData
+    ? buildPersonSchema(authorData, SITE_URL)
+    : { '@type': 'Person', name: f.author ?? 'Beauticate Editorial', url: `${SITE_URL}/about-beauticate` }
+
+  const articleNode = {
+    '@type': schemaType,
+    '@id': `${articleUrl}#article`,
     headline: f.seo_title ?? f.title,
     description: f.meta_description ?? f.excerpt,
     url: articleUrl,
     datePublished: f.date_published,
     dateModified: f.date_modified ?? f.date_published,
     inLanguage: 'en-AU',
-    author: {
-      '@type': 'Person',
-      name: f.author ?? 'Beauticate Editorial',
-      url: `${SITE_URL}/about-beauticate`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-      url: SITE_URL,
-      logo: { '@type': 'ImageObject', url: PUBLISHER_LOGO },
-    },
-    image: {
-      '@type': 'ImageObject',
-      url: imageUrl,
-      width: 1200,
-      height: 630,
-    },
+    author: authorSchema,
+    publisher: ORGANIZATION_SCHEMA,
+    image: { '@type': 'ImageObject', url: imageUrl, contentUrl: imageUrl },
     mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
     keywords: f.tags?.join(', '),
     articleSection: f.category,
     isAccessibleForFree: true,
-    ...(schemaType === 'NewsArticle' ? {
-      dateline: 'Sydney, Australia',
-      printEdition: SITE_NAME,
-    } : {}),
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.article-excerpt', '.article-body p:first-of-type'],
+    },
+    ...(schemaType === 'NewsArticle' ? { dateline: 'Sydney, Australia', printEdition: SITE_NAME } : {}),
   }
 
-  // If there are FAQs, wrap in @graph with both Article + FAQPage
+  const graph: object[] = [articleNode]
+
   if (faqs && faqs.length > 0) {
-    return {
-      '@context': 'https://schema.org',
-      '@graph': [
-        { ...base, '@context': undefined },
-        {
-          '@type': 'FAQPage',
-          mainEntity: faqs.map(({ q, a }) => ({
-            '@type': 'Question',
-            name: q,
-            acceptedAnswer: { '@type': 'Answer', text: a },
-          })),
-        },
-      ],
-    }
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${articleUrl}#faq`,
+      mainEntity: faqs.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    })
   }
 
-  return base
+  return { '@context': 'https://schema.org', '@graph': graph }
 }
 
 export function buildBreadcrumbSchema(crumbs: { name: string; url: string }[]) {
@@ -97,6 +111,7 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
   const description = f.meta_description ?? f.excerpt ?? ''
   const image = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
   const canonical = `${SITE_URL}${url}`
+  const schemaType = resolveSchemaType(f)
 
   return {
     title,
@@ -122,12 +137,19 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
       description,
       images: [image],
     },
+    robots: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large' as const,
+      'max-video-preview': -1,
+    },
     other: {
-      // Google News signals
       'article:published_time': f.date_published,
       'article:author': f.author ?? 'Beauticate Editorial',
       'article:section': f.category,
       'article:tag': (f.tags ?? []).join(','),
+      ...(schemaType === 'NewsArticle' ? { 'news_keywords': (f.tags ?? []).join(', ') } : {}),
     },
   }
 }
