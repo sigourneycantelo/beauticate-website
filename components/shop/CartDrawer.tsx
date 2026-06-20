@@ -38,8 +38,11 @@ export default function CartDrawer() {
             <ul className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
               {lines.map(line => {
                 const img = line.merchandise.product.featuredImage
-                const price = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
-                  .format(parseFloat(line.cost.totalAmount.amount))
+                const unitPrice = line.merchandise?.price ?? line.cost?.totalAmount
+                const price = unitPrice
+                  ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
+                      .format(parseFloat(unitPrice.amount) * (line.quantity ?? 1))
+                  : null
                 return (
                   <li key={line.id} className="flex gap-3">
                     {img && (
@@ -55,7 +58,7 @@ export default function CartDrawer() {
                       {line.merchandise.title !== 'Default Title' && (
                         <p className="text-xs text-charcoal-light">{line.merchandise.title}</p>
                       )}
-                      <p className="text-sm mt-1">{price}</p>
+                      {price && <p className="text-sm mt-1">{price}</p>}
                     </div>
                     <button
                       onClick={() => removeItem(line.id)}
