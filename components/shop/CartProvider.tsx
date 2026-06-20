@@ -36,23 +36,26 @@ export default function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = useCallback(async (variantId: string, quantity = 1) => {
     const c = await getOrCreateCart()
+    if (!c?.id) return
     const updated = await fetch('/api/cart', {
       method: 'POST',
       body: JSON.stringify({ action: 'add', cartId: c.id, variantId, quantity }),
       headers: { 'Content-Type': 'application/json' },
     }).then(r => r.json())
-    setCart(updated)
-    setIsOpen(true)
+    if (updated?.id) {
+      setCart(updated)
+      setIsOpen(true)
+    }
   }, [getOrCreateCart])
 
   const removeItem = useCallback(async (lineId: string) => {
-    if (!cart) return
+    if (!cart?.id) return
     const updated = await fetch('/api/cart', {
       method: 'POST',
       body: JSON.stringify({ action: 'remove', cartId: cart.id, lineIds: [lineId] }),
       headers: { 'Content-Type': 'application/json' },
     }).then(r => r.json())
-    setCart(updated)
+    if (updated?.id) setCart(updated)
   }, [cart])
 
   return (
