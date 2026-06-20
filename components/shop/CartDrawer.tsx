@@ -70,9 +70,9 @@ export default function CartDrawer() {
                 )
               })}
             </ul>
-            <div className="border-t border-cream-200 px-6 py-4">
+            <div className="border-t border-cream-200 px-6 py-4 space-y-3">
               {total && (
-                <div className="flex justify-between text-sm mb-4">
+                <div className="flex justify-between text-sm mb-2">
                   <span>Subtotal</span>
                   <span className="font-medium">{total}</span>
                 </div>
@@ -82,6 +82,9 @@ export default function CartDrawer() {
                   Checkout
                 </a>
               )}
+              <button onClick={closeCart} className="btn-secondary w-full text-center">
+                Continue Shopping
+              </button>
             </div>
           </>
         )}
