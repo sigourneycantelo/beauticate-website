@@ -10,21 +10,17 @@ function getYouTubeId(url: string): string | null {
   return m ? m[1] : null
 }
 
-function isShort(url: string): boolean {
-  return url.includes('/shorts/')
-}
-
 export default function YouTubeEmbed({ url, caption }: Props) {
   const id = getYouTubeId(url)
   if (!id) return null
-
-  // Shorts are 9:16 — use a taller aspect ratio so the video fills the column
-  // without black bars. Regular videos stay 16:9.
-  const aspectClass = isShort(url) ? 'aspect-[9/16]' : 'aspect-video'
+  const isShort = url.includes('/shorts/')
 
   return (
-    <figure className="my-8">
-      <div className={`relative w-full overflow-hidden rounded bg-ink ${aspectClass}`}>
+    <figure className={`my-8 ${isShort ? 'flex flex-col items-center' : ''}`}>
+      <div
+        className="relative overflow-hidden rounded bg-ink"
+        style={isShort ? { width: '100%', maxWidth: '380px', aspectRatio: '9/16' } : { width: '100%', aspectRatio: '16/9' }}
+      >
         <iframe
           src={`https://www.youtube.com/embed/${id}`}
           title={caption ?? 'Video'}
