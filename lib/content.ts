@@ -69,10 +69,11 @@ export function getArticlesByCategory(category: string, subcategory?: string) {
     })
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
-    .sort((a, b) =>
-      new Date(b!.frontmatter.date_published).getTime() -
-      new Date(a!.frontmatter.date_published).getTime()
-    )
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
 }
 
 export function getFeaturedArticles(limit = 6) {
@@ -93,10 +94,11 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
     .filter(isPublished)
     .filter(a => a?.frontmatter.featured_image)
     .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
-    .sort((a, b) =>
-      new Date(b!.frontmatter.date_published).getTime() -
-      new Date(a!.frontmatter.date_published).getTime()
-    )
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
     .slice(0, limit)
 }
 
@@ -110,8 +112,8 @@ export function getRelatedArticles(
     .filter(isPublished)
     .filter(a => a?.frontmatter.slug !== currentSlug)
     .sort((a, b) => {
-      const aMatches = a!.frontmatter.tags.filter(t => tags.includes(t)).length
-      const bMatches = b!.frontmatter.tags.filter(t => tags.includes(t)).length
+      const aMatches = (a?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
+      const bMatches = (b?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
       return bMatches - aMatches
     })
     .slice(0, limit)
@@ -136,8 +138,9 @@ export function getVodcastEpisodes(): {
       return { frontmatter: data as VodcastFrontmatter, content }
     })
     .filter(Boolean)
-    .sort((a, b) =>
-      new Date(b!.frontmatter.date_published).getTime() -
-      new Date(a!.frontmatter.date_published).getTime()
-    ) as { frontmatter: VodcastFrontmatter; content: string }[]
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    }) as { frontmatter: VodcastFrontmatter; content: string }[]
 }
