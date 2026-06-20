@@ -230,7 +230,9 @@ reading_time: ${Math.max(1, Math.round(body.split(/\s+/).length / 200))}
 
   const dir = join(ROOT, 'content', category, subcategory, slug)
   mkdirSync(dir, { recursive: true })
-  writeFileSync(join(dir, `${slug}.mdx`), `${yaml}\n\n${body}\n`)
+  const rawMdx = `${yaml}\n\n${body}\n`
+  const { cleanMdxBody } = await import('./clean-mdx.mjs')
+  writeFileSync(join(dir, `${slug}.mdx`), cleanMdxBody(rawMdx))
 
   return { slug, status: alreadyImported ? 'FIXED' : 'IMPORTED', hasImage: hasFeaturedImage }
 }
