@@ -25,11 +25,16 @@ export default function CartProvider({ children }: { children: ReactNode }) {
 
   const getOrCreateCart = useCallback(async () => {
     if (cart) return cart
-    const newCart = await fetch('/api/cart', {
+    const res = await fetch('/api/cart', {
       method: 'POST',
       body: JSON.stringify({ action: 'create' }),
       headers: { 'Content-Type': 'application/json' },
-    }).then(r => r.json())
+    })
+    const newCart = await res.json()
+    if (!res.ok || !newCart?.id) {
+      console.error('[cart] create failed', newCart)
+      return null
+    }
     setCart(newCart)
     return newCart
   }, [cart])

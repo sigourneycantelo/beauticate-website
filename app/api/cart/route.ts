@@ -9,6 +9,8 @@ export async function POST(req: Request) {
     if (action === 'remove') return NextResponse.json(await removeFromCart(cartId, lineIds))
     return NextResponse.json({ error: 'Unknown action' }, { status: 400 })
   } catch (e) {
-return NextResponse.json({ error: 'Cart error' }, { status: 500 })
+    const msg = e instanceof Error ? e.message : String(e)
+    console.error('[cart API error]', msg)
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
