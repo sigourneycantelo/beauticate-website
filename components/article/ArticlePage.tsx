@@ -5,7 +5,10 @@ import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
 import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
+import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
 import ArticleGrid from './ArticleGrid'
+
+const mdxComponents = { YouTubeEmbed, ProductEmbed }
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -22,8 +25,8 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     <article>
       {/* Hero */}
       {f.featured_image && (
-        <div className="relative h-[50vh] md:h-[60vh] bg-cream-100">
-          <Image src={f.featured_image} alt={f.featured_image_alt ?? f.title} fill className="object-cover object-top" priority />
+        <div className="relative w-full aspect-[16/9] bg-cream-100">
+          <Image src={f.featured_image} alt={f.featured_image_alt ?? f.title} fill className="object-cover object-center" priority />
         </div>
       )}
 
@@ -57,7 +60,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* Body */}
         <div className="prose prose-lg max-w-none">
-          <MDXRemote source={content} />
+          <MDXRemote source={content} components={mdxComponents} />
         </div>
 
         {/* Shop the Edit */}

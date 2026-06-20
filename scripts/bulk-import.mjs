@@ -18,7 +18,8 @@ const ROOT = join(__dirname, '..')
 const ARGS          = process.argv.slice(2)
 const MODE_ALL      = ARGS.includes('--all')
 const MODE_FIX      = ARGS.includes('--fix')
-const TARGET_SLUG   = ARGS[ARGS.indexOf('--slug') + 1] ?? null
+const _slugIdx      = ARGS.indexOf('--slug')
+const TARGET_SLUG   = _slugIdx !== -1 ? (ARGS[_slugIdx + 1] ?? null) : null
 const CUTOFF_DATE   = MODE_ALL ? null : new Date(Date.now() - 2 * 365.25 * 24 * 60 * 60 * 1000)
 const CONCURRENCY   = 3   // parallel downloads — polite to WP server
 const DELAY_MS      = 300 // between API calls
