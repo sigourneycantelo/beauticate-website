@@ -4,6 +4,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
 import FAQPanel from '@/components/shared/FAQPanel'
+import ProductEmbed from '@/components/mdx/ProductEmbed'
 import ArticleGrid from './ArticleGrid'
 
 interface Props {
@@ -58,6 +59,22 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         <div className="prose prose-lg max-w-none">
           <MDXRemote source={content} />
         </div>
+
+        {/* Shop the Edit */}
+        {productLinks.length > 0 && (
+          <div className="mt-12 pt-10 border-t border-cream-200">
+            <h4 className="font-sans text-xs tracking-[0.34em] uppercase mb-6">Shop the Edit</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {productLinks.map((p, i) => (
+                <ProductEmbed
+                  key={i}
+                  product={p}
+                  shopProduct={p.type === 'shop' && p.handle ? shopProductMap[p.handle] : undefined}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* FAQ Panel */}
         {f.faqs && f.faqs.length > 0 && (
