@@ -1,29 +1,24 @@
 import type { Metadata } from 'next'
-import { EB_Garamond } from 'next/font/google'
-import localFont from 'next/font/local'
+import { EB_Garamond, Hanken_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Header from '@/components/layout/Header'
 
-// EB Garamond — editorial body & headings
+// EB Garamond — headlines, intros, body, links
 const ebGaramond = EB_Garamond({
   subsets: ['latin'],
   variable: '--font-serif',
   display: 'swap',
-  weight: ['400', '500', '600'],
+  weight: ['400', '500'],
   style: ['normal', 'italic'],
 })
 
-// Century Gothic — navigation, UI labels, all-caps headings
-const centuryGothic = localFont({
-  src: [
-    { path: '../public/fonts/century-gothic.ttf',             weight: '400', style: 'normal' },
-    { path: '../public/fonts/century-gothic-italic.ttf',      weight: '400', style: 'italic' },
-    { path: '../public/fonts/century-gothic-bold.ttf',        weight: '700', style: 'normal' },
-    { path: '../public/fonts/century-gothic-bold-italic.ttf', weight: '700', style: 'italic' },
-  ],
+// Hanken Grotesk — eyebrows, breadcrumbs, nav, tags, buttons
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
+  weight: ['400', '500'],
 })
 import Footer from '@/components/layout/Footer'
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
@@ -108,7 +103,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${ebGaramond.variable} ${centuryGothic.variable}`}>
+    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable}`}>
       <body>
         <Script
           id="schema-org"

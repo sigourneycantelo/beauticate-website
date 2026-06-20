@@ -4,7 +4,7 @@
 
 :root {
   --font-serif: 'EB Garamond', Georgia, serif;
-  --font-sans:  'Century Gothic', 'Josefin Sans', system-ui, sans-serif;
+  --font-sans:  'Hanken Grotesk', system-ui, sans-serif;
 }
 
 @layer base {
@@ -13,7 +13,7 @@
   }
 
   body {
-    @apply bg-cream text-charcoal antialiased;
+    @apply bg-paper text-ink antialiased;
     font-family: var(--font-serif);
   }
 
@@ -21,14 +21,14 @@
   h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight; }
   h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight; }
   h3 { @apply font-serif text-xl md:text-2xl leading-snug; }
-  h4 { @apply font-sans text-xs tracking-[0.2em] uppercase; }
+  h4 { @apply font-sans text-xs tracking-[0.34em] uppercase; }
 
   p  { @apply font-serif text-base md:text-lg leading-relaxed; }
 
-  /* Navigation labels always sans, caps, wide tracking */
+  /* Navigation labels — Hanken Grotesk, caps, 0.34em tracking per brief */
   nav a, .nav-label {
     font-family: var(--font-sans);
-    @apply uppercase tracking-[0.16em] text-[12.5px];
+    @apply uppercase tracking-[0.34em] text-[12.5px];
   }
 }
 
@@ -56,13 +56,10 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-charcoal text-cream text-xs font-sans tracking-[0.2em] uppercase transition-colors hover:bg-charcoal-light;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-ink text-paper text-xs font-sans tracking-[0.34em] uppercase transition-colors hover:bg-ink/80;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-charcoal text-charcoal text-xs font-sans tracking-[0.2em] uppercase transition-colors hover:bg-charcoal hover:text-cream;
-  }
-  .btn-gold {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-gold text-cream text-xs font-sans tracking-[0.2em] uppercase transition-colors hover:bg-gold-light;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-ink text-ink text-xs font-sans tracking-[0.34em] uppercase transition-colors hover:bg-ink hover:text-paper;
   }
 
   /* Article card with goop/SheerLuxe-style image hover */

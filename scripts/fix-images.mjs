@@ -101,9 +101,12 @@ async function fixArticle(mdxPath) {
   let yaml = fmMatch[1]
   let body = fmMatch[2]
 
-  // Skip if already has a featured image
+  // Skip if already has a featured image AND the file actually exists on disk
   const existingImage = yaml.match(/^featured_image:\s*"([^"]+)"/m)?.[1]
-  if (existingImage && existingImage.length > 5) return { status: 'SKIP_HAS_IMAGE' }
+  if (existingImage && existingImage.length > 5) {
+    const localPath = join(ROOT, 'public', existingImage)
+    if (existsSync(localPath)) return { status: 'SKIP_HAS_IMAGE' }
+  }
 
   const slugMatch = yaml.match(/^slug:\s*"?([^"\n]+)"?/m)
   const slug = slugMatch?.[1] ?? mdxPath.split('/').slice(-2, -1)[0]

@@ -1,18 +1,16 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-const CLIENT_ID = process.env.SHOPIFY_CLIENT_ID
-const CLIENT_SECRET = process.env.SHOPIFY_CLIENT_SECRET
+const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
 const API_URL = STORE_DOMAIN ? `https://${STORE_DOMAIN}/api/2024-10/graphql.json` : ''
 
 async function shopifyFetch<T>(query: string, variables?: object): Promise<T> {
-  if (!STORE_DOMAIN || !CLIENT_ID || !CLIENT_SECRET) return { data: null } as T
+  if (!STORE_DOMAIN || !PRIVATE_TOKEN) return { data: null } as T
   const res = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-Shopify-Storefront-Access-Token': CLIENT_ID,
-      'Shopify-Storefront-Private-Token': CLIENT_SECRET,
+      'Shopify-Storefront-Private-Token': PRIVATE_TOKEN,
     },
     body: JSON.stringify({ query, variables }),
     next: { revalidate: 3600 }, // cache 1 hour
@@ -122,7 +120,7 @@ export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
 // ─── Cart ────────────────────────────────────────────────────────────────────
 
 export async function createCart(): Promise<Cart | null> {
-  if (!STORE_DOMAIN || !CLIENT_ID || !CLIENT_SECRET) return null
+  if (!STORE_DOMAIN || !PRIVATE_TOKEN) return null
   const data = await shopifyFetch<{ cartCreate: { cart: Cart } }>(`
     mutation CreateCart {
       cartCreate {

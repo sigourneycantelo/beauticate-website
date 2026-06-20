@@ -10,24 +10,19 @@ const config: Config = {
     extend: {
       colors: {
         // Beauticate brand colours — update with exact hex once confirmed
-        cream: {
-          50:  '#ffffff',
-          100: '#fafafa',
-          200: '#ebebeb',
-          DEFAULT: '#ffffff',
-        },
-        charcoal: {
-          DEFAULT: '#1a1a1a',
-          light: '#3d3d3d',
-        },
-        blush: {
-          DEFAULT: '#c9a99a',
-          light: '#e8d5cd',
-        },
-        gold: {
-          DEFAULT: '#b8965a',
-          light: '#d4b483',
-        },
+        paper:     '#FFFFFF',
+        parchment: '#FBF9F4',
+        ink:       '#1C1A17',
+        eucalypt:  '#8E9A82',
+        teal:      '#104760',
+        // brand accents — use sparingly
+        camel:      '#DBCEB9',
+        terracotta: '#B5613A',
+        mist:       '#BABED8',
+        aqua:       '#BFFFF5',
+        // legacy aliases kept so existing components don't break
+        cream:    { DEFAULT: '#FFFFFF', 50: '#FFFFFF', 100: '#FBF9F4', 200: '#ebebeb' },
+        charcoal: { DEFAULT: '#1C1A17', light: '#3d3d3d' },
       },
       fontFamily: {
         // Update once brand fonts confirmed
@@ -37,15 +32,15 @@ const config: Config = {
       typography: {
         DEFAULT: {
           css: {
-            color: '#1a1a1a',
+            color: '#1C1A17',
             fontFamily: 'var(--font-serif)',
             fontSize: '1.125rem',
             lineHeight: '1.8',
-            a: { color: '#b8965a', '&:hover': { color: '#8a6e3f' } },
+            a: { color: '#1C1A17', '&:hover': { color: '#8E9A82' } },
             h1: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' },
             h2: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em' },
             h3: { fontFamily: 'var(--font-serif)' },
-            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '0.7rem', fontWeight: '300' },
+            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.34em', fontSize: '0.7rem', fontWeight: '400' },
             p:  { fontFamily: 'var(--font-serif)' },
           },
         },
