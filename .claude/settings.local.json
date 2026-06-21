@@ -9,7 +9,8 @@
       "WebSearch(*)",
       "mcp__2b00369b-d974-4891-8822-11c4375dd506__read_file_content",
       "mcp__2b00369b-d974-4891-8822-11c4375dd506__get_file_metadata",
-      "mcp__2b00369b-d974-4891-8822-11c4375dd506__search_files"
+      "mcp__2b00369b-d974-4891-8822-11c4375dd506__search_files",
+      "mcp__2b00369b-d974-4891-8822-11c4375dd506__download_file_content"
     ]
   }
 }
