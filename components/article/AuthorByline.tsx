@@ -30,7 +30,7 @@ export default function AuthorByline({ name, date, readingTime, affiliateDisclos
             alt={displayName}
             fill
             sizes="36px"
-            className="object-cover object-center scale-[1.6] grayscale"
+            className="object-cover object-top scale-[2.5] grayscale"
           />
         </div>
       )}

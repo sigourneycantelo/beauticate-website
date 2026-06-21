@@ -12,6 +12,7 @@ import AuthorByline from './AuthorByline'
 import { resolveSchemaType } from '@/lib/seo'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
+import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -31,7 +32,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     return <ProductEmbed product={productLink} shopProduct={shopProduct} />
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem }
 
   return (
     <article>
