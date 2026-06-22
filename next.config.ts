@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
       // ── Legacy pages ─────────────────────────────────────────────────────
       { source: '/about-beauticate', destination: '/about', permanent: true },
 
+      // ── Duplicate consolidation ──────────────────────────────────────────────────
+      { source: '/living/giving-back-became-non-negotiable', destination: '/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee', permanent: true },
+      { source: '/destinations/where-family-memories-are-made', destination: '/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review', permanent: true },
+
       // ── 301 Redirect Map (337 redirects — protects 12 years of SEO) ──────
       { source: '/how-to/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', destination: '/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', permanent: true },
       { source: '/who/creatives/darren-palmer-interiors-designer-and-olivier-duvillard', destination: '/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard', permanent: true },
