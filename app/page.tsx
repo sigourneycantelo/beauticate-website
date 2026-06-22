@@ -7,24 +7,32 @@ import TheCollective from '@/components/shared/TheCollective'
 import SocialFeed from '@/components/shared/SocialFeed'
 
 export default async function HomePage() {
-  const [featured, beautyArticles, wellnessArticles, interviewArticles] = await Promise.all([
-    getFeaturedArticles(8),
-    getArticlesByCategory('beauty-style'),
-    getArticlesByCategory('wellness'),
-    getArticlesByCategory('interviews'),
-  ])
-
   // Hero = first featured article with an image
+  const featured = await getFeaturedArticles(8)
   const hero = featured.find(a => a?.frontmatter.featured_image)
-  const editorialArticles = featured.filter(a => a?.frontmatter.featured_image)
 
-  // Story strip: 4 most-recent articles with images
-  const storySlugs = editorialArticles.slice(0, 4).map(a => a!.frontmatter.slug)
+  // Story strip: 4 most-recent articles
   const storyArticles = getAllArticles(4, [])
+  const shownSlugs = new Set(storyArticles.map(a => a!.frontmatter.slug))
 
-  // Editorial grid: all articles except the ones in the story strip, min 5 to fill the layout
-  const storySlugsSet = new Set(storyArticles.map(a => a!.frontmatter.slug))
-  const gridArticles = getAllArticles(10, []).filter(a => !storySlugsSet.has(a!.frontmatter.slug))
+  // Editorial grid: next 10 articles, excluding story strip
+  const gridArticles = getAllArticles(10, [...shownSlugs])
+  gridArticles.forEach(a => shownSlugs.add(a!.frontmatter.slug))
+
+  // Per-category sections: fetch more than needed, exclude already-shown
+  const beautyArticles = getArticlesByCategory('beauty-style')
+    .filter(a => !shownSlugs.has(a!.frontmatter.slug))
+    .slice(0, 5)
+  beautyArticles.forEach(a => shownSlugs.add(a!.frontmatter.slug))
+
+  const wellnessArticles = getArticlesByCategory('wellness')
+    .filter(a => !shownSlugs.has(a!.frontmatter.slug))
+    .slice(0, 5)
+  wellnessArticles.forEach(a => shownSlugs.add(a!.frontmatter.slug))
+
+  const interviewArticles = getArticlesByCategory('interviews')
+    .filter(a => !shownSlugs.has(a!.frontmatter.slug))
+    .slice(0, 5)
 
   return (
     <>
@@ -68,17 +76,17 @@ export default async function HomePage() {
 
       {/* ── Divider label ─────────────────────────────────────────── */}
       <SectionDivider label="Beauty & Style" href="/beauty-style" />
-      <EditorialGrid articles={beautyArticles.slice(0, 5) as any} />
+      <EditorialGrid articles={beautyArticles as any} />
 
       {/* ── Divider label ─────────────────────────────────────────── */}
       <SectionDivider label="Wellness" href="/wellness" />
-      <EditorialGrid articles={wellnessArticles.slice(0, 5) as any} />
+      <EditorialGrid articles={wellnessArticles as any} />
 
       {/* ── Interviews ────────────────────────────────────────────── */}
       {interviewArticles.length > 0 && (
         <>
           <SectionDivider label="Interviews" href="/interviews" />
-          <EditorialGrid articles={interviewArticles.slice(0, 5) as any} />
+          <EditorialGrid articles={interviewArticles as any} />
         </>
       )}
 

@@ -2,3 +2,4 @@ public/content/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 public/content/**/*.png filter=lfs diff=lfs merge=lfs -text
 public/content/**/*.webp filter=lfs diff=lfs merge=lfs -text
 public/content/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+public/content/**/*.gif filter=lfs diff=lfs merge=lfs -text
