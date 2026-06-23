@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getProducts } from '@/lib/shopify'
 import ProductCard from '@/components/shop/ProductCard'
+import HeroVideo from '@/components/shop/HeroVideo'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -9,10 +10,6 @@ export const metadata: Metadata = {
   title: 'Shop | Beauticate',
   description: 'Curated beauty, wellness and lifestyle — recommended by the editors and experts of Beauticate. Fewer, better things, chosen by editors not algorithms.',
 }
-
-// Set this env var once you have the Cloudflare Stream URL:
-// NEXT_PUBLIC_SHOP_HERO_VIDEO_URL=https://customer-xxx.cloudflarestreams.com/VIDEO_ID/iframe
-const HERO_VIDEO_URL = process.env.NEXT_PUBLIC_SHOP_HERO_VIDEO_URL ?? ''
 
 const SHOP_SECTIONS = [
   {
@@ -40,17 +37,7 @@ export default async function ShopPage() {
 
       {/* Hero */}
       <section className="relative w-full bg-ink overflow-hidden" style={{ minHeight: 'clamp(440px, 60vh, 700px)' }}>
-        {HERO_VIDEO_URL ? (
-          <iframe
-            src={`${HERO_VIDEO_URL}?autoplay=true&muted=true&loop=true&controls=false&background=true`}
-            allow="autoplay; fullscreen; picture-in-picture"
-            className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-            title="Beauticate Shop hero"
-          />
-        ) : (
-          // Placeholder gradient until Cloudflare video URL is configured
-          <div className="absolute inset-0 bg-gradient-to-br from-ink via-charcoal/90 to-teal/60" />
-        )}
+        <HeroVideo />
 
         {/* Scrim */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
