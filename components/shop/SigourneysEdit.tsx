@@ -16,7 +16,7 @@ export default async function SigourneysEdit() {
         <p className="text-charcoal-light text-sm max-w-md">The products I never run out of.</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {products.map(p => <ProductCard key={p.id} product={p} showEditorial />)}
+        {products.map(p => <ProductCard key={p.id} product={p} />)}
       </div>
     </section>
   )
