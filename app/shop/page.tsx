@@ -35,23 +35,33 @@ export default async function ShopPage() {
   return (
     <div>
 
-      {/* Hero */}
-      <section className="relative w-full bg-ink overflow-hidden" style={{ minHeight: 'clamp(440px, 60vh, 700px)' }}>
+      {/* Hero — 100vw breakout so no parent padding/constraint clips the video */}
+      <section
+        className="relative bg-ink overflow-hidden"
+        style={{
+          width: '100vw',
+          marginLeft: 'calc(50% - 50vw)',
+          minHeight: 'clamp(480px, 65vh, 780px)',
+        }}
+      >
         <HeroVideo />
 
         {/* Scrim */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
 
         {/* Hero content */}
-        <div className="relative z-10 flex flex-col items-center justify-end h-full text-center px-6 pb-16 pt-24" style={{ minHeight: 'clamp(440px, 60vh, 700px)' }}>
+        <div
+          className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-16 pt-24"
+          style={{ minHeight: 'clamp(480px, 65vh, 780px)' }}
+        >
           <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-paper/60 mb-4">
             The Beauticate Edit
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight max-w-2xl mb-6">
-            Fewer, better things.
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight max-w-2xl mb-5">
+            Essentials for a beautiful life.
           </h1>
-          <p className="font-serif text-base md:text-lg text-paper/70 max-w-md leading-relaxed mb-10">
-            Chosen by editors, not algorithms. Every product recommended because we would genuinely use it ourselves.
+          <p className="font-serif text-lg md:text-xl text-paper/70 max-w-sm leading-relaxed mb-10">
+            Curated by editors and experts.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/shop/by-category" className="btn-primary">

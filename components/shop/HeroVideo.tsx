@@ -33,24 +33,36 @@ export default function HeroVideo() {
   }, [])
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden">
+    <div
+      ref={containerRef}
+      style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}
+    >
       {/* Poster frame — loads instantly, sits underneath the video */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={POSTER_URL}
         alt=""
         aria-hidden
-        className="absolute inset-0 w-full h-full object-cover"
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         fetchPriority="high"
       />
 
-      {/* Cloudflare Stream iframe — fades in over the poster once ready */}
+      {/* Cloudflare Stream iframe — fades in over the poster once ready.
+          Inline styles guarantee full coverage regardless of UA stylesheet specificity. */}
       <iframe
         src={STREAM_URL}
         allow="autoplay; fullscreen; picture-in-picture"
-        className={`absolute inset-0 w-full h-full border-0 pointer-events-none transition-opacity duration-[1400ms] ease-in-out ${
-          visible ? 'opacity-100' : 'opacity-0'
-        }`}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          pointerEvents: 'none',
+          opacity: visible ? 1 : 0,
+          transition: 'opacity 1400ms ease-in-out',
+        }}
         title=""
         aria-hidden
       />
