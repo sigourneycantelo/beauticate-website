@@ -114,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <AnnouncementBar message="Shop the Beauticate Edit — curated beauty, wellness & style" href="/shop" />
           <Header />
-          <main id="main">{children}</main>
+          <main id="main" data-pagefind-body>{children}</main>
           <Footer />
           <CartDrawer />
         </CartProvider>
