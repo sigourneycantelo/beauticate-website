@@ -256,13 +256,79 @@ const AUTHORS: Author[] = [
     sameAs: ['https://www.linkedin.com/in/marinagainulina'],
   },
   {
-    // IG only. Academic ORCID / Macquarie identity user supplied looks like a
-    // different Stephanie Russo, left out pending confirmation.
+    // Confirmed by Sig: the academic Stephanie Russo (Macquarie / ORCID) is a
+    // different person, and the steph.russo Instagram came bundled with it.
+    // No verified profile for the Beauticate writer yet, so name-only.
     name: 'Stephanie Russo',
     slug: 'stephanie-russo',
     role: 'Contributing Writer',
-    instagram: 'https://www.instagram.com/steph.russo/',
-    sameAs: ['https://www.instagram.com/steph.russo/'],
+  },
+  {
+    name: 'Ashley Ropati',
+    slug: 'ashley-ropati',
+    role: 'Beauty Editor & Lifestyle Journalist',
+    linkedin: 'https://www.linkedin.com/in/ashley-ropati-77b7b280/',
+    sameAs: [
+      'https://www.linkedin.com/in/ashley-ropati-77b7b280/',
+      'https://muckrack.com/ashley-ropati',
+      'https://twitter.com/ashleyropati',
+      'https://www.beautydirectory.com.au/news/nz/nz-5-minutes-with-ashley-ropati',
+    ],
+  },
+  {
+    name: 'Karina Wharton',
+    slug: 'karina-wharton',
+    role: 'Beauty Writer',
+    instagram: 'https://www.instagram.com/karina_wharton/',
+    sameAs: [
+      'https://www.instagram.com/karina_wharton/',
+      'https://www.facebook.com/karina.wharton.5',
+    ],
+  },
+  {
+    // Bylined Jess Burdon and Jessica Burdon. Writer and novelist.
+    name: 'Jessica Burdon',
+    slug: 'jessica-burdon',
+    role: 'Writer & Novelist',
+    instagram: 'https://www.instagram.com/jessicaburdon/',
+    sameAs: [
+      'https://www.instagram.com/jessicaburdon/',
+      'http://www.jessicaburdon.com/',
+      'https://www.huffpost.com/author/jessica-burdon',
+    ],
+  },
+  {
+    // IG / LinkedIn held back as unconfirmed. Portfolio + fragrance blog only.
+    name: 'Rosalind Thomas',
+    slug: 'rosalind-thomas',
+    role: 'Beauty & Fragrance Writer',
+    sameAs: [
+      'https://rosalindthomas.com/',
+      'https://theaccords.com.au/',
+    ],
+  },
+  {
+    name: 'Claudia De Berardinis',
+    slug: 'claudia-de-berardinis',
+    role: 'Digital Content Producer & Writer',
+    sameAs: [
+      'https://muckrack.com/claudia-de-berardinis',
+      'https://www.theceomagazine.com/authors/writer/claudia-de-berardinis/',
+    ],
+  },
+  {
+    name: 'Maria Pielago',
+    slug: 'maria-pielago',
+    role: 'Former Editorial Intern',
+    linkedin: 'https://www.linkedin.com/in/maria-pielago-25a408a0',
+    sameAs: ['https://www.linkedin.com/in/maria-pielago-25a408a0'],
+  },
+  {
+    name: 'Paige Murphy',
+    slug: 'paige-murphy',
+    role: 'Contributing Writer & Stylist',
+    linkedin: 'https://au.linkedin.com/in/paige-murphy-b94b9465',
+    sameAs: ['https://au.linkedin.com/in/paige-murphy-b94b9465'],
   },
 ]
 
