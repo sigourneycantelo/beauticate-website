@@ -154,7 +154,12 @@ const AUTHORS: Author[] = [
     role: 'Contributing Editor',
     photo: '/images/authors/zoe-briggs.png',
     instagram: 'https://www.instagram.com/zoebriggsbeauty/',
-    sameAs: ['https://www.instagram.com/zoebriggsbeauty/'],
+    linkedin: 'https://www.linkedin.com/in/zoe-briggs-8ba944233/',
+    sameAs: [
+      'https://www.instagram.com/zoebriggsbeauty/',
+      'https://www.linkedin.com/in/zoe-briggs-8ba944233/',
+      'https://muckrack.com/zoe-briggs-1/articles',
+    ],
   },
   {
     name: 'Ally McManus',
@@ -170,6 +175,94 @@ const AUTHORS: Author[] = [
     name: 'Yadira Galarza Cauchi',
     slug: 'yadira-galarza-cauchi',
     role: 'Contributing Writer',
+  },
+  {
+    name: 'Rikki Hodge-Smith',
+    slug: 'rikki-hodge-smith',
+    role: 'Managing Editor',
+    instagram: 'https://www.instagram.com/_rikkishell/',
+    sameAs: [
+      'https://www.instagram.com/_rikkishell/',
+      'https://www.beautydirectory.com.au/news/business/beauticate-appoints-rikki-hodge-smith-managing-ed',
+    ],
+  },
+  {
+    // Bylined as Tess Schlink. Now Tess de Vivie, contributing editor at Harper's Bazaar.
+    name: 'Tess Schlink',
+    slug: 'tess-schlink',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/tessdevivie/',
+    linkedin: 'https://www.linkedin.com/in/tess-de-vivie/',
+    sameAs: [
+      'https://www.instagram.com/tessdevivie/',
+      'https://www.linkedin.com/in/tess-de-vivie/',
+    ],
+  },
+  {
+    // Bylined as Emily Algar. Now Emily Morello, writes for RUSSH, ELLE, Harper's Bazaar.
+    name: 'Emily Algar',
+    slug: 'emily-algar',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/emilyalgar/',
+    sameAs: [
+      'https://www.instagram.com/emilyalgar/',
+      'https://www.bythem.co/creators/emily-algar',
+    ],
+  },
+  {
+    name: 'Chrisanthi Kaliviotis',
+    slug: 'chrisanthi-kaliviotis',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/chrisanthi_kal/',
+    linkedin: 'https://www.linkedin.com/in/chrisanthi-kaliviotis-933924126',
+    sameAs: [
+      'https://www.instagram.com/chrisanthi_kal/',
+      'https://www.linkedin.com/in/chrisanthi-kaliviotis-933924126',
+    ],
+  },
+  {
+    name: 'Lisa Walker',
+    slug: 'lisa-walker',
+    role: 'Founder, Eir Women',
+    instagram: 'https://www.instagram.com/walker_on_the_wild_side/',
+    sameAs: [
+      'https://www.instagram.com/walker_on_the_wild_side/',
+      'https://www.instagram.com/eirforwomen/',
+    ],
+  },
+  {
+    name: 'Madeleine Boyd',
+    slug: 'madeleine-boyd',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/madeleine_boyd/',
+    linkedin: 'https://www.linkedin.com/in/madeleine-boyd-35133639/',
+    sameAs: [
+      'https://www.instagram.com/madeleine_boyd/',
+      'https://www.linkedin.com/in/madeleine-boyd-35133639/',
+    ],
+  },
+  {
+    name: 'Molly Gay',
+    slug: 'molly-gay',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/mollykatgay/',
+    sameAs: ['https://www.instagram.com/mollykatgay/'],
+  },
+  {
+    name: 'Marina Gainulina',
+    slug: 'marina-gainulina',
+    role: 'Contributing Writer',
+    linkedin: 'https://www.linkedin.com/in/marinagainulina',
+    sameAs: ['https://www.linkedin.com/in/marinagainulina'],
+  },
+  {
+    // IG only. Academic ORCID / Macquarie identity user supplied looks like a
+    // different Stephanie Russo, left out pending confirmation.
+    name: 'Stephanie Russo',
+    slug: 'stephanie-russo',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/steph.russo/',
+    sameAs: ['https://www.instagram.com/steph.russo/'],
   },
 ]
 
