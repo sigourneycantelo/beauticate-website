@@ -18,7 +18,16 @@ const GENERIC = new Set(['beauticate editorial', 'beauticate editors', 'beautica
 // The keyword must sit at a credit boundary (line start, italic/quote marker, or
 // after a full stop) so it can't fire mid-sentence, e.g. a book title that ends
 // "...Forgotten Words by Paul Anthony Jones".
-const CRED = /(?:^|[\n.*_>"'\)\]:])\s*(?:Story|Words|Written|Interview|Interviewed)\s+by\s+([A-Z][a-zA-Z'.-]+(?:\s+[A-Z][a-zA-Z'.-]+){0,3})/gm
+// Keyword case is handled explicitly ([Ss]tory etc.) rather than with /i, because
+// /i would also un-gate the [A-Z] capitalisation that bounds the captured name.
+// \[? allows a markdown-link byline "by [Sigourney Cantelo](url)"; À-ÿ allows
+// accented names like "Tess de Vivie de Régie".
+// The optional "(and X)" arm catches compound credits like "Interview and story by".
+const KW = "(?:[Ss]tory|[Ww]ords|[Ww]ritten|[Ii]nterview(?:ed|s)?)"
+const CRED = new RegExp(
+  `(?:^|[\\n.*_>"'\\)\\]:])\\s*${KW}(?:\\s+and\\s+${KW})?\\s+[Bb]y\\s+\\[?([A-ZÀ-ÿ][a-zA-ZÀ-ÿ'.-]+(?:\\s+[A-ZÀ-ÿ][a-zA-ZÀ-ÿ'.-]+){0,3})`,
+  'gm',
+)
 
 // Canonical names from the registry (source of truth).
 const registrySrc = readFileSync('lib/authors.ts', 'utf8')
@@ -37,6 +46,12 @@ const ALIAS = {
   'jessica burdon': 'Jessica Burdon',
   'chrisanthi kalivioits': 'Chrisanthi Kaliviotis',
   'steph russo.': 'Stephanie Russo',
+  // First-name-only and renamed bylines, each unambiguous in this corpus.
+  'tess': 'Tess Schlink',
+  'tess schlink': 'Tess Schlink',
+  'tess de vivie': 'Tess Schlink',
+  'tess de vivie de régie': 'Tess Schlink',
+  'kristina': 'Kristina Zhou',
 }
 
 const STOP = /\s+(And|With|Imagery|Photography|Photographed|Photos|Production|For|At|On|In|The|Main|Hero|Header|Holding|Images|Image|Select|Layout|Sponsored|Story|Video|Words|Arranged|Shot|This)\b.*/i
