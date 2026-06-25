@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "npx pagefind --site .next/server/app || true",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",
-    "send-email": "npx tsx scripts/send-email.ts"
+    "send-email": "npx tsx scripts/send-email.ts",
+    "prebuild": "node scripts/build-search-index.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",
