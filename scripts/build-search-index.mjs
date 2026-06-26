@@ -33,9 +33,9 @@ function walk(dir, results) {
       const text = fs.readFileSync(full, 'utf8')
       const fm = extractFrontmatter(text)
       if (!fm || fm.published !== 'true' || !fm.title || !fm.slug) continue
-      // Build the URL path from directory structure
-      const rel = path.relative(contentDir, path.dirname(full))
-      const urlPath = '/' + rel.split(path.sep).join('/') + '/' + fm.slug
+      // Build the URL from frontmatter category/subcategory/slug
+      const parts = [fm.category, fm.subcategory, fm.slug].filter(Boolean)
+      const urlPath = '/' + parts.join('/')
       results.push({
         title: fm.title,
         slug: fm.slug,
