@@ -149,7 +149,7 @@ function MegaMenu({ entries }: { entries: MegaMenuEntry[] }) {
                   fill
                   loading="eager"
                   className="object-cover object-top transition-transform duration-700 group-hover/card:scale-[1.05]"
-                  sizes="(max-width: 1280px) 150px, 200px"
+                  sizes="(max-width: 1280px) 220px, 280px"
                 />
               )}
             </div>
