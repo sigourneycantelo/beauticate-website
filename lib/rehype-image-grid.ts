@@ -1,50 +1,95 @@
-aW1wb3J0IHR5cGUgeyBSb290LCBFbGVtZW50LCBOb2RlIH0gZnJvbSAnaGFzdCcKaW1wb3J0IHR5
-cGUgeyBQbHVnaW4gfSBmcm9tICd1bmlmaWVkJwoKLyoqCiAqIFJlaHlwZSBwbHVnaW4gdGhhdCBk
-ZXRlY3RzIHJ1bnMgb2YgMisgY29uc2VjdXRpdmUgcGFyYWdyYXBocyBlYWNoIGNvbnRhaW5pbmcK
-ICogb25seSBhIHNpbmdsZSBpbWFnZSwgYW5kIHdyYXBzIHRoZW0gaW4gYSByZXNwb25zaXZlIENT
-UyBncmlkLgogKgogKiBUaGlzIHJlc3RvcmVzIHRoZSAiMy1hY3Jvc3MiIHByb2R1Y3QgZ2FsbGVy
-eSBsYXlvdXQgZnJvbSB0aGUgV29yZFByZXNzIG1pZ3JhdGlvbgogKiB3aXRob3V0IHJlcXVpcmlu
-ZyBjaGFuZ2VzIHRvIGluZGl2aWR1YWwgTURYIGZpbGVzLgogKi8KY29uc3QgcmVoeXBlSW1hZ2VH
-cmluZDogUGx1Z2luPFtdLCBSb290PiA9ICgpID0+IHsKICByZXR1cm4gKHRyZWU6IFJvb3QpID0+
-IHsKICAgIGNvbnN0IGNoaWxkcmVuID0gdHJlZS5jaGlsZHJlbiBhcyBOb2RlW10KICAgIGxldCBp
-ID0gMAoKICAgIHdoaWxlIChpIDwgY2hpbGRyZW4ubGVuZ3RoKSB7CiAgICAgIGNvbnN0IHJ1blN0
-YXJ0ID0gaQoKICAgICAgLy8gRmluZCB0aGUgbGVuZ3RoIG9mIGEgcnVuIG9mIGltYWdlLW9ubHkg
-cGFyYWdyYXBocyBzdGFydGluZyBhdCBpCiAgICAgIHdoaWxlICgKICAgICAgICBpIDwgY2hpbGRy
-ZW4ubGVuZ3RoICYmCiAgICAgICAgaXNJbWFnZU9ubHlQYXJhZ3JhcGgoY2hpbGRyZW5baV0pCiAg
-ICAgICkgewogICAgICAgIGkrKwogICAgICB9CgogICAgICBjb25zdCBydW5MZW5ndGggPSBpIC0gcnVu
-U3RhcnQKCiAgICAgIGlmIChydW5MZW5ndGggPT09IDApIHsKICAgICAgICAvLyBOb24taW1hZ2Ugbm9k
-ZSDigJQgYWR2YW5jZSBzbyB0aGUgb3V0ZXIgbG9vcCBkb2Vzbid0IHNwaW4gZm9yZXZlcgogICAg
-ICAgIGkrKwogICAgICAgIGNvbnRpbnVlCiAgICAgIH0KCiAgICAgIGlmIChydW5MZW5ndGggPj0g
-MikgewogICAgICAgIC8vIEV4dHJhY3QgdGhlIDxpbWc+IGVsZW1lbnRzIGZyb20gZWFjaCA8cD4g
-YW5kIGJ1aWxkIGEgZ3JpZCB3cmFwcGVyCiAgICAgICAgY29uc3QgaW1nTm9kZXMgPSBjaGlsZHJl
-bgogICAgICAgICAgLnNsaWNlKHJ1blN0YXJ0LCBydW5TdGFydCArIHJ1bkxlbmd0aCkKICAgICAg
-ICAgIC5tYXAoKHApID0+IHsKICAgICAgICAgICAgY29uc3QgcGFyYSA9IHAgYXMgRWxlbWVudAog
-ICAgICAgICAgICBjb25zdCBpbWcgPSBwYXJhLmNoaWxkcmVuLmZpbmQoCiAgICAgICAgICAgICAg
-KGMpOiBjIGlzIEVsZW1lbnQgPT4gYy50eXBlID09PSAnZWxlbWVudCcgJiYgYy50YWdOYW1lID09
-PSAnaW1nJwogICAgICAgICAgICApIQogICAgICAgICAgICAvLyBBZGQgb2JqZWN0LWNvbnRhaW4g
-c28gcHJvZHVjdCBzaG90cyBkb24ndCBjcm9wCiAgICAgICAgICAgIGltZy5wcm9wZXJ0aWVzID0g
-ewogICAgICAgICAgICAgIC4uLmltZy5wcm9wZXJ0aWVzLAogICAgICAgICAgICAgIGNsYXNzOiAn
-dy1mdWxsIGgtYXV0byBvYmplY3QtY29udGFpbicsCiAgICAgICAgICAgIH0KICAgICAgICAgICAg
-cmV0dXJuIGltZwogICAgICAgICAgfSkKCiAgICAgICAgY29uc3QgY29scyA9IHJ1bkxlbmd0aCA9
-PT0gMiA/IDIgOiAzCiAgICAgICAgY29uc3QgZ3JpZENsYXNzID0KICAgICAgICAgIGNvbHMgPT09
-IDIKICAgICAgICAgICAgPyAnbm90LXByb3NlIGdyaWQgZ3JpZC1jb2xzLTIgZ2FwLTMgbXktNicK
-ICAgICAgICAgICAgOiAnbm90LXByb3NlIGdyaWQgZ3JpZC1jb2xzLTIgbWQ6Z3JpZC1jb2xzLTMg
-Z2FwLTMgbXktNicKCiAgICAgICAgY29uc3QgZ3JpZERpdjogRWxlbWVudCA9IHsKICAgICAgICAg
-IHR5cGU6ICdlbGVtZW50JywKICAgICAgICAgIHRhZ05hbWU6ICdkaXYnLAogICAgICAgICAgcHJv
-cGVydGllczogeyBjbGFzczogZ3JpZENsYXNzIH0sCiAgICAgICAgICBjaGlsZHJlbjogaW1nTm9k
-ZXMubWFwKChpbWcpID0+ICh7CiAgICAgICAgICAgIHR5cGU6ICdlbGVtZW50JyBhcyBjb25zdCwK
-ICAgICAgICAgICAgdGFnTmFtZTogJ2RpdicgYXMgY29uc3QsCiAgICAgICAgICAgIHByb3BlcnRp
-ZXM6IHsgY2xhc3M6ICdmbGV4IGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlcicgfSwKICAgICAg
-ICAgICAgY2hpbGRyZW46IFtpbWddLAogICAgICAgICAgfSkpLAogICAgICAgIH0KCiAgICAgICAg
-Y2hpbGRyZW4uc3BsaWNlKHJ1blN0YXJ0LCBydW5MZW5ndGgsIGdyaWREaXYpCiAgICAgICAgLy8g
-aSBpcyBub3cgYXQgcnVuU3RhcnQgKyAxICh0aGUgZWxlbWVudCBhZnRlciB0aGUgaW5zZXJ0ZWQg
-ZGl2KQogICAgICAgIGkgPSBydW5TdGFydCArIDEKICAgICAgfQogICAgfQogIH0KfQoKZnVuY3Rp
-b24gaXNJbWFnZU9ubHlQYXJhZ3JhcGgobm9kZTogTm9kZSk6IGJvb2xlYW4gewogIGlmIChub2Rl
-LnR5cGUgIT09ICdlbGVtZW50JykgcmV0dXJuIGZhbHNlCiAgY29uc3QgZWwgPSBub2RlIGFzIEVs
-ZW1lbnQKICBpZiAoZWwudGFnTmFtZSAhPT0gJ3AnKSByZXR1cm4gZmFsc2UKCiAgLy8gRmlsdGVy
-IG91dCB3aGl0ZXNwYWNlIHRleHQgbm9kZXMKICBjb25zdCBtZWFuaW5nZnVsID0gZWwuY2hpbGRy
-ZW4uZmlsdGVyKAogICAgKGMpID0+ICEoYy50eXBlID09PSAndGV4dCcgJiYgKGMgYXMgeyB2YWx1
-ZTogc3RyaW5nIH0pLnZhbHVlLnRyaW0oKSA9PT0gJycpCiAgKQoKICByZXR1cm4gKAogICAgbWVh
-bmluZ2Z1bC5sZW5ndGggPT09IDEgJiYKICAgIG1lYW5pbmdmdWxbMF0udHlwZSA9PT0gJ2VsZW1l
-bnQnICYmCiAgICAobWVhbmluZ2Z1bFswXSBhcyBFbGVtZW50KS50YWdOYW1lID09PSAnaW1nJwog
-ICkKfQoKZXhwb3J0IGRlZmF1bHQgcmVoeXBlSW1hZ2VHcmluZAo=
+import type { Root, Element, Node } from 'hast'
+import type { Plugin } from 'unified'
+
+/**
+ * Rehype plugin that detects runs of 2+ consecutive paragraphs each containing
+ * only a single image, and wraps them in a responsive CSS grid.
+ *
+ * This restores the "3-across" product gallery layout from the WordPress migration
+ * without requiring changes to individual MDX files.
+ */
+const rehypeImageGrid: Plugin<[], Root> = () => {
+  return (tree: Root) => {
+    const children = tree.children as Node[]
+    let i = 0
+
+    while (i < children.length) {
+      const runStart = i
+
+      // Find the length of a run of image-only paragraphs starting at i
+      while (
+        i < children.length &&
+        isImageOnlyParagraph(children[i])
+      ) {
+        i++
+      }
+
+      const runLength = i - runStart
+
+      if (runLength === 0) {
+        // Non-image node — advance so the outer loop doesn't spin forever
+        i++
+        continue
+      }
+
+      if (runLength >= 2) {
+        // Extract the <img> elements from each <p> and build a grid wrapper
+        const imgNodes = children
+          .slice(runStart, runStart + runLength)
+          .map((p) => {
+            const para = p as Element
+            const img = para.children.find(
+              (c): c is Element => c.type === 'element' && c.tagName === 'img'
+            )!
+            // Add object-contain so product shots don't crop
+            img.properties = {
+              ...img.properties,
+              class: 'w-full h-auto object-contain',
+            }
+            return img
+          })
+
+        const cols = runLength === 2 ? 2 : 3
+        const gridClass =
+          cols === 2
+            ? 'not-prose grid grid-cols-2 gap-3 my-6'
+            : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
+
+        const gridDiv: Element = {
+          type: 'element',
+          tagName: 'div',
+          properties: { class: gridClass },
+          children: imgNodes.map((img) => ({
+            type: 'element' as const,
+            tagName: 'div' as const,
+            properties: { class: 'flex items-center justify-center' },
+            children: [img],
+          })),
+        }
+
+        children.splice(runStart, runLength, gridDiv)
+        // i is now at runStart + 1 (the element after the inserted div)
+        i = runStart + 1
+      }
+    }
+  }
+}
+
+function isImageOnlyParagraph(node: Node): boolean {
+  if (node.type !== 'element') return false
+  const el = node as Element
+  if (el.tagName !== 'p') return false
+
+  // Filter out whitespace text nodes
+  const meaningful = el.children.filter(
+    (c) => !(c.type === 'text' && (c as { value: string }).value.trim() === '')
+  )
+
+  return (
+    meaningful.length === 1 &&
+    meaningful[0].type === 'element' &&
+    (meaningful[0] as Element).tagName === 'img'
+  )
+}
+
+export default rehypeImageGrid
