@@ -19,6 +19,7 @@ function articleHref(f: Article['frontmatter']) {
 
 export default function HeroWide({ article }: { article: Article }) {
   const f = article.frontmatter
+  if (!f.featured_image) return null
 
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
@@ -30,7 +31,7 @@ export default function HeroWide({ article }: { article: Article }) {
         }}
       >
         <Image
-          src={f.featured_image ?? '/images/hero-home.jpg'}
+          src={f.featured_image}
           alt={f.featured_image_alt ?? f.title}
           fill
           priority
