@@ -33,8 +33,3 @@ next-env.d.ts
 # pagefind index (generated at build)
 public/pagefind/
 
-# generated search index
-public/search-index.json
-
-# qa / dev artifacts
-qa/
