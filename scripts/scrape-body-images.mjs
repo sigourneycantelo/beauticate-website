@@ -51,45 +51,74 @@ function extractCategory(fm) {
 async function fetchArticleImages(wpUrl) {
   try {
     const res = await fetch(wpUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Beauticate-migration/1.0)' },
-      signal: AbortSignal.timeout(15000)
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      },
+      signal: AbortSignal.timeout(20000)
     })
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.error(`  HTTP ${res.status}`)
+      return []
+    }
     const html = await res.text()
 
-    // Find the article/post content area
-    // WordPress typically uses .entry-content, .post-content, article .content etc.
-    const contentMatch = html.match(/<(?:div|article)[^>]+class="[^"]*(?:entry-content|post-content|article-content)[^"]*"[^>]*>([\s\S]*?)<\/(?:div|article)>/i)
-      || html.match(/<article[^>]*>([\s\S]*?)<\/article>/i)
+    // Try multiple content selectors in order of specificity
+    const contentMatch =
+      html.match(/<(?:div|section)[^>]+class="[^"]*(?:entry-content|post-content|article-content|wpb_wrapper|vc_column-inner)[^"]*"[^>]*>([\s\S]*?)<\/(?:div|section)>/i) ||
+      html.match(/<article[^>]*>([\s\S]*?)<\/article>/i) ||
+      html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)
 
     const contentHtml = contentMatch ? contentMatch[1] : html
 
-    // Extract img tags — get src and alt
-    const imgPattern = /<img[^>]+src=["']([^"']+)["'][^>]*(?:alt=["']([^"']*)["'])?[^>]*\/?>/gi
+    // Extract img tags — handle both src= and data-src= (lazy loading)
+    // Also handle alt appearing before or after src
+    const imgTagPattern = /<img\s([^>]+?)(?:\s*\/)?>/gi
     const imgs = []
-    let m
-    while ((m = imgPattern.exec(contentHtml)) !== null) {
-      let src = m[1]
-      const alt = m[2] || ''
-      // Skip tiny images, icons, avatars, logos
+    let tagMatch
+    while ((tagMatch = imgTagPattern.exec(contentHtml)) !== null) {
+      const attrs = tagMatch[1]
+
+      // Get src — prefer data-src (lazy load) over src, also try data-lazy-src
+      const srcMatch = attrs.match(/\bdata-lazy-src=["']([^"']+)["']/) ||
+                       attrs.match(/\bdata-src=["']([^"']+)["']/) ||
+                       attrs.match(/\bsrc=["']([^"']+)["']/)
+      if (!srcMatch) continue
+
+      // Get alt
+      const altMatch = attrs.match(/\balt=["']([^"']*)["']/)
+      let src = srcMatch[1]
+      const alt = altMatch ? altMatch[1] : ''
+
+      // Skip UI elements
       if (src.includes('avatar') || src.includes('logo') || src.includes('icon') ||
           src.includes('emoji') || src.includes('pixel') || src.includes('1x1') ||
-          src.includes('gravatar') || src.includes('s.w.org')) continue
-      // Skip already-absolute non-beauticate URLs (social etc)
-      if (src.startsWith('http') && !src.includes('beauticate.com') && !src.includes('wp-content')) continue
+          src.includes('gravatar') || src.includes('s.w.org') || src.includes('spinner') ||
+          src.includes('placeholder') || src.includes('blank.gif') || src === 'data:image') continue
+
+      // Skip data URIs
+      if (src.startsWith('data:')) continue
+
       // Make absolute
       if (src.startsWith('//')) src = 'https:' + src
       else if (src.startsWith('/')) src = BASE_URL + src
 
-      // Use largest srcset version if available - look for srcset near this img
+      // Keep wp-content/uploads images from any domain (CDN), plus beauticate.com images
+      // Skip unrelated external images (social share buttons, ad pixels, etc.)
+      if (src.startsWith('http')) {
+        const hasWpContent = src.includes('/wp-content/uploads/')
+        const isBeauticate = src.includes('beauticate.com')
+        const isWpCdn = src.includes('.wp.com') // Jetpack CDN
+        if (!hasWpContent && !isBeauticate && !isWpCdn) continue
+      }
+
       imgs.push({ src, alt })
     }
 
-    // Deduplicate by src
+    // Deduplicate — strip WP size suffixes like -850x425 to treat variants as same image
     const seen = new Set()
     return imgs.filter(i => {
-      // Strip size suffix like -850x425 to deduplicate variants
-      const base = i.src.replace(/-\d+x\d+(\.\w+)$/, '$1')
+      const base = i.src.replace(/-\d+x\d+(\.\w+)$/, '$1').replace(/[?#].*$/, '')
       if (seen.has(base)) return false
       seen.add(base)
       return true
@@ -194,7 +223,7 @@ for (const file of candidates) {
     ? `${BASE_URL}/${category}/${subcategory}/${slug}/`
     : `${BASE_URL}/${slug}/`
 
-  process.stdout.write(`Fetching ${slug}...`)
+  process.stdout.write(`Fetching ${wpUrl}...`)
 
   const imgs = await fetchArticleImages(wpUrl)
 
@@ -204,6 +233,7 @@ for (const file of candidates) {
     await sleep(DELAY_MS)
     continue
   }
+  console.log(` found ${imgs.length} images`)
 
   // Download each image
   const imageRefs = []
