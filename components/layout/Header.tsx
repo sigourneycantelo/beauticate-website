@@ -147,8 +147,9 @@ function MegaMenu({ entries }: { entries: MegaMenuEntry[] }) {
                   src={a.frontmatter.featured_image}
                   alt={a.frontmatter.featured_image_alt ?? a.frontmatter.title}
                   fill
+                  loading="eager"
                   className="object-cover object-top transition-transform duration-700 group-hover/card:scale-[1.05]"
-                  sizes="120px"
+                  sizes="(max-width: 1280px) 150px, 200px"
                 />
               )}
             </div>
