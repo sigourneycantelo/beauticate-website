@@ -98,6 +98,25 @@ export async function getCollectionByHandle(handle: string): Promise<ShopifyColl
   return (data as any)?.collection ?? null
 }
 
+export async function getProductTypes(): Promise<string[]> {
+  const data = await shopifyFetch<{ productTypes: { edges: { node: string }[] } }>(`
+    { productTypes(first: 50) { edges { node } } }
+  `)
+  return data.productTypes?.edges.map(e => e.node).filter(Boolean) ?? []
+}
+
+export async function getProductsByType(type: string, first = 8): Promise<ShopifyProduct[]> {
+  const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
+    query ProductsByType($query: String!, $first: Int!) {
+      products(first: $first, query: $query) {
+        nodes { ...ProductFields }
+      }
+    }
+    ${PRODUCT_FRAGMENT}
+  `, { query: `product_type:${type}`, first })
+  return data.products?.nodes ?? []
+}
+
 export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
   const data = await shopifyFetch<{ collections: { nodes: ShopifyCollection[] } }>(`
     query GetCollections($first: Int!) {
