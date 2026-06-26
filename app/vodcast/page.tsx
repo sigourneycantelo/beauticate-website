@@ -55,16 +55,6 @@ export default function VodcastPage() {
 
       {/* ── Masthead ── */}
       <section className="text-center py-14 px-6" style={{ borderBottom: '1px solid rgba(28,26,23,.08)' }}>
-        <div className="mb-4">
-          <Image
-            src="/images/podcast/beautiful-inside-logo.png"
-            alt="Beautiful Inside by Beauticate"
-            width={220}
-            height={88}
-            className="mx-auto"
-            onError={undefined}
-          />
-        </div>
         <h1 className="font-serif font-normal text-[clamp(34px,6vw,64px)] leading-[1.05] tracking-[-0.01em] mb-1">
           BEAUTIFUL<br />INSIDE
         </h1>
@@ -96,8 +86,20 @@ export default function VodcastPage() {
         className="grid grid-cols-1 md:grid-cols-2 gap-0"
         style={{ maxWidth: 1200, margin: '0 auto', padding: 'clamp(40px,5vw,72px) clamp(20px,6vw,104px)' }}
       >
-        {/* Left: description */}
+        {/* Left: cover art + description */}
         <div className="pr-0 md:pr-16 flex flex-col justify-center mb-10 md:mb-0">
+          <div className="flex gap-5 items-start mb-7">
+            <div className="relative flex-shrink-0 rounded-[2px] overflow-hidden shadow-sm" style={{ width: 100, height: 100 }}>
+              <Image src="/images/podcast/cover.jpg" alt="Beautiful Inside by Beauticate podcast cover" fill className="object-cover" sizes="100px" />
+            </div>
+            <div>
+              <p className="font-sans text-[9px] tracking-[.2em] uppercase mb-1.5" style={{ opacity: 0.45 }}>4.9 / 5 on Apple Podcasts</p>
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(5)].map((_, i) => <span key={i} className="text-[#1C1A17] text-sm">★</span>)}
+              </div>
+              <p className="font-sans text-[10px] tracking-[.04em]" style={{ opacity: 0.6 }}>Beautiful, honest conversations.</p>
+            </div>
+          </div>
           <p className="font-serif text-[18px] leading-[1.7] mb-6" style={{ opacity: 0.75 }}>
             Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have — inside and out.
           </p>
