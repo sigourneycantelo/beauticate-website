@@ -53,12 +53,14 @@ export interface MegaMenuEntry {
   label: string
   href: string
   articles: MegaArticle[]
+  groupHeader?: string  // if set, renders a group label above this entry
 }
 
 export interface MegaMenuData {
   beauty: MegaMenuEntry[]
   style: MegaMenuEntry[]
   wellness: MegaMenuEntry[]
+  destinations: MegaMenuEntry[]
   interviews: MegaMenuEntry[]
 }
 
@@ -75,7 +77,7 @@ const NAV_ITEMS = [
   { label: 'Beauty', href: '/beauty-style', megaKey: 'beauty' as const },
   { label: 'Style', href: '/beauty-style/style', megaKey: 'style' as const },
   { label: 'Wellness', href: '/wellness', megaKey: 'wellness' as const },
-  { label: 'Destinations', href: '/destinations' },
+  { label: 'Destinations', href: '/destinations', megaKey: 'destinations' as const },
   { label: 'Living', href: '/living' },
   { label: 'Podcast', href: '/vodcast' },
   { label: 'Interviews', href: '/interviews', megaKey: 'interviews' as const },
@@ -111,15 +113,21 @@ function MegaMenu({ entries }: { entries: MegaMenuEntry[] }) {
           Browse
         </p>
         {entries.map(e => (
-          <button
-            key={e.href}
-            onMouseEnter={() => setActiveHref(e.href)}
-            onClick={() => setActiveHref(e.href)}
-            className="font-sans text-[12px] tracking-[0.16em] uppercase text-left transition-opacity cursor-pointer"
-            style={{ opacity: activeHref === e.href ? 1 : 0.66 }}
-          >
-            {e.label}
-          </button>
+          <div key={e.href}>
+            {e.groupHeader && (
+              <p className="font-sans text-[9.5px] tracking-[0.2em] uppercase mt-3 mb-1" style={{ opacity: 0.45 }}>
+                {e.groupHeader}
+              </p>
+            )}
+            <button
+              onMouseEnter={() => setActiveHref(e.href)}
+              onClick={() => setActiveHref(e.href)}
+              className="font-sans text-[12px] tracking-[0.16em] uppercase text-left transition-opacity cursor-pointer w-full"
+              style={{ opacity: activeHref === e.href ? 1 : 0.66 }}
+            >
+              {e.label}
+            </button>
+          </div>
         ))}
       </div>
 

@@ -19,14 +19,14 @@ function articleHref(f: Article['frontmatter']) {
 
 const BG = ['linear-gradient(150deg,#d7c9c0,#b9a294)', 'linear-gradient(150deg,#c2c8c1,#8a948b)']
 
-function Card({ article, i }: { article: Article; i: number }) {
+function Card({ article, i, aspectRatio = '4/5' }: { article: Article; i: number; aspectRatio?: string }) {
   const f = article.frontmatter
   return (
     <article className="group">
       <Link href={articleHref(f)} className="block">
         <div
           className="relative overflow-hidden rounded-[2px]"
-          style={{ aspectRatio: '4/5', border: '1px solid rgba(28,26,23,.10)' }}
+          style={{ aspectRatio, border: '1px solid rgba(28,26,23,.10)' }}
         >
           {f.featured_image ? (
             <Image
@@ -65,10 +65,10 @@ export default function DuoLeft({ articles }: { articles: Article[] }) {
         padding: 'clamp(28px,4vw,52px) clamp(20px,6vw,104px) clamp(14px,2vw,24px)',
       }}
     >
-      <Card article={a} i={0} />
+      <Card article={a} i={0} aspectRatio="3/4" />
       {b && (
         <div style={{ marginTop: 'clamp(48px,8vw,120px)' }}>
-          <Card article={b} i={1} />
+          <Card article={b} i={1} aspectRatio="4/5" />
         </div>
       )}
       <div className="hidden md:block" />
