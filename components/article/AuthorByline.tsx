@@ -24,13 +24,13 @@ export default function AuthorByline({ name, date, readingTime, affiliateDisclos
   return (
     <div className="flex items-center gap-3 text-xs text-charcoal-light mb-10 pb-6 border-b border-cream-200">
       {photo && (
-        <div className="relative shrink-0 w-9 h-9 rounded-full overflow-hidden ring-1 ring-cream-200">
+        <div className="relative shrink-0 w-16 h-16 rounded-full overflow-hidden ring-1 ring-cream-200">
           <Image
             src={photo}
             alt={displayName}
             fill
-            sizes="36px"
-            className="object-cover object-top scale-[2.5] grayscale"
+            sizes="64px"
+            className="object-cover object-top scale-[1.6]"
           />
         </div>
       )}
