@@ -10,7 +10,7 @@ export default function ShopByMoment({ collections }: Props) {
     <section className="max-w-wide mx-auto px-4 py-12 md:py-16">
       <h2 className="text-center mb-2">Shop by Moment</h2>
       <p className="text-center text-charcoal-light text-sm mb-8 max-w-md mx-auto">
-        Curated for how you actually live — not just what you need to buy.
+        Curated for how you actually live, not just what you need to buy.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {collections.map(c => (
