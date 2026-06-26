@@ -1,4 +1,4 @@
-import { getAllArticles, getVodcastEpisodes } from '@/lib/content'
+import { getAllArticles, getArticleBySlug, getVodcastEpisodes } from '@/lib/content'
 import { getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
@@ -29,10 +29,9 @@ export default async function HomePage() {
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
 
-  // Allow any article with is_hero: true to be pinned to the hero slot
-  const allArticles = getAllArticles(200)
-  const pinnedHero = allArticles.find(a => (a?.frontmatter as any).is_hero)
-  let heroArticle: typeof allArticles[0]
+  // Pinned hero — load directly by slug, fall back to newest article
+  const pinnedHero = getArticleBySlug(['beauty-style', 'winter-edit-team-picks'])
+  let heroArticle: ReturnType<typeof getArticleBySlug>
   if (pinnedHero) {
     heroArticle = pinnedHero
     shownSlugs.add(pinnedHero.frontmatter.slug)
