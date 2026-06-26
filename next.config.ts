@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'www.beauticate.com' },
       { protocol: 'https', hostname: 'beauticate.com' },
       { protocol: 'https', hostname: 'beauticate.shop' },
+      { protocol: 'https', hostname: 'd3t3ozftmdmh3i.cloudfront.net' },
+      { protocol: 'https', hostname: 'd3ctxlq1ktw2nl.cloudfront.net' },
     ],
   },
 

@@ -63,54 +63,50 @@ async function fetchArticleImages(wpUrl) {
     }
     const html = await res.text()
 
-    // Try multiple content selectors in order of specificity
-    const contentMatch =
-      html.match(/<(?:div|section)[^>]+class="[^"]*(?:entry-content|post-content|article-content|wpb_wrapper|vc_column-inner)[^"]*"[^>]*>([\s\S]*?)<\/(?:div|section)>/i) ||
-      html.match(/<article[^>]*>([\s\S]*?)<\/article>/i) ||
-      html.match(/<main[^>]*>([\s\S]*?)<\/main>/i)
-
-    const contentHtml = contentMatch ? contentMatch[1] : html
-
-    // Extract img tags — handle both src= and data-src= (lazy loading)
-    // Also handle alt appearing before or after src
+    // Search the full HTML — more reliable than trying to extract a content div
+    // with regex (nested divs break lazy matching)
     const imgTagPattern = /<img\s([^>]+?)(?:\s*\/)?>/gi
     const imgs = []
     let tagMatch
-    while ((tagMatch = imgTagPattern.exec(contentHtml)) !== null) {
+    while ((tagMatch = imgTagPattern.exec(html)) !== null) {
       const attrs = tagMatch[1]
+      const attrsLower = attrs.toLowerCase()
 
-      // Get src — prefer data-src (lazy load) over src, also try data-lazy-src
-      const srcMatch = attrs.match(/\bdata-lazy-src=["']([^"']+)["']/) ||
-                       attrs.match(/\bdata-src=["']([^"']+)["']/) ||
-                       attrs.match(/\bsrc=["']([^"']+)["']/)
-      if (!srcMatch) continue
+      // Skip logos, navigation images, and the featured image (already in frontmatter)
+      if (attrsLower.includes('logo') || attrsLower.includes('favicon') ||
+          attrsLower.includes('wp-post-image') || attrsLower.includes('avatar') ||
+          attrsLower.includes('gravatar')) continue
+
+      // Prefer data-src (lazy-loaded real URL) over src (placeholder gif)
+      const dataSrcMatch = attrs.match(/\bdata-src=["']([^"']+)["']/) ||
+                           attrs.match(/\bdata-lazy-src=["']([^"']+)["']/)
+      const srcMatch = attrs.match(/\bsrc=["']([^"']+)["']/)
+      const rawSrc = srcMatch ? srcMatch[1] : ''
+      const isPlaceholder = rawSrc.includes('placeholder') || rawSrc.includes('lazy_placeholder') ||
+                            rawSrc.startsWith('data:') || rawSrc === ''
+
+      let src = dataSrcMatch ? dataSrcMatch[1] : (isPlaceholder ? null : rawSrc)
+      if (!src) continue
 
       // Get alt
       const altMatch = attrs.match(/\balt=["']([^"']*)["']/)
-      let src = srcMatch[1]
       const alt = altMatch ? altMatch[1] : ''
 
-      // Skip UI elements
-      if (src.includes('avatar') || src.includes('logo') || src.includes('icon') ||
-          src.includes('emoji') || src.includes('pixel') || src.includes('1x1') ||
-          src.includes('gravatar') || src.includes('s.w.org') || src.includes('spinner') ||
-          src.includes('placeholder') || src.includes('blank.gif') || src === 'data:image') continue
+      // Skip UI elements — case-insensitive
+      const srcLower = src.toLowerCase()
+      if (srcLower.includes('logo') || srcLower.includes('icon') || srcLower.includes('emoji') ||
+          srcLower.includes('pixel') || srcLower.includes('1x1') || srcLower.includes('gravatar') ||
+          srcLower.includes('s.w.org') || srcLower.includes('spinner') || srcLower.includes('blank.gif') ||
+          srcLower.includes('placeholder')) continue
 
-      // Skip data URIs
       if (src.startsWith('data:')) continue
 
       // Make absolute
       if (src.startsWith('//')) src = 'https:' + src
       else if (src.startsWith('/')) src = BASE_URL + src
 
-      // Keep wp-content/uploads images from any domain (CDN), plus beauticate.com images
-      // Skip unrelated external images (social share buttons, ad pixels, etc.)
-      if (src.startsWith('http')) {
-        const hasWpContent = src.includes('/wp-content/uploads/')
-        const isBeauticate = src.includes('beauticate.com')
-        const isWpCdn = src.includes('.wp.com') // Jetpack CDN
-        if (!hasWpContent && !isBeauticate && !isWpCdn) continue
-      }
+      // Only keep images from wp-content/uploads (article images, not external embeds)
+      if (!src.includes('/wp-content/uploads/')) continue
 
       imgs.push({ src, alt })
     }

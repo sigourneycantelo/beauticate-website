@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import type { ArticleFrontmatter, VodcastFrontmatter } from '@/types/content'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
-const VODCAST_DIR = path.join(CONTENT_DIR, 'vodcast')
+const VODCAST_DIR = path.join(CONTENT_DIR, 'vodcast', 'episodes')
 
 // ─── Articles ────────────────────────────────────────────────────────────────
 
@@ -151,4 +151,12 @@ export function getVodcastEpisodes(): {
       const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
       return dateB - dateA
     }) as { frontmatter: VodcastFrontmatter; content: string }[]
+}
+
+export function getVodcastEpisode(slug: string): { frontmatter: VodcastFrontmatter; content: string } | null {
+  const mdxPath = path.join(VODCAST_DIR, slug, `${slug}.mdx`)
+  if (!fs.existsSync(mdxPath)) return null
+  const raw = fs.readFileSync(mdxPath, 'utf-8')
+  const { data, content } = matter(raw)
+  return { frontmatter: data as VodcastFrontmatter, content }
 }

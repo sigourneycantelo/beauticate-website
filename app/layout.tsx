@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { EB_Garamond, Hanken_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
-import Header from '@/components/layout/Header'
+import HeaderWithData from '@/components/layout/HeaderWithData'
 
 // EB Garamond — headlines, intros, body, links
 const ebGaramond = EB_Garamond({
@@ -23,6 +23,8 @@ const hankenGrotesk = Hanken_Grotesk({
 import Footer from '@/components/layout/Footer'
 import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartProvider from '@/components/shop/CartProvider'
+import ScrollReveal from '@/components/shared/ScrollReveal'
+import BetaTicker from '@/components/home/BetaTicker'
 import CartDrawer from '@/components/shop/CartDrawer'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
@@ -112,8 +114,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="beforeInteractive"
         />
         <CartProvider>
+          <ScrollReveal />
+          <BetaTicker />
           <AnnouncementBar message="Shop the Beauticate Edit — curated beauty, wellness & style" href="/shop" />
-          <Header />
+          <HeaderWithData />
           <main id="main" data-pagefind-body>{children}</main>
           <Footer />
           <CartDrawer />

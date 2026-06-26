@@ -11,6 +11,8 @@ interface Article {
     featured_image?: string
     featured_image_alt?: string
     hero_image?: string
+    hero_title?: string
+    hero_eyebrow?: string
   }
 }
 
@@ -20,8 +22,10 @@ function articleHref(f: Article['frontmatter']) {
 
 export default function HeroWide({ article }: { article: Article }) {
   const f = article.frontmatter
-  const heroSrc = f.hero_image ?? f.featured_image
-  if (!heroSrc) return null
+
+  const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.jpg'
+  const heroTitle = f.hero_title ?? f.title
+  const heroEyebrow = f.hero_eyebrow ?? 'Shop · The Edit'
 
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
@@ -33,12 +37,13 @@ export default function HeroWide({ article }: { article: Article }) {
         }}
       >
         <Image
-          src={heroSrc}
+          src={heroImage}
           alt={f.featured_image_alt ?? f.title}
           fill
           priority
           className="object-cover"
           sizes="100vw"
+          unoptimized={heroImage.endsWith('.gif')}
         />
         <div
           className="absolute inset-0 z-[1]"
@@ -52,7 +57,7 @@ export default function HeroWide({ article }: { article: Article }) {
             className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3.5 font-medium"
             style={{ color: 'rgba(255,255,255,.85)' }}
           >
-            Shop · The Edit
+            {heroEyebrow}
           </span>
           <h2
             className="font-serif font-normal leading-[1.04]"
@@ -62,7 +67,7 @@ export default function HeroWide({ article }: { article: Article }) {
               textShadow: '0 2px 30px rgba(0,0,0,.4)',
             }}
           >
-            {f.title}
+            {heroTitle}
           </h2>
           {f.excerpt && (
             <p className="font-sans mt-3.5" style={{ fontSize: '13.5px', opacity: 0.92, maxWidth: '46ch' }}>
