@@ -29,7 +29,16 @@ export default async function HomePage() {
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
 
-  const [heroArticle] = take(1)
+  // Allow any article with is_hero: true to be pinned to the hero slot
+  const allArticles = getAllArticles(200)
+  const pinnedHero = allArticles.find(a => (a?.frontmatter as any).is_hero)
+  let heroArticle: typeof allArticles[0]
+  if (pinnedHero) {
+    heroArticle = pinnedHero
+    shownSlugs.add(pinnedHero.frontmatter.slug)
+  } else {
+    ;[heroArticle] = take(1)
+  }
   const duoLeftArticles = take(2)
   const [bigArticle, smallArticle] = take(2)
   const trio1Articles = take(3)
