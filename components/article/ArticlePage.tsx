@@ -13,6 +13,7 @@ import { resolveSchemaType } from '@/lib/seo'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
+import rehypeImageGrid from '@/lib/rehype-image-grid'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -74,7 +75,11 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* Body */}
         <div className="prose prose-lg max-w-none">
-          <MDXRemote source={content} components={mdxComponents} />
+          <MDXRemote
+            source={content}
+            components={mdxComponents}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid] } }}
+          />
         </div>
 
         {/* Shop the Edit */}
