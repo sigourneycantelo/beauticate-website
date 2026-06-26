@@ -154,7 +154,12 @@ const AUTHORS: Author[] = [
     role: 'Contributing Editor',
     photo: '/images/authors/zoe-briggs.png',
     instagram: 'https://www.instagram.com/zoebriggsbeauty/',
-    sameAs: ['https://www.instagram.com/zoebriggsbeauty/'],
+    linkedin: 'https://www.linkedin.com/in/zoe-briggs-8ba944233/',
+    sameAs: [
+      'https://www.instagram.com/zoebriggsbeauty/',
+      'https://www.linkedin.com/in/zoe-briggs-8ba944233/',
+      'https://muckrack.com/zoe-briggs-1/articles',
+    ],
   },
   {
     name: 'Ally McManus',
@@ -170,6 +175,160 @@ const AUTHORS: Author[] = [
     name: 'Yadira Galarza Cauchi',
     slug: 'yadira-galarza-cauchi',
     role: 'Contributing Writer',
+  },
+  {
+    name: 'Rikki Hodge-Smith',
+    slug: 'rikki-hodge-smith',
+    role: 'Managing Editor',
+    instagram: 'https://www.instagram.com/_rikkishell/',
+    sameAs: [
+      'https://www.instagram.com/_rikkishell/',
+      'https://www.beautydirectory.com.au/news/business/beauticate-appoints-rikki-hodge-smith-managing-ed',
+    ],
+  },
+  {
+    // Bylined as Tess Schlink. Now Tess de Vivie, contributing editor at Harper's Bazaar.
+    name: 'Tess Schlink',
+    slug: 'tess-schlink',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/tessdevivie/',
+    linkedin: 'https://www.linkedin.com/in/tess-de-vivie/',
+    sameAs: [
+      'https://www.instagram.com/tessdevivie/',
+      'https://www.linkedin.com/in/tess-de-vivie/',
+    ],
+  },
+  {
+    // Bylined as Emily Algar. Now Emily Morello, writes for RUSSH, ELLE, Harper's Bazaar.
+    name: 'Emily Algar',
+    slug: 'emily-algar',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/emilyalgar/',
+    sameAs: [
+      'https://www.instagram.com/emilyalgar/',
+      'https://www.bythem.co/creators/emily-algar',
+    ],
+  },
+  {
+    name: 'Chrisanthi Kaliviotis',
+    slug: 'chrisanthi-kaliviotis',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/chrisanthi_kal/',
+    linkedin: 'https://www.linkedin.com/in/chrisanthi-kaliviotis-933924126',
+    sameAs: [
+      'https://www.instagram.com/chrisanthi_kal/',
+      'https://www.linkedin.com/in/chrisanthi-kaliviotis-933924126',
+    ],
+  },
+  {
+    name: 'Lisa Walker',
+    slug: 'lisa-walker',
+    role: 'Founder, Eir Women',
+    instagram: 'https://www.instagram.com/walker_on_the_wild_side/',
+    sameAs: [
+      'https://www.instagram.com/walker_on_the_wild_side/',
+      'https://www.instagram.com/eirforwomen/',
+    ],
+  },
+  {
+    name: 'Madeleine Boyd',
+    slug: 'madeleine-boyd',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/madeleine_boyd/',
+    linkedin: 'https://www.linkedin.com/in/madeleine-boyd-35133639/',
+    sameAs: [
+      'https://www.instagram.com/madeleine_boyd/',
+      'https://www.linkedin.com/in/madeleine-boyd-35133639/',
+    ],
+  },
+  {
+    name: 'Molly Gay',
+    slug: 'molly-gay',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/mollykatgay/',
+    sameAs: ['https://www.instagram.com/mollykatgay/'],
+  },
+  {
+    name: 'Marina Gainulina',
+    slug: 'marina-gainulina',
+    role: 'Contributing Writer',
+    linkedin: 'https://www.linkedin.com/in/marinagainulina',
+    sameAs: ['https://www.linkedin.com/in/marinagainulina'],
+  },
+  {
+    // Confirmed by Sig: the academic Stephanie Russo (Macquarie / ORCID) is a
+    // different person, and the steph.russo Instagram came bundled with it.
+    // No verified profile for the Beauticate writer yet, so name-only.
+    name: 'Stephanie Russo',
+    slug: 'stephanie-russo',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Ashley Ropati',
+    slug: 'ashley-ropati',
+    role: 'Beauty Editor & Lifestyle Journalist',
+    linkedin: 'https://www.linkedin.com/in/ashley-ropati-77b7b280/',
+    sameAs: [
+      'https://www.linkedin.com/in/ashley-ropati-77b7b280/',
+      'https://muckrack.com/ashley-ropati',
+      'https://twitter.com/ashleyropati',
+      'https://www.beautydirectory.com.au/news/nz/nz-5-minutes-with-ashley-ropati',
+    ],
+  },
+  {
+    name: 'Karina Wharton',
+    slug: 'karina-wharton',
+    role: 'Beauty Writer',
+    instagram: 'https://www.instagram.com/karina_wharton/',
+    sameAs: [
+      'https://www.instagram.com/karina_wharton/',
+      'https://www.facebook.com/karina.wharton.5',
+    ],
+  },
+  {
+    // Bylined Jess Burdon and Jessica Burdon. Writer and novelist.
+    name: 'Jessica Burdon',
+    slug: 'jessica-burdon',
+    role: 'Writer & Novelist',
+    instagram: 'https://www.instagram.com/jessicaburdon/',
+    sameAs: [
+      'https://www.instagram.com/jessicaburdon/',
+      'http://www.jessicaburdon.com/',
+      'https://www.huffpost.com/author/jessica-burdon',
+    ],
+  },
+  {
+    // IG / LinkedIn held back as unconfirmed. Portfolio + fragrance blog only.
+    name: 'Rosalind Thomas',
+    slug: 'rosalind-thomas',
+    role: 'Beauty & Fragrance Writer',
+    sameAs: [
+      'https://rosalindthomas.com/',
+      'https://theaccords.com.au/',
+    ],
+  },
+  {
+    name: 'Claudia De Berardinis',
+    slug: 'claudia-de-berardinis',
+    role: 'Digital Content Producer & Writer',
+    sameAs: [
+      'https://muckrack.com/claudia-de-berardinis',
+      'https://www.theceomagazine.com/authors/writer/claudia-de-berardinis/',
+    ],
+  },
+  {
+    name: 'Maria Pielago',
+    slug: 'maria-pielago',
+    role: 'Former Editorial Intern',
+    linkedin: 'https://www.linkedin.com/in/maria-pielago-25a408a0',
+    sameAs: ['https://www.linkedin.com/in/maria-pielago-25a408a0'],
+  },
+  {
+    name: 'Paige Murphy',
+    slug: 'paige-murphy',
+    role: 'Contributing Writer & Stylist',
+    linkedin: 'https://au.linkedin.com/in/paige-murphy-b94b9465',
+    sameAs: ['https://au.linkedin.com/in/paige-murphy-b94b9465'],
   },
 ]
 

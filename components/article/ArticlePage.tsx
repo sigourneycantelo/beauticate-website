@@ -43,7 +43,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         </div>
       )}
 
-      <div className="max-w-content mx-auto px-4 py-10">
+      <div className="max-w-wide mx-auto px-4 py-10">
         {/* Breadcrumb */}
         <nav className="text-xs text-charcoal-light mb-6 flex gap-2">
           <Link href={`/${f.category}`} className="hover:text-gold capitalize">
