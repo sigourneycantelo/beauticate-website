@@ -188,10 +188,11 @@ for (const file of candidates) {
   const slug = extractSlug(fm)
   if (!slug) { skipped++; continue }
 
+  // Build WordPress URL using category/subcategory/slug path
   const { category, subcategory } = extractCategory(fm)
-
-  // Build WordPress URL — try the slug directly
-  const wpUrl = `${BASE_URL}/${slug}/`
+  const wpUrl = category && subcategory
+    ? `${BASE_URL}/${category}/${subcategory}/${slug}/`
+    : `${BASE_URL}/${slug}/`
 
   process.stdout.write(`Fetching ${slug}...`)
 
