@@ -120,10 +120,7 @@ export default async function EpisodePage({ params }: Props) {
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-sans text-[10px] tracking-[.16em] uppercase transition-opacity"
-              style={{ opacity: 0.55 }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '0.55')}
+              className="font-sans text-[10px] tracking-[.16em] uppercase opacity-55 hover:opacity-100 transition-opacity"
             >
               {p.name} ↗
             </a>
