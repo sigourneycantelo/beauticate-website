@@ -10,6 +10,7 @@ interface Article {
     excerpt?: string
     featured_image?: string
     featured_image_alt?: string
+    hero_image?: string
   }
 }
 
@@ -19,7 +20,8 @@ function articleHref(f: Article['frontmatter']) {
 
 export default function HeroWide({ article }: { article: Article }) {
   const f = article.frontmatter
-  if (!f.featured_image) return null
+  const heroSrc = f.hero_image ?? f.featured_image
+  if (!heroSrc) return null
 
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
@@ -31,7 +33,7 @@ export default function HeroWide({ article }: { article: Article }) {
         }}
       >
         <Image
-          src={f.featured_image}
+          src={heroSrc}
           alt={f.featured_image_alt ?? f.title}
           fill
           priority

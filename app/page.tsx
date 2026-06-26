@@ -1,4 +1,4 @@
-import { getAllArticles, getVodcastEpisodes } from '@/lib/content'
+import { getAllArticles, getHeroArticle, getVodcastEpisodes } from '@/lib/content'
 import { getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
@@ -29,7 +29,8 @@ export default async function HomePage() {
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
 
-  const [heroArticle] = take(1)
+  const heroArticle = getHeroArticle()
+  if (heroArticle) shownSlugs.add(heroArticle.frontmatter.slug)
   const duoLeftArticles = take(2)
   const [bigArticle, smallArticle] = take(2)
   const trio1Articles = take(3)
