@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauticate — Design Language v3 (locked)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;        /* default background, the whole site */
+    --parchment:#FBF9F4;    /* accent surface: social + select blocks only */
+    --ink:#1C1A17;          /* near-black, text + buttons */
+    --eucalypt:#8E9A82;     /* soft accent, sparing */
+    --teal:#104760;         /* brand deep teal, dark moments */
+    --camel:#DBCEB9;
+    --terra:#B5613A;
+    --line:rgba(28,26,23,.16);
+    --hair:rgba(28,26,23,.10);
+    --serif:'EB Garamond',Georgia,'Times New Roman',serif;
+    --sans:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mx:clamp(20px,6vw,112px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.62;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--ink);color:#fff}
+
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.34em;font-size:11px;font-weight:500;opacity:.7}
+  .wordmark{font-family:var(--sans);font-weight:300;text-transform:uppercase;letter-spacing:.42em;font-size:clamp(15px,2vw,19px)}
+
+  header.top{padding:22px var(--mx);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hair);position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:20}
+  header.top .tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;opacity:.5}
+
+  /* scrim hero */
+  .hero{position:relative;height:clamp(440px,72vh,620px);overflow:hidden;border-bottom:1px solid var(--hair)}
+  .hero .photo{position:absolute;inset:0;background:
+      radial-gradient(120% 80% at 72% 18%, #cfd8d2 0%, rgba(207,216,210,0) 55%),
+      radial-gradient(120% 90% at 18% 30%, #e7ded2 0%, rgba(231,222,210,0) 50%),
+      linear-gradient(160deg,#b9c2bd 0%, #9aa79c 38%, #6f7d76 100%)}
+  .hero .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(12,14,13,.82) 0%, rgba(12,14,13,.5) 28%, rgba(12,14,13,0) 58%)}
+  .hero .copy{position:absolute;left:var(--mx);right:var(--mx);bottom:clamp(34px,6vw,64px);color:#fff}
+  .hero .copy .eyebrow{color:rgba(255,255,255,.85);margin-bottom:18px;display:inline-block}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6.4vw,80px);line-height:1.02;letter-spacing:-.005em;max-width:18ch;text-shadow:0 1px 30px rgba(0,0,0,.25)}
+  .hero h1 em{font-style:italic}
+  .hero .note{position:absolute;top:18px;left:var(--mx);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+  section{padding:clamp(54px,8vw,104px) var(--mx);border-bottom:1px solid var(--hair)}
+  .sec-label{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-label .num{font-family:var(--serif);font-style:italic;font-weight:400;font-size:23px;opacity:.5}
+  .sec-label h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,44px);line-height:1.04}
+  .lede{max-width:66ch;font-size:clamp(15px,1.5vw,17px);opacity:.82}
+
+  /* colour */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:34px}
+  .swatch{border:1px solid var(--hair);border-radius:2px;overflow:hidden;background:var(--parchment)}
+  .swatch .chip{height:104px;border-bottom:1px solid var(--hair)}
+  .swatch .body{padding:12px 14px 16px}
+  .swatch .nm{font-family:var(--serif);font-size:18px}
+  .swatch .hex{font-size:11px;letter-spacing:.08em;opacity:.5;margin-top:2px;text-transform:uppercase}
+  .swatch .use{font-size:12px;opacity:.72;margin-top:9px;line-height:1.4}
+  .accentline{margin-top:26px;font-size:13px;opacity:.66;max-width:66ch}
+
+  /* type */
+  .type-row{padding:28px 0;border-top:1px solid var(--hair);display:grid;grid-template-columns:170px 1fr;gap:28px}
+  .type-row:first-of-type{border-top:none;padding-top:6px}
+  .type-row .role{font-size:11.5px;text-transform:uppercase;letter-spacing:.18em;opacity:.55;padding-top:8px}
+  .type-row .role span{display:block;text-transform:none;letter-spacing:.01em;font-size:12.5px;opacity:.7;margin-top:7px}
+  .d-roman{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.8vw,58px);line-height:1.02;letter-spacing:-.005em}
+  .d-roman em{font-style:italic}
+  .d-italic{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,34px);line-height:1.22;opacity:.92}
+  .d-caps{font-family:var(--sans);text-transform:uppercase;letter-spacing:.34em;font-size:13px;font-weight:500}
+  .d-body{font-family:var(--serif);font-size:clamp(16px,1.6vw,19px);line-height:1.7;max-width:62ch;opacity:.9}
+  .d-ui{font-size:15px;max-width:60ch;opacity:.84}
+
+  /* principles */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:32px;margin-top:36px}
+  .col h3{font-family:var(--serif);font-weight:500;font-size:21px;margin-bottom:9px}
+  .col p{font-size:14px;opacity:.8;line-height:1.55}
+  .col em{font-style:italic;opacity:.95}
+
+  /* kit */
+  .kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:24px;margin-top:36px}
+  .part{border:1px solid var(--hair);border-radius:3px;background:var(--paper);overflow:hidden}
+  .part .demo{height:170px;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;position:relative;overflow:hidden}
+  .part .cap{padding:15px 17px 19px;border-top:1px solid var(--hair)}
+  .part .cap .nm{font-family:var(--serif);font-size:18px}
+  .part .cap .ds{font-size:12.5px;opacity:.72;margin-top:5px;line-height:1.45}
+
+  .demo.scrim{background:linear-gradient(155deg,#b9c2bd,#7c8a82)}
+  .demo.scrim::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(10,12,11,.8),rgba(10,12,11,0) 60%)}
+  .demo.scrim .t{position:relative;z-index:2;font-family:var(--serif);color:#fff;font-size:21px;line-height:1.1}
+  .demo.scrim .t em{font-style:italic}
+
+  .demo.edit{background:var(--parchment)}
+  .editrow{display:flex;align-items:flex-end;gap:7px;height:100%}
+  .editrow .p{flex:1;background:#fff;border:1px solid var(--hair);border-radius:2px;position:relative}
+  .editrow .p:nth-child(1){height:55%}.editrow .p:nth-child(2){height:84%}.editrow .p:nth-child(3){height:68%}.editrow .p:nth-child(4){height:96%}.editrow .p:nth-child(5){height:76%}
+  .editrow .p span{position:absolute;top:-21px;left:1px;font-family:var(--serif);font-style:italic;font-size:14px;opacity:.6}
+
+  .asym{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:7px;height:100%}
+  .asym i{background:var(--parchment);border:1px solid var(--hair);border-radius:2px}
+  .asym i:first-child{grid-row:1/3}
+
+  .demo.read{background:var(--parchment);align-items:center;justify-content:center;text-align:center}
+  .demo.read .col-demo{font-family:var(--serif);font-size:12.5px;line-height:1.65;max-width:20ch;opacity:.8}
+  .demo.read .col-demo b{font-style:normal;display:block;font-size:16px;margin-bottom:6px}
+
+  .demo.dark{background:var(--teal)}
+  .demo.dark .l{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .demo.dark .t{font-family:var(--serif);color:#fff;font-size:21px;line-height:1.12;margin-top:6px}
+  .demo.dark .t em{font-style:italic}
+
+  /* modules */
+  .modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));gap:16px;margin-top:34px}
+  .mod{border:1px solid var(--line);border-radius:3px;background:var(--paper);padding:22px;display:flex;flex-direction:column;gap:13px;min-height:172px}
+  .mod .l{font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;opacity:.7}
+  .mod .t{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.14}
+  .mod .t em{font-style:italic}
+  .mod .btn{align-self:flex-start;margin-top:auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:11px 22px;border-radius:1px;border:1px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer}
+  .mod.listen{background:var(--teal);border-color:var(--teal);color:#fff}
+  .mod.listen .l{opacity:.75}
+  .mod.listen .btn{background:transparent;border-color:rgba(255,255,255,.8);color:#fff}
+  .mod.guide{background:var(--parchment)}
+  .mod.guide .btn{background:transparent;color:var(--ink)}
+
+  footer{padding:58px var(--mx) 78px;background:var(--ink);color:#fff}
+  footer .wordmark{color:#fff}
+  footer p{opacity:.7;font-size:13px;max-width:58ch;margin-top:18px;line-height:1.6}
+  footer .chg{margin-top:26px;font-size:12.5px;opacity:.55;font-style:italic;font-family:var(--serif)}
+
+  @media (max-width:680px){.type-row{grid-template-columns:1fr;gap:10px}.type-row .role{padding-top:0}}
+  @media (prefers-reduced-motion:no-preference){.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}.reveal.in{opacity:1;transform:none}}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <span class="wordmark">Beauticate</span>
+  <span class="tag">Design Language · v3 · locked</span>
+</header>
+
+<div class="hero">
+  <div class="photo"></div>
+  <span class="note">The signature · photo + lower-third gradient + white EB Garamond</span>
+  <div class="copy">
+    <span class="eyebrow">Beauty</span>
+    <h1>my honest review of the <em>dyson V16</em></h1>
+  </div>
+</div>
+
+<!-- COLOUR -->
+<section class="reveal">
+  <div class="sec-label"><span class="num">01</span><h2>Colour</h2></div>
+  <p class="lede">Black ink on white. The SheerLuxe and Goop principle. Photography is where the colour lives, never the furniture. Parchment is held back as a change of pace, and two soft accents earn the occasional moment.</p>
+  <div class="swatches">
+    <div class="swatch"><div class="chip" style="background:#FFFFFF"></div><div class="body"><div class="nm">Paper</div><div class="hex">#FFFFFF</div><div class="use">The default. The whole site. Clean, editorial, white.</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#FBF9F4"></div><div class="body"><div class="nm">Parchment</div><div class="hex">#FBF9F4</div><div class="use">Accent only. Social posts, the long read, the odd block for a change of pace.</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#1C1A17"></div><div class="body"><div class="nm">Ink</div><div class="hex">#1C1A17</div><div class="use">All text and all buttons. A warm near-black.</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#8E9A82"></div><div class="body"><div class="nm">Eucalypt</div><div class="hex">#8E9A82</div><div class="use">The soft accent you liked. Tags, small wellness moments.</div></div></div>
+    <div class="swatch"><div class="chip" style="background:#104760"></div><div class="body"><div class="nm">Deep Teal</div><div class="hex">#104760</div><div class="use">From your brand board. Dark sections, podcast blocks, footer.</div></div></div>
+  </div>
+  <p class="accentline">Your other brand colours (camel #DBCEB9, terracotta #B5613A, mist #BABED8, aqua #bffff5) stay in the family for social and the rare editorial flourish, so the black and white always leads on the website.</p>
+</section>
+
+<!-- TYPE -->
+<section class="reveal">
+  <div class="sec-label"><span class="num">02</span><h2>Typography</h2></div>
+  <p class="lede">EB Garamond does almost everything, just like your brand board. Headlines, intros, body, links. Sentence case or lowercase, one word in italic for lift. The caps face is Hanken Grotesk, spaced wide, standing in for Century Gothic from your logo.</p>
+  <div style="height:38px"></div>
+  <div class="type-row"><div class="role">Headline<span>EB Garamond · sentence case</span></div><div><div class="d-roman">the hair tool everyone's <em>quietly</em> talking about</div></div></div>
+  <div class="type-row"><div class="role">Intro / accent<span>EB Garamond Italic</span></div><div><div class="d-italic">Take what resonates. Leave what doesn't.</div></div></div>
+  <div class="type-row"><div class="role">Eyebrow / breadcrumb<span>Hanken Grotesk · spaced caps</span></div><div><div class="d-caps">Wellness &nbsp;·&nbsp; Fitness</div></div></div>
+  <div class="type-row"><div class="role">Body<span>EB Garamond · 1.7 line</span></div><div><p class="d-body">Makeup, at its best, is like great lighting. It lifts, flatters and makes you feel instantly more alive without anyone guessing what's changed. This is the reading text of the site, serif and warm, the way your guides already read.</p></div></div>
+  <div class="type-row"><div class="role">UI / nav<span>Hanken Grotesk</span></div><div><p class="d-ui">Buttons, menus, captions and tags. The quiet sans that keeps the serif company without competing with it.</p></div></div>
+  <div style="margin-top:34px;font-size:13px;opacity:.62;max-width:66ch">Times New Roman stays on social, for the newspaper-column posts. The Seasons stays your decorative social font. EB Garamond carries the website, so the two worlds rhyme without repeating.</div>
+</section>
+
+<!-- LAYOUT -->
+<section class="reveal">
+  <div class="sec-label"><span class="num">03</span><h2>Layout &amp; space</h2></div>
+  <p class="lede">White, open and hairline-ruled. The opposite of dense. One thing leads each screen, the rest support it, and the space between is left alone.</p>
+  <div class="cols">
+    <div class="col"><h3>Hierarchy, not equality</h3><p>One clear lead per screen, then smaller supporting cards. Never a flat grid of identical tiles.</p></div>
+    <div class="col"><h3>Asymmetry on purpose</h3><p>Large beside small, image stepping past a caption. <em>Off-balance feels alive.</em> Symmetry feels like a template.</p></div>
+    <div class="col"><h3>Hairlines, not boxes</h3><p>Thin rules and white space do the dividing, the way SheerLuxe does. No heavy cards, no shadows, no clutter.</p></div>
+    <div class="col"><h3>Mobile is the original</h3><p>Designed thumb-first, because that's where you arrive from. Desktop is the generous version of the phone.</p></div>
+  </div>
+</section>
+
+<!-- MOTION + IMAGE -->
+<section class="reveal">
+  <div class="sec-label"><span class="num">04</span><h2>Movement &amp; image</h2></div>
+  <div class="cols">
+    <div class="col"><h3>Alive but calm</h3><p>Soft scroll reveals, a slow zoom on hover, short muted video loops in heroes. Slow easings, nothing bouncy. If an animation shows off, it goes.</p></div>
+    <div class="col"><h3>The gradient is the grade</h3><p>Photography carries the colour. A black lower-third gradient sits under white text wherever a headline meets an image. Top third, bottom third, wherever the photo allows.</p></div>
+    <div class="col"><h3>Product as still life</h3><p>Shop imagery on white, styled as a flat-lay, not a product feed. The shop should look shot for the magazine.</p></div>
+  </div>
+</section>
+
+<!-- KIT -->
+<section class="reveal">
+  <div class="sec-label"><span class="num">05</span><h2>The kit of parts</h2></div>
+  <p class="lede">The signature blocks the whole site composes from.</p>
+  <div class="kit">
+    <div class="part"><div class="demo scrim"><div class="t">white text over a <em>darkened</em> photo</div></div><div class="cap"><div class="nm">The scrim headline</div><div class="ds">Your signature. Photo, lower-third black gradient, white EB Garamond. The hero of editorial pages.</div></div></div>
+    <div class="part"><div class="demo edit"><div class="editrow"><div class="p"><span>1.</span></div><div class="p"><span>2.</span></div><div class="p"><span>3.</span></div><div class="p"><span>4.</span></div><div class="p"><span>5.</span></div></div></div><div class="cap"><div class="nm">The Edit</div><div class="ds">Numbered, shoppable flat-lay with a caption. The hero of shopping-led categories. Sits on parchment.</div></div></div>
+    <div class="part"><div class="demo"><div class="asym"><i></i><i></i><i></i></div></div><div class="cap"><div class="nm">Asymmetric grid</div><div class="ds">Mixed card sizes, generous white space. The default way stories are listed. Never a flat 3-up.</div></div></div>
+    <div class="part"><div class="demo read"><div class="col-demo"><b>The long read</b>A single serif column on parchment, set like a magazine essay. For your personal pieces.</div></div><div class="cap"><div class="nm">The long read</div><div class="ds">Centred EB Garamond column, narrow measure, parchment ground. The template for personal essays.</div></div></div>
+    <div class="part"><div class="demo dark"><div class="l">From Instagram</div><div class="t">most saved <em>this month</em></div></div><div class="cap"><div class="nm">Social rail</div><div class="ds">The social-first soul. Trust shown high on the page, not buried at the bottom.</div></div></div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section class="reveal">
+  <div class="sec-label"><span class="num">06</span><h2>The story-page modules</h2></div>
+  <p class="lede">The redesigned Shop / Listen / Guide blocks. They replace the clunky WordPress sidebar and live inside story pages only, never on category pages.</p>
+  <div class="modules">
+    <div class="mod shop"><div class="l">Shop the edit</div><div class="t">the six things in <em>this</em> story</div><button class="btn">Shop now</button></div>
+    <div class="mod listen"><div class="l">Beautiful Inside</div><div class="t">hear the full conversation</div><button class="btn">Listen now</button></div>
+    <div class="mod guide"><div class="l">Free download</div><div class="t">the <em>Sacred Sixty</em> guide</div><button class="btn">Get the guide</button></div>
+  </div>
+</section>
+
+<footer class="reveal">
+  <span class="wordmark">Beauticate</span>
+  <p>Design language v3, locked. Editorial black and white on pure white, EB Garamond, your scrim headline as the signature. This is the single source of truth the developer and the team build to.</p>
+  <p class="chg">Changed from v2: background is now white by default. Parchment kept as an accent for social, the long read and select blocks. Long-read essay template added. Times New Roman confirmed social-only.</p>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

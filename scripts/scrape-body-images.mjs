@@ -51,45 +51,70 @@ function extractCategory(fm) {
 async function fetchArticleImages(wpUrl) {
   try {
     const res = await fetch(wpUrl, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Beauticate-migration/1.0)' },
-      signal: AbortSignal.timeout(15000)
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      },
+      signal: AbortSignal.timeout(20000)
     })
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.error(`  HTTP ${res.status}`)
+      return []
+    }
     const html = await res.text()
 
-    // Find the article/post content area
-    // WordPress typically uses .entry-content, .post-content, article .content etc.
-    const contentMatch = html.match(/<(?:div|article)[^>]+class="[^"]*(?:entry-content|post-content|article-content)[^"]*"[^>]*>([\s\S]*?)<\/(?:div|article)>/i)
-      || html.match(/<article[^>]*>([\s\S]*?)<\/article>/i)
-
-    const contentHtml = contentMatch ? contentMatch[1] : html
-
-    // Extract img tags — get src and alt
-    const imgPattern = /<img[^>]+src=["']([^"']+)["'][^>]*(?:alt=["']([^"']*)["'])?[^>]*\/?>/gi
+    // Search the full HTML — more reliable than trying to extract a content div
+    // with regex (nested divs break lazy matching)
+    const imgTagPattern = /<img\s([^>]+?)(?:\s*\/)?>/gi
     const imgs = []
-    let m
-    while ((m = imgPattern.exec(contentHtml)) !== null) {
-      let src = m[1]
-      const alt = m[2] || ''
-      // Skip tiny images, icons, avatars, logos
-      if (src.includes('avatar') || src.includes('logo') || src.includes('icon') ||
-          src.includes('emoji') || src.includes('pixel') || src.includes('1x1') ||
-          src.includes('gravatar') || src.includes('s.w.org')) continue
-      // Skip already-absolute non-beauticate URLs (social etc)
-      if (src.startsWith('http') && !src.includes('beauticate.com') && !src.includes('wp-content')) continue
+    let tagMatch
+    while ((tagMatch = imgTagPattern.exec(html)) !== null) {
+      const attrs = tagMatch[1]
+      const attrsLower = attrs.toLowerCase()
+
+      // Skip logos, navigation images, and the featured image (already in frontmatter)
+      if (attrsLower.includes('logo') || attrsLower.includes('favicon') ||
+          attrsLower.includes('wp-post-image') || attrsLower.includes('avatar') ||
+          attrsLower.includes('gravatar')) continue
+
+      // Prefer data-src (lazy-loaded real URL) over src (placeholder gif)
+      const dataSrcMatch = attrs.match(/\bdata-src=["']([^"']+)["']/) ||
+                           attrs.match(/\bdata-lazy-src=["']([^"']+)["']/)
+      const srcMatch = attrs.match(/\bsrc=["']([^"']+)["']/)
+      const rawSrc = srcMatch ? srcMatch[1] : ''
+      const isPlaceholder = rawSrc.includes('placeholder') || rawSrc.includes('lazy_placeholder') ||
+                            rawSrc.startsWith('data:') || rawSrc === ''
+
+      let src = dataSrcMatch ? dataSrcMatch[1] : (isPlaceholder ? null : rawSrc)
+      if (!src) continue
+
+      // Get alt
+      const altMatch = attrs.match(/\balt=["']([^"']*)["']/)
+      const alt = altMatch ? altMatch[1] : ''
+
+      // Skip UI elements — case-insensitive
+      const srcLower = src.toLowerCase()
+      if (srcLower.includes('logo') || srcLower.includes('icon') || srcLower.includes('emoji') ||
+          srcLower.includes('pixel') || srcLower.includes('1x1') || srcLower.includes('gravatar') ||
+          srcLower.includes('s.w.org') || srcLower.includes('spinner') || srcLower.includes('blank.gif') ||
+          srcLower.includes('placeholder')) continue
+
+      if (src.startsWith('data:')) continue
+
       // Make absolute
       if (src.startsWith('//')) src = 'https:' + src
       else if (src.startsWith('/')) src = BASE_URL + src
 
-      // Use largest srcset version if available - look for srcset near this img
+      // Only keep images from wp-content/uploads (article images, not external embeds)
+      if (!src.includes('/wp-content/uploads/')) continue
+
       imgs.push({ src, alt })
     }
 
-    // Deduplicate by src
+    // Deduplicate — strip WP size suffixes like -850x425 to treat variants as same image
     const seen = new Set()
     return imgs.filter(i => {
-      // Strip size suffix like -850x425 to deduplicate variants
-      const base = i.src.replace(/-\d+x\d+(\.\w+)$/, '$1')
+      const base = i.src.replace(/-\d+x\d+(\.\w+)$/, '$1').replace(/[?#].*$/, '')
       if (seen.has(base)) return false
       seen.add(base)
       return true
@@ -188,12 +213,13 @@ for (const file of candidates) {
   const slug = extractSlug(fm)
   if (!slug) { skipped++; continue }
 
+  // Build WordPress URL using category/subcategory/slug path
   const { category, subcategory } = extractCategory(fm)
+  const wpUrl = category && subcategory
+    ? `${BASE_URL}/${category}/${subcategory}/${slug}/`
+    : `${BASE_URL}/${slug}/`
 
-  // Build WordPress URL — try the slug directly
-  const wpUrl = `${BASE_URL}/${slug}/`
-
-  process.stdout.write(`Fetching ${slug}...`)
+  process.stdout.write(`Fetching ${wpUrl}...`)
 
   const imgs = await fetchArticleImages(wpUrl)
 
@@ -203,6 +229,7 @@ for (const file of candidates) {
     await sleep(DELAY_MS)
     continue
   }
+  console.log(` found ${imgs.length} images`)
 
   // Download each image
   const imageRefs = []
