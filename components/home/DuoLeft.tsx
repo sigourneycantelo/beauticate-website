@@ -62,7 +62,7 @@ export default function DuoLeft({ articles }: { articles: Article[] }) {
       className="reveal grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1fr_1fr_0.72fr]"
       style={{
         gap: 'clamp(24px,3vw,46px)',
-        padding: 'clamp(28px,4vw,52px) clamp(20px,6vw,104px)',
+        padding: 'clamp(28px,4vw,52px) clamp(20px,6vw,104px) clamp(14px,2vw,24px)',
       }}
     >
       <Card article={a} i={0} />

@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import type { ArticleFrontmatter, VodcastFrontmatter } from '@/types/content'
 
 const CONTENT_DIR = path.join(process.cwd(), 'content')
-const VODCAST_DIR = path.join(CONTENT_DIR, 'vodcast')
+const VODCAST_DIR = path.join(CONTENT_DIR, 'vodcast', 'episodes')
 
 // ─── Articles ────────────────────────────────────────────────────────────────
 
