@@ -76,6 +76,14 @@ export function getArticlesByCategory(category: string, subcategory?: string) {
     })
 }
 
+export function getHeroArticle() {
+  const allSlugs = getArticleSlugs()
+  return allSlugs
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .find(a => a?.frontmatter.is_hero) ?? null
+}
+
 export function getFeaturedArticles(limit = 6) {
   const allSlugs = getArticleSlugs()
   return allSlugs

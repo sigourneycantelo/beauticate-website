@@ -47,6 +47,16 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
   git branch -D tmp-main-push
   ```
 
+## Home page hero curation
+
+The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.
+
+When publishing a new story, always ask:
+1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` in the frontmatter. Only one article should have `is_hero: true` at a time; remove the flag from the previous hero.
+2. **"Please provide a landscape holding shot for the hero."** — This is a wide-crop image optimised for the full-bleed `HeroWide` banner. Save it to the article's content directory and set `hero_image: /content/<category>/<subcategory>/<slug>/hero.jpg` in the frontmatter. If no dedicated shot is provided, `featured_image` is used as fallback.
+
+The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
+
 ## Category page order
 
 Articles appear on category pages sorted newest-first by `date_published`. The "first 12 stories" on each page are the 12 most recent articles by date.

@@ -47,6 +47,10 @@ export interface ArticleFrontmatter {
   related_collections?: string[]
   youtube_embed?: string
 
+  // Hero
+  is_hero?: boolean            // true = this article is the curated home page hero
+  hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
+
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
   reviewed?: boolean           // true = SEO/AEO review done; used by /admin/review-queue
