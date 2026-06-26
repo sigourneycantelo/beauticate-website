@@ -66,7 +66,11 @@ export default function DuoLeft({ articles }: { articles: Article[] }) {
       }}
     >
       <Card article={a} i={0} />
-      {b && <Card article={b} i={1} />}
+      {b && (
+        <div style={{ marginTop: 'clamp(48px,8vw,120px)' }}>
+          <Card article={b} i={1} />
+        </div>
+      )}
       <div className="hidden md:block" />
     </section>
   )
