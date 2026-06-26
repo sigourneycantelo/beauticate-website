@@ -7,6 +7,7 @@ export interface ProductLink {
   url?: string           // for type: 'affiliate' | 'external'
   retailer?: string      // e.g. 'MECCA', 'Sephora', 'Brand direct'
   note?: string          // e.g. "Sigourney's Edit", "Reader favourite"
+  price?: string         // optional fallback display price
 }
 
 export interface FAQ {
