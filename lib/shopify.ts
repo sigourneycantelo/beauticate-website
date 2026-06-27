@@ -149,18 +149,6 @@ export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
 
 // ─── Product types / categories ──────────────────────────────────────────────
 
-export async function getProductsByType(productType: string, first = 24): Promise<ShopifyProduct[]> {
-  const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
-    ${PRODUCT_FRAGMENT}
-    query GetProductsByType($first: Int!, $query: String!) {
-      products(first: $first, query: $query, sortKey: UPDATED_AT, reverse: true) {
-        nodes { ...ProductFields }
-      }
-    }
-  `, { first, query: `product_type:"${productType}"` })
-  return (data as any)?.products?.nodes ?? []
-}
-
 // ─── Cart ────────────────────────────────────────────────────────────────────
 
 export async function createCart(): Promise<Cart | null> {
