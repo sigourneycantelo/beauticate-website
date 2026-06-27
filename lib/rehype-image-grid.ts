@@ -33,7 +33,7 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
       }
 
       if (runLength >= 2) {
-        // Extract the <img> elements from each <p> and build a grid wrapper
+        // Extract the <img> elements from each <p>
         const imgNodes = children
           .slice(runStart, runStart + runLength)
           .map((p) => {
@@ -41,7 +41,6 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
             const img = para.children.find(
               (c): c is Element => c.type === 'element' && c.tagName === 'img'
             )!
-            // Add object-contain so product shots don't crop
             img.properties = {
               ...img.properties,
               class: 'w-full h-auto object-contain',
@@ -49,27 +48,42 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
             return img
           })
 
-        const cols = runLength === 2 ? 2 : 3
-        const gridClass =
-          cols === 2
-            ? 'not-prose grid grid-cols-2 gap-3 my-6'
-            : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
-
-        const gridDiv: Element = {
-          type: 'element',
-          tagName: 'div',
-          properties: { class: gridClass },
-          children: imgNodes.map((img) => ({
-            type: 'element' as const,
-            tagName: 'div' as const,
-            properties: { class: 'flex items-center justify-center' },
-            children: [img],
-          })),
+        // Chunk into rows: prefer exactly-3 only when the whole run is 3,
+        // otherwise use rows of 2 so we get a 2-column layout.
+        const chunkSize = runLength === 3 ? 3 : 2
+        const gridNodes: Element[] = []
+        for (let j = 0; j < imgNodes.length; j += chunkSize) {
+          const chunk = imgNodes.slice(j, j + chunkSize)
+          // A leftover single image is shown full-width — skip wrapping
+          if (chunk.length === 1) {
+            gridNodes.push({
+              type: 'element',
+              tagName: 'p',
+              properties: {},
+              children: [chunk[0]],
+            })
+            continue
+          }
+          const cols = chunk.length === 2 ? 2 : 3
+          const gridClass =
+            cols === 2
+              ? 'not-prose grid grid-cols-2 gap-3 my-6'
+              : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
+          gridNodes.push({
+            type: 'element',
+            tagName: 'div',
+            properties: { class: gridClass },
+            children: chunk.map((img) => ({
+              type: 'element' as const,
+              tagName: 'div' as const,
+              properties: { class: 'flex items-center justify-center' },
+              children: [img],
+            })),
+          })
         }
 
-        children.splice(runStart, runLength, gridDiv)
-        // i is now at runStart + 1 (the element after the inserted div)
-        i = runStart + 1
+        children.splice(runStart, runLength, ...gridNodes)
+        i = runStart + gridNodes.length
       }
     }
   }

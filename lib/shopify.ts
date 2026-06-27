@@ -6,20 +6,31 @@ const API_URL = STORE_DOMAIN ? `https://${STORE_DOMAIN}/api/2024-10/graphql.json
 
 async function shopifyFetch<T>(query: string, variables?: object): Promise<T> {
   if (!STORE_DOMAIN || !PRIVATE_TOKEN) return { data: null } as T
-  const res = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Shopify-Storefront-Private-Token': PRIVATE_TOKEN,
-    },
-    body: JSON.stringify({ query, variables }),
-    next: { revalidate: 3600 }, // cache 1 hour
-  })
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Shopify-Storefront-Private-Token': PRIVATE_TOKEN,
+      },
+      body: JSON.stringify({ query, variables }),
+      next: { revalidate: 3600 }, // cache 1 hour
+    })
 
-  if (!res.ok) throw new Error(`Shopify API error: ${res.statusText}`)
-  const { data, errors } = await res.json()
-  if (errors) throw new Error(errors[0].message)
-  return data
+    if (!res.ok) {
+      console.warn(`Shopify API error: ${res.status} ${res.statusText}`)
+      return { data: null } as T
+    }
+    const { data, errors } = await res.json()
+    if (errors) {
+      console.warn('Shopify GraphQL errors:', errors[0]?.message)
+      return { data: null } as T
+    }
+    return data
+  } catch (err) {
+    console.warn('Shopify fetch failed (build will continue without shop data):', err)
+    return { data: null } as T
+  }
 }
 
 // ─── Fragments ───────────────────────────────────────────────────────────────
@@ -134,6 +145,26 @@ export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
     }
   `, { first })
   return (data as any)?.collections?.nodes ?? []
+}
+
+// ─── Product types / categories ──────────────────────────────────────────────
+
+export async function getProductTypes(): Promise<string[]> {
+  const products = await getProducts(250)
+  const types = [...new Set(products.map(p => p.productType).filter(Boolean))]
+  return types.sort()
+}
+
+export async function getProductsByType(productType: string, first = 24): Promise<ShopifyProduct[]> {
+  const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
+    ${PRODUCT_FRAGMENT}
+    query GetProductsByType($first: Int!, $query: String!) {
+      products(first: $first, query: $query, sortKey: UPDATED_AT, reverse: true) {
+        nodes { ...ProductFields }
+      }
+    }
+  `, { first, query: `product_type:"${productType}"` })
+  return (data as any)?.products?.nodes ?? []
 }
 
 // ─── Cart ────────────────────────────────────────────────────────────────────
