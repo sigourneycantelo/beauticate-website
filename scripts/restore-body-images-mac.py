@@ -184,7 +184,7 @@ def scrape_wp_images(wp_url: str) -> list:
 
     return list(dict.fromkeys(urls))
 
-def find_url_by_filename(wp_images: list, target_filename: str) -> str | None:
+def find_url_by_filename(wp_images: list, target_filename: str):
     """Match a missing filename against a list of WordPress CDN URLs."""
     target_lower = target_filename.lower()
     # Normalize: strip size suffixes like -1024x768
