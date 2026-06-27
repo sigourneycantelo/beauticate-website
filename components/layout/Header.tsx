@@ -88,13 +88,13 @@ function articleHref(f: MegaArticle['frontmatter']) {
 }
 
 // ─── Full-width tabbed mega menu ──────────────────────────────────────────────
-function MegaMenu({ entries }: { entries: MegaMenuEntry[] }) {
+function MegaMenu({ entries, open }: { entries: MegaMenuEntry[], open: boolean }) {
   const [activeHref, setActiveHref] = useState(entries[0]?.href ?? '')
   const active = entries.find(e => e.href === activeHref) ?? entries[0]
 
   return (
     <div
-      className="absolute left-0 right-0 top-full hidden group-hover:grid z-50 bg-white text-left"
+      className={`absolute left-0 right-0 top-full z-50 bg-white text-left ${open ? 'grid' : 'hidden'}`}
       style={{
         gridTemplateColumns: '220px 1fr',
         gap: '48px',
@@ -172,6 +172,7 @@ interface Props {
 export default function Header({ megaMenuArticles }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [openMega, setOpenMega] = useState<string | null>(null)
 
   return (
     <header
@@ -275,17 +276,30 @@ export default function Header({ megaMenuArticles }: Props) {
           const hasMega = 'megaKey' in item && item.megaKey && megaMenuArticles
           const entries = hasMega ? megaMenuArticles![item.megaKey as keyof MegaMenuData] : null
 
+          const isOpen = openMega === item.href
+
           return (
             // No `relative` on this wrapper — mega positions relative to sticky <header>
-            <div key={item.href} className="group">
+            <div
+              key={item.href}
+              className="group"
+              onMouseEnter={() => hasMega ? setOpenMega(item.href) : undefined}
+              onMouseLeave={() => setOpenMega(null)}
+            >
               <Link
                 href={item.href}
-                className="block font-sans uppercase py-1.5 transition-opacity"
-                style={{ opacity: item.lead ? 1 : 0.66, fontWeight: item.lead ? 600 : 500 }}
+                className="block font-sans uppercase py-1.5 transition-colors"
+                style={{
+                  color: isOpen ? '#B5613A' : undefined,
+                  opacity: isOpen ? 1 : (item.lead ? 1 : 0.66),
+                  fontWeight: item.lead ? 600 : 500,
+                }}
+                onMouseEnter={e => { if (!hasMega) e.currentTarget.style.color = '#B5613A' }}
+                onMouseLeave={e => { if (!hasMega) e.currentTarget.style.color = '' }}
               >
                 {item.label}
               </Link>
-              {entries && entries.length > 0 && <MegaMenu entries={entries} />}
+              {entries && entries.length > 0 && <MegaMenu entries={entries} open={isOpen} />}
             </div>
           )
         })}
