@@ -1,6 +1,6 @@
 {
   "category": "beauty-style",
-  "generated": "2026-06-28T05:58:48.895Z",
+  "generated": "2026-06-28T08:42:53.922Z",
   "results": [
     {
       "slug": "beauticate-team-winter-edit",
@@ -21,47 +21,6 @@
           "type": "TEXT",
           "severity": "high",
           "summary": "MDX shorter than WP by 338 words (WP 2208 vs MDX 1870, 15% missing)"
-        }
-      ]
-    },
-    {
-      "slug": "masks-for-stressed-skin",
-      "path": "content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/",
-      "link": "https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/",
-      "wpFound": true,
-      "datePublished": "2026-05-22",
-      "stats": {
-        "wpWords": 1169,
-        "mdxWords": 1428,
-        "wpImages": 8,
-        "mdxImages": 10,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "FLATTENED",
-          "severity": "high",
-          "summary": "2 image embed(s) flattened to a plain text link (image dropped in migration)",
-          "detail": [
-            {
-              "href": "https://klsq.io/q045h1"
-            },
-            {
-              "href": "https://klsq.io/q045h1%20"
-            }
-          ]
-        },
-        {
-          "type": "MARKDOWN",
-          "severity": "medium",
-          "summary": "space-close-bold×1",
-          "detail": [
-            {
-              "type": "space-close-bold",
-              "line": 19
-            }
-          ]
         }
       ]
     },
@@ -198,11 +157,8 @@
         {
           "type": "FLATTENED",
           "severity": "high",
-          "summary": "3 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "summary": "2 image embed(s) flattened to a plain text link (image dropped in migration)",
           "detail": [
-            {
-              "href": "https://bit.ly/41yVcXG"
-            },
             {
               "href": "https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/"
             },
@@ -334,6 +290,34 @@
       ]
     },
     {
+      "slug": "masks-for-stressed-skin",
+      "path": "content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/",
+      "link": "https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/",
+      "wpFound": true,
+      "datePublished": "2026-05-22",
+      "stats": {
+        "wpWords": 1169,
+        "mdxWords": 1428,
+        "wpImages": 8,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "space-close-bold×1",
+          "detail": [
+            {
+              "type": "space-close-bold",
+              "line": 19
+            }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "red-light-therapy-hair-thinning",
       "path": "content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx",
       "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/hair/red-light-therapy-hair-thinning/",
@@ -348,19 +332,6 @@
         "wpCaptions": 0
       },
       "findings": [
-        {
-          "type": "FLATTENED",
-          "severity": "high",
-          "summary": "2 image embed(s) flattened to a plain text link (image dropped in migration)",
-          "detail": [
-            {
-              "href": "https://www.qureskincare.com/SIGOURNEY57027"
-            },
-            {
-              "href": "https://qureskincare.com/products/hair-growth-helmet?snowball=SIGOURNEY57027"
-            }
-          ]
-        },
         {
           "type": "MARKDOWN",
           "severity": "medium",

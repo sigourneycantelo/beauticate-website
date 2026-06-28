@@ -1,0 +1,261 @@
+{
+  "category": "living",
+  "generated": "2026-06-28T08:42:53.479Z",
+  "results": [
+    {
+      "slug": "pool-accessories-that-changed-our-lives",
+      "path": "content/living/outdoors/pool-accessories-that-changed-our-lives/pool-accessories-that-changed-our-lives.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/outdoors/pool-accessories-that-changed-our-lives/",
+      "link": "https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/",
+      "wpFound": true,
+      "datePublished": "2026-01-30",
+      "stats": {
+        "wpWords": 1130,
+        "mdxWords": 1359,
+        "wpImages": 10,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 1 more body image(s) than MDX (WP 10 vs MDX 9) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/15.png",
+              "alt": "Poolside"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/16.png",
+              "alt": "Poolside Basil Bangs"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/17.png",
+              "alt": "Pool Accessories"
+            }
+          ]
+        },
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "space-close-bold×1",
+          "detail": [
+            {
+              "type": "space-close-bold",
+              "line": 29
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lazy-girls-guide-summer-entertaining",
+      "path": "content/living/lifestyle/lazy-girls-guide-summer-entertaining/lazy-girls-guide-summer-entertaining.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/lazy-girls-guide-summer-entertaining/",
+      "link": "https://www.beauticate.com/living/lifestyle/lazy-girls-guide-summer-entertaining/",
+      "wpFound": true,
+      "datePublished": "2026-01-29",
+      "stats": {
+        "wpWords": 1252,
+        "mdxWords": 1541,
+        "wpImages": 14,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 5 more body image(s) than MDX (WP 14 vs MDX 9) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/WEBSITE-PORTRAIT-11.gif",
+              "alt": "Name Card Ideas"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/WEBSITE-PORTRAIT-12.gif",
+              "alt": "Cake Ideas DIY"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/WEBSITE-PORTRAIT-14.gif",
+              "alt": "Table Scape Ideas"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/9.png",
+              "alt": "table setting"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/WEBSITE-PORTRAIT-15.gif",
+              "alt": "Sigourney and Jayde"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "we-tried-samsungs-latest-statement-making-tv",
+      "path": "content/living/interiors/we-tried-samsungs-latest-statement-making-tv/we-tried-samsungs-latest-statement-making-tv.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/we-tried-samsungs-latest-statement-making-tv/",
+      "link": "https://www.beauticate.com/living/interiors/we-tried-samsungs-latest-statement-making-tv/",
+      "wpFound": true,
+      "datePublished": "2022-04-26",
+      "stats": {
+        "wpWords": 540,
+        "mdxWords": 410,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "TEXT",
+          "severity": "high",
+          "summary": "MDX shorter than WP by 130 words (WP 540 vs MDX 410, 24% missing)"
+        }
+      ]
+    },
+    {
+      "slug": "how-to-create-dreamy-bedrooms",
+      "path": "content/living/interiors/how-to-create-dreamy-bedrooms/how-to-create-dreamy-bedrooms.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-to-create-dreamy-bedrooms/",
+      "link": "https://www.beauticate.com/living/interiors/how-to-create-dreamy-bedrooms/",
+      "wpFound": true,
+      "datePublished": "2022-03-29",
+      "stats": {
+        "wpWords": 663,
+        "mdxWords": 554,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "TEXT",
+          "severity": "high",
+          "summary": "MDX shorter than WP by 109 words (WP 663 vs MDX 554, 16% missing)"
+        }
+      ]
+    },
+    {
+      "slug": "giving-back-became-non-negotiable",
+      "path": "content/living/giving-back-became-non-negotiable/giving-back-became-non-negotiable.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/giving-back-became-non-negotiable/",
+      "datePublished": "2026-06-07",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "dyson-v16-review",
+      "path": "content/living/lifestyle/dyson-v16-review/dyson-v16-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/dyson-v16-review/",
+      "link": "https://www.beauticate.com/living/dyson-v16-review/",
+      "wpFound": true,
+      "datePublished": "2026-05-29",
+      "stats": {
+        "wpWords": 1004,
+        "mdxWords": 1004,
+        "wpImages": 7,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-sheer-curtains-can-transform-a-space",
+      "path": "content/living/interiors/how-sheer-curtains-can-transform-a-space/how-sheer-curtains-can-transform-a-space.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-sheer-curtains-can-transform-a-space/",
+      "link": "https://www.beauticate.com/living/interiors/how-sheer-curtains-can-transform-a-space/",
+      "wpFound": true,
+      "datePublished": "2024-11-10",
+      "stats": {
+        "wpWords": 912,
+        "mdxWords": 888,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "airgarden",
+      "path": "content/living/sustainability/airgarden/airgarden.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/airgarden/",
+      "link": "https://www.beauticate.com/living/sustainability/airgarden/",
+      "wpFound": true,
+      "datePublished": "2024-04-18",
+      "stats": {
+        "wpWords": 1189,
+        "mdxWords": 1142,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "8-at-trinity",
+      "path": "content/living/lifestyle/8-at-trinity/8-at-trinity.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/8-at-trinity/",
+      "link": "https://www.beauticate.com/living/lifestyle/8-at-trinity/",
+      "wpFound": true,
+      "datePublished": "2024-01-24",
+      "stats": {
+        "wpWords": 714,
+        "mdxWords": 665,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2",
+      "path": "content/living/sustainability/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2/",
+      "link": "https://www.beauticate.com/living/sustainability/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2/",
+      "wpFound": true,
+      "datePublished": "2023-06-15",
+      "stats": {
+        "wpWords": 1530,
+        "mdxWords": 1454,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful",
+      "path": "content/living/interiors/alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful/alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful/",
+      "link": "https://www.beauticate.com/living/interiors/alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful/",
+      "wpFound": true,
+      "datePublished": "2022-04-06",
+      "stats": {
+        "wpWords": 1604,
+        "mdxWords": 1528,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "inside-the-beauticate-beauty-cupboard",
+      "path": "content/living/interiors/inside-the-beauticate-beauty-cupboard/inside-the-beauticate-beauty-cupboard.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/inside-the-beauticate-beauty-cupboard/",
+      "link": "https://www.beauticate.com/living/interiors/inside-the-beauticate-beauty-cupboard/",
+      "wpFound": true,
+      "datePublished": "2022-02-15",
+      "stats": {
+        "wpWords": 488,
+        "mdxWords": 420,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}

@@ -12,17 +12,6 @@
 
 - **TEXT** (high): MDX shorter than WP by 338 words (WP 2208 vs MDX 1870, 15% missing)
 
-## masks-for-stressed-skin
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/)
-- 📄 MDX: `content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx`
-- words WP/MDX: 1169/1428 · images WP/MDX: 8/10
-
-- **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
-    - linked to: https://klsq.io/q045h1
-    - linked to: https://klsq.io/q045h1%20
-- **MARKDOWN** (medium): space-close-bold×1
-
 ## systeme-bio-plus-oil-serum-review
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/)
@@ -59,8 +48,7 @@
     - https://www.beauticate.com/wp-content/uploads/2029/01/e4508a01-e571-f011-9cef-546ceb321ef4-600x768-1-1.jpg
     - https://www.beauticate.com/wp-content/uploads/2029/01/inca-sunhat-straw-hat-lifestyle-zoe-3.webp
     - https://www.beauticate.com/wp-content/uploads/2029/01/4-scaled.png  _(alt: face sunscreen products displayed poolside)_
-- **FLATTENED** (high): 3 image embed(s) flattened to a plain text link (image dropped in migration)
-    - linked to: https://bit.ly/41yVcXG
+- **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
     - linked to: https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/
     - linked to: https://lornamurray.com.au/collections/pleated-hats-adult
 - **MARKDOWN** (medium): mismatched-bold×8
@@ -87,15 +75,20 @@
     - linked to: https://www.qureskincare.com/SIGOURNEY57027
     - linked to: https://www.beauticate.com/beauty-style/skin-care/qure-glowcase-review/
 
+## masks-for-stressed-skin
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/)
+- 📄 MDX: `content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx`
+- words WP/MDX: 1169/1428 · images WP/MDX: 8/10
+
+- **MARKDOWN** (medium): space-close-bold×1
+
 ## red-light-therapy-hair-thinning
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/red-light-therapy-hair-thinning/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/red-light-therapy-hair-thinning/)
 - 📄 MDX: `content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx`
 - words WP/MDX: 1299/1558 · images WP/MDX: 6/9
 
-- **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
-    - linked to: https://www.qureskincare.com/SIGOURNEY57027
-    - linked to: https://qureskincare.com/products/hair-growth-helmet?snowball=SIGOURNEY57027
 - **MARKDOWN** (medium): mismatched-bold×1
 
 ## why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy

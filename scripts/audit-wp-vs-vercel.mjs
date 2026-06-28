@@ -227,12 +227,12 @@ async function fetchWpPost(slug) {
 }
 
 function escapeRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') }
-// WP anchors that wrap an image: <a href="X"> … <img> … </a>  → the href values.
+// WP anchors that wrap an image: <a href="X"> … <img src="Y"> … </a> → {href, src}.
 // Used to detect embeds the migration "flattened" into plain text links.
-function extractWpLinkedImageHrefs(html) {
-  const hrefs = []
-  for (const m of html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>\s*(?:<picture\b[^>]*>\s*)?(?:<source\b[^>]*>\s*)*<img\b/gi)) hrefs.push(m[1])
-  return hrefs
+function extractWpLinkedImages(html) {
+  const out = []
+  for (const m of html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>\s*(?:<picture\b[^>]*>\s*)?(?:<source\b[^>]*>\s*)*<img\b[^>]*\bsrc=["']([^"']+)["']/gi)) out.push({ href: m[1], src: m[2] })
+  return out
 }
 
 // ─── Audit one article ───────────────────────────────────────────────────────
@@ -289,17 +289,19 @@ async function auditArticle(item, users) {
   // migration kept only the link as plain text (e.g. [@handle](instagram)) and
   // dropped the image. Detect: WP image-link href that appears in the MDX as a
   // plain [text](href) link but NOT as an image link [![..](..)](href).
-  // Only meaningful when images were actually dropped (imgDeficit > 0). Without a
-  // deficit, every image is present and a matching plain link is just a normal
-  // inline prose link that WP happened to wrap an image in — a false positive.
+  // Flag a link as flattened only when the SPECIFIC image WP wrapped is actually
+  // absent from the MDX. Otherwise it's a normal inline prose link that WP merely
+  // happened to wrap an image in, and the image is present elsewhere — a false
+  // positive (e.g. shop links in a roundup whose images survived migration).
   const flattened = []
-  if (imgDeficit > 0) {
-    for (const href of new Set(extractWpLinkedImageHrefs(wpHtml))) {
-      const h = escapeRe(href)
-      const hasImageLink = new RegExp(`\\)\\]\\(${h}\\)`).test(body)        // [![alt](src)](href)
-      const hasPlainLink = new RegExp(`\\[[^\\]]*\\]\\(${h}\\)`).test(body) // [text](href)
-      if (!hasImageLink && hasPlainLink) flattened.push(href)
-    }
+  const seenFlat = new Set()
+  for (const { href, src } of extractWpLinkedImages(wpHtml)) {
+    if (mdxKeys.has(imgKey(src))) continue                                // image present → not dropped
+    if (seenFlat.has(href)) continue
+    const h = escapeRe(href)
+    const hasImageLink = new RegExp(`\\)\\]\\(${h}\\)`).test(body)        // [![alt](src)](href)
+    const hasPlainLink = new RegExp(`\\[[^\\]]*\\]\\(${h}\\)`).test(body) // [text](href)
+    if (!hasImageLink && hasPlainLink) { seenFlat.add(href); flattened.push(href) }
   }
   if (flattened.length) {
     findings.push({
