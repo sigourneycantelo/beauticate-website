@@ -1,0 +1,190 @@
+{
+  "category": "sigourneys-edit",
+  "generated": "2026-06-28T09:54:11.297Z",
+  "results": [
+    {
+      "slug": "beauticate-shop-launch",
+      "path": "content/sigourneys-edit/beauticate-shop-launch/beauticate-shop-launch.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/beauticate-shop-launch/",
+      "datePublished": "2026-06-18",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "winter-beauty-rituals",
+      "path": "content/sigourneys-edit/edit/winter-beauty-rituals/winter-beauty-rituals.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/winter-beauty-rituals/",
+      "link": "https://www.beauticate.com/sigourneys-edit/winter-beauty-rituals/",
+      "wpFound": true,
+      "datePublished": "2025-08-10",
+      "stats": {
+        "wpWords": 838,
+        "mdxWords": 838,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "latest-injectable-trends",
+      "path": "content/sigourneys-edit/latest-injectable-trends/latest-injectable-trends.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/latest-injectable-trends/",
+      "link": "https://www.beauticate.com/sigourneys-edit/latest-injectable-trends/",
+      "wpFound": true,
+      "datePublished": "2025-08-10",
+      "stats": {
+        "wpWords": 292,
+        "mdxWords": 263,
+        "wpImages": 5,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "beauty-expo-australia-2025-for-founders-why-im-going-and-you-should-too",
+      "path": "content/sigourneys-edit/beauty-expo-australia-2025-for-founders-why-im-going-and-you-should-too/beauty-expo-australia-2025-for-founders-why-im-going-and-you-should-too.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/beauty-expo-australia-2025-for-founders-why-im-going-and-you-should-too/",
+      "link": "https://www.beauticate.com/sigourneys-edit/beauty-expo-australia-2025-for-founders-why-im-going-and-you-should-too/",
+      "wpFound": true,
+      "datePublished": "2025-08-06",
+      "stats": {
+        "wpWords": 360,
+        "mdxWords": 363,
+        "wpImages": 4,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "qure-shower-filter-review",
+      "path": "content/sigourneys-edit/qure-shower-filter-review/qure-shower-filter-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/qure-shower-filter-review/",
+      "link": "https://www.beauticate.com/sigourneys-edit/qure-shower-filter-review/",
+      "wpFound": true,
+      "datePublished": "2025-06-11",
+      "stats": {
+        "wpWords": 634,
+        "mdxWords": 605,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "tokyo-24-hours-family-itinerary",
+      "path": "content/sigourneys-edit/edit/tokyo-24-hours-family-itinerary/tokyo-24-hours-family-itinerary.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/tokyo-24-hours-family-itinerary/",
+      "link": "https://www.beauticate.com/sigourneys-edit/tokyo-24-hours-family-itinerary/",
+      "wpFound": true,
+      "datePublished": "2025-05-10",
+      "stats": {
+        "wpWords": 853,
+        "mdxWords": 851,
+        "wpImages": 0,
+        "mdxImages": 13,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "goldfield-and-banks-silky-woods-cairns",
+      "path": "content/sigourneys-edit/edit/goldfield-and-banks-silky-woods-cairns/goldfield-and-banks-silky-woods-cairns.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/goldfield-and-banks-silky-woods-cairns/",
+      "link": "https://www.beauticate.com/sigourneys-edit/goldfield-and-banks-silky-woods-cairns/",
+      "wpFound": true,
+      "datePublished": "2025-05-07",
+      "stats": {
+        "wpWords": 1483,
+        "mdxWords": 1476,
+        "wpImages": 0,
+        "mdxImages": 19,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "three-meadows",
+      "path": "content/sigourneys-edit/edit/three-meadows/three-meadows.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/three-meadows/",
+      "link": "https://www.beauticate.com/sigourneys-edit/three-meadows/",
+      "wpFound": true,
+      "datePublished": "2024-12-18",
+      "stats": {
+        "wpWords": 979,
+        "mdxWords": 975,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "beautiful-inside-by-beauticate-the-podcast",
+      "path": "content/sigourneys-edit/edit/beautiful-inside-by-beauticate-the-podcast/beautiful-inside-by-beauticate-the-podcast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/beautiful-inside-by-beauticate-the-podcast/",
+      "link": "https://www.beauticate.com/sigourneys-edit/beautiful-inside-by-beauticate-the-podcast/",
+      "wpFound": true,
+      "datePublished": "2024-07-08",
+      "stats": {
+        "wpWords": 495,
+        "mdxWords": 492,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "is-emface-the-new-needle-free-alternative-to-fillers",
+      "path": "content/sigourneys-edit/edit/is-emface-the-new-needle-free-alternative-to-fillers/is-emface-the-new-needle-free-alternative-to-fillers.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/is-emface-the-new-needle-free-alternative-to-fillers/",
+      "link": "https://www.beauticate.com/sigourneys-edit/is-emface-the-new-needle-free-alternative-to-fillers/",
+      "wpFound": true,
+      "datePublished": "2024-02-23",
+      "stats": {
+        "wpWords": 305,
+        "mdxWords": 305,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourney-road-tests-the-latest-window-and-floor-cleaning-robots",
+      "path": "content/sigourneys-edit/edit/sigourney-road-tests-the-latest-window-and-floor-cleaning-robots/sigourney-road-tests-the-latest-window-and-floor-cleaning-robots.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourney-road-tests-the-latest-window-and-floor-cleaning-robots/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourney-road-tests-the-latest-window-and-floor-cleaning-robots/",
+      "wpFound": true,
+      "datePublished": "2023-07-13",
+      "stats": {
+        "wpWords": 1021,
+        "mdxWords": 1015,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "my-current-morning-routine",
+      "path": "content/sigourneys-edit/edit/my-current-morning-routine/my-current-morning-routine.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/my-current-morning-routine/",
+      "link": "https://www.beauticate.com/sigourneys-edit/my-current-morning-routine/",
+      "wpFound": true,
+      "datePublished": "2022-07-12",
+      "stats": {
+        "wpWords": 1037,
+        "mdxWords": 1034,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}
