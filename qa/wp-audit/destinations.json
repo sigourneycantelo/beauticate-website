@@ -1,35 +1,7 @@
 {
   "category": "destinations",
-  "generated": "2026-06-28T07:20:47.646Z",
+  "generated": "2026-06-28T08:05:13.162Z",
   "results": [
-    {
-      "slug": "sustainable-luxury-travel-australia-wild-luxury-review",
-      "path": "content/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/sustainable-luxury-travel-australia-wild-luxury-review.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/",
-      "link": "https://www.beauticate.com/destination/travel/hotels-resorts/stays/sustainable-luxury-travel-australia-wild-luxury-review/",
-      "wpFound": true,
-      "datePublished": "2026-06-05",
-      "stats": {
-        "wpWords": 1154,
-        "mdxWords": 1137,
-        "wpImages": 23,
-        "mdxImages": 22,
-        "wpCaptions": 1
-      },
-      "findings": [
-        {
-          "type": "IMAGES",
-          "severity": "high",
-          "summary": "WP has 1 more body image(s) than MDX (WP 23 vs MDX 22) — likely missing",
-          "detail": [
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/2026/06/2-1024x683.jpg",
-              "alt": "Family dining together overlooking the Hawkesbury River at Calabash Bay Lodge, Wild Luxury NSW"
-            }
-          ]
-        }
-      ]
-    },
     {
       "slug": "mondrian-gold-coast-review",
       "path": "content/destinations/travel/mondrian-gold-coast-review/mondrian-gold-coast-review.mdx",
@@ -163,36 +135,36 @@
       ]
     },
     {
-      "slug": "la-travel-guide-beverly-hills",
-      "path": "content/destinations/travel/la-travel-guide-beverly-hills/la-travel-guide-beverly-hills.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/la-travel-guide-beverly-hills/",
-      "link": "https://www.beauticate.com/destination/travel/la-travel-guide-beverly-hills/",
+      "slug": "paradisus-bali-melia-review",
+      "path": "content/destinations/travel/paradisus-bali-melia-review/paradisus-bali-melia-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/paradisus-bali-melia-review/",
+      "datePublished": "2026-06-21",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "sustainable-luxury-travel-australia-wild-luxury-review",
+      "path": "content/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/sustainable-luxury-travel-australia-wild-luxury-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/",
+      "link": "https://www.beauticate.com/destination/travel/hotels-resorts/stays/sustainable-luxury-travel-australia-wild-luxury-review/",
       "wpFound": true,
-      "datePublished": "2025-02-18",
+      "datePublished": "2026-06-05",
       "stats": {
-        "wpWords": 1128,
-        "mdxWords": 1120,
-        "wpImages": 5,
-        "mdxImages": 3,
-        "wpCaptions": 0
+        "wpWords": 1154,
+        "mdxWords": 1137,
+        "wpImages": 23,
+        "mdxImages": 23,
+        "wpCaptions": 1
       },
-      "findings": [
-        {
-          "type": "IMAGES",
-          "severity": "high",
-          "summary": "WP has 2 more body image(s) than MDX (WP 5 vs MDX 3) — likely missing",
-          "detail": [
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/The-Maybourne-Beverly-Hills-Exterior-Copy-scaled-re0g3gju3q23f3kwb6gvgybot40fult6sdfetpiu4w.jpg",
-              "alt": "The Maybourne Beverly Hills - Exterior - Copy"
-            },
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/The-Maybourne-Beverly-Hills-The-Terrace-Copy-scaled-re0g49otzl5zf0ekl12b48yz820th80v8dngpabms0.jpg",
-              "alt": "The Maybourne Beverly Hills - The Terrace - Copy"
-            }
-          ]
-        }
-      ]
+      "findings": []
+    },
+    {
+      "slug": "where-family-memories-are-made",
+      "path": "content/destinations/where-family-memories-are-made/where-family-memories-are-made.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/where-family-memories-are-made/",
+      "datePublished": "2026-06-05",
+      "wpFound": false,
+      "findings": []
     },
     {
       "slug": "1-hotel-melbourne-review",
@@ -208,34 +180,6 @@
         "mdxImages": 8,
         "wpCaptions": 0
       },
-      "findings": [
-        {
-          "type": "MARKDOWN",
-          "severity": "medium",
-          "summary": "mismatched-bold×1",
-          "detail": [
-            {
-              "type": "mismatched-bold",
-              "line": 91
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "slug": "paradisus-bali-melia-review",
-      "path": "content/destinations/travel/paradisus-bali-melia-review/paradisus-bali-melia-review.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/paradisus-bali-melia-review/",
-      "datePublished": "2026-06-21",
-      "wpFound": false,
-      "findings": []
-    },
-    {
-      "slug": "where-family-memories-are-made",
-      "path": "content/destinations/where-family-memories-are-made/where-family-memories-are-made.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/destinations/where-family-memories-are-made/",
-      "datePublished": "2026-06-05",
-      "wpFound": false,
       "findings": []
     },
     {
@@ -298,6 +242,22 @@
         "mdxWords": 1043,
         "wpImages": 0,
         "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "la-travel-guide-beverly-hills",
+      "path": "content/destinations/travel/la-travel-guide-beverly-hills/la-travel-guide-beverly-hills.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/la-travel-guide-beverly-hills/",
+      "link": "https://www.beauticate.com/destination/travel/la-travel-guide-beverly-hills/",
+      "wpFound": true,
+      "datePublished": "2025-02-18",
+      "stats": {
+        "wpWords": 1128,
+        "mdxWords": 1120,
+        "wpImages": 5,
+        "mdxImages": 5,
         "wpCaptions": 0
       },
       "findings": []
