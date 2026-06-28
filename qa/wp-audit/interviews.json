@@ -1,0 +1,301 @@
+{
+  "category": "interviews",
+  "generated": "2026-06-28T09:44:45.344Z",
+  "results": [
+    {
+      "slug": "what-to-watch-and-listen-to-over-the-break",
+      "path": "content/interviews/actors-presenters/what-to-watch-and-listen-to-over-the-break/what-to-watch-and-listen-to-over-the-break.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/actors-presenters/what-to-watch-and-listen-to-over-the-break/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/what-to-watch-and-listen-to-over-the-break/",
+      "wpFound": true,
+      "datePublished": "2026-01-05",
+      "stats": {
+        "wpWords": 352,
+        "mdxWords": 352,
+        "wpImages": 12,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 1 more body image(s) than MDX (WP 12 vs MDX 11) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/Read-the-full-article-on-Beauticate.png",
+              "alt": "What to Watch on Beautiful Inside"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rae-morris-interview",
+      "path": "content/interviews/creatives/rae-morris-interview/rae-morris-interview.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/creatives/rae-morris-interview/",
+      "link": "https://www.beauticate.com/interviews/creatives/rae-morris-interview/",
+      "wpFound": true,
+      "datePublished": "2025-12-09",
+      "stats": {
+        "wpWords": 1978,
+        "mdxWords": 2279,
+        "wpImages": 18,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 8 more body image(s) than MDX (WP 18 vs MDX 10) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/09/Copy-of-Website-Feature-Images-12.png",
+              "alt": "Rae Morris Makeup Image"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-1-1.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-3b.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-5.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-7a.jpeg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-8a.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-8b.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Rae-9-rcaohjaadrqw30k7n5qv39trazwco15sy19z0ocd8w.jpg",
+              "alt": "Rae-9"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-13.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Rae-10-rcaohybpf4bh8ryd7c8w7614t5u836tic3pqp3q2hc.jpg",
+              "alt": "Rae-10"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2025/09/Rae-12.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Rae-14-rcaojfwi8octmjsjihemnaieo4i59xq7jgwf1vimmo.jpeg",
+              "alt": "024A9145"
+            }
+          ]
+        },
+        {
+          "type": "FLATTENED",
+          "severity": "high",
+          "summary": "1 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "detail": [
+            {
+              "href": "https://raemorris.com/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media",
+      "path": "content/interviews/actors-presenters/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/actors-presenters/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
+      "wpFound": true,
+      "datePublished": "2025-10-20",
+      "stats": {
+        "wpWords": 774,
+        "mdxWords": 770,
+        "wpImages": 4,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 53
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "who-jocelyn-petroni-beauty-therapist",
+      "path": "content/interviews/creatives/who-jocelyn-petroni-beauty-therapist/who-jocelyn-petroni-beauty-therapist.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/creatives/who-jocelyn-petroni-beauty-therapist/",
+      "link": "https://www.beauticate.com/interviews/creatives/who-jocelyn-petroni-beauty-therapist/",
+      "wpFound": true,
+      "datePublished": "2024-09-20",
+      "stats": {
+        "wpWords": 2043,
+        "mdxWords": 2043,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "META",
+          "severity": "medium",
+          "summary": "title",
+          "detail": [
+            {
+              "field": "title",
+              "wp": "Jocleyn Petroni, The A-Listers’ Facialist Who Is All About Love",
+              "mdx": "Jocelyn Petroni, The A-Listers' Facialist Who Is All About Love"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "kate-waterhouse-style-beauty",
+      "path": "content/interviews/creatives/kate-waterhouse-style-beauty/kate-waterhouse-style-beauty.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/creatives/kate-waterhouse-style-beauty/",
+      "link": "https://www.beauticate.com/interviews/kate-waterhouse-style-beauty/",
+      "wpFound": true,
+      "datePublished": "2026-05-03",
+      "stats": {
+        "wpWords": 1112,
+        "mdxWords": 1112,
+        "wpImages": 15,
+        "mdxImages": 15,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "trinny-woodall-podcast",
+      "path": "content/interviews/founders/trinny-woodall-podcast/trinny-woodall-podcast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/founders/trinny-woodall-podcast/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/trinny-woodall-podcast/",
+      "wpFound": true,
+      "datePublished": "2026-04-30",
+      "stats": {
+        "wpWords": 291,
+        "mdxWords": 296,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "susan-yara-reinvention-podcast",
+      "path": "content/interviews/founders/susan-yara-reinvention-podcast/susan-yara-reinvention-podcast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/founders/susan-yara-reinvention-podcast/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/susan-yara-reinvention-podcast/",
+      "wpFound": true,
+      "datePublished": "2026-04-16",
+      "stats": {
+        "wpWords": 243,
+        "mdxWords": 248,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "dr-shefali-conscious-parenting-podcast",
+      "path": "content/interviews/creatives/dr-shefali-conscious-parenting-podcast/dr-shefali-conscious-parenting-podcast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/creatives/dr-shefali-conscious-parenting-podcast/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/dr-shefali-conscious-parenting-podcast/",
+      "wpFound": true,
+      "datePublished": "2026-04-09",
+      "stats": {
+        "wpWords": 367,
+        "mdxWords": 371,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "luxury-pool-design-trends-australia-2",
+      "path": "content/interviews/luxury-pool-design-trends-australia-2/luxury-pool-design-trends-australia-2/luxury-pool-design-trends-australia-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/luxury-pool-design-trends-australia-2/luxury-pool-design-trends-australia-2/",
+      "link": "https://www.beauticate.com/interviews/luxury-pool-design-trends-australia-2/",
+      "wpFound": true,
+      "datePublished": "2025-12-19",
+      "stats": {
+        "wpWords": 1125,
+        "mdxWords": 1390,
+        "wpImages": 20,
+        "mdxImages": 20,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "11-years-of-beauticate-a-love-letter",
+      "path": "content/interviews/11-years-of-beauticate-a-love-letter/11-years-of-beauticate-a-love-letter/11-years-of-beauticate-a-love-letter.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/11-years-of-beauticate-a-love-letter/11-years-of-beauticate-a-love-letter/",
+      "link": "https://www.beauticate.com/interviews/11-years-of-beauticate-a-love-letter/",
+      "wpFound": true,
+      "datePublished": "2025-05-22",
+      "stats": {
+        "wpWords": 987,
+        "mdxWords": 976,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "miranda-kerr-on-faith-family-and-that-first-date",
+      "path": "content/interviews/models/miranda-kerr-on-faith-family-and-that-first-date/miranda-kerr-on-faith-family-and-that-first-date.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/models/miranda-kerr-on-faith-family-and-that-first-date/",
+      "link": "https://www.beauticate.com/interviews/models/miranda-kerr-on-faith-family-and-that-first-date/",
+      "wpFound": true,
+      "datePublished": "2025-03-12",
+      "stats": {
+        "wpWords": 120,
+        "mdxWords": 145,
+        "wpImages": 3,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame",
+      "path": "content/interviews/actors-presenters/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/interviews/actors-presenters/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame/",
+      "link": "https://www.beauticate.com/interviews/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame/",
+      "wpFound": true,
+      "datePublished": "2024-10-24",
+      "stats": {
+        "wpWords": 1511,
+        "mdxWords": 1512,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}
