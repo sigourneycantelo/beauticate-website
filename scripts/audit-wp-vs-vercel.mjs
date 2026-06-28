@@ -98,6 +98,18 @@ function decode(str = '') {
 // these survive in content.rendered and otherwise inflate the WP word count,
 // causing false TEXT-truncation findings.
 function stripShortcodes(s) { return s.replace(/\[\/?[a-z][^\]]*\]/gi, ' ') }
+// Strip pasted Microsoft-Word style junk (CSS comments, {…} rule blocks, mso-*
+// declarations) that survives in some content.rendered and inflates word counts
+// → false TEXT-truncation findings (e.g. how-to-model-workout, confessions…).
+function stripWordCss(s) {
+  return s
+    .replace(/\/\*[\s\S]*?\*\//g, ' ')                 // CSS comments
+    .replace(/\{[^{}]*\}/g, ' ')                       // CSS rule blocks
+    .replace(/mso-[a-z-]+\s*:[^;]*;?/gi, ' ')          // mso declarations
+    .replace(/\bNormal\s+\d+\s+false\s+false\s+false\s+EN-US\s+JA\s+X-NONE\b/gi, ' ') // Word para-metadata anchor
+    .replace(/\b\d+ \d+ \d+ \d+ \d+ \S+ \d+ \d+ \d+ \d+\.\d+\b/g, ' ')                 // its leading number run
+    .replace(/\btable\.MsoNormalTable\b/gi, ' ')
+}
 function stripTags(html) {
   return decode(
     html
@@ -255,7 +267,7 @@ async function auditArticle(item, users) {
   const wpHtml = wp.content?.rendered || ''
   const wpImages = extractWpImages(wpHtml)
   const wpCaptions = extractWpCaptions(wpHtml)
-  const wpWords = wordCount(stripShortcodes(stripTags(wpHtml)))
+  const wpWords = wordCount(stripWordCss(stripShortcodes(stripTags(wpHtml))))
   const wpTitle = decode(wp.title?.rendered || '')
   const wpDate = (wp.date || '').slice(0, 10)
   const wpAuthor = users[wp.author] || ''

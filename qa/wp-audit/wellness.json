@@ -1,35 +1,7 @@
 {
   "category": "wellness",
-  "generated": "2026-06-28T05:57:20.496Z",
+  "generated": "2026-06-28T12:02:58.639Z",
   "results": [
-    {
-      "slug": "why-giving-back-became-non-negotiable-by-shentel-lee",
-      "path": "content/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/why-giving-back-became-non-negotiable-by-shentel-lee.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/",
-      "link": "https://www.beauticate.com/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/",
-      "wpFound": true,
-      "datePublished": "2026-06-07",
-      "stats": {
-        "wpWords": 1058,
-        "mdxWords": 1057,
-        "wpImages": 4,
-        "mdxImages": 3,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "IMAGES",
-          "severity": "high",
-          "summary": "WP has 1 more body image(s) than MDX (WP 4 vs MDX 3) — likely missing",
-          "detail": [
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/2026/06/Kuching-Food-Aid-Donation.png",
-              "alt": ""
-            }
-          ]
-        }
-      ]
-    },
     {
       "slug": "miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep",
       "path": "content/wellness/mindset/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep.mdx",
@@ -60,6 +32,66 @@
       ]
     },
     {
+      "slug": "does-bullet-proof-coffee-live-up-to-the-hype-we-tried-it",
+      "path": "content/wellness/health/does-bullet-proof-coffee-live-up-to-the-hype-we-tried-it/does-bullet-proof-coffee-live-up-to-the-hype-we-tried-it.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/does-bullet-proof-coffee-live-up-to-the-hype-we-tried-it/",
+      "link": "https://www.beauticate.com/wellness/health/does-bullet-proof-coffee-live-up-to-the-hype-we-tried-it/",
+      "wpFound": true,
+      "datePublished": "2018-04-02",
+      "stats": {
+        "wpWords": 1077,
+        "mdxWords": 1084,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×2",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 45
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "how-to-make-sauerkraut-for-gut-health-and-that-glow",
+      "path": "content/wellness/health/how-to-make-sauerkraut-for-gut-health-and-that-glow/how-to-make-sauerkraut-for-gut-health-and-that-glow.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-sauerkraut-for-gut-health-and-that-glow/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-sauerkraut-for-gut-health-and-that-glow/",
+      "wpFound": true,
+      "datePublished": "2015-02-23",
+      "stats": {
+        "wpWords": 34,
+        "mdxWords": 34,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
       "slug": "what-nobody-told-me-about-my-body-after-40",
       "path": "content/wellness/health/what-nobody-told-me-about-my-body-after-40/what-nobody-told-me-about-my-body-after-40.mdx",
       "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/what-nobody-told-me-about-my-body-after-40/",
@@ -76,6 +108,22 @@
       "findings": []
     },
     {
+      "slug": "why-giving-back-became-non-negotiable-by-shentel-lee",
+      "path": "content/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/why-giving-back-became-non-negotiable-by-shentel-lee.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/",
+      "link": "https://www.beauticate.com/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/",
+      "wpFound": true,
+      "datePublished": "2026-06-07",
+      "stats": {
+        "wpWords": 1058,
+        "mdxWords": 1057,
+        "wpImages": 4,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
       "slug": "sigourneys-sleep-edit",
       "path": "content/wellness/health/sigourneys-sleep-edit/sigourneys-sleep-edit.mdx",
       "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/sigourneys-sleep-edit/",
@@ -84,9 +132,9 @@
       "datePublished": "2026-05-29",
       "stats": {
         "wpWords": 0,
-        "mdxWords": 15,
+        "mdxWords": 84,
         "wpImages": 0,
-        "mdxImages": 8,
+        "mdxImages": 1,
         "wpCaptions": 0
       },
       "findings": []
@@ -199,6 +247,1382 @@
         "mdxWords": 410,
         "wpImages": 0,
         "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sacred-six-6-ways-im-going-to-live-longer",
+      "path": "content/wellness/longevity/sacred-six-6-ways-im-going-to-live-longer/sacred-six-6-ways-im-going-to-live-longer.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/longevity/sacred-six-6-ways-im-going-to-live-longer/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sacred-six-6-ways-im-going-to-live-longer/",
+      "wpFound": true,
+      "datePublished": "2024-11-02",
+      "stats": {
+        "wpWords": 259,
+        "mdxWords": 259,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spring-wellness-reboot",
+      "path": "content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/spring-wellness-reboot/",
+      "link": "https://www.beauticate.com/wellness/health/spring-wellness-reboot/",
+      "wpFound": true,
+      "datePublished": "2023-11-06",
+      "stats": {
+        "wpWords": 785,
+        "mdxWords": 785,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-bring-a-skincare-routine-approach-to-your-teeth",
+      "path": "content/wellness/health/how-to-bring-a-skincare-routine-approach-to-your-teeth/how-to-bring-a-skincare-routine-approach-to-your-teeth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-bring-a-skincare-routine-approach-to-your-teeth/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-bring-a-skincare-routine-approach-to-your-teeth/",
+      "wpFound": true,
+      "datePublished": "2022-11-02",
+      "stats": {
+        "wpWords": 1333,
+        "mdxWords": 1325,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "supermodel-fitness-secrets-the-best-personal-trainers-for-models",
+      "path": "content/wellness/fitness/supermodel-fitness-secrets-the-best-personal-trainers-for-models/supermodel-fitness-secrets-the-best-personal-trainers-for-models.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/supermodel-fitness-secrets-the-best-personal-trainers-for-models/",
+      "link": "https://www.beauticate.com/wellness/fitness/supermodel-fitness-secrets-the-best-personal-trainers-for-models/",
+      "wpFound": true,
+      "datePublished": "2022-04-27",
+      "stats": {
+        "wpWords": 1036,
+        "mdxWords": 1060,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "these-are-the-comfiest-and-most-supportive-activewear-brands-2",
+      "path": "content/wellness/fitness/these-are-the-comfiest-and-most-supportive-activewear-brands-2/these-are-the-comfiest-and-most-supportive-activewear-brands-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/these-are-the-comfiest-and-most-supportive-activewear-brands-2/",
+      "link": "https://www.beauticate.com/wellness/fitness/these-are-the-comfiest-and-most-supportive-activewear-brands-2/",
+      "wpFound": true,
+      "datePublished": "2022-02-22",
+      "stats": {
+        "wpWords": 658,
+        "mdxWords": 657,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "why-vibration-training-is-my-fitness-holy-grail",
+      "path": "content/wellness/fitness/why-vibration-training-is-my-fitness-holy-grail/why-vibration-training-is-my-fitness-holy-grail.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/why-vibration-training-is-my-fitness-holy-grail/",
+      "link": "https://www.beauticate.com/wellness/fitness/why-vibration-training-is-my-fitness-holy-grail/",
+      "wpFound": true,
+      "datePublished": "2021-10-18",
+      "stats": {
+        "wpWords": 955,
+        "mdxWords": 954,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "its-time-to-spring-clean-your-routine-with-these-wellness-inspired-buys",
+      "path": "content/wellness/health/its-time-to-spring-clean-your-routine-with-these-wellness-inspired-buys/its-time-to-spring-clean-your-routine-with-these-wellness-inspired-buys.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/its-time-to-spring-clean-your-routine-with-these-wellness-inspired-buys/",
+      "link": "https://www.beauticate.com/wellness/health/its-time-to-spring-clean-your-routine-with-these-wellness-inspired-buys/",
+      "wpFound": true,
+      "datePublished": "2021-10-04",
+      "stats": {
+        "wpWords": 598,
+        "mdxWords": 598,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-foam-rolling-can-transform-your-body-with-gwyneths-trainer-lauren-roxburgh",
+      "path": "content/wellness/health/how-foam-rolling-can-transform-your-body-with-gwyneths-trainer-lauren-roxburgh/how-foam-rolling-can-transform-your-body-with-gwyneths-trainer-lauren-roxburgh.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-foam-rolling-can-transform-your-body-with-gwyneths-trainer-lauren-roxburgh/",
+      "link": "https://www.beauticate.com/wellness/health/how-foam-rolling-can-transform-your-body-with-gwyneths-trainer-lauren-roxburgh/",
+      "wpFound": true,
+      "datePublished": "2021-03-15",
+      "stats": {
+        "wpWords": 1009,
+        "mdxWords": 1009,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-decadent-dairy-free-raw-hot-chocolate",
+      "path": "content/wellness/health/how-to-decadent-dairy-free-raw-hot-chocolate/how-to-decadent-dairy-free-raw-hot-chocolate.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-decadent-dairy-free-raw-hot-chocolate/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-decadent-dairy-free-raw-hot-chocolate/",
+      "wpFound": true,
+      "datePublished": "2020-08-05",
+      "stats": {
+        "wpWords": 390,
+        "mdxWords": 399,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "a-nutritionist-on-binning-bad-lockdown-eating-habits",
+      "path": "content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/",
+      "link": "https://www.beauticate.com/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/",
+      "wpFound": true,
+      "datePublished": "2020-06-16",
+      "stats": {
+        "wpWords": 1435,
+        "mdxWords": 1431,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-this-wellness-guru-is-navigating-isolation",
+      "path": "content/wellness/health/how-this-wellness-guru-is-navigating-isolation/how-this-wellness-guru-is-navigating-isolation.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-this-wellness-guru-is-navigating-isolation/",
+      "link": "https://www.beauticate.com/wellness/health/how-this-wellness-guru-is-navigating-isolation/",
+      "wpFound": true,
+      "datePublished": "2020-04-07",
+      "stats": {
+        "wpWords": 335,
+        "mdxWords": 334,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-10-wellness-apps-were-obsessed-with-right-now",
+      "path": "content/wellness/health/the-10-wellness-apps-were-obsessed-with-right-now/the-10-wellness-apps-were-obsessed-with-right-now.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-10-wellness-apps-were-obsessed-with-right-now/",
+      "link": "https://www.beauticate.com/wellness/health/the-10-wellness-apps-were-obsessed-with-right-now/",
+      "wpFound": true,
+      "datePublished": "2020-02-11",
+      "stats": {
+        "wpWords": 1010,
+        "mdxWords": 1007,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "why-you-should-be-paying-more-attention-to-your-microbiome",
+      "path": "content/wellness/health/why-you-should-be-paying-more-attention-to-your-microbiome/why-you-should-be-paying-more-attention-to-your-microbiome.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/why-you-should-be-paying-more-attention-to-your-microbiome/",
+      "link": "https://www.beauticate.com/wellness/health/why-you-should-be-paying-more-attention-to-your-microbiome/",
+      "wpFound": true,
+      "datePublished": "2019-11-06",
+      "stats": {
+        "wpWords": 753,
+        "mdxWords": 749,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "i-learned-vedic-meditation-and-this-is-how-it-changed-my-life",
+      "path": "content/wellness/health/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life/",
+      "link": "https://www.beauticate.com/wellness/health/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life/",
+      "wpFound": true,
+      "datePublished": "2019-10-01",
+      "stats": {
+        "wpWords": 1192,
+        "mdxWords": 1189,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "teresa-palmer-and-chrissy-duigan-on-their-new-supplements",
+      "path": "content/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements/teresa-palmer-and-chrissy-duigan-on-their-new-supplements.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements/",
+      "link": "https://www.beauticate.com/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements/",
+      "wpFound": true,
+      "datePublished": "2019-05-24",
+      "stats": {
+        "wpWords": 596,
+        "mdxWords": 596,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "fail-free-ways-reset-health",
+      "path": "content/wellness/health/fail-free-ways-reset-health/fail-free-ways-reset-health.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/fail-free-ways-reset-health/",
+      "link": "https://www.beauticate.com/wellness/health/fail-free-ways-reset-health/",
+      "wpFound": true,
+      "datePublished": "2019-01-17",
+      "stats": {
+        "wpWords": 996,
+        "mdxWords": 990,
+        "wpImages": 0,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "jessica-sepel-food-to-avoid",
+      "path": "content/wellness/health/jessica-sepel-food-to-avoid/jessica-sepel-food-to-avoid.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/jessica-sepel-food-to-avoid/",
+      "link": "https://www.beauticate.com/wellness/health/jessica-sepel-food-to-avoid/",
+      "wpFound": true,
+      "datePublished": "2018-10-16",
+      "stats": {
+        "wpWords": 807,
+        "mdxWords": 805,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-10-best-fitness-apps-2",
+      "path": "content/wellness/fitness/the-10-best-fitness-apps-2/the-10-best-fitness-apps-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/the-10-best-fitness-apps-2/",
+      "link": "https://www.beauticate.com/wellness/fitness/the-10-best-fitness-apps-2/",
+      "wpFound": true,
+      "datePublished": "2018-06-13",
+      "stats": {
+        "wpWords": 1307,
+        "mdxWords": 1291,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "five-cookbooks-you-need-right-now-2",
+      "path": "content/wellness/health/five-cookbooks-you-need-right-now-2/five-cookbooks-you-need-right-now-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/five-cookbooks-you-need-right-now-2/",
+      "link": "https://www.beauticate.com/wellness/health/five-cookbooks-you-need-right-now-2/",
+      "wpFound": true,
+      "datePublished": "2018-05-22",
+      "stats": {
+        "wpWords": 424,
+        "mdxWords": 421,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-only-cinco-de-mayo-recipes-youll-need",
+      "path": "content/wellness/health/the-only-cinco-de-mayo-recipes-youll-need/the-only-cinco-de-mayo-recipes-youll-need.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-only-cinco-de-mayo-recipes-youll-need/",
+      "link": "https://www.beauticate.com/wellness/health/the-only-cinco-de-mayo-recipes-youll-need/",
+      "wpFound": true,
+      "datePublished": "2018-05-05",
+      "stats": {
+        "wpWords": 507,
+        "mdxWords": 506,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "drastically-reduce-your-chances-of-developing-dementia",
+      "path": "content/wellness/health/drastically-reduce-your-chances-of-developing-dementia/drastically-reduce-your-chances-of-developing-dementia.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/drastically-reduce-your-chances-of-developing-dementia/",
+      "link": "https://www.beauticate.com/wellness/health/drastically-reduce-your-chances-of-developing-dementia/",
+      "wpFound": true,
+      "datePublished": "2018-03-19",
+      "stats": {
+        "wpWords": 779,
+        "mdxWords": 778,
+        "wpImages": 9,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "beauty-sleep-natural-toothpaste",
+      "path": "content/wellness/health/beauty-sleep-natural-toothpaste/beauty-sleep-natural-toothpaste.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/beauty-sleep-natural-toothpaste/",
+      "link": "https://www.beauticate.com/wellness/health/beauty-sleep-natural-toothpaste/",
+      "wpFound": true,
+      "datePublished": "2018-03-13",
+      "stats": {
+        "wpWords": 24,
+        "mdxWords": 24,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "does-the-beauty-diet-actually-give-you-beautiful-skin",
+      "path": "content/wellness/health/does-the-beauty-diet-actually-give-you-beautiful-skin/does-the-beauty-diet-actually-give-you-beautiful-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/does-the-beauty-diet-actually-give-you-beautiful-skin/",
+      "link": "https://www.beauticate.com/wellness/health/does-the-beauty-diet-actually-give-you-beautiful-skin/",
+      "wpFound": true,
+      "datePublished": "2018-03-06",
+      "stats": {
+        "wpWords": 459,
+        "mdxWords": 452,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "video-hypoxi-review-on-weight-loss-and-cellulite-sigourneys-edit",
+      "path": "content/wellness/fitness/video-hypoxi-review-on-weight-loss-and-cellulite-sigourneys-edit/video-hypoxi-review-on-weight-loss-and-cellulite-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/video-hypoxi-review-on-weight-loss-and-cellulite-sigourneys-edit/",
+      "link": "https://www.beauticate.com/wellness/fitness/video-hypoxi-review-on-weight-loss-and-cellulite-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2018-01-31",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "i-spent-a-week-living-like-miranda-kerr-heres-what-happened",
+      "path": "content/wellness/health/i-spent-a-week-living-like-miranda-kerr-heres-what-happened/i-spent-a-week-living-like-miranda-kerr-heres-what-happened.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/i-spent-a-week-living-like-miranda-kerr-heres-what-happened/",
+      "link": "https://www.beauticate.com/wellness/health/i-spent-a-week-living-like-miranda-kerr-heres-what-happened/",
+      "wpFound": true,
+      "datePublished": "2018-01-22",
+      "stats": {
+        "wpWords": 1348,
+        "mdxWords": 1360,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-break-up-with-your-barista-sigourneys-edit",
+      "path": "content/wellness/health/how-to-break-up-with-your-barista-sigourneys-edit/how-to-break-up-with-your-barista-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-break-up-with-your-barista-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-to-break-up-with-your-barista-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2017-09-18",
+      "stats": {
+        "wpWords": 692,
+        "mdxWords": 692,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it",
+      "path": "content/wellness/health/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it/",
+      "wpFound": true,
+      "datePublished": "2017-08-22",
+      "stats": {
+        "wpWords": 1518,
+        "mdxWords": 1516,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "why-soup-cleanses-are-the-latest-detox-see-ya-juicing",
+      "path": "content/wellness/health/why-soup-cleanses-are-the-latest-detox-see-ya-juicing/why-soup-cleanses-are-the-latest-detox-see-ya-juicing.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/why-soup-cleanses-are-the-latest-detox-see-ya-juicing/",
+      "link": "https://www.beauticate.com/wellness/health/why-soup-cleanses-are-the-latest-detox-see-ya-juicing/",
+      "wpFound": true,
+      "datePublished": "2017-08-07",
+      "stats": {
+        "wpWords": 784,
+        "mdxWords": 780,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin",
+      "path": "content/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/",
+      "link": "https://www.beauticate.com/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/",
+      "wpFound": true,
+      "datePublished": "2017-07-25",
+      "stats": {
+        "wpWords": 1361,
+        "mdxWords": 1399,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "f257idrsg86cqyawj8durejzgkzivw",
+      "path": "content/wellness/health/f257idrsg86cqyawj8durejzgkzivw/f257idrsg86cqyawj8durejzgkzivw.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/f257idrsg86cqyawj8durejzgkzivw/",
+      "link": "https://www.beauticate.com/wellness/health/f257idrsg86cqyawj8durejzgkzivw/",
+      "wpFound": true,
+      "datePublished": "2017-07-11",
+      "stats": {
+        "wpWords": 957,
+        "mdxWords": 957,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-have-cake-for-breakfast-guilt-free",
+      "path": "content/wellness/health/how-to-have-cake-for-breakfast-guilt-free/how-to-have-cake-for-breakfast-guilt-free.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-have-cake-for-breakfast-guilt-free/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-have-cake-for-breakfast-guilt-free/",
+      "wpFound": true,
+      "datePublished": "2017-07-11",
+      "stats": {
+        "wpWords": 618,
+        "mdxWords": 666,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "superfoods-bloggers-swear-by",
+      "path": "content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/superfoods-bloggers-swear-by/",
+      "link": "https://www.beauticate.com/wellness/health/superfoods-bloggers-swear-by/",
+      "wpFound": true,
+      "datePublished": "2017-07-11",
+      "stats": {
+        "wpWords": 522,
+        "mdxWords": 522,
+        "wpImages": 0,
+        "mdxImages": 17,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "fit-into-your-fashion",
+      "path": "content/wellness/health/fit-into-your-fashion/fit-into-your-fashion.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/fit-into-your-fashion/",
+      "link": "https://www.beauticate.com/wellness/health/fit-into-your-fashion/",
+      "wpFound": true,
+      "datePublished": "2017-07-07",
+      "stats": {
+        "wpWords": 620,
+        "mdxWords": 614,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-9-easy-steps-to-a-diy-juice-cleanse",
+      "path": "content/wellness/health/how-to-9-easy-steps-to-a-diy-juice-cleanse/how-to-9-easy-steps-to-a-diy-juice-cleanse.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-9-easy-steps-to-a-diy-juice-cleanse/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-9-easy-steps-to-a-diy-juice-cleanse/",
+      "wpFound": true,
+      "datePublished": "2017-07-07",
+      "stats": {
+        "wpWords": 829,
+        "mdxWords": 828,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "get-ready-with-rachael-finch",
+      "path": "content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/get-ready-with-rachael-finch/",
+      "link": "https://www.beauticate.com/wellness/fitness/get-ready-with-rachael-finch/",
+      "wpFound": true,
+      "datePublished": "2017-06-07",
+      "stats": {
+        "wpWords": 782,
+        "mdxWords": 782,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "anti-ageing-banana-blueberry-pancakes",
+      "path": "content/wellness/health/anti-ageing-banana-blueberry-pancakes/anti-ageing-banana-blueberry-pancakes.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/anti-ageing-banana-blueberry-pancakes/",
+      "link": "https://www.beauticate.com/wellness/health/anti-ageing-banana-blueberry-pancakes/",
+      "wpFound": true,
+      "datePublished": "2017-06-06",
+      "stats": {
+        "wpWords": 239,
+        "mdxWords": 253,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "recipe-skin-clearing-chilli-chia-jam",
+      "path": "content/wellness/health/recipe-skin-clearing-chilli-chia-jam/recipe-skin-clearing-chilli-chia-jam.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/recipe-skin-clearing-chilli-chia-jam/",
+      "link": "https://www.beauticate.com/wellness/health/recipe-skin-clearing-chilli-chia-jam/",
+      "wpFound": true,
+      "datePublished": "2017-05-15",
+      "stats": {
+        "wpWords": 329,
+        "mdxWords": 335,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "a-wellness-writers-daily-skin-glowing-food-guide",
+      "path": "content/wellness/health/a-wellness-writers-daily-skin-glowing-food-guide/a-wellness-writers-daily-skin-glowing-food-guide.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/a-wellness-writers-daily-skin-glowing-food-guide/",
+      "link": "https://www.beauticate.com/wellness/health/a-wellness-writers-daily-skin-glowing-food-guide/",
+      "wpFound": true,
+      "datePublished": "2017-05-03",
+      "stats": {
+        "wpWords": 419,
+        "mdxWords": 431,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-have-a-super-food-diet-without-the-super-price-tag",
+      "path": "content/wellness/health/how-to-have-a-super-food-diet-without-the-super-price-tag/how-to-have-a-super-food-diet-without-the-super-price-tag.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-have-a-super-food-diet-without-the-super-price-tag/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-have-a-super-food-diet-without-the-super-price-tag/",
+      "wpFound": true,
+      "datePublished": "2017-04-25",
+      "stats": {
+        "wpWords": 569,
+        "mdxWords": 614,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-break-up-with-a-negative-insta-feed",
+      "path": "content/wellness/health/how-to-break-up-with-a-negative-insta-feed/how-to-break-up-with-a-negative-insta-feed.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-break-up-with-a-negative-insta-feed/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-break-up-with-a-negative-insta-feed/",
+      "wpFound": true,
+      "datePublished": "2017-04-12",
+      "stats": {
+        "wpWords": 1294,
+        "mdxWords": 1294,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-turn-one-chicken-recipe-into-a-weeks-worth-of-different-lunches",
+      "path": "content/wellness/health/how-to-turn-one-chicken-recipe-into-a-weeks-worth-of-different-lunches/how-to-turn-one-chicken-recipe-into-a-weeks-worth-of-different-lunches.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-turn-one-chicken-recipe-into-a-weeks-worth-of-different-lunches/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-turn-one-chicken-recipe-into-a-weeks-worth-of-different-lunches/",
+      "wpFound": true,
+      "datePublished": "2017-04-03",
+      "stats": {
+        "wpWords": 878,
+        "mdxWords": 942,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "four-overnight-breakfasts-to-make-mornings-more-manageable",
+      "path": "content/wellness/health/four-overnight-breakfasts-to-make-mornings-more-manageable/four-overnight-breakfasts-to-make-mornings-more-manageable.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/four-overnight-breakfasts-to-make-mornings-more-manageable/",
+      "link": "https://www.beauticate.com/wellness/health/four-overnight-breakfasts-to-make-mornings-more-manageable/",
+      "wpFound": true,
+      "datePublished": "2017-03-13",
+      "stats": {
+        "wpWords": 429,
+        "mdxWords": 633,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "kick-your-water-chugging-woes-to-the-curb-heres-how-to-stay-hydrated-through-some-tasty-foods",
+      "path": "content/wellness/health/kick-your-water-chugging-woes-to-the-curb-heres-how-to-stay-hydrated-through-some-tasty-foods/kick-your-water-chugging-woes-to-the-curb-heres-how-to-stay-hydrated-through-some-tasty-foods.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/kick-your-water-chugging-woes-to-the-curb-heres-how-to-stay-hydrated-through-some-tasty-foods/",
+      "link": "https://www.beauticate.com/wellness/health/kick-your-water-chugging-woes-to-the-curb-heres-how-to-stay-hydrated-through-some-tasty-foods/",
+      "wpFound": true,
+      "datePublished": "2017-02-15",
+      "stats": {
+        "wpWords": 370,
+        "mdxWords": 366,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "11-things-fitspo-girls-never-do",
+      "path": "content/wellness/fitness/11-things-fitspo-girls-never-do/11-things-fitspo-girls-never-do.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/11-things-fitspo-girls-never-do/",
+      "link": "https://www.beauticate.com/wellness/fitness/11-things-fitspo-girls-never-do/",
+      "wpFound": true,
+      "datePublished": "2017-02-11",
+      "stats": {
+        "wpWords": 1527,
+        "mdxWords": 1530,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-get-a-blake-lively-body-by-her-stunt-double",
+      "path": "content/wellness/health/how-to-get-a-blake-lively-body-by-her-stunt-double/how-to-get-a-blake-lively-body-by-her-stunt-double.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-get-a-blake-lively-body-by-her-stunt-double/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-get-a-blake-lively-body-by-her-stunt-double/",
+      "wpFound": true,
+      "datePublished": "2016-11-29",
+      "stats": {
+        "wpWords": 527,
+        "mdxWords": 526,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "post-baby-workout-what-i-wish-i-knew-the-first-time-around",
+      "path": "content/wellness/fitness/post-baby-workout-what-i-wish-i-knew-the-first-time-around/post-baby-workout-what-i-wish-i-knew-the-first-time-around.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/post-baby-workout-what-i-wish-i-knew-the-first-time-around/",
+      "link": "https://www.beauticate.com/wellness/fitness/post-baby-workout-what-i-wish-i-knew-the-first-time-around/",
+      "wpFound": true,
+      "datePublished": "2016-10-20",
+      "stats": {
+        "wpWords": 1133,
+        "mdxWords": 1130,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "recipe-detoxing-plant-based-green-noodle-bowl",
+      "path": "content/wellness/health/recipe-detoxing-plant-based-green-noodle-bowl/recipe-detoxing-plant-based-green-noodle-bowl.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/recipe-detoxing-plant-based-green-noodle-bowl/",
+      "link": "https://www.beauticate.com/wellness/health/recipe-detoxing-plant-based-green-noodle-bowl/",
+      "wpFound": true,
+      "datePublished": "2016-09-26",
+      "stats": {
+        "wpWords": 246,
+        "mdxWords": 263,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-5-yummiest-guilt-free-pasta-and-rice-alternatives",
+      "path": "content/wellness/health/the-5-yummiest-guilt-free-pasta-and-rice-alternatives/the-5-yummiest-guilt-free-pasta-and-rice-alternatives.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-5-yummiest-guilt-free-pasta-and-rice-alternatives/",
+      "link": "https://www.beauticate.com/wellness/health/the-5-yummiest-guilt-free-pasta-and-rice-alternatives/",
+      "wpFound": true,
+      "datePublished": "2016-09-14",
+      "stats": {
+        "wpWords": 709,
+        "mdxWords": 709,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "teas-to-make-you-more-beautiful",
+      "path": "content/wellness/health/teas-to-make-you-more-beautiful/teas-to-make-you-more-beautiful.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/teas-to-make-you-more-beautiful/",
+      "link": "https://www.beauticate.com/wellness/health/teas-to-make-you-more-beautiful/",
+      "wpFound": true,
+      "datePublished": "2016-09-06",
+      "stats": {
+        "wpWords": 370,
+        "mdxWords": 369,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-detox-in-winter-prodjuice-cleanse-review",
+      "path": "content/wellness/health/how-to-detox-in-winter-prodjuice-cleanse-review/how-to-detox-in-winter-prodjuice-cleanse-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-detox-in-winter-prodjuice-cleanse-review/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-detox-in-winter-prodjuice-cleanse-review/",
+      "wpFound": true,
+      "datePublished": "2016-07-27",
+      "stats": {
+        "wpWords": 1285,
+        "mdxWords": 1285,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-best-tea-for-beautiful-skin",
+      "path": "content/wellness/health/the-best-tea-for-beautiful-skin/the-best-tea-for-beautiful-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-best-tea-for-beautiful-skin/",
+      "link": "https://www.beauticate.com/wellness/health/the-best-tea-for-beautiful-skin/",
+      "wpFound": true,
+      "datePublished": "2016-05-10",
+      "stats": {
+        "wpWords": 708,
+        "mdxWords": 708,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "recipe-complexion-loving-crusted-coconut-prawns",
+      "path": "content/wellness/health/recipe-complexion-loving-crusted-coconut-prawns/recipe-complexion-loving-crusted-coconut-prawns.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/recipe-complexion-loving-crusted-coconut-prawns/",
+      "link": "https://www.beauticate.com/wellness/health/recipe-complexion-loving-crusted-coconut-prawns/",
+      "wpFound": true,
+      "datePublished": "2016-04-04",
+      "stats": {
+        "wpWords": 538,
+        "mdxWords": 936,
+        "wpImages": 3,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "fitness-program-road-test-we-put-three-through-their-paces-1",
+      "path": "content/wellness/health/fitness-program-road-test-we-put-three-through-their-paces-1/fitness-program-road-test-we-put-three-through-their-paces-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/fitness-program-road-test-we-put-three-through-their-paces-1/",
+      "link": "https://www.beauticate.com/wellness/health/fitness-program-road-test-we-put-three-through-their-paces-1/",
+      "wpFound": true,
+      "datePublished": "2016-03-15",
+      "stats": {
+        "wpWords": 770,
+        "mdxWords": 770,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "recipe-the-ultimate-kale-salad",
+      "path": "content/wellness/health/recipe-the-ultimate-kale-salad/recipe-the-ultimate-kale-salad.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/recipe-the-ultimate-kale-salad/",
+      "link": "https://www.beauticate.com/wellness/health/recipe-the-ultimate-kale-salad/",
+      "wpFound": true,
+      "datePublished": "2016-03-14",
+      "stats": {
+        "wpWords": 691,
+        "mdxWords": 691,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-truth-about-pregnancy-sigourneys-edit",
+      "path": "content/wellness/health/the-truth-about-pregnancy-sigourneys-edit/the-truth-about-pregnancy-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-truth-about-pregnancy-sigourneys-edit/",
+      "link": "https://www.beauticate.com/wellness/health/the-truth-about-pregnancy-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2016-03-02",
+      "stats": {
+        "wpWords": 124,
+        "mdxWords": 192,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "piri-piri-chicken-skewers-with-corn-red-cabbage-slaw",
+      "path": "content/wellness/health/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw/",
+      "link": "https://www.beauticate.com/wellness/health/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw/",
+      "wpFound": true,
+      "datePublished": "2016-03-01",
+      "stats": {
+        "wpWords": 455,
+        "mdxWords": 452,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "crispy-coconut-chicken-with-mango-salsa",
+      "path": "content/wellness/health/crispy-coconut-chicken-with-mango-salsa/crispy-coconut-chicken-with-mango-salsa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/crispy-coconut-chicken-with-mango-salsa/",
+      "link": "https://www.beauticate.com/wellness/health/crispy-coconut-chicken-with-mango-salsa/",
+      "wpFound": true,
+      "datePublished": "2016-01-15",
+      "stats": {
+        "wpWords": 385,
+        "mdxWords": 385,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "pregnancy-essentials-sigourneys-edit",
+      "path": "content/wellness/health/pregnancy-essentials-sigourneys-edit/pregnancy-essentials-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/pregnancy-essentials-sigourneys-edit/",
+      "link": "https://www.beauticate.com/wellness/health/pregnancy-essentials-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2016-01-07",
+      "stats": {
+        "wpWords": 1342,
+        "mdxWords": 1339,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "nourishing-summer-chicken-salad",
+      "path": "content/wellness/health/nourishing-summer-chicken-salad/nourishing-summer-chicken-salad.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/nourishing-summer-chicken-salad/",
+      "link": "https://www.beauticate.com/wellness/health/nourishing-summer-chicken-salad/",
+      "wpFound": true,
+      "datePublished": "2015-12-21",
+      "stats": {
+        "wpWords": 486,
+        "mdxWords": 486,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "healthy-snacks-that-models-eat",
+      "path": "content/wellness/health/healthy-snacks-that-models-eat/healthy-snacks-that-models-eat.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/healthy-snacks-that-models-eat/",
+      "link": "https://www.beauticate.com/wellness/health/healthy-snacks-that-models-eat/",
+      "wpFound": true,
+      "datePublished": "2015-11-04",
+      "stats": {
+        "wpWords": 812,
+        "mdxWords": 809,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "skin-loving-pulled-salmon-salad",
+      "path": "content/wellness/health/skin-loving-pulled-salmon-salad/skin-loving-pulled-salmon-salad.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/skin-loving-pulled-salmon-salad/",
+      "link": "https://www.beauticate.com/wellness/health/skin-loving-pulled-salmon-salad/",
+      "wpFound": true,
+      "datePublished": "2015-11-02",
+      "stats": {
+        "wpWords": 316,
+        "mdxWords": 315,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-i-stay-fit-with-rebecca-judd",
+      "path": "content/wellness/fitness/how-i-stay-fit-with-rebecca-judd/how-i-stay-fit-with-rebecca-judd.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/how-i-stay-fit-with-rebecca-judd/",
+      "link": "https://www.beauticate.com/wellness/fitness/how-i-stay-fit-with-rebecca-judd/",
+      "wpFound": true,
+      "datePublished": "2015-10-05",
+      "stats": {
+        "wpWords": 713,
+        "mdxWords": 713,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "9-diet-hacks-youll-thank-us-for-come-summer",
+      "path": "content/wellness/health/9-diet-hacks-youll-thank-us-for-come-summer/9-diet-hacks-youll-thank-us-for-come-summer.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/9-diet-hacks-youll-thank-us-for-come-summer/",
+      "link": "https://www.beauticate.com/wellness/health/9-diet-hacks-youll-thank-us-for-come-summer/",
+      "wpFound": true,
+      "datePublished": "2015-09-21",
+      "stats": {
+        "wpWords": 1151,
+        "mdxWords": 1148,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-grow-herbs-for-health-and-beauty-sigourneys-edit",
+      "path": "content/wellness/health/how-to-grow-herbs-for-health-and-beauty-sigourneys-edit/how-to-grow-herbs-for-health-and-beauty-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-grow-herbs-for-health-and-beauty-sigourneys-edit/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-grow-herbs-for-health-and-beauty-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2015-09-17",
+      "stats": {
+        "wpWords": 31,
+        "mdxWords": 31,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-top-superfoods-for-spring",
+      "path": "content/wellness/health/the-top-superfoods-for-spring/the-top-superfoods-for-spring.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-top-superfoods-for-spring/",
+      "link": "https://www.beauticate.com/wellness/health/the-top-superfoods-for-spring/",
+      "wpFound": true,
+      "datePublished": "2015-09-14",
+      "stats": {
+        "wpWords": 819,
+        "mdxWords": 814,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-best-basked-pumpkin-of-all-time",
+      "path": "content/wellness/health/the-best-basked-pumpkin-of-all-time/the-best-basked-pumpkin-of-all-time.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/the-best-basked-pumpkin-of-all-time/",
+      "link": "https://www.beauticate.com/wellness/health/the-best-basked-pumpkin-of-all-time/",
+      "wpFound": true,
+      "datePublished": "2015-09-07",
+      "stats": {
+        "wpWords": 432,
+        "mdxWords": 432,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-a-delicious-immune-boosting-bone-broth",
+      "path": "content/wellness/health/how-to-make-a-delicious-immune-boosting-bone-broth/how-to-make-a-delicious-immune-boosting-bone-broth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-a-delicious-immune-boosting-bone-broth/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-a-delicious-immune-boosting-bone-broth/",
+      "wpFound": true,
+      "datePublished": "2015-07-29",
+      "stats": {
+        "wpWords": 780,
+        "mdxWords": 782,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-a-super-healthy-fig-and-pear-loaf",
+      "path": "content/wellness/health/how-to-make-a-super-healthy-fig-and-pear-loaf/how-to-make-a-super-healthy-fig-and-pear-loaf.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-a-super-healthy-fig-and-pear-loaf/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-a-super-healthy-fig-and-pear-loaf/",
+      "wpFound": true,
+      "datePublished": "2015-05-06",
+      "stats": {
+        "wpWords": 277,
+        "mdxWords": 275,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "fig-and-rosewater-chia-pudding",
+      "path": "content/wellness/health/fig-and-rosewater-chia-pudding/fig-and-rosewater-chia-pudding.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/fig-and-rosewater-chia-pudding/",
+      "link": "https://www.beauticate.com/wellness/health/fig-and-rosewater-chia-pudding/",
+      "wpFound": true,
+      "datePublished": "2015-04-22",
+      "stats": {
+        "wpWords": 520,
+        "mdxWords": 534,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "6-reasons-to-eat-more-raw-chocolate-this-easter",
+      "path": "content/wellness/health/6-reasons-to-eat-more-raw-chocolate-this-easter/6-reasons-to-eat-more-raw-chocolate-this-easter.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/6-reasons-to-eat-more-raw-chocolate-this-easter/",
+      "link": "https://www.beauticate.com/wellness/health/6-reasons-to-eat-more-raw-chocolate-this-easter/",
+      "wpFound": true,
+      "datePublished": "2015-04-03",
+      "stats": {
+        "wpWords": 455,
+        "mdxWords": 455,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "stuff-you-didnt-know-about-sweat-1",
+      "path": "content/wellness/health/stuff-you-didnt-know-about-sweat-1/stuff-you-didnt-know-about-sweat-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/stuff-you-didnt-know-about-sweat-1/",
+      "link": "https://www.beauticate.com/wellness/health/stuff-you-didnt-know-about-sweat-1/",
+      "wpFound": true,
+      "datePublished": "2015-03-31",
+      "stats": {
+        "wpWords": 41,
+        "mdxWords": 39,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-model-workout",
+      "path": "content/wellness/fitness/how-to-model-workout/how-to-model-workout.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/how-to-model-workout/",
+      "link": "https://www.beauticate.com/wellness/fitness/how-to-model-workout/",
+      "wpFound": true,
+      "datePublished": "2015-01-20",
+      "stats": {
+        "wpWords": 1086,
+        "mdxWords": 1082,
+        "wpImages": 13,
+        "mdxImages": 13,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "gwinganna-review-sigourneys-edit",
+      "path": "content/wellness/health/gwinganna-review-sigourneys-edit/gwinganna-review-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/gwinganna-review-sigourneys-edit/",
+      "link": "https://www.beauticate.com/wellness/health/gwinganna-review-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2015-01-12",
+      "stats": {
+        "wpWords": 280,
+        "mdxWords": 275,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-guilt-free-corn-fritters",
+      "path": "content/wellness/health/how-to-guilt-free-corn-fritters/how-to-guilt-free-corn-fritters.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-guilt-free-corn-fritters/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-guilt-free-corn-fritters/",
+      "wpFound": true,
+      "datePublished": "2014-12-09",
+      "stats": {
+        "wpWords": 489,
+        "mdxWords": 489,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-pilates-for-the-ultimate-bikini-body",
+      "path": "content/wellness/fitness/how-to-pilates-for-the-ultimate-bikini-body/how-to-pilates-for-the-ultimate-bikini-body.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/how-to-pilates-for-the-ultimate-bikini-body/",
+      "link": "https://www.beauticate.com/wellness/fitness/how-to-pilates-for-the-ultimate-bikini-body/",
+      "wpFound": true,
+      "datePublished": "2014-11-25",
+      "stats": {
+        "wpWords": 431,
+        "mdxWords": 431,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-raw-chocolate-with-abigail-oneill",
+      "path": "content/wellness/health/how-to-make-raw-chocolate-with-abigail-oneill/how-to-make-raw-chocolate-with-abigail-oneill.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-raw-chocolate-with-abigail-oneill/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-raw-chocolate-with-abigail-oneill/",
+      "wpFound": true,
+      "datePublished": "2014-11-18",
+      "stats": {
+        "wpWords": 183,
+        "mdxWords": 183,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-an-antioxidant-rainbow-salad",
+      "path": "content/wellness/health/how-to-make-an-antioxidant-rainbow-salad/how-to-make-an-antioxidant-rainbow-salad.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-an-antioxidant-rainbow-salad/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-an-antioxidant-rainbow-salad/",
+      "wpFound": true,
+      "datePublished": "2014-11-05",
+      "stats": {
+        "wpWords": 382,
+        "mdxWords": 382,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-jessica-sepels-beauty-brownie",
+      "path": "content/wellness/health/how-to-make-jessica-sepels-beauty-brownie/how-to-make-jessica-sepels-beauty-brownie.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-jessica-sepels-beauty-brownie/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-jessica-sepels-beauty-brownie/",
+      "wpFound": true,
+      "datePublished": "2014-10-22",
+      "stats": {
+        "wpWords": 344,
+        "mdxWords": 352,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it",
+      "path": "content/wellness/health/how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it/how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it/",
+      "wpFound": true,
+      "datePublished": "2014-09-19",
+      "stats": {
+        "wpWords": 577,
+        "mdxWords": 574,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-carrots",
+      "path": "content/wellness/health/how-to-carrots/how-to-carrots.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-carrots/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-carrots/",
+      "wpFound": true,
+      "datePublished": "2014-08-20",
+      "stats": {
+        "wpWords": 644,
+        "mdxWords": 644,
+        "wpImages": 5,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-protein-balls-with-zoe-bingley-pullin",
+      "path": "content/wellness/health/how-to-make-protein-balls-with-zoe-bingley-pullin/how-to-make-protein-balls-with-zoe-bingley-pullin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-make-protein-balls-with-zoe-bingley-pullin/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-make-protein-balls-with-zoe-bingley-pullin/",
+      "wpFound": true,
+      "datePublished": "2014-06-17",
+      "stats": {
+        "wpWords": 225,
+        "mdxWords": 241,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-strengthen-your-core-with-kettlebells",
+      "path": "content/wellness/fitness/how-to-strengthen-your-core-with-kettlebells/how-to-strengthen-your-core-with-kettlebells.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/how-to-strengthen-your-core-with-kettlebells/",
+      "link": "https://www.beauticate.com/wellness/fitness/how-to-strengthen-your-core-with-kettlebells/",
+      "wpFound": true,
+      "datePublished": "2014-05-21",
+      "stats": {
+        "wpWords": 542,
+        "mdxWords": 542,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-workout-your-workout-bag",
+      "path": "content/wellness/fitness/how-to-workout-your-workout-bag/how-to-workout-your-workout-bag.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/how-to-workout-your-workout-bag/",
+      "link": "https://www.beauticate.com/wellness/fitness/how-to-workout-your-workout-bag/",
+      "wpFound": true,
+      "datePublished": "2014-05-05",
+      "stats": {
+        "wpWords": 365,
+        "mdxWords": 490,
+        "wpImages": 2,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-go-raw-with-skin-loving-beetroot-ravioli",
+      "path": "content/wellness/health/how-to-go-raw-with-skin-loving-beetroot-ravioli/how-to-go-raw-with-skin-loving-beetroot-ravioli.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-go-raw-with-skin-loving-beetroot-ravioli/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-go-raw-with-skin-loving-beetroot-ravioli/",
+      "wpFound": true,
+      "datePublished": "2014-04-28",
+      "stats": {
+        "wpWords": 299,
+        "mdxWords": 313,
+        "wpImages": 5,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-be-a-healthy-bunny-this-easter",
+      "path": "content/wellness/health/how-to-be-a-healthy-bunny-this-easter/how-to-be-a-healthy-bunny-this-easter.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/how-to-be-a-healthy-bunny-this-easter/",
+      "link": "https://www.beauticate.com/wellness/health/how-to-be-a-healthy-bunny-this-easter/",
+      "wpFound": true,
+      "datePublished": "2014-04-17",
+      "stats": {
+        "wpWords": 1202,
+        "mdxWords": 1269,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "4-exercises-the-fashion-girls-swear-by",
+      "path": "content/wellness/fitness/4-exercises-the-fashion-girls-swear-by/4-exercises-the-fashion-girls-swear-by.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/fitness/4-exercises-the-fashion-girls-swear-by/",
+      "link": "https://www.beauticate.com/wellness/fitness/4-exercises-the-fashion-girls-swear-by/",
+      "wpFound": true,
+      "datePublished": "2014-02-20",
+      "stats": {
+        "wpWords": 766,
+        "mdxWords": 763,
+        "wpImages": 0,
+        "mdxImages": 9,
         "wpCaptions": 0
       },
       "findings": []
