@@ -1,0 +1,207 @@
+{
+  "category": "wellness",
+  "generated": "2026-06-28T05:57:20.496Z",
+  "results": [
+    {
+      "slug": "why-giving-back-became-non-negotiable-by-shentel-lee",
+      "path": "content/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/why-giving-back-became-non-negotiable-by-shentel-lee.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/",
+      "link": "https://www.beauticate.com/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee/",
+      "wpFound": true,
+      "datePublished": "2026-06-07",
+      "stats": {
+        "wpWords": 1058,
+        "mdxWords": 1057,
+        "wpImages": 4,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 1 more body image(s) than MDX (WP 4 vs MDX 3) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/06/Kuching-Food-Aid-Donation.png",
+              "alt": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep",
+      "path": "content/wellness/mindset/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/",
+      "wpFound": true,
+      "datePublished": "2025-02-12",
+      "stats": {
+        "wpWords": 200,
+        "mdxWords": 195,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "META",
+          "severity": "medium",
+          "summary": "title",
+          "detail": [
+            {
+              "field": "title",
+              "wp": "Miranda Kerr on Faith, Family and THAT First Date (where he fell asleep)…",
+              "mdx": "Miranda Kerr on Faith, Family and THAT First Date (where he fell asleep)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "what-nobody-told-me-about-my-body-after-40",
+      "path": "content/wellness/health/what-nobody-told-me-about-my-body-after-40/what-nobody-told-me-about-my-body-after-40.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/what-nobody-told-me-about-my-body-after-40/",
+      "datePublished": "2026-06-21",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "wellness-tech-red-light-sauna-sleep-tracker-review",
+      "path": "content/wellness/longevity/wellness-tech-red-light-sauna-sleep-tracker-review/wellness-tech-red-light-sauna-sleep-tracker-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/longevity/wellness-tech-red-light-sauna-sleep-tracker-review/",
+      "datePublished": "2026-06-21",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-sleep-edit",
+      "path": "content/wellness/health/sigourneys-sleep-edit/sigourneys-sleep-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/sigourneys-sleep-edit/",
+      "link": "https://www.beauticate.com/wellness/health/sigourneys-sleep-edit/",
+      "wpFound": true,
+      "datePublished": "2026-05-29",
+      "stats": {
+        "wpWords": 0,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "breast-cancer-beauty-routine",
+      "path": "content/wellness/health/breast-cancer-beauty-routine/breast-cancer-beauty-routine.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/breast-cancer-beauty-routine/",
+      "link": "https://www.beauticate.com/wellness/breast-cancer-beauty-routine/",
+      "wpFound": true,
+      "datePublished": "2026-05-03",
+      "stats": {
+        "wpWords": 1998,
+        "mdxWords": 2015,
+        "wpImages": 5,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sacred-six-the-rituals-practices-helping-me-heal-from-burnout",
+      "path": "content/wellness/health/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/health/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/",
+      "wpFound": true,
+      "datePublished": "2025-08-28",
+      "stats": {
+        "wpWords": 521,
+        "mdxWords": 526,
+        "wpImages": 6,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak",
+      "path": "content/wellness/mindset/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/",
+      "wpFound": true,
+      "datePublished": "2025-06-14",
+      "stats": {
+        "wpWords": 261,
+        "mdxWords": 260,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth",
+      "path": "content/wellness/mindset/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth/",
+      "wpFound": true,
+      "datePublished": "2025-05-29",
+      "stats": {
+        "wpWords": 308,
+        "mdxWords": 318,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart",
+      "path": "content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/",
+      "wpFound": true,
+      "datePublished": "2025-05-14",
+      "stats": {
+        "wpWords": 367,
+        "mdxWords": 377,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey",
+      "path": "content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/",
+      "wpFound": true,
+      "datePublished": "2025-04-09",
+      "stats": {
+        "wpWords": 406,
+        "mdxWords": 419,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected",
+      "path": "content/wellness/mindset/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/wellness/mindset/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/",
+      "wpFound": true,
+      "datePublished": "2025-03-26",
+      "stats": {
+        "wpWords": 410,
+        "mdxWords": 410,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}

@@ -1,0 +1,478 @@
+{
+  "category": "beauty-style",
+  "generated": "2026-06-28T05:58:48.895Z",
+  "results": [
+    {
+      "slug": "beauticate-team-winter-edit",
+      "path": "content/beauty-style/beauty-tips/beauticate-team-winter-edit/beauticate-team-winter-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauticate-team-winter-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/beauticate-team-winter-edit/",
+      "wpFound": true,
+      "datePublished": "2026-06-01",
+      "stats": {
+        "wpWords": 2208,
+        "mdxWords": 1870,
+        "wpImages": 53,
+        "mdxImages": 64,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "TEXT",
+          "severity": "high",
+          "summary": "MDX shorter than WP by 338 words (WP 2208 vs MDX 1870, 15% missing)"
+        }
+      ]
+    },
+    {
+      "slug": "masks-for-stressed-skin",
+      "path": "content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/",
+      "link": "https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/",
+      "wpFound": true,
+      "datePublished": "2026-05-22",
+      "stats": {
+        "wpWords": 1169,
+        "mdxWords": 1428,
+        "wpImages": 8,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "FLATTENED",
+          "severity": "high",
+          "summary": "2 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "detail": [
+            {
+              "href": "https://klsq.io/q045h1"
+            },
+            {
+              "href": "https://klsq.io/q045h1%20"
+            }
+          ]
+        },
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "space-close-bold×1",
+          "detail": [
+            {
+              "type": "space-close-bold",
+              "line": 19
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "systeme-bio-plus-oil-serum-review",
+      "path": "content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/systeme-bio-plus-oil-serum-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/",
+      "link": "https://www.beauticate.com/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/",
+      "wpFound": true,
+      "datePublished": "2026-04-12",
+      "stats": {
+        "wpWords": 1940,
+        "mdxWords": 1947,
+        "wpImages": 15,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 1 more body image(s) than MDX (WP 15 vs MDX 14) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/04/Systeme-Trial-Photos.gif",
+              "alt": "Système Bio+ Oil Serum"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/04/IMG_3546-Samantha-Turnbull-scaled.jpg",
+              "alt": "neck and décolletage skin results before facial oil"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/04/IMG_8959-K-McGeachie-before-1-scaled.jpg",
+              "alt": "skin before applying serum"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/04/Ashleigh-Carter-BEFORE-1.jpg",
+              "alt": "skin tone before using serum"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chic-sunscreens-hats",
+      "path": "content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/chic-sunscreens-hats/",
+      "link": "https://www.beauticate.com/beauty-style/skin-care/chic-sunscreens-hats/",
+      "wpFound": true,
+      "datePublished": "2026-03-16",
+      "stats": {
+        "wpWords": 1043,
+        "mdxWords": 1322,
+        "wpImages": 25,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 16 more body image(s) than MDX (WP 25 vs MDX 9) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Solar-Veil_a6105978-9e86-45f6-bc4a-253379a7c967_grande-ri6m4eqvwwm6coeq7yehyadpt37vf6w4eyyfzvprx0.webp",
+              "alt": "Solar-Veil_a6105978-9e86-45f6-bc4a-253379a7c967_grande"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/0824_GT_Website_ProductPages_NiftyFifty_Mineral-1-ri6md7ihw2nt19mlu9brskg1zxukh6tnyit2q4o3o4.jpg",
+              "alt": "0824_GT_Website_ProductPages_NiftyFifty_Mineral (1)"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/Wordpress-Square-Images-4.png",
+              "alt": "fuca sunscreen"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/Wordpress-Square-Images-5.png",
+              "alt": "simka sunscreen"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/1.png",
+              "alt": "sunhat and sunscreen"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/natural-zinc-stick-clear-spf-50_500x-1-ri6mz60rjqpy9bqcm910jiypkzm9amzxb7gfbu40b8.png",
+              "alt": "natural-zinc-stick-clear-spf-50_500x (1)"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Wordpress-Square-Images-rkkoq7n2tbvwnc3hpyz39315kwfugnvjr8cmqfpmdw.png",
+              "alt": "sun bum sunscreen"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/the-quick-screen-50spf-whipped-sunscreen-and-body-moisturiser-1-ri6n83hkh2y0jyreh3zf89ucqrlsf4g4jekhggvd78.png",
+              "alt": "the-quick-screen-50spf-whipped-sunscreen-and-body-moisturiser (1)"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/Wordpress-Landscape-Images-2.gif",
+              "alt": "mineral sunscreen options suitable for children"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/976885_NA_1__47427.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/we-are-feel-good-inc-sunscreen-lotion-broad-spectrum-spf50-200ml_1.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/PDP-AirydayClearasDaySPF50_SunscreenForFace04__1_-removebg-preview.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/3-scaled.png",
+              "alt": "face sunscreen products displayed poolside"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/cyla-bucket-hat-bronze-5_1100x-1-683x1024.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/e4508a01-e571-f011-9cef-546ceb321ef4-600x768-1-1.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/inca-sunhat-straw-hat-lifestyle-zoe-3.webp",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/01/4-scaled.png",
+              "alt": "face sunscreen products displayed poolside"
+            }
+          ]
+        },
+        {
+          "type": "FLATTENED",
+          "severity": "high",
+          "summary": "3 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "detail": [
+            {
+              "href": "https://bit.ly/41yVcXG"
+            },
+            {
+              "href": "https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/"
+            },
+            {
+              "href": "https://lornamurray.com.au/collections/pleated-hats-adult"
+            }
+          ]
+        },
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×8",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 31
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 41
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 45
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 65
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 69
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 73
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 77
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 81
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "qure-micro-infusion-system-review",
+      "path": "content/beauty-style/beauty-tips/qure-micro-infusion-system-review/qure-micro-infusion-system-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/qure-micro-infusion-system-review/",
+      "link": "https://www.beauticate.com/beauty-style/qure-micro-infusion-system-review/",
+      "wpFound": true,
+      "datePublished": "2026-03-05",
+      "stats": {
+        "wpWords": 1027,
+        "mdxWords": 1061,
+        "wpImages": 16,
+        "mdxImages": 9,
+        "wpCaptions": 10
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 7 more body image(s) than MDX (WP 16 vs MDX 9) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/qure-micro-infusion-before-yaz-724x1024.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/qure-micro-infusion-after-yaz-724x1024.png",
+              "alt": "Before and after results using the Qure Micro-Infusion System"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/qure-micro-infusion-before-simone-724x1024.png",
+              "alt": "Qure Micro-Infusion System reader trial showing improved glow and skin texture"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/qure-micro-infusion-after-simone-724x1024.png",
+              "alt": "Qure Micro-Infusion System reader trial showing improved glow and skin texture"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/Untitled-design-46-724x1024.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/Untitled-design-48-724x1024.png",
+              "alt": "Before and after results using the Qure Micro-Infusion System"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/bundle-02a_2048x2048-rkbsxzfpn5w05tfyu7vuyws1pdd5p1uk0v2lzmblzk.webp",
+              "alt": "qure micro infusion"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Website-Feature-Images-49-rev67ghjp8mtg6t7hlciyik8dgb4zwfyv2cjg40jdc.png",
+              "alt": "sigourney with qure"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/3.png",
+              "alt": "microinfusion"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/1-1.png",
+              "alt": "qure microinfusion"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/03/2-1.png",
+              "alt": "microinfusion"
+            }
+          ]
+        },
+        {
+          "type": "FLATTENED",
+          "severity": "high",
+          "summary": "2 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "detail": [
+            {
+              "href": "https://www.qureskincare.com/SIGOURNEY57027"
+            },
+            {
+              "href": "https://www.beauticate.com/beauty-style/skin-care/qure-glowcase-review/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "red-light-therapy-hair-thinning",
+      "path": "content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/hair/red-light-therapy-hair-thinning/",
+      "link": "https://www.beauticate.com/beauty-style/hair/red-light-therapy-hair-thinning/",
+      "wpFound": true,
+      "datePublished": "2026-02-05",
+      "stats": {
+        "wpWords": 1299,
+        "mdxWords": 1558,
+        "wpImages": 6,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "FLATTENED",
+          "severity": "high",
+          "summary": "2 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "detail": [
+            {
+              "href": "https://www.qureskincare.com/SIGOURNEY57027"
+            },
+            {
+              "href": "https://qureskincare.com/products/hair-growth-helmet?snowball=SIGOURNEY57027"
+            }
+          ]
+        },
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 24
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy",
+      "path": "content/beauty-style/beauty-tips/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy/",
+      "link": "https://www.beauticate.com/beauty-style/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy/",
+      "wpFound": true,
+      "datePublished": "2025-12-17",
+      "stats": {
+        "wpWords": 785,
+        "mdxWords": 1244,
+        "wpImages": 4,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "space-close-bold×1",
+          "detail": [
+            {
+              "type": "space-close-bold",
+              "line": 63
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "brow-mistakes-most-women-make",
+      "path": "content/beauty-style/makeup/brow-mistakes-most-women-make/brow-mistakes-most-women-make.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/makeup/brow-mistakes-most-women-make/",
+      "link": "https://www.beauticate.com/beauty-style/beauty-tips/brow-mistakes-most-women-make/",
+      "wpFound": true,
+      "datePublished": "2026-06-09",
+      "stats": {
+        "wpWords": 936,
+        "mdxWords": 1160,
+        "wpImages": 2,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "winter-edit-team-picks",
+      "path": "content/beauty-style/winter-edit-team-picks/winter-edit-team-picks.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/winter-edit-team-picks/",
+      "datePublished": "2026-06-01",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "beauticate-collective-editors-experts",
+      "path": "content/beauty-style/beauty-tips/beauticate-collective-editors-experts/beauticate-collective-editors-experts.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauticate-collective-editors-experts/",
+      "link": "https://www.beauticate.com/beauty-style/beauticate-collective-editors-experts/",
+      "wpFound": true,
+      "datePublished": "2026-05-15",
+      "stats": {
+        "wpWords": 1946,
+        "mdxWords": 1944,
+        "wpImages": 15,
+        "mdxImages": 15,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "last-minute-christmas-gifts",
+      "path": "content/beauty-style/beauty-tips/last-minute-christmas-gifts/last-minute-christmas-gifts.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/last-minute-christmas-gifts/",
+      "link": "https://www.beauticate.com/beauty-style/last-minute-christmas-gifts/",
+      "wpFound": true,
+      "datePublished": "2025-12-21",
+      "stats": {
+        "wpWords": 480,
+        "mdxWords": 480,
+        "wpImages": 24,
+        "mdxImages": 24,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "nightly-beauty-routine",
+      "path": "content/beauty-style/skin-care/nightly-beauty-routine/nightly-beauty-routine.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/nightly-beauty-routine/",
+      "link": "https://www.beauticate.com/beauty-style/nightly-beauty-routine/",
+      "wpFound": true,
+      "datePublished": "2025-12-19",
+      "stats": {
+        "wpWords": 1089,
+        "mdxWords": 1301,
+        "wpImages": 23,
+        "mdxImages": 23,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}

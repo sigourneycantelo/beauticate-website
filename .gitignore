@@ -33,3 +33,6 @@ next-env.d.ts
 # pagefind index (generated at build)
 public/pagefind/
 
+
+# WP audit cache
+.cache/
