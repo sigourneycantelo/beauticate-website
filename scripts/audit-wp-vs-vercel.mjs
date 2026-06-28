@@ -289,12 +289,17 @@ async function auditArticle(item, users) {
   // migration kept only the link as plain text (e.g. [@handle](instagram)) and
   // dropped the image. Detect: WP image-link href that appears in the MDX as a
   // plain [text](href) link but NOT as an image link [![..](..)](href).
+  // Only meaningful when images were actually dropped (imgDeficit > 0). Without a
+  // deficit, every image is present and a matching plain link is just a normal
+  // inline prose link that WP happened to wrap an image in — a false positive.
   const flattened = []
-  for (const href of new Set(extractWpLinkedImageHrefs(wpHtml))) {
-    const h = escapeRe(href)
-    const hasImageLink = new RegExp(`\\)\\]\\(${h}\\)`).test(body)        // [![alt](src)](href)
-    const hasPlainLink = new RegExp(`\\[[^\\]]*\\]\\(${h}\\)`).test(body) // [text](href)
-    if (!hasImageLink && hasPlainLink) flattened.push(href)
+  if (imgDeficit > 0) {
+    for (const href of new Set(extractWpLinkedImageHrefs(wpHtml))) {
+      const h = escapeRe(href)
+      const hasImageLink = new RegExp(`\\)\\]\\(${h}\\)`).test(body)        // [![alt](src)](href)
+      const hasPlainLink = new RegExp(`\\[[^\\]]*\\]\\(${h}\\)`).test(body) // [text](href)
+      if (!hasImageLink && hasPlainLink) flattened.push(href)
+    }
   }
   if (flattened.length) {
     findings.push({

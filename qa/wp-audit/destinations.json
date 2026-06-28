@@ -1,0 +1,338 @@
+{
+  "category": "destinations",
+  "generated": "2026-06-28T07:20:47.646Z",
+  "results": [
+    {
+      "slug": "sustainable-luxury-travel-australia-wild-luxury-review",
+      "path": "content/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/sustainable-luxury-travel-australia-wild-luxury-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/",
+      "link": "https://www.beauticate.com/destination/travel/hotels-resorts/stays/sustainable-luxury-travel-australia-wild-luxury-review/",
+      "wpFound": true,
+      "datePublished": "2026-06-05",
+      "stats": {
+        "wpWords": 1154,
+        "mdxWords": 1137,
+        "wpImages": 23,
+        "mdxImages": 22,
+        "wpCaptions": 1
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 1 more body image(s) than MDX (WP 23 vs MDX 22) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2026/06/2-1024x683.jpg",
+              "alt": "Family dining together overlooking the Hawkesbury River at Calabash Bay Lodge, Wild Luxury NSW"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mondrian-gold-coast-review",
+      "path": "content/destinations/travel/mondrian-gold-coast-review/mondrian-gold-coast-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/mondrian-gold-coast-review/",
+      "link": "https://www.beauticate.com/destination/travel/hotels-resorts/mondrian-gold-coast-review/",
+      "wpFound": true,
+      "datePublished": "2025-12-12",
+      "stats": {
+        "wpWords": 847,
+        "mdxWords": 1054,
+        "wpImages": 25,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 16 more body image(s) than MDX (WP 25 vs MDX 9) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/6.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/5.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/3.png",
+              "alt": "Fashion Moments at The Mondrian"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Mondrian-Images-Word-Press-3.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/2.png",
+              "alt": "Food FLatlay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Mondrian-Images-Word-Press-2-rg0s3wxqtx5el4j1j8i3hd7aariw9lssgch087onww.png",
+              "alt": "Mondrian Images Word Press (2)"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Mondrian-Images-Word-Press-1.png",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/IMG_5364.jpg",
+              "alt": ""
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-59-1024x1024.png",
+              "alt": "Camilla Minimal Slip with Pleated Chiffon Skirt Flat Lay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-58-1024x1024.png",
+              "alt": "Reebok UNISEX CLUB C 85 SNEAKER flat lay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-53-1024x1024.png",
+              "alt": "Camilla Blue Print Dress Flatylay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-49-1024x1024.png",
+              "alt": "Camilla Dress Flat Lay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-52-1024x1024.png",
+              "alt": "Booie Beauty Product Flat Lay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-50-1024x1024.png",
+              "alt": "Lifecykel Flat Lay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-55-1024x1024.png",
+              "alt": "Black Casetify Suitcase Flat Lay"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-51-1024x1024.png",
+              "alt": "Perri Cutten Suit on Model"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-54-1024x1024.png",
+              "alt": "ACLER BLUE DRESS FLATLAY CINIFORD MINI DRESS"
+            }
+          ]
+        },
+        {
+          "type": "FLATTENED",
+          "severity": "high",
+          "summary": "6 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "detail": [
+            {
+              "href": "https://mondrianhotels.com/gold-coast/"
+            },
+            {
+              "href": "https://mondrianhotels.com/gold-coast/accommodations/"
+            },
+            {
+              "href": "https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/"
+            },
+            {
+              "href": "https://mondrianhotels.com/gold-coast/dining/"
+            },
+            {
+              "href": "https://lifecykel.com/"
+            },
+            {
+              "href": "https://mondrianhotels.com/gold-coast/wellness/ciel-spa/"
+            }
+          ]
+        },
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1, space-close-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 11
+            },
+            {
+              "type": "space-close-bold",
+              "line": 31
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "la-travel-guide-beverly-hills",
+      "path": "content/destinations/travel/la-travel-guide-beverly-hills/la-travel-guide-beverly-hills.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/la-travel-guide-beverly-hills/",
+      "link": "https://www.beauticate.com/destination/travel/la-travel-guide-beverly-hills/",
+      "wpFound": true,
+      "datePublished": "2025-02-18",
+      "stats": {
+        "wpWords": 1128,
+        "mdxWords": 1120,
+        "wpImages": 5,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 2 more body image(s) than MDX (WP 5 vs MDX 3) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/The-Maybourne-Beverly-Hills-Exterior-Copy-scaled-re0g3gju3q23f3kwb6gvgybot40fult6sdfetpiu4w.jpg",
+              "alt": "The Maybourne Beverly Hills - Exterior - Copy"
+            },
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/elementor/thumbs/The-Maybourne-Beverly-Hills-The-Terrace-Copy-scaled-re0g49otzl5zf0ekl12b48yz820th80v8dngpabms0.jpg",
+              "alt": "The Maybourne Beverly Hills - The Terrace - Copy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "1-hotel-melbourne-review",
+      "path": "content/destinations/travel/1-hotel-melbourne-review/1-hotel-melbourne-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/1-hotel-melbourne-review/",
+      "link": "https://www.beauticate.com/destination/travel/1-hotel-melbourne-review/",
+      "wpFound": true,
+      "datePublished": "2026-05-03",
+      "stats": {
+        "wpWords": 1455,
+        "mdxWords": 1455,
+        "wpImages": 8,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 91
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "paradisus-bali-melia-review",
+      "path": "content/destinations/travel/paradisus-bali-melia-review/paradisus-bali-melia-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/paradisus-bali-melia-review/",
+      "datePublished": "2026-06-21",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "where-family-memories-are-made",
+      "path": "content/destinations/where-family-memories-are-made/where-family-memories-are-made.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/where-family-memories-are-made/",
+      "datePublished": "2026-06-05",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "reve-skin-beauty-annandale",
+      "path": "content/destinations/clinics/reve-skin-beauty-annandale/reve-skin-beauty-annandale.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/reve-skin-beauty-annandale/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/reve-skin-beauty-annandale/",
+      "wpFound": true,
+      "datePublished": "2026-03-13",
+      "stats": {
+        "wpWords": 661,
+        "mdxWords": 798,
+        "wpImages": 7,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "bannisters-port-stephens-family-getaway",
+      "path": "content/destinations/travel/bannisters-port-stephens-family-getaway/bannisters-port-stephens-family-getaway.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/bannisters-port-stephens-family-getaway/",
+      "link": "https://www.beauticate.com/destination/travel/bannisters-port-stephens-family-getaway/",
+      "wpFound": true,
+      "datePublished": "2025-10-06",
+      "stats": {
+        "wpWords": 967,
+        "mdxWords": 1143,
+        "wpImages": 7,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sun-ranch-byron-bay-retreat",
+      "path": "content/destinations/travel/sun-ranch-byron-bay-retreat/sun-ranch-byron-bay-retreat.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/sun-ranch-byron-bay-retreat/",
+      "link": "https://www.beauticate.com/destination/travel/sun-ranch-byron-bay-retreat/",
+      "wpFound": true,
+      "datePublished": "2025-08-29",
+      "stats": {
+        "wpWords": 725,
+        "mdxWords": 725,
+        "wpImages": 14,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "kerala-travel-guide",
+      "path": "content/destinations/travel/kerala-travel-guide/kerala-travel-guide.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/kerala-travel-guide/",
+      "link": "https://www.beauticate.com/destination/travel/kerala-travel-guide/",
+      "wpFound": true,
+      "datePublished": "2025-04-04",
+      "stats": {
+        "wpWords": 1102,
+        "mdxWords": 1043,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "go-tos-natures-energy-glebe",
+      "path": "content/destinations/travel/go-tos-natures-energy-glebe/go-tos-natures-energy-glebe.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/go-tos-natures-energy-glebe/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/go-tos-natures-energy-glebe/",
+      "wpFound": true,
+      "datePublished": "2023-11-23",
+      "stats": {
+        "wpWords": 712,
+        "mdxWords": 675,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "skyn-perth",
+      "path": "content/destinations/clinics/skyn-perth/skyn-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/skyn-perth/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/skyn-perth/",
+      "wpFound": true,
+      "datePublished": "2023-11-13",
+      "stats": {
+        "wpWords": 584,
+        "mdxWords": 544,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}
