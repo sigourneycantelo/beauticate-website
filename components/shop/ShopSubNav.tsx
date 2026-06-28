@@ -1,52 +1,63 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Fragment } from 'react'
 
+// Secondary navigation for the Shop section — sits directly beneath the main
+// Beauticate header, styled as a centred, dot-separated editorial row in the
+// SheerLuxe manner. Mirrors the shop links on beauticate.shop.
 const TABS = [
-  { label: 'Shop by Brand',    href: '/shop/by-brand' },
   { label: 'Shop by Category', href: '/shop/by-category' },
+  { label: 'Shop by Brand',    href: '/shop/by-brand' },
   { label: 'Shop by Moment',   href: '/shop/by-moment' },
-  { label: 'Shop by Curator',  href: '/shop/by-curator', soon: true },
+  { label: 'About',            href: '/about' },
 ]
 
 export default function ShopSubNav() {
   const path = usePathname()
 
   return (
-    <div className="bg-parchment border-b border-camel/40">
-      <div className="max-w-wide mx-auto px-4">
-        <nav className="flex items-stretch overflow-x-auto scrollbar-none" aria-label="Shop navigation">
-          {TABS.map(tab => {
-            const active = !tab.soon && path.startsWith(tab.href)
-            if (tab.soon) {
-              return (
+    <div
+      className="bg-white"
+      style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }}
+    >
+      <nav
+        aria-label="Shop navigation"
+        className="max-w-wide mx-auto flex items-center justify-center flex-nowrap overflow-x-auto scrollbar-none"
+        style={{ gap: '0', padding: '13px clamp(20px,6vw,104px)' }}
+      >
+        {TABS.map((tab, i) => {
+          const active = path === tab.href || path.startsWith(tab.href + '/')
+          return (
+            <Fragment key={tab.href}>
+              {i > 0 && (
                 <span
-                  key={tab.href}
-                  className="flex items-center gap-2 px-5 py-4 font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/30 whitespace-nowrap cursor-default select-none"
+                  aria-hidden
+                  className="select-none"
+                  style={{ opacity: 0.28, margin: '0 clamp(14px,2vw,26px)' }}
                 >
-                  {tab.label}
-                  <span className="text-[9px] tracking-[0.15em] bg-camel/40 text-charcoal/40 px-1.5 py-0.5 rounded-sm">
-                    Soon
-                  </span>
+                  ·
                 </span>
-              )
-            }
-            return (
+              )}
               <Link
-                key={tab.href}
                 href={tab.href}
-                className={`flex items-center px-5 py-4 font-sans text-[11px] tracking-[0.2em] uppercase whitespace-nowrap border-b-2 transition-colors duration-150 ${
-                  active
-                    ? 'border-ink text-ink'
-                    : 'border-transparent text-charcoal/50 hover:text-ink hover:border-camel'
-                }`}
+                className="font-sans whitespace-nowrap transition-colors duration-150"
+                style={{
+                  fontSize: '11px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  opacity: active ? 1 : 0.6,
+                  color: active ? '#1C1A17' : undefined,
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#B5613A'; e.currentTarget.style.opacity = '1' }}
+                onMouseLeave={e => { e.currentTarget.style.color = active ? '#1C1A17' : ''; e.currentTarget.style.opacity = active ? '1' : '0.6' }}
               >
                 {tab.label}
               </Link>
-            )
-          })}
-        </nav>
-      </div>
+            </Fragment>
+          )
+        })}
+      </nav>
     </div>
   )
 }
