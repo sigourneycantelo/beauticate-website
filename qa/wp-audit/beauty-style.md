@@ -1,7 +1,7 @@
 # WP ↔ Vercel audit — `beauty-style` (latest 12)
 
-- ⚠️  7 article(s) with inconsistencies
-- ✅ 4 clean
+- ⚠️  6 article(s) with inconsistencies
+- ✅ 5 clean
 - ❓ 1 not found on WP (likely written post-migration)
 
 ## beauticate-team-winter-edit
@@ -75,14 +75,6 @@
     - linked to: https://www.qureskincare.com/SIGOURNEY57027
     - linked to: https://www.beauticate.com/beauty-style/skin-care/qure-glowcase-review/
 
-## masks-for-stressed-skin
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/)
-- 📄 MDX: `content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx`
-- words WP/MDX: 1169/1428 · images WP/MDX: 8/10
-
-- **MARKDOWN** (medium): space-close-bold×1
-
 ## red-light-therapy-hair-thinning
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/red-light-therapy-hair-thinning/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/red-light-therapy-hair-thinning/)
@@ -101,6 +93,7 @@
 
 ## ✅ Clean
 - [brow-mistakes-most-women-make ↗](https://beauticate-website.vercel.app/beauty-style/makeup/brow-mistakes-most-women-make/)
+- [masks-for-stressed-skin ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/)
 - [beauticate-collective-editors-experts ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauticate-collective-editors-experts/)
 - [last-minute-christmas-gifts ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/last-minute-christmas-gifts/)
 - [nightly-beauty-routine ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/nightly-beauty-routine/)

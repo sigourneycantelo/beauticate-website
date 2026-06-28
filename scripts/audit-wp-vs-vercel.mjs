@@ -177,7 +177,7 @@ function findMarkdownBugs(body) {
   lines.forEach((line, i) => {
     const n = i + 1
     // SPACE-CLOSE-BOLD: "**label: **text" — space/NBSP before closing **
-    if (/\*\*[^*\n]*[  ]\*\*/.test(line)) bugs.push({ type: 'space-close-bold', line: n })
+    if (/\*\*(?=\S)[^*\n]*[  ]\*\*/.test(line)) bugs.push({ type: 'space-close-bold', line: n })
     // GLUE: sentence end glued to next via a bare * with no surrounding space, e.g. "have.*I had"
     if (/[a-z0-9.!?"’”]\*[A-Z‘“]/.test(line)) bugs.push({ type: 'glue', line: n })
     // STRAY STARS: a line that is only asterisks

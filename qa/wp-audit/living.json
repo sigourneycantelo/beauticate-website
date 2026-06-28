@@ -1,54 +1,7 @@
 {
   "category": "living",
-  "generated": "2026-06-28T08:48:13.771Z",
+  "generated": "2026-06-28T08:55:52.535Z",
   "results": [
-    {
-      "slug": "pool-accessories-that-changed-our-lives",
-      "path": "content/living/outdoors/pool-accessories-that-changed-our-lives/pool-accessories-that-changed-our-lives.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/living/outdoors/pool-accessories-that-changed-our-lives/",
-      "link": "https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/",
-      "wpFound": true,
-      "datePublished": "2026-01-30",
-      "stats": {
-        "wpWords": 1130,
-        "mdxWords": 1359,
-        "wpImages": 10,
-        "mdxImages": 9,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "IMAGES",
-          "severity": "high",
-          "summary": "WP has 1 more body image(s) than MDX (WP 10 vs MDX 9) — likely missing",
-          "detail": [
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/15.png",
-              "alt": "Poolside"
-            },
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/16.png",
-              "alt": "Poolside Basil Bangs"
-            },
-            {
-              "src": "https://www.beauticate.com/wp-content/uploads/2026/01/17.png",
-              "alt": "Pool Accessories"
-            }
-          ]
-        },
-        {
-          "type": "MARKDOWN",
-          "severity": "medium",
-          "summary": "space-close-bold×1",
-          "detail": [
-            {
-              "type": "space-close-bold",
-              "line": 29
-            }
-          ]
-        }
-      ]
-    },
     {
       "slug": "lazy-girls-guide-summer-entertaining",
       "path": "content/living/lifestyle/lazy-girls-guide-summer-entertaining/lazy-girls-guide-summer-entertaining.mdx",
@@ -113,6 +66,22 @@
         "mdxWords": 1004,
         "wpImages": 7,
         "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "pool-accessories-that-changed-our-lives",
+      "path": "content/living/outdoors/pool-accessories-that-changed-our-lives/pool-accessories-that-changed-our-lives.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/outdoors/pool-accessories-that-changed-our-lives/",
+      "link": "https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/",
+      "wpFound": true,
+      "datePublished": "2026-01-30",
+      "stats": {
+        "wpWords": 1130,
+        "mdxWords": 1359,
+        "wpImages": 10,
+        "mdxImages": 12,
         "wpCaptions": 0
       },
       "findings": []

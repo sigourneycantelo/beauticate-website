@@ -1,20 +1,8 @@
 # WP ↔ Vercel audit — `living` (latest 12)
 
-- ⚠️  2 article(s) with inconsistencies
-- ✅ 9 clean
+- ⚠️  1 article(s) with inconsistencies
+- ✅ 10 clean
 - ❓ 1 not found on WP (likely written post-migration)
-
-## pool-accessories-that-changed-our-lives
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/living/outdoors/pool-accessories-that-changed-our-lives/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/)
-- 📄 MDX: `content/living/outdoors/pool-accessories-that-changed-our-lives/pool-accessories-that-changed-our-lives.mdx`
-- words WP/MDX: 1130/1359 · images WP/MDX: 10/9
-
-- **IMAGES** (high): WP has 1 more body image(s) than MDX (WP 10 vs MDX 9) — likely missing
-    - https://www.beauticate.com/wp-content/uploads/2026/01/15.png  _(alt: Poolside)_
-    - https://www.beauticate.com/wp-content/uploads/2026/01/16.png  _(alt: Poolside Basil Bangs)_
-    - https://www.beauticate.com/wp-content/uploads/2026/01/17.png  _(alt: Pool Accessories)_
-- **MARKDOWN** (medium): space-close-bold×1
 
 ## lazy-girls-guide-summer-entertaining
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/living/lifestyle/lazy-girls-guide-summer-entertaining/)**
@@ -31,6 +19,7 @@
 
 ## ✅ Clean
 - [dyson-v16-review ↗](https://beauticate-website.vercel.app/living/lifestyle/dyson-v16-review/)
+- [pool-accessories-that-changed-our-lives ↗](https://beauticate-website.vercel.app/living/outdoors/pool-accessories-that-changed-our-lives/)
 - [how-sheer-curtains-can-transform-a-space ↗](https://beauticate-website.vercel.app/living/interiors/how-sheer-curtains-can-transform-a-space/)
 - [airgarden ↗](https://beauticate-website.vercel.app/living/sustainability/airgarden/)
 - [8-at-trinity ↗](https://beauticate-website.vercel.app/living/lifestyle/8-at-trinity/)

@@ -1,6 +1,6 @@
 {
   "category": "beauty-style",
-  "generated": "2026-06-28T08:42:53.922Z",
+  "generated": "2026-06-28T08:55:52.817Z",
   "results": [
     {
       "slug": "beauticate-team-winter-edit",
@@ -290,34 +290,6 @@
       ]
     },
     {
-      "slug": "masks-for-stressed-skin",
-      "path": "content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/",
-      "link": "https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/",
-      "wpFound": true,
-      "datePublished": "2026-05-22",
-      "stats": {
-        "wpWords": 1169,
-        "mdxWords": 1428,
-        "wpImages": 8,
-        "mdxImages": 10,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "MARKDOWN",
-          "severity": "medium",
-          "summary": "space-close-bold×1",
-          "detail": [
-            {
-              "type": "space-close-bold",
-              "line": 19
-            }
-          ]
-        }
-      ]
-    },
-    {
       "slug": "red-light-therapy-hair-thinning",
       "path": "content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx",
       "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/hair/red-light-therapy-hair-thinning/",
@@ -395,6 +367,22 @@
       "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/winter-edit-team-picks/",
       "datePublished": "2026-06-01",
       "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "masks-for-stressed-skin",
+      "path": "content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/beauty-style/skin-care/masks-for-stressed-skin/",
+      "link": "https://www.beauticate.com/beauty-style/skin-care/masks-for-stressed-skin/",
+      "wpFound": true,
+      "datePublished": "2026-05-22",
+      "stats": {
+        "wpWords": 1169,
+        "mdxWords": 1428,
+        "wpImages": 8,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
       "findings": []
     },
     {
