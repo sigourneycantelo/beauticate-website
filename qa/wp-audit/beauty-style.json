@@ -1,6 +1,6 @@
 {
   "category": "beauty-style",
-  "generated": "2026-06-28T21:29:44.098Z",
+  "generated": "2026-06-28T22:35:17.099Z",
   "results": [
     {
       "slug": "beauticate-team-winter-edit",
@@ -33,7 +33,7 @@
       "datePublished": "2026-03-16",
       "stats": {
         "wpWords": 1043,
-        "mdxWords": 1322,
+        "mdxWords": 1321,
         "wpImages": 25,
         "mdxImages": 9,
         "wpCaptions": 0
@@ -124,33 +124,6 @@
             },
             {
               "href": "https://lornamurray.com.au/collections/pleated-hats-adult"
-            }
-          ]
-        },
-        {
-          "type": "MARKDOWN",
-          "severity": "medium",
-          "summary": "mismatched-bold×5",
-          "detail": [
-            {
-              "type": "mismatched-bold",
-              "line": 65
-            },
-            {
-              "type": "mismatched-bold",
-              "line": 69
-            },
-            {
-              "type": "mismatched-bold",
-              "line": 73
-            },
-            {
-              "type": "mismatched-bold",
-              "line": 77
-            },
-            {
-              "type": "mismatched-bold",
-              "line": 81
             }
           ]
         }

@@ -16,7 +16,7 @@
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/chic-sunscreens-hats/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/chic-sunscreens-hats/)
 - 📄 MDX: `content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx`
-- words WP/MDX: 1043/1322 · images WP/MDX: 25/9
+- words WP/MDX: 1043/1321 · images WP/MDX: 25/9
 
 - **IMAGES** (high): WP has 16 more body image(s) than MDX (WP 25 vs MDX 9) — likely missing
     - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Solar-Veil_a6105978-9e86-45f6-bc4a-253379a7c967_grande-ri6m4eqvwwm6coeq7yehyadpt37vf6w4eyyfzvprx0.webp  _(alt: Solar-Veil_a6105978-9e86-45f6-bc4a-253379a7c967_grande)_
@@ -39,7 +39,6 @@
 - **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
     - linked to: https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/
     - linked to: https://lornamurray.com.au/collections/pleated-hats-adult
-- **MARKDOWN** (medium): mismatched-bold×5
 
 ## qure-micro-infusion-system-review
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/qure-micro-infusion-system-review/)**
