@@ -13,9 +13,9 @@ batch after the category sweep finishes.
 Full audit done 2026-06-28: 777 clean, 4 post-migration, 192 flagged. Batch-fixed:
 115 glue (fix-glue-batch.mjs), 29 bold lines/10 files (fix-bold-batch.mjs), 3 `&`-drop titles.
 **Remaining (need per-article hands-on, not batchable):**
-- [ ] IMAGES — 9 articles: systeme-bio-plus-oil-serum-review (1), why-your-tap-water-might-be-ruining-your-skin (1), louis-vuitton-makeup-review-australia (2), struggling-to-sleep-this-mattress-changed-everything (2), your-ultimate-guide-to-mini-bags (2), cheek-blush-tattoo (3), the-makeup-tools-for-people-with-disabilities (4), qure-micro-infusion-system-review (7), chic-sunscreens-hats (16).
+- [x] IMAGES — DONE via content-matching (scripts/restore-images.mjs). Restored 9 genuinely-absent images across 4 articles: systeme-bio (1), struggling-to-sleep (2), mini-bags (2), the-makeup-tools-for-people-with-disabilities (4). The other 5 (why-tap-water, louis-vuitton, cheek-blush, qure, chic-sunscreens) were FALSE POSITIVES — all image files present (renamed); bodies reference fewer than WP but nothing is broken. (So chic-sunscreens "16 missing" / qure "7 missing" were not real.) Optional later: surface more of the already-present files in those 5 bodies.
 - [ ] TEXT — 4 articles (paragraph-diff + restore; check shop-grid noise): beauticate-team-winter-edit (15%), confessions-of-a-beauty-shopgirl (26%), how-to-buy-perfume-for-someone-else (27%), what-to-wear-for-winter-workouts (16%).
-- [ ] FLATTENED — 3 (in image-heavy articles; verify per-image, likely some inline-prose FPs): chic-sunscreens-hats, qure-micro-infusion-system-review, your-ultimate-guide-to-mini-bags.
+- [ ] FLATTENED — 3 (chic-sunscreens-hats, qure-micro-infusion-system-review, your-ultimate-guide-to-mini-bags): now likely ALL false positives — content-matching showed these articles' image files are present, so the flagged links are inline prose (like rae-morris). Verify & dismiss.
 - [ ] MARKDOWN manual — 18 glue articles skipped by batch (unbalanced after split) + ~33 mismatched-bold articles (45 ambiguous lines: unclosed `**[link]`, glued product blocks). See fix-glue-batch.mjs skip-list & fix-bold-batch "left for manual".
 - SKIP (verified non-issues): 8 META = cosmetic trailing `…`/`.`/`–→:` differences (MDX cleaner); censored swears (f***).
 
