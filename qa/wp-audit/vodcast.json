@@ -1,7 +1,35 @@
 {
   "category": "vodcast",
-  "generated": "2026-06-28T09:26:35.932Z",
+  "generated": "2026-06-28T21:27:01.471Z",
   "results": [
+    {
+      "slug": "celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media",
+      "path": "content/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
+      "wpFound": true,
+      "datePublished": "2025-10-20",
+      "stats": {
+        "wpWords": 774,
+        "mdxWords": 930,
+        "wpImages": 4,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 52
+            }
+          ]
+        }
+      ]
+    },
     {
       "slug": "sacred-six-on-on-stress-sanity-and-sacred-rituals",
       "path": "content/vodcast/episodes/sacred-six-on-on-stress-sanity-and-sacred-rituals/sacred-six-on-on-stress-sanity-and-sacred-rituals.mdx",
@@ -158,6 +186,606 @@
         "mdxWords": 333,
         "wpImages": 0,
         "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s",
+      "path": "content/vodcast/episodes/sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s/sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s/",
+      "datePublished": "2025-11-12",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "sacred-six-the-rituals-practices-helping-me-heal-from-burnout",
+      "path": "content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/",
+      "wpFound": true,
+      "datePublished": "2025-08-28",
+      "stats": {
+        "wpWords": 521,
+        "mdxWords": 579,
+        "wpImages": 6,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "goldfield-banks-founder-dimitri-weber-on-fragrance-and-making-australia-his-muse",
+      "path": "content/vodcast/episodes/goldfield-banks-founder-dimitri-weber-on-fragrance-and-making-australia-his-muse/goldfield-banks-founder-dimitri-weber-on-fragrance-and-making-australia-his-muse.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/goldfield-banks-founder-dimitri-weber-on-fragrance-and-making-australia-his-muse/",
+      "datePublished": "2025-08-07",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose",
+      "path": "content/vodcast/episodes/mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose/mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose/",
+      "wpFound": true,
+      "datePublished": "2025-07-03",
+      "stats": {
+        "wpWords": 295,
+        "mdxWords": 294,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak",
+      "path": "content/vodcast/episodes/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/",
+      "wpFound": true,
+      "datePublished": "2025-06-14",
+      "stats": {
+        "wpWords": 261,
+        "mdxWords": 261,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth",
+      "path": "content/vodcast/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth/",
+      "datePublished": "2025-05-29",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit",
+      "path": "content/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit/",
+      "datePublished": "2025-05-14",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream",
+      "path": "content/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream/",
+      "link": "https://www.beauticate.com/uncategorized/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream/",
+      "wpFound": true,
+      "datePublished": "2025-04-23",
+      "stats": {
+        "wpWords": 267,
+        "mdxWords": 267,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3",
+      "path": "content/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3/",
+      "wpFound": true,
+      "datePublished": "2025-04-23",
+      "stats": {
+        "wpWords": 267,
+        "mdxWords": 272,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo",
+      "path": "content/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo/",
+      "datePublished": "2025-04-09",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected",
+      "path": "content/vodcast/episodes/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/",
+      "wpFound": true,
+      "datePublished": "2025-03-26",
+      "stats": {
+        "wpWords": 410,
+        "mdxWords": 410,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b",
+      "path": "content/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b/",
+      "datePublished": "2025-03-14",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand",
+      "path": "content/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand/",
+      "wpFound": true,
+      "datePublished": "2025-03-14",
+      "stats": {
+        "wpWords": 393,
+        "mdxWords": 397,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "davinia-taylor-on-alcohol-addiction-mental-health",
+      "path": "content/vodcast/episodes/davinia-taylor-on-alcohol-addiction-mental-health/davinia-taylor-on-alcohol-addiction-mental-health.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/davinia-taylor-on-alcohol-addiction-mental-health/",
+      "datePublished": "2025-02-26",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2",
+      "path": "content/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2/",
+      "wpFound": true,
+      "datePublished": "2025-02-26",
+      "stats": {
+        "wpWords": 178,
+        "mdxWords": 187,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep",
+      "path": "content/vodcast/episodes/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/",
+      "wpFound": true,
+      "datePublished": "2025-02-12",
+      "stats": {
+        "wpWords": 200,
+        "mdxWords": 200,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out",
+      "path": "content/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out/",
+      "wpFound": true,
+      "datePublished": "2025-02-05",
+      "stats": {
+        "wpWords": 178,
+        "mdxWords": 176,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sacred-six-6-things-from-india-that-changed-my-life",
+      "path": "content/vodcast/episodes/sacred-six-6-things-from-india-that-changed-my-life/sacred-six-6-things-from-india-that-changed-my-life.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-6-things-from-india-that-changed-my-life/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sacred-six-6-things-from-india-that-changed-my-life/",
+      "wpFound": true,
+      "datePublished": "2024-12-18",
+      "stats": {
+        "wpWords": 193,
+        "mdxWords": 190,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2",
+      "path": "content/vodcast/episodes/amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2/amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2/",
+      "datePublished": "2024-12-12",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "journey-through-motherhood-mental-health-and-lifes-curveballs",
+      "path": "content/vodcast/episodes/journey-through-motherhood-mental-health-and-lifes-curveballs/journey-through-motherhood-mental-health-and-lifes-curveballs.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/journey-through-motherhood-mental-health-and-lifes-curveballs/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/journey-through-motherhood-mental-health-and-lifes-curveballs/",
+      "wpFound": true,
+      "datePublished": "2024-12-12",
+      "stats": {
+        "wpWords": 352,
+        "mdxWords": 337,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter",
+      "path": "content/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter/amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter/",
+      "wpFound": true,
+      "datePublished": "2024-12-07",
+      "stats": {
+        "wpWords": 325,
+        "mdxWords": 333,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1",
+      "path": "content/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1/amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1/",
+      "datePublished": "2024-12-07",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success",
+      "path": "content/vodcast/episodes/20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success/20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success/",
+      "wpFound": true,
+      "datePublished": "2024-11-28",
+      "stats": {
+        "wpWords": 559,
+        "mdxWords": 557,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces",
+      "path": "content/vodcast/episodes/vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces/vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces/",
+      "datePublished": "2024-11-28",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care",
+      "path": "content/vodcast/episodes/nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care/nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care/",
+      "wpFound": true,
+      "datePublished": "2024-11-21",
+      "stats": {
+        "wpWords": 320,
+        "mdxWords": 318,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "emma-lane-on-sustainability-slow-living-and-the-famous-range-estates",
+      "path": "content/vodcast/episodes/emma-lane-on-sustainability-slow-living-and-the-famous-range-estates/emma-lane-on-sustainability-slow-living-and-the-famous-range-estates.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/emma-lane-on-sustainability-slow-living-and-the-famous-range-estates/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/emma-lane-on-sustainability-slow-living-and-the-famous-range-estates/",
+      "wpFound": true,
+      "datePublished": "2024-11-14",
+      "stats": {
+        "wpWords": 214,
+        "mdxWords": 214,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-range-estates-emma-lane-on-nature-led-design",
+      "path": "content/vodcast/episodes/the-range-estates-emma-lane-on-nature-led-design/the-range-estates-emma-lane-on-nature-led-design.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/the-range-estates-emma-lane-on-nature-led-design/",
+      "datePublished": "2024-11-14",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "sacred-six-6-ways-im-going-to-live-longer",
+      "path": "content/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer/sacred-six-6-ways-im-going-to-live-longer.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sacred-six-6-ways-im-going-to-live-longer/",
+      "wpFound": true,
+      "datePublished": "2024-11-02",
+      "stats": {
+        "wpWords": 259,
+        "mdxWords": 426,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "bianca-dye-on-pressure-performance-and-panic-attacks",
+      "path": "content/vodcast/episodes/bianca-dye-on-pressure-performance-and-panic-attacks/bianca-dye-on-pressure-performance-and-panic-attacks.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/bianca-dye-on-pressure-performance-and-panic-attacks/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/bianca-dye-on-pressure-performance-and-panic-attacks/",
+      "wpFound": true,
+      "datePublished": "2024-10-18",
+      "stats": {
+        "wpWords": 423,
+        "mdxWords": 430,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "ashaya-founder-jodie-matthews-on-perimenopause-and-ayurveda",
+      "path": "content/vodcast/episodes/ashaya-founder-jodie-matthews-on-perimenopause-and-ayurveda/ashaya-founder-jodie-matthews-on-perimenopause-and-ayurveda.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/ashaya-founder-jodie-matthews-on-perimenopause-and-ayurveda/",
+      "datePublished": "2024-10-10",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "talking-perimenopause-with-ashaya-founder-jodie-matthews",
+      "path": "content/vodcast/episodes/talking-perimenopause-with-ashaya-founder-jodie-matthews/talking-perimenopause-with-ashaya-founder-jodie-matthews.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/talking-perimenopause-with-ashaya-founder-jodie-matthews/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/talking-perimenopause-with-ashaya-founder-jodie-matthews/",
+      "wpFound": true,
+      "datePublished": "2024-10-10",
+      "stats": {
+        "wpWords": 373,
+        "mdxWords": 371,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body",
+      "path": "content/vodcast/episodes/wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body/wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body/",
+      "wpFound": true,
+      "datePublished": "2024-10-03",
+      "stats": {
+        "wpWords": 291,
+        "mdxWords": 295,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "leigh-campbell-on-fertility-struggles-social-media-self-care-part-2",
+      "path": "content/vodcast/episodes/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2/",
+      "datePublished": "2024-09-26",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "leigh-campbell-part-2-fertility-struggles-social-media-self-care",
+      "path": "content/vodcast/episodes/leigh-campbell-part-2-fertility-struggles-social-media-self-care/leigh-campbell-part-2-fertility-struggles-social-media-self-care.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/leigh-campbell-part-2-fertility-struggles-social-media-self-care/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/leigh-campbell-part-2-fertility-struggles-social-media-self-care/",
+      "wpFound": true,
+      "datePublished": "2024-09-26",
+      "stats": {
+        "wpWords": 227,
+        "mdxWords": 236,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd",
+      "path": "content/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd/",
+      "wpFound": true,
+      "datePublished": "2024-09-19",
+      "stats": {
+        "wpWords": 410,
+        "mdxWords": 414,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1",
+      "path": "content/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1/",
+      "datePublished": "2024-09-19",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "sigourney-s-sacred-six-for-ultimate-wellness",
+      "path": "content/vodcast/episodes/sigourney-s-sacred-six-for-ultimate-wellness/sigourney-s-sacred-six-for-ultimate-wellness.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sigourney-s-sacred-six-for-ultimate-wellness/",
+      "datePublished": "2024-08-27",
+      "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-sacred-six-for-ultimate-wellness",
+      "path": "content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sigourneys-sacred-six-for-ultimate-wellness/",
+      "wpFound": true,
+      "datePublished": "2024-08-27",
+      "stats": {
+        "wpWords": 270,
+        "mdxWords": 274,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics",
+      "path": "content/vodcast/episodes/lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics/lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics/",
+      "wpFound": true,
+      "datePublished": "2024-08-08",
+      "stats": {
+        "wpWords": 289,
+        "mdxWords": 288,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "pip-edwards-from-perfectionism-to-self-compassion",
+      "path": "content/vodcast/episodes/pip-edwards-from-perfectionism-to-self-compassion/pip-edwards-from-perfectionism-to-self-compassion.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/pip-edwards-from-perfectionism-to-self-compassion/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/pip-edwards-from-perfectionism-to-self-compassion/",
+      "wpFound": true,
+      "datePublished": "2024-07-22",
+      "stats": {
+        "wpWords": 485,
+        "mdxWords": 491,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourney-on-the-treatment-centre-and-finding-purpose-part-2",
+      "path": "content/vodcast/episodes/sigourney-on-the-treatment-centre-and-finding-purpose-part-2/sigourney-on-the-treatment-centre-and-finding-purpose-part-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sigourney-on-the-treatment-centre-and-finding-purpose-part-2/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sigourney-on-the-treatment-centre-and-finding-purpose-part-2/",
+      "wpFound": true,
+      "datePublished": "2024-07-08",
+      "stats": {
+        "wpWords": 247,
+        "mdxWords": 246,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourney-on-career-social-media-and-mental-health-struggles-part-1",
+      "path": "content/vodcast/episodes/sigourney-on-career-social-media-and-mental-health-struggles-part-1/sigourney-on-career-social-media-and-mental-health-struggles-part-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sigourney-on-career-social-media-and-mental-health-struggles-part-1/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/sigourney-on-career-social-media-and-mental-health-struggles-part-1/",
+      "wpFound": true,
+      "datePublished": "2024-07-01",
+      "stats": {
+        "wpWords": 500,
+        "mdxWords": 507,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "postcast2",
+      "path": "content/vodcast/episodes/postcast2/postcast2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/postcast2/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/postcast2/",
+      "wpFound": true,
+      "datePublished": "2024-06-30",
+      "stats": {
+        "wpWords": 887,
+        "mdxWords": 883,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "trinny-woodall-on-ivf-acne-and-boarding-school",
+      "path": "content/vodcast/episodes/trinny-woodall-on-ivf-acne-and-boarding-school/trinny-woodall-on-ivf-acne-and-boarding-school.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/trinny-woodall-on-ivf-acne-and-boarding-school/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/trinny-woodall-on-ivf-acne-and-boarding-school/",
+      "wpFound": true,
+      "datePublished": "2024-06-30",
+      "stats": {
+        "wpWords": 293,
+        "mdxWords": 292,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "welcome-to-beautiful-inside-trailer",
+      "path": "content/vodcast/episodes/welcome-to-beautiful-inside-trailer/welcome-to-beautiful-inside-trailer.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/welcome-to-beautiful-inside-trailer/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/welcome-to-beautiful-inside-trailer/",
+      "wpFound": true,
+      "datePublished": "2024-06-30",
+      "stats": {
+        "wpWords": 361,
+        "mdxWords": 373,
+        "wpImages": 0,
+        "mdxImages": 3,
         "wpCaptions": 0
       },
       "findings": []

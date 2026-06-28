@@ -1,8 +1,16 @@
-# WP ↔ Vercel audit — `vodcast` (latest 12)
+# WP ↔ Vercel audit — `vodcast` (latest 58)
 
-- ⚠️  0 article(s) with inconsistencies
-- ✅ 8 clean
-- ❓ 4 not found on WP (likely written post-migration)
+- ⚠️  1 article(s) with inconsistencies
+- ✅ 38 clean
+- ❓ 19 not found on WP (likely written post-migration)
+
+## celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/)
+- 📄 MDX: `content/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media.mdx`
+- words WP/MDX: 774/930 · images WP/MDX: 4/7
+
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## ✅ Clean
 - [sacred-six-on-on-stress-sanity-and-sacred-rituals ↗](https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-on-on-stress-sanity-and-sacred-rituals/)
@@ -13,9 +21,54 @@
 - [tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing ↗](https://beauticate-website.vercel.app/vodcast/episodes/tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing/)
 - [david-the-medium-on-intuition-healing-and-life-after-death ↗](https://beauticate-website.vercel.app/vodcast/episodes/david-the-medium-on-intuition-healing-and-life-after-death/)
 - [olivia-arezzolo-interview ↗](https://beauticate-website.vercel.app/vodcast/episodes/olivia-arezzolo-interview/)
+- [sacred-six-the-rituals-practices-helping-me-heal-from-burnout ↗](https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/)
+- [mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose ↗](https://beauticate-website.vercel.app/vodcast/episodes/mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose/)
+- [lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak ↗](https://beauticate-website.vercel.app/vodcast/episodes/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/)
+- [gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream ↗](https://beauticate-website.vercel.app/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream/)
+- [gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3 ↗](https://beauticate-website.vercel.app/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3/)
+- [jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected ↗](https://beauticate-website.vercel.app/vodcast/episodes/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected/)
+- [jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand ↗](https://beauticate-website.vercel.app/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand/)
+- [the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2 ↗](https://beauticate-website.vercel.app/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2/)
+- [miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep ↗](https://beauticate-website.vercel.app/vodcast/episodes/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep/)
+- [the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out ↗](https://beauticate-website.vercel.app/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out/)
+- [sacred-six-6-things-from-india-that-changed-my-life ↗](https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-6-things-from-india-that-changed-my-life/)
+- [journey-through-motherhood-mental-health-and-lifes-curveballs ↗](https://beauticate-website.vercel.app/vodcast/episodes/journey-through-motherhood-mental-health-and-lifes-curveballs/)
+- [amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter ↗](https://beauticate-website.vercel.app/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter/)
+- [20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success ↗](https://beauticate-website.vercel.app/vodcast/episodes/20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success/)
+- [nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care ↗](https://beauticate-website.vercel.app/vodcast/episodes/nagnata-founder-laura-may-gibbs-on-sustainability-style-and-self-care/)
+- [emma-lane-on-sustainability-slow-living-and-the-famous-range-estates ↗](https://beauticate-website.vercel.app/vodcast/episodes/emma-lane-on-sustainability-slow-living-and-the-famous-range-estates/)
+- [sacred-six-6-ways-im-going-to-live-longer ↗](https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer/)
+- [bianca-dye-on-pressure-performance-and-panic-attacks ↗](https://beauticate-website.vercel.app/vodcast/episodes/bianca-dye-on-pressure-performance-and-panic-attacks/)
+- [talking-perimenopause-with-ashaya-founder-jodie-matthews ↗](https://beauticate-website.vercel.app/vodcast/episodes/talking-perimenopause-with-ashaya-founder-jodie-matthews/)
+- [wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body ↗](https://beauticate-website.vercel.app/vodcast/episodes/wellness-expert-leah-simmons-on-how-to-transform-your-mind-and-body/)
+- [leigh-campbell-part-2-fertility-struggles-social-media-self-care ↗](https://beauticate-website.vercel.app/vodcast/episodes/leigh-campbell-part-2-fertility-struggles-social-media-self-care/)
+- [lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd ↗](https://beauticate-website.vercel.app/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd/)
+- [sigourneys-sacred-six-for-ultimate-wellness ↗](https://beauticate-website.vercel.app/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/)
+- [lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics ↗](https://beauticate-website.vercel.app/vodcast/episodes/lipstick-queen-poppy-king-on-the-psychological-impact-of-cosmetics/)
+- [pip-edwards-from-perfectionism-to-self-compassion ↗](https://beauticate-website.vercel.app/vodcast/episodes/pip-edwards-from-perfectionism-to-self-compassion/)
+- [sigourney-on-the-treatment-centre-and-finding-purpose-part-2 ↗](https://beauticate-website.vercel.app/vodcast/episodes/sigourney-on-the-treatment-centre-and-finding-purpose-part-2/)
+- [sigourney-on-career-social-media-and-mental-health-struggles-part-1 ↗](https://beauticate-website.vercel.app/vodcast/episodes/sigourney-on-career-social-media-and-mental-health-struggles-part-1/)
+- [postcast2 ↗](https://beauticate-website.vercel.app/vodcast/episodes/postcast2/)
+- [trinny-woodall-on-ivf-acne-and-boarding-school ↗](https://beauticate-website.vercel.app/vodcast/episodes/trinny-woodall-on-ivf-acne-and-boarding-school/)
+- [welcome-to-beautiful-inside-trailer ↗](https://beauticate-website.vercel.app/vodcast/episodes/welcome-to-beautiful-inside-trailer/)
 
 ## ❓ Not found on WP
 - [susan-yara-on-reinvention-resilience-and-rebuilding-trust ↗](https://beauticate-website.vercel.app/vodcast/episodes/susan-yara-on-reinvention-resilience-and-rebuilding-trust/)
 - [dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame ↗](https://beauticate-website.vercel.app/vodcast/episodes/dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame/)
 - [trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up ↗](https://beauticate-website.vercel.app/vodcast/episodes/trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up/)
 - [guy-sebastian-on-fame-family-fragrance ↗](https://beauticate-website.vercel.app/vodcast/episodes/guy-sebastian-on-fame-family-fragrance/)
+- [sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s ↗](https://beauticate-website.vercel.app/vodcast/episodes/sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s/)
+- [goldfield-banks-founder-dimitri-weber-on-fragrance-and-making-australia-his-muse ↗](https://beauticate-website.vercel.app/vodcast/episodes/goldfield-banks-founder-dimitri-weber-on-fragrance-and-making-australia-his-muse/)
+- [synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth ↗](https://beauticate-website.vercel.app/vodcast/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth/)
+- [jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit ↗](https://beauticate-website.vercel.app/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit/)
+- [lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo ↗](https://beauticate-website.vercel.app/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo/)
+- [jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b ↗](https://beauticate-website.vercel.app/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b/)
+- [davinia-taylor-on-alcohol-addiction-mental-health ↗](https://beauticate-website.vercel.app/vodcast/episodes/davinia-taylor-on-alcohol-addiction-mental-health/)
+- [amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2 ↗](https://beauticate-website.vercel.app/vodcast/episodes/amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2/)
+- [amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1 ↗](https://beauticate-website.vercel.app/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1/)
+- [vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces ↗](https://beauticate-website.vercel.app/vodcast/episodes/vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces/)
+- [the-range-estates-emma-lane-on-nature-led-design ↗](https://beauticate-website.vercel.app/vodcast/episodes/the-range-estates-emma-lane-on-nature-led-design/)
+- [ashaya-founder-jodie-matthews-on-perimenopause-and-ayurveda ↗](https://beauticate-website.vercel.app/vodcast/episodes/ashaya-founder-jodie-matthews-on-perimenopause-and-ayurveda/)
+- [leigh-campbell-on-fertility-struggles-social-media-self-care-part-2 ↗](https://beauticate-website.vercel.app/vodcast/episodes/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2/)
+- [lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1 ↗](https://beauticate-website.vercel.app/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1/)
+- [sigourney-s-sacred-six-for-ultimate-wellness ↗](https://beauticate-website.vercel.app/vodcast/episodes/sigourney-s-sacred-six-for-ultimate-wellness/)
