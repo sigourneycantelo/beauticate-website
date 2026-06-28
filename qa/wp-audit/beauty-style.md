@@ -16,8 +16,29 @@
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/chic-sunscreens-hats/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/chic-sunscreens-hats/)
 - 📄 MDX: `content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx`
-- words WP/MDX: 1043/1272 · images WP/MDX: 25/25
+- words WP/MDX: 1043/1272 · images WP/MDX: 25/21
 
+- **IMAGES** (high): WP has 4 more body image(s) than MDX (WP 25 vs MDX 21) — likely missing
+    - https://www.beauticate.com/wp-content/uploads/2029/01/Screenshot-2026-01-25-152400.jpg
+    - https://www.beauticate.com/wp-content/uploads/2026/03/Screenshot-2026-04-01-at-4.51.54-pm.png
+    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/face-body-spf50-mother-spf-kalovy_aa7ebe96-e050-466e-b79f-d75b6ceab93d-removebg-preview-ri8r9ojt2ihq7a9kwg355gbka6eag4gy96xqw5trbo.png  _(alt: face-body-spf50-mother-spf-kalovy_aa7ebe96-e050-466e-b79f-d75b6ceab93d-removebg-preview)_
+    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Solar-Veil_a6105978-9e86-45f6-bc4a-253379a7c967_grande-ri6m4eqvwwm6coeq7yehyadpt37vf6w4eyyfzvprx0.webp  _(alt: Solar-Veil_a6105978-9e86-45f6-bc4a-253379a7c967_grande)_
+    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/0824_GT_Website_ProductPages_NiftyFifty_Mineral-1-ri6md7ihw2nt19mlu9brskg1zxukh6tnyit2q4o3o4.jpg  _(alt: 0824_GT_Website_ProductPages_NiftyFifty_Mineral (1))_
+    - https://www.beauticate.com/wp-content/uploads/2029/01/Wordpress-Square-Images-4.png  _(alt: fuca sunscreen)_
+    - https://www.beauticate.com/wp-content/uploads/2029/01/Wordpress-Square-Images-5.png  _(alt: simka sunscreen)_
+    - https://www.beauticate.com/wp-content/uploads/2029/01/1.png  _(alt: sunhat and sunscreen)_
+    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/natural-zinc-stick-clear-spf-50_500x-1-ri6mz60rjqpy9bqcm910jiypkzm9amzxb7gfbu40b8.png  _(alt: natural-zinc-stick-clear-spf-50_500x (1))_
+    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/Wordpress-Square-Images-rkkoq7n2tbvwnc3hpyz39315kwfugnvjr8cmqfpmdw.png  _(alt: sun bum sunscreen)_
+    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/the-quick-screen-50spf-whipped-sunscreen-and-body-moisturiser-1-ri6n83hkh2y0jyreh3zf89ucqrlsf4g4jekhggvd78.png  _(alt: the-quick-screen-50spf-whipped-sunscreen-and-body-moisturiser (1))_
+    - https://www.beauticate.com/wp-content/uploads/2029/01/Wordpress-Landscape-Images-2.gif  _(alt: mineral sunscreen options suitable for children)_
+    - https://www.beauticate.com/wp-content/uploads/2029/01/976885_NA_1__47427.jpg
+    - https://www.beauticate.com/wp-content/uploads/2029/01/we-are-feel-good-inc-sunscreen-lotion-broad-spectrum-spf50-200ml_1.jpg
+    - https://www.beauticate.com/wp-content/uploads/2029/01/PDP-AirydayClearasDaySPF50_SunscreenForFace04__1_-removebg-preview.png
+    - https://www.beauticate.com/wp-content/uploads/2029/01/3-scaled.png  _(alt: face sunscreen products displayed poolside)_
+    - https://www.beauticate.com/wp-content/uploads/2029/01/cyla-bucket-hat-bronze-5_1100x-1-683x1024.jpg
+    - https://www.beauticate.com/wp-content/uploads/2029/01/e4508a01-e571-f011-9cef-546ceb321ef4-600x768-1-1.jpg
+    - https://www.beauticate.com/wp-content/uploads/2029/01/inca-sunhat-straw-hat-lifestyle-zoe-3.webp
+    - https://www.beauticate.com/wp-content/uploads/2029/01/4-scaled.png  _(alt: face sunscreen products displayed poolside)_
 - **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
     - linked to: https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/
     - linked to: https://lornamurray.com.au/collections/pleated-hats-adult
