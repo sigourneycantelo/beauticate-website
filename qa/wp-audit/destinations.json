@@ -1,6 +1,6 @@
 {
   "category": "destinations",
-  "generated": "2026-06-28T08:05:13.162Z",
+  "generated": "2026-06-28T12:14:48.361Z",
   "results": [
     {
       "slug": "mondrian-gold-coast-review",
@@ -95,17 +95,8 @@
         {
           "type": "FLATTENED",
           "severity": "high",
-          "summary": "6 image embed(s) flattened to a plain text link (image dropped in migration)",
+          "summary": "3 image embed(s) flattened to a plain text link (image dropped in migration)",
           "detail": [
-            {
-              "href": "https://mondrianhotels.com/gold-coast/"
-            },
-            {
-              "href": "https://mondrianhotels.com/gold-coast/accommodations/"
-            },
-            {
-              "href": "https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/"
-            },
             {
               "href": "https://mondrianhotels.com/gold-coast/dining/"
             },
@@ -116,19 +107,88 @@
               "href": "https://mondrianhotels.com/gold-coast/wellness/ciel-spa/"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "slug": "skin-temple-melbourne",
+      "path": "content/destinations/clinics/skin-temple-melbourne/skin-temple-melbourne.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/skin-temple-melbourne/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/skin-temple-melbourne/",
+      "wpFound": true,
+      "datePublished": "2016-04-26",
+      "stats": {
+        "wpWords": 951,
+        "mdxWords": 1008,
+        "wpImages": 6,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "IMAGES",
+          "severity": "high",
+          "summary": "WP has 1 more body image(s) than MDX (WP 6 vs MDX 5) — likely missing",
+          "detail": [
+            {
+              "src": "https://www.beauticate.com/wp-content/uploads/2016/04/img-16.jpg",
+              "alt": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "franck-provost-barangaroo-nsw",
+      "path": "content/destinations/clinics/franck-provost-barangaroo-nsw/franck-provost-barangaroo-nsw.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/franck-provost-barangaroo-nsw/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/franck-provost-barangaroo-nsw/",
+      "wpFound": true,
+      "datePublished": "2018-10-17",
+      "stats": {
+        "wpWords": 758,
+        "mdxWords": 754,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": [
         {
           "type": "MARKDOWN",
           "severity": "medium",
-          "summary": "mismatched-bold×1, space-close-bold×1",
+          "summary": "glue×1",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "loccitane-petit-spa-subiaco-wa",
+      "path": "content/destinations/clinics/loccitane-petit-spa-subiaco-wa/loccitane-petit-spa-subiaco-wa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/loccitane-petit-spa-subiaco-wa/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/loccitane-petit-spa-subiaco-wa/",
+      "wpFound": true,
+      "datePublished": "2015-04-13",
+      "stats": {
+        "wpWords": 855,
+        "mdxWords": 926,
+        "wpImages": 5,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
           "detail": [
             {
               "type": "mismatched-bold",
-              "line": 11
-            },
-            {
-              "type": "space-close-bold",
-              "line": 31
+              "line": 140
             }
           ]
         }
@@ -238,7 +298,7 @@
       "wpFound": true,
       "datePublished": "2025-04-04",
       "stats": {
-        "wpWords": 1102,
+        "wpWords": 1050,
         "mdxWords": 1043,
         "wpImages": 0,
         "mdxImages": 12,
@@ -270,7 +330,7 @@
       "wpFound": true,
       "datePublished": "2023-11-23",
       "stats": {
-        "wpWords": 712,
+        "wpWords": 675,
         "mdxWords": 675,
         "wpImages": 0,
         "mdxImages": 12,
@@ -286,10 +346,2090 @@
       "wpFound": true,
       "datePublished": "2023-11-13",
       "stats": {
-        "wpWords": 584,
+        "wpWords": 548,
         "mdxWords": 544,
         "wpImages": 0,
         "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spa-by-jw-jw-marriott-gold-coast",
+      "path": "content/destinations/travel/spa-by-jw-jw-marriott-gold-coast/spa-by-jw-jw-marriott-gold-coast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/spa-by-jw-jw-marriott-gold-coast/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/spa-by-jw-jw-marriott-gold-coast/",
+      "wpFound": true,
+      "datePublished": "2023-11-01",
+      "stats": {
+        "wpWords": 643,
+        "mdxWords": 641,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "discover-beauty-at-melbournes-most-luxurious-spa",
+      "path": "content/destinations/clinics/discover-beauty-at-melbournes-most-luxurious-spa/discover-beauty-at-melbournes-most-luxurious-spa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/discover-beauty-at-melbournes-most-luxurious-spa/",
+      "link": "https://www.beauticate.com/destination/discover-beauty-at-melbournes-most-luxurious-spa/",
+      "wpFound": true,
+      "datePublished": "2023-09-22",
+      "stats": {
+        "wpWords": 820,
+        "mdxWords": 819,
+        "wpImages": 0,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour",
+      "path": "content/destinations/clinics/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour/",
+      "link": "https://www.beauticate.com/destination/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour/",
+      "wpFound": true,
+      "datePublished": "2023-08-31",
+      "stats": {
+        "wpWords": 756,
+        "mdxWords": 755,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "chateau-elan-spa-the-hunter-valley-nsw",
+      "path": "content/destinations/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw/chateau-elan-spa-the-hunter-valley-nsw.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw/",
+      "wpFound": true,
+      "datePublished": "2023-02-09",
+      "stats": {
+        "wpWords": 554,
+        "mdxWords": 552,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "chakana-day-spa-wellbeing-avalon-2",
+      "path": "content/destinations/spas-retreats/chakana-day-spa-wellbeing-avalon-2/chakana-day-spa-wellbeing-avalon-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/chakana-day-spa-wellbeing-avalon-2/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/chakana-day-spa-wellbeing-avalon-2/",
+      "wpFound": true,
+      "datePublished": "2022-09-19",
+      "stats": {
+        "wpWords": 727,
+        "mdxWords": 727,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "bare-beauty-house-manly",
+      "path": "content/destinations/travel/bare-beauty-house-manly/bare-beauty-house-manly.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/bare-beauty-house-manly/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/bare-beauty-house-manly/",
+      "wpFound": true,
+      "datePublished": "2022-06-06",
+      "stats": {
+        "wpWords": 507,
+        "mdxWords": 507,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "youth-lab-joondalup",
+      "path": "content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/youth-lab-joondalup/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/youth-lab-joondalup/",
+      "wpFound": true,
+      "datePublished": "2022-05-31",
+      "stats": {
+        "wpWords": 513,
+        "mdxWords": 509,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "crown-spa-perth-review",
+      "path": "content/destinations/spas-retreats/crown-spa-perth-review/crown-spa-perth-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/crown-spa-perth-review/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/crown-spa-perth-review/",
+      "wpFound": true,
+      "datePublished": "2022-05-20",
+      "stats": {
+        "wpWords": 642,
+        "mdxWords": 642,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-sleek-skin-clinic-favoured-by-in-the-know-melburnians",
+      "path": "content/destinations/clinics/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians/",
+      "wpFound": true,
+      "datePublished": "2021-04-06",
+      "stats": {
+        "wpWords": 659,
+        "mdxWords": 659,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "youth-lab-claremont",
+      "path": "content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/youth-lab-claremont/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/youth-lab-claremont/",
+      "wpFound": true,
+      "datePublished": "2021-03-09",
+      "stats": {
+        "wpWords": 437,
+        "mdxWords": 434,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "delphine-sorel-sydney",
+      "path": "content/destinations/clinics/delphine-sorel-sydney/delphine-sorel-sydney.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/delphine-sorel-sydney/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/delphine-sorel-sydney/",
+      "wpFound": true,
+      "datePublished": "2020-12-08",
+      "stats": {
+        "wpWords": 574,
+        "mdxWords": 570,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "escape-here-the-south-coast-sanctuary-for-self-care",
+      "path": "content/destinations/travel/escape-here-the-south-coast-sanctuary-for-self-care/escape-here-the-south-coast-sanctuary-for-self-care.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/escape-here-the-south-coast-sanctuary-for-self-care/",
+      "link": "https://www.beauticate.com/destination/travel/escape-here-the-south-coast-sanctuary-for-self-care/",
+      "wpFound": true,
+      "datePublished": "2020-10-20",
+      "stats": {
+        "wpWords": 1077,
+        "mdxWords": 1076,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "blanc-wa",
+      "path": "content/destinations/clinics/blanc-wa/blanc-wa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/blanc-wa/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/blanc-wa/",
+      "wpFound": true,
+      "datePublished": "2020-09-08",
+      "stats": {
+        "wpWords": 514,
+        "mdxWords": 510,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "que-colour-darlinghurst-2",
+      "path": "content/destinations/clinics/que-colour-darlinghurst-2/que-colour-darlinghurst-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/que-colour-darlinghurst-2/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/que-colour-darlinghurst-2/",
+      "wpFound": true,
+      "datePublished": "2020-08-18",
+      "stats": {
+        "wpWords": 575,
+        "mdxWords": 569,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "pamperina-woollahra",
+      "path": "content/destinations/clinics/pamperina-woollahra/pamperina-woollahra.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/pamperina-woollahra/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/pamperina-woollahra/",
+      "wpFound": true,
+      "datePublished": "2020-08-05",
+      "stats": {
+        "wpWords": 474,
+        "mdxWords": 469,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "koda-cutters-bondi",
+      "path": "content/destinations/clinics/koda-cutters-bondi/koda-cutters-bondi.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/koda-cutters-bondi/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/koda-cutters-bondi/",
+      "wpFound": true,
+      "datePublished": "2020-07-02",
+      "stats": {
+        "wpWords": 457,
+        "mdxWords": 451,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "you-have-to-visit-this-cult-perth-beauty-hub",
+      "path": "content/destinations/clinics/you-have-to-visit-this-cult-perth-beauty-hub/you-have-to-visit-this-cult-perth-beauty-hub.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/you-have-to-visit-this-cult-perth-beauty-hub/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/you-have-to-visit-this-cult-perth-beauty-hub/",
+      "wpFound": true,
+      "datePublished": "2019-12-03",
+      "stats": {
+        "wpWords": 647,
+        "mdxWords": 643,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula",
+      "path": "content/destinations/travel/thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula/thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula/",
+      "link": "https://www.beauticate.com/destination/travel/thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula/",
+      "wpFound": true,
+      "datePublished": "2019-12-03",
+      "stats": {
+        "wpWords": 1374,
+        "mdxWords": 1363,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict",
+      "path": "content/destinations/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict/",
+      "link": "https://www.beauticate.com/destination/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict/",
+      "wpFound": true,
+      "datePublished": "2019-08-28",
+      "stats": {
+        "wpWords": 1296,
+        "mdxWords": 1303,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "skincare-mecca-why-you-need-to-visit-myeongdong",
+      "path": "content/destinations/travel/skincare-mecca-why-you-need-to-visit-myeongdong/skincare-mecca-why-you-need-to-visit-myeongdong.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/skincare-mecca-why-you-need-to-visit-myeongdong/",
+      "link": "https://www.beauticate.com/destination/travel/skincare-mecca-why-you-need-to-visit-myeongdong/",
+      "wpFound": true,
+      "datePublished": "2019-03-26",
+      "stats": {
+        "wpWords": 1389,
+        "mdxWords": 1372,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-go-tos-bells-at-killcare-day-spa-nsw",
+      "path": "content/destinations/spas-retreats/the-go-tos-bells-at-killcare-day-spa-nsw/the-go-tos-bells-at-killcare-day-spa-nsw.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/the-go-tos-bells-at-killcare-day-spa-nsw/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/the-go-tos-bells-at-killcare-day-spa-nsw/",
+      "wpFound": true,
+      "datePublished": "2018-11-14",
+      "stats": {
+        "wpWords": 549,
+        "mdxWords": 548,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "we-visited-this-top-bali-resort-and-you-can-too",
+      "path": "content/destinations/travel/we-visited-this-top-bali-resort-and-you-can-too/we-visited-this-top-bali-resort-and-you-can-too.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/we-visited-this-top-bali-resort-and-you-can-too/",
+      "link": "https://www.beauticate.com/destination/travel/we-visited-this-top-bali-resort-and-you-can-too/",
+      "wpFound": true,
+      "datePublished": "2018-10-09",
+      "stats": {
+        "wpWords": 851,
+        "mdxWords": 851,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-youth-lab-perth",
+      "path": "content/destinations/travel/the-youth-lab-perth/the-youth-lab-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/the-youth-lab-perth/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/the-youth-lab-perth/",
+      "wpFound": true,
+      "datePublished": "2018-06-26",
+      "stats": {
+        "wpWords": 603,
+        "mdxWords": 599,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-go-tos-halcyon-house-nsw",
+      "path": "content/destinations/spas-retreats/the-go-tos-halcyon-house-nsw/the-go-tos-halcyon-house-nsw.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/the-go-tos-halcyon-house-nsw/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/the-go-tos-halcyon-house-nsw/",
+      "wpFound": true,
+      "datePublished": "2018-05-08",
+      "stats": {
+        "wpWords": 723,
+        "mdxWords": 723,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "serene-day-spa-wa",
+      "path": "content/destinations/clinics/serene-day-spa-wa/serene-day-spa-wa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/serene-day-spa-wa/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/serene-day-spa-wa/",
+      "wpFound": true,
+      "datePublished": "2018-03-26",
+      "stats": {
+        "wpWords": 518,
+        "mdxWords": 517,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-victorian-dermal-group-melbourne",
+      "path": "content/destinations/clinics/the-victorian-dermal-group-melbourne/the-victorian-dermal-group-melbourne.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/the-victorian-dermal-group-melbourne/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/the-victorian-dermal-group-melbourne/",
+      "wpFound": true,
+      "datePublished": "2018-02-13",
+      "stats": {
+        "wpWords": 549,
+        "mdxWords": 548,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "academy-face-and-body-subiaco-wa",
+      "path": "content/destinations/clinics/academy-face-and-body-subiaco-wa/academy-face-and-body-subiaco-wa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/academy-face-and-body-subiaco-wa/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/academy-face-and-body-subiaco-wa/",
+      "wpFound": true,
+      "datePublished": "2018-01-29",
+      "stats": {
+        "wpWords": 549,
+        "mdxWords": 548,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "vaia-beauty-darlinghurst",
+      "path": "content/destinations/clinics/vaia-beauty-darlinghurst/vaia-beauty-darlinghurst.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/vaia-beauty-darlinghurst/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/vaia-beauty-darlinghurst/",
+      "wpFound": true,
+      "datePublished": "2017-11-21",
+      "stats": {
+        "wpWords": 637,
+        "mdxWords": 637,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spa-q-qt-resort-gold-coast",
+      "path": "content/destinations/travel/spa-q-qt-resort-gold-coast/spa-q-qt-resort-gold-coast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/spa-q-qt-resort-gold-coast/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/spa-q-qt-resort-gold-coast/",
+      "wpFound": true,
+      "datePublished": "2017-11-15",
+      "stats": {
+        "wpWords": 515,
+        "mdxWords": 513,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "five-star-day-spa-erina",
+      "path": "content/destinations/clinics/five-star-day-spa-erina/five-star-day-spa-erina.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/five-star-day-spa-erina/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/five-star-day-spa-erina/",
+      "wpFound": true,
+      "datePublished": "2017-08-30",
+      "stats": {
+        "wpWords": 498,
+        "mdxWords": 495,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "edwards-and-co-melbourne",
+      "path": "content/destinations/clinics/edwards-and-co-melbourne/edwards-and-co-melbourne.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/edwards-and-co-melbourne/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/edwards-and-co-melbourne/",
+      "wpFound": true,
+      "datePublished": "2017-08-02",
+      "stats": {
+        "wpWords": 644,
+        "mdxWords": 642,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "realskin-clinic-hamilton",
+      "path": "content/destinations/clinics/realskin-clinic-hamilton/realskin-clinic-hamilton.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/realskin-clinic-hamilton/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/realskin-clinic-hamilton/",
+      "wpFound": true,
+      "datePublished": "2017-06-12",
+      "stats": {
+        "wpWords": 657,
+        "mdxWords": 654,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "edwards-co-surry-hills",
+      "path": "content/destinations/clinics/edwards-co-surry-hills/edwards-co-surry-hills.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/edwards-co-surry-hills/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/edwards-co-surry-hills/",
+      "wpFound": true,
+      "datePublished": "2017-03-19",
+      "stats": {
+        "wpWords": 503,
+        "mdxWords": 502,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "wildlife-studio-mcmahons-point",
+      "path": "content/destinations/clinics/wildlife-studio-mcmahons-point/wildlife-studio-mcmahons-point.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/wildlife-studio-mcmahons-point/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/wildlife-studio-mcmahons-point/",
+      "wpFound": true,
+      "datePublished": "2017-01-30",
+      "stats": {
+        "wpWords": 562,
+        "mdxWords": 562,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "la-belle-peau-north-perth",
+      "path": "content/destinations/travel/la-belle-peau-north-perth/la-belle-peau-north-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/la-belle-peau-north-perth/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/la-belle-peau-north-perth/",
+      "wpFound": true,
+      "datePublished": "2016-12-14",
+      "stats": {
+        "wpWords": 629,
+        "mdxWords": 626,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-other-side-of-ibiza-sigourneys-edit",
+      "path": "content/destinations/travel/the-other-side-of-ibiza-sigourneys-edit/the-other-side-of-ibiza-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/the-other-side-of-ibiza-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-other-side-of-ibiza-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2016-11-16",
+      "stats": {
+        "wpWords": 1515,
+        "mdxWords": 1514,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "como-shambhala-urban-escape",
+      "path": "content/destinations/clinics/como-shambhala-urban-escape/como-shambhala-urban-escape.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/como-shambhala-urban-escape/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/como-shambhala-urban-escape/",
+      "wpFound": true,
+      "datePublished": "2016-11-07",
+      "stats": {
+        "wpWords": 383,
+        "mdxWords": 381,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "chuan-spa-the-langham-melbourne-1",
+      "path": "content/destinations/clinics/chuan-spa-the-langham-melbourne-1/chuan-spa-the-langham-melbourne-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/chuan-spa-the-langham-melbourne-1/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/chuan-spa-the-langham-melbourne-1/",
+      "wpFound": true,
+      "datePublished": "2016-10-25",
+      "stats": {
+        "wpWords": 731,
+        "mdxWords": 731,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "one-only-spa-at-hayman-island-the-whitsundays",
+      "path": "content/destinations/spas-retreats/one-only-spa-at-hayman-island-the-whitsundays/one-only-spa-at-hayman-island-the-whitsundays.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/one-only-spa-at-hayman-island-the-whitsundays/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/one-only-spa-at-hayman-island-the-whitsundays/",
+      "wpFound": true,
+      "datePublished": "2016-08-24",
+      "stats": {
+        "wpWords": 465,
+        "mdxWords": 465,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "dessange-paddington",
+      "path": "content/destinations/clinics/dessange-paddington/dessange-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/dessange-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/dessange-paddington/",
+      "wpFound": true,
+      "datePublished": "2016-06-29",
+      "stats": {
+        "wpWords": 542,
+        "mdxWords": 541,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "karpatimedispa-double-bay",
+      "path": "content/destinations/spas-retreats/karpatimedispa-double-bay/karpatimedispa-double-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/karpatimedispa-double-bay/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/karpatimedispa-double-bay/",
+      "wpFound": true,
+      "datePublished": "2016-06-15",
+      "stats": {
+        "wpWords": 653,
+        "mdxWords": 653,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "melanie-grant-skin-health-double-bay",
+      "path": "content/destinations/spas-retreats/melanie-grant-skin-health-double-bay/melanie-grant-skin-health-double-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/melanie-grant-skin-health-double-bay/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/melanie-grant-skin-health-double-bay/",
+      "wpFound": true,
+      "datePublished": "2016-06-15",
+      "stats": {
+        "wpWords": 457,
+        "mdxWords": 455,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "robertson-kirkwood-salon-rozelle",
+      "path": "content/destinations/clinics/robertson-kirkwood-salon-rozelle/robertson-kirkwood-salon-rozelle.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/robertson-kirkwood-salon-rozelle/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/robertson-kirkwood-salon-rozelle/",
+      "wpFound": true,
+      "datePublished": "2016-06-01",
+      "stats": {
+        "wpWords": 499,
+        "mdxWords": 499,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "mineral-lifestyle-hair-spa-paddington",
+      "path": "content/destinations/travel/mineral-lifestyle-hair-spa-paddington/mineral-lifestyle-hair-spa-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/mineral-lifestyle-hair-spa-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/mineral-lifestyle-hair-spa-paddington/",
+      "wpFound": true,
+      "datePublished": "2016-06-01",
+      "stats": {
+        "wpWords": 582,
+        "mdxWords": 582,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "reader-review-advanced-aestheticsmedi-clinic-gold-coast",
+      "path": "content/destinations/travel/reader-review-advanced-aestheticsmedi-clinic-gold-coast/reader-review-advanced-aestheticsmedi-clinic-gold-coast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/reader-review-advanced-aestheticsmedi-clinic-gold-coast/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/reader-review-advanced-aestheticsmedi-clinic-gold-coast/",
+      "wpFound": true,
+      "datePublished": "2016-06-01",
+      "stats": {
+        "wpWords": 879,
+        "mdxWords": 879,
+        "wpImages": 4,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "djurra-salon-freemantle",
+      "path": "content/destinations/travel/djurra-salon-freemantle/djurra-salon-freemantle.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/djurra-salon-freemantle/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/djurra-salon-freemantle/",
+      "wpFound": true,
+      "datePublished": "2016-05-25",
+      "stats": {
+        "wpWords": 793,
+        "mdxWords": 792,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "juliana-marcs-double-bay",
+      "path": "content/destinations/clinics/juliana-marcs-double-bay/juliana-marcs-double-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/juliana-marcs-double-bay/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/juliana-marcs-double-bay/",
+      "wpFound": true,
+      "datePublished": "2016-05-20",
+      "stats": {
+        "wpWords": 646,
+        "mdxWords": 645,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "zucci-stjames",
+      "path": "content/destinations/travel/zucci-stjames/zucci-stjames.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/zucci-stjames/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/zucci-stjames/",
+      "wpFound": true,
+      "datePublished": "2016-05-20",
+      "stats": {
+        "wpWords": 566,
+        "mdxWords": 565,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "stephanies-vintage-spa-cleveland",
+      "path": "content/destinations/clinics/stephanies-vintage-spa-cleveland/stephanies-vintage-spa-cleveland.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/stephanies-vintage-spa-cleveland/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/stephanies-vintage-spa-cleveland/",
+      "wpFound": true,
+      "datePublished": "2016-05-17",
+      "stats": {
+        "wpWords": 446,
+        "mdxWords": 444,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "wieselmann-south-yarra",
+      "path": "content/destinations/clinics/wieselmann-south-yarra/wieselmann-south-yarra.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/wieselmann-south-yarra/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/wieselmann-south-yarra/",
+      "wpFound": true,
+      "datePublished": "2016-05-17",
+      "stats": {
+        "wpWords": 361,
+        "mdxWords": 360,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "assure-cosmetic-centre-subiaco-wa",
+      "path": "content/destinations/clinics/assure-cosmetic-centre-subiaco-wa/assure-cosmetic-centre-subiaco-wa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/assure-cosmetic-centre-subiaco-wa/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/assure-cosmetic-centre-subiaco-wa/",
+      "wpFound": true,
+      "datePublished": "2016-05-11",
+      "stats": {
+        "wpWords": 683,
+        "mdxWords": 682,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "skin-brilliance-brighton",
+      "path": "content/destinations/clinics/skin-brilliance-brighton/skin-brilliance-brighton.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/skin-brilliance-brighton/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/skin-brilliance-brighton/",
+      "wpFound": true,
+      "datePublished": "2016-03-15",
+      "stats": {
+        "wpWords": 511,
+        "mdxWords": 508,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "me-skin-and-body-south-yarra",
+      "path": "content/destinations/clinics/me-skin-and-body-south-yarra/me-skin-and-body-south-yarra.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/me-skin-and-body-south-yarra/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/me-skin-and-body-south-yarra/",
+      "wpFound": true,
+      "datePublished": "2016-03-10",
+      "stats": {
+        "wpWords": 598,
+        "mdxWords": 588,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-girl-you-love-glebe",
+      "path": "content/destinations/spas-retreats/the-girl-you-love-glebe/the-girl-you-love-glebe.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/the-girl-you-love-glebe/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/the-girl-you-love-glebe/",
+      "wpFound": true,
+      "datePublished": "2016-03-10",
+      "stats": {
+        "wpWords": 522,
+        "mdxWords": 520,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "dr-anh-clinic-review",
+      "path": "content/destinations/clinics/dr-anh-clinic-review/dr-anh-clinic-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/dr-anh-clinic-review/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/dr-anh-clinic-review/",
+      "wpFound": true,
+      "datePublished": "2016-03-08",
+      "stats": {
+        "wpWords": 453,
+        "mdxWords": 451,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "aesop-paddington",
+      "path": "content/destinations/clinics/aesop-paddington/aesop-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/aesop-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/aesop-paddington/",
+      "wpFound": true,
+      "datePublished": "2016-02-15",
+      "stats": {
+        "wpWords": 300,
+        "mdxWords": 300,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "aurora-spa-st-kilda",
+      "path": "content/destinations/clinics/aurora-spa-st-kilda/aurora-spa-st-kilda.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/aurora-spa-st-kilda/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/aurora-spa-st-kilda/",
+      "wpFound": true,
+      "datePublished": "2016-02-12",
+      "stats": {
+        "wpWords": 577,
+        "mdxWords": 577,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "clear-skincare-clinic-clarence-street-sydney",
+      "path": "content/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/clear-skincare-clinic-clarence-street-sydney.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/clear-skincare-clinic-clarence-street-sydney/",
+      "wpFound": true,
+      "datePublished": "2016-02-10",
+      "stats": {
+        "wpWords": 719,
+        "mdxWords": 718,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "gaia-byron-bay",
+      "path": "content/destinations/travel/gaia-byron-bay/gaia-byron-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/gaia-byron-bay/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/gaia-byron-bay/",
+      "wpFound": true,
+      "datePublished": "2015-12-31",
+      "stats": {
+        "wpWords": 1078,
+        "mdxWords": 1077,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "amy-jean-eye-couture-sydney",
+      "path": "content/destinations/clinics/amy-jean-eye-couture-sydney/amy-jean-eye-couture-sydney.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/amy-jean-eye-couture-sydney/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/amy-jean-eye-couture-sydney/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 661,
+        "mdxWords": 660,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "ella-bache-bondi-junction",
+      "path": "content/destinations/clinics/ella-bache-bondi-junction/ella-bache-bondi-junction.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/ella-bache-bondi-junction/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/ella-bache-bondi-junction/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 515,
+        "mdxWords": 514,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "paddington-beauty-room-paddington",
+      "path": "content/destinations/clinics/paddington-beauty-room-paddington/paddington-beauty-room-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/paddington-beauty-room-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/paddington-beauty-room-paddington/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 566,
+        "mdxWords": 564,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "wildlife-origin-milsons-point",
+      "path": "content/destinations/clinics/wildlife-origin-milsons-point/wildlife-origin-milsons-point.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/wildlife-origin-milsons-point/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/wildlife-origin-milsons-point/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 624,
+        "mdxWords": 621,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "bixie-colour",
+      "path": "content/destinations/travel/bixie-colour/bixie-colour.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/bixie-colour/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/bixie-colour/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 647,
+        "mdxWords": 645,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "jocelyn-petroni-woollahra",
+      "path": "content/destinations/travel/jocelyn-petroni-woollahra/jocelyn-petroni-woollahra.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/jocelyn-petroni-woollahra/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/jocelyn-petroni-woollahra/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 429,
+        "mdxWords": 428,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-darling-spa-pyrmont",
+      "path": "content/destinations/travel/the-darling-spa-pyrmont/the-darling-spa-pyrmont.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/the-darling-spa-pyrmont/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/the-darling-spa-pyrmont/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 505,
+        "mdxWords": 504,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-parlour-room",
+      "path": "content/destinations/travel/the-parlour-room/the-parlour-room.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/the-parlour-room/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/the-parlour-room/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 703,
+        "mdxWords": 699,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-spa-raes-on-wategos-byron-bay",
+      "path": "content/destinations/travel/the-spa-raes-on-wategos-byron-bay/the-spa-raes-on-wategos-byron-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/the-spa-raes-on-wategos-byron-bay/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/the-spa-raes-on-wategos-byron-bay/",
+      "wpFound": true,
+      "datePublished": "2015-12-15",
+      "stats": {
+        "wpWords": 796,
+        "mdxWords": 795,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "crown-spa-melbourne",
+      "path": "content/destinations/travel/crown-spa-melbourne/crown-spa-melbourne.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/crown-spa-melbourne/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/crown-spa-melbourne/",
+      "wpFound": true,
+      "datePublished": "2015-12-14",
+      "stats": {
+        "wpWords": 699,
+        "mdxWords": 697,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "raw-anthony-nader-surry-hills",
+      "path": "content/destinations/clinics/raw-anthony-nader-surry-hills/raw-anthony-nader-surry-hills.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/raw-anthony-nader-surry-hills/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/raw-anthony-nader-surry-hills/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 420,
+        "mdxWords": 420,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "tan-temple-bondi",
+      "path": "content/destinations/clinics/tan-temple-bondi/tan-temple-bondi.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/tan-temple-bondi/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/tan-temple-bondi/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 588,
+        "mdxWords": 586,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-nail-lab-darlinghurst",
+      "path": "content/destinations/clinics/the-nail-lab-darlinghurst/the-nail-lab-darlinghurst.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/the-nail-lab-darlinghurst/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/the-nail-lab-darlinghurst/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 420,
+        "mdxWords": 419,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "salus-spa-the-lakehouse-daylesford",
+      "path": "content/destinations/spas-retreats/salus-spa-the-lakehouse-daylesford/salus-spa-the-lakehouse-daylesford.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/salus-spa-the-lakehouse-daylesford/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/salus-spa-the-lakehouse-daylesford/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 869,
+        "mdxWords": 869,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "southern-spa-southern-ocean-lodge",
+      "path": "content/destinations/spas-retreats/southern-spa-southern-ocean-lodge/southern-spa-southern-ocean-lodge.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/southern-spa-southern-ocean-lodge/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/southern-spa-southern-ocean-lodge/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 575,
+        "mdxWords": 574,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "loccitane-petit-spa",
+      "path": "content/destinations/travel/loccitane-petit-spa/loccitane-petit-spa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/loccitane-petit-spa/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/loccitane-petit-spa/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 825,
+        "mdxWords": 823,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "stables-day-spa-at-mount-lofty-house-crafers",
+      "path": "content/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers/stables-day-spa-at-mount-lofty-house-crafers.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/stables-day-spa-at-mount-lofty-house-crafers/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 16,
+        "mdxWords": 16,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "valonz-paddington",
+      "path": "content/destinations/travel/valonz-paddington/valonz-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/valonz-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/valonz-paddington/",
+      "wpFound": true,
+      "datePublished": "2015-11-15",
+      "stats": {
+        "wpWords": 252,
+        "mdxWords": 251,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "elements-day-spa-darwin",
+      "path": "content/destinations/clinics/elements-day-spa-darwin/elements-day-spa-darwin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/elements-day-spa-darwin/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/elements-day-spa-darwin/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 285,
+        "mdxWords": 285,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "headcase-hair-paddington",
+      "path": "content/destinations/clinics/headcase-hair-paddington/headcase-hair-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/headcase-hair-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/headcase-hair-paddington/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 527,
+        "mdxWords": 527,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "hepburn-spa-and-bathhouse-daylesford",
+      "path": "content/destinations/clinics/hepburn-spa-and-bathhouse-daylesford/hepburn-spa-and-bathhouse-daylesford.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/hepburn-spa-and-bathhouse-daylesford/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/hepburn-spa-and-bathhouse-daylesford/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 649,
+        "mdxWords": 649,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "herbario-prahran",
+      "path": "content/destinations/clinics/herbario-prahran/herbario-prahran.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/herbario-prahran/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/herbario-prahran/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 295,
+        "mdxWords": 296,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "love-those-lashes-paddington",
+      "path": "content/destinations/clinics/love-those-lashes-paddington/love-those-lashes-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/love-those-lashes-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/love-those-lashes-paddington/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 469,
+        "mdxWords": 469,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "que-colour-darlinghurst",
+      "path": "content/destinations/clinics/que-colour-darlinghurst/que-colour-darlinghurst.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/que-colour-darlinghurst/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/que-colour-darlinghurst/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 359,
+        "mdxWords": 358,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "red-ochre-spa-ayers-rock",
+      "path": "content/destinations/spas-retreats/red-ochre-spa-ayers-rock/red-ochre-spa-ayers-rock.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/red-ochre-spa-ayers-rock/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/red-ochre-spa-ayers-rock/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 497,
+        "mdxWords": 497,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "chi-spa-shangri-la-hotel-sydney",
+      "path": "content/destinations/travel/chi-spa-shangri-la-hotel-sydney/chi-spa-shangri-la-hotel-sydney.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/chi-spa-shangri-la-hotel-sydney/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/chi-spa-shangri-la-hotel-sydney/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 667,
+        "mdxWords": 666,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "saffire-coles-bay",
+      "path": "content/destinations/travel/saffire-coles-bay/saffire-coles-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/saffire-coles-bay/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/saffire-coles-bay/",
+      "wpFound": true,
+      "datePublished": "2015-10-15",
+      "stats": {
+        "wpWords": 527,
+        "mdxWords": 527,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "concept-cosmetic-medicine-newcastle",
+      "path": "content/destinations/clinics/concept-cosmetic-medicine-newcastle/concept-cosmetic-medicine-newcastle.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/concept-cosmetic-medicine-newcastle/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/concept-cosmetic-medicine-newcastle/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 13,
+        "mdxWords": 13,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "daly-st-salon-adelaide",
+      "path": "content/destinations/clinics/daly-st-salon-adelaide/daly-st-salon-adelaide.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/daly-st-salon-adelaide/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/daly-st-salon-adelaide/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "edwards-and-co-surry-hills",
+      "path": "content/destinations/clinics/edwards-and-co-surry-hills/edwards-and-co-surry-hills.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/edwards-and-co-surry-hills/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/edwards-and-co-surry-hills/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 12,
+        "mdxWords": 12,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "endota-spa-glenelg",
+      "path": "content/destinations/clinics/endota-spa-glenelg/endota-spa-glenelg.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/endota-spa-glenelg/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/endota-spa-glenelg/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "esteem-medi-spa-gold-coast",
+      "path": "content/destinations/clinics/esteem-medi-spa-gold-coast/esteem-medi-spa-gold-coast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/esteem-medi-spa-gold-coast/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/skin-salons/esteem-medi-spa-gold-coast/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "follow-hair-studio-surfers-paradise",
+      "path": "content/destinations/clinics/follow-hair-studio-surfers-paradise/follow-hair-studio-surfers-paradise.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/follow-hair-studio-surfers-paradise/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/follow-hair-studio-surfers-paradise/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 211,
+        "mdxWords": 211,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "head-studio-perth",
+      "path": "content/destinations/clinics/head-studio-perth/head-studio-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/head-studio-perth/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/head-studio-perth/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "mr-burrows-newtown",
+      "path": "content/destinations/clinics/mr-burrows-newtown/mr-burrows-newtown.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/mr-burrows-newtown/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/mr-burrows-newtown/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 372,
+        "mdxWords": 372,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "mudd-spa-barton",
+      "path": "content/destinations/clinics/mudd-spa-barton/mudd-spa-barton.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/mudd-spa-barton/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/mudd-spa-barton/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 18,
+        "mdxWords": 18,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "salon-x-paddington",
+      "path": "content/destinations/clinics/salon-x-paddington/salon-x-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/salon-x-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/salon-x-paddington/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "savoy-day-spa-hobart",
+      "path": "content/destinations/clinics/savoy-day-spa-hobart/savoy-day-spa-hobart.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/savoy-day-spa-hobart/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/savoy-day-spa-hobart/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 466,
+        "mdxWords": 466,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spaq-qt-gold-coast",
+      "path": "content/destinations/clinics/spaq-qt-gold-coast/spaq-qt-gold-coast.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/spaq-qt-gold-coast/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/spaq-qt-gold-coast/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 16,
+        "mdxWords": 16,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spaq-qt-port-douglas",
+      "path": "content/destinations/clinics/spaq-qt-port-douglas/spaq-qt-port-douglas.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/spaq-qt-port-douglas/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/spaq-qt-port-douglas/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 16,
+        "mdxWords": 16,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "temple-day-spa",
+      "path": "content/destinations/clinics/temple-day-spa/temple-day-spa.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/temple-day-spa/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/temple-day-spa/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "chahoya-spa-by-loccitane-broome",
+      "path": "content/destinations/spas-retreats/chahoya-spa-by-loccitane-broome/chahoya-spa-by-loccitane-broome.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/chahoya-spa-by-loccitane-broome/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/chahoya-spa-by-loccitane-broome/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "como-the-treasury-perth",
+      "path": "content/destinations/spas-retreats/como-the-treasury-perth/como-the-treasury-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/como-the-treasury-perth/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/como-the-treasury-perth/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "empire-retreat-yallingup",
+      "path": "content/destinations/spas-retreats/empire-retreat-yallingup/empire-retreat-yallingup.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/empire-retreat-yallingup/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/empire-retreat-yallingup/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "facialistas-hyde-park",
+      "path": "content/destinations/spas-retreats/facialistas-hyde-park/facialistas-hyde-park.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/facialistas-hyde-park/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/facialistas-hyde-park/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "peppers-mineral-springs-hepburn-springs",
+      "path": "content/destinations/spas-retreats/peppers-mineral-springs-hepburn-springs/peppers-mineral-springs-hepburn-springs.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/peppers-mineral-springs-hepburn-springs/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/peppers-mineral-springs-hepburn-springs/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sharkra-medispa-hobart",
+      "path": "content/destinations/spas-retreats/sharkra-medispa-hobart/sharkra-medispa-hobart.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/sharkra-medispa-hobart/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/sharkra-medispa-hobart/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 17,
+        "mdxWords": 17,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spa-qualia-hamilton-island",
+      "path": "content/destinations/spas-retreats/spa-qualia-hamilton-island/spa-qualia-hamilton-island.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/spa-qualia-hamilton-island/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/spa-qualia-hamilton-island/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-day-spa-the-langham-sydney",
+      "path": "content/destinations/spas-retreats/the-day-spa-the-langham-sydney/the-day-spa-the-langham-sydney.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/the-day-spa-the-langham-sydney/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/the-day-spa-the-langham-sydney/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 261,
+        "mdxWords": 261,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-spa-byron-at-byron-resort-byron-bay",
+      "path": "content/destinations/spas-retreats/the-spa-byron-at-byron-resort-byron-bay/the-spa-byron-at-byron-resort-byron-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/the-spa-byron-at-byron-resort-byron-bay/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/the-spa-byron-at-byron-resort-byron-bay/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 16,
+        "mdxWords": 16,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "waldheim-spa-cradle-mountain-lodge",
+      "path": "content/destinations/spas-retreats/waldheim-spa-cradle-mountain-lodge/waldheim-spa-cradle-mountain-lodge.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/spas-retreats/waldheim-spa-cradle-mountain-lodge/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/waldheim-spa-cradle-mountain-lodge/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 484,
+        "mdxWords": 484,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "agape-hair-hobart",
+      "path": "content/destinations/travel/agape-hair-hobart/agape-hair-hobart.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/agape-hair-hobart/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/agape-hair-hobart/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "aurora-spa-palazzo-versace-gold-coast-main-beach",
+      "path": "content/destinations/travel/aurora-spa-palazzo-versace-gold-coast-main-beach/aurora-spa-palazzo-versace-gold-coast-main-beach.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/aurora-spa-palazzo-versace-gold-coast-main-beach/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/aurora-spa-palazzo-versace-gold-coast-main-beach/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 17,
+        "mdxWords": 17,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "axis-hair-braddon",
+      "path": "content/destinations/travel/axis-hair-braddon/axis-hair-braddon.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/axis-hair-braddon/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/axis-hair-braddon/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 307,
+        "mdxWords": 306,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "brad-ngata-darlinghurst",
+      "path": "content/destinations/travel/brad-ngata-darlinghurst/brad-ngata-darlinghurst.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/brad-ngata-darlinghurst/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/brad-ngata-darlinghurst/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "injidup-spa-retreat-yalingup",
+      "path": "content/destinations/travel/injidup-spa-retreat-yalingup/injidup-spa-retreat-yalingup.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/injidup-spa-retreat-yalingup/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/injidup-spa-retreat-yalingup/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "joey-scandizzo-south-yarra",
+      "path": "content/destinations/travel/joey-scandizzo-south-yarra/joey-scandizzo-south-yarra.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/joey-scandizzo-south-yarra/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/joey-scandizzo-south-yarra/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 413,
+        "mdxWords": 413,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "joh-bailey-double-bay",
+      "path": "content/destinations/travel/joh-bailey-double-bay/joh-bailey-double-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/joh-bailey-double-bay/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/joh-bailey-double-bay/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "la-boutique-double-bay",
+      "path": "content/destinations/travel/la-boutique-double-bay/la-boutique-double-bay.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/la-boutique-double-bay/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/la-boutique-double-bay/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 12,
+        "mdxWords": 12,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lee-preston-hairdressing-south-perth",
+      "path": "content/destinations/travel/lee-preston-hairdressing-south-perth/lee-preston-hairdressing-south-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/lee-preston-hairdressing-south-perth/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/lee-preston-hairdressing-south-perth/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "roji-canberra",
+      "path": "content/destinations/travel/roji-canberra/roji-canberra.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/roji-canberra/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/roji-canberra/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 17,
+        "mdxWords": 16,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "skin-deep-medi-spa-perth",
+      "path": "content/destinations/travel/skin-deep-medi-spa-perth/skin-deep-medi-spa-perth.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/skin-deep-medi-spa-perth/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/skin-deep-medi-spa-perth/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 17,
+        "mdxWords": 17,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spaq-qt-sydney",
+      "path": "content/destinations/travel/spaq-qt-sydney/spaq-qt-sydney.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/spaq-qt-sydney/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/spaq-qt-sydney/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 11,
+        "mdxWords": 11,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "togninis-hair-skin-and-body-fortitude-valley",
+      "path": "content/destinations/travel/togninis-hair-skin-and-body-fortitude-valley/togninis-hair-skin-and-body-fortitude-valley.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/togninis-hair-skin-and-body-fortitude-valley/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/togninis-hair-skin-and-body-fortitude-valley/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "toni-and-guy-subiaco",
+      "path": "content/destinations/travel/toni-and-guy-subiaco/toni-and-guy-subiaco.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/toni-and-guy-subiaco/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/toni-and-guy-subiaco/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 18,
+        "mdxWords": 18,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "wellness-spa-daintree-ecolodge",
+      "path": "content/destinations/travel/wellness-spa-daintree-ecolodge/wellness-spa-daintree-ecolodge.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/wellness-spa-daintree-ecolodge/",
+      "link": "https://www.beauticate.com/destination/travel/spas-retreats/wellness-spa-daintree-ecolodge/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 14,
+        "mdxWords": 14,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "yots-hair-north-adelaide",
+      "path": "content/destinations/travel/yots-hair-north-adelaide/yots-hair-north-adelaide.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/yots-hair-north-adelaide/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/yots-hair-north-adelaide/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 15,
+        "mdxWords": 15,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "tikkun-holistic-spa-santa-monica",
+      "path": "content/destinations/clinics/tikkun-holistic-spa-santa-monica/tikkun-holistic-spa-santa-monica.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/clinics/tikkun-holistic-spa-santa-monica/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/clinics/tikkun-holistic-spa-santa-monica/",
+      "wpFound": true,
+      "datePublished": "2015-04-28",
+      "stats": {
+        "wpWords": 649,
+        "mdxWords": 723,
+        "wpImages": 5,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "oscar-oscar-paddington",
+      "path": "content/destinations/travel/oscar-oscar-paddington/oscar-oscar-paddington.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/oscar-oscar-paddington/",
+      "link": "https://www.beauticate.com/destination/beauty-wellness/hair-salons/oscar-oscar-paddington/",
+      "wpFound": true,
+      "datePublished": "2015-04-22",
+      "stats": {
+        "wpWords": 388,
+        "mdxWords": 388,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-country-getaway",
+      "path": "content/destinations/travel/sigourneys-edit-country-getaway/sigourneys-edit-country-getaway.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/sigourneys-edit-country-getaway/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-country-getaway/",
+      "wpFound": true,
+      "datePublished": "2014-09-29",
+      "stats": {
+        "wpWords": 700,
+        "mdxWords": 696,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-wolgan-valley",
+      "path": "content/destinations/travel/sigourneys-edit-wolgan-valley/sigourneys-edit-wolgan-valley.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/destinations/travel/sigourneys-edit-wolgan-valley/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-wolgan-valley/",
+      "wpFound": true,
+      "datePublished": "2014-08-12",
+      "stats": {
+        "wpWords": 850,
+        "mdxWords": 849,
+        "wpImages": 0,
+        "mdxImages": 7,
         "wpCaptions": 0
       },
       "findings": []

@@ -25,7 +25,9 @@ const APPLY = process.argv.includes('--apply')
 const ci = process.argv.indexOf('--cat')
 const CAT = ci !== -1 ? process.argv[ci + 1] : 'beauty-style'
 
-const GLUE = /([.!?…”’"])\*([A-Z“‘"])/g
+// sentence/word char + single * (no space) + Capital = a glued italic intro/byline.
+// A space before * is legitimate italic, so requiring no space avoids real emphasis.
+const GLUE = /([.!?…”’"\w])\*([A-Z“‘"])/g
 const starParity = line => {
   const dbl = (line.match(/\*\*/g) || []).length
   // count single stars not part of ** : strip ** then count *

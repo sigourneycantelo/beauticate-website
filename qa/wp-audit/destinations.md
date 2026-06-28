@@ -1,7 +1,7 @@
-# WP ↔ Vercel audit — `destinations` (latest 12)
+# WP ↔ Vercel audit — `destinations` (latest 145)
 
-- ⚠️  1 article(s) with inconsistencies
-- ✅ 9 clean
+- ⚠️  4 article(s) with inconsistencies
+- ✅ 139 clean
 - ❓ 2 not found on WP (likely written post-migration)
 
 ## mondrian-gold-coast-review
@@ -28,14 +28,35 @@
     - https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-55-1024x1024.png  _(alt: Black Casetify Suitcase Flat Lay)_
     - https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-51-1024x1024.png  _(alt: Perri Cutten Suit on Model)_
     - https://www.beauticate.com/wp-content/uploads/2029/10/Currently-Loving-EDM-54-1024x1024.png  _(alt: ACLER BLUE DRESS FLATLAY CINIFORD MINI DRESS)_
-- **FLATTENED** (high): 6 image embed(s) flattened to a plain text link (image dropped in migration)
-    - linked to: https://mondrianhotels.com/gold-coast/
-    - linked to: https://mondrianhotels.com/gold-coast/accommodations/
-    - linked to: https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/
+- **FLATTENED** (high): 3 image embed(s) flattened to a plain text link (image dropped in migration)
     - linked to: https://mondrianhotels.com/gold-coast/dining/
     - linked to: https://lifecykel.com/
     - linked to: https://mondrianhotels.com/gold-coast/wellness/ciel-spa/
-- **MARKDOWN** (medium): mismatched-bold×1, space-close-bold×1
+
+## skin-temple-melbourne
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/destinations/clinics/skin-temple-melbourne/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/destination/beauty-wellness/skin-salons/skin-temple-melbourne/)
+- 📄 MDX: `content/destinations/clinics/skin-temple-melbourne/skin-temple-melbourne.mdx`
+- words WP/MDX: 951/1008 · images WP/MDX: 6/5
+
+- **IMAGES** (high): WP has 1 more body image(s) than MDX (WP 6 vs MDX 5) — likely missing
+    - https://www.beauticate.com/wp-content/uploads/2016/04/img-16.jpg
+
+## franck-provost-barangaroo-nsw
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/destinations/clinics/franck-provost-barangaroo-nsw/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/destination/beauty-wellness/hair-salons/franck-provost-barangaroo-nsw/)
+- 📄 MDX: `content/destinations/clinics/franck-provost-barangaroo-nsw/franck-provost-barangaroo-nsw.mdx`
+- words WP/MDX: 758/754 · images WP/MDX: 0/7
+
+- **MARKDOWN** (medium): glue×1
+
+## loccitane-petit-spa-subiaco-wa
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/destinations/clinics/loccitane-petit-spa-subiaco-wa/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/destination/beauty-wellness/clinics/loccitane-petit-spa-subiaco-wa/)
+- 📄 MDX: `content/destinations/clinics/loccitane-petit-spa-subiaco-wa/loccitane-petit-spa-subiaco-wa.mdx`
+- words WP/MDX: 855/926 · images WP/MDX: 5/5
+
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## ✅ Clean
 - [sustainable-luxury-travel-australia-wild-luxury-review ↗](https://beauticate-website.vercel.app/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review/)
@@ -47,6 +68,136 @@
 - [la-travel-guide-beverly-hills ↗](https://beauticate-website.vercel.app/destinations/travel/la-travel-guide-beverly-hills/)
 - [go-tos-natures-energy-glebe ↗](https://beauticate-website.vercel.app/destinations/travel/go-tos-natures-energy-glebe/)
 - [skyn-perth ↗](https://beauticate-website.vercel.app/destinations/clinics/skyn-perth/)
+- [spa-by-jw-jw-marriott-gold-coast ↗](https://beauticate-website.vercel.app/destinations/travel/spa-by-jw-jw-marriott-gold-coast/)
+- [discover-beauty-at-melbournes-most-luxurious-spa ↗](https://beauticate-website.vercel.app/destinations/clinics/discover-beauty-at-melbournes-most-luxurious-spa/)
+- [sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour ↗](https://beauticate-website.vercel.app/destinations/clinics/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour/)
+- [chateau-elan-spa-the-hunter-valley-nsw ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw/)
+- [chakana-day-spa-wellbeing-avalon-2 ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/chakana-day-spa-wellbeing-avalon-2/)
+- [bare-beauty-house-manly ↗](https://beauticate-website.vercel.app/destinations/travel/bare-beauty-house-manly/)
+- [youth-lab-joondalup ↗](https://beauticate-website.vercel.app/destinations/clinics/youth-lab-joondalup/)
+- [crown-spa-perth-review ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/crown-spa-perth-review/)
+- [the-sleek-skin-clinic-favoured-by-in-the-know-melburnians ↗](https://beauticate-website.vercel.app/destinations/clinics/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians/)
+- [youth-lab-claremont ↗](https://beauticate-website.vercel.app/destinations/clinics/youth-lab-claremont/)
+- [delphine-sorel-sydney ↗](https://beauticate-website.vercel.app/destinations/clinics/delphine-sorel-sydney/)
+- [escape-here-the-south-coast-sanctuary-for-self-care ↗](https://beauticate-website.vercel.app/destinations/travel/escape-here-the-south-coast-sanctuary-for-self-care/)
+- [blanc-wa ↗](https://beauticate-website.vercel.app/destinations/clinics/blanc-wa/)
+- [que-colour-darlinghurst-2 ↗](https://beauticate-website.vercel.app/destinations/clinics/que-colour-darlinghurst-2/)
+- [pamperina-woollahra ↗](https://beauticate-website.vercel.app/destinations/clinics/pamperina-woollahra/)
+- [koda-cutters-bondi ↗](https://beauticate-website.vercel.app/destinations/clinics/koda-cutters-bondi/)
+- [you-have-to-visit-this-cult-perth-beauty-hub ↗](https://beauticate-website.vercel.app/destinations/clinics/you-have-to-visit-this-cult-perth-beauty-hub/)
+- [thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula ↗](https://beauticate-website.vercel.app/destinations/travel/thermal-baths-and-vineyards-why-i-adore-the-mornington-peninsula/)
+- [we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict ↗](https://beauticate-website.vercel.app/destinations/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict/)
+- [skincare-mecca-why-you-need-to-visit-myeongdong ↗](https://beauticate-website.vercel.app/destinations/travel/skincare-mecca-why-you-need-to-visit-myeongdong/)
+- [the-go-tos-bells-at-killcare-day-spa-nsw ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/the-go-tos-bells-at-killcare-day-spa-nsw/)
+- [we-visited-this-top-bali-resort-and-you-can-too ↗](https://beauticate-website.vercel.app/destinations/travel/we-visited-this-top-bali-resort-and-you-can-too/)
+- [the-youth-lab-perth ↗](https://beauticate-website.vercel.app/destinations/travel/the-youth-lab-perth/)
+- [the-go-tos-halcyon-house-nsw ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/the-go-tos-halcyon-house-nsw/)
+- [serene-day-spa-wa ↗](https://beauticate-website.vercel.app/destinations/clinics/serene-day-spa-wa/)
+- [the-victorian-dermal-group-melbourne ↗](https://beauticate-website.vercel.app/destinations/clinics/the-victorian-dermal-group-melbourne/)
+- [academy-face-and-body-subiaco-wa ↗](https://beauticate-website.vercel.app/destinations/clinics/academy-face-and-body-subiaco-wa/)
+- [vaia-beauty-darlinghurst ↗](https://beauticate-website.vercel.app/destinations/clinics/vaia-beauty-darlinghurst/)
+- [spa-q-qt-resort-gold-coast ↗](https://beauticate-website.vercel.app/destinations/travel/spa-q-qt-resort-gold-coast/)
+- [five-star-day-spa-erina ↗](https://beauticate-website.vercel.app/destinations/clinics/five-star-day-spa-erina/)
+- [edwards-and-co-melbourne ↗](https://beauticate-website.vercel.app/destinations/clinics/edwards-and-co-melbourne/)
+- [realskin-clinic-hamilton ↗](https://beauticate-website.vercel.app/destinations/clinics/realskin-clinic-hamilton/)
+- [edwards-co-surry-hills ↗](https://beauticate-website.vercel.app/destinations/clinics/edwards-co-surry-hills/)
+- [wildlife-studio-mcmahons-point ↗](https://beauticate-website.vercel.app/destinations/clinics/wildlife-studio-mcmahons-point/)
+- [la-belle-peau-north-perth ↗](https://beauticate-website.vercel.app/destinations/travel/la-belle-peau-north-perth/)
+- [the-other-side-of-ibiza-sigourneys-edit ↗](https://beauticate-website.vercel.app/destinations/travel/the-other-side-of-ibiza-sigourneys-edit/)
+- [como-shambhala-urban-escape ↗](https://beauticate-website.vercel.app/destinations/clinics/como-shambhala-urban-escape/)
+- [chuan-spa-the-langham-melbourne-1 ↗](https://beauticate-website.vercel.app/destinations/clinics/chuan-spa-the-langham-melbourne-1/)
+- [one-only-spa-at-hayman-island-the-whitsundays ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/one-only-spa-at-hayman-island-the-whitsundays/)
+- [dessange-paddington ↗](https://beauticate-website.vercel.app/destinations/clinics/dessange-paddington/)
+- [karpatimedispa-double-bay ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/karpatimedispa-double-bay/)
+- [melanie-grant-skin-health-double-bay ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/melanie-grant-skin-health-double-bay/)
+- [robertson-kirkwood-salon-rozelle ↗](https://beauticate-website.vercel.app/destinations/clinics/robertson-kirkwood-salon-rozelle/)
+- [mineral-lifestyle-hair-spa-paddington ↗](https://beauticate-website.vercel.app/destinations/travel/mineral-lifestyle-hair-spa-paddington/)
+- [reader-review-advanced-aestheticsmedi-clinic-gold-coast ↗](https://beauticate-website.vercel.app/destinations/travel/reader-review-advanced-aestheticsmedi-clinic-gold-coast/)
+- [djurra-salon-freemantle ↗](https://beauticate-website.vercel.app/destinations/travel/djurra-salon-freemantle/)
+- [juliana-marcs-double-bay ↗](https://beauticate-website.vercel.app/destinations/clinics/juliana-marcs-double-bay/)
+- [zucci-stjames ↗](https://beauticate-website.vercel.app/destinations/travel/zucci-stjames/)
+- [stephanies-vintage-spa-cleveland ↗](https://beauticate-website.vercel.app/destinations/clinics/stephanies-vintage-spa-cleveland/)
+- [wieselmann-south-yarra ↗](https://beauticate-website.vercel.app/destinations/clinics/wieselmann-south-yarra/)
+- [assure-cosmetic-centre-subiaco-wa ↗](https://beauticate-website.vercel.app/destinations/clinics/assure-cosmetic-centre-subiaco-wa/)
+- [skin-brilliance-brighton ↗](https://beauticate-website.vercel.app/destinations/clinics/skin-brilliance-brighton/)
+- [me-skin-and-body-south-yarra ↗](https://beauticate-website.vercel.app/destinations/clinics/me-skin-and-body-south-yarra/)
+- [the-girl-you-love-glebe ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/the-girl-you-love-glebe/)
+- [dr-anh-clinic-review ↗](https://beauticate-website.vercel.app/destinations/clinics/dr-anh-clinic-review/)
+- [aesop-paddington ↗](https://beauticate-website.vercel.app/destinations/clinics/aesop-paddington/)
+- [aurora-spa-st-kilda ↗](https://beauticate-website.vercel.app/destinations/clinics/aurora-spa-st-kilda/)
+- [clear-skincare-clinic-clarence-street-sydney ↗](https://beauticate-website.vercel.app/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/)
+- [gaia-byron-bay ↗](https://beauticate-website.vercel.app/destinations/travel/gaia-byron-bay/)
+- [amy-jean-eye-couture-sydney ↗](https://beauticate-website.vercel.app/destinations/clinics/amy-jean-eye-couture-sydney/)
+- [ella-bache-bondi-junction ↗](https://beauticate-website.vercel.app/destinations/clinics/ella-bache-bondi-junction/)
+- [paddington-beauty-room-paddington ↗](https://beauticate-website.vercel.app/destinations/clinics/paddington-beauty-room-paddington/)
+- [wildlife-origin-milsons-point ↗](https://beauticate-website.vercel.app/destinations/clinics/wildlife-origin-milsons-point/)
+- [bixie-colour ↗](https://beauticate-website.vercel.app/destinations/travel/bixie-colour/)
+- [jocelyn-petroni-woollahra ↗](https://beauticate-website.vercel.app/destinations/travel/jocelyn-petroni-woollahra/)
+- [the-darling-spa-pyrmont ↗](https://beauticate-website.vercel.app/destinations/travel/the-darling-spa-pyrmont/)
+- [the-parlour-room ↗](https://beauticate-website.vercel.app/destinations/travel/the-parlour-room/)
+- [the-spa-raes-on-wategos-byron-bay ↗](https://beauticate-website.vercel.app/destinations/travel/the-spa-raes-on-wategos-byron-bay/)
+- [crown-spa-melbourne ↗](https://beauticate-website.vercel.app/destinations/travel/crown-spa-melbourne/)
+- [raw-anthony-nader-surry-hills ↗](https://beauticate-website.vercel.app/destinations/clinics/raw-anthony-nader-surry-hills/)
+- [tan-temple-bondi ↗](https://beauticate-website.vercel.app/destinations/clinics/tan-temple-bondi/)
+- [the-nail-lab-darlinghurst ↗](https://beauticate-website.vercel.app/destinations/clinics/the-nail-lab-darlinghurst/)
+- [salus-spa-the-lakehouse-daylesford ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/salus-spa-the-lakehouse-daylesford/)
+- [southern-spa-southern-ocean-lodge ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/southern-spa-southern-ocean-lodge/)
+- [loccitane-petit-spa ↗](https://beauticate-website.vercel.app/destinations/travel/loccitane-petit-spa/)
+- [stables-day-spa-at-mount-lofty-house-crafers ↗](https://beauticate-website.vercel.app/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers/)
+- [valonz-paddington ↗](https://beauticate-website.vercel.app/destinations/travel/valonz-paddington/)
+- [elements-day-spa-darwin ↗](https://beauticate-website.vercel.app/destinations/clinics/elements-day-spa-darwin/)
+- [headcase-hair-paddington ↗](https://beauticate-website.vercel.app/destinations/clinics/headcase-hair-paddington/)
+- [hepburn-spa-and-bathhouse-daylesford ↗](https://beauticate-website.vercel.app/destinations/clinics/hepburn-spa-and-bathhouse-daylesford/)
+- [herbario-prahran ↗](https://beauticate-website.vercel.app/destinations/clinics/herbario-prahran/)
+- [love-those-lashes-paddington ↗](https://beauticate-website.vercel.app/destinations/clinics/love-those-lashes-paddington/)
+- [que-colour-darlinghurst ↗](https://beauticate-website.vercel.app/destinations/clinics/que-colour-darlinghurst/)
+- [red-ochre-spa-ayers-rock ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/red-ochre-spa-ayers-rock/)
+- [chi-spa-shangri-la-hotel-sydney ↗](https://beauticate-website.vercel.app/destinations/travel/chi-spa-shangri-la-hotel-sydney/)
+- [saffire-coles-bay ↗](https://beauticate-website.vercel.app/destinations/travel/saffire-coles-bay/)
+- [concept-cosmetic-medicine-newcastle ↗](https://beauticate-website.vercel.app/destinations/clinics/concept-cosmetic-medicine-newcastle/)
+- [daly-st-salon-adelaide ↗](https://beauticate-website.vercel.app/destinations/clinics/daly-st-salon-adelaide/)
+- [edwards-and-co-surry-hills ↗](https://beauticate-website.vercel.app/destinations/clinics/edwards-and-co-surry-hills/)
+- [endota-spa-glenelg ↗](https://beauticate-website.vercel.app/destinations/clinics/endota-spa-glenelg/)
+- [esteem-medi-spa-gold-coast ↗](https://beauticate-website.vercel.app/destinations/clinics/esteem-medi-spa-gold-coast/)
+- [follow-hair-studio-surfers-paradise ↗](https://beauticate-website.vercel.app/destinations/clinics/follow-hair-studio-surfers-paradise/)
+- [head-studio-perth ↗](https://beauticate-website.vercel.app/destinations/clinics/head-studio-perth/)
+- [mr-burrows-newtown ↗](https://beauticate-website.vercel.app/destinations/clinics/mr-burrows-newtown/)
+- [mudd-spa-barton ↗](https://beauticate-website.vercel.app/destinations/clinics/mudd-spa-barton/)
+- [salon-x-paddington ↗](https://beauticate-website.vercel.app/destinations/clinics/salon-x-paddington/)
+- [savoy-day-spa-hobart ↗](https://beauticate-website.vercel.app/destinations/clinics/savoy-day-spa-hobart/)
+- [spaq-qt-gold-coast ↗](https://beauticate-website.vercel.app/destinations/clinics/spaq-qt-gold-coast/)
+- [spaq-qt-port-douglas ↗](https://beauticate-website.vercel.app/destinations/clinics/spaq-qt-port-douglas/)
+- [temple-day-spa ↗](https://beauticate-website.vercel.app/destinations/clinics/temple-day-spa/)
+- [chahoya-spa-by-loccitane-broome ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/chahoya-spa-by-loccitane-broome/)
+- [como-the-treasury-perth ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/como-the-treasury-perth/)
+- [empire-retreat-yallingup ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/empire-retreat-yallingup/)
+- [facialistas-hyde-park ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/facialistas-hyde-park/)
+- [peppers-mineral-springs-hepburn-springs ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/peppers-mineral-springs-hepburn-springs/)
+- [sharkra-medispa-hobart ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/sharkra-medispa-hobart/)
+- [spa-qualia-hamilton-island ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/spa-qualia-hamilton-island/)
+- [the-day-spa-the-langham-sydney ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/the-day-spa-the-langham-sydney/)
+- [the-spa-byron-at-byron-resort-byron-bay ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/the-spa-byron-at-byron-resort-byron-bay/)
+- [waldheim-spa-cradle-mountain-lodge ↗](https://beauticate-website.vercel.app/destinations/spas-retreats/waldheim-spa-cradle-mountain-lodge/)
+- [agape-hair-hobart ↗](https://beauticate-website.vercel.app/destinations/travel/agape-hair-hobart/)
+- [aurora-spa-palazzo-versace-gold-coast-main-beach ↗](https://beauticate-website.vercel.app/destinations/travel/aurora-spa-palazzo-versace-gold-coast-main-beach/)
+- [axis-hair-braddon ↗](https://beauticate-website.vercel.app/destinations/travel/axis-hair-braddon/)
+- [brad-ngata-darlinghurst ↗](https://beauticate-website.vercel.app/destinations/travel/brad-ngata-darlinghurst/)
+- [injidup-spa-retreat-yalingup ↗](https://beauticate-website.vercel.app/destinations/travel/injidup-spa-retreat-yalingup/)
+- [joey-scandizzo-south-yarra ↗](https://beauticate-website.vercel.app/destinations/travel/joey-scandizzo-south-yarra/)
+- [joh-bailey-double-bay ↗](https://beauticate-website.vercel.app/destinations/travel/joh-bailey-double-bay/)
+- [la-boutique-double-bay ↗](https://beauticate-website.vercel.app/destinations/travel/la-boutique-double-bay/)
+- [lee-preston-hairdressing-south-perth ↗](https://beauticate-website.vercel.app/destinations/travel/lee-preston-hairdressing-south-perth/)
+- [roji-canberra ↗](https://beauticate-website.vercel.app/destinations/travel/roji-canberra/)
+- [skin-deep-medi-spa-perth ↗](https://beauticate-website.vercel.app/destinations/travel/skin-deep-medi-spa-perth/)
+- [spaq-qt-sydney ↗](https://beauticate-website.vercel.app/destinations/travel/spaq-qt-sydney/)
+- [togninis-hair-skin-and-body-fortitude-valley ↗](https://beauticate-website.vercel.app/destinations/travel/togninis-hair-skin-and-body-fortitude-valley/)
+- [toni-and-guy-subiaco ↗](https://beauticate-website.vercel.app/destinations/travel/toni-and-guy-subiaco/)
+- [wellness-spa-daintree-ecolodge ↗](https://beauticate-website.vercel.app/destinations/travel/wellness-spa-daintree-ecolodge/)
+- [yots-hair-north-adelaide ↗](https://beauticate-website.vercel.app/destinations/travel/yots-hair-north-adelaide/)
+- [tikkun-holistic-spa-santa-monica ↗](https://beauticate-website.vercel.app/destinations/clinics/tikkun-holistic-spa-santa-monica/)
+- [oscar-oscar-paddington ↗](https://beauticate-website.vercel.app/destinations/travel/oscar-oscar-paddington/)
+- [sigourneys-edit-country-getaway ↗](https://beauticate-website.vercel.app/destinations/travel/sigourneys-edit-country-getaway/)
+- [sigourneys-edit-wolgan-valley ↗](https://beauticate-website.vercel.app/destinations/travel/sigourneys-edit-wolgan-valley/)
 
 ## ❓ Not found on WP
 - [paradisus-bali-melia-review ↗](https://beauticate-website.vercel.app/destinations/travel/paradisus-bali-melia-review/)

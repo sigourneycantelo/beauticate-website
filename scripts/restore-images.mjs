@@ -35,8 +35,12 @@ async function sig(buf) {
 }
 function dist(a, b) { if (!a || !b) return 1e9; let s = 0; for (let i = 0; i < a.length; i++) s += Math.abs(a[i] - b[i]); return s }
 
-const j = JSON.parse(readFileSync(join(ROOT, 'qa', 'wp-audit', 'beauty-style.json'), 'utf8'))
-const r = j.results.find(x => x.slug === slug) || { path: null }
+// find the article across all category reports
+let r = { path: null }
+for (const rep of readdirSync(join(ROOT, 'qa', 'wp-audit')).filter(f => f.endsWith('.json'))) {
+  const found = JSON.parse(readFileSync(join(ROOT, 'qa', 'wp-audit', rep), 'utf8')).results?.find(x => x.slug === slug)
+  if (found) { r = found; break }
+}
 const mdxPath = r.path && join(ROOT, r.path)
 const html = JSON.parse(readFileSync(join(ROOT, '.cache', 'wp', `${slug}.json`), 'utf8')).content?.rendered || ''
 
