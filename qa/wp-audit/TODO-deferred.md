@@ -99,3 +99,55 @@ Ambiguous markdown the batch safely declined — each needs per-article inspecti
 - the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet
 - these-are-the-beauty-brands-working-towards-better-packaging
 - decorate-your-home-with-scent
+
+## interviews FULL audit (363) — done 2026-06-28
+186 clean, 0 post-migration, 177 flagged → batch-fixed 125 glue + 4 bold + 1 META (rachel-finch). rae-morris (8-img gallery) deferred; carlos-huber TEXT + rae-morris FLATTENED + what-to-watch banner = false positives/skip; jocelyn(typo)/rojin(ellipsis) META skip.
+### Remaining manual markdown (48):
+- 11-years-of-beauticate-a-love-letter
+- stephanie-davies-founder-la-boheme-lifestyle
+- hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds
+- alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home
+- hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes
+- riley-minford-the-trans-model-owning-her-beauty
+- laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships
+- cece-meadows-the-colourful-makeup-brand-founder-on-beauty-as-therapy
+- melanie-grant-skin-specialist
+- samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties
+- jo-malone-cbe-the-queen-of-fragrance-who-loves-a-good-story
+- jules-sebastian-on-why-it-matters-to-make-sure-kids-and-grown-ups-are-having-fun
+- natalie-ferrari-the-in-demand-sydney-beauty-expert-shares-her-pregnancy-beauty-routine
+- ada-nicodemou-the-lifelong-tv-star-who-loves-to-be-a-beauty-guinea-pig
+- amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted
+- hannah-english-the-scientist-and-skinfluencer-encouraging-self-awareness-and-self-acceptance
+- rowi-singh-the-creative-makeup-genius-on-finding-her-identity-through-makeup
+- amy-beeck-perths-coolest-fashion-guru-who-schedules-each-day-down-to-the-minute
+- video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty
+- jessi-and-millie-poutama-the-lgbtq-activist-couple-living-a-truly-sustainable-lifestyle
+- ruby-hammer-the-celebrity-makeup-artist-shares-the-hard-won-life-and-beauty-lessons-she-has-learned-in-her-50s
+- abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance
+- alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother
+- alison-barton-chow-the-coco-ribbon-designer-with-a-time-saving-shower-hack
+- pippa-holt-a-fashion-insiders-guide-to-summer-beauty-and-statement-dressing
+- natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness
+- inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder
+- the-feminine-feminist-heart-surgeon-who-empowers-women-and-stockpiles-lipstick
+- trinny-woodall-shares-the-most-important-thing-about-ageing
+- the-french-fashion-designer-with-a-balinese-dream-home
+- the-society-jeweller-with-a-stylish-loungewear-wardrobe
+- why-this-model-mum-of-two-doesnt-own-a-hair-dryer
+- rachel-gilbert-designer
+- megan-gale-model-entrepreneur
+- kristin-rawson-interior-designer-editor
+- pia-muehlenbeck-vlogger
+- dina-broadhurst-artist
+- juju-roche-artist
+- amelia-mather-swimwear-designer
+- jennifer-hawkins-model-and-entrepreneur
+- karen-martini-chef-and-author
+- emma-seibold-fitness-entrepreneur
+- megan-hess-fashion-illustrator
+- laura-enever-pro-surfer
+- nadia-bartel-style-blogger
+- zoe-bingley-pullin-nutritionist-and-chef
+- lindy-klim
+- bianca-cheah
