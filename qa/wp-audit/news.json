@@ -1,0 +1,22 @@
+{
+  "category": "news",
+  "generated": "2026-06-28T09:48:42.695Z",
+  "results": [
+    {
+      "slug": "most-women-have-injectables-after-this-big-life-change",
+      "path": "content/news/most-women-have-injectables-after-this-big-life-change/most-women-have-injectables-after-this-big-life-change.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/news/most-women-have-injectables-after-this-big-life-change/",
+      "link": "https://www.beauticate.com/news/most-women-have-injectables-after-this-big-life-change/",
+      "wpFound": true,
+      "datePublished": "2017-12-11",
+      "stats": {
+        "wpWords": 251,
+        "mdxWords": 259,
+        "wpImages": 0,
+        "mdxImages": 0,
+        "wpCaptions": 0
+      },
+      "findings": []
+    }
+  ]
+}
