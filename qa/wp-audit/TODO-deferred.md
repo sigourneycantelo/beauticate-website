@@ -88,3 +88,8 @@ Ambiguous markdown the batch safely declined — each needs per-article inspecti
 - does-bullet-proof-coffee-live-up-to-the-hype (mangled **Day 3**/italic markers)
 - how-to-make-sauerkraut-for-gut-health (mangled credits italic/bold)
 - miranda-kerr…fell-asleep — META trailing ellipsis (cosmetic, skip)
+
+## destinations FULL audit (145) — done 2026-06-28
+122 clean, 2 post-migration, 21 flagged → fixed 12 glue + 8 bold/meta. IMAGES (mondrian, skin-temple) + FLATTENED = false positives (files present). Remaining manual:
+- franck-provost-barangaroo-nsw (glue split unbalances — manual)
+- loccitane-petit-spa-subiaco-wa (Word-junk + mangled bold/italic byline)
