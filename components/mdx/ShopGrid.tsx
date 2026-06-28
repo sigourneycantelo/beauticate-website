@@ -18,7 +18,7 @@ export function ShopItem({ image, name, price, url }: ShopItemProps) {
         <img
           src={image}
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
         />
       </div>
       <p className="text-[11px] leading-tight text-charcoal font-medium line-clamp-2 mb-0.5">{name}</p>
