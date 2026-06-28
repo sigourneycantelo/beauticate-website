@@ -6,7 +6,7 @@ batch after the category sweep finishes.
 
 ## Deferred gallery / image jobs
 - [ ] **destinations/mondrian-gold-coast-review** — 16 missing images (many `Currently-Loving-EDM` flatlays — decide inline vs shoppable grid first) + 6 flattened embeds + 2 markdown bugs.
-- [ ] **living/lazy-girls-guide-summer-entertaining** — 5 missing portrait images incl. two oversized animated GIFs (WEBSITE-PORTRAIT-11 = 12.7MB, -15 = 17.9MB) → optimize before embedding; use `<Portrait>` per the portrait-images rule. Placement maps by alt→section heading (Name Cards / Cake / Tablescape / Table Setting / "Sigourney and Jayde").
+- [x] **living/lazy-girls-guide-summer-entertaining** — RESOLVED as FALSE POSITIVE: content-match (restore-images.mjs) shows all 23 image files present locally (incl the big GIFs). Not missing; body just references fewer than WP. Optional later: surface more of the existing files.
 - [ ] **interviews/rae-morris-interview** — 8 photoshoot images to interleave into the existing gallery (MDX has every other image; insert each by WP order). NOTE: its FLATTENED `raemorris.com` hit is a FALSE POSITIVE (legit inline prose link "my own makeup brushes") — leave it.
 
 ## beauty-style FULL audit (973 articles) — remaining per-article work
@@ -93,3 +93,9 @@ Ambiguous markdown the batch safely declined — each needs per-article inspecti
 122 clean, 2 post-migration, 21 flagged → fixed 12 glue + 8 bold/meta. IMAGES (mondrian, skin-temple) + FLATTENED = false positives (files present). Remaining manual:
 - franck-provost-barangaroo-nsw (glue split unbalances — manual)
 - loccitane-petit-spa-subiaco-wa (Word-junk + mangled bold/italic byline)
+
+## living FULL audit (49) — done 2026-06-28
+30 clean, 1 post-migration, 18 flagged → fixed 13 glue + 1 META. lazy-girls IMAGES = false positive. Remaining manual (glue split unbalances / mangled credits):
+- the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet
+- these-are-the-beauty-brands-working-towards-better-packaging
+- decorate-your-home-with-scent
