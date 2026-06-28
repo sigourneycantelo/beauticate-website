@@ -82,3 +82,9 @@ Ambiguous markdown the batch safely declined — each needs per-article inspecti
 - video-how-to-do-a-natural-mineral-makeup-base-for-summer
 - 6-spring-beauty-buys-were-coveting
 - sigourney-1
+
+## wellness FULL audit (100) — done 2026-06-28
+83 clean, 2 post-migration, 15 flagged → fixed 10 glue + 2 bold. Word-CSS guard cleared TEXT FPs. Remaining manual:
+- does-bullet-proof-coffee-live-up-to-the-hype (mangled **Day 3**/italic markers)
+- how-to-make-sauerkraut-for-gut-health (mangled credits italic/bold)
+- miranda-kerr…fell-asleep — META trailing ellipsis (cosmetic, skip)
