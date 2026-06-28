@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import CartButton from '@/components/shop/CartButton'
 import SearchBar from '@/components/shared/SearchBar'
 
@@ -88,12 +88,24 @@ function articleHref(f: MegaArticle['frontmatter']) {
 }
 
 // ─── Full-width tabbed mega menu ──────────────────────────────────────────────
-function MegaMenu({ entries, open }: { entries: MegaMenuEntry[], open: boolean }) {
+function MegaMenu({
+  entries,
+  open,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  entries: MegaMenuEntry[]
+  open: boolean
+  onMouseEnter?: () => void
+  onMouseLeave?: () => void
+}) {
   const [activeHref, setActiveHref] = useState(entries[0]?.href ?? '')
   const active = entries.find(e => e.href === activeHref) ?? entries[0]
 
   return (
     <div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className={`absolute left-0 right-0 top-full z-50 bg-white text-left ${open ? 'grid' : 'hidden'}`}
       style={{
         gridTemplateColumns: '220px 1fr',
@@ -173,6 +185,19 @@ export default function Header({ megaMenuArticles }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [openMega, setOpenMega] = useState<string | null>(null)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+  }
+  const scheduleClose = () => {
+    cancelClose()
+    closeTimer.current = setTimeout(() => setOpenMega(null), 150)
+  }
+  const openMenu = (href: string) => {
+    cancelClose()
+    setOpenMega(href)
+  }
 
   return (
     <header
@@ -283,8 +308,8 @@ export default function Header({ megaMenuArticles }: Props) {
             <div
               key={item.href}
               className="group"
-              onMouseEnter={() => hasMega ? setOpenMega(item.href) : undefined}
-              onMouseLeave={() => setOpenMega(null)}
+              onMouseEnter={() => hasMega ? openMenu(item.href) : undefined}
+              onMouseLeave={scheduleClose}
             >
               <Link
                 href={item.href}
@@ -299,7 +324,14 @@ export default function Header({ megaMenuArticles }: Props) {
               >
                 {item.label}
               </Link>
-              {entries && entries.length > 0 && <MegaMenu entries={entries} open={isOpen} />}
+              {entries && entries.length > 0 && (
+                <MegaMenu
+                  entries={entries}
+                  open={isOpen}
+                  onMouseEnter={cancelClose}
+                  onMouseLeave={scheduleClose}
+                />
+              )}
             </div>
           )
         })}
