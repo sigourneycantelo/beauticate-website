@@ -1,7 +1,7 @@
 # WP ↔ Vercel audit — `living` (latest 12)
 
-- ⚠️  4 article(s) with inconsistencies
-- ✅ 7 clean
+- ⚠️  2 article(s) with inconsistencies
+- ✅ 9 clean
 - ❓ 1 not found on WP (likely written post-migration)
 
 ## pool-accessories-that-changed-our-lives
@@ -29,29 +29,15 @@
     - https://www.beauticate.com/wp-content/uploads/2026/01/9.png  _(alt: table setting)_
     - https://www.beauticate.com/wp-content/uploads/2026/01/WEBSITE-PORTRAIT-15.gif  _(alt: Sigourney and Jayde)_
 
-## we-tried-samsungs-latest-statement-making-tv
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/living/interiors/we-tried-samsungs-latest-statement-making-tv/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/living/interiors/we-tried-samsungs-latest-statement-making-tv/)
-- 📄 MDX: `content/living/interiors/we-tried-samsungs-latest-statement-making-tv/we-tried-samsungs-latest-statement-making-tv.mdx`
-- words WP/MDX: 540/410 · images WP/MDX: 0/9
-
-- **TEXT** (high): MDX shorter than WP by 130 words (WP 540 vs MDX 410, 24% missing)
-
-## how-to-create-dreamy-bedrooms
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/living/interiors/how-to-create-dreamy-bedrooms/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/living/interiors/how-to-create-dreamy-bedrooms/)
-- 📄 MDX: `content/living/interiors/how-to-create-dreamy-bedrooms/how-to-create-dreamy-bedrooms.mdx`
-- words WP/MDX: 663/554 · images WP/MDX: 0/9
-
-- **TEXT** (high): MDX shorter than WP by 109 words (WP 663 vs MDX 554, 16% missing)
-
 ## ✅ Clean
 - [dyson-v16-review ↗](https://beauticate-website.vercel.app/living/lifestyle/dyson-v16-review/)
 - [how-sheer-curtains-can-transform-a-space ↗](https://beauticate-website.vercel.app/living/interiors/how-sheer-curtains-can-transform-a-space/)
 - [airgarden ↗](https://beauticate-website.vercel.app/living/sustainability/airgarden/)
 - [8-at-trinity ↗](https://beauticate-website.vercel.app/living/lifestyle/8-at-trinity/)
 - [we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2 ↗](https://beauticate-website.vercel.app/living/sustainability/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2/)
+- [we-tried-samsungs-latest-statement-making-tv ↗](https://beauticate-website.vercel.app/living/interiors/we-tried-samsungs-latest-statement-making-tv/)
 - [alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful ↗](https://beauticate-website.vercel.app/living/interiors/alisa-and-lysandra-fraser-the-interior-design-duo-on-how-to-make-your-bathroom-beautiful/)
+- [how-to-create-dreamy-bedrooms ↗](https://beauticate-website.vercel.app/living/interiors/how-to-create-dreamy-bedrooms/)
 - [inside-the-beauticate-beauty-cupboard ↗](https://beauticate-website.vercel.app/living/interiors/inside-the-beauticate-beauty-cupboard/)
 
 ## ❓ Not found on WP

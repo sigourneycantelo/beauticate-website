@@ -1,6 +1,6 @@
 {
   "category": "living",
-  "generated": "2026-06-28T08:42:53.479Z",
+  "generated": "2026-06-28T08:48:13.771Z",
   "results": [
     {
       "slug": "pool-accessories-that-changed-our-lives",
@@ -94,50 +94,6 @@
       ]
     },
     {
-      "slug": "we-tried-samsungs-latest-statement-making-tv",
-      "path": "content/living/interiors/we-tried-samsungs-latest-statement-making-tv/we-tried-samsungs-latest-statement-making-tv.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/we-tried-samsungs-latest-statement-making-tv/",
-      "link": "https://www.beauticate.com/living/interiors/we-tried-samsungs-latest-statement-making-tv/",
-      "wpFound": true,
-      "datePublished": "2022-04-26",
-      "stats": {
-        "wpWords": 540,
-        "mdxWords": 410,
-        "wpImages": 0,
-        "mdxImages": 9,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "TEXT",
-          "severity": "high",
-          "summary": "MDX shorter than WP by 130 words (WP 540 vs MDX 410, 24% missing)"
-        }
-      ]
-    },
-    {
-      "slug": "how-to-create-dreamy-bedrooms",
-      "path": "content/living/interiors/how-to-create-dreamy-bedrooms/how-to-create-dreamy-bedrooms.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-to-create-dreamy-bedrooms/",
-      "link": "https://www.beauticate.com/living/interiors/how-to-create-dreamy-bedrooms/",
-      "wpFound": true,
-      "datePublished": "2022-03-29",
-      "stats": {
-        "wpWords": 663,
-        "mdxWords": 554,
-        "wpImages": 0,
-        "mdxImages": 9,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "TEXT",
-          "severity": "high",
-          "summary": "MDX shorter than WP by 109 words (WP 663 vs MDX 554, 16% missing)"
-        }
-      ]
-    },
-    {
       "slug": "giving-back-became-non-negotiable",
       "path": "content/living/giving-back-became-non-negotiable/giving-back-became-non-negotiable.mdx",
       "vercelUrl": "https://beauticate-website.vercel.app/living/giving-back-became-non-negotiable/",
@@ -169,7 +125,7 @@
       "wpFound": true,
       "datePublished": "2024-11-10",
       "stats": {
-        "wpWords": 912,
+        "wpWords": 892,
         "mdxWords": 888,
         "wpImages": 0,
         "mdxImages": 10,
@@ -185,7 +141,7 @@
       "wpFound": true,
       "datePublished": "2024-04-18",
       "stats": {
-        "wpWords": 1189,
+        "wpWords": 1151,
         "mdxWords": 1142,
         "wpImages": 0,
         "mdxImages": 10,
@@ -201,7 +157,7 @@
       "wpFound": true,
       "datePublished": "2024-01-24",
       "stats": {
-        "wpWords": 714,
+        "wpWords": 668,
         "mdxWords": 665,
         "wpImages": 0,
         "mdxImages": 10,
@@ -217,10 +173,26 @@
       "wpFound": true,
       "datePublished": "2023-06-15",
       "stats": {
-        "wpWords": 1530,
+        "wpWords": 1480,
         "mdxWords": 1454,
         "wpImages": 0,
         "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "we-tried-samsungs-latest-statement-making-tv",
+      "path": "content/living/interiors/we-tried-samsungs-latest-statement-making-tv/we-tried-samsungs-latest-statement-making-tv.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/we-tried-samsungs-latest-statement-making-tv/",
+      "link": "https://www.beauticate.com/living/interiors/we-tried-samsungs-latest-statement-making-tv/",
+      "wpFound": true,
+      "datePublished": "2022-04-26",
+      "stats": {
+        "wpWords": 483,
+        "mdxWords": 410,
+        "wpImages": 0,
+        "mdxImages": 9,
         "wpCaptions": 0
       },
       "findings": []
@@ -233,10 +205,26 @@
       "wpFound": true,
       "datePublished": "2022-04-06",
       "stats": {
-        "wpWords": 1604,
+        "wpWords": 1561,
         "mdxWords": 1528,
         "wpImages": 0,
         "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-create-dreamy-bedrooms",
+      "path": "content/living/interiors/how-to-create-dreamy-bedrooms/how-to-create-dreamy-bedrooms.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-to-create-dreamy-bedrooms/",
+      "link": "https://www.beauticate.com/living/interiors/how-to-create-dreamy-bedrooms/",
+      "wpFound": true,
+      "datePublished": "2022-03-29",
+      "stats": {
+        "wpWords": 556,
+        "mdxWords": 554,
+        "wpImages": 0,
+        "mdxImages": 9,
         "wpCaptions": 0
       },
       "findings": []
@@ -249,7 +237,7 @@
       "wpFound": true,
       "datePublished": "2022-02-15",
       "stats": {
-        "wpWords": 488,
+        "wpWords": 422,
         "mdxWords": 420,
         "wpImages": 0,
         "mdxImages": 10,

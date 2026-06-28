@@ -93,6 +93,11 @@ function decode(str = '') {
 }
 
 // ─── HTML helpers for WP content.rendered ────────────────────────────────────
+// Strip leftover WPBakery/WordPress shortcodes (e.g. [vc_row], [vc_column_text],
+// [vc_single_image image="..." link="..."], [/caption]). On old migrated posts
+// these survive in content.rendered and otherwise inflate the WP word count,
+// causing false TEXT-truncation findings.
+function stripShortcodes(s) { return s.replace(/\[\/?[a-z][^\]]*\]/gi, ' ') }
 function stripTags(html) {
   return decode(
     html
@@ -250,7 +255,7 @@ async function auditArticle(item, users) {
   const wpHtml = wp.content?.rendered || ''
   const wpImages = extractWpImages(wpHtml)
   const wpCaptions = extractWpCaptions(wpHtml)
-  const wpWords = wordCount(stripTags(wpHtml))
+  const wpWords = wordCount(stripShortcodes(stripTags(wpHtml)))
   const wpTitle = decode(wp.title?.rendered || '')
   const wpDate = (wp.date || '').slice(0, 10)
   const wpAuthor = users[wp.author] || ''
