@@ -1,6 +1,6 @@
 {
   "category": "living",
-  "generated": "2026-06-28T08:55:52.535Z",
+  "generated": "2026-06-28T21:21:20.741Z",
   "results": [
     {
       "slug": "lazy-girls-guide-summer-entertaining",
@@ -41,6 +41,94 @@
             {
               "src": "https://www.beauticate.com/wp-content/uploads/2026/01/WEBSITE-PORTRAIT-15.gif",
               "alt": "Sigourney and Jayde"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet",
+      "path": "content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/",
+      "link": "https://www.beauticate.com/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/",
+      "wpFound": true,
+      "datePublished": "2021-11-01",
+      "stats": {
+        "wpWords": 1182,
+        "mdxWords": 1175,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "glue×1, mismatched-bold×1",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 47
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 47
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "these-are-the-beauty-brands-working-towards-better-packaging",
+      "path": "content/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging/these-are-the-beauty-brands-working-towards-better-packaging.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging/",
+      "link": "https://www.beauticate.com/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging/",
+      "wpFound": true,
+      "datePublished": "2021-08-25",
+      "stats": {
+        "wpWords": 3024,
+        "mdxWords": 2988,
+        "wpImages": 0,
+        "mdxImages": 25,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "glue×1",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 145
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "decorate-your-home-with-scent",
+      "path": "content/living/interiors/decorate-your-home-with-scent/decorate-your-home-with-scent.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/decorate-your-home-with-scent/",
+      "link": "https://www.beauticate.com/living/interiors/decorate-your-home-with-scent/",
+      "wpFound": true,
+      "datePublished": "2018-09-12",
+      "stats": {
+        "wpWords": 325,
+        "mdxWords": 323,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "glue×1",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 29
             }
           ]
         }
@@ -210,6 +298,550 @@
         "mdxWords": 420,
         "wpImages": 0,
         "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "these-7-things-make-entertaining-a-cinch",
+      "path": "content/living/lifestyle/these-7-things-make-entertaining-a-cinch/these-7-things-make-entertaining-a-cinch.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/these-7-things-make-entertaining-a-cinch/",
+      "link": "https://www.beauticate.com/living/lifestyle/these-7-things-make-entertaining-a-cinch/",
+      "wpFound": true,
+      "datePublished": "2021-12-14",
+      "stats": {
+        "wpWords": 818,
+        "mdxWords": 815,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-turn-your-home-into-a-holiday-haven-according-to-a-seasoned-pro",
+      "path": "content/living/interiors/how-to-turn-your-home-into-a-holiday-haven-according-to-a-seasoned-pro/how-to-turn-your-home-into-a-holiday-haven-according-to-a-seasoned-pro.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-to-turn-your-home-into-a-holiday-haven-according-to-a-seasoned-pro/",
+      "link": "https://www.beauticate.com/living/interiors/how-to-turn-your-home-into-a-holiday-haven-according-to-a-seasoned-pro/",
+      "wpFound": true,
+      "datePublished": "2021-12-06",
+      "stats": {
+        "wpWords": 1372,
+        "mdxWords": 1372,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful",
+      "path": "content/living/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful/",
+      "link": "https://www.beauticate.com/living/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful/",
+      "wpFound": true,
+      "datePublished": "2021-10-19",
+      "stats": {
+        "wpWords": 719,
+        "mdxWords": 719,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "run-out-of-your-usual-products-opt-for-these-sustainable-alternatives-instead",
+      "path": "content/living/sustainability/run-out-of-your-usual-products-opt-for-these-sustainable-alternatives-instead/run-out-of-your-usual-products-opt-for-these-sustainable-alternatives-instead.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/run-out-of-your-usual-products-opt-for-these-sustainable-alternatives-instead/",
+      "link": "https://www.beauticate.com/living/sustainability/run-out-of-your-usual-products-opt-for-these-sustainable-alternatives-instead/",
+      "wpFound": true,
+      "datePublished": "2021-09-07",
+      "stats": {
+        "wpWords": 871,
+        "mdxWords": 865,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "is-your-makeup-routine-bad-for-the-planet",
+      "path": "content/living/sustainability/is-your-makeup-routine-bad-for-the-planet/is-your-makeup-routine-bad-for-the-planet.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/is-your-makeup-routine-bad-for-the-planet/",
+      "link": "https://www.beauticate.com/living/sustainability/is-your-makeup-routine-bad-for-the-planet/",
+      "wpFound": true,
+      "datePublished": "2021-08-31",
+      "stats": {
+        "wpWords": 1171,
+        "mdxWords": 1152,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "announcing-our-new-sustainability-section-go-green",
+      "path": "content/living/sustainability/announcing-our-new-sustainability-section-go-green/announcing-our-new-sustainability-section-go-green.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/announcing-our-new-sustainability-section-go-green/",
+      "link": "https://www.beauticate.com/living/sustainability/announcing-our-new-sustainability-section-go-green/",
+      "wpFound": true,
+      "datePublished": "2021-07-12",
+      "stats": {
+        "wpWords": 652,
+        "mdxWords": 641,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-i-navigate-working-from-home",
+      "path": "content/living/interiors/how-i-navigate-working-from-home/how-i-navigate-working-from-home.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-i-navigate-working-from-home/",
+      "link": "https://www.beauticate.com/living/interiors/how-i-navigate-working-from-home/",
+      "wpFound": true,
+      "datePublished": "2021-03-12",
+      "stats": {
+        "wpWords": 1104,
+        "mdxWords": 1102,
+        "wpImages": 0,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-decorating-trends-to-create-a-chic-sanctuary-at-home",
+      "path": "content/living/interiors/the-decorating-trends-to-create-a-chic-sanctuary-at-home/the-decorating-trends-to-create-a-chic-sanctuary-at-home.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/the-decorating-trends-to-create-a-chic-sanctuary-at-home/",
+      "link": "https://www.beauticate.com/living/interiors/the-decorating-trends-to-create-a-chic-sanctuary-at-home/",
+      "wpFound": true,
+      "datePublished": "2020-12-14",
+      "stats": {
+        "wpWords": 790,
+        "mdxWords": 789,
+        "wpImages": 0,
+        "mdxImages": 17,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "this-coffee-table-majorly-upped-our-entertaining-game",
+      "path": "content/living/interiors/this-coffee-table-majorly-upped-our-entertaining-game/this-coffee-table-majorly-upped-our-entertaining-game.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/this-coffee-table-majorly-upped-our-entertaining-game/",
+      "link": "https://www.beauticate.com/living/interiors/this-coffee-table-majorly-upped-our-entertaining-game/",
+      "wpFound": true,
+      "datePublished": "2020-11-17",
+      "stats": {
+        "wpWords": 823,
+        "mdxWords": 815,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "bangarra-dance-theatres-tyrel-dulvarie-and-lillian-banks-on-the-power-of-representation",
+      "path": "content/living/lifestyle/bangarra-dance-theatres-tyrel-dulvarie-and-lillian-banks-on-the-power-of-representation/bangarra-dance-theatres-tyrel-dulvarie-and-lillian-banks-on-the-power-of-representation.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/bangarra-dance-theatres-tyrel-dulvarie-and-lillian-banks-on-the-power-of-representation/",
+      "link": "https://www.beauticate.com/living/lifestyle/bangarra-dance-theatres-tyrel-dulvarie-and-lillian-banks-on-the-power-of-representation/",
+      "wpFound": true,
+      "datePublished": "2020-11-16",
+      "stats": {
+        "wpWords": 1376,
+        "mdxWords": 1375,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-art-of-tablescaping-the-chic-trend-taking-over-instagram",
+      "path": "content/living/interiors/the-art-of-tablescaping-the-chic-trend-taking-over-instagram/the-art-of-tablescaping-the-chic-trend-taking-over-instagram.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/the-art-of-tablescaping-the-chic-trend-taking-over-instagram/",
+      "link": "https://www.beauticate.com/living/interiors/the-art-of-tablescaping-the-chic-trend-taking-over-instagram/",
+      "wpFound": true,
+      "datePublished": "2020-06-24",
+      "stats": {
+        "wpWords": 425,
+        "mdxWords": 425,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lockdown-learnings-4-who-profile-alumnae-share-how-their-lives-have-evolved",
+      "path": "content/living/lifestyle/lockdown-learnings-4-who-profile-alumnae-share-how-their-lives-have-evolved/lockdown-learnings-4-who-profile-alumnae-share-how-their-lives-have-evolved.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/lockdown-learnings-4-who-profile-alumnae-share-how-their-lives-have-evolved/",
+      "link": "https://www.beauticate.com/living/lifestyle/lockdown-learnings-4-who-profile-alumnae-share-how-their-lives-have-evolved/",
+      "wpFound": true,
+      "datePublished": "2020-06-24",
+      "stats": {
+        "wpWords": 1255,
+        "mdxWords": 1253,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-5-chic-podcasts-were-currently-streaming",
+      "path": "content/living/lifestyle/the-5-chic-podcasts-were-currently-streaming/the-5-chic-podcasts-were-currently-streaming.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/the-5-chic-podcasts-were-currently-streaming/",
+      "link": "https://www.beauticate.com/living/lifestyle/the-5-chic-podcasts-were-currently-streaming/",
+      "wpFound": true,
+      "datePublished": "2020-05-04",
+      "stats": {
+        "wpWords": 457,
+        "mdxWords": 451,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-stay-sane-at-home-from-someone-who-is-always-at-home",
+      "path": "content/living/lifestyle/how-to-stay-sane-at-home-from-someone-who-is-always-at-home/how-to-stay-sane-at-home-from-someone-who-is-always-at-home.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/how-to-stay-sane-at-home-from-someone-who-is-always-at-home/",
+      "link": "https://www.beauticate.com/living/lifestyle/how-to-stay-sane-at-home-from-someone-who-is-always-at-home/",
+      "wpFound": true,
+      "datePublished": "2020-04-28",
+      "stats": {
+        "wpWords": 1807,
+        "mdxWords": 1801,
+        "wpImages": 0,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "these-home-office-beauties-will-help-make-working-from-home-a-breeze",
+      "path": "content/living/interiors/these-home-office-beauties-will-help-make-working-from-home-a-breeze/these-home-office-beauties-will-help-make-working-from-home-a-breeze.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/these-home-office-beauties-will-help-make-working-from-home-a-breeze/",
+      "link": "https://www.beauticate.com/living/interiors/these-home-office-beauties-will-help-make-working-from-home-a-breeze/",
+      "wpFound": true,
+      "datePublished": "2020-03-30",
+      "stats": {
+        "wpWords": 412,
+        "mdxWords": 412,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-5-instagram-accounts-you-need-to-be-following-for-major-interior-inspo",
+      "path": "content/living/interiors/the-5-instagram-accounts-you-need-to-be-following-for-major-interior-inspo/the-5-instagram-accounts-you-need-to-be-following-for-major-interior-inspo.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/the-5-instagram-accounts-you-need-to-be-following-for-major-interior-inspo/",
+      "link": "https://www.beauticate.com/living/interiors/the-5-instagram-accounts-you-need-to-be-following-for-major-interior-inspo/",
+      "wpFound": true,
+      "datePublished": "2020-03-17",
+      "stats": {
+        "wpWords": 343,
+        "mdxWords": 343,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "luxe-your-laundry-and-youll-love-doing-the-washing",
+      "path": "content/living/interiors/luxe-your-laundry-and-youll-love-doing-the-washing/luxe-your-laundry-and-youll-love-doing-the-washing.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/luxe-your-laundry-and-youll-love-doing-the-washing/",
+      "link": "https://www.beauticate.com/living/interiors/luxe-your-laundry-and-youll-love-doing-the-washing/",
+      "wpFound": true,
+      "datePublished": "2020-02-17",
+      "stats": {
+        "wpWords": 421,
+        "mdxWords": 419,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "are-your-candles-eco-friendly",
+      "path": "content/living/interiors/are-your-candles-eco-friendly/are-your-candles-eco-friendly.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/are-your-candles-eco-friendly/",
+      "link": "https://www.beauticate.com/living/interiors/are-your-candles-eco-friendly/",
+      "wpFound": true,
+      "datePublished": "2019-10-16",
+      "stats": {
+        "wpWords": 327,
+        "mdxWords": 324,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "6-bathrooms-were-coveting-right-now-and-how-to-get-the-look",
+      "path": "content/living/interiors/6-bathrooms-were-coveting-right-now-and-how-to-get-the-look/6-bathrooms-were-coveting-right-now-and-how-to-get-the-look.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/6-bathrooms-were-coveting-right-now-and-how-to-get-the-look/",
+      "link": "https://www.beauticate.com/living/interiors/6-bathrooms-were-coveting-right-now-and-how-to-get-the-look/",
+      "wpFound": true,
+      "datePublished": "2019-09-02",
+      "stats": {
+        "wpWords": 522,
+        "mdxWords": 498,
+        "wpImages": 0,
+        "mdxImages": 15,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "weve-found-the-perfect-candle-you-need-for-every-season",
+      "path": "content/living/interiors/weve-found-the-perfect-candle-you-need-for-every-season/weve-found-the-perfect-candle-you-need-for-every-season.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/weve-found-the-perfect-candle-you-need-for-every-season/",
+      "link": "https://www.beauticate.com/living/interiors/weve-found-the-perfect-candle-you-need-for-every-season/",
+      "wpFound": true,
+      "datePublished": "2019-07-16",
+      "stats": {
+        "wpWords": 898,
+        "mdxWords": 893,
+        "wpImages": 0,
+        "mdxImages": 24,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "selfie-lighting-tricks",
+      "path": "content/living/lifestyle/selfie-lighting-tricks/selfie-lighting-tricks.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/selfie-lighting-tricks/",
+      "link": "https://www.beauticate.com/living/lifestyle/selfie-lighting-tricks/",
+      "wpFound": true,
+      "datePublished": "2019-03-04",
+      "stats": {
+        "wpWords": 664,
+        "mdxWords": 646,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "who-profile-approved-interiors-styles",
+      "path": "content/living/interiors/who-profile-approved-interiors-styles/who-profile-approved-interiors-styles.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/who-profile-approved-interiors-styles/",
+      "link": "https://www.beauticate.com/living/interiors/who-profile-approved-interiors-styles/",
+      "wpFound": true,
+      "datePublished": "2018-12-03",
+      "stats": {
+        "wpWords": 636,
+        "mdxWords": 635,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "celebrity-interior-decorating",
+      "path": "content/living/interiors/celebrity-interior-decorating/celebrity-interior-decorating.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/celebrity-interior-decorating/",
+      "link": "https://www.beauticate.com/living/interiors/celebrity-interior-decorating/",
+      "wpFound": true,
+      "datePublished": "2018-09-11",
+      "stats": {
+        "wpWords": 462,
+        "mdxWords": 457,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "australian-beauty-brands-secrets-to-success",
+      "path": "content/living/lifestyle/australian-beauty-brands-secrets-to-success/australian-beauty-brands-secrets-to-success.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/australian-beauty-brands-secrets-to-success/",
+      "link": "https://www.beauticate.com/living/lifestyle/australian-beauty-brands-secrets-to-success/",
+      "wpFound": true,
+      "datePublished": "2018-08-27",
+      "stats": {
+        "wpWords": 1472,
+        "mdxWords": 1467,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-green-up-your-workspace-for-optimal-health",
+      "path": "content/living/interiors/how-to-green-up-your-workspace-for-optimal-health/how-to-green-up-your-workspace-for-optimal-health.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/interiors/how-to-green-up-your-workspace-for-optimal-health/",
+      "link": "https://www.beauticate.com/living/interiors/how-to-green-up-your-workspace-for-optimal-health/",
+      "wpFound": true,
+      "datePublished": "2018-04-20",
+      "stats": {
+        "wpWords": 453,
+        "mdxWords": 450,
+        "wpImages": 0,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "stylish-ways-to-save-water",
+      "path": "content/living/lifestyle/stylish-ways-to-save-water/stylish-ways-to-save-water.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/stylish-ways-to-save-water/",
+      "link": "https://www.beauticate.com/living/lifestyle/stylish-ways-to-save-water/",
+      "wpFound": true,
+      "datePublished": "2018-03-22",
+      "stats": {
+        "wpWords": 466,
+        "mdxWords": 462,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "why-makeup-shaming-has-to-stop",
+      "path": "content/living/lifestyle/why-makeup-shaming-has-to-stop/why-makeup-shaming-has-to-stop.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/why-makeup-shaming-has-to-stop/",
+      "link": "https://www.beauticate.com/living/lifestyle/why-makeup-shaming-has-to-stop/",
+      "wpFound": true,
+      "datePublished": "2018-02-28",
+      "stats": {
+        "wpWords": 829,
+        "mdxWords": 830,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "shop-your-travel-ready-edit-for-your-next-getaway",
+      "path": "content/living/lifestyle/shop-your-travel-ready-edit-for-your-next-getaway/shop-your-travel-ready-edit-for-your-next-getaway.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/shop-your-travel-ready-edit-for-your-next-getaway/",
+      "link": "https://www.beauticate.com/living/lifestyle/shop-your-travel-ready-edit-for-your-next-getaway/",
+      "wpFound": true,
+      "datePublished": "2018-01-10",
+      "stats": {
+        "wpWords": 443,
+        "mdxWords": 443,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "video-how-to-style-your-sleepwear-with-jasmine-will",
+      "path": "content/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will/video-how-to-style-your-sleepwear-with-jasmine-will.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will/",
+      "link": "https://www.beauticate.com/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will/",
+      "wpFound": true,
+      "datePublished": "2017-11-20",
+      "stats": {
+        "wpWords": 26,
+        "mdxWords": 26,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "video-how-to-style-your-sleepwear-with-jasmine-will-2",
+      "path": "content/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2/video-how-to-style-your-sleepwear-with-jasmine-will-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2/",
+      "link": "https://www.beauticate.com/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2/",
+      "wpFound": true,
+      "datePublished": "2017-11-20",
+      "stats": {
+        "wpWords": 26,
+        "mdxWords": 26,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "video-how-to-host-a-party",
+      "path": "content/living/lifestyle/video-how-to-host-a-party/video-how-to-host-a-party.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/video-how-to-host-a-party/",
+      "link": "https://www.beauticate.com/living/lifestyle/video-how-to-host-a-party/",
+      "wpFound": true,
+      "datePublished": "2017-11-01",
+      "stats": {
+        "wpWords": 202,
+        "mdxWords": 201,
+        "wpImages": 21,
+        "mdxImages": 21,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-make-it-in-the-beauty-biz-rules-from-the-top-ceos",
+      "path": "content/living/lifestyle/how-to-make-it-in-the-beauty-biz-rules-from-the-top-ceos/how-to-make-it-in-the-beauty-biz-rules-from-the-top-ceos.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/how-to-make-it-in-the-beauty-biz-rules-from-the-top-ceos/",
+      "link": "https://www.beauticate.com/living/lifestyle/how-to-make-it-in-the-beauty-biz-rules-from-the-top-ceos/",
+      "wpFound": true,
+      "datePublished": "2017-07-31",
+      "stats": {
+        "wpWords": 875,
+        "mdxWords": 902,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-body-shop-takes-on-the-united-nations-with-their-new-campaign",
+      "path": "content/living/sustainability/the-body-shop-takes-on-the-united-nations-with-their-new-campaign/the-body-shop-takes-on-the-united-nations-with-their-new-campaign.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/sustainability/the-body-shop-takes-on-the-united-nations-with-their-new-campaign/",
+      "link": "https://www.beauticate.com/news/the-body-shop-takes-on-the-united-nations-with-their-new-campaign/",
+      "wpFound": true,
+      "datePublished": "2017-06-20",
+      "stats": {
+        "wpWords": 234,
+        "mdxWords": 234,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "motherhood-the-lessons-ive-learned-sigourneys-edit",
+      "path": "content/living/lifestyle/motherhood-the-lessons-ive-learned-sigourneys-edit/motherhood-the-lessons-ive-learned-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/living/lifestyle/motherhood-the-lessons-ive-learned-sigourneys-edit/",
+      "link": "https://www.beauticate.com/living/lifestyle/motherhood-the-lessons-ive-learned-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2017-05-04",
+      "stats": {
+        "wpWords": 1330,
+        "mdxWords": 1329,
+        "wpImages": 0,
+        "mdxImages": 29,
         "wpCaptions": 0
       },
       "findings": []
