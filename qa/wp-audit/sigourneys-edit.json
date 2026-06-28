@@ -1,7 +1,167 @@
 {
   "category": "sigourneys-edit",
-  "generated": "2026-06-28T09:54:11.297Z",
+  "generated": "2026-06-28T22:26:04.022Z",
   "results": [
+    {
+      "slug": "these-fragrances-have-been-cheering-me-up-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/these-fragrances-have-been-cheering-me-up-sigourneys-edit/these-fragrances-have-been-cheering-me-up-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/these-fragrances-have-been-cheering-me-up-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/these-fragrances-have-been-cheering-me-up-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2021-08-16",
+      "stats": {
+        "wpWords": 640,
+        "mdxWords": 640,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "glue×1",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 55
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "this-dry-shampoo-is-better-for-you-and-your-hair",
+      "path": "content/sigourneys-edit/edit/this-dry-shampoo-is-better-for-you-and-your-hair/this-dry-shampoo-is-better-for-you-and-your-hair.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/this-dry-shampoo-is-better-for-you-and-your-hair/",
+      "link": "https://www.beauticate.com/sigourneys-edit/this-dry-shampoo-is-better-for-you-and-your-hair/",
+      "wpFound": true,
+      "datePublished": "2020-06-10",
+      "stats": {
+        "wpWords": 356,
+        "mdxWords": 352,
+        "wpImages": 0,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×1",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 17
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sigourney-on-chanels-new-skin-tint",
+      "path": "content/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint/sigourney-on-chanels-new-skin-tint.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourney-on-chanels-new-skin-tint/",
+      "wpFound": true,
+      "datePublished": "2019-06-12",
+      "stats": {
+        "wpWords": 552,
+        "mdxWords": 550,
+        "wpImages": 0,
+        "mdxImages": 13,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "glue×1",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "5-ways-to-make-neck-and-back-pain-go-away",
+      "path": "content/sigourneys-edit/edit/5-ways-to-make-neck-and-back-pain-go-away/5-ways-to-make-neck-and-back-pain-go-away.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/5-ways-to-make-neck-and-back-pain-go-away/",
+      "link": "https://www.beauticate.com/sigourneys-edit/5-ways-to-make-neck-and-back-pain-go-away/",
+      "wpFound": true,
+      "datePublished": "2019-04-08",
+      "stats": {
+        "wpWords": 1045,
+        "mdxWords": 1031,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "mismatched-bold×3",
+          "detail": [
+            {
+              "type": "mismatched-bold",
+              "line": 45
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 49
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sigourneys-edit-endless-summer",
+      "path": "content/sigourneys-edit/edit/sigourneys-edit-endless-summer/sigourneys-edit-endless-summer.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourneys-edit-endless-summer/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-endless-summer/",
+      "wpFound": true,
+      "datePublished": "2014-02-27",
+      "stats": {
+        "wpWords": 574,
+        "mdxWords": 567,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": [
+        {
+          "type": "MARKDOWN",
+          "severity": "medium",
+          "summary": "glue×2, mismatched-bold×2",
+          "detail": [
+            {
+              "type": "glue",
+              "line": 1
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 1
+            },
+            {
+              "type": "glue",
+              "line": 13
+            },
+            {
+              "type": "mismatched-bold",
+              "line": 13
+            }
+          ]
+        }
+      ]
+    },
     {
       "slug": "beauticate-shop-launch",
       "path": "content/sigourneys-edit/beauticate-shop-launch/beauticate-shop-launch.mdx",
@@ -182,6 +342,822 @@
         "mdxWords": 1034,
         "wpImages": 0,
         "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "do-regular-skin-treatments-really-make-a-difference",
+      "path": "content/sigourneys-edit/edit/do-regular-skin-treatments-really-make-a-difference/do-regular-skin-treatments-really-make-a-difference.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/do-regular-skin-treatments-really-make-a-difference/",
+      "link": "https://www.beauticate.com/sigourneys-edit/do-regular-skin-treatments-really-make-a-difference/",
+      "wpFound": true,
+      "datePublished": "2022-04-06",
+      "stats": {
+        "wpWords": 582,
+        "mdxWords": 582,
+        "wpImages": 0,
+        "mdxImages": 6,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "minensseys-amazing-new-body-duo-smells-just-like-spring",
+      "path": "content/sigourneys-edit/edit/minensseys-amazing-new-body-duo-smells-just-like-spring/minensseys-amazing-new-body-duo-smells-just-like-spring.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/minensseys-amazing-new-body-duo-smells-just-like-spring/",
+      "link": "https://www.beauticate.com/sigourneys-edit/minensseys-amazing-new-body-duo-smells-just-like-spring/",
+      "wpFound": true,
+      "datePublished": "2021-07-06",
+      "stats": {
+        "wpWords": 401,
+        "mdxWords": 398,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "these-budget-body-products-pack-a-powerful-punch",
+      "path": "content/sigourneys-edit/edit/these-budget-body-products-pack-a-powerful-punch/these-budget-body-products-pack-a-powerful-punch.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/these-budget-body-products-pack-a-powerful-punch/",
+      "link": "https://www.beauticate.com/sigourneys-edit/these-budget-body-products-pack-a-powerful-punch/",
+      "wpFound": true,
+      "datePublished": "2021-06-29",
+      "stats": {
+        "wpWords": 337,
+        "mdxWords": 334,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one",
+      "path": "content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/",
+      "link": "https://www.beauticate.com/sigourneys-edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/",
+      "wpFound": true,
+      "datePublished": "2021-06-15",
+      "stats": {
+        "wpWords": 716,
+        "mdxWords": 715,
+        "wpImages": 0,
+        "mdxImages": 5,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "hismile-at-home-whitening-i-tried-the-game-changer-disrupting-the-smilecare-category",
+      "path": "content/sigourneys-edit/edit/hismile-at-home-whitening-i-tried-the-game-changer-disrupting-the-smilecare-category/hismile-at-home-whitening-i-tried-the-game-changer-disrupting-the-smilecare-category.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/hismile-at-home-whitening-i-tried-the-game-changer-disrupting-the-smilecare-category/",
+      "link": "https://www.beauticate.com/sigourneys-edit/hismile-at-home-whitening-i-tried-the-game-changer-disrupting-the-smilecare-category/",
+      "wpFound": true,
+      "datePublished": "2021-05-19",
+      "stats": {
+        "wpWords": 1058,
+        "mdxWords": 1058,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-i-fell-in-love-with-sydney-again",
+      "path": "content/sigourneys-edit/edit/how-i-fell-in-love-with-sydney-again/how-i-fell-in-love-with-sydney-again.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-i-fell-in-love-with-sydney-again/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-i-fell-in-love-with-sydney-again/",
+      "wpFound": true,
+      "datePublished": "2021-03-30",
+      "stats": {
+        "wpWords": 1035,
+        "mdxWords": 1033,
+        "wpImages": 0,
+        "mdxImages": 21,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-one-step-cleanse-that-saves-vital-seconds",
+      "path": "content/sigourneys-edit/edit/the-one-step-cleanse-that-saves-vital-seconds/the-one-step-cleanse-that-saves-vital-seconds.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-one-step-cleanse-that-saves-vital-seconds/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-one-step-cleanse-that-saves-vital-seconds/",
+      "wpFound": true,
+      "datePublished": "2021-02-15",
+      "stats": {
+        "wpWords": 380,
+        "mdxWords": 378,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-everything-im-buying-this-summer",
+      "path": "content/sigourneys-edit/edit/sigourneys-edit-everything-im-buying-this-summer/sigourneys-edit-everything-im-buying-this-summer.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourneys-edit-everything-im-buying-this-summer/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-everything-im-buying-this-summer/",
+      "wpFound": true,
+      "datePublished": "2020-12-15",
+      "stats": {
+        "wpWords": 1030,
+        "mdxWords": 1028,
+        "wpImages": 0,
+        "mdxImages": 36,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "this-pharmacy-product-fixed-my-freaked-out-skin",
+      "path": "content/sigourneys-edit/edit/this-pharmacy-product-fixed-my-freaked-out-skin/this-pharmacy-product-fixed-my-freaked-out-skin.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/this-pharmacy-product-fixed-my-freaked-out-skin/",
+      "link": "https://www.beauticate.com/sigourneys-edit/this-pharmacy-product-fixed-my-freaked-out-skin/",
+      "wpFound": true,
+      "datePublished": "2020-11-11",
+      "stats": {
+        "wpWords": 747,
+        "mdxWords": 744,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "my-obsessive-search-for-the-perfect-hand-wash-ends-here",
+      "path": "content/sigourneys-edit/edit/my-obsessive-search-for-the-perfect-hand-wash-ends-here/my-obsessive-search-for-the-perfect-hand-wash-ends-here.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/my-obsessive-search-for-the-perfect-hand-wash-ends-here/",
+      "link": "https://www.beauticate.com/sigourneys-edit/my-obsessive-search-for-the-perfect-hand-wash-ends-here/",
+      "wpFound": true,
+      "datePublished": "2020-10-26",
+      "stats": {
+        "wpWords": 495,
+        "mdxWords": 491,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "why-facial-oil-is-my-holy-grail",
+      "path": "content/sigourneys-edit/edit/why-facial-oil-is-my-holy-grail/why-facial-oil-is-my-holy-grail.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/why-facial-oil-is-my-holy-grail/",
+      "link": "https://www.beauticate.com/sigourneys-edit/why-facial-oil-is-my-holy-grail/",
+      "wpFound": true,
+      "datePublished": "2020-10-21",
+      "stats": {
+        "wpWords": 645,
+        "mdxWords": 640,
+        "wpImages": 0,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "i-reset-my-ring-and-you-can-win-the-chance-to-as-well",
+      "path": "content/sigourneys-edit/edit/i-reset-my-ring-and-you-can-win-the-chance-to-as-well/i-reset-my-ring-and-you-can-win-the-chance-to-as-well.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/i-reset-my-ring-and-you-can-win-the-chance-to-as-well/",
+      "link": "https://www.beauticate.com/sigourneys-edit/i-reset-my-ring-and-you-can-win-the-chance-to-as-well/",
+      "wpFound": true,
+      "datePublished": "2020-10-06",
+      "stats": {
+        "wpWords": 631,
+        "mdxWords": 629,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "why-you-need-to-try-this-antioxidant-pumped-range",
+      "path": "content/sigourneys-edit/edit/why-you-need-to-try-this-antioxidant-pumped-range/why-you-need-to-try-this-antioxidant-pumped-range.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/why-you-need-to-try-this-antioxidant-pumped-range/",
+      "link": "https://www.beauticate.com/sigourneys-edit/why-you-need-to-try-this-antioxidant-pumped-range/",
+      "wpFound": true,
+      "datePublished": "2020-09-23",
+      "stats": {
+        "wpWords": 759,
+        "mdxWords": 755,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "if-you-like-unique-scents-take-a-whiff-of-these",
+      "path": "content/sigourneys-edit/edit/if-you-like-unique-scents-take-a-whiff-of-these/if-you-like-unique-scents-take-a-whiff-of-these.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/if-you-like-unique-scents-take-a-whiff-of-these/",
+      "link": "https://www.beauticate.com/sigourneys-edit/if-you-like-unique-scents-take-a-whiff-of-these/",
+      "wpFound": true,
+      "datePublished": "2020-07-22",
+      "stats": {
+        "wpWords": 558,
+        "mdxWords": 558,
+        "wpImages": 0,
+        "mdxImages": 19,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-turn-your-tv-into-an-art-piece-samsung-frame-review",
+      "path": "content/sigourneys-edit/edit/how-to-turn-your-tv-into-an-art-piece-samsung-frame-review/how-to-turn-your-tv-into-an-art-piece-samsung-frame-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-to-turn-your-tv-into-an-art-piece-samsung-frame-review/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-to-turn-your-tv-into-an-art-piece-samsung-frame-review/",
+      "wpFound": true,
+      "datePublished": "2020-07-07",
+      "stats": {
+        "wpWords": 632,
+        "mdxWords": 630,
+        "wpImages": 0,
+        "mdxImages": 16,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "do-virtual-beauty-consults-actually-work",
+      "path": "content/sigourneys-edit/edit/do-virtual-beauty-consults-actually-work/do-virtual-beauty-consults-actually-work.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/do-virtual-beauty-consults-actually-work/",
+      "link": "https://www.beauticate.com/sigourneys-edit/do-virtual-beauty-consults-actually-work/",
+      "wpFound": true,
+      "datePublished": "2020-05-26",
+      "stats": {
+        "wpWords": 1063,
+        "mdxWords": 1056,
+        "wpImages": 0,
+        "mdxImages": 3,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-fragrance-im-coming-home-to-this-mothers-day",
+      "path": "content/sigourneys-edit/edit/the-fragrance-im-coming-home-to-this-mothers-day/the-fragrance-im-coming-home-to-this-mothers-day.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-fragrance-im-coming-home-to-this-mothers-day/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-fragrance-im-coming-home-to-this-mothers-day/",
+      "wpFound": true,
+      "datePublished": "2020-04-22",
+      "stats": {
+        "wpWords": 605,
+        "mdxWords": 604,
+        "wpImages": 0,
+        "mdxImages": 23,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "our-new-daily-routine-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/our-new-daily-routine-sigourneys-edit/our-new-daily-routine-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/our-new-daily-routine-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/our-new-daily-routine-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2020-04-07",
+      "stats": {
+        "wpWords": 1158,
+        "mdxWords": 1151,
+        "wpImages": 0,
+        "mdxImages": 19,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "my-festive-season-essentials-and-salon-go-tos-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/my-festive-season-essentials-and-salon-go-tos-sigourneys-edit/my-festive-season-essentials-and-salon-go-tos-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/my-festive-season-essentials-and-salon-go-tos-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/my-festive-season-essentials-and-salon-go-tos-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2019-12-11",
+      "stats": {
+        "wpWords": 231,
+        "mdxWords": 230,
+        "wpImages": 0,
+        "mdxImages": 11,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-i-maximised-my-small-balcony-for-spring",
+      "path": "content/sigourneys-edit/edit/how-i-maximised-my-small-balcony-for-spring/how-i-maximised-my-small-balcony-for-spring.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-i-maximised-my-small-balcony-for-spring/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-i-maximised-my-small-balcony-for-spring/",
+      "wpFound": true,
+      "datePublished": "2019-09-23",
+      "stats": {
+        "wpWords": 583,
+        "mdxWords": 580,
+        "wpImages": 0,
+        "mdxImages": 17,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "taking-a-beauty-to-shanghai-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/taking-a-beauty-to-shanghai-sigourneys-edit/taking-a-beauty-to-shanghai-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/taking-a-beauty-to-shanghai-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/taking-a-beauty-to-shanghai-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2019-09-18",
+      "stats": {
+        "wpWords": 1371,
+        "mdxWords": 1367,
+        "wpImages": 0,
+        "mdxImages": 36,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-next-wine-country-road-trip-you-need-to-have",
+      "path": "content/sigourneys-edit/edit/the-next-wine-country-road-trip-you-need-to-have/the-next-wine-country-road-trip-you-need-to-have.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-next-wine-country-road-trip-you-need-to-have/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-next-wine-country-road-trip-you-need-to-have/",
+      "wpFound": true,
+      "datePublished": "2019-07-22",
+      "stats": {
+        "wpWords": 649,
+        "mdxWords": 646,
+        "wpImages": 0,
+        "mdxImages": 13,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "four-new-skincare-finds-i-love-for-winter-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/four-new-skincare-finds-i-love-for-winter-sigourneys-edit/four-new-skincare-finds-i-love-for-winter-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/four-new-skincare-finds-i-love-for-winter-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/four-new-skincare-finds-i-love-for-winter-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2019-07-10",
+      "stats": {
+        "wpWords": 817,
+        "mdxWords": 808,
+        "wpImages": 0,
+        "mdxImages": 9,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "my-home-renovations-the-lessons-i-learnt",
+      "path": "content/sigourneys-edit/edit/my-home-renovations-the-lessons-i-learnt/my-home-renovations-the-lessons-i-learnt.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/my-home-renovations-the-lessons-i-learnt/",
+      "link": "https://www.beauticate.com/sigourneys-edit/my-home-renovations-the-lessons-i-learnt/",
+      "wpFound": true,
+      "datePublished": "2019-06-26",
+      "stats": {
+        "wpWords": 2520,
+        "mdxWords": 2515,
+        "wpImages": 0,
+        "mdxImages": 18,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-layer-your-skincare",
+      "path": "content/sigourneys-edit/edit/how-to-layer-your-skincare/how-to-layer-your-skincare.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-to-layer-your-skincare/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-to-layer-your-skincare/",
+      "wpFound": true,
+      "datePublished": "2019-06-19",
+      "stats": {
+        "wpWords": 811,
+        "mdxWords": 808,
+        "wpImages": 0,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-backstage-multi-masking-secret-i-picked-up-at-fashion-week",
+      "path": "content/sigourneys-edit/edit/the-backstage-multi-masking-secret-i-picked-up-at-fashion-week/the-backstage-multi-masking-secret-i-picked-up-at-fashion-week.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-backstage-multi-masking-secret-i-picked-up-at-fashion-week/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-backstage-multi-masking-secret-i-picked-up-at-fashion-week/",
+      "wpFound": true,
+      "datePublished": "2019-06-03",
+      "stats": {
+        "wpWords": 670,
+        "mdxWords": 668,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "this-cult-cream-has-expanded-into-a-range-and-were-giving-5-packs-away",
+      "path": "content/sigourneys-edit/edit/this-cult-cream-has-expanded-into-a-range-and-were-giving-5-packs-away/this-cult-cream-has-expanded-into-a-range-and-were-giving-5-packs-away.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/this-cult-cream-has-expanded-into-a-range-and-were-giving-5-packs-away/",
+      "link": "https://www.beauticate.com/sigourneys-edit/this-cult-cream-has-expanded-into-a-range-and-were-giving-5-packs-away/",
+      "wpFound": true,
+      "datePublished": "2019-05-14",
+      "stats": {
+        "wpWords": 436,
+        "mdxWords": 429,
+        "wpImages": 0,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "travel-diary-soneva-kiri-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/travel-diary-soneva-kiri-sigourneys-edit/travel-diary-soneva-kiri-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/travel-diary-soneva-kiri-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/travel-diary-soneva-kiri-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2019-05-13",
+      "stats": {
+        "wpWords": 794,
+        "mdxWords": 793,
+        "wpImages": 0,
+        "mdxImages": 18,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "announcing-sigourneys-new-role-with-minenssey-skincare",
+      "path": "content/sigourneys-edit/edit/announcing-sigourneys-new-role-with-minenssey-skincare/announcing-sigourneys-new-role-with-minenssey-skincare.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/announcing-sigourneys-new-role-with-minenssey-skincare/",
+      "link": "https://www.beauticate.com/sigourneys-edit/announcing-sigourneys-new-role-with-minenssey-skincare/",
+      "wpFound": true,
+      "datePublished": "2019-05-06",
+      "stats": {
+        "wpWords": 654,
+        "mdxWords": 652,
+        "wpImages": 0,
+        "mdxImages": 12,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "madrid-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/madrid-sigourneys-edit/madrid-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/madrid-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/madrid-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2019-01-30",
+      "stats": {
+        "wpWords": 1124,
+        "mdxWords": 1109,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-gifts-youll-be-most-grateful-for",
+      "path": "content/sigourneys-edit/edit/the-gifts-youll-be-most-grateful-for/the-gifts-youll-be-most-grateful-for.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-gifts-youll-be-most-grateful-for/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-gifts-youll-be-most-grateful-for/",
+      "wpFound": true,
+      "datePublished": "2018-12-17",
+      "stats": {
+        "wpWords": 145,
+        "mdxWords": 145,
+        "wpImages": 0,
+        "mdxImages": 2,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "luxe-festive-beauty-looks",
+      "path": "content/sigourneys-edit/edit/luxe-festive-beauty-looks/luxe-festive-beauty-looks.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/luxe-festive-beauty-looks/",
+      "link": "https://www.beauticate.com/sigourneys-edit/luxe-festive-beauty-looks/",
+      "wpFound": true,
+      "datePublished": "2018-11-22",
+      "stats": {
+        "wpWords": 366,
+        "mdxWords": 364,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "do-natural-deodorants-actually-work-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/do-natural-deodorants-actually-work-sigourneys-edit/do-natural-deodorants-actually-work-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/do-natural-deodorants-actually-work-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/do-natural-deodorants-actually-work-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2018-06-12",
+      "stats": {
+        "wpWords": 432,
+        "mdxWords": 431,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "what-im-teaching-my-kids-about-beauty-sigourneys-edit",
+      "path": "content/sigourneys-edit/picks/what-im-teaching-my-kids-about-beauty-sigourneys-edit/what-im-teaching-my-kids-about-beauty-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/picks/what-im-teaching-my-kids-about-beauty-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/what-im-teaching-my-kids-about-beauty-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2018-05-02",
+      "stats": {
+        "wpWords": 687,
+        "mdxWords": 686,
+        "wpImages": 0,
+        "mdxImages": 4,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sensitive-scalp-moogoo-shampoo-review",
+      "path": "content/sigourneys-edit/edit/sensitive-scalp-moogoo-shampoo-review/sensitive-scalp-moogoo-shampoo-review.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sensitive-scalp-moogoo-shampoo-review/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sensitive-scalp-moogoo-shampoo-review/",
+      "wpFound": true,
+      "datePublished": "2018-04-10",
+      "stats": {
+        "wpWords": 697,
+        "mdxWords": 694,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-i-got-my-glow-back-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/how-i-got-my-glow-back-sigourneys-edit/how-i-got-my-glow-back-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-i-got-my-glow-back-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-i-got-my-glow-back-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2017-07-26",
+      "stats": {
+        "wpWords": 1181,
+        "mdxWords": 1181,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "my-morning-routine-and-fiveminuteface-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/my-morning-routine-and-fiveminuteface-sigourneys-edit/my-morning-routine-and-fiveminuteface-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/my-morning-routine-and-fiveminuteface-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/my-morning-routine-and-fiveminuteface-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2017-05-26",
+      "stats": {
+        "wpWords": 57,
+        "mdxWords": 57,
+        "wpImages": 0,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourney-visits-the-home-of-skincare-brand-bioderma-in-the-south-of-france",
+      "path": "content/sigourneys-edit/edit/sigourney-visits-the-home-of-skincare-brand-bioderma-in-the-south-of-france/sigourney-visits-the-home-of-skincare-brand-bioderma-in-the-south-of-france.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourney-visits-the-home-of-skincare-brand-bioderma-in-the-south-of-france/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourney-visits-the-home-of-skincare-brand-bioderma-in-the-south-of-france/",
+      "wpFound": true,
+      "datePublished": "2017-05-23",
+      "stats": {
+        "wpWords": 1299,
+        "mdxWords": 1292,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "armani-beauty-follows-sigourney-for-a-day",
+      "path": "content/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day/armani-beauty-follows-sigourney-for-a-day.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day/",
+      "link": "https://www.beauticate.com/sigourneys-edit/armani-beauty-follows-sigourney-for-a-day/",
+      "wpFound": true,
+      "datePublished": "2017-03-02",
+      "stats": {
+        "wpWords": 108,
+        "mdxWords": 107,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-best-baby-products-sigourneys-edit",
+      "path": "content/sigourneys-edit/picks/the-best-baby-products-sigourneys-edit/the-best-baby-products-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/picks/the-best-baby-products-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-best-baby-products-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2016-09-13",
+      "stats": {
+        "wpWords": 1194,
+        "mdxWords": 1196,
+        "wpImages": 14,
+        "mdxImages": 14,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-beauty-and-life-lessons-my-mother-taught-me-sigourneys-edit-2",
+      "path": "content/sigourneys-edit/picks/the-beauty-and-life-lessons-my-mother-taught-me-sigourneys-edit-2/the-beauty-and-life-lessons-my-mother-taught-me-sigourneys-edit-2.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/picks/the-beauty-and-life-lessons-my-mother-taught-me-sigourneys-edit-2/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-beauty-and-life-lessons-my-mother-taught-me-sigourneys-edit-2/",
+      "wpFound": true,
+      "datePublished": "2016-05-05",
+      "stats": {
+        "wpWords": 637,
+        "mdxWords": 634,
+        "wpImages": 0,
+        "mdxImages": 10,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-a-taste-of-provence",
+      "path": "content/sigourneys-edit/edit/sigourneys-edit-a-taste-of-provence/sigourneys-edit-a-taste-of-provence.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourneys-edit-a-taste-of-provence/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-a-taste-of-provence/",
+      "wpFound": true,
+      "datePublished": "2016-01-12",
+      "stats": {
+        "wpWords": 833,
+        "mdxWords": 833,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "spring-fragrance-guide-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/spring-fragrance-guide-sigourneys-edit/spring-fragrance-guide-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/spring-fragrance-guide-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/spring-fragrance-guide-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2015-09-15",
+      "stats": {
+        "wpWords": 1238,
+        "mdxWords": 1237,
+        "wpImages": 0,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "lake-como-sigourneys-edit-1",
+      "path": "content/sigourneys-edit/edit/lake-como-sigourneys-edit-1/lake-como-sigourneys-edit-1.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/lake-como-sigourneys-edit-1/",
+      "link": "https://www.beauticate.com/sigourneys-edit/lake-como-sigourneys-edit-1/",
+      "wpFound": true,
+      "datePublished": "2015-07-01",
+      "stats": {
+        "wpWords": 860,
+        "mdxWords": 856,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-do-boat-beauty",
+      "path": "content/sigourneys-edit/edit/how-to-do-boat-beauty/how-to-do-boat-beauty.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-to-do-boat-beauty/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-to-do-boat-beauty/",
+      "wpFound": true,
+      "datePublished": "2015-06-22",
+      "stats": {
+        "wpWords": 737,
+        "mdxWords": 737,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "the-weho-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/the-weho-sigourneys-edit/the-weho-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-weho-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/the-weho-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2015-05-19",
+      "stats": {
+        "wpWords": 798,
+        "mdxWords": 797,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "santa-monica-sigourneys-edit",
+      "path": "content/sigourneys-edit/edit/santa-monica-sigourneys-edit/santa-monica-sigourneys-edit.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/santa-monica-sigourneys-edit/",
+      "link": "https://www.beauticate.com/sigourneys-edit/santa-monica-sigourneys-edit/",
+      "wpFound": true,
+      "datePublished": "2015-03-18",
+      "stats": {
+        "wpWords": 847,
+        "mdxWords": 843,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-dior-makeover",
+      "path": "content/sigourneys-edit/edit/sigourneys-edit-dior-makeover/sigourneys-edit-dior-makeover.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourneys-edit-dior-makeover/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-dior-makeover/",
+      "wpFound": true,
+      "datePublished": "2014-10-16",
+      "stats": {
+        "wpWords": 94,
+        "mdxWords": 93,
+        "wpImages": 0,
+        "mdxImages": 8,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-smart-women-event",
+      "path": "content/sigourneys-edit/picks/sigourneys-edit-smart-women-event/sigourneys-edit-smart-women-event.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/picks/sigourneys-edit-smart-women-event/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-smart-women-event/",
+      "wpFound": true,
+      "datePublished": "2014-09-17",
+      "stats": {
+        "wpWords": 292,
+        "mdxWords": 289,
+        "wpImages": 1,
+        "mdxImages": 1,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "sigourneys-edit-baby",
+      "path": "content/sigourneys-edit/edit/sigourneys-edit-baby/sigourneys-edit-baby.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/sigourneys-edit-baby/",
+      "link": "https://www.beauticate.com/sigourneys-edit/sigourneys-edit-baby/",
+      "wpFound": true,
+      "datePublished": "2014-07-10",
+      "stats": {
+        "wpWords": 765,
+        "mdxWords": 972,
+        "wpImages": 18,
+        "mdxImages": 18,
+        "wpCaptions": 0
+      },
+      "findings": []
+    },
+    {
+      "slug": "how-to-get-a-byron-bay-glow",
+      "path": "content/sigourneys-edit/edit/how-to-get-a-byron-bay-glow/how-to-get-a-byron-bay-glow.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-to-get-a-byron-bay-glow/",
+      "link": "https://www.beauticate.com/sigourneys-edit/how-to-get-a-byron-bay-glow/",
+      "wpFound": true,
+      "datePublished": "2014-04-16",
+      "stats": {
+        "wpWords": 524,
+        "mdxWords": 524,
+        "wpImages": 13,
+        "mdxImages": 13,
         "wpCaptions": 0
       },
       "findings": []
