@@ -192,7 +192,7 @@ export default function Header({ megaMenuArticles }: Props) {
   }
   const scheduleClose = () => {
     cancelClose()
-    closeTimer.current = setTimeout(() => setOpenMega(null), 150)
+    closeTimer.current = setTimeout(() => setOpenMega(null), 400)
   }
   const openMenu = (href: string) => {
     cancelClose()
