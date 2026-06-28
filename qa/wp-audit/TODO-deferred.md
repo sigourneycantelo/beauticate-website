@@ -27,3 +27,58 @@ Full audit done 2026-06-28: 777 clean, 4 post-migration, 192 flagged. Batch-fixe
 - WP title typos already corrected in MDX (e.g. "Jocleyn"→"Jocelyn") — ignore META.
 - Duplicate CTA banners whose WP position doesn't fit the MDX structure — skip.
 - Generic podcast-logo heroes → tracked separately in `podcast-images-needed.md` (Sigourney sourcing artwork).
+
+## beauty-style manual-markdown queue (enumerated 2026-06-28)
+Ambiguous markdown the batch safely declined — each needs per-article inspection.
+
+### Complex glued paragraphs (split would unbalance markers) — 18
+- these-are-your-favourite-skincare-products
+- the-mother-daughter-duo-approaching-aging-practically
+- the-sisters-using-science-and-astrology-to-care-for-your-skin
+- how-a-beauty-writer-manages-her-rosacea
+- the-beauticate-guide-to-hair-repair
+- a-22-year-old-brand-founder-on-how-to-get-dumpling-skin
+- camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls
+- sigs-hair-hit-list
+- how-to-do-lash-extensions-right
+- the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene
+- how-to-nail-summer-beauty-with-coral-makeup
+- how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch
+- zero-waste-beauty-hacks-on-trial-solid-shampoo-body-moisturising-bars-and-no-poo
+- abigail-oneill-hydrotherapy
+- this-new-perfume-trend-will-have-you-smelling-like-you-only-better
+- nine-new-season-trends-youll-actually-want-to-try
+- how-to-bastille-beauty-11-cult-french-icons
+- sigourney-1
+
+### Mismatched/unclosed bold (unclosed `**[link]`, glued product blocks) — 30
+- chic-sunscreens-hats
+- the-makeup-tools-for-people-with-disabilities
+- your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style
+- red-light-therapy-hair-thinning
+- ingredient-smart-beauty-swaps
+- dyson-supersonic-r-hair-dryer-review
+- hypochlorous-acid-why-this-dermal-mist-has-gone-viral
+- how-to-bring-life-back-to-your-locks-expert-haircare-tips
+- glass-hair
+- these-are-your-favourite-skincare-products
+- beauty-secrets-from-the-happiest-kingdom-on-earth
+- best-hair-tools-for-fine-hair
+- the-sisters-using-science-and-astrology-to-care-for-your-skin
+- how-a-beauty-writer-manages-her-rosacea
+- diy-a-salon-worthy-blowdry-with-these-volume-hair-products
+- video-mornings-with-sigourney-and-family
+- zero-waste-beauty-hacks-on-trial-solid-shampoo-body-moisturising-bars-and-no-poo
+- shop-sigs-look-from-her-parlour-x-shoot
+- how-to-insomnia-cure-tips
+- beauty-advent-calendars
+- this-new-perfume-trend-will-have-you-smelling-like-you-only-better
+- the-definitive-meghan-markle-beauty-guide
+- need-it-now-looks-from-the-sag-awards
+- emily-skyes-killer-workout
+- roji-canberra-3
+- mesoeclat-treatment-review
+- why-youre-probably-not-washing-your-hair-correctly
+- video-how-to-do-a-natural-mineral-makeup-base-for-summer
+- 6-spring-beauty-buys-were-coveting
+- sigourney-1
