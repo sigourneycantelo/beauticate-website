@@ -1,35 +1,7 @@
 {
   "category": "vodcast",
-  "generated": "2026-06-28T21:27:01.471Z",
+  "generated": "2026-06-28T21:29:14.854Z",
   "results": [
-    {
-      "slug": "celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media",
-      "path": "content/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media.mdx",
-      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
-      "link": "https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
-      "wpFound": true,
-      "datePublished": "2025-10-20",
-      "stats": {
-        "wpWords": 774,
-        "mdxWords": 930,
-        "wpImages": 4,
-        "mdxImages": 7,
-        "wpCaptions": 0
-      },
-      "findings": [
-        {
-          "type": "MARKDOWN",
-          "severity": "medium",
-          "summary": "mismatched-bold×1",
-          "detail": [
-            {
-              "type": "mismatched-bold",
-              "line": 52
-            }
-          ]
-        }
-      ]
-    },
     {
       "slug": "sacred-six-on-on-stress-sanity-and-sacred-rituals",
       "path": "content/vodcast/episodes/sacred-six-on-on-stress-sanity-and-sacred-rituals/sacred-six-on-on-stress-sanity-and-sacred-rituals.mdx",
@@ -196,6 +168,22 @@
       "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s/",
       "datePublished": "2025-11-12",
       "wpFound": false,
+      "findings": []
+    },
+    {
+      "slug": "celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media",
+      "path": "content/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media.mdx",
+      "vercelUrl": "https://beauticate-website.vercel.app/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
+      "link": "https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/",
+      "wpFound": true,
+      "datePublished": "2025-10-20",
+      "stats": {
+        "wpWords": 774,
+        "mdxWords": 930,
+        "wpImages": 4,
+        "mdxImages": 7,
+        "wpCaptions": 0
+      },
       "findings": []
     },
     {

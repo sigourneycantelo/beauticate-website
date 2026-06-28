@@ -1,16 +1,8 @@
 # WP ↔ Vercel audit — `vodcast` (latest 58)
 
-- ⚠️  1 article(s) with inconsistencies
-- ✅ 38 clean
+- ⚠️  0 article(s) with inconsistencies
+- ✅ 39 clean
 - ❓ 19 not found on WP (likely written post-migration)
-
-## celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/)
-- 📄 MDX: `content/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media.mdx`
-- words WP/MDX: 774/930 · images WP/MDX: 4/7
-
-- **MARKDOWN** (medium): mismatched-bold×1
 
 ## ✅ Clean
 - [sacred-six-on-on-stress-sanity-and-sacred-rituals ↗](https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-on-on-stress-sanity-and-sacred-rituals/)
@@ -21,6 +13,7 @@
 - [tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing ↗](https://beauticate-website.vercel.app/vodcast/episodes/tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing/)
 - [david-the-medium-on-intuition-healing-and-life-after-death ↗](https://beauticate-website.vercel.app/vodcast/episodes/david-the-medium-on-intuition-healing-and-life-after-death/)
 - [olivia-arezzolo-interview ↗](https://beauticate-website.vercel.app/vodcast/episodes/olivia-arezzolo-interview/)
+- [celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media ↗](https://beauticate-website.vercel.app/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media/)
 - [sacred-six-the-rituals-practices-helping-me-heal-from-burnout ↗](https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/)
 - [mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose ↗](https://beauticate-website.vercel.app/vodcast/episodes/mukti-organics-founder-on-trauma-truth-and-building-a-beauty-brand-with-purpose/)
 - [lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak ↗](https://beauticate-website.vercel.app/vodcast/episodes/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak/)

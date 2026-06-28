@@ -1,7 +1,7 @@
 # WP ↔ Vercel audit — `beauty-style` (latest 973)
 
-- ⚠️  192 article(s) with inconsistencies
-- ✅ 777 clean
+- ⚠️  72 article(s) with inconsistencies
+- ✅ 897 clean
 - ❓ 4 not found on WP (likely written post-migration)
 
 ## beauticate-team-winter-edit
@@ -11,18 +11,6 @@
 - words WP/MDX: 2208/1870 · images WP/MDX: 53/64
 
 - **TEXT** (high): MDX shorter than WP by 338 words (WP 2208 vs MDX 1870, 15% missing)
-
-## systeme-bio-plus-oil-serum-review
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/)
-- 📄 MDX: `content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/systeme-bio-plus-oil-serum-review.mdx`
-- words WP/MDX: 1940/1947 · images WP/MDX: 15/14
-
-- **IMAGES** (high): WP has 1 more body image(s) than MDX (WP 15 vs MDX 14) — likely missing
-    - https://www.beauticate.com/wp-content/uploads/2026/04/Systeme-Trial-Photos.gif  _(alt: Système Bio+ Oil Serum)_
-    - https://www.beauticate.com/wp-content/uploads/2026/04/IMG_3546-Samantha-Turnbull-scaled.jpg  _(alt: neck and décolletage skin results before facial oil)_
-    - https://www.beauticate.com/wp-content/uploads/2026/04/IMG_8959-K-McGeachie-before-1-scaled.jpg  _(alt: skin before applying serum)_
-    - https://www.beauticate.com/wp-content/uploads/2026/04/Ashleigh-Carter-BEFORE-1.jpg  _(alt: skin tone before using serum)_
 
 ## chic-sunscreens-hats
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/chic-sunscreens-hats/)**
@@ -51,7 +39,7 @@
 - **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
     - linked to: https://www.beauticate.com/living/outdoors/pool-accessories-that-changed-our-lives/
     - linked to: https://lornamurray.com.au/collections/pleated-hats-adult
-- **MARKDOWN** (medium): mismatched-bold×8
+- **MARKDOWN** (medium): mismatched-bold×5
 
 ## qure-micro-infusion-system-review
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/qure-micro-infusion-system-review/)**
@@ -87,39 +75,12 @@
     - https://www.beauticate.com/wp-content/uploads/2029/09/La_Beaute_Louis_Vuitton__Campaign_BTS_©_Louis_Vuitton_Malletier_3-1-2.jpg  _(alt: LV Ombres eyeshadow palette displayed against a dark background, with the packaging glistening gold.)_
     - https://www.beauticate.com/wp-content/uploads/2029/09/La_Beaute_Louis_Vuitton__Campaign_BTS_©_Louis_Vuitton_Malletier_3-1.jpg  _(alt: Pat McGrath applying Louis Vuitton makeup on an asian model)_
 
-## the-makeup-tools-for-people-with-disabilities
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities/the-makeup-tools-for-people-with-disabilities.mdx`
-- words WP/MDX: 1399/1397 · images WP/MDX: 6/2
-
-- **IMAGES** (high): WP has 4 more body image(s) than MDX (WP 6 vs MDX 2) — likely missing
-    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/BOOIE_ByStorm_Lifestyle_01-scaled-re70ta251xsbtb5tva6xl02j1b1putue3gpot44wls.jpg  _(alt: Betty and Margie accessible makeup tools on coloured background — silicone ergonomic beauty applicators)_
-    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/7-re70sr9d992ld3x4x22e74tb5lmdkvrrcvnz7kws28.jpg  _(alt: Celeste Barber juggling disco balls)_
-    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/2-re70qp049c8xvwwzynyv85jw85sdoskyqo4mapyvps.jpg  _(alt: Celeste Barber and Storm having fun while applying makeup — inclusive beauty campaign imagery)_
-    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/5-re70rz27k7zzot23hpvl4bxhc1hd5ynt903eta2l8w.jpg  _(alt: Close-up of Margie adaptive paddle tool with braille label — BOOIE x ByStorm inclusive beauty design)_
-- **MARKDOWN** (medium): mismatched-bold×2
-
-## struggling-to-sleep-this-mattress-changed-everything-for-me
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/struggling-to-sleep-this-mattress-changed-everything-for-me/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/living/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me/)
-- 📄 MDX: `content/beauty-style/beauty-tips/struggling-to-sleep-this-mattress-changed-everything-for-me/struggling-to-sleep-this-mattress-changed-everything-for-me.mdx`
-- words WP/MDX: 1391/1425 · images WP/MDX: 15/13
-
-- **IMAGES** (high): WP has 2 more body image(s) than MDX (WP 15 vs MDX 13) — likely missing
-    - https://www.beauticate.com/wp-content/uploads/2025/03/KIngBed_1P0A8044-scaled-1024x683.jpg
-    - https://www.beauticate.com/wp-content/uploads/2025/01/KIngBed_1P0A8389-scaled-683x1024.jpg
-- **MARKDOWN** (medium): mismatched-bold×1
-
 ## your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style/)
 - 📄 MDX: `content/beauty-style/style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style.mdx`
-- words WP/MDX: 259/261 · images WP/MDX: 6/4
+- words WP/MDX: 259/261 · images WP/MDX: 6/6
 
-- **IMAGES** (high): WP has 2 more body image(s) than MDX (WP 6 vs MDX 4) — likely missing
-    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/MINIBAGS-re70ev6tn4ojgcwk8kxtfvst6jgv73wme99j9s6vf8.png  _(alt: MINIBAGS)_
-    - https://www.beauticate.com/wp-content/uploads/elementor/thumbs/MINIBAGS-5-re70g1hk6oafyt74dl81234jwvodthkjk2mdv8g5n8.png  _(alt: MINIBAGS (5))_
 - **FLATTENED** (high): 2 image embed(s) flattened to a plain text link (image dropped in migration)
     - linked to: https://bit.ly/446M9Ol
     - linked to: https://bit.ly/3HKPds5
@@ -149,14 +110,15 @@
     - https://www.beauticate.com/wp-content/uploads/2024/05/day-4a-181x300.jpg
     - https://www.beauticate.com/wp-content/uploads/2024/05/day4b-207x300.jpg
     - https://www.beauticate.com/wp-content/uploads/2024/05/cheek-tint-specialist-sydney-151x300.jpg
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## confessions-of-a-beauty-shopgirl
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/style/confessions-of-a-beauty-shopgirl/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/style/confessions-of-a-beauty-shopgirl/)
 - 📄 MDX: `content/beauty-style/style/confessions-of-a-beauty-shopgirl/confessions-of-a-beauty-shopgirl.mdx`
-- words WP/MDX: 882/657 · images WP/MDX: 1/1
+- words WP/MDX: 786/657 · images WP/MDX: 1/1
 
-- **TEXT** (high): MDX shorter than WP by 225 words (WP 882 vs MDX 657, 26% missing)
+- **TEXT** (high): MDX shorter than WP by 129 words (WP 786 vs MDX 657, 16% missing)
 
 ## how-to-buy-perfume-for-someone-else
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-buy-perfume-for-someone-else/)**
@@ -173,6 +135,14 @@
 - words WP/MDX: 629/527 · images WP/MDX: 2/3
 
 - **TEXT** (high): MDX shorter than WP by 102 words (WP 629 vs MDX 527, 16% missing)
+
+## systeme-bio-plus-oil-serum-review
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/)
+- 📄 MDX: `content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/systeme-bio-plus-oil-serum-review.mdx`
+- words WP/MDX: 1940/1947 · images WP/MDX: 15/15
+
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## red-light-therapy-hair-thinning
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/red-light-therapy-hair-thinning/)**
@@ -206,13 +176,13 @@
 
 - **MARKDOWN** (medium): space-close-bold×1, mismatched-bold×1
 
-## magnesium-pools-wellness-design-australia
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/magnesium-pools-wellness-design-australia/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/magnesium-pools-wellness-design-australia/)
-- 📄 MDX: `content/beauty-style/beauty-tips/magnesium-pools-wellness-design-australia/magnesium-pools-wellness-design-australia.mdx`
-- words WP/MDX: 983/981 · images WP/MDX: 0/9
+## the-makeup-tools-for-people-with-disabilities
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities/)
+- 📄 MDX: `content/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities/the-makeup-tools-for-people-with-disabilities.mdx`
+- words WP/MDX: 1399/1397 · images WP/MDX: 6/6
 
-- **MARKDOWN** (medium): mismatched-bold×5
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## dyson-supersonic-r-hair-dryer-review
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/)**
@@ -222,51 +192,11 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## red-light-therapy-infraredi-review
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/red-light-therapy-infraredi-review/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/sigourneys-edit/red-light-therapy-infraredi-review/)
-- 📄 MDX: `content/beauty-style/beauty-tips/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx`
-- words WP/MDX: 923/927 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): mismatched-bold×8
-
 ## hypochlorous-acid-why-this-dermal-mist-has-gone-viral
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral/)
 - 📄 MDX: `content/beauty-style/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral/hypochlorous-acid-why-this-dermal-mist-has-gone-viral.mdx`
 - words WP/MDX: 740/747 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): mismatched-bold×1
-
-## how-to-mask-according-to-your-mood
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-mask-according-to-your-mood/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/how-to-mask-according-to-your-mood/)
-- 📄 MDX: `content/beauty-style/skin-care/how-to-mask-according-to-your-mood/how-to-mask-according-to-your-mood.mdx`
-- words WP/MDX: 1499/1496 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×7
-
-## the-exact-products-a-beauty-editor-packs-for-europe
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-exact-products-a-beauty-editor-packs-for-europe/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/the-exact-products-a-beauty-editor-packs-for-europe/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-exact-products-a-beauty-editor-packs-for-europe/the-exact-products-a-beauty-editor-packs-for-europe.mdx`
-- words WP/MDX: 958/948 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×1
-
-## timeless-beauty-the-effortless-no-makeup-makeup-look
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/timeless-beauty-the-effortless-no-makeup-makeup-look/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/timeless-beauty-the-effortless-no-makeup-makeup-look/)
-- 📄 MDX: `content/beauty-style/beauty-tips/timeless-beauty-the-effortless-no-makeup-makeup-look/timeless-beauty-the-effortless-no-makeup-makeup-look.mdx`
-- words WP/MDX: 652/652 · images WP/MDX: 14/14
-
-- **MARKDOWN** (medium): mismatched-bold×2
-
-## best-korean-beauty-products-2025
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/best-korean-beauty-products-2025/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/best-korean-beauty-products-2025/)
-- 📄 MDX: `content/beauty-style/skin-care/best-korean-beauty-products-2025/best-korean-beauty-products-2025.mdx`
-- words WP/MDX: 617/617 · images WP/MDX: 10/10
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
@@ -276,15 +206,7 @@
 - 📄 MDX: `content/beauty-style/hair/how-to-bring-life-back-to-your-locks-expert-haircare-tips/how-to-bring-life-back-to-your-locks-expert-haircare-tips.mdx`
 - words WP/MDX: 505/505 · images WP/MDX: 11/11
 
-- **MARKDOWN** (medium): mismatched-bold×6
-
-## the-best-eye-creams-and-mascaras-for-super-sensitive-eyes
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes/)
-- 📄 MDX: `content/beauty-style/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes.mdx`
-- words WP/MDX: 950/949 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×5
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## glass-hair
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/glass-hair/)**
@@ -318,45 +240,13 @@
 
 - **MARKDOWN** (medium): glue×2
 
-## how-to-use-superstar-skincare-ingredients-without-the-downsides
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-use-superstar-skincare-ingredients-without-the-downsides/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/how-to-use-superstar-skincare-ingredients-without-the-downsides/)
-- 📄 MDX: `content/beauty-style/skin-care/how-to-use-superstar-skincare-ingredients-without-the-downsides/how-to-use-superstar-skincare-ingredients-without-the-downsides.mdx`
-- words WP/MDX: 1174/1153 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science/)
-- 📄 MDX: `content/beauty-style/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science.mdx`
-- words WP/MDX: 845/845 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×5
-
 ## beauty-secrets-from-the-happiest-kingdom-on-earth
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-secrets-from-the-happiest-kingdom-on-earth/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/beauty-secrets-from-the-happiest-kingdom-on-earth/)
 - 📄 MDX: `content/beauty-style/beauty-tips/beauty-secrets-from-the-happiest-kingdom-on-earth/beauty-secrets-from-the-happiest-kingdom-on-earth.mdx`
 - words WP/MDX: 2164/2174 · images WP/MDX: 0/12
 
-- **MARKDOWN** (medium): mismatched-bold×1
-
-## the-best-new-ways-to-perfect-your-fake-tan
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-new-ways-to-perfect-your-fake-tan/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-best-new-ways-to-perfect-your-fake-tan/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-best-new-ways-to-perfect-your-fake-tan/the-best-new-ways-to-perfect-your-fake-tan.mdx`
-- words WP/MDX: 2113/2112 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×6
-
-## how-to-care-for-sensitive-skin-while-still-using-serious-skincare
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-care-for-sensitive-skin-while-still-using-serious-skincare/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/how-to-care-for-sensitive-skin-while-still-using-serious-skincare/)
-- 📄 MDX: `content/beauty-style/skin-care/how-to-care-for-sensitive-skin-while-still-using-serious-skincare/how-to-care-for-sensitive-skin-while-still-using-serious-skincare.mdx`
-- words WP/MDX: 954/968 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×5
+- **MARKDOWN** (medium): mismatched-bold×2
 
 ## best-hair-tools-for-fine-hair
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/best-hair-tools-for-fine-hair/)**
@@ -374,22 +264,6 @@
 
 - **MARKDOWN** (medium): glue×3, mismatched-bold×1
 
-## how-to-level-up-your-next-diy-mani-pedi
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/nails/how-to-level-up-your-next-diy-mani-pedi/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/nails/how-to-level-up-your-next-diy-mani-pedi/)
-- 📄 MDX: `content/beauty-style/nails/how-to-level-up-your-next-diy-mani-pedi/how-to-level-up-your-next-diy-mani-pedi.mdx`
-- words WP/MDX: 1631/1628 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×10
-
-## a-matte-lip-obsessives-nine-favourite-products-right-now
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/a-matte-lip-obsessives-nine-favourite-products-right-now/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/reviews/products/a-matte-lip-obsessives-nine-favourite-products-right-now/)
-- 📄 MDX: `content/beauty-style/makeup/a-matte-lip-obsessives-nine-favourite-products-right-now/a-matte-lip-obsessives-nine-favourite-products-right-now.mdx`
-- words WP/MDX: 1342/1340 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×1
-
 ## how-a-beauty-writer-manages-her-rosacea
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-a-beauty-writer-manages-her-rosacea/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/how-a-beauty-writer-manages-her-rosacea/)
@@ -398,43 +272,11 @@
 
 - **MARKDOWN** (medium): glue×7, mismatched-bold×2
 
-## do-magnetic-false-lashes-really-work
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/do-magnetic-false-lashes-really-work/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/do-magnetic-false-lashes-really-work/)
-- 📄 MDX: `content/beauty-style/beauty-tips/do-magnetic-false-lashes-really-work/do-magnetic-false-lashes-really-work.mdx`
-- words WP/MDX: 918/918 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## mood-boosting-beauty-treats-for-every-budget
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/mood-boosting-beauty-treats-for-every-budget/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/mood-boosting-beauty-treats-for-every-budget/)
-- 📄 MDX: `content/beauty-style/beauty-tips/mood-boosting-beauty-treats-for-every-budget/mood-boosting-beauty-treats-for-every-budget.mdx`
-- words WP/MDX: 708/705 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
 ## the-beauticate-guide-to-hair-repair
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-beauticate-guide-to-hair-repair/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/the-beauticate-guide-to-hair-repair/)
 - 📄 MDX: `content/beauty-style/hair/the-beauticate-guide-to-hair-repair/the-beauticate-guide-to-hair-repair.mdx`
 - words WP/MDX: 908/901 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×1
-
-## video-we-meet-four-beauty-scholars-achieving-their-dreams
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-we-meet-four-beauty-scholars-achieving-their-dreams/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/video-we-meet-four-beauty-scholars-achieving-their-dreams/)
-- 📄 MDX: `content/beauty-style/beauty-tips/video-we-meet-four-beauty-scholars-achieving-their-dreams/video-we-meet-four-beauty-scholars-achieving-their-dreams.mdx`
-- words WP/MDX: 426/425 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## 9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/makeup/9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season/)
-- 📄 MDX: `content/beauty-style/makeup/9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season/9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season.mdx`
-- words WP/MDX: 705/704 · images WP/MDX: 0/9
 
 - **MARKDOWN** (medium): glue×1
 
@@ -445,30 +287,6 @@
 - words WP/MDX: 1372/1361 · images WP/MDX: 0/7
 
 - **MARKDOWN** (medium): glue×9
-
-## 6-great-exfoliants-to-get-you-glowing-this-spring
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/6-great-exfoliants-to-get-you-glowing-this-spring/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/6-great-exfoliants-to-get-you-glowing-this-spring/)
-- 📄 MDX: `content/beauty-style/skin-care/6-great-exfoliants-to-get-you-glowing-this-spring/6-great-exfoliants-to-get-you-glowing-this-spring.mdx`
-- words WP/MDX: 586/582 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## 8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/)
-- 📄 MDX: `content/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now.mdx`
-- words WP/MDX: 626/626 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## how-staying-at-home-helped-me-fall-back-in-love-with-makeup
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-staying-at-home-helped-me-fall-back-in-love-with-makeup/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/makeup/how-staying-at-home-helped-me-fall-back-in-love-with-makeup/)
-- 📄 MDX: `content/beauty-style/makeup/how-staying-at-home-helped-me-fall-back-in-love-with-makeup/how-staying-at-home-helped-me-fall-back-in-love-with-makeup.mdx`
-- words WP/MDX: 732/732 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×1
 
 ## camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls/)**
@@ -486,86 +304,6 @@
 
 - **MARKDOWN** (medium): glue×3
 
-## 12-great-new-foundations-and-concealers-with-real-skincare-benefits
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/12-great-new-foundations-and-concealers-with-real-skincare-benefits/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/12-great-new-foundations-and-concealers-with-real-skincare-benefits/)
-- 📄 MDX: `content/beauty-style/skin-care/12-great-new-foundations-and-concealers-with-real-skincare-benefits/12-great-new-foundations-and-concealers-with-real-skincare-benefits.mdx`
-- words WP/MDX: 1437/1434 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×1
-
-## our-top-six-tips-for-how-to-shop-your-beauty-stash
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-top-six-tips-for-how-to-shop-your-beauty-stash/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/living/sustainability/our-top-six-tips-for-how-to-shop-your-beauty-stash/)
-- 📄 MDX: `content/beauty-style/beauty-tips/our-top-six-tips-for-how-to-shop-your-beauty-stash/our-top-six-tips-for-how-to-shop-your-beauty-stash.mdx`
-- words WP/MDX: 1989/1966 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt/)
-- 📄 MDX: `content/beauty-style/beauty-tips/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt.mdx`
-- words WP/MDX: 574/572 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent/)
-- 📄 MDX: `content/beauty-style/beauty-tips/chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent/chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent.mdx`
-- words WP/MDX: 394/391 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## the-best-new-launches-that-will-get-you-excited-about-beauty-again
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/the-best-new-launches-that-will-get-you-excited-about-beauty-again.mdx`
-- words WP/MDX: 1454/1452 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/reviews/products/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test/)
-- 📄 MDX: `content/beauty-style/beauty-tips/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test.mdx`
-- words WP/MDX: 2017/2002 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×1
-
-## six-non-traditional-treatments-for-smooth-comfortable-lips
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/six-non-traditional-treatments-for-smooth-comfortable-lips/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/six-non-traditional-treatments-for-smooth-comfortable-lips/)
-- 📄 MDX: `content/beauty-style/beauty-tips/six-non-traditional-treatments-for-smooth-comfortable-lips/six-non-traditional-treatments-for-smooth-comfortable-lips.mdx`
-- words WP/MDX: 811/810 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches/)
-- 📄 MDX: `content/beauty-style/skin-care/the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches/the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches.mdx`
-- words WP/MDX: 658/659 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## the-4-perth-beauty-destinations-were-currently-visiting
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-4-perth-beauty-destinations-were-currently-visiting/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-4-perth-beauty-destinations-were-currently-visiting/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-4-perth-beauty-destinations-were-currently-visiting/the-4-perth-beauty-destinations-were-currently-visiting.mdx`
-- words WP/MDX: 464/461 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/)
-- 📄 MDX: `content/beauty-style/skin-care/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar.mdx`
-- words WP/MDX: 922/918 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×1
-
 ## diy-a-salon-worthy-blowdry-with-these-volume-hair-products
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/diy-a-salon-worthy-blowdry-with-these-volume-hair-products/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/diy-a-salon-worthy-blowdry-with-these-volume-hair-products/)
@@ -574,189 +312,13 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## this-is-literally-all-you-need-to-know-about-getting-a-lash-lift
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-is-literally-all-you-need-to-know-about-getting-a-lash-lift/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/this-is-literally-all-you-need-to-know-about-getting-a-lash-lift/)
-- 📄 MDX: `content/beauty-style/beauty-tips/this-is-literally-all-you-need-to-know-about-getting-a-lash-lift/this-is-literally-all-you-need-to-know-about-getting-a-lash-lift.mdx`
-- words WP/MDX: 512/512 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly/)
-- 📄 MDX: `content/beauty-style/skin-care/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly.mdx`
-- words WP/MDX: 1120/1102 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/nails/these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/nails/these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails/)
-- 📄 MDX: `content/beauty-style/nails/these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails/these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails.mdx`
-- words WP/MDX: 591/581 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## beauty-boost-treatment-we-chat-this-cult-favourite-facial
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-boost-treatment-we-chat-this-cult-favourite-facial/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/cosmetic/beauty-boost-treatment-we-chat-this-cult-favourite-facial/)
-- 📄 MDX: `content/beauty-style/beauty-tips/beauty-boost-treatment-we-chat-this-cult-favourite-facial/beauty-boost-treatment-we-chat-this-cult-favourite-facial.mdx`
-- words WP/MDX: 459/459 · images WP/MDX: 0/1
-
-- **MARKDOWN** (medium): glue×1
-
-## an-insomniacs-guide-to-beauty-before-bed
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/an-insomniacs-guide-to-beauty-before-bed/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/an-insomniacs-guide-to-beauty-before-bed/)
-- 📄 MDX: `content/beauty-style/beauty-tips/an-insomniacs-guide-to-beauty-before-bed/an-insomniacs-guide-to-beauty-before-bed.mdx`
-- words WP/MDX: 837/835 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## the-new-beauty-rules-how-beauty-has-completely-changed-for-good
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-new-beauty-rules-how-beauty-has-completely-changed-for-good/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-new-beauty-rules-how-beauty-has-completely-changed-for-good/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-new-beauty-rules-how-beauty-has-completely-changed-for-good/the-new-beauty-rules-how-beauty-has-completely-changed-for-good.mdx`
-- words WP/MDX: 639/626 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## these-beauties-will-help-you-refresh-your-skincare-regime
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/these-beauties-will-help-you-refresh-your-skincare-regime/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/these-beauties-will-help-you-refresh-your-skincare-regime/)
-- 📄 MDX: `content/beauty-style/skin-care/these-beauties-will-help-you-refresh-your-skincare-regime/these-beauties-will-help-you-refresh-your-skincare-regime.mdx`
-- words WP/MDX: 728/728 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×1
-
-## this-simple-hair-trick-saves-my-strands
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/this-simple-hair-trick-saves-my-strands/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/this-simple-hair-trick-saves-my-strands/)
-- 📄 MDX: `content/beauty-style/hair/this-simple-hair-trick-saves-my-strands/this-simple-hair-trick-saves-my-strands.mdx`
-- words WP/MDX: 534/532 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## these-are-the-products-that-will-make-your-shower-as-fun-as-bath
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/these-are-the-products-that-will-make-your-shower-as-fun-as-bath/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/these-are-the-products-that-will-make-your-shower-as-fun-as-bath/)
-- 📄 MDX: `content/beauty-style/skin-care/these-are-the-products-that-will-make-your-shower-as-fun-as-bath/these-are-the-products-that-will-make-your-shower-as-fun-as-bath.mdx`
-- words WP/MDX: 347/347 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood/)
-- 📄 MDX: `content/beauty-style/skin-care/the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood/the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood.mdx`
-- words WP/MDX: 643/642 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×5
-
-## the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year/the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year.mdx`
-- words WP/MDX: 355/355 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year/the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year.mdx`
-- words WP/MDX: 987/984 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## 2020s-best-beauty-advent-calendars-and-christmas-crackers
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/2020s-best-beauty-advent-calendars-and-christmas-crackers/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/2020s-best-beauty-advent-calendars-and-christmas-crackers/)
-- 📄 MDX: `content/beauty-style/beauty-tips/2020s-best-beauty-advent-calendars-and-christmas-crackers/2020s-best-beauty-advent-calendars-and-christmas-crackers.mdx`
-- words WP/MDX: 1459/1458 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×1
-
-## bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding/)
-- 📄 MDX: `content/beauty-style/beauty-tips/bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding/bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding.mdx`
-- words WP/MDX: 808/807 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## this-top-mua-shares-how-to-get-runway-ready-skin-at-home
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/this-top-mua-shares-how-to-get-runway-ready-skin-at-home/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/this-top-mua-shares-how-to-get-runway-ready-skin-at-home/)
-- 📄 MDX: `content/beauty-style/skin-care/this-top-mua-shares-how-to-get-runway-ready-skin-at-home/this-top-mua-shares-how-to-get-runway-ready-skin-at-home.mdx`
-- words WP/MDX: 995/984 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×1
-
-## money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends/)
-- 📄 MDX: `content/beauty-style/hair/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends.mdx`
-- words WP/MDX: 1147/1132 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## this-cutting-edge-brow-technique-is-one-step-up-on-microblading
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-cutting-edge-brow-technique-is-one-step-up-on-microblading/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/this-cutting-edge-brow-technique-is-one-step-up-on-microblading/)
-- 📄 MDX: `content/beauty-style/beauty-tips/this-cutting-edge-brow-technique-is-one-step-up-on-microblading/this-cutting-edge-brow-technique-is-one-step-up-on-microblading.mdx`
-- words WP/MDX: 529/529 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## the-best-sydney-beauty-treatments-for-post-lockdown-preening
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-sydney-beauty-treatments-for-post-lockdown-preening/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-best-sydney-beauty-treatments-for-post-lockdown-preening/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-best-sydney-beauty-treatments-for-post-lockdown-preening/the-best-sydney-beauty-treatments-for-post-lockdown-preening.mdx`
-- words WP/MDX: 337/335 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## the-7-beauty-pick-me-ups-to-add-to-cart-this-spring
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-7-beauty-pick-me-ups-to-add-to-cart-this-spring/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-7-beauty-pick-me-ups-to-add-to-cart-this-spring/)
-- 📄 MDX: `content/beauty-style/skin-care/the-7-beauty-pick-me-ups-to-add-to-cart-this-spring/the-7-beauty-pick-me-ups-to-add-to-cart-this-spring.mdx`
-- words WP/MDX: 496/493 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## do-hydration-boosting-capsules-work-we-tried-them-for-30-days
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/)
-- 📄 MDX: `content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx`
-- words WP/MDX: 1027/1027 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick/)
-- 📄 MDX: `content/beauty-style/skin-care/why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick/why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick.mdx`
-- words WP/MDX: 802/802 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
 ## these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider/)
 - 📄 MDX: `content/beauty-style/hair/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider.mdx`
 - words WP/MDX: 1304/1298 · images WP/MDX: 0/4
 
-- **MARKDOWN** (medium): glue×4
-
-## the-under-25-budget-buys-were-using-on-repeat
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-under-25-budget-buys-were-using-on-repeat/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-under-25-budget-buys-were-using-on-repeat/)
-- 📄 MDX: `content/beauty-style/skin-care/the-under-25-budget-buys-were-using-on-repeat/the-under-25-budget-buys-were-using-on-repeat.mdx`
-- words WP/MDX: 515/515 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
+- **MARKDOWN** (medium): glue×3
 
 ## how-to-do-lash-extensions-right
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-do-lash-extensions-right/)**
@@ -772,125 +334,13 @@
 - 📄 MDX: `content/beauty-style/hair/this-clean-haircare-entrepreneur-shares-her-instant-volumising-hack/this-clean-haircare-entrepreneur-shares-her-instant-volumising-hack.mdx`
 - words WP/MDX: 874/862 · images WP/MDX: 0/10
 
-- **MARKDOWN** (medium): glue×1
-
-## how-to-get-your-natural-brows-to-look-their-best
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-get-your-natural-brows-to-look-their-best/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/how-to-get-your-natural-brows-to-look-their-best/)
-- 📄 MDX: `content/beauty-style/beauty-tips/how-to-get-your-natural-brows-to-look-their-best/how-to-get-your-natural-brows-to-look-their-best.mdx`
-- words WP/MDX: 1192/1190 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×7
-
-## the-best-australian-candles-under-40
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-australian-candles-under-40/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-best-australian-candles-under-40/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-best-australian-candles-under-40/the-best-australian-candles-under-40.mdx`
-- words WP/MDX: 705/702 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×5
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene/)
 - 📄 MDX: `content/beauty-style/skin-care/the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene/the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene.mdx`
 - words WP/MDX: 644/632 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks/)
-- 📄 MDX: `content/beauty-style/skin-care/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks.mdx`
-- words WP/MDX: 902/901 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×1
-
-## skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help/)
-- 📄 MDX: `content/beauty-style/skin-care/skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help/skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help.mdx`
-- words WP/MDX: 624/623 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×4
-
-## diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/nails/diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home/)
-- 📄 MDX: `content/beauty-style/beauty-tips/diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home/diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home.mdx`
-- words WP/MDX: 677/678 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## the-self-care-rituals-i-swear-by-mothers-day-or-not
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-self-care-rituals-i-swear-by-mothers-day-or-not/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/sigourneys-edit/the-self-care-rituals-i-swear-by-mothers-day-or-not/)
-- 📄 MDX: `content/beauty-style/skin-care/the-self-care-rituals-i-swear-by-mothers-day-or-not/the-self-care-rituals-i-swear-by-mothers-day-or-not.mdx`
-- words WP/MDX: 1237/1232 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## this-mother-and-daughter-duo-talk-their-holistic-daily-routines
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/)
-- 📄 MDX: `content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx`
-- words WP/MDX: 1695/1690 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×16
-
-## the-top-6-products-to-fake-great-skin
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-top-6-products-to-fake-great-skin/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-top-6-products-to-fake-great-skin/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-top-6-products-to-fake-great-skin/the-top-6-products-to-fake-great-skin.mdx`
-- words WP/MDX: 1049/1048 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×5
-
-## boost-your-scalp-health-and-get-the-best-hair-of-your-life
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/boost-your-scalp-health-and-get-the-best-hair-of-your-life/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/boost-your-scalp-health-and-get-the-best-hair-of-your-life/)
-- 📄 MDX: `content/beauty-style/hair/boost-your-scalp-health-and-get-the-best-hair-of-your-life/boost-your-scalp-health-and-get-the-best-hair-of-your-life.mdx`
-- words WP/MDX: 364/364 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing/)
-- 📄 MDX: `content/beauty-style/beauty-tips/these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing/these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing.mdx`
-- words WP/MDX: 699/699 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing/)
-- 📄 MDX: `content/beauty-style/beauty-tips/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing.mdx`
-- words WP/MDX: 1127/1127 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands/)
-- 📄 MDX: `content/beauty-style/skin-care/overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands/overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands.mdx`
-- words WP/MDX: 561/562 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×5
-
-## heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2/)
-- 📄 MDX: `content/beauty-style/beauty-tips/heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2/heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2.mdx`
-- words WP/MDX: 465/450 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2/)
-- 📄 MDX: `content/beauty-style/beauty-tips/we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2/we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2.mdx`
-- words WP/MDX: 1111/1099 · images WP/MDX: 0/10
 
 - **MARKDOWN** (medium): glue×1
 
@@ -902,94 +352,6 @@
 
 - **MARKDOWN** (medium): glue×1
 
-## the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2/the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2.mdx`
-- words WP/MDX: 441/441 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×1
-
-## heres-how-to-make-the-most-of-your-beauty-fridge
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/heres-how-to-make-the-most-of-your-beauty-fridge/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/heres-how-to-make-the-most-of-your-beauty-fridge/)
-- 📄 MDX: `content/beauty-style/skin-care/heres-how-to-make-the-most-of-your-beauty-fridge/heres-how-to-make-the-most-of-your-beauty-fridge.mdx`
-- words WP/MDX: 321/319 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## the-desk-drawer-beauty-essentials-you-need-this-new-year-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-desk-drawer-beauty-essentials-you-need-this-new-year-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-desk-drawer-beauty-essentials-you-need-this-new-year-2/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-desk-drawer-beauty-essentials-you-need-this-new-year-2/the-desk-drawer-beauty-essentials-you-need-this-new-year-2.mdx`
-- words WP/MDX: 489/485 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×1
-
-## the-2019-beauticate-christmas-gift-guide
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-2019-beauticate-christmas-gift-guide/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-2019-beauticate-christmas-gift-guide/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-2019-beauticate-christmas-gift-guide/the-2019-beauticate-christmas-gift-guide.mdx`
-- words WP/MDX: 610/609 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/makeup/trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap/)
-- 📄 MDX: `content/beauty-style/makeup/trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap/trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap.mdx`
-- words WP/MDX: 888/887 · images WP/MDX: 0/2
-
-- **MARKDOWN** (medium): glue×1
-
-## our-edit-of-the-12-best-2019-beauty-advent-calendars
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-edit-of-the-12-best-2019-beauty-advent-calendars/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/our-edit-of-the-12-best-2019-beauty-advent-calendars/)
-- 📄 MDX: `content/beauty-style/beauty-tips/our-edit-of-the-12-best-2019-beauty-advent-calendars/our-edit-of-the-12-best-2019-beauty-advent-calendars.mdx`
-- words WP/MDX: 2164/2159 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## what-clean-beauty-means-to-rose-marie-swift
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/what-clean-beauty-means-to-rose-marie-swift/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/what-clean-beauty-means-to-rose-marie-swift/)
-- 📄 MDX: `content/beauty-style/beauty-tips/what-clean-beauty-means-to-rose-marie-swift/what-clean-beauty-means-to-rose-marie-swift.mdx`
-- words WP/MDX: 1171/1162 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×2
-
-## the-6-perfumes-that-will-evoke-spring-in-a-spritz
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-6-perfumes-that-will-evoke-spring-in-a-spritz/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-6-perfumes-that-will-evoke-spring-in-a-spritz/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-6-perfumes-that-will-evoke-spring-in-a-spritz/the-6-perfumes-that-will-evoke-spring-in-a-spritz.mdx`
-- words WP/MDX: 451/451 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×1
-
-## how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by/)
-- 📄 MDX: `content/beauty-style/hair/how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by/how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by.mdx`
-- words WP/MDX: 601/597 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## a-beauty-nine-australian-beauty-brands-to-get-on-your-radar
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/a-beauty-nine-australian-beauty-brands-to-get-on-your-radar/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/a-beauty-nine-australian-beauty-brands-to-get-on-your-radar/)
-- 📄 MDX: `content/beauty-style/skin-care/a-beauty-nine-australian-beauty-brands-to-get-on-your-radar/a-beauty-nine-australian-beauty-brands-to-get-on-your-radar.mdx`
-- words WP/MDX: 558/549 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×1
-
-## face-mask-your-way-to-great-skin-with-these-beauties
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/face-mask-your-way-to-great-skin-with-these-beauties/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/face-mask-your-way-to-great-skin-with-these-beauties/)
-- 📄 MDX: `content/beauty-style/skin-care/face-mask-your-way-to-great-skin-with-these-beauties/face-mask-your-way-to-great-skin-with-these-beauties.mdx`
-- words WP/MDX: 542/540 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
 ## video-mornings-with-sigourney-and-family
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-mornings-with-sigourney-and-family/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/sigourneys-edit/video-mornings-with-sigourney-and-family/)
@@ -998,51 +360,11 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles/)
-- 📄 MDX: `content/beauty-style/hair/our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles/our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles.mdx`
-- words WP/MDX: 1135/1121 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## three-new-sydney-beauty-destinations-we-love
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/three-new-sydney-beauty-destinations-we-love/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/three-new-sydney-beauty-destinations-we-love/)
-- 📄 MDX: `content/beauty-style/beauty-tips/three-new-sydney-beauty-destinations-we-love/three-new-sydney-beauty-destinations-we-love.mdx`
-- words WP/MDX: 257/245 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## the-at-home-ipl-hair-removal-device-that-actually-works
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-at-home-ipl-hair-removal-device-that-actually-works/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/the-at-home-ipl-hair-removal-device-that-actually-works/)
-- 📄 MDX: `content/beauty-style/skin-care/the-at-home-ipl-hair-removal-device-that-actually-works/the-at-home-ipl-hair-removal-device-that-actually-works.mdx`
-- words WP/MDX: 1066/1062 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×1
-
-## the-pimple-injection-and-other-blemish-hacks-that-actually-work
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-pimple-injection-and-other-blemish-hacks-that-actually-work/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/the-pimple-injection-and-other-blemish-hacks-that-actually-work/)
-- 📄 MDX: `content/beauty-style/skin-care/the-pimple-injection-and-other-blemish-hacks-that-actually-work/the-pimple-injection-and-other-blemish-hacks-that-actually-work.mdx`
-- words WP/MDX: 412/409 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
 ## how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch/)
 - 📄 MDX: `content/beauty-style/skin-care/how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch/how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch.mdx`
 - words WP/MDX: 900/897 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## pharmacy-beauty-buys-were-lusting-over
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/pharmacy-beauty-buys-were-lusting-over/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/pharmacy-beauty-buys-were-lusting-over/)
-- 📄 MDX: `content/beauty-style/skin-care/pharmacy-beauty-buys-were-lusting-over/pharmacy-beauty-buys-were-lusting-over.mdx`
-- words WP/MDX: 566/563 · images WP/MDX: 0/5
 
 - **MARKDOWN** (medium): glue×1
 
@@ -1053,30 +375,6 @@
 - words WP/MDX: 1258/1258 · images WP/MDX: 0/7
 
 - **MARKDOWN** (medium): glue×1, mismatched-bold×1
-
-## what-london-taught-me-about-beauty-sigourneys-edit
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/what-london-taught-me-about-beauty-sigourneys-edit/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/what-london-taught-me-about-beauty-sigourneys-edit/)
-- 📄 MDX: `content/beauty-style/skin-care/what-london-taught-me-about-beauty-sigourneys-edit/what-london-taught-me-about-beauty-sigourneys-edit.mdx`
-- words WP/MDX: 1216/1184 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## 6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe/)
-- 📄 MDX: `content/beauty-style/beauty-tips/6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe/6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe.mdx`
-- words WP/MDX: 621/621 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## 8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines/)
-- 📄 MDX: `content/beauty-style/beauty-tips/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines.mdx`
-- words WP/MDX: 1009/1009 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): mismatched-bold×1
 
 ## shop-sigs-look-from-her-parlour-x-shoot
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/shop-sigs-look-from-her-parlour-x-shoot/)**
@@ -1094,22 +392,6 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## christmas-festive-scents
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/christmas-festive-scents/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/christmas-festive-scents/)
-- 📄 MDX: `content/beauty-style/beauty-tips/christmas-festive-scents/christmas-festive-scents.mdx`
-- words WP/MDX: 900/900 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×1
-
-## repair-your-skin-barrier
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/repair-your-skin-barrier/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/repair-your-skin-barrier/)
-- 📄 MDX: `content/beauty-style/skin-care/repair-your-skin-barrier/repair-your-skin-barrier.mdx`
-- words WP/MDX: 675/672 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
 ## abigail-oneill-hydrotherapy
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/abigail-oneill-hydrotherapy/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/wellness/health/abigail-oneill-hydrotherapy/)
@@ -1126,54 +408,6 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## skin-ageing-faster-than-it-should
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/skin-ageing-faster-than-it-should/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/skin-ageing-faster-than-it-should/)
-- 📄 MDX: `content/beauty-style/skin-care/skin-ageing-faster-than-it-should/skin-ageing-faster-than-it-should.mdx`
-- words WP/MDX: 869/866 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): glue×1
-
-## sam-mcknight-styling
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/sam-mcknight-styling/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/ask/hairs/sam-mcknight-styling/)
-- 📄 MDX: `content/beauty-style/beauty-tips/sam-mcknight-styling/sam-mcknight-styling.mdx`
-- words WP/MDX: 333/319 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## italian-it-girl-glow
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/italian-it-girl-glow/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/italian-it-girl-glow/)
-- 📄 MDX: `content/beauty-style/beauty-tips/italian-it-girl-glow/italian-it-girl-glow.mdx`
-- words WP/MDX: 696/680 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## proenza-schouler-lancome-makeup-collection
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/proenza-schouler-lancome-makeup-collection/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/proenza-schouler-lancome-makeup-collection/)
-- 📄 MDX: `content/beauty-style/beauty-tips/proenza-schouler-lancome-makeup-collection/proenza-schouler-lancome-makeup-collection.mdx`
-- words WP/MDX: 483/471 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
-## cellulite-products-that-work
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/cellulite-products-that-work/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/wellness/fitness/cellulite-products-that-work/)
-- 📄 MDX: `content/beauty-style/skin-care/cellulite-products-that-work/cellulite-products-that-work.mdx`
-- words WP/MDX: 666/665 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## gym-bag-essentials-that-arent-a-water-bottle
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/gym-bag-essentials-that-arent-a-water-bottle/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/wellness/fitness/gym-bag-essentials-that-arent-a-water-bottle/)
-- 📄 MDX: `content/beauty-style/makeup/gym-bag-essentials-that-arent-a-water-bottle/gym-bag-essentials-that-arent-a-water-bottle.mdx`
-- words WP/MDX: 567/566 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
 ## this-new-perfume-trend-will-have-you-smelling-like-you-only-better
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-new-perfume-trend-will-have-you-smelling-like-you-only-better/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/this-new-perfume-trend-will-have-you-smelling-like-you-only-better/)
@@ -1182,39 +416,14 @@
 
 - **MARKDOWN** (medium): glue×1, mismatched-bold×1
 
-## how-to-save-the-environment-without-sacrificing-your-glow-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-save-the-environment-without-sacrificing-your-glow-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/how-to-save-the-environment-without-sacrificing-your-glow-2/)
-- 📄 MDX: `content/beauty-style/skin-care/how-to-save-the-environment-without-sacrificing-your-glow-2/how-to-save-the-environment-without-sacrificing-your-glow-2.mdx`
-- words WP/MDX: 390/388 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
-## 12-apps-every-busy-woman-needs
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/12-apps-every-busy-woman-needs/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/living/lifestyle/12-apps-every-busy-woman-needs/)
-- 📄 MDX: `content/beauty-style/beauty-tips/12-apps-every-busy-woman-needs/12-apps-every-busy-woman-needs.mdx`
-- words WP/MDX: 1158/1158 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
 ## unique-one-of-a-kind-scents-that-will-have-everyone-asking-sigourneys-edit
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/fragrance/unique-one-of-a-kind-scents-that-will-have-everyone-asking-sigourneys-edit/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/unique-one-of-a-kind-scents-that-will-have-everyone-asking-sigourneys-edit/)
 - 📄 MDX: `content/beauty-style/fragrance/unique-one-of-a-kind-scents-that-will-have-everyone-asking-sigourneys-edit/unique-one-of-a-kind-scents-that-will-have-everyone-asking-sigourneys-edit.mdx`
 - words WP/MDX: 651/651 · images WP/MDX: 0/10
 
-- **MARKDOWN** (medium): glue×1
 - **META** (medium): title
     - title: WP `Unique One-Of-A-Kind Scents That Will Have Everyone Asking – Sigourney’s Edit` ≠ MDX `Unique One-Of-A-Kind Scents That Will Have Everyone Asking: Sigourney’s Edit`
-
-## rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand/)
-- 📄 MDX: `content/beauty-style/beauty-tips/rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand/rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand.mdx`
-- words WP/MDX: 399/400 · images WP/MDX: 0/1
-
-- **MARKDOWN** (medium): glue×2
 
 ## the-definitive-meghan-markle-beauty-guide
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-definitive-meghan-markle-beauty-guide/)**
@@ -1224,22 +433,6 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## how-to-choose-your-perfect-shade-of-lipstick
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-choose-your-perfect-shade-of-lipstick/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/how-to-choose-your-perfect-shade-of-lipstick/)
-- 📄 MDX: `content/beauty-style/makeup/how-to-choose-your-perfect-shade-of-lipstick/how-to-choose-your-perfect-shade-of-lipstick.mdx`
-- words WP/MDX: 456/455 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## the-acne-mistakes-you-dont-even-know-youre-making
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-acne-mistakes-you-dont-even-know-youre-making/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/the-acne-mistakes-you-dont-even-know-youre-making/)
-- 📄 MDX: `content/beauty-style/skin-care/the-acne-mistakes-you-dont-even-know-youre-making/the-acne-mistakes-you-dont-even-know-youre-making.mdx`
-- words WP/MDX: 326/326 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
 ## we-raided-australias-top-models-handbags-heres-what-we-found
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/we-raided-australias-top-models-handbags-heres-what-we-found/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/we-raided-australias-top-models-handbags-heres-what-we-found/)
@@ -1248,23 +441,6 @@
 
 - **META** (medium): title
     - title: WP `We Raided Australia’s Top Model’s Handbags – Here’s What We Found…` ≠ MDX `We Raided Australia's Top Model's Handbags – Here's What We Found`
-
-## a-celebrity-stylist-on-mardi-gras-and-male-grooming
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/a-celebrity-stylist-on-mardi-gras-and-male-grooming/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/a-celebrity-stylist-on-mardi-gras-and-male-grooming/)
-- 📄 MDX: `content/beauty-style/beauty-tips/a-celebrity-stylist-on-mardi-gras-and-male-grooming/a-celebrity-stylist-on-mardi-gras-and-male-grooming.mdx`
-- words WP/MDX: 485/483 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## beauty-sleep-the-best-new-body-and-bath-products-for-date-night
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/beauty-sleep-the-best-new-body-and-bath-products-for-date-night/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/beauty-sleep-the-best-new-body-and-bath-products-for-date-night/)
-- 📄 MDX: `content/beauty-style/skin-care/beauty-sleep-the-best-new-body-and-bath-products-for-date-night/beauty-sleep-the-best-new-body-and-bath-products-for-date-night.mdx`
-- words WP/MDX: 0/0 · images WP/MDX: 0/12
-
-- **META** (medium): title
-    - title: WP `Beauty Sleep: Best New Body & Bath Products For Date Night` ≠ MDX `Beauty Sleep: Best New Body  Bath Products For Date Night`
 
 ## video-waking-up-with-jess-hart
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-waking-up-with-jess-hart/)**
@@ -1283,14 +459,13 @@
 
 - **MARKDOWN** (medium): glue×1
 
-## video-sigourney-road-tests-3d-skin-tightening-treatment-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourney-road-tests-3d-skin-tightening-treatment-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/video-sigourney-road-tests-3d-skin-tightening-treatment-2/)
-- 📄 MDX: `content/beauty-style/skin-care/video-sigourney-road-tests-3d-skin-tightening-treatment-2/video-sigourney-road-tests-3d-skin-tightening-treatment-2.mdx`
-- words WP/MDX: 178/178 · images WP/MDX: 0/3
+## why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/)
+- 📄 MDX: `content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx`
+- words WP/MDX: 532/532 · images WP/MDX: 0/1
 
-- **META** (medium): title
-    - title: WP `VIDEO: Sigourney Road Tests RF Lift & Restore Facial` ≠ MDX `VIDEO: Sigourney Road Tests RF Lift  Restore Facial`
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## get-ready-with-elyse-taylor
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/get-ready-with-elyse-taylor/)**
@@ -1301,14 +476,6 @@
 - **META** (medium): title
     - title: WP `Get Ready With… Elyse Taylor` ≠ MDX `Get Ready With Elyse Taylor`
 
-## the-turn-back-time-tweaks-that-actually-work
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/)
-- 📄 MDX: `content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx`
-- words WP/MDX: 1030/1027 · images WP/MDX: 0/4
-
-- **MARKDOWN** (medium): glue×1
-
 ## news-australias-newest-and-most-elite-skin-clinic-opens-its-doors
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/news-australias-newest-and-most-elite-skin-clinic-opens-its-doors/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/news-australias-newest-and-most-elite-skin-clinic-opens-its-doors/)
@@ -1316,14 +483,6 @@
 - words WP/MDX: 220/220 · images WP/MDX: 0/3
 
 - **MARKDOWN** (medium): glue×1
-
-## behind-the-scenes-with-chanel-and-lily-rose-depp
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/behind-the-scenes-with-chanel-and-lily-rose-depp/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/behind-the-scenes-with-chanel-and-lily-rose-depp/)
-- 📄 MDX: `content/beauty-style/beauty-tips/behind-the-scenes-with-chanel-and-lily-rose-depp/behind-the-scenes-with-chanel-and-lily-rose-depp.mdx`
-- words WP/MDX: 219/219 · images WP/MDX: 3/3
-
-- **MARKDOWN** (medium): mismatched-bold×1
 
 ## finally-a-diet-with-no-limit-on-calories
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/finally-a-diet-with-no-limit-on-calories/)**
@@ -1334,35 +493,19 @@
 - **META** (medium): title
     - title: WP `The Latest Diet Trend Wants You To Eat As Much As You Like…` ≠ MDX `The Latest Diet Trend Wants You To Eat As Much As You Like`
 
-## how-to-feel-better-in-a-swimsuit
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/style/how-to-feel-better-in-a-swimsuit/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/wellness/health/how-to-feel-better-in-a-swimsuit/)
-- 📄 MDX: `content/beauty-style/style/how-to-feel-better-in-a-swimsuit/how-to-feel-better-in-a-swimsuit.mdx`
-- words WP/MDX: 699/697 · images WP/MDX: 0/5
-
-- **MARKDOWN** (medium): glue×1
-
 ## need-it-now-looks-from-the-sag-awards
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/need-it-now-looks-from-the-sag-awards/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/need-it-now-looks-from-the-sag-awards/)
 - 📄 MDX: `content/beauty-style/beauty-tips/need-it-now-looks-from-the-sag-awards/need-it-now-looks-from-the-sag-awards.mdx`
-- words WP/MDX: 790/949 · images WP/MDX: 1/1
+- words WP/MDX: 742/949 · images WP/MDX: 1/1
 
 - **MARKDOWN** (medium): mismatched-bold×1
-
-## the-three-most-exciting-new-products-from-sephoras-showcase
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-three-most-exciting-new-products-from-sephoras-showcase/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/the-three-most-exciting-new-products-from-sephoras-showcase/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-three-most-exciting-new-products-from-sephoras-showcase/the-three-most-exciting-new-products-from-sephoras-showcase.mdx`
-- words WP/MDX: 788/782 · images WP/MDX: 1/1
-
-- **MARKDOWN** (medium): mismatched-bold×2
 
 ## dannii-minogues-new-blonde-hue-took-almost-12-hours
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/dannii-minogues-new-blonde-hue-took-almost-12-hours/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/news/dannii-minogues-new-blonde-hue-took-almost-12-hours/)
 - 📄 MDX: `content/beauty-style/beauty-tips/dannii-minogues-new-blonde-hue-took-almost-12-hours/dannii-minogues-new-blonde-hue-took-almost-12-hours.mdx`
-- words WP/MDX: 263/342 · images WP/MDX: 1/1
+- words WP/MDX: 239/342 · images WP/MDX: 1/1
 
 - **META** (medium): title
     - title: WP `Dannii Minogue’s Blonde Hair Was A 12 Hour Mane Mission… You Read Right` ≠ MDX `Dannii Minogue’s Blonde Hair Was A 12 Hour Mane Mission You Read Right`
@@ -1385,14 +528,6 @@
 - **META** (medium): title
     - title: WP `Australia’s Next Top Model Winner Is…` ≠ MDX `Australia's Next Top Model Winner Is`
 
-## the-best-dry-shampoos-reader-review
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-best-dry-shampoos-reader-review/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/the-best-dry-shampoos-reader-review/)
-- 📄 MDX: `content/beauty-style/hair/the-best-dry-shampoos-reader-review/the-best-dry-shampoos-reader-review.mdx`
-- words WP/MDX: 714/711 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×1
-
 ## emily-skyes-killer-workout
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/emily-skyes-killer-workout/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/wellness/fitness/emily-skyes-killer-workout/)
@@ -1401,55 +536,6 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## nine-natural-products-that-actually-do-something
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/nine-natural-products-that-actually-do-something/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/nine-natural-products-that-actually-do-something/)
-- 📄 MDX: `content/beauty-style/skin-care/nine-natural-products-that-actually-do-something/nine-natural-products-that-actually-do-something.mdx`
-- words WP/MDX: 760/754 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## mmy-red-carpet-looks-were-stealing-for-the-races
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/mmy-red-carpet-looks-were-stealing-for-the-races/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/mmy-red-carpet-looks-were-stealing-for-the-races/)
-- 📄 MDX: `content/beauty-style/beauty-tips/mmy-red-carpet-looks-were-stealing-for-the-races/mmy-red-carpet-looks-were-stealing-for-the-races.mdx`
-- words WP/MDX: 338/338 · images WP/MDX: 0/11
-
-- **MARKDOWN** (medium): glue×1
-
-## 48-hours-in-paris-with-sephora
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/48-hours-in-paris-with-sephora/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/48-hours-in-paris-with-sephora/)
-- 📄 MDX: `content/beauty-style/beauty-tips/48-hours-in-paris-with-sephora/48-hours-in-paris-with-sephora.mdx`
-- words WP/MDX: 1691/1691 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## miranda-kerr-on-motherhood-men-motorbikes-2
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miranda-kerr-on-motherhood-men-motorbikes-2/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/miranda-kerr-on-motherhood-men-motorbikes-2/)
-- 📄 MDX: `content/beauty-style/beauty-tips/miranda-kerr-on-motherhood-men-motorbikes-2/miranda-kerr-on-motherhood-men-motorbikes-2.mdx`
-- words WP/MDX: 76/102 · images WP/MDX: 0/3
-
-- **META** (medium): title
-    - title: WP `Miranda Kerr on Motherhood, Men & Motorbikes` ≠ MDX `Miranda Kerr on Motherhood, Men  Motorbikes`
-
-## miranda-rap
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miranda-rap/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/miranda-rap/)
-- 📄 MDX: `content/beauty-style/beauty-tips/miranda-rap/miranda-rap.mdx`
-- words WP/MDX: 146/146 · images WP/MDX: 0/3
-
-- **MARKDOWN** (medium): mismatched-bold×1
-
-## the-beauticate-teams-best-foundation-application-tips
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauticate-teams-best-foundation-application-tips/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-beauticate-teams-best-foundation-application-tips/)
-- 📄 MDX: `content/beauty-style/beauty-tips/the-beauticate-teams-best-foundation-application-tips/the-beauticate-teams-best-foundation-application-tips.mdx`
-- words WP/MDX: 792/792 · images WP/MDX: 1/5
-
-- **MARKDOWN** (medium): glue×1
-
 ## roji-canberra-3
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/roji-canberra-3/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/destination/beauty-wellness/hair-salons/roji-canberra-3/)
@@ -1457,14 +543,6 @@
 - words WP/MDX: 600/598 · images WP/MDX: 0/4
 
 - **MARKDOWN** (medium): mismatched-bold×1
-
-## reader-review-eyelash-curlers
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/reader-review-eyelash-curlers/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/reviews/products/reader-review-eyelash-curlers/)
-- 📄 MDX: `content/beauty-style/makeup/reader-review-eyelash-curlers/reader-review-eyelash-curlers.mdx`
-- words WP/MDX: 594/591 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×1
 
 ## how-to-diy-professional-hair-colour-at-home
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-diy-professional-hair-colour-at-home/)**
@@ -1490,6 +568,14 @@
 
 - **MARKDOWN** (medium): glue×1
 
+## what-are-the-best-nail-hardeners
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/what-are-the-best-nail-hardeners/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/what-are-the-best-nail-hardeners/)
+- 📄 MDX: `content/beauty-style/beauty-tips/what-are-the-best-nail-hardeners/what-are-the-best-nail-hardeners.mdx`
+- words WP/MDX: 557/756 · images WP/MDX: 0/7
+
+- **MARKDOWN** (medium): mismatched-bold×1
+
 ## why-youre-probably-not-washing-your-hair-correctly
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/why-youre-probably-not-washing-your-hair-correctly/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/why-youre-probably-not-washing-your-hair-correctly/)
@@ -1506,35 +592,11 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## the-beauty-rules-that-are-meant-to-be-broken
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-beauty-rules-that-are-meant-to-be-broken/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/the-beauty-rules-that-are-meant-to-be-broken/)
-- 📄 MDX: `content/beauty-style/skin-care/the-beauty-rules-that-are-meant-to-be-broken/the-beauty-rules-that-are-meant-to-be-broken.mdx`
-- words WP/MDX: 811/807 · images WP/MDX: 0/7
-
-- **MARKDOWN** (medium): glue×1
-
 ## nine-new-season-trends-youll-actually-want-to-try
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/nine-new-season-trends-youll-actually-want-to-try/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/nine-new-season-trends-youll-actually-want-to-try/)
 - 📄 MDX: `content/beauty-style/hair/nine-new-season-trends-youll-actually-want-to-try/nine-new-season-trends-youll-actually-want-to-try.mdx`
 - words WP/MDX: 1326/1323 · images WP/MDX: 0/12
-
-- **MARKDOWN** (medium): glue×1
-
-## reader-review-facial-exfoliants
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-facial-exfoliants/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/reader-review-facial-exfoliants/)
-- 📄 MDX: `content/beauty-style/skin-care/reader-review-facial-exfoliants/reader-review-facial-exfoliants.mdx`
-- words WP/MDX: 738/738 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
-## reader-review-body-creams
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-body-creams/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/reader-review-body-creams/)
-- 📄 MDX: `content/beauty-style/skin-care/reader-review-body-creams/reader-review-body-creams.mdx`
-- words WP/MDX: 1147/1147 · images WP/MDX: 0/9
 
 - **MARKDOWN** (medium): glue×1
 
@@ -1546,21 +608,13 @@
 
 - **MARKDOWN** (medium): mismatched-bold×1
 
-## winter-warmers-sigourneys-edit
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/winter-warmers-sigourneys-edit/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/sigourneys-edit/winter-warmers-sigourneys-edit/)
-- 📄 MDX: `content/beauty-style/beauty-tips/winter-warmers-sigourneys-edit/winter-warmers-sigourneys-edit.mdx`
-- words WP/MDX: 1127/1127 · images WP/MDX: 0/11
+## oscars-beauty-and-hair-trends
+- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/oscars-beauty-and-hair-trends/)**
+- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/oscars-beauty-and-hair-trends/)
+- 📄 MDX: `content/beauty-style/hair/oscars-beauty-and-hair-trends/oscars-beauty-and-hair-trends.mdx`
+- words WP/MDX: 1005/1004 · images WP/MDX: 0/11
 
-- **MARKDOWN** (medium): glue×1
-
-## 5-of-the-best-hand-creams-review
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/5-of-the-best-hand-creams-review/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/skin-care/5-of-the-best-hand-creams-review/)
-- 📄 MDX: `content/beauty-style/skin-care/5-of-the-best-hand-creams-review/5-of-the-best-hand-creams-review.mdx`
-- words WP/MDX: 642/642 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
+- **MARKDOWN** (medium): mismatched-bold×1
 
 ## new-beauty-buys-illuminators-and-highlighters
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/new-beauty-buys-illuminators-and-highlighters/)**
@@ -1570,43 +624,11 @@
 
 - **MARKDOWN** (medium): glue×1
 
-## how-to-3-ways-to-minimize-tress-fall-out
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-3-ways-to-minimize-tress-fall-out/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/how-to-3-ways-to-minimize-tress-fall-out/)
-- 📄 MDX: `content/beauty-style/hair/how-to-3-ways-to-minimize-tress-fall-out/how-to-3-ways-to-minimize-tress-fall-out.mdx`
-- words WP/MDX: 582/579 · images WP/MDX: 0/9
-
-- **MARKDOWN** (medium): glue×1
-
-## how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black/)
-- 📄 MDX: `content/beauty-style/makeup/how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black/how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black.mdx`
-- words WP/MDX: 456/456 · images WP/MDX: 0/6
-
-- **MARKDOWN** (medium): glue×1
-
 ## how-to-bastille-beauty-11-cult-french-icons
 - 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-bastille-beauty-11-cult-french-icons/)**
 - 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/beauty-tips/how-to-bastille-beauty-11-cult-french-icons/)
 - 📄 MDX: `content/beauty-style/beauty-tips/how-to-bastille-beauty-11-cult-french-icons/how-to-bastille-beauty-11-cult-french-icons.mdx`
 - words WP/MDX: 608/605 · images WP/MDX: 0/10
-
-- **MARKDOWN** (medium): glue×1
-
-## seven-sex-and-the-city-hair-lessons
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/hair/seven-sex-and-the-city-hair-lessons/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/hair/seven-sex-and-the-city-hair-lessons/)
-- 📄 MDX: `content/beauty-style/hair/seven-sex-and-the-city-hair-lessons/seven-sex-and-the-city-hair-lessons.mdx`
-- words WP/MDX: 484/484 · images WP/MDX: 0/8
-
-- **MARKDOWN** (medium): glue×1
-
-## how-to-pick-the-perfect-shade-of-red-lipstick
-- 🔗 **[Open on Vercel ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-pick-the-perfect-shade-of-red-lipstick/)**
-- 📰 [Compare on WordPress ↗](https://www.beauticate.com/beauty-style/makeup/how-to-pick-the-perfect-shade-of-red-lipstick/)
-- 📄 MDX: `content/beauty-style/makeup/how-to-pick-the-perfect-shade-of-red-lipstick/how-to-pick-the-perfect-shade-of-red-lipstick.mdx`
-- words WP/MDX: 696/696 · images WP/MDX: 0/12
 
 - **MARKDOWN** (medium): glue×1
 
@@ -1630,8 +652,15 @@
 - [fathers-day-fragrance-gifts ↗](https://beauticate-website.vercel.app/beauty-style/fragrance/fathers-day-fragrance-gifts/)
 - [family-ski-holiday-to-japan ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/family-ski-holiday-to-japan/)
 - [goldfield-and-banks-interview-dimitri-weber ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/goldfield-and-banks-interview-dimitri-weber/)
+- [magnesium-pools-wellness-design-australia ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/magnesium-pools-wellness-design-australia/)
 - [best-ai-image-generator-app-review-glam-ai ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/best-ai-image-generator-app-review-glam-ai/)
+- [red-light-therapy-infraredi-review ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/red-light-therapy-infraredi-review/)
 - [le-meridien-melbourne-review ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/le-meridien-melbourne-review/)
+- [how-to-mask-according-to-your-mood ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-mask-according-to-your-mood/)
+- [struggling-to-sleep-this-mattress-changed-everything-for-me ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/struggling-to-sleep-this-mattress-changed-everything-for-me/)
+- [the-exact-products-a-beauty-editor-packs-for-europe ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-exact-products-a-beauty-editor-packs-for-europe/)
+- [timeless-beauty-the-effortless-no-makeup-makeup-look ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/timeless-beauty-the-effortless-no-makeup-makeup-look/)
+- [best-korean-beauty-products-2025 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/best-korean-beauty-products-2025/)
 - [built-by-damo-the-best-deck-on-the-block ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/built-by-damo-the-best-deck-on-the-block/)
 - [the-art-of-loving-yourself-a-valentines-day-for-me ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-art-of-loving-yourself-a-valentines-day-for-me/)
 - [korean-skin-treatments-that-we-predict-well-be-seeing-more-of ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/korean-skin-treatments-that-we-predict-well-be-seeing-more-of/)
@@ -1647,6 +676,7 @@
 - [smoothies-to-transform-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/smoothies-to-transform-skin/)
 - [5-french-hair-secrets-for-effortlessly-cool-hair ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair/)
 - [bathing-a-love-affair ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/bathing-a-love-affair/)
+- [the-best-eye-creams-and-mascaras-for-super-sensitive-eyes ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes/)
 - [clear-skincare-clinic-led-brand-has-relaunched ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/clear-skincare-clinic-led-brand-has-relaunched/)
 - [what-is-the-best-value-led-mask-on-the-market-qure ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/what-is-the-best-value-led-mask-on-the-market-qure/)
 - [how-to-choose-the-right-products-for-your-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-choose-the-right-products-for-your-skin/)
@@ -1671,18 +701,24 @@
 - [beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation/)
 - [how-to-sleep-better-with-anna-robards ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-sleep-better-with-anna-robards/)
 - [vagina-skincare ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/vagina-skincare/)
+- [how-to-use-superstar-skincare-ingredients-without-the-downsides ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-use-superstar-skincare-ingredients-without-the-downsides/)
 - [why-you-need-this-new-blush-in-your-makeup-bag ↗](https://beauticate-website.vercel.app/beauty-style/makeup/why-you-need-this-new-blush-in-your-makeup-bag/)
 - [why-the-central-coast-is-worth-revisiting ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/why-the-central-coast-is-worth-revisiting/)
+- [wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science/)
 - [are-at-home-led-masks-worth-the-cost ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/are-at-home-led-masks-worth-the-cost/)
 - [guy-sebastian-on-his-fame-family-and-his-new-fragrance ↗](https://beauticate-website.vercel.app/beauty-style/fragrance/guy-sebastian-on-his-fame-family-and-his-new-fragrance/)
 - [how-i-found-my-zen-with-yoga-inspired-skincare ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-i-found-my-zen-with-yoga-inspired-skincare/)
+- [the-best-new-ways-to-perfect-your-fake-tan ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-new-ways-to-perfect-your-fake-tan/)
 - [the-beauty-advice-im-giving-my-daughter ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauty-advice-im-giving-my-daughter/)
 - [why-you-should-gua-sha-your-neck-too ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/why-you-should-gua-sha-your-neck-too/)
 - [how-an-australian-skincare-brand-is-giving-hollywood-its-glow ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-an-australian-skincare-brand-is-giving-hollywood-its-glow/)
+- [how-to-care-for-sensitive-skin-while-still-using-serious-skincare ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-care-for-sensitive-skin-while-still-using-serious-skincare/)
 - [luxury-skincare-review ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/luxury-skincare-review/)
 - [four-luxe-eye-makeup-products-worth-the-splurge ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/four-luxe-eye-makeup-products-worth-the-splurge/)
 - [christmas-2022 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/christmas-2022/)
+- [how-to-level-up-your-next-diy-mani-pedi ↗](https://beauticate-website.vercel.app/beauty-style/nails/how-to-level-up-your-next-diy-mani-pedi/)
 - [i-was-about-to-get-botox-and-tried-this-instead-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/i-was-about-to-get-botox-and-tried-this-instead-2/)
+- [a-matte-lip-obsessives-nine-favourite-products-right-now ↗](https://beauticate-website.vercel.app/beauty-style/makeup/a-matte-lip-obsessives-nine-favourite-products-right-now/)
 - [the-new-australian-skincare-brand-making-the-most-of-our-beautiful-oceans ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-new-australian-skincare-brand-making-the-most-of-our-beautiful-oceans/)
 - [the-best-products-to-lighten-up-your-skincare-for-spring ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-best-products-to-lighten-up-your-skincare-for-spring/)
 - [how-i-dealt-with-my-insomnia ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-i-dealt-with-my-insomnia/)
@@ -1706,27 +742,43 @@
 - [these-are-the-summer-fragrances-that-my-friends-wont-stop-asking-me-about ↗](https://beauticate-website.vercel.app/beauty-style/fragrance/these-are-the-summer-fragrances-that-my-friends-wont-stop-asking-me-about/)
 - [how-i-improve-the-appearance-of-cellulite-at-home ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-i-improve-the-appearance-of-cellulite-at-home/)
 - [three-days-in-la-where-to-stay-eat-and-get-beautiful ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/three-days-in-la-where-to-stay-eat-and-get-beautiful/)
+- [do-magnetic-false-lashes-really-work ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/do-magnetic-false-lashes-really-work/)
 - [sigs-slim-aarons-poolside-birthday-all-the-details ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/sigs-slim-aarons-poolside-birthday-all-the-details/)
 - [the-2021-beauticate-team-christmas-gift-guide ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-2021-beauticate-team-christmas-gift-guide/)
+- [mood-boosting-beauty-treats-for-every-budget ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/mood-boosting-beauty-treats-for-every-budget/)
+- [video-we-meet-four-beauty-scholars-achieving-their-dreams ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-we-meet-four-beauty-scholars-achieving-their-dreams/)
+- [9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season ↗](https://beauticate-website.vercel.app/beauty-style/makeup/9-new-makeup-buys-that-will-set-your-heart-aflutter-this-season/)
 - [3-underrated-amazon-finds-that-transformed-my-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/3-underrated-amazon-finds-that-transformed-my-skin/)
 - [video-supermodel-and-ceo-miranda-kerr-on-lockdown-life-sustainable-beauty-and-superfoods-for-your-face ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-supermodel-and-ceo-miranda-kerr-on-lockdown-life-sustainable-beauty-and-superfoods-for-your-face/)
 - [video-beauty-and-fashion-expert-trinny-woodall-on-how-to-truly-change-your-skin ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-beauty-and-fashion-expert-trinny-woodall-on-how-to-truly-change-your-skin/)
 - [magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/)
+- [6-great-exfoliants-to-get-you-glowing-this-spring ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/6-great-exfoliants-to-get-you-glowing-this-spring/)
 - [i-tried-the-22-hairbrush-celebrities-are-obsessed-with-the-results-surprised-me ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/i-tried-the-22-hairbrush-celebrities-are-obsessed-with-the-results-surprised-me/)
 - [how-to-create-a-skincare-routine-for-your-body ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-create-a-skincare-routine-for-your-body/)
 - [our-2021-fathers-day-guide-as-chosen-by-the-discerning-men-of-beauticate ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-2021-fathers-day-guide-as-chosen-by-the-discerning-men-of-beauticate/)
+- [8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/)
+- [how-staying-at-home-helped-me-fall-back-in-love-with-makeup ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-staying-at-home-helped-me-fall-back-in-love-with-makeup/)
 - [does-eyeliner-tattoo-hurt ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/does-eyeliner-tattoo-hurt/)
 - [dr-ateh-jewel-the-beauty-journalist-on-how-it-feels-to-see-diversity-properly-start-to-matter ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/dr-ateh-jewel-the-beauty-journalist-on-how-it-feels-to-see-diversity-properly-start-to-matter/)
 - [the-three-rs-of-beauty-aka-how-to-be-sustainable-and-still-have-fun ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-three-rs-of-beauty-aka-how-to-be-sustainable-and-still-have-fun/)
 - [olivia-bond-on-how-to-make-your-jewellery-sparkle-like-new ↗](https://beauticate-website.vercel.app/beauty-style/style/olivia-bond-on-how-to-make-your-jewellery-sparkle-like-new/)
 - [everything-you-need-to-know-before-buying-tape-in-hair-extensions ↗](https://beauticate-website.vercel.app/beauty-style/hair/everything-you-need-to-know-before-buying-tape-in-hair-extensions/)
+- [12-great-new-foundations-and-concealers-with-real-skincare-benefits ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/12-great-new-foundations-and-concealers-with-real-skincare-benefits/)
+- [our-top-six-tips-for-how-to-shop-your-beauty-stash ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-top-six-tips-for-how-to-shop-your-beauty-stash/)
+- [zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt/)
 - [these-are-the-products-i-use-on-my-kids ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/these-are-the-products-i-use-on-my-kids/)
+- [chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/chanel-factory-5-collection-discover-the-clever-take-on-the-classic-scent/)
+- [the-best-new-launches-that-will-get-you-excited-about-beauty-again ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/)
+- [beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test/)
 - [steroid-free-soothers-for-troubled-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/steroid-free-soothers-for-troubled-skin/)
+- [six-non-traditional-treatments-for-smooth-comfortable-lips ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/six-non-traditional-treatments-for-smooth-comfortable-lips/)
 - [the-dos-of-hair-density-these-are-the-products-that-make-my-hair-feel-thicker ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-dos-of-hair-density-these-are-the-products-that-make-my-hair-feel-thicker/)
 - [how-to-prevent-hair-loss ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-prevent-hair-loss/)
+- [the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-groomed-brow-edit-my-favoured-products-for-full-but-natural-arches/)
 - [the-supermodel-weapon-for-a-sculpted-face-jade-roller-benefits ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-supermodel-weapon-for-a-sculpted-face-jade-roller-benefits/)
 - [ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards/)
 - [cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/)
+- [the-4-perth-beauty-destinations-were-currently-visiting ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-4-perth-beauty-destinations-were-currently-visiting/)
 - [the-fab-four-handcreams-were-using-on-repeat-right-now ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-fab-four-handcreams-were-using-on-repeat-right-now/)
 - [this-is-my-winning-combo-for-airbrushed-undereyes ↗](https://beauticate-website.vercel.app/beauty-style/makeup/this-is-my-winning-combo-for-airbrushed-undereyes/)
 - [miss-korea-chats-the-ugly-side-of-the-world-of-beauty-pageants ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miss-korea-chats-the-ugly-side-of-the-world-of-beauty-pageants/)
@@ -1734,67 +786,115 @@
 - [the-brow-trend-that-taught-me-self-love ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-brow-trend-that-taught-me-self-love/)
 - [filorga-the-cult-french-pharmacy-brand-making-waves ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/filorga-the-cult-french-pharmacy-brand-making-waves/)
 - [how-to-apply-false-lashes ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-apply-false-lashes/)
+- [cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/)
 - [the-product-that-made-me-completely-rethink-cleansers ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-product-that-made-me-completely-rethink-cleansers/)
 - [chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/)
+- [this-is-literally-all-you-need-to-know-about-getting-a-lash-lift ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-is-literally-all-you-need-to-know-about-getting-a-lash-lift/)
+- [dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly/)
+- [these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails ↗](https://beauticate-website.vercel.app/beauty-style/nails/these-nail-professionals-share-how-to-achieve-no-makeup-makeup-nails/)
+- [beauty-boost-treatment-we-chat-this-cult-favourite-facial ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-boost-treatment-we-chat-this-cult-favourite-facial/)
 - [how-to-repair-lashes-naturally-our-expert-approved-guides ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-repair-lashes-naturally-our-expert-approved-guides/)
 - [the-best-products-to-make-your-eyes-pop-mask-or-no-mask ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/the-best-products-to-make-your-eyes-pop-mask-or-no-mask/)
 - [ethical-beauty-scores-global-wins ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/ethical-beauty-scores-global-wins/)
+- [an-insomniacs-guide-to-beauty-before-bed ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/an-insomniacs-guide-to-beauty-before-bed/)
+- [the-new-beauty-rules-how-beauty-has-completely-changed-for-good ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-new-beauty-rules-how-beauty-has-completely-changed-for-good/)
+- [these-beauties-will-help-you-refresh-your-skincare-regime ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/these-beauties-will-help-you-refresh-your-skincare-regime/)
+- [this-simple-hair-trick-saves-my-strands ↗](https://beauticate-website.vercel.app/beauty-style/hair/this-simple-hair-trick-saves-my-strands/)
 - [celeste-barber-on-kissing-tom-ford-and-makeup-must-haves ↗](https://beauticate-website.vercel.app/beauty-style/makeup/celeste-barber-on-kissing-tom-ford-and-makeup-must-haves/)
 - [upgrade-your-life-with-our-valentines-day-gift-guide ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/upgrade-your-life-with-our-valentines-day-gift-guide/)
+- [these-are-the-products-that-will-make-your-shower-as-fun-as-bath ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/these-are-the-products-that-will-make-your-shower-as-fun-as-bath/)
+- [the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-5-best-facial-spritzes-to-refresh-your-makeup-and-your-mood/)
+- [the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-4-sydney-beauty-treatments-to-get-you-sorted-for-the-new-year/)
 - [three-super-easy-beauty-ideas-for-new-years-eve ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/three-super-easy-beauty-ideas-for-new-years-eve/)
+- [the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauticate-christmas-gift-guide-why-you-should-100-treat-yourself-and-your-loved-ones-this-year/)
 - [the-most-festive-scents-to-put-you-in-a-christmassy-mood ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-most-festive-scents-to-put-you-in-a-christmassy-mood/)
+- [2020s-best-beauty-advent-calendars-and-christmas-crackers ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/2020s-best-beauty-advent-calendars-and-christmas-crackers/)
+- [bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/bridal-beauty-routine-these-are-the-specific-details-of-how-i-prepped-for-my-wedding/)
 - [orange-really-is-the-new-black-three-non-freaky-ways-to-wear-orange-makeup ↗](https://beauticate-website.vercel.app/beauty-style/makeup/orange-really-is-the-new-black-three-non-freaky-ways-to-wear-orange-makeup/)
 - [get-your-skin-perfectly-prepped-for-summer-with-these-beauties ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/get-your-skin-perfectly-prepped-for-summer-with-these-beauties/)
 - [this-is-your-post-lockdown-beauty-to-do-list ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/this-is-your-post-lockdown-beauty-to-do-list/)
+- [this-top-mua-shares-how-to-get-runway-ready-skin-at-home ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/this-top-mua-shares-how-to-get-runway-ready-skin-at-home/)
+- [money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends ↗](https://beauticate-website.vercel.app/beauty-style/hair/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends/)
+- [this-cutting-edge-brow-technique-is-one-step-up-on-microblading ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-cutting-edge-brow-technique-is-one-step-up-on-microblading/)
 - [benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment/)
+- [the-best-sydney-beauty-treatments-for-post-lockdown-preening ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-sydney-beauty-treatments-for-post-lockdown-preening/)
 - [6-tips-for-mastering-a-flawless-at-home-blowdry ↗](https://beauticate-website.vercel.app/beauty-style/hair/6-tips-for-mastering-a-flawless-at-home-blowdry/)
+- [the-7-beauty-pick-me-ups-to-add-to-cart-this-spring ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-7-beauty-pick-me-ups-to-add-to-cart-this-spring/)
+- [do-hydration-boosting-capsules-work-we-tried-them-for-30-days ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/)
 - [beauty-to-the-rescue-5-buys-to-do-a-world-of-good ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-to-the-rescue-5-buys-to-do-a-world-of-good/)
 - [video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic/)
+- [why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick/)
 - [our-fathers-day-gift-guide-as-approved-by-the-men-of-beauticate ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-fathers-day-gift-guide-as-approved-by-the-men-of-beauticate/)
 - [how-to-make-your-beauty-sleep-work-harder-for-you ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-make-your-beauty-sleep-work-harder-for-you/)
+- [the-under-25-budget-buys-were-using-on-repeat ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-under-25-budget-buys-were-using-on-repeat/)
 - [hairstyles-for-wet-and-windy-days ↗](https://beauticate-website.vercel.app/beauty-style/hair/hairstyles-for-wet-and-windy-days/)
 - [this-pharmacy-night-routine-gets-my-big-tick-of-approval ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/this-pharmacy-night-routine-gets-my-big-tick-of-approval/)
+- [how-to-get-your-natural-brows-to-look-their-best ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-get-your-natural-brows-to-look-their-best/)
 - [natural-hair-masks-you-can-find-in-your-kitchen-pantry ↗](https://beauticate-website.vercel.app/beauty-style/hair/natural-hair-masks-you-can-find-in-your-kitchen-pantry/)
 - [these-luxurious-dental-care-upgrades-deserve-a-place-on-your-bathroom-counter ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/these-luxurious-dental-care-upgrades-deserve-a-place-on-your-bathroom-counter/)
 - [the-5-beauty-rules-you-need-to-break ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-5-beauty-rules-you-need-to-break/)
+- [the-best-australian-candles-under-40 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-australian-candles-under-40/)
+- [dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks/)
 - [world-oceans-day-how-our-favourite-brands-are-helping-our-seas ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/world-oceans-day-how-our-favourite-brands-are-helping-our-seas/)
 - [sophie-monk-reveals-her-kooky-food-colouring-beauty-hack ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/sophie-monk-reveals-her-kooky-food-colouring-beauty-hack/)
 - [this-luxury-candle-designer-shares-whats-getting-her-through-covid-19 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-luxury-candle-designer-shares-whats-getting-her-through-covid-19/)
 - [egg-yolk-hair-mask-the-diy-recipe-for-glossy-hair ↗](https://beauticate-website.vercel.app/beauty-style/hair/egg-yolk-hair-mask-the-diy-recipe-for-glossy-hair/)
 - [olaplex-review-is-it-worth-the-hype ↗](https://beauticate-website.vercel.app/beauty-style/hair/olaplex-review-is-it-worth-the-hype/)
 - [j-hannah-nail-polish-review-the-cult-range-youll-want-to-try ↗](https://beauticate-website.vercel.app/beauty-style/nails/j-hannah-nail-polish-review-the-cult-range-youll-want-to-try/)
+- [skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help/)
+- [diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/diy-nail-art-the-subtle-and-chic-manis-you-can-definitely-recreate-at-home/)
 - [how-to-find-anti-ageing-products-that-wont-weigh-down-oily-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-find-anti-ageing-products-that-wont-weigh-down-oily-skin/)
 - [these-pretty-kitchen-pieces-will-inspire-your-iso-baking ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/these-pretty-kitchen-pieces-will-inspire-your-iso-baking/)
+- [the-self-care-rituals-i-swear-by-mothers-day-or-not ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-self-care-rituals-i-swear-by-mothers-day-or-not/)
 - [is-it-safe-to-use-retinol-on-your-eye-area ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/)
+- [this-mother-and-daughter-duo-talk-their-holistic-daily-routines ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/)
 - [the-best-instagram-workouts-for-every-type-of-exerciser ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-instagram-workouts-for-every-type-of-exerciser/)
 - [this-is-all-the-content-were-consuming-to-get-us-through-social-distancing ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/this-is-all-the-content-were-consuming-to-get-us-through-social-distancing/)
+- [the-top-6-products-to-fake-great-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-top-6-products-to-fake-great-skin/)
+- [boost-your-scalp-health-and-get-the-best-hair-of-your-life ↗](https://beauticate-website.vercel.app/beauty-style/hair/boost-your-scalp-health-and-get-the-best-hair-of-your-life/)
 - [what-your-skin-needs-now-that-youre-stuck-inside ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/what-your-skin-needs-now-that-youre-stuck-inside/)
+- [these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/these-are-the-powerful-beauty-habits-you-can-finally-adopt-while-social-distancing/)
+- [self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing/)
+- [overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/overwashed-your-hands-these-are-the-best-hand-creams-for-dry-hands/)
 - [chemical-peels-do-you-need-one ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/chemical-peels-do-you-need-one/)
 - [how-our-stunning-landscape-is-inspiring-the-latest-a-beauty ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-our-stunning-landscape-is-inspiring-the-latest-a-beauty/)
 - [im-a-hair-bleach-addict-heres-how-i-prevent-the-damage ↗](https://beauticate-website.vercel.app/beauty-style/hair/im-a-hair-bleach-addict-heres-how-i-prevent-the-damage/)
 - [rose-marie-swifts-10-beauty-rules-for-older-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin/)
+- [heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/heres-exactly-how-to-shop-beauty-according-to-your-ethical-and-skincare-concerns-2/)
+- [we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2/)
 - [video-megan-gale-on-rituals-crystals-and-meditation ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-megan-gale-on-rituals-crystals-and-meditation/)
+- [the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2/)
+- [heres-how-to-make-the-most-of-your-beauty-fridge ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/heres-how-to-make-the-most-of-your-beauty-fridge/)
 - [video-sigourney-plies-skincare-secrets-from-victoria-beckhams-derm ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourney-plies-skincare-secrets-from-victoria-beckhams-derm/)
 - [self-tan-tips-to-make-your-bronze-way-more-believable-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/self-tan-tips-to-make-your-bronze-way-more-believable-2/)
 - [6-products-to-help-pollution-proof-your-beauty-routine ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/6-products-to-help-pollution-proof-your-beauty-routine/)
+- [the-desk-drawer-beauty-essentials-you-need-this-new-year-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-desk-drawer-beauty-essentials-you-need-this-new-year-2/)
 - [celebrating-strong-successful-and-smart-women-with-armani-beauty ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/celebrating-strong-successful-and-smart-women-with-armani-beauty/)
 - [these-are-the-exact-products-we-swear-by-to-travel-in-style ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/these-are-the-exact-products-we-swear-by-to-travel-in-style/)
 - [our-best-party-proof-beauty-buys ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-best-party-proof-beauty-buys/)
+- [the-2019-beauticate-christmas-gift-guide ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-2019-beauticate-christmas-gift-guide/)
+- [trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap ↗](https://beauticate-website.vercel.app/beauty-style/makeup/trinny-woodall-shares-the-four-makeup-lessons-you-need-to-learn-asap/)
 - [my-new-zealand-beauty-haul ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/my-new-zealand-beauty-haul/)
+- [our-edit-of-the-12-best-2019-beauty-advent-calendars ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-edit-of-the-12-best-2019-beauty-advent-calendars/)
 - [the-beauticate-teams-christmas-essentials ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauticate-teams-christmas-essentials/)
 - [byredo-hand-cream-review-is-it-worth-it ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/byredo-hand-cream-review-is-it-worth-it/)
+- [what-clean-beauty-means-to-rose-marie-swift ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/what-clean-beauty-means-to-rose-marie-swift/)
 - [cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial ↗](https://beauticate-website.vercel.app/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial/)
 - [how-to-create-your-own-french-skincare-routine ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-create-your-own-french-skincare-routine/)
 - [the-extreme-beauty-standards-flight-attendants-adhere-to ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-extreme-beauty-standards-flight-attendants-adhere-to/)
 - [the-best-italian-hair-products-and-secrets-you-need-to-know ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know/)
+- [the-6-perfumes-that-will-evoke-spring-in-a-spritz ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-6-perfumes-that-will-evoke-spring-in-a-spritz/)
+- [how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by/)
 - [get-glowing-skin-with-these-5-diy-treatments ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/get-glowing-skin-with-these-5-diy-treatments/)
 - [psa-this-new-australian-range-is-perfect-for-nixing-dehydration ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/psa-this-new-australian-range-is-perfect-for-nixing-dehydration/)
 - [the-one-thing-that-made-zoe-foster-blake-nervous ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-one-thing-that-made-zoe-foster-blake-nervous/)
 - [why-this-semi-permanent-bb-cream-facial-is-going-viral ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/why-this-semi-permanent-bb-cream-facial-is-going-viral/)
 - [how-to-dry-body-brush-properly ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-dry-body-brush-properly/)
+- [a-beauty-nine-australian-beauty-brands-to-get-on-your-radar ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/a-beauty-nine-australian-beauty-brands-to-get-on-your-radar/)
 - [are-at-home-gel-nail-kits-worth-the-investment ↗](https://beauticate-website.vercel.app/beauty-style/nails/are-at-home-gel-nail-kits-worth-the-investment/)
 - [chanel-schooled-us-on-pilates-and-wellness ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/chanel-schooled-us-on-pilates-and-wellness/)
 - [video-sigourney-on-her-ultimate-eye-care-routine ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourney-on-her-ultimate-eye-care-routine/)
+- [face-mask-your-way-to-great-skin-with-these-beauties ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/face-mask-your-way-to-great-skin-with-these-beauties/)
 - [could-this-cult-treatment-fix-your-pigmentation ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/could-this-cult-treatment-fix-your-pigmentation/)
 - [everything-you-need-to-know-about-dry-conditioner ↗](https://beauticate-website.vercel.app/beauty-style/hair/everything-you-need-to-know-about-dry-conditioner/)
 - [all-you-need-to-know-about-eyes ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/all-you-need-to-know-about-eyes/)
@@ -1803,7 +903,9 @@
 - [video-inside-jessica-rowes-wacky-cat-themed-beauty-bag ↗](https://beauticate-website.vercel.app/beauty-style/makeup/video-inside-jessica-rowes-wacky-cat-themed-beauty-bag/)
 - [when-art-and-beauty-collide ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/when-art-and-beauty-collide/)
 - [the-natural-hair-products-we-currently-have-on-rotation ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-natural-hair-products-we-currently-have-on-rotation/)
+- [our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles ↗](https://beauticate-website.vercel.app/beauty-style/hair/our-guide-to-your-most-magnificent-mane-makeover-yet-this-beauty-treatment-delivers-transformations-as-dramatic-as-plastic-surgery-sans-needles/)
 - [boho-bliss-meets-coastal-charm-a-stunning-getaway ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/boho-bliss-meets-coastal-charm-a-stunning-getaway/)
+- [three-new-sydney-beauty-destinations-we-love ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/three-new-sydney-beauty-destinations-we-love/)
 - [playas-shelby-wild-on-how-to-achieve-californian-hair ↗](https://beauticate-website.vercel.app/beauty-style/hair/playas-shelby-wild-on-how-to-achieve-californian-hair/)
 - [the-nourishing-winter-oils-to-suit-every-beauty-style ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-nourishing-winter-oils-to-suit-every-beauty-style/)
 - [video-whats-in-megan-gales-bag ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-whats-in-megan-gales-bag/)
@@ -1811,11 +913,17 @@
 - [video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials/)
 - [video-sigourney-on-how-to-nourish-your-skin ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourney-on-how-to-nourish-your-skin/)
 - [mbfwa19-the-must-have-beauty-products-from-backstage-at-fashion-week ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/mbfwa19-the-must-have-beauty-products-from-backstage-at-fashion-week/)
+- [the-at-home-ipl-hair-removal-device-that-actually-works ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-at-home-ipl-hair-removal-device-that-actually-works/)
 - [subtle-and-sophisticated-scents-perfect-for-mothers-day ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/subtle-and-sophisticated-scents-perfect-for-mothers-day/)
 - [the-beauticate-teams-mothers-day-wishlist ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauticate-teams-mothers-day-wishlist/)
 - [would-you-tattoo-your-forehead ↗](https://beauticate-website.vercel.app/beauty-style/hair/would-you-tattoo-your-forehead/)
 - [the-new-interiors-trends-and-how-to-work-them ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-new-interiors-trends-and-how-to-work-them/)
+- [the-pimple-injection-and-other-blemish-hacks-that-actually-work ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-pimple-injection-and-other-blemish-hacks-that-actually-work/)
+- [pharmacy-beauty-buys-were-lusting-over ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/pharmacy-beauty-buys-were-lusting-over/)
 - [4-makeup-artist-approved-tricks-to-brighten-up-tired-eyes ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/4-makeup-artist-approved-tricks-to-brighten-up-tired-eyes/)
+- [what-london-taught-me-about-beauty-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/what-london-taught-me-about-beauty-sigourneys-edit/)
+- [6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/6-gorgeous-scents-to-upgrade-your-autumn-fragrance-wardrobe/)
+- [8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines/)
 - [video-holiday-makeup-bag-for-an-endless-summer ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-holiday-makeup-bag-for-an-endless-summer/)
 - [the-new-approach-to-layering-skincare ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-new-approach-to-layering-skincare/)
 - [elyse-taylor-on-how-to-be-happy ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/elyse-taylor-on-how-to-be-happy/)
@@ -1835,10 +943,12 @@
 - [yoga-sleep-poses ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/yoga-sleep-poses/)
 - [jessica-sepel-smoothie-bowl ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/jessica-sepel-smoothie-bowl/)
 - [makeup-artist-budget-buys ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/makeup-artist-budget-buys/)
+- [christmas-festive-scents ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/christmas-festive-scents/)
 - [the-products-i-traveled-europe-with ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-products-i-traveled-europe-with/)
 - [kristin-ess-hair-double-conditioning ↗](https://beauticate-website.vercel.app/beauty-style/hair/kristin-ess-hair-double-conditioning/)
 - [three-linen-looks-you-will-love ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/three-linen-looks-you-will-love/)
 - [gift-guide-every-beauty-lover ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/gift-guide-every-beauty-lover/)
+- [repair-your-skin-barrier ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/repair-your-skin-barrier/)
 - [natural-beauty-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/natural-beauty-2/)
 - [best-party-picks-black-friday-sales ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/best-party-picks-black-friday-sales/)
 - [luxe-products-for-spring ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/luxe-products-for-spring/)
@@ -1856,6 +966,8 @@
 - [why-i-changed-my-mind-about-masks-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/why-i-changed-my-mind-about-masks-sigourneys-edit/)
 - [mastectomy-swimwear-breast-cancer-awareness-month ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/mastectomy-swimwear-breast-cancer-awareness-month/)
 - [the-perfume-trend-that-beats-coffee ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-perfume-trend-that-beats-coffee/)
+- [skin-ageing-faster-than-it-should ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/skin-ageing-faster-than-it-should/)
+- [sam-mcknight-styling ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/sam-mcknight-styling/)
 - [beauticate-dermalogica-pro-power-peel ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauticate-dermalogica-pro-power-peel/)
 - [how-to-style-this-seasons-must-have-shoe ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-style-this-seasons-must-have-shoe/)
 - [sensitive-scalp-hair-colour ↗](https://beauticate-website.vercel.app/beauty-style/hair/sensitive-scalp-hair-colour/)
@@ -1863,14 +975,17 @@
 - [clever-ways-organise-beauty-arent-plastic-drawers ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/clever-ways-organise-beauty-arent-plastic-drawers/)
 - [how-to-create-an-inspirational-workspace-with-hayley-bonham ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-create-an-inspirational-workspace-with-hayley-bonham/)
 - [hair-dilemmas-solved ↗](https://beauticate-website.vercel.app/beauty-style/hair/hair-dilemmas-solved/)
+- [italian-it-girl-glow ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/italian-it-girl-glow/)
 - [a-week-in-my-wardrobe ↗](https://beauticate-website.vercel.app/beauty-style/makeup/a-week-in-my-wardrobe/)
 - [korean-plastic-surgery ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/korean-plastic-surgery/)
 - [how-i-do-weekends-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-i-do-weekends-sigourneys-edit/)
 - [how-to-luxe-your-dogs-life ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-luxe-your-dogs-life/)
+- [proenza-schouler-lancome-makeup-collection ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/proenza-schouler-lancome-makeup-collection/)
 - [zero-waste-beauty ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/zero-waste-beauty/)
 - [hair-trends-your-hairdresser-wants-you-to-know ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/hair-trends-your-hairdresser-wants-you-to-know/)
 - [ultimate-guide-no-makeup-makeup ↗](https://beauticate-website.vercel.app/beauty-style/makeup/ultimate-guide-no-makeup-makeup/)
 - [weve-found-a-dreamy-south-coast-escape-thats-perfect-for-events ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/weve-found-a-dreamy-south-coast-escape-thats-perfect-for-events/)
+- [cellulite-products-that-work ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/cellulite-products-that-work/)
 - [can-sleeping-on-a-silk-pillowcase-prevent-wrinkles ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/can-sleeping-on-a-silk-pillowcase-prevent-wrinkles/)
 - [sigourney-cantelo-bathroom-cabinet ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/sigourney-cantelo-bathroom-cabinet/)
 - [5-ways-to-instantly-make-your-home-super-cosy-this-winter ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/5-ways-to-instantly-make-your-home-super-cosy-this-winter/)
@@ -1878,13 +993,16 @@
 - [celebrity-beauty-brands-are-they-actually-worth-the-hype-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/celebrity-beauty-brands-are-they-actually-worth-the-hype-2/)
 - [winter-weekend-escape-to-bells-at-killcare-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/winter-weekend-escape-to-bells-at-killcare-sigourneys-edit/)
 - [the-5-things-beauty-experts-wish-you-would-stop-buying-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-5-things-beauty-experts-wish-you-would-stop-buying-2/)
+- [gym-bag-essentials-that-arent-a-water-bottle ↗](https://beauticate-website.vercel.app/beauty-style/makeup/gym-bag-essentials-that-arent-a-water-bottle/)
 - [video-how-to-steam-your-skin ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-how-to-steam-your-skin/)
 - [five-reasons-why-winter-fashion-is-the-best ↗](https://beauticate-website.vercel.app/beauty-style/style/five-reasons-why-winter-fashion-is-the-best/)
 - [the-11-french-pharmacy-products-you-need-that-you-can-buy-in-australia ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-11-french-pharmacy-products-you-need-that-you-can-buy-in-australia/)
 - [video-how-to-pack-your-suitcase ↗](https://beauticate-website.vercel.app/beauty-style/style/video-how-to-pack-your-suitcase/)
 - [five-things-you-should-never-do-after-a-facial-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/five-things-you-should-never-do-after-a-facial-2/)
 - [sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir ↗](https://beauticate-website.vercel.app/beauty-style/hair/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir/)
+- [how-to-save-the-environment-without-sacrificing-your-glow-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-save-the-environment-without-sacrificing-your-glow-2/)
 - [scented-halo-why-your-hair-needs-perfume-too ↗](https://beauticate-website.vercel.app/beauty-style/hair/scented-halo-why-your-hair-needs-perfume-too/)
+- [12-apps-every-busy-woman-needs ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/12-apps-every-busy-woman-needs/)
 - [how-to-perfect-the-classic-manicure-2 ↗](https://beauticate-website.vercel.app/beauty-style/nails/how-to-perfect-the-classic-manicure-2/)
 - [the-drugstore-products-that-saved-my-skin-3 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-drugstore-products-that-saved-my-skin-3/)
 - [prep-your-skin-for-your-most-glow-worthy-winter-yet-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/prep-your-skin-for-your-most-glow-worthy-winter-yet-2/)
@@ -1894,6 +1012,7 @@
 - [how-to-cleanse-your-skin-in-winter-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-cleanse-your-skin-in-winter-2/)
 - [5-celeb-beauty-looks-to-copy-this-weekend-as-seen-on-instagram-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/5-celeb-beauty-looks-to-copy-this-weekend-as-seen-on-instagram-2/)
 - [how-to-wear-the-top-2018-hair-trends ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-wear-the-top-2018-hair-trends/)
+- [rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/rosie-huntington-whiteley-is-launching-rose-inc-her-very-own-beauty-brand/)
 - [think-twice-about-using-a-towel-to-dry-your-face ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/think-twice-about-using-a-towel-to-dry-your-face/)
 - [our-top-11-best-dressed-royal-wedding-guests-and-how-to-get-their-makeup-looks ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-top-11-best-dressed-royal-wedding-guests-and-how-to-get-their-makeup-looks/)
 - [video-pia-muehlenbeck-shares-her-hair-styling-secrets ↗](https://beauticate-website.vercel.app/beauty-style/hair/video-pia-muehlenbeck-shares-her-hair-styling-secrets/)
@@ -1909,6 +1028,8 @@
 - [the-skincare-ingredients-that-will-fade-redness-for-good ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-skincare-ingredients-that-will-fade-redness-for-good/)
 - [how-to-transition-your-wardrobe-for-the-cooler-months-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-transition-your-wardrobe-for-the-cooler-months-2/)
 - [how-to-be-sustainable-in-style ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-be-sustainable-in-style/)
+- [how-to-choose-your-perfect-shade-of-lipstick ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-choose-your-perfect-shade-of-lipstick/)
+- [the-acne-mistakes-you-dont-even-know-youre-making ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-acne-mistakes-you-dont-even-know-youre-making/)
 - [the-most-stunning-festival-beauty-trends-to-rock-at-coachella-2018 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-most-stunning-festival-beauty-trends-to-rock-at-coachella-2018/)
 - [these-are-the-kate-middleton-approved-mum-buys ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/these-are-the-kate-middleton-approved-mum-buys/)
 - [beauty-products-that-alleviate-anxiety ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-products-that-alleviate-anxiety/)
@@ -1921,6 +1042,7 @@
 - [how-to-magically-de-bloat-your-face ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-magically-de-bloat-your-face/)
 - [the-right-way-to-do-bathleisure ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-right-way-to-do-bathleisure/)
 - [stunning-looks-from-award-season ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/stunning-looks-from-award-season/)
+- [a-celebrity-stylist-on-mardi-gras-and-male-grooming ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/a-celebrity-stylist-on-mardi-gras-and-male-grooming/)
 - [beauty-bites-sophisticated-and-sculpted-summer-skin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-bites-sophisticated-and-sculpted-summer-skin/)
 - [vietnams-new-vibe-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/vietnams-new-vibe-sigourneys-edit/)
 - [revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet/)
@@ -1928,6 +1050,7 @@
 - [best-new-beauty-gadgets ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/best-new-beauty-gadgets/)
 - [are-you-working-out-your-face-try-foga-for-a-natural-facelift-say-scientists ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/are-you-working-out-your-face-try-foga-for-a-natural-facelift-say-scientists/)
 - [how-to-do-your-whole-makeup-look-with-just-lipstick ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-do-your-whole-makeup-look-with-just-lipstick/)
+- [beauty-sleep-the-best-new-body-and-bath-products-for-date-night ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/beauty-sleep-the-best-new-body-and-bath-products-for-date-night/)
 - [the-only-scent-you-should-be-wearing-this-valentines-day ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-only-scent-you-should-be-wearing-this-valentines-day/)
 - [beauty-bites-spf-makeup-for-lunching-in-the-sun ↗](https://beauticate-website.vercel.app/beauty-style/makeup/beauty-bites-spf-makeup-for-lunching-in-the-sun/)
 - [the-ultimate-guide-to-fuller-lips-sans-needles ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-ultimate-guide-to-fuller-lips-sans-needles/)
@@ -1950,7 +1073,6 @@
 - [how-not-to-use-coconut-oil-in-your-skincare-routine ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-not-to-use-coconut-oil-in-your-skincare-routine/)
 - [cult-cool-girl-fragrances ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/cult-cool-girl-fragrances/)
 - [video-how-to-get-beachy-waves ↗](https://beauticate-website.vercel.app/beauty-style/hair/video-how-to-get-beachy-waves/)
-- [why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/)
 - [beauty-and-dessert-have-just-merged-and-were-loving-it ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-and-dessert-have-just-merged-and-were-loving-it/)
 - [get-ready-with-miranda-kerr ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/get-ready-with-miranda-kerr/)
 - [miranda-kerr-and-evan-spiegel-are-pregnant ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miranda-kerr-and-evan-spiegel-are-pregnant/)
@@ -1961,6 +1083,7 @@
 - [the-best-celeb-halloween-costumes-2017 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-celeb-halloween-costumes-2017/)
 - [this-stylist-has-a-kickass-anti-ageing-routine ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/this-stylist-has-a-kickass-anti-ageing-routine/)
 - [how-my-smart-watch-saved-my-life-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-my-smart-watch-saved-my-life-sigourneys-edit/)
+- [video-sigourney-road-tests-3d-skin-tightening-treatment-2 ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourney-road-tests-3d-skin-tightening-treatment-2/)
 - [how-to-ease-an-angry-scalp ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-ease-an-angry-scalp/)
 - [q-how-can-i-keep-powders-ruining-my-flawless-foundation ↗](https://beauticate-website.vercel.app/beauty-style/makeup/q-how-can-i-keep-powders-ruining-my-flawless-foundation/)
 - [video-beauty-bites-flawless-spring-makeup-look ↗](https://beauticate-website.vercel.app/beauty-style/makeup/video-beauty-bites-flawless-spring-makeup-look/)
@@ -2019,6 +1142,7 @@
 - [how-korean-beauty-cleared-my-skin-from-acne ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-korean-beauty-cleared-my-skin-from-acne/)
 - [video-michael-browns-three-tips-to-ace-your-base-with-jesinta-franklin ↗](https://beauticate-website.vercel.app/beauty-style/makeup/video-michael-browns-three-tips-to-ace-your-base-with-jesinta-franklin/)
 - [how-to-8-ways-to-groom-like-a-new-yorker ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-8-ways-to-groom-like-a-new-yorker/)
+- [the-turn-back-time-tweaks-that-actually-work ↗](https://beauticate-website.vercel.app/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/)
 - [why-i-love-wine-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/makeup/why-i-love-wine-sigourneys-edit/)
 - [in-flight-beauty-how-to-look-great-at-35000-feet ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/in-flight-beauty-how-to-look-great-at-35000-feet/)
 - [five-makeup-essentials-that-will-fit-in-your-clutch ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/five-makeup-essentials-that-will-fit-in-your-clutch/)
@@ -2068,6 +1192,7 @@
 - [you-can-actually-diy-and-it-actually-works-with-this-insta-account ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/you-can-actually-diy-and-it-actually-works-with-this-insta-account/)
 - [the-one-colour-your-makeup-bag-needs-right-now-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/makeup/the-one-colour-your-makeup-bag-needs-right-now-sigourneys-edit/)
 - [kill-signs-of-aging-with-kindness ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/kill-signs-of-aging-with-kindness/)
+- [behind-the-scenes-with-chanel-and-lily-rose-depp ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/behind-the-scenes-with-chanel-and-lily-rose-depp/)
 - [sigourney-road-tests-chanels-new-rouge-coco-gloss ↗](https://beauticate-website.vercel.app/beauty-style/makeup/sigourney-road-tests-chanels-new-rouge-coco-gloss/)
 - [genderless-makeup-campaign-blurthelines-set-to-make-beauty-boundless ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/genderless-makeup-campaign-blurthelines-set-to-make-beauty-boundless/)
 - [seven-of-the-best-waterproof-makeup-products ↗](https://beauticate-website.vercel.app/beauty-style/makeup/seven-of-the-best-waterproof-makeup-products/)
@@ -2095,12 +1220,14 @@
 - [roxy-jacenko-reveals-major-health-reboot-on-insta ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/roxy-jacenko-reveals-major-health-reboot-on-insta/)
 - [kevin-murphys-chic-new-hairstyles-dominate-myers-aw-2017-runway ↗](https://beauticate-website.vercel.app/beauty-style/hair/kevin-murphys-chic-new-hairstyles-dominate-myers-aw-2017-runway/)
 - [we-just-had-a-preview-of-karlie-and-jesintas-hair-for-tonights-david-jones-show ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/we-just-had-a-preview-of-karlie-and-jesintas-hair-for-tonights-david-jones-show/)
+- [how-to-feel-better-in-a-swimsuit ↗](https://beauticate-website.vercel.app/beauty-style/style/how-to-feel-better-in-a-swimsuit/)
 - [5-ways-to-sweat-proof-your-make-up-routine ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/5-ways-to-sweat-proof-your-make-up-routine/)
 - [lancme-is-about-to-launch-the-most-perfect-highlighter ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/lancme-is-about-to-launch-the-most-perfect-highlighter/)
 - [gigi-hadid-shows-off-the-hair-colour-of-2017 ↗](https://beauticate-website.vercel.app/beauty-style/hair/gigi-hadid-shows-off-the-hair-colour-of-2017/)
 - [the-powerful-reason-alicia-keys-wore-makeup-again ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-powerful-reason-alicia-keys-wore-makeup-again/)
 - [celebrity-stylist-calls-this-hair-product-the-devil ↗](https://beauticate-website.vercel.app/beauty-style/hair/celebrity-stylist-calls-this-hair-product-the-devil/)
 - [great-aussie-products-we-love-and-how-we-use-them ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/great-aussie-products-we-love-and-how-we-use-them/)
+- [the-three-most-exciting-new-products-from-sephoras-showcase ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-three-most-exciting-new-products-from-sephoras-showcase/)
 - [chrissy-teigen-posts-refreshing-approach-to-stretch-marks ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/chrissy-teigen-posts-refreshing-approach-to-stretch-marks/)
 - [should-you-apply-fake-tan-on-top-of-an-existing-tan ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/should-you-apply-fake-tan-on-top-of-an-existing-tan/)
 - [the-womens-march-is-giving-you-a-beauty-buy-discount ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-womens-march-is-giving-you-a-beauty-buy-discount/)
@@ -2163,6 +1290,8 @@
 - [kylie-jenners-hair-oops-what-to-do-when-you-regret-a-colour ↗](https://beauticate-website.vercel.app/beauty-style/hair/kylie-jenners-hair-oops-what-to-do-when-you-regret-a-colour/)
 - [get-your-skin-ready-for-the-party-season ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/get-your-skin-ready-for-the-party-season/)
 - [how-to-tackle-crows-feet-while-you-sleep ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-tackle-crows-feet-while-you-sleep/)
+- [the-best-dry-shampoos-reader-review ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-best-dry-shampoos-reader-review/)
+- [nine-natural-products-that-actually-do-something ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/nine-natural-products-that-actually-do-something/)
 - [lily-rose-depp-wows-in-new-chanel-film ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/lily-rose-depp-wows-in-new-chanel-film/)
 - [video-at-home-and-in-the-studio-with-tory-burch ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-at-home-and-in-the-studio-with-tory-burch/)
 - [tessa-james-go-to-beauty-essentials ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/tessa-james-go-to-beauty-essentials/)
@@ -2172,8 +1301,11 @@
 - [how-to-get-around-shipping-restrictions-and-more-online-shopping-hacks ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-get-around-shipping-restrictions-and-more-online-shopping-hacks/)
 - [the-best-strobing-products-reader-review-1 ↗](https://beauticate-website.vercel.app/beauty-style/makeup/the-best-strobing-products-reader-review-1/)
 - [video-tash-seftons-sixty-second-eyeliner-trick ↗](https://beauticate-website.vercel.app/beauty-style/makeup/video-tash-seftons-sixty-second-eyeliner-trick/)
+- [mmy-red-carpet-looks-were-stealing-for-the-races ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/mmy-red-carpet-looks-were-stealing-for-the-races/)
+- [48-hours-in-paris-with-sephora ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/48-hours-in-paris-with-sephora/)
 - [hairstyles-for-long-hair-to-love-and-copy-from-the-icons ↗](https://beauticate-website.vercel.app/beauty-style/hair/hairstyles-for-long-hair-to-love-and-copy-from-the-icons/)
 - [miranda-kerr-on-motherhood-men-motorbikes ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miranda-kerr-on-motherhood-men-motorbikes/)
+- [miranda-kerr-on-motherhood-men-motorbikes-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miranda-kerr-on-motherhood-men-motorbikes-2/)
 - [diary-of-a-perfume-launch-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/diary-of-a-perfume-launch-sigourneys-edit/)
 - [newly-brunette-carrie-bickmore-spills-her-beauty-routine ↗](https://beauticate-website.vercel.app/beauty-style/hair/newly-brunette-carrie-bickmore-spills-her-beauty-routine/)
 - [six-french-girl-skincare-secrets ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/six-french-girl-skincare-secrets/)
@@ -2183,6 +1315,7 @@
 - [how-to-get-supermodel-skin ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-get-supermodel-skin/)
 - [video-how-to-settle-a-baby ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-how-to-settle-a-baby/)
 - [video-winter-body-routine-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/video-winter-body-routine-sigourneys-edit/)
+- [miranda-rap ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/miranda-rap/)
 - [a-journey-into-natural-skincare-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/a-journey-into-natural-skincare-sigourneys-edit/)
 - [the-beauty-cupboard-edit-july ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauty-cupboard-edit-july/)
 - [short-hairstyles ↗](https://beauticate-website.vercel.app/beauty-style/hair/short-hairstyles/)
@@ -2196,8 +1329,10 @@
 - [video-how-to-make-almond-milk ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-how-to-make-almond-milk/)
 - [video-beauty-cupboard-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-beauty-cupboard-edit/)
 - [three-on-trend-hairstyles-anyone-can-pull-off ↗](https://beauticate-website.vercel.app/beauty-style/hair/three-on-trend-hairstyles-anyone-can-pull-off/)
+- [the-beauticate-teams-best-foundation-application-tips ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauticate-teams-best-foundation-application-tips/)
 - [short-hairstyles-to-snip-off-the-damage ↗](https://beauticate-website.vercel.app/beauty-style/hair/short-hairstyles-to-snip-off-the-damage/)
 - [how-to-fix-the-skincare-mistakes-youre-probably-making ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-fix-the-skincare-mistakes-youre-probably-making/)
+- [reader-review-eyelash-curlers ↗](https://beauticate-website.vercel.app/beauty-style/makeup/reader-review-eyelash-curlers/)
 - [the-mbfw-backstage-antics-you-wont-see-on-instagram ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-mbfw-backstage-antics-you-wont-see-on-instagram/)
 - [the-twenty-second-skincare-video ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-twenty-second-skincare-video/)
 - [the-best-brow-colour-reader-review ↗](https://beauticate-website.vercel.app/beauty-style/makeup/the-best-brow-colour-reader-review/)
@@ -2231,7 +1366,6 @@
 - [how-to-do-a-faux-foil-eye-with-erika-heynatz-and-rae-morris ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-do-a-faux-foil-eye-with-erika-heynatz-and-rae-morris/)
 - [summers-best-beauty-tips-from-girls-in-the-know ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/summers-best-beauty-tips-from-girls-in-the-know/)
 - [reader-review-volumising-mascara ↗](https://beauticate-website.vercel.app/beauty-style/makeup/reader-review-volumising-mascara/)
-- [what-are-the-best-nail-hardeners ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/what-are-the-best-nail-hardeners/)
 - [go-tos-launch ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/go-tos-launch/)
 - [go-tos-launch-2 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/go-tos-launch-2/)
 - [reader-review-eye-creams ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-eye-creams/)
@@ -2249,21 +1383,25 @@
 - [deltas-6-cant-live-without-cosmetics-and-how-she-uses-them ↗](https://beauticate-website.vercel.app/beauty-style/makeup/deltas-6-cant-live-without-cosmetics-and-how-she-uses-them/)
 - [reader-review-antioxidant-serums ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-antioxidant-serums/)
 - [best-beauty-tutorials-for-halloween ↗](https://beauticate-website.vercel.app/beauty-style/makeup/best-beauty-tutorials-for-halloween/)
+- [the-beauty-rules-that-are-meant-to-be-broken ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/the-beauty-rules-that-are-meant-to-be-broken/)
 - [the-asian-beauty-innovations-you-need-to-know-about-1 ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-asian-beauty-innovations-you-need-to-know-about-1/)
 - [how-to-do-french-girl-beauty-like-an-icon ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-do-french-girl-beauty-like-an-icon/)
 - [my-evening-skincare-routine-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/my-evening-skincare-routine-sigourneys-edit/)
 - [what-is-a-skin-booster-and-why-do-i-need-one ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/what-is-a-skin-booster-and-why-do-i-need-one/)
 - [how-to-stop-your-hair-getting-old ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-stop-your-hair-getting-old/)
+- [reader-review-facial-exfoliants ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-facial-exfoliants/)
 - [go-jazz-bar-glam-a-la-the-emmy-awards ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/go-jazz-bar-glam-a-la-the-emmy-awards/)
 - [everyday-style-essentials-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/style/everyday-style-essentials-sigourneys-edit/)
 - [oscar-oscar-palazzo-versace-gold-coast ↗](https://beauticate-website.vercel.app/beauty-style/treatments/oscar-oscar-palazzo-versace-gold-coast/)
 - [peninsula-life-medi-spa-mornington-peninsula ↗](https://beauticate-website.vercel.app/beauty-style/treatments/peninsula-life-medi-spa-mornington-peninsula/)
+- [reader-review-body-creams ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-body-creams/)
 - [reader-review-body-scrubs ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-body-scrubs/)
 - [how-to-double-protect-your-skin ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-double-protect-your-skin/)
 - [racing-season-beauty-countdown-what-to-schedule-when ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/racing-season-beauty-countdown-what-to-schedule-when/)
 - [reader-review-cleansing-oils ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-cleansing-oils/)
 - [bridal-beauty-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/bridal-beauty-sigourneys-edit/)
 - [how-to-bronze-in-winter ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-bronze-in-winter/)
+- [winter-warmers-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/winter-warmers-sigourneys-edit/)
 - [my-morning-skincare-routine-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/my-morning-skincare-routine-sigourneys-edit/)
 - [secrets-of-a-celebrity-hair-colourist ↗](https://beauticate-website.vercel.app/beauty-style/hair/secrets-of-a-celebrity-hair-colourist/)
 - [megan-gale-on-being-an-earth-mother ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/megan-gale-on-being-an-earth-mother/)
@@ -2280,6 +1418,7 @@
 - [9-bridal-hairstyles-to-say-i-do-to ↗](https://beauticate-website.vercel.app/beauty-style/hair/9-bridal-hairstyles-to-say-i-do-to/)
 - [best-lip-balm ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/best-lip-balm/)
 - [how-to-blast-a-blemish ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-blast-a-blemish/)
+- [5-of-the-best-hand-creams-review ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/5-of-the-best-hand-creams-review/)
 - [blue-eyeshadow-its-back-and-artier-than-ever ↗](https://beauticate-website.vercel.app/beauty-style/makeup/blue-eyeshadow-its-back-and-artier-than-ever/)
 - [new-season-makeup-must-haves ↗](https://beauticate-website.vercel.app/beauty-style/makeup/new-season-makeup-must-haves/)
 - [is-nail-art-dead ↗](https://beauticate-website.vercel.app/beauty-style/nails/is-nail-art-dead/)
@@ -2300,7 +1439,6 @@
 - [post-summer-essentials-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/post-summer-essentials-sigourneys-edit/)
 - [london-fashion-week-round-up ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/london-fashion-week-round-up/)
 - [how-to-use-contour-cream-with-montana-cox ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-use-contour-cream-with-montana-cox/)
-- [oscars-beauty-and-hair-trends ↗](https://beauticate-website.vercel.app/beauty-style/hair/oscars-beauty-and-hair-trends/)
 - [how-to-do-undone-beachy-hair ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-do-undone-beachy-hair/)
 - [how-to-50-shades-of-grey-eyeshadows ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-50-shades-of-grey-eyeshadows/)
 - [the-best-beauty-tips-and-hairstyles-from-rom-coms ↗](https://beauticate-website.vercel.app/beauty-style/hair/the-best-beauty-tips-and-hairstyles-from-rom-coms/)
@@ -2326,6 +1464,7 @@
 - [how-to-tv-ready-skin-with-sally-obermeder ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-tv-ready-skin-with-sally-obermeder/)
 - [how-to-spring-racing-beauty-edit ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-spring-racing-beauty-edit/)
 - [how-to-scream-queen-beauty-rules ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-scream-queen-beauty-rules/)
+- [how-to-3-ways-to-minimize-tress-fall-out ↗](https://beauticate-website.vercel.app/beauty-style/hair/how-to-3-ways-to-minimize-tress-fall-out/)
 - [seven-timeless-oc-beauty-favourites ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/seven-timeless-oc-beauty-favourites/)
 - [cauliflower-fried-rice ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/cauliflower-fried-rice/)
 - [how-to-fashion-bloggers-on-their-beauty-faux-pas ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-fashion-bloggers-on-their-beauty-faux-pas/)
@@ -2337,6 +1476,7 @@
 - [how-to-resort-chic ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-resort-chic/)
 - [how-to-kate-middletons-beauty-secrets ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-kate-middletons-beauty-secrets/)
 - [how-to-beauty-by-bacall ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-beauty-by-bacall/)
+- [how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-double-duty-beauty-like-the-jailbirds-in-orange-is-the-new-black/)
 - [how-to-recreate-the-look-of-love ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-recreate-the-look-of-love/)
 - [how-to-dark-lips-sigourneys-edit ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-dark-lips-sigourneys-edit/)
 - [how-to-get-a-base-body-babes-body ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-get-a-base-body-babes-body/)
@@ -2350,6 +1490,7 @@
 - [how-to-4-ways-to-prevent-the-most-common-dermal-disasters ↗](https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-4-ways-to-prevent-the-most-common-dermal-disasters/)
 - [how-to-take-sun-like-a-brazilian ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-take-sun-like-a-brazilian/)
 - [go-from-day-to-night-in-record-time ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/go-from-day-to-night-in-record-time/)
+- [seven-sex-and-the-city-hair-lessons ↗](https://beauticate-website.vercel.app/beauty-style/hair/seven-sex-and-the-city-hair-lessons/)
 - [how-to-be-a-beauty-queen ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-a-beauty-queen/)
 - [how-to-be-a-beauty-rebel-with-ruby-rose ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-a-beauty-rebel-with-ruby-rose/)
 - [ruby-rose-video-interview ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/ruby-rose-video-interview/)
@@ -2365,6 +1506,7 @@
 - [how-to-be-a-princess ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-a-princess/)
 - [how-to-make-a-beauty-smoothie-with-zoe-bingley-pullin ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-make-a-beauty-smoothie-with-zoe-bingley-pullin/)
 - [cosmetics-cleanse ↗](https://beauticate-website.vercel.app/beauty-style/makeup/cosmetics-cleanse/)
+- [how-to-pick-the-perfect-shade-of-red-lipstick ↗](https://beauticate-website.vercel.app/beauty-style/makeup/how-to-pick-the-perfect-shade-of-red-lipstick/)
 - [how-to-be-runway-ready ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-runway-ready/)
 - [how-to-do-mini-break-beauty-a-guide-to-packing-lightly ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-do-mini-break-beauty-a-guide-to-packing-lightly/)
 - [how-to-backstage-beautiful-fashion-week-pros-reveal-all ↗](https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-backstage-beautiful-fashion-week-pros-reveal-all/)

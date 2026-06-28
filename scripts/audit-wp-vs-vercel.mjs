@@ -194,8 +194,10 @@ function findMarkdownBugs(body) {
     if (/[a-z0-9.!?"’”]\*[A-Z‘“]/.test(line)) bugs.push({ type: 'glue', line: n })
     // STRAY STARS: a line that is only asterisks
     if (/^\s*\*{2,}\s*$/.test(line)) bugs.push({ type: 'stray-stars', line: n })
-    // MISMATCHED: odd number of standalone ** runs on a non-empty line (rough heuristic)
-    const boldRuns = (line.match(/\*\*/g) || []).length
+    // MISMATCHED: odd number of standalone ** runs on a non-empty line (rough heuristic).
+    // Strip censored swears first (a word-start letter + 2+ stars, e.g. f***, sh**) so
+    // they don't read as unbalanced bold.
+    const boldRuns = (line.replace(/\b[a-z]\*{2,}/gi, ' ').match(/\*\*/g) || []).length
     if (boldRuns % 2 === 1 && line.trim().length > 2) bugs.push({ type: 'mismatched-bold', line: n })
   })
   return bugs
