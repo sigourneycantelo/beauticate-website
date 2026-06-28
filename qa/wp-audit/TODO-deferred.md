@@ -151,3 +151,13 @@ Ambiguous markdown the batch safely declined — each needs per-article inspecti
 - zoe-bingley-pullin-nutritionist-and-chef
 - lindy-klim
 - bianca-cheah
+
+## sigourneys-edit FULL audit (68) — done 2026-06-28
+50 clean, 1 post-migration, 17 flagged → fixed 11 glue + 1 bold + lake-como text restore. Remaining manual markdown (5):
+- these-fragrances-have-been-cheering-me-up-sigourneys-edit
+- this-dry-shampoo-is-better-for-you-and-your-hair
+- sigourney-on-chanels-new-skin-tint
+- 5-ways-to-make-neck-and-back-pain-go-away
+- sigourneys-edit-endless-summer
+
+## news FULL audit (1) — clean
