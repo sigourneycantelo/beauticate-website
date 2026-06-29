@@ -67,8 +67,8 @@ export default async function ShopPage() {
             essentials for a <em className="italic">beautiful</em> life.
           </h1>
           <p
-            className="font-serif font-normal text-paper/90 mt-1"
-            style={{ fontSize: 'clamp(13px, 1.8vw, 25px)', lineHeight: 1.12 }}
+            className="font-serif font-normal text-paper/90 mt-3"
+            style={{ fontSize: 'clamp(20px, 2.9vw, 39px)', lineHeight: 1.12, marginLeft: 'clamp(28px, 5vw, 72px)' }}
           >
             curated by editors and experts.
           </p>
