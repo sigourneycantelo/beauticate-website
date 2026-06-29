@@ -35,42 +35,41 @@ export default async function ShopPage() {
   return (
     <div>
 
-      {/* Hero — 100vw breakout so no parent padding/constraint clips the video */}
+      {/* Hero — full-bleed video, headline top-left (mirrors beauticate.shop).
+          100vw breakout so no parent padding/constraint clips the video. */}
       <section
         className="relative bg-ink overflow-hidden"
         style={{
           width: '100vw',
           marginLeft: 'calc(50% - 50vw)',
-          minHeight: 'clamp(480px, 65vh, 780px)',
+          minHeight: 'clamp(500px, 72vh, 820px)',
         }}
       >
         <HeroVideo />
 
-        {/* Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
-
-        {/* Hero content */}
+        {/* Scrim — darkens the top-left corner so the headline stays legible */}
         <div
-          className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-16 pt-24"
-          style={{ minHeight: 'clamp(480px, 65vh, 780px)' }}
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.20) 40%, transparent 72%)' }}
+        />
+
+        {/* Hero content — top-left */}
+        <div
+          className="relative z-10 flex flex-col items-start justify-start text-left px-[clamp(24px,6vw,104px)] pt-[clamp(34px,6vw,76px)]"
+          style={{ minHeight: 'clamp(500px, 72vh, 820px)' }}
         >
-          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-paper/60 mb-4">
-            The Beauticate Edit
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight max-w-2xl mb-5">
-            Essentials for a beautiful life.
+          <h1
+            className="font-serif font-normal text-paper"
+            style={{ fontSize: 'clamp(30px, 4.4vw, 58px)', lineHeight: 1.1 }}
+          >
+            essentials for a <em className="italic">beautiful</em> life.
           </h1>
-          <p className="font-serif text-lg md:text-xl text-paper/70 max-w-sm leading-relaxed mb-10">
-            Curated by editors and experts.
+          <p
+            className="font-serif font-normal text-paper/90 mt-1"
+            style={{ fontSize: 'clamp(20px, 2.7vw, 38px)', lineHeight: 1.12 }}
+          >
+            curated by editors and experts.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/shop/by-category" className="btn-primary">
-              Explore the Edit
-            </Link>
-            <Link href="/shop/by-brand" className="inline-flex items-center justify-center px-6 py-3 border border-paper/40 text-paper text-xs font-sans tracking-[0.34em] uppercase transition-colors hover:bg-paper hover:text-ink">
-              Shop by Brand
-            </Link>
-          </div>
         </div>
       </section>
 
