@@ -24,7 +24,7 @@ export default function ShopSubNav() {
       <nav
         aria-label="Shop navigation"
         className="max-w-wide mx-auto flex items-center justify-center flex-nowrap overflow-x-auto scrollbar-none"
-        style={{ gap: '0', padding: '13px clamp(20px,6vw,104px)' }}
+        style={{ gap: '0', padding: '16px clamp(20px,6vw,104px)' }}
       >
         {TABS.map((tab, i) => {
           const active = path === tab.href || path.startsWith(tab.href + '/')
@@ -34,7 +34,7 @@ export default function ShopSubNav() {
                 <span
                   aria-hidden
                   className="select-none"
-                  style={{ opacity: 0.28, margin: '0 clamp(14px,2vw,26px)' }}
+                  style={{ opacity: 0.28, margin: '0 clamp(16px,2.4vw,32px)' }}
                 >
                   ·
                 </span>
@@ -43,7 +43,7 @@ export default function ShopSubNav() {
                 href={tab.href}
                 className="font-sans whitespace-nowrap transition-colors duration-150"
                 style={{
-                  fontSize: '11px',
+                  fontSize: '13px',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   opacity: active ? 1 : 0.6,
