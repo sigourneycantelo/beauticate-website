@@ -110,7 +110,7 @@ export default function PressPage() {
   return (
     <>
       <section className="relative overflow-hidden" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', height: 'clamp(420px,60vh,680px)' }}>
-        <Image src="/images/sigourney-press-hero.jpg" alt="Sigourney Cantelo" fill priority sizes="100vw" className="object-cover" style={{ objectPosition: '50% 46%' }} />
+        <Image src="/images/sigourney-press-hero.jpg" alt="Sigourney Cantelo" fill priority sizes="100vw" className="object-cover" style={{ objectPosition: '50% 58%' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(45,34,28,.34), rgba(45,34,28,.10) 45%, rgba(45,34,28,.48))' }} />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
           <p className="font-sans text-white/85" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase' }}>In the</p>
