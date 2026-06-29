@@ -117,8 +117,8 @@ export default function PressPage() {
           <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase', opacity: 0.5 }}>In the</p>
           <h1 className="font-serif italic font-normal mt-1" style={{ fontSize: 'clamp(44px,6vw,76px)', lineHeight: 1 }}>Media</h1>
           <p className="font-serif mt-5 mx-auto md:mx-0 max-w-[44ch]" style={{ fontSize: 'clamp(15px,1.5vw,18px)', opacity: 0.7 }}>
-            Beauticate and founder Sigourney Cantelo, featured across the titles that have shaped beauty,
-            wellness and culture for over a decade.
+            For over a decade, Beauticate and founder Sigourney Cantelo have been featured in the
+            titles that shape beauty, wellness and culture.
           </p>
         </div>
       </section>
