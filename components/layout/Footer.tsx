@@ -14,6 +14,7 @@ const SOCIAL_LINKS = [
 const FOOTER_NAV = [
   { label: 'About', href: '/about-beauticate' },
   { label: 'Press', href: '/press' },
+  { label: 'From the Archive', href: '/archive' },
   { label: 'Advertise With Us', href: '/advertise-with-us' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
