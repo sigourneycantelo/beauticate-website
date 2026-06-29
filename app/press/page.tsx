@@ -36,6 +36,9 @@ const PUBLICATIONS: PressItem[] = [
   { outlet: 'The Family Travel Hub', title: 'Ibiza with Sigourney Cantelo', href: 'https://www.thefamilytravelhub.com/ibiza-with-sigourney-cantelo-founder-amp-editor-of-beauticate/' },
   { outlet: 'The Strategy', title: 'The Strategy — Sigourney Cantelo', href: 'https://thestrategy.ca/2021/07/08/sigourney-cantelo-the-strategy/', logo: '/images/press/the-strategy.png' },
   { outlet: 'Ageless Radiance Club', title: 'Sigourney Cantelo on 3 incredible spas to add to your go-to list', href: 'https://agelessradianceclub.com/sigourney-cantelo-on-3-incredible-spas-to-add-to-your-go-to-list/' },
+  { outlet: 'Esprit', title: 'Founder profile', href: '/press-clippings/esprit-profile.pdf' },
+  { outlet: 'Madison', title: 'Wedding beauty', href: '/press-clippings/madison-wedding.pdf' },
+  { outlet: 'Fitness First', title: 'Beauty', href: '/press-clippings/fitness-first.pdf' },
 ]
 
 // Podcast guest appearances.
