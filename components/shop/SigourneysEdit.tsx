@@ -12,9 +12,15 @@ export default async function SigourneysEdit() {
 
   return (
     <section className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,90px)] border-t border-cream-200">
-      {/* Press strip */}
-      <p className="text-center font-sans" style={{ fontSize: '10.5px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.5 }}>
-        As featured in Vogue, Marie Claire, The Daily Telegraph, Daily Mail, Body+Soul and Mumbrella
+      {/* Press strip — links to the In the Media page */}
+      <p className="text-center">
+        <Link
+          href="/press"
+          className="font-sans hover:opacity-90 transition-opacity"
+          style={{ fontSize: '10.5px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.5 }}
+        >
+          As featured in Vogue, Marie Claire, The Daily Telegraph, Daily Mail, Body+Soul and Mumbrella
+        </Link>
       </p>
 
       {/* Edit header */}
