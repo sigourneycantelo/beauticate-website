@@ -244,10 +244,10 @@ export default function Header({ megaMenuArticles }: Props) {
             <Image
               src="/beauticate-shop-logo.png"
               alt="Beauticate Shop"
-              width={300}
-              height={120}
+              width={600}
+              height={240}
               priority
-              className="h-10 w-auto"
+              className="h-[clamp(72px,9vw,118px)] w-auto mix-blend-multiply"
             />
           ) : (
             <Image
@@ -306,12 +306,12 @@ export default function Header({ megaMenuArticles }: Props) {
       <nav
         className="hidden lg:flex items-center justify-center relative"
         style={{
-          gap: '38px',
-          fontSize: '11.5px',
-          letterSpacing: '.18em',
+          gap: isShop ? '26px' : '38px',
+          fontSize: isShop ? '9.5px' : '11.5px',
+          letterSpacing: isShop ? '.16em' : '.18em',
           marginTop: isShop ? 0 : '18px',
-          paddingTop: isShop ? '13px' : 0,
-          paddingBottom: isShop ? '13px' : '15px',
+          paddingTop: isShop ? '10px' : 0,
+          paddingBottom: isShop ? '10px' : '15px',
           borderTop: isShop ? 'none' : '1px solid rgba(28,26,23,.10)',
           borderBottom: isShop ? '1px solid rgba(28,26,23,.10)' : 'none',
           order: isShop ? 1 : 2,
@@ -338,6 +338,10 @@ export default function Header({ megaMenuArticles }: Props) {
                   color: isOpen ? '#B5613A' : undefined,
                   opacity: isOpen ? 1 : (item.lead ? 1 : 0.66),
                   fontWeight: item.lead ? 600 : 500,
+                  // Inline beats the global `nav a { 12.5px }` rule so the shop's
+                  // back-to-site nav reads smaller than the shop sub-nav.
+                  fontSize: isShop ? '9.5px' : undefined,
+                  letterSpacing: isShop ? '0.16em' : undefined,
                 }}
                 onMouseEnter={e => { if (!hasMega) e.currentTarget.style.color = '#B5613A' }}
                 onMouseLeave={e => { if (!hasMega) e.currentTarget.style.color = '' }}
