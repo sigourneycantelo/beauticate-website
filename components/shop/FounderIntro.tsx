@@ -13,7 +13,7 @@ export default function FounderIntro() {
             alt="Sigourney Cantelo, founder and publisher of Beauticate"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
+            className="object-cover grayscale"
           />
         </div>
 
