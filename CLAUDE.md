@@ -17,6 +17,11 @@ The migration date was June 18, 2026. Articles dated on or after that date were 
 
 ## Ongoing article cleanup
 
+> **Full playbook:** see [`docs/article-audit-and-fix.md`](docs/article-audit-and-fix.md)
+> for the end-to-end audit & fix process, the script toolbox, and hard-won
+> gotchas. ([`docs/wp-audit-process.md`](docs/wp-audit-process.md) covers the
+> detector internals.)
+
 There is a standing mandate to clean up articles as they are encountered. Two types of work:
 
 ### 1. Markdown delimiter fixes (formatting)
