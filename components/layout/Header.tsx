@@ -206,7 +206,7 @@ export default function Header({ megaMenuArticles }: Props) {
 
   return (
     <header
-      className="sticky top-0 z-50 flex flex-col"
+      className="sticky top-0 z-50"
       style={{ background: 'rgba(255,255,255,.97)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(28,26,23,.10)' }}
     >
       {/* ── Top bar: social | logo | actions ── */}
@@ -214,8 +214,7 @@ export default function Header({ megaMenuArticles }: Props) {
         className="grid items-center gap-4"
         style={{
           gridTemplateColumns: '1fr auto 1fr',
-          padding: isShop ? '14px clamp(20px,6vw,104px) 16px' : '18px clamp(20px,6vw,104px) 0',
-          order: isShop ? 2 : 1,
+          padding: isShop ? '14px clamp(20px,6vw,104px) 18px' : '18px clamp(20px,6vw,104px) 0',
         }}
       >
         {/* Social — desktop only */}
@@ -312,9 +311,8 @@ export default function Header({ megaMenuArticles }: Props) {
           marginTop: isShop ? 0 : '18px',
           paddingTop: isShop ? '10px' : 0,
           paddingBottom: isShop ? '10px' : '15px',
-          borderTop: isShop ? 'none' : '1px solid rgba(28,26,23,.10)',
+          borderTop: '1px solid rgba(28,26,23,.10)',
           borderBottom: isShop ? '1px solid rgba(28,26,23,.10)' : 'none',
-          order: isShop ? 1 : 2,
         }}
       >
         {NAV_ITEMS.map(item => {
@@ -365,7 +363,7 @@ export default function Header({ megaMenuArticles }: Props) {
       {searchOpen && (
         <div
           className="px-6 py-3"
-          style={{ borderTop: '1px solid rgba(28,26,23,.10)', order: 3 }}
+          style={{ borderTop: '1px solid rgba(28,26,23,.10)' }}
         >
           <SearchBar onClose={() => setSearchOpen(false)} />
         </div>
@@ -373,7 +371,7 @@ export default function Header({ megaMenuArticles }: Props) {
 
       {/* ── Mobile nav ── */}
       {menuOpen && (
-        <nav className="lg:hidden bg-white" style={{ borderTop: '1px solid rgba(28,26,23,.10)', order: 3 }}>
+        <nav className="lg:hidden bg-white" style={{ borderTop: '1px solid rgba(28,26,23,.10)' }}>
           {NAV_ITEMS.map(item => (
             <Link
               key={item.href}
