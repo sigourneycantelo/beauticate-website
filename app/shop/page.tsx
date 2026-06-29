@@ -4,6 +4,7 @@ import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
 import ShopByMoment from '@/components/shop/ShopByMoment'
 import Collective from '@/components/shop/Collective'
+import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
@@ -87,20 +88,8 @@ export default async function ShopPage() {
       {/* Meet the Beauticate Collective */}
       <Collective />
 
-      {/* Editorial note */}
-      <section className="bg-ink py-14 md:py-20">
-        <div className="max-w-content mx-auto px-6 text-center">
-          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-paper/40 mb-6">
-            Our philosophy
-          </p>
-          <blockquote className="font-serif text-2xl md:text-3xl text-paper leading-relaxed mb-8">
-            &ldquo;I only stock things I would recommend to my closest friends. That&rsquo;s the whole edit.&rdquo;
-          </blockquote>
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-paper/50">
-            Sigourney Cantelo — Founder &amp; Editor-in-Chief
-          </p>
-        </div>
-      </section>
+      {/* Press strip + Sigourney's Edit (editors-essentials collection) */}
+      <SigourneysEdit />
 
     </div>
   )
