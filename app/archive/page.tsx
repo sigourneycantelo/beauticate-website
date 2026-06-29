@@ -78,7 +78,7 @@ function FeatureCard({ f }: { f: Feature }) {
 function WideCard({ f }: { f: Feature }) {
   return (
     <a href={f.href} target="_blank" rel="noopener noreferrer" className="group block">
-      <div className="relative overflow-hidden rounded-[2px] bg-cream-100" style={{ aspectRatio: '2/1' }}>
+      <div className="relative overflow-hidden rounded-[2px] bg-cream-100" style={{ aspectRatio: '3/2' }}>
         <Image
           src={f.image}
           alt={f.title}
