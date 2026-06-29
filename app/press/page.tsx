@@ -46,6 +46,7 @@ const PODCASTS: PressItem[] = [
   { outlet: 'Podcast', title: 'How Luxury Travel Changes After Kids: Sigourney Cantelo on Burnout, Beauty & Family Holidays', href: 'https://open.spotify.com/episode/6XC1LMIVxUF3rS8gSTNpu6' },
   { outlet: 'Tea Talk', title: 'Sigourney Cantelo on Australian beauty and wellness', href: 'https://open.spotify.com/episode/3mbx0h2trMuxzywE0pTOdl' },
   { outlet: 'Podcast', title: 'Sigourney Cantelo — Founder & Editor, Beauticate', href: 'https://open.spotify.com/episode/1oyxhOavyCSZd5p35JQvfA' },
+  { outlet: 'Fearlessly Failing with Lola Berry', title: 'Hot Seat: Sigourney Cantelo', href: 'https://podcasts.apple.com/au/podcast/663-hot-seat-sigourney-cantelo/id1478245620?i=1000688984238' },
 ]
 
 // Brand features and collaborations.
