@@ -9,6 +9,8 @@ interface PressItem {
   outlet: string
   title: string
   href: string
+  /** Optional logo at /images/press/<file>. Falls back to the styled outlet name. */
+  logo?: string
 }
 
 // Press coverage, in the order it appears in the Beauticate media kit.
@@ -52,9 +54,19 @@ export default function PressPage() {
             rel="noopener noreferrer"
             className="group block border-t border-cream-200 pt-5"
           >
-            <p className="font-sans" style={{ fontSize: '10.5px', letterSpacing: '0.26em', textTransform: 'uppercase', opacity: 0.55 }}>
-              {p.outlet}
-            </p>
+            {p.logo ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={p.logo}
+                alt={p.outlet}
+                className="h-7 w-auto object-contain object-left"
+                style={{ maxWidth: '160px', opacity: 0.85 }}
+              />
+            ) : (
+              <p className="font-sans" style={{ fontSize: '10.5px', letterSpacing: '0.26em', textTransform: 'uppercase', opacity: 0.55 }}>
+                {p.outlet}
+              </p>
+            )}
             <h2
               className="font-serif font-normal mt-2 group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]"
               style={{ fontSize: 'clamp(18px,1.8vw,22px)', lineHeight: 1.25 }}
