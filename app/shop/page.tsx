@@ -1,10 +1,26 @@
-import Link from 'next/link'
-import { getProducts } from '@/lib/shopify'
-import ProductCard from '@/components/shop/ProductCard'
+import { getCollections } from '@/lib/shopify'
 import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
+import ShopByMoment from '@/components/shop/ShopByMoment'
+import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
+
+// The four "moment" collections, in display order. Matched by title with a
+// fallback to any image-bearing collections so the grid always fills.
+const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
+
+function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
+  const picked = MOMENT_TITLES
+    .map(t => collections.find(c => c.title.toLowerCase() === t))
+    .filter(Boolean) as ShopifyCollection[]
+  const have = new Set(picked.map(c => c.id))
+  for (const c of collections) {
+    if (picked.length >= 4) break
+    if (!have.has(c.id) && c.image) picked.push(c)
+  }
+  return picked.slice(0, 4)
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -14,7 +30,8 @@ export const metadata: Metadata = {
 }
 
 export default async function ShopPage() {
-  const newArrivals = await getProducts(8)
+  const collections = await getCollections(48)
+  const moments = pickMoments(collections)
 
   return (
     <div>
@@ -63,32 +80,8 @@ export default async function ShopPage() {
       {/* Founder introduction — portrait left, letter right */}
       <FounderIntro />
 
-      {/* New Arrivals */}
-      {newArrivals.length > 0 && (
-        <section className="max-w-wide mx-auto px-4 py-14 md:py-20">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="label-editorial mb-2">Just arrived</p>
-              <h2 className="font-serif text-2xl md:text-3xl text-ink">New to the edit</h2>
-            </div>
-            <Link href="/shop/by-category" className="hidden md:block font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/50 hover:text-ink transition-colors">
-              View all →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
-            {newArrivals.slice(0, 4).map(p => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-          {newArrivals.length > 4 && (
-            <div className="mt-10 text-center">
-              <Link href="/shop/by-category" className="btn-secondary">
-                See all new arrivals
-              </Link>
-            </div>
-          )}
-        </section>
-      )}
+      {/* Shop by Moment — four portrait tiles */}
+      <ShopByMoment collections={moments} />
 
       {/* Editorial note */}
       <section className="bg-ink py-14 md:py-20">
