@@ -8,6 +8,8 @@ interface ShopItemProps {
   price?: string
   /** Affiliate/retailer link. Omit for a product with no link yet — card is un-clickable. */
   url?: string
+  /** Shopify product handle — when set, this is OUR product: "In our shop", links to the product page. */
+  handle?: string
   /** Optional uppercase brand line shown above the name, e.g. "Maison Balzac" */
   brand?: string
   /** Retailer for the "shop via {retailer}" cue. Auto-detected from the URL if omitted. */
@@ -22,16 +24,24 @@ interface ShopItemProps {
  * difference is the affiliate cue and that it clicks out to the retailer with
  * no hover state.
  */
-export function ShopItem({ image, name, price, url, brand, retailer, cover }: ShopItemProps) {
-  const r = url ? (retailer ?? retailerFromUrl(url)) : ''
+export function ShopItem({ image, name, price, url, handle, brand, retailer, cover }: ShopItemProps) {
+  // Our own product → internal link + "In our shop". Otherwise affiliate/external.
+  const internal = !!handle
+  const href = internal ? `/shop/products/${handle}` : url
+  const r = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
+  const cornerLabel = internal
+    ? 'In our shop'
+    : url
+      ? (r ? `shop via ${r} ↗` : 'shop ↗')
+      : undefined
   return (
     <ProductTile
-      href={url}
-      external={!!url}
+      href={href}
+      external={!internal && !!url}
       cover={cover}
       primarySrc={image}
       primaryAlt={name}
-      cornerLabel={url ? (r ? `shop via ${r} ↗` : 'shop ↗') : undefined}
+      cornerLabel={cornerLabel}
       brand={brand}
       name={name}
       price={price}
