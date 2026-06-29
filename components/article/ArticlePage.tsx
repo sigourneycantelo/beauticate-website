@@ -49,7 +49,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         primarySrc={props.image}
         primaryAlt={props.name}
         cornerLabel="In our shop"
-        brand={props.brand ?? sp.vendor}
+        brand={props.brand}
         name={props.name ?? sp.title}
         price={price}
       />
