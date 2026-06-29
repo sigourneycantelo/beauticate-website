@@ -2,7 +2,9 @@
 
 Process guides and playbooks for working on the Beauticate site. Most are written
 for Claude / Claude Code to follow — **read the root [`CLAUDE.md`](../CLAUDE.md)
-first** for the durable, project-wide rules, then the relevant guide below.
+first** for the durable, project-wide rules, then the relevant guide below. For
+the team git workflow (branches, PRs, reviewing previews) see
+[`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
 ## Content & editorial
 
