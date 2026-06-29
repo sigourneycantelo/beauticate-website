@@ -110,8 +110,8 @@ export default function PressPage() {
   return (
     <div className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,96px)]">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(28px,5vw,72px)] items-center mb-[clamp(44px,6vw,80px)]">
-        <div className="relative rounded-[2px] overflow-hidden bg-cream-100" style={{ aspectRatio: '4/5' }}>
-          <Image src="/images/sigourney-press-hero.jpg" alt="Sigourney Cantelo reading the paper" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: '50% 80%' }} />
+        <div className="relative rounded-[2px] overflow-hidden bg-cream-100" style={{ aspectRatio: '5/4' }}>
+          <Image src="/images/sigourney-press-hero.jpg" alt="Sigourney Cantelo reading the paper" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: '50% 50%' }} />
         </div>
         <div className="text-center md:text-left">
           <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase', opacity: 0.5 }}>In the</p>
