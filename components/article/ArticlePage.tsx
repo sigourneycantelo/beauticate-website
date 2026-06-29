@@ -15,7 +15,7 @@ import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
-import ProductCard from '@/components/shop/ProductCard'
+import ProductTile from '@/components/shared/ProductTile'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
 interface Props {
@@ -36,11 +36,24 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     return <ProductEmbed product={productLink} shopProduct={shopProduct} />
   }
 
-  // <ShopItem handle="..."> for our own products → rich shop card with live Shopify
-  // image, price and hover image. Falls back to the plain ShopItem for affiliates.
+  // <ShopItem handle="..."> for our own products → "In our shop" card using the
+  // article's tight product image (consistent sizing) + live Shopify price + internal link.
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
     const sp = props.handle ? shopProductMap[props.handle] : undefined
-    return sp ? <ProductCard product={sp} /> : <ShopItem {...props} />
+    if (!sp) return <ShopItem {...props} />
+    const mp = sp.priceRange?.minVariantPrice
+    const price = mp ? new Intl.NumberFormat("en-AU", { style: "currency", currency: mp.currencyCode }).format(parseFloat(mp.amount)) : undefined
+    return (
+      <ProductTile
+        href={`/shop/products/${sp.handle}`}
+        primarySrc={props.image}
+        primaryAlt={props.name}
+        cornerLabel="In our shop"
+        brand={props.brand ?? sp.vendor}
+        name={props.name ?? sp.title}
+        price={price}
+      />
+    )
   }
 
   const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote }
