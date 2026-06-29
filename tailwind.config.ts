@@ -13,6 +13,9 @@ const config: Config = {
         paper:     '#FFFFFF',
         parchment: '#FBF9F4',
         ink:       '#1C1A17',
+        // product-card tile — matches the warm grey Shopify product-photo background
+        // so shop shots sit natively and white article shots multiply onto it
+        tile:      '#EAE9E7',
         eucalypt:  '#8E9A82',
         teal:      '#104760',
         // brand accents — use sparingly

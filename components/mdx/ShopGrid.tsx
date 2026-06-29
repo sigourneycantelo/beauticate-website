@@ -6,7 +6,8 @@ interface ShopItemProps {
   /** Combined brand + product name, e.g. "Maison Balzac Le Rêve Candle" */
   name: string
   price?: string
-  url: string
+  /** Affiliate/retailer link. Omit for a product with no link yet — card is un-clickable. */
+  url?: string
   /** Optional uppercase brand line shown above the name, e.g. "Maison Balzac" */
   brand?: string
   /** Retailer for the "shop via {retailer}" cue. Auto-detected from the URL if omitted. */
@@ -22,15 +23,15 @@ interface ShopItemProps {
  * no hover state.
  */
 export function ShopItem({ image, name, price, url, brand, retailer, cover }: ShopItemProps) {
-  const r = retailer ?? retailerFromUrl(url)
+  const r = url ? (retailer ?? retailerFromUrl(url)) : ''
   return (
     <ProductTile
       href={url}
-      external
+      external={!!url}
       cover={cover}
       primarySrc={image}
       primaryAlt={name}
-      cornerLabel={r ? `shop via ${r} ↗` : 'shop ↗'}
+      cornerLabel={url ? (r ? `shop via ${r} ↗` : 'shop ↗') : undefined}
       brand={brand}
       name={name}
       price={price}

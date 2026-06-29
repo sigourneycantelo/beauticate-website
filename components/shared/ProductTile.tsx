@@ -11,7 +11,8 @@ function HeartIcon() {
 }
 
 export interface ProductTileProps {
-  href: string
+  /** Omit for products with no link — the card renders un-clickable. */
+  href?: string
   /** External (affiliate) link — opens in a new tab and gets nofollow. */
   external?: boolean
   /** Primary deep-etched / product image. */
@@ -55,10 +56,10 @@ export default function ProductTile({
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain p-4'
-  // Product shots come on white backgrounds; multiply blends that white into the
-  // parchment tile so the product sits seamlessly (no white box, no deep-etching).
-  // Lifestyle/model shots (cover) are shown as-is.
-  const blend = cover ? undefined : ({ mixBlendMode: 'multiply' } as const)
+  // The tile is the warm grey of Shopify's product photos, so those (useNextImage)
+  // sit natively. Article shots arrive on white, so multiply blends that white into
+  // the same grey. Lifestyle/cover shots are shown untouched.
+  const blend = (cover || useNextImage) ? undefined : ({ mixBlendMode: 'multiply' } as const)
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
@@ -72,8 +73,8 @@ export default function ProductTile({
 
   const inner = (
     <>
-      {/* Tile — parchment matches the shop background exactly */}
-      <div className="relative aspect-[3/4] bg-parchment rounded-sm overflow-hidden mb-3">
+      {/* Tile — warm grey matching the Shopify product-photo background */}
+      <div className="relative aspect-[3/4] bg-tile rounded-sm overflow-hidden mb-3">
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
@@ -118,6 +119,9 @@ export default function ProductTile({
   )
 
   const cls = `block text-left ${hasHover ? 'group' : ''} ${className}`
+
+  // No link (product with no affiliate URL yet) → render an un-clickable card.
+  if (!href) return <div className={cls}>{inner}</div>
 
   return external ? (
     <a href={href} target="_blank" rel="noopener noreferrer nofollow" className={cls}>
