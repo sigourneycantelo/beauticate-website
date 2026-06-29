@@ -21,7 +21,6 @@ const hankenGrotesk = Hanken_Grotesk({
   weight: ['400', '500'],
 })
 import Footer from '@/components/layout/Footer'
-import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartProvider from '@/components/shop/CartProvider'
 import ScrollReveal from '@/components/shared/ScrollReveal'
 import BetaTicker from '@/components/home/BetaTicker'
@@ -116,7 +115,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <ScrollReveal />
           <BetaTicker />
-          <AnnouncementBar message="Shop the Beauticate Edit — curated beauty, wellness & style" href="/shop" />
           <HeaderWithData />
           <main id="main" data-pagefind-body>{children}</main>
           <Footer />
