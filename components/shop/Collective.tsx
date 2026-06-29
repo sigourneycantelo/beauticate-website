@@ -1,42 +1,37 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
-const NAMES = [
-  'Sigourney Cantelo', 'Jocelyn Petroni', 'Monique McMahon', 'Kate Waterhouse',
-  'Brooke Stevenson', 'Camilla Thompson', 'Rae Morris', 'Shentel Lee',
-  'Michelle Bridges', 'Kristin Rawson', 'Dr Amy Chahal', 'Simone Aspinall',
-  'Kerrie Gentle', 'Dr Leanne Girgis', 'Jacqueline Alwill',
-]
-
-// "Meet the Beauticate Collective" — the editors and experts behind every pick.
+// Meet the Beauticate Collective — heading, subtitle and the contact-sheet
+// composite of all fifteen editors and experts. Mirrors beauticate.shop.
 export default function Collective() {
   return (
-    <section
-      className="text-center"
-      style={{ background: '#104760', color: '#FFFFFF', padding: 'clamp(52px,7vw,96px) clamp(20px,6vw,104px)' }}
-    >
-      <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase', opacity: 0.7 }}>
-        Meet the Beauticate Collective
-      </p>
-      <p className="font-serif mx-auto mt-4 max-w-[40ch]" style={{ fontSize: 'clamp(20px,2.4vw,30px)', lineHeight: 1.32 }}>
-        The editors, experts, and trusted voices behind every recommendation.
-      </p>
+    <section className="bg-white border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,90px)]">
+      <div className="text-center mb-9 max-w-2xl mx-auto">
+        <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold text-eucalypt">
+          Meet the Beauticate Collective
+        </p>
+        <h2 className="font-serif font-normal mt-3" style={{ fontSize: 'clamp(22px,2.8vw,34px)', lineHeight: 1.25 }}>
+          The editors, experts, and trusted voices <em className="italic">behind every recommendation</em>
+        </h2>
+      </div>
 
-      <p className="font-serif italic mx-auto mt-8 max-w-[56ch]" style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.9, opacity: 0.85 }}>
-        {NAMES.map((name, i) => (
-          <span key={name}>
-            {name}
-            {i < NAMES.length - 1 && <span className="not-italic mx-2 opacity-50">·</span>}
-          </span>
-        ))}
-      </p>
+      <Image
+        src="/images/beauticate-collective.jpg"
+        alt="The Beauticate Collective — fifteen editors, experts and trusted voices"
+        width={1200}
+        height={630}
+        sizes="(max-width: 1280px) 100vw, 1200px"
+        className="w-full h-auto rounded-[2px]"
+      />
 
-      <Link
-        href="/about"
-        className="inline-block mt-9 font-sans text-white"
-        style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,.8)', paddingBottom: '2px' }}
-      >
-        Meet the Collective →
-      </Link>
+      <div className="text-center mt-9">
+        <Link
+          href="/about"
+          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase border border-ink px-7 py-3 rounded-[1px] hover:bg-ink hover:text-white transition-colors duration-300"
+        >
+          Meet the Collective
+        </Link>
+      </div>
     </section>
   )
 }
