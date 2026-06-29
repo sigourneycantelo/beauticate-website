@@ -14,6 +14,7 @@ import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
+import EditorNote from '@/components/mdx/EditorNote'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
 interface Props {
@@ -34,7 +35,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     return <ProductEmbed product={productLink} shopProduct={shopProduct} />
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem, ProductInset }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem, ProductInset, EditorNote }
 
   // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
   const heroMaxWidth = f.hero_max_width ?? 1200
