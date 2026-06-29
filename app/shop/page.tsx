@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { getProducts } from '@/lib/shopify'
 import ProductCard from '@/components/shop/ProductCard'
 import HeroVideo from '@/components/shop/HeroVideo'
+import TrustBand from '@/components/shop/TrustBand'
+import FounderIntro from '@/components/shop/FounderIntro'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-dynamic'
@@ -10,24 +12,6 @@ export const metadata: Metadata = {
   title: 'Shop | Beauticate',
   description: 'Curated beauty, wellness and lifestyle — recommended by the editors and experts of Beauticate. Fewer, better things, chosen by editors not algorithms.',
 }
-
-const SHOP_SECTIONS = [
-  {
-    href: '/shop/by-brand',
-    label: 'Shop by Brand',
-    description: 'Discover the carefully chosen brands behind the edit.',
-  },
-  {
-    href: '/shop/by-category',
-    label: 'Shop by Category',
-    description: 'Skincare, fragrance, hair, wellness and more.',
-  },
-  {
-    href: '/shop/by-moment',
-    label: 'Shop by Moment',
-    description: 'Curated for how you actually live — not just what you need to buy.',
-  },
-]
 
 export default async function ShopPage() {
   const newArrivals = await getProducts(8)
@@ -73,28 +57,11 @@ export default async function ShopPage() {
         </div>
       </section>
 
-      {/* Section teasers — 3 columns */}
-      <section className="border-b border-camel/30 bg-parchment">
-        <div className="max-w-wide mx-auto px-4 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-camel/30">
-          {SHOP_SECTIONS.map(s => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className="group flex flex-col items-center text-center px-8 py-10 hover:bg-camel/10 transition-colors"
-            >
-              <h3 className="font-sans text-[11px] tracking-[0.25em] uppercase text-ink mb-3 group-hover:text-eucalypt transition-colors">
-                {s.label}
-              </h3>
-              <p className="font-serif text-sm text-charcoal/60 leading-relaxed max-w-xs">
-                {s.description}
-              </p>
-              <span className="mt-4 font-sans text-[10px] tracking-[0.2em] uppercase text-eucalypt">
-                Browse →
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
+      {/* Trust band */}
+      <TrustBand />
+
+      {/* Founder introduction — portrait left, letter right */}
+      <FounderIntro />
 
       {/* New Arrivals */}
       {newArrivals.length > 0 && (
