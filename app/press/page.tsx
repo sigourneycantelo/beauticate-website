@@ -15,7 +15,7 @@ interface PressItem {
 
 // Earned media — publications, in order of prominence.
 const PUBLICATIONS: PressItem[] = [
-  { outlet: 'Vogue', title: 'Beauty pageant', href: 'https://www.vogue.com.au/beauty/news/beauty-pageant/news-story/6faf67bde5e339f4f4342b4af1f88552', logo: '/images/press/vogue.png' },
+  { outlet: 'Vogue', title: 'Sigourney Cantelo wins the Jasmine Award for Journalistic Excellence', href: 'https://www.vogue.com.au/beauty/news/beauty-pageant/news-story/6faf67bde5e339f4f4342b4af1f88552', logo: '/images/press/vogue.png' },
   { outlet: 'Vogue', title: 'How Not To Get A Suntan In Paris', href: 'https://www.vogue.com.au/beauty/skin/how-not-to-get-a-suntan-in-paris/news-story/a2a52a5c4d76cc2cc0129a0194539fef', logo: '/images/press/vogue.png' },
   { outlet: 'Vogue', title: 'What’s in a beauty director’s makeup bag?', href: 'https://www.vogue.com.au/blogs/editors-blogs/whats-in-a-beauty-directors-makeup-bag/news-story/115f3b9c81dbf933150b5ec8c93c9f9e', logo: '/images/press/vogue.png' },
   { outlet: 'Vogue', title: 'RAFW beauty essentials', href: 'https://www.vogue.com.au/blogs/editors-blogs/rafw-beauty-essentials/news-story/960911cb7b1a92871c3c4dee5cdf67b5', logo: '/images/press/vogue.png' },
@@ -44,6 +44,8 @@ const PUBLICATIONS: PressItem[] = [
 const PODCASTS: PressItem[] = [
   { outlet: 'Ageless by Rescu', title: 'Sigourney Cantelo — Beauty & Empowerment', href: 'https://podcasts.apple.com/us/podcast/sigourney-cantelo-beauty-and-empowerment/id1579146202?i=1000552404701', logo: '/images/press/ageless-rescu.png' },
   { outlet: 'Podcast', title: 'How Luxury Travel Changes After Kids: Sigourney Cantelo on Burnout, Beauty & Family Holidays', href: 'https://open.spotify.com/episode/6XC1LMIVxUF3rS8gSTNpu6' },
+  { outlet: 'Tea Talk', title: 'Sigourney Cantelo on Australian beauty and wellness', href: 'https://open.spotify.com/episode/3mbx0h2trMuxzywE0pTOdl' },
+  { outlet: 'Podcast', title: 'Sigourney Cantelo — Founder & Editor, Beauticate', href: 'https://open.spotify.com/episode/1oyxhOavyCSZd5p35JQvfA' },
 ]
 
 // Brand features and collaborations.
