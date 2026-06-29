@@ -61,13 +61,13 @@ export default async function ShopPage() {
         >
           <h1
             className="font-serif font-normal text-paper"
-            style={{ fontSize: 'clamp(30px, 4.4vw, 58px)', lineHeight: 1.1 }}
+            style={{ fontSize: 'clamp(20px, 2.9vw, 39px)', lineHeight: 1.1 }}
           >
             essentials for a <em className="italic">beautiful</em> life.
           </h1>
           <p
             className="font-serif font-normal text-paper/90 mt-1"
-            style={{ fontSize: 'clamp(20px, 2.7vw, 38px)', lineHeight: 1.12 }}
+            style={{ fontSize: 'clamp(13px, 1.8vw, 25px)', lineHeight: 1.12 }}
           >
             curated by editors and experts.
           </p>
