@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 import SearchBar from '@/components/shared/SearchBar'
 
@@ -182,6 +183,10 @@ interface Props {
 }
 
 export default function Header({ megaMenuArticles }: Props) {
+  const pathname = usePathname()
+  // On the shop, the main nav sits above a Beauticate.shop wordmark so it reads
+  // as a sub-brand you can navigate back out of.
+  const isShop = pathname?.startsWith('/shop') ?? false
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [openMega, setOpenMega] = useState<string | null>(null)
@@ -201,7 +206,7 @@ export default function Header({ megaMenuArticles }: Props) {
 
   return (
     <header
-      className="sticky top-0 z-50"
+      className="sticky top-0 z-50 flex flex-col"
       style={{ background: 'rgba(255,255,255,.97)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(28,26,23,.10)' }}
     >
       {/* ── Top bar: social | logo | actions ── */}
@@ -209,7 +214,8 @@ export default function Header({ megaMenuArticles }: Props) {
         className="grid items-center gap-4"
         style={{
           gridTemplateColumns: '1fr auto 1fr',
-          padding: '18px clamp(20px,6vw,104px) 0',
+          padding: isShop ? '14px clamp(20px,6vw,104px) 16px' : '18px clamp(20px,6vw,104px) 0',
+          order: isShop ? 2 : 1,
         }}
       >
         {/* Social — desktop only */}
@@ -232,16 +238,27 @@ export default function Header({ megaMenuArticles }: Props) {
         </div>
         <div className="md:hidden" />
 
-        {/* Logo */}
-        <Link href="/" className="justify-self-center">
-          <Image
-            src="/logo-dark.png"
-            alt="Beauticate"
-            width={360}
-            height={49}
-            priority
-            className="h-7 w-auto mix-blend-multiply"
-          />
+        {/* Logo — Beauticate.shop wordmark on the shop, the master logo elsewhere */}
+        <Link href={isShop ? '/shop' : '/'} className="justify-self-center">
+          {isShop ? (
+            <Image
+              src="/beauticate-shop-logo.png"
+              alt="Beauticate Shop"
+              width={300}
+              height={120}
+              priority
+              className="h-10 w-auto"
+            />
+          ) : (
+            <Image
+              src="/logo-dark.png"
+              alt="Beauticate"
+              width={360}
+              height={49}
+              priority
+              className="h-7 w-auto mix-blend-multiply"
+            />
+          )}
         </Link>
 
         {/* Actions */}
@@ -292,9 +309,12 @@ export default function Header({ megaMenuArticles }: Props) {
           gap: '38px',
           fontSize: '11.5px',
           letterSpacing: '.18em',
-          marginTop: '18px',
-          paddingBottom: '15px',
-          borderTop: '1px solid rgba(28,26,23,.10)',
+          marginTop: isShop ? 0 : '18px',
+          paddingTop: isShop ? '13px' : 0,
+          paddingBottom: isShop ? '13px' : '15px',
+          borderTop: isShop ? 'none' : '1px solid rgba(28,26,23,.10)',
+          borderBottom: isShop ? '1px solid rgba(28,26,23,.10)' : 'none',
+          order: isShop ? 1 : 2,
         }}
       >
         {NAV_ITEMS.map(item => {
@@ -341,7 +361,7 @@ export default function Header({ megaMenuArticles }: Props) {
       {searchOpen && (
         <div
           className="px-6 py-3"
-          style={{ borderTop: '1px solid rgba(28,26,23,.10)' }}
+          style={{ borderTop: '1px solid rgba(28,26,23,.10)', order: 3 }}
         >
           <SearchBar onClose={() => setSearchOpen(false)} />
         </div>
@@ -349,7 +369,7 @@ export default function Header({ megaMenuArticles }: Props) {
 
       {/* ── Mobile nav ── */}
       {menuOpen && (
-        <nav className="lg:hidden bg-white" style={{ borderTop: '1px solid rgba(28,26,23,.10)' }}>
+        <nav className="lg:hidden bg-white" style={{ borderTop: '1px solid rgba(28,26,23,.10)', order: 3 }}>
           {NAV_ITEMS.map(item => (
             <Link
               key={item.href}
