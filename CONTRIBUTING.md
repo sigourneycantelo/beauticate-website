@@ -24,6 +24,32 @@ cd beauticate-website
 npm install
 ```
 
+## Running the site locally (real-time preview)
+
+For live, instant feedback while you edit (hot reload on every save), run the dev
+server:
+
+```bash
+cp .env.example .env.local      # create your local env file
+npm run dev                     # then open http://localhost:3000
+```
+
+Every time you save an article or component, the browser updates instantly — this
+is the fastest way to see your changes.
+
+**You do not need real secrets for article work.** Articles and the
+`<ShopGrid>`/`<ShopItem>` blocks are static (images + links) and render fine with
+the placeholder values already in `.env.example`. Only the Shopify-API-driven
+bits (`<CollectionEmbed>`, the shop/cart pages) need real tokens — ask Sigourney
+if you specifically need those.
+
+### Localhost vs. the Vercel preview
+
+- **Localhost (`npm run dev`)** — real-time, instant, for *your own* editing.
+- **Vercel preview** — every branch push / PR automatically gets a preview URL
+  (posted by the Vercel bot on the PR). It mirrors production but rebuilds on each
+  push (~1–2 min), so it's for **sharing and review**, not live editing.
+
 ## The pull-request workflow (contributors)
 
 1. **Branch off the latest `main`:**
