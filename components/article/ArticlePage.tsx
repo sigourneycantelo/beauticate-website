@@ -15,6 +15,7 @@ import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
+import ProductCard from '@/components/shop/ProductCard'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
 interface Props {
@@ -35,7 +36,14 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     return <ProductEmbed product={productLink} shopProduct={shopProduct} />
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem, ProductInset, EditorNote }
+  // <ShopItem handle="..."> for our own products → rich shop card with live Shopify
+  // image, price and hover image. Falls back to the plain ShopItem for affiliates.
+  function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
+    const sp = props.handle ? shopProductMap[props.handle] : undefined
+    return sp ? <ProductCard product={sp} /> : <ShopItem {...props} />
+  }
+
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote }
 
   // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
   const heroMaxWidth = f.hero_max_width ?? 1200

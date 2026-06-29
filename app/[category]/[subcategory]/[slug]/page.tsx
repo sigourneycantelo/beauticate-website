@@ -23,9 +23,14 @@ export default async function ArticleRoute({ params }: Props) {
 
   const { frontmatter: f, content, products } = article
 
-  const shopProducts = await getProductsByHandles(
-    products.filter(p => p.type === 'shop').map(p => p.handle!)
-  )
+  // Shop products to fetch: frontmatter product_links + any handle="..." used by
+  // <ShopItem handle> in the body, so own-shop cards get live image/price/hover.
+  const bodyHandles = [...content.matchAll(/\bhandle="([^"]+)"/g)].map(m => m[1])
+  const shopHandles = [...new Set([
+    ...products.filter(p => p.type === 'shop').map(p => p.handle!),
+    ...bodyHandles,
+  ])]
+  const shopProducts = await getProductsByHandles(shopHandles)
 
   const related = getRelatedArticles(slug, category, f.tags ?? [])
 
