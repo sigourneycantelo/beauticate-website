@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 // Thin credibility band beneath the hero — Hanken caps, wide tracking.
 export default function TrustBand() {
   return (
@@ -15,7 +17,10 @@ export default function TrustBand() {
       >
         Trusted by women for over a decade
         <span className="mx-2 opacity-50">·</span>
-        By the editors of Beauticate.com
+        By the editors of{' '}
+        <Link href="/" className="underline decoration-[0.5px] underline-offset-2 hover:opacity-70 transition-opacity">
+          Beauticate.com
+        </Link>
       </p>
     </div>
   )
