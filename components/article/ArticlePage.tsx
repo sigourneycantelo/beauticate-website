@@ -14,6 +14,7 @@ import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
+import EditorNote from '@/components/mdx/EditorNote'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
 interface Props {
@@ -34,18 +35,24 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     return <ProductEmbed product={productLink} shopProduct={shopProduct} />
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem, ProductInset }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem, ProductInset, EditorNote }
+
+  // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
+  const heroMaxWidth = f.hero_max_width ?? 1200
 
   return (
     <article>
-      {/* Hero — capped at 1200px to match the WordPress source size (never upscaled/stretched) */}
+      {/* Hero — capped to hero_max_width to match the source resolution (never upscaled/stretched) */}
       {f.featured_image && (
-        <div className="relative w-full max-w-[1200px] mx-auto aspect-[16/9] bg-cream-100">
+        <div
+          className="relative w-full mx-auto aspect-[16/9] bg-cream-100"
+          style={{ maxWidth: `${heroMaxWidth}px` }}
+        >
           <Image
             src={f.featured_image}
             alt={f.featured_image_alt ?? f.title}
             fill
-            sizes="(max-width: 1200px) 100vw, 1200px"
+            sizes={`(max-width: ${heroMaxWidth}px) 100vw, ${heroMaxWidth}px`}
             className="object-cover object-center"
             priority
           />

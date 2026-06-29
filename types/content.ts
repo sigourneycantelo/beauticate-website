@@ -51,6 +51,7 @@ export interface ArticleFrontmatter {
   // Hero
   is_hero?: boolean            // true = this article is the curated home page hero
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
+  hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
 
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
