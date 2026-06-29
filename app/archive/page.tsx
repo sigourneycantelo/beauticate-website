@@ -13,17 +13,17 @@ interface Feature {
 }
 
 const VOGUE: Feature[] = [
+  { title: 'Lady Gaga & Cyndi Lauper', image: '/images/archive/lady-gaga-cyndi-lauper.jpg', href: '/archive/lady-gaga-cyndi-lauper.pdf' },
+  { title: 'Rihanna for M·A·C', image: '/images/archive/rihanna-mac.jpg', href: '/archive/rihanna-mac.pdf' },
+  { title: 'Simply Schiffer', image: '/images/archive/claudia-schiffer.jpg', href: '/archive/claudia-schiffer.pdf' },
+  { title: 'Estée Lauder', image: '/images/archive/estee-lauder.jpg', href: '/archive/estee-lauder.pdf' },
   { title: 'In Bloom', image: '/images/archive/in-bloom.jpg', href: '/archive/in-bloom.pdf' },
   { title: 'In the Raw', image: '/images/archive/in-the-raw.jpg', href: '/archive/in-the-raw.pdf' },
   { title: 'Coming Clean', image: '/images/archive/coming-clean.jpg', href: '/archive/coming-clean.pdf' },
-  { title: 'Simply Schiffer', image: '/images/archive/claudia-schiffer.jpg', href: '/archive/claudia-schiffer.pdf' },
   { title: 'Cate Blanchett', image: '/images/archive/cate-blanchett.jpg', href: '/archive/cate-blanchett.pdf' },
   { title: 'Burberry', image: '/images/archive/burberry.jpg', href: '/archive/burberry.pdf' },
   { title: 'Jo Malone', image: '/images/archive/jo-malone.jpg', href: '/archive/jo-malone.pdf' },
   { title: 'Dior in Grasse', image: '/images/archive/dior-grasse.jpg', href: '/archive/dior-grasse.pdf' },
-  { title: 'Lady Gaga & Cyndi Lauper', image: '/images/archive/lady-gaga-cyndi-lauper.jpg', href: '/archive/lady-gaga-cyndi-lauper.pdf' },
-  { title: 'Estée Lauder', image: '/images/archive/estee-lauder.jpg', href: '/archive/estee-lauder.pdf' },
-  { title: 'Rihanna for M·A·C', image: '/images/archive/rihanna-mac.jpg', href: '/archive/rihanna-mac.pdf' },
   { title: 'Shu Uemura', image: '/images/archive/shu-uemura.jpg', href: '/archive/shu-uemura.pdf' },
   { title: 'Zen Again', image: '/images/archive/zen-again.jpg', href: '/archive/zen-again.pdf' },
 ]
