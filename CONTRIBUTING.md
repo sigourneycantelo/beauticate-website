@@ -50,6 +50,11 @@ if you specifically need those.
   (posted by the Vercel bot on the PR). It mirrors production but rebuilds on each
   push (~1–2 min), so it's for **sharing and review**, not live editing.
 
+> **Preview asks you to log in?** That's Vercel Deployment Protection. The repo
+> owner can fix it at Vercel → Project → Settings → Deployment Protection (turn
+> off protection for preview deployments, or add the contributor to the Vercel
+> team). Until then, preview URLs will hit a login wall.
+
 ## The pull-request workflow (contributors)
 
 1. **Branch off the latest `main`:**
