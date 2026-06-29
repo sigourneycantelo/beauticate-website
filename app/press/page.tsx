@@ -108,21 +108,20 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 export default function PressPage() {
   return (
-    <>
-      <section className="relative overflow-hidden" style={{ width: '100vw', marginLeft: 'calc(50% - 50vw)', height: 'clamp(420px,60vh,680px)' }}>
-        <Image src="/images/sigourney-press-hero.jpg" alt="Sigourney Cantelo" fill priority sizes="100vw" className="object-cover" style={{ objectPosition: '50% 58%' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(45,34,28,.34), rgba(45,34,28,.10) 45%, rgba(45,34,28,.48))' }} />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
-          <p className="font-sans text-white/85" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase' }}>In the</p>
-          <h1 className="font-serif italic font-normal text-white mt-1" style={{ fontSize: 'clamp(40px,6vw,72px)', lineHeight: 1 }}>Media</h1>
+    <div className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,96px)]">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(28px,5vw,72px)] items-center mb-[clamp(44px,6vw,80px)]">
+        <div className="relative rounded-[2px] overflow-hidden bg-cream-100" style={{ aspectRatio: '4/5' }}>
+          <Image src="/images/sigourney-press-hero.jpg" alt="Sigourney Cantelo reading the paper" fill priority sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" style={{ objectPosition: '50% 80%' }} />
+        </div>
+        <div className="text-center md:text-left">
+          <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase', opacity: 0.5 }}>In the</p>
+          <h1 className="font-serif italic font-normal mt-1" style={{ fontSize: 'clamp(44px,6vw,76px)', lineHeight: 1 }}>Media</h1>
+          <p className="font-serif mt-5 mx-auto md:mx-0 max-w-[44ch]" style={{ fontSize: 'clamp(15px,1.5vw,18px)', opacity: 0.7 }}>
+            Beauticate and founder Sigourney Cantelo, featured across the titles that have shaped beauty,
+            wellness and culture for over a decade.
+          </p>
         </div>
       </section>
-
-    <div className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] pt-[clamp(36px,5vw,64px)] pb-[clamp(48px,7vw,96px)]">
-      <p className="font-serif text-center mx-auto mb-[clamp(36px,5vw,64px)] max-w-[52ch]" style={{ fontSize: 'clamp(15px,1.5vw,18px)', opacity: 0.7 }}>
-        Beauticate and founder Sigourney Cantelo, featured across the titles that have shaped beauty,
-        wellness and culture for over a decade.
-      </p>
 
       <PressGrid items={PUBLICATIONS} />
 
@@ -132,6 +131,5 @@ export default function PressPage() {
       <SectionLabel>Features &amp; Collaborations</SectionLabel>
       <PressGrid items={FEATURES} />
     </div>
-    </>
   )
 }
