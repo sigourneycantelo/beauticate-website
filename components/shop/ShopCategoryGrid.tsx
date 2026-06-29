@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const CATEGORIES = [
-  { label: 'Beauty', href: '/shop/by-category', gradient: 'linear-gradient(150deg,#cdbdb2,#8a766a)', soon: false },
-  { label: 'Wellness', href: '/shop/by-category', gradient: 'linear-gradient(150deg,#bcc4ba,#7d8a7c)', soon: false },
-  { label: 'Living', href: '/shop/by-category', gradient: 'linear-gradient(150deg,#d3c7bb,#9c8b79)', soon: false },
-  { label: 'Style', href: '/shop/by-category', gradient: 'linear-gradient(150deg,#cbb6ac,#94756a)', soon: true },
+  { label: 'Beauty', href: '/shop/by-category', img: '/images/shop/category-beauty.jpg', soon: false },
+  { label: 'Wellness', href: '/shop/by-category', img: '/images/shop/category-wellness.jpg', soon: false },
+  { label: 'Living', href: '/shop/by-category', img: '/images/shop/category-living.jpg', soon: false },
+  { label: 'Style', href: '/shop/by-category', img: '/images/shop/category-style.jpg', soon: true },
 ]
 
 // "Shop by Category" media grid — Beauty / Wellness / Living live, Style coming soon.
@@ -24,11 +25,14 @@ export default function ShopCategoryGrid() {
         {CATEGORIES.map(cat => {
           const Inner = (
             <>
-              <div
-                className="absolute inset-0 transition-transform duration-[900ms] group-hover:scale-[1.04]"
-                style={{ background: cat.gradient }}
+              <Image
+                src={cat.img}
+                alt={cat.label}
+                fill
+                sizes="(max-width:768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(20,18,16,.4)] to-[rgba(20,18,16,.12)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(20,18,16,.5)] to-[rgba(20,18,16,.14)]" />
               <div className="relative z-10 text-white">
                 <h3 className="font-serif font-normal tracking-[0.02em]" style={{ fontSize: 'clamp(24px,2.6vw,34px)' }}>
                   {cat.label}
@@ -43,7 +47,7 @@ export default function ShopCategoryGrid() {
           const base = 'group relative overflow-hidden rounded-[2px] flex flex-col items-center justify-center text-center aspect-[4/5]'
 
           return cat.soon ? (
-            <div key={cat.label} className={`${base} cursor-default`} aria-disabled style={{ opacity: 0.78 }}>
+            <div key={cat.label} className={`${base} cursor-default`} aria-disabled style={{ opacity: 0.82 }}>
               {Inner}
             </div>
           ) : (
