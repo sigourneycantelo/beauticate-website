@@ -19,11 +19,13 @@ export default function SearchResults({ query }: Props) {
     script.src = '/pagefind/pagefind-ui.js'
     script.onload = () => {
       // @ts-ignore — pagefind-ui.js is a generated static file, not an npm package
-      new window.PagefindUI({
+      const ui = new window.PagefindUI({
         element: '#pagefind-search',
         showSubResults: true,
-        defaultValue: query,
       })
+      // Run the query from the URL (?q=). PagefindUI has no `defaultValue`
+      // option — triggerSearch fills the box and executes the search.
+      if (query) ui.triggerSearch(query)
     }
     document.head.appendChild(script)
   }, []) // init once — Pagefind owns its own input state after mount

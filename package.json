@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-pagefind-index.mjs && next build",
+    "build:search": "node scripts/build-pagefind-index.mjs",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "npx pagefind --site .next/server/app --output-path public/pagefind || true",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",
     "send-email": "npx tsx scripts/send-email.ts"
   },
