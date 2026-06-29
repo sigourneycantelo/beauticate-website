@@ -3,6 +3,7 @@ import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
 import ShopByMoment from '@/components/shop/ShopByMoment'
+import Collective from '@/components/shop/Collective'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
@@ -82,6 +83,9 @@ export default async function ShopPage() {
 
       {/* Shop by Moment — four portrait tiles */}
       <ShopByMoment collections={moments} />
+
+      {/* Meet the Beauticate Collective */}
+      <Collective />
 
       {/* Editorial note */}
       <section className="bg-ink py-14 md:py-20">
