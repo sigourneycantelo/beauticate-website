@@ -55,14 +55,18 @@ export default function ProductTile({
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain p-4'
+  // Product shots come on white backgrounds; multiply blends that white into the
+  // parchment tile so the product sits seamlessly (no white box, no deep-etching).
+  // Lifestyle/model shots (cover) are shown as-is.
+  const blend = cover ? undefined : ({ mixBlendMode: 'multiply' } as const)
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
     return useNextImage ? (
-      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} />
+      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} style={blend} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt} className={cls} />
+      <img src={src} alt={alt} className={cls} style={blend} />
     )
   }
 
