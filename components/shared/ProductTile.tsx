@@ -99,15 +99,15 @@ export default function ProductTile({
       {!hideMeta && (
         <>
           {brand && (
-            <p className="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold opacity-55 mb-0.5">
+            <p className="font-sans text-[10.5px] tracking-[0.22em] uppercase font-semibold opacity-60 mb-1">
               {brand}
             </p>
           )}
-          <h3 className={`font-serif text-[15px] leading-[1.25] ${hasHover ? 'group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]' : ''}`}>
+          <h3 className={`font-serif text-[19px] leading-[1.2] ${hasHover ? 'group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]' : ''}`}>
             {name}
           </h3>
           {price && (
-            <p className="font-serif text-[12.5px] opacity-70 mt-1">
+            <p className="font-serif text-[13px] opacity-65 mt-1">
               {price}
               {priceSuffix && <span className="italic opacity-80">{priceSuffix}</span>}
             </p>
