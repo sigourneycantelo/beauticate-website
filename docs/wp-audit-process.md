@@ -1,5 +1,9 @@
 # WordPress ↔ Vercel article reconciliation
 
+> **Start with the master playbook:** [`article-audit-and-fix.md`](./article-audit-and-fix.md)
+> covers the whole process, the script toolbox, and the gotchas. This document is
+> the deep dive on the **detector** internals.
+
 A repeatable, review-gated process to find and fix inconsistencies between the
 original WordPress articles (`beauticate.com`) and the migrated Next.js/MDX
 articles.
