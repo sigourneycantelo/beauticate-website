@@ -53,11 +53,17 @@ export default function HeroVideo() {
         src={STREAM_URL}
         allow="autoplay; fullscreen; picture-in-picture"
         style={{
+          // Full-bleed cover: force the iframe to a 16:9 box always large enough
+          // to fill the container, centred and cropped. A 100%×100% iframe instead
+          // letterboxes the video inside the Stream player.
           position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '100vw',
+          height: '56.25vw',     // 16:9 derived from width
+          minHeight: '100vh',
+          minWidth: '177.78vh',  // 16:9 derived from height
           border: 'none',
           pointerEvents: 'none',
           opacity: visible ? 1 : 0,
