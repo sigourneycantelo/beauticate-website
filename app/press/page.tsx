@@ -19,6 +19,7 @@ const PRESS: PressItem[] = [
   { outlet: 'The Daily Telegraph', title: 'Sigourney Cantelo: ‘I had the perfect life but was really crumbling inside’', href: 'https://www.dailytelegraph.com.au/lifestyle/sydney-weekend/sigourney-cantelo-i-had-the-perfect-life-but-was-really-crumbling-inside/news-story/68a35c2fcd6d7b0d305550d34b33729c', logo: '/images/press/daily-telegraph.png' },
   { outlet: 'Daily Mail', title: 'Seasoned traveller: Vogue beauty editor reveals must-have holiday products', href: 'https://www.dailymail.co.uk/femail/article-7373261/How-pack-like-seasoned-traveller-Vogue-beauty-editor-reveals-products.html', logo: '/images/press/daily-mail.png' },
   { outlet: 'Daily Mail', title: 'Expert shares the exact skincare and makeup she uses to avoid getting Botox', href: 'https://www.dailymail.com/lifestyle/article-8598825/Expert-shares-exact-skincare-makeup-uses-AVOID-getting-Botox.html', logo: '/images/press/daily-mail.png' },
+  { outlet: 'Daily Mail', title: 'Home and Away’s Kate Ritchie on diet and beauty', href: 'https://www.dailymail.com/lifestyle/article-3586012/Home-Away-star-Kate-Ritchie-speaks-diet-beauty-Beauticate-interview.html', logo: '/images/press/daily-mail.png' },
   { outlet: 'ParlourX', title: 'The X-Files Interviews — Sigourney Cantelo', href: 'https://www.parlourx.com/blogs/news/sigourney-cantelo-beauticate', logo: '/images/press/parlourx.png' },
   { outlet: 'Marie Claire', title: 'I Checked Myself Into Rehab For Anxiety — It Wasn’t What I Expected', href: 'https://www.marieclaire.com.au/life/health-wellness/rehab-for-anxiety/', logo: '/images/press/marie-claire.png' },
   { outlet: 'Beauty Directory', title: 'Sigourney Cantelo launches new podcast', href: 'https://www.beautydirectory.com.au/news/digital/sigourney-cantelo-launches-podcast-beautiful-inside-by-beauticate', logo: '/images/press/beauty-directory.png' },
@@ -28,6 +29,9 @@ const PRESS: PressItem[] = [
   { outlet: 'The Strategy', title: 'The Strategy — Sigourney Cantelo', href: 'https://thestrategy.ca/2021/07/08/sigourney-cantelo-the-strategy/', logo: '/images/press/the-strategy.png' },
   { outlet: 'Mumbrella', title: 'Vogue’s Sigourney Cantelo Departs To Run Own Site — Beauticate', href: 'https://mumbrella.com.au/vogues-sigourney-cantelo-departs-run-site-233667', logo: '/images/press/mumbrella.png' },
   { outlet: 'Vogue', title: 'Vogue Road Tests Mineral Makeup', href: 'https://www.vogue.com.au/beauty/makeup/vogue-roadtests-mineral-makeup/news-story/cd1698343c42b5622e072203b057918b', logo: '/images/press/vogue.png' },
+  { outlet: 'Mamamia', title: 'A former Vogue editor’s pregnancy style tips', href: 'https://www.mamamia.com.au/beauty-pregnancy-tips/' },
+  { outlet: 'Mamamia', title: '‘I checked myself into a rehab centre for three weeks’', href: 'https://www.mamamia.com.au/treatment-facility/' },
+  { outlet: 'Palm Beach Collection', title: 'At Home With Sigourney Cantelo, Founder of Beauticate', href: 'https://palmbeachcollection.com.au/blogs/blog/at-home-with-sigourney-cantelo-founder-of-beauticate' },
 ]
 
 export default function PressPage() {
