@@ -37,10 +37,17 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
   return (
     <article>
-      {/* Hero */}
+      {/* Hero — capped at 1200px to match the WordPress source size (never upscaled/stretched) */}
       {f.featured_image && (
-        <div className="relative w-full aspect-[16/9] bg-cream-100">
-          <Image src={f.featured_image} alt={f.featured_image_alt ?? f.title} fill className="object-cover object-center" priority />
+        <div className="relative w-full max-w-[1200px] mx-auto aspect-[16/9] bg-cream-100">
+          <Image
+            src={f.featured_image}
+            alt={f.featured_image_alt ?? f.title}
+            fill
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            className="object-cover object-center"
+            priority
+          />
         </div>
       )}
 
