@@ -1,6 +1,7 @@
 import type { ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
+import { retailerFromUrl } from '@/lib/retailer'
 
 interface Props {
   product: ProductLink
@@ -42,18 +43,17 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
 
   // ── Affiliate / external product (no product image available) ─────
   const href = product.url ?? '#'
-  const retailer = product.retailer ?? ''
+  const retailer = product.retailer ?? retailerFromUrl(product.url)
 
   return (
     <div className="not-prose my-8 max-w-[300px] mx-auto">
       <ProductTile
         href={href}
         external
-        cornerLabel={retailer ? `at ${retailer} ↗` : 'Shop ↗'}
+        cornerLabel={retailer ? `shop via ${retailer} ↗` : 'shop ↗'}
         brand={retailer || undefined}
         name={product.name}
         price={product.price}
-        priceSuffix={retailer ? ` at ${retailer}` : undefined}
       />
     </div>
   )

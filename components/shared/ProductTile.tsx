@@ -33,6 +33,8 @@ export interface ProductTileProps {
   priceSuffix?: string
   /** Extra wrapper classes — e.g. a max-width for a single inset card. */
   className?: string
+  /** Hide the brand/name/price block — used when the card is inset beside a heading that already names the product. */
+  hideMeta?: boolean
 }
 
 /**
@@ -49,7 +51,7 @@ export default function ProductTile({
   href, external = false,
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, cover = false,
-  cornerLabel, brand, name, price, priceSuffix, className = '',
+  cornerLabel, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain p-4'
@@ -78,15 +80,20 @@ export default function ProductTile({
         {secondarySrc && renderImg(secondarySrc, secondaryAlt, 'opacity-0 transition-opacity duration-500 group-hover:opacity-100')}
 
         {cornerLabel && (
-          <span className="absolute top-3 left-3 font-sans text-[8.5px] tracking-[0.16em] uppercase font-semibold opacity-50">
+          <span className="absolute top-3 left-3 font-sans text-[8.5px] tracking-[0.16em] uppercase font-semibold opacity-50 z-10">
             {cornerLabel}
           </span>
         )}
+
+        {/* Wishlist heart — top-right, on the tile */}
+        <span className={`absolute top-3 right-3 w-[18px] h-[18px] z-10 ${cover ? 'text-white opacity-90 drop-shadow' : 'text-ink opacity-55'}`}>
+          <HeartIcon />
+        </span>
       </div>
 
-      {/* Meta — left aligned, with the wishlist heart on the name row (SheerLuxe) */}
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
+      {/* Meta — left aligned (SheerLuxe): brand / name, then a smaller price */}
+      {!hideMeta && (
+        <>
           {brand && (
             <p className="font-sans text-[10px] tracking-[0.2em] uppercase font-semibold opacity-55 mb-0.5">
               {brand}
@@ -95,16 +102,13 @@ export default function ProductTile({
           <h3 className={`font-serif text-[15px] leading-[1.25] ${hasHover ? 'group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]' : ''}`}>
             {name}
           </h3>
-        </div>
-        <span className="shrink-0 mt-0.5 w-[17px] h-[17px] text-ink opacity-50">
-          <HeartIcon />
-        </span>
-      </div>
-      {price && (
-        <p className="font-serif text-[12.5px] opacity-70 mt-1">
-          {price}
-          {priceSuffix && <span className="italic opacity-80">{priceSuffix}</span>}
-        </p>
+          {price && (
+            <p className="font-serif text-[12.5px] opacity-70 mt-1">
+              {price}
+              {priceSuffix && <span className="italic opacity-80">{priceSuffix}</span>}
+            </p>
+          )}
+        </>
       )}
     </>
   )

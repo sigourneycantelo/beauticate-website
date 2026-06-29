@@ -1,4 +1,5 @@
 import ProductTile from '@/components/shared/ProductTile'
+import { retailerFromUrl } from '@/lib/retailer'
 
 interface ShopItemProps {
   image: string
@@ -8,8 +9,10 @@ interface ShopItemProps {
   url: string
   /** Optional uppercase brand line shown above the name, e.g. "Maison Balzac" */
   brand?: string
-  /** Optional retailer for the affiliate cue, e.g. "Mecca" → "at Mecca ↗" */
+  /** Retailer for the "shop via {retailer}" cue. Auto-detected from the URL if omitted. */
   retailer?: string
+  /** Lifestyle/model shot — fills the tile edge-to-edge (no parchment frame). */
+  cover?: boolean
 }
 
 /**
@@ -18,18 +21,19 @@ interface ShopItemProps {
  * difference is the affiliate cue and that it clicks out to the retailer with
  * no hover state.
  */
-export function ShopItem({ image, name, price, url, brand, retailer }: ShopItemProps) {
+export function ShopItem({ image, name, price, url, brand, retailer, cover }: ShopItemProps) {
+  const r = retailer ?? retailerFromUrl(url)
   return (
     <ProductTile
       href={url}
       external
+      cover={cover}
       primarySrc={image}
       primaryAlt={name}
-      cornerLabel={retailer ? `at ${retailer} ↗` : 'Shop ↗'}
+      cornerLabel={r ? `shop via ${r} ↗` : 'shop ↗'}
       brand={brand}
       name={name}
       price={price}
-      priceSuffix={retailer ? ` at ${retailer}` : undefined}
     />
   )
 }
