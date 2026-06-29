@@ -5,6 +5,7 @@ import FounderIntro from '@/components/shop/FounderIntro'
 import ShopByMoment from '@/components/shop/ShopByMoment'
 import Collective from '@/components/shop/Collective'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
+import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
@@ -90,6 +91,9 @@ export default async function ShopPage() {
 
       {/* Press strip + Sigourney's Edit (editors-essentials collection) */}
       <SigourneysEdit />
+
+      {/* Shop by Category */}
+      <ShopCategoryGrid />
 
     </div>
   )
