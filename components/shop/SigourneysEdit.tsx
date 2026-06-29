@@ -37,8 +37,7 @@ export default async function SigourneysEdit() {
       <div className="text-center mt-10">
         <Link
           href="/shop/collections/editors-essentials"
-          className="inline-block font-sans text-ink"
-          style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
+          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase border border-ink px-7 py-3 rounded-[1px] hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Shop the edit
         </Link>
