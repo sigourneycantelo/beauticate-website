@@ -30,9 +30,8 @@ export default function HeroWide({ article }: { article: Article }) {
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
       <section
-        className="reveal relative overflow-hidden flex items-end"
+        className="reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto aspect-[16/9] min-h-[480px]"
         style={{
-          height: 'clamp(520px,74vh,780px)',
           paddingBottom: 'clamp(30px,5vw,64px)',
         }}
       >
@@ -42,7 +41,7 @@ export default function HeroWide({ article }: { article: Article }) {
           fill
           priority
           className="object-cover"
-          sizes="100vw"
+          sizes="(max-width: 1200px) 100vw, 1200px"
           unoptimized={heroImage.endsWith('.gif')}
         />
         <div
