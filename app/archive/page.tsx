@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'From the Archive',
-  description: 'Selected work from Sigourney Cantelo’s years in print — Vogue Australia, Studio and Body+Soul.',
+  description: 'Selected work from Sigourney Cantelo’s years in print — Vogue Australia, Studio, Body+Soul and New Woman.',
 }
 
 interface Feature {
@@ -48,6 +48,13 @@ const BODYSOUL: Feature[] = [
   { title: 'Look Fresh', image: '/images/archive/bs-may-2014.jpg', href: '/archive/bs-may-2014.pdf' },
 ]
 
+// New Woman features are wide double-page spreads.
+const NEW_WOMAN: Feature[] = [
+  { title: 'Scents of Style', image: '/images/archive/new-woman-1.jpg', href: '/archive/new-woman-1.pdf' },
+  { title: 'Protect Your Assets', image: '/images/archive/new-woman-2.jpg', href: '/archive/new-woman-2.pdf' },
+  { title: 'Skin Doctor', image: '/images/archive/new-woman-3.jpg', href: '/archive/new-woman-3.pdf' },
+]
+
 function FeatureCard({ f }: { f: Feature }) {
   return (
     <a href={f.href} target="_blank" rel="noopener noreferrer" className="group block">
@@ -68,10 +75,38 @@ function FeatureCard({ f }: { f: Feature }) {
   )
 }
 
+function WideCard({ f }: { f: Feature }) {
+  return (
+    <a href={f.href} target="_blank" rel="noopener noreferrer" className="group block">
+      <div className="relative overflow-hidden rounded-[2px] bg-cream-100" style={{ aspectRatio: '2/1' }}>
+        <Image
+          src={f.image}
+          alt={f.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]"
+        />
+      </div>
+      <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
+      <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
+        View the feature &rarr;
+      </span>
+    </a>
+  )
+}
+
 function FeatureGrid({ items }: { items: Feature[] }) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[clamp(24px,4vw,56px)] gap-y-[clamp(36px,4vw,56px)]">
       {items.map(f => <FeatureCard key={f.href} f={f} />)}
+    </div>
+  )
+}
+
+function WideGrid({ items }: { items: Feature[] }) {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[clamp(24px,4vw,56px)] gap-y-[clamp(36px,4vw,56px)]">
+      {items.map(f => <WideCard key={f.href} f={f} />)}
     </div>
   )
 }
@@ -98,7 +133,7 @@ export default function ArchivePage() {
         </h1>
         <p className="font-serif mx-auto mt-5 max-w-[54ch]" style={{ fontSize: 'clamp(15px,1.5vw,18px)', opacity: 0.7 }}>
           Two decades of beauty, wellness and travel writing — from Vogue Australia, where Sigourney
-          was Beauty &amp; Health Director, to Studio and Body+Soul.
+          was Beauty &amp; Health Director, to Studio, Body+Soul and New Woman.
         </p>
       </header>
 
@@ -119,6 +154,9 @@ export default function ArchivePage() {
 
       <SectionLabel>Body+Soul</SectionLabel>
       <FeatureGrid items={BODYSOUL} />
+
+      <SectionLabel>New Woman</SectionLabel>
+      <WideGrid items={NEW_WOMAN} />
     </div>
   )
 }
