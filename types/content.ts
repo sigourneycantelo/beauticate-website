@@ -85,6 +85,15 @@ export interface VodcastFrontmatter {
   topics?: string[]
   faqs?: FAQ[]
   related_products?: string[]
+
+  // Podcast page editorial fields
+  themes?: string[]
+  standfirst?: string
+  pull_quote?: string
+  pull_quote_author?: string
+  guest_name?: string
+  guest_role?: string
+  marquee_rank?: number
 }
 
 export interface EmailFrontmatter {
