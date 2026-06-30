@@ -255,6 +255,15 @@
   box-shadow: 0 24px 60px rgba(25, 22, 19, 0.16);
   background: linear-gradient(140deg, #e0cabb, #cbab98);
 }
+.grEmbed {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.grEmbed :global(.instagram-media) {
+  border-radius: 3px !important;
+  box-shadow: 0 24px 60px rgba(25, 22, 19, 0.16) !important;
+}
 .grVideo video,
 .grVideo img {
   position: absolute;

@@ -1,48 +1,78 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 type Styles = Record<string, string>
 
-const POSTER = '/images/podcast/getting-ready-poster.jpg'
-const VIDEO_SRC = '/videos/getting-ready-with-sig.mp4'
-// Instagram permalink for Sig's getting-ready reel. When set, the whole reel
-// clicks through to the IG post (caption + comments). Leave '' to keep it
-// as a non-clickable on-page reel. e.g. 'https://www.instagram.com/reel/XXXX/'
-const IG_URL = ''
+// Sig's "getting ready" Instagram reel. The official IG embed shows the real
+// video, its caption, and links straight to the post. Lazy-loaded so it never
+// blocks render. Leave '' to fall back to the styled placeholder tile.
+const IG_PERMALINK = 'https://www.instagram.com/p/DBbE0wOSQHW/'
+const IG_EMBED_SRC = 'https://www.instagram.com/embed.js'
 
-export default function GettingReadyReel({ styles, igUrl = IG_URL }: { styles: Styles; igUrl?: string }) {
-  const [isMobile, setIsMobile] = useState(false)
-  const [mounted, setMounted] = useState(false)
+declare global {
+  interface Window {
+    instgrm?: { Embeds: { process: () => void } }
+  }
+}
 
+export default function GettingReadyReel({ styles }: { styles: Styles }) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Lazy-inject Instagram's embed.js once the section nears the viewport, then
+  // ask it to process the blockquote into the live embed.
   useEffect(() => {
-    setMounted(true)
-    const mq = window.matchMedia('(max-width: 768px)')
-    const update = () => setIsMobile(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
+    if (!IG_PERMALINK) return
+    const el = ref.current
+    if (!el) return
+
+    const render = () => {
+      if (window.instgrm) {
+        window.instgrm.Embeds.process()
+        return
+      }
+      if (!document.querySelector(`script[src="${IG_EMBED_SRC}"]`)) {
+        const s = document.createElement('script')
+        s.async = true
+        s.src = IG_EMBED_SRC
+        s.onload = () => window.instgrm?.Embeds.process()
+        document.body.appendChild(s)
+      }
+    }
+
+    const io = new IntersectionObserver(
+      entries => {
+        if (entries.some(e => e.isIntersecting)) {
+          render()
+          io.disconnect()
+        }
+      },
+      { rootMargin: '300px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
   }, [])
 
-  // Tinted gradient placeholder is the CSS background of .grVideo, so if the
-  // video/poster files are missing the box degrades gracefully (no broken icon).
-  const inner = (
-    <>
-      {mounted && isMobile ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={POSTER} alt="Getting ready with Sig" loading="lazy" />
-      ) : (
-        <video
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="none"
-          poster={POSTER}
+  if (IG_PERMALINK) {
+    return (
+      <div className={styles.grEmbed} ref={ref}>
+        <blockquote
+          className="instagram-media"
+          data-instgrm-permalink={`${IG_PERMALINK}?utm_source=ig_embed&utm_campaign=loading`}
+          data-instgrm-version="14"
+          style={{ width: '100%', maxWidth: 360, margin: '0 auto', minWidth: 240 }}
         >
-          <source src={VIDEO_SRC} type="video/mp4" />
-        </video>
-      )}
+          <a href={IG_PERMALINK} target="_blank" rel="noopener noreferrer">
+            Watch &ldquo;Getting ready with Sig&rdquo; on Instagram
+          </a>
+        </blockquote>
+      </div>
+    )
+  }
+
+  // Fallback styled placeholder tile (used only if no permalink is set).
+  return (
+    <div className={styles.grVideo}>
       <div className={styles.scr} />
       <span className={styles.grPlay} aria-hidden="true">
         <svg viewBox="0 0 24 24">
@@ -53,24 +83,6 @@ export default function GettingReadyReel({ styles, igUrl = IG_URL }: { styles: S
         <span className={styles.eyebrow}>Behind the scenes</span>
         <b>Getting ready with Sig</b>
       </div>
-    </>
+    </div>
   )
-
-  // When an Instagram permalink is provided, the whole reel links out to the
-  // post so people can read the caption / watch it on IG (opens in a new tab).
-  if (igUrl) {
-    return (
-      <a
-        className={styles.grVideo}
-        href={igUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Watch Getting ready with Sig on Instagram"
-      >
-        {inner}
-      </a>
-    )
-  }
-
-  return <div className={styles.grVideo}>{inner}</div>
 }
