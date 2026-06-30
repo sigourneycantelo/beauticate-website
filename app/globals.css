@@ -104,7 +104,7 @@
 }
 .story-dot {
   position: absolute; left: -1.85rem; top: 5px; width: 11px; height: 11px;
-  border-radius: 9999px; background: #C9A24B; box-shadow: 0 0 0 4px #FBF9F4;
+  border-radius: 9999px; background: #A8472A; box-shadow: 0 0 0 4px #F9FAFB;
 }
 .story-fade { display: none; }
 
@@ -121,7 +121,7 @@
   .story--js.is-shown .story-line { transform: scaleX(1); }
   .story-dot { left: 0; top: 8px; }
   .story-fade { display: block; position: absolute; top: 0; right: -1px; width: 56px; height: 100%; pointer-events: none;
-    background: linear-gradient(to right, rgba(251, 249, 244, 0), #FBF9F4); }
+    background: linear-gradient(to right, rgba(249, 250, 251, 0), #F9FAFB); }
 }
 
 @media (prefers-reduced-motion: reduce) {

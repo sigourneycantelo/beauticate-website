@@ -4,23 +4,22 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 // Milestone copy is final (house style: Australian spelling, no em dashes).
-// `href` wires to a live route; null = plain text (route not ready, e.g. the
-// standalone Directory and the Top 100 edit).
+// `href` wires to a live route; null = plain text (route not ready, e.g. Top 100).
 const MILESTONES: { year: string; text: string; href: string | null; cta?: string }[] = [
   { year: '2014', text: 'While at Vogue, Sigourney starts Beauticate as a side project. Rapid growth sees her leave to go all in.', href: null },
   { year: '2015', text: 'The GO-TOs Spa and Salon Directory launches and the travel vertical grows.', href: '/destinations', cta: 'Explore Destinations' },
   { year: '2016', text: 'The WHOs series takes off. Polished at-home shoots blend beauty, interiors and the lives of industry insiders.', href: '/interviews', cta: 'Read the Interviews' },
-  { year: '2017', text: 'The Top 100 best beauty buys lands, expertly curated.', href: null },
-  { year: '2019', text: 'Top 100 Products of All Time cements Beauticate as where readers shop from trusted edits.', href: '/shop', cta: 'Visit the Shop' },
+  { year: '2017', text: 'The Top 100 lands: an expertly curated edit of the best beauty buys of all time, and the list readers return to shop from.', href: null },
   { year: '2019', text: 'The Interiors section launches and Beauticate becomes a full lifestyle platform.', href: '/living', cta: 'Explore Living' },
-  { year: '2022', text: 'Beautiful Inside, the video podcast, launches and debuts at #3 on Apple.', href: '/vodcast', cta: 'Listen to the Podcast' },
-  { year: '2024', text: 'GO-TOs expands into wellness and aesthetics, profiling leading clinics and practitioners.', href: '/wellness', cta: 'Explore Wellness' },
+  { year: '2022', text: 'GO-TOs expands into wellness and aesthetics, profiling leading clinics and practitioners.', href: '/wellness', cta: 'Explore Wellness' },
+  { year: '2024', text: 'Beautiful Inside, the video podcast, launches and debuts at #3 on Apple.', href: '/vodcast', cta: 'Listen to the Podcast' },
   { year: '2025', text: 'Podcast reach triples to 3.1 million a month.', href: '/vodcast', cta: 'Listen to the Podcast' },
   { year: '2026', text: 'The Beauticate Shop launches.', href: '/shop', cta: 'Visit the Shop' },
 ]
 
 export default function StoryTimeline() {
   const ref = useRef<HTMLElement>(null)
+  const railRef = useRef<HTMLDivElement>(null)
   // `js` gates the hidden-then-reveal state so the milestones are fully visible
   // when JavaScript is off. `shown` triggers the reveal + line draw.
   const [js, setJs] = useState(false)
@@ -40,21 +39,46 @@ export default function StoryTimeline() {
     return () => io.disconnect()
   }, [])
 
+  const scrollRail = (dir: number) => {
+    railRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })
+  }
+
   return (
     <section
       ref={ref}
       aria-labelledby="story-heading"
-      className={`story bg-[#FBF9F4] border-t border-b border-gray-100 py-16 ${js ? 'story--js' : ''} ${shown ? 'is-shown' : ''}`}
+      className={`story bg-gray-50 border-t border-b border-gray-100 py-16 ${js ? 'story--js' : ''} ${shown ? 'is-shown' : ''}`}
     >
       <div className="max-w-6xl mx-auto px-6">
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3 text-center">Our story</p>
-        <h2 id="story-heading" className="font-serif text-2xl md:text-3xl text-charcoal mb-12 text-center">
-          A decade in the making
+        <h2 id="story-heading" className="font-serif text-2xl md:text-3xl text-charcoal mb-8 text-center">
+          Over a decade in the making
         </h2>
+
+        {/* Scroll controls: desktop only; the rail reflows to a vertical list on mobile. */}
+        <div className="hidden md:flex items-center justify-end gap-2 mb-5">
+          <span className="font-sans text-[10px] tracking-[0.18em] uppercase text-charcoal/40 mr-1">Scroll</span>
+          <button
+            type="button"
+            onClick={() => scrollRail(-1)}
+            aria-label="Previous milestones"
+            className="w-9 h-9 rounded-full border border-charcoal/20 text-charcoal/60 hover:border-charcoal hover:text-charcoal transition-colors flex items-center justify-center"
+          >
+            <span aria-hidden="true">&larr;</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollRail(1)}
+            aria-label="Next milestones"
+            className="w-9 h-9 rounded-full border border-charcoal/20 text-charcoal/60 hover:border-charcoal hover:text-charcoal transition-colors flex items-center justify-center"
+          >
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
 
         {/* The rail scrolls horizontally on desktop, reflows to a vertical
             timeline on mobile. The connecting line draws itself on reveal. */}
-        <div className="story-rail relative">
+        <div ref={railRef} className="story-rail relative">
           <span aria-hidden="true" className="story-line" />
           <ol className="story-track">
             {MILESTONES.map((m, i) => (
@@ -69,7 +93,7 @@ export default function StoryTimeline() {
                     href={m.href}
                     className="font-sans text-[11px] tracking-[0.16em] uppercase text-gold hover:text-charcoal transition-colors mt-3 inline-block"
                   >
-                    {m.cta} →
+                    {m.cta} &rarr;
                   </Link>
                 )}
               </li>
