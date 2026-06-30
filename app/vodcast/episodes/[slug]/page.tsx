@@ -56,6 +56,18 @@ const mdxComponents = {
       />
     )
   },
+  // Body image; a markdown title (![alt](src "Caption")) renders a caption.
+  img: ({ src, alt, title }: React.ComponentProps<'img'>) => (
+    <figure className="my-12">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={src} alt={alt ?? ''} loading="lazy" className="w-full rounded-[2px]" />
+      {title && (
+        <figcaption className="mt-3 text-center font-sans text-[11px] tracking-[0.14em] uppercase" style={{ opacity: 0.5 }}>
+          {title}
+        </figcaption>
+      )}
+    </figure>
+  ),
 }
 
 // Subscribe destinations, rendered as clickable platform logos at the top of
@@ -256,7 +268,7 @@ export default async function EpisodePage({ params }: Props) {
       {/* Body content */}
       {cleanContent && (
         <div
-          className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg prose-img:w-full prose-img:rounded-[2px] prose-img:my-10"
+          className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg"
           style={{ color: '#1C1A17' }}
         >
           <MDXRemote source={cleanContent} components={mdxComponents} />
