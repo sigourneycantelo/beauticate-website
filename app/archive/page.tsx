@@ -42,8 +42,9 @@ const VOGUE: Feature[] = [
 ]
 
 const VOGUE_ONLINE: Feature[] = [
-  { title: 'How Not To Get A Suntan In Paris', image: '', href: 'https://www.vogue.com.au/beauty/skin/how-not-to-get-a-suntan-in-paris/news-story/a2a52a5c4d76cc2cc0129a0194539fef' },
-  { title: 'Vogue Road Tests Mineral Makeup', image: '', href: 'https://www.vogue.com.au/beauty/makeup/vogue-roadtests-mineral-makeup/news-story/cd1698343c42b5622e072203b057918b' },
+  { title: 'Winning the Jasmine Award', image: '/images/archive/vogue-jasmine-award.jpg', href: '/archive/vogue-jasmine-award.pdf', kicker: 'Vogue.com.au · 2010' },
+  { title: 'Beauty Tips for Surviving Fashion Week', image: '/images/archive/vogue-fashion-week.jpg', href: '/archive/vogue-fashion-week.pdf', kicker: 'Vogue.com.au · 2011' },
+  { title: 'What’s in My Make-Up Bag', image: '/images/archive/vogue-makeup-bag.jpg', href: '/archive/vogue-makeup-bag.pdf', kicker: 'Vogue.com.au · 2013' },
 ]
 
 const FREELANCE: Feature[] = [
@@ -169,15 +170,8 @@ export default function ArchivePage() {
 
       <SectionLabel>Vogue Australia</SectionLabel>
       <FeatureGrid items={VOGUE} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[clamp(28px,4vw,64px)] gap-y-[clamp(24px,3vw,36px)] max-w-3xl mx-auto mt-[clamp(36px,4vw,56px)]">
-        {VOGUE_ONLINE.map(f => (
-          <a key={f.href} href={f.href} target="_blank" rel="noopener noreferrer" className="group block border-t border-cream-200 pt-5">
-            <p className="font-sans" style={{ fontSize: '10.5px', letterSpacing: '0.26em', textTransform: 'uppercase', opacity: 0.55 }}>Vogue Australia · Online</p>
-            <h2 className="font-serif font-normal mt-2 group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]" style={{ fontSize: 'clamp(18px,1.8vw,22px)', lineHeight: 1.25 }}>{f.title}</h2>
-            <span className="inline-block mt-3 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">Read &rarr;</span>
-          </a>
-        ))}
-      </div>
+      <SectionLabel>Vogue Australia · Online</SectionLabel>
+      <FeatureGrid items={VOGUE_ONLINE} />
 
       <SectionLabel>Freelance</SectionLabel>
       <FeatureGrid items={FREELANCE} />
