@@ -1,302 +1,300 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import type { VodcastFrontmatter } from '@/types/content'
 import { getVodcastEpisodes } from '@/lib/content'
+import styles from './podcast.module.css'
+import PodcastReveal from '@/components/vodcast/PodcastReveal'
+import StickyPlayer from '@/components/vodcast/StickyPlayer'
+import GettingReadyReel from '@/components/vodcast/GettingReadyReel'
+import GuestRail, { type Guest } from '@/components/vodcast/GuestRail'
+import ThemeArchive, { type ArchiveEpisode } from '@/components/vodcast/ThemeArchive'
+import CuratorFeed from '@/components/vodcast/CuratorFeed'
 
 export const metadata: Metadata = {
   title: 'Beautiful Inside — Podcast by Beauticate',
-  description: 'Sigourney Cantelo in conversation with the people shaping beauty, wellness and the way we live. Watch on YouTube or listen on Spotify and Apple Podcasts.',
+  description:
+    'Sigourney Cantelo in conversation with the experts, founders and thought leaders shaping how we live. Watch on YouTube or listen on Spotify and Apple Podcasts.',
 }
 
-const PLATFORMS = [
-  {
-    name: 'YouTube',
-    href: 'https://www.youtube.com/@sigourneycantelo',
-    color: '#FF0000',
-    icon: (
-      <svg width="20" height="14" viewBox="0 0 24 17" fill="currentColor">
-        <path d="M23.495 2.656A3.015 3.015 0 0 0 21.374.516C19.505 0 12 0 12 0S4.495 0 2.626.516A3.015 3.015 0 0 0 .505 2.656C0 4.534 0 8.45 0 8.45s0 3.916.505 5.794a3.015 3.015 0 0 0 2.121 2.14C4.495 16.9 12 16.9 12 16.9s7.505 0 9.374-.516a3.015 3.015 0 0 0 2.121-2.14C24 12.366 24 8.45 24 8.45s0-3.916-.505-5.794zM9.545 12.023V4.877l6.273 3.573-6.273 3.573z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Spotify',
-    href: 'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
-    color: '#1DB954',
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Apple Podcasts',
-    href: 'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
-    color: '#9933CC',
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.878 2.915 2.078 4.718.064.563.077.6.077 1.02 0 .397-.013.44-.077.978-.206 1.87-.917 3.407-2.166 4.657-.746.746-1.51 1.224-2.596 1.63-.536.2-.794.25-1.247.3-.444.05-.776.025-1.096-.073-.696-.21-1.202-.87-1.202-1.59 0-.734.527-1.413 1.253-1.59.25-.057.27-.064.52-.077.37-.02.638-.089.99-.256.89-.428 1.556-1.214 1.876-2.23.128-.41.18-.795.17-1.273-.013-.756-.218-1.4-.647-1.985-.577-.79-1.468-1.28-2.464-1.344-.13-.008-.26-.013-.4-.013-1.37 0-2.52.755-3.054 2.01-.168.396-.24.78-.24 1.312 0 .565.077 1.01.255 1.464.268.69.71 1.22 1.33 1.59.307.18.77.37 1.14.46.282.07.41.172.517.39.09.193.09.39 0 .57-.09.19-.244.32-.46.397-.295.11-.616.08-.88-.05-.77-.38-1.437-.96-1.97-1.72-.77-1.09-1.16-2.41-1.1-3.76.09-2.16 1.15-4.01 2.88-5.11.97-.61 2.08-.93 3.27-.93zm.17 4.085c1.51 0 2.77 1.26 2.77 2.77s-1.26 2.77-2.77 2.77-2.77-1.26-2.77-2.77 1.24-2.77 2.77-2.77zm0 1.1c-.92 0-1.67.75-1.67 1.67s.75 1.67 1.67 1.67 1.67-.75 1.67-1.67-.75-1.67-1.67-1.67z" />
-      </svg>
-    ),
-  },
-]
+const PLATFORMS = {
+  spotify: 'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
+  apple: 'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
+  youtube: 'https://www.youtube.com/@sigourneycantelo',
+}
 
-const DEFAULT_COVER = 'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/38363818/38363818-1739270093542-7154f374420cb.jpg'
+const DEFAULT_COVER =
+  'https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/38363818/38363818-1739270093542-7154f374420cb.jpg'
 
 function episodeImage(img: string | undefined): string {
   if (!img) return DEFAULT_COVER
-  if (img.startsWith('http')) return img
   return img
 }
 
+// ── Canonical theme taxonomy ────────────────────────────────────────────────
+const THEMES = [
+  'Confidence',
+  'Reinvention',
+  'Health',
+  'Healing',
+  'Perimenopause',
+  'Beauty & Skin',
+  'Business',
+  'Motherhood',
+  'Reset',
+]
+
+// Keyword → theme map so the filter returns results before episodes are tagged.
+const THEME_KEYWORDS: { theme: string; words: string[] }[] = [
+  { theme: 'Perimenopause', words: ['perimenopause', 'menopause', 'hormone'] },
+  { theme: 'Health', words: ['anxiety', 'gut', 'sleep', 'longevity', 'adhd', 'mental health', 'wellness', 'nervous system'] },
+  { theme: 'Healing', words: ['heartbreak', 'trauma', 'grief', 'healing', 'breathwork', 'awakening'] },
+  { theme: 'Business', words: ['founder', 'business', 'brand', 'entrepreneur', 'building'] },
+  { theme: 'Motherhood', words: ['mother', 'parenting', 'family', 'ivf', 'children', 'kids'] },
+  { theme: 'Reinvention', words: ['reinvention', 'starting over', 'start over', 'rebuilding', 'reinvent', 'pivot'] },
+  { theme: 'Confidence', words: ['confidence', 'self-worth', 'self worth', 'identity', 'boundaries', 'picking yourself'] },
+  { theme: 'Beauty & Skin', words: ['skin', 'beauty', 'fragrance', 'skincare', 'acne', 'glow'] },
+  { theme: 'Reset', words: ['sacred six', 'reset', 'ritual', 'intention', 'escape', 'sanity'] },
+]
+
+function inferThemes(f: VodcastFrontmatter): string[] {
+  const hay = `${f.title ?? ''} ${f.excerpt ?? ''} ${f.meta_description ?? ''}`.toLowerCase()
+  const out = new Set<string>()
+  for (const { theme, words } of THEME_KEYWORDS) {
+    if (words.some(w => hay.includes(w))) out.add(theme)
+  }
+  return [...out]
+}
+
+function themesFor(f: VodcastFrontmatter): string[] {
+  return f.themes && f.themes.length ? f.themes : inferThemes(f)
+}
+
+function kickerFor(f: VodcastFrontmatter): string {
+  if (f.guest_role) return f.guest_role
+  if (f.topics && f.topics.length) return f.topics[0]
+  return 'Interview'
+}
+
+function trim(excerpt: string | undefined, max = 110): string | undefined {
+  if (!excerpt) return undefined
+  return excerpt.length > max ? excerpt.slice(0, max - 1).trimEnd() + '…' : excerpt
+}
+
+// ── Curated marquee guest order ─────────────────────────────────────────────
+const CURATED_GUESTS: { name: string; role: string; slug: string }[] = [
+  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep' },
+  { name: 'Trinny Woodall', role: 'Founder · Trinny London', slug: 'trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up' },
+  { name: 'Celeste Barber', role: 'Comedian & writer', slug: 'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media' },
+  { name: 'Gabby Bernstein', role: 'Author & speaker', slug: 'gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream' },
+  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth' },
+  { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame' },
+  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion' },
+  { name: 'Susan Yara', role: 'Founder · Naturium', slug: 'susan-yara-on-reinvention-resilience-and-rebuilding-trust' },
+  { name: 'Tanya Ali Jalani', role: 'Breathwork facilitator', slug: 'tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing' },
+  { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo' },
+]
+
+const APPLE_ICON = (
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 00-3 19.5c-.1-.8 0-2 .2-2.8.2-.7 1.2-5 1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2.9.5 1.7 1.4 1.7 1.7 0 2.8-2.1 2.8-4.6 0-1.9-1.3-3.3-3.6-3.3-2.6 0-4.2 2-4.2 4.1 0 .8.2 1.3.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.3-.5.2-1.3-.5-1.9-2-1.9-3.6 0-2.7 2.3-5.9 6.8-5.9 3.6 0 6 2.6 6 5.4 0 3.7-2 6.4-5 6.4-1 0-2-.6-2.3-1.2l-.6 2.4c-.2.8-.7 1.8-1 2.4A10 10 0 1012 2z" />
+  </svg>
+)
+const SPOTIFY_ICON = (
+  <svg viewBox="0 0 24 24">
+    <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.86.2c-2.35-1.44-5.3-1.76-8.8-.96a.62.62 0 11-.28-1.2c3.83-.88 7.1-.5 9.74 1.1.3.18.4.57.2.86zm1.23-2.74a.78.78 0 01-1.07.26c-2.7-1.66-6.8-2.14-10-1.17a.78.78 0 11-.45-1.5c3.64-1.1 8.18-.56 11.27 1.34.36.22.48.7.25 1.07zm.1-2.85C14.8 8.96 9.4 8.78 6.3 9.72a.94.94 0 11-.54-1.8c3.56-1.08 9.5-.87 13.24 1.35a.94.94 0 01-.96 1.6z" />
+  </svg>
+)
+const YOUTUBE_ICON = (
+  <svg viewBox="0 0 24 24">
+    <path d="M23 7.5s-.22-1.56-.9-2.24c-.86-.9-1.82-.9-2.26-.96C16.7 4.07 12 4.07 12 4.07s-4.7 0-7.82.23c-.44.06-1.4.06-2.26.96C1.22 5.94 1 7.5 1 7.5S.78 9.33.78 11.16v1.7C.78 14.7 1 16.5 1 16.5s.22 1.56.9 2.24c.86.9 2 .87 2.5.97 1.8.17 7.6.22 7.6.22s4.7 0 7.82-.24c.44-.05 1.4-.06 2.26-.96.68-.68.9-2.24.9-2.24s.22-1.83.22-3.66v-1.7C23.22 9.33 23 7.5 23 7.5zM9.7 14.84V8.86l6.08 3z" />
+  </svg>
+)
+
 export default function VodcastPage() {
   const episodes = getVodcastEpisodes()
-  const [featured, ...rest] = episodes
+  const hero = episodes[0]
+  const heroF = hero?.frontmatter
+  const heroSlug = heroF?.slug ?? ''
+  const heroHref = `/vodcast/episodes/${heroSlug}`
+
+  // Staggered pair = episodes 2 and 3
+  const pair: ArchiveEpisode[] = episodes.slice(1, 3).map(ep => ({
+    slug: ep.frontmatter.slug,
+    title: ep.frontmatter.title,
+    kicker: kickerFor(ep.frontmatter),
+    image: episodeImage(ep.frontmatter.featured_image),
+    themes: themesFor(ep.frontmatter),
+  }))
+
+  // Grids = episodes 4 onward
+  const rest: ArchiveEpisode[] = episodes.slice(3).map(ep => ({
+    slug: ep.frontmatter.slug,
+    title: ep.frontmatter.title,
+    excerpt: trim(ep.frontmatter.excerpt),
+    kicker: kickerFor(ep.frontmatter),
+    image: episodeImage(ep.frontmatter.featured_image),
+    themes: themesFor(ep.frontmatter),
+  }))
+
+  // Theme pills: union of episode themes + canonical THEMES, in canonical order.
+  const present = new Set<string>()
+  episodes.forEach(ep => themesFor(ep.frontmatter).forEach(t => present.add(t)))
+  const pills = ['All', ...THEMES.filter(t => present.has(t))]
+
+  // Resolve curated guest list against the episodes, skipping any not found.
+  const bySlug = new Map(episodes.map(ep => [ep.frontmatter.slug, ep.frontmatter]))
+  const guests: Guest[] = CURATED_GUESTS.filter(g => bySlug.has(g.slug)).map(g => ({
+    name: g.name,
+    role: g.role,
+    href: `/vodcast/episodes/${g.slug}`,
+    image: episodeImage(bySlug.get(g.slug)?.featured_image),
+  }))
+
+  // Pull-quote breather: prefer a featured ep's pull_quote, else a curated line.
+  const pullEp = episodes.find(ep => ep.frontmatter.pull_quote)
+  const quote = pullEp
+    ? {
+        quote: pullEp.frontmatter.pull_quote as string,
+        author:
+          (pullEp.frontmatter.pull_quote_author ??
+            pullEp.frontmatter.guest_name ??
+            pullEp.frontmatter.title) + ' · Beautiful Inside',
+      }
+    : {
+        quote: 'The most beautiful thing we can do is come home to ourselves.',
+        author: 'Beautiful Inside by Beauticate',
+      }
+
+  const heroStand =
+    heroF?.standfirst ??
+    heroF?.excerpt ??
+    'Going inside the homes, routines and inner lives of fascinating people.'
 
   return (
-    <div className="bg-white">
+    <div className={styles.podcastPage}>
+      <PodcastReveal revClass={styles.rev} inClass={styles.in} />
 
-      {/* ── Masthead ── */}
-      <section className="text-center py-14 px-6" style={{ borderBottom: '1px solid rgba(28,26,23,.08)' }}>
-        <h1 className="sr-only">Beautiful Inside by Beauticate</h1>
-        <Image
-          src="/images/podcast/beautiful-inside-logo.png"
-          alt="Beautiful Inside by Beauticate"
-          width={420}
-          height={247}
-          priority
-          className="mx-auto h-auto w-[180px] md:w-[230px] mb-8"
-        />
-        <p className="font-sans text-[10.5px] tracking-[.2em] uppercase mb-5" style={{ opacity: 0.55 }}>
-          Subscribe to the podcast on your favourite platform
-        </p>
-        <div className="flex justify-center items-center gap-7 flex-wrap">
-          {PLATFORMS.map(p => (
-            <a
-              key={p.name}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={p.name}
-              className="flex items-center gap-2 font-sans text-[10px] tracking-[.16em] uppercase opacity-90 hover:opacity-100 transition-opacity"
-            >
-              <span style={{ color: p.color }}>{p.icon}</span>
-              <span>{p.name}</span>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Hero: host portrait flanked by intro copy + rating ── */}
-      <section
-        className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-x-10 gap-y-8 items-center"
-        style={{ maxWidth: 1060, margin: '0 auto', padding: 'clamp(40px,5vw,72px) clamp(20px,6vw,80px)' }}
-      >
-        {/* Left: description */}
-        <p className="font-serif text-[18px] leading-[1.7] md:text-right order-2 md:order-1 text-charcoal">
-          Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have, inside and out.
-        </p>
-
-        {/* Centre: host portrait — free-standing on the white, no card frame */}
-        <div className="relative mx-auto order-1 md:order-2" style={{ width: 'clamp(240px,34vw,360px)', aspectRatio: '1/1' }}>
-          <Image
-            src="/images/podcast/host-hero.png"
-            alt="Beautiful Inside by Beauticate — hosted by Sigourney Cantelo"
-            fill
-            className="object-contain"
-            sizes="360px"
-            priority
-          />
-        </div>
-
-        {/* Right: Apple Podcasts rating card + tagline */}
-        <div className="flex flex-col items-center md:items-start gap-6 order-3">
-          <div className="rounded-[18px] bg-white px-9 py-7 text-center border border-cream-200 shadow-[0_12px_40px_rgba(28,26,23,0.10)]">
-            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-[13px]" style={{ background: 'linear-gradient(150deg,#D070E6,#7A33C8)' }}>
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <path d="M12 14.4a2.2 2.2 0 0 0 2.2-2.2V6.6a2.2 2.2 0 1 0-4.4 0v5.6a2.2 2.2 0 0 0 2.2 2.2Zm4.6-2.2a4.6 4.6 0 0 1-9.2 0H6a6 6 0 0 0 5 5.92V21h2v-2.88a6 6 0 0 0 5-5.92h-1.4Z" />
-              </svg>
-            </div>
-            <div className="font-serif text-[38px] leading-none text-charcoal">4.9/5</div>
-            <div className="font-serif text-[14.5px] mt-1.5" style={{ opacity: 0.62 }}>Rated on Apple Podcast</div>
-            <div className="mt-2.5 flex justify-center gap-1 text-[17px]" style={{ color: '#F4A62A' }}>
-              {[...Array(5)].map((_, i) => <span key={i}>★</span>)}
-            </div>
-          </div>
-          <p className="font-serif font-medium italic text-[21px] leading-[1.5] text-center md:text-left text-charcoal">
-            We will be talking to experts and thought leaders to improve our mindset and cultivate our own inner beauty.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Now Playing on Spotify, flanked by two recent covers ── */}
-      {episodes.length >= 3 && (
-        <section style={{ maxWidth: 1060, margin: '0 auto', padding: '0 clamp(20px,6vw,80px) clamp(40px,5vw,64px)' }}>
-          <div className="grid grid-cols-2 md:grid-cols-[1fr_1.15fr_1fr] gap-4 items-center">
-            {/* Left cover */}
-            <Link href={`/vodcast/episodes/${episodes[1]?.frontmatter.slug}`} className="relative rounded-[2px] overflow-hidden block group" style={{ aspectRatio: '4/5' }}>
+      {/* ===== 2 · HERO (latest episode) ===== */}
+      <section className={styles.hero} id="hero">
+        <Link href={heroHref} aria-label={heroF?.title ?? 'Latest episode'}>
+          <div className={styles.heroImg}>
+            {heroF && (
               <Image
-                src={episodeImage(episodes[1]?.frontmatter.featured_image)}
-                alt={episodes[1]?.frontmatter.title ?? ''}
+                src={episodeImage(heroF.featured_image)}
+                alt={heroF.featured_image_alt ?? heroF.title}
                 fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                sizes="340px"
+                priority
+                sizes="100vw"
+                className="object-cover"
               />
-            </Link>
-
-            {/* Centre: Spotify now-playing player */}
-            <div className="col-span-2 md:col-span-1 order-first md:order-none">
-              <p className="font-sans text-[9.5px] tracking-[.2em] uppercase text-center mb-3" style={{ opacity: 0.5 }}>Now playing on Spotify</p>
-              <iframe
-                title="Beautiful Inside by Beauticate on Spotify"
-                src="https://open.spotify.com/embed/show/5su7l0yO5Ue0706K2Lzd8q?utm_source=generator&theme=0"
-                width="100%"
-                height="352"
-                frameBorder="0"
-                loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                style={{ borderRadius: 12 }}
-              />
-            </div>
-
-            {/* Right cover */}
-            <Link href={`/vodcast/episodes/${episodes[2]?.frontmatter.slug}`} className="relative rounded-[2px] overflow-hidden block group" style={{ aspectRatio: '4/5' }}>
-              <Image
-                src={episodeImage(episodes[2]?.frontmatter.featured_image)}
-                alt={episodes[2]?.frontmatter.title ?? ''}
-                fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                sizes="340px"
-              />
-            </Link>
+            )}
           </div>
-        </section>
-      )}
+        </Link>
+        <div className={styles.heroScrim} />
 
-      {/* ── Episode listing ── */}
-      <section style={{ borderTop: '1px solid rgba(28,26,23,.08)', padding: 'clamp(40px,5vw,64px) clamp(20px,6vw,104px)' }}>
+        <div className={styles.heroRating}>
+          <div>
+            <small>Apple Podcasts</small>
+            <span className={styles.stars}>★★★★★</span>
+          </div>
+          <b>4.9</b>
+        </div>
 
-        {/* Featured (latest) episode */}
-        {featured && (
-          <div
-            className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 mb-14"
-            style={{ borderBottom: '1px solid rgba(28,26,23,.08)', paddingBottom: 'clamp(40px,4vw,56px)' }}
-          >
-            <Link href={`/vodcast/episodes/${featured.frontmatter.slug}`} className="block group">
-              <div className="relative rounded-[2px] overflow-hidden" style={{ aspectRatio: '1/1' }}>
-                <Image
-                  src={episodeImage(featured.frontmatter.featured_image)}
-                  alt={featured.frontmatter.featured_image_alt ?? featured.frontmatter.title}
-                  fill
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                  sizes="280px"
-                  priority
-                />
-              </div>
+        <div className={`${styles.heroInner} ${styles.rev}`}>
+          <div className={`${styles.heroEyebrow} ${styles.eyebrow}`}>
+            <span className={styles.dot} /> Latest episode · Beautiful Inside
+          </div>
+          <Link href={heroHref}>
+            <h1>{heroF?.title}</h1>
+          </Link>
+          <p className={styles.heroStand}>{heroStand}</p>
+          <div className={styles.heroRow}>
+            <Link href={heroHref} className={styles.playCta}>
+              <span className={styles.tri}>
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>{' '}
+              Play episode
             </Link>
-            <div className="flex flex-col justify-center">
-              <p className="font-sans text-[9.5px] tracking-[.18em] uppercase mb-3" style={{ opacity: 0.45 }}>
-                Latest episode · {new Date(featured.frontmatter.date_published).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })}
-              </p>
-              <Link href={`/vodcast/episodes/${featured.frontmatter.slug}`} className="group">
-                <h2 className="font-serif font-normal text-[clamp(22px,3vw,32px)] leading-[1.18] mb-4 group-hover:opacity-70 transition-opacity">
-                  {featured.frontmatter.title}
-                </h2>
-              </Link>
-              {featured.frontmatter.excerpt && (
-                <p className="font-serif text-[16px] leading-[1.65] mb-6" style={{ opacity: 0.68, maxWidth: '60ch' }}>
-                  {featured.frontmatter.excerpt}
-                </p>
-              )}
-              <Link
-                href={`/vodcast/episodes/${featured.frontmatter.slug}`}
-                className="font-sans text-[10px] tracking-[.18em] uppercase self-start"
-                style={{ borderBottom: '1px solid currentColor', paddingBottom: '2px', opacity: 0.7 }}
-              >
-                Listen now
-              </Link>
+            <div className={styles.heroPlat}>
+              <span>Also on</span>
+              <a href={PLATFORMS.spotify} target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+                {SPOTIFY_ICON}
+              </a>
+              <a href={PLATFORMS.apple} target="_blank" rel="noopener noreferrer" aria-label="Apple Podcasts">
+                {APPLE_ICON}
+              </a>
+              <a href={PLATFORMS.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                {YOUTUBE_ICON}
+              </a>
             </div>
           </div>
-        )}
-
-        {/* Episode grid — 3 columns */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-          style={{ gap: 'clamp(32px,3.5vw,52px)' }}
-        >
-          {rest.map(ep => {
-            const f = ep.frontmatter
-            const date = new Date(f.date_published).toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })
-            return (
-              <article key={f.slug} className="group">
-                <Link href={`/vodcast/episodes/${f.slug}`} className="block">
-                  <div
-                    className="relative rounded-[2px] overflow-hidden mb-4"
-                    style={{ aspectRatio: '4/3', border: '1px solid rgba(28,26,23,.08)' }}
-                  >
-                    <Image
-                      src={episodeImage(f.featured_image)}
-                      alt={f.featured_image_alt ?? f.title}
-                      fill
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                      style={f.card_position ? { objectPosition: f.card_position } : undefined}
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    />
-                  </div>
-                  <p className="font-sans text-[9px] tracking-[.16em] uppercase mb-2" style={{ opacity: 0.42 }}>
-                    {date}
-                  </p>
-                  <h3 className="font-serif font-normal text-[17px] leading-[1.3] mb-2 group-hover:opacity-70 transition-opacity">
-                    {f.title}
-                  </h3>
-                  {f.excerpt && (
-                    <p className="font-sans text-[12.5px] leading-[1.6] mb-3" style={{ opacity: 0.6 }}>
-                      {f.excerpt.length > 120 ? f.excerpt.slice(0, 117) + '...' : f.excerpt}
-                    </p>
-                  )}
-                  <span className="font-sans text-[9.5px] tracking-[.16em] uppercase" style={{ borderBottom: '1px solid currentColor', paddingBottom: '1px', opacity: 0.55 }}>
-                    Read more
-                  </span>
-                </Link>
-              </article>
-            )
-          })}
         </div>
       </section>
 
-      {/* ── Newsletter ── */}
-      <section
-        className="text-center px-6 py-16"
-        style={{ borderTop: '1px solid rgba(28,26,23,.08)', background: '#FBF9F4' }}
-      >
-        <p className="font-sans text-[9.5px] tracking-[.2em] uppercase mb-3" style={{ opacity: 0.45 }}>Stay in the loop</p>
-        <h2 className="font-serif font-normal text-[clamp(22px,3vw,30px)] mb-3">Subscribe to Beautify Your Life</h2>
-        <p className="font-serif text-[15px] leading-[1.65] mb-8 max-w-md mx-auto" style={{ opacity: 0.65 }}>
-          Sign up to get your weekly fix of WISOs and HOW TOs, exclusive gifts, discounts and events directly to your inbox.
+      {/* ===== 4 · GETTING READY reel ===== */}
+      <section className={styles.gr}>
+        <div className={`${styles.wrap} ${styles.grGrid}`}>
+          <div className={styles.rev}>
+            <GettingReadyReel styles={styles} />
+          </div>
+          <div className={`${styles.grCopy} ${styles.rev}`}>
+            <h2>Inside the homes, routines and inner lives of fascinating people.</h2>
+            <p className={styles.lede2}>
+              Each week we go beyond the surface with the experts, founders and thought leaders
+              shaping how we live. The science and psychology of beauty and self-care, and the tools
+              to look and feel the best you ever have, inside and out.
+            </p>
+            <p className={styles.pull}>
+              We talk to the people improving our mindset, our health and the way we cultivate our
+              own inner beauty.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 5 · GUESTS RAIL ===== */}
+      <GuestRail styles={styles} guests={guests} />
+
+      {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
+      <ThemeArchive styles={styles} pair={pair} rest={rest} pills={pills} quote={quote} />
+
+      {/* ===== 8 · CURATOR.IO STRIP ===== */}
+      <CuratorFeed styles={styles} />
+
+      {/* ===== 9 · SUBSCRIBE ===== */}
+      <section className={styles.subscribe}>
+        <span className={styles.eyebrow}>The newsletter</span>
+        <h2>Subscribe to beautify your life</h2>
+        <p>
+          Your weekly fix of who&apos;s worth knowing and how to live well, plus exclusive gifts,
+          discounts and events, straight to your inbox.
         </p>
-        <form
-          className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto"
-          action="/api/subscribe"
-          method="POST"
-        >
+        <form className={styles.subform} action="/api/subscribe" method="POST">
           <input
             type="email"
             name="email"
-            placeholder="Your email"
+            placeholder="Email address"
+            aria-label="Email address"
             required
-            className="flex-1 px-4 py-3 font-sans text-[12px] tracking-[.04em] bg-white rounded-[2px] outline-none"
-            style={{ border: '1px solid rgba(28,26,23,.2)' }}
           />
-          <button
-            type="submit"
-            className="px-6 py-3 font-sans text-[10px] tracking-[.18em] uppercase text-white transition-opacity hover:opacity-80"
-            style={{ background: '#1C1A17', borderRadius: '2px' }}
-          >
-            Subscribe
-          </button>
+          <button type="submit">Subscribe</button>
         </form>
       </section>
 
+      {/* ===== 3 · STICKY PLAYER (fixed, slides up past hero) ===== */}
+      {heroF && (
+        <StickyPlayer
+          styles={styles}
+          title={heroF.title}
+          image={episodeImage(heroF.featured_image)}
+          slug={heroSlug}
+          spotifyEpisodeId={heroF.spotify_episode_id}
+          youtubeVideoId={heroF.youtube_video_id}
+        />
+      )}
     </div>
   )
 }
