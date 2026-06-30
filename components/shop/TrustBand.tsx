@@ -21,15 +21,6 @@ export default function TrustBand() {
         <Link href="/" className="underline decoration-[0.5px] underline-offset-2 hover:opacity-70 transition-opacity">
           Beauticate.com
         </Link>
-        <span className="mx-2 opacity-50">·</span>
-        As featured in{' '}
-        <Link href="/press" className="underline decoration-[0.5px] underline-offset-2 hover:opacity-70 transition-opacity">
-          the press
-        </Link>
-        <span className="mx-2 opacity-50">·</span>
-        <Link href="/archive" className="underline decoration-[0.5px] underline-offset-2 hover:opacity-70 transition-opacity">
-          25 years in print
-        </Link>
       </p>
     </div>
   )

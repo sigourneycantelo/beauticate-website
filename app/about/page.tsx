@@ -56,13 +56,6 @@ const collectivePeople = [
   },
 ]
 
-const stats = [
-  { value: '3.1M+', label: 'Monthly readers' },
-  { value: '11', label: 'Years publishing' },
-  { value: '2,082', label: 'Referring domains' },
-  { value: '67%', label: 'AU beauty AI share of voice' },
-]
-
 const faqs = [
   {
     question: 'Who founded Beauticate?',
@@ -100,39 +93,17 @@ export default function AboutPage() {
 
       <main className="bg-white">
 
-        {/* Hero */}
-        <section className="max-w-4xl mx-auto px-6 pt-16 pb-12 text-center">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-4">About</p>
-          <h1 className="font-serif text-4xl md:text-5xl text-charcoal leading-tight mb-6">
-            Beauty, wellness and lifestyle —<br className="hidden md:block" /> trusted for eleven years
-          </h1>
-          <p className="font-serif text-lg text-charcoal/70 leading-relaxed max-w-2xl mx-auto">
-            Beauticate is Australia&apos;s most-cited independent beauty publisher, founded in 2014 by journalist and former Vogue Australia Beauty &amp; Health Director Sigourney Cantelo. We reach more than 3.1 million readers every month.
-          </p>
-        </section>
-
-        {/* Stats */}
-        <section className="border-t border-b border-gray-100 py-10">
-          <div className="max-w-4xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map(s => (
-              <div key={s.label}>
-                <div className="font-serif text-3xl text-charcoal mb-1">{s.value}</div>
-                <div className="font-sans text-[11px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Founder section */}
-        <section className="max-w-4xl mx-auto px-6 py-16 md:flex gap-14 items-start">
-          <div className="md:w-64 flex-shrink-0 mb-8 md:mb-0">
-            <div className="relative w-full aspect-[3/2] bg-cream rounded-lg overflow-hidden">
+        {/* Founder — image left, story right */}
+        <section className="max-w-6xl mx-auto px-6 pt-14 pb-16 md:grid md:grid-cols-[minmax(0,440px)_1fr] md:gap-16 items-start">
+          {/* Photo */}
+          <div className="md:sticky md:top-24 mb-10 md:mb-0">
+            <div className="relative w-full aspect-[2/3] bg-cream rounded-lg overflow-hidden">
               <Image
-                src="/images/sigourney-cantelo.jpg"
+                src="/images/sigourney-about.jpg"
                 alt="Sigourney Cantelo, Founder and Editor-in-Chief of Beauticate"
                 fill
                 className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 256px"
+                sizes="(max-width: 768px) 100vw, 440px"
                 priority
               />
             </div>
@@ -147,39 +118,42 @@ export default function AboutPage() {
               >
                 @sigourney.cantelo
               </a>
+              <Link
+                href="/sigourneys-edit"
+                className="font-sans text-[11px] tracking-widest uppercase text-charcoal/60 hover:text-charcoal transition-colors mt-2 block"
+              >
+                Read Sigourney&apos;s Edit →
+              </Link>
             </div>
           </div>
 
-          <div className="flex-1">
-            <h2 className="font-serif text-2xl text-charcoal mb-5">Our story</h2>
+          {/* Story */}
+          <div>
+            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3">About</p>
+            <h1 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-7">About Beauticate</h1>
             <div className="font-serif text-base text-charcoal/80 leading-relaxed space-y-4">
-              <p>
-                Beauticate launched in 2014 with a simple idea: that beauty content should be honest, expert and actually useful. Sigourney Cantelo had spent more than a decade as Beauty &amp; Health Director at Vogue Australia, and before that at magazines across the industry. She had seen firsthand which information readers could trust — and how much of what was published they couldn&apos;t.
-              </p>
-              <p>
-                Eleven years later, Beauticate has grown into one of Australia&apos;s most-trusted independent beauty publishers — with a reach of more than 3.1 million readers monthly, 2,082 referring domains, and a 67% share of voice in Australian beauty content across AI engines. It has won <Link href="/archive" className="text-gold hover:text-charcoal transition-colors">multiple industry awards</Link> and been cited in Vogue, Harper&apos;s BAZAAR and <Link href="/press" className="text-gold hover:text-charcoal transition-colors">major Australian media</Link>.
-              </p>
-              <p>
-                We cover beauty, skincare, wellness, hair, destinations, living and interviews — always through the lens of real expertise. Our writers and contributors include working makeup artists, dermatologists, nutritionists and industry insiders. We test products ourselves, visit the clinics we recommend, and only publish what we would genuinely stand behind.
-              </p>
-              <p>
-                In 2025 Beauticate launched <Link href="https://beauticate.shop" className="text-gold hover:text-charcoal transition-colors">Beauticate Shop</Link> — a curated beauty and wellness edit built on the same editorial philosophy: fewer, better things, chosen by editors not algorithms.
-              </p>
+              <p>Beauticate began more than a decade ago, as a side project, while I was Beauty &amp; Health Director at Vogue Australia.</p>
+              <p>After years of writing for magazines, I wanted to create something of my own. A space that honoured beauty properly. Not as something trivial, but as something powerful.</p>
+              <p>The name came from two words: beauty + educate. But over time, it&apos;s become something deeper. To Beauticate is to live beautifully and well. To be curious, to question, to seek pleasure, purpose and presence in equal measure.</p>
+              <p>Because real beauty has never been just about what you put on your skin. It&apos;s the bold lip that gets you through a hard morning. The fragrance that makes a stranger smile. The bath that finally lets you exhale. Small things that are actually enormous things.</p>
+              <p>And it&apos;s so much more than that, too. It&apos;s how you nourish yourself, how you move through the world, how you design your home, where you travel to restore. How you heal. How you feel on the inside, because that shapes everything.</p>
+              <p>So Beauticate grew with me. Into wellness and longevity, interiors and destinations, identity, reinvention, motherhood, burnout, perimenopause. Into every corner of a life lived as beautifully as possible.</p>
+              <p>That philosophy led to <Link href="/vodcast" className="text-gold hover:text-charcoal transition-colors">Beautiful Inside</Link>, a video podcast filmed in the homes and spaces of people we admire, exploring healing, mental health and what lies beneath the lives we present to the world.</p>
+              <p>And now to the <Link href="https://beauticate.shop" className="text-gold hover:text-charcoal transition-colors">Beauticate Shop</Link>, our curated edit of the products we actually use, love and recommend. It&apos;s in its testing/beta stage now and we&apos;d love you to be among the first to explore (and give us your feedback). No noise, no fillers. Just the things genuinely worth your time and money.</p>
+              <p>This is a space for curious minds and wise souls. For seekers, quiet rebuilders and people who believe that how you live matters as much as how you look.</p>
+              <p>Across all of it, the intention is exactly the same as day one. To help you look, live and feel your best, with honesty, expertise and a little joy thrown in.</p>
+              <p>Thank you for being here. It means more than you know.</p>
+              <p className="font-serif italic text-charcoal">Sigourney x</p>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-gray-100">
-              <h3 className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 mb-3">Credentials</h3>
-              <ul className="font-serif text-sm text-charcoal/70 space-y-2">
-                <li>— Former Beauty &amp; Health Director, Vogue Australia</li>
-                <li>— 25+ years in Australian beauty and media</li>
-                <li>— Founder, Beauticate (est. 2014)</li>
-                <li>— 3.1M monthly readers across editorial and social</li>
-                <li>— #1 independent beauty publisher, Australian AI search (67% share of voice)</li>
-              </ul>
-              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-                <Link href="/archive" className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold hover:text-charcoal transition-colors">Selected published work &rarr;</Link>
-                <Link href="/press" className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold hover:text-charcoal transition-colors">In the media &rarr;</Link>
-              </div>
+            {/* Founder bio box */}
+            <div className="mt-10 bg-[#f7f5f2] border border-gray-100 rounded-lg p-6 md:p-8 space-y-4">
+              <p className="font-serif text-sm text-charcoal/75 leading-relaxed">
+                <strong className="font-semibold">Sigourney Cantelo</strong> is the founder and publisher of Beauticate. With over 25 years across print, digital and broadcast — including her tenure as Beauty &amp; Health Director at Vogue Australia and regular appearances on Sunrise and the Today show as a beauty and style commentator — she is one of Australia&apos;s most recognised voices in beauty, health and wellness media. Her work has appeared in Body + Soul, marie claire, Sunday Life and numerous Australian and international publications. She is a six-time Star Beauty Award winner and a five-time Jasmine Award recipient, including twice winning the Jasmine Award for Journalistic Excellence.
+              </p>
+              <p className="font-serif text-sm text-charcoal/75 leading-relaxed">
+                She founded Beauticate in 2014 as an independent editorial platform: the depth and rigour of a major masthead, with the freedom of something entirely her own. Today it reaches 3.1 million monthly touchpoints across editorial, podcast, newsletter, Instagram and e-commerce.
+              </p>
             </div>
           </div>
         </section>

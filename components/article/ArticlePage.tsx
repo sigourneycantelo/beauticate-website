@@ -37,12 +37,15 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   }
 
   // <ShopItem handle="..."> for our own products → "In our shop" card using the
-  // article's tight product image (consistent sizing) + live Shopify price + internal link.
+  // article's (tightly-cropped) product image for consistent sizing, plus the live
+  // Shopify price and an internal link. Falls back to the plain ShopItem for affiliates.
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
     const sp = props.handle ? shopProductMap[props.handle] : undefined
     if (!sp) return <ShopItem {...props} />
     const mp = sp.priceRange?.minVariantPrice
-    const price = mp ? new Intl.NumberFormat("en-AU", { style: "currency", currency: mp.currencyCode }).format(parseFloat(mp.amount)) : undefined
+    const price = mp
+      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
+      : undefined
     return (
       <ProductTile
         href={`/shop/products/${sp.handle}`}
