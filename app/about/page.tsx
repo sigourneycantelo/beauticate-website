@@ -121,7 +121,28 @@ export default function AboutPage() {
                 priority
               />
             </div>
-            <div className="mt-4">
+          </div>
+
+          {/* Story */}
+          <div>
+            <h1 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-7">About Beauticate</h1>
+            <div className="font-serif text-base text-charcoal/80 leading-relaxed space-y-4">
+              <p>Beauticate began more than a decade ago, as a side project, while I was Beauty &amp; Health Director at Vogue Australia.</p>
+              <p>After years of writing for magazines, I wanted to create something of my own. A space that honoured beauty properly. Not as something trivial, but as something powerful.</p>
+              <p>The name came from two words: beauty + educate. But over time, it&apos;s become something deeper. To Beauticate is to live beautifully and well. To be curious, to question, to seek pleasure, purpose and presence in equal measure.</p>
+              <p>Because real beauty has never been just about what you put on your skin. It&apos;s the bold lip that gets you through a hard morning. The fragrance that makes a stranger smile. The bath that finally lets you exhale. Small things that are actually enormous things.</p>
+              <p>And it&apos;s so much more than that, too. It&apos;s how you nourish yourself, how you move through the world, how you design your home, where you travel to restore. How you heal. How you feel on the inside, because that shapes everything.</p>
+              <p>So Beauticate grew with me. Into wellness and longevity, interiors and destinations, identity, reinvention, motherhood, burnout, perimenopause. Into every corner of a life lived as beautifully as possible.</p>
+              <p>That philosophy led to <Link href="/vodcast" className="text-gold hover:text-charcoal transition-colors">Beautiful Inside</Link>, a video podcast filmed in the homes and spaces of people we admire, exploring healing, mental health and what lies beneath the lives we present to the world.</p>
+              <p>And now to the <Link href="https://beauticate.shop" className="text-gold hover:text-charcoal transition-colors">Beauticate Shop</Link>, our curated edit of the products we actually use, love and recommend. It&apos;s in its testing/beta stage now and we&apos;d love you to be among the first to explore (and give us your feedback). No noise, no fillers. Just the things genuinely worth your time and money.</p>
+              <p>This is a space for curious minds and wise souls. For seekers, quiet rebuilders and people who believe that how you live matters as much as how you look.</p>
+              <p>Across all of it, the intention is exactly the same as day one. To help you look, live and feel your best, with honesty, expertise and a little joy thrown in.</p>
+              <p>Thank you for being here. It means more than you know.</p>
+              <p className="font-serif italic text-charcoal">Sigourney x</p>
+            </div>
+
+            {/* Signature */}
+            <div className="mt-6">
               <p className="font-serif text-base text-charcoal">Sigourney Cantelo</p>
               <p className="font-sans text-[11px] tracking-widest uppercase text-charcoal/40 mt-0.5">Founder &amp; Editor-in-Chief</p>
               <a
@@ -138,26 +159,6 @@ export default function AboutPage() {
               >
                 Read Sigourney&apos;s Edit →
               </Link>
-            </div>
-          </div>
-
-          {/* Story */}
-          <div>
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3">About</p>
-            <h1 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-7">About Beauticate</h1>
-            <div className="font-serif text-base text-charcoal/80 leading-relaxed space-y-4">
-              <p>Beauticate began more than a decade ago, as a side project, while I was Beauty &amp; Health Director at Vogue Australia.</p>
-              <p>After years of writing for magazines, I wanted to create something of my own. A space that honoured beauty properly. Not as something trivial, but as something powerful.</p>
-              <p>The name came from two words: beauty + educate. But over time, it&apos;s become something deeper. To Beauticate is to live beautifully and well. To be curious, to question, to seek pleasure, purpose and presence in equal measure.</p>
-              <p>Because real beauty has never been just about what you put on your skin. It&apos;s the bold lip that gets you through a hard morning. The fragrance that makes a stranger smile. The bath that finally lets you exhale. Small things that are actually enormous things.</p>
-              <p>And it&apos;s so much more than that, too. It&apos;s how you nourish yourself, how you move through the world, how you design your home, where you travel to restore. How you heal. How you feel on the inside, because that shapes everything.</p>
-              <p>So Beauticate grew with me. Into wellness and longevity, interiors and destinations, identity, reinvention, motherhood, burnout, perimenopause. Into every corner of a life lived as beautifully as possible.</p>
-              <p>That philosophy led to <Link href="/vodcast" className="text-gold hover:text-charcoal transition-colors">Beautiful Inside</Link>, a video podcast filmed in the homes and spaces of people we admire, exploring healing, mental health and what lies beneath the lives we present to the world.</p>
-              <p>And now to the <Link href="https://beauticate.shop" className="text-gold hover:text-charcoal transition-colors">Beauticate Shop</Link>, our curated edit of the products we actually use, love and recommend. It&apos;s in its testing/beta stage now and we&apos;d love you to be among the first to explore (and give us your feedback). No noise, no fillers. Just the things genuinely worth your time and money.</p>
-              <p>This is a space for curious minds and wise souls. For seekers, quiet rebuilders and people who believe that how you live matters as much as how you look.</p>
-              <p>Across all of it, the intention is exactly the same as day one. To help you look, live and feel your best, with honesty, expertise and a little joy thrown in.</p>
-              <p>Thank you for being here. It means more than you know.</p>
-              <p className="font-serif italic text-charcoal">Sigourney x</p>
             </div>
 
             {/* Founder bio box */}
