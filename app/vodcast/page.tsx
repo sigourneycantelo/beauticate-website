@@ -81,71 +81,85 @@ export default function VodcastPage() {
         </div>
       </section>
 
-      {/* ── Intro + featured collage ── */}
+      {/* ── Hero: host portrait flanked by intro copy + rating ── */}
       <section
-        className="grid grid-cols-1 md:grid-cols-2 gap-0"
-        style={{ maxWidth: 1200, margin: '0 auto', padding: 'clamp(40px,5vw,72px) clamp(20px,6vw,104px)' }}
+        className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-x-10 gap-y-8 items-center"
+        style={{ maxWidth: 1060, margin: '0 auto', padding: 'clamp(40px,5vw,72px) clamp(20px,6vw,80px)' }}
       >
-        {/* Left: cover art + description */}
-        <div className="pr-0 md:pr-16 flex flex-col justify-center mb-10 md:mb-0">
-          <div className="flex gap-5 items-start mb-7">
-            <div className="relative flex-shrink-0 rounded-[2px] overflow-hidden shadow-sm" style={{ width: 100, height: 100 }}>
-              <Image src="/images/podcast/cover.jpg" alt="Beautiful Inside by Beauticate podcast cover" fill className="object-cover" sizes="100px" />
+        {/* Left: description */}
+        <p className="font-serif text-[16.5px] leading-[1.72] md:text-right order-2 md:order-1" style={{ opacity: 0.75 }}>
+          Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have — inside and out.
+        </p>
+
+        {/* Centre: host / cover portrait */}
+        <div className="relative mx-auto rounded-[2px] overflow-hidden shadow-sm order-1 md:order-2" style={{ width: 'clamp(220px,30vw,280px)', aspectRatio: '1/1' }}>
+          <Image
+            src="/images/podcast/cover.jpg"
+            alt="Beautiful Inside by Beauticate — hosted by Sigourney Cantelo"
+            fill
+            className="object-cover"
+            sizes="280px"
+            priority
+          />
+        </div>
+
+        {/* Right: rating + tagline */}
+        <div className="flex flex-col items-center md:items-start gap-5 order-3">
+          <div className="text-center md:text-left">
+            <div className="flex gap-0.5 mb-1.5 justify-center md:justify-start">
+              {[...Array(5)].map((_, i) => <span key={i} className="text-[#1C1A17] text-base">★</span>)}
             </div>
-            <div>
-              <p className="font-sans text-[9px] tracking-[.2em] uppercase mb-1.5" style={{ opacity: 0.45 }}>4.9 / 5 on Apple Podcasts</p>
-              <div className="flex gap-0.5 mb-2">
-                {[...Array(5)].map((_, i) => <span key={i} className="text-[#1C1A17] text-sm">★</span>)}
-              </div>
-              <p className="font-sans text-[10px] tracking-[.04em]" style={{ opacity: 0.6 }}>Beautiful, honest conversations.</p>
-            </div>
+            <p className="font-sans text-[9px] tracking-[.2em] uppercase" style={{ opacity: 0.5 }}>4.9 / 5 · Rated on Apple Podcasts</p>
           </div>
-          <p className="font-serif text-[18px] leading-[1.7] mb-6" style={{ opacity: 0.75 }}>
-            Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have — inside and out.
-          </p>
-          <p className="font-serif italic text-[20px] leading-[1.55]" style={{ color: '#8E9A82' }}>
+          <p className="font-serif italic text-[19px] leading-[1.55] text-center md:text-left" style={{ color: '#8E9A82' }}>
             We will be talking to experts and thought leaders to improve our mindset and cultivate our own inner beauty.
           </p>
         </div>
+      </section>
 
-        {/* Right: episode collage */}
-        {episodes.length >= 3 && (
-          <div className="grid grid-cols-2 gap-3" style={{ gridTemplateRows: 'auto auto' }}>
-            <div className="col-span-2 relative rounded-[2px] overflow-hidden" style={{ aspectRatio: '16/7' }}>
-              <Image
-                src={episodeImage(episodes[0]?.frontmatter.featured_image)}
-                alt={episodes[0]?.frontmatter.title ?? ''}
-                fill
-                className="object-cover object-top"
-                sizes="600px"
-              />
-              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,.65) 0%, rgba(10,10,10,.1) 50%, transparent 100%)' }} />
-              <div className="absolute bottom-0 left-0 p-4">
-                <p className="font-sans text-[9px] tracking-[.18em] uppercase text-white mb-1" style={{ opacity: 0.7 }}>Latest episode</p>
-                <h3 className="font-serif text-white text-[15px] leading-[1.25]">{episodes[0]?.frontmatter.title}</h3>
-              </div>
-            </div>
-            <div className="relative rounded-[2px] overflow-hidden" style={{ aspectRatio: '4/3' }}>
+      {/* ── Now Playing on Spotify, flanked by two recent covers ── */}
+      {episodes.length >= 3 && (
+        <section style={{ maxWidth: 1060, margin: '0 auto', padding: '0 clamp(20px,6vw,80px) clamp(40px,5vw,64px)' }}>
+          <div className="grid grid-cols-2 md:grid-cols-[1fr_1.15fr_1fr] gap-4 items-center">
+            {/* Left cover */}
+            <Link href={`/vodcast/episodes/${episodes[1]?.frontmatter.slug}`} className="relative rounded-[2px] overflow-hidden block group" style={{ aspectRatio: '4/5' }}>
               <Image
                 src={episodeImage(episodes[1]?.frontmatter.featured_image)}
                 alt={episodes[1]?.frontmatter.title ?? ''}
                 fill
-                className="object-cover object-top"
-                sizes="300px"
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                sizes="340px"
+              />
+            </Link>
+
+            {/* Centre: Spotify now-playing player */}
+            <div className="col-span-2 md:col-span-1 order-first md:order-none">
+              <p className="font-sans text-[9.5px] tracking-[.2em] uppercase text-center mb-3" style={{ opacity: 0.5 }}>Now playing on Spotify</p>
+              <iframe
+                title="Beautiful Inside by Beauticate on Spotify"
+                src="https://open.spotify.com/embed/show/5su7l0yO5Ue0706K2Lzd8q?utm_source=generator&theme=0"
+                width="100%"
+                height="352"
+                frameBorder="0"
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                style={{ borderRadius: 12 }}
               />
             </div>
-            <div className="relative rounded-[2px] overflow-hidden" style={{ aspectRatio: '4/3' }}>
+
+            {/* Right cover */}
+            <Link href={`/vodcast/episodes/${episodes[2]?.frontmatter.slug}`} className="relative rounded-[2px] overflow-hidden block group" style={{ aspectRatio: '4/5' }}>
               <Image
                 src={episodeImage(episodes[2]?.frontmatter.featured_image)}
                 alt={episodes[2]?.frontmatter.title ?? ''}
                 fill
-                className="object-cover object-top"
-                sizes="300px"
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                sizes="340px"
               />
-            </div>
+            </Link>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {/* ── Episode listing ── */}
       <section style={{ borderTop: '1px solid rgba(28,26,23,.08)', padding: 'clamp(40px,5vw,64px) clamp(20px,6vw,104px)' }}>
