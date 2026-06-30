@@ -4,6 +4,7 @@ export interface Author {
   name: string
   slug: string
   role: string
+  profileUrl?: string     // on-site profile / about page
   photo?: string          // path under /images/authors/
   instagram?: string      // full URL
   linkedin?: string       // full URL
@@ -15,6 +16,7 @@ const AUTHORS: Author[] = [
     name: 'Sigourney Cantelo',
     slug: 'sigourney-cantelo',
     role: 'Founder & Editor-in-Chief',
+    profileUrl: '/about',
     photo: '/images/authors/sigourney-cantelo.jpg',
     instagram: 'https://www.instagram.com/sigourneycantelo/',
     linkedin: 'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
