@@ -30,12 +30,14 @@ const VOGUE: Feature[] = [
   { title: 'I learned Vedic Meditation', image: '/images/archive/zen-again.jpg', href: '/archive/zen-again.pdf' },
   { title: 'A Journey Through the Senses', image: '/images/archive/perfume-passport.jpg', href: '/archive/perfume-passport.pdf' },
   { title: 'Off the Beaten Path Fragrances', image: '/images/archive/nouveau-niche.jpg', href: '/archive/nouveau-niche.pdf' },
+  { title: 'Distilling Provence', image: '/images/archive/distilling-provence.jpg', href: '/archive/distilling-provence.pdf', desc: 'Jasmine Award Winner' },
   { title: 'A Lash Shoot with Uchiide San', image: '/images/archive/night-moves.jpg', href: '/archive/night-moves.pdf' },
   { title: 'Tricks of the Trade', image: '/images/archive/tricks-of-the-trade.jpg', href: '/archive/tricks-of-the-trade.pdf' },
   { title: 'I Did a 30-Day Yoga Challenge', image: '/images/archive/karma-chameleon.jpg', href: '/archive/karma-chameleon.pdf' },
   { title: 'Bali & Lombok, Indonesia', image: '/images/archive/indo-i-did.jpg', href: '/archive/indo-i-did.pdf' },
   { title: 'Paradise Found at Song Saa, Cambodia', image: '/images/archive/paradise-found-song-saa.jpg', href: '/archive/paradise-found-song-saa.pdf' },
   { title: 'Sweet Retreat, Gwinganna', image: '/images/archive/sweet-retreat.jpg', href: '/archive/sweet-retreat.pdf' },
+  { title: 'The Great Escape, Australia', image: '/images/archive/the-great-escape.jpg', href: '/archive/the-great-escape.pdf' },
 ]
 
 const VOGUE_ONLINE: Feature[] = [
