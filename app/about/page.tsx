@@ -157,7 +157,7 @@ export default function AboutPage() {
                 Beauticate launched in 2014 with a simple idea: that beauty content should be honest, expert and actually useful. Sigourney Cantelo had spent more than a decade as Beauty &amp; Health Director at Vogue Australia, and before that at magazines across the industry. She had seen firsthand which information readers could trust — and how much of what was published they couldn&apos;t.
               </p>
               <p>
-                Eleven years later, Beauticate has grown into one of Australia&apos;s most-trusted independent beauty publishers — with a reach of more than 3.1 million readers monthly, 2,082 referring domains, and a 67% share of voice in Australian beauty content across AI engines. It has won multiple industry awards and been cited in Vogue, Harper&apos;s BAZAAR and major Australian media.
+                Eleven years later, Beauticate has grown into one of Australia&apos;s most-trusted independent beauty publishers — with a reach of more than 3.1 million readers monthly, 2,082 referring domains, and a 67% share of voice in Australian beauty content across AI engines. It has won <Link href="/archive" className="text-gold hover:text-charcoal transition-colors">multiple industry awards</Link> and been cited in Vogue, Harper&apos;s BAZAAR and <Link href="/press" className="text-gold hover:text-charcoal transition-colors">major Australian media</Link>.
               </p>
               <p>
                 We cover beauty, skincare, wellness, hair, destinations, living and interviews — always through the lens of real expertise. Our writers and contributors include working makeup artists, dermatologists, nutritionists and industry insiders. We test products ourselves, visit the clinics we recommend, and only publish what we would genuinely stand behind.
@@ -176,6 +176,10 @@ export default function AboutPage() {
                 <li>— 3.1M monthly readers across editorial and social</li>
                 <li>— #1 independent beauty publisher, Australian AI search (67% share of voice)</li>
               </ul>
+              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+                <Link href="/archive" className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold hover:text-charcoal transition-colors">Selected published work &rarr;</Link>
+                <Link href="/press" className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold hover:text-charcoal transition-colors">In the media &rarr;</Link>
+              </div>
             </div>
           </div>
         </section>
