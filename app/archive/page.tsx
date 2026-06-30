@@ -13,6 +13,7 @@ interface Feature {
 }
 
 const VOGUE: Feature[] = [
+  { title: 'The Ultimate Guide to Fragrance', image: '/images/archive/ultimate-guide-fragrance.jpg', href: '/archive/ultimate-guide-fragrance.pdf' },
   { title: 'Interviewing Lady Gaga & Cyndi Lauper for M·A·C in New York', image: '/images/archive/lady-gaga-cyndi-lauper.jpg', href: '/archive/lady-gaga-cyndi-lauper.pdf' },
   { title: 'Interviewing Rihanna in Barbados for M·A·C', image: '/images/archive/rihanna-mac.jpg', href: '/archive/rihanna-mac.pdf' },
   { title: 'The Claudia Schiffer Interview', image: '/images/archive/claudia-schiffer.jpg', href: '/archive/claudia-schiffer.pdf' },
@@ -26,7 +27,6 @@ const VOGUE: Feature[] = [
   { title: 'Coming Clean', image: '/images/archive/coming-clean.jpg', href: '/archive/coming-clean.pdf' },
   { title: 'In the Raw', image: '/images/archive/in-the-raw.jpg', href: '/archive/in-the-raw.pdf' },
   { title: 'I learned Vedic Meditation', image: '/images/archive/zen-again.jpg', href: '/archive/zen-again.pdf' },
-  { title: 'The Ultimate Guide to Fragrance', image: '/images/archive/ultimate-guide-fragrance.jpg', href: '/archive/ultimate-guide-fragrance.pdf' },
   { title: 'Perfume Passport', image: '/images/archive/perfume-passport.jpg', href: '/archive/perfume-passport.pdf' },
   { title: 'Nouveau Niche', image: '/images/archive/nouveau-niche.jpg', href: '/archive/nouveau-niche.pdf' },
   { title: 'Night Moves', image: '/images/archive/night-moves.jpg', href: '/archive/night-moves.pdf' },
