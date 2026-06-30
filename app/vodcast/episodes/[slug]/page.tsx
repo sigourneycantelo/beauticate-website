@@ -5,6 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getVodcastEpisode, getVodcastEpisodes } from '@/lib/content'
+import FAQPanel from '@/components/shared/FAQPanel'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 
@@ -30,11 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-// Style markdown blockquotes (`>`) in episode bodies as centred pull quotes,
-// matching the <PullQuote> treatment used across editorial articles.
+// Episode body styling: large centred pull quotes (markdown `>`) and smaller,
+// quieter section sub-heads (markdown `##`) so the quotes carry the emphasis.
 const mdxComponents = {
+  h2: (props: React.ComponentProps<'h2'>) => (
+    <h2 className="font-serif font-normal text-[21px] md:text-[22px] leading-snug tracking-[0.01em] mt-12 mb-3" style={{ color: '#1C1A17' }}>
+      {props.children}
+    </h2>
+  ),
   blockquote: (props: React.ComponentProps<'blockquote'>) => (
-    <blockquote className="not-prose my-10 mx-auto max-w-[600px] text-center border-t border-b border-cream-300 py-8 px-4 font-serif text-2xl md:text-3xl italic leading-relaxed text-charcoal tracking-[-0.01em]">
+    <blockquote className="not-prose my-12 mx-auto max-w-[660px] text-center border-t border-b border-cream-300 py-9 px-4 font-serif italic text-[27px] md:text-[36px] leading-[1.28] text-charcoal tracking-[-0.01em]">
       {props.children}
     </blockquote>
   ),
@@ -195,28 +201,18 @@ export default async function EpisodePage({ params }: Props) {
       {/* Body content */}
       {cleanContent && (
         <div
-          className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg"
+          className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg prose-img:w-full prose-img:rounded-[2px] prose-img:my-10"
           style={{ color: '#1C1A17' }}
         >
           <MDXRemote source={cleanContent} components={mdxComponents} />
         </div>
       )}
 
-      {/* FAQs */}
+      {/* FAQs — proper accordion box, shared with editorial articles */}
       {f.faqs && f.faqs.length > 0 && (
-        <section className="max-w-3xl mx-auto px-6 pb-16">
-          <h2 className="font-serif font-normal text-[22px] mb-6" style={{ borderTop: '1px solid rgba(28,26,23,.10)', paddingTop: '2rem' }}>
-            Questions about this episode
-          </h2>
-          <div className="flex flex-col gap-6">
-            {f.faqs.map((faq, i) => (
-              <div key={i}>
-                <h3 className="font-sans text-[13px] tracking-[.04em] font-medium mb-2">{faq.question}</h3>
-                <p className="font-serif text-[15px] leading-[1.65]" style={{ opacity: 0.78 }}>{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        <div className="max-w-3xl mx-auto px-6 pb-16">
+          <FAQPanel faqs={f.faqs} title="Questions about this episode" />
+        </div>
       )}
 
       {/* Back to podcast */}
