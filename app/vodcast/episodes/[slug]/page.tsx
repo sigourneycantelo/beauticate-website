@@ -64,6 +64,7 @@ const PLATFORMS = [
   {
     name: 'YouTube',
     href: 'https://www.youtube.com/@sigourneycantelo',
+    color: '#FF0000',
     icon: (
       <svg width="22" height="16" viewBox="0 0 24 17" fill="currentColor" aria-hidden="true">
         <path d="M23.495 2.656A3.015 3.015 0 0 0 21.374.516C19.505 0 12 0 12 0S4.495 0 2.626.516A3.015 3.015 0 0 0 .505 2.656C0 4.534 0 8.45 0 8.45s0 3.916.505 5.794a3.015 3.015 0 0 0 2.121 2.14C4.495 16.9 12 16.9 12 16.9s7.505 0 9.374-.516a3.015 3.015 0 0 0 2.121-2.14C24 12.366 24 8.45 24 8.45s0-3.916-.505-5.794zM9.545 12.023V4.877l6.273 3.573-6.273 3.573z" />
@@ -73,6 +74,7 @@ const PLATFORMS = [
   {
     name: 'Spotify',
     href: 'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
+    color: '#1DB954',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
@@ -82,6 +84,7 @@ const PLATFORMS = [
   {
     name: 'Apple Podcasts',
     href: 'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
+    color: '#9933CC',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M5.34 0A5.328 5.328 0 0 0 0 5.34v13.32A5.328 5.328 0 0 0 5.34 24h13.32A5.328 5.328 0 0 0 24 18.66V5.34A5.328 5.328 0 0 0 18.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.878 2.915 2.078 4.718.064.563.077.6.077 1.02 0 .397-.013.44-.077.978-.206 1.87-.917 3.407-2.166 4.657-.746.746-1.51 1.224-2.596 1.63-.536.2-.794.25-1.247.3-.444.05-.776.025-1.096-.073-.696-.21-1.202-.87-1.202-1.59 0-.734.527-1.413 1.253-1.59.25-.057.27-.064.52-.077.37-.02.638-.089.99-.256.89-.428 1.556-1.214 1.876-2.23.128-.41.18-.795.17-1.273-.013-.756-.218-1.4-.647-1.985-.577-.79-1.468-1.28-2.464-1.344-.13-.008-.26-.013-.4-.013-1.37 0-2.52.755-3.054 2.01-.168.396-.24.78-.24 1.312 0 .565.077 1.01.255 1.464.268.69.71 1.22 1.33 1.59.307.18.77.37 1.14.46.282.07.41.172.517.39.09.193.09.39 0 .57-.09.19-.244.32-.46.397-.295.11-.616.08-.88-.05-.77-.38-1.437-.96-1.97-1.72-.77-1.09-1.16-2.41-1.1-3.76.09-2.16 1.15-4.01 2.88-5.11.97-.61 2.08-.93 3.27-.93zm.17 4.085c1.51 0 2.77 1.26 2.77 2.77s-1.26 2.77-2.77 2.77-2.77-1.26-2.77-2.77 1.24-2.77 2.77-2.77zm0 1.1c-.92 0-1.67.75-1.67 1.67s.75 1.67 1.67 1.67 1.67-.75 1.67-1.67-.75-1.67-1.67-1.67z" />
@@ -156,6 +159,35 @@ export default async function EpisodePage({ params }: Props) {
     />
     <article className="bg-white min-h-screen">
 
+      {/* Podcast masthead — logo + jump-to-your-platform logos */}
+      <div className="text-center pt-10 pb-8 px-6">
+        <Link href="/vodcast" aria-label="Beautiful Inside by Beauticate">
+          <Image
+            src="/images/podcast/beautiful-inside-logo.png"
+            alt="Beautiful Inside by Beauticate"
+            width={360}
+            height={212}
+            priority
+            className="mx-auto h-auto w-[150px] md:w-[180px]"
+          />
+        </Link>
+        <div className="flex items-center justify-center gap-7 mt-6 flex-wrap">
+          {PLATFORMS.map(p => (
+            <a
+              key={p.name}
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={p.name}
+              className="flex items-center gap-2 opacity-90 hover:opacity-100 transition-opacity"
+            >
+              <span style={{ color: p.color }}>{p.icon}</span>
+              <span className="font-sans text-[10px] tracking-[.14em] uppercase">{p.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
       {/* Breadcrumb */}
       <div
         className="max-w-3xl mx-auto px-6 pt-10 pb-2"
@@ -193,24 +225,6 @@ export default async function EpisodePage({ params }: Props) {
             {f.excerpt}
           </p>
         )}
-
-        {/* Listen on — platform logos, jump to your preferred app */}
-        <div className="flex items-center gap-5 mt-7">
-          <span className="font-sans text-[9.5px] tracking-[.2em] uppercase" style={{ opacity: 0.4 }}>Listen on</span>
-          {PLATFORMS.map(p => (
-            <a
-              key={p.name}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={p.name}
-              title={p.name}
-              className="text-charcoal opacity-55 hover:opacity-100 transition-opacity"
-            >
-              {p.icon}
-            </a>
-          ))}
-        </div>
       </header>
 
       {/* YouTube embed (primary) or Anchor audio (fallback) */}
