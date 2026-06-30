@@ -91,14 +91,14 @@ export default function VodcastPage() {
           Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have — inside and out.
         </p>
 
-        {/* Centre: host / cover portrait */}
-        <div className="relative mx-auto rounded-[2px] overflow-hidden shadow-sm order-1 md:order-2" style={{ width: 'clamp(220px,30vw,280px)', aspectRatio: '1/1' }}>
+        {/* Centre: host portrait — free-standing on the white, no card frame */}
+        <div className="relative mx-auto order-1 md:order-2" style={{ width: 'clamp(240px,34vw,360px)', aspectRatio: '1/1' }}>
           <Image
-            src="/images/podcast/cover.jpg"
+            src="/images/podcast/host-hero.png"
             alt="Beautiful Inside by Beauticate — hosted by Sigourney Cantelo"
             fill
-            className="object-cover"
-            sizes="280px"
+            className="object-contain"
+            sizes="360px"
             priority
           />
         </div>
