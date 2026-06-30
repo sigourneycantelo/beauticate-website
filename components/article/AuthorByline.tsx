@@ -15,6 +15,7 @@ export default function AuthorByline({ name, date, readingTime, affiliateDisclos
   const displayName = author?.name ?? name
   const role = author?.role
   const photo = author?.photo
+  const profileUrl = author?.profileUrl
 
   const formattedDate = new Date(date).toLocaleDateString('en-AU', {
     day: 'numeric',
@@ -37,8 +38,8 @@ export default function AuthorByline({ name, date, readingTime, affiliateDisclos
       )}
       <div className="flex flex-col gap-0.5 min-w-0">
         <span className="font-medium text-charcoal leading-none">
-          {author?.profileUrl ? (
-            <Link href={author.profileUrl} className="hover:text-gold transition-colors">{displayName}</Link>
+          {profileUrl ? (
+            <Link href={profileUrl} className="hover:text-gold transition-colors">{displayName}</Link>
           ) : (
             displayName
           )}
