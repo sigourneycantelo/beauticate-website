@@ -17,7 +17,8 @@ can't be read by code). Source of truth for any AI-assisted writing.
 - [`beauticate-voice.md`](./beauticate-voice.md) — Beauticate house voice + article-writing SOP.
 - [`podcast-reels-clip-selection.md`](./podcast-reels-clip-selection.md) — Reels clip SOP; its
   "what makes a good clip" rules double as the criteria for choosing **pull quotes** from a transcript.
-- `podcast-article-rewrite-prompt.md` — **PENDING** (Sigourney to provide the podcast-article prompt).
+- [`podcast-article-rewrite-prompt.md`](./podcast-article-rewrite-prompt.md) — the "Beauticate
+  Podcast Content Engine" super-prompt. For episode-article rebuilds apply Steps 1, 2, 5, 7, 9, 10.
 
 ## Hard rules (both voices)
 
