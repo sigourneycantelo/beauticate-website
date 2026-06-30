@@ -187,6 +187,7 @@ export default function VodcastPage() {
                 priority
                 sizes="100vw"
                 className="object-cover"
+                style={{ objectPosition: heroF.hero_focus ?? '50% 20%' }}
               />
             )}
           </div>

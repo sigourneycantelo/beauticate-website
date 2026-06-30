@@ -79,6 +79,7 @@
 }
 .heroImg :global(img) {
   object-fit: cover;
+  object-position: 50% 20%;
 }
 @keyframes kb {
   from { transform: scale(1.06); }
@@ -261,6 +262,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 20%;
 }
 .grVideo .scr {
   position: absolute;
@@ -428,6 +430,7 @@
 }
 .guest .guestImg :global(img) {
   object-fit: cover;
+  object-position: 50% 20%;
 }
 .guest .meta {
   padding-top: 14px;
@@ -505,6 +508,7 @@
 }
 .pair .epScrim .pairImg :global(img) {
   object-fit: cover;
+  object-position: 50% 20%;
 }
 .pair .epScrim:hover .pairImg {
   transform: scale(1.05);
@@ -555,6 +559,7 @@
 }
 .ep .epImg :global(img) {
   object-fit: cover;
+  object-position: 50% 20%;
 }
 .ep:hover .epImg {
   transform: translateY(-4px);
@@ -883,6 +888,7 @@
 }
 .player .pthumb :global(img) {
   object-fit: cover;
+  object-position: 50% 20%;
 }
 .player .pmeta {
   min-width: 0;
