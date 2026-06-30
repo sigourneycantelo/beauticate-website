@@ -51,6 +51,7 @@ export interface ArticleFrontmatter {
 
   // Hero
   is_hero?: boolean            // true = this article is the curated home page hero
+  home_rank?: number           // pin to the top of the home grid (1 = position 2 on the page); unranked = newest-first
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
 

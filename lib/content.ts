@@ -113,7 +113,10 @@ export function getFeaturedArticles(limit = 6) {
     .slice(0, limit)
 }
 
-// Returns all published articles with images, sorted by date (newest first).
+// Returns all published articles with images for the home page grid.
+// Articles with `home_rank` are pinned to the top in ascending rank order
+// (editorial curation — e.g. keep a just-demoted hero or a launch piece up top);
+// everything else flows newest-first by date_published.
 // Use excludeSlugs to avoid repeating articles already shown elsewhere on the page.
 export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
   const allSlugs = getArticleSlugs()
@@ -123,6 +126,9 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
     .filter(a => a?.frontmatter.featured_image)
     .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
     .sort((a, b) => {
+      const rankA = a?.frontmatter.home_rank ?? Infinity
+      const rankB = b?.frontmatter.home_rank ?? Infinity
+      if (rankA !== rankB) return rankA - rankB   // pinned articles first, by rank
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
       const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
       return dateB - dateA

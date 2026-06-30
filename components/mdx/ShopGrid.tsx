@@ -1,3 +1,4 @@
+import { Children } from 'react'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
 
@@ -53,11 +54,21 @@ interface ShopGridProps {
   children: React.ReactNode
 }
 
-/** "Shop the look" strip — three across, like the WordPress originals. */
+/**
+ * "Shop the look" strip — every product in a single row on desktop (so a
+ * 5-product edit reads as one magazine strip), scrolling horizontally on
+ * narrow screens rather than wrapping.
+ */
 export function ShopGrid({ children }: ShopGridProps) {
+  const count = Math.min(Children.count(children), 6)
   return (
-    <div className="not-prose grid grid-cols-2 md:grid-cols-3 gap-[clamp(16px,2.5vw,32px)] my-10">
-      {children}
+    <div className="not-prose my-10 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0 md:overflow-visible">
+      <div
+        className="grid gap-[clamp(12px,1.6vw,22px)]"
+        style={{ gridTemplateColumns: `repeat(${count}, minmax(150px, 1fr))` }}
+      >
+        {children}
+      </div>
     </div>
   )
 }
