@@ -10,7 +10,6 @@ interface Feature {
   title: string
   image: string
   href: string
-  desc?: string
 }
 
 const VOGUE: Feature[] = [
@@ -25,17 +24,17 @@ const VOGUE: Feature[] = [
   { title: 'Visiting The South of France with Dior', image: '/images/archive/dior-grasse.jpg', href: '/archive/dior-grasse.pdf' },
   { title: 'A shoot with Rae Morris', image: '/images/archive/in-bloom.jpg', href: '/archive/in-bloom.pdf' },
   { title: 'A Shoot with Shu Uemura’s Uchiide San', image: '/images/archive/shu-uemura.jpg', href: '/archive/shu-uemura.pdf' },
-  { title: 'Coming Clean', image: '/images/archive/coming-clean.jpg', href: '/archive/coming-clean.pdf', desc: 'Makeup maestros share their secrets' },
-  { title: 'In the Raw', image: '/images/archive/in-the-raw.jpg', href: '/archive/in-the-raw.pdf', desc: 'Road testing the raw food movement' },
+  { title: 'Makeup Maestros Share Their Secrets', image: '/images/archive/coming-clean.jpg', href: '/archive/coming-clean.pdf' },
+  { title: 'Road Testing the Raw Food Movement', image: '/images/archive/in-the-raw.jpg', href: '/archive/in-the-raw.pdf' },
   { title: 'I learned Vedic Meditation', image: '/images/archive/zen-again.jpg', href: '/archive/zen-again.pdf' },
-  { title: 'Perfume Passport', image: '/images/archive/perfume-passport.jpg', href: '/archive/perfume-passport.pdf', desc: 'A journey through the senses' },
-  { title: 'Nouveau Niche', image: '/images/archive/nouveau-niche.jpg', href: '/archive/nouveau-niche.pdf', desc: 'Off the beaten path fragrances' },
-  { title: 'Night Moves', image: '/images/archive/night-moves.jpg', href: '/archive/night-moves.pdf', desc: 'A lash shoot with Uchiide San' },
+  { title: 'A Journey Through the Senses', image: '/images/archive/perfume-passport.jpg', href: '/archive/perfume-passport.pdf' },
+  { title: 'Off the Beaten Path Fragrances', image: '/images/archive/nouveau-niche.jpg', href: '/archive/nouveau-niche.pdf' },
+  { title: 'A Lash Shoot with Uchiide San', image: '/images/archive/night-moves.jpg', href: '/archive/night-moves.pdf' },
   { title: 'Tricks of the Trade', image: '/images/archive/tricks-of-the-trade.jpg', href: '/archive/tricks-of-the-trade.pdf' },
-  { title: 'Karma Chameleon', image: '/images/archive/karma-chameleon.jpg', href: '/archive/karma-chameleon.pdf', desc: 'My 30-day yoga challenge' },
-  { title: 'Indo I Did', image: '/images/archive/indo-i-did.jpg', href: '/archive/indo-i-did.pdf', desc: 'Bali & Lombok' },
-  { title: 'Paradise Found at Song Saa', image: '/images/archive/paradise-found-song-saa.jpg', href: '/archive/paradise-found-song-saa.pdf', desc: 'Song Saa, Cambodia' },
-  { title: 'Sweet Retreat', image: '/images/archive/sweet-retreat.jpg', href: '/archive/sweet-retreat.pdf', desc: 'Gwinganna' },
+  { title: 'I Did a 30-Day Yoga Challenge', image: '/images/archive/karma-chameleon.jpg', href: '/archive/karma-chameleon.pdf' },
+  { title: 'Bali & Lombok, Indonesia', image: '/images/archive/indo-i-did.jpg', href: '/archive/indo-i-did.pdf' },
+  { title: 'Paradise Found at Song Saa, Cambodia', image: '/images/archive/paradise-found-song-saa.jpg', href: '/archive/paradise-found-song-saa.pdf' },
+  { title: 'Sweet Retreat, Gwinganna', image: '/images/archive/sweet-retreat.jpg', href: '/archive/sweet-retreat.pdf' },
 ]
 
 const VOGUE_ONLINE: Feature[] = [
@@ -78,9 +77,6 @@ function FeatureCard({ f }: { f: Feature }) {
         />
       </div>
       <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
-      {f.desc && (
-        <p className="font-serif italic opacity-55 mt-1.5" style={{ fontSize: 'clamp(13px,1.3vw,15px)', lineHeight: 1.3 }}>{f.desc}</p>
-      )}
       <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
         View the feature &rarr;
       </span>
@@ -101,9 +97,6 @@ function WideCard({ f }: { f: Feature }) {
         />
       </div>
       <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
-      {f.desc && (
-        <p className="font-serif italic opacity-55 mt-1.5" style={{ fontSize: 'clamp(13px,1.3vw,15px)', lineHeight: 1.3 }}>{f.desc}</p>
-      )}
       <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
         View the feature &rarr;
       </span>
