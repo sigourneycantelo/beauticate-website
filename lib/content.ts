@@ -76,6 +76,26 @@ export function getArticlesByCategory(category: string, subcategory?: string) {
     })
 }
 
+// Subcategory archive listing: folder members PLUS any published article that
+// opts in via `also_in: ["<category>/<subcategory>"]` (explicit cross-listing —
+// e.g. a fragrance interview that lives under /interviews but should also appear
+// in the fragrance archive). Deduped by slug, newest first.
+export function getArticlesBySubcategory(category: string, subcategory: string) {
+  const key = `${category}/${subcategory}`
+  const inFolder = getArticlesByCategory(category, subcategory)
+  const seen = new Set(inFolder.map(a => a?.frontmatter.slug))
+  const crossListed = getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => (a?.frontmatter.also_in ?? []).includes(key))
+    .filter(a => !seen.has(a?.frontmatter.slug))
+  return [...inFolder, ...crossListed].sort((a, b) => {
+    const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+    const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+    return dateB - dateA
+  })
+}
+
 export function getHeroArticle() {
   const allSlugs = getArticleSlugs()
   return allSlugs

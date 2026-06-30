@@ -55,12 +55,14 @@ export interface MegaMenuEntry {
   href: string
   articles: MegaArticle[]
   groupHeader?: string  // if set, renders a group label above this entry
+  hidden?: boolean      // used as the default preview but not shown as a tab
 }
 
 export interface MegaMenuData {
   beauty: MegaMenuEntry[]
   style: MegaMenuEntry[]
   wellness: MegaMenuEntry[]
+  living: MegaMenuEntry[]
   destinations: MegaMenuEntry[]
   interviews: MegaMenuEntry[]
 }
@@ -79,7 +81,7 @@ const NAV_ITEMS = [
   { label: 'Style', href: '/beauty-style/style', megaKey: 'style' as const },
   { label: 'Wellness', href: '/wellness', megaKey: 'wellness' as const },
   { label: 'Destinations', href: '/destinations', megaKey: 'destinations' as const },
-  { label: 'Living', href: '/living' },
+  { label: 'Living', href: '/living', megaKey: 'living' as const },
   { label: 'Podcast', href: '/vodcast' },
   { label: 'Interviews', href: '/interviews', megaKey: 'interviews' as const },
 ]
@@ -125,7 +127,7 @@ function MegaMenu({
         <p className="font-sans text-[9.5px] tracking-[0.2em] uppercase mb-1" style={{ opacity: 0.45 }}>
           Browse
         </p>
-        {entries.map(e => (
+        {entries.filter(e => !e.hidden).map(e => (
           <div key={e.href}>
             {e.groupHeader && (
               <p className="font-sans text-[9.5px] tracking-[0.2em] uppercase mt-3 mb-1" style={{ opacity: 0.45 }}>

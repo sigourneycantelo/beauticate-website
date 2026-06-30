@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticleRoute({ params }: Props) {
   const { category, subcategory, slug } = await params
   const article = getArticleBySlug([category, subcategory, slug])
-  if (!article) notFound()
+  if (!article || article.frontmatter.published === false) notFound()
 
   const { frontmatter: f, content, products } = article
 

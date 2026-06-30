@@ -24,6 +24,7 @@ export interface ArticleFrontmatter {
   category: string
   subcategory?: string
   tags: string[]
+  also_in?: string[]   // extra "<category>/<subcategory>" archives to cross-list this article into (primary home stays category/subcategory)
   excerpt: string
   featured_image: string
   featured_image_alt: string

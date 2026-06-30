@@ -1,4 +1,4 @@
-import { getArticleBySlug, getArticlesByCategory, getRelatedArticles } from '@/lib/content'
+import { getArticleBySlug, getArticlesBySubcategory, getRelatedArticles } from '@/lib/content'
 import { getProductsByHandles } from '@/lib/shopify'
 import ArticlePage from '@/components/article/ArticlePage'
 import ArticleGrid from '@/components/article/ArticleGrid'
@@ -31,6 +31,7 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
 
   // Check if this is a 2-level article (no subcategory in the path)
   const article = getArticleBySlug([category, subcategory])
+  if (article && article.frontmatter.published === false) notFound()
   if (article) {
     const shopProducts = await getProductsByHandles(
       article.products.filter(p => p.type === 'shop').map(p => p.handle!)
@@ -47,8 +48,8 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
     )
   }
 
-  // Otherwise render subcategory archive
-  const articles = getArticlesByCategory(category, subcategory)
+  // Otherwise render subcategory archive (folder members + any `also_in` cross-posts)
+  const articles = getArticlesBySubcategory(category, subcategory)
   if (!articles.length) notFound()
 
   return (
