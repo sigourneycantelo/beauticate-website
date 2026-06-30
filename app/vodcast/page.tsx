@@ -239,6 +239,7 @@ export default function VodcastPage() {
                       alt={f.featured_image_alt ?? f.title}
                       fill
                       className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                      style={f.card_position ? { objectPosition: f.card_position } : undefined}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
