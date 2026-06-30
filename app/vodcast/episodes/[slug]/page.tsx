@@ -33,7 +33,7 @@ const mdxComponents = {
     </h2>
   ),
   blockquote: (props: React.ComponentProps<'blockquote'>) => (
-    <blockquote className="not-prose my-14 mx-auto max-w-[760px] text-center border-t border-b border-cream-300 py-10 px-2 font-serif italic text-[40px] md:text-[72px] leading-[1.12] text-charcoal tracking-[-0.02em]">
+    <blockquote className="not-prose my-10 mx-auto max-w-[600px] text-center border-t border-b border-cream-300 py-8 px-4 font-serif text-2xl md:text-3xl italic leading-relaxed text-charcoal tracking-[-0.01em]">
       {props.children}
     </blockquote>
   ),
