@@ -11,6 +11,7 @@ interface Feature {
   image: string
   href: string
   desc?: string
+  kicker?: string
 }
 
 const VOGUE: Feature[] = [
@@ -46,10 +47,10 @@ const VOGUE_ONLINE: Feature[] = [
 ]
 
 const STUDIO: Feature[] = [
-  { title: 'Behind the Scenes', image: '/images/archive/studio-behind-the-scenes.jpg', href: '/archive/studio-behind-the-scenes.pdf' },
-  { title: 'Florence', image: '/images/archive/studio-florence.jpg', href: '/archive/studio-florence.pdf' },
-  { title: 'Honeymoons Worth the Trip', image: '/images/archive/studio-honeymoons.jpg', href: '/archive/studio-honeymoons.pdf' },
-  { title: 'Thailand', image: '/images/archive/studio-thailand.jpg', href: '/archive/studio-thailand.pdf' },
+  { title: 'Sigourney’s Wedding', image: '/images/archive/studio-behind-the-scenes.jpg', href: '/archive/studio-behind-the-scenes.pdf', kicker: 'Studio Bride · 2008' },
+  { title: 'Florence for Honeymooners', image: '/images/archive/studio-florence.jpg', href: '/archive/studio-florence.pdf', kicker: 'Studio Bride · 2009' },
+  { title: 'Sigourney Visits Lake Como & Vals, Switzerland', image: '/images/archive/studio-honeymoons.jpg', href: '/archive/studio-honeymoons.pdf', kicker: 'Studio Bride · 2008' },
+  { title: 'Sigourney’s Thailand Honeymoon', image: '/images/archive/studio-thailand.jpg', href: '/archive/studio-thailand.pdf', kicker: 'Studio Bride · 2008' },
 ]
 
 const BODYSOUL: Feature[] = [
@@ -79,10 +80,15 @@ function FeatureCard({ f }: { f: Feature }) {
           className="object-cover object-top transition-transform duration-[800ms] group-hover:scale-[1.03]"
         />
       </div>
-      <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
-      {f.desc && (
-        <p className="font-sans mt-1.5" style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6 }}>{f.desc}</p>
-      )}
+      <div className="mt-4">
+        {f.kicker && (
+          <p className="font-sans mb-2" style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.5 }}>{f.kicker}</p>
+        )}
+        <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
+        {f.desc && (
+          <p className="font-sans mt-1.5" style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6 }}>{f.desc}</p>
+        )}
+      </div>
       <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
         View the feature &rarr;
       </span>
@@ -102,10 +108,15 @@ function WideCard({ f }: { f: Feature }) {
           className="object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]"
         />
       </div>
-      <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
-      {f.desc && (
-        <p className="font-sans mt-1.5" style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6 }}>{f.desc}</p>
-      )}
+      <div className="mt-4">
+        {f.kicker && (
+          <p className="font-sans mb-2" style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.5 }}>{f.kicker}</p>
+        )}
+        <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
+        {f.desc && (
+          <p className="font-sans mt-1.5" style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6 }}>{f.desc}</p>
+        )}
+      </div>
       <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
         View the feature &rarr;
       </span>
@@ -167,7 +178,7 @@ export default function ArchivePage() {
         ))}
       </div>
 
-      <SectionLabel>Studio</SectionLabel>
+      <SectionLabel>Freelance</SectionLabel>
       <FeatureGrid items={STUDIO} />
 
       <SectionLabel>Body+Soul</SectionLabel>
