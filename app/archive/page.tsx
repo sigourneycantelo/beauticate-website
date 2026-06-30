@@ -30,6 +30,7 @@ const VOGUE: Feature[] = [
   { title: 'Perfume Passport', image: '/images/archive/perfume-passport.jpg', href: '/archive/perfume-passport.pdf' },
   { title: 'Nouveau Niche', image: '/images/archive/nouveau-niche.jpg', href: '/archive/nouveau-niche.pdf' },
   { title: 'Night Moves', image: '/images/archive/night-moves.jpg', href: '/archive/night-moves.pdf' },
+  { title: 'Tricks of the Trade', image: '/images/archive/tricks-of-the-trade.jpg', href: '/archive/tricks-of-the-trade.pdf' },
   { title: 'Karma Chameleon', image: '/images/archive/karma-chameleon.jpg', href: '/archive/karma-chameleon.pdf' },
   { title: 'Indo I Did', image: '/images/archive/indo-i-did.jpg', href: '/archive/indo-i-did.pdf' },
   { title: 'Paradise Found at Song Saa', image: '/images/archive/paradise-found-song-saa.jpg', href: '/archive/paradise-found-song-saa.pdf' },
