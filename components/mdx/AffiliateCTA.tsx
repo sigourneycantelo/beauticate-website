@@ -12,9 +12,9 @@ interface Props {
 export default function AffiliateCTA({ href, label = 'Shop now', children }: Props) {
   return (
     <aside className="not-prose my-8 border border-gold/40 bg-cream-100 p-6 sm:p-7 text-center">
-      <p className="text-[15px] sm:text-base leading-relaxed text-charcoal mb-4 [&_:last-child]:mb-0">
+      <div className="text-[15px] sm:text-base leading-relaxed text-charcoal mb-4 [&_p]:m-0">
         {children}
-      </p>
+      </div>
       <a
         href={href}
         target="_blank"
