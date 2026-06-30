@@ -30,34 +30,31 @@ const BATCH = 9
 
 export default function ThemeArchive({
   styles,
-  pair,
-  rest,
+  pool,
   pills,
   quote,
 }: {
   styles: Styles
-  pair: ArchiveEpisode[]
-  rest: ArchiveEpisode[]
+  pool: ArchiveEpisode[]
   pills: string[]
   quote: QuoteBreather
 }) {
   const [active, setActive] = useState('All')
   const [visible, setVisible] = useState(BATCH)
 
-  const matches = (ep: ArchiveEpisode) =>
-    active === 'All' || ep.themes.includes(active)
-
-  const filteredRest = useMemo(
-    () => rest.filter(matches),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [rest, active]
+  // Filter the whole pool by the selected theme — the highlighted pair AND the
+  // grids below are derived from this, so choosing a theme updates everything.
+  const filtered = useMemo(
+    () => (active === 'All' ? pool : pool.filter(ep => ep.themes.includes(active))),
+    [pool, active]
   )
 
-  const shown = filteredRest.slice(0, visible)
-  // First grid = first 6 of the shown set; second grid = the remainder.
+  const pair = filtered.slice(0, 2)
+  const gridPool = filtered.slice(2)
+  const shown = gridPool.slice(0, visible)
   const firstGrid = shown.slice(0, 6)
   const secondGrid = shown.slice(6)
-  const allShown = visible >= filteredRest.length
+  const allShown = visible >= gridPool.length
 
   const selectPill = (pill: string) => {
     setActive(pill)
@@ -95,6 +92,10 @@ export default function ThemeArchive({
             <span className={styles.eyebrow}>All episodes</span>
             <h2>Find your next listen</h2>
           </div>
+          <span className={styles.eyebrow}>
+            {filtered.length} {filtered.length === 1 ? 'episode' : 'episodes'}
+            {active !== 'All' ? ` · ${active}` : ''}
+          </span>
         </div>
 
         <div className={`${styles.moodbar} ${styles.rev}`}>
@@ -109,7 +110,7 @@ export default function ThemeArchive({
           ))}
         </div>
 
-        {/* Staggered featured pair (always visible, not filtered) */}
+        {/* Staggered featured pair — the two most recent in the current theme */}
         {pair.length > 0 && (
           <div className={`${styles.pair} ${styles.rev}`}>
             {pair.map(ep => (
@@ -140,25 +141,27 @@ export default function ThemeArchive({
         )}
 
         {/* First 3-up grid */}
-        <div className={styles.grid3}>{firstGrid.map(renderCard)}</div>
+        {firstGrid.length > 0 && <div className={styles.grid3}>{firstGrid.map(renderCard)}</div>}
 
-        {/* Pull-quote breather */}
-        <div className={`${styles.quoteband} ${styles.rev}`}>
-          <span className={styles.eyebrow}>From the episodes</span>
-          <blockquote>{quote.quote}</blockquote>
-          <cite>{quote.author}</cite>
-        </div>
+        {/* Pull-quote breather (only when there is a second grid to separate) */}
+        {secondGrid.length > 0 && (
+          <div className={`${styles.quoteband} ${styles.rev}`}>
+            <span className={styles.eyebrow}>From the episodes</span>
+            <blockquote>{quote.quote}</blockquote>
+            <cite>{quote.author}</cite>
+          </div>
+        )}
 
         {/* Second 3-up grid */}
         {secondGrid.length > 0 && (
           <div className={styles.grid3}>{secondGrid.map(renderCard)}</div>
         )}
 
-        {filteredRest.length === 0 && (
+        {filtered.length === 0 && (
           <p className={styles.curNote}>No episodes in this theme yet.</p>
         )}
 
-        {filteredRest.length > BATCH && (
+        {gridPool.length > BATCH && (
           <button
             className={styles.loadmore}
             disabled={allShown}
