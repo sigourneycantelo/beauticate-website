@@ -46,11 +46,12 @@ const VOGUE_ONLINE: Feature[] = [
   { title: 'Vogue Road Tests Mineral Makeup', image: '', href: 'https://www.vogue.com.au/beauty/makeup/vogue-roadtests-mineral-makeup/news-story/cd1698343c42b5622e072203b057918b' },
 ]
 
-const STUDIO: Feature[] = [
+const FREELANCE: Feature[] = [
   { title: 'Sigourney’s Wedding', image: '/images/archive/studio-behind-the-scenes.jpg', href: '/archive/studio-behind-the-scenes.pdf', kicker: 'Studio Bride · 2008' },
   { title: 'Florence for Honeymooners', image: '/images/archive/studio-florence.jpg', href: '/archive/studio-florence.pdf', kicker: 'Studio Bride · 2009' },
   { title: 'Sigourney Visits Lake Como & Vals, Switzerland', image: '/images/archive/studio-honeymoons.jpg', href: '/archive/studio-honeymoons.pdf', kicker: 'Studio Bride · 2008' },
   { title: 'Sigourney’s Thailand Honeymoon', image: '/images/archive/studio-thailand.jpg', href: '/archive/studio-thailand.pdf', kicker: 'Studio Bride · 2008' },
+  { title: 'A Family Weekend in the Blue Mountains', image: '/images/archive/blue-mountains.jpg', href: '/archive/blue-mountains.pdf', kicker: 'Holidays with Kids · 2017' },
 ]
 
 const BODYSOUL: Feature[] = [
@@ -179,7 +180,7 @@ export default function ArchivePage() {
       </div>
 
       <SectionLabel>Freelance</SectionLabel>
-      <FeatureGrid items={STUDIO} />
+      <FeatureGrid items={FREELANCE} />
 
       <SectionLabel>Body+Soul</SectionLabel>
       <FeatureGrid items={BODYSOUL} />
