@@ -4,7 +4,6 @@ import ArticlePage from '@/components/article/ArticlePage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { buildArticleMetadata, buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo'
-import Script from 'next/script'
 
 interface Props { params: Promise<{ category: string; subcategory: string; slug: string }> }
 
@@ -45,13 +44,14 @@ export default async function ArticleRoute({ params }: Props) {
 
   return (
     <>
-      <Script
-        id="schema-article"
+      {/* JSON-LD rendered as plain <script> in this server component so it is
+          present in the initial SSR HTML (next/script's afterInteractive default
+          injects client-side only, which is less reliably crawled). */}
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <Script
-        id="schema-breadcrumb"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />

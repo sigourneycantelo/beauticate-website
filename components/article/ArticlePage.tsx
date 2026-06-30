@@ -15,6 +15,8 @@ import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
+import QuickAnswer from '@/components/mdx/QuickAnswer'
+import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import ProductTile from '@/components/shared/ProductTile'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
@@ -59,7 +61,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     )
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote, QuickAnswer, AffiliateCTA }
 
   // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
   const heroMaxWidth = f.hero_max_width ?? 1200
