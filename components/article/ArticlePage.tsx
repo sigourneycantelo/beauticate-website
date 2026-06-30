@@ -47,11 +47,17 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     const price = mp
       ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
       : undefined
+    // Use the article's cut-out when provided; otherwise fall back to the live
+    // Shopify product photo (second image revealed on hover, like shop cards).
+    const imgs = sp.images?.nodes ?? []
+    const usingShopImage = !props.image
     return (
       <ProductTile
         href={`/shop/products/${sp.handle}`}
-        primarySrc={props.image}
-        primaryAlt={props.name}
+        useNextImage={usingShopImage}
+        primarySrc={props.image ?? (imgs[0] ?? sp.featuredImage)?.url}
+        primaryAlt={props.name ?? sp.title}
+        secondarySrc={usingShopImage ? imgs[1]?.url : undefined}
         cornerLabel="In our shop"
         brand={props.brand}
         name={props.name ?? sp.title}
