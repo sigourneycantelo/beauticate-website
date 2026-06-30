@@ -26,6 +26,14 @@ const VOGUE: Feature[] = [
   { title: 'Coming Clean', image: '/images/archive/coming-clean.jpg', href: '/archive/coming-clean.pdf' },
   { title: 'In the Raw', image: '/images/archive/in-the-raw.jpg', href: '/archive/in-the-raw.pdf' },
   { title: 'I learned Vedic Meditation', image: '/images/archive/zen-again.jpg', href: '/archive/zen-again.pdf' },
+  { title: 'The Ultimate Guide to Fragrance', image: '/images/archive/ultimate-guide-fragrance.jpg', href: '/archive/ultimate-guide-fragrance.pdf' },
+  { title: 'Perfume Passport', image: '/images/archive/perfume-passport.jpg', href: '/archive/perfume-passport.pdf' },
+  { title: 'Nouveau Niche', image: '/images/archive/nouveau-niche.jpg', href: '/archive/nouveau-niche.pdf' },
+  { title: 'Night Moves', image: '/images/archive/night-moves.jpg', href: '/archive/night-moves.pdf' },
+  { title: 'Karma Chameleon', image: '/images/archive/karma-chameleon.jpg', href: '/archive/karma-chameleon.pdf' },
+  { title: 'Indo I Did', image: '/images/archive/indo-i-did.jpg', href: '/archive/indo-i-did.pdf' },
+  { title: 'Paradise Found at Song Saa', image: '/images/archive/paradise-found-song-saa.jpg', href: '/archive/paradise-found-song-saa.pdf' },
+  { title: 'Sweet Retreat', image: '/images/archive/sweet-retreat.jpg', href: '/archive/sweet-retreat.pdf' },
 ]
 
 const VOGUE_ONLINE: Feature[] = [
