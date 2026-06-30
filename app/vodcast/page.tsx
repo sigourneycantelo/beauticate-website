@@ -163,11 +163,6 @@ export default function VodcastPage() {
         author: 'Beautiful Inside by Beauticate',
       }
 
-  const heroStand =
-    heroF?.standfirst ??
-    heroF?.excerpt ??
-    'Going inside the homes, routines and inner lives of fascinating people.'
-
   return (
     <div className={styles.podcastPage}>
       <PodcastReveal revClass={styles.rev} inClass={styles.in} />
@@ -206,7 +201,6 @@ export default function VodcastPage() {
           <Link href={heroHref}>
             <h1>{heroF?.title}</h1>
           </Link>
-          <p className={styles.heroStand}>{heroStand}</p>
           <div className={styles.heroRow}>
             <Link href={heroHref} className={styles.playCta}>
               <span className={styles.tri}>
