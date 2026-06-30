@@ -14,6 +14,20 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // ── Duplicate vodcast episodes removed → canonical episode ───────────
+      { source: '/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3', destination: '/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream', permanent: true },
+      { source: '/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b', destination: '/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand', permanent: true },
+      { source: '/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd-part-1', destination: '/vodcast/episodes/lifestyle-journalist-leigh-campbell-on-loss-love-and-adult-adhd', permanent: true },
+      { source: '/vodcast/episodes/sleep-expert-olivia-arezzolo-on-therapy-healing-and-the-ayahuasca-retreat-that-s', destination: '/vodcast/episodes/olivia-arezzolo-interview', permanent: true },
+      { source: '/vodcast/episodes/sigourney-s-sacred-six-for-ultimate-wellness', destination: '/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness', permanent: true },
+      { source: '/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out', destination: '/vodcast/episodes/davinia-taylor-on-alcohol-addiction-mental-health', permanent: true },
+      { source: '/vodcast/episodes/the-truth-about-alcohol-addiction-mental-health-davinia-taylor-speaks-out-2', destination: '/vodcast/episodes/davinia-taylor-on-alcohol-addiction-mental-health', permanent: true },
+      { source: '/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-that-sex-chapter-part-1', destination: '/vodcast/episodes/amy-gerard-on-her-home-reno-social-media-and-that-sex-chapter', permanent: true },
+      { source: '/vodcast/episodes/journey-through-motherhood-mental-health-and-lifes-curveballs', destination: '/vodcast/episodes/amy-gerard-on-motherhood-mental-health-life-s-curveballs-part-2', permanent: true },
+      { source: '/vodcast/episodes/the-range-estates-emma-lane-on-nature-led-design', destination: '/vodcast/episodes/emma-lane-on-sustainability-slow-living-and-the-famous-range-estates', permanent: true },
+      { source: '/vodcast/episodes/guy-sebastian-on-fame-family-fragrance', destination: '/vodcast/episodes/guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', permanent: true },
+      { source: '/vodcast/episodes/leigh-campbell-part-2-fertility-struggles-social-media-self-care', destination: '/vodcast/episodes/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2', permanent: true },
+
       // ── Shop domain passthrough ──────────────────────────────────────────
       { source: '/collections/:slug', destination: '/shop/collections/:slug', permanent: true },
       { source: '/products/:slug', destination: '/shop/products/:slug', permanent: true },
