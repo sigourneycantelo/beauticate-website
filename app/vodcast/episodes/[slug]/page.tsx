@@ -54,16 +54,18 @@ const mdxComponents = {
     // "Unlock Exclusive Discounts" etc.) appended to episodes, pending a proper
     // sidebar/promo design. Remove this guard to bring it back.
     if (typeof src === 'string' && /\/[123]\.gif$/i.test(src)) return null
+    // Use block spans, not <figure>/<figcaption>: MDX wraps images in <p>, and a
+    // block element inside <p> is invalid HTML and triggers hydration errors.
     return (
-      <figure className="my-12">
+      <span className="block my-12">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt ?? ''} loading="lazy" className="w-full rounded-[2px]" />
+        <img src={src} alt={alt ?? ''} loading="lazy" className="block w-full rounded-[2px]" />
         {title && (
-          <figcaption className="mt-3 text-center font-sans text-[11px] tracking-[0.14em] uppercase" style={{ opacity: 0.5 }}>
+          <span className="block mt-3 text-center font-sans text-[11px] tracking-[0.14em] uppercase" style={{ opacity: 0.5 }}>
             {title}
-          </figcaption>
+          </span>
         )}
-      </figure>
+      </span>
     )
   },
 }
@@ -173,14 +175,14 @@ export default async function EpisodePage({ params }: Props) {
       {/* Hero image + title */}
       <header className="max-w-3xl mx-auto px-6 pt-10 pb-8">
         {f.featured_image && (
-          <div className="relative w-full mb-8 rounded-[2px] overflow-hidden" style={{ aspectRatio: '16/9' }}>
+          <div className="relative mx-auto mb-8 rounded-[2px] overflow-hidden" style={{ aspectRatio: f.hero_aspect ?? '16/9', maxWidth: f.hero_aspect ? '560px' : '100%' }}>
             <Image
               src={f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
               className="object-cover"
               priority
-              sizes="(max-width: 768px) 100vw, 760px"
+              sizes="(max-width: 768px) 100vw, 560px"
             />
           </div>
         )}

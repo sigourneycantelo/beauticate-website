@@ -74,6 +74,7 @@ export interface VodcastFrontmatter {
   excerpt: string
   featured_image: string
   featured_image_alt: string
+  hero_aspect?: string        // CSS aspect-ratio for the hero, e.g. "4/5" for portrait shots; defaults to "16/9"
   meta_description: string
   seo_title?: string
   spotify_episode_id?: string
