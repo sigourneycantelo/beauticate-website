@@ -25,12 +25,16 @@ function safeDate(value: string | undefined, fallback: Date): Date {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  const entries: MetadataRoute.Sitemap = STATIC.map(s => ({
-    url: `${SITE}${s.path}`,
-    lastModified: now,
-    changeFrequency: 'weekly',
-    priority: s.priority,
-  }))
+  const entries: MetadataRoute.Sitemap = []
+
+  for (const s of STATIC) {
+    entries.push({
+      url: `${SITE}${s.path}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: s.priority,
+    })
+  }
 
   const sections = new Set<string>()
   for (const parts of getArticleSlugs()) {
@@ -47,7 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   for (const s of sections) {
-    entries.push({ url: `${SITE}/${s}`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 })
+    entries.push({
+      url: `${SITE}/${s}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    })
   }
 
   return entries
