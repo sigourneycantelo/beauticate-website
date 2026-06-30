@@ -10,10 +10,11 @@ interface Feature {
   title: string
   image: string
   href: string
+  desc?: string
 }
 
 const VOGUE: Feature[] = [
-  { title: 'The Ultimate Guide to Fragrance', image: '/images/archive/ultimate-guide-fragrance.jpg', href: '/archive/ultimate-guide-fragrance.pdf' },
+  { title: 'The Ultimate Guide to Fragrance', image: '/images/archive/ultimate-guide-fragrance.jpg', href: '/archive/ultimate-guide-fragrance.pdf', desc: 'Jasmine Award Winner' },
   { title: 'Interviewing Lady Gaga & Cyndi Lauper for M·A·C in New York', image: '/images/archive/lady-gaga-cyndi-lauper.jpg', href: '/archive/lady-gaga-cyndi-lauper.pdf' },
   { title: 'Interviewing Rihanna in Barbados for M·A·C', image: '/images/archive/rihanna-mac.jpg', href: '/archive/rihanna-mac.pdf' },
   { title: 'An Interview with Claudia Schiffer', image: '/images/archive/claudia-schiffer.jpg', href: '/archive/claudia-schiffer.pdf' },
@@ -77,6 +78,9 @@ function FeatureCard({ f }: { f: Feature }) {
         />
       </div>
       <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
+      {f.desc && (
+        <p className="font-sans mt-1.5" style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6 }}>{f.desc}</p>
+      )}
       <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
         View the feature &rarr;
       </span>
@@ -97,6 +101,9 @@ function WideCard({ f }: { f: Feature }) {
         />
       </div>
       <h2 className="font-serif font-normal mt-4" style={{ fontSize: 'clamp(19px,2vw,24px)' }}>{f.title}</h2>
+      {f.desc && (
+        <p className="font-sans mt-1.5" style={{ fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase', opacity: 0.6 }}>{f.desc}</p>
+      )}
       <span className="inline-block mt-2 font-sans text-[9.5px] tracking-[0.2em] uppercase opacity-45 group-hover:opacity-80 transition-opacity">
         View the feature &rarr;
       </span>
