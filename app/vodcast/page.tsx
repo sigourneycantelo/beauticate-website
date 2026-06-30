@@ -47,18 +47,18 @@ const THEMES = [
 // Keyword → theme map so the filter returns results before episodes are tagged.
 const THEME_KEYWORDS: { theme: string; words: string[] }[] = [
   { theme: 'Perimenopause', words: ['perimenopause', 'menopause', 'hormone'] },
-  { theme: 'Health', words: ['anxiety', 'gut', 'sleep', 'longevity', 'adhd', 'mental health', 'wellness', 'nervous system'] },
-  { theme: 'Healing', words: ['heartbreak', 'trauma', 'grief', 'healing', 'breathwork', 'awakening'] },
-  { theme: 'Business', words: ['founder', 'business', 'brand', 'entrepreneur', 'building'] },
-  { theme: 'Motherhood', words: ['mother', 'parenting', 'family', 'ivf', 'children', 'kids'] },
-  { theme: 'Reinvention', words: ['reinvention', 'starting over', 'start over', 'rebuilding', 'reinvent', 'pivot'] },
-  { theme: 'Confidence', words: ['confidence', 'self-worth', 'self worth', 'identity', 'boundaries', 'picking yourself'] },
-  { theme: 'Beauty & Skin', words: ['skin', 'beauty', 'fragrance', 'skincare', 'acne', 'glow'] },
-  { theme: 'Reset', words: ['sacred six', 'reset', 'ritual', 'intention', 'escape', 'sanity'] },
+  { theme: 'Health', words: ['anxiety', 'gut', 'sleep', 'longevity', 'adhd', 'mental health', 'wellness', 'nervous system', 'panic', 'chronic pain'] },
+  { theme: 'Healing', words: ['heartbreak', 'trauma', 'grief', 'healing', 'breathwork', 'awakening', 'addiction', 'recovery'] },
+  { theme: 'Business', words: ['founder', 'business', 'brand', 'entrepreneur', 'billion-dollar', 'building a'] },
+  { theme: 'Motherhood', words: ['mother', 'parenting', 'ivf', 'fertility', 'conscious parent'] },
+  { theme: 'Reinvention', words: ['reinvention', 'starting over', 'start over', 'rebuilding', 'reinvent', 'curveball'] },
+  { theme: 'Confidence', words: ['confidence', 'self-worth', 'self worth', 'identity', 'boundaries', 'picking yourself', 'self-compassion', 'people-pleas'] },
+  { theme: 'Beauty & Skin', words: ['skin', 'fragrance', 'skincare', 'acne', 'lipstick', 'cosmetic', 'makeup'] },
+  { theme: 'Reset', words: ['sacred six', 'reset', 'ritual', 'intention', 'escape', 'sanity', 'slow living', 'spa'] },
 ]
 
-function inferThemes(f: VodcastFrontmatter): string[] {
-  const hay = `${f.title ?? ''} ${f.excerpt ?? ''} ${f.meta_description ?? ''}`.toLowerCase()
+function inferThemes(text: string): string[] {
+  const hay = text.toLowerCase()
   const out = new Set<string>()
   for (const { theme, words } of THEME_KEYWORDS) {
     if (words.some(w => hay.includes(w))) out.add(theme)
@@ -66,8 +66,12 @@ function inferThemes(f: VodcastFrontmatter): string[] {
   return [...out]
 }
 
+// Explicit `themes` in frontmatter win; otherwise we work it out automatically
+// from the episode's title + summary (cleaner signal than the raw transcript,
+// which repeats boilerplate). Set `themes:` on an episode to curate precisely.
 function themesFor(f: VodcastFrontmatter): string[] {
-  return f.themes && f.themes.length ? f.themes : inferThemes(f)
+  if (f.themes && f.themes.length) return f.themes
+  return inferThemes(`${f.title ?? ''} ${f.excerpt ?? ''} ${f.meta_description ?? ''}`)
 }
 
 function kickerFor(f: VodcastFrontmatter): string {
@@ -118,17 +122,10 @@ export default function VodcastPage() {
   const heroSlug = heroF?.slug ?? ''
   const heroHref = `/vodcast/episodes/${heroSlug}`
 
-  // Staggered pair = episodes 2 and 3
-  const pair: ArchiveEpisode[] = episodes.slice(1, 3).map(ep => ({
-    slug: ep.frontmatter.slug,
-    title: ep.frontmatter.title,
-    kicker: kickerFor(ep.frontmatter),
-    image: episodeImage(ep.frontmatter.featured_image),
-    themes: themesFor(ep.frontmatter),
-  }))
-
-  // Grids = episodes 4 onward
-  const rest: ArchiveEpisode[] = episodes.slice(3).map(ep => ({
+  // The archive pool = every published episode except the hero, newest-first.
+  // The filter (and the highlighted pair) are derived from this on the client,
+  // so choosing a theme updates the whole section.
+  const pool: ArchiveEpisode[] = episodes.slice(1).map(ep => ({
     slug: ep.frontmatter.slug,
     title: ep.frontmatter.title,
     excerpt: trim(ep.frontmatter.excerpt),
@@ -137,9 +134,9 @@ export default function VodcastPage() {
     themes: themesFor(ep.frontmatter),
   }))
 
-  // Theme pills: union of episode themes + canonical THEMES, in canonical order.
+  // Theme pills: canonical order, limited to themes actually present in the pool.
   const present = new Set<string>()
-  episodes.forEach(ep => themesFor(ep.frontmatter).forEach(t => present.add(t)))
+  pool.forEach(ep => ep.themes.forEach(t => present.add(t)))
   const pills = ['All', ...THEMES.filter(t => present.has(t))]
 
   // Resolve curated guest list against the episodes, skipping any not found.
@@ -260,7 +257,7 @@ export default function VodcastPage() {
       <GuestRail styles={styles} guests={guests} />
 
       {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
-      <ThemeArchive styles={styles} pair={pair} rest={rest} pills={pills} quote={quote} />
+      <ThemeArchive styles={styles} pool={pool} pills={pills} quote={quote} />
 
       {/* ===== 8 · CURATOR.IO STRIP ===== */}
       <CuratorFeed styles={styles} />
