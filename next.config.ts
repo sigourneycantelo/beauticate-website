@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
       { source: '/vodcast/episodes/guy-sebastian-on-fame-family-fragrance', destination: '/vodcast/episodes/guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', permanent: true },
       { source: '/vodcast/episodes/leigh-campbell-part-2-fertility-struggles-social-media-self-care', destination: '/vodcast/episodes/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2', permanent: true },
 
+      // ── Valentina Ferrer: a founder interview, not a podcast episode ─────
+      { source: '/vodcast/episodes/postcast2', destination: '/interviews/founders/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur', permanent: true },
+      { source: '/interviews/models/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur', destination: '/interviews/founders/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur', permanent: true },
+
       // ── Shop domain passthrough ──────────────────────────────────────────
       { source: '/collections/:slug', destination: '/shop/collections/:slug', permanent: true },
       { source: '/products/:slug', destination: '/shop/products/:slug', permanent: true },
