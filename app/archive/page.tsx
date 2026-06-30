@@ -53,6 +53,7 @@ const FREELANCE: Feature[] = [
   { title: 'Sigourney Visits Lake Como & Vals, Switzerland', image: '/images/archive/studio-honeymoons.jpg', href: '/archive/studio-honeymoons.pdf', kicker: 'Studio Bride · 2008' },
   { title: 'Sigourney’s Thailand Honeymoon', image: '/images/archive/studio-thailand.jpg', href: '/archive/studio-thailand.pdf', kicker: 'Studio Bride · 2008' },
   { title: 'A Family Weekend in the Blue Mountains', image: '/images/archive/blue-mountains.jpg', href: '/archive/blue-mountains.pdf', kicker: 'Holidays with Kids · 2017' },
+  { title: 'Inside Crane Lodge, Whale Beach', image: '/images/archive/crane-lodge.jpg', href: 'https://www.signatureluxurytravel.com.au/hotel-review/crane-lodge/', kicker: 'Signature Luxury Travel · Online' },
 ]
 
 const BODYSOUL: Feature[] = [
