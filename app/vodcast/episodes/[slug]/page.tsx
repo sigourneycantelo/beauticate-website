@@ -49,17 +49,23 @@ const mdxComponents = {
     )
   },
   // Body image; a markdown title (![alt](src "Caption")) renders a caption.
-  img: ({ src, alt, title }: React.ComponentProps<'img'>) => (
-    <figure className="my-12">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={alt ?? ''} loading="lazy" className="w-full rounded-[2px]" />
-      {title && (
-        <figcaption className="mt-3 text-center font-sans text-[11px] tracking-[0.14em] uppercase" style={{ opacity: 0.5 }}>
-          {title}
-        </figcaption>
-      )}
-    </figure>
-  ),
+  img: ({ src, alt, title }: React.ComponentProps<'img'>) => {
+    // Temporarily hide the legacy promo block (1.gif/2.gif/3.gif — "Get the Guide",
+    // "Unlock Exclusive Discounts" etc.) appended to episodes, pending a proper
+    // sidebar/promo design. Remove this guard to bring it back.
+    if (typeof src === 'string' && /\/[123]\.gif$/i.test(src)) return null
+    return (
+      <figure className="my-12">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt ?? ''} loading="lazy" className="w-full rounded-[2px]" />
+        {title && (
+          <figcaption className="mt-3 text-center font-sans text-[11px] tracking-[0.14em] uppercase" style={{ opacity: 0.5 }}>
+            {title}
+          </figcaption>
+        )}
+      </figure>
+    )
+  },
 }
 
 // Subscribe destinations, rendered as clickable platform logos at the top of
