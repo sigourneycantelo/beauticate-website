@@ -38,19 +38,21 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 ![alt text](/content/<category>/<subcategory>/<slug>/filename.jpg)
 ```
 
+### 3. Layout reshaping (images dumped at the bottom)
+The migration often dumped all body images at the end. Pull the **WP REST source** (`/wp-json/wp/v2/posts?slug=<slug>`; images are `[vc_single_image image="ID"]` shortcodes — resolve IDs via `/wp-json/wp/v2/media/<id>`) to get the original order, then interleave the images back through the article and de-glue any merged paragraphs. Replace keyword-stuffed alt text with descriptive alt. Link product/affiliate shots; leave editorial photos unlinked.
+
+### 4. Reusable article components
+- **`<EditorNote>`** (`components/mdx/EditorNote.tsx`) — boxed editorial callout: eyebrow `label` (defaults to "Editor's Note"; override e.g. `label="The Beauticate Edit"`), blurb (children), and a product card (`productImage`, `productName`, `productPrice`, `productUrl`). Pull shop product images + price from `beauticate.shop/products/<handle>.json`.
+- **`hero_max_width`** frontmatter (number, px) — caps the in-article hero so a low-res holding shot is not upscaled (set ~native width, e.g. `760`). Omit for high-res heroes (defaults to 1200).
+- **`<ShopGrid>` / `<ShopItem>`** — image-based "Shop The Look" product grids (`image`, `name`, `url`, optional `price`).
+
 ## Git workflow
 
-- Feature branch: `claude/vercel-article-cleanup-duw0tz`
-- **Always push fixes to BOTH the feature branch AND `main`** — Vercel deploys from `main`.
-- Use cherry-pick via temp branch to push to main (branches have diverged):
-  ```
-  git fetch origin main
-  git checkout -b tmp-main-push origin/main
-  git cherry-pick <commit>
-  git push origin tmp-main-push:main
-  git checkout claude/vercel-article-cleanup-duw0tz
-  git branch -D tmp-main-push
-  ```
+- **`main` is a protected branch** — you cannot push to it directly or cherry-pick onto it. All changes go through a pull request.
+- Work on a feature branch (one per article, e.g. `maeko/<slug>`). Make tidy, per-article commits, push, and open a PR to `main`.
+- **Merging requires an approving review** — the repo owner (sigourneycantelo) approves and merges in the GitHub UI. A logged-in collaborator cannot self-approve or admin-merge.
+- **Vercel auto-deploys from `main`** on merge (~2–5 min; the build includes a Pagefind search-index step). Hard-refresh (Ctrl/Cmd+Shift+R) to bypass browser cache.
+- Keep local churn out of commits: before staging, run `git restore .claude/settings.local.json .claude/launch.json qa/wp-audit/*`, and stage files explicitly (avoid `git add -A`).
 
 ## Home page hero curation
 
@@ -65,3 +67,20 @@ The most recent articles (by `date_published`) appear directly below the hero in
 ## Category page order
 
 Articles appear on category pages sorted newest-first by `date_published`. The "first 12 stories" on each page are the 12 most recent articles by date.
+
+## Session handoff (last updated 2026-06-30)
+
+Article-by-article cleanup in progress — front-end layout reshaping + back-end SEO — following [`docs/article-audit-and-fix.md`](docs/article-audit-and-fix.md).
+
+**Done & deployed to `main`:**
+- The Best Italian Hair Products (image shop grids, two Editor's Notes, hero cap)
+- Melanie Grant / "The Exact Products…" (images interleaved per WP, Editor's Note, hero swap, de-duplicated photos)
+
+**Open PRs awaiting review + merge:**
+- **#4** — editorial intros (Melanie Grant + Italian hair)
+- **#5** — Qure microstamping review (interleave images, Qure affiliate links on device/product shots, intro, Editor's Note, SEO/alt)
+- **#6** — Tailwind Node 24 dev-server fix (`require` → ESM `import` in `tailwind.config.ts`; stops intermittent `next dev` crashes)
+
+**Next:** continue cleaning articles one at a time. Given a Vercel link: pull the WP REST source, interleave images, de-glue paragraphs, fix alt text + SEO, add any Editor's Note, then branch → commit → PR.
+
+> Remove or trim this section once the backlog is cleared — it is transient status, not a durable convention.
