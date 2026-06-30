@@ -93,7 +93,7 @@ export default function VodcastPage() {
         style={{ maxWidth: 1060, margin: '0 auto', padding: 'clamp(40px,5vw,72px) clamp(20px,6vw,80px)' }}
       >
         {/* Left: description */}
-        <p className="font-serif text-[18px] leading-[1.7] md:text-right order-2 md:order-1 text-charcoal" style={{ opacity: 0.92 }}>
+        <p className="font-serif text-[18px] leading-[1.7] md:text-right order-2 md:order-1 text-charcoal">
           Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have, inside and out.
         </p>
 
@@ -123,7 +123,7 @@ export default function VodcastPage() {
               {[...Array(5)].map((_, i) => <span key={i}>★</span>)}
             </div>
           </div>
-          <p className="font-serif italic text-[19px] leading-[1.55] text-center md:text-left text-charcoal" style={{ opacity: 0.85, color: '#7E8B72' }}>
+          <p className="font-serif font-medium italic text-[21px] leading-[1.5] text-center md:text-left text-charcoal">
             We will be talking to experts and thought leaders to improve our mindset and cultivate our own inner beauty.
           </p>
         </div>
