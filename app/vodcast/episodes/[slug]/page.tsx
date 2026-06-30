@@ -1,8 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getVodcastEpisode, getVodcastEpisodes } from '@/lib/content'
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -16,13 +20,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const ep = getVodcastEpisode(slug)
   if (!ep) return {}
+  const f = ep.frontmatter
   return {
-    title: `${ep.frontmatter.title} | Beautiful Inside`,
-    description: ep.frontmatter.meta_description ?? ep.frontmatter.excerpt,
-    openGraph: ep.frontmatter.featured_image
-      ? { images: [{ url: ep.frontmatter.featured_image }] }
+    title: f.seo_title ?? `${f.title} | Beautiful Inside`,
+    description: f.meta_description ?? f.excerpt,
+    openGraph: f.featured_image
+      ? { images: [{ url: f.featured_image }] }
       : undefined,
   }
+}
+
+// Style markdown blockquotes (`>`) in episode bodies as centred pull quotes,
+// matching the <PullQuote> treatment used across editorial articles.
+const mdxComponents = {
+  blockquote: (props: React.ComponentProps<'blockquote'>) => (
+    <blockquote className="not-prose my-10 mx-auto max-w-[600px] text-center border-t border-b border-cream-300 py-8 px-4 font-serif text-2xl md:text-3xl italic leading-relaxed text-charcoal tracking-[-0.01em]">
+      {props.children}
+    </blockquote>
+  ),
 }
 
 const PLATFORMS = [
@@ -45,7 +60,56 @@ export default async function EpisodePage({ params }: Props) {
   // Strip the raw anchor URL line from display content
   const cleanContent = content.replace(/\[https:\/\/anchor\.fm[^\]]*\]\([^\)]*\)\n?/, '').trim()
 
+  // ── Structured data ────────────────────────────────────────────────────────
+  const episodeUrl = `${SITE_URL}/vodcast/episodes/${f.slug}`
+  const imageUrl = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
+  const description = f.meta_description ?? f.excerpt
+
+  const graph: object[] = []
+
+  if (f.youtube_video_id) {
+    graph.push({
+      '@type': 'VideoObject',
+      '@id': `${episodeUrl}#video`,
+      name: f.seo_title ?? f.title,
+      description,
+      thumbnailUrl: imageUrl,
+      uploadDate: f.date_published,
+      contentUrl: `https://www.youtube.com/watch?v=${f.youtube_video_id}`,
+      embedUrl: `https://www.youtube.com/embed/${f.youtube_video_id}`,
+    })
+  }
+
+  if (f.faqs && f.faqs.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${episodeUrl}#faq`,
+      mainEntity: f.faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+      })),
+    })
+  }
+
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Beautiful Inside', item: `${SITE_URL}/vodcast` },
+      { '@type': 'ListItem', position: 3, name: f.title, item: episodeUrl },
+    ],
+  })
+
+  const episodeSchema = { '@context': 'https://schema.org', '@graph': graph }
+
   return (
+    <>
+    <Script
+      id="schema-vodcast-episode"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(episodeSchema) }}
+    />
     <article className="bg-white min-h-screen">
 
       {/* Breadcrumb */}
@@ -134,7 +198,7 @@ export default async function EpisodePage({ params }: Props) {
           className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg"
           style={{ color: '#1C1A17' }}
         >
-          <div dangerouslySetInnerHTML={{ __html: cleanContent }} />
+          <MDXRemote source={cleanContent} components={mdxComponents} />
         </div>
       )}
 
@@ -167,5 +231,6 @@ export default async function EpisodePage({ params }: Props) {
       </div>
 
     </article>
+    </>
   )
 }

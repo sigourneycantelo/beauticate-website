@@ -74,6 +74,7 @@ export interface VodcastFrontmatter {
   featured_image: string
   featured_image_alt: string
   meta_description: string
+  seo_title?: string
   spotify_episode_id?: string
   apple_episode_url?: string
   youtube_video_id?: string
