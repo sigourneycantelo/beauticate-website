@@ -93,8 +93,8 @@ export default function VodcastPage() {
         style={{ maxWidth: 1060, margin: '0 auto', padding: 'clamp(40px,5vw,72px) clamp(20px,6vw,80px)' }}
       >
         {/* Left: description */}
-        <p className="font-serif text-[16.5px] leading-[1.72] md:text-right order-2 md:order-1" style={{ opacity: 0.75 }}>
-          Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have — inside and out.
+        <p className="font-serif text-[18px] leading-[1.7] md:text-right order-2 md:order-1 text-charcoal" style={{ opacity: 0.92 }}>
+          Join us as we go inside the homes, routines and inner lives of fascinating people, discussing the science and psychology of beauty and self-care to give you the tools to look and feel the best you ever have, inside and out.
         </p>
 
         {/* Centre: host portrait — free-standing on the white, no card frame */}
@@ -109,15 +109,21 @@ export default function VodcastPage() {
           />
         </div>
 
-        {/* Right: rating + tagline */}
-        <div className="flex flex-col items-center md:items-start gap-5 order-3">
-          <div className="text-center md:text-left">
-            <div className="flex gap-0.5 mb-1.5 justify-center md:justify-start">
-              {[...Array(5)].map((_, i) => <span key={i} className="text-[#1C1A17] text-base">★</span>)}
+        {/* Right: Apple Podcasts rating card + tagline */}
+        <div className="flex flex-col items-center md:items-start gap-6 order-3">
+          <div className="rounded-[18px] bg-white px-9 py-7 text-center border border-cream-200 shadow-[0_12px_40px_rgba(28,26,23,0.10)]">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-[13px]" style={{ background: 'linear-gradient(150deg,#D070E6,#7A33C8)' }}>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M12 14.4a2.2 2.2 0 0 0 2.2-2.2V6.6a2.2 2.2 0 1 0-4.4 0v5.6a2.2 2.2 0 0 0 2.2 2.2Zm4.6-2.2a4.6 4.6 0 0 1-9.2 0H6a6 6 0 0 0 5 5.92V21h2v-2.88a6 6 0 0 0 5-5.92h-1.4Z" />
+              </svg>
             </div>
-            <p className="font-sans text-[9px] tracking-[.2em] uppercase" style={{ opacity: 0.5 }}>4.9 / 5 · Rated on Apple Podcasts</p>
+            <div className="font-serif text-[38px] leading-none text-charcoal">4.9/5</div>
+            <div className="font-serif text-[14.5px] mt-1.5" style={{ opacity: 0.62 }}>Rated on Apple Podcast</div>
+            <div className="mt-2.5 flex justify-center gap-1 text-[17px]" style={{ color: '#F4A62A' }}>
+              {[...Array(5)].map((_, i) => <span key={i}>★</span>)}
+            </div>
           </div>
-          <p className="font-serif italic text-[19px] leading-[1.55] text-center md:text-left" style={{ color: '#8E9A82' }}>
+          <p className="font-serif italic text-[19px] leading-[1.55] text-center md:text-left text-charcoal" style={{ opacity: 0.85, color: '#7E8B72' }}>
             We will be talking to experts and thought leaders to improve our mindset and cultivate our own inner beauty.
           </p>
         </div>
