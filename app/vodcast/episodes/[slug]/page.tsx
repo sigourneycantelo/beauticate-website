@@ -181,6 +181,7 @@ export default async function EpisodePage({ params }: Props) {
               alt={f.featured_image_alt ?? f.title}
               fill
               className="object-cover"
+              style={{ objectPosition: f.hero_focus ?? '50% 20%' }}
               priority
               sizes="(max-width: 768px) 100vw, 560px"
             />

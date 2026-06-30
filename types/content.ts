@@ -75,6 +75,7 @@ export interface VodcastFrontmatter {
   featured_image: string
   featured_image_alt: string
   hero_aspect?: string        // CSS aspect-ratio for the hero, e.g. "4/5" for portrait shots; defaults to "16/9"
+  hero_focus?: string         // CSS object-position for cropping the holding shot (e.g. "50% 12%"); defaults to a face-friendly top bias
   card_position?: string      // CSS object-position for the listing card image (e.g. "50% 18%"); defaults to top
   meta_description: string
   seo_title?: string

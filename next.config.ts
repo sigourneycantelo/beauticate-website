@@ -28,6 +28,8 @@ const nextConfig: NextConfig = {
       { source: '/vodcast/episodes/guy-sebastian-on-fame-family-fragrance', destination: '/vodcast/episodes/guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', permanent: true },
       { source: '/vodcast/episodes/leigh-campbell-part-2-fertility-struggles-social-media-self-care', destination: '/vodcast/episodes/leigh-campbell-on-fertility-struggles-social-media-self-care-part-2', permanent: true },
 
+      { source: '/vodcast/episodes/20-years-of-vedic-meditation-learnings-in-1-hour-all-about-curing-anxiety-maximizing-success', destination: '/vodcast/episodes/vedic-meditation-teacher-gary-gorrow-on-designing-sacred-spaces', permanent: true },
+
       // ── Valentina Ferrer: a founder interview, not a podcast episode ─────
       { source: '/vodcast/episodes/postcast2', destination: '/interviews/founders/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur', permanent: true },
       { source: '/interviews/models/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur', destination: '/interviews/founders/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur', permanent: true },
