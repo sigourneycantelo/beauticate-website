@@ -6,8 +6,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getVodcastEpisode, getVodcastEpisodes } from '@/lib/content'
 import FAQPanel from '@/components/shared/FAQPanel'
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
+import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -21,14 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const ep = getVodcastEpisode(slug)
   if (!ep) return {}
-  const f = ep.frontmatter
-  return {
-    title: f.seo_title ?? `${f.title} | Beautiful Inside`,
-    description: f.meta_description ?? f.excerpt,
-    openGraph: f.featured_image
-      ? { images: [{ url: f.featured_image }] }
-      : undefined,
-  }
+  return buildVodcastMetadata(ep.frontmatter, `/vodcast/episodes/${slug}`)
 }
 
 // Episode body styling: oversized centred pull quotes (markdown `>`), smaller
@@ -119,48 +111,8 @@ export default async function EpisodePage({ params }: Props) {
   // Strip the raw anchor URL line from display content
   const cleanContent = content.replace(/\[https:\/\/anchor\.fm[^\]]*\]\([^\)]*\)\n?/, '').trim()
 
-  // ── Structured data ────────────────────────────────────────────────────────
-  const episodeUrl = `${SITE_URL}/vodcast/episodes/${f.slug}`
-  const imageUrl = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
-  const description = f.meta_description ?? f.excerpt
-
-  const graph: object[] = []
-
-  if (f.youtube_video_id) {
-    graph.push({
-      '@type': 'VideoObject',
-      '@id': `${episodeUrl}#video`,
-      name: f.seo_title ?? f.title,
-      description,
-      thumbnailUrl: imageUrl,
-      uploadDate: f.date_published,
-      contentUrl: `https://www.youtube.com/watch?v=${f.youtube_video_id}`,
-      embedUrl: `https://www.youtube.com/embed/${f.youtube_video_id}`,
-    })
-  }
-
-  if (f.faqs && f.faqs.length > 0) {
-    graph.push({
-      '@type': 'FAQPage',
-      '@id': `${episodeUrl}#faq`,
-      mainEntity: f.faqs.map(faq => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
-    })
-  }
-
-  graph.push({
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Beautiful Inside', item: `${SITE_URL}/vodcast` },
-      { '@type': 'ListItem', position: 3, name: f.title, item: episodeUrl },
-    ],
-  })
-
-  const episodeSchema = { '@context': 'https://schema.org', '@graph': graph }
+  // ── Structured data: PodcastEpisode + Article + Video + FAQ + Breadcrumb ──
+  const episodeSchema = buildVodcastSchema(f, `/vodcast/episodes/${f.slug}`, anchorUrl)
 
   return (
     <>
@@ -233,7 +185,7 @@ export default async function EpisodePage({ params }: Props) {
           {f.title}
         </h1>
         {f.excerpt && (
-          <p className="font-serif text-[17px] leading-[1.6]" style={{ opacity: 0.72 }}>
+          <p className="episode-excerpt font-serif text-[17px] leading-[1.6]" style={{ opacity: 0.72 }}>
             {f.excerpt}
           </p>
         )}
