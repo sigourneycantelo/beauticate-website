@@ -7,6 +7,7 @@ import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
 import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
 import Portrait from '@/components/mdx/Portrait'
+import PortraitQuote from '@/components/mdx/PortraitQuote'
 import ArticleGrid from './ArticleGrid'
 import AuthorByline from './AuthorByline'
 import { resolveSchemaType } from '@/lib/seo'
@@ -59,7 +60,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     )
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote }
 
   // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
   const heroMaxWidth = f.hero_max_width ?? 1200
