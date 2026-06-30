@@ -53,10 +53,17 @@ dashes, no Oxford commas.** En dashes are fine.
 
 ## 3. The pass, step by step
 
+> **Shortcut for steps A, B, D:** `node scripts/scaffold-article.mjs <slug> [--save] [--new-slug <new>]`
+> pulls the WP source, lists the body images in order (with dimensions), downloads
+> them into `public/content/…` as `wp-hero.jpg` / `wp-1.jpg` … (with `--save`), and
+> prints a frontmatter skeleton + the redirect lines. It does **no** editorial work —
+> you still rename the images, write alt text, and fill the `TODO`s from the brief.
+
 ### A. Source of truth — [mechanic]
 Pull the WordPress REST source for the original order and full content:
 `https://www.beauticate.com/wp-json/wp/v2/posts?slug=<old-slug>` (cached under
-`.cache/wp/`). Resolve image IDs via `/wp-json/wp/v2/media/<id>`.
+`.cache/wp/`). Resolve image IDs via `/wp-json/wp/v2/media/<id>`. (The scaffold
+script above does this for you.)
 
 ### B. Slug, redirects, canonical — [mechanic] (decision to rename is [editorial])
 - The **URL is the directory name**, not frontmatter `slug`. To rename: `git mv`
