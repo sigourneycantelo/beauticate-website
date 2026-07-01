@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beautiful Inside by Beauticate — Podcast</title>
+
+<!--
+  ============================================================
+  BEAUTICATE · PODCAST PAGE (Beautiful Inside) · MOCK v1
+  ============================================================
+  HANDOFF NOTES FOR CLAUDE CODE
+  ------------------------------------------------------------
+  1. HERO is dynamic: it pulls the MOST RECENT published episode
+     (title, standfirst, hero still or 6s muted loop, slug).
+     Mock is populated with the current latest as an example.
+  2. STICKY PLAYER is a concept mock (no real audio wired).
+     Wire to the latest episode's Spotify/YouTube embed, or a
+     lightweight HTML5 audio element pulling the RSS enclosure.
+  3. BEHIND-THE-SCENES video = Sig's makeup-prep IG clip.
+     Muted, autoplay, loop, playsinline, poster frame, lazy.
+     Mobile falls back to the poster still (no autoplay).
+  4. GUEST RAIL pulls marquee guests (name + role + portrait + ep link).
+  5. BROWSE BY MOOD filter is working (data-mood attributes).
+     Wire moods to a CMS taxonomy so it scales automatically.
+  6. CURATOR STRIP = Curator.io feed slot. Drop the embed in the
+     marked container. Themed: Beautiful Inside / behind the scenes.
+  7. All grey-tone panels marked [IMG: ...] are image slots.
+     Aspect ratios noted on each. Swap for real photography.
+  8. Fonts load from Google Fonts here for preview. Swap to the
+     repo's self-hosted EB Garamond + Hanken Grotesk on build.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#191613;
+    --ink-soft:#4a443c;
+    --muted:#857d72;
+    --paper:#fdfcfb;       /* near-white, consistent with the rest of the site */
+    --paper-2:#f4f3f0;     /* clean greige-white, yellow pulled out */
+    --beige:#e7e4de;       /* cooled greige podcast band (was yellow-beige) */
+    --wine:#7a2733;        /* deep red accent */
+    --choc:#3a2a22;        /* chocolate accent */
+    --line:rgba(25,22,19,.14);
+    --line-soft:rgba(25,22,19,.08);
+    --white:#ffffff;
+    --serif:"EB Garamond",Georgia,"Times New Roman",serif;
+    --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --scrim:linear-gradient(to top,rgba(20,17,14,.82) 0%,rgba(20,17,14,.46) 34%,rgba(20,17,14,0) 72%);
+    --maxw:1320px;
+    --gut:clamp(20px,4vw,56px);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.55;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  /* ---------- shared type ---------- */
+  .eyebrow{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .display{font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:-.01em}
+  .lede{font-family:var(--serif);font-size:clamp(18px,2vw,21px);line-height:1.5;color:var(--ink-soft)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+
+  /* image-slot placeholder treatment (mock only) */
+  .imgslot{position:relative;overflow:hidden;background:#cabfb1}
+  .imgslot::after{content:attr(data-tag);position:absolute;top:8px;left:8px;font-family:var(--sans);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);background:rgba(0,0,0,.28);padding:3px 7px;border-radius:2px;backdrop-filter:blur(2px);z-index:4;pointer-events:none}
+  .t-blush{background:linear-gradient(140deg,#e7d4cc,#d4b6aa)}
+  .t-taupe{background:linear-gradient(140deg,#ddd2c3,#c3b29c)}
+  .t-sage{background:linear-gradient(140deg,#cfd4c6,#b1baa3)}
+  .t-stone{background:linear-gradient(140deg,#d6d0c7,#bbb1a4)}
+  .t-dusk{background:linear-gradient(140deg,#d0d6dc,#aab5c0)}
+  .t-clay{background:linear-gradient(140deg,#e0cabb,#cbab98)}
+  .t-ink{background:linear-gradient(140deg,#3a352f,#211d19)}
+  .grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:soft-light;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* ---------- masthead ---------- */
+  .topbar{background:var(--choc);color:var(--paper);text-align:center;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:8px 16px;font-weight:500}
+  header.mast{position:sticky;top:0;z-index:60;background:rgba(251,249,245,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+  .mast-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:18px var(--gut)}
+  .mast-soc{display:flex;gap:14px;align-items:center}
+  .mast-soc svg{width:15px;height:15px;opacity:.7;transition:opacity .2s}
+  .mast-soc a:hover svg{opacity:1}
+  .logo{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2.4vw,26px);letter-spacing:.04em;text-align:center;white-space:nowrap}
+  .mast-act{display:flex;justify-content:flex-end;gap:20px;align-items:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+  .mast-act a{opacity:.78;transition:opacity .2s}
+  .mast-act a:hover{opacity:1}
+  .mast-act .shopbtn{background:var(--ink);color:var(--paper);padding:9px 20px;border-radius:30px;opacity:1}
+  .mast-act .shopbtn:hover{background:var(--wine)}
+  nav.subnav{border-bottom:1px solid var(--line-soft)}
+  nav.subnav ul{display:flex;justify-content:center;gap:clamp(14px,2vw,30px);list-style:none;padding:13px var(--gut);flex-wrap:wrap}
+  nav.subnav a{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);transition:color .2s}
+  nav.subnav a:hover,nav.subnav a.active{color:var(--ink)}
+  nav.subnav a.active{position:relative}
+  nav.subnav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-13px;height:2px;background:var(--ink)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:clamp(540px,82vh,820px);display:flex;align-items:flex-end;overflow:hidden;background:#26221d}
+  .hero .imgslot{position:absolute;inset:0}
+  .hero-img{position:absolute;inset:0;transform:scale(1.06);animation:kb 22s var(--ease) infinite alternate}
+  @keyframes kb{from{transform:scale(1.06)}to{transform:scale(1.16)}}
+  .hero-scrim{position:absolute;inset:0;background:var(--scrim);z-index:2}
+  .hero-inner{position:relative;z-index:3;width:100%;padding:0 var(--gut) clamp(40px,6vh,76px);color:#fff;max-width:var(--maxw);margin:0 auto}
+  .hero-eyebrow{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.82);margin-bottom:18px}
+  .hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--wine);box-shadow:0 0 0 0 rgba(122,39,51,.6);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(122,39,51,.55)}70%{box-shadow:0 0 0 9px rgba(122,39,51,0)}100%{box-shadow:0 0 0 0 rgba(122,39,51,0)}}
+  .hero h1{font-family:var(--serif);font-weight:500;color:#fff;font-size:clamp(34px,5.2vw,68px);line-height:1.02;letter-spacing:-.015em;max-width:16ch;text-shadow:0 1px 30px rgba(0,0,0,.25)}
+  .hero-stand{font-family:var(--serif);color:rgba(255,255,255,.9);font-size:clamp(16px,1.5vw,19px);line-height:1.5;max-width:48ch;margin-top:18px}
+  .hero-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:30px}
+  .play-cta{display:inline-flex;align-items:center;gap:13px;background:#fff;color:var(--ink);padding:13px 22px 13px 15px;border-radius:40px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;transition:transform .25s var(--ease),box-shadow .25s}
+  .play-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.28)}
+  .play-cta .tri{width:30px;height:30px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+  .play-cta .tri svg{width:11px;height:11px;fill:#fff;margin-left:2px}
+  .hero-plat{display:flex;align-items:center;gap:16px}
+  .hero-plat span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+  .hero-plat a svg{width:18px;height:18px;fill:#fff;opacity:.85;transition:opacity .2s}
+  .hero-plat a:hover svg{opacity:1}
+  .hero-rating{position:absolute;top:clamp(20px,4vh,40px);right:var(--gut);z-index:3;display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px);padding:9px 14px;border-radius:40px;color:#fff}
+  .hero-rating b{font-family:var(--serif);font-size:18px;font-weight:500;line-height:1}
+  .hero-rating small{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.78;display:block}
+  .hero-rating .stars{color:#f0c14b;font-size:11px;letter-spacing:1px}
+
+  /* ---------- getting ready (vertical reel beside copy) ---------- */
+  .gr{padding:clamp(54px,8vh,96px) 0;border-bottom:1px solid var(--line-soft)}
+  .gr-grid{display:grid;grid-template-columns:.8fr 1fr;gap:clamp(34px,6vw,84px);align-items:center}
+  .gr-video{position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9/16;border-radius:3px;overflow:hidden;cursor:pointer;box-shadow:0 24px 60px rgba(25,22,19,.16)}
+  .gr-video .imgslot{position:absolute;inset:0}
+  .gr-video .scr{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,13,11,.6),rgba(15,13,11,0) 52%);z-index:2}
+  .gr-video .cap{position:absolute;z-index:3;left:0;bottom:0;padding:18px 20px;color:#fff}
+  .gr-video .cap .eyebrow{color:rgba(255,255,255,.78)}
+  .gr-video .cap b{font-family:var(--serif);font-weight:500;font-size:20px;display:block;margin-top:5px}
+  .gr-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(4px);display:grid;place-items:center;transition:transform .3s var(--ease),background .3s}
+  .gr-video:hover .gr-play{transform:translate(-50%,-50%) scale(1.08);background:rgba(255,255,255,.26)}
+  .gr-play svg{width:18px;height:18px;fill:#fff;margin-left:2px}
+  .gr-copy h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.12;letter-spacing:-.01em;max-width:18ch}
+  .gr-copy p.lede2{margin-top:18px;max-width:46ch;color:var(--ink-soft);font-size:15.5px}
+  .gr-copy .pull{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.3vw,26px);line-height:1.34;color:var(--ink);border-left:2px solid var(--ink);padding-left:24px}
+  @media(max-width:900px){.gr-grid{grid-template-columns:1fr;gap:30px}.gr-video{max-width:300px}}
+
+  /* ---------- guests rail ---------- */
+  .guests{padding:clamp(54px,8vh,92px) 0;background:var(--paper)}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:30px}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.2vw,40px);line-height:1.05;letter-spacing:-.01em}
+  .sec-head .eyebrow{margin-bottom:9px;display:block}
+  .rail-ctrl{display:flex;gap:10px}
+  .rail-ctrl button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s}
+  .rail-ctrl button:hover{background:var(--ink);border-color:var(--ink)}
+  .rail-ctrl button:hover svg{stroke:#fff}
+  .rail-ctrl svg{width:16px;height:16px;stroke:var(--ink);fill:none;stroke-width:1.6}
+  .rail{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:8px;margin:0 calc(var(--gut)*-1);padding-left:var(--gut);padding-right:var(--gut);scrollbar-width:none}
+  .rail::-webkit-scrollbar{display:none}
+  .guest{flex:0 0 auto;width:clamp(210px,24vw,260px);scroll-snap-align:start;cursor:pointer}
+  .guest .imgslot{aspect-ratio:3/4;border-radius:2px}
+  .guest:hover .grain{opacity:.65}
+  .guest .meta{padding-top:14px}
+  .guest .meta .nm{font-family:var(--serif);font-size:21px;font-weight:500;line-height:1.1}
+  .guest .meta .rl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+
+  /* ---------- mood + archive ---------- */
+  .archive{padding:clamp(54px,8vh,96px) 0;background:var(--paper-2)}
+  .moodbar{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 44px}
+  .mood{font-family:var(--sans);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);background:transparent;border:1px solid var(--line);padding:10px 18px;border-radius:40px;cursor:pointer;transition:all .2s}
+  .mood:hover{border-color:var(--wine)}
+  .mood.active{background:var(--wine);color:#fff;border-color:var(--wine)}
+
+  /* featured staggered pair */
+  .pair{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:54px}
+  .pair .ep-scrim{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:2px;cursor:pointer}
+  .pair .ep-scrim:nth-child(2){margin-top:46px}
+  .pair .imgslot{position:absolute;inset:0;transition:transform .8s var(--ease)}
+  .pair .ep-scrim:hover .imgslot{transform:scale(1.05)}
+  .pair .scr{position:absolute;inset:0;background:var(--scrim);z-index:2}
+  .pair .ep-copy{position:absolute;z-index:3;left:0;bottom:0;padding:clamp(20px,2.4vw,34px);color:#fff}
+  .pair .ep-copy .eyebrow{color:rgba(255,255,255,.78)}
+  .pair .ep-copy h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.4vw,30px);line-height:1.08;margin-top:10px;max-width:18ch}
+
+  /* 3-up grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,2.4vw,38px)}
+  .ep{cursor:pointer}
+  .ep .imgslot{aspect-ratio:4/3;border-radius:2px;transition:transform .6s var(--ease)}
+  .ep:hover .imgslot{transform:translateY(-4px)}
+  .ep .cat{margin-top:16px;display:block}
+  .ep h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.14;margin-top:9px;letter-spacing:-.005em}
+  .ep p{font-size:14px;color:var(--ink-soft);margin-top:9px;max-width:40ch;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ep .listen{display:inline-flex;align-items:center;gap:8px;margin-top:13px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
+  .ep .listen svg{width:9px;height:9px;fill:var(--ink)}
+  .ep .listen span{position:relative}
+  .ep .listen span::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+  .ep:hover .listen span::after{transform:scaleX(1)}
+  .ep.hide{display:none}
+
+  /* pull-quote breather */
+  .quoteband{margin:60px 0;background:var(--beige);border-radius:2px;padding:clamp(40px,6vw,76px) clamp(28px,5vw,90px);text-align:center}
+  .quoteband .eyebrow{display:block;margin-bottom:22px}
+  .quoteband blockquote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(24px,3.4vw,42px);line-height:1.22;letter-spacing:-.01em;max-width:24ch;margin:0 auto;color:var(--ink)}
+  .quoteband cite{display:block;margin-top:26px;font-style:normal;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+
+  .loadmore{display:block;margin:50px auto 0;background:transparent;border:1px solid var(--ink);color:var(--ink);font-family:var(--sans);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:15px 40px;border-radius:40px;cursor:pointer;transition:background .25s,color .25s}
+  .loadmore:hover{background:var(--ink);color:#fff}
+
+  /* ---------- curator strip ---------- */
+  .curator{padding:clamp(54px,8vh,90px) 0;background:var(--paper);border-top:1px solid var(--line-soft)}
+  .cur-head{text-align:center;margin-bottom:34px}
+  .cur-head .eyebrow{display:block;margin-bottom:12px}
+  .cur-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,38px)}
+  .cur-head a.follow{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;border-bottom:1px solid var(--ink);padding-bottom:3px}
+  .cur-rail{display:flex;gap:14px;overflow-x:auto;padding:0 var(--gut);margin:0 calc(var(--gut)*-1);scrollbar-width:none;scroll-snap-type:x mandatory}
+  .cur-rail::-webkit-scrollbar{display:none}
+  .cur-tile{flex:0 0 auto;width:clamp(200px,22vw,250px);aspect-ratio:1;border-radius:2px;scroll-snap-align:start;position:relative;cursor:pointer}
+  .cur-tile .ig{position:absolute;top:10px;right:10px;z-index:3;opacity:.85}
+  .cur-tile .ig svg{width:17px;height:17px;fill:#fff}
+  .cur-tile:hover .grain{opacity:.7}
+  .cur-note{text-align:center;margin-top:24px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- subscribe ---------- */
+  .subscribe{background:var(--ink);color:var(--paper);padding:clamp(58px,9vh,104px) var(--gut);text-align:center}
+  .subscribe .eyebrow{color:rgba(255,255,255,.6)}
+  .subscribe h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.04;margin:14px 0 16px}
+  .subscribe p{color:rgba(255,255,255,.7);max-width:48ch;margin:0 auto 34px;font-size:15px}
+  .subform{display:flex;gap:10px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .subform input{flex:1;min-width:230px;background:transparent;border:1px solid rgba(255,255,255,.32);color:#fff;padding:15px 20px;border-radius:40px;font-family:var(--sans);font-size:14px}
+  .subform input::placeholder{color:rgba(255,255,255,.5)}
+  .subform button{background:#fff;color:var(--ink);border:0;padding:15px 32px;border-radius:40px;font-family:var(--sans);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:opacity .2s}
+  .subform button:hover{opacity:.85}
+
+  /* ---------- footer ---------- */
+  footer.foot{background:var(--paper-2);padding:clamp(48px,7vh,80px) var(--gut) 28px;border-top:1px solid var(--line-soft)}
+  .foot-grid{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+  .foot-grid .logo{text-align:left;font-size:24px;margin-bottom:14px}
+  .foot-grid p.blurb{font-size:13px;color:var(--ink-soft);max-width:38ch}
+  .foot-soc{display:flex;gap:14px;margin-top:20px}
+  .foot-soc svg{width:16px;height:16px;opacity:.6;transition:opacity .2s}
+  .foot-soc a:hover svg{opacity:1}
+  .foot-col h4{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:600}
+  .foot-col ul{list-style:none}
+  .foot-col li{margin-bottom:11px}
+  .foot-col a{font-size:13px;color:var(--ink-soft);transition:color .2s}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-base{max-width:var(--maxw);margin:48px auto 0;padding-top:22px;border-top:1px solid var(--line-soft);font-size:11px;color:var(--muted);line-height:1.7}
+
+  /* ---------- sticky player ---------- */
+  .player{position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(25,22,19,.96);backdrop-filter:blur(14px);color:#fff;transform:translateY(120%);transition:transform .45s var(--ease)}
+  .player.show{transform:translateY(0)}
+  .player-prog{height:2px;background:rgba(255,255,255,.16)}
+  .player-prog .bar{height:100%;width:18%;background:#fff;transition:width .3s linear}
+  .player-inner{display:flex;align-items:center;gap:16px;padding:12px var(--gut);max-width:var(--maxw);margin:0 auto}
+  .player .ppbtn{width:42px;height:42px;border-radius:50%;background:#fff;border:0;cursor:pointer;display:grid;place-items:center;flex:0 0 auto}
+  .player .ppbtn svg{width:14px;height:14px;fill:var(--ink)}
+  .player .pthumb{width:42px;height:42px;border-radius:3px;flex:0 0 auto}
+  .player .pmeta{min-width:0;flex:1}
+  .player .pmeta .pe{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+  .player .pmeta .pt{font-family:var(--serif);font-size:16px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .player .pplat{display:flex;gap:14px;align-items:center}
+  .player .pplat svg{width:16px;height:16px;fill:#fff;opacity:.8}
+  .player .pclose{background:none;border:0;color:rgba(255,255,255,.6);cursor:pointer;font-size:20px;line-height:1;padding:6px}
+  .player .pplat{display:none}
+
+  /* ---------- reveal ---------- */
+  .rev{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .rev.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .intro-grid{grid-template-columns:1fr;gap:30px}
+    .grid3{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .player .pplat{display:none}
+  }
+  @media(max-width:620px){
+    .mast-grid{grid-template-columns:auto 1fr auto}
+    .mast-soc{display:none}
+    .mast-act a.hide-m{display:none}
+    .pair{grid-template-columns:1fr;gap:16px}
+    .pair .ep-scrim:nth-child(2){margin-top:0}
+    .grid3{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .hero h1{font-size:clamp(30px,9vw,44px)}
+    .player .pmeta .pt{font-size:14px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .rev{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== MASTHEAD ===== -->
+<div class="topbar">Free shipping Australia-wide over $75 &nbsp;·&nbsp; The new season edit is live</div>
+<header class="mast">
+  <div class="mast-grid">
+    <div class="mast-soc">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.43-1.3.83-.4.4-.64.8-.83 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.07 3.5c.05 1.1.24 1.7.4 2.1.2.5.43.9.83 1.3.4.4.8.64 1.3.83.4.16 1 .35 2.1.4 1.2.07 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.43 1.3-.83.4-.4.64-.8.83-1.3.16-.4.35-1 .4-2.1.07-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.43-.9-.83-1.3-.4-.4-.8-.64-1.3-.83-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 100 9.8 4.9 4.9 0 000-9.8zm0 8.1a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm6.2-8.3a1.15 1.15 0 11-2.3 0 1.15 1.15 0 012.3 0z"/></svg></a>
+      <a href="#" aria-label="Spotify"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.86.2c-2.35-1.44-5.3-1.76-8.8-.96a.62.62 0 11-.28-1.2c3.83-.88 7.1-.5 9.74 1.1.3.18.4.57.2.86zm1.23-2.74a.78.78 0 01-1.07.26c-2.7-1.66-6.8-2.14-10-1.17a.78.78 0 11-.45-1.5c3.64-1.1 8.18-.56 11.27 1.34.36.22.48.7.25 1.07zm.1-2.85C14.8 8.96 9.4 8.78 6.3 9.72a.94.94 0 11-.54-1.8c3.56-1.08 9.5-.87 13.24 1.35a.94.94 0 01-.96 1.6z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5s-.22-1.56-.9-2.24c-.86-.9-1.82-.9-2.26-.96C16.7 4.07 12 4.07 12 4.07h-.02s-4.7 0-7.82.23c-.44.06-1.4.06-2.26.96C1.22 5.94 1 7.5 1 7.5S.78 9.33.78 11.16v1.7C.78 14.7 1 16.5 1 16.5s.22 1.56.9 2.24c.86.9 2 .87 2.5.97 1.8.17 7.6.22 7.6.22s4.7 0 7.82-.24c.44-.05 1.4-.06 2.26-.96.68-.68.9-2.24.9-2.24s.22-1.83.22-3.66v-1.7C23.22 9.33 23 7.5 23 7.5zM9.7 14.84V8.86l6.08 3z"/></svg></a>
+    </div>
+    <div class="logo">BEAUTICATE.</div>
+    <div class="mast-act">
+      <a href="#" class="hide-m">Search</a>
+      <a href="#" class="hide-m">Subscribe</a>
+      <a href="#" class="hide-m">Sign In</a>
+      <a href="#" class="shopbtn">Shop</a>
+      <a href="#" aria-label="Bag"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></a>
+    </div>
+  </div>
+  <nav class="subnav">
+    <ul>
+      <li><a href="#">Beauty</a></li>
+      <li><a href="#">Style</a></li>
+      <li><a href="#">Wellness</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Living</a></li>
+      <li><a href="#" class="active">Podcast</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== HERO (dynamic: latest episode) ===== -->
+<section class="hero" id="hero">
+  <div class="imgslot t-ink hero-img" data-tag="IMG: latest ep still or 6s muted loop · 2400×1350">
+    <div class="grain"></div>
+  </div>
+  <div class="hero-scrim"></div>
+
+  <div class="hero-rating">
+    <div>
+      <small>Apple Podcasts</small>
+      <span class="stars">★★★★★</span>
+    </div>
+    <b>4.9</b>
+  </div>
+
+  <div class="hero-inner rev">
+    <div class="hero-eyebrow eyebrow"><span class="dot"></span> Latest episode · Beautiful Inside</div>
+    <h1>Dr Sarah Jane on trauma, transformation and trusting the body</h1>
+    <p class="hero-stand">This week I sit down with holistic chiropractor Dr Sarah Jane on how the body holds what the mind forgets, and the quiet work of coming home to yourself.</p>
+    <div class="hero-row">
+      <a href="#" class="play-cta"><span class="tri"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span> Play episode</a>
+      <div class="hero-plat">
+        <span>Also on</span>
+        <a href="#" aria-label="Spotify"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.86.2c-2.35-1.44-5.3-1.76-8.8-.96a.62.62 0 11-.28-1.2c3.83-.88 7.1-.5 9.74 1.1.3.18.4.57.2.86zm1.23-2.74a.78.78 0 01-1.07.26c-2.7-1.66-6.8-2.14-10-1.17a.78.78 0 11-.45-1.5c3.64-1.1 8.18-.56 11.27 1.34.36.22.48.7.25 1.07zm.1-2.85C14.8 8.96 9.4 8.78 6.3 9.72a.94.94 0 11-.54-1.8c3.56-1.08 9.5-.87 13.24 1.35a.94.94 0 01-.96 1.6z"/></svg></a>
+        <a href="#" aria-label="Apple Podcasts"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-3 19.5c-.1-.8 0-2 .2-2.8.2-.7 1.2-5 1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2.9.5 1.7 1.4 1.7 1.7 0 2.8-2.1 2.8-4.6 0-1.9-1.3-3.3-3.6-3.3-2.6 0-4.2 2-4.2 4.1 0 .8.2 1.3.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.3-.5.2-1.3-.5-1.9-2-1.9-3.6 0-2.7 2.3-5.9 6.8-5.9 3.6 0 6 2.6 6 5.4 0 3.7-2 6.4-5 6.4-1 0-2-.6-2.3-1.2l-.6 2.4c-.2.8-.7 1.8-1 2.4A10 10 0 1012 2z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.5s-.22-1.56-.9-2.24c-.86-.9-1.82-.9-2.26-.96C16.7 4.07 12 4.07 12 4.07s-4.7 0-7.82.23c-.44.06-1.4.06-2.26.96C1.22 5.94 1 7.5 1 7.5S.78 9.33.78 11.16v1.7C.78 14.7 1 16.5 1 16.5s.22 1.56.9 2.24c.86.9 2 .87 2.5.97 1.8.17 7.6.22 7.6.22s4.7 0 7.82-.24c.44-.05 1.4-.06 2.26-.96.68-.68.9-2.24.9-2.24s.22-1.83.22-3.66v-1.7C23.22 9.33 23 7.5 23 7.5zM9.7 14.84V8.86l6.08 3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GETTING READY (vertical reel beside positioning copy) ===== -->
+<!-- CLAUDE CODE: replace .imgslot with <video muted autoplay loop playsinline poster="..."> Sig's vertical reel (9:16). Mobile: poster only, no autoplay. -->
+<section class="gr">
+  <div class="wrap gr-grid">
+    <div class="gr-video rev">
+      <div class="imgslot t-clay" data-tag="VIDEO: Sig reel · 9:16 · muted/autoplay/loop"><div class="grain"></div></div>
+      <div class="scr"></div>
+      <button class="gr-play" aria-label="Play video"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+      <div class="cap"><span class="eyebrow">Behind the scenes</span><b>Getting ready with Sig</b></div>
+    </div>
+    <div class="gr-copy rev">
+      <h2>Inside the homes, routines and inner lives of fascinating people.</h2>
+      <p class="lede2">Each week we go beyond the surface with the experts, founders and thought leaders shaping how we live. The science and psychology of beauty and self-care, and the tools to look and feel the best you ever have, inside and out.</p>
+      <p class="pull">We talk to the people improving our mindset, our health and the way we cultivate our own inner beauty.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GUESTS RAIL ===== -->
+<section class="guests">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <span class="eyebrow">The guests</span>
+        <h2>Who we've had in the room</h2>
+      </div>
+      <div class="rail-ctrl">
+        <button id="gPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button id="gNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="rail" id="guestRail">
+    <a class="guest"><div class="imgslot t-blush" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Miranda Kerr</div><div class="rl">Founder · KORA Organics</div></div></a>
+    <a class="guest"><div class="imgslot t-taupe" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Trinny Woodall</div><div class="rl">Founder · Trinny London</div></div></a>
+    <a class="guest"><div class="imgslot t-sage" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Celeste Barber</div><div class="rl">Comedian &amp; writer</div></div></a>
+    <a class="guest"><div class="imgslot t-dusk" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Gabby Bernstein</div><div class="rl">Author &amp; speaker</div></div></a>
+    <a class="guest"><div class="imgslot t-clay" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Lindsay Price</div><div class="rl">Actor</div></div></a>
+    <a class="guest"><div class="imgslot t-stone" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Pip Edwards</div><div class="rl">Founder · P.E Nation</div></div></a>
+    <a class="guest"><div class="imgslot t-blush" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Guy Sebastian</div><div class="rl">Musician</div></div></a>
+    <a class="guest"><div class="imgslot t-taupe" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Dr Shefali Tsabary</div><div class="rl">Clinical psychologist</div></div></a>
+    <a class="guest"><div class="imgslot t-sage" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Susan Yara</div><div class="rl">Founder · Naturium</div></div></a>
+    <a class="guest"><div class="imgslot t-dusk" data-tag="IMG 3:4"><div class="grain"></div></div><div class="meta"><div class="nm">Tanya Ali Jalani</div><div class="rl">Breathwork facilitator</div></div></a>
+  </div>
+</section>
+
+<!-- ===== MOOD + ARCHIVE ===== -->
+<section class="archive">
+  <div class="wrap">
+    <div class="sec-head rev" style="margin-bottom:0">
+      <div>
+        <span class="eyebrow">All episodes</span>
+        <h2>Find your next listen</h2>
+      </div>
+    </div>
+    <div class="moodbar rev">
+      <button class="mood active" data-mood="all">All</button>
+      <button class="mood" data-mood="confidence">Confidence</button>
+      <button class="mood" data-mood="reinvention">Reinvention</button>
+      <button class="mood" data-mood="health">Health</button>
+      <button class="mood" data-mood="healing">Healing</button>
+      <button class="mood" data-mood="perimenopause">Perimenopause</button>
+      <button class="mood" data-mood="beauty">Beauty &amp; Skin</button>
+      <button class="mood" data-mood="business">Business</button>
+      <button class="mood" data-mood="motherhood">Motherhood</button>
+      <button class="mood" data-mood="reset">Reset</button>
+    </div>
+
+    <!-- CLAUDE CODE: this pair = the two most recent episodes (auto, after the hero). -->
+    <div class="pair rev">
+      <a class="ep-scrim" data-mood="reinvention perimenopause">
+        <div class="imgslot t-taupe" data-tag="IMG 4:3"><div class="grain"></div></div>
+        <div class="scr"></div>
+        <div class="ep-copy"><span class="eyebrow">Interview</span><h3>Trinny Woodall on reinvention, resilience and backing yourself</h3></div>
+      </a>
+      <a class="ep-scrim" data-mood="health healing">
+        <div class="imgslot t-sage" data-tag="IMG 4:3"><div class="grain"></div></div>
+        <div class="scr"></div>
+        <div class="ep-copy"><span class="eyebrow">Wellness</span><h3>Tanya Ali Jalani on awakening, mental health and the human side of healing</h3></div>
+      </a>
+    </div>
+
+    <!-- 3-up -->
+    <div class="grid3" id="grid">
+      <a class="ep" data-mood="health healing"><div class="imgslot t-blush" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Wellness</span><h3>Dr Sarah Jane on trauma, transformation and trusting the body</h3><p>How the body holds what the mind forgets, and the quiet work of coming home to yourself.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="beauty business"><div class="imgslot t-dusk" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Interview</span><h3>Alexa Roetger on skin, self-worth and starting over</h3><p>The founder of Aesthetica Byron Bay on building a clinic and a life on your own terms.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="reinvention business"><div class="imgslot t-stone" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Interview</span><h3>Susan Yara on reinvention, resilience and rebuilding trust</h3><p>A deeply honest conversation on identity, boundaries and life in the public eye.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="motherhood"><div class="imgslot t-clay" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Living</span><h3>Dr Shefali Tsabary on conscious parenting, screens and shame</h3><p>A powerful conversation on boundaries, burnout and coming back to yourself.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="reset"><div class="imgslot t-sage" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Sacred Six</span><h3>Sacred Six on escape, intention and the spas that shape us</h3><p>Why Sacred Six exists at all, and the rituals worth travelling for.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="confidence"><div class="imgslot t-taupe" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Interview</span><h3>Guy Sebastian on identity, inner circles and rebuilding self-worth</h3><p>Two decades in, a conversation that felt different. Beyond the music.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+    </div>
+
+    <!-- pull-quote breather -->
+    <div class="quoteband rev">
+      <span class="eyebrow">From the episode</span>
+      <blockquote>The body keeps the score long after the mind has decided to move on.</blockquote>
+      <cite>Dr Sarah Jane · Beautiful Inside</cite>
+    </div>
+
+    <!-- second 3-up -->
+    <div class="grid3" id="grid2">
+      <a class="ep" data-mood="reset"><div class="imgslot t-stone" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Sacred Six</span><h3>Sacred Six on stress, sanity and sacred rituals</h3><p>The small daily practices holding it all together, and why they matter more than ever.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="motherhood beauty"><div class="imgslot t-blush" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Interview</span><h3>Trinny Woodall on IVF, acne and boarding school</h3><p>The stories behind the brand, told with the honesty Trinny is loved for.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+      <a class="ep" data-mood="reset"><div class="imgslot t-dusk" data-tag="IMG 4:3"><div class="grain"></div></div><span class="cat eyebrow">Guide</span><h3>What to watch and listen to over the break</h3><p>Thoughtful podcast and vodcast conversations, curated for different moods.</p><span class="listen"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Listen</span></span></a>
+    </div>
+
+    <button class="loadmore" id="loadMore">Load more episodes</button>
+  </div>
+</section>
+
+<!-- ===== CURATOR.IO STRIP ===== -->
+<section class="curator">
+  <div class="wrap cur-head rev">
+    <span class="eyebrow">@beauticate · behind the mic</span>
+    <h2>Beautiful Inside, off the record</h2>
+    <a href="https://www.instagram.com/beauticate/" class="follow">Follow on Instagram</a>
+  </div>
+  <!-- CLAUDE CODE: drop Curator.io feed embed here. Themed feed: Beautiful Inside / BTS. Cap to one row. -->
+  <div class="cur-rail" id="curatorFeed">
+    <a class="cur-tile t-blush"><span class="ig"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2-.06-1.3-.07-1.7-.07-4.9s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42 1.3-.06 1.7-.07 4.9-.07z"/></svg></span><div class="grain"></div></a>
+    <a class="cur-tile t-taupe"><div class="grain"></div></a>
+    <a class="cur-tile t-sage"><div class="grain"></div></a>
+    <a class="cur-tile t-clay"><div class="grain"></div></a>
+    <a class="cur-tile t-dusk"><div class="grain"></div></a>
+    <a class="cur-tile t-stone"><div class="grain"></div></a>
+  </div>
+  <p class="cur-note">Feed slot · Curator.io</p>
+</section>
+
+<!-- ===== SUBSCRIBE ===== -->
+<section class="subscribe">
+  <span class="eyebrow">The newsletter</span>
+  <h2>Subscribe to beautify your life</h2>
+  <p>Your weekly fix of who's worth knowing and how to live well, plus exclusive gifts, discounts and events, straight to your inbox.</p>
+  <div class="subform">
+    <input type="email" placeholder="Email address" aria-label="Email address">
+    <button type="button">Subscribe</button>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <div class="logo">BEAUTICATE.</div>
+      <p class="blurb">Elevating beauty, wellness and lifestyle with trusted tips, expert voices and stories that inspire. Trusted by readers for over a decade.</p>
+      <div class="foot-soc">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2-.06-1.3-.07-1.7-.07-4.9s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42 1.3-.06 1.7-.07 4.9-.07z"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.5 3.6 3.5 4v2.6c-1.3 0-2.5-.4-3.5-1v6.6a5.7 5.7 0 11-5.7-5.7c.3 0 .6 0 .9.07v2.7a3 3 0 102.1 2.86V3z"/></svg></a>
+        <a href="#" aria-label="Spotify"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.86.2c-2.35-1.44-5.3-1.76-8.8-.96a.62.62 0 11-.28-1.2c3.83-.88 7.1-.5 9.74 1.1.3.18.4.57.2.86zm1.23-2.74a.78.78 0 01-1.07.26c-2.7-1.66-6.8-2.14-10-1.17a.78.78 0 11-.45-1.5c3.64-1.1 8.18-.56 11.27 1.34.36.22.48.7.25 1.07zm.1-2.85C14.8 8.96 9.4 8.78 6.3 9.72a.94.94 0 11-.54-1.8c3.56-1.08 9.5-.87 13.24 1.35a.94.94 0 01-.96 1.6z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.5s-.22-1.56-.9-2.24c-.86-.9-1.82-.9-2.26-.96C16.7 4.07 12 4.07 12 4.07s-4.7 0-7.82.23c-.44.06-1.4.06-2.26.96C1.22 5.94 1 7.5 1 7.5S.78 9.33.78 11.16v1.7C.78 14.7 1 16.5 1 16.5s.22 1.56.9 2.24c.86.9 2 .87 2.5.97 1.8.17 7.6.22 7.6.22s4.7 0 7.82-.24c.44-.05 1.4-.06 2.26-.96.68-.68.9-2.24.9-2.24s.22-1.83.22-3.66v-1.7C23.22 9.33 23 7.5 23 7.5zM9.7 14.84V8.86l6.08 3z"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Advertise with us</a></li>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Terms &amp; conditions</a></li>
+        <li><a href="#">Exclusive offers</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="mailto:info@beauticate.com">info@beauticate.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base wrap" style="padding-left:0;padding-right:0">
+    Beauticate occasionally uses affiliate links and may receive a small commission if you purchase via these links. We also work with trusted brand partners to bring you sponsored content. Every image we publish is credited where possible. If you spot an error, please contact us.
+    <br>© Beauticate 2026. All rights reserved.
+  </div>
+</footer>
+
+<!-- ===== STICKY PLAYER ===== -->
+<div class="player" id="player">
+  <div class="player-prog"><div class="bar" id="pbar"></div></div>
+  <div class="player-inner">
+    <button class="ppbtn" id="ppbtn" aria-label="Play"><svg id="ppicon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+    <div class="imgslot pthumb t-ink" data-tag=""></div>
+    <div class="pmeta">
+      <div class="pe">Now playing · Latest episode</div>
+      <div class="pt">Dr Sarah Jane on trauma, transformation and trusting the body</div>
+    </div>
+    <div class="pplat">
+      <a href="#" aria-label="Spotify"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm4.6 14.4a.6.6 0 01-.86.2c-2.35-1.44-5.3-1.76-8.8-.96a.62.62 0 11-.28-1.2c3.83-.88 7.1-.5 9.74 1.1.3.18.4.57.2.86zm1.23-2.74a.78.78 0 01-1.07.26c-2.7-1.66-6.8-2.14-10-1.17a.78.78 0 11-.45-1.5c3.64-1.1 8.18-.56 11.27 1.34.36.22.48.7.25 1.07z"/></svg></a>
+      <a href="#" aria-label="Apple"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-3 19.5c-.1-.8 0-2 .2-2.8.2-.7 1.2-5 1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.8-2.4.9 0 1.3.6 1.3 1.4 0 .9-.5 2.1-.8 3.3-.2.9.5 1.7 1.4 1.7 1.7 0 2.8-2.1 2.8-4.6 0-1.9-1.3-3.3-3.6-3.3-2.6 0-4.2 2-4.2 4.1 0 .8.2 1.3.6 1.8.2.2.2.3.1.5l-.2.8c0 .3-.2.3-.5.2-1.3-.5-1.9-2-1.9-3.6 0-2.7 2.3-5.9 6.8-5.9 3.6 0 6 2.6 6 5.4 0 3.7-2 6.4-5 6.4-1 0-2-.6-2.3-1.2l-.6 2.4c-.2.8-.7 1.8-1 2.4A10 10 0 1012 2z"/></svg></a>
+    </div>
+    <button class="pclose" id="pclose" aria-label="Close">&times;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* scroll reveal */
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rev').forEach(function(el){io.observe(el);});
+  } else {
+    document.querySelectorAll('.rev').forEach(function(el){el.classList.add('in');});
+  }
+
+  /* guest rail arrows */
+  var rail = document.getElementById('guestRail');
+  function step(){ return Math.min(rail.clientWidth*0.8, 560); }
+  document.getElementById('gNext').onclick = function(){ rail.scrollBy({left:step(),behavior:'smooth'}); };
+  document.getElementById('gPrev').onclick = function(){ rail.scrollBy({left:-step(),behavior:'smooth'}); };
+
+  /* mood filter */
+  var moods = document.querySelectorAll('.mood');
+  var eps = document.querySelectorAll('#grid .ep, #grid2 .ep');
+  moods.forEach(function(b){
+    b.onclick = function(){
+      moods.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      var m = b.dataset.mood;
+      eps.forEach(function(ep){
+        var tags = (ep.dataset.mood||'').split(' ');
+        ep.classList.toggle('hide', !(m==='all' || tags.indexOf(m)>-1));
+      });
+    };
+  });
+
+  /* load more (mock) */
+  document.getElementById('loadMore').onclick = function(){
+    this.textContent = 'You are all caught up';
+    this.disabled = true;
+    this.style.opacity = '.5';
+  };
+
+  /* sticky player: appear after hero, play toggle */
+  var player = document.getElementById('player');
+  var hero = document.getElementById('hero');
+  var dismissed = false;
+  window.addEventListener('scroll', function(){
+    if(dismissed) return;
+    var past = hero.getBoundingClientRect().bottom < 0;
+    player.classList.toggle('show', past);
+  }, {passive:true});
+  document.getElementById('pclose').onclick = function(){ dismissed = true; player.classList.remove('show'); };
+
+  var playing = false, bar = document.getElementById('pbar'), icon = document.getElementById('ppicon'), w = 18, timer;
+  document.getElementById('ppbtn').onclick = function(){
+    playing = !playing;
+    icon.innerHTML = playing ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>' : '<path d="M8 5v14l11-7z"/>';
+    if(playing && !reduce){
+      timer = setInterval(function(){ w = (w+0.4)%100; bar.style.width = w+'%'; }, 200);
+    } else { clearInterval(timer); }
+  };
+})();
+</script>
+</body>
+</html>
