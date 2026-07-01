@@ -54,9 +54,7 @@ function Card({ c }: { c: MegaCard }) {
       <span className="mh-card-img">
         {c.image ? <Image src={c.image} alt={c.imageAlt || c.title} fill sizes="(max-width:1080px) 22vw, 220px" className="mh-card-obj" /> : null}
       </span>
-      <span className="mh-card-eye">{c.eyebrow}</span>
       <span className="mh-card-title">{sentenceCase(c.title)}</span>
-      {c.meta ? <span className="mh-card-meta">{c.meta}</span> : null}
     </Link>
   )
 }

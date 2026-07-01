@@ -148,32 +148,33 @@
 .playCta {
   display: inline-flex;
   align-items: center;
-  gap: 13px;
-  background: #fff;
+  gap: 8px;
+  background: rgba(255,255,255,.85);
   color: var(--ink);
-  padding: 13px 22px 13px 15px;
+  padding: 8px 16px 8px 10px;
   border-radius: 40px;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
   transition: transform 0.25s var(--ease), box-shadow 0.25s;
+  backdrop-filter: blur(6px);
 }
 .playCta:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
 }
 .playCta .tri {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--ink);
   display: grid;
   place-items: center;
 }
 .playCta .tri svg {
-  width: 11px;
-  height: 11px;
+  width: 8px;
+  height: 8px;
   fill: #fff;
   margin-left: 2px;
 }

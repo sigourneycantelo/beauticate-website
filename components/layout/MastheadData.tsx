@@ -9,11 +9,7 @@ function cards(cat: string, sub: string | undefined, eyebrow: string): MegaCard[
     .map((a) => {
       const f = a.frontmatter
       const url = f.subcategory ? `/${f.category}/${f.subcategory}/${f.slug}` : `/${f.category}/${f.slug}`
-      const rawExcerpt = (f as { excerpt?: string }).excerpt
-      const meta = typeof rawExcerpt === 'string' && rawExcerpt
-        ? rawExcerpt.replace(/\s+/g, ' ').trim().slice(0, 52)
-        : undefined
-      return { title: f.title, href: url, image: f.featured_image, imageAlt: f.featured_image_alt || f.title, eyebrow, meta }
+      return { title: f.title, href: url, image: f.featured_image, imageAlt: f.featured_image_alt || f.title, eyebrow }
     })
 }
 

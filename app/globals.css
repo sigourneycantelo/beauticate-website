@@ -133,7 +133,7 @@
 .mh{
   --mh-paper:#FFFFFF; --mh-ink:#2a2621; --mh-wine:#7a2733; --mh-muted:#7a7268;
   --mh-greige:#efece6; --mh-line:rgba(42,38,33,.14); --mh-line-soft:rgba(42,38,33,.08);
-  --mh-util-h:46px; --mh-nav-h:52px;
+  --mh-util-h:54px; --mh-nav-h:52px;
   position:sticky; top:0; z-index:1000; background:var(--mh-paper);
   border-bottom:1px solid var(--mh-line); font-family:var(--font-sans);
 }
@@ -151,19 +151,19 @@
 .mh-social{ display:flex; align-items:center; gap:13px; }
 .mh-social a{ color:var(--mh-ink); opacity:.72; transition:opacity .2s,color .2s; display:flex; }
 .mh-social a:hover{ opacity:1; color:var(--mh-wine); }
-.mh-social svg{ width:16px; height:16px; }
+.mh-social svg{ width:18px; height:18px; }
 .mh-util-link{
-  font-size:11px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
+  font-size:12px; font-weight:500; letter-spacing:.11em; text-transform:uppercase;
   color:var(--mh-ink); opacity:.85; padding:4px 0; transition:color .2s,opacity .2s; white-space:nowrap;
 }
 .mh-util-link:hover{ color:var(--mh-wine); opacity:1; }
 .mh-icon-btn{ display:flex; align-items:center; color:var(--mh-ink); opacity:.85; transition:color .2s,opacity .2s; }
 .mh-icon-btn:hover{ color:var(--mh-wine); opacity:1; }
-.mh-icon-btn svg{ width:18px; height:18px; }
+.mh-icon-btn svg{ width:20px; height:20px; }
 
 .mh-wordmark{ justify-self:center; display:flex; align-items:center; }
 .mh-logo{ display:block; width:auto; }
-.mh-logo-lg{ height:19px; }
+.mh-logo-lg{ height:24px; }
 .mh-logo-mini{ height:14px; }
 .mh-logo-drawer{ height:16px; }
 
@@ -203,7 +203,7 @@
 .mh-subs{ border-right:1px solid var(--mh-line-soft); padding-right:8px; }
 .mh-eyebrow{ display:block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--mh-muted); margin-bottom:16px; }
 .mh-subs ul{ list-style:none; margin:0; padding:0; }
-.mh-subs a{ display:flex; align-items:center; gap:9px; padding:7px 0; font-size:12px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--mh-ink); opacity:.82; transition:color .18s,opacity .18s; }
+.mh-subs a{ display:flex; align-items:center; gap:9px; padding:7px 0; font-size:12px; font-weight:500; letter-spacing:.04em; text-transform:none; color:var(--mh-ink); opacity:.82; transition:color .18s,opacity .18s; }
 .mh-subs a::before{ content:""; width:0; height:1px; background:var(--mh-wine); transition:width .22s ease; flex:none; }
 .mh-subs a:hover, .mh-subs a.active{ color:var(--mh-wine); opacity:1; }
 .mh-subs a:hover::before, .mh-subs a.active::before{ width:14px; }
@@ -214,10 +214,10 @@
 .mh-card{ display:block; }
 .mh-card-img{ display:block; position:relative; aspect-ratio:4/5; width:100%; margin-bottom:11px; overflow:hidden; background:var(--mh-greige); }
 .mh-card-obj{ object-fit:cover; }
-.mh-card-eye{ display:block; font-size:9.5px; font-weight:600; letter-spacing:.15em; text-transform:uppercase; color:var(--mh-wine); margin-bottom:5px; }
+.mh-card-eye{ display:none; }
 .mh-card-title{ display:block; font-family:var(--font-serif); font-weight:400; font-size:13.5px; line-height:1.3; color:var(--mh-ink); margin-bottom:5px; }
 .mh-card:hover .mh-card-title{ text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:.5px; }
-.mh-card-meta{ display:block; font-size:10.5px; color:var(--mh-muted); letter-spacing:.02em; }
+.mh-card-meta{ display:none; }
 
 /* mobile bits */
 .mh-hamburger{ display:none; align-items:center; color:var(--mh-ink); }
@@ -241,7 +241,7 @@
 .mh-d-item.open .mh-d-chev{ transform:rotate(180deg); }
 .mh-d-subs{ max-height:0; overflow:hidden; transition:max-height .3s ease; background:var(--mh-greige); }
 .mh-d-item.open .mh-d-subs{ max-height:420px; }
-.mh-d-subs a{ display:block; padding:11px 22px 11px 34px; font-size:11.5px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--mh-ink); opacity:.82; }
+.mh-d-subs a{ display:block; padding:11px 22px 11px 34px; font-size:11.5px; font-weight:500; letter-spacing:.04em; text-transform:none; color:var(--mh-ink); opacity:.82; }
 .mh-d-foot{ margin-top:auto; padding:22px; border-top:1px solid var(--mh-line); }
 .mh-d-foot a{ display:block; padding:9px 0; font-size:11px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--mh-ink); }
 .mh-d-social{ display:flex; gap:16px; margin-top:16px; }
