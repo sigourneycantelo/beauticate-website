@@ -42,6 +42,7 @@ export interface ArticleFrontmatter {
   schema_type?: 'Article' | 'HowTo' | 'FAQPage' | 'Review' | 'NewsArticle'
   focus_keyphrase?: string          // primary keyphrase the article targets (documentation/SEO reference)
   faqs?: FAQ[]
+  faqs_title?: string               // visible heading for the FAQ panel (defaults to "Frequently Asked Questions")
   reading_time?: number
 
   // Review schema (only emitted for Review-type articles that supply a rating)

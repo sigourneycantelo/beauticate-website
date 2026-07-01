@@ -41,7 +41,7 @@ export default function EditorNote({
           <a
             href={productUrl}
             target="_blank"
-            rel="noopener noreferrer nofollow"
+            rel="sponsored noopener"
             className="group block w-full sm:w-[180px] flex-none text-center"
           >
             <div className="relative aspect-square bg-white rounded-sm overflow-hidden mb-2">

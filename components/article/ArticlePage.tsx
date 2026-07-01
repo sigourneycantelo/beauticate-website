@@ -113,6 +113,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           readingTime={f.reading_time}
           affiliateDisclosure={f.affiliate_disclosure}
           showDate={resolveSchemaType(f) === 'NewsArticle'}
+          lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
         />
 
         {/* Body */}
@@ -142,7 +143,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* FAQ Panel */}
         {f.faqs && f.faqs.length > 0 && (
-          <FAQPanel faqs={f.faqs} />
+          <FAQPanel faqs={f.faqs} title={f.faqs_title} />
         )}
 
         {/* Affiliate disclosure */}
