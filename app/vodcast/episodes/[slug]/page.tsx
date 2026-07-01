@@ -6,6 +6,8 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getVodcastEpisode, getVodcastEpisodes } from '@/lib/content'
 import FAQPanel from '@/components/shared/FAQPanel'
+import ProductInset from '@/components/mdx/ProductInset'
+import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
 
 interface Props {
@@ -68,6 +70,9 @@ const mdxComponents = {
       </span>
     )
   },
+  ProductInset,
+  ShopGrid,
+  ShopItem,
 }
 
 // Subscribe destinations, rendered as clickable platform logos at the top of
