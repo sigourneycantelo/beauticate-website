@@ -7,6 +7,7 @@ import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
 import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
 import Portrait from '@/components/mdx/Portrait'
+import PortraitQuote from '@/components/mdx/PortraitQuote'
 import ArticleGrid from './ArticleGrid'
 import AuthorByline from './AuthorByline'
 import { resolveSchemaType } from '@/lib/seo'
@@ -49,11 +50,17 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     const price = mp
       ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
       : undefined
+    // Use the article's cut-out when provided; otherwise fall back to the live
+    // Shopify product photo (second image revealed on hover, like shop cards).
+    const imgs = sp.images?.nodes ?? []
+    const usingShopImage = !props.image
     return (
       <ProductTile
         href={`/shop/products/${sp.handle}`}
-        primarySrc={props.image}
-        primaryAlt={props.name}
+        useNextImage={usingShopImage}
+        primarySrc={props.image ?? (imgs[0] ?? sp.featuredImage)?.url}
+        primaryAlt={props.name ?? sp.title}
+        secondarySrc={usingShopImage ? imgs[1]?.url : undefined}
         cornerLabel="In our shop"
         brand={props.brand}
         name={props.name ?? sp.title}
@@ -62,7 +69,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     )
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow }
 
   // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
   const heroMaxWidth = f.hero_max_width ?? 1200

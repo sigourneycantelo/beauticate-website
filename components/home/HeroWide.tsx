@@ -13,6 +13,7 @@ interface Article {
     hero_image?: string
     hero_title?: string
     hero_eyebrow?: string
+    hero_aspect?: string
   }
 }
 
@@ -23,17 +24,16 @@ function articleHref(f: Article['frontmatter']) {
 export default function HeroWide({ article }: { article: Article }) {
   const f = article.frontmatter
 
-  const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.jpg'
+  const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.png'
   const heroTitle = f.hero_title ?? f.title
   const heroEyebrow = f.hero_eyebrow ?? 'Shop · The Edit'
+  const heroAspect = f.hero_aspect ?? '16/9'
 
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
       <section
-        className="reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto aspect-[16/9] min-h-[480px]"
-        style={{
-          paddingBottom: 'clamp(30px,5vw,64px)',
-        }}
+        className="reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto min-h-[480px]"
+        style={{ aspectRatio: heroAspect, paddingBottom: 'clamp(30px,5vw,64px)' }}
       >
         <Image
           src={heroImage}

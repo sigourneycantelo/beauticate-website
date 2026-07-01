@@ -57,6 +57,7 @@ export interface ArticleFrontmatter {
 
   // Hero
   is_hero?: boolean            // true = this article is the curated home page hero
+  home_rank?: number           // pin to the top of the home grid (1 = position 2 on the page); unranked = newest-first
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
 
@@ -79,6 +80,9 @@ export interface VodcastFrontmatter {
   excerpt: string
   featured_image: string
   featured_image_alt: string
+  hero_aspect?: string        // CSS aspect-ratio for the hero, e.g. "4/5" for portrait shots; defaults to "16/9"
+  hero_focus?: string         // CSS object-position for cropping the holding shot (e.g. "50% 12%"); defaults to a face-friendly top bias
+  card_position?: string      // CSS object-position for the listing card image (e.g. "50% 18%"); defaults to top
   meta_description: string
   seo_title?: string
   spotify_episode_id?: string
@@ -88,6 +92,15 @@ export interface VodcastFrontmatter {
   topics?: string[]
   faqs?: FAQ[]
   related_products?: string[]
+
+  // Podcast page editorial fields
+  themes?: string[]
+  standfirst?: string
+  pull_quote?: string
+  pull_quote_author?: string
+  guest_name?: string
+  guest_role?: string
+  marquee_rank?: number
 }
 
 export interface EmailFrontmatter {
