@@ -40,8 +40,15 @@ export interface ArticleFrontmatter {
 
   // AEO
   schema_type?: 'Article' | 'HowTo' | 'FAQPage' | 'Review' | 'NewsArticle'
+  focus_keyphrase?: string          // primary keyphrase the article targets (documentation/SEO reference)
   faqs?: FAQ[]
+  faqs_title?: string               // visible heading for the FAQ panel (defaults to "Frequently Asked Questions")
   reading_time?: number
+
+  // Review schema (only emitted for Review-type articles that supply a rating)
+  review_rating?: number            // e.g. 4.5
+  review_item?: string              // product/service reviewed, e.g. "Qure Micro-Infusion Facial System"
+  review_brand?: string             // brand of the reviewed product, e.g. "Qure Skincare"
 
   // Commerce
   product_links?: ProductLink[]

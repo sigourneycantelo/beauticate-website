@@ -16,6 +16,9 @@ import PullQuote from '@/components/mdx/PullQuote'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
+import QuickAnswer from '@/components/mdx/QuickAnswer'
+import AffiliateCTA from '@/components/mdx/AffiliateCTA'
+import SplitRow from '@/components/mdx/SplitRow'
 import ProductTile from '@/components/shared/ProductTile'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
@@ -66,7 +69,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     )
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote }
+  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow }
 
   // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
   const heroMaxWidth = f.hero_max_width ?? 1200
@@ -117,6 +120,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           readingTime={f.reading_time}
           affiliateDisclosure={f.affiliate_disclosure}
           showDate={resolveSchemaType(f) === 'NewsArticle'}
+          lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
         />
 
         {/* Body */}
@@ -146,7 +150,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* FAQ Panel */}
         {f.faqs && f.faqs.length > 0 && (
-          <FAQPanel faqs={f.faqs} />
+          <FAQPanel faqs={f.faqs} title={f.faqs_title} />
         )}
 
         {/* Affiliate disclosure */}

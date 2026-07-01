@@ -73,6 +73,22 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
       cssSelector: ['h1', '.article-excerpt', '.article-body p:first-of-type'],
     },
     ...(schemaType === 'NewsArticle' ? { dateline: 'Sydney, Australia', printEdition: SITE_NAME } : {}),
+    // Review-specific fields (only emitted when the article supplies a rating)
+    ...(schemaType === 'Review' && f.review_rating
+      ? {
+          itemReviewed: {
+            '@type': 'Product',
+            name: f.review_item ?? f.title,
+            ...(f.review_brand ? { brand: { '@type': 'Brand', name: f.review_brand } } : {}),
+          },
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: String(f.review_rating),
+            bestRating: '5',
+            worstRating: '1',
+          },
+        }
+      : {}),
   }
 
   const graph: object[] = [articleNode]
@@ -135,7 +151,7 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
       site: '@beauticate',
       title,
       description,
-      images: [image],
+      images: [{ url: image, alt: f.featured_image_alt ?? f.title }],
     },
     robots: {
       index: true,

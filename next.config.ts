@@ -210,10 +210,11 @@ const nextConfig: NextConfig = {
       // ── 301 Redirect Map (337 redirects — protects 12 years of SEO) ──────
       { source: '/how-to/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', destination: '/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', permanent: true },
       { source: '/who/creatives/darren-palmer-interiors-designer-and-olivier-duvillard', destination: '/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard', permanent: true },
-      { source: '/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', destination: '/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', permanent: true },
+      { source: '/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', destination: '/beauty-style/skin-care/micro-infusion-at-home', permanent: true },
+      { source: '/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', destination: '/beauty-style/skin-care/micro-infusion-at-home', permanent: true },
       { source: '/beauty-style/hairs/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', destination: '/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', permanent: true },
       { source: '/beauty-style/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', destination: '/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it', permanent: true },
-      { source: '/sigourneys-edit/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', destination: '/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', permanent: true },
+      { source: '/sigourneys-edit/i-tried-a-new-diy-microstamping-device-heres-what-i-thought', destination: '/beauty-style/skin-care/micro-infusion-at-home', permanent: true },
       { source: '/who/influencers/riley-minford-the-trans-model-owning-her-beauty', destination: '/interviews/tastemakers/riley-minford-the-trans-model-owning-her-beauty', permanent: true },
       { source: '/who/influencers/stella-kim', destination: '/interviews/tastemakers/stella-kim', permanent: true },
       { source: '/how-to/best-hair-tools-for-fine-hair', destination: '/beauty-style/hair/best-hair-tools-for-fine-hair', permanent: true },
