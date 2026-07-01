@@ -9,7 +9,7 @@ const CATEGORIES = [
 
 export default function ShopByCategory() {
   return (
-    <section className="bg-parchment border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
+    <section className="bg-white border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
       <div className="text-center mb-10">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase opacity-50">Explore</p>
         <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px, 3vw, 38px)' }}>
