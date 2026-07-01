@@ -131,7 +131,7 @@
 
 /* ================= Global Masthead (v15) ================= */
 .mh{
-  --mh-paper:#f6f5f2; --mh-ink:#2a2621; --mh-wine:#7a2733; --mh-muted:#7a7268;
+  --mh-paper:#FFFFFF; --mh-ink:#2a2621; --mh-wine:#7a2733; --mh-muted:#7a7268;
   --mh-greige:#efece6; --mh-line:rgba(42,38,33,.14); --mh-line-soft:rgba(42,38,33,.08);
   --mh-util-h:46px; --mh-nav-h:52px;
   position:sticky; top:0; z-index:1000; background:var(--mh-paper);
