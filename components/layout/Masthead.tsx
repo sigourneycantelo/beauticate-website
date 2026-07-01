@@ -33,6 +33,21 @@ function Wordmark({ className = '' }: { className?: string }) {
   return <span className={className}>Beauticate<span className="mh-dot">.</span></span>
 }
 
+// Display story titles in sentence case (house style). Titles are stored Title
+// Case; this lowercases all but the first word, preserving all-caps acronyms
+// (DIY, SPF) and a standalone "I". Proper nouns it can't detect are lowercased.
+function sentenceCase(s: string): string {
+  let started = false
+  return s.split(/(\s+)/).map((w) => {
+    if (/^\s*$/.test(w)) return w
+    const isAcronym = w.length >= 2 && w === w.toUpperCase() && /[A-Z]/.test(w)
+    let out = isAcronym ? w : w.toLowerCase()
+    if (out === 'i') out = 'I'
+    if (!started) { out = out.charAt(0).toUpperCase() + out.slice(1); started = true }
+    return out
+  }).join('')
+}
+
 function Card({ c }: { c: MegaCard }) {
   return (
     <Link href={c.href} className="mh-card">
@@ -40,7 +55,7 @@ function Card({ c }: { c: MegaCard }) {
         {c.image ? <Image src={c.image} alt={c.imageAlt || c.title} fill sizes="(max-width:1080px) 22vw, 220px" className="mh-card-obj" /> : null}
       </span>
       <span className="mh-card-eye">{c.eyebrow}</span>
-      <span className="mh-card-title">{c.title}</span>
+      <span className="mh-card-title">{sentenceCase(c.title)}</span>
       {c.meta ? <span className="mh-card-meta">{c.meta}</span> : null}
     </Link>
   )
