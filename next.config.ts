@@ -511,7 +511,6 @@ const nextConfig: NextConfig = {
       { source: '/tag/video/page/2', destination: '/interviews/page/2', permanent: true },
       { source: '/wellness/fitness/page/2', destination: '/interviews/page/2', permanent: true },
       { source: '/how-to/go-green/our-top-six-tips-for-how-to-shop-your-beauty-stash', destination: '/living/sustainability/our-top-six-tips-for-how-to-shop-your-beauty-stash', permanent: true },
-      { source: '/beauty-style/hair/how-to-get-nice-hair', destination: '/beauty-style/how-to-get-nice-hair', permanent: true },
       { source: '/how-to/hairstyles/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider', destination: '/beauty-style/hair/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider', permanent: true },
       { source: '/beauty-style/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful', destination: '/how-to/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful', permanent: true },
       { source: '/who/actors-presenters/sophia-loren-actress-and-icon', destination: '/interviews/actors-presenters/sophia-loren-actress-and-icon', permanent: true },
