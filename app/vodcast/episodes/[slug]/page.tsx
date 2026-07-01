@@ -8,6 +8,8 @@ import { getVodcastEpisode, getVodcastEpisodes } from '@/lib/content'
 import FAQPanel from '@/components/shared/FAQPanel'
 import ProductInset from '@/components/mdx/ProductInset'
 import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
+import ProductTile from '@/components/shared/ProductTile'
+import { getProductsByHandles } from '@/lib/shopify'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
 
 interface Props {
@@ -124,6 +126,42 @@ export default async function EpisodePage({ params }: Props) {
   // Strip the raw anchor URL line from display content
   const cleanContent = content.replace(/\[https:\/\/anchor\.fm[^\]]*\]\([^\)]*\)\n?/, '').trim()
 
+  // <ShopItem handle="..."> in the body → our own product: fetch it from Shopify
+  // so the card is a full "In our shop" card (live price, internal link, hover).
+  const bodyHandles = [...new Set([...cleanContent.matchAll(/\bhandle="([^"]+)"/g)].map(m => m[1]))]
+  let shopProducts: Awaited<ReturnType<typeof getProductsByHandles>> = []
+  try {
+    shopProducts = bodyHandles.length ? await getProductsByHandles(bodyHandles) : []
+  } catch {
+    shopProducts = []
+  }
+  const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
+
+  function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
+    const sp = props.handle ? shopProductMap[props.handle] : undefined
+    if (!sp) return <ShopItem {...props} />
+    const mp = sp.priceRange?.minVariantPrice
+    const price = mp
+      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
+      : props.price
+    const imgs = sp.images?.nodes ?? []
+    const usingShopImage = !props.image
+    return (
+      <ProductTile
+        href={`/shop/products/${sp.handle}`}
+        useNextImage={usingShopImage}
+        primarySrc={props.image ?? (imgs[0] ?? sp.featuredImage)?.url}
+        primaryAlt={props.name ?? sp.title}
+        secondarySrc={usingShopImage ? imgs[1]?.url : undefined}
+        cornerLabel="In our shop"
+        brand={props.brand}
+        name={props.name ?? sp.title}
+        price={price}
+      />
+    )
+  }
+  const components = { ...mdxComponents, ShopItem: ShopItemCard }
+
   // ── Structured data: PodcastEpisode + Article + Video + FAQ + Breadcrumb ──
   const episodeSchema = buildVodcastSchema(f, `/vodcast/episodes/${f.slug}`, anchorUrl)
 
@@ -237,7 +275,7 @@ export default async function EpisodePage({ params }: Props) {
           className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg"
           style={{ color: '#1C1A17' }}
         >
-          <MDXRemote source={cleanContent} components={mdxComponents} />
+          <MDXRemote source={cleanContent} components={components} />
         </div>
       )}
 
