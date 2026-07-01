@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 import SearchBar from '@/components/shared/SearchBar'
@@ -192,7 +192,14 @@ export default function Header({ megaMenuArticles }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [openMega, setOpenMega] = useState<string | null>(null)
+  const [slim, setSlim] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    const onScroll = () => setSlim(window.scrollY > 72)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const cancelClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -213,14 +220,16 @@ export default function Header({ megaMenuArticles }: Props) {
     >
       {/* ── Top bar: social | logo | actions ── */}
       <div
-        className="grid items-center gap-4"
+        className="grid items-center gap-4 transition-[padding] duration-200"
         style={{
           gridTemplateColumns: '1fr auto 1fr',
-          padding: isShop ? '14px clamp(20px,6vw,104px) 18px' : '18px clamp(20px,6vw,104px) 0',
+          padding: slim
+            ? '9px clamp(20px,6vw,104px) 9px'
+            : isShop ? '14px clamp(20px,6vw,104px) 18px' : '18px clamp(20px,6vw,104px) 0',
         }}
       >
-        {/* Social — desktop only */}
-        <div className="hidden md:flex gap-4 items-center">
+        {/* Social — desktop only, hidden when slim */}
+        <div className={`hidden md:flex gap-4 items-center transition-opacity duration-200 ${slim ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           {SOCIAL.map(s => (
             <a
               key={s.href}
@@ -248,7 +257,7 @@ export default function Header({ megaMenuArticles }: Props) {
               width={600}
               height={240}
               priority
-              className="h-[clamp(72px,9vw,118px)] w-auto mix-blend-multiply"
+              className={`w-auto mix-blend-multiply transition-all duration-200 ${slim ? 'h-[52px]' : 'h-[clamp(72px,9vw,118px)]'}`}
             />
           ) : (
             <Image
@@ -257,7 +266,7 @@ export default function Header({ megaMenuArticles }: Props) {
               width={360}
               height={49}
               priority
-              className="h-7 w-auto mix-blend-multiply"
+              className={`w-auto mix-blend-multiply transition-all duration-200 ${slim ? 'h-5' : 'h-7'}`}
             />
           )}
         </Link>
@@ -305,14 +314,14 @@ export default function Header({ megaMenuArticles }: Props) {
 
       {/* ── Desktop nav ── */}
       <nav
-        className="hidden lg:flex items-center justify-center relative"
+        className="hidden lg:flex items-center justify-center relative transition-[padding,margin] duration-200"
         style={{
           gap: isShop ? '26px' : '38px',
           fontSize: isShop ? '9.5px' : '11.5px',
           letterSpacing: isShop ? '.16em' : '.18em',
-          marginTop: isShop ? 0 : '18px',
-          paddingTop: isShop ? '10px' : 0,
-          paddingBottom: isShop ? '10px' : '15px',
+          marginTop: slim ? 0 : isShop ? 0 : '18px',
+          paddingTop: slim ? '7px' : isShop ? '10px' : 0,
+          paddingBottom: slim ? '7px' : isShop ? '10px' : '15px',
           borderTop: '1px solid rgba(28,26,23,.10)',
           borderBottom: isShop ? '1px solid rgba(28,26,23,.10)' : 'none',
         }}
