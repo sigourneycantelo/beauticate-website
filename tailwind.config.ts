@@ -11,9 +11,15 @@ const config: Config = {
     extend: {
       colors: {
         // Beauticate brand colours — update with exact hex once confirmed
-        paper:     '#FFFFFF',
+        paper:     '#f6f5f2',
         parchment: '#F5F3F0',
-        ink:       '#1C1A17',
+        ink:       '#2a2621',
+        // v15 canonical accents (mock is the source of truth)
+        wine:      '#7a2733',
+        choc:      '#3a2a22',
+        greige:    '#efece6',
+        muted:     '#7a7268',
+        line:      'rgba(42,38,33,0.14)',
         // product-card tile — matches the warm grey Shopify product-photo background
         // so shop shots sit natively and white article shots multiply onto it
         tile:      '#EAE9E7',
@@ -27,7 +33,7 @@ const config: Config = {
         aqua:       '#BFFFF5',
         // legacy aliases kept so existing components don't break
         cream:    { DEFAULT: '#FFFFFF', 50: '#FFFFFF', 100: '#FBF9F4', 200: '#ebebeb' },
-        charcoal: { DEFAULT: '#1C1A17', light: '#3d3d3d' },
+        charcoal: { DEFAULT: '#2a2621', light: '#3d3d3d' },
       },
       fontFamily: {
         // Update once brand fonts confirmed

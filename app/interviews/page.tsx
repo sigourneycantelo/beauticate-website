@@ -42,7 +42,7 @@ export default async function InterviewsPage() {
 
       {/* Header */}
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-10 text-center">
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3">Interviews</p>
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Interviews</p>
         <h1 className="font-serif text-4xl md:text-5xl text-charcoal leading-tight mb-5">
           The people shaping beauty
         </h1>
@@ -51,7 +51,7 @@ export default async function InterviewsPage() {
         </p>
         <Link
           href="/interviews/a-z"
-          className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal border-b border-charcoal/30 pb-0.5 hover:text-gold hover:border-gold transition-colors"
+          className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal border-b border-charcoal/30 pb-0.5 hover:text-wine hover:border-wine transition-colors"
         >
           Browse A–Z index
         </Link>
@@ -73,16 +73,16 @@ export default async function InterviewsPage() {
               </div>
             )}
             <div className="md:w-1/2">
-              <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3">
+              <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">
                 {SUBCATEGORY_LABELS[hero.frontmatter.subcategory ?? ''] ?? hero.frontmatter.subcategory}
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-4 group-hover:text-gold transition-colors">
+              <h2 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-4 group-hover:text-wine transition-colors">
                 {hero.frontmatter.title}
               </h2>
               <p className="font-serif text-base text-charcoal/60 leading-relaxed mb-6">
                 {hero.frontmatter.excerpt}
               </p>
-              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal border-b border-charcoal pb-0.5 group-hover:text-gold group-hover:border-gold transition-colors">
+              <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal border-b border-charcoal pb-0.5 group-hover:text-wine group-hover:border-wine transition-colors">
                 Read more
               </span>
             </div>
@@ -110,10 +110,10 @@ export default async function InterviewsPage() {
                     />
                   </div>
                 )}
-                <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-gold mb-2">
+                <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-wine mb-2">
                   {SUBCATEGORY_LABELS[a.frontmatter.subcategory ?? ''] ?? a.frontmatter.subcategory}
                 </p>
-                <h3 className="font-serif text-lg text-charcoal leading-snug group-hover:text-gold transition-colors">
+                <h3 className="font-serif text-lg text-charcoal leading-snug group-hover:text-wine transition-colors">
                   {a.frontmatter.title}
                 </h3>
                 {a.frontmatter.excerpt && (
@@ -135,7 +135,7 @@ export default async function InterviewsPage() {
               </h2>
               <Link
                 href={`/interviews/${sub}`}
-                className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 hover:text-gold transition-colors"
+                className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 hover:text-wine transition-colors"
               >
                 See all
               </Link>
@@ -157,7 +157,7 @@ export default async function InterviewsPage() {
                       />
                     </div>
                   )}
-                  <h3 className="font-serif text-sm text-charcoal leading-snug group-hover:text-gold transition-colors">
+                  <h3 className="font-serif text-sm text-charcoal leading-snug group-hover:text-wine transition-colors">
                     {a.frontmatter.title}
                   </h3>
                 </Link>

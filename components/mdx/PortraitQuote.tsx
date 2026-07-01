@@ -35,11 +35,11 @@ export default function PortraitQuote({ src, alt, name, role, side = 'left', chi
       </div>
 
       <figcaption className={side === 'right' ? 'md:order-1' : ''}>
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-1">{name}</p>
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-1">{name}</p>
         {role && (
           <p className="font-sans text-[10px] tracking-[0.18em] uppercase opacity-50 mb-5">{role}</p>
         )}
-        <blockquote className="font-serif italic text-[clamp(17px,1.6vw,23px)] leading-[1.55] text-charcoal [&_a]:text-gold [&_a:hover]:text-charcoal">
+        <blockquote className="font-serif italic text-[clamp(17px,1.6vw,23px)] leading-[1.55] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
           {children}
         </blockquote>
       </figcaption>

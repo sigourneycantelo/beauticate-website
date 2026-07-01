@@ -25,7 +25,7 @@ export default function CartDrawer() {
       <aside className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-cream shadow-2xl flex flex-col">
         <div className="flex items-center justify-between px-6 py-4 border-b border-cream-200">
           <h2 className="text-base">Your Cart ({lines.length})</h2>
-          <button onClick={closeCart} className="p-1 hover:text-gold transition-colors">✕</button>
+          <button onClick={closeCart} className="p-1 hover:text-wine transition-colors">✕</button>
         </div>
 
         {lines.length === 0 ? (

@@ -49,7 +49,7 @@ export default function AuthorByline({ name, date, readingTime, affiliateDisclos
           {showDate && <span>{formattedDate}</span>}
           {formattedUpdated && <span>Last updated {formattedUpdated}</span>}
           {readingTime && <span>{readingTime} min read</span>}
-          {affiliateDisclosure && <span className="text-gold">Affiliate links</span>}
+          {affiliateDisclosure && <span className="text-wine">Affiliate links</span>}
         </div>
       </div>
     </div>

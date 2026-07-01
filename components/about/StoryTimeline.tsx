@@ -47,7 +47,7 @@ export default function StoryTimeline() {
       className={`story bg-[#FBF9F4] border-t border-b border-gray-100 py-16 ${js ? 'story--js' : ''} ${shown ? 'is-shown' : ''}`}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3 text-center">Our story</p>
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted mb-3 text-center">Our story</p>
         <h2 id="story-heading" className="font-serif text-2xl md:text-3xl text-charcoal mb-12 text-center">
           A decade in the making
         </h2>
@@ -67,7 +67,7 @@ export default function StoryTimeline() {
                 {m.href && (
                   <Link
                     href={m.href}
-                    className="font-sans text-[11px] tracking-[0.16em] uppercase text-gold hover:text-charcoal transition-colors mt-3 inline-block"
+                    className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-3 inline-block"
                   >
                     {m.cta} →
                   </Link>

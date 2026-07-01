@@ -179,7 +179,7 @@ export default function ReviewQueuePage() {
                   >
                     <td className="py-2.5 px-4">
                       <Link href={item.path} target="_blank" className="group">
-                        <div className="font-medium text-gray-900 leading-snug max-w-[280px] text-sm group-hover:text-gold transition-colors">{item.title}</div>
+                        <div className="font-medium text-gray-900 leading-snug max-w-[280px] text-sm group-hover:text-wine transition-colors">{item.title}</div>
                         <div className="text-xs text-gray-400 mt-0.5 truncate max-w-[280px]">{item.slug}</div>
                       </Link>
                     </td>

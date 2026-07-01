@@ -18,7 +18,7 @@ export default function FAQPanel({ faqs, title = 'Frequently Asked Questions' }:
               className="w-full text-left flex justify-between items-start gap-4 py-1"
             >
               <span className="text-sm font-medium">{faq.question}</span>
-              <span className="text-gold mt-0.5 flex-none">{open === i ? '−' : '+'}</span>
+              <span className="text-wine mt-0.5 flex-none">{open === i ? '−' : '+'}</span>
             </button>
             {open === i && (
               <p className="text-sm text-charcoal-light mt-2 leading-relaxed">{faq.answer}</p>

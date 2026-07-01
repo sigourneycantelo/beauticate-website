@@ -29,7 +29,7 @@ export default function ArticleCard({ frontmatter: f, href, size = 'default' }: 
               {f.category.replace(/-/g, ' ')}
             </p>
           )}
-          <h3 className={`font-serif leading-snug group-hover:text-gold transition-colors ${size === 'small' ? 'text-base' : 'text-lg md:text-xl'}`}>
+          <h3 className={`font-serif leading-snug group-hover:text-wine transition-colors ${size === 'small' ? 'text-base' : 'text-lg md:text-xl'}`}>
             {f.title}
           </h3>
           {size !== 'small' && f.excerpt && (

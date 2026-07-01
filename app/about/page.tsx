@@ -140,13 +140,13 @@ export default function AboutPage() {
                 href="https://www.instagram.com/sigourney.cantelo/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-[11px] tracking-widest uppercase text-gold hover:text-charcoal transition-colors mt-2 inline-block"
+                className="font-sans text-[11px] tracking-widest uppercase text-wine hover:text-charcoal transition-colors mt-2 inline-block"
               >
                 @sigourney.cantelo
               </a>
               <Link
                 href="/sigourneys-edit"
-                className="font-sans text-[11px] tracking-widest uppercase text-gold hover:text-charcoal transition-colors mt-2 block"
+                className="font-sans text-[11px] tracking-widest uppercase text-wine hover:text-charcoal transition-colors mt-2 block"
               >
                 Explore Sigourney&apos;s Edit →
               </Link>
@@ -155,22 +155,22 @@ export default function AboutPage() {
 
           {/* Letter */}
           <div>
-            <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-gold mb-4">From the Founder</p>
+            <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-muted mb-4">From the Founder</p>
             <h1 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-7">About Beauticate</h1>
             <div className="font-serif text-base text-charcoal/80 leading-relaxed space-y-4">
               <p>Beauticate began more than a decade ago, as a side project, while I was Beauty &amp; Health Director at Vogue Australia.</p>
               <p>After years of writing for magazines, I wanted to create something of my own. A space that honoured beauty properly. Not as something trivial, but as something powerful.</p>
               <p>The name came from two words: beauty + educate. But over time, it&apos;s become something deeper. To Beauticate is to live beautifully and well. To be curious, to question, to seek pleasure, purpose and presence in equal measure.</p>
 
-              <blockquote className="my-8 border-l-2 border-gold/50 pl-6">
+              <blockquote className="my-8 border-l-2 border-wine/50 pl-6">
                 <p className="font-serif italic text-2xl md:text-[28px] text-charcoal leading-snug">Real beauty has never been just about what you put on your skin.</p>
               </blockquote>
 
               <p>It&apos;s the bold lip that gets you through a hard morning. The fragrance that makes a stranger smile. The bath that finally lets you exhale. Small things that are actually enormous things.</p>
               <p>And it&apos;s so much more than that, too. It&apos;s how you nourish yourself, how you move through the world, how you design your home, where you travel to restore. How you heal. How you feel on the inside, because that shapes everything.</p>
               <p>So Beauticate grew with me. Into wellness and longevity, interiors and destinations, identity, reinvention, motherhood, burnout, perimenopause. Into every corner of a life lived as beautifully as possible.</p>
-              <p>That philosophy led to <Link href="/vodcast" className="text-gold hover:text-charcoal transition-colors">Beautiful Inside</Link>, a video podcast filmed in the homes and spaces of people we admire, exploring healing, mental health and what lies beneath the lives we present to the world.</p>
-              <p>And now to the <Link href="https://beauticate.shop" className="text-gold hover:text-charcoal transition-colors">Beauticate Shop</Link>, our curated edit of the products we actually use, love and recommend. It&apos;s in its testing/beta stage now and we&apos;d love you to be among the first to explore (and give us your feedback). No noise, no fillers. Just the things genuinely worth your time and money.</p>
+              <p>That philosophy led to <Link href="/vodcast" className="text-wine hover:text-charcoal transition-colors">Beautiful Inside</Link>, a video podcast filmed in the homes and spaces of people we admire, exploring healing, mental health and what lies beneath the lives we present to the world.</p>
+              <p>And now to the <Link href="https://beauticate.shop" className="text-wine hover:text-charcoal transition-colors">Beauticate Shop</Link>, our curated edit of the products we actually use, love and recommend. It&apos;s in its testing/beta stage now and we&apos;d love you to be among the first to explore (and give us your feedback). No noise, no fillers. Just the things genuinely worth your time and money.</p>
               <p>This is a space for curious minds and wise souls. For seekers, quiet rebuilders and people who believe that how you live matters as much as how you look.</p>
               <p>Across all of it, the intention is exactly the same as day one. To help you look, live and feel your best, with honesty, expertise and a little joy thrown in.</p>
               <p>Thank you for being here. It means more than you know.</p>
@@ -181,7 +181,7 @@ export default function AboutPage() {
 
         {/* Full-width bio panel */}
         <section className="max-w-6xl mx-auto px-6 pb-16">
-          <div className="bg-gray-100 border-t-2 border-gold/30 rounded-lg p-7 md:p-10 space-y-4">
+          <div className="bg-gray-100 border-t-2 border-wine/30 rounded-lg p-7 md:p-10 space-y-4">
             <p className="font-serif text-sm md:text-base text-charcoal/75 leading-relaxed">
               <strong className="font-semibold">Sigourney Cantelo</strong> is the founder and publisher of Beauticate. With over 25 years across print, digital and broadcast, including her tenure as Beauty &amp; Health Director at Vogue Australia and regular appearances on Sunrise and the Today show as a beauty and style commentator, she is one of Australia&apos;s most recognised voices in beauty, health and wellness media. Her work has appeared in Body + Soul, marie claire, Sunday Life and numerous Australian and international publications. She is a six-time Star Beauty Award winner and a five-time Jasmine Award recipient, including twice winning the Jasmine Award for Journalistic Excellence.
             </p>
@@ -189,7 +189,7 @@ export default function AboutPage() {
               She founded Beauticate in 2014 as an independent editorial platform, with the depth and rigour of a major masthead and the freedom of something entirely her own. Today it reaches 3.1 million monthly touchpoints across editorial, podcast, newsletter, Instagram and e-commerce.
             </p>
             <p>
-              <Link href="/archive" className="font-sans text-[11px] tracking-[0.16em] uppercase text-gold hover:text-charcoal transition-colors inline-block">Read Sigourney&apos;s magazine work →</Link>
+              <Link href="/archive" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors inline-block">Read Sigourney&apos;s magazine work →</Link>
             </p>
           </div>
         </section>
@@ -216,7 +216,7 @@ export default function AboutPage() {
         {/* Our Editors & Experts */}
         <section className="bg-gray-50 border-t border-b border-gray-100 py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3 text-center">The Collective</p>
+            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted mb-3 text-center">The Collective</p>
             <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 text-center">Our editors &amp; experts</h2>
             <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-3xl mx-auto text-center mb-12">
               The Beauticate Collective is a curated group of editors and experts who shape the voice, perspective and vision of this platform. From beauty editors and cosmetic physicians to wellness coaches, nutritionists and interior designers, together they cover every pillar of a beautifully lived life.
@@ -227,8 +227,8 @@ export default function AboutPage() {
                   <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                     <Image src={p.image} alt={p.name} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, 360px" />
                   </div>
-                  <h3 className="font-serif text-lg text-charcoal">{p.instagram ? <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">{p.name}</a> : p.name}</h3>
-                  <p className="font-sans text-[11px] tracking-widest uppercase text-gold mt-0.5 mb-2">{p.role}</p>
+                  <h3 className="font-serif text-lg text-charcoal">{p.instagram ? <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-wine transition-colors">{p.name}</a> : p.name}</h3>
+                  <p className="font-sans text-[11px] tracking-widest uppercase text-muted mt-0.5 mb-2">{p.role}</p>
                   <p className="font-serif text-sm text-charcoal/70 leading-relaxed">{p.bio}</p>
                 </div>
               ))}
@@ -245,8 +245,8 @@ export default function AboutPage() {
                 <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                   <Image src={p.image} alt={p.name} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, 360px" />
                 </div>
-                <h3 className="font-serif text-lg text-charcoal">{p.instagram ? <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">{p.name}</a> : p.name}</h3>
-                <p className="font-sans text-[11px] tracking-widest uppercase text-gold mt-0.5 mb-2">{p.role}</p>
+                <h3 className="font-serif text-lg text-charcoal">{p.instagram ? <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-wine transition-colors">{p.name}</a> : p.name}</h3>
+                <p className="font-sans text-[11px] tracking-widest uppercase text-muted mt-0.5 mb-2">{p.role}</p>
                 <p className="font-serif text-sm text-charcoal/70 leading-relaxed">{p.bio}</p>
               </div>
             ))}

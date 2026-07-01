@@ -27,7 +27,7 @@ export default function ProductPage({ product: p }: Props) {
           <h1 className="text-2xl md:text-3xl mb-2">{p.title}</h1>
           <p className="text-xl mb-6">{formatted}</p>
           {p.editorial_note && (
-            <blockquote className="border-l-2 border-gold pl-4 italic text-charcoal-light text-sm mb-6">
+            <blockquote className="border-l-2 border-wine pl-4 italic text-charcoal-light text-sm mb-6">
               "{p.editorial_note}"
             </blockquote>
           )}

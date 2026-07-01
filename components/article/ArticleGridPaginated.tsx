@@ -43,7 +43,7 @@ function Card({ article }: { article: Article }) {
               {f.category.replace(/-/g, ' ')}
             </p>
           )}
-          <h3 className="font-serif text-lg md:text-xl leading-snug group-hover:text-gold transition-colors">
+          <h3 className="font-serif text-lg md:text-xl leading-snug group-hover:text-wine transition-colors">
             {f.title}
           </h3>
           {f.excerpt && (

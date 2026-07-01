@@ -22,9 +22,9 @@ export default function SearchBar({ onClose }: Props) {
         autoFocus type="search" value={query}
         onChange={e => setQuery(e.target.value)}
         placeholder="Search articles, products, brands..."
-        className="flex-1 bg-transparent border-b border-charcoal py-2 text-sm focus:outline-none focus:border-gold"
+        className="flex-1 bg-transparent border-b border-charcoal py-2 text-sm focus:outline-none focus:border-wine"
       />
-      <button type="submit" className="text-sm tracking-widest uppercase hover:text-gold">Search</button>
+      <button type="submit" className="text-sm tracking-widest uppercase hover:text-wine">Search</button>
       {onClose && (
         <button type="button" onClick={onClose} className="text-charcoal-light hover:text-charcoal">×</button>
       )}

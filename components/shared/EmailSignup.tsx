@@ -24,7 +24,7 @@ export default function EmailSignup() {
           Weekly beauty intelligence — trusted tips, expert voices, and what we're shopping now.
         </p>
         {status === 'success' ? (
-          <p className="text-gold text-sm">You're in. Welcome to the Beauticate world.</p>
+          <p className="text-wine text-sm">You're in. Welcome to the Beauticate world.</p>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
             <input

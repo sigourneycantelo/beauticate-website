@@ -104,7 +104,7 @@
 }
 .story-dot {
   position: absolute; left: -1.85rem; top: 5px; width: 11px; height: 11px;
-  border-radius: 9999px; background: #A8472A; box-shadow: 0 0 0 4px #F9FAFB;
+  border-radius: 9999px; background: #7a2733; box-shadow: 0 0 0 4px #F9FAFB;
 }
 .story-fade { display: none; }
 
