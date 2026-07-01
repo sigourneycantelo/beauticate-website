@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { EB_Garamond, Hanken_Grotesk } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
-import HeaderWithData from '@/components/layout/HeaderWithData'
+import MastheadData from '@/components/layout/MastheadData'
 
 // EB Garamond — headlines, intros, body, links
 const ebGaramond = EB_Garamond({
@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <ScrollReveal />
           <BetaTicker />
-          <HeaderWithData />
+          <MastheadData />
           <main id="main" data-pagefind-body>{children}</main>
           <Footer />
           <CartDrawer />
