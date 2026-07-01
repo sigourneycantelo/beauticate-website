@@ -20,6 +20,7 @@ import EditorNote from '@/components/mdx/EditorNote'
 import QuickAnswer from '@/components/mdx/QuickAnswer'
 import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import SplitRow from '@/components/mdx/SplitRow'
+import Caption from '@/components/mdx/Caption'
 import ProductTile from '@/components/shared/ProductTile'
 import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
@@ -88,7 +89,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
-    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand,
+    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand, Caption,
   }
 
   const bodyContent = withSubscribeBand(content)

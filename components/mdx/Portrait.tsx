@@ -19,7 +19,7 @@ export default function Portrait({ src, alt, caption, side = 'left' }: Props) {
         className="w-full h-auto rounded"
       />
       {caption && (
-        <span className="text-xs text-charcoal-light block mt-1 leading-snug">{caption}</span>
+        <span className="font-sans text-[10px] tracking-[0.2em] uppercase leading-snug block mt-2" style={{ color: '#9a9190' }}>{caption}</span>
       )}
     </span>
   )

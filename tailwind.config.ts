@@ -12,13 +12,14 @@ const config: Config = {
       colors: {
         // Beauticate brand colours — update with exact hex once confirmed
         paper:     '#FFFFFF',
-        parchment: '#FBF9F4',
+        parchment: '#F5F3F0',
         ink:       '#1C1A17',
         // product-card tile — matches the warm grey Shopify product-photo background
         // so shop shots sit natively and white article shots multiply onto it
         tile:      '#EAE9E7',
         eucalypt:  '#8E9A82',
         teal:      '#104760',
+        chocolate:  '#3a2a22',
         // brand accents — use sparingly
         camel:      '#DBCEB9',
         terracotta: '#B5613A',
@@ -44,8 +45,21 @@ const config: Config = {
             h1: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' },
             h2: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em', fontWeight: '600' },
             h3: { fontFamily: 'var(--font-serif)', fontWeight: '500' },
-            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.34em', fontSize: '0.7rem', fontWeight: '400' },
+            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.34em', fontSize: '0.7rem', fontWeight: '400', color: '#3a2a22' },
             p:  { fontFamily: 'var(--font-serif)' },
+            figcaption: {
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.625rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#9a9190',
+              marginTop: '0.5rem',
+              a: {
+                color: '#9a9190',
+                textDecoration: 'none',
+                '&:hover': { color: '#3d3d3d' },
+              },
+            },
           },
         },
       },
