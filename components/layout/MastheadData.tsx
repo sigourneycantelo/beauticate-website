@@ -4,6 +4,7 @@ import { getArticlesByCategory } from '@/lib/content'
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
 function cards(cat: string, sub: string | undefined, eyebrow: string): MegaCard[] {
   return getArticlesByCategory(cat, sub)
+    .filter((a): a is NonNullable<typeof a> => Boolean(a))
     .slice(0, 4)
     .map((a) => {
       const f = a.frontmatter as Record<string, unknown> & {
