@@ -11,7 +11,7 @@ const config: Config = {
     extend: {
       colors: {
         // Beauticate brand colours — update with exact hex once confirmed
-        paper:     '#f6f5f2',
+        paper:     '#FFFFFF',
         parchment: '#F5F3F0',
         ink:       '#2a2621',
         // v15 canonical accents (mock is the source of truth)
