@@ -13,8 +13,10 @@ function HeartIcon() {
 export interface ProductTileProps {
   /** Omit for products with no link — the card renders un-clickable. */
   href?: string
-  /** External (affiliate) link — opens in a new tab and gets nofollow. */
+  /** External (affiliate) link — opens in a new tab and gets rel="sponsored". */
   external?: boolean
+  /** First-party store link (our own shop on another domain) — followed, not sponsored. */
+  follow?: boolean
   /** Primary deep-etched / product image. */
   primarySrc?: string
   primaryAlt?: string
@@ -49,7 +51,7 @@ export interface ProductTileProps {
  *  • Affiliate      → no hover; the card simply clicks out to the retailer.
  */
 export default function ProductTile({
-  href, external = false,
+  href, external = false, follow = false,
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, cover = false,
   cornerLabel, brand, name, price, priceSuffix, className = '', hideMeta = false,
@@ -124,7 +126,10 @@ export default function ProductTile({
   if (!href) return <div className={cls}>{inner}</div>
 
   return external ? (
-    <a href={href} target="_blank" rel="noopener noreferrer nofollow" className={cls}>
+    // Affiliate/paid outbound: rel="sponsored" is Google's recommended value, and
+    // we keep the referrer (no noreferrer) so affiliate networks can attribute the sale.
+    // First-party store links (follow) stay followed so equity flows to our own shop.
+    <a href={href} target="_blank" rel={follow ? 'noopener' : 'sponsored noopener'} className={cls}>
       {inner}
     </a>
   ) : (

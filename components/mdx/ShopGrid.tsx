@@ -4,6 +4,8 @@ import { retailerFromUrl } from '@/lib/retailer'
 
 interface ShopItemProps {
   image: string
+  /** Image alt text. Falls back to the product name when omitted. */
+  alt?: string
   /** Combined brand + product name, e.g. "Maison Balzac Le Rêve Candle" */
   name: string
   price?: string
@@ -15,6 +17,8 @@ interface ShopItemProps {
   brand?: string
   /** Retailer for the "shop via {retailer}" cue. Auto-detected from the URL if omitted. */
   retailer?: string
+  /** First-party store link (e.g. our own beauticate.shop) — rendered as a normal followed link, not sponsored. */
+  follow?: boolean
   /** Lifestyle/model shot — fills the tile edge-to-edge (no parchment frame). */
   cover?: boolean
 }
@@ -25,7 +29,7 @@ interface ShopItemProps {
  * difference is the affiliate cue and that it clicks out to the retailer with
  * no hover state.
  */
-export function ShopItem({ image, name, price, url, handle, brand, retailer, cover }: ShopItemProps) {
+export function ShopItem({ image, alt, name, price, url, handle, brand, retailer, follow, cover }: ShopItemProps) {
   // Our own product → internal link + "In our shop". Otherwise affiliate/external.
   const internal = !!handle
   const href = internal ? `/shop/products/${handle}` : url
@@ -39,9 +43,10 @@ export function ShopItem({ image, name, price, url, handle, brand, retailer, cov
     <ProductTile
       href={href}
       external={!internal && !!url}
+      follow={follow}
       cover={cover}
       primarySrc={image}
-      primaryAlt={name}
+      primaryAlt={alt ?? name}
       cornerLabel={cornerLabel}
       brand={brand}
       name={name}
