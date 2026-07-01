@@ -161,10 +161,11 @@
 .mh-icon-btn:hover{ color:var(--mh-wine); opacity:1; }
 .mh-icon-btn svg{ width:18px; height:18px; }
 
-.mh-wordmark{
-  justify-self:center; font-weight:300; font-size:23px; letter-spacing:.30em;
-  text-transform:uppercase; color:var(--mh-ink); padding-left:.30em; white-space:nowrap;
-}
+.mh-wordmark{ justify-self:center; display:flex; align-items:center; }
+.mh-logo{ display:block; width:auto; }
+.mh-logo-lg{ height:19px; }
+.mh-logo-mini{ height:14px; }
+.mh-logo-drawer{ height:16px; }
 
 .mh-primary{ position:relative; height:var(--mh-nav-h); display:flex; align-items:center; justify-content:center; }
 .mh-pillars{ list-style:none; margin:0; padding:0; display:flex; align-items:center; gap:34px; height:100%; }
@@ -254,7 +255,7 @@
   .mh-util-left .mh-social, .mh-util-left .mh-util-link{ display:none; }
   .mh-hamburger{ display:flex; justify-self:start; }
   .mh-util-right .mh-signin{ display:none; }
-  .mh-wordmark{ font-size:19px; letter-spacing:.24em; }
+  .mh-logo-lg{ height:17px; }
   .mh-primary{ display:none; }
   .mh-scrolled .mh-utility{ height:56px; opacity:1; border-color:var(--mh-line-soft); }
 }
