@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
@@ -10,6 +9,8 @@ import Portrait from '@/components/mdx/Portrait'
 import PortraitQuote from '@/components/mdx/PortraitQuote'
 import ArticleGrid from './ArticleGrid'
 import AuthorByline from './AuthorByline'
+import ArticleHero from './ArticleHero'
+import ShareButtons from './ShareButtons'
 import { resolveSchemaType } from '@/lib/seo'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
@@ -20,6 +21,7 @@ import QuickAnswer from '@/components/mdx/QuickAnswer'
 import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import SplitRow from '@/components/mdx/SplitRow'
 import ProductTile from '@/components/shared/ProductTile'
+import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 
 interface Props {
@@ -30,19 +32,35 @@ interface Props {
   relatedArticles: any[]
 }
 
+// Inject <SubscribeBand /> at the paragraph break nearest to 50% through the content.
+function withSubscribeBand(content: string): string {
+  const marker = '\n\n<SubscribeBand />\n\n'
+  // Don't inject if already present
+  if (content.includes('<SubscribeBand')) return content
+  const mid = Math.floor(content.length / 2)
+  let best = -1
+  let bestDist = Infinity
+  let pos = 0
+  while ((pos = content.indexOf('\n\n', pos)) !== -1) {
+    const dist = Math.abs(pos - mid)
+    if (dist < bestDist) { bestDist = dist; best = pos }
+    pos += 2
+  }
+  if (best === -1) return content
+  return content.slice(0, best) + marker + content.slice(best + 2)
+}
+
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
+  const isLandscape = !!f.hero_image
+  const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
-  // Inline product card usable in MDX as <InlineProduct handle="reboot" />
   function InlineProduct({ handle }: { handle: string }) {
     const shopProduct = shopProductMap[handle]
     const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
     return <ProductEmbed product={productLink} shopProduct={shopProduct} />
   }
 
-  // <ShopItem handle="..."> for our own products → "In our shop" card using the
-  // article's (tightly-cropped) product image for consistent sizing, plus the live
-  // Shopify price and an internal link. Falls back to the plain ShopItem for affiliates.
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
     const sp = props.handle ? shopProductMap[props.handle] : undefined
     if (!sp) return <ShopItem {...props} />
@@ -50,8 +68,6 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     const price = mp
       ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
       : undefined
-    // Use the article's cut-out when provided; otherwise fall back to the live
-    // Shopify product photo (second image revealed on hover, like shop cards).
     const imgs = sp.images?.nodes ?? []
     const usingShopImage = !props.image
     return (
@@ -69,64 +85,59 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     )
   }
 
-  const mdxComponents = { YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow }
+  const mdxComponents = {
+    YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
+    InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
+    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand,
+  }
 
-  // Cap hero display width to avoid upscaling a low-res holding shot (defaults to 1200px).
-  const heroMaxWidth = f.hero_max_width ?? 1200
+  const bodyContent = withSubscribeBand(content)
 
   return (
-    <article>
-      {/* Hero — capped to hero_max_width to match the source resolution (never upscaled/stretched) */}
-      {f.featured_image && (
-        <div
-          className="relative w-full mx-auto aspect-[16/9] bg-cream-100"
-          style={{ maxWidth: `${heroMaxWidth}px` }}
-        >
-          <Image
-            src={f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            sizes={`(max-width: ${heroMaxWidth}px) 100vw, ${heroMaxWidth}px`}
-            className="object-cover object-center"
-            priority
-          />
-        </div>
-      )}
+    <article className="pb-16 md:pb-0">
+      {/* Hero: full-bleed landscape or editorial split */}
+      <ArticleHero frontmatter={f} />
 
       <div className="px-[clamp(20px,6vw,104px)] py-10">
-        {/* Breadcrumb */}
-        <nav className="text-xs text-charcoal-light mb-6 flex gap-2">
-          <Link href={`/${f.category}`} className="hover:text-gold capitalize">
-            {f.category.replace(/-/g, ' ')}
-          </Link>
-          {f.subcategory && (
-            <>
-              <span>/</span>
-              <Link href={`/${f.category}/${f.subcategory}`} className="hover:text-gold capitalize">
-                {f.subcategory.replace(/-/g, ' ')}
+        {/* Title / meta — only in landscape mode; split mode has them in the hero panel */}
+        {isLandscape && (
+          <>
+            <nav className="text-[11px] font-sans tracking-[0.18em] uppercase text-charcoal-light mb-6 flex gap-2 flex-wrap">
+              <Link href={`/${f.category}`} className="hover:text-charcoal capitalize transition-colors">
+                {f.category.replace(/-/g, ' ')}
               </Link>
-            </>
-          )}
-        </nav>
+              {f.subcategory && (
+                <>
+                  <span>/</span>
+                  <Link href={`/${f.category}/${f.subcategory}`} className="hover:text-charcoal capitalize transition-colors">
+                    {f.subcategory.replace(/-/g, ' ')}
+                  </Link>
+                </>
+              )}
+            </nav>
 
-        {/* Title */}
-        <h1 className="mb-4">{f.title}</h1>
-        {f.excerpt && <p className="text-lg text-charcoal-light mb-6 leading-relaxed">{f.excerpt}</p>}
+            <h1 className="mb-4">{f.title}</h1>
+            {f.excerpt && (
+              <p className="font-serif text-[18px] leading-[1.65] text-charcoal-light mb-6">
+                {f.excerpt}
+              </p>
+            )}
 
-        {/* Meta */}
-        <AuthorByline
-          name={f.author ?? 'Beauticate Editorial'}
-          date={f.date_published}
-          readingTime={f.reading_time}
-          affiliateDisclosure={f.affiliate_disclosure}
-          showDate={resolveSchemaType(f) === 'NewsArticle'}
-          lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
-        />
+            <AuthorByline
+              name={f.author ?? 'Beauticate Editorial'}
+              date={f.date_published}
+              readingTime={f.reading_time}
+              affiliateDisclosure={f.affiliate_disclosure}
+              showDate={resolveSchemaType(f) === 'NewsArticle'}
+              lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
+            />
+          </>
+        )}
 
-        {/* Body */}
-        <div className="prose prose-lg max-w-none">
+        {/* Body — capped measure for readability */}
+        <div className="prose prose-lg max-w-[680px]">
           <MDXRemote
-            source={content}
+            source={bodyContent}
             components={mdxComponents}
             options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid] } }}
           />
@@ -134,7 +145,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* Shop the Edit */}
         {productLinks.length > 0 && (
-          <div className="mt-12 pt-10 border-t border-cream-200">
+          <div className="mt-12 pt-10 border-t border-cream-200 max-w-[680px]">
             <h4 className="font-sans text-xs tracking-[0.34em] uppercase mb-6">Shop the Edit</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {productLinks.map((p, i) => (
@@ -150,20 +161,31 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* FAQ Panel */}
         {f.faqs && f.faqs.length > 0 && (
-          <FAQPanel faqs={f.faqs} title={f.faqs_title} />
+          <div className="max-w-[680px]">
+            <FAQPanel faqs={f.faqs} title={f.faqs_title} />
+          </div>
         )}
 
         {/* Affiliate disclosure */}
         {f.affiliate_disclosure && (
-          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
+          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200 max-w-[680px]">
             This article contains affiliate links. Beauticate may receive a small commission on purchases made through these links at no extra cost to you.
           </p>
         )}
+
+        {/* Share */}
+        <div className="max-w-[680px]">
+          <ShareButtons
+            url={articleUrl}
+            title={f.title}
+            image={f.featured_image}
+          />
+        </div>
       </div>
 
       {/* Related articles */}
       {relatedArticles.length > 0 && (
-        <div className="border-t border-cream-200 mt-8">
+        <div className="border-t border-cream-200">
           <div className="px-[clamp(20px,6vw,104px)] py-10">
             <h2 className="mb-8">You might also like</h2>
             <ArticleGrid articles={relatedArticles} />
