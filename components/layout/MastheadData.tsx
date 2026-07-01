@@ -7,13 +7,11 @@ function cards(cat: string, sub: string | undefined, eyebrow: string): MegaCard[
     .filter((a): a is NonNullable<typeof a> => Boolean(a))
     .slice(0, 4)
     .map((a) => {
-      const f = a.frontmatter as Record<string, unknown> & {
-        title: string; slug: string; category: string; subcategory?: string
-        featured_image?: string; featured_image_alt?: string; excerpt?: string
-      }
+      const f = a.frontmatter
       const url = f.subcategory ? `/${f.category}/${f.subcategory}/${f.slug}` : `/${f.category}/${f.slug}`
-      const meta = typeof f.excerpt === 'string' && f.excerpt
-        ? f.excerpt.replace(/\s+/g, ' ').trim().slice(0, 52)
+      const rawExcerpt = (f as { excerpt?: string }).excerpt
+      const meta = typeof rawExcerpt === 'string' && rawExcerpt
+        ? rawExcerpt.replace(/\s+/g, ' ').trim().slice(0, 52)
         : undefined
       return { title: f.title, href: url, image: f.featured_image, imageAlt: f.featured_image_alt || f.title, eyebrow, meta }
     })
