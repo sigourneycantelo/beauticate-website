@@ -147,9 +147,10 @@ def parse_wxr(xml_path: str) -> dict:
             print(f'  WARN HTML parse error for {slug}: {e}', file=sys.stderr)
             continue
 
-        images = [(after_para, filename, alt)
-                  for kind, after_para, filename, alt in parser.items
-                  if kind == 'img']
+        # Filter image items before unpacking (paragraph items are 3-tuples, image items 4-tuples)
+        images = [(item[1], item[2], item[3])
+                  for item in parser.items
+                  if item[0] == 'img']
 
         if not images:
             continue
