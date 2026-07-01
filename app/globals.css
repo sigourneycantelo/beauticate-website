@@ -91,3 +91,40 @@
     @apply font-sans text-[10px] tracking-[0.25em] uppercase text-charcoal-light;
   }
 }
+
+/* ── About — "Our Story" timeline ───────────────────────────────
+   Vertical on mobile, horizontal scroll-snap rail on desktop. The connecting
+   line draws itself on reveal. Fully visible with JS off or reduced-motion. */
+.story-track { display: flex; flex-direction: column; gap: 2.75rem; list-style: none; margin: 0; padding: 0; }
+.milestone { position: relative; padding-left: 1.85rem; }
+.story-line {
+  position: absolute; background: rgba(28, 26, 23, .16);
+  left: 5px; top: 6px; bottom: 6px; width: 2px;
+  transform: scaleY(0); transform-origin: top; transition: transform 1.1s ease;
+}
+.story-dot {
+  position: absolute; left: -1.85rem; top: 5px; width: 11px; height: 11px;
+  border-radius: 9999px; background: #A8472A; box-shadow: 0 0 0 4px #F9FAFB;
+}
+.story-fade { display: none; }
+
+/* Reveal state — only applied once JS is present, so no-JS shows everything. */
+.story--js .milestone { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.story--js.is-shown .milestone { opacity: 1; transform: none; }
+.story--js.is-shown .story-line { transform: scaleY(1); }
+
+@media (min-width: 768px) {
+  .story-rail { overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: .5rem; }
+  .story-track { flex-direction: row; gap: 0; }
+  .milestone { flex: 0 0 clamp(220px, 24vw, 282px); scroll-snap-align: start; padding-left: 0; padding-right: 2rem; padding-top: 2.9rem; }
+  .story-line { left: 0; right: 0; top: 13px; bottom: auto; width: auto; height: 2px; transform: scaleX(0); transform-origin: left; }
+  .story--js.is-shown .story-line { transform: scaleX(1); }
+  .story-dot { left: 0; top: 8px; }
+  .story-fade { display: block; position: absolute; top: 0; right: -1px; width: 56px; height: 100%; pointer-events: none;
+    background: linear-gradient(to right, rgba(249, 250, 251, 0), #F9FAFB); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story--js .milestone { opacity: 1 !important; transform: none !important; transition: none; }
+  .story-line { transform: none !important; transition: none; }
+}

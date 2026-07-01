@@ -36,3 +36,6 @@ public/pagefind/
 
 # WP audit cache
 .cache/
+
+# WordPress XML export — too large for git (214MB), local only
+migration/
