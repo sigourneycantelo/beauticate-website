@@ -22,6 +22,7 @@ import time
 import urllib.request
 import urllib.error
 from pathlib import Path
+from typing import Optional
 
 CONTENT_DIR = Path(__file__).parent.parent / 'content'
 OUT_FILE = Path(__file__).parent.parent / 'data' / 'wp-live-intros.json'
@@ -69,7 +70,7 @@ def find_articles():
     return articles
 
 
-def fetch_html(url: str) -> str | None:
+def fetch_html(url: str) -> Optional[str]:
     req = urllib.request.Request(url, headers=HEADERS)
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
