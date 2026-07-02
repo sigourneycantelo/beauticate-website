@@ -260,3 +260,11 @@
   .mh-scrolled .mh-utility{ height:56px; opacity:1; border-color:var(--mh-line-soft); }
 }
 @media(prefers-reduced-motion:reduce){ .mh *{ animation-duration:.001ms!important; transition-duration:.001ms!important; } }
+
+/* Shop sub-nav sticks below the collapsed masthead */
+.shop-subnav-sticky{
+  position:sticky; top:calc(var(--mh-nav-h, 52px) + 1px); z-index:999;
+}
+@media(max-width:900px){
+  .shop-subnav-sticky{ top:57px; }
+}

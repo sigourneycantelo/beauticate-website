@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 
 export type MegaCard = { title: string; href: string; image?: string; imageAlt?: string; eyebrow: string; meta?: string }
@@ -29,7 +30,8 @@ function SocialIcon({ d }: { d: string }) {
   return <svg viewBox="0 0 24 24" {...s}><circle cx="12" cy="12" r="9.2" /><path d="M7.6 10.2c2.8-.7 5.8-.5 8.3 1M8.1 13c2.3-.5 4.6-.3 6.6.9M8.7 15.5c1.8-.4 3.4-.2 4.9.7" /></svg>
 }
 
-function Wordmark({ className = '', priority = false }: { className?: string; priority?: boolean }) {
+function Wordmark({ className = '', priority = false, shop = false }: { className?: string; priority?: boolean; shop?: boolean }) {
+  if (shop) return <Image src="/beauticate-shop-logo.png" alt="Beauticate Shop" width={600} height={240} priority={priority} className={className} style={{ mixBlendMode: 'multiply' }} />
   return <Image src="/logo-dark.png" alt="Beauticate" width={997} height={135} priority={priority} className={className} />
 }
 
@@ -96,6 +98,8 @@ function PillarItem({ p }: { p: Pillar }) {
 }
 
 export default function Masthead({ pillars }: { pillars: Pillar[] }) {
+  const pathname = usePathname()
+  const isShop = pathname?.startsWith('/shop') ?? false
   const [scrolled, setScrolled] = useState(false)
   const [drawer, setDrawer] = useState(false)
   const [openKey, setOpenKey] = useState<string | null>(null)
@@ -133,7 +137,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
           <Link href="/about" className="mh-util-link">About</Link>
         </div>
 
-        <Link href="/" className="mh-wordmark" aria-label="Beauticate home"><Wordmark className="mh-logo mh-logo-lg" priority /></Link>
+        <Link href={isShop ? '/shop' : '/'} className="mh-wordmark" aria-label={isShop ? 'Beauticate Shop' : 'Beauticate home'}><Wordmark className="mh-logo mh-logo-lg" priority shop={isShop} /></Link>
 
         <div className="mh-util-right">
           <Link href="/search" className="mh-icon-btn" aria-label="Search">
@@ -146,7 +150,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
 
       {/* Primary tier */}
       <nav className="mh-primary" aria-label="Primary">
-        <Link href="/" className="mh-brand-mini" aria-hidden="true" tabIndex={-1}><Wordmark className="mh-logo mh-logo-mini" /></Link>
+        <Link href={isShop ? '/shop' : '/'} className="mh-brand-mini" aria-hidden="true" tabIndex={-1}><Wordmark className="mh-logo mh-logo-mini" shop={isShop} /></Link>
         <ul className="mh-pillars">
           {pillars.map(p => <PillarItem key={p.key} p={p} />)}
         </ul>
@@ -156,7 +160,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
       <div className={`mh-scrim${drawer ? ' open' : ''}`} onClick={() => setDrawer(false)} aria-hidden="true" />
       <aside className={`mh-drawer${drawer ? ' open' : ''}`} aria-label="Menu">
         <div className="mh-drawer-head">
-          <Wordmark className="mh-logo mh-logo-drawer" />
+          <Wordmark className="mh-logo mh-logo-drawer" shop={isShop} />
           <button className="mh-drawer-close" aria-label="Close menu" onClick={() => setDrawer(false)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><line x1="6" y1="6" x2="18" y2="18" /><line x1="18" y1="6" x2="6" y2="18" /></svg>
           </button>

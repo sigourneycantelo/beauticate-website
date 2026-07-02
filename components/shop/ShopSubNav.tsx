@@ -18,8 +18,10 @@ export default function ShopSubNav() {
 
   return (
     <div
-      className="bg-white"
-      style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }}
+      className="bg-white shop-subnav-sticky"
+      style={{
+        borderBottom: '1px solid rgba(28,26,23,.10)',
+      }}
     >
       <nav
         aria-label="Shop navigation"
