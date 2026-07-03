@@ -35,16 +35,26 @@ interface Props {
   relatedArticles: any[]
 }
 
-// Inject <SubscribeBand /> at the paragraph break nearest to 50% through the content.
 function withSubscribeBand(content: string): string {
   const marker = '\n\n<SubscribeBand />\n\n'
-  // Don't inject if already present
   if (content.includes('<SubscribeBand')) return content
+  const textOnly = content.replace(/<[^>]+>/g, '').replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+  if (textOnly.length < 1500) return content
+
   const mid = Math.floor(content.length / 2)
+  const headingRe = /^#{1,4}\s/
+  const componentRe = /^<[A-Z]/
+
   let best = -1
   let bestDist = Infinity
   let pos = 0
   while ((pos = content.indexOf('\n\n', pos)) !== -1) {
+    const after = content.slice(pos + 2)
+    const nextLine = after.split('\n')[0]
+    if (headingRe.test(nextLine) || componentRe.test(nextLine)) {
+      pos += 2
+      continue
+    }
     const dist = Math.abs(pos - mid)
     if (dist < bestDist) { bestDist = dist; best = pos }
     pos += 2
