@@ -3,10 +3,9 @@ import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 const ITEMS: { text: string; href: string }[] = [
-  { text: 'Beautiful Inside, the podcast, new episode every Tuesday', href: '/vodcast' },
+  { text: 'Listen to the podcast', href: '/vodcast' },
   { text: 'Shop the winter edit', href: '/shop' },
   { text: 'Beauticate Insiders get early access, subscribe', href: '/subscribe' },
-  { text: 'Beautiful Inside, new episodes every Tuesday', href: '/vodcast' },
 ]
 
 export default function BetaTicker() {
