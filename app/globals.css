@@ -66,6 +66,19 @@
 [class*="youtube"] .crt-source-icon,
 .crt-source-youtube { background-color: #2c2c2c !important; }
 
+/* Interview pull-quotes — italic-only paragraphs promoted to 1.5× bold-italic */
+.prose .interview-pull-quote {
+  font-size: 1.5em;
+  line-height: 1.35;
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
+}
+.prose .interview-pull-quote em {
+  font-style: inherit;
+}
+
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 bg-ink text-paper text-xs font-sans tracking-[0.34em] uppercase transition-colors hover:bg-ink/80;

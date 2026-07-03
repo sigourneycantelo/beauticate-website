@@ -21,9 +21,11 @@ import QuickAnswer from '@/components/mdx/QuickAnswer'
 import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import SplitRow from '@/components/mdx/SplitRow'
 import Caption from '@/components/mdx/Caption'
+import InlineImage from '@/components/mdx/InlineImage'
 import ProductTile from '@/components/shared/ProductTile'
 import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
+import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -89,7 +91,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
-    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand, Caption,
+    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand, Caption, InlineImage,
   }
 
   const bodyContent = withSubscribeBand(content)
@@ -140,7 +142,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid] } }}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes] } }}
           />
         </div>
 
