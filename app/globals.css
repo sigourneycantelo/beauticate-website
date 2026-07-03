@@ -166,9 +166,9 @@
 .mh-logo-lg{ height:24px; }
 .mh-logo-mini{ height:14px; }
 .mh-logo-drawer{ height:16px; }
-.mh-logo-shop.mh-logo-lg{ height:40px; }
-.mh-logo-shop.mh-logo-mini{ height:22px; }
-.mh-logo-shop.mh-logo-drawer{ height:26px; }
+.mh-logo-shop.mh-logo-lg{ height:56px; }
+.mh-logo-shop.mh-logo-mini{ height:28px; }
+.mh-logo-shop.mh-logo-drawer{ height:32px; }
 
 .mh-primary{ position:relative; height:var(--mh-nav-h); display:flex; align-items:center; justify-content:center; }
 .mh-pillars{ list-style:none; margin:0; padding:0; display:flex; align-items:center; gap:34px; height:100%; }
@@ -199,10 +199,10 @@
   border-top:1px solid var(--mh-line-soft); border-bottom:1px solid var(--mh-line);
   box-shadow:0 18px 40px -28px rgba(42,38,33,.35);
   opacity:0; visibility:hidden; transform:translateY(-8px);
-  transition:opacity .18s ease,transform .18s ease,visibility .18s; z-index:5;
+  transition:opacity .22s ease .05s,transform .22s ease .05s,visibility .22s .05s; z-index:5;
   pointer-events:none;
 }
-.mh-pillar:hover .mh-mega, .mh-pillar:focus-within .mh-mega{ opacity:1; visibility:visible; transform:translateY(0); transition-delay:.2s; pointer-events:auto; }
+.mh-pillar:hover .mh-mega, .mh-pillar:focus-within .mh-mega{ opacity:1; visibility:visible; transform:translateY(0); transition-delay:.35s; pointer-events:auto; }
 .mh-mega-inner{ max-width:1180px; margin:0 auto; padding:36px 34px 40px; display:grid; grid-template-columns:216px 1fr; gap:52px; align-items:start; }
 .mh-subs{ border-right:1px solid var(--mh-line-soft); padding-right:8px; }
 .mh-eyebrow{ display:block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--mh-muted); margin-bottom:16px; }
@@ -219,7 +219,7 @@
 .mh-card-img{ display:block; position:relative; aspect-ratio:4/5; width:100%; margin-bottom:11px; overflow:hidden; background:var(--mh-greige); }
 .mh-card-obj{ object-fit:cover; }
 .mh-card-eye{ display:none; }
-.mh-card-title{ display:block; font-family:var(--font-serif); font-weight:400; font-size:13.5px; line-height:1.3; color:var(--mh-ink); margin-bottom:5px; }
+.mh-card-title{ display:block; font-family:var(--font-serif); font-weight:400; font-size:13.5px; line-height:1.3; color:var(--mh-ink); margin-bottom:5px; text-transform:none; letter-spacing:0; }
 .mh-card:hover .mh-card-title{ text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:.5px; }
 .mh-card-meta{ display:none; }
 
@@ -260,7 +260,7 @@
   .mh-hamburger{ display:flex; justify-self:start; }
   .mh-util-right .mh-signin{ display:none; }
   .mh-logo-lg{ height:17px; }
-  .mh-logo-shop.mh-logo-lg{ height:28px; }
+  .mh-logo-shop.mh-logo-lg{ height:38px; }
   .mh-primary{ display:none; }
   .mh-scrolled .mh-utility{ height:56px; opacity:1; border-color:var(--mh-line-soft); }
 }
