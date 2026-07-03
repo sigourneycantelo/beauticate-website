@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/build-pagefind-index.mjs && next build",
+    "build": "node scripts/build-pagefind-index.mjs && node scripts/build-chat-index.mjs && next build",
     "build:search": "node scripts/build-pagefind-index.mjs",
+    "build:chat": "node scripts/build-chat-index.mjs",
     "start": "next start",
     "lint": "next lint",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",

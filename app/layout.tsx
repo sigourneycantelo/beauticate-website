@@ -25,6 +25,7 @@ import CartProvider from '@/components/shop/CartProvider'
 import ScrollReveal from '@/components/shared/ScrollReveal'
 import BetaTicker from '@/components/home/BetaTicker'
 import CartDrawer from '@/components/shop/CartDrawer'
+import AskSigLauncher from '@/components/chat/AskSigLauncher'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main id="main" data-pagefind-body>{children}</main>
           <Footer />
           <CartDrawer />
+          <AskSigLauncher />
         </CartProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
