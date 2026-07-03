@@ -128,11 +128,20 @@ export async function POST(req: Request) {
     const encoder = new TextEncoder()
     const decoder = new TextDecoder()
 
+    function cleanText(text: string): string {
+      return text
+        .replace(/\bgenuinely\b/gi, 'really')
+        .replace(/—/g, ', ')   // em dash —
+        .replace(/–/g, '-')    // en dash –
+    }
+
     const readable = new ReadableStream({
       async start(controller) {
         try {
           const reader = anthropicRes.body!.getReader()
           let buffer = ''
+          let fullText = ''
+          let flushed = 0
 
           while (true) {
             const { done, value } = await reader.read()
@@ -153,12 +162,25 @@ export async function POST(req: Request) {
                   event.type === 'content_block_delta' &&
                   event.delta?.type === 'text_delta'
                 ) {
-                  controller.enqueue(
-                    encoder.encode(`data: ${JSON.stringify({ text: event.delta.text })}\n\n`)
-                  )
+                  fullText += event.delta.text
+                  const cleaned = cleanText(fullText)
+                  const safe = cleaned.slice(0, Math.max(0, cleaned.length - 15))
+                  if (safe.length > flushed) {
+                    controller.enqueue(
+                      encoder.encode(`data: ${JSON.stringify({ text: safe.slice(flushed) })}\n\n`)
+                    )
+                    flushed = safe.length
+                  }
                 }
               } catch {}
             }
+          }
+
+          const final = cleanText(fullText)
+          if (final.length > flushed) {
+            controller.enqueue(
+              encoder.encode(`data: ${JSON.stringify({ text: final.slice(flushed) })}\n\n`)
+            )
           }
 
           controller.enqueue(encoder.encode('data: [DONE]\n\n'))
