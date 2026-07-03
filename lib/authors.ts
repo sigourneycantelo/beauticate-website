@@ -15,7 +15,7 @@ const AUTHORS: Author[] = [
     name: 'Sigourney Cantelo',
     slug: 'sigourney-cantelo',
     role: 'Founder & Editor-in-Chief',
-    photo: '/images/authors/sigourney-cantelo.jpg',
+    photo: '/images/authors/sigourney-cantelo.png',
     instagram: 'https://www.instagram.com/sigourneycantelo/',
     linkedin: 'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
     sameAs: [
@@ -69,7 +69,7 @@ const AUTHORS: Author[] = [
     name: 'Jacqueline Alwill',
     slug: 'jacqueline-alwill',
     role: 'Nutrition Expert',
-    photo: '/images/authors/jacqueline-alwill.png',
+    photo: '/images/authors/jacquiline-alwill.png',
     instagram: 'https://www.instagram.com/brownpapernutrition/',
     sameAs: ['https://www.instagram.com/brownpapernutrition/'],
   },
@@ -77,7 +77,7 @@ const AUTHORS: Author[] = [
     name: 'Camilla Thompson',
     slug: 'camilla-thompson',
     role: 'Wellness Editor',
-    photo: '/images/authors/camilla-thompson.png',
+    photo: '/images/authors/camille-thomson.png',
     instagram: 'https://www.instagram.com/camilla_thompson/',
     sameAs: ['https://www.instagram.com/camilla_thompson/'],
   },
@@ -109,7 +109,7 @@ const AUTHORS: Author[] = [
     name: 'Dr Amy Chahal',
     slug: 'dr-amy-chahal',
     role: 'Aesthetics Expert',
-    photo: '/images/authors/dr-amy-chahal.png',
+    photo: '/images/authors/amy-chahal.png',
     instagram: 'https://www.instagram.com/drachahal/',
     sameAs: ['https://www.instagram.com/drachahal/'],
   },
@@ -117,7 +117,7 @@ const AUTHORS: Author[] = [
     name: 'Dr Leanne Girgis',
     slug: 'dr-leanne-girgis',
     role: 'Health Expert',
-    photo: '/images/authors/dr-leanne-girgis.png',
+    photo: '/images/authors/leanne-girgis.png',
     instagram: 'https://www.instagram.com/leannegirgis/',
     sameAs: ['https://www.instagram.com/leannegirgis/'],
   },
@@ -171,6 +171,7 @@ const AUTHORS: Author[] = [
     name: 'Kristina Zhou',
     slug: 'kristina-zhou',
     role: 'Contributing Writer',
+    photo: '/images/authors/kristina-zhou.png',
   },
   {
     name: 'Yadira Galarza Cauchi',
@@ -181,6 +182,7 @@ const AUTHORS: Author[] = [
     name: 'Rikki Hodge-Smith',
     slug: 'rikki-hodge-smith',
     role: 'Managing Editor',
+    photo: '/images/authors/rikki-hodge-smith.png',
     instagram: 'https://www.instagram.com/_rikkishell/',
     sameAs: [
       'https://www.instagram.com/_rikkishell/',
@@ -192,6 +194,7 @@ const AUTHORS: Author[] = [
     name: 'Tess Schlink',
     slug: 'tess-schlink',
     role: 'Contributing Writer',
+    photo: '/images/authors/tess-schlink.png',
     instagram: 'https://www.instagram.com/tessdevivie/',
     linkedin: 'https://www.linkedin.com/in/tess-de-vivie/',
     sameAs: [
@@ -204,6 +207,7 @@ const AUTHORS: Author[] = [
     name: 'Emily Algar',
     slug: 'emily-algar',
     role: 'Contributing Writer',
+    photo: '/images/authors/emily-algar.png',
     instagram: 'https://www.instagram.com/emilyalgar/',
     sameAs: [
       'https://www.instagram.com/emilyalgar/',
@@ -214,6 +218,7 @@ const AUTHORS: Author[] = [
     name: 'Chrisanthi Kaliviotis',
     slug: 'chrisanthi-kaliviotis',
     role: 'Contributing Writer',
+    photo: '/images/authors/Christanthi-Kaliviotis.png',
     instagram: 'https://www.instagram.com/chrisanthi_kal/',
     linkedin: 'https://www.linkedin.com/in/chrisanthi-kaliviotis-933924126',
     sameAs: [
@@ -235,6 +240,7 @@ const AUTHORS: Author[] = [
     name: 'Madeleine Boyd',
     slug: 'madeleine-boyd',
     role: 'Contributing Writer',
+    photo: '/images/authors/madeleine-boyd.png',
     instagram: 'https://www.instagram.com/madeleine_boyd/',
     linkedin: 'https://www.linkedin.com/in/madeleine-boyd-35133639/',
     sameAs: [
@@ -263,11 +269,13 @@ const AUTHORS: Author[] = [
     name: 'Stephanie Russo',
     slug: 'stephanie-russo',
     role: 'Contributing Writer',
+    photo: '/images/authors/stephanie-russo.png',
   },
   {
     name: 'Ashley Ropati',
     slug: 'ashley-ropati',
     role: 'Beauty Editor & Lifestyle Journalist',
+    photo: '/images/authors/ashley-ropati.png',
     linkedin: 'https://www.linkedin.com/in/ashley-ropati-77b7b280/',
     sameAs: [
       'https://www.linkedin.com/in/ashley-ropati-77b7b280/',
