@@ -5,9 +5,9 @@ judgment-heavy work (galleries, oversized assets, layout). Do these as a focused
 batch after the category sweep finishes.
 
 ## Deferred gallery / image jobs
-- [ ] **destinations/mondrian-gold-coast-review** — 16 missing images (many `Currently-Loving-EDM` flatlays — decide inline vs shoppable grid first) + 6 flattened embeds + 2 markdown bugs.
+- [x] **destinations/mondrian-gold-coast-review** — DONE 2026-07-04: downloaded 8 missing editorial images + 9 product flat-lay images from WP. Restructured MDX: moved misplaced images from "Shop the look" dump into correct article sections, added missing images (fashion portraits, food flatlay, pool, closing shots), added product flat-lays to "Shop the Edit" section. Portrait images use `<Portrait>` component with alternating sides.
 - [x] **living/lazy-girls-guide-summer-entertaining** — RESOLVED as FALSE POSITIVE: content-match (restore-images.mjs) shows all 23 image files present locally (incl the big GIFs). Not missing; body just references fewer than WP. Optional later: surface more of the existing files.
-- [ ] **interviews/rae-morris-interview** — 8 photoshoot images to interleave into the existing gallery (MDX has every other image; insert each by WP order). NOTE: its FLATTENED `raemorris.com` hit is a FALSE POSITIVE (legit inline prose link "my own makeup brushes") — leave it.
+- [x] **interviews/rae-morris-interview** — RESOLVED 2026-07-04: FALSE POSITIVE. WP has 10 images in a top carousel; the MDX already has all 10 images placed contextually throughout the article body (better layout than WP). No images missing. The `raemorris.com` FLATTENED hit is also a false positive (legit inline prose link).
 
 ## beauty-style FULL audit (973 articles) — remaining per-article work
 Full audit done 2026-06-28: 777 clean, 4 post-migration, 192 flagged. Batch-fixed:
