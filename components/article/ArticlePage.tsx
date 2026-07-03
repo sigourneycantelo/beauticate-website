@@ -53,7 +53,7 @@ function withSubscribeBand(content: string): string {
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
-  const isLandscape = !!f.hero_image
+  const isLandscape = !!(f.hero_image || f.featured_image)
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
   function InlineProduct({ handle }: { handle: string }) {
@@ -99,7 +99,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       {/* Hero: full-bleed landscape or editorial split */}
       <ArticleHero frontmatter={f} />
 
-      <div className="px-[clamp(20px,6vw,104px)] py-10">
+      <div className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] py-10">
         {/* Title / meta — only in landscape mode; split mode has them in the hero panel */}
         {isLandscape && (
           <>
@@ -136,7 +136,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         )}
 
         {/* Body — capped measure for readability */}
-        <div className="prose prose-lg max-w-[680px]">
+        <div className="prose prose-lg max-w-none">
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
@@ -146,7 +146,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* Shop the Edit */}
         {productLinks.length > 0 && (
-          <div className="mt-12 pt-10 border-t border-cream-200 max-w-[680px]">
+          <div className="mt-12 pt-10 border-t border-cream-200">
             <h4 className="font-sans text-xs tracking-[0.34em] uppercase mb-6">Shop the Edit</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {productLinks.map((p, i) => (
@@ -169,7 +169,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
         {/* Affiliate disclosure */}
         {f.affiliate_disclosure && (
-          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200 max-w-[680px]">
+          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
             This article contains affiliate links. Beauticate may receive a small commission on purchases made through these links at no extra cost to you.
           </p>
         )}

@@ -9,31 +9,34 @@ interface Props {
 }
 
 export default function ArticleHero({ frontmatter: f }: Props) {
-  const isLandscape = !!f.hero_image
+  const heroSrc = f.hero_image || f.featured_image
+  const isLandscape = !!heroSrc
 
   if (isLandscape) {
-    // Full-bleed landscape mode
+    // Full-bleed landscape mode — default for any article with an image
     return (
       <>
         {/* Desktop: full-bleed 16:9 */}
         <div className="hidden md:block relative w-full aspect-[16/9]">
           <Image
-            src={f.hero_image!}
+            src={f.hero_image || f.featured_image}
             alt={f.featured_image_alt ?? f.title}
             fill
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: f.hero_focus ?? 'center center' }}
             priority
           />
         </div>
-        {/* Mobile: portrait/square at 3:4, prefer featured_image if available */}
+        {/* Mobile: portrait/square at 3:4, prefer featured_image */}
         <div className="md:hidden relative w-full aspect-[3/4]">
           <Image
             src={f.featured_image || f.hero_image!}
             alt={f.featured_image_alt ?? f.title}
             fill
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: f.hero_focus ?? 'center center' }}
             priority
           />
         </div>
@@ -41,7 +44,7 @@ export default function ArticleHero({ frontmatter: f }: Props) {
     )
   }
 
-  // Editorial split mode — no landscape image
+  // Editorial split mode — fallback only when no image exists at all
   return (
     <div className="flex flex-col md:grid md:grid-cols-2 min-h-[480px] md:min-h-[580px]">
       {/* Image */}
@@ -60,11 +63,11 @@ export default function ArticleHero({ frontmatter: f }: Props) {
 
       {/* Greige text panel */}
       <div
-        className="order-2 flex flex-col justify-center px-[clamp(28px,6vw,80px)] py-12 md:py-16"
+        className="order-2 flex flex-col justify-center items-center text-center px-[clamp(28px,6vw,80px)] py-12 md:py-16"
         style={{ background: '#F3EFE8' }}
       >
         {/* Breadcrumb */}
-        <nav className="text-[11px] font-sans tracking-[0.18em] uppercase text-charcoal-light mb-6 flex gap-2 flex-wrap">
+        <nav className="text-[11px] font-sans tracking-[0.18em] uppercase text-charcoal-light mb-6 flex gap-2 flex-wrap justify-center">
           <Link href={`/${f.category}`} className="hover:text-charcoal capitalize transition-colors">
             {f.category.replace(/-/g, ' ')}
           </Link>

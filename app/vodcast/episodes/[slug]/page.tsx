@@ -241,6 +241,17 @@ export default async function EpisodePage({ params }: Props) {
             {f.excerpt}
           </p>
         )}
+        {anchorUrl && (
+          <a
+            href={anchorUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary mt-8 inline-flex items-center gap-2"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+            Listen Now
+          </a>
+        )}
       </header>
 
       {/* YouTube embed (primary) or Anchor audio (fallback) */}
