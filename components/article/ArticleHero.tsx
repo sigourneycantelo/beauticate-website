@@ -9,10 +9,10 @@ interface Props {
 }
 
 export default function ArticleHero({ frontmatter: f }: Props) {
-  const isLandscape = !!f.hero_image
+  const isLandscape = !!(f.hero_image || f.featured_image)
 
   if (isLandscape) {
-    // Full-bleed landscape mode — default for any article with an image
+    // Full-bleed landscape mode — used for all articles with any image
     return (
       <>
         {/* Desktop: full-bleed 16:9 */}

@@ -53,7 +53,7 @@ function withSubscribeBand(content: string): string {
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
-  const isLandscape = !!f.hero_image
+  const isLandscape = !!(f.hero_image || f.featured_image)
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
   function InlineProduct({ handle }: { handle: string }) {
