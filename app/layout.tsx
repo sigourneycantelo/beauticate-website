@@ -123,6 +123,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
+        <Script
+          id="klaviyo-sdk"
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
