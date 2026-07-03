@@ -15,17 +15,19 @@ export default function ArticleHero({ frontmatter: f }: Props) {
     // Full-bleed landscape mode — used for all articles with any image
     return (
       <>
-        {/* Desktop: full-bleed 16:9 */}
-        <div className="hidden md:block relative w-full aspect-[16/9]">
-          <Image
-            src={f.hero_image || f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: f.hero_focus ?? 'center center' }}
-            priority
-          />
+        {/* Desktop: 16:9 capped at 1200px */}
+        <div className="hidden md:block max-w-[1200px] mx-auto">
+          <div className="relative w-full aspect-[16/9]">
+            <Image
+              src={f.hero_image || f.featured_image}
+              alt={f.featured_image_alt ?? f.title}
+              fill
+              sizes="1200px"
+              className="object-cover"
+              style={{ objectPosition: f.hero_focus ?? 'center center' }}
+              priority
+            />
+          </div>
         </div>
         {/* Mobile: portrait/square at 3:4, prefer featured_image */}
         <div className="md:hidden relative w-full aspect-[3/4]">
