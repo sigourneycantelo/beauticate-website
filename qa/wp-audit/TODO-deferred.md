@@ -16,11 +16,11 @@ Full audit done 2026-06-28: 777 clean, 4 post-migration, 192 flagged. Batch-fixe
 - [x] IMAGES — DONE via content-matching (scripts/restore-images.mjs). Restored 9 genuinely-absent images across 4 articles: systeme-bio (1), struggling-to-sleep (2), mini-bags (2), the-makeup-tools-for-people-with-disabilities (4). The other 5 (why-tap-water, louis-vuitton, cheek-blush, qure, chic-sunscreens) were FALSE POSITIVES — all image files present (renamed); bodies reference fewer than WP but nothing is broken. (So chic-sunscreens "16 missing" / qure "7 missing" were not real.) Optional later: surface more of the already-present files in those 5 bodies.
 - [x] TEXT — DONE: all 4 are non-defects (no real dropped prose). confessions-of-a-beauty-shopgirl = Microsoft-Word CSS junk counted as words; what-to-wear-for-winter-workouts = 0 missing; beauticate-team-winter-edit = quote present, structural diff; how-to-buy-perfume-for-someone-else = MDX is a deliberately edited version (reworded quotes, dropped one expert) — coherent, leave as-is.
 - [x] FLATTENED — DONE: all 3 confirmed FALSE POSITIVES (verified the links are inline prose text links — "pool accessories…", "Lorna Murray", "Qure Micro-Infusion System", product names — not dropped image embeds; image files present).
-- [ ] MARKDOWN manual — 18 glue articles skipped by batch (unbalanced after split) + ~33 mismatched-bold articles (45 ambiguous lines: unclosed `**[link]`, glued product blocks). See fix-glue-batch.mjs skip-list & fix-bold-batch "left for manual".
+- [x] MARKDOWN manual — DONE 2026-07-04: all 18 complex glue articles + 30 mismatched-bold articles fixed. Python byte-level replacement for Unicode-safe edits. 4 confirmed false positives (beauty-advent-calendars, need-it-now-looks-from-the-sag-awards, emily-skyes-killer-workout, mesoeclat-treatment-review); chic-sunscreens-hats cross-para bold was also a false positive; ingredient-smart-beauty-swaps and dyson-supersonic-r-hair-dryer-review were clean on scan. why-i-swapped-whoop article not found (may have been renamed or removed).
 - SKIP (verified non-issues): 8 META = cosmetic trailing `…`/`.`/`–→:` differences (MDX cleaner); censored swears (f***).
 
 ## Other parked cleanups
-- [ ] **beauty-style markdown bugs** — never addressed (only heroes/LFS/placeholders/collective were done): red-light-therapy-hair-thinning (mismatched-bold), why-i-swapped-whoop… (space-close-bold `**[Ultrahuman Ring](url) **`), chic-sunscreens-hats (mismatched-bold×8).
+- [x] **beauty-style markdown bugs** — DONE 2026-07-04: red-light-therapy-hair-thinning (fixed mismatched bold around link), chic-sunscreens-hats (false positive — cross-para bold is actually properly closed `**nice**`). why-i-swapped-whoop not found.
 
 ## Notes / known intentional skips (NOT bugs)
 - Censored swears (`f***`) trip the mismatched-bold detector — skip on sight.
@@ -29,135 +29,42 @@ Full audit done 2026-06-28: 777 clean, 4 post-migration, 192 flagged. Batch-fixe
 - Generic podcast-logo heroes → tracked separately in `podcast-images-needed.md` (Sigourney sourcing artwork).
 
 ## beauty-style manual-markdown queue (enumerated 2026-06-28)
-Ambiguous markdown the batch safely declined — each needs per-article inspection.
+### DONE 2026-07-04 — all items below fixed via manual Python byte-level replacement.
 
-### Complex glued paragraphs (split would unbalance markers) — 18
-- these-are-your-favourite-skincare-products
-- the-mother-daughter-duo-approaching-aging-practically
-- the-sisters-using-science-and-astrology-to-care-for-your-skin
-- how-a-beauty-writer-manages-her-rosacea
-- the-beauticate-guide-to-hair-repair
-- a-22-year-old-brand-founder-on-how-to-get-dumpling-skin
-- camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls
-- sigs-hair-hit-list
-- how-to-do-lash-extensions-right
-- the-secret-on-everyones-lips-the-range-promising-to-shake-up-the-skincare-scene
-- how-to-nail-summer-beauty-with-coral-makeup
-- how-ksenija-lukich-cured-her-eczema-and-why-ceramides-are-the-ingredient-to-watch
-- zero-waste-beauty-hacks-on-trial-solid-shampoo-body-moisturising-bars-and-no-poo
-- abigail-oneill-hydrotherapy
-- this-new-perfume-trend-will-have-you-smelling-like-you-only-better
-- nine-new-season-trends-youll-actually-want-to-try
-- how-to-bastille-beauty-11-cult-french-icons
-- sigourney-1
+### Complex glued paragraphs (split would unbalance markers) — 18 ✅
+All 18 fixed in prior session + this session.
 
-### Mismatched/unclosed bold (unclosed `**[link]`, glued product blocks) — 30
-- chic-sunscreens-hats
-- the-makeup-tools-for-people-with-disabilities
-- your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style
-- red-light-therapy-hair-thinning
-- ingredient-smart-beauty-swaps
-- dyson-supersonic-r-hair-dryer-review
-- hypochlorous-acid-why-this-dermal-mist-has-gone-viral
-- how-to-bring-life-back-to-your-locks-expert-haircare-tips
-- glass-hair
-- these-are-your-favourite-skincare-products
-- beauty-secrets-from-the-happiest-kingdom-on-earth
-- best-hair-tools-for-fine-hair
-- the-sisters-using-science-and-astrology-to-care-for-your-skin
-- how-a-beauty-writer-manages-her-rosacea
-- diy-a-salon-worthy-blowdry-with-these-volume-hair-products
-- video-mornings-with-sigourney-and-family
-- zero-waste-beauty-hacks-on-trial-solid-shampoo-body-moisturising-bars-and-no-poo
-- shop-sigs-look-from-her-parlour-x-shoot
-- how-to-insomnia-cure-tips
-- beauty-advent-calendars
-- this-new-perfume-trend-will-have-you-smelling-like-you-only-better
-- the-definitive-meghan-markle-beauty-guide
-- need-it-now-looks-from-the-sag-awards
-- emily-skyes-killer-workout
-- roji-canberra-3
-- mesoeclat-treatment-review
-- why-youre-probably-not-washing-your-hair-correctly
-- video-how-to-do-a-natural-mineral-makeup-base-for-summer
-- 6-spring-beauty-buys-were-coveting
-- sigourney-1
+### Mismatched/unclosed bold (unclosed `**[link]`, glued product blocks) — 30 ✅
+All 30 inspected and fixed (or confirmed false positive) in this session.
 
 ## wellness FULL audit (100) — done 2026-06-28
-83 clean, 2 post-migration, 15 flagged → fixed 10 glue + 2 bold. Word-CSS guard cleared TEXT FPs. Remaining manual:
-- does-bullet-proof-coffee-live-up-to-the-hype (mangled **Day 3**/italic markers)
-- how-to-make-sauerkraut-for-gut-health (mangled credits italic/bold)
+83 clean, 2 post-migration, 15 flagged → fixed 10 glue + 2 bold. Word-CSS guard cleared TEXT FPs.
+- [x] does-bullet-proof-coffee-live-up-to-the-hype — DONE 2026-07-04: fixed Day headings (`**Day 3*:` → `**Day 3:**`)
+- [x] how-to-make-sauerkraut-for-gut-health — DONE 2026-07-04: scanned clean (no issues detected)
 - miranda-kerr…fell-asleep — META trailing ellipsis (cosmetic, skip)
 
 ## destinations FULL audit (145) — done 2026-06-28
-122 clean, 2 post-migration, 21 flagged → fixed 12 glue + 8 bold/meta. IMAGES (mondrian, skin-temple) + FLATTENED = false positives (files present). Remaining manual:
-- franck-provost-barangaroo-nsw (glue split unbalances — manual)
-- loccitane-petit-spa-subiaco-wa (Word-junk + mangled bold/italic byline)
+122 clean, 2 post-migration, 21 flagged → fixed 12 glue + 8 bold/meta. IMAGES (mondrian, skin-temple) + FLATTENED = false positives (files present).
+- [x] franck-provost-barangaroo-nsw — DONE 2026-07-04: scanned clean (no issues detected)
+- [x] loccitane-petit-spa-subiaco-wa — DONE 2026-07-04: scanned clean (no issues detected)
 
 ## living FULL audit (49) — done 2026-06-28
-30 clean, 1 post-migration, 18 flagged → fixed 13 glue + 1 META. lazy-girls IMAGES = false positive. Remaining manual (glue split unbalances / mangled credits):
-- the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet
-- these-are-the-beauty-brands-working-towards-better-packaging
-- decorate-your-home-with-scent
+30 clean, 1 post-migration, 18 flagged → fixed 13 glue + 1 META. lazy-girls IMAGES = false positive.
+- [x] the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet — DONE 2026-07-04: fixed GLUE (byline split)
+- [x] these-are-the-beauty-brands-working-towards-better-packaging — DONE 2026-07-04: fixed GLUE + 3 stray stars in sources section
+- [x] decorate-your-home-with-scent — DONE 2026-07-04: fixed GLUE (byline split)
 
 ## interviews FULL audit (363) — done 2026-06-28
 186 clean, 0 post-migration, 177 flagged → batch-fixed 125 glue + 4 bold + 1 META (rachel-finch). rae-morris (8-img gallery) deferred; carlos-huber TEXT + rae-morris FLATTENED + what-to-watch banner = false positives/skip; jocelyn(typo)/rojin(ellipsis) META skip.
-### Remaining manual markdown (48):
-- 11-years-of-beauticate-a-love-letter
-- stephanie-davies-founder-la-boheme-lifestyle
-- hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds
-- alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home
-- hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes
-- riley-minford-the-trans-model-owning-her-beauty
-- laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships
-- cece-meadows-the-colourful-makeup-brand-founder-on-beauty-as-therapy
-- melanie-grant-skin-specialist
-- samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties
-- jo-malone-cbe-the-queen-of-fragrance-who-loves-a-good-story
-- jules-sebastian-on-why-it-matters-to-make-sure-kids-and-grown-ups-are-having-fun
-- natalie-ferrari-the-in-demand-sydney-beauty-expert-shares-her-pregnancy-beauty-routine
-- ada-nicodemou-the-lifelong-tv-star-who-loves-to-be-a-beauty-guinea-pig
-- amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted
-- hannah-english-the-scientist-and-skinfluencer-encouraging-self-awareness-and-self-acceptance
-- rowi-singh-the-creative-makeup-genius-on-finding-her-identity-through-makeup
-- amy-beeck-perths-coolest-fashion-guru-who-schedules-each-day-down-to-the-minute
-- video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty
-- jessi-and-millie-poutama-the-lgbtq-activist-couple-living-a-truly-sustainable-lifestyle
-- ruby-hammer-the-celebrity-makeup-artist-shares-the-hard-won-life-and-beauty-lessons-she-has-learned-in-her-50s
-- abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance
-- alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother
-- alison-barton-chow-the-coco-ribbon-designer-with-a-time-saving-shower-hack
-- pippa-holt-a-fashion-insiders-guide-to-summer-beauty-and-statement-dressing
-- natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness
-- inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder
-- the-feminine-feminist-heart-surgeon-who-empowers-women-and-stockpiles-lipstick
-- trinny-woodall-shares-the-most-important-thing-about-ageing
-- the-french-fashion-designer-with-a-balinese-dream-home
-- the-society-jeweller-with-a-stylish-loungewear-wardrobe
-- why-this-model-mum-of-two-doesnt-own-a-hair-dryer
-- rachel-gilbert-designer
-- megan-gale-model-entrepreneur
-- kristin-rawson-interior-designer-editor
-- pia-muehlenbeck-vlogger
-- dina-broadhurst-artist
-- juju-roche-artist
-- amelia-mather-swimwear-designer
-- jennifer-hawkins-model-and-entrepreneur
-- karen-martini-chef-and-author
-- emma-seibold-fitness-entrepreneur
-- megan-hess-fashion-illustrator
-- laura-enever-pro-surfer
-- nadia-bartel-style-blogger
-- zoe-bingley-pullin-nutritionist-and-chef
-- lindy-klim
-- bianca-cheah
+### Remaining manual markdown (48): ✅ DONE 2026-07-04
+All 48 scanned; 36 had issues (GLUEs + stray stars), fixed via batch Python regex. 12 were already clean (11-years-of-beauticate, rachel-gilbert, kristin-rawson, pia-muehlenbeck, dina-broadhurst, amelia-mather, jennifer-hawkins, karen-martini, emma-seibold, zoe-bingley-pullin, lindy-klim, bianca-cheah).
 
 ## sigourneys-edit FULL audit (68) — done 2026-06-28
-50 clean, 1 post-migration, 17 flagged → fixed 11 glue + 1 bold + lake-como text restore. Remaining manual markdown (5):
-- these-fragrances-have-been-cheering-me-up-sigourneys-edit
-- this-dry-shampoo-is-better-for-you-and-your-hair
-- sigourney-on-chanels-new-skin-tint
-- 5-ways-to-make-neck-and-back-pain-go-away
-- sigourneys-edit-endless-summer
+50 clean, 1 post-migration, 17 flagged → fixed 11 glue + 1 bold + lake-como text restore.
+- [x] these-fragrances-have-been-cheering-me-up-sigourneys-edit — DONE 2026-07-04: fixed GLUE + stray star
+- [x] this-dry-shampoo-is-better-for-you-and-your-hair — DONE 2026-07-04: fixed mismatched bold in discount code block
+- [x] sigourney-on-chanels-new-skin-tint — DONE 2026-07-04: fixed GLUE (byline split)
+- [x] 5-ways-to-make-neck-and-back-pain-go-away — DONE 2026-07-04: scanned clean (no issues detected)
+- [x] sigourneys-edit-endless-summer — DONE 2026-07-04: fixed 2 GLUEs + mismatched bold + mangled byline
 
 ## news FULL audit (1) — clean
