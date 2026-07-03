@@ -11,7 +11,7 @@ the intro text at the top of each article body that is currently missing one.
 
 Only patches articles where:
   - date_published is before 2026-06-18 (pre-migration)
-  - body starts with a heading (no intro currently)
+  - body starts with an h2 heading (## ) — not prose or h3, which already have intro content
   - wp-live-intros.json has a non-empty intro for this slug
 """
 
@@ -50,7 +50,9 @@ def main():
         dm = re.search(r'date_published:\s*"?(\d{4}-\d{2}-\d{2})', fm)
         if not dm or dm.group(1) >= '2026-06-18':
             continue
-        if not (body.startswith('#') or body.startswith('\n#')):
+        # Only patch articles that open with an h2 section heading (## ).
+        # Articles starting with ### or prose already have intro-level content.
+        if not (body.startswith('## ') or body.startswith('\n## ')):
             skipped_already_has += 1
             continue
 
