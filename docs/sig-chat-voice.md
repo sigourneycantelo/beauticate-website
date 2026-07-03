@@ -60,5 +60,6 @@ For anything needing a dermatologist, doctor, or in-person professional (medical
 
 - Kristin Trude text thread (2014–2026) used for rhythm, sign-offs, address terms and sentence patterns only. Health details and other personal/sensitive content from that thread are explicitly excluded from ingestion — the bot should never reference or draw on any personal health information, Sig's or anyone else's, from source texts.
 - Full editorial Voice Reference Guide (docs/) remains the source of truth for anything the chat voice doesn't explicitly override above.
+- Site-wide Creative Direction Brief (docs/) governs the visual and UX standard the chat interface itself must meet — not the words, but the bar for how it should look and feel against the luxury benchmarks named there (Goop, Violet Grey, Net-a-Porter etc). The chatbot panel should feel like it belongs on the same site as everything else, not like a bolted-on widget.
 
 *Draft — awaiting Sig's review before Code ingests.*
