@@ -403,6 +403,69 @@ def extract_product_links(html):
     return links
 
 
+def extract_intro(html):
+    """
+    Extract the editorial intro from a WP article.
+    The intro is the text between the hero/excerpt area and the first
+    interview heading or quote block. Returns the intro text as a string,
+    or empty string if none found.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+
+    for noscript in soup.find_all("noscript"):
+        noscript.decompose()
+
+    body = soup.find("div", class_=re.compile(r"entry-content|post-content|article-content|elementor-widget-theme-post-content"))
+    if not body:
+        body = soup.find("article") or soup.find("main") or soup
+
+    intro_parts = []
+    for el in body.children:
+        if hasattr(el, 'name') and el.name is None:
+            continue
+        if not hasattr(el, 'name'):
+            text = str(el).strip()
+            if text:
+                intro_parts.append(text)
+            continue
+
+        if _is_inside_excluded_section(el, EXCLUDED_SECTIONS_WP):
+            continue
+
+        tag = el.name
+        text = el.get_text(strip=True)
+
+        if not text:
+            continue
+
+        if tag in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
+            break
+
+        if tag == 'blockquote':
+            break
+
+        if tag in ('p', 'div'):
+            if text.startswith(('“', '"', '‘', "'")):
+                if len(text) > 50:
+                    break
+
+            if re.match(r'^###?\s', text):
+                break
+
+            classes = " ".join(el.get("class") or [])
+            if re.search(r'wp-block-quote|pullquote|interview-q', classes):
+                break
+
+            intro_parts.append(text)
+
+    intro = "\n\n".join(intro_parts).strip()
+
+    if len(intro) < 20:
+        return ""
+
+    return intro
+
+
 def download_image(url, dest_folder):
     """Download one image and return its local path, or None on failure."""
     try:
@@ -654,8 +717,11 @@ def main():
     new_images = extract_images_with_layout(new_html, site="new")
 
     old_product_links = extract_product_links(old_html)
+    old_intro = extract_intro(old_html)
 
     print(f"Found {len(old_images)} image(s) on old, {len(new_images)} on new.")
+    if old_intro:
+        print(f"Editorial intro found ({len(old_intro)} chars).")
     same_count = len(old_images) == len(new_images)
     print("Stage 1 and 2: matching by position, alt text, filename and dimensions, no downloads...")
     cheap_matches, unmatched_old, unmatched_new = cheap_match(old_images, new_images)
@@ -690,6 +756,8 @@ def main():
             for img in still_unmatched
         ],
         "layout_differences": [m for m in all_matches if m["layout_flags"]],
+        "intro": old_intro,
+        "intro_length": len(old_intro),
         "product_links": old_product_links,
         "product_link_count": len(old_product_links),
         "affiliate_link_count": len([l for l in old_product_links if l["is_affiliate"]]),
@@ -714,6 +782,11 @@ def main():
     print(f"Images missing from new site: {len(still_unmatched)}")
     print(f"Images with layout differences: {len(report['layout_differences'])}")
     print(f"Product links found: {report['product_link_count']} ({report['affiliate_link_count']} affiliate)")
+    if report["intro"]:
+        print(f"Editorial intro: {report['intro_length']} chars")
+        print(f"  Preview: {report['intro'][:120]}...")
+    else:
+        print("Editorial intro: NONE FOUND (may be missing from article)")
 
     recs = report.get("component_recommendations", [])
     if recs:
