@@ -215,7 +215,7 @@
 .mh-all:hover{ text-decoration:underline; text-underline-offset:3px; }
 
 .mh-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
-.mh-card{ display:block; }
+.mh-card{ display:block; text-transform:none; letter-spacing:0; }
 .mh-card-img{ display:block; position:relative; aspect-ratio:4/5; width:100%; margin-bottom:11px; overflow:hidden; background:var(--mh-greige); }
 .mh-card-obj{ object-fit:cover; }
 .mh-card-eye{ display:none; }
