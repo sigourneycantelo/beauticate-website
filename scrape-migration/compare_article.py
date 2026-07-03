@@ -403,6 +403,52 @@ def extract_product_links(html):
     return links
 
 
+def extract_body_content(html):
+    """
+    Extract the article body content from WP HTML, stripping sidebar,
+    nav, footer, related posts, ads, and other non-article elements.
+    Returns cleaned HTML string containing only the article body.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+
+    for noscript in soup.find_all("noscript"):
+        noscript.decompose()
+    for script in soup.find_all("script"):
+        script.decompose()
+    for style in soup.find_all("style"):
+        style.decompose()
+
+    for tag_name in EXCLUDED_TAG_NAMES:
+        for el in soup.find_all(tag_name):
+            el.decompose()
+
+    for el in soup.find_all(True):
+        el_id = el.get("id") or ""
+        el_class = " ".join(el.get("class") or [])
+        combined = f"{el_id} {el_class}"
+        if EXCLUDED_SECTIONS_WP.search(combined):
+            el.decompose()
+
+    body = soup.find("div", class_=re.compile(
+        r"entry-content|post-content|article-content|"
+        r"elementor-widget-theme-post-content"
+    ))
+    if not body:
+        body = soup.find("article") or soup.find("main") or soup
+
+    return str(body)
+
+
+def extract_body_text(html):
+    """
+    Extract plain text from the article body, excluding sidebar and
+    non-article elements. Returns the text as a string.
+    """
+    cleaned_html = extract_body_content(html)
+    soup = BeautifulSoup(cleaned_html, "html.parser")
+    return soup.get_text(separator="\n", strip=True)
+
+
 def extract_intro(html):
     """
     Extract the editorial intro from a WP article.
@@ -410,26 +456,17 @@ def extract_intro(html):
     interview heading or quote block. Returns the intro text as a string,
     or empty string if none found.
     """
-    soup = BeautifulSoup(html, "html.parser")
-
-    for noscript in soup.find_all("noscript"):
-        noscript.decompose()
-
-    body = soup.find("div", class_=re.compile(r"entry-content|post-content|article-content|elementor-widget-theme-post-content"))
-    if not body:
-        body = soup.find("article") or soup.find("main") or soup
+    cleaned = extract_body_content(html)
+    soup = BeautifulSoup(cleaned, "html.parser")
 
     intro_parts = []
-    for el in body.children:
+    for el in soup.children:
         if hasattr(el, 'name') and el.name is None:
             continue
         if not hasattr(el, 'name'):
             text = str(el).strip()
             if text:
                 intro_parts.append(text)
-            continue
-
-        if _is_inside_excluded_section(el, EXCLUDED_SECTIONS_WP):
             continue
 
         tag = el.name
@@ -713,6 +750,11 @@ def main():
     old_html = getattr(old_result, "raw_html", None) or getattr(old_result, "html", None) or ""
     new_html = getattr(new_result, "raw_html", None) or getattr(new_result, "html", None) or ""
 
+    old_body_text = extract_body_text(old_html)
+    old_body_html = extract_body_content(old_html)
+    (base_dir / "old_body.html").write_text(old_body_html)
+    (base_dir / "old_body.txt").write_text(old_body_text)
+
     old_images = extract_images_with_layout(old_html, site="old")
     new_images = extract_images_with_layout(new_html, site="new")
 
@@ -720,6 +762,7 @@ def main():
     old_intro = extract_intro(old_html)
 
     print(f"Found {len(old_images)} image(s) on old, {len(new_images)} on new.")
+    print(f"Body text: {len(old_body_text.split())} words (sidebar excluded).")
     if old_intro:
         print(f"Editorial intro found ({len(old_intro)} chars).")
     same_count = len(old_images) == len(new_images)
@@ -741,7 +784,8 @@ def main():
         "slug": args.slug,
         "old_url": args.old_url,
         "new_url": args.new_url,
-        "old_word_count": len((getattr(old_result, "markdown", None) or "").split()),
+        "old_word_count_full": len((getattr(old_result, "markdown", None) or "").split()),
+        "old_word_count_body": len(old_body_text.split()),
         "new_word_count": len((getattr(new_result, "markdown", None) or "").split()),
         "old_image_count": len(old_images),
         "new_image_count": len(new_images),
