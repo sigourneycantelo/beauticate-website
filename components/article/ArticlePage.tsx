@@ -53,7 +53,7 @@ function withSubscribeBand(content: string): string {
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
-  const isLandscape = !!(f.hero_image || f.featured_image)
+  const isLandscape = !!f.hero_image
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
   function InlineProduct({ handle }: { handle: string }) {
@@ -99,7 +99,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       {/* Hero: full-bleed landscape or editorial split */}
       <ArticleHero frontmatter={f} />
 
-      <div className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] py-10">
+      <div className="max-w-wide mx-auto px-[clamp(20px,3vw,34px)] py-10">
         {/* Title / meta — only in landscape mode; split mode has them in the hero panel */}
         {isLandscape && (
           <>
@@ -187,7 +187,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       {/* Related articles */}
       {relatedArticles.length > 0 && (
         <div className="border-t border-cream-200">
-          <div className="px-[clamp(20px,6vw,104px)] py-10">
+          <div className="px-[clamp(20px,3vw,34px)] py-10">
             <h2 className="mb-8">You might also like</h2>
             <ArticleGrid articles={relatedArticles} />
           </div>

@@ -9,8 +9,7 @@ interface Props {
 }
 
 export default function ArticleHero({ frontmatter: f }: Props) {
-  const heroSrc = f.hero_image || f.featured_image
-  const isLandscape = !!heroSrc
+  const isLandscape = !!f.hero_image
 
   if (isLandscape) {
     // Full-bleed landscape mode — default for any article with an image
@@ -83,7 +82,7 @@ export default function ArticleHero({ frontmatter: f }: Props) {
 
         {/* Title */}
         <h1
-          className="font-serif text-charcoal leading-[1.12] mb-5"
+          className="font-serif text-charcoal leading-[1.12] mb-5 text-center"
           style={{ fontSize: 'clamp(26px, 3.5vw, 44px)', letterSpacing: '-0.02em' }}
         >
           {f.title}
