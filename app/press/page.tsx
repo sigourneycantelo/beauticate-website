@@ -40,6 +40,7 @@ const PUBLICATIONS: PressItem[] = [
   { outlet: 'Esprit', title: 'Founder profile', href: '/press-clippings/esprit-profile.pdf' },
   { outlet: 'Madison', title: 'Wedding beauty', href: '/press-clippings/madison-wedding.pdf' },
   { outlet: 'Porter', title: 'Beauty: Sun Secrets', href: '/press-clippings/porter.pdf' },
+  { outlet: 'Fitness First', title: 'Our new beauty expert', href: '/press-clippings/fitness-first.pdf' },
 ]
 
 // Podcast guest appearances.

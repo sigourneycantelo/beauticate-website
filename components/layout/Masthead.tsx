@@ -31,7 +31,7 @@ function SocialIcon({ d }: { d: string }) {
 }
 
 function Wordmark({ className = '', priority = false, shop = false }: { className?: string; priority?: boolean; shop?: boolean }) {
-  if (shop) return <Image src="/beauticate-shop-logo.png" alt="Beauticate Shop" width={600} height={240} priority={priority} className={className} style={{ mixBlendMode: 'multiply' }} />
+  if (shop) return <Image src="/beauticate-shop-logo.png" alt="Beauticate Shop" width={600} height={240} priority={priority} className={`${className} mh-logo-shop`} style={{ mixBlendMode: 'multiply' }} />
   return <Image src="/logo-dark.png" alt="Beauticate" width={997} height={135} priority={priority} className={className} />
 }
 

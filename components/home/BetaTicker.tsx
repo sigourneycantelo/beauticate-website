@@ -6,7 +6,7 @@ const ITEMS: { text: string; href: string }[] = [
   { text: 'Beautiful Inside, the podcast, new episode every Tuesday', href: '/vodcast' },
   { text: 'Shop the winter edit', href: '/shop' },
   { text: 'Beauticate Insiders get early access, subscribe', href: '/subscribe' },
-  { text: 'Free shipping on orders over $150', href: '/shop' },
+  { text: 'Beautiful Inside, new episodes every Tuesday', href: '/vodcast' },
 ]
 
 export default function BetaTicker() {
