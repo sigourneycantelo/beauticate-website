@@ -141,7 +141,7 @@ const AUTHORS: Author[] = [
     name: 'Jayde Balderston',
     slug: 'jayde-balderston',
     role: 'Contributing Editor',
-    photo: '/images/authors/jayde-balderston.jpg',
+    photo: '/images/authors/jayde-balderston.png',
   },
   {
     name: 'Paris Obakpolo',
