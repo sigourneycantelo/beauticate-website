@@ -113,7 +113,7 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
       <div className="flex items-center gap-3 px-4 py-3 bg-white border-b border-line shrink-0">
         <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-wine shrink-0">
           <Image
-            src="/images/sig-chat-avatar.jpg"
+            src="/images/sig-chat-avatar.png"
             alt="Sigourney Cantelo"
             width={40}
             height={40}

@@ -20,7 +20,7 @@ export default function AskSigLauncher() {
           aria-label="Ask Sig"
         >
           <Image
-            src="/images/sig-chat-avatar.jpg"
+            src="/images/sig-chat-avatar.png"
             alt="Ask Sig"
             width={56}
             height={56}
