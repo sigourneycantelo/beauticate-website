@@ -48,6 +48,21 @@ const nextConfig: NextConfig = {
       { source: '/living/giving-back-became-non-negotiable', destination: '/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee', permanent: true },
       { source: '/destinations/where-family-memories-are-made', destination: '/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review', permanent: true },
 
+      // ── SEO priority list: high-traffic old paths needing redirects ──────────────
+      { source: '/reviews/luxury-skincare-review', destination: '/beauty-style/skin-care/luxury-skincare-review', permanent: true },
+      { source: '/ask/should-you-apply-fake-tan-on-top-of-an-existing-tan', destination: '/beauty-style/beauty-tips/should-you-apply-fake-tan-on-top-of-an-existing-tan', permanent: true },
+      { source: '/sigourneys-edit/sensitive-scalp-moogoo-shampoo-review', destination: '/sigourneys-edit/edit/sensitive-scalp-moogoo-shampoo-review', permanent: true },
+      { source: '/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details', destination: '/beauty-style/beauty-tips/sigs-slim-aarons-poolside-birthday-all-the-details', permanent: true },
+      { source: '/sigourneys-edit/dyson-supersonic-r-hair-dryer-review', destination: '/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review', permanent: true },
+      { source: '/sigourneys-edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one', destination: '/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one', permanent: true },
+      { source: '/how-to/beauty-tips/how-to-remove-fake-tan-from-white-clothes', destination: '/beauty-style/beauty-tips/how-to-remove-fake-tan-from-white-clothes', permanent: true },
+      { source: '/reviews/products/byredo-hand-cream-review-is-it-worth-it', destination: '/beauty-style/skin-care/byredo-hand-cream-review-is-it-worth-it', permanent: true },
+      { source: '/vodcast-by-beauticate/david-the-medium-on-intuition-healing-and-life-after-death', destination: '/vodcast/episodes/david-the-medium-on-intuition-healing-and-life-after-death', permanent: true },
+      { source: '/vodcast-by-beauticate/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', destination: '/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', permanent: true },
+      { source: '/ask/q-how-can-i-keep-powders-ruining-my-flawless-foundation', destination: '/beauty-style/makeup/q-how-can-i-keep-powders-ruining-my-flawless-foundation', permanent: true },
+      // Wildcard: all other vodcast-by-beauticate paths → vodcast/episodes (specific overrides above)
+      { source: '/vodcast-by-beauticate/:slug', destination: '/vodcast/episodes/:slug', permanent: true },
+
       // ── Biohacking subcategory consolidation (moved into /wellness/biohacking) ──
       { source: '/wellness/health/sigourneys-sleep-edit', destination: '/wellness/biohacking/sigourneys-sleep-edit', permanent: true },
       { source: '/wellness/health/sacred-six-the-rituals-practices-helping-me-heal-from-burnout', destination: '/wellness/biohacking/sacred-six-the-rituals-practices-helping-me-heal-from-burnout', permanent: true },
