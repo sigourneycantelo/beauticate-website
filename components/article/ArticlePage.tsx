@@ -103,6 +103,12 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
     ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand, Caption, InlineImage,
+    a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+      const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
+      return isExternal
+        ? <a {...props} target="_blank" rel="noopener noreferrer" />
+        : <a {...props} />
+    },
   }
 
   const bodyContent = withSubscribeBand(content)
