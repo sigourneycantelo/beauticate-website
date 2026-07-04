@@ -1,0 +1,1580 @@
+{
+  "generated": "2026-07-04",
+  "missing_wp_only": [
+    {
+      "slug": "vaia-beauty-darlinghurst",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/vaia-beauty-darlinghurst/",
+      "category": "destinations"
+    },
+    {
+      "slug": "beauty-and-dessert-have-just-merged-and-were-loving-it",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/beauty-and-dessert-have-just-merged-and-were-loving-it/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "video-beauty-bites-flawless-spring-makeup-look",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/video-beauty-bites-flawless-spring-makeup-look/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "david-mallet-hair-stylist",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/david-mallet-hair-stylist/",
+      "category": "interviews"
+    },
+    {
+      "slug": "winters-fiercest-makeup-trends",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/winters-fiercest-makeup-trends/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "video-how-to-do-a-gold-foil-pedicure",
+      "wp_url": "https://www.beauticate.com/beauty-style/nails/video-how-to-do-a-gold-foil-pedicure/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "ksenija-lukich-tv-host",
+      "wp_url": "https://www.beauticate.com/interviews/actors-presenters/ksenija-lukich-tv-host/",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-girl-you-love-glebe",
+      "wp_url": "https://www.beauticate.com/destinations/spas-retreats/the-girl-you-love-glebe/",
+      "category": "destinations"
+    },
+    {
+      "slug": "me-skin-and-body-south-yarra",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/me-skin-and-body-south-yarra/",
+      "category": "destinations"
+    },
+    {
+      "slug": "video-behind-the-scenes-on-beauticate-weekly-wrap-up",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/video-behind-the-scenes-on-beauticate-weekly-wrap-up/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "genevieve-smart",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/genevieve-smart/",
+      "category": "interviews"
+    },
+    {
+      "slug": "dr-anh-clinic-review",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/dr-anh-clinic-review/",
+      "category": "destinations"
+    },
+    {
+      "slug": "6-surprising-things-that-could-be-giving-you-bad-skin",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/6-surprising-things-that-could-be-giving-you-bad-skin/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "reader-review-volume-shampoos-4",
+      "wp_url": "https://www.beauticate.com/beauty-style/hair/reader-review-volume-shampoos-4/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "canna-campbell-financial-adviser-and-vlogger",
+      "wp_url": "https://www.beauticate.com/interviews/founders/canna-campbell-financial-adviser-and-vlogger/",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-truth-about-pregnancy-sigourneys-edit",
+      "wp_url": "https://www.beauticate.com/wellness/health/the-truth-about-pregnancy-sigourneys-edit/",
+      "category": "wellness"
+    },
+    {
+      "slug": "piri-piri-chicken-skewers-with-corn-red-cabbage-slaw",
+      "wp_url": "https://www.beauticate.com/wellness/health/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw/",
+      "category": "wellness"
+    },
+    {
+      "slug": "reader-review-bright-nail-polish",
+      "wp_url": "https://www.beauticate.com/beauty-style/nails/reader-review-bright-nail-polish/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "kirsten-shanks-naturopath-and-entrepreneur",
+      "wp_url": "https://www.beauticate.com/interviews/founders/kirsten-shanks-naturopath-and-entrepreneur/",
+      "category": "interviews"
+    },
+    {
+      "slug": "why-chanels-latest-cream-is-as-covetable-as-their-handbags",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/why-chanels-latest-cream-is-as-covetable-as-their-handbags/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "hit-refresh-the-new-hair-colour-trends-to-know-now",
+      "wp_url": "https://www.beauticate.com/beauty-style/hair/hit-refresh-the-new-hair-colour-trends-to-know-now/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "anna-heinrich-tv-star-and-lawyer",
+      "wp_url": "https://www.beauticate.com/interviews/actors-presenters/anna-heinrich-tv-star-and-lawyer/",
+      "category": "interviews"
+    },
+    {
+      "slug": "reader-review-face-masks",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/reader-review-face-masks/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "seven-of-the-best-model-approved-beauty-buys",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/seven-of-the-best-model-approved-beauty-buys/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "aesop-paddington",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/aesop-paddington/",
+      "category": "destinations"
+    },
+    {
+      "slug": "aurora-spa-st-kilda",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/aurora-spa-st-kilda/",
+      "category": "destinations"
+    },
+    {
+      "slug": "becky-cooper-fashion-desinger",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/becky-cooper-fashion-desinger/",
+      "category": "interviews"
+    },
+    {
+      "slug": "clear-skincare-clinic-clarence-street-sydney",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/",
+      "category": "destinations"
+    },
+    {
+      "slug": "how-to-use-hot-rollers-even-if-youre-uncoordinated",
+      "wp_url": "https://www.beauticate.com/beauty-style/hair/how-to-use-hot-rollers-even-if-youre-uncoordinated/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "recipe-loved-up-sicilian-swordfish-and-green-salad",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/recipe-loved-up-sicilian-swordfish-and-green-salad/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "valentines-day-cupids-date-night",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/valentines-day-cupids-date-night/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "rachel-finch-model-and-tv-presenter",
+      "wp_url": "https://www.beauticate.com/interviews/actors-presenters/rachel-finch-model-and-tv-presenter/",
+      "category": "interviews"
+    },
+    {
+      "slug": "reader-review-after-sun-care",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/reader-review-after-sun-care/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-highlight-with-rae-morris",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/how-to-highlight-with-rae-morris/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "grace-kelly-princess-and-actress",
+      "wp_url": "https://www.beauticate.com/interviews/actors-presenters/grace-kelly-princess-and-actress/",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-make-the-most-of-your-time-at-the-beauty-salon",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/how-to-make-the-most-of-your-time-at-the-beauty-salon/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-parlour-room",
+      "wp_url": "https://www.beauticate.com/destinations/travel/the-parlour-room/",
+      "category": "destinations"
+    },
+    {
+      "slug": "jocelyn-petroni-woollahra",
+      "wp_url": "https://www.beauticate.com/destinations/travel/jocelyn-petroni-woollahra/",
+      "category": "destinations"
+    },
+    {
+      "slug": "the-darling-spa-pyrmont",
+      "wp_url": "https://www.beauticate.com/destinations/travel/the-darling-spa-pyrmont/",
+      "category": "destinations"
+    },
+    {
+      "slug": "the-spa-raes-on-wategos-byron-bay",
+      "wp_url": "https://www.beauticate.com/destinations/travel/the-spa-raes-on-wategos-byron-bay/",
+      "category": "destinations"
+    },
+    {
+      "slug": "bixie-colour",
+      "wp_url": "https://www.beauticate.com/destinations/travel/bixie-colour/",
+      "category": "destinations"
+    },
+    {
+      "slug": "what-are-the-best-nail-hardeners",
+      "wp_url": "https://www.beauticate.com/beauty-style/nails/what-are-the-best-nail-hardeners/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "b4eqvwiwqul60j621kycw4iod8mzx4",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/b4eqvwiwqul60j621kycw4iod8mzx4/",
+      "category": "destinations"
+    },
+    {
+      "slug": "crown-spa-melbourne",
+      "wp_url": "https://www.beauticate.com/destinations/travel/crown-spa-melbourne/",
+      "category": "destinations"
+    },
+    {
+      "slug": "jessica-mauboy",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/jessica-mauboy/",
+      "category": "interviews"
+    },
+    {
+      "slug": "stables-day-spa-at-mount-lofty-house-crafers",
+      "wp_url": "https://www.beauticate.com/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers/",
+      "category": "destinations"
+    },
+    {
+      "slug": "loccitane-petit-spa",
+      "wp_url": "https://www.beauticate.com/destinations/travel/loccitane-petit-spa/",
+      "category": "destinations"
+    },
+    {
+      "slug": "lisa-messenger-entrepreneur-and-author-1",
+      "wp_url": "https://www.beauticate.com/interviews/founders/lisa-messenger-entrepreneur-and-author-1/",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-stop-your-hair-getting-old",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/how-to-stop-your-hair-getting-old/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "josie-taylor-blogger-and-food-stylist",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/josie-taylor-blogger-and-food-stylist/",
+      "category": "interviews"
+    },
+    {
+      "slug": "reader-review-facial-exfoliants",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/reader-review-facial-exfoliants/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "go-jazz-bar-glam-a-la-the-emmy-awards",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/go-jazz-bar-glam-a-la-the-emmy-awards/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "everyday-style-essentials-sigourneys-edit",
+      "wp_url": "https://www.beauticate.com/beauty-style/style/everyday-style-essentials-sigourneys-edit/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "temple-day-spa",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/temple-day-spa/",
+      "category": "destinations"
+    },
+    {
+      "slug": "follow-hair-studio-surfers-paradise",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/follow-hair-studio-surfers-paradise/",
+      "category": "destinations"
+    },
+    {
+      "slug": "concept-cosmetic-medicine-newcastle",
+      "wp_url": "https://www.beauticate.com/destinations/clinics/concept-cosmetic-medicine-newcastle/",
+      "category": "destinations"
+    },
+    {
+      "slug": "how-to-channel-your-inner-mean-girl",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/how-to-channel-your-inner-mean-girl/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "penelope-mitchell-actress",
+      "wp_url": "https://www.beauticate.com/interviews/actors-presenters/penelope-mitchell-actress/",
+      "category": "interviews"
+    },
+    {
+      "slug": "new-beauty-buys-body",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/new-beauty-buys-body/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "liz-kelsh-makeup-artist",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/liz-kelsh-makeup-artist/",
+      "category": "interviews"
+    },
+    {
+      "slug": "post-summer-essentials-sigourneys-edit",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/post-summer-essentials-sigourneys-edit/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "london-fashion-week-round-up",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/london-fashion-week-round-up/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-use-contour-cream-with-montana-cox",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/how-to-use-contour-cream-with-montana-cox/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "supermodel-beach-beauty-secrets",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/supermodel-beach-beauty-secrets/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "bip-ling-fashion-blogger",
+      "wp_url": "https://www.beauticate.com/interviews/tastemakers/bip-ling-fashion-blogger/",
+      "category": "interviews"
+    },
+    {
+      "slug": "who-madeleine-boyd-beauty-journalist",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/who-madeleine-boyd-beauty-journalist/",
+      "category": "interviews"
+    },
+    {
+      "slug": "jess-hart-model-entrepreneur",
+      "wp_url": "https://www.beauticate.com/interviews/models/jess-hart-model-entrepreneur/",
+      "category": "interviews"
+    },
+    {
+      "slug": "seven-timeless-oc-beauty-favourites",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/seven-timeless-oc-beauty-favourites/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "rosie-huntington-whiteley-model",
+      "wp_url": "https://www.beauticate.com/interviews/models/rosie-huntington-whiteley-model/",
+      "category": "interviews"
+    },
+    {
+      "slug": "cauliflower-fried-rice",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/cauliflower-fried-rice/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "sigourneys-edit-country-getaway",
+      "wp_url": "https://www.beauticate.com/destinations/travel/sigourneys-edit-country-getaway/",
+      "category": "destinations"
+    },
+    {
+      "slug": "jessica-gomes-model",
+      "wp_url": "https://www.beauticate.com/interviews/models/jessica-gomes-model/",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-fashion-bloggers-on-their-beauty-faux-pas",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/how-to-fashion-bloggers-on-their-beauty-faux-pas/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it",
+      "wp_url": "https://www.beauticate.com/wellness/health/how-to-how-to-the-oil-pulling-detox-and-why-you-should-be-doing-it/",
+      "category": "wellness"
+    },
+    {
+      "slug": "sally-obermeder-tv-host-author",
+      "wp_url": "https://www.beauticate.com/interviews/actors-presenters/sally-obermeder-tv-host-author/",
+      "category": "interviews"
+    },
+    {
+      "slug": "sigourneys-edit-smart-women-event",
+      "wp_url": "https://www.beauticate.com/sigourneys-edit/picks/sigourneys-edit-smart-women-event/",
+      "category": "sigourneys-edit"
+    },
+    {
+      "slug": "sigourneys-edit-inside-a-skincare-lab",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/sigourneys-edit-inside-a-skincare-lab/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-get-ready-with-bambi-erin-and-zippora",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/how-to-get-ready-with-bambi-erin-and-zippora/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "matilda-dods-model",
+      "wp_url": "https://www.beauticate.com/interviews/models/matilda-dods-model/",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-bastille-beauty-11-cult-french-icons",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/how-to-bastille-beauty-11-cult-french-icons/",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "6-ways-to-pick-pocket-parisienne-preening",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/6-ways-to-pick-pocket-parisienne-preening/",
+      "category": "beauty-style"
+    }
+  ],
+  "missing_vercel_only": [
+    {
+      "slug": "lazy-girls-guide-summer-entertaining",
+      "vercel_url": "https://beauticate-website.vercel.app/living/entertaining/lazy-girls-guide-summer-entertaining",
+      "category": "living"
+    },
+    {
+      "slug": "sacred-six-on-escape-intention-and-the-spas-that-shape-us",
+      "vercel_url": "https://beauticate-website.vercel.app/vodcast/episodes/sacred-six-on-escape-intention-and-the-spas-that-shape-us",
+      "category": "vodcast"
+    },
+    {
+      "slug": "guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth",
+      "vercel_url": "https://beauticate-website.vercel.app/vodcast/episodes/guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth",
+      "category": "vodcast"
+    },
+    {
+      "slug": "luxury-pool-design-trends-australia-2",
+      "vercel_url": "https://beauticate-website.vercel.app/living/interiors/luxury-pool-design-trends-australia-2",
+      "category": "living"
+    },
+    {
+      "slug": "nightly-beauty-routine",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/nightly-beauty-routine",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing",
+      "vercel_url": "https://beauticate-website.vercel.app/vodcast/episodes/tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing",
+      "category": "vodcast"
+    },
+    {
+      "slug": "christmas-led-skincare-gift",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/christmas-led-skincare-gift",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "shaynna-blaze-tvs-interior-designer-on-feeling-your-best-at-every-age",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/shaynna-blaze-tvs-interior-designer-on-feeling-your-best-at-every-age",
+      "category": "interviews"
+    },
+    {
+      "slug": "this-cutting-edge-brow-technique-is-one-step-up-on-microblading",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/this-cutting-edge-brow-technique-is-one-step-up-on-microblading",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "i-reset-my-ring-and-you-can-win-the-chance-to-as-well",
+      "vercel_url": "https://beauticate-website.vercel.app/sigourneys-edit/edit/i-reset-my-ring-and-you-can-win-the-chance-to-as-well",
+      "category": "sigourneys-edit"
+    },
+    {
+      "slug": "benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-best-sydney-beauty-treatments-for-post-lockdown-preening",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-sydney-beauty-treatments-for-post-lockdown-preening",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder",
+      "category": "interviews"
+    },
+    {
+      "slug": "why-you-need-to-try-this-antioxidant-pumped-range",
+      "vercel_url": "https://beauticate-website.vercel.app/sigourneys-edit/edit/why-you-need-to-try-this-antioxidant-pumped-range",
+      "category": "sigourneys-edit"
+    },
+    {
+      "slug": "the-7-beauty-pick-me-ups-to-add-to-cart-this-spring",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-7-beauty-pick-me-ups-to-add-to-cart-this-spring",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "6-tips-for-mastering-a-flawless-at-home-blowdry",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/6-tips-for-mastering-a-flawless-at-home-blowdry",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "do-hydration-boosting-capsules-work-we-tried-them-for-30-days",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "ruby-hammer-major-brit-makeup-artist-on-the-complexities-of-diversity",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/ruby-hammer-major-brit-makeup-artist-on-the-complexities-of-diversity",
+      "category": "interviews"
+    },
+    {
+      "slug": "beauty-to-the-rescue-5-buys-to-do-a-world-of-good",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/beauty-to-the-rescue-5-buys-to-do-a-world-of-good",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "blanc-wa",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/clinics/blanc-wa",
+      "category": "destinations"
+    },
+    {
+      "slug": "video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/why-your-skin-needs-a-cleansing-balm-asap-and-which-one-to-pick",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "our-fathers-day-gift-guide-as-approved-by-the-men-of-beauticate",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/our-fathers-day-gift-guide-as-approved-by-the-men-of-beauticate",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts",
+      "category": "interviews"
+    },
+    {
+      "slug": "do-virtual-beauty-consults-actually-work",
+      "vercel_url": "https://beauticate-website.vercel.app/sigourneys-edit/edit/do-virtual-beauty-consults-actually-work",
+      "category": "sigourneys-edit"
+    },
+    {
+      "slug": "skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/skincare-sos-the-soothing-moisturisers-i-use-when-my-skin-needs-help",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "luxe-your-laundry-and-youll-love-doing-the-washing",
+      "vercel_url": "https://beauticate-website.vercel.app/living/lifestyle/luxe-your-laundry-and-youll-love-doing-the-washing",
+      "category": "living"
+    },
+    {
+      "slug": "the-glossy-mag-editor-in-chief-who-is-a-die-hard-skincare-fanatic",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/the-glossy-mag-editor-in-chief-who-is-a-die-hard-skincare-fanatic",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-10-wellness-apps-were-obsessed-with-right-now",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/biohacking/the-10-wellness-apps-were-obsessed-with-right-now",
+      "category": "wellness"
+    },
+    {
+      "slug": "we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/we-headed-to-the-worlds-skincare-capital-to-school-up-on-zero-waste-beauty-2",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "video-megan-gale-on-rituals-crystals-and-meditation",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/video-megan-gale-on-rituals-crystals-and-meditation",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-nail-summer-beauty-with-coral-makeup",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/how-to-nail-summer-beauty-with-coral-makeup",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-very-modern-and-ultra-chic-rose-perfumes-you-need-to-know-2",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2",
+      "category": "interviews"
+    },
+    {
+      "slug": "heres-how-to-make-the-most-of-your-beauty-fridge",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/heres-how-to-make-the-most-of-your-beauty-fridge",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "why-you-should-be-paying-more-attention-to-your-microbiome",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/why-you-should-be-paying-more-attention-to-your-microbiome",
+      "category": "wellness"
+    },
+    {
+      "slug": "fredrika-akander-fashion-blogger",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/fredrika-akander-fashion-blogger",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-extreme-beauty-standards-flight-attendants-adhere-to",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-extreme-beauty-standards-flight-attendants-adhere-to",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-best-italian-hair-products-and-secrets-you-need-to-know",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-6-perfumes-that-will-evoke-spring-in-a-spritz",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-6-perfumes-that-will-evoke-spring-in-a-spritz",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "get-glowing-skin-with-these-5-diy-treatments",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/get-glowing-skin-with-these-5-diy-treatments",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/how-to-maintain-curly-hair-the-7-rules-you-need-to-swear-by",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "isabella-giovinazzo-actress",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/actors-presenters/isabella-giovinazzo-actress",
+      "category": "interviews"
+    },
+    {
+      "slug": "are-your-candles-eco-friendly",
+      "vercel_url": "https://beauticate-website.vercel.app/living/sustainability/are-your-candles-eco-friendly",
+      "category": "living"
+    },
+    {
+      "slug": "tamsin-johnson-interior-designer",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/tamsin-johnson-interior-designer",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-one-thing-that-made-zoe-foster-blake-nervous",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-one-thing-that-made-zoe-foster-blake-nervous",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "psa-this-new-australian-range-is-perfect-for-nixing-dehydration",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/psa-this-new-australian-range-is-perfect-for-nixing-dehydration",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "why-this-semi-permanent-bb-cream-facial-is-going-viral",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/cosmetic/why-this-semi-permanent-bb-cream-facial-is-going-viral",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "fail-free-ways-reset-health",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/biohacking/fail-free-ways-reset-health",
+      "category": "wellness"
+    },
+    {
+      "slug": "sunscreen-innovations",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/sunscreen-innovations",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "yoga-sleep-poses",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/yoga-sleep-poses",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "monika-radulovic-model",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/monika-radulovic-model",
+      "category": "interviews"
+    },
+    {
+      "slug": "jessica-sepel-smoothie-bowl",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/jessica-sepel-smoothie-bowl",
+      "category": "wellness"
+    },
+    {
+      "slug": "makeup-artist-budget-buys",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/makeup-artist-budget-buys",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "myra-perez-floral-designer",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/myra-perez-floral-designer",
+      "category": "interviews"
+    },
+    {
+      "slug": "christmas-festive-scents",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/christmas-festive-scents",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-gifts-youll-be-most-grateful-for",
+      "vercel_url": "https://beauticate-website.vercel.app/sigourneys-edit/edit/the-gifts-youll-be-most-grateful-for",
+      "category": "sigourneys-edit"
+    },
+    {
+      "slug": "jane-birkin-beauty-icon",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/jane-birkin-beauty-icon",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-products-i-traveled-europe-with",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-products-i-traveled-europe-with",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "kristin-ess-hair-double-conditioning",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/kristin-ess-hair-double-conditioning",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "a-week-in-my-wardrobe",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/a-week-in-my-wardrobe",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "korean-plastic-surgery",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/cosmetic/korean-plastic-surgery",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "australian-beauty-brands-secrets-to-success",
+      "vercel_url": "https://beauticate-website.vercel.app/living/lifestyle/australian-beauty-brands-secrets-to-success",
+      "category": "living"
+    },
+    {
+      "slug": "hayley-bonham-stylist-publicist-entrepreneur",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/hayley-bonham-stylist-publicist-entrepreneur",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-i-do-weekends-sigourneys-edit",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/how-i-do-weekends-sigourneys-edit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "french-vs-korean-skincare",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/french-vs-korean-skincare",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "video-waking-up-with-jess-hart",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-waking-up-with-jess-hart",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "inside-the-beauty-cupboards-of-our-fave-aussie-designers",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/inside-the-beauty-cupboards-of-our-fave-aussie-designers",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "natasha-liu-bordizzo-actress",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/actors-presenters/natasha-liu-bordizzo-actress",
+      "category": "interviews"
+    },
+    {
+      "slug": "christmas-beauty-products-you-can-hang-from-your-tree",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/christmas-beauty-products-you-can-hang-from-your-tree",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "video-damiens-skincare-journey",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/video-damiens-skincare-journey",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-quit-dairy-and-still-have-a-life",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-quit-dairy-and-still-have-a-life",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "katrina-lawrence-author",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/katrina-lawrence-author",
+      "category": "interviews"
+    },
+    {
+      "slug": "video-how-to-host-a-party",
+      "vercel_url": "https://beauticate-website.vercel.app/living/entertaining/video-how-to-host-a-party",
+      "category": "living"
+    },
+    {
+      "slug": "the-best-celeb-halloween-costumes-2017",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-celeb-halloween-costumes-2017",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "this-stylist-has-a-kickass-anti-ageing-routine",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/this-stylist-has-a-kickass-anti-ageing-routine",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-my-smart-watch-saved-my-life-sigourneys-edit",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-my-smart-watch-saved-my-life-sigourneys-edit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "tahnee-atkinson-model",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/tahnee-atkinson-model",
+      "category": "interviews"
+    },
+    {
+      "slug": "video-sigourney-road-tests-3d-skin-tightening-treatment-2",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourney-road-tests-3d-skin-tightening-treatment-2",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "f257idrsg86cqyawj8durejzgkzivw",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/f257idrsg86cqyawj8durejzgkzivw",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-have-cake-for-breakfast-guilt-free",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/how-to-have-cake-for-breakfast-guilt-free",
+      "category": "wellness"
+    },
+    {
+      "slug": "superfoods-bloggers-swear-by",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/superfoods-bloggers-swear-by",
+      "category": "wellness"
+    },
+    {
+      "slug": "6-common-awkward-beauty-blunders-and-how-to-avoid-them",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/6-common-awkward-beauty-blunders-and-how-to-avoid-them",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "jodi-anasta-actress",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/actors-presenters/jodi-anasta-actress",
+      "category": "interviews"
+    },
+    {
+      "slug": "five-makeup-essentials-that-will-fit-in-your-clutch",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/five-makeup-essentials-that-will-fit-in-your-clutch",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "arizona-muse-has-yet-to-disappoint",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/arizona-muse-has-yet-to-disappoint",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "kristen-fisher-eyebrow-stylist",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/kristen-fisher-eyebrow-stylist",
+      "category": "interviews"
+    },
+    {
+      "slug": "video-sigourneys-in-flight-beauty-routine",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/video-sigourneys-in-flight-beauty-routine",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-body-shop-takes-on-the-united-nations-with-their-new-campaign",
+      "vercel_url": "https://beauticate-website.vercel.app/living/sustainability/the-body-shop-takes-on-the-united-nations-with-their-new-campaign",
+      "category": "living"
+    },
+    {
+      "slug": "6-of-the-best-minimalist-beauty-brands",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/6-of-the-best-minimalist-beauty-brands",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "jesinta-franklins-six-beauty-favourites",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/jesinta-franklins-six-beauty-favourites",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-new-beauty-tech-tools-were-truly-excited-about",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-new-beauty-tech-tools-were-truly-excited-about",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "realskin-clinic-hamilton",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/clinics/realskin-clinic-hamilton",
+      "category": "destinations"
+    },
+    {
+      "slug": "the-makeup-every-woman-should-own-sigourneys-edit",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/the-makeup-every-woman-should-own-sigourneys-edit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "get-ready-with-rachael-finch",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/fitness/get-ready-with-rachael-finch",
+      "category": "wellness"
+    },
+    {
+      "slug": "anti-ageing-banana-blueberry-pancakes",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/anti-ageing-banana-blueberry-pancakes",
+      "category": "wellness"
+    },
+    {
+      "slug": "the-best-face-masks-for-your-skin-and-lifestyle",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-best-face-masks-for-your-skin-and-lifestyle",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "stephanie-darling-author-and-editor",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/stephanie-darling-author-and-editor",
+      "category": "interviews"
+    },
+    {
+      "slug": "get-ready-with-jessica-gomes",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/get-ready-with-jessica-gomes",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-beautiful-bush-inspired-facial-that-actually-packs-a-dermal-punch",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-beautiful-bush-inspired-facial-that-actually-packs-a-dermal-punch",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-new-s",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-new-s",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "elsa-pataky-reveals-the-marriage-pact-she-broke",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/elsa-pataky-reveals-the-marriage-pact-she-broke",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "alice-quiddington-dj",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/alice-quiddington-dj",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-one-trick-that-will-give-you-a-perfect-selfie-every-time",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/the-one-trick-that-will-give-you-a-perfect-selfie-every-time",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "best-beauty-looks-of-coachella-2017-weekend-1",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/best-beauty-looks-of-coachella-2017-weekend-1",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "why-you-really-need-vitamin-b-in-your-life",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/why-you-really-need-vitamin-b-in-your-life",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "pat-mcgraths-dark-star-006-kit-launches-and-its-already-gone",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/pat-mcgraths-dark-star-006-kit-launches-and-its-already-gone",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "drake-loves-this-beauty-product-so-much-he-got-a-tattoo-of-it",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/drake-loves-this-beauty-product-so-much-he-got-a-tattoo-of-it",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "michelle-williams-and-busy-phillips-get-fit-by-busting-a-move",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/michelle-williams-and-busy-phillips-get-fit-by-busting-a-move",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "silvana-philippoussis-model-and-actress",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/actors-presenters/silvana-philippoussis-model-and-actress",
+      "category": "interviews"
+    },
+    {
+      "slug": "gucci-created-totally-relatable-memes-for-their-new-campaign",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/gucci-created-totally-relatable-memes-for-their-new-campaign",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "road-trip-beauty-essentials-sigourneys-edit",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/road-trip-beauty-essentials-sigourneys-edit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "jen-atkin-celebrity-hair-stylist",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/jen-atkin-celebrity-hair-stylist",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-best-diy-teeth-whitening-reader-review",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-best-diy-teeth-whitening-reader-review",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "you-can-actually-diy-and-it-actually-works-with-this-insta-account",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/you-can-actually-diy-and-it-actually-works-with-this-insta-account",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "katy-perrys-new-lipstick-line",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/katy-perrys-new-lipstick-line",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "gigi-hadid-shows-off-the-hair-colour-of-2017",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/gigi-hadid-shows-off-the-hair-colour-of-2017",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-powerful-reason-alicia-keys-wore-makeup-again",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/the-powerful-reason-alicia-keys-wore-makeup-again",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "celebrity-stylist-calls-this-hair-product-the-devil",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/celebrity-stylist-calls-this-hair-product-the-devil",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "great-aussie-products-we-love-and-how-we-use-them",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/great-aussie-products-we-love-and-how-we-use-them",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-three-most-exciting-new-products-from-sephoras-showcase",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-three-most-exciting-new-products-from-sephoras-showcase",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "chrissy-teigen-posts-refreshing-approach-to-stretch-marks",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/chrissy-teigen-posts-refreshing-approach-to-stretch-marks",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "should-you-apply-fake-tan-on-top-of-an-existing-tan",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/should-you-apply-fake-tan-on-top-of-an-existing-tan",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "dannii-minogues-new-blonde-hue-took-almost-12-hours",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/dannii-minogues-new-blonde-hue-took-almost-12-hours",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-womens-march-is-giving-you-a-beauty-buy-discount",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-womens-march-is-giving-you-a-beauty-buy-discount",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-best-sea-salt-sprays-reader-review",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/the-best-sea-salt-sprays-reader-review",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "lara-worthington-shares-the-ten-products-she-cant-travel-without",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/lara-worthington-shares-the-ten-products-she-cant-travel-without",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "hailey-bieber-model",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/hailey-bieber-model",
+      "category": "interviews"
+    },
+    {
+      "slug": "this-is-the-worlds-best-selling-mascara",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/this-is-the-worlds-best-selling-mascara",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "i-tested-the-beauty-tips-from-our-grandmothers-heres-what-happened",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/i-tested-the-beauty-tips-from-our-grandmothers-heres-what-happened",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "emily-skyes-killer-workout",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/emily-skyes-killer-workout",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "nine-natural-products-that-actually-do-something",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/nine-natural-products-that-actually-do-something",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "lily-rose-depp-wows-in-new-chanel-film",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/lily-rose-depp-wows-in-new-chanel-film",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "eva-galambos-fashion-buyer-and-entrepreneur",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/eva-galambos-fashion-buyer-and-entrepreneur",
+      "category": "interviews"
+    },
+    {
+      "slug": "chuan-spa-the-langham-melbourne-1",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/clinics/chuan-spa-the-langham-melbourne-1",
+      "category": "destinations"
+    },
+    {
+      "slug": "post-baby-workout-what-i-wish-i-knew-the-first-time-around",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/fitness/post-baby-workout-what-i-wish-i-knew-the-first-time-around",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-make-it-big-in-beauty-haircare-and-tequila-tycoon-schools-us",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/how-to-make-it-big-in-beauty-haircare-and-tequila-tycoon-schools-us",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-best-pigmentation-treatments-reader-review",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/the-best-pigmentation-treatments-reader-review",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "kit-willow-designer",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/kit-willow-designer",
+      "category": "interviews"
+    },
+    {
+      "slug": "video-six-steps-to-a-zenned-out-complexion",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/video-six-steps-to-a-zenned-out-complexion",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-get-supermodel-skin",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-get-supermodel-skin",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "a-journey-into-natural-skincare-sigourneys-edit",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/a-journey-into-natural-skincare-sigourneys-edit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "pip-edwards-designer",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/pip-edwards-designer",
+      "category": "interviews"
+    },
+    {
+      "slug": "the-beauty-cupboard-edit-july",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/the-beauty-cupboard-edit-july",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "short-hairstyles",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/short-hairstyles",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "elsa-morgan-makeup-artist",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/elsa-morgan-makeup-artist",
+      "category": "interviews"
+    },
+    {
+      "slug": "video-how-to-keep-your-veggies-fresh-for-longer",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/video-how-to-keep-your-veggies-fresh-for-longer",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "dyson-supersonic-hair-dryer-review-is-it-worth-699",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/dyson-supersonic-hair-dryer-review-is-it-worth-699",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-lazy-girls-guide-to-summer-hair",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/the-lazy-girls-guide-to-summer-hair",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "sibella-court-interior-stylist-and-author",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/sibella-court-interior-stylist-and-author",
+      "category": "interviews"
+    },
+    {
+      "slug": "roji-canberra",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/travel/roji-canberra",
+      "category": "destinations"
+    },
+    {
+      "slug": "agape-hair-hobart",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/travel/agape-hair-hobart",
+      "category": "destinations"
+    },
+    {
+      "slug": "spaq-qt-sydney",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/travel/spaq-qt-sydney",
+      "category": "destinations"
+    },
+    {
+      "slug": "how-to-make-a-super-healthy-fig-and-pear-loaf",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/how-to-make-a-super-healthy-fig-and-pear-loaf",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-channel-your-inner-met-gala-goddess-like-fashions-hall-of-famers",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-channel-your-inner-met-gala-goddess-like-fashions-hall-of-famers",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-buy-perfume-for-someone-else",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-buy-perfume-for-someone-else",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "mothers-day-treats-for-every-mama",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/mothers-day-treats-for-every-mama",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "what-to-wear-for-winter-workouts",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/style/what-to-wear-for-winter-workouts",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "jess-burdon-writer",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/jess-burdon-writer",
+      "category": "interviews"
+    },
+    {
+      "slug": "three-things-your-makeup-bag-needs-now",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/three-things-your-makeup-bag-needs-now",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "tikkun-holistic-spa-santa-monica",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/clinics/tikkun-holistic-spa-santa-monica",
+      "category": "destinations"
+    },
+    {
+      "slug": "best-hair-dryer",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/best-hair-dryer",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "tash-and-devin-a-bikini-a-day",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/tastemakers/tash-and-devin-a-bikini-a-day",
+      "category": "interviews"
+    },
+    {
+      "slug": "fig-and-rosewater-chia-pudding",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/fig-and-rosewater-chia-pudding",
+      "category": "wellness"
+    },
+    {
+      "slug": "oscar-oscar-paddington",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/travel/oscar-oscar-paddington",
+      "category": "destinations"
+    },
+    {
+      "slug": "salon-of-the-week-oscar-oscar-paddington",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/salon-of-the-week-oscar-oscar-paddington",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "fashion-force-strong-women-ruled-at-mbfwa",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/fashion-force-strong-women-ruled-at-mbfwa",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "amalie-gassmann-model",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/amalie-gassmann-model",
+      "category": "interviews"
+    },
+    {
+      "slug": "fashion-designers-on-their-beauty-muses",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/fashion-designers-on-their-beauty-muses",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "the-beauty-of-a-white-shirt",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/style/the-beauty-of-a-white-shirt",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "loccitane-petit-spa-subiaco-wa",
+      "vercel_url": "https://beauticate-website.vercel.app/destinations/clinics/loccitane-petit-spa-subiaco-wa",
+      "category": "destinations"
+    },
+    {
+      "slug": "megan-hess-fashion-illustrator",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/megan-hess-fashion-illustrator",
+      "category": "interviews"
+    },
+    {
+      "slug": "dermalogica-bio-peel-review",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/dermalogica-bio-peel-review",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "6-reasons-to-eat-more-raw-chocolate-this-easter",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/6-reasons-to-eat-more-raw-chocolate-this-easter",
+      "category": "wellness"
+    },
+    {
+      "slug": "hermione-underwood-publicist-and-travel-blogger",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/tastemakers/hermione-underwood-publicist-and-travel-blogger",
+      "category": "interviews"
+    },
+    {
+      "slug": "stuff-you-didnt-know-about-sweat-1",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/fitness/stuff-you-didnt-know-about-sweat-1",
+      "category": "wellness"
+    },
+    {
+      "slug": "robyn-lawley-model",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/robyn-lawley-model",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-make-an-antioxidant-rainbow-salad",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/how-to-make-an-antioxidant-rainbow-salad",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-tv-ready-skin-with-sally-obermeder",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-tv-ready-skin-with-sally-obermeder",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-spring-racing-beauty-edit",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-spring-racing-beauty-edit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "kym-ellery-fashion-designer",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/kym-ellery-fashion-designer",
+      "category": "interviews"
+    },
+    {
+      "slug": "felicia-oreb-and-diana-johnson-personal-trainers",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/tastemakers/felicia-oreb-and-diana-johnson-personal-trainers",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-strengthen-your-core-with-kettlebells",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/fitness/how-to-strengthen-your-core-with-kettlebells",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-emulate-the-chicest-beauty-icons-of-the-80s",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-emulate-the-chicest-beauty-icons-of-the-80s",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "kelly-smythe-stylist",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/kelly-smythe-stylist",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-accessorize-with-jackets-with-kelly-smythe",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/style/how-to-accessorize-with-jackets-with-kelly-smythe",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-5-hair-mistakes-you-didnt-know-you-were-making",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/how-to-5-hair-mistakes-you-didnt-know-you-were-making",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-skin-with-kelly-smythe",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-skin-with-kelly-smythe",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-mothers-day",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-mothers-day",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "sigourneys-edit-hair",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/sigourneys-edit-hair",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-workout-your-workout-bag",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/fitness/how-to-workout-your-workout-bag",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-make-up-like-a-makeup-artist-with-sarah-jagger",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/how-to-make-up-like-a-makeup-artist-with-sarah-jagger",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "who-sarah-jagger-make-up-artist",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/who-sarah-jagger-make-up-artist",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-go-raw-with-skin-loving-beetroot-ravioli",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/how-to-go-raw-with-skin-loving-beetroot-ravioli",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-make-a-beauty-smoothie-with-zoe-bingley-pullin",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/how-to-make-a-beauty-smoothie-with-zoe-bingley-pullin",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-be-a-princess",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-a-princess",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "zoe-bingley-pullin-nutritionist-and-chef",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef",
+      "category": "interviews"
+    },
+    {
+      "slug": "cosmetics-cleanse",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/cosmetics-cleanse",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-be-a-healthy-bunny-this-easter",
+      "vercel_url": "https://beauticate-website.vercel.app/wellness/health/how-to-be-a-healthy-bunny-this-easter",
+      "category": "wellness"
+    },
+    {
+      "slug": "how-to-pick-the-perfect-shade-of-red-lipstick",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/how-to-pick-the-perfect-shade-of-red-lipstick",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "who-jodhi-meares",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/who-jodhi-meares",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-be-runway-ready",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-runway-ready",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-get-a-byron-bay-glow",
+      "vercel_url": "https://beauticate-website.vercel.app/sigourneys-edit/edit/how-to-get-a-byron-bay-glow",
+      "category": "sigourneys-edit"
+    },
+    {
+      "slug": "how-to-do-mini-break-beauty-a-guide-to-packing-lightly",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-do-mini-break-beauty-a-guide-to-packing-lightly",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-backstage-beautiful-fashion-week-pros-reveal-all",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-backstage-beautiful-fashion-week-pros-reveal-all",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-fake-gorgeous-skin",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/how-to-fake-gorgeous-skin",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "who-emily-green-model",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/models/who-emily-green-model",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-quench-thirsty-hair",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/how-to-quench-thirsty-hair",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-do-barefaced-beauty-like-a-beatnik",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-do-barefaced-beauty-like-a-beatnik",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-be-camera-ready-with-lauren-curtis-beauty-vlogger",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-be-camera-ready-with-lauren-curtis-beauty-vlogger",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "lauren-curtis-beauty-vlogger",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/tastemakers/lauren-curtis-beauty-vlogger",
+      "category": "interviews"
+    },
+    {
+      "slug": "use-a-curling-tong-with-hairstylist-paloma-rose-garcia",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/use-a-curling-tong-with-hairstylist-paloma-rose-garcia",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "start-a-skincare-business-with-lindy-klim",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/founders/start-a-skincare-business-with-lindy-klim",
+      "category": "interviews"
+    }
+  ],
+  "missing_both": [
+    {
+      "slug": "how-to-luxe-your-dogs-life",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/how-to-luxe-your-dogs-life/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-luxe-your-dogs-life",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "proenza-schouler-lancome-makeup-collection",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/proenza-schouler-lancome-makeup-collection/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/proenza-schouler-lancome-makeup-collection",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "christelle-scifo-stylist",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/christelle-scifo-stylist/",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/christelle-scifo-stylist",
+      "category": "interviews"
+    },
+    {
+      "slug": "zero-waste-beauty",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/zero-waste-beauty/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/zero-waste-beauty",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "hair-trends-your-hairdresser-wants-you-to-know",
+      "wp_url": "https://www.beauticate.com/beauty-style/hair/hair-trends-your-hairdresser-wants-you-to-know/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/hair-trends-your-hairdresser-wants-you-to-know",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "ultimate-guide-no-makeup-makeup",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/ultimate-guide-no-makeup-makeup/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/ultimate-guide-no-makeup-makeup",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "go-tos-launch-2",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/go-tos-launch-2/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/go-tos-launch-2",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "go-tos-launch",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/go-tos-launch/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/go-tos-launch",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "reader-review-eye-creams",
+      "wp_url": "https://www.beauticate.com/beauty-style/skin-care/reader-review-eye-creams/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/skin-care/reader-review-eye-creams",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "makeup-hacks-for-the-party-season",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/makeup-hacks-for-the-party-season/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/makeup-hacks-for-the-party-season",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "somer-watson",
+      "wp_url": "https://www.beauticate.com/interviews/creatives/somer-watson/",
+      "vercel_url": "https://beauticate-website.vercel.app/interviews/creatives/somer-watson",
+      "category": "interviews"
+    },
+    {
+      "slug": "how-to-where-should-you-be-parting-your-hair",
+      "wp_url": "https://www.beauticate.com/beauty-style/hair/how-to-where-should-you-be-parting-your-hair/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/hair/how-to-where-should-you-be-parting-your-hair",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-pack-your-mbfwa-survival-kit",
+      "wp_url": "https://www.beauticate.com/beauty-style/beauty-tips/how-to-pack-your-mbfwa-survival-kit/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/beauty-tips/how-to-pack-your-mbfwa-survival-kit",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-give-yourself-a-vinylux-manicure",
+      "wp_url": "https://www.beauticate.com/beauty-style/nails/how-to-give-yourself-a-vinylux-manicure/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/nails/how-to-give-yourself-a-vinylux-manicure",
+      "category": "beauty-style"
+    },
+    {
+      "slug": "how-to-fill-in-your-brows-with-desiree-wise",
+      "wp_url": "https://www.beauticate.com/beauty-style/makeup/how-to-fill-in-your-brows-with-desiree-wise/",
+      "vercel_url": "https://beauticate-website.vercel.app/beauty-style/makeup/how-to-fill-in-your-brows-with-desiree-wise",
+      "category": "beauty-style"
+    }
+  ],
+  "credits_needed": 326
+}
