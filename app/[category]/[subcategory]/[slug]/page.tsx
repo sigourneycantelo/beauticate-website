@@ -34,7 +34,7 @@ export default async function ArticleRoute({ params }: Props) {
   const related = getRelatedArticles(slug, category, f.tags ?? [])
 
   const url = `/${category}/${subcategory}/${slug}`
-  const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })))
+  const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })), content)
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: category.replace(/-/g, ' '), url: `/${category}` },

@@ -42,7 +42,35 @@ export function resolveSchemaType(f: ArticleFrontmatter): SchemaType {
   return 'Article'
 }
 
-export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { q: string; a: string }[]) {
+function extractHowToSteps(content: string): { name: string; text: string }[] {
+  const lines = content.split('\n')
+  const steps: { name: string; text: string }[] = []
+  let i = 0
+  while (i < lines.length) {
+    const h2Match = lines[i].match(/^##\s+(.+)/)
+    if (h2Match) {
+      const name = h2Match[1].replace(/\\\./g, '.').replace(/\*\*/g, '').trim()
+      if (/shop|look|related/i.test(name)) { i++; continue }
+      const bodyLines: string[] = []
+      i++
+      while (i < lines.length && !lines[i].match(/^##\s/)) {
+        const line = lines[i].trim()
+        if (line && !line.startsWith('![') && !line.startsWith('<') && !line.startsWith('#')) {
+          bodyLines.push(line.replace(/\*\*/g, '').replace(/\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1'))
+        }
+        i++
+      }
+      if (bodyLines.length > 0) {
+        steps.push({ name, text: bodyLines.slice(0, 3).join(' ') })
+      }
+    } else {
+      i++
+    }
+  }
+  return steps
+}
+
+export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { q: string; a: string }[], content?: string) {
   const schemaType = resolveSchemaType(f)
   const articleUrl = `${SITE_URL}${url}`
   const imageUrl = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
@@ -88,6 +116,21 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
             worstRating: '1',
           },
         }
+      : {}),
+    ...(schemaType === 'HowTo' && content
+      ? (() => {
+          const steps = extractHowToSteps(content)
+          return steps.length >= 2
+            ? {
+                step: steps.map((s, i) => ({
+                  '@type': 'HowToStep',
+                  position: i + 1,
+                  name: s.name,
+                  text: s.text,
+                })),
+              }
+            : {}
+        })()
       : {}),
   }
 
