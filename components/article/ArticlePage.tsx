@@ -26,6 +26,7 @@ import ProductTile from '@/components/shared/ProductTile'
 import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 import rehypePullQuotes from '@/lib/rehype-pull-quotes'
+import rehypeShopGrid from '@/lib/rehype-shop-grid'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -152,7 +153,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes] } }}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypeShopGrid] } }}
           />
         </div>
 

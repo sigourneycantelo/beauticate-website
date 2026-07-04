@@ -51,7 +51,7 @@ const config: Config = {
             h1: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' },
             h2: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em', fontWeight: '600' },
             h3: { fontFamily: 'var(--font-serif)', fontWeight: '500' },
-            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.34em', fontSize: '0.7rem', fontWeight: '400', color: '#3a2a22' },
+            h4: { fontFamily: 'var(--font-serif)', textTransform: 'none', letterSpacing: 'normal', fontSize: '1.125rem', fontWeight: '600', color: '#1C1A17', lineHeight: '1.8' },
             p:  { fontFamily: 'var(--font-serif)' },
             figcaption: {
               fontFamily: 'var(--font-sans)',
