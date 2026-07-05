@@ -140,7 +140,7 @@ export function getRelatedArticles(
   currentSlug: string,
   category: string,
   tags: string[],
-  limit = 4
+  limit = 6
 ) {
   return getArticlesByCategory(category)
     .filter(isPublished)
