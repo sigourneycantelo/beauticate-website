@@ -242,6 +242,43 @@ Some fixes are component-level, not content-level:
   `getRelatedArticles()` in `lib/content.ts` defaults to `limit = 6`. The
   section uses `max-w-wide mx-auto` to align with the article body width.
 
+- **Gallery articles — per-image captions in grid rows.**  Event/portrait gallery
+  articles (e.g. Armani Beauty, Greatest Hits) have runs of images where each
+  image has its own caption naming the person. The `rehype-image-grid` plugin
+  (`lib/rehype-image-grid.ts`) treats `image + h6` as a single unit and places
+  both in the same grid cell. Key rules:
+  - **Use `######` headings for per-image captions**, never italic (`*...*`).
+    Italic paragraphs break image runs in the plugin (they're not recognised as
+    captions), causing sections to render as separate single images instead of
+    grouped rows.
+  - **Add `&nbsp;` between distinct sections** to prevent cross-section run
+    merging. Without a separator, the plugin sees adjacent sections' images as
+    one long run and chunks them into wrong groupings (e.g. 2+2+1 instead of
+    2+3).
+  - **Chunking logic:** exactly 3 images → 3-col grid; any other count → rows
+    of 2 (2fr/1fr asymmetric grid). A leftover single image renders full-width.
+  - **Caption placement:** the `######` must immediately follow its image (with
+    only a blank line between). The plugin pairs each image with the next h6 it
+    finds before hitting another image or a non-whitespace/non-caption node.
+  - **Conversion pattern** — for each italic caption in a gallery article:
+    ```
+    # Before (broken — italic breaks the run):
+    *Natalie Decorte from The Polo Project*
+
+    # After (correct — h6 is recognised as caption):
+    ###### Natalie Decorte from The Polo Project
+
+    &nbsp;
+    ```
+  - **Tailwind JIT doesn't scan `lib/`** so `grid-template-columns` values must
+    use inline `style` attributes, not Tailwind classes. The plugin uses
+    `style: 'grid-template-columns:2fr 1fr'` for 2-col grids.
+
+- **Vodcast episode layout — `max-w-wide` (1200px), not `max-w-3xl` (768px).**
+  The vodcast episode page (`app/vodcast/episodes/[slug]/page.tsx`) originally
+  used `max-w-3xl` for all containers, making episodes noticeably narrower than
+  editorial articles. Changed to `max-w-wide` to match.
+
 ---
 
 ## 6. Hard-won gotchas
