@@ -103,6 +103,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   const [scrolled, setScrolled] = useState(false)
   const [drawer, setDrawer] = useState(false)
   const [openKey, setOpenKey] = useState<string | null>(null)
+  const [megaHidden, setMegaHidden] = useState(false)
   const tick = useRef(false)
 
   useEffect(() => {
@@ -120,8 +121,15 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
     return () => { document.body.style.overflow = '' }
   }, [drawer])
 
+  useEffect(() => { setMegaHidden(false) }, [pathname])
+
+  const handleNavClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement
+    if (target.closest('.mh-mega a, .mh-pillar-link')) setMegaHidden(true)
+  }
+
   return (
-    <header className={`mh${scrolled ? ' mh-scrolled' : ''}`}>
+    <header className={`mh${scrolled ? ' mh-scrolled' : ''}${megaHidden ? ' mh-closing' : ''}`}>
       {/* Utility tier */}
       <div className="mh-utility">
         <div className="mh-util-left">
@@ -149,7 +157,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
       </div>
 
       {/* Primary tier */}
-      <nav className="mh-primary" aria-label="Primary">
+      <nav className="mh-primary" aria-label="Primary" onClick={handleNavClick}>
         <Link href={isShop ? '/shop' : '/'} className="mh-brand-mini" aria-hidden="true" tabIndex={-1}><Wordmark className="mh-logo mh-logo-mini" shop={isShop} /></Link>
         <ul className="mh-pillars">
           {pillars.map(p => <PillarItem key={p.key} p={p} />)}

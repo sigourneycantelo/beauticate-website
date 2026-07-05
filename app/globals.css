@@ -250,6 +250,7 @@
   pointer-events:none;
 }
 .mh-pillar:hover .mh-mega, .mh-pillar:focus-within .mh-mega{ opacity:1; visibility:visible; transform:translateY(0); transition-delay:.35s; pointer-events:auto; }
+.mh.mh-closing .mh-pillar:hover .mh-mega, .mh.mh-closing .mh-pillar:focus-within .mh-mega{ opacity:0; visibility:hidden; pointer-events:none; transition-delay:0s; }
 .mh-mega-inner{ max-width:1180px; margin:0 auto; padding:36px 34px 40px; display:grid; grid-template-columns:216px 1fr; gap:52px; align-items:start; }
 .mh-subs{ border-right:1px solid var(--mh-line-soft); padding-right:8px; }
 .mh-eyebrow{ display:block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--mh-muted); margin-bottom:16px; }
