@@ -205,7 +205,7 @@ export default async function EpisodePage({ params }: Props) {
 
       {/* Breadcrumb */}
       <div
-        className="max-w-3xl mx-auto px-6 pt-10 pb-2"
+        className="max-w-wide mx-auto px-6 pt-10 pb-2"
         style={{ borderBottom: '1px solid rgba(28,26,23,.08)' }}
       >
         <nav className="font-sans text-[10px] tracking-[.16em] uppercase" style={{ opacity: 0.5 }}>
@@ -216,7 +216,7 @@ export default async function EpisodePage({ params }: Props) {
       </div>
 
       {/* Hero image + title */}
-      <header className="max-w-3xl mx-auto px-6 pt-10 pb-8">
+      <header className="max-w-wide mx-auto px-6 pt-10 pb-8">
         {f.featured_image && (
           <div className="relative mx-auto mb-8 rounded-[2px] overflow-hidden" style={{ aspectRatio: f.hero_aspect ?? '16/9', maxWidth: f.hero_aspect ? '560px' : '100%' }}>
             <Image
@@ -255,7 +255,7 @@ export default async function EpisodePage({ params }: Props) {
       </header>
 
       {/* YouTube embed (primary) or Anchor audio (fallback) */}
-      <div className="max-w-3xl mx-auto px-6 pb-10">
+      <div className="max-w-wide mx-auto px-6 pb-10">
         {f.youtube_video_id ? (
           <div className="relative w-full overflow-hidden rounded-[2px] bg-black" style={{ aspectRatio: '16/9' }}>
             <iframe
@@ -283,7 +283,7 @@ export default async function EpisodePage({ params }: Props) {
       {/* Body content */}
       {cleanContent && (
         <div
-          className="max-w-3xl mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg"
+          className="max-w-wide mx-auto px-6 pb-12 font-serif text-[17px] leading-[1.72] prose prose-lg"
           style={{ color: '#1C1A17' }}
         >
           <MDXRemote source={cleanContent} components={components} />
@@ -292,13 +292,13 @@ export default async function EpisodePage({ params }: Props) {
 
       {/* FAQs — proper accordion box, shared with editorial articles */}
       {f.faqs && f.faqs.length > 0 && (
-        <div className="max-w-3xl mx-auto px-6 pb-16">
+        <div className="max-w-wide mx-auto px-6 pb-16">
           <FAQPanel faqs={f.faqs} title="Questions about this episode" />
         </div>
       )}
 
       {/* Back to podcast */}
-      <div className="max-w-3xl mx-auto px-6 pb-20">
+      <div className="max-w-wide mx-auto px-6 pb-20">
         <Link
           href="/vodcast"
           className="font-sans text-[10.5px] tracking-[.18em] uppercase transition-opacity"
