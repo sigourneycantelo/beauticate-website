@@ -96,7 +96,11 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
     const onScroll = () => {
       if (tick.current) return
       tick.current = true
-      requestAnimationFrame(() => { setScrolled(window.scrollY > 64); tick.current = false })
+      requestAnimationFrame(() => {
+        const y = window.scrollY
+        setScrolled(prev => (prev ? y > 10 : y > 64))
+        tick.current = false
+      })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)

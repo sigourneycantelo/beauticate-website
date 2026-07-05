@@ -208,7 +208,7 @@ export default async function EpisodePage({ params }: Props) {
         className="max-w-wide mx-auto px-6 pt-10 pb-2"
         style={{ borderBottom: '1px solid rgba(28,26,23,.08)' }}
       >
-        <nav className="font-sans text-[10px] tracking-[.16em] uppercase" style={{ opacity: 0.5 }}>
+        <nav className="font-sans font-medium text-[11.5px] tracking-[0.12em] uppercase text-charcoal-light">
           <Link href="/vodcast" className="hover:opacity-100 transition-opacity">Beautiful Inside</Link>
           <span className="mx-2">/</span>
           <span>{f.title}</span>
