@@ -231,6 +231,17 @@ Some fixes are component-level, not content-level:
   during cleanup (`**Nutritionist, former model and blogger**` or
   `### 2. Bannie Williams, The Healthy Ingredient`).
 
+- **`rehype-image-grid` requires blank lines between images.**  The plugin
+  detects runs of consecutive `<p><img></p>` elements in HAST and wraps them
+  in a CSS grid. MDX blank lines between `![](url)` lines produce whitespace
+  text nodes in HAST — the plugin skips these via `isWhitespaceText()`. If
+  blank lines are removed, MDX merges all images into a single `<p>` and the
+  plugin won't fire. Always keep blank lines between consecutive images.
+
+- **"You might also like" — 6 related articles, 2 rows of 3.**
+  `getRelatedArticles()` in `lib/content.ts` defaults to `limit = 6`. The
+  section uses `max-w-wide mx-auto` to align with the article body width.
+
 ---
 
 ## 6. Hard-won gotchas
