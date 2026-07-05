@@ -66,11 +66,12 @@ interface ShopGridProps {
  */
 export function ShopGrid({ children }: ShopGridProps) {
   const count = Math.min(Children.count(children), 6)
+  const cols = Math.max(count, 3)
   return (
     <div className="not-prose my-10 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0 md:overflow-visible">
       <div
         className="grid gap-[clamp(12px,1.6vw,22px)]"
-        style={{ gridTemplateColumns: `repeat(${count}, minmax(150px, 1fr))` }}
+        style={{ gridTemplateColumns: `repeat(${cols}, minmax(150px, 1fr))` }}
       >
         {children}
       </div>
