@@ -51,7 +51,7 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
             )!
             img.properties = {
               ...img.properties,
-              class: 'w-full h-auto object-contain',
+              class: 'w-full h-full object-cover',
             }
             return img
           })
@@ -75,12 +75,13 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
           const cols = chunk.length === 2 ? 2 : 3
           const gridClass =
             cols === 2
-              ? 'not-prose grid grid-cols-2 gap-3 my-6'
+              ? 'not-prose grid gap-3 my-6'
               : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
+          const gridStyle = cols === 2 ? 'grid-template-columns:2fr 1fr' : undefined
           gridNodes.push({
             type: 'element',
             tagName: 'div',
-            properties: { class: gridClass },
+            properties: { class: gridClass, style: gridStyle },
             children: chunk.map((img) => ({
               type: 'element' as const,
               tagName: 'div' as const,
