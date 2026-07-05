@@ -191,6 +191,46 @@ Some fixes are component-level, not content-level:
   Next text block...
   ```
 
+- **Inline `![](img)` + `## [NAME](url)` product blobs → `<ShopGrid>`.**
+  Many older articles (especially listicles and "Shop the Look" roundups) have
+  products rendered as a plain image followed by a heading-level link:
+  ```mdx
+  ![](https://…/product.jpg)
+
+  ## [PRODUCT NAME](https://buy-link.com)
+  ```
+  These should be converted to proper `<ShopGrid>` with `<ShopItem>` children,
+  grouping 3 products per grid where the original article had 3 per section:
+  ```mdx
+  <ShopGrid>
+    <ShopItem image="https://…/product1.jpg" name="Product One" url="https://…" />
+    <ShopItem image="https://…/product2.jpg" name="Product Two" url="https://…" />
+    <ShopItem image="https://…/product3.jpg" name="Product Three" url="https://…" />
+  </ShopGrid>
+  ```
+
+- **Single/double product `<ShopGrid>` renders at 1/3 width.**  The ShopGrid
+  component enforces a minimum 3-column grid (`const cols = Math.max(count, 3)`)
+  so single or double product grids render at 1/3 page width — the same size as
+  in a 3-item row. No wrapper or class overrides needed.
+
+- **YouTube Shorts left-aligned at 1/3 width.**  Shorts videos default to
+  centred in the `YouTubeEmbed` component. To left-align and constrain width,
+  wrap in a div with Tailwind classes (NOT `style={{}}` — MDX strips inline
+  styles):
+  ```mdx
+  <div className="not-prose max-w-[364px]">
+
+  <YouTubeEmbed url="https://youtube.com/shorts/…" />
+
+  </div>
+  ```
+
+- **ALL CAPS headings → title case.**  WordPress migration preserved shouted
+  headings (`## NUTRITIONIST, FORMER MODEL & BLOGGER`). Convert to title case
+  during cleanup (`**Nutritionist, former model and blogger**` or
+  `### 2. Bannie Williams, The Healthy Ingredient`).
+
 ---
 
 ## 6. Hard-won gotchas
@@ -222,6 +262,18 @@ Some fixes are component-level, not content-level:
   the hero component already displays this image above the body.
 - **Shell escaping:** prefer script files or Python over inline `node -e` for
   anything with quotes/`$`. On macOS, `xargs` lacks `-d` (use `tr '\n' '\0' | xargs -0`).
+- **NBSP / curly quote files need byte-level edits.** Many WordPress-era MDX
+  files contain NBSP (`\xc2\xa0`) and curly quotes (`\xe2\x80\x98`/`\xe2\x80\x99`
+  /`\xe2\x80\x9c`/`\xe2\x80\x9d`). The `Edit` tool's string matching silently
+  fails on these. Use Python `open(path, 'rb')` / `open(path, 'wb')` for
+  byte-level replacement, or rewrite the full body after splitting on `b'---\n'`.
+- **MDX strips inline `style={{}}` on raw HTML divs.** `next-mdx-remote` silently
+  removes JSX-style `style={{maxWidth: '260px'}}` props on raw `<div>` elements.
+  Use Tailwind arbitrary value classes instead (e.g. `max-w-[364px]`).
+- **Low-res source images — never upscale.** Many WordPress product and portrait
+  images are only 200×300px. Check dimensions before sizing up; cap at native
+  pixel width. A blurry 200px image stretched to 280px looks worse than a sharp
+  200px image.
 
 ---
 
