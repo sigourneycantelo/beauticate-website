@@ -206,7 +206,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       {/* Related articles */}
       {relatedArticles.length > 0 && (
         <div className="border-t border-cream-200">
-          <div className="px-[clamp(20px,3vw,34px)] py-10">
+          <div className="max-w-wide mx-auto px-[clamp(20px,3vw,34px)] py-10">
             <h2 className="mb-8">You might also like</h2>
             <ArticleGrid articles={relatedArticles} />
           </div>
