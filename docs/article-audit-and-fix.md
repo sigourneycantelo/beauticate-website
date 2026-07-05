@@ -149,6 +149,48 @@ Some fixes are component-level, not content-level:
   (`components/mdx/ShopGrid.tsx`), so product packshots show in full on the cream
   tile instead of being cropped at the edges.
 
+- **Single-product listicles → `<SplitRow>`.**  When an article has one product
+  per section (heading + copy + single `<ShopGrid><ShopItem/></ShopGrid>`),
+  convert to `<SplitRow>` for a two-column copy+product layout:
+  ```mdx
+  <SplitRow image="/content/..." alt="Product Name" side="right" imageWidth="260" href="https://...">
+
+  ## 1. Section heading
+
+  Body copy...
+
+  </SplitRow>
+  ```
+  Alternate `side="right"` / `side="left"` for visual rhythm. SplitRow uses
+  flexbox (self-contained, no bleed); do NOT use `<ProductInset>` (float-based,
+  bleeds into subsequent sections). On mobile, SplitRow stacks copy-first,
+  image below.
+
+- **Multi-image character/look articles → 3-image rows + ShopGrid.**  Articles
+  where each section has 3 editorial images followed by copy and a "Shop the
+  Look" product set (e.g. TV Mums, celebrity looks) should use:
+  - **3 consecutive `![](url)` on separate lines** (with blank lines between) for
+    the editorial images — `rehype-image-grid` auto-wraps exactly 3 into a
+    `grid-cols-3` row (2-col on mobile).
+  - **`<ShopGrid>` with 3 `<ShopItem>` children** for the products.
+  - Remove any first body image that duplicates the hero/featured image.
+  - Remove orphan single-item `<ShopGrid>` blocks at the bottom (migration
+    artefacts).
+  - Convert inline `![alt](url) Product Name` blobs into proper
+    `<ShopItem image="url" name="Product Name" />` inside a `<ShopGrid>`.
+
+- **Vertically-stacked image sequences → `<InlineImage>`.**  Recovery/progress
+  photo series (e.g. cheek blush tattoo) should use `<InlineImage>` components
+  with consistent `width` values, NOT markdown `![]()` (which gets auto-gridded)
+  or `<Portrait>` (which floats and bleeds). Pattern:
+  ```mdx
+  Text block...
+
+  <InlineImage src="/content/..." alt="..." width="181" height="300" />
+
+  Next text block...
+  ```
+
 ---
 
 ## 6. Hard-won gotchas
@@ -168,6 +210,16 @@ Some fixes are component-level, not content-level:
   detector strips both before counting.
 - **Censored swears** (`f***`) trip the mismatched-bold heuristic — recognise and
   skip them.
+- **Rogue "Save" text.** WordPress's Pinterest "Save" button migrated as a bare
+  `Save` line, usually after the byline. Batch-strip with:
+  `python3 -c "..."` (regex `\n\nSave\n` → `\n`). 461 articles had this.
+- **Orphan trailing ShopGrid/image blocks.** Some articles have duplicate
+  single-item `<ShopGrid>` blocks or repeated body images at the end of the file
+  (after the byline). These are migration artefacts — the images already appear
+  in the body. Remove them, but verify they're truly duplicates first.
+- **First body image duplicating the hero.** Some articles have a `![](url)` as
+  the first body element that is the same image as `featured_image`. Remove it —
+  the hero component already displays this image above the body.
 - **Shell escaping:** prefer script files or Python over inline `node -e` for
   anything with quotes/`$`. On macOS, `xargs` lacks `-d` (use `tr '\n' '\0' | xargs -0`).
 

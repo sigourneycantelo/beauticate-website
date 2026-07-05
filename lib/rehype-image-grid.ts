@@ -14,28 +14,36 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
     let i = 0
 
     while (i < children.length) {
-      const runStart = i
-
-      // Find the length of a run of image-only paragraphs starting at i
-      while (
-        i < children.length &&
-        isImageOnlyParagraph(children[i])
-      ) {
+      if (!isImageOnlyParagraph(children[i])) {
         i++
+        continue
       }
 
-      const runLength = i - runStart
+      // Collect a run of image-only paragraphs, skipping whitespace text nodes
+      const imgIndices: number[] = []
+      let j = i
+      while (j < children.length) {
+        if (isImageOnlyParagraph(children[j])) {
+          imgIndices.push(j)
+          j++
+        } else if (isWhitespaceText(children[j])) {
+          j++
+        } else {
+          break
+        }
+      }
 
-      if (runLength === 0) {
-        // Non-image node — advance so the outer loop doesn't spin forever
-        i++
+      const runLength = imgIndices.length
+
+      if (runLength < 2) {
+        i = j
         continue
       }
 
       if (runLength >= 2) {
         // Extract the <img> elements from each <p>
-        const imgNodes = children
-          .slice(runStart, runStart + runLength)
+        const imgNodes = imgIndices
+          .map((idx) => children[idx])
           .map((p) => {
             const para = p as Element
             const img = para.children.find(
@@ -82,11 +90,18 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
           })
         }
 
-        children.splice(runStart, runLength, ...gridNodes)
-        i = runStart + gridNodes.length
+        const spliceStart = imgIndices[0]
+        const spliceCount = j - spliceStart
+        children.splice(spliceStart, spliceCount, ...gridNodes)
+        i = spliceStart + gridNodes.length
       }
     }
   }
+}
+
+function isWhitespaceText(node: Node): boolean {
+  if (node.type !== 'text') return false
+  return (node as { value: string }).value.trim() === ''
 }
 
 function isImageOnlyParagraph(node: Node): boolean {
