@@ -43,7 +43,7 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
 
   // ── Affiliate / external product (no product image available) ─────
   const href = product.url ?? '#'
-  const retailer = product.retailer ?? retailerFromUrl(product.url) || product.name?.split(' ')[0] || ''
+  const retailer = (product.retailer ?? retailerFromUrl(product.url)) || product.name?.split(' ')[0] || ''
 
   return (
     <div className="not-prose my-8 max-w-[300px] mx-auto">
