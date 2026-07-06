@@ -51,7 +51,7 @@ export default function ProductTile({
   const inner = (
     <>
       {/* Image area — greige for de-etched, full-bleed for lifestyle */}
-      <div className={`relative aspect-[3/4] overflow-hidden ${cover ? '' : 'bg-tile'}`}>
+      <div className="relative aspect-[3/4] overflow-hidden bg-tile">
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (

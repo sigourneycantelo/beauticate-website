@@ -21,16 +21,18 @@ interface Props {
  */
 export default function PortraitQuote({ src, alt, name, role, side = 'left', children }: Props) {
   return (
-    <figure className="not-prose my-16 grid items-center gap-8 md:gap-14 md:grid-cols-2">
+    <figure className="not-prose article-wide my-16 grid items-start gap-8 md:gap-14 md:grid-cols-2">
       <div className={side === 'right' ? 'md:order-2' : ''}>
-        <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-tile">
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 560px"
-            className="object-cover object-top"
-          />
+        <div className="md:sticky md:top-24">
+          <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-tile">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes="(max-width: 768px) 100vw, 560px"
+              className="object-cover object-top"
+            />
+          </div>
         </div>
       </div>
 
@@ -39,7 +41,7 @@ export default function PortraitQuote({ src, alt, name, role, side = 'left', chi
         {role && (
           <p className="font-sans text-[10px] tracking-[0.18em] uppercase opacity-50 mb-5">{role}</p>
         )}
-        <blockquote className="font-serif italic text-[clamp(17px,1.6vw,23px)] leading-[1.55] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
+        <blockquote className="font-serif italic text-[clamp(22px,2.4vw,34px)] leading-[1.5] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
           {children}
         </blockquote>
       </figcaption>
