@@ -1,5 +1,5 @@
 import { getAllArticles, getHeroArticle, getVodcastEpisodes } from '@/lib/content'
-import { getProducts } from '@/lib/shopify'
+import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
@@ -15,10 +15,20 @@ import HeroSplit from '@/components/home/HeroSplit'
 import ShopByMoment from '@/components/home/ShopByMoment'
 
 export default async function HomePage() {
-  const [shopProducts, vodcastEpisodes] = await Promise.all([
+  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes] = await Promise.all([
+    getProductsByTag('team', 24),
+    getCollectionByHandle('autumn-edit'),
     getProducts(12),
     Promise.resolve(getVodcastEpisodes()),
   ])
+  const collectionProducts = winterCollection?.products?.nodes ?? []
+  const seen = new Set<string>()
+  const curatedProducts = [...taggedProducts, ...collectionProducts].filter(p => {
+    if (seen.has(p.handle)) return false
+    seen.add(p.handle)
+    return true
+  }).slice(0, 12)
+  const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
 
   // Rolling de-dupe — no article appears twice on the home page
   const shownSlugs = new Set<string>()

@@ -93,6 +93,18 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
   return (data as any)?.products?.nodes ?? []
 }
 
+export async function getProductsByTag(tag: string, first = 20): Promise<ShopifyProduct[]> {
+  const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
+    ${PRODUCT_FRAGMENT}
+    query ProductsByTag($query: String!, $first: Int!) {
+      products(first: $first, query: $query, sortKey: UPDATED_AT, reverse: true) {
+        nodes { ...ProductFields }
+      }
+    }
+  `, { query: `tag:${tag}`, first })
+  return (data as any)?.products?.nodes ?? []
+}
+
 // ─── Collections ─────────────────────────────────────────────────────────────
 
 export async function getCollectionByHandle(handle: string): Promise<ShopifyCollection | null> {

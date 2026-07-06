@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect, useState } from 'react'
 import Link from 'next/link'
 import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
@@ -8,6 +11,30 @@ function formatPrice(p: ShopifyProduct) {
 }
 
 export default function ShopStrip({ products }: { products: ShopifyProduct[] }) {
+  const railRef = useRef<HTMLDivElement>(null)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    const el = railRef.current
+    if (!el) return
+
+    let raf: number
+    const speed = 0.5
+
+    function step() {
+      if (!paused && el) {
+        el.scrollLeft += speed
+        if (el.scrollLeft >= el.scrollWidth - el.clientWidth) {
+          el.scrollLeft = 0
+        }
+      }
+      raf = requestAnimationFrame(step)
+    }
+
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
+  }, [paused])
+
   if (!products.length) return null
 
   return (
@@ -35,12 +62,17 @@ export default function ShopStrip({ products }: { products: ShopifyProduct[] }) 
 
       {/* Product rail */}
       <div
-        className="grid overflow-x-auto pb-3"
+        ref={railRef}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
+        onTouchEnd={() => setPaused(false)}
+        className="flex overflow-x-auto pb-3 scrollbar-hide"
         style={{
-          gridAutoFlow: 'column',
-          gridAutoColumns: 'minmax(168px,1fr)',
           gap: '18px',
           scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
         }}
       >
         {products.map(p => {
@@ -48,20 +80,20 @@ export default function ShopStrip({ products }: { products: ShopifyProduct[] }) 
           const primary = imgs[0] ?? p.featuredImage
           const secondary = imgs[1]
           return (
-            <ProductTile
-              key={p.handle}
-              href={`/shop/products/${p.handle}`}
-              useNextImage
-              primarySrc={primary?.url}
-              primaryAlt={primary?.altText ?? p.title}
-              secondarySrc={secondary?.url}
-              secondaryAlt={secondary?.altText ?? p.title}
-              cornerLabel="In our shop"
-              brand={p.vendor}
-              name={p.title}
-              price={formatPrice(p)}
-              className="snap-start"
-            />
+            <div key={p.handle} className="snap-start shrink-0" style={{ width: '186px' }}>
+              <ProductTile
+                href={`/shop/products/${p.handle}`}
+                useNextImage
+                primarySrc={primary?.url}
+                primaryAlt={primary?.altText ?? p.title}
+                secondarySrc={secondary?.url}
+                secondaryAlt={secondary?.altText ?? p.title}
+                cornerLabel="In our shop"
+                brand={p.vendor}
+                name={p.title}
+                price={formatPrice(p)}
+              />
+            </div>
           )
         })}
       </div>
