@@ -33,7 +33,8 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
   // Our own product → internal link + "In our shop". Otherwise affiliate/external.
   const internal = !!handle
   const href = internal ? `/shop/products/${handle}` : url
-  const r = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
+  const detected = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
+  const r = detected || brand || ''
   const cornerLabel = internal
     ? 'In our shop'
     : url

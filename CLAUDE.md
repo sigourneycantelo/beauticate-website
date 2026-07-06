@@ -62,6 +62,18 @@ When publishing a new story, always ask:
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
 
+## Product card design rules
+
+All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
+
+**Structure — two halves:**
+1. **Image area (top)** — portrait 3:4 aspect ratio. Two modes:
+   - *De-etched* (default): pack shot on greige (`bg-tile`) background. Used for beauty products with clean cut-out images.
+   - *Lifestyle/editorial* (`cover={true}`): model shot, flat-lay, or contextual image. These keep their own background — no greige overlay.
+2. **Text area (bottom)** — **always white background**. Brand name (uppercase sans), product name (serif), price (smaller, muted). This must blend into the white page, never sit on greige.
+
+The white text strip is the constant across both modes. The image area is the variable. This consistency is what makes a grid of mixed product shots look curated. Reference: SheerLuxe product cards.
+
 ## Category page order
 
 Articles appear on category pages sorted newest-first by `date_published`. The "first 12 stories" on each page are the 12 most recent articles by date.
