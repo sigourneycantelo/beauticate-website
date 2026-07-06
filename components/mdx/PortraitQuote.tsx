@@ -30,18 +30,19 @@ export default function PortraitQuote({ src, alt, name, role, side = 'left', chi
               alt={alt}
               fill
               sizes="(max-width: 768px) 100vw, 560px"
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
           </div>
         </div>
       </div>
 
-      <figcaption className={side === 'right' ? 'md:order-1' : ''}>
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-1">{name}</p>
+      <figcaption className={`${side === 'right' ? 'md:order-1' : ''} md:pt-4`}>
+        <h3 className="font-serif text-[clamp(32px,3.6vw,52px)] leading-[1.1] text-charcoal mb-1">{name}</h3>
         {role && (
-          <p className="font-sans text-[10px] tracking-[0.18em] uppercase opacity-50 mb-5">{role}</p>
+          <p className="font-serif italic text-[clamp(18px,2vw,28px)] leading-[1.3] text-charcoal opacity-50 mb-6">{role}</p>
         )}
-        <blockquote className="font-serif italic text-[clamp(22px,2.4vw,34px)] leading-[1.5] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
+        <hr className="border-charcoal/20 w-16 mb-6" />
+        <blockquote className="font-serif italic text-[clamp(17px,1.5vw,22px)] leading-[1.7] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
           {children}
         </blockquote>
       </figcaption>
