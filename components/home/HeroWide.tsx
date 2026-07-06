@@ -46,18 +46,20 @@ export default function HeroWide({ article }: { article: Article }) {
         />
         <div
           className="absolute inset-0 z-[1]"
-          style={{ background: 'linear-gradient(to top,rgba(10,10,10,.8) 0%,rgba(10,10,10,.42) 32%,rgba(10,10,10,.14) 55%,rgba(10,10,10,0) 74%)' }}
+          style={{ background: 'linear-gradient(to top,rgba(10,10,10,.88) 0%,rgba(10,10,10,.65) 30%,rgba(10,10,10,.3) 55%,rgba(10,10,10,.08) 80%,transparent 100%)' }}
         />
         <div
           className="relative z-10 text-white text-left"
           style={{ width: 'min(840px,92%)', margin: '0 auto', padding: 0 }}
         >
-          <span
-            className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3.5 font-medium"
-            style={{ color: 'rgba(255,255,255,.85)' }}
-          >
-            {heroEyebrow}
-          </span>
+          {heroEyebrow && (
+            <span
+              className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3.5 font-medium"
+              style={{ color: 'rgba(255,255,255,.85)' }}
+            >
+              {heroEyebrow}
+            </span>
+          )}
           <h2
             className="font-serif font-normal leading-[1.04]"
             style={{
