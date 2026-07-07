@@ -82,9 +82,6 @@ export default function Footer() {
           <p className="text-xs text-cream/40">
             © Beauticate {new Date().getFullYear()}, All Rights Reserved.
           </p>
-          <p className="text-xs text-cream/40">
-            Beauticate occasionally uses affiliate links and may receive a small commission on purchases.
-          </p>
         </div>
       </div>
     </footer>
