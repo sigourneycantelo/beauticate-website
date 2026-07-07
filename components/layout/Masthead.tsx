@@ -111,7 +111,12 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
     return () => { document.body.style.overflow = '' }
   }, [drawer])
 
-  useEffect(() => { setMegaHidden(false) }, [pathname])
+  useEffect(() => {
+    if (megaHidden) {
+      const t = setTimeout(() => setMegaHidden(false), 400)
+      return () => clearTimeout(t)
+    }
+  }, [pathname, megaHidden])
 
   const handleNavClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement
