@@ -47,18 +47,13 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav */}
-          <div>
-            <h4 className="text-xs tracking-widest text-cream/50 uppercase mb-4">Navigate</h4>
-            <ul className="space-y-2">
-              {FOOTER_NAV.map(item => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-cream/70 hover:text-cream transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Nav — two columns, no heading */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+            {FOOTER_NAV.map(item => (
+              <Link key={item.href} href={item.href} className="text-sm text-cream/70 hover:text-cream transition-colors">
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* Contact + Social */}
