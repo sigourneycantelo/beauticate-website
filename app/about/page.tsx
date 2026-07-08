@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import Image from 'next/image'
 import Link from 'next/link'
 import StoryTimeline from '@/components/about/StoryTimeline'
@@ -129,8 +128,8 @@ const PRESS_LOGOS = [
 export default function AboutPage() {
   return (
     <>
-      <Script id="schema-person" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sigourneySchema) }} />
-      <Script id="schema-faq-about" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sigourneySchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <main className="bg-white">
 
