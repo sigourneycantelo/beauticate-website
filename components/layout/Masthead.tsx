@@ -136,13 +136,12 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
               <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"><SocialIcon d={s.d} /></a>
             ))}
           </div>
-          <Link href="/subscribe" className="mh-util-link">Subscribe</Link>
-          <Link href="/about" className="mh-util-link">About</Link>
         </div>
 
         <Link href={isShop ? '/shop' : '/'} className="mh-wordmark" aria-label={isShop ? 'Beauticate Shop' : 'Beauticate home'}><Wordmark className="mh-logo mh-logo-lg" priority shop={isShop} /></Link>
 
         <div className="mh-util-right">
+          <Link href="/subscribe" className="mh-util-link">Subscribe</Link>
           <Link href="/search" className="mh-icon-btn" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><circle cx="11" cy="11" r="7" /><line x1="16.2" y1="16.2" x2="21" y2="21" /></svg>
           </Link>
