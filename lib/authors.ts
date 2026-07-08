@@ -494,6 +494,38 @@ const AUTHORS: Author[] = [
     slug: 'lauren-wilson',
     role: 'Contributing Reviewer',
   },
+  {
+    name: 'Margaret Zhang',
+    slug: 'margaret-zhang',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/margaret__zhang/',
+    sameAs: [
+      'https://www.instagram.com/margaret__zhang/',
+    ],
+  },
+  {
+    name: 'Colette Harvey',
+    slug: 'colette-harvey',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Zoe Bingley-Pullin',
+    slug: 'zoe-bingley-pullin',
+    role: 'Nutrition Expert',
+    instagram: 'https://www.instagram.com/zoebingleypullin/',
+    sameAs: [
+      'https://www.instagram.com/zoebingleypullin/',
+    ],
+  },
+  {
+    name: "Abigail O'Neill",
+    slug: 'abigail-oneill',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/abigailoneill/',
+    sameAs: [
+      'https://www.instagram.com/abigailoneill/',
+    ],
+  },
 ]
 
 const INDEX = new Map(AUTHORS.map(a => [a.name.toLowerCase(), a]))
