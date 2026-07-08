@@ -24,13 +24,14 @@ export default function PortraitQuote({ src, alt, name, role, side = 'left', chi
     <figure className="not-prose article-wide my-16 grid items-start gap-8 md:gap-14 md:grid-cols-2">
       <div className={side === 'right' ? 'md:order-2' : ''}>
         <div className="md:sticky md:top-24">
-          <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-tile">
+          <div className="relative w-full overflow-hidden rounded-sm">
             <Image
               src={src}
               alt={alt}
-              fill
+              width={1200}
+              height={1500}
               sizes="(max-width: 768px) 100vw, 560px"
-              className="object-cover object-center"
+              className="w-full h-auto"
             />
           </div>
         </div>
