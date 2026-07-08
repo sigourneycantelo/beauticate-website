@@ -1,17 +1,19 @@
 import Image from 'next/image'
-import Script from 'next/script'
+import Link from 'next/link'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import type { ShopifyProduct } from '@/types/shopify'
 
 interface Props { product: ShopifyProduct; related?: ShopifyProduct[] }
 
+const SITE = 'https://www.beauticate.com'
+
 export default function ProductPage({ product: p, related = [] }: Props) {
   const price = p.priceRange.minVariantPrice
   const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
   const available = p.variants.nodes.some(v => v.availableForSale)
 
-  const schema = {
+  const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: p.title,
@@ -24,13 +26,33 @@ export default function ProductPage({ product: p, related = [] }: Props) {
       price: parseFloat(price.amount).toFixed(2),
       priceCurrency: price.currencyCode,
       availability: available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      url: `https://www.beauticate.com/shop/products/${p.handle}`,
+      url: `${SITE}/shop/products/${p.handle}`,
     },
   }
 
+  const crumbs = [
+    { name: 'Home', url: `${SITE}/` },
+    { name: 'Shop', url: `${SITE}/shop` },
+    { name: p.title, url: `${SITE}/shop/products/${p.handle}` },
+  ]
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
+  }
+
   return (
-    <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
-      <Script id="product-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+    <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(20px,4vw,56px)]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
+      <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-6">
+        <Link href="/" className="hover:text-ink transition-colors">Home</Link>
+        <span className="mx-2 opacity-40">/</span>
+        <Link href="/shop" className="hover:text-ink transition-colors">Shop</Link>
+        <span className="mx-2 opacity-40">/</span>
+        <span className="text-ink">{p.title}</span>
+      </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
         <div className="flex flex-col gap-3">
