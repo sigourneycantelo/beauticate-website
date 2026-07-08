@@ -106,7 +106,7 @@ export default function AskSigDemo() {
   }
 
   return (
-    <div className="min-h-[100dvh] bg-[#efece6] flex flex-col items-center justify-center px-4 py-8">
+    <div className="fixed inset-0 z-[99999] bg-[#efece6] flex flex-col items-center justify-center px-4 py-8">
       <div className="w-full max-w-[480px] flex flex-col h-[min(700px,85vh)] bg-[#f7f6f4] rounded-2xl shadow-2xl overflow-hidden border border-line">
         {/* Header */}
         <div className="flex items-center gap-3 px-5 py-4 bg-white border-b border-line shrink-0">
