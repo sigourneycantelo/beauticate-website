@@ -68,7 +68,7 @@ function withSubscribeBand(content: string): string {
   const target = Math.floor(content.length * 0.6)
   candidates.sort((a, b) => Math.abs(a.pos - target) - Math.abs(b.pos - target))
   const best = candidates[0]?.pos ?? -1
-  if (best === -1) return content
+  if (best === -1) return content + marker
   return content.slice(0, best) + marker + content.slice(best)
 }
 

@@ -23,7 +23,7 @@ export default function SubscribeBand() {
 
   return (
     <aside
-      className="not-prose my-14 py-12 px-8 text-center"
+      className="not-prose article-wide my-14 py-12 px-8 text-center"
       style={{ background: '#F3EFE8' }}
       aria-label="Newsletter signup"
     >
