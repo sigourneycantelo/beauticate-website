@@ -1,4 +1,4 @@
-import type { Root, Element, Node } from 'hast'
+import type { Root, Element, ElementContent, Node } from 'hast'
 import type { Plugin } from 'unified'
 
 /**
@@ -93,7 +93,7 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
           tagName: 'div',
           properties: { class: gridClass, style: gridStyle },
           children: chunk.map(({ img, caption }) => {
-            const cellChildren: (Element | Node)[] = [img]
+            const cellChildren: ElementContent[] = [img as ElementContent]
             if (caption) {
               caption.properties = {
                 ...caption.properties,
@@ -127,7 +127,7 @@ function isCaption(node: Node): boolean {
 
 function isWhitespaceText(node: Node): boolean {
   if (node.type !== 'text') return false
-  return (node as { value: string }).value.trim() === ''
+  return (node as unknown as { value: string }).value.trim() === ''
 }
 
 function isImageOnlyParagraph(node: Node): boolean {

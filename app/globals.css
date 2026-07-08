@@ -358,3 +358,16 @@
 @media(max-width:900px){
   .shop-subnav-sticky{ top:57px; }
 }
+
+/* ── Article body width tiers ──────────────────────────────────
+   Narrow (720px) default, .article-wide breaks out to full parent. */
+.article-body > * {
+  grid-column: 2;
+}
+.article-body > .article-wide {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}

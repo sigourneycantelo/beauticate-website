@@ -68,7 +68,7 @@ export default function ArticleHero({ frontmatter: f }: Props) {
         style={{ background: '#F3EFE8' }}
       >
         {/* Breadcrumb */}
-        <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-2 flex-wrap justify-center">
+        <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-3 flex-wrap justify-center items-center">
           <Link href={`/${f.category}`} className="hover:text-charcoal transition-colors">
             {f.category.replace(/-/g, ' ')}
           </Link>

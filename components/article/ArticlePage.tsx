@@ -20,6 +20,7 @@ import EditorNote from '@/components/mdx/EditorNote'
 import QuickAnswer from '@/components/mdx/QuickAnswer'
 import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import SplitRow from '@/components/mdx/SplitRow'
+import StickyScroll from '@/components/mdx/StickyScroll'
 import Caption from '@/components/mdx/Caption'
 import InlineImage from '@/components/mdx/InlineImage'
 import ProductTile from '@/components/shared/ProductTile'
@@ -42,26 +43,30 @@ function withSubscribeBand(content: string): string {
   const textOnly = content.replace(/<[^>]+>/g, '').replace(/!\[[^\]]*\]\([^)]*\)/g, '')
   if (textOnly.length < 1500) return content
 
-  const mid = Math.floor(content.length / 2)
   const headingRe = /^#{1,4}\s/
-  const componentRe = /^<[A-Z]/
+  const lo = Math.floor(content.length * 0.4)
+  const hi = Math.floor(content.length * 0.9)
 
-  let best = -1
-  let bestDist = Infinity
+  // Find paragraph breaks immediately before a heading within the 40–90% window.
+  const candidates: Array<{ pos: number }> = []
   let pos = 0
   while ((pos = content.indexOf('\n\n', pos)) !== -1) {
-    const after = content.slice(pos + 2)
-    const nextLine = after.split('\n')[0]
-    if (headingRe.test(nextLine) || componentRe.test(nextLine)) {
-      pos += 2
-      continue
+    if (pos >= lo && pos <= hi) {
+      const after = content.slice(pos + 2)
+      const nextLine = after.split('\n')[0]
+      if (headingRe.test(nextLine)) {
+        candidates.push({ pos })
+      }
     }
-    const dist = Math.abs(pos - mid)
-    if (dist < bestDist) { bestDist = dist; best = pos }
     pos += 2
   }
+
+  // Pick the candidate closest to 60% (midpoint of the window).
+  const target = Math.floor(content.length * 0.6)
+  candidates.sort((a, b) => Math.abs(a.pos - target) - Math.abs(b.pos - target))
+  const best = candidates[0]?.pos ?? -1
   if (best === -1) return content
-  return content.slice(0, best) + marker + content.slice(best + 2)
+  return content.slice(0, best) + marker + content.slice(best)
 }
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
@@ -102,7 +107,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
-    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, SubscribeBand, Caption, InlineImage,
+    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, SubscribeBand, Caption, InlineImage,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
       return isExternal
@@ -122,7 +127,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {/* Title / meta — only in landscape mode; split mode has them in the hero panel */}
         {isLandscape && (
           <>
-            <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-2 flex-wrap">
+            <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-3 flex-wrap items-center">
               <Link href={`/${f.category}`} className="hover:text-charcoal transition-colors">
                 {f.category.replace(/-/g, ' ')}
               </Link>
@@ -154,8 +159,14 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           </>
         )}
 
-        {/* Body — capped measure for readability */}
-        <div className="prose prose-lg max-w-none">
+        {/* Body — three-tier width system: narrow (720px) default, wide (1200px) breakout */}
+        <div
+          className="prose prose-lg max-w-none article-body"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr min(720px, 100%) 1fr',
+          }}
+        >
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}

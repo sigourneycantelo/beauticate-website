@@ -7,6 +7,8 @@ interface Props {
   productName?: string
   productPrice?: string
   productUrl?: string
+  /** Shopify product handle — links to our own PDP at /shop/products/{handle} */
+  handle?: string
   children: React.ReactNode
 }
 
@@ -22,8 +24,13 @@ export default function EditorNote({
   productName,
   productPrice,
   productUrl,
+  handle,
   children,
 }: Props) {
+  const internal = !!handle
+  const href = internal ? `/shop/products/${handle}` : productUrl
+  const shopLabel = internal ? 'In our shop' : 'Shop now ↗'
+
   return (
     <aside className="not-prose my-12 border border-cream-200 bg-parchment p-6 sm:p-8">
       <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-terracotta mb-3">
@@ -37,11 +44,10 @@ export default function EditorNote({
           </div>
         </div>
 
-        {productImage && productUrl && (
+        {productImage && href && (
           <a
-            href={productUrl}
-            target="_blank"
-            rel="sponsored noopener"
+            href={href}
+            {...(!internal && { target: '_blank', rel: 'sponsored noopener' })}
             className="group block w-full sm:w-[180px] flex-none text-center"
           >
             <div className="relative aspect-square bg-white rounded-sm overflow-hidden mb-2">
@@ -62,7 +68,7 @@ export default function EditorNote({
               <p className="font-sans text-xs text-charcoal-light mt-0.5">{productPrice}</p>
             )}
             <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-terracotta mt-1.5">
-              Shop now ↗
+              {shopLabel}
             </p>
           </a>
         )}
