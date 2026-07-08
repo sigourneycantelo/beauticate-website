@@ -82,9 +82,9 @@ export default function ReviewTemplate() {
 
         {/* ── Body ── */}
         <div className="prose prose-lg max-w-none">
-          <h4>I have always loved my Dyson. Loved it — not in the way you say you love something that works fine, but in the way you defend a brand to friends who suggest you try something else.</h4>
+          <p>I have always loved my Dyson. Like really loved it, in the way that you defend a brand to friends who suggest you try something else.</p>
 
-          <p>This Dyson V16 review began when I was invited to the Dyson V16 launch and finally got to see what the newer technology could actually do. My old model was ancient — loyal but tired — so I jumped at the chance to take one home and give it a proper, honest go. Reader, it broke me. In the best possible way.</p>
+          <p>This Dyson V16 review began when I was invited to the Dyson V16 launch and finally got to see what the newer technology could actually do. My old model was ancient — loyal but tired — so I jumped at the chance to take one home and give it a proper, honest go. And honestly? It broke me. In the best possible way.</p>
 
           <p>If this Dyson V16 review proves anything, it is that I never thought I'd enjoy vacuuming. Let alone want to actually clean the damn thing.</p>
         </div>
@@ -95,8 +95,11 @@ export default function ReviewTemplate() {
         </div>
 
         {/* ── Pull Quote 1 ── */}
-        <blockquote className="my-12 ml-4 sm:ml-10 border-l-[3px] border-wine pl-6 sm:pl-10">
-          <p className="font-serif text-[24px] sm:text-[30px] leading-[1.4] text-charcoal">
+        <blockquote className="not-prose my-10 md:my-14">
+          <p
+            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
+            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
+          >
             Vacuum maintenance was always my <em>hard no</em>. The worst job in the house. The scissors. The hair. The gag reflex.
           </p>
         </blockquote>
@@ -129,8 +132,11 @@ export default function ReviewTemplate() {
         </div>
 
         {/* ── Pull Quote 2 ── */}
-        <blockquote className="my-12 ml-4 sm:ml-10 border-l-[3px] border-wine pl-6 sm:pl-10">
-          <p className="font-serif text-[24px] sm:text-[30px] leading-[1.4] text-charcoal">
+        <blockquote className="not-prose my-10 md:my-14">
+          <p
+            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
+            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
+          >
             The laser alone deserves its own love letter.
           </p>
         </blockquote>
@@ -162,8 +168,11 @@ export default function ReviewTemplate() {
         </div>
 
         {/* ── Pull Quote 3 ── */}
-        <blockquote className="my-12 ml-4 sm:ml-10 border-l-[3px] border-wine pl-6 sm:pl-10">
-          <p className="font-serif text-[24px] sm:text-[30px] leading-[1.4] text-charcoal">
+        <blockquote className="not-prose my-10 md:my-14">
+          <p
+            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
+            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
+          >
             You can hear it when you move from hard floors to rugs...Oooh, <em>so satisfying</em>.
           </p>
         </blockquote>
@@ -200,8 +209,11 @@ export default function ReviewTemplate() {
         </div>
 
         {/* ── Pull Quote 4 ── */}
-        <blockquote className="my-12 ml-4 sm:ml-10 border-l-[3px] border-wine pl-6 sm:pl-10">
-          <p className="font-serif text-[24px] sm:text-[30px] leading-[1.4] text-charcoal">
+        <blockquote className="not-prose my-10 md:my-14">
+          <p
+            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
+            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
+          >
             I fell for it because it respects my time, removes friction, and tells me when the job is actually done.
           </p>
         </blockquote>
