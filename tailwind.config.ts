@@ -39,6 +39,7 @@ const config: Config = {
         // Update once brand fonts confirmed
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans:  ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
       },
       typography: {
         DEFAULT: {

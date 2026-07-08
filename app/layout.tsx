@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, Hanken_Grotesk } from 'next/font/google'
+import { EB_Garamond, Hanken_Grotesk, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import MastheadData from '@/components/layout/MastheadData'
@@ -10,6 +10,15 @@ const ebGaramond = EB_Garamond({
   variable: '--font-serif',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+})
+
+// Playfair Display — display numerals (NumberedSection)
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  weight: ['400', '700'],
   style: ['normal', 'italic'],
 })
 
@@ -105,7 +114,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable}`}>
+    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable} ${playfairDisplay.variable}`}>
       <body>
         <Script
           id="schema-org"
