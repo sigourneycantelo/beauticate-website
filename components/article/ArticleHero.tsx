@@ -15,9 +15,9 @@ export default function ArticleHero({ frontmatter: f }: Props) {
     // Full-bleed landscape mode — used for all articles with any image
     return (
       <>
-        {/* Desktop: 16:9 capped at 1200px */}
+        {/* Desktop: use hero_aspect if set, default 16:9, capped at 1200px */}
         <div className="hidden md:block max-w-[1200px] mx-auto">
-          <div className="relative w-full aspect-[16/9]">
+          <div className="relative w-full" style={{ aspectRatio: f.hero_aspect ?? '16/9' }}>
             <Image
               src={f.hero_image || f.featured_image}
               alt={f.featured_image_alt ?? f.title}

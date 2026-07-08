@@ -9,7 +9,7 @@ interface Props {
   children: ReactNode
 }
 
-const h2Style = '[&>h2]:text-[clamp(18px,2.2vw,22px)] [&>h2]:font-sans [&>h2]:tracking-[0.06em] [&>h2]:uppercase [&>h2]:text-charcoal-light [&>h2]:font-medium [&>h2]:mb-5 [&>h2]:mt-2'
+const h2Style = '[&>h2]:font-serif [&>h2]:mb-5 [&>h2]:mt-2'
 
 export default function StickyScroll({ src, alt, side = 'right', href, caption, children }: Props) {
   const imgEl = (

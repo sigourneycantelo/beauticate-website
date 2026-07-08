@@ -13,8 +13,8 @@ export default function NumberedSection({ number, title }: Props) {
         {number}
       </span>
       <h2
-        className="font-sans uppercase tracking-[0.12em] leading-tight font-medium"
-        style={{ fontSize: 'clamp(13px, 1.4vw, 16px)' }}
+        className="font-serif leading-tight"
+        style={{ fontSize: 'clamp(22px, 2.8vw, 32px)' }}
       >
         {title}
       </h2>

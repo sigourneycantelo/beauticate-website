@@ -601,8 +601,16 @@ const nextConfig: NextConfig = {
     ]
   },
 
-  webpack(config) {
+  webpack(config, { dev }) {
     config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] })
+    if (dev) {
+      config.watchOptions = {
+        ...config.watchOptions,
+        ignored: ['**/node_modules/**', '**/content/**/*.jpg', '**/content/**/*.jpeg', '**/content/**/*.png', '**/content/**/*.webp', '**/content/**/*.gif', '**/.git/**', '**/.next/**'],
+        poll: 1000,
+        aggregateTimeout: 300,
+      }
+    }
     return config
   },
 }

@@ -9,6 +9,8 @@ interface Props {
   productUrl?: string
   /** Shopify product handle — links to our own PDP at /shop/products/{handle} */
   handle?: string
+  /** Override the default link label ("Shop now" / "In our shop") */
+  linkLabel?: string
   children: React.ReactNode
 }
 
@@ -25,11 +27,12 @@ export default function EditorNote({
   productPrice,
   productUrl,
   handle,
+  linkLabel,
   children,
 }: Props) {
-  const internal = !!handle
-  const href = internal ? `/shop/products/${handle}` : productUrl
-  const shopLabel = internal ? 'In our shop' : 'Shop now ↗'
+  const href = handle ? `/shop/products/${handle}` : productUrl
+  const isInternal = !!handle || (!!productUrl && productUrl.startsWith('/'))
+  const shopLabel = linkLabel ?? (handle ? 'In our shop' : 'Shop now ↗')
 
   return (
     <aside className="not-prose my-12 border border-cream-200 bg-parchment p-6 sm:p-8">
@@ -47,16 +50,16 @@ export default function EditorNote({
         {productImage && href && (
           <a
             href={href}
-            {...(!internal && { target: '_blank', rel: 'sponsored noopener' })}
+            {...(!isInternal && { target: '_blank', rel: 'sponsored noopener' })}
             className="group block w-full sm:w-[180px] flex-none text-center"
           >
-            <div className="relative aspect-square bg-white rounded-sm overflow-hidden mb-2">
+            <div className={`relative ${handle ? 'aspect-square' : 'aspect-[3/4]'} bg-white rounded-sm overflow-hidden mb-2`}>
               <Image
                 src={productImage}
                 alt={productName ?? ''}
                 fill
                 sizes="180px"
-                className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.04]"
+                className={`${handle ? 'object-contain p-2' : 'object-cover'} transition-transform duration-500 group-hover:scale-[1.04]`}
               />
             </div>
             {productName && (

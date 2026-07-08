@@ -62,18 +62,34 @@ function isPublished(a: { frontmatter: ArticleFrontmatter } | null): boolean {
 
 export function getArticlesByCategory(category: string, subcategory?: string) {
   const allSlugs = getArticleSlugs()
-  return allSlugs
+  const inFolder = allSlugs
     .filter(parts => {
       if (subcategory) return parts[0] === category && parts[1] === subcategory
       return parts[0] === category
     })
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
-    .sort((a, b) => {
+
+  // Also include cross-listed articles (via also_in) at the category level
+  if (!subcategory) {
+    const seen = new Set(inFolder.map(a => a?.frontmatter.slug))
+    const crossListed = allSlugs
+      .map(parts => getArticleBySlug(parts))
+      .filter(isPublished)
+      .filter(a => (a?.frontmatter.also_in ?? []).some(ai => ai.startsWith(`${category}/`)))
+      .filter(a => !seen.has(a?.frontmatter.slug))
+    return [...inFolder, ...crossListed].sort((a, b) => {
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
       const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
       return dateB - dateA
     })
+  }
+
+  return inFolder.sort((a, b) => {
+    const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+    const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+    return dateB - dateA
+  })
 }
 
 // Subcategory archive listing: folder members PLUS any published article that
@@ -94,6 +110,47 @@ export function getArticlesBySubcategory(category: string, subcategory: string) 
     const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
     return dateB - dateA
   })
+}
+
+export function getArticlesByFeeling(feeling: string) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => (a?.frontmatter.feeling ?? []).includes(feeling))
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+}
+
+export function getArticlesByTravelType(travelType: string) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.travelType === travelType)
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+}
+
+export function getDirectoryListings(filters?: { state?: string; venueType?: string }) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => !!a?.frontmatter.venueType)
+    .filter(a => !filters?.state || a?.frontmatter.state === filters.state)
+    .filter(a => !filters?.venueType || a?.frontmatter.venueType === filters.venueType)
+    .sort((a, b) => {
+      const stateA = a?.frontmatter.state ?? 'ZZZ'
+      const stateB = b?.frontmatter.state ?? 'ZZZ'
+      if (stateA !== stateB) return stateA.localeCompare(stateB)
+      const titleA = a?.frontmatter.title ?? ''
+      const titleB = b?.frontmatter.title ?? ''
+      return titleA.localeCompare(titleB)
+    })
 }
 
 export function getHeroArticle() {
