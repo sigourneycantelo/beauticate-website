@@ -62,6 +62,7 @@ export interface ArticleFrontmatter {
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
   hero_focus?: string          // CSS object-position for hero crop, e.g. "50% 12%"; defaults to "center center"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
+  hero_aspect?: string         // CSS aspect-ratio for hero image, e.g. "16/9"; defaults to 16/9
 
   // Destinations taxonomy
   travelType?: 'guide' | 'hotel-review' | 'travel-beauty' | 'sigs-edit'
