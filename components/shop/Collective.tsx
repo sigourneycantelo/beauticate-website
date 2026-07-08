@@ -8,11 +8,14 @@ export default function Collective() {
     <section className="bg-white border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,90px)]">
       <div className="text-center mb-9 max-w-2xl mx-auto">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold text-eucalypt">
-          Meet the Beauticate Collective
+          The Beauticate Collective
         </p>
-        <h2 className="font-serif font-normal mt-3" style={{ fontSize: 'clamp(22px,2.8vw,34px)', lineHeight: 1.25 }}>
-          The editors, experts, and trusted voices <em className="italic">behind every recommendation</em>
+        <h2 className="font-serif font-normal mt-3" style={{ fontSize: 'clamp(28px,3.4vw,44px)', lineHeight: 1.12 }}>
+          Meet your <em className="italic">personal shoppers</em>
         </h2>
+        <p className="font-serif mt-3 mx-auto" style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.4, opacity: 0.7, maxWidth: '46ch' }}>
+          The editors, experts and trusted voices behind every recommendation.
+        </p>
       </div>
 
       <Image
