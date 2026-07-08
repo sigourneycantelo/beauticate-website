@@ -3,7 +3,7 @@ import { getProductsByHandles } from '@/lib/shopify'
 import ArticlePage from '@/components/article/ArticlePage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { buildArticleMetadata, buildArticleSchema, buildBreadcrumbSchema } from '@/lib/seo'
+import { buildArticleMetadata, buildArticleSchema, buildBreadcrumbSchema, buildLocalBusinessSchema } from '@/lib/seo'
 
 interface Props { params: Promise<{ category: string; subcategory: string; slug: string }> }
 
@@ -35,6 +35,7 @@ export default async function ArticleRoute({ params }: Props) {
 
   const url = `/${category}/${subcategory}/${slug}`
   const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })), content)
+  const localBusinessSchema = buildLocalBusinessSchema(f, url)
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: '/' },
     { name: category.replace(/-/g, ' '), url: `/${category}` },
@@ -55,6 +56,12 @@ export default async function ArticleRoute({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {localBusinessSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      )}
       <ArticlePage
         frontmatter={f}
         content={content}

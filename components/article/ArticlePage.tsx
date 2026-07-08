@@ -29,6 +29,8 @@ import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
+import NearbyVenues from './NearbyVenues'
+import VenueCTA from './VenueCTA'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -157,6 +159,10 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               showDate={resolveSchemaType(f) === 'NewsArticle'}
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />
+
+            {f.venueType && (
+              <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} />
+            )}
           </>
         )}
 
@@ -189,6 +195,11 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               ))}
             </div>
           </div>
+        )}
+
+        {/* Nearby venues — only on flagged travel articles */}
+        {f.showNearbyVenues && f.state && (
+          <NearbyVenues state={f.state} />
         )}
 
         {/* FAQ Panel */}

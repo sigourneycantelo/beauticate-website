@@ -151,6 +151,40 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
   return { '@context': 'https://schema.org', '@graph': graph }
 }
 
+const VENUE_TYPE_MAP: Record<string, string> = {
+  'spa': 'DaySpa',
+  'skin-clinic': 'HealthAndBeautyBusiness',
+  'salon': 'HairSalon',
+  'nail-salon': 'NailSalon',
+}
+
+export function buildLocalBusinessSchema(f: ArticleFrontmatter, url: string) {
+  if (!f.venueType) return null
+
+  const pageUrl = `${SITE_URL}${url}`
+  const schemaType = VENUE_TYPE_MAP[f.venueType] ?? 'HealthAndBeautyBusiness'
+  const imageUrl = f.featured_image ? `${SITE_URL}${f.featured_image}` : undefined
+
+  const node: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': schemaType,
+    '@id': `${pageUrl}#localbusiness`,
+    name: f.title,
+    url: pageUrl,
+  }
+
+  if (imageUrl) node.image = imageUrl
+  if (f.address) {
+    node.address = {
+      '@type': 'PostalAddress',
+      streetAddress: f.address,
+    }
+  }
+  if (f.telephone) node.telephone = f.telephone
+
+  return node
+}
+
 export function buildBreadcrumbSchema(crumbs: { name: string; url: string }[]) {
   return {
     '@context': 'https://schema.org',

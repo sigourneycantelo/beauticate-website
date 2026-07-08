@@ -63,6 +63,19 @@ export interface ArticleFrontmatter {
   hero_focus?: string          // CSS object-position for hero crop, e.g. "50% 12%"; defaults to "center center"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
 
+  // Destinations taxonomy
+  travelType?: 'guide' | 'hotel-review' | 'travel-beauty' | 'sigs-edit'
+  venueType?: 'spa' | 'salon' | 'skin-clinic' | 'nail-salon' | 'bathhouse' | 'retreat' | 'hotel'
+  address?: string              // street address for LocalBusiness schema
+  telephone?: string            // phone number for LocalBusiness schema
+  instagram?: string            // Instagram handle (without @), e.g. "auroraspaandbathhouse"
+  booking_url?: string          // direct booking/enquiry URL
+  state?: 'NSW' | 'VIC' | 'QLD' | 'WA' | 'SA' | 'TAS' | 'ACT' | 'NT'
+  feeling?: string[]
+  verdict?: string
+  showNearbyVenues?: boolean
+  isTravelHero?: boolean
+
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
   reviewed?: boolean           // true = SEO/AEO review done; used by /admin/review-queue
