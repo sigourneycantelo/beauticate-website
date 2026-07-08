@@ -6,6 +6,7 @@ import ShopByMoment from '@/components/shop/ShopByMoment'
 import Collective from '@/components/shop/Collective'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
+import ShopNewsletter from '@/components/shop/ShopNewsletter'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
@@ -94,6 +95,9 @@ export default async function ShopPage() {
 
       {/* Shop by Category */}
       <ShopCategoryGrid />
+
+      {/* The edit, in your inbox — newsletter */}
+      <ShopNewsletter />
 
     </div>
   )
