@@ -6,7 +6,6 @@ import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
 import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
 import Portrait from '@/components/mdx/Portrait'
-import PortraitQuote from '@/components/mdx/PortraitQuote'
 import ArticleGrid from './ArticleGrid'
 import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
@@ -29,6 +28,7 @@ import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
+import rehypeVenueContact from '@/lib/rehype-venue-contact'
 import NearbyVenues from './NearbyVenues'
 import VenueCTA from './VenueCTA'
 
@@ -108,7 +108,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   }
 
   const mdxComponents = {
-    YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
+    YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
     ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, SubscribeBand, Caption, InlineImage,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
@@ -177,7 +177,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypeShopGrid] } }}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypeShopGrid, rehypeVenueContact] } }}
           />
         </div>
 

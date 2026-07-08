@@ -371,3 +371,46 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* ── Venue attribution ("Review by …") ─────────────────────── */
+.venue-attribution {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a9190;
+  font-weight: 400;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* ── Venue contact section ─────────────────────────────────── */
+.venue-contact {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+.venue-contact h2 {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9a9190;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.venue-contact p {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+.venue-contact a {
+  color: #1C1A17;
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,0.15);
+  text-underline-offset: 3px;
+}
+.venue-contact a:hover {
+  text-decoration-color: rgba(0,0,0,0.5);
+}
