@@ -37,12 +37,20 @@ let _index: ChatIndex | null = null
 function loadIndex(): ChatIndex {
   if (_index) return _index
   const p = path.join(process.cwd(), 'data', 'chat-index.json')
-  const raw = JSON.parse(fs.readFileSync(p, 'utf-8'))
-  // Support both old (array) and new (object with articles/products) formats
-  if (Array.isArray(raw)) {
-    _index = { articles: raw, products: [] }
-  } else {
-    _index = raw
+  try {
+    const content = fs.readFileSync(p, 'utf-8')
+    if (!content.trim()) {
+      _index = { articles: [], products: [] }
+      return _index
+    }
+    const raw = JSON.parse(content)
+    if (Array.isArray(raw)) {
+      _index = { articles: raw, products: [] }
+    } else {
+      _index = raw
+    }
+  } catch {
+    _index = { articles: [], products: [] }
   }
   return _index!
 }
