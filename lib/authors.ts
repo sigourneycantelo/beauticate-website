@@ -339,6 +339,161 @@ const AUTHORS: Author[] = [
     linkedin: 'https://au.linkedin.com/in/paige-murphy-b94b9465',
     sameAs: ['https://au.linkedin.com/in/paige-murphy-b94b9465'],
   },
+  {
+    name: 'Grace Parsons',
+    slug: 'grace-parsons',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Jill Sandringham',
+    slug: 'jill-sandringham',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Lucy Searle',
+    slug: 'lucy-searle',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Elyse Goyen',
+    slug: 'elyse-goyen',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Lauren Kennedy',
+    slug: 'lauren-kennedy',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Katherine Ring',
+    slug: 'katherine-ring',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Josie Taylor',
+    slug: 'josie-taylor',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Isabella Ousby',
+    slug: 'isabella-ousby',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Megan McGlinchey',
+    slug: 'megan-mcglinchey',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Gracie Clough',
+    slug: 'gracie-clough',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Amanda Chan',
+    slug: 'amanda-chan',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Allanah Jansons',
+    slug: 'allanah-jansons',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Willa Zheng',
+    slug: 'willa-zheng',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Marvin Gloria',
+    slug: 'marvin-gloria',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Alexis Gilmer',
+    slug: 'alexis-gilmer',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Michelle Mullen',
+    slug: 'michelle-mullen',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Amy Cannan',
+    slug: 'amy-cannan',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Penny Hunt',
+    slug: 'penny-hunt',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Daniella Giancarli',
+    slug: 'daniella-giancarli',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Ashlee Campbell',
+    slug: 'ashlee-campbell',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Katrine Pascoe',
+    slug: 'katrine-pascoe',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Kath Karras',
+    slug: 'kath-karras',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Sammi Keys',
+    slug: 'sammi-keys',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Danielle de Gail',
+    slug: 'danielle-de-gail',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Arianne Witt',
+    slug: 'arianne-witt',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Juliette Tuck',
+    slug: 'juliette-tuck',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Jennah Porter',
+    slug: 'jennah-porter',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Amy Mattes-Harris',
+    slug: 'amy-mattes-harris',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Vickie Zarifopoulos',
+    slug: 'vickie-zarifopoulos',
+    role: 'Contributing Reviewer',
+  },
+  {
+    name: 'Zoe Brown',
+    slug: 'zoe-brown',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Lauren Wilson',
+    slug: 'lauren-wilson',
+    role: 'Contributing Reviewer',
+  },
 ]
 
 const INDEX = new Map(AUTHORS.map(a => [a.name.toLowerCase(), a]))
