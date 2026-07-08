@@ -36,6 +36,21 @@ const sigourneySchema = {
   alumniOf: [
     { '@type': 'Organization', name: 'Vogue Australia' },
   ],
+  award: [
+    'Jasmine Award for Journalistic Excellence, Vogue Australia (The Ultimate Guide to Fragrance)',
+    'Jasmine Award, Vogue Australia (Distilling Provence)',
+  ],
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'Professional experience',
+    name: 'Beauty & Health Director, Vogue Australia (former)',
+  },
+  subjectOf: {
+    '@type': 'WebPage',
+    '@id': 'https://www.beauticate.com/press#in-the-media',
+    url: 'https://www.beauticate.com/press',
+    name: 'Sigourney Cantelo — In the Media',
+  },
   knowsAbout: [
     'Beauty', 'Skincare', 'Wellness', 'Lifestyle', 'Health', 'Fashion', 'Cosmetics',
     'Anti-ageing', 'Beauty Journalism', 'Content Strategy',
