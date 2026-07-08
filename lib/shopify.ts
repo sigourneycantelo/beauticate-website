@@ -248,14 +248,15 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
   return data.cartLinesRemove.cart
 }
 
-
 // ─── Sitemap helpers (lightweight, paginated) ─────────────────────────────────
+
+type ProductHandleConn = { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: { handle: string; updatedAt?: string }[] }
 
 export async function getAllProductHandles(): Promise<{ handle: string; updatedAt?: string }[]> {
   const out: { handle: string; updatedAt?: string }[] = []
   let cursor: string | null = null
   for (let i = 0; i < 20; i++) {
-    const data = await shopifyFetch<{ products?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: { handle: string; updatedAt?: string }[] } }>(`
+    const data: { products?: ProductHandleConn } = await shopifyFetch<{ products?: ProductHandleConn }>(`
       query AllProductHandles($cursor: String) {
         products(first: 250, after: $cursor, sortKey: UPDATED_AT, reverse: true) {
           pageInfo { hasNextPage endCursor }
@@ -263,7 +264,7 @@ export async function getAllProductHandles(): Promise<{ handle: string; updatedA
         }
       }
     `, { cursor })
-    const conn = (data as { products?: { pageInfo: { hasNextPage: boolean; endCursor: string }; nodes: { handle: string; updatedAt?: string }[] } })?.products
+    const conn: ProductHandleConn | undefined = data?.products
     if (!conn) break
     for (const n of conn.nodes ?? []) if (n?.handle) out.push({ handle: n.handle, updatedAt: n.updatedAt })
     if (!conn.pageInfo?.hasNextPage) break
@@ -273,8 +274,8 @@ export async function getAllProductHandles(): Promise<{ handle: string; updatedA
 }
 
 export async function getAllCollectionHandles(): Promise<string[]> {
-  const data = await shopifyFetch<{ collections?: { nodes: { handle: string }[] } }>(`
+  const data: { collections?: { nodes: { handle: string }[] } } = await shopifyFetch<{ collections?: { nodes: { handle: string }[] } }>(`
     { collections(first: 250) { nodes { handle } } }
   `)
-  return ((data as { collections?: { nodes: { handle: string }[] } })?.collections?.nodes ?? []).map(n => n?.handle).filter(Boolean)
+  return (data?.collections?.nodes ?? []).map(n => n.handle).filter(Boolean)
 }
