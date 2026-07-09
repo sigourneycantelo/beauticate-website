@@ -32,8 +32,8 @@ export default function HeroWide({ article }: { article: Article }) {
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
       <section
-        className="reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto min-h-[480px]"
-        style={{ aspectRatio: heroAspect, paddingBottom: 'clamp(30px,5vw,64px)' }}
+        className="reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto min-h-[420px] md:min-h-[480px]"
+        style={{ aspectRatio: heroAspect, paddingBottom: 'clamp(20px,5vw,64px)' }}
       >
         <Image
           src={heroImage}
@@ -63,7 +63,7 @@ export default function HeroWide({ article }: { article: Article }) {
           <h2
             className="font-serif font-normal leading-[1.04]"
             style={{
-              fontSize: 'clamp(32px,4.4vw,58px)',
+              fontSize: 'clamp(26px,4.4vw,58px)',
               letterSpacing: '-.015em',
               textShadow: '0 2px 30px rgba(0,0,0,.4)',
             }}
@@ -71,7 +71,7 @@ export default function HeroWide({ article }: { article: Article }) {
             {heroTitle}
           </h2>
           {f.excerpt && (
-            <p className="font-sans mt-3.5" style={{ fontSize: '13.5px', opacity: 0.92, maxWidth: '46ch' }}>
+            <p className="hidden sm:block font-sans mt-3.5" style={{ fontSize: '13.5px', opacity: 0.92, maxWidth: '46ch' }}>
               {f.excerpt}
             </p>
           )}
