@@ -32,9 +32,13 @@ export default function HeroWide({ article }: { article: Article }) {
   return (
     <Link href={articleHref(f)} className="block cursor-pointer">
       <section
-        className="reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto min-h-[420px] md:min-h-[480px]"
-        style={{ aspectRatio: heroAspect, paddingBottom: 'clamp(20px,5vw,64px)' }}
+        className="hero-wide reveal relative overflow-hidden flex items-end max-w-[1200px] mx-auto"
+        style={{ paddingBottom: 'clamp(20px,5vw,64px)', '--hero-aspect': heroAspect } as React.CSSProperties}
       >
+        <style>{`
+          .hero-wide { aspect-ratio: 3/4; }
+          @media (min-width: 768px) { .hero-wide { aspect-ratio: var(--hero-aspect, 16/9); min-height: 480px; } }
+        `}</style>
         <Image
           src={heroImage}
           alt={f.featured_image_alt ?? f.title}
