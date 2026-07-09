@@ -69,15 +69,29 @@ export default function ArticleHero({ frontmatter: f }: Props) {
       >
         {/* Breadcrumb */}
         <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-3 flex-wrap justify-center items-center">
-          <Link href={`/${f.category}`} className="hover:text-charcoal transition-colors">
-            {f.category.replace(/-/g, ' ')}
-          </Link>
-          {f.subcategory && (
+          {f.venueType ? (
             <>
-              <span>/</span>
-              <Link href={`/${f.category}/${f.subcategory}`} className="hover:text-charcoal transition-colors">
-                {f.subcategory.replace(/-/g, ' ')}
+              <Link href="/destinations" className="hover:text-charcoal transition-colors">
+                destinations
               </Link>
+              <span>/</span>
+              <Link href="/destinations/directory" className="hover:text-charcoal transition-colors">
+                directory
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href={`/${f.category}`} className="hover:text-charcoal transition-colors">
+                {f.category.replace(/-/g, ' ')}
+              </Link>
+              {f.subcategory && (
+                <>
+                  <span>/</span>
+                  <Link href={`/${f.category}/${f.subcategory}`} className="hover:text-charcoal transition-colors">
+                    {f.subcategory.replace(/-/g, ' ')}
+                  </Link>
+                </>
+              )}
             </>
           )}
         </nav>
