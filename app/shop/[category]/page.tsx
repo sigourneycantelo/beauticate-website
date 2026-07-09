@@ -8,6 +8,63 @@ import CategoryBrowser, { type BrowsableProduct } from '@/components/shop/Catego
 
 const SITE = 'https://www.beauticate.com'
 
+const CATEGORY_FAQS: Record<string, { q: string; a: string }[]> = {
+  beauty: [
+    {
+      q: 'How does Beauticate choose which beauty products to stock?',
+      a: 'Every product in the Beauticate Shop beauty edit is tested by our editorial team and reviewed by our founder Sigourney Cantelo, a 25-year beauty journalist and former Vogue Australia Beauty & Health Director. We only stock what we would personally use and recommend.',
+    },
+    {
+      q: 'Who curates the beauty edit?',
+      a: 'Sigourney Cantelo curates the edit alongside Beauticate’s editorial team and The Beauticate Collective, our panel of beauty, wellness and lifestyle experts. Nothing lands in the shop without a genuine editorial endorsement.',
+    },
+    {
+      q: 'Are all beauty products on Beauticate Shop authentic?',
+      a: 'Yes. All products are sourced directly from authorised distributors and brand partners. We do not sell grey-market or counterfeit products.',
+    },
+    {
+      q: 'Do you ship beauty products Australia-wide?',
+      a: 'Yes. Beauticate Shop ships to all Australian addresses.',
+    },
+  ],
+  wellness: [
+    {
+      q: 'How does Beauticate choose which wellness products to stock?',
+      a: 'Every wellness product is tested and reviewed by our editorial team and founder Sigourney Cantelo, a 25-year beauty and wellness journalist and former Vogue Australia Beauty & Health Director. If it doesn’t genuinely improve how we feel, it doesn’t make the cut.',
+    },
+    {
+      q: 'What kinds of wellness products does Beauticate stock?',
+      a: 'Our wellness edit spans supplements, aromatherapy, body care and lifestyle tools. Each product is chosen for real-world efficacy, not trend cycles.',
+    },
+    {
+      q: 'Are the wellness products sourced from trusted brands?',
+      a: 'Yes. All products are sourced directly from authorised distributors and brand partners. We carry only authentic stock from brands we trust and use ourselves.',
+    },
+    {
+      q: 'Do you ship wellness products across Australia?',
+      a: 'Yes. Beauticate Shop ships Australia-wide.',
+    },
+  ],
+  living: [
+    {
+      q: 'How does Beauticate choose which home and living products to stock?',
+      a: 'Every product in our Living edit is chosen by our founder Sigourney Cantelo, a 25-year lifestyle journalist, and the Beauticate editorial team. We look for pieces that elevate daily rituals, from candles and diffusers to tabletop and textiles.',
+    },
+    {
+      q: 'Who curates the Living edit?',
+      a: 'Sigourney Cantelo curates the Living edit alongside Beauticate’s editorial team and The Beauticate Collective, our panel of beauty, wellness and lifestyle experts. Every piece is something we would put in our own homes.',
+    },
+    {
+      q: 'Are all living products on Beauticate Shop authentic?',
+      a: 'Yes. All products are sourced directly from authorised brand partners and distributors. We do not sell grey-market goods.',
+    },
+    {
+      q: 'Do you ship living products Australia-wide?',
+      a: 'Yes. Beauticate Shop ships to all Australian addresses.',
+    },
+  ],
+}
+
 export function generateStaticParams() {
   return BROAD_CATEGORIES.map(b => ({ category: b.slug }))
 }
@@ -121,12 +178,25 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
       name: p.title,
     })),
   }
+
+  const faqs = CATEGORY_FAQS[broad.slug] ?? []
+  const faqSchema = faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  } : null
+
   const minH = 'clamp(240px,34vw,420px)'
 
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
       {collection.image ? (
         <section className="relative w-full overflow-hidden" style={{ minHeight: minH }}>
@@ -159,6 +229,24 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
           initialSub={cat}
         />
       </div>
+
+      {faqs.length > 0 && (
+        <section className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] pb-[clamp(48px,8vw,96px)]">
+          <div className="mx-auto max-w-[680px]">
+            <h2 className="font-serif font-normal text-center mb-10" style={{ fontSize: 'clamp(24px,3vw,36px)' }}>
+              Frequently asked questions
+            </h2>
+            <dl className="divide-y divide-charcoal-light/10">
+              {faqs.map(({ q, a }) => (
+                <div key={q} className="py-6">
+                  <dt className="font-sans text-[13px] tracking-[0.04em] font-medium text-ink">{q}</dt>
+                  <dd className="font-serif text-charcoal-light mt-2" style={{ fontSize: 'clamp(14px,1.4vw,16px)', lineHeight: 1.7 }}>{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+      )}
     </div>
   )
 }
