@@ -71,30 +71,39 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
     )
   }
 
-  // The broad collection is the curated superset; each sub-collection defines a filter
-  // bucket. Fetch the superset for the product list + hero, and the sub-collection
-  // handle-sets to tag which bucket each product belongs to.
-  const [collection, ...subHandleLists] = await Promise.all([
+  // The category grid is the UNION of the broad collection and its sub-collections.
+  // Relying on the broad collection alone hides products that were filed into a
+  // sub-collection (e.g. a perfume in `fragrance-1`) but never added to the broad
+  // parent — so we merge both and dedupe. Home items (candles, room sprays) that are
+  // filed into a beauty sub but really belong in Living are dropped via the Living
+  // membership set, so they show under Living only, not Beauty.
+  const [collection, livingHandles, ...subCols] = await Promise.all([
     getCollectionFull(broad.handle),
-    ...broad.subs.map(s => getCollectionProductHandles(s.handle)),
+    broad.slug === 'living' ? Promise.resolve<string[]>([]) : getCollectionProductHandles('living-interiors'),
+    ...broad.subs.map(s => getCollectionFull(s.handle)),
   ])
   if (!collection) notFound()
+  const living = new Set(livingHandles)
 
   // handle -> every sub-collection it's filed in (a scented body oil can be in both
   // Body and Fragrance, so a product can match more than one filter).
   const subsOf = new Map<string, string[]>()
+  const byHandle = new Map<string, (typeof collection.products.nodes)[number]>()
+  for (const p of collection.products.nodes) byHandle.set(p.handle, p)
   broad.subs.forEach((s, i) => {
-    for (const h of subHandleLists[i] ?? []) {
-      const arr = subsOf.get(h) ?? []
+    for (const p of subCols[i]?.products.nodes ?? []) {
+      const arr = subsOf.get(p.handle) ?? []
       if (!arr.includes(s.slug)) arr.push(s.slug)
-      subsOf.set(h, arr)
+      subsOf.set(p.handle, arr)
+      // add sub-only products to the grid, unless they really belong in Living
+      if (!byHandle.has(p.handle) && !living.has(p.handle)) byHandle.set(p.handle, p)
     }
   })
 
   // Filed Shopify sub-collection membership wins; anything filed nowhere is
   // auto-classified from its own product type / tags / title so it still lands in the
   // right filter bucket without touching Shopify.
-  const products: BrowsableProduct[] = collection.products.nodes.map(p => {
+  const products: BrowsableProduct[] = [...byHandle.values()].map(p => {
     const filed = subsOf.get(p.handle)
     const auto = classifySub(broad, p)
     return { ...p, subSlugs: filed?.length ? filed : auto ? [auto] : [] }
