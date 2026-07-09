@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import NewsletterForm from '@/components/shared/NewsletterForm'
 
 const SOCIAL_LINKS = [
   { label: 'Instagram', href: 'https://www.instagram.com/beauticate/' },
@@ -56,9 +57,13 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Contact + Social */}
+          {/* Newsletter + Contact + Social */}
           <div>
-            <h4 className="text-xs tracking-widest text-cream/50 uppercase mb-4">Get In Touch</h4>
+            <h4 className="text-xs tracking-widest text-cream/50 uppercase mb-4">The Edit, In Your Inbox</h4>
+            <p className="text-sm text-cream/50 mb-4">Beauty intel, no noise.</p>
+            <div className="mb-6">
+              <NewsletterForm variant="dark" />
+            </div>
             <a href="mailto:info@beauticate.com" className="text-sm text-cream/70 hover:text-cream transition-colors block mb-6">
               info@beauticate.com
             </a>
