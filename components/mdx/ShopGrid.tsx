@@ -60,19 +60,14 @@ interface ShopGridProps {
   children: React.ReactNode
 }
 
-/**
- * "Shop the look" strip — every product in a single row on desktop (so a
- * 5-product edit reads as one magazine strip), scrolling horizontally on
- * narrow screens rather than wrapping.
- */
 export function ShopGrid({ children }: ShopGridProps) {
-  const count = Math.min(Children.count(children), 6)
-  const cols = Math.max(count, 3)
+  const count = Children.count(children)
+  const cols = Math.min(count, 3)
   return (
     <div className="not-prose article-wide my-10 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0 md:overflow-visible">
       <div
-        className="grid gap-[clamp(12px,1.6vw,22px)]"
-        style={{ gridTemplateColumns: `repeat(${cols}, minmax(150px, 1fr))` }}
+        className="grid gap-[clamp(16px,2vw,28px)]"
+        style={{ gridTemplateColumns: `repeat(${cols}, minmax(200px, 1fr))` }}
       >
         {children}
       </div>

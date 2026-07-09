@@ -26,7 +26,7 @@ export default function VenueCTA({ instagram, bookingUrl }: VenueCTAProps) {
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 border border-charcoal/20 text-charcoal text-[11px] font-sans font-medium tracking-[0.14em] uppercase rounded-full hover:border-charcoal/40 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 border border-charcoal/20 text-charcoal text-[11px] font-sans font-medium tracking-[0.14em] uppercase rounded-[1px] hover:border-charcoal/40 transition-colors"
         >
           Book Now
         </a>
@@ -36,7 +36,7 @@ export default function VenueCTA({ instagram, bookingUrl }: VenueCTAProps) {
           href={`https://www.instagram.com/${instagram}/`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 border border-charcoal/20 text-charcoal text-[11px] font-sans font-medium tracking-[0.14em] uppercase rounded-full hover:border-charcoal/40 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 border border-charcoal/20 text-charcoal text-[11px] font-sans font-medium tracking-[0.14em] uppercase rounded-[1px] hover:border-charcoal/40 transition-colors"
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -51,7 +51,7 @@ export default function VenueCTA({ instagram, bookingUrl }: VenueCTAProps) {
           href={website}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 border border-charcoal/20 text-charcoal text-[11px] font-sans font-medium tracking-[0.14em] uppercase rounded-full hover:border-charcoal/40 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 border border-charcoal/20 text-charcoal text-[11px] font-sans font-medium tracking-[0.14em] uppercase rounded-[1px] hover:border-charcoal/40 transition-colors"
         >
           Visit Website
         </a>

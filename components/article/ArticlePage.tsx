@@ -6,6 +6,7 @@ import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
 import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
 import Portrait from '@/components/mdx/Portrait'
+import PortraitQuote from '@/components/mdx/PortraitQuote'
 import ArticleGrid from './ArticleGrid'
 import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
@@ -108,7 +109,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   }
 
   const mdxComponents = {
-    YouTubeEmbed, ProductEmbed, Portrait, CollectionEmbed,
+    YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
     ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, SubscribeBand, Caption, InlineImage,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {

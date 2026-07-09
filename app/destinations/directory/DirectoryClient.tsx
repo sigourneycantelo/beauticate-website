@@ -112,7 +112,7 @@ export default function DirectoryClient({ venues }: { venues: Venue[] }) {
             ))}
             <div className="ml-auto">
               <div
-                className="inline-flex rounded-full overflow-hidden"
+                className="inline-flex rounded-[1px] overflow-hidden"
                 style={{ border: '1px solid #DDD3C2' }}
               >
                 <span
@@ -185,7 +185,7 @@ function Chip({ active, onClick, isType, children }: { active: boolean; onClick:
 
   return (
     <button
-      className="font-sans text-xs tracking-[0.1em] uppercase px-[15px] py-2 rounded-full transition-all duration-150 cursor-pointer"
+      className="font-sans text-xs tracking-[0.1em] uppercase px-[15px] py-2 rounded-[1px] transition-all duration-150 cursor-pointer"
       style={{
         borderWidth: 1,
         borderStyle: 'solid',
@@ -248,7 +248,7 @@ function VenueCard({ venue: v }: { venue: Venue }) {
       <div className="flex gap-[10px] mt-4">
         <Link
           href={venueHref(v)}
-          className="flex-1 text-center font-sans text-[11px] tracking-[0.12em] uppercase py-[11px] rounded-[3px]"
+          className="flex-1 text-center font-sans text-[11px] tracking-[0.12em] uppercase py-[11px] rounded-[1px]"
           style={{ background: '#211E19', color: '#FBF8F2' }}
         >
           Read review

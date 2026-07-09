@@ -264,7 +264,7 @@ export default function TravelPage() {
             </p>
             <Link
               href="/destinations/directory"
-              className="font-sans text-xs tracking-[0.16em] uppercase whitespace-nowrap px-[26px] py-[14px] rounded-[3px]"
+              className="font-sans text-xs tracking-[0.16em] uppercase whitespace-nowrap px-[26px] py-[14px] rounded-[1px]"
               style={{ border: '1px solid rgba(244,239,227,0.6)' }}
             >
               Open the directory
