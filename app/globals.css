@@ -215,7 +215,7 @@
 .mh-logo-lg{ height:24px; }
 .mh-logo-mini{ height:14px; }
 .mh-logo-drawer{ height:16px; }
-.mh-logo-shop.mh-logo-lg{ height:40px; }
+.mh-logo-shop.mh-logo-lg{ width:172px; height:auto; }
 .mh-logo-shop.mh-logo-mini{ height:28px; }
 .mh-logo-shop.mh-logo-drawer{ height:32px; }
 
@@ -310,7 +310,7 @@
   .mh-hamburger{ display:flex; justify-self:start; }
   .mh-util-right .mh-util-link{ display:none; }
   .mh-logo-lg{ height:17px; }
-  .mh-logo-shop.mh-logo-lg{ height:44px; }
+  .mh-logo-shop.mh-logo-lg{ width:130px; height:auto; }
   .mh-primary{ display:none; }
   .mh-scrolled .mh-utility{ height:56px; opacity:1; border-color:var(--mh-line-soft); }
 }
