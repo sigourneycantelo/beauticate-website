@@ -25,7 +25,7 @@ export default function ArticleCard({ frontmatter: f, href, size = 'default' }: 
         </div>
         <div className="mt-3">
           {f.category && (
-            <p className="text-xs tracking-widest uppercase text-charcoal-light mb-1">
+            <p className="font-sans text-xs tracking-widest uppercase text-charcoal-light mb-1">
               {f.category.replace(/-/g, ' ')}
             </p>
           )}

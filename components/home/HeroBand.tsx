@@ -57,7 +57,7 @@ export default function HeroBand({ articles }: Props) {
       {hero && (
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 text-center w-full px-6 pb-10 md:pb-16" style={{ maxWidth: 'min(720px, 88%)' }}>
           {hero.frontmatter.subcategory && (
-            <span className="font-serif italic text-[15px] opacity-70 block mb-3">
+            <span className="font-sans text-[10px] tracking-[.22em] uppercase font-medium opacity-60 block mb-3">
               {hero.frontmatter.subcategory.replace(/-/g, ' ')}
             </span>
           )}

@@ -51,7 +51,7 @@ export default function MoreToRead({ articles }: Props) {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#cdc4bb] to-[#8f857b]" />
                 )}
               </div>
-              <span className="font-serif italic text-[15px] opacity-70 block mt-3.5 mb-1.5">
+              <span className="font-sans text-[10px] tracking-[.22em] uppercase font-medium text-charcoal-light block mt-3.5 mb-1.5">
                 {(f.subcategory ?? f.category).replace(/-/g, ' ')}
               </span>
               <h3 className="font-serif font-normal text-[20px] leading-[1.16]">{f.title}</h3>
