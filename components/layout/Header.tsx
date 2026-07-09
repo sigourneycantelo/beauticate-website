@@ -228,28 +228,39 @@ export default function Header({ megaMenuArticles }: Props) {
             : isShop ? '14px clamp(20px,6vw,104px) 18px' : '18px clamp(20px,6vw,104px) 0',
         }}
       >
-        {/* Social — desktop only, hidden when slim */}
-        <div className={`hidden md:flex gap-4 items-center transition-opacity duration-200 ${slim ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-          {SOCIAL.map(s => (
-            <a
-              key={s.href}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="block transition-opacity"
-              style={{ opacity: 0.55 }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '0.55')}
-            >
-              {s.icon}
-            </a>
-          ))}
-        </div>
+        {/* Left: back-to-Beauticate wordmark on the shop, social elsewhere */}
+        {isShop ? (
+          <Link
+            href="/"
+            aria-label="Back to Beauticate"
+            className={`hidden md:flex items-center gap-2 transition-opacity duration-200 ${slim ? 'opacity-0 pointer-events-none' : 'opacity-70 hover:opacity-100'}`}
+          >
+            <span aria-hidden className="font-sans text-[13px] leading-none">&larr;</span>
+            <Image src="/logo-dark.png" alt="Beauticate" width={360} height={49} className="w-auto h-[15px] mix-blend-multiply" />
+          </Link>
+        ) : (
+          <div className={`hidden md:flex gap-4 items-center transition-opacity duration-200 ${slim ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+            {SOCIAL.map(s => (
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="block transition-opacity"
+                style={{ opacity: 0.55 }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '0.55')}
+              >
+                {s.icon}
+              </a>
+            ))}
+          </div>
+        )}
         <div className="md:hidden" />
 
         {/* Logo — Beauticate.shop wordmark on the shop, the master logo elsewhere */}
-        <Link href={isShop ? '/shop' : '/'} className="justify-self-center">
+        <Link href={isShop ? '/shop' : '/'} className={`justify-self-center ${isShop ? 'py-2.5' : ''}`}>
           {isShop ? (
             <Image
               src="/beauticate-shop-logo.png"
@@ -257,7 +268,7 @@ export default function Header({ megaMenuArticles }: Props) {
               width={600}
               height={240}
               priority
-              className={`w-auto mix-blend-multiply transition-all duration-200 ${slim ? 'h-[52px]' : 'h-[clamp(72px,9vw,118px)]'}`}
+              className={`w-auto mix-blend-multiply transition-all duration-200 ${slim ? 'h-5' : 'h-7'}`}
             />
           ) : (
             <Image
@@ -407,3 +418,4 @@ export default function Header({ megaMenuArticles }: Props) {
     </header>
   )
 }
+
