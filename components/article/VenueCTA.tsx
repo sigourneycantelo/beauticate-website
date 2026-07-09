@@ -20,7 +20,7 @@ export default function VenueCTA({ instagram, bookingUrl }: VenueCTAProps) {
   const website = bookingUrl ? websiteFromBooking(bookingUrl) : null
 
   return (
-    <div className="flex items-center justify-center gap-3 mt-6 mb-2">
+    <div className="flex items-center justify-center gap-3 mt-6 mb-10">
       {bookingUrl && (
         <a
           href={bookingUrl}
