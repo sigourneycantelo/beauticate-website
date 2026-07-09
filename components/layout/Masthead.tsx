@@ -131,6 +131,11 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
           <button className="mh-hamburger" aria-label="Open menu" onClick={() => setDrawer(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" /></svg>
           </button>
+          {isShop && (
+            <Link href="/" className="mh-back-site" aria-label="Back to Beauticate">
+              <span aria-hidden>&larr;</span> Beauticate
+            </Link>
+          )}
           <div className="mh-social">
             {SOCIALS.map(s => (
               <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"><SocialIcon d={s.d} /></a>
