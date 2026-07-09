@@ -36,7 +36,7 @@ export default function ProductTile({
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain p-4'
-  const blend = cover ? undefined : ({ mixBlendMode: 'multiply' } as const)
+  const blend = (cover || useNextImage) ? undefined : ({ mixBlendMode: 'multiply' } as const)
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
