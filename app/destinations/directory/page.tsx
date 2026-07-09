@@ -21,6 +21,7 @@ export default function DirectoryPage() {
     image: a!.frontmatter.featured_image ?? '',
     imageAlt: a!.frontmatter.featured_image_alt ?? a!.frontmatter.title,
     verdict: a!.frontmatter.verdict ?? '',
+    isFeatured: a!.frontmatter.is_featured ?? false,
   }))
 
   return (
