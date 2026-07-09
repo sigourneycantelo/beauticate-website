@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 
 export type MegaCard = { title: string; href: string; image?: string; imageAlt?: string; eyebrow: string; meta?: string }
-export type MegaSub = { label: string; href: string; cards: MegaCard[] }
+export type MegaSub = { label: string; href: string; cards: MegaCard[]; disabled?: boolean }
 export type Pillar = {
   key: string; label: string; href: string; eyebrow: string
   allLabel: string; allHref: string; subs: MegaSub[]; isShop?: boolean
@@ -49,7 +49,8 @@ function Card({ c }: { c: MegaCard }) {
 
 function PillarItem({ p }: { p: Pillar }) {
   const [active, setActive] = useState(p.subs[0]?.label ?? '')
-  const cards = (p.subs.find(s => s.label === active) ?? p.subs[0])?.cards ?? []
+  const activeSub = p.subs.find(s => s.label === active) ?? p.subs[0]
+  const cards = activeSub?.cards ?? []
   const hasMega = p.subs.length > 0
   return (
     <li className={`mh-pillar${p.isShop ? ' is-shop' : ''}`}>
@@ -62,19 +63,34 @@ function PillarItem({ p }: { p: Pillar }) {
               <ul>
                 {p.subs.map(s => (
                   <li key={s.label}>
-                    <Link
-                      href={s.href}
-                      className={active === s.label ? 'active' : ''}
-                      onMouseEnter={() => setActive(s.label)}
-                      onFocus={() => setActive(s.label)}
-                    >{s.label}</Link>
+                    {s.disabled ? (
+                      <span
+                        className={`mh-sub-soon${active === s.label ? ' active' : ''}`}
+                        onMouseEnter={() => setActive(s.label)}
+                      >
+                        {s.label}<em>Soon</em>
+                      </span>
+                    ) : (
+                      <Link
+                        href={s.href}
+                        className={active === s.label ? 'active' : ''}
+                        onMouseEnter={() => setActive(s.label)}
+                        onFocus={() => setActive(s.label)}
+                      >{s.label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
               <Link href={p.allHref} className="mh-all">{p.allLabel} &rarr;</Link>
             </div>
             <div className="mh-cards">
-              {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)}
+              {activeSub?.disabled ? (
+                <p className="mh-soon-note">
+                  Our {activeSub.label} edit is coming soon.
+                </p>
+              ) : (
+                cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)
+              )}
             </div>
           </div>
         </div>
@@ -182,7 +198,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
                   <span className="mh-d-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></span>
                 </button>
                 <div className="mh-d-subs">
-                  {p.subs.map(s => <Link key={s.label} href={s.href} onClick={() => setDrawer(false)}>{s.label}</Link>)}
+                  {p.subs.map(s => s.disabled
+                    ? <span key={s.label} className="mh-d-soon">{s.label} <em>Soon</em></span>
+                    : <Link key={s.label} href={s.href} onClick={() => setDrawer(false)}>{s.label}</Link>)}
                 </div>
               </div>
             )

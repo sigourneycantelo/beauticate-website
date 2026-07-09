@@ -1,5 +1,8 @@
 import Masthead, { type Pillar, type MegaCard, type MegaSub } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
+import { getCollections } from '@/lib/shopify'
+import { BROAD_CATEGORIES } from '@/lib/shop-taxonomy'
+import type { ShopifyCollection } from '@/types/shopify'
 
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
 function cards(cat: string, sub: string | undefined, eyebrow: string): MegaCard[] {
@@ -27,7 +30,37 @@ function editorialPillar(
   }
 }
 
-export default function MastheadData() {
+// Shop pillar: broad categories (Beauty · Wellness · Living · Style-soon) mirroring
+// the editorial nav, each with sub-category thumbnail cards. Thumbnails use the real
+// Shopify collection image, falling back to the first product shot when a collection
+// has no banner set yet.
+function buildShopPillar(collections: ShopifyCollection[]): Pillar {
+  const imgByHandle = new Map<string, string>()
+  for (const c of collections) {
+    const url = c.image?.url ?? c.products?.nodes?.[0]?.featuredImage?.url
+    if (url) imgByHandle.set(c.handle, url)
+  }
+
+  const subs: MegaSub[] = BROAD_CATEGORIES.map((b): MegaSub => ({
+    label: b.label,
+    href: b.comingSoon ? '/shop/style' : `/shop/${b.slug}`,
+    disabled: b.comingSoon,
+    cards: b.subs.map((s): MegaCard => ({
+      title: s.label,
+      href: `/shop/${b.slug}?cat=${s.slug}`,
+      image: imgByHandle.get(s.handle),
+      imageAlt: s.label,
+      eyebrow: b.label,
+    })),
+  }))
+  return {
+    key: 'shop', label: 'Shop', href: '/shop', eyebrow: 'The Beauticate Shop', isShop: true,
+    allLabel: 'Shop all', allHref: '/shop',
+    subs,
+  }
+}
+
+export default async function MastheadData() {
   const beauty = editorialPillar('beauty', 'Beauty & Style', 'beauty-style', 'Beauty & Style', [
     ['Skin Care', 'skin-care'], ['Makeup', 'makeup'], ['Hair', 'hair'], ['Style', 'style'],
     ['Fragrance', 'fragrance'], ['Nails', 'nails'], ['Beauty Tips', 'beauty-tips'],
@@ -54,22 +87,9 @@ export default function MastheadData() {
     subs: [{ label: 'Episodes', href: '/vodcast/episodes', cards: cards('vodcast', 'episodes', 'Beautiful Inside') }],
   }
 
-  // Shop: real Shopify collections only. New In points to the shop landing until a
-  // dedicated New In collection exists; Gifting surfaces the three budget tiers.
-  const giftTiles: MegaCard[] = [
-    { title: 'Little Luxuries', href: '/shop/collections/little-luxuries-under-50', eyebrow: 'Under $50' },
-    { title: 'Thoughtful Gestures', href: '/shop/collections/thoughtful-gestures-under-100', eyebrow: 'Under $100' },
-    { title: 'Luxe Lovers', href: '/shop/collections/luxe-lovers-under-300', eyebrow: 'Under $300' },
-  ]
-  const shop: Pillar = {
-    key: 'shop', label: 'Shop', href: '/shop', eyebrow: 'Shop', isShop: true,
-    allLabel: 'Shop all', allHref: '/shop',
-    subs: [
-      { label: 'New In', href: '/shop', cards: giftTiles },
-      { label: 'Gifting', href: '/shop/by-moment', cards: giftTiles },
-      { label: 'Shop All', href: '/shop', cards: giftTiles },
-    ],
-  }
+  // Shop: broad categories mirroring the editorial nav, with real collection thumbnails.
+  const collections = await getCollections(100)
+  const shop = buildShopPillar(collections)
 
   const pillars: Pillar[] = [shop, beauty, wellness, living, destinations, interviews, podcast]
   return <Masthead pillars={pillars} />

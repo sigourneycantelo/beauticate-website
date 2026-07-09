@@ -93,6 +93,35 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
   return (data as any)?.products?.nodes ?? []
 }
 
+// A collection with a fuller product list than getCollectionByHandle (which caps at 24) —
+// used by the broad category pages that need every product in the group.
+export async function getCollectionFull(handle: string, first = 250): Promise<ShopifyCollection | null> {
+  const data = await shopifyFetch<{ collection: ShopifyCollection | null }>(`
+    ${PRODUCT_FRAGMENT}
+    query GetCollectionFull($handle: String!, $first: Int!) {
+      collection(handle: $handle) {
+        id handle title description
+        image { url altText width height }
+        products(first: $first) { nodes { ...ProductFields } }
+      }
+    }
+  `, { handle, first })
+  return (data as any)?.collection ?? null
+}
+
+// Just the product handles in a collection — for cheaply tagging which sub-collection
+// (filter bucket) each product on a broad category page belongs to.
+export async function getCollectionProductHandles(handle: string, first = 250): Promise<string[]> {
+  const data = await shopifyFetch<{ collection: { products: { nodes: { handle: string }[] } } | null }>(`
+    query CollectionHandles($handle: String!, $first: Int!) {
+      collection(handle: $handle) {
+        products(first: $first) { nodes { handle } }
+      }
+    }
+  `, { handle, first })
+  return (data as any)?.collection?.products?.nodes?.map((n: { handle: string }) => n.handle).filter(Boolean) ?? []
+}
+
 export async function getProductsByTag(tag: string, first = 20): Promise<ShopifyProduct[]> {
   const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
     ${PRODUCT_FRAGMENT}
