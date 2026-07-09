@@ -83,15 +83,9 @@ export default function ReviewSupersonicTemplate() {
           <p>Mind you, this is not the first time we have had a first peek at Dyson's innovative hair engineering at Beauticate. Back in 2016 when Dyson first revolutionised hair dryers, we <a href="/beauty-style/hair/dyson-supersonic-hair-dryer-review-is-it-worth-699">put their OG Supersonic hair dryer to the test</a> (it looks almost retro now!). We were impressed then, and now, nine years on, the Supersonic has had a glow up (and shrink down) of epic proportions.</p>
         </div>
 
-        <div className="prose prose-lg max-w-none">
-          <h2>What is the Dyson Supersonic R?</h2>
-          <p>First seen backstage at fashion weeks from Stella McCartney to Issey Miyake, and in the hands of celebrity stylists for the likes of <em>Demi Moore, Emma Stone,</em> and <em>Selena Gomez</em>, the <a href="https://www.dyson.com.au/supersonic-r-hair-dryer-522248-01-vinca-blue-topaz" target="_blank" rel="noopener noreferrer">Supersonic R</a> was previously only available to professionals. Until now.</p>
-
-          <p>Just launched for consumers, it's Dyson's most powerful, lightest, and most precise hair dryer to date — 30% smaller and 20% lighter than the original Supersonic. Its unique curved design makes it feel more like a styling wand than a tool, and it's powered by a Dyson Hyperdymium motor plus RFID-enabled attachments that adjust airflow and temperature automatically. Translation? You don't need to be a pro to get a pro-level finish.</p>
-        </div>
-
+        {/* ── Image: editorial set shot ── */}
         <div className="my-8">
-          <div className="relative w-full aspect-[4/3] overflow-hidden bg-tile">
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
             <Image
               src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-306.jpg"
               alt="Dyson Supersonic R hair dryer styled on set"
@@ -103,35 +97,86 @@ export default function ReviewSupersonicTemplate() {
         </div>
 
         <div className="prose prose-lg max-w-none">
+          <h2>What is the Dyson Supersonic R?</h2>
+          <p>First seen backstage at fashion weeks from Stella McCartney to Issey Miyake, and in the hands of celebrity stylists for the likes of <em>Demi Moore, Emma Stone,</em> and <em>Selena Gomez</em>, the <a href="https://www.dyson.com.au/supersonic-r-hair-dryer-522248-01-vinca-blue-topaz" target="_blank" rel="noopener noreferrer">Supersonic R</a> was previously only available to professionals. Until now.</p>
+
+          <p>Just launched for consumers, it's Dyson's most powerful, lightest, and most precise hair dryer to date — 30% smaller and 20% lighter than the original Supersonic. Its unique curved design makes it feel more like a styling wand than a tool, and it's powered by a Dyson Hyperdymium motor plus RFID-enabled attachments that adjust airflow and temperature automatically. Translation? You don't need to be a pro to get a pro-level finish.</p>
+
           <p>And yes, it retails for $799 — but more on that later.</p>
-
-          <h2>My first try (and why I haven't touched my old dryer since)</h2>
-          <p>The launch was held at the gorgeous new Eve Hotel in Sydney — cue Champagne, Dyson demos, and an all-out hair moment. I got to try the dryer under the guidance of Dyson stylists and took one home to test properly.</p>
         </div>
 
-        {/* ── Pull Quote 1 ── */}
-        <blockquote className="not-prose my-10 md:my-14">
-          <p
-            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
-            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
-          >
-            The shine? Glassy. Not greasy, not static — just healthy, light-reflecting bounce.
-          </p>
-        </blockquote>
-
-        <div className="prose prose-lg max-w-none">
-          <p>The next morning, I set up in my bathroom, applied a pump of the <a href="https://www.dyson.com.au/newsroom/choosing-your-dyson-chitosan-pre-style-cream" target="_blank" rel="noopener noreferrer">Dyson Chitosan Pre-Style Cream</a> and began. The airflow? Feather-light but powerful. The weight? Noticeably less strain on my arms.</p>
-
-          <p>Now, it's officially part of my weekly hair ritual. I've timed it: my blowdry is now four minutes faster than it was before. For a busy working mum, that's basically a gift from the hair gods.</p>
-        </div>
-
-        <div className="my-8">
-          <div className="relative w-full aspect-[4/3] overflow-hidden bg-tile">
+        {/* ── Image pair: Sigourney using dryer + editorial blowout ── */}
+        <div className="my-8 grid grid-cols-2 gap-4">
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
               src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1430-1.jpg"
               alt="Sigourney Cantelo using the Dyson Supersonic R hair dryer"
               fill
-              sizes="720px"
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-1006.jpg"
+              alt="Supermodel blowout styled with the Dyson Supersonic R"
+              fill
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="prose prose-lg max-w-none">
+          <h2>My first try (and why I haven't touched my old dryer since)</h2>
+          <p>The launch was held at the gorgeous new Eve Hotel in Sydney — cue Champagne, Dyson demos, and an all-out hair moment. I got to try the dryer under the guidance of Dyson stylists and took one home to test properly.</p>
+        </div>
+
+        {/* ── Image pair: Ceramic Pink dryer + editorial shot ── */}
+        <div className="my-8 grid grid-cols-2 gap-4">
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1426-1.jpg"
+              alt="Dyson Supersonic R hair dryer in Ceramic Pink"
+              fill
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-320.jpg"
+              alt="Dyson Supersonic R editorial styling shot"
+              fill
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="prose prose-lg max-w-none">
+          <p>The next morning, I set up in my bathroom, applied a pump of the <a href="https://www.dyson.com.au/newsroom/choosing-your-dyson-chitosan-pre-style-cream" target="_blank" rel="noopener noreferrer">Dyson Chitosan Pre-Style Cream</a> and began. The airflow? Feather-light but powerful. The weight? Noticeably less strain on my arms. And the shine? Glassy. Not greasy, not static — just healthy, light-reflecting bounce.</p>
+
+          <p>Now, it's officially part of my weekly hair ritual. I've timed it: my blowdry is now four minutes faster than it was before. For a busy working mum, that's basically a gift from the hair gods.</p>
+        </div>
+
+        {/* ── Image pair: Pre-Style Cream + detail shot ── */}
+        <div className="my-8 grid grid-cols-2 gap-4">
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1415.jpg"
+              alt="Dyson Chitosan Pre-Style Cream"
+              fill
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1407-1.jpg"
+              alt="Dyson Supersonic R hair dryer detail"
+              fill
+              sizes="360px"
               className="object-cover"
             />
           </div>
@@ -142,41 +187,61 @@ export default function ReviewSupersonicTemplate() {
           <p>According to Dyson's National Styling Manager Gabrielle Roccuzzo, the biggest blowdry mistake we make at home is skipping the blast dry step.</p>
 
           <p>"When blowdrying their hair, most people don't take out enough moisture by blast drying first," Gabrielle tells Beauticate. "To ensure smoother results and more control, blast dry your hair first. Once you've removed the excess water, then start to blow dry with a brush. This will provide better results in the long run and protect your hair."</p>
-        </div>
 
-        {/* ── Pull Quote 2 ── */}
-        <blockquote className="not-prose my-10 md:my-14">
-          <p
-            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
-            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
-          >
-            It feels more like a styling wand than a tool.
-          </p>
-        </blockquote>
-
-        <div className="prose prose-lg max-w-none">
           <p>The Supersonic R is perfect for this technique. I used the Powerful Air Attachment to blast dry, followed by the <a href="https://www.dyson.com.au/flyaway-971618-02" target="_blank" rel="noopener noreferrer">Flyaway Attachment</a> to smooth my strands and finish the look with that subtle 'I just left a salon in Paris' vibe.</p>
-
-          <h2>The supermodel blowout is back — here's how to get it</h2>
-          <p>Blame TikTok, the <em>Mob Wife</em> aesthetic, or the rising wave of '90s nostalgia, but the supermodel blowout is having a serious comeback. Think <em>Claudia Schiffer, Sabrina Carpenter,</em> or any It girl worth her Dyson demo.</p>
         </div>
 
-        <div className="my-8">
-          <div className="relative w-full aspect-[4/3] overflow-hidden bg-tile">
+        {/* ── Image pair: styling result + Siriano backstage ── */}
+        <div className="my-8 grid grid-cols-2 gap-4">
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-1006.jpg"
-              alt="Supermodel blowout hairstyle created with the Dyson Supersonic R"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1444-1.jpg"
+              alt="Blowdry result using the Dyson Supersonic R"
               fill
-              sizes="720px"
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/Siriano206.jpg"
+              alt="Dyson Supersonic R backstage at fashion week"
+              fill
+              sizes="360px"
               className="object-cover"
             />
           </div>
         </div>
 
         <div className="prose prose-lg max-w-none">
+          <h2>The supermodel blowout is back — here's how to get it</h2>
+          <p>Blame TikTok, the <em>Mob Wife</em> aesthetic, or the rising wave of '90s nostalgia, but the supermodel blowout is having a serious comeback. Think <em>Claudia Schiffer, Sabrina Carpenter,</em> or any It girl worth her Dyson demo.</p>
+
           <p>"The supermodel blowout is by far the biggest trend of the year, with an emphasis on bounce, volume and shine," says Gabrielle. "The Supersonic R helps to achieve this look by helping create bouncy curls with ease. Its lightweight design makes it easier to use and style, whilst effectively controlling temperature in order to protect your hair."</p>
 
           <p>Dyson has even launched a <a href="https://www.dyson.com.au/newsroom/introducing-the-new-dyson-supersonic-r-hair-dryer" target="_blank" rel="noopener noreferrer">"Styled with R" Menu</a> at select demo stores, where you can try their trend-forward looks — from halo curls to sleek straight styles — in person with an expert.</p>
+        </div>
+
+        {/* ── Image pair: editorial styling + product deep-etch ── */}
+        <div className="my-8 grid grid-cols-2 gap-4">
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/0209i2-1.jpg"
+              alt="Supermodel blowout hairstyle"
+              fill
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
+          <div className="relative w-full aspect-[3/4] overflow-hidden">
+            <Image
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/skEeZdGT8mjAh2UcFA4ojF-1.jpg"
+              alt="Dyson Supersonic R Flyaway Smoother attachment"
+              fill
+              sizes="360px"
+              className="object-cover"
+            />
+          </div>
         </div>
 
         {/* ── Subscribe Band ── */}
@@ -184,33 +249,46 @@ export default function ReviewSupersonicTemplate() {
 
         <div className="prose prose-lg max-w-none">
           <h2>The verdict: is it worth $799?</h2>
-          <p>If you only blowdry once a week and love a low-maintenance routine — this may be a luxury splurge. But if you're someone who blowdries or styles most days, cares about hair health and shine, has heavy hard-to-dry hair, gets arm fatigue mid-styling, or wants red carpet hair without the red carpet stylist…</p>
-        </div>
-
-        {/* ── Pull Quote 3 ── */}
-        <blockquote className="not-prose my-10 md:my-14">
-          <p
-            className="font-serif italic text-chocolate leading-[1.15] tracking-[-0.01em]"
-            style={{ fontSize: 'clamp(36px, 5vw, 62px)' }}
-          >
-            The Dyson Supersonic R is not just a tool. It's an upgrade.
-          </p>
-        </blockquote>
-
-        <div className="prose prose-lg max-w-none">
+          <p>If you only blowdry once a week and love a low-maintenance routine — this may be a luxury splurge. But if you're someone who:</p>
+          <ul>
+            <li>Blowdries or styles most days</li>
+            <li>Cares about hair health and shine</li>
+            <li>Has heavy, hard-to-dry hair</li>
+            <li>Gets arm fatigue mid-styling</li>
+            <li>Wants red carpet hair without the red carpet stylist…</li>
+          </ul>
           <p>…then this is absolutely worth it.</p>
+          <p><strong>The Dyson Supersonic R is not just a tool. It's an upgrade.</strong></p>
         </div>
 
+        {/* ── Image: product shot ── */}
         <div className="my-8">
-          <div className="relative w-full aspect-[4/3] overflow-hidden bg-tile">
+          <div className="relative w-full aspect-[4/3] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1426-1.jpg"
-              alt="Dyson Supersonic R hair dryer in Ceramic Pink"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/dysonsupersonicr.jpg"
+              alt="Dyson Supersonic R hair dryer product shot"
               fill
               sizes="720px"
               className="object-cover"
             />
           </div>
+        </div>
+
+        <div className="prose prose-lg max-w-none">
+          <h2>Details to shop</h2>
+          <ul>
+            <li><strong>RRP</strong>: $799 AUD</li>
+            <li><strong>Colourways</strong>: Ceramic Pink and Jasper Plum (Dyson.com.au exclusive)</li>
+            <li><strong>Where to Buy</strong>: Dyson.com.au and select retailers</li>
+          </ul>
+          <p><strong>Styling Menu</strong>: Book in-store at Dyson Demo Labs globally</p>
+        </div>
+
+        {/* ── Credits ── */}
+        <div className="prose prose-lg max-w-none mt-6">
+          <p className="font-sans text-[10px] tracking-[0.2em] uppercase leading-snug" style={{ color: '#9a9190' }}>
+            Story by Sigourney Cantelo · Imagery by The Fourth Creative
+          </p>
         </div>
 
         {/* ── Disclosure ── */}
@@ -220,13 +298,6 @@ export default function ReviewSupersonicTemplate() {
             The Dyson Supersonic R was provided for editorial consideration. All opinions are Sigourney's own.
           </p>
         </aside>
-
-        {/* ── Details ── */}
-        <div className="prose prose-lg max-w-none">
-          <p className="font-sans text-[10px] tracking-[0.2em] uppercase leading-snug" style={{ color: '#9a9190' }}>
-            Story by Sigourney Cantelo · Imagery by The Fourth Creative
-          </p>
-        </div>
 
       </div>
 
