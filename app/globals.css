@@ -194,6 +194,8 @@
   transition:height .32s ease,opacity .24s ease,border-color .32s ease; overflow:hidden;
 }
 .mh-util-left{ display:flex; align-items:center; gap:20px; justify-self:start; }
+.mh-back-site{ display:flex; align-items:center; gap:5px; font-family:var(--font-sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--mh-ink); opacity:.72; transition:opacity .2s,color .2s; white-space:nowrap; }
+.mh-back-site:hover{ opacity:1; color:var(--mh-wine); }
 .mh-util-right{ display:flex; align-items:center; gap:16px; justify-self:end; }
 .mh-social{ display:flex; align-items:center; gap:13px; }
 .mh-social a{ color:var(--mh-ink); opacity:.72; transition:opacity .2s,color .2s; display:flex; }
@@ -208,12 +210,12 @@
 .mh-icon-btn:hover{ color:var(--mh-wine); opacity:1; }
 .mh-icon-btn svg{ width:20px; height:20px; }
 
-.mh-wordmark{ justify-self:center; display:flex; align-items:center; }
+.mh-wordmark{ justify-self:center; display:flex; align-items:center; padding:6px 0; }
 .mh-logo{ display:block; width:auto; }
 .mh-logo-lg{ height:24px; }
 .mh-logo-mini{ height:14px; }
 .mh-logo-drawer{ height:16px; }
-.mh-logo-shop.mh-logo-lg{ height:56px; }
+.mh-logo-shop.mh-logo-lg{ height:40px; }
 .mh-logo-shop.mh-logo-mini{ height:28px; }
 .mh-logo-shop.mh-logo-drawer{ height:32px; }
 
@@ -306,9 +308,9 @@
   .mh-util-left{ gap:0; }
   .mh-util-left .mh-social, .mh-util-left .mh-util-link{ display:none; }
   .mh-hamburger{ display:flex; justify-self:start; }
-  .mh-util-right .mh-signin{ display:none; }
+  .mh-util-right .mh-util-link{ display:none; }
   .mh-logo-lg{ height:17px; }
-  .mh-logo-shop.mh-logo-lg{ height:38px; }
+  .mh-logo-shop.mh-logo-lg{ height:44px; }
   .mh-primary{ display:none; }
   .mh-scrolled .mh-utility{ height:56px; opacity:1; border-color:var(--mh-line-soft); }
 }
