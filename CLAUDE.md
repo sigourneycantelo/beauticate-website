@@ -4,6 +4,27 @@
 
 Beauticate is a beauty/lifestyle editorial site migrated from WordPress to Next.js (app router) on Vercel. Content lives in `content/<category>/<subcategory>/<slug>/<slug>.mdx` files rendered via `next-mdx-remote`.
 
+## Local development — do NOT run from a cloud-synced folder
+
+**`next dev` breaks when the repo lives in a cloud-synced directory** (iCloud "Desktop & Documents", or Google Drive):
+
+- **iCloud (e.g. `~/Desktop/...`):** the file watcher throws `Watchpack Error: EINTR: interrupted system call` and the first page compile hangs — the server looks "down" even though it started.
+- **Google Drive (`~/Library/CloudStorage/GoogleDrive-.../`):** native `node_modules` binaries get SIGKILL'd, and local git refs/objects get torn.
+
+**Fix:** keep the working copy in a plain, non-synced local folder such as `~/dev/` or `~/code/` (anything under Home that is *not* Desktop, Documents, or Drive):
+
+```bash
+git clone https://github.com/sigourneycantelo/beauticate-website.git ~/dev/beauticate-website
+cd ~/dev/beauticate-website && npm install
+cp /path/to/existing/.env.local .env.local   # bring your env over
+npm run dev                                    # localhost:3000, fast + stable
+```
+
+If port 3000 shows "in use" from a hung server: `lsof -tiTCP:3000 | xargs kill -9`.
+
+**Previewing the latest without local dev:** the Vercel deploy of `main` is always a full, current preview — use that URL rather than fighting a synced-folder dev server. (Because local git is unreliable on Drive, changes are pushed to `main` via the GitHub API and verified against the live deploy.)
+
+
 ## WordPress source rule
 
 **Any article with `date_published` before `2026-06-18` originated on the WordPress site and may have body images or content that was not fully migrated.**
