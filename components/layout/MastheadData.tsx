@@ -41,6 +41,7 @@ export default function MastheadData() {
   const destinations = editorialPillar('destinations', 'Destinations', 'destinations', 'Destinations', [
     ['Travel', 'travel'], ['Clinics', 'clinics'], ['Spas & Retreats', 'spas-retreats'],
   ])
+  destinations.subs.push({ label: 'Directory', href: '/destinations/directory', cards: [] })
   const interviews = editorialPillar('interviews', 'Interviews', 'interviews', 'Interviews', [
     ['Creatives', 'creatives'], ['Founders', 'founders'], ['Actors & Presenters', 'actors-presenters'],
     ['Models', 'models'], ['Tastemakers', 'tastemakers'],
