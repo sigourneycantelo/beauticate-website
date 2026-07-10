@@ -7,7 +7,10 @@ import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 
 export type MegaCard = { title: string; href: string; image?: string; imageAlt?: string; eyebrow: string; meta?: string }
-export type MegaSub = { label: string; href: string; cards: MegaCard[]; disabled?: boolean }
+export type MegaLink = { label: string; href: string }
+// A sub renders either as image cards (default) or, when `list` is set, as a full text
+// list of every item with `cards` shown as a few featured highlights on top.
+export type MegaSub = { label: string; href: string; cards: MegaCard[]; list?: MegaLink[]; disabled?: boolean }
 export type Pillar = {
   key: string; label: string; href: string; eyebrow: string
   allLabel: string; allHref: string; subs: MegaSub[]; isShop?: boolean
@@ -83,15 +86,26 @@ function PillarItem({ p }: { p: Pillar }) {
               </ul>
               <Link href={p.allHref} className="mh-all">{p.allLabel} &rarr;</Link>
             </div>
-            <div className="mh-cards">
-              {activeSub?.disabled ? (
-                <p className="mh-soon-note">
-                  Our {activeSub.label} edit is coming soon.
-                </p>
-              ) : (
-                cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)
-              )}
-            </div>
+            {activeSub?.disabled ? (
+              <div className="mh-cards"><p className="mh-soon-note">Our {activeSub.label} edit is coming soon.</p></div>
+            ) : activeSub?.list ? (
+              <div className="mh-mega-list">
+                {cards.length > 0 && (
+                  <div className="mh-featured">
+                    {cards.map((c, i) => <Card key={`${active}-f-${i}`} c={c} />)}
+                  </div>
+                )}
+                <ul className="mh-list">
+                  {activeSub.list.map((l) => (
+                    <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div className="mh-cards">
+                {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)}
+              </div>
+            )}
           </div>
         </div>
       )}
