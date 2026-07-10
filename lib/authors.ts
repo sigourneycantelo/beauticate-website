@@ -21,7 +21,7 @@ const AUTHORS: Author[] = [
     sameAs: [
       'https://www.instagram.com/sigourneycantelo/',
       'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
-      'https://www.wikidata.org/wiki/Q139643093',
+      'https://www.wikidata.org/wiki/Q139644159',
       `${SITE_URL}/about-beauticate`,
     ],
   },

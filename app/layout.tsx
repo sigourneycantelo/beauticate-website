@@ -80,6 +80,7 @@ const orgSchema = {
         'https://www.youtube.com/@beauticate',
         'https://www.pinterest.com.au/beauticate/',
         'https://beauticate.shop',
+        'https://www.wikidata.org/wiki/Q139643093',
       ],
     },
     {
@@ -90,8 +91,9 @@ const orgSchema = {
       worksFor: { '@id': 'https://www.beauticate.com/#organization' },
       url: 'https://www.beauticate.com/about-beauticate',
       sameAs: [
-        'https://www.instagram.com/sigourney.cantelo/',
-        'https://www.linkedin.com/in/sigourneycantelo/',
+        'https://www.instagram.com/sigourneycantelo/',
+        'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
+        'https://www.wikidata.org/wiki/Q139644159',
       ],
       knowsAbout: ['Beauty', 'Wellness', 'Lifestyle', 'Skincare', 'Fashion'],
       alumniOf: 'Vogue Australia',
