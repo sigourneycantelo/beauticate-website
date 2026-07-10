@@ -63,7 +63,7 @@ export default async function CollectionPage({ params }: Props) {
 
       {collection.image ? (
         <section className="relative w-full overflow-hidden" style={{ minHeight: minH }}>
-          <Image src={collection.image.url} alt={collection.image.altText ?? collection.title} fill priority sizes="100vw" className="object-cover" />
+          <Image src={collection.image.url} alt={collection.image.altText ?? collection.title} fill priority sizes="100vw" className="object-cover" style={{ objectPosition: 'center 30%' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.42))' }} />
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: minH }}>
             <h1 className="font-serif font-normal text-paper" style={{ fontSize: 'clamp(34px,5vw,60px)', letterSpacing: '0.04em' }}>{collection.title}</h1>
