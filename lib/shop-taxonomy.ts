@@ -11,7 +11,7 @@
 export type SubCat = {
   slug: string     // url filter value, e.g. ?cat=makeup
   label: string    // button / card label
-  handle: string   // Shopify collection handle
+  handle?: string  // Shopify collection handle (omit for classify-only filters, e.g. Living)
   // Auto-classification signals — used to place a product in this bucket when it
   // isn't (or is wrongly) filed in the Shopify sub-collection. productTypes match
   // Shopify's productType exactly; keywords are substring-matched (case-insensitive)
@@ -87,7 +87,30 @@ export const BROAD_CATEGORIES: BroadCat[] = [
     slug: 'living',
     label: 'Living',
     handle: 'living-interiors',
-    subs: [],
+    // No Shopify sub-collections exist for Living, so these filters are classify-only
+    // (matched from productType / title). handle omitted on purpose.
+    subs: [
+      {
+        slug: 'candles', label: 'Candles & Incense',
+        productTypes: ['Candles', 'Candle', 'Incense & Holders', 'Essential Oils & Burners'],
+        keywords: ['candle', 'incense', 'burner'],
+      },
+      {
+        slug: 'glassware', label: 'Glassware & Barware',
+        productTypes: ['Glassware', 'Serveware', 'Decanter', 'Carafe', 'Jug', 'Serving Spoon'],
+        keywords: ['glass', 'carafe', 'decanter', 'tumbler', 'coupe', 'flute', 'jug', 'pitcher', 'serving', 'vinaigrette', 'balsamic', 'cake server', 'whisk', 'culinary'],
+      },
+      {
+        slug: 'home-fragrance', label: 'Home Fragrance',
+        productTypes: ['Room Spray', 'Scented Water', 'Scented Soap', 'Mist'],
+        keywords: ['room spray', 'scented water', 'scented soap', 'pot pourri', 'potpourri'],
+      },
+      {
+        slug: 'decor', label: 'Vases & Décor',
+        productTypes: ['Vases', 'Vase', 'Furniture'],
+        keywords: ['vase', 'furniture', 'blanket', 'cushion', 'throw'],
+      },
+    ],
   },
   {
     slug: 'style',
@@ -100,6 +123,58 @@ export const BROAD_CATEGORIES: BroadCat[] = [
 export function getBroad(slug: string): BroadCat | undefined {
   return BROAD_CATEGORIES.find(b => b.slug === slug)
 }
+
+// ─── Shop by Brand ────────────────────────────────────────────────────────────
+// Mirrors the beauticate.shop "Shop by Brand" menu. `handle` is the live Shopify
+// collection handle → /shop/brands/<handle>.
+
+export type ShopBrand = { name: string; handle: string }
+
+export const SHOP_BRANDS: ShopBrand[] = [
+  { name: 'Archer Farrar Perfume Atelier', handle: 'archer-farrar-perfume-atelier' },
+  { name: 'Basics by B', handle: 'basics-by-b' },
+  { name: 'Booie Beauty', handle: 'booie-beauty' },
+  { name: 'Bon Wellness', handle: 'bon-patch' },
+  { name: 'Buj', handle: 'buj' },
+  { name: 'Chiquita', handle: 'chiquita' },
+  { name: 'Christophe Robin', handle: 'christophe-robin' },
+  { name: 'Eir Women', handle: 'eir-women' },
+  { name: 'Estetika', handle: 'estetika-1' },
+  { name: 'Innour', handle: 'innour' },
+  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
+  { name: 'Kiicity', handle: 'kiicity' },
+  { name: 'Lamav', handle: 'lamav' },
+  { name: 'Lash Armour', handle: 'lash-armour-1' },
+  { name: 'Lumira', handle: 'lumira-1' },
+  { name: 'Maison Balzac', handle: 'maison-balzac-1' },
+  { name: 'Mukti Organics', handle: 'mukti-organics-1' },
+  { name: 'OiTO Haircare', handle: 'oito-haircare' },
+  { name: 'Saint Louve', handle: 'saintlouve-1' },
+  { name: 'Sontse.', handle: 'sontse-1' },
+  { name: 'St Louis Says', handle: 'st-louis-says' },
+  { name: 'Subtle Energies', handle: 'subtle-energies' },
+  { name: 'Sunescape', handle: 'sunescape' },
+  { name: 'Tulita Parfum', handle: 'tulita-parfum' },
+]
+
+// ─── Shop by Moment ───────────────────────────────────────────────────────────
+// Mirrors the beauticate.shop "Shop by Moment" menu. `handle` is the live Shopify
+// collection handle → /shop/collections/<handle>.
+
+export type ShopMoment = { name: string; handle: string }
+
+export const SHOP_MOMENTS: ShopMoment[] = [
+  { name: 'Winter Edit', handle: 'autumn-edit' },
+  { name: 'Deepest Sleep', handle: 'evening-unwind' },
+  { name: 'Fit Girl Glow', handle: 'fit-girl-glow' },
+  { name: 'Selfcare Sunday', handle: 'selfcare-sunday' },
+  { name: 'Winter Skin', handle: 'winter-skin' },
+  { name: 'Best Friend Birthday', handle: 'best-friend-bday' },
+  { name: 'Mama Love', handle: 'mothers-day' },
+  { name: 'Little Luxuries — Under $50', handle: 'little-luxuries-under-50' },
+  { name: 'Thoughtful Gestures — Under $100', handle: 'thoughtful-gestures-under-100' },
+  { name: 'Luxe Lovers — Under $300', handle: 'luxe-lovers-under-300' },
+]
 
 // Auto-classify a product into one of a broad category's sub-buckets from its own
 // signals, for when it isn't filed in the Shopify sub-collection. First sub to match
