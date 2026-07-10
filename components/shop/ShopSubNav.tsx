@@ -7,10 +7,10 @@ import { Fragment } from 'react'
 // Beauticate header, styled as a centred, dot-separated editorial row in the
 // SheerLuxe manner. Mirrors the shop links on beauticate.shop.
 const TABS = [
-  { label: 'Shop by Category', href: '/shop/by-category' },
-  { label: 'Shop by Brand',    href: '/shop/by-brand' },
-  { label: 'Shop by Moment',   href: '/shop/by-moment' },
-  { label: 'About',            href: '/about' },
+  { label: 'Shop by Category', href: '/shop', match: (p: string) => p === '/shop' || /^\/shop\/(beauty|wellness|living|style)/.test(p) },
+  { label: 'Shop by Brand',    href: '/shop/brands', match: (p: string) => p.startsWith('/shop/brands') },
+  { label: 'Shop by Moment',   href: '/shop/gifting', match: (p: string) => p.startsWith('/shop/gifting') || p.startsWith('/shop/collections') },
+  { label: 'About',            href: '/about', match: (p: string) => p === '/about' },
 ]
 
 export default function ShopSubNav() {
@@ -29,7 +29,7 @@ export default function ShopSubNav() {
         style={{ gap: '0', padding: '16px clamp(20px,6vw,104px)' }}
       >
         {TABS.map((tab, i) => {
-          const active = path === tab.href || path.startsWith(tab.href + '/')
+          const active = tab.match(path)
           return (
             <Fragment key={tab.href}>
               {i > 0 && (
