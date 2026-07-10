@@ -137,7 +137,7 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
   const [collection, livingHandles, ...subCols] = await Promise.all([
     getCollectionFull(broad.handle),
     broad.slug === 'living' ? Promise.resolve<string[]>([]) : getCollectionProductHandles('living-interiors'),
-    ...broad.subs.map(s => getCollectionFull(s.handle)),
+    ...broad.subs.map(s => (s.handle ? getCollectionFull(s.handle) : Promise.resolve(null))),
   ])
   if (!collection) notFound()
   const living = new Set(livingHandles)
