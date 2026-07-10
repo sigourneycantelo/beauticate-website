@@ -200,7 +200,7 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
 
       {collection.image ? (
         <section className="relative w-full overflow-hidden" style={{ minHeight: minH }}>
-          <Image src={collection.image.url} alt={collection.image.altText ?? broad.label} fill priority sizes="100vw" className="object-cover" />
+          <Image src={collection.image.url} alt={collection.image.altText ?? broad.label} fill priority sizes="100vw" className="object-cover" style={{ objectPosition: 'center 30%' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.42))' }} />
           <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: minH }}>
             <p className="font-sans text-paper/80 mb-2" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase' }}>Shop</p>
