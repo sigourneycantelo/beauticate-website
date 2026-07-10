@@ -1,4 +1,4 @@
-import Masthead, { type Pillar, type MegaCard, type MegaSub } from './Masthead'
+import Masthead, { type Pillar, type MegaCard, type MegaSub, type MegaLink } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
 import { getCollections } from '@/lib/shopify'
 import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS } from '@/lib/shop-taxonomy'
@@ -48,26 +48,27 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     eyebrow: 'Category',
   }))
 
-  const brandCards: MegaCard[] = SHOP_BRANDS.slice(0, 8).map((b): MegaCard => ({
-    title: b.name,
-    href: `/shop/brands/${b.handle}`,
-    image: imgByHandle.get(b.handle),
-    imageAlt: b.name,
-    eyebrow: 'Brand',
-  }))
+  // Brand & Moment scale past what image cards can show, so they render as a full text
+  // list with a few featured image highlights on top.
+  const FEATURED_BRANDS = ['maison-balzac-1', 'lumira-1', 'tulita-parfum']
+  const FEATURED_MOMENTS = ['autumn-edit', 'evening-unwind', 'little-luxuries-under-50']
 
-  const momentCards: MegaCard[] = SHOP_MOMENTS.slice(0, 8).map((m): MegaCard => ({
-    title: m.name,
-    href: `/shop/collections/${m.handle}`,
-    image: imgByHandle.get(m.handle),
-    imageAlt: m.name,
-    eyebrow: 'Moment',
-  }))
+  const brandCards: MegaCard[] = FEATURED_BRANDS
+    .map(h => SHOP_BRANDS.find(b => b.handle === h))
+    .filter((b): b is NonNullable<typeof b> => Boolean(b))
+    .map((b): MegaCard => ({ title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'Brand' }))
+  const brandList: MegaLink[] = SHOP_BRANDS.map(b => ({ label: b.name, href: `/shop/brands/${b.handle}` }))
+
+  const momentCards: MegaCard[] = FEATURED_MOMENTS
+    .map(h => SHOP_MOMENTS.find(m => m.handle === h))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m))
+    .map((m): MegaCard => ({ title: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle), imageAlt: m.name, eyebrow: 'Moment' }))
+  const momentList: MegaLink[] = SHOP_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}` }))
 
   const subs: MegaSub[] = [
     { label: 'Shop by Category', href: '/shop', cards: categoryCards },
-    { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards },
-    { label: 'Shop by Moment', href: '/shop/gifting', cards: momentCards },
+    { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards, list: brandList },
+    { label: 'Shop by Moment', href: '/shop/gifting', cards: momentCards, list: momentList },
   ]
   return {
     key: 'shop', label: 'Shop', href: '/shop', eyebrow: 'The Beauticate Shop', isShop: true,
