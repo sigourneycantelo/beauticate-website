@@ -1,7 +1,7 @@
 import Masthead, { type Pillar, type MegaCard, type MegaSub } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
 import { getCollections } from '@/lib/shopify'
-import { BROAD_CATEGORIES } from '@/lib/shop-taxonomy'
+import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
 
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
@@ -30,10 +30,9 @@ function editorialPillar(
   }
 }
 
-// Shop pillar: broad categories (Beauty · Wellness · Living · Style-soon) mirroring
-// the editorial nav, each with sub-category thumbnail cards. Thumbnails use the real
-// Shopify collection image, falling back to the first product shot when a collection
-// has no banner set yet.
+// Shop pillar mirrors the beauticate.shop menu: three groups — Shop by Category,
+// Shop by Brand, Shop by Moment — each with thumbnail cards. Thumbnails use the real
+// Shopify collection image, falling back to the first product shot.
 function buildShopPillar(collections: ShopifyCollection[]): Pillar {
   const imgByHandle = new Map<string, string>()
   for (const c of collections) {
@@ -41,18 +40,35 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     if (url) imgByHandle.set(c.handle, url)
   }
 
-  const subs: MegaSub[] = BROAD_CATEGORIES.map((b): MegaSub => ({
-    label: b.label,
+  const categoryCards: MegaCard[] = BROAD_CATEGORIES.map((b): MegaCard => ({
+    title: b.comingSoon ? `${b.label} — soon` : b.label,
     href: b.comingSoon ? '/shop/style' : `/shop/${b.slug}`,
-    disabled: b.comingSoon,
-    cards: b.subs.map((s): MegaCard => ({
-      title: s.label,
-      href: `/shop/${b.slug}?cat=${s.slug}`,
-      image: imgByHandle.get(s.handle),
-      imageAlt: s.label,
-      eyebrow: b.label,
-    })),
+    image: b.handle ? imgByHandle.get(b.handle) : undefined,
+    imageAlt: b.label,
+    eyebrow: 'Category',
   }))
+
+  const brandCards: MegaCard[] = SHOP_BRANDS.slice(0, 8).map((b): MegaCard => ({
+    title: b.name,
+    href: `/shop/brands/${b.handle}`,
+    image: imgByHandle.get(b.handle),
+    imageAlt: b.name,
+    eyebrow: 'Brand',
+  }))
+
+  const momentCards: MegaCard[] = SHOP_MOMENTS.slice(0, 8).map((m): MegaCard => ({
+    title: m.name,
+    href: `/shop/collections/${m.handle}`,
+    image: imgByHandle.get(m.handle),
+    imageAlt: m.name,
+    eyebrow: 'Moment',
+  }))
+
+  const subs: MegaSub[] = [
+    { label: 'Shop by Category', href: '/shop', cards: categoryCards },
+    { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards },
+    { label: 'Shop by Moment', href: '/shop/gifting', cards: momentCards },
+  ]
   return {
     key: 'shop', label: 'Shop', href: '/shop', eyebrow: 'The Beauticate Shop', isShop: true,
     allLabel: 'Shop all', allHref: '/shop',
