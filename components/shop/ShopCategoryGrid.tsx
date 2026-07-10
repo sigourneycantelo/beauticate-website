@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const CATEGORIES = [
-  { label: 'Beauty', href: '/shop/by-category', img: '/images/shop/category-beauty.jpg', soon: false },
-  { label: 'Wellness', href: '/shop/by-category', img: '/images/shop/category-wellness.jpg', soon: false },
-  { label: 'Living', href: '/shop/by-category', img: '/images/shop/category-living.jpg', soon: false },
-  { label: 'Style', href: '/shop/by-category', img: '/images/shop/category-style.jpg', soon: true },
+  { label: 'Beauty', href: '/shop/beauty', img: '/images/shop/category-beauty.jpg', soon: false },
+  { label: 'Wellness', href: '/shop/wellness', img: '/images/shop/category-wellness.jpg', soon: false },
+  { label: 'Living', href: '/shop/living', img: '/images/shop/category-living.jpg', soon: false },
+  { label: 'Style', href: '/shop/style', img: '/images/shop/category-style.jpg', soon: true },
 ]
 
 // "Shop by Category" media grid — Beauty / Wellness / Living live, Style coming soon.
