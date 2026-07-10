@@ -1,10 +1,10 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getCollectionFull, getCollectionProductHandles } from '@/lib/shopify'
 import { BROAD_CATEGORIES, getBroad, classifySub } from '@/lib/shop-taxonomy'
 import CategoryBrowser, { type BrowsableProduct } from '@/components/shop/CategoryBrowser'
+import CollectionHero from '@/components/shop/CollectionHero'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -190,29 +190,13 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
     })),
   } : null
 
-  const minH = 'clamp(240px,34vw,420px)'
-
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      {collection.image ? (
-        <section className="relative w-full overflow-hidden" style={{ minHeight: minH }}>
-          <Image src={collection.image.url} alt={collection.image.altText ?? broad.label} fill priority sizes="100vw" className="object-cover" style={{ objectPosition: 'center 30%' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.42))' }} />
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: minH }}>
-            <p className="font-sans text-paper/80 mb-2" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase' }}>Shop</p>
-            <h1 className="font-serif font-normal text-paper" style={{ fontSize: 'clamp(34px,5vw,60px)', letterSpacing: '0.04em' }}>{broad.label}</h1>
-          </div>
-        </section>
-      ) : (
-        <header className="text-center max-w-wide mx-auto px-[clamp(20px,6vw,104px)] pt-[clamp(40px,6vw,80px)] pb-[clamp(4px,2vw,16px)]">
-          <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal-light/60">Shop</p>
-          <h1 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(36px,5vw,64px)', lineHeight: 1 }}>{broad.label}</h1>
-        </header>
-      )}
+      <CollectionHero image={collection.image} eyebrow="Shop" title={broad.label} />
 
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
         <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-8">
