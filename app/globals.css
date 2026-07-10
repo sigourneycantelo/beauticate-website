@@ -278,6 +278,17 @@
 .mh-card:hover .mh-card-title{ text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:.5px; }
 .mh-card-meta{ display:none; }
 
+/* List layout (Shop by Brand / Moment): a few featured cards + full text list */
+.mh-mega-list{ display:block; }
+.mh-featured{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:24px; }
+.mh-featured .mh-card-img{ aspect-ratio:16/11; margin-bottom:9px; }
+.mh-featured .mh-card-title{ font-size:15px; }
+.mh-list{ list-style:none; margin:0; padding:0; columns:3; column-gap:30px; }
+.mh-list li{ break-inside:avoid; }
+.mh-list a{ display:block; padding:6px 0; font-size:12px; font-weight:500; letter-spacing:.05em; text-transform:uppercase; color:var(--mh-ink); opacity:.78; transition:color .18s, opacity .18s; }
+.mh-list a:hover{ color:var(--mh-wine); opacity:1; }
+@media(max-width:1080px){ .mh-list{ columns:2; } }
+
 /* mobile bits */
 .mh-hamburger{ display:none; align-items:center; color:var(--mh-ink); }
 .mh-hamburger svg{ width:22px; height:22px; }
