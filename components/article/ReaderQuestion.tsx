@@ -50,7 +50,7 @@ export default function ReaderQuestion({ category, articleTitle, articleUrl }: P
           What do you want to know about {topic}?
         </h3>
         <p className="text-sm font-sans text-muted mb-6">
-          Your question could inspire our next story.
+          We use your questions to shape what we write about next.
         </p>
 
         {status === 'sent' ? (
