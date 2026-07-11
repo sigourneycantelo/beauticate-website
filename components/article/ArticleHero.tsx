@@ -10,8 +10,24 @@ interface Props {
 
 export default function ArticleHero({ frontmatter: f }: Props) {
   const isLandscape = !!(f.hero_image || f.featured_image)
+  const heroSrc = f.hero_image || f.featured_image
+  const isGif = heroSrc?.toLowerCase().endsWith('.gif')
 
   if (isLandscape) {
+    if (isGif) {
+      // Animated GIF — use native <img> so the animation plays
+      return (
+        <div className="max-w-[1200px] mx-auto">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={heroSrc}
+            alt={f.featured_image_alt ?? f.title}
+            className="w-full h-auto"
+          />
+        </div>
+      )
+    }
+
     // Full-bleed landscape mode — used for all articles with any image
     return (
       <>
@@ -19,10 +35,11 @@ export default function ArticleHero({ frontmatter: f }: Props) {
         <div className="hidden md:block max-w-[1200px] mx-auto">
           <div className="relative w-full" style={{ aspectRatio: f.hero_aspect ?? '16/9' }}>
             <Image
-              src={f.hero_image || f.featured_image}
+              src={heroSrc}
               alt={f.featured_image_alt ?? f.title}
               fill
               sizes="1200px"
+
               className="object-cover"
               style={{ objectPosition: f.hero_focus ?? 'center center' }}
               priority
@@ -36,6 +53,7 @@ export default function ArticleHero({ frontmatter: f }: Props) {
             alt={f.featured_image_alt ?? f.title}
             fill
             sizes="100vw"
+            quality={90}
             className="object-cover"
             style={{ objectPosition: f.hero_focus ?? 'center center' }}
             priority
@@ -56,6 +74,7 @@ export default function ArticleHero({ frontmatter: f }: Props) {
             alt={f.featured_image_alt ?? f.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
+            quality={90}
             className="object-cover object-center"
             priority
           />

@@ -18,6 +18,7 @@ export default function ArticleCard({ frontmatter: f, href, size = 'default' }: 
               src={f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
+
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               unoptimized={f.featured_image.endsWith('.gif')}
             />
