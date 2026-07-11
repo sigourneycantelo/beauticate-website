@@ -27,6 +27,9 @@ export function resolveSchemaType(f: ArticleFrontmatter): SchemaType {
   const title = f.title.toLowerCase()
   const category = (f.category ?? '').toLowerCase()
   const subcategory = (f.subcategory ?? '').toLowerCase()
+  const isReview = tags.includes('review') || title.includes('review') || title.includes('we tried') || title.includes('we visited')
+  // Review beats NewsArticle — a hotel review is a review, not news
+  if (isReview) return 'Review'
   // NewsArticle: explicitly flagged, or interviews, travel/destinations, news/trending tags
   if (
     f.is_news ||
@@ -37,7 +40,6 @@ export function resolveSchemaType(f: ArticleFrontmatter): SchemaType {
     tags.includes('trending') ||
     tags.includes('interview')
   ) return 'NewsArticle'
-  if (tags.includes('review') || title.includes('review') || title.includes('we tried')) return 'Review'
   if (title.includes('how to') || title.includes('guide') || tags.includes('how-to')) return 'HowTo'
   return 'Article'
 }
@@ -115,6 +117,22 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
             bestRating: '5',
             worstRating: '1',
           },
+          ...(f.review_pros?.length ? {
+            positiveNotes: {
+              '@type': 'ItemList',
+              itemListElement: f.review_pros.map((note, i) => ({
+                '@type': 'ListItem', position: i + 1, name: note,
+              })),
+            },
+          } : {}),
+          ...(f.review_cons?.length ? {
+            negativeNotes: {
+              '@type': 'ItemList',
+              itemListElement: f.review_cons.map((note, i) => ({
+                '@type': 'ListItem', position: i + 1, name: note,
+              })),
+            },
+          } : {}),
         }
       : {}),
     ...(schemaType === 'HowTo' && content
