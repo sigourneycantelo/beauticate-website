@@ -8,6 +8,7 @@ import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
 import Portrait from '@/components/mdx/Portrait'
 import PortraitQuote from '@/components/mdx/PortraitQuote'
 import ArticleGrid from './ArticleGrid'
+import ReaderQuestion from './ReaderQuestion'
 import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
 import ShareButtons from './ShareButtons'
@@ -225,6 +226,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
             image={f.featured_image}
           />
         </div>
+
+        {/* Reader question */}
+        <ReaderQuestion
+          category={f.category}
+          articleTitle={f.title}
+          articleUrl={articleUrl}
+        />
       </div>
 
       {/* Related articles */}
