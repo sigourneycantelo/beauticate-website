@@ -14,7 +14,7 @@ async function shopifyFetch<T>(query: string, variables?: object): Promise<T> {
         'Shopify-Storefront-Private-Token': PRIVATE_TOKEN,
       },
       body: JSON.stringify({ query, variables }),
-      next: { revalidate: 3600 }, // cache 1 hour
+      next: { revalidate: 300 }, // cache 5 min — new Shopify images/products show quickly while the shop is actively curated
     })
 
     if (!res.ok) {
