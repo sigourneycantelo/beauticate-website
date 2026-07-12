@@ -278,6 +278,11 @@
 .mh-card:hover .mh-card-title{ text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:.5px; }
 .mh-card-meta{ display:none; }
 
+/* Coming-soon category card (e.g. Style): dim + centred badge */
+.mh-card-soon .mh-card-img::after{ content:""; position:absolute; inset:0; background:rgba(250,249,244,.34); z-index:1; }
+.mh-card-badge{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2; font-family:var(--font-sans); font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--mh-ink); background:rgba(255,255,255,.9); padding:6px 13px; border-radius:999px; white-space:nowrap; }
+.mh-card-soon .mh-card-title{ opacity:.6; }
+
 /* List layout (Shop by Brand / Moment): a few featured cards + full text list */
 .mh-mega-list{ display:block; }
 .mh-featured{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:24px; }
