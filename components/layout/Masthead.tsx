@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 
-export type MegaCard = { title: string; href: string; image?: string; imageAlt?: string; eyebrow: string; meta?: string }
+export type MegaCard = { title: string; href: string; image?: string; imageAlt?: string; eyebrow: string; meta?: string; soon?: boolean }
 export type MegaLink = { label: string; href: string }
 // A sub renders either as image cards (default) or, when `list` is set, as a full text
 // list of every item with `cards` shown as a few featured highlights on top.
@@ -41,9 +41,10 @@ function Wordmark({ className = '', priority = false, shop = false }: { classNam
 
 function Card({ c }: { c: MegaCard }) {
   return (
-    <Link href={c.href} className="mh-card">
+    <Link href={c.href} className={`mh-card${c.soon ? ' mh-card-soon' : ''}`}>
       <span className="mh-card-img">
         {c.image ? <Image src={c.image} alt={c.imageAlt || c.title} fill sizes="(max-width:1080px) 22vw, 220px" className="mh-card-obj" /> : null}
+        {c.soon && <span className="mh-card-badge">Coming Soon</span>}
       </span>
       <span className="mh-card-title">{c.title}</span>
     </Link>
