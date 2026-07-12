@@ -131,31 +131,33 @@ export function getBroad(slug: string): BroadCat | undefined {
 
 export type ShopBrand = { name: string; handle: string }
 
+// Ordered by profile / recognition (not alphabetical) — most well-known first.
+// Easy to re-rank: this array order drives both the Brands index and the nav list.
 export const SHOP_BRANDS: ShopBrand[] = [
-  { name: 'Archer Farrar Perfume Atelier', handle: 'archer-farrar-perfume-atelier' },
-  { name: 'Basics by B', handle: 'basics-by-b' },
-  { name: 'Booie Beauty', handle: 'booie-beauty' },
-  { name: 'Bon Wellness', handle: 'bon-patch' },
-  { name: 'Buj', handle: 'buj' },
-  { name: 'Chiquita', handle: 'chiquita' },
-  { name: 'Christophe Robin', handle: 'christophe-robin' },
-  { name: 'Eir Women', handle: 'eir-women' },
-  { name: 'Estetika', handle: 'estetika-1' },
-  { name: 'Innour', handle: 'innour' },
-  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
-  { name: 'Kiicity', handle: 'kiicity' },
-  { name: 'Lamav', handle: 'lamav' },
-  { name: 'Lash Armour', handle: 'lash-armour-1' },
-  { name: 'Lumira', handle: 'lumira-1' },
   { name: 'Maison Balzac', handle: 'maison-balzac-1' },
+  { name: 'Booie Beauty', handle: 'booie-beauty' },
   { name: 'Mukti Organics', handle: 'mukti-organics-1' },
-  { name: 'OiTO Haircare', handle: 'oito-haircare' },
+  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
+  { name: 'Lumira', handle: 'lumira-1' },
   { name: 'Saint Louve', handle: 'saintlouve-1' },
-  { name: 'Sontse.', handle: 'sontse-1' },
-  { name: 'St Louis Says', handle: 'st-louis-says' },
+  { name: 'Christophe Robin', handle: 'christophe-robin' },
+  { name: 'Lamav', handle: 'lamav' },
   { name: 'Subtle Energies', handle: 'subtle-energies' },
   { name: 'Sunescape', handle: 'sunescape' },
   { name: 'Tulita Parfum', handle: 'tulita-parfum' },
+  { name: 'Archer Farrar Perfume Atelier', handle: 'archer-farrar-perfume-atelier' },
+  { name: 'Chiquita', handle: 'chiquita' },
+  { name: 'Estetika', handle: 'estetika-1' },
+  { name: 'Eir Women', handle: 'eir-women' },
+  { name: 'Innour', handle: 'innour' },
+  { name: 'Bon Wellness', handle: 'bon-patch' },
+  { name: 'OiTO Haircare', handle: 'oito-haircare' },
+  { name: 'Lash Armour', handle: 'lash-armour-1' },
+  { name: 'Buj', handle: 'buj' },
+  { name: 'Kiicity', handle: 'kiicity' },
+  { name: 'Sontse.', handle: 'sontse-1' },
+  { name: 'St Louis Says', handle: 'st-louis-says' },
+  { name: 'Basics by B', handle: 'basics-by-b' },
 ]
 
 // ─── Shop by Moment ───────────────────────────────────────────────────────────
