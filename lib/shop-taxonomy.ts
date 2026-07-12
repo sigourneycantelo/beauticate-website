@@ -136,9 +136,9 @@ export type ShopBrand = { name: string; handle: string }
 export const SHOP_BRANDS: ShopBrand[] = [
   { name: 'Maison Balzac', handle: 'maison-balzac-1' },
   { name: 'Booie Beauty', handle: 'booie-beauty' },
-  { name: 'Mukti Organics', handle: 'mukti-organics-1' },
-  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
   { name: 'Lumira', handle: 'lumira-1' },
+  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
+  { name: 'Mukti Organics', handle: 'mukti-organics-1' },
   { name: 'Saint Louve', handle: 'saintlouve-1' },
   { name: 'Christophe Robin', handle: 'christophe-robin' },
   { name: 'Lamav', handle: 'lamav' },
