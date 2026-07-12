@@ -24,11 +24,12 @@ export default function CollectionHero({ image, eyebrow, title, description }: P
     )
   }
 
-  const minH = 'clamp(460px,66vh,760px)'
+  const minH = 'clamp(420px,64vh,760px)'
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: minH }}>
-      <Image src={image.url} alt={image.altText ?? title} fill priority sizes="100vw" className="object-cover" />
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.34) 55%, rgba(0,0,0,0.44) 100%)' }} />
+    <section className="relative w-full overflow-hidden" style={{ minHeight: minH, backgroundColor: '#141210' }}>
+      {/* object-contain shows the whole square uncropped, letterboxed on the black backdrop */}
+      <Image src={image.url} alt={image.altText ?? title} fill priority sizes="100vw" className="object-contain" />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.32) 50%, rgba(0,0,0,0.46) 100%)' }} />
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: minH }}>
         <p className="font-sans text-paper/80 mb-3" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase' }}>{eyebrow}</p>
         <h1 className="font-serif font-normal text-paper" style={{ fontSize: 'clamp(38px,5.5vw,66px)', letterSpacing: '0.03em', textShadow: '0 1px 24px rgba(0,0,0,0.28)' }}>{title}</h1>
