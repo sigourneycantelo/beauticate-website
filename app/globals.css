@@ -288,6 +288,9 @@
 .mh-mega-list{ display:block; }
 .mh-featured{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:24px; }
 .mh-featured .mh-card-img{ aspect-ratio:16/11; margin-bottom:9px; }
+/* Shop mega-menu preview tiles are square (match the square Shopify imagery) */
+.is-shop .mh-card-img{ aspect-ratio:1/1; }
+.is-shop .mh-featured .mh-card-img{ aspect-ratio:1/1; }
 .mh-featured .mh-card-title{ font-size:15px; }
 .mh-list{ list-style:none; margin:0; padding:0; columns:3; column-gap:30px; }
 .mh-list li{ break-inside:avoid; }
