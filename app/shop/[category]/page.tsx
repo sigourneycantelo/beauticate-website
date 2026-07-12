@@ -166,6 +166,18 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
     return { ...p, subSlugs: filed?.length ? filed : auto ? [auto] : [] }
   })
 
+  // Visual sub-category tiles: use the sub-collection's own image, falling back to the
+  // first product shot in that bucket (covers Living's code-only filters that have no
+  // Shopify collection image).
+  const subTiles = broad.subs.map((s, i) => {
+    const rep = products.find(p => p.subSlugs?.includes(s.slug))
+    return {
+      slug: s.slug,
+      label: s.label,
+      image: subCols[i]?.image?.url ?? rep?.featuredImage?.url ?? rep?.images?.nodes?.[0]?.url,
+    }
+  })
+
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -209,8 +221,9 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
 
         <CategoryBrowser
           products={products}
-          subs={broad.subs.map(s => ({ slug: s.slug, label: s.label }))}
+          subs={subTiles}
           initialSub={cat}
+          allImage={collection.image?.url}
         />
       </div>
 
