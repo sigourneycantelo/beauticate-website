@@ -20,7 +20,7 @@ export default async function ShopBrandsPage() {
     if (url) imgByHandle.set(c.handle, url)
   }
 
-  const brands = [...SHOP_BRANDS].sort((a, b) => a.name.localeCompare(b.name))
+  const brands = SHOP_BRANDS   // curated order (most well-known first)
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
