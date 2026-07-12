@@ -34,7 +34,7 @@ export default function ShopByMoment({ collections }: Props) {
             key={c.id}
             href={`/shop/collections/${c.handle}`}
             className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
-            style={{ aspectRatio: '4/5' }}
+            style={{ aspectRatio: '1/1' }}
           >
             {c.image ? (
               <Image
