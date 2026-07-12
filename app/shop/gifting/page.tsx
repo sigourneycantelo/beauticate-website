@@ -7,7 +7,7 @@ import { SHOP_MOMENTS } from '@/lib/shop-taxonomy'
 const SITE = 'https://www.beauticate.com'
 
 export const metadata: Metadata = {
-  title: 'Gifting & Edits | Beauticate Shop',
+  title: 'Shop by Moment | Beauticate Shop',
   description: 'Shop by moment — curated Beauticate edits for every occasion, from Deepest Sleep to gifting under $50.',
   alternates: { canonical: `${SITE}/shop/gifting` },
 }
@@ -26,7 +26,7 @@ export default async function ShopGiftingPage() {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
       { '@type': 'ListItem', position: 2, name: 'Shop', item: `${SITE}/shop` },
-      { '@type': 'ListItem', position: 3, name: 'Gifting', item: `${SITE}/shop/gifting` },
+      { '@type': 'ListItem', position: 3, name: 'Shop by Moment', item: `${SITE}/shop/gifting` },
     ],
   }
 
@@ -36,9 +36,9 @@ export default async function ShopGiftingPage() {
 
       <header className="text-center max-w-wide mx-auto px-[clamp(20px,6vw,104px)] pt-[clamp(40px,6vw,80px)] pb-[clamp(4px,2vw,16px)]">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal-light/60">Shop</p>
-        <h1 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(36px,5vw,64px)', lineHeight: 1 }}>Gifting &amp; Edits</h1>
+        <h1 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(36px,5vw,64px)', lineHeight: 1 }}>Shop by Moment</h1>
         <p className="font-serif mx-auto mt-4 max-w-[54ch] text-charcoal-light" style={{ fontSize: 'clamp(15px,1.5vw,18px)' }}>
-          Shop by moment — our editors&rsquo; curated edits for every occasion and every budget.
+          Our editors&rsquo; curated edits for every occasion and every budget.
         </p>
       </header>
 
@@ -48,7 +48,7 @@ export default async function ShopGiftingPage() {
           <span className="mx-2 opacity-40">/</span>
           <Link href="/shop" className="hover:text-ink transition-colors">Shop</Link>
           <span className="mx-2 opacity-40">/</span>
-          <span className="text-ink">Gifting</span>
+          <span className="text-ink">Shop by Moment</span>
         </nav>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
