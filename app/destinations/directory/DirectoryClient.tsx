@@ -232,27 +232,35 @@ export default function DirectoryClient({ venues }: { venues: Venue[] }) {
           {countLabel}
         </p>
 
-        {grouped.length === 0 && (
+        {filtered.length === 0 && (
           <p className="text-center py-[60px] font-serif italic text-xl" style={{ color: '#6E655A' }}>
             Nothing here yet in this filter. Try another state or type.
           </p>
         )}
 
-        {grouped.map(({ state, venues: group }) => (
-          <div key={state}>
-            <h2
-              className="font-serif font-medium text-[28px] mt-9 mb-5 pb-[10px]"
-              style={{ borderBottom: '1px solid #E8E2D8' }}
-            >
-              {FULL_STATE[state]}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {group.map(v => (
-                <VenueCard key={v.slug} venue={v} />
-              ))}
-            </div>
+        {stateFilter === 'all' ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filtered.map(v => (
+              <VenueCard key={v.slug} venue={v} />
+            ))}
           </div>
-        ))}
+        ) : (
+          grouped.map(({ state, venues: group }) => (
+            <div key={state}>
+              <h2
+                className="font-serif font-medium text-[28px] mt-9 mb-5 pb-[10px]"
+                style={{ borderBottom: '1px solid #E8E2D8' }}
+              >
+                {FULL_STATE[state]}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {group.map(v => (
+                  <VenueCard key={v.slug} venue={v} />
+                ))}
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   )
