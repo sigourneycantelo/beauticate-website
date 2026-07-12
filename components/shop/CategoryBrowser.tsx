@@ -1,5 +1,6 @@
 'use client'
 
+// Sub-category filters render as visual image tiles (see /shop/[category]).
 import { useState } from 'react'
 import Image from 'next/image'
 import ProductGrid from './ProductGrid'
