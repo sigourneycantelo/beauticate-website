@@ -32,7 +32,7 @@ export default function ShopByMoment() {
             key={m.href}
             href={m.href}
             className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
-            style={{ aspectRatio: '4/5' }}
+            style={{ aspectRatio: '1/1' }}
           >
             {/* Background */}
             <div
