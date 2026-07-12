@@ -56,8 +56,19 @@ function PillarItem({ p }: { p: Pillar }) {
   const activeSub = p.subs.find(s => s.label === active) ?? p.subs[0]
   const cards = activeSub?.cards ?? []
   const hasMega = p.subs.length > 0
+
+  // Hover-intent: a short open delay stops menus flashing as the cursor sweeps across
+  // pillars, and a close grace period lets the cursor travel diagonally from the pillar
+  // to a card without the menu snapping shut.
+  const [open, setOpen] = useState(false)
+  const openT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const onEnter = () => { clearTimeout(closeT.current); openT.current = setTimeout(() => setOpen(true), 90) }
+  const onLeave = () => { clearTimeout(openT.current); closeT.current = setTimeout(() => setOpen(false), 260) }
+  useEffect(() => () => { clearTimeout(openT.current); clearTimeout(closeT.current) }, [])
+
   return (
-    <li className={`mh-pillar${p.isShop ? ' is-shop' : ''}`}>
+    <li className={`mh-pillar${p.isShop ? ' is-shop' : ''}${open ? ' open' : ''}`} onMouseEnter={onEnter} onMouseLeave={onLeave}>
       <Link href={p.href} className="mh-pillar-link">{p.label}</Link>
       {hasMega && (
         <div className="mh-mega">
