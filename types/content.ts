@@ -49,6 +49,8 @@ export interface ArticleFrontmatter {
   review_rating?: number            // e.g. 4.5
   review_item?: string              // product/service reviewed, e.g. "Qure Micro-Infusion Facial System"
   review_brand?: string             // brand of the reviewed product, e.g. "Qure Skincare"
+  review_pros?: string[]
+  review_cons?: string[]
 
   // Commerce
   product_links?: ProductLink[]
