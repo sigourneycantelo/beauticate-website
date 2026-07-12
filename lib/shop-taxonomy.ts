@@ -77,7 +77,7 @@ export const BROAD_CATEGORIES: BroadCat[] = [
         keywords: ['vitamin', 'supplement', 'collagen', 'probiotic', 'magnesium', 'protein', 'nutrition', 'capsule', 'powder', 'adaptogen'],
       },
       {
-        slug: 'accessories', label: 'Accessories', handle: 'wellness-accessories',
+        slug: 'tools', label: 'Tools', handle: 'wellness-accessories',
         productTypes: ['Massager', 'Foam Roller', 'Acupressure Mat', 'Body Brush', 'Wellness Device', 'Period Relief Device', 'Sleep Mask', 'Bluelight', 'Wearable Wellness Patch', 'Accessories', 'Accessory'],
         keywords: ['massager', 'foam roller', 'acupressure', 'body brush', 'device', 'wellness patch', 'sleep mask', 'blue light', 'bluelight', 'gua sha'],
       },
