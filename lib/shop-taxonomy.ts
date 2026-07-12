@@ -115,6 +115,7 @@ export const BROAD_CATEGORIES: BroadCat[] = [
   {
     slug: 'style',
     label: 'Style',
+    handle: 'style',   // placeholder collection — only used for the tile image; stays coming-soon
     comingSoon: true,
     subs: [],
   },
