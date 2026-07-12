@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauticate — Directory (mock)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF8F2;--paper-2:#F3ECE1;--ink:#211E19;--stone:#6E655A;
+    --sand:#E7DECF;--line:#DDD3C2;--clay:#A8735A;--olive:#5A5A46;
+    --serif:'EB Garamond',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+  .mocknote{background:var(--ink);color:#EFE7D8;font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:7px 16px}
+
+  header.nav{border-bottom:1px solid var(--line)}
+  .navtop{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:1240px;margin:0 auto}
+  .navtop .util{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);flex:1}
+  .navtop .util:last-child{text-align:right}
+  .wordmark{font-family:var(--serif);font-size:30px;letter-spacing:.16em;text-transform:uppercase;padding:0 28px}
+  .navbar{display:flex;justify-content:center;gap:34px;padding:0 0 14px;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--stone)}
+  .navbar a.active{color:var(--ink);border-bottom:1.5px solid var(--clay);padding-bottom:5px}
+
+  .masthead{text-align:center;padding:60px 0 30px}
+  .masthead .kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);margin-bottom:14px}
+  .masthead h1{font-family:var(--serif);font-weight:500;font-size:52px;letter-spacing:.01em}
+  .masthead p{font-family:var(--serif);font-size:20px;font-style:italic;color:var(--stone);margin-top:14px}
+
+  /* controls */
+  .controls{position:sticky;top:0;z-index:20;background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+  .controls .row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:8px 15px;border:1px solid var(--line);border-radius:999px;color:var(--stone);cursor:pointer;background:var(--paper);transition:.15s}
+  .chip:hover{border-color:var(--clay);color:var(--ink)}
+  .chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .chip.type.on{background:var(--clay);border-color:var(--clay)}
+  .label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);margin-right:4px;align-self:center}
+  .toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .toggle span{padding:8px 16px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px}
+  .toggle .active{background:var(--ink);color:var(--paper)}
+  .toggle .soon{color:#B6AC9B;cursor:not-allowed}
+  .toggle .soon small{font-size:9px;letter-spacing:.08em}
+
+  .results{padding:40px 0 70px}
+  .count{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:26px}
+  .stategroup h2{font-family:var(--serif);font-weight:500;font-size:28px;margin:36px 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .stategroup:first-child h2{margin-top:0}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .venue{}
+  .venue .thumb{height:210px;border-radius:3px;position:relative;overflow:hidden}
+  .venue .vtag{position:absolute;top:12px;left:12px;z-index:2;background:rgba(251,246,238,.94);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:2px}
+  .venue .approved{position:absolute;top:12px;right:12px;z-index:2;background:var(--olive);color:#F4EFE3;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:2px}
+  .venue h3{font-family:var(--serif);font-weight:500;font-size:21px;margin-top:15px}
+  .venue .loc{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--stone);margin-top:7px}
+  .venue .verdict{font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--ink);margin-top:12px;padding-left:12px;border-left:2px solid var(--sand);line-height:1.4}
+  .venue .actions{display:flex;gap:10px;margin-top:16px}
+  .venue .actions a{flex:1;text-align:center;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:11px;border-radius:3px}
+  .venue .actions .book{background:var(--ink);color:var(--paper)}
+  .venue .actions .read{border:1px solid var(--line);color:var(--ink)}
+  .empty{display:none;text-align:center;padding:60px 0;color:var(--stone);font-family:var(--serif);font-style:italic;font-size:20px}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--stone);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.masthead h1{font-size:38px}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="mocknote">Design mock · sample venues · state &amp; type filters are live, try them</div>
+
+<header class="nav">
+  <div class="navtop">
+    <div class="util">Australia</div>
+    <div class="wordmark">Beauticate</div>
+    <div class="util">Search · Subscribe</div>
+  </div>
+  <nav class="navbar">
+    <a>Shop</a><a>Beauty &amp; Style</a><a>Wellness</a><a>Living</a>
+    <a class="active">Destinations</a><a>Interviews</a><a>Podcast</a>
+  </nav>
+</header>
+
+<div class="masthead wrap">
+  <div class="kicker">Destinations · Directory</div>
+  <h1>The Beauty &amp; Wellness Directory</h1>
+  <p>The spas, salons, skin clinics and bathhouses we actually rate, all around Australia.</p>
+</div>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="row" style="margin-bottom:12px">
+      <div class="chips" id="states">
+        <span class="label">State</span>
+        <span class="chip state on" data-state="all">All</span>
+        <span class="chip state" data-state="NSW">NSW</span>
+        <span class="chip state" data-state="VIC">VIC</span>
+        <span class="chip state" data-state="QLD">QLD</span>
+        <span class="chip state" data-state="WA">WA</span>
+        <span class="chip state" data-state="SA">SA</span>
+        <span class="chip state" data-state="TAS">TAS</span>
+      </div>
+      <div class="toggle" title="Map view coming in a later phase">
+        <span class="active">List</span>
+        <span class="soon">Map <small>· soon</small></span>
+      </div>
+    </div>
+    <div class="chips" id="types">
+      <span class="label">Type</span>
+      <span class="chip type on" data-type="all">All</span>
+      <span class="chip type" data-type="spa">Spas</span>
+      <span class="chip type" data-type="salon">Salons</span>
+      <span class="chip type" data-type="skin-clinic">Skin clinics</span>
+      <span class="chip type" data-type="bathhouse">Bathhouses</span>
+      <span class="chip type" data-type="retreat">Retreats</span>
+    </div>
+  </div>
+</div>
+
+<div class="results">
+  <div class="wrap">
+    <div class="count" id="count"></div>
+    <div id="listing"></div>
+    <div class="empty" id="empty">Nothing here yet in this filter. Try another state or type.</div>
+  </div>
+</div>
+
+<footer>Beauticate · Vetted, not crowdsourced</footer>
+
+<script>
+  const venues = [
+    {name:"Saint Haven", type:"retreat", tlab:"Retreat", state:"NSW", loc:"Byron Bay", verdict:"The magnesium bathhouse alone is worth the drive. Book the twilight session.", g:"radial-gradient(130% 100% at 55% 30%,#9FB68C,#5F7350)"},
+    {name:" Costa Rose Skin", type:"skin-clinic", tlab:"Skin clinic", state:"NSW", loc:"Paddington", verdict:"Results-driven without the clinical chill. The facialists actually listen.", g:"radial-gradient(130% 100% at 45% 25%,#AEBEC8,#5C6E79)"},
+    {name:"The Aurora Spa", type:"spa", tlab:"Spa", state:"NSW", loc:"Bondi", verdict:"A proper switch-off. Come for the massage, stay for the ocean plunge.", g:"radial-gradient(130% 100% at 55% 25%,#D8A98D,#94614A)"},
+    {name:"Salon Lore", type:"salon", tlab:"Salon", state:"VIC", loc:"Fitzroy", verdict:"The colourist whisperers of Melbourne. Worth the wait list.", g:"radial-gradient(130% 100% at 50% 30%,#C6A2B4,#6E4F63)"},
+    {name:"Sense of Self", type:"bathhouse", tlab:"Bathhouse", state:"VIC", loc:"Collingwood", verdict:"The bathhouse that made bathing social again. Go with a friend.", g:"radial-gradient(130% 100% at 40% 30%,#A9B7BD,#5D6E74)"},
+    {name:"Skin by Dr Ryan", type:"skin-clinic", tlab:"Skin clinic", state:"VIC", loc:"South Yarra", verdict:"Considered, conservative, never overcooked. Rare in this world.", g:"radial-gradient(130% 100% at 55% 25%,#D9BA8F,#9A6E44)"},
+    {name:"Halcyon House Spa", type:"spa", tlab:"Spa", state:"QLD", loc:"Cabarita Beach", verdict:"The prettiest day spa on the east coast, and the treatments match.", g:"radial-gradient(130% 100% at 55% 30%,#C7A98D,#7A5C41)"},
+    {name:"Palm Springs Retreat", type:"retreat", tlab:"Retreat", state:"QLD", loc:"Sunshine Coast", verdict:"A gentle reset. No punishing schedules, just space to breathe.", g:"radial-gradient(130% 100% at 45% 30%,#BFC3A0,#6F7550)"},
+    {name:"Gloss Hair Studio", type:"salon", tlab:"Salon", state:"QLD", loc:"Noosa", verdict:"Beachy, lived-in colour done properly. Ask for the balayage.", g:"radial-gradient(130% 100% at 50% 25%,#B79BB0,#6E5570)"},
+    {name:"COMO Shambhala", type:"spa", tlab:"Spa", state:"WA", loc:"Perth", verdict:"Serene to its bones. The best hot-stone in the west.", g:"radial-gradient(130% 100% at 55% 25%,#CDB08E,#7E6247)"},
+    {name:"The Skin Practice", type:"skin-clinic", tlab:"Skin clinic", state:"WA", loc:"Cottesloe", verdict:"Quietly excellent. They fix skin, they don't sell you a face.", g:"radial-gradient(130% 100% at 45% 25%,#9FB6A2,#586E5B)"},
+    {name:"Saltus Bathhouse", type:"bathhouse", tlab:"Bathhouse", state:"SA", loc:"Adelaide", verdict:"A jewel-box hammam in the city. The steam ritual is sublime.", g:"radial-gradient(130% 100% at 50% 30%,#D4B6A0,#8C6550)"},
+    {name:"Vasse Virgin Spa", type:"spa", tlab:"Spa", state:"WA", loc:"Margaret River", verdict:"Olive-oil facials in wine country. As lovely as it sounds.", g:"radial-gradient(130% 100% at 55% 30%,#C9A98A,#5E4A3B)"},
+    {name:"Saffire Day Spa", type:"spa", tlab:"Spa", state:"TAS", loc:"Coles Bay", verdict:"Freycinet out the window, deep quiet within. Unforgettable.", g:"radial-gradient(130% 100% at 45% 25%,#AEBEC8,#5C6E79)"},
+    {name:"Colour Lab", type:"salon", tlab:"Salon", state:"SA", loc:"Adelaide", verdict:"The city's sharpest cut. Precise, fast, no fuss.", g:"radial-gradient(130% 100% at 50% 30%,#C6A2B4,#6E4F63)"}
+  ];
+  const order=["NSW","VIC","QLD","WA","SA","TAS","ACT","NT"];
+  const fullState={NSW:"New South Wales",VIC:"Victoria",QLD:"Queensland",WA:"Western Australia",SA:"South Australia",TAS:"Tasmania",ACT:"ACT",NT:"Northern Territory"};
+  let curState="all", curType="all";
+
+  function render(){
+    const list=document.getElementById('listing');
+    const items=venues.filter(v=>(curState==='all'||v.state===curState)&&(curType==='all'||v.type===curType));
+    document.getElementById('count').textContent=items.length+" places"+(curState!=='all'?" in "+fullState[curState]:"")+(curType!=='all'?" · "+curType.replace('-',' '):"");
+    document.getElementById('empty').style.display=items.length?'none':'block';
+    let html='';
+    order.forEach(st=>{
+      const group=items.filter(v=>v.state===st);
+      if(!group.length) return;
+      html+='<div class="stategroup"><h2>'+fullState[st]+'</h2><div class="grid">';
+      group.forEach(v=>{
+        html+='<div class="venue"><div class="thumb"><span class="vtag">'+v.tlab+'</span><span class="approved">Beauticate approved</span><div style="position:absolute;inset:0;background:'+v.g+'"></div></div>'
+          +'<h3>'+v.name+'</h3><div class="loc">'+v.loc+' · '+v.state+'</div>'
+          +'<div class="verdict">'+v.verdict+'</div>'
+          +'<div class="actions"><a class="book">Book</a><a class="read">Read review</a></div></div>';
+      });
+      html+='</div></div>';
+    });
+    list.innerHTML=html;
+  }
+  document.getElementById('states').addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c)return;
+    document.querySelectorAll('#states .chip').forEach(x=>x.classList.remove('on'));
+    c.classList.add('on'); curState=c.dataset.state; render();
+  });
+  document.getElementById('types').addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c)return;
+    document.querySelectorAll('#types .chip').forEach(x=>x.classList.remove('on'));
+    c.classList.add('on'); curType=c.dataset.type; render();
+  });
+  render();
+</script>
+</body>
+</html>

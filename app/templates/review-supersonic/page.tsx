@@ -24,27 +24,13 @@ export default function ReviewSupersonicTemplate() {
   return (
     <article className="pb-16 md:pb-0">
 
-      {/* ── HERO: Full-bleed landscape ── */}
-      <div className="hidden md:block max-w-[1200px] mx-auto">
-        <div className="relative w-full aspect-[16/9]">
-          <Image
-            src={f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            sizes="1200px"
-            className="object-cover"
-            priority
-          />
-        </div>
-      </div>
-      <div className="md:hidden relative w-full aspect-[3/4]">
-        <Image
-          src={f.featured_image}
+      {/* ── HERO: Animated GIF holding shot ── */}
+      <div className="max-w-[1200px] mx-auto">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/JUNE-EDM-17.gif"
           alt={f.featured_image_alt ?? f.title}
-          fill
-          sizes="100vw"
-          className="object-cover"
-          priority
+          className="w-full h-auto"
         />
       </div>
 
@@ -78,6 +64,8 @@ export default function ReviewSupersonicTemplate() {
 
         {/* ── Body ── */}
         <div className="prose prose-lg max-w-none">
+          <p>You know the feeling when you first unbox a truly special beauty tool? That hush of reverence as you cradle it, that quiet buzz of excitement as you plug it in, and the silent prayer that it will change your life (or at least your hair)? That was me, last month, standing in my bathroom holding the <a href="https://www.dyson.co.uk/commercial/hair-care/supersonic-r-pro/vinca-blue" target="_blank" rel="noopener noreferrer">Dyson Supersonic r™</a> for the first time.</p>
+
           <p>And now, after a month of twice-weekly use, I can safely say: this is not just a hair dryer. This is <a href="https://www.dyson.com.au/supersonic-r-hair-dryer-522248-01-vinca-blue-topaz" target="_blank" rel="noopener noreferrer">Dyson</a> engineering meets red carpet styling. And it's about to change how we blowdry, forever.</p>
 
           <p>Mind you, this is not the first time we have had a first peek at Dyson's innovative hair engineering at Beauticate. Back in 2016 when Dyson first revolutionised hair dryers, we <a href="/beauty-style/hair/dyson-supersonic-hair-dryer-review-is-it-worth-699">put their OG Supersonic hair dryer to the test</a> (it looks almost retro now!). We were impressed then, and now, nine years on, the Supersonic has had a glow up (and shrink down) of epic proportions.</p>

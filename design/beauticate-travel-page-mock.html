@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauticate — Travel (mock)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF8F2;
+    --paper-2:#F3ECE1;
+    --ink:#211E19;
+    --stone:#6E655A;
+    --sand:#E7DECF;
+    --line:#DDD3C2;
+    --clay:#A8735A;
+    --olive:#5A5A46;
+    --serif:'EB Garamond', Georgia, serif;
+    --sans:'Hanken Grotesk', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+  .mocknote{background:var(--ink);color:#EFE7D8;font-family:var(--sans);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:7px 16px}
+
+  /* nav */
+  header.nav{border-bottom:1px solid var(--line);background:var(--paper)}
+  .navtop{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;max-width:1240px;margin:0 auto}
+  .navtop .util{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);flex:1}
+  .navtop .util:last-child{text-align:right}
+  .wordmark{font-family:var(--serif);font-size:30px;letter-spacing:.16em;text-transform:uppercase;flex:0 0 auto;padding:0 28px}
+  .navbar{display:flex;justify-content:center;gap:34px;padding:0 0 14px;font-size:12.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--stone)}
+  .navbar a.active{color:var(--ink);border-bottom:1.5px solid var(--clay);padding-bottom:5px}
+
+  /* hero */
+  .hero{position:relative;height:600px;display:flex;align-items:flex-end;overflow:hidden}
+  .hero .img{position:absolute;inset:0;background:
+     linear-gradient(180deg,rgba(20,18,15,0) 40%,rgba(20,18,15,.72) 100%),
+     radial-gradient(120% 90% at 70% 20%,#C9A98A 0%,#9C7E64 42%,#5E4A3B 100%)}
+  .hero .content{position:relative;z-index:2;padding:0 0 54px;color:#FBF6EE}
+  .hero .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;opacity:.9;margin-bottom:18px}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:60px;line-height:1.02;max-width:900px;letter-spacing:.005em}
+  .hero .standfirst{font-family:var(--serif);font-size:21px;font-style:italic;margin-top:16px;max-width:620px;opacity:.94}
+  .hero .loc{font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-top:20px;opacity:.85}
+
+  section{padding:66px 0}
+  .kicker{font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:8px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:34px;letter-spacing:.01em}
+  .sec-head .more{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+
+  /* feeling tiles */
+  .feelings{background:var(--paper-2)}
+  .feelgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .feel{position:relative;height:320px;border-radius:5px;overflow:hidden;display:flex;align-items:flex-end;color:#FCF7EF}
+  .feel .g{position:absolute;inset:0}
+  .feel .lab{position:relative;z-index:2;padding:26px}
+  .feel .lab .t{font-family:var(--serif);font-size:29px;font-weight:500;line-height:1.04}
+  .feel .lab .s{font-size:13px;letter-spacing:.04em;opacity:.92;margin-top:7px}
+  .feel .g::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(20,16,12,.6) 100%)}
+
+  /* rows */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .cards.three{grid-template-columns:repeat(3,1fr)}
+  .card .thumb{height:250px;border-radius:3px;overflow:hidden;position:relative}
+  .cards.three .card .thumb{height:300px}
+  .card .tag{position:absolute;top:12px;left:12px;z-index:2;background:rgba(251,246,238,.92);color:var(--ink);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:2px}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.14;margin-top:16px}
+  .card .meta{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);margin-top:9px}
+
+  /* cross band */
+  .band{background:var(--olive);color:#F4EFE3;border-radius:6px;padding:46px 50px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .band .t{font-family:var(--serif);font-size:29px;font-weight:500;max-width:640px;line-height:1.12}
+  .band .btn{border:1px solid rgba(244,239,227,.6);padding:14px 26px;border-radius:3px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
+
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--stone);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+
+  @media(max-width:900px){
+    .feelgrid{grid-template-columns:repeat(2,1fr)}
+    .cards,.cards.three{grid-template-columns:repeat(2,1fr)}
+    .hero h1{font-size:40px}
+    .hero{height:520px}
+    .band{flex-direction:column;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="mocknote">Design mock · placeholder imagery, real headlines from your inventory</div>
+
+<header class="nav">
+  <div class="navtop">
+    <div class="util">Australia</div>
+    <div class="wordmark">Beauticate</div>
+    <div class="util">Search · Subscribe</div>
+  </div>
+  <nav class="navbar">
+    <a>Shop</a><a>Beauty &amp; Style</a><a>Wellness</a><a>Living</a>
+    <a class="active">Destinations</a><a>Interviews</a><a>Podcast</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="img"></div>
+  <div class="wrap content">
+    <div class="eyebrow">Destinations · Travel</div>
+    <h1>The island that saved our family holiday</h1>
+    <p class="standfirst">Sometimes the reset you need isn't a five-star anything. It's a slow boat, no wifi and a beach that asks nothing of you.</p>
+    <div class="loc">Nusa Lembongan, Indonesia</div>
+  </div>
+</div>
+
+<!-- FEELINGS -->
+<section class="feelings">
+  <div class="wrap">
+    <div class="kicker">Start with a feeling</div>
+    <div class="sec-head"><h2>Where do you want to go?</h2><div class="more">All collections</div></div>
+    <div class="feelgrid">
+      <a class="feel"><div class="g" style="background:radial-gradient(120% 100% at 30% 20%,#E7C3C0,#9E6E6A)"></div><div class="lab"><div class="t">Girls trip</div><div class="s">Spa days, long lunches and good company</div></div></a>
+      <a class="feel"><div class="g" style="background:radial-gradient(120% 100% at 30% 20%,#A9B7BD,#5D6E74)"></div><div class="lab"><div class="t">Weekender</div><div class="s">Quick drives and two-night escapes</div></div></a>
+      <a class="feel"><div class="g" style="background:radial-gradient(120% 100% at 30% 20%,#8FA0A0,#5E6E6B)"></div><div class="lab"><div class="t">Switch off</div><div class="s">Resorts &amp; do-nothing escapes</div></div></a>
+      <a class="feel"><div class="g" style="background:radial-gradient(120% 100% at 30% 20%,#D8B48C,#A6764F)"></div><div class="lab"><div class="t">Family adventures</div><div class="s">Trips that work for everyone</div></div></a>
+      <a class="feel"><div class="g" style="background:radial-gradient(120% 100% at 30% 20%,#B79BB0,#6E5570)"></div><div class="lab"><div class="t">Explore a city</div><div class="s">Hotels, staycations and guides</div></div></a>
+      <a class="feel"><div class="g" style="background:radial-gradient(120% 100% at 30% 20%,#9FB68C,#5F7350)"></div><div class="lab"><div class="t">Reset &amp; heal</div><div class="s">Retreats &amp; wellness stays</div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE TO GO NOW -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Seasonal edit</div>
+    <div class="sec-head"><h2>Where to go now</h2><div class="more">See all travel</div></div>
+    <div class="cards">
+      <a class="card"><div class="thumb"><span class="tag">Hotel</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 60% 30%,#CDB08E,#7E6247)"></div></div><h3>The Bali resort that solves the family holiday dilemma</h3><div class="meta">Paradisus by Melia · Bali</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Hotel</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 40% 30%,#A9B7BD,#5D6E74)"></div></div><h3>1 Hotel Melbourne: the wellness hotel changing city stays</h3><div class="meta">Melbourne · VIC</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Hotel</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 55% 25%,#D8A98D,#94614A)"></div></div><h3>The Mondrian Gold Coast is the luxe coastal escape you deserve</h3><div class="meta">Gold Coast · QLD</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Guide</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 45% 30%,#BFC3A0,#6F7550)"></div></div><h3>We needed a break: our family getaway to Bannisters</h3><div class="meta">Port Stephens · NSW</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- SIG'S EDITS -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">In her words</div>
+    <div class="sec-head"><h2>Sig's travel edits</h2><div class="more">More from Sigourney</div></div>
+    <div class="cards three">
+      <a class="card"><div class="thumb"><span class="tag">Sig's edit</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 60% 25%,#C6A2B4,#6E4F63)"></div></div><h3>Tokyo in 24 hours: digital art, ninjas &amp; vintage finds</h3><div class="meta">Tokyo · Japan</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Sig's edit</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 40% 30%,#D9BA8F,#9A6E44)"></div></div><h3>Behind the scent: inside a luxury perfume press trip</h3><div class="meta">Cairns · QLD</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Beauty-tips</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 50% 25%,#AEBEC8,#5C6E79)"></div></div><h3>Powder, onsens &amp; snow monkeys: a family ski holiday to Japan</h3><div class="meta">Nagano · Japan</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="kicker">Know before you go</div>
+    <div class="sec-head"><h2>City &amp; region guides</h2><div class="more">All guides</div></div>
+    <div class="cards">
+      <a class="card"><div class="thumb"><span class="tag">Guide</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 55% 30%,#C7A98D,#7A5C41)"></div></div><h3>Where to stay, eat &amp; heal in Kerala: a first-timer's guide</h3><div class="meta">Kerala · India</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Guide</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 45% 25%,#9FB6A2,#586E5B)"></div></div><h3>Where family memories are made</h3><div class="meta">Wild Luxury · Australia</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Travel beauty</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 50% 30%,#D4B6A0,#8C6550)"></div></div><h3>The long-haul flight kit I never travel without</h3><div class="meta">Travel · Beauty</div></a>
+      <a class="card"><div class="thumb"><span class="tag">Guide</span><div style="position:absolute;inset:0;background:radial-gradient(130% 100% at 55% 25%,#B7A6C0,#665573)"></div></div><h3>A slow weekend in the Southern Highlands</h3><div class="meta">Southern Highlands · NSW</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- CROSS BAND -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="band">
+      <div class="t">Looking for somewhere closer to home? Explore spas, salons and clinics near you.</div>
+      <a class="btn">Open the directory</a>
+    </div>
+  </div>
+</section>
+
+<footer>Beauticate · Beauty, wellness &amp; the places worth travelling for</footer>
+
+</body>
+</html>
