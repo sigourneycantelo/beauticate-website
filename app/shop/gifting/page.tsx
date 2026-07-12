@@ -56,7 +56,7 @@ export default async function ShopGiftingPage() {
             const img = imgByHandle.get(m.handle)
             return (
               <Link key={m.handle} href={`/shop/collections/${m.handle}`} className="group block">
-                <div className="relative aspect-[3/2] overflow-hidden bg-tile mb-3">
+                <div className="relative aspect-square overflow-hidden bg-tile mb-3">
                   {img ? (
                     <Image src={img} alt={m.name} fill sizes="(max-width:768px) 100vw, 420px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
                   ) : (
