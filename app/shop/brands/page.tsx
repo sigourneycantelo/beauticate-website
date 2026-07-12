@@ -58,7 +58,7 @@ export default async function ShopBrandsPage() {
             const img = imgByHandle.get(b.handle)
             return (
               <Link key={b.handle} href={`/shop/brands/${b.handle}`} className="group block text-center">
-                <div className="relative aspect-[4/5] overflow-hidden bg-tile mb-3">
+                <div className="relative aspect-square overflow-hidden bg-tile mb-3">
                   {img ? (
                     <Image src={img} alt={b.name} fill sizes="(max-width:768px) 50vw, 300px" className="object-cover" />
                   ) : (
