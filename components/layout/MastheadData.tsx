@@ -41,11 +41,12 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
   }
 
   const categoryCards: MegaCard[] = BROAD_CATEGORIES.map((b): MegaCard => ({
-    title: b.comingSoon ? `${b.label} — soon` : b.label,
-    href: b.comingSoon ? '/shop/style' : `/shop/${b.slug}`,
+    title: b.label,
+    href: `/shop/${b.slug}`,
     image: b.handle ? imgByHandle.get(b.handle) : undefined,
     imageAlt: b.label,
     eyebrow: 'Category',
+    soon: b.comingSoon,
   }))
 
   // Brand & Moment scale past what image cards can show, so they render as a full text
