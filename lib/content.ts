@@ -43,23 +43,20 @@ export function getArticleBySlug(slugParts: string[]): {
 
   const raw = fs.readFileSync(mdxPath, 'utf-8')
 
-  let data: Record<string, unknown>
-  let content: string
+  let parsed: matter.GrayMatterFile<string>
   try {
-    const parsed = matter(raw)
-    data = parsed.data
-    content = parsed.content
+    parsed = matter(raw)
   } catch {
     return null
   }
 
   // product_links live in frontmatter; fall back to products.json for legacy articles
-  const products = (data.product_links as import('@/types/content').ProductLink[] | undefined)
+  const products = (parsed.data.product_links as import('@/types/content').ProductLink[] | undefined)
     ?? (fs.existsSync(productsPath) ? JSON.parse(fs.readFileSync(productsPath, 'utf-8')) : [])
 
   return {
-    frontmatter: data as ArticleFrontmatter,
-    content,
+    frontmatter: parsed.data as ArticleFrontmatter,
+    content: parsed.content,
     products,
   }
 }
