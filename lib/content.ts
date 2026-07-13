@@ -161,6 +161,32 @@ export function getHeroArticle() {
     .find(a => a?.frontmatter.is_hero) ?? null
 }
 
+export function getHeroArticles() {
+  const hero = getHeroArticle()
+  const categories = ['beauty-style', 'wellness', 'living', 'destinations', 'interviews']
+  const heroSlug = hero?.frontmatter.slug
+  const slides = hero ? [hero] : []
+  const usedSlugs = new Set(heroSlug ? [heroSlug] : [])
+
+  for (const cat of categories) {
+    if (slides.length >= 5) break
+    const best = getArticlesByCategory(cat)
+      .filter(isPublished)
+      .filter(a => a?.frontmatter.featured_image)
+      .filter(a => !usedSlugs.has(a!.frontmatter.slug))
+      .sort((a, b) => {
+        const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+        const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+        return dateB - dateA
+      })[0]
+    if (best) {
+      slides.push(best)
+      usedSlugs.add(best.frontmatter.slug)
+    }
+  }
+  return slides
+}
+
 export function getFeaturedArticles(limit = 6) {
   const allSlugs = getArticleSlugs()
   return allSlugs

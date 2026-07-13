@@ -119,6 +119,10 @@ function PillarItem({ p }: { p: Pillar }) {
             </div>
             {activeSub?.disabled ? (
               <div className="mh-cards"><p className="mh-soon-note">Our {activeSub.label} edit is coming soon.</p></div>
+            ) : activeSub?.children && cards.length > 0 ? (
+              <div className="mh-cards">
+                {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)}
+              </div>
             ) : activeSub?.children ? (
               <div className="mh-cards"><p className="mh-soon-note">Browse our curated directory of salons, spas, clinics &amp; wellness destinations.</p></div>
             ) : activeSub?.list ? (

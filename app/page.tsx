@@ -1,4 +1,4 @@
-import { getAllArticles, getHeroArticle, getVodcastEpisodes } from '@/lib/content'
+import { getAllArticles, getHeroArticle, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
 import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
@@ -41,8 +41,8 @@ export default async function HomePage() {
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
 
-  const heroArticle = getHeroArticle()
-  if (heroArticle) shownSlugs.add(heroArticle.frontmatter.slug)
+  const heroArticles = getHeroArticles()
+  heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
   const duoLeftArticles = take(2)
   const [bigArticle, smallArticle] = take(2)
   const trio1Articles = take(3)
@@ -52,8 +52,8 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* 1 — Wide landscape hero */}
-      {heroArticle && <HeroWide article={heroArticle as any} />}
+      {/* 1 — Cycling hero */}
+      {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
 
       {/* 2 — Press & trust band */}
       <PressTrustBand />

@@ -213,8 +213,8 @@
 .mh-wordmark-group{ justify-self:center; display:flex; flex-direction:column; align-items:center; padding:14px 0 10px; }
 .mh-wordmark{ display:flex; align-items:center; }
 .mh-strapline{
-  font-family:var(--font-serif); font-size:14px; font-weight:400; letter-spacing:.02em;
-  color:var(--mh-ink); opacity:.55; margin-top:2px; white-space:nowrap;
+  font-family:var(--font-serif); font-size:14.5px; font-weight:400; font-style:italic; letter-spacing:.01em;
+  color:var(--mh-ink); opacity:.65; margin-top:2px; white-space:nowrap;
 }
 .mh-logo{ display:block; width:auto; }
 .mh-logo-lg{ height:24px; }
@@ -482,8 +482,8 @@
 }
 .press-trust-band a{ color:inherit; text-decoration:none; }
 .ptb-heading{
-  font-family:var(--font-sans); font-size:10.5px; font-weight:600;
-  letter-spacing:.22em; text-transform:uppercase; color:#2a2621; opacity:.55;
+  font-family:var(--font-serif); font-size:clamp(14px,1.4vw,17px); font-weight:400; font-style:italic;
+  letter-spacing:.02em; text-transform:none; color:#2a2621; opacity:.55;
   margin-top:clamp(14px,1.8vw,22px); margin-bottom:clamp(12px,1.6vw,20px);
 }
 .ptb-heading a:hover{ opacity:.7; }
