@@ -95,30 +95,13 @@ export default async function MastheadData() {
       label: 'Travel',
       href: '/destinations/travel',
       cards: cards('destinations', 'travel', 'Travel'),
-      children: [
-        { label: 'View All Travel', href: '/destinations/travel' },
-        { label: 'Reset & Heal', href: '/destinations/travel/feeling/reset' },
-        { label: 'Girls Trip', href: '/destinations/travel/feeling/girls-trip' },
-        { label: 'City Stays', href: '/destinations/travel/feeling/city' },
-        { label: 'Family', href: '/destinations/travel/feeling/family' },
-        { label: 'Romantic Escapes', href: '/destinations/travel/feeling/romantic' },
-        { label: 'Switch Off', href: '/destinations/travel/feeling/switch-off' },
-      ],
+    },
+    {
+      label: 'Beauty & Wellness Directory',
+      href: '/destinations/directory',
+      cards: cards('destinations', 'spas-retreats', 'Directory'),
     },
   ]
-  destinations.subs.push({
-    label: 'Beauty & Wellness Directory',
-    href: '/destinations/directory',
-    cards: cards('destinations', 'spas-retreats', 'Directory'),
-    children: [
-      { label: 'Navigate by State', href: '/destinations/directory' },
-      { label: 'Spas & Bathhouses', href: '/destinations/spas-retreats' },
-      { label: 'Skin Clinics', href: '/destinations/clinics' },
-      { label: 'Hair Salons', href: '/destinations/directory?type=salon' },
-      { label: 'Beauty Salons', href: '/destinations/directory?type=salon' },
-      { label: 'Wellness', href: '/destinations/directory?type=retreat' },
-    ],
-  })
   const interviews = editorialPillar('interviews', 'Interviews', 'interviews', 'Interviews', [
     ['Creatives', 'creatives'], ['Founders', 'founders'], ['Actors & Presenters', 'actors-presenters'],
     ['Models', 'models'], ['Tastemakers', 'tastemakers'],
