@@ -48,14 +48,18 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
           return (
             <Fragment key={tab.key}>
               {i > 0 && <span aria-hidden className="select-none" style={{ opacity: 0.28, margin: '0 clamp(16px,2.4vw,32px)' }}>·</span>}
-              <Link
-                href={tab.href}
+              <span
+                className="inline-flex"
                 onMouseEnter={() => (hasMenu ? openMenu(tab.key) : setOpen(null))}
-                className="font-sans whitespace-nowrap transition-colors duration-150 hover:!opacity-100"
-                style={{ fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase', opacity: active ? 1 : 0.6, color: active ? '#1C1A17' : undefined }}
               >
-                {tab.label}
-              </Link>
+                <Link
+                  href={tab.href}
+                  className="font-sans whitespace-nowrap transition-colors duration-150 hover:!opacity-100"
+                  style={{ fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase', opacity: active ? 1 : 0.6, color: active ? '#1C1A17' : undefined }}
+                >
+                  {tab.label}
+                </Link>
+              </span>
             </Fragment>
           )
         })}
