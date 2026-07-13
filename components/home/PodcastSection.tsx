@@ -46,7 +46,7 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
           </span>
         )}
       </div>
-      <h4 className="font-serif font-normal text-[16px] leading-[1.25] mt-3 lowercase" style={{ color: '#1C1A17' }}>
+      <h4 className="font-serif font-normal leading-[1.25] mt-3" style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: '#1C1A17' }}>
         {f.title}
       </h4>
     </a>
@@ -56,7 +56,7 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
 export default function PodcastSection({ episodes }: Props) {
   if (!episodes.length) return null
 
-  const reelEps = episodes.slice(0, 5)
+  const reelEps = episodes.slice(0, 8)
 
   return (
     <section
@@ -90,15 +90,18 @@ export default function PodcastSection({ episodes }: Props) {
       {/* Reels */}
       <p className="font-sans text-[10px] tracking-[0.2em] uppercase mb-4" style={{ opacity: 0.5, color: '#1C1A17' }}>Watch</p>
       <div
-        className="grid gap-4 overflow-x-auto pb-2"
+        className="flex gap-4 overflow-x-auto pb-3 scrollbar-hide"
         style={{
-          gridAutoFlow: 'column',
-          gridAutoColumns: 'minmax(180px, 1fr)',
           scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+          paddingRight: 'clamp(20px,6vw,104px)',
         }}
       >
         {reelEps.map((ep, i) => (
-          <ReelCard key={i} ep={ep} />
+          <div key={i} className="shrink-0" style={{ width: 'clamp(160px, 20vw, 200px)', scrollSnapAlign: 'start' }}>
+            <ReelCard ep={ep} />
+          </div>
         ))}
       </div>
     </section>
