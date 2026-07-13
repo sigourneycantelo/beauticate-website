@@ -15,7 +15,7 @@ const FEELINGS = [
   { slug: 'switch-off', title: 'Switch off', sub: 'Retreats & do-nothing escapes', image: '/destinations/feeling-switch-off.jpg' },
   { slug: 'city', title: 'Explore a city', sub: 'Guides for 24 hours or a week', image: '/destinations/feeling-city.jpg' },
   { slug: 'family', title: 'Family adventure', sub: 'Trips that work for everyone', image: '/destinations/feeling-family.jpg' },
-  { slug: 'romantic', title: 'Romantic mini-breaks', sub: 'Escapes made for two', image: '/destinations/feeling-weekender.jpg' },
+  { slug: 'romantic', title: 'Romantic escapes', sub: 'Escapes made for two', image: '/destinations/feeling-weekender.jpg' },
 ]
 
 const TYPE_LABELS: Record<string, string> = {

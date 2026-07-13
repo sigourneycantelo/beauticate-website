@@ -9,7 +9,7 @@ const FEELINGS: Record<string, { title: string; description: string }> = {
     description: 'The best weekends away with your closest — spa stays, wine regions and city escapes.',
   },
   romantic: {
-    title: 'Romantic Mini-Breaks',
+    title: 'Romantic Escapes',
     description: 'Escapes made for two — intimate stays, coastal retreats and sunset dinners.',
   },
   'switch-off': {

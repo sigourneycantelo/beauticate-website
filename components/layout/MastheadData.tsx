@@ -100,7 +100,7 @@ export default async function MastheadData() {
         { label: 'Girls Trip', href: '/destinations/travel/feeling/girls-trip' },
         { label: 'City Stays', href: '/destinations/travel/feeling/city' },
         { label: 'Family', href: '/destinations/travel/feeling/family' },
-        { label: 'Romantic Mini-Breaks', href: '/destinations/travel/feeling/romantic' },
+        { label: 'Romantic Escapes', href: '/destinations/travel/feeling/romantic' },
         { label: 'Switch Off', href: '/destinations/travel/feeling/switch-off' },
       ],
     },
