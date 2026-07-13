@@ -175,6 +175,7 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
       slug: s.slug,
       label: s.label,
       image: subCols[i]?.image?.url ?? rep?.featuredImage?.url ?? rep?.images?.nodes?.[0]?.url,
+      comingSoon: s.comingSoon,
     }
   })
 
