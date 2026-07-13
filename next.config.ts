@@ -102,6 +102,7 @@ const nextConfig: NextConfig = {
       { source: '/destinations/travel/aurora-spa-palazzo-versace-gold-coast-main-beach', destination: '/destinations/spas-retreats/aurora-spa-palazzo-versace-gold-coast-main-beach', permanent: true },
       { source: '/destinations/travel/chi-spa-shangri-la-hotel-sydney', destination: '/destinations/spas-retreats/chi-spa-shangri-la-hotel-sydney', permanent: true },
       { source: '/destinations/travel/the-spa-raes-on-wategos-byron-bay', destination: '/destinations/spas-retreats/the-spa-raes-on-wategos-byron-bay', permanent: true },
+      { source: '/destinations/spas-retreats/tikkun-holistic-spa-santa-monica', destination: '/destinations/travel/tikkun-holistic-spa-santa-monica', permanent: true },
 
       // ── SEO priority list: high-traffic old paths needing redirects ──────────────
       { source: '/reviews/luxury-skincare-review', destination: '/beauty-style/skin-care/luxury-skincare-review', permanent: true },
