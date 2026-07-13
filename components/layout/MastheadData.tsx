@@ -96,6 +96,7 @@ export default async function MastheadData() {
       href: '/destinations/travel',
       cards: cards('destinations', 'travel', 'Travel'),
       children: [
+        { label: 'View All Travel', href: '/destinations/travel' },
         { label: 'Reset & Heal', href: '/destinations/travel/feeling/reset' },
         { label: 'Girls Trip', href: '/destinations/travel/feeling/girls-trip' },
         { label: 'City Stays', href: '/destinations/travel/feeling/city' },
