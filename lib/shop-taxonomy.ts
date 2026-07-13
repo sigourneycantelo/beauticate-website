@@ -12,6 +12,7 @@ export type SubCat = {
   slug: string     // url filter value, e.g. ?cat=makeup
   label: string    // button / card label
   handle?: string  // Shopify collection handle (omit for classify-only filters, e.g. Living)
+  comingSoon?: boolean  // greyed, non-clickable tile with no products yet (e.g. Nails)
   // Auto-classification signals — used to place a product in this bucket when it
   // isn't (or is wrongly) filed in the Shopify sub-collection. productTypes match
   // Shopify's productType exactly; keywords are substring-matched (case-insensitive)
@@ -64,6 +65,7 @@ export const BROAD_CATEGORIES: BroadCat[] = [
         productTypes: ['Beauty Tools', 'Makeup Brush Holder', 'Makeup sponge', 'Vanity Toiletry Cosmetic bags', 'Accessories', 'Accessory'],
         keywords: ['makeup brush', 'beauty tool', 'makeup sponge', 'cosmetic bag', 'vanity bag', 'tweezer', 'applicator'],
       },
+      { slug: 'nails', label: 'Nails', comingSoon: true },
     ],
   },
   {
