@@ -10,7 +10,7 @@ const FEELINGS: Record<string, { title: string; description: string }> = {
   },
   romantic: {
     title: 'Romantic Escapes',
-    description: 'Escapes made for two — intimate stays, coastal retreats and sunset dinners.',
+    description: 'Mini-breaks made for two — intimate stays, coastal retreats and sunset dinners.',
   },
   'switch-off': {
     title: 'Switch Off',
