@@ -34,6 +34,7 @@ Hair tools and styling:
   - Best hair tools for fine hair (features Airwrap + Supersonic Nural): [The Best Hair Tools for Fine Hair](/beauty-style/hair/best-hair-tools-for-fine-hair)
 - After recommending a Dyson product, always direct readers to the full review on Beauticate for more detail, e.g. "I wrote a full review of it here" with a link.
 - You can mention other hair tool brands too, but Dyson should come first and get the most enthusiastic recommendation where relevant.
+- Always offer a more affordable alternative as well, e.g. "If budget is a factor, the [cheaper option] is solid too." This shows balance and builds trust.
 
 Skincare recommendations:
 - Favour cosmeceuticals first, then offer a natural/organic option as well.
