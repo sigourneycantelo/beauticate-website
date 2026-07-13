@@ -13,6 +13,7 @@ import PodcastSection from '@/components/home/PodcastSection'
 import InsidersBar from '@/components/home/InsidersBar'
 import HeroSplit from '@/components/home/HeroSplit'
 import ShopByMoment from '@/components/home/ShopByMoment'
+import ShopByCategory from '@/components/home/ShopByCategory'
 import PressTrustBand from '@/components/home/PressTrustBand'
 
 export default async function HomePage() {
@@ -57,46 +58,49 @@ export default async function HomePage() {
       {/* 2 — Press & trust band */}
       <PressTrustBand />
 
-      {/* 3 — Two stories */}
-      {duoLeftArticles.length > 0 && <DuoLeft articles={duoLeftArticles as any} />}
+      {/* 3 — Shop by Category */}
+      <ShopByCategory />
 
-      {/* 4 — Shop strip */}
+      {/* 4 — Voices line */}
+      <TheCollective />
+
+      {/* 5 — Product rail */}
       <ShopStrip products={shopProducts} />
 
-      {/* 5 — Staggered scrim pair */}
+      {/* 6 — Must-read stories */}
+      <SectionTitle eyebrow="Editorial" title="Must-read stories" italic="stories" />
+      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
+
+      {/* 7 — Subscribe */}
+      <InsidersBar />
+
+      {/* 8 — Asymmetric two-story block */}
       {bigArticle && smallArticle && (
         <DuoStagger big={bigArticle as any} small={smallArticle as any} />
       )}
 
-      {/* 6 — The Collective */}
-      <TheCollective />
-
-      {/* 7 — Instagram feed (Curator.io) */}
-      <InstagramFeed />
-
-      {/* 8 — Stories worth your time */}
-      <SectionTitle eyebrow="Editorial" title="Stories worth your time" italic="your time" />
-      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
-
-      {/* 9 — Beautiful Inside podcast (video reels, warm greige) */}
+      {/* 9 — Podcast */}
       <PodcastSection episodes={vodcastEpisodes} />
 
-      {/* 10 — Image-left / text-right featured story */}
+      {/* 10 — Single highlighted article */}
       {splitArticle && <HeroSplit article={splitArticle as any} />}
 
-      {/* 11 — Subscribe */}
-      <InsidersBar />
-
-      {/* 12 — The edit */}
-      <SectionTitle eyebrow="Shop" title="The edit" italic="edit" />
-      {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
-
-      {/* 12 — Shop by Moment */}
+      {/* 11 — Shop by Moment */}
       <ShopByMoment />
 
-      {/* 13 — More to explore */}
-      <SectionTitle eyebrow="Keep reading" title="More to explore" italic="explore" />
+      {/* 12 — Articles worth your time */}
+      <SectionTitle eyebrow="Keep reading" title="Articles worth your time" italic="your time" />
+      {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
+
+      {/* 13 — Two stories */}
+      {duoLeftArticles.length > 0 && <DuoLeft articles={duoLeftArticles as any} />}
+
+      {/* 14 — More to explore */}
+      <SectionTitle eyebrow="Editorial" title="More to explore" italic="explore" />
       {trio3Articles.length > 0 && <StoriesTrio articles={trio3Articles as any} />}
+
+      {/* 15 — Instagram feed */}
+      <InstagramFeed />
 
       {/* Explore all link */}
       <div

@@ -31,10 +31,10 @@ export default function TheCollective() {
         The voices behind every recommendation
       </h2>
       <p
-        className="font-sans mt-2 mx-auto"
-        style={{ fontSize: '13px', opacity: 0.66, maxWidth: '60ch', marginBottom: '14px' }}
+        className="font-serif italic mt-3 mx-auto"
+        style={{ fontSize: 'clamp(15px,1.6vw,19px)', opacity: 0.7, maxWidth: '64ch' }}
       >
-        Trusted by women for over a decade. Every story is written, tested and stood behind by a named expert, not an algorithm.
+        Our advice comes from editors, experts, facialists, doctors, designers and stylists, not influencers or algorithms
       </p>
 
       {/* Stats */}
