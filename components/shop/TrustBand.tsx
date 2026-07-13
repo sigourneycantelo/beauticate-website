@@ -22,6 +22,14 @@ export default function TrustBand() {
           Beauticate.com
         </Link>
       </p>
+      <p
+        className="font-sans mt-1.5"
+        style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.45 }}
+      >
+        <Link href="/press" className="hover:opacity-70 transition-opacity">
+          As featured in Vogue, Marie Claire, The Daily Telegraph, Daily Mail, Body+Soul and Mumbrella
+        </Link>
+      </p>
     </div>
   )
 }
