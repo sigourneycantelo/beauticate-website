@@ -5,7 +5,7 @@ import Image from 'next/image'
 // composite of all fifteen editors and experts. Mirrors beauticate.shop.
 export default function Collective() {
   return (
-    <section className="bg-white border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,90px)]">
+    <section className="bg-white px-[clamp(20px,6vw,104px)] pt-[clamp(24px,3vw,40px)] pb-[clamp(24px,3vw,40px)]">
       <div className="text-center mb-9 max-w-2xl mx-auto">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold text-eucalypt">
           The Beauticate Collective
