@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo, useRef, useEffect, useCallback } from 'react'
+import { useState, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -52,124 +52,23 @@ function venueHref(v: Venue) {
   return `/${v.category}${v.subcategory ? `/${v.subcategory}` : ''}/${v.slug}`
 }
 
-function HeroCarousel({ venues }: { venues: Venue[] }) {
-  const [current, setCurrent] = useState(0)
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
-
-  const resetTimer = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current)
-    timerRef.current = setInterval(() => {
-      setCurrent(c => (c + 1) % venues.length)
-    }, 5000)
-  }, [venues.length])
-
-  useEffect(() => {
-    resetTimer()
-    return () => { if (timerRef.current) clearInterval(timerRef.current) }
-  }, [resetTimer])
-
-  const go = (i: number) => {
-    setCurrent(i)
-    resetTimer()
-  }
-  const prev = () => go((current - 1 + venues.length) % venues.length)
-  const next = () => go((current + 1) % venues.length)
-
-  if (!venues.length) return null
-  const v = venues[current]
-
-  return (
-    <section className="relative h-[520px] md:h-[600px] overflow-hidden">
-      {venues.map((slide, i) => (
-        <Link key={slide.slug} href={venueHref(slide)} className="block absolute inset-0">
-          <div
-            className="absolute inset-0 transition-opacity duration-700"
-            style={{ opacity: i === current ? 1 : 0, pointerEvents: i === current ? 'auto' : 'none' }}
-          >
-            {slide.image ? (
-              <Image
-                src={slide.image}
-                alt={slide.imageAlt}
-                fill
-                priority={i === 0}
-                className="object-cover"
-                sizes="100vw"
-              />
-            ) : (
-              <div className="absolute inset-0" style={{ background: 'radial-gradient(120% 90% at 70% 20%,#C9A98A,#9C7E64 42%,#5E4A3B)' }} />
-            )}
-          </div>
-        </Link>
-      ))}
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{ background: 'linear-gradient(180deg,rgba(20,18,15,0) 40%,rgba(20,18,15,.72) 100%)' }}
-      />
-      <div className="relative z-10 h-full flex flex-col justify-end max-w-[1240px] mx-auto w-full px-8 pb-[54px]" style={{ color: '#FBF6EE' }}>
-        <p className="font-sans text-xs tracking-[0.22em] uppercase opacity-90 mb-[18px]">
-          Destinations · Directory
-        </p>
-        <h2 className="font-serif font-medium text-[40px] md:text-[60px] leading-[1.02] max-w-[900px] tracking-[0.005em]">
-          {v.title}
-        </h2>
-        {v.verdict && (
-          <p className="font-serif text-[21px] italic mt-4 max-w-[620px] opacity-[0.94]">
-            {v.verdict}
-          </p>
-        )}
-        <p className="font-sans text-xs tracking-[0.16em] uppercase mt-5 opacity-[0.85]">
-          {TYPE_LABELS[v.venueType] ?? v.venueType} · {v.state}
-        </p>
-      </div>
-      {/* Nav arrows */}
-      <button
-        onClick={(e) => { e.preventDefault(); prev() }}
-        className="absolute left-5 top-1/2 -translate-y-1/2 z-20 w-[44px] h-[44px] flex items-center justify-center rounded-full cursor-pointer"
-        style={{ background: 'rgba(251,246,238,0.18)', backdropFilter: 'blur(6px)' }}
-        aria-label="Previous"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF6EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-      </button>
-      <button
-        onClick={(e) => { e.preventDefault(); next() }}
-        className="absolute right-5 top-1/2 -translate-y-1/2 z-20 w-[44px] h-[44px] flex items-center justify-center rounded-full cursor-pointer"
-        style={{ background: 'rgba(251,246,238,0.18)', backdropFilter: 'blur(6px)' }}
-        aria-label="Next"
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF6EE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-      </button>
-      {/* Dots */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-        {venues.map((_, i) => (
-          <button
-            key={i}
-            onClick={(e) => { e.preventDefault(); go(i) }}
-            className="w-2 h-2 rounded-full transition-all duration-300 cursor-pointer"
-            style={{ background: i === current ? '#FBF6EE' : 'rgba(251,246,238,0.4)' }}
-            aria-label={`Slide ${i + 1}`}
-          />
-        ))}
-      </div>
-    </section>
-  )
-}
-
 export default function DirectoryClient({ venues }: { venues: Venue[] }) {
   const searchParams = useSearchParams()
   const initialState = searchParams.get('state') ?? 'all'
+  const initialType = searchParams.get('type') ?? 'all'
   const [stateFilter, setStateFilter] = useState(
     STATES.includes(initialState as any) ? initialState : 'all'
   )
-  const [typeFilter, setTypeFilter] = useState('all')
+  const [typeFilter, setTypeFilter] = useState(
+    VENUE_TYPES.some(t => t.value === initialType) ? initialType : 'all'
+  )
+  const [hoverVenue, setHoverVenue] = useState<Venue | null>(null)
 
-  const heroVenues = useMemo(() => {
-    return venues.filter(v => v.isFeatured && v.image).slice(0, 8)
+  const defaultHero = useMemo(() => {
+    return venues.find(v => v.isFeatured && v.image) ?? venues.find(v => v.image) ?? null
   }, [venues])
 
-  const fallbackHeroes = useMemo(() => {
-    if (heroVenues.length >= 3) return heroVenues
-    return venues.filter(v => v.image && v.verdict).slice(0, 6)
-  }, [venues, heroVenues])
+  const heroVenue = hoverVenue ?? defaultHero
 
   const filtered = useMemo(() => {
     return venues.filter(v =>
@@ -192,10 +91,52 @@ export default function DirectoryClient({ venues }: { venues: Venue[] }) {
 
   const countLabel = `${filtered.length} place${filtered.length !== 1 ? 's' : ''}${stateFilter !== 'all' ? ` in ${FULL_STATE[stateFilter]}` : ''}${typeFilter !== 'all' ? ` · ${typeFilter.replace('-', ' ')}` : ''}`
 
+  const getPreviewForState = (state: string) => venues.find(v => v.state === state && v.image) ?? null
+  const getPreviewForType = (type: string) => venues.find(v => v.venueType === type && v.image) ?? null
+
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* HERO CAROUSEL */}
-      <HeroCarousel venues={fallbackHeroes} />
+      {/* FULL-BLEED HERO */}
+      <section className="relative h-[480px] md:h-[560px] overflow-hidden">
+        {heroVenue?.image && (
+          <Image
+            src={heroVenue.image}
+            alt={heroVenue.imageAlt}
+            fill
+            priority
+            className="object-cover transition-opacity duration-500"
+            sizes="100vw"
+          />
+        )}
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{ background: 'linear-gradient(180deg,rgba(20,18,15,0) 30%,rgba(20,18,15,.75) 100%)' }}
+        />
+        <div className="relative z-10 h-full flex flex-col justify-end max-w-[1240px] mx-auto w-full px-8 pb-[50px]" style={{ color: '#FBF6EE' }}>
+          <p className="font-sans text-xs tracking-[0.22em] uppercase opacity-90 mb-[14px]">
+            The Beauty &amp; Wellness Directory
+          </p>
+          {heroVenue ? (
+            <Link href={venueHref(heroVenue)} className="group">
+              <h1 className="font-serif font-medium text-[36px] md:text-[56px] leading-[1.02] max-w-[900px] tracking-[0.005em] group-hover:underline decoration-1 underline-offset-4">
+                {heroVenue.title}
+              </h1>
+              {heroVenue.verdict && (
+                <p className="font-serif text-[19px] italic mt-3 max-w-[620px] opacity-[0.94]">
+                  {heroVenue.verdict}
+                </p>
+              )}
+              <p className="font-sans text-xs tracking-[0.16em] uppercase mt-4 opacity-[0.85]">
+                {TYPE_LABELS[heroVenue.venueType] ?? heroVenue.venueType} · {heroVenue.state}
+              </p>
+            </Link>
+          ) : (
+            <h1 className="font-serif font-medium text-[36px] md:text-[56px] leading-[1.02] max-w-[900px]">
+              The spas, salons &amp; clinics we actually rate
+            </h1>
+          )}
+        </div>
+      </section>
 
       {/* FILTER BAR */}
       <div
@@ -207,18 +148,42 @@ export default function DirectoryClient({ venues }: { venues: Venue[] }) {
             <span className="font-sans text-[11px] tracking-[0.16em] uppercase mr-1" style={{ color: '#6E655A' }}>
               State
             </span>
-            <Chip active={stateFilter === 'all'} onClick={() => setStateFilter('all')}>All</Chip>
+            <Chip
+              active={stateFilter === 'all'}
+              onClick={() => setStateFilter('all')}
+              onMouseEnter={() => setHoverVenue(null)}
+              onMouseLeave={() => setHoverVenue(null)}
+            >All</Chip>
             {STATES.map(s => (
-              <Chip key={s} active={stateFilter === s} onClick={() => setStateFilter(s)}>{s}</Chip>
+              <Chip
+                key={s}
+                active={stateFilter === s}
+                onClick={() => setStateFilter(s)}
+                onMouseEnter={() => setHoverVenue(getPreviewForState(s))}
+                onMouseLeave={() => setHoverVenue(null)}
+              >{s}</Chip>
             ))}
           </div>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-sans text-[11px] tracking-[0.16em] uppercase mr-1" style={{ color: '#6E655A' }}>
               Type
             </span>
-            <Chip active={typeFilter === 'all'} onClick={() => setTypeFilter('all')} isType>All</Chip>
+            <Chip
+              active={typeFilter === 'all'}
+              onClick={() => setTypeFilter('all')}
+              onMouseEnter={() => setHoverVenue(null)}
+              onMouseLeave={() => setHoverVenue(null)}
+              isType
+            >All</Chip>
             {VENUE_TYPES.map(t => (
-              <Chip key={t.value} active={typeFilter === t.value} onClick={() => setTypeFilter(t.value)} isType>
+              <Chip
+                key={t.value}
+                active={typeFilter === t.value}
+                onClick={() => setTypeFilter(t.value)}
+                onMouseEnter={() => setHoverVenue(getPreviewForType(t.value))}
+                onMouseLeave={() => setHoverVenue(null)}
+                isType
+              >
                 {t.label}
               </Chip>
             ))}
@@ -266,7 +231,9 @@ export default function DirectoryClient({ venues }: { venues: Venue[] }) {
   )
 }
 
-function Chip({ active, onClick, isType, children }: { active: boolean; onClick: () => void; isType?: boolean; children: React.ReactNode }) {
+function Chip({ active, onClick, onMouseEnter, onMouseLeave, isType, children }: {
+  active: boolean; onClick: () => void; onMouseEnter?: () => void; onMouseLeave?: () => void; isType?: boolean; children: React.ReactNode
+}) {
   const activeStyle = isType
     ? { background: '#A8735A', borderColor: '#A8735A', color: '#FBF8F2' }
     : { background: '#211E19', borderColor: '#211E19', color: '#FBF8F2' }
@@ -283,6 +250,8 @@ function Chip({ active, onClick, isType, children }: { active: boolean; onClick:
         ...(active ? activeStyle : {}),
       }}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {children}
     </button>

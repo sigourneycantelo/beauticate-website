@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 
 const FEELINGS = [
   { slug: 'girls-trip', title: 'Girls trip', sub: 'Weekends away with your best', image: '/destinations/feeling-girls-trip.jpg' },
-  { slug: 'weekender', title: 'Weekender', sub: 'Two nights, total reset', image: '/destinations/feeling-weekender.jpg' },
+  { slug: 'reset', title: 'Reset & heal', sub: 'Wellness & longevity stays', image: '/destinations/feeling-reset.jpg' },
   { slug: 'switch-off', title: 'Switch off', sub: 'Retreats & do-nothing escapes', image: '/destinations/feeling-switch-off.jpg' },
   { slug: 'city', title: 'Explore a city', sub: 'Guides for 24 hours or a week', image: '/destinations/feeling-city.jpg' },
   { slug: 'family', title: 'Family adventure', sub: 'Trips that work for everyone', image: '/destinations/feeling-family.jpg' },
-  { slug: 'reset', title: 'Reset & heal', sub: 'Wellness & longevity stays', image: '/destinations/feeling-reset.jpg' },
+  { slug: 'romantic', title: 'Romantic mini-breaks', sub: 'Escapes made for two', image: '/destinations/feeling-weekender.jpg' },
 ]
 
 const TYPE_LABELS: Record<string, string> = {
@@ -66,9 +66,10 @@ function TravelCard({ article, tall }: { article: any; tall?: boolean }) {
 
 export default function TravelPage() {
   const allTravel = getArticlesBySubcategory('destinations', 'travel')
-    .filter(a => !!a?.frontmatter.travelType)
+    .filter(a => !!a)
+  const typedTravel = allTravel.filter(a => !!a?.frontmatter.travelType)
 
-  const heroArticle = allTravel.find(a => a?.frontmatter.isTravelHero) ?? allTravel[0]
+  const heroArticle = typedTravel.find(a => a?.frontmatter.isTravelHero) ?? allTravel[0]
   const sigsEdits = getArticlesByTravelType('sigs-edit').slice(0, 3)
 
   const recentEditorial = allTravel

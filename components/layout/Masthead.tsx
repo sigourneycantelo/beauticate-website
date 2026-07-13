@@ -99,8 +99,8 @@ function PillarItem({ p }: { p: Pillar }) {
                           <svg className="mh-fly-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="9 6 15 12 9 18" /></svg>
                         </Link>
                         <ul className="mh-flyout">
-                          {s.children.map(c => (
-                            <li key={c.href}><Link href={c.href}>{c.label}</Link></li>
+                          {s.children.map((c, ci) => (
+                            <li key={ci}><Link href={c.href}>{c.label}</Link></li>
                           ))}
                         </ul>
                       </>
@@ -255,8 +255,8 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
                       <div key={s.label} className="mh-d-group">
                         <Link href={s.href} className="mh-d-group-label" onClick={() => setDrawer(false)}>{s.label}</Link>
                         <div className="mh-d-group-children">
-                          {s.children.map(c => (
-                            <Link key={c.href} href={c.href} onClick={() => setDrawer(false)}>{c.label}</Link>
+                          {s.children.map((c, ci) => (
+                            <Link key={ci} href={c.href} onClick={() => setDrawer(false)}>{c.label}</Link>
                           ))}
                         </div>
                       </div>

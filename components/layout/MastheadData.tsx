@@ -89,10 +89,35 @@ export default async function MastheadData() {
   const living = editorialPillar('living', 'Living', 'living', 'Living', [
     ['Lifestyle', 'lifestyle'], ['Interiors', 'interiors'], ['Sustainability', 'sustainability'], ['Entertaining', 'entertaining'],
   ])
-  const destinations = editorialPillar('destinations', 'Destinations', 'destinations', 'Destinations', [
-    ['Travel', 'travel'], ['Clinics', 'clinics'], ['Spas & Retreats', 'spas-retreats'],
-  ])
-  destinations.subs.push({ label: 'Directory', href: '/destinations/directory', cards: [] })
+  const destinations = editorialPillar('destinations', 'Destinations', 'destinations', 'Destinations', [])
+  destinations.subs = [
+    {
+      label: 'Travel',
+      href: '/destinations/travel',
+      cards: cards('destinations', 'travel', 'Travel'),
+      children: [
+        { label: 'Reset & Heal', href: '/destinations/travel/feeling/reset' },
+        { label: 'Girls Trip', href: '/destinations/travel/feeling/girls-trip' },
+        { label: 'City Stays', href: '/destinations/travel/feeling/city' },
+        { label: 'Family', href: '/destinations/travel/feeling/family' },
+        { label: 'Romantic Mini-Breaks', href: '/destinations/travel/feeling/romantic' },
+        { label: 'Switch Off', href: '/destinations/travel/feeling/switch-off' },
+      ],
+    },
+  ]
+  destinations.subs.push({
+    label: 'Beauty & Wellness Directory',
+    href: '/destinations/directory',
+    cards: [],
+    children: [
+      { label: 'Navigate by State', href: '/destinations/directory' },
+      { label: 'Spas & Bathhouses', href: '/destinations/spas-retreats' },
+      { label: 'Skin Clinics', href: '/destinations/clinics' },
+      { label: 'Hair Salons', href: '/destinations/directory?type=salon' },
+      { label: 'Beauty Salons', href: '/destinations/directory?type=salon' },
+      { label: 'Wellness', href: '/destinations/directory?type=retreat' },
+    ],
+  })
   const interviews = editorialPillar('interviews', 'Interviews', 'interviews', 'Interviews', [
     ['Creatives', 'creatives'], ['Founders', 'founders'], ['Actors & Presenters', 'actors-presenters'],
     ['Models', 'models'], ['Tastemakers', 'tastemakers'],
