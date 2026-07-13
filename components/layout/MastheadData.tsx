@@ -1,7 +1,7 @@
 import Masthead, { type Pillar, type MegaCard, type MegaSub, type MegaLink } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
 import { getCollections } from '@/lib/shopify'
-import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS } from '@/lib/shop-taxonomy'
+import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS, CURATOR_EDITS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
 
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
@@ -12,7 +12,7 @@ function cards(cat: string, sub: string | undefined, eyebrow: string): MegaCard[
     .map((a) => {
       const f = a.frontmatter
       const url = f.subcategory ? `/${f.category}/${f.subcategory}/${f.slug}` : `/${f.category}/${f.slug}`
-      return { title: f.title, href: url, image: f.featured_image, imageAlt: f.featured_image_alt || f.title, eyebrow }
+      return { title: f.title, href: url, image: f.featured_image, imageAlt: f.featured_image_alt || f.title, imagePosition: f.nav_image_position, eyebrow }
     })
 }
 
@@ -52,7 +52,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
   // Brand & Moment scale past what image cards can show, so they render as a full text
   // list with a few featured image highlights on top.
   const FEATURED_BRANDS = ['maison-balzac-1', 'lumira-1', 'tulita-parfum']
-  const FEATURED_MOMENTS = ['autumn-edit', 'evening-unwind', 'little-luxuries-under-50']
+  const FEATURED_MOMENTS = ['autumn-edit', 'evening-unwind', 'fit-girl-glow']
 
   const brandCards: MegaCard[] = FEATURED_BRANDS
     .map(h => SHOP_BRANDS.find(b => b.handle === h))
@@ -60,16 +60,36 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     .map((b): MegaCard => ({ title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'Brand' }))
   const brandList: MegaLink[] = SHOP_BRANDS.map(b => ({ label: b.name, href: `/shop/brands/${b.handle}` }))
 
+  // Shop by Moment = the mood edits only (gifting edits move to the Gifting item).
   const momentCards: MegaCard[] = FEATURED_MOMENTS
     .map(h => SHOP_MOMENTS.find(m => m.handle === h))
     .filter((m): m is NonNullable<typeof m> => Boolean(m))
     .map((m): MegaCard => ({ title: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle), imageAlt: m.name, eyebrow: 'Moment' }))
-  const momentList: MegaLink[] = SHOP_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}` }))
+  const momentList: MegaLink[] = MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}` }))
+
+  // New In Shop — the three latest brands to onboard, as image cards.
+  const newInCards: MegaCard[] = NEW_IN_BRANDS.map((b): MegaCard => ({
+    title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'New In',
+  }))
+
+  // Editor's Picks — curator edits shown as previews (becomes "Shop by Curator").
+  const curatorCards: MegaCard[] = CURATOR_EDITS.map((c): MegaCard => ({
+    title: c.name, href: `/shop/collections/${c.handle}`, image: imgByHandle.get(c.handle), imageAlt: c.name, eyebrow: 'Curated',
+  }))
+
+  // Gifting — the occasion / price-tier edits; the /shop/gifting page lists them all.
+  const giftingCards: MegaCard[] = GIFTING_MOMENTS.slice(0, 3).map((m): MegaCard => ({
+    title: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle), imageAlt: m.name, eyebrow: 'Gifting',
+  }))
+  const giftingList: MegaLink[] = GIFTING_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}` }))
 
   const subs: MegaSub[] = [
     { label: 'Shop by Category', href: '/shop', cards: categoryCards },
     { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards, list: brandList },
-    { label: 'Shop by Moment', href: '/shop/gifting', cards: momentCards, list: momentList },
+    { label: 'Shop by Moment', href: '/shop/by-moment', cards: momentCards, list: momentList },
+    { label: 'New In Shop', href: '/shop/brands', cards: newInCards },
+    { label: "Editor's Picks", href: '/shop/collections/editors-essentials', cards: curatorCards },
+    { label: 'Gifting', href: '/shop/gifting', cards: giftingCards, list: giftingList },
   ]
   return {
     key: 'shop', label: 'Shop', href: '/shop', eyebrow: 'The Beauticate Shop', isShop: true,

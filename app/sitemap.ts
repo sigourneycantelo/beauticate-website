@@ -15,6 +15,7 @@ const STATIC: { path: string; priority: number }[] = [
   { path: '/shop/living', priority: 0.7 },
   { path: '/shop/style', priority: 0.4 },
   { path: '/shop/brands', priority: 0.6 },
+  { path: '/shop/by-moment', priority: 0.6 },
   { path: '/shop/gifting', priority: 0.6 },
   { path: '/shop/shipping', priority: 0.3 },
   { path: '/shop/refund-policy', priority: 0.3 },

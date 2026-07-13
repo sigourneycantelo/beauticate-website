@@ -67,7 +67,7 @@ export default function ShopByMoment({ collections }: Props) {
 
       <div className="text-center mt-9">
         <Link
-          href="/shop/gifting"
+          href="/shop/by-moment"
           className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase border border-ink px-7 py-3 rounded-[1px] hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Shop all moments

@@ -181,6 +181,34 @@ export const SHOP_MOMENTS: ShopMoment[] = [
   { name: 'Luxe Lovers — Under $300', handle: 'luxe-lovers-under-300' },
 ]
 
+// Gifting edits are the occasion / price-tier moments; they live under the "Gifting"
+// nav item and the /shop/gifting page. Everything else is a "mood" moment shown under
+// Shop by Moment (/shop/by-moment). Order in SHOP_MOMENTS = newest first.
+export const GIFTING_HANDLES = new Set<string>([
+  'best-friend-bday', 'mothers-day', 'little-luxuries-under-50',
+  'thoughtful-gestures-under-100', 'luxe-lovers-under-300',
+])
+export const MOOD_MOMENTS: ShopMoment[] = SHOP_MOMENTS.filter(m => !GIFTING_HANDLES.has(m.handle))
+export const GIFTING_MOMENTS: ShopMoment[] = SHOP_MOMENTS.filter(m => GIFTING_HANDLES.has(m.handle))
+
+// ─── New In Shop ──────────────────────────────────────────────────────────────
+// The latest brands to onboard, curated by hand (Shopify's Storefront API exposes no
+// collection creation date). Update this list when a new brand comes on board.
+export const NEW_IN_BRANDS: ShopBrand[] = [
+  { name: 'WaterRower', handle: 'waterrower' },
+  { name: 'NOHRD', handle: 'nohrd' },
+  { name: 'Kiicity', handle: 'kiicity' },
+]
+
+// ─── Curator edits (Editor's Picks → "Shop by Curator") ───────────────────────
+// The curated "picks" collections shown as previews under Editor's Picks. Will grow
+// into a "Shop by Curator" section as more curators are added.
+export type CuratorEdit = { name: string; handle: string }
+export const CURATOR_EDITS: CuratorEdit[] = [
+  { name: "Editor's Essentials", handle: 'editors-essentials' },
+  { name: 'Team Picks', handle: 'team-picks' },
+]
+
 // Auto-classify a product into one of a broad category's sub-buckets from its own
 // signals, for when it isn't filed in the Shopify sub-collection. First sub to match
 // wins (subs are ordered most-specific first). Returns undefined if nothing matches.

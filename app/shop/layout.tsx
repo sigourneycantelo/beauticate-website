@@ -1,6 +1,6 @@
 import ShopSubNav, { type SubNavItem } from '@/components/shop/ShopSubNav'
 import { getCollections } from '@/lib/shopify'
-import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS } from '@/lib/shop-taxonomy'
+import { BROAD_CATEGORIES, SHOP_BRANDS, MOOD_MOMENTS } from '@/lib/shop-taxonomy'
 
 export default async function ShopLayout({ children }: { children: React.ReactNode }) {
   const collections = await getCollections(100)
@@ -17,7 +17,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
     soon: b.comingSoon,
   }))
   const brands: SubNavItem[] = SHOP_BRANDS.map(b => ({ label: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle) }))
-  const moments: SubNavItem[] = SHOP_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) }))
+  const moments: SubNavItem[] = MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) }))
 
   return (
     <>
