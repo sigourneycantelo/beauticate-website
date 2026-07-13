@@ -1,8 +1,22 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function InsidersBar() {
+  const [submitted, setSubmitted] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = new FormData(form)
+    await fetch('/api/subscribe', { method: 'POST', body: data })
+    setSubmitted(true)
+  }
+
   return (
     <section
       id="insiders"
-      className="reveal text-center"
+      className="text-center"
       style={{
         background: '#FFFFFF',
         borderTop: '1px solid rgba(28,26,23,.10)',
@@ -10,29 +24,36 @@ export default function InsidersBar() {
         padding: 'clamp(34px,4vw,52px) clamp(20px,6vw,104px)',
       }}
     >
-      <p className="font-serif italic" style={{ fontSize: 'clamp(18px,2vw,24px)' }}>
-        fashion. beauty. wellness. living. destinations.
+      <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(22px,2.6vw,32px)' }}>
+        The art of living beautifully, edited.
+      </h2>
+      <p className="font-sans mt-2 mb-5 mx-auto" style={{ fontSize: '13px', opacity: 0.62, maxWidth: '52ch' }}>
+        The best of beauty, wellness, style and travel. Plus what we&rsquo;re buying and who we&rsquo;re interviewing. Every fortnight.
       </p>
-      <p className="font-sans mt-2 mb-5" style={{ fontSize: '12.5px', letterSpacing: '.04em', opacity: 0.62 }}>
-        One beautifully edited email a week. Delivered to your inbox, every Sunday.
-      </p>
-      <form action="/api/subscribe" method="POST" className="flex max-w-[420px] mx-auto">
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="Your email address"
-          className="flex-1 font-sans text-[13px] px-4 py-3 bg-white"
-          style={{ border: '1px solid #1C1A17', borderRight: 'none' }}
-        />
-        <button
-          type="submit"
-          className="font-sans text-[10.5px] tracking-[0.2em] uppercase text-white px-5 cursor-pointer"
-          style={{ background: '#1C1A17', border: '1px solid #1C1A17' }}
-        >
-          Subscribe
-        </button>
-      </form>
+
+      {submitted ? (
+        <p className="font-serif italic" style={{ fontSize: 'clamp(16px,1.8vw,20px)', opacity: 0.75 }}>
+          You&rsquo;re in. The first edit lands in your inbox soon.
+        </p>
+      ) : (
+        <form onSubmit={handleSubmit} className="flex max-w-[420px] mx-auto">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Your email address"
+            className="flex-1 font-sans text-[13px] px-4 py-3 bg-white"
+            style={{ border: '1px solid #1C1A17', borderRight: 'none' }}
+          />
+          <button
+            type="submit"
+            className="font-sans text-[10.5px] tracking-[0.2em] uppercase text-white px-5 cursor-pointer"
+            style={{ background: '#1C1A17', border: '1px solid #1C1A17' }}
+          >
+            Join the edit
+          </button>
+        </form>
+      )}
     </section>
   )
 }
