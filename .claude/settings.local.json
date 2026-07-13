@@ -31,7 +31,19 @@
       "Skill(firecrawl-search)",
       "Skill(firecrawl-search:*)",
       "Skill(firecrawl)",
-      "Skill(firecrawl:*)"
+      "Skill(firecrawl:*)",
+      "Bash(git config *)",
+      "Bash(git checkout *)",
+      "Bash(where npm *)",
+      "PowerShell(Get-Command npm -ErrorAction SilentlyContinue)",
+      "PowerShell(node --version 2>&1)",
+      "PowerShell(npm --version 2>&1)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Program Files\\\\nodejs\",\"C:\\\\Program Files \\(x86\\)\\\\nodejs\",\"$env:LOCALAPPDATA\\\\Programs\" -ErrorAction SilentlyContinue -Directory | Select-Object FullName; Get-ChildItem -Path \"$env:APPDATA\\\\npm\" -ErrorAction SilentlyContinue)",
+      "Bash(python3 -c ' *)",
+      "Bash(git status *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git reset *)"
     ]
   }
 }
