@@ -180,7 +180,7 @@
 .mh{
   --mh-paper:#FFFFFF; --mh-ink:#2a2621; --mh-wine:#7a2733; --mh-muted:#7a7268;
   --mh-greige:#efece6; --mh-line:rgba(42,38,33,.14); --mh-line-soft:rgba(42,38,33,.08);
-  --mh-util-h:54px; --mh-nav-h:52px;
+  --mh-util-h:74px; --mh-nav-h:52px;
   position:sticky; top:0; z-index:1000; background:var(--mh-paper);
   border-bottom:1px solid var(--mh-line); font-family:var(--font-sans);
 }
@@ -220,7 +220,7 @@
 .mh-logo-lg{ height:24px; }
 .mh-logo-mini{ height:14px; }
 .mh-logo-drawer{ height:16px; }
-.mh-logo-shop.mh-logo-lg{ width:172px; height:auto; margin-block:12px; }
+.mh-logo-shop.mh-logo-lg{ width:172px; height:auto; }
 .mh-logo-shop.mh-logo-mini{ height:28px; }
 .mh-logo-shop.mh-logo-drawer{ height:32px; }
 
