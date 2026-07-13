@@ -12,6 +12,17 @@ const LOGOS = [
 export default function PressTrustBand() {
   return (
     <section className="press-trust-band">
+      {/* Trust panel */}
+      <p className="ptb-trust">
+        <Link href="/about">
+          25 Years of Trusted Journalism
+          <span className="ptb-dot"> · </span>
+          3 Million Monthly Touchpoints
+          <span className="ptb-dot"> · </span>
+          Expertly-Curated Shop
+        </Link>
+      </p>
+
       {/* As Seen In */}
       <p className="ptb-heading">
         <Link href="/press">As Seen In</Link>
@@ -25,17 +36,6 @@ export default function PressTrustBand() {
           </Link>
         ))}
       </div>
-
-      {/* Trust panel */}
-      <p className="ptb-trust">
-        <Link href="/about">
-          25 Years of Trusted Journalism
-          <span className="ptb-dot"> · </span>
-          3 Million Monthly Touchpoints
-          <span className="ptb-dot"> · </span>
-          Expertly-Curated Shop
-        </Link>
-      </p>
     </section>
   )
 }
