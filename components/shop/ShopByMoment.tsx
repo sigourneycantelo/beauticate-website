@@ -18,7 +18,7 @@ export default function ShopByMoment({ collections }: Props) {
   if (!moments.length) return null
 
   return (
-    <section className="bg-white border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
+    <section className="bg-white px-[clamp(20px,6vw,104px)] pt-[clamp(46px,6vw,82px)] pb-[clamp(24px,3vw,40px)]">
       <div className="text-center mb-10">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold text-eucalypt">
           Shop by Moment
