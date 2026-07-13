@@ -62,15 +62,18 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
 
   if (!articles.length) return null
 
+  const activeAspect = articles[active]?.frontmatter.hero_aspect
+
   return (
     <section
       className="hero-carousel relative overflow-hidden max-w-[1200px] mx-auto"
+      style={activeAspect ? { aspectRatio: activeAspect } as React.CSSProperties : undefined}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       <style>{`
-        .hero-carousel { aspect-ratio: 3/4; }
-        @media (min-width: 768px) { .hero-carousel { aspect-ratio: 16/9; min-height: 480px; } }
+        .hero-carousel { aspect-ratio: 4/5; transition: aspect-ratio .6s ease; }
+        @media (min-width: 768px) { .hero-carousel { aspect-ratio: 12/5; min-height: 420px; } }
         .hero-slide {
           position: absolute; inset: 0;
           opacity: 0; transition: opacity 1s ease;
