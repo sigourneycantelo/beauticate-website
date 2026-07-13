@@ -16,7 +16,7 @@ const SECTION_PROMPTS: Record<string, string> = {
   '/vodcast': 'Ask me about any episode',
   '/living': 'Need a home or lifestyle tip?',
 }
-const DEFAULT_PROMPT = 'Ask me anything'
+const DEFAULT_PROMPT = "Let's have a chat..."
 
 function getPromptForPath(pathname: string): string {
   for (const [prefix, prompt] of Object.entries(SECTION_PROMPTS)) {
