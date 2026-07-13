@@ -64,7 +64,7 @@ export function ShopGrid({ children }: ShopGridProps) {
   const count = Children.count(children)
   const cols = Math.min(count, 3)
   return (
-    <div className="not-prose article-wide my-10 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0 md:overflow-visible">
+    <div className="not-prose my-10 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0 md:overflow-visible">
       <div
         className="grid gap-[clamp(16px,2vw,28px)]"
         style={{ gridTemplateColumns: `repeat(${cols}, minmax(200px, 1fr))` }}
