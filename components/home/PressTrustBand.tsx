@@ -1,0 +1,41 @@
+import Link from 'next/link'
+
+const LOGOS = [
+  'VOGUE',
+  'The Daily Telegraph',
+  'marie claire',
+  'body+soul',
+  'Mamamia',
+  'The Daily Mail',
+]
+
+export default function PressTrustBand() {
+  return (
+    <section className="press-trust-band">
+      {/* As Seen In */}
+      <p className="ptb-heading">
+        <Link href="/press">As Seen In</Link>
+      </p>
+
+      {/* Press logos */}
+      <div className="ptb-logos">
+        {LOGOS.map(name => (
+          <Link key={name} href="/press" className="ptb-logo">
+            {name}
+          </Link>
+        ))}
+      </div>
+
+      {/* Trust panel */}
+      <p className="ptb-trust">
+        <Link href="/about">
+          25 Years of Trusted Journalism
+          <span className="ptb-dot"> · </span>
+          3 Million Monthly Touchpoints
+          <span className="ptb-dot"> · </span>
+          Expertly-Curated Shop
+        </Link>
+      </p>
+    </section>
+  )
+}

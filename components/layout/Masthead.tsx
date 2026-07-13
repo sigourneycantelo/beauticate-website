@@ -185,9 +185,13 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
           </div>
         </div>
 
-        <Link href={isShop ? '/shop' : '/'} className="mh-wordmark" aria-label={isShop ? 'Beauticate Shop' : 'Beauticate home'}><Wordmark className="mh-logo mh-logo-lg" priority shop={isShop} /></Link>
+        <div className="mh-wordmark-group">
+          <Link href={isShop ? '/shop' : '/'} className="mh-wordmark" aria-label={isShop ? 'Beauticate Shop' : 'Beauticate home'}><Wordmark className="mh-logo mh-logo-lg" priority shop={isShop} /></Link>
+          {!isShop && <p className="mh-strapline">Beauty, wellness and lifestyle. Stories and shopping.</p>}
+        </div>
 
         <div className="mh-util-right">
+          <Link href="/about" className="mh-util-link">About</Link>
           <Link href="/subscribe" className="mh-util-link">Subscribe</Link>
           <Link href="/search" className="mh-icon-btn" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><circle cx="11" cy="11" r="7" /><line x1="16.2" y1="16.2" x2="21" y2="21" /></svg>

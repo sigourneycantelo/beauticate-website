@@ -13,6 +13,7 @@ import PodcastSection from '@/components/home/PodcastSection'
 import InsidersBar from '@/components/home/InsidersBar'
 import HeroSplit from '@/components/home/HeroSplit'
 import ShopByMoment from '@/components/home/ShopByMoment'
+import PressTrustBand from '@/components/home/PressTrustBand'
 
 export default async function HomePage() {
   const [taggedProducts, winterCollection, allProducts, vodcastEpisodes] = await Promise.all([
@@ -53,8 +54,8 @@ export default async function HomePage() {
       {/* 1 — Wide landscape hero */}
       {heroArticle && <HeroWide article={heroArticle as any} />}
 
-      {/* 2 — Insiders subscribe strip */}
-      <InsidersBar />
+      {/* 2 — Press & trust band */}
+      <PressTrustBand />
 
       {/* 3 — Two stories */}
       {duoLeftArticles.length > 0 && <DuoLeft articles={duoLeftArticles as any} />}
@@ -83,7 +84,10 @@ export default async function HomePage() {
       {/* 10 — Image-left / text-right featured story */}
       {splitArticle && <HeroSplit article={splitArticle as any} />}
 
-      {/* 11 — The edit */}
+      {/* 11 — Subscribe */}
+      <InsidersBar />
+
+      {/* 12 — The edit */}
       <SectionTitle eyebrow="Shop" title="The edit" italic="edit" />
       {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
 

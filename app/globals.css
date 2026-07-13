@@ -210,7 +210,12 @@
 .mh-icon-btn:hover{ color:var(--mh-wine); opacity:1; }
 .mh-icon-btn svg{ width:20px; height:20px; }
 
-.mh-wordmark{ justify-self:center; display:flex; align-items:center; padding:6px 0; }
+.mh-wordmark-group{ justify-self:center; display:flex; flex-direction:column; align-items:center; padding:6px 0; }
+.mh-wordmark{ display:flex; align-items:center; }
+.mh-strapline{
+  font-family:var(--font-serif); font-size:13px; letter-spacing:.02em;
+  color:var(--mh-muted); margin-top:2px; white-space:nowrap;
+}
 .mh-logo{ display:block; width:auto; }
 .mh-logo-lg{ height:24px; }
 .mh-logo-mini{ height:14px; }
@@ -240,6 +245,7 @@
   color:var(--mh-ink); opacity:0; pointer-events:none; transition:opacity .3s ease; padding-left:.24em;
 }
 .mh-scrolled .mh-utility{ height:0; opacity:0; border-color:transparent; }
+.mh-scrolled .mh-strapline{ display:none; }
 .mh-scrolled .mh-brand-mini{ opacity:1; }
 
 /* mega */
@@ -339,6 +345,7 @@
   .mh-util-left .mh-social, .mh-util-left .mh-util-link{ display:none; }
   .mh-hamburger{ display:flex; justify-self:start; }
   .mh-util-right .mh-util-link{ display:none; }
+  .mh-strapline{ display:none; }
   .mh-logo-lg{ height:17px; }
   .mh-logo-shop.mh-logo-lg{ width:130px; height:auto; }
   .mh-primary{ display:none; }
@@ -445,4 +452,37 @@
 }
 .venue-contact a:hover {
   text-decoration-color: rgba(0,0,0,0.5);
+}
+
+/* Press & Trust band (under hero) */
+.press-trust-band{
+  text-align:center;
+  padding:clamp(28px,3.5vw,44px) clamp(20px,6vw,104px);
+  border-bottom:1px solid rgba(28,26,23,.10);
+  background:#FFFFFF;
+}
+.press-trust-band a{ color:inherit; text-decoration:none; }
+.ptb-heading{
+  font-family:var(--font-sans); font-size:10.5px; font-weight:600;
+  letter-spacing:.22em; text-transform:uppercase; color:#2a2621; opacity:.55;
+  margin-bottom:clamp(16px,2vw,24px);
+}
+.ptb-heading a:hover{ opacity:.7; }
+.ptb-logos{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:clamp(20px,3vw,44px); margin-bottom:clamp(20px,2.5vw,32px);
+}
+.ptb-logo{
+  font-family:var(--font-serif); font-size:clamp(15px,1.6vw,20px); font-weight:400;
+  color:#2a2621; opacity:.5; transition:opacity .2s; white-space:nowrap;
+}
+.ptb-logo:hover{ opacity:.8; }
+.ptb-trust{
+  font-family:var(--font-sans); font-size:11px; font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase; color:#2a2621; opacity:.5;
+}
+.ptb-trust a:hover{ opacity:.7; }
+.ptb-dot{ opacity:.4; }
+@media(max-width:600px){
+  .ptb-logos{ gap:14px 24px; }
 }
