@@ -209,7 +209,7 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <CollectionHero image={collection.image} eyebrow="Shop" title={broad.label} />
+      <CollectionHero image={collection.image} eyebrow="Shop" title={broad.label} description={collection.description} />
 
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
         <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-8">
@@ -245,6 +245,11 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
           </div>
         </section>
       )}
+
+      <p className="text-center pb-16 font-serif text-charcoal-light/60" style={{ fontSize: 'clamp(14px,1.4vw,16px)' }}>
+        Not finding what you&apos;re after?{' '}
+        <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>
+      </p>
     </div>
   )
 }
