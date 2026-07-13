@@ -213,7 +213,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
 
         <div className="mh-wordmark-group">
           <Link href={isShop ? '/shop' : '/'} className="mh-wordmark" aria-label={isShop ? 'Beauticate Shop' : 'Beauticate home'}><Wordmark className="mh-logo mh-logo-lg" priority shop={isShop} /></Link>
-          {!isShop && <p className="mh-strapline">Beauty, wellness and lifestyle. Stories and shopping.</p>}
+          {!isShop && <p className="mh-strapline">Expertly curated. Beautifully told. Ready to shop.</p>}
         </div>
 
         <div className="mh-util-right">

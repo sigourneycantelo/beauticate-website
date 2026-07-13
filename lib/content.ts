@@ -42,7 +42,16 @@ export function getArticleBySlug(slugParts: string[]): {
   if (!fs.existsSync(mdxPath)) return null
 
   const raw = fs.readFileSync(mdxPath, 'utf-8')
-  const { data, content } = matter(raw)
+
+  let data: Record<string, unknown>
+  let content: string
+  try {
+    const parsed = matter(raw)
+    data = parsed.data
+    content = parsed.content
+  } catch {
+    return null
+  }
 
   // product_links live in frontmatter; fall back to products.json for legacy articles
   const products = (data.product_links as import('@/types/content').ProductLink[] | undefined)

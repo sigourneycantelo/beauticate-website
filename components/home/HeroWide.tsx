@@ -17,6 +17,7 @@ interface Article {
     hero_title?: string
     hero_eyebrow?: string
     hero_aspect?: string
+    hero_focus?: string
   }
 }
 
@@ -101,6 +102,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.png'
         const heroTitle = f.hero_title ?? f.title
         const eyebrow = f.hero_eyebrow ?? CATEGORY_LABELS[f.category] ?? f.category
+        const focus = f.hero_focus ?? 'center 25%'
 
         return (
           <Link
@@ -116,6 +118,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
               fill
               priority={i === 0}
               className="hero-img object-cover"
+              style={{ objectPosition: focus }}
               sizes="(max-width: 1200px) 100vw, 1200px"
               unoptimized={heroImage.endsWith('.gif')}
             />
@@ -159,7 +162,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         )
       })}
 
-      {/* First slide as layout placeholder for aspect ratio */}
+      {/* Invisible spacer to hold the aspect ratio since slides are position:absolute */}
       <div className="invisible" aria-hidden>
         <div style={{ aspectRatio: 'inherit' }} />
       </div>
