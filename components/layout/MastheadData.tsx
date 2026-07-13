@@ -109,7 +109,7 @@ export default async function MastheadData() {
   destinations.subs.push({
     label: 'Beauty & Wellness Directory',
     href: '/destinations/directory',
-    cards: [],
+    cards: cards('destinations', 'spas-retreats', 'Directory'),
     children: [
       { label: 'Navigate by State', href: '/destinations/directory' },
       { label: 'Spas & Bathhouses', href: '/destinations/spas-retreats' },
