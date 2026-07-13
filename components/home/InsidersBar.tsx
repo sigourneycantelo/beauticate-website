@@ -19,8 +19,6 @@ export default function InsidersBar() {
       className="text-center"
       style={{
         background: '#FFFFFF',
-        borderTop: '1px solid rgba(28,26,23,.10)',
-        borderBottom: '1px solid rgba(28,26,23,.10)',
         padding: 'clamp(34px,4vw,52px) clamp(20px,6vw,104px)',
       }}
     >

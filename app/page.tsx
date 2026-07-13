@@ -105,7 +105,7 @@ export default async function HomePage() {
       {/* Explore all link */}
       <div
         className="text-center"
-        style={{ padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)', borderTop: '1px solid rgba(28,26,23,.10)' }}
+        style={{ padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)' }}
       >
         <a
           href="/beauty-style"

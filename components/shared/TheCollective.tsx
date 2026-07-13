@@ -14,8 +14,6 @@ export default function TheCollective() {
       style={{
         padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)',
         background: '#FBF9F4',
-        borderTop: '1px solid rgba(28,26,23,.10)',
-        borderBottom: '1px solid rgba(28,26,23,.10)',
       }}
     >
       <span

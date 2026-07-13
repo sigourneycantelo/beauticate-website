@@ -10,10 +10,9 @@ const CATEGORIES = [
 
 export default function ShopByCategory() {
   return (
-    <section className="bg-white border-t border-b border-[rgba(28,26,23,.10)] px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
+    <section className="bg-white px-[clamp(20px,6vw,104px)] py-[clamp(38px,5vw,68px)]">
       <div className="text-center mb-10">
-        <p className="font-sans text-[11px] tracking-[0.34em] uppercase opacity-50">Explore</p>
-        <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px, 3vw, 38px)' }}>
+        <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(24px, 3vw, 38px)' }}>
           Shop by <em className="italic">category</em>
         </h2>
       </div>
@@ -29,7 +28,7 @@ export default function ShopByCategory() {
                 sizes="(max-width:768px) 50vw, 25vw"
                 className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(20,18,16,.5)] to-[rgba(20,18,16,.14)]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(28,24,20,.45)] to-[rgba(28,24,20,.06)]" />
               <div className="relative z-10 text-white">
                 <h3 className="font-serif font-normal tracking-[0.02em]" style={{ fontSize: 'clamp(24px,2.6vw,34px)' }}>
                   {cat.label}

@@ -63,8 +63,6 @@ export default function PodcastSection({ episodes }: Props) {
       className="reveal"
       style={{
         background: '#E8E3DB',
-        borderTop: '1px solid rgba(28,26,23,.10)',
-        borderBottom: '1px solid rgba(28,26,23,.10)',
         padding: 'clamp(46px,6vw,78px) clamp(20px,6vw,104px)',
       }}
     >

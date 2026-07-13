@@ -213,8 +213,8 @@
 .mh-wordmark-group{ justify-self:center; display:flex; flex-direction:column; align-items:center; padding:14px 0 10px; }
 .mh-wordmark{ display:flex; align-items:center; }
 .mh-strapline{
-  font-family:var(--font-serif); font-size:13px; font-weight:600; letter-spacing:.02em;
-  color:var(--mh-muted); margin-top:4px; white-space:nowrap;
+  font-family:var(--font-serif); font-size:14px; font-weight:400; letter-spacing:.02em;
+  color:var(--mh-ink); opacity:.55; margin-top:2px; white-space:nowrap;
 }
 .mh-logo{ display:block; width:auto; }
 .mh-logo-lg{ height:24px; }
@@ -274,6 +274,26 @@
 .mh-sub-soon{ display:flex; align-items:center; gap:8px; padding:7px 0; font-size:12px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--mh-muted); opacity:.55; cursor:default; }
 .mh-sub-soon em{ font-style:normal; font-size:8.5px; letter-spacing:.14em; padding:2px 6px; border:1px solid var(--mh-line-soft); border-radius:999px; opacity:.8; }
 .mh-soon-note{ grid-column:1 / -1; align-self:center; font-family:var(--font-serif); font-style:italic; font-size:17px; color:var(--mh-muted); }
+
+/* Flyout submenu (e.g. Destinations > Beauty & Wellness Directory) */
+.mh-has-flyout{ position:relative; }
+.mh-sub-parent{ display:flex; align-items:center; gap:9px; padding:7px 0; font-size:12px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--mh-ink); opacity:.82; transition:color .18s,opacity .18s; }
+.mh-sub-parent::before{ content:""; width:0; height:1px; background:var(--mh-wine); transition:width .22s ease; flex:none; }
+.mh-sub-parent:hover, .mh-sub-parent.active{ color:var(--mh-wine); opacity:1; }
+.mh-sub-parent:hover::before, .mh-sub-parent.active::before{ width:14px; }
+.mh-fly-arrow{ width:10px; height:10px; flex:none; margin-left:auto; opacity:.5; transition:opacity .18s, transform .18s; }
+.mh-has-flyout:hover .mh-fly-arrow{ opacity:1; transform:translateX(2px); }
+.mh-flyout{ position:absolute; left:calc(100% + 16px); top:-8px; list-style:none; margin:0; padding:14px 22px; background:var(--mh-paper); border:1px solid var(--mh-line-soft); box-shadow:0 4px 20px rgba(42,38,33,.08); min-width:210px; opacity:0; visibility:hidden; transition:opacity .18s,visibility .18s; z-index:10; }
+.mh-has-flyout:hover .mh-flyout{ opacity:1; visibility:visible; }
+.mh-flyout a{ display:block; padding:7px 0; font-size:12px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; color:var(--mh-ink); opacity:.82; transition:color .18s,opacity .18s; white-space:nowrap; }
+.mh-flyout a::before{ display:none; }
+.mh-flyout a:hover{ color:var(--mh-wine); opacity:1; }
+
+/* Mobile drawer: flyout group */
+.mh-d-group{ padding:0; }
+.mh-d-group-label{ display:block; padding:11px 22px 6px 34px; font-size:11.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--mh-ink); opacity:.9; }
+.mh-d-group-children a{ display:block; padding:8px 22px 8px 48px; font-size:11px; font-weight:400; letter-spacing:.05em; text-transform:uppercase; color:var(--mh-ink); opacity:.72; }
+.mh-d-group-children a:hover{ opacity:1; color:var(--mh-wine); }
 
 .mh-cards{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
 .mh-card{ display:block; text-transform:none; letter-spacing:0; }
@@ -457,8 +477,7 @@
 /* Press & Trust band (under hero) */
 .press-trust-band{
   text-align:center;
-  padding:clamp(18px,2.5vw,30px) clamp(20px,6vw,104px);
-  border-bottom:1px solid rgba(28,26,23,.10);
+  padding:clamp(18px,2.5vw,30px) clamp(20px,6vw,104px) clamp(14px,2vw,22px);
   background:#FFFFFF;
 }
 .press-trust-band a{ color:inherit; text-decoration:none; }
@@ -478,10 +497,11 @@
 }
 .ptb-logo:hover{ opacity:.8; }
 .ptb-trust{
-  font-family:var(--font-sans); font-size:11px; font-weight:500;
-  letter-spacing:.2em; text-transform:uppercase; color:#2a2621; opacity:.5;
+  font-family:var(--font-sans); font-size:11px; font-weight:600;
+  letter-spacing:.2em; text-transform:uppercase; color:#1C1A17;
 }
-.ptb-trust a:hover{ opacity:.7; }
+.ptb-trust a{ transition:color .2s; }
+.ptb-trust a:hover{ color:#7a2733; }
 .ptb-dot{ opacity:.4; }
 @media(max-width:600px){
   .ptb-logos{ gap:14px 24px; }

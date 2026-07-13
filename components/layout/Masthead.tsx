@@ -8,9 +8,11 @@ import CartButton from '@/components/shop/CartButton'
 
 export type MegaCard = { title: string; href: string; image?: string; imageAlt?: string; eyebrow: string; meta?: string; soon?: boolean }
 export type MegaLink = { label: string; href: string }
+export type MegaChild = { label: string; href: string }
 // A sub renders either as image cards (default) or, when `list` is set, as a full text
 // list of every item with `cards` shown as a few featured highlights on top.
-export type MegaSub = { label: string; href: string; cards: MegaCard[]; list?: MegaLink[]; disabled?: boolean }
+// When `children` is set, the sub shows a nested flyout instead of cards.
+export type MegaSub = { label: string; href: string; cards: MegaCard[]; list?: MegaLink[]; disabled?: boolean; children?: MegaChild[] }
 export type Pillar = {
   key: string; label: string; href: string; eyebrow: string
   allLabel: string; allHref: string; subs: MegaSub[]; isShop?: boolean
@@ -77,7 +79,7 @@ function PillarItem({ p }: { p: Pillar }) {
               <span className="mh-eyebrow">{p.eyebrow}</span>
               <ul>
                 {p.subs.map(s => (
-                  <li key={s.label}>
+                  <li key={s.label} className={s.children ? 'mh-has-flyout' : ''}>
                     {s.disabled ? (
                       <span
                         className={`mh-sub-soon${active === s.label ? ' active' : ''}`}
@@ -85,6 +87,23 @@ function PillarItem({ p }: { p: Pillar }) {
                       >
                         {s.label}<em>Soon</em>
                       </span>
+                    ) : s.children ? (
+                      <>
+                        <Link
+                          href={s.href}
+                          className={`mh-sub-parent${active === s.label ? ' active' : ''}`}
+                          onMouseEnter={() => setActive(s.label)}
+                          onFocus={() => setActive(s.label)}
+                        >
+                          {s.label}
+                          <svg className="mh-fly-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="9 6 15 12 9 18" /></svg>
+                        </Link>
+                        <ul className="mh-flyout">
+                          {s.children.map(c => (
+                            <li key={c.href}><Link href={c.href}>{c.label}</Link></li>
+                          ))}
+                        </ul>
+                      </>
                     ) : (
                       <Link
                         href={s.href}
@@ -100,6 +119,8 @@ function PillarItem({ p }: { p: Pillar }) {
             </div>
             {activeSub?.disabled ? (
               <div className="mh-cards"><p className="mh-soon-note">Our {activeSub.label} edit is coming soon.</p></div>
+            ) : activeSub?.children ? (
+              <div className="mh-cards"><p className="mh-soon-note">Browse our curated directory of salons, spas, clinics &amp; wellness destinations.</p></div>
             ) : activeSub?.list ? (
               <div className="mh-mega-list">
                 {cards.length > 0 && (
@@ -183,6 +204,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
               <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noopener noreferrer"><SocialIcon d={s.d} /></a>
             ))}
           </div>
+          <Link href="/subscribe" className="mh-util-link">Subscribe</Link>
         </div>
 
         <div className="mh-wordmark-group">
@@ -192,7 +214,6 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
 
         <div className="mh-util-right">
           <Link href="/about" className="mh-util-link">About</Link>
-          <Link href="/subscribe" className="mh-util-link">Subscribe</Link>
           <Link href="/search" className="mh-icon-btn" aria-label="Search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><circle cx="11" cy="11" r="7" /><line x1="16.2" y1="16.2" x2="21" y2="21" /></svg>
           </Link>
@@ -230,6 +251,16 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
                 <div className="mh-d-subs">
                   {p.subs.map(s => s.disabled
                     ? <span key={s.label} className="mh-d-soon">{s.label} <em>Soon</em></span>
+                    : s.children ? (
+                      <div key={s.label} className="mh-d-group">
+                        <Link href={s.href} className="mh-d-group-label" onClick={() => setDrawer(false)}>{s.label}</Link>
+                        <div className="mh-d-group-children">
+                          {s.children.map(c => (
+                            <Link key={c.href} href={c.href} onClick={() => setDrawer(false)}>{c.label}</Link>
+                          ))}
+                        </div>
+                      </div>
+                    )
                     : <Link key={s.label} href={s.href} onClick={() => setDrawer(false)}>{s.label}</Link>)}
                 </div>
               </div>
