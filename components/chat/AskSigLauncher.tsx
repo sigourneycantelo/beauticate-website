@@ -16,7 +16,7 @@ const SECTION_PROMPTS: Record<string, string> = {
   '/vodcast': 'Ask me about any episode',
   '/living': 'Need a home or lifestyle tip?',
 }
-const DEFAULT_PROMPT = 'Loves a chat...'
+const DEFAULT_PROMPT = 'Go on, ask me anything'
 
 function getPromptForPath(pathname: string): string {
   for (const [prefix, prompt] of Object.entries(SECTION_PROMPTS)) {
@@ -63,7 +63,7 @@ export default function AskSigLauncher() {
               className="relative cursor-pointer animate-fade-in mb-1 max-w-[200px]"
             >
               <div className="bg-white rounded-2xl rounded-br-sm shadow-lg px-4 py-3 border border-line">
-                <p className="text-[11px] font-sans font-semibold tracking-[0.2em] uppercase text-wine mb-1">Ask Sig</p>
+                <p className="text-[11px] font-sans font-semibold tracking-[0.2em] uppercase text-wine mb-0.5">Ask Sig</p>
                 <p className="text-sm font-sans text-ink leading-snug">{prompt}</p>
               </div>
               <button
