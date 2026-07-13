@@ -11,7 +11,7 @@ const CATEGORIES = [
 // "Shop by Category" media grid — Beauty / Wellness / Living live, Style coming soon.
 export default function ShopCategoryGrid() {
   return (
-    <section className="bg-parchment border-t border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(48px,6vw,82px)]">
+    <section className="bg-parchment px-[clamp(20px,6vw,104px)] py-[clamp(48px,6vw,82px)]">
       <div className="text-center mb-10">
         <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase', opacity: 0.5 }}>
           Explore
