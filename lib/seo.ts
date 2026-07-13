@@ -72,6 +72,12 @@ function extractHowToSteps(content: string): { name: string; text: string }[] {
   return steps
 }
 
+const YOUTUBE_ID_REGEX = /youtube\.com\/(?:embed\/|watch\?v=)([A-Za-z0-9_-]{11})/
+
+function extractFirstYouTubeId(content: string): string | undefined {
+  return content.match(YOUTUBE_ID_REGEX)?.[1]
+}
+
 export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { q: string; a: string }[], content?: string) {
   const schemaType = resolveSchemaType(f)
   const articleUrl = `${SITE_URL}${url}`
@@ -163,6 +169,21 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
         name: q,
         acceptedAnswer: { '@type': 'Answer', text: a },
       })),
+    })
+  }
+
+  const youtubeId = content ? extractFirstYouTubeId(content) : undefined
+  if (youtubeId) {
+    graph.push({
+      '@type': 'VideoObject',
+      '@id': `${articleUrl}#video`,
+      name: f.seo_title ?? f.title,
+      description: f.meta_description ?? f.excerpt,
+      thumbnailUrl: [imageUrl],
+      uploadDate: f.date_published,
+      contentUrl: `https://www.youtube.com/watch?v=${youtubeId}`,
+      embedUrl: `https://www.youtube.com/embed/${youtubeId}`,
+      publisher: ORGANIZATION_SCHEMA,
     })
   }
 
