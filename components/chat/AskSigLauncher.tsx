@@ -62,7 +62,8 @@ export default function AskSigLauncher() {
               onClick={handleOpen}
               className="relative cursor-pointer animate-fade-in mb-1 max-w-[200px]"
             >
-              <div className="bg-white rounded-2xl rounded-br-sm shadow-lg px-4 py-2.5 border border-line">
+              <div className="bg-white rounded-2xl rounded-br-sm shadow-lg px-4 py-3 border border-line">
+                <p className="text-[9px] font-sans font-medium tracking-[0.2em] uppercase text-muted mb-1">Ask Sig</p>
                 <p className="text-sm font-sans text-ink leading-snug">{prompt}</p>
               </div>
               <button
