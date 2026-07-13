@@ -246,7 +246,7 @@
 }
 .mh-scrolled .mh-utility{ height:0; opacity:0; border-color:transparent; }
 .mh-scrolled .mh-strapline{ display:none; }
-.mh-scrolled .mh-brand-mini{ opacity:1; }
+.mh-scrolled .mh-brand-mini{ opacity:1; pointer-events:auto; }
 
 /* mega */
 .mh-mega{
