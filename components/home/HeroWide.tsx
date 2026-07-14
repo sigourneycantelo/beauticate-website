@@ -79,14 +79,8 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
           opacity: 0; transition: opacity 1s ease;
         }
         .hero-slide.is-active { opacity: 1; z-index: 2; }
-        .hero-slide .hero-img {
-          transition: transform 6s ease-out;
-          transform: scale(1);
-        }
-        .hero-slide.is-active .hero-img { transform: scale(1.04); }
         @media (prefers-reduced-motion: reduce) {
           .hero-slide { transition: none; }
-          .hero-slide .hero-img { transition: none; transform: none !important; }
         }
         .hero-dots {
           position: absolute; bottom: clamp(14px,3vw,28px); left: 50%;
@@ -120,7 +114,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
               alt={f.featured_image_alt ?? f.title}
               fill
               priority={i === 0}
-              className="hero-img object-cover"
+              className="object-cover"
               style={{ objectPosition: focus }}
               sizes="(max-width: 1200px) 100vw, 1200px"
               unoptimized={heroImage.endsWith('.gif')}
@@ -140,17 +134,20 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
                 {eyebrow}
               </span>
               <h2
-                className="font-serif font-normal leading-[1.04]"
+                className="font-serif font-normal leading-[1.08] whitespace-nowrap"
                 style={{
-                  fontSize: 'clamp(26px,4.4vw,58px)',
-                  letterSpacing: '-.015em',
-                  textShadow: '0 2px 30px rgba(0,0,0,.4)',
+                  fontSize: 'clamp(20px,2.8vw,38px)',
+                  letterSpacing: '-.01em',
+                  textShadow: '0 1px 20px rgba(0,0,0,.35)',
                 }}
               >
                 {heroTitle}
               </h2>
               {f.excerpt && (
-                <p className="hidden sm:block font-sans mt-3.5" style={{ fontSize: '13.5px', opacity: 0.92, maxWidth: '46ch' }}>
+                <p
+                  className="hidden sm:block font-sans mt-3 overflow-hidden whitespace-nowrap text-ellipsis"
+                  style={{ fontSize: '13px', opacity: 0.88, maxWidth: '52ch' }}
+                >
                   {f.excerpt}
                 </p>
               )}
