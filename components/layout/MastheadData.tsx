@@ -78,9 +78,12 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
   }))
 
   // Gifting — the occasion / price-tier edits; the /shop/gifting page lists them all.
-  const giftingCards: MegaCard[] = GIFTING_MOMENTS.slice(0, 3).map((m): MegaCard => ({
-    title: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle), imageAlt: m.name, eyebrow: 'Gifting',
-  }))
+  // Featured previews are the three price tiers (under $50 / $100 / $300).
+  const FEATURED_GIFTING = ['little-luxuries-under-50', 'thoughtful-gestures-under-100', 'luxe-lovers-under-300']
+  const giftingCards: MegaCard[] = FEATURED_GIFTING
+    .map(h => GIFTING_MOMENTS.find(m => m.handle === h))
+    .filter((m): m is NonNullable<typeof m> => Boolean(m))
+    .map((m): MegaCard => ({ title: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle), imageAlt: m.name, eyebrow: 'Gifting' }))
   const giftingList: MegaLink[] = GIFTING_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}` }))
 
   const subs: MegaSub[] = [
