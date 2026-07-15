@@ -4,7 +4,6 @@ import { getArticlesByTravelType, getArticlesByFeeling, getArticlesBySubcategory
 import DuoStagger from '@/components/home/DuoStagger'
 import DuoLeft from '@/components/home/DuoLeft'
 import InsidersBar from '@/components/home/InsidersBar'
-import TravelSuggestBox from '@/components/travel/TravelSuggestBox'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -248,9 +247,6 @@ export default function TravelPage() {
 
       {/* FEELING STRIP 4 — City */}
       <FeelingStrip feeling={FEELINGS[3]} />
-
-      {/* SUGGEST BOX */}
-      <TravelSuggestBox />
 
       {/* FEELING STRIP 5 — Family */}
       <FeelingStrip feeling={FEELINGS[4]} />
