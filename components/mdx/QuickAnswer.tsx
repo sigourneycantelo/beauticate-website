@@ -11,7 +11,7 @@ interface Props {
 export default function QuickAnswer({ label = 'Quick answer', children }: Props) {
   return (
     <aside className="not-prose my-8 border-l-2 border-wine bg-parchment p-6 sm:p-7">
-      <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-terracotta mb-3">
+      <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-wine mb-3">
         {label}
       </p>
       <div className="text-[15px] sm:text-base text-charcoal leading-relaxed [&_p]:mb-3 [&_p:last-child]:mb-0">

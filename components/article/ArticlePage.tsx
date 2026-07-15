@@ -23,6 +23,7 @@ import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import SplitRow from '@/components/mdx/SplitRow'
 import StickyScroll from '@/components/mdx/StickyScroll'
 import NumberedSection from '@/components/mdx/NumberedSection'
+import BeforeAfterSlider from '@/components/mdx/BeforeAfterSlider'
 import Caption from '@/components/mdx/Caption'
 import InlineImage from '@/components/mdx/InlineImage'
 import ProductTile from '@/components/shared/ProductTile'
@@ -112,7 +113,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
-    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, SubscribeBand, Caption, InlineImage,
+    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, SubscribeBand, Caption, InlineImage, BeforeAfterSlider,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
       return isExternal

@@ -36,10 +36,10 @@ const config: Config = {
         charcoal: { DEFAULT: '#2a2621', light: '#3d3d3d' },
       },
       fontFamily: {
-        // Update once brand fonts confirmed
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans:  ['var(--font-sans)', 'system-ui', 'sans-serif'],
         display: ['var(--font-display)', 'Georgia', 'serif'],
+        numeral: ['var(--font-numeral)', 'Georgia', 'serif'],
       },
       typography: {
         DEFAULT: {
@@ -50,8 +50,8 @@ const config: Config = {
             lineHeight: '1.8',
             a: { color: '#1C1A17', '&:hover': { color: '#8E9A82' } },
             h1: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' },
-            h2: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em', fontWeight: '600' },
-            h3: { fontFamily: 'var(--font-serif)', fontWeight: '500' },
+            h2: { fontFamily: 'var(--font-display)', letterSpacing: '-0.01em', fontWeight: '500' },
+            h3: { fontFamily: 'var(--font-display)', fontWeight: '400' },
             h4: { fontFamily: 'var(--font-serif)', textTransform: 'none', letterSpacing: 'normal', fontSize: '1.125rem', fontWeight: '600', color: '#1C1A17', lineHeight: '1.8' },
             p:  { fontFamily: 'var(--font-serif)' },
             figcaption: {

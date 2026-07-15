@@ -95,6 +95,8 @@ All product cards use the single `ProductTile` component (`components/shared/Pro
 
 The white text strip is the constant across both modes. The image area is the variable. This consistency is what makes a grid of mixed product shots look curated. Reference: SheerLuxe product cards.
 
+**Image rule:** Product images in ShopItem cards must always be de-etched product shots — the product on a neutral or transparent background, outside its retail packaging. Never use retail box or packaging shots. This applies to all product cards site-wide.
+
 ## Category page order
 
 Articles appear on category pages sorted newest-first by `date_published`. The "first 12 stories" on each page are the 12 most recent articles by date.

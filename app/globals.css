@@ -17,6 +17,8 @@
 :root {
   --font-serif: 'EB Garamond', Georgia, serif;
   --font-sans:  'Hanken Grotesk', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-numeral: 'Italiana', Georgia, serif;
 }
 
 @layer base {
@@ -31,8 +33,8 @@
 
   /* Editorial typography — serif body, sans navigation */
   h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight; }
-  h2 { @apply font-serif text-2xl md:text-3xl lg:text-4xl leading-tight; }
-  h3 { @apply font-serif text-xl md:text-2xl leading-snug; }
+  h2 { @apply font-display text-2xl md:text-3xl lg:text-4xl leading-tight font-medium; }
+  h3 { @apply font-display text-xl md:text-2xl leading-snug font-normal; }
   h4 { @apply font-sans text-xs tracking-[0.34em] uppercase; }
 
   p  { @apply font-serif text-base md:text-lg leading-relaxed; }
