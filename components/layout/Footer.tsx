@@ -23,6 +23,8 @@ const FOOTER_NAV = [
   { label: 'Exclusive Offers', href: '/offers' },
   { label: 'Shipping Policy', href: '/shop/shipping' },
   { label: 'Refund Policy', href: '/shop/refund-policy' },
+  { label: 'Partner With Us', href: '/shop/partners' },
+  { label: 'Suggest a Brand', href: '/shop/suggest' },
   { label: 'Contact', href: '/contact' },
 ]
 

@@ -197,6 +197,10 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
                 />
               ))}
             </div>
+            <p className="mt-6 font-serif text-charcoal-light/60 text-sm">
+              Not finding what you&apos;re after?{' '}
+              <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>
+            </p>
           </div>
         )}
 

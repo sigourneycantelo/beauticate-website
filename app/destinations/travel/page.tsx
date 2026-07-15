@@ -2,6 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { getArticlesByTravelType, getArticlesByFeeling, getArticlesBySubcategory } from '@/lib/content'
 import DuoStagger from '@/components/home/DuoStagger'
+import DuoLeft from '@/components/home/DuoLeft'
+import InsidersBar from '@/components/home/InsidersBar'
+import TravelSuggestBox from '@/components/travel/TravelSuggestBox'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -64,6 +67,35 @@ function TravelCard({ article, tall }: { article: any; tall?: boolean }) {
   )
 }
 
+function FeelingStrip({ feeling }: { feeling: typeof FEELINGS[number] }) {
+  const articles = getArticlesByFeeling(feeling.slug).slice(0, 3)
+  if (!articles.length) return null
+  return (
+    <section className="pt-5 pb-[66px]">
+      <div className="max-w-[1240px] mx-auto px-8">
+        <p className="font-sans text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#A8735A' }}>
+          {feeling.sub}
+        </p>
+        <div className="flex items-baseline justify-between mb-[26px]">
+          <h2 className="font-serif font-medium text-[34px] tracking-[0.01em]">{feeling.title}</h2>
+          <Link
+            href={`/destinations/travel/feeling/${feeling.slug}`}
+            className="font-sans text-xs tracking-[0.14em] uppercase"
+            style={{ color: '#6E655A' }}
+          >
+            See all
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {articles.map(a => (
+            <TravelCard key={a!.frontmatter.slug} article={a} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function TravelPage() {
   const allTravel = getArticlesBySubcategory('destinations', 'travel')
     .filter(a => !!a)
@@ -74,7 +106,7 @@ export default function TravelPage() {
 
   const recentEditorial = allTravel
     .filter(a => a?.frontmatter.slug !== heroArticle?.frontmatter.slug)
-    .slice(0, 5)
+    .slice(0, 7)
 
   const hf = heroArticle?.frontmatter
   const heroImage = hf?.hero_image ?? hf?.featured_image
@@ -197,6 +229,35 @@ export default function TravelPage() {
         <DuoStagger big={recentEditorial[3] as any} small={recentEditorial[4] as any} />
       )}
 
+      {/* FEELING STRIP 1 — Girls trip */}
+      <FeelingStrip feeling={FEELINGS[0]} />
+
+      {/* FEELING STRIP 2 — Reset & heal */}
+      <FeelingStrip feeling={FEELINGS[1]} />
+
+      {/* SUBSCRIBE */}
+      <InsidersBar />
+
+      {/* FEELING STRIP 3 — Switch off */}
+      <FeelingStrip feeling={FEELINGS[2]} />
+
+      {/* DUO LEFT — articles 6 & 7 */}
+      {recentEditorial.length >= 7 && (
+        <DuoLeft articles={[recentEditorial[5] as any, recentEditorial[6] as any]} />
+      )}
+
+      {/* FEELING STRIP 4 — City */}
+      <FeelingStrip feeling={FEELINGS[3]} />
+
+      {/* SUGGEST BOX */}
+      <TravelSuggestBox />
+
+      {/* FEELING STRIP 5 — Family */}
+      <FeelingStrip feeling={FEELINGS[4]} />
+
+      {/* FEELING STRIP 6 — Romantic */}
+      <FeelingStrip feeling={FEELINGS[5]} />
+
       {/* SIG'S TRAVEL EDITS — 3 across */}
       {sigsEdits.length > 0 && (
         <section className="pt-5 pb-[66px]">
@@ -222,36 +283,6 @@ export default function TravelPage() {
           </div>
         </section>
       )}
-
-      {/* FEELING HIGHLIGHT STRIPS — 3 per feeling */}
-      {FEELINGS.map(f => {
-        const articles = getArticlesByFeeling(f.slug).slice(0, 3)
-        if (!articles.length) return null
-        return (
-          <section key={f.slug} className="pt-5 pb-[66px]">
-            <div className="max-w-[1240px] mx-auto px-8">
-              <p className="font-sans text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#A8735A' }}>
-                {f.sub}
-              </p>
-              <div className="flex items-baseline justify-between mb-[26px]">
-                <h2 className="font-serif font-medium text-[34px] tracking-[0.01em]">{f.title}</h2>
-                <Link
-                  href={`/destinations/travel/feeling/${f.slug}`}
-                  className="font-sans text-xs tracking-[0.14em] uppercase"
-                  style={{ color: '#6E655A' }}
-                >
-                  See all
-                </Link>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {articles.map(a => (
-                  <TravelCard key={a!.frontmatter.slug} article={a} />
-                ))}
-              </div>
-            </div>
-          </section>
-        )
-      })}
 
       {/* CROSS BAND — DIRECTORY LINK */}
       <section className="pt-5 pb-[66px]">

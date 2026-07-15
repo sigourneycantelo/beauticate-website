@@ -153,9 +153,25 @@
 }
 .story-dot {
   position: absolute; left: -1.85rem; top: 5px; width: 11px; height: 11px;
-  border-radius: 9999px; background: #7a2733; box-shadow: 0 0 0 4px #F9FAFB;
+  border-radius: 9999px; background: #7a2733; box-shadow: 0 0 0 4px #FBF9F4;
 }
 .story-fade { display: none; }
+.milestone-img {
+  position: relative; width: 100%; aspect-ratio: 4/3; border-radius: 6px;
+  overflow: hidden; margin-bottom: 1rem; background: #efece6;
+}
+.story-rail-wrap { position: relative; }
+.story-arrow {
+  display: none; position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; width: 36px; height: 36px; border-radius: 9999px;
+  background: rgba(255,255,255,.9); border: 1px solid rgba(28,26,23,.1);
+  color: #2a2621; cursor: pointer; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .25s ease; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.story-arrow.is-visible { opacity: 1; }
+.story-arrow:hover { background: #fff; border-color: rgba(28,26,23,.2); }
+.story-arrow--left { left: -4px; }
+.story-arrow--right { right: -4px; }
 
 /* Reveal state — only applied once JS is present, so no-JS shows everything. */
 .story--js .milestone { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
@@ -163,14 +179,18 @@
 .story--js.is-shown .story-line { transform: scaleY(1); }
 
 @media (min-width: 768px) {
-  .story-rail { overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: .5rem; }
+  .story-rail { overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: .5rem;
+    scrollbar-width: none; -ms-overflow-style: none; }
+  .story-rail::-webkit-scrollbar { display: none; }
   .story-track { flex-direction: row; gap: 0; }
-  .milestone { flex: 0 0 clamp(220px, 24vw, 282px); scroll-snap-align: start; padding-left: 0; padding-right: 2rem; padding-top: 2.9rem; }
+  .milestone { flex: 0 0 clamp(240px, 26vw, 300px); scroll-snap-align: start; padding-left: 0; padding-right: 2rem; padding-top: 2.9rem; }
   .story-line { left: 0; right: 0; top: 13px; bottom: auto; width: auto; height: 2px; transform: scaleX(0); transform-origin: left; }
   .story--js.is-shown .story-line { transform: scaleX(1); }
   .story-dot { left: 0; top: 8px; }
   .story-fade { display: block; position: absolute; top: 0; right: -1px; width: 56px; height: 100%; pointer-events: none;
-    background: linear-gradient(to right, rgba(249, 250, 251, 0), #F9FAFB); }
+    background: linear-gradient(to right, rgba(251, 249, 244, 0), #FBF9F4); }
+  .story-arrow { display: flex; }
+  .milestone-img { aspect-ratio: 3/2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
