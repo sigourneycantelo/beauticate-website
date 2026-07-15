@@ -30,7 +30,6 @@ interface ShopItemProps {
  * no hover state.
  */
 export function ShopItem({ image, alt, name, price, url, handle, brand, retailer, follow, cover }: ShopItemProps) {
-  // Our own product → internal link + "In our shop". Otherwise affiliate/external.
   const internal = !!handle
   const href = internal ? `/shop/products/${handle}` : url
   const detected = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
@@ -63,13 +62,32 @@ interface ShopGridProps {
 export function ShopGrid({ children }: ShopGridProps) {
   const count = Children.count(children)
   const cols = Math.min(count, 3)
+
+  if (cols === 1) {
+    return (
+      <div className="not-prose my-10 flex justify-center">
+        <div style={{ maxWidth: '420px', width: '100%' }}>
+          {children}
+        </div>
+      </div>
+    )
+  }
+
+  const is3up = cols === 3
+
   return (
-    <div className="not-prose my-10 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0 md:overflow-visible">
+    <div className={`not-prose my-10 ${is3up ? '-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0 sm:overflow-visible snap-x snap-mandatory sm:snap-none' : ''}`}>
       <div
-        className="grid gap-[clamp(16px,2vw,28px)]"
-        style={{ gridTemplateColumns: `repeat(${cols}, minmax(200px, 1fr))` }}
+        className={is3up ? 'flex gap-4 sm:grid sm:grid-cols-3 sm:gap-4' : 'grid gap-5'}
+        style={is3up ? undefined : { gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
-        {children}
+        {is3up
+          ? Children.map(children, (child) => (
+              <div className="flex-none w-[70vw] snap-start sm:w-auto sm:flex-auto">
+                {child}
+              </div>
+            ))
+          : children}
       </div>
     </div>
   )
