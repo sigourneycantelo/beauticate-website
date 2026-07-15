@@ -27,7 +27,11 @@ export function resolveSchemaType(f: ArticleFrontmatter): SchemaType {
   const title = f.title.toLowerCase()
   const category = (f.category ?? '').toLowerCase()
   const subcategory = (f.subcategory ?? '').toLowerCase()
-  const isReview = tags.includes('review') || title.includes('review') || title.includes('we tried') || title.includes('we visited')
+  const isReview = tags.includes('review') || title.includes('review') ||
+    title.includes('we tried') || title.includes('i tried') ||
+    title.includes('we visited') || title.includes('we tested') || title.includes('i tested') ||
+    /road.test/.test(title) || title.includes('we put') || title.includes('beauty on trial') ||
+    title.includes('tried and tested') || f.review_rating != null
   // Review beats NewsArticle — a hotel review is a review, not news
   if (isReview) return 'Review'
   // NewsArticle: explicitly flagged, or interviews, travel/destinations, news/trending tags
@@ -123,6 +127,7 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
             bestRating: '5',
             worstRating: '1',
           },
+          reviewBody: f.meta_description ?? f.excerpt,
           ...(f.review_pros?.length ? {
             positiveNotes: {
               '@type': 'ItemList',
