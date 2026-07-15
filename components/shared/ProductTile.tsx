@@ -36,15 +36,14 @@ export default function ProductTile({
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain p-6'
-  const blend = cover ? undefined : ({ mixBlendMode: 'multiply' } as const)
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
     return useNextImage ? (
-      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} style={blend} />
+      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt} className={cls} style={blend} />
+      <img src={src} alt={alt} className={cls} />
     )
   }
 
