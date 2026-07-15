@@ -10,6 +10,10 @@ interface Props {
   afterAlt?: string
   beforeLabel?: string
   afterLabel?: string
+  beforeFocus?: string
+  afterFocus?: string
+  beforeScale?: string | number
+  afterScale?: string | number
 }
 
 export default function BeforeAfterSlider({
@@ -19,6 +23,10 @@ export default function BeforeAfterSlider({
   afterAlt = 'After',
   beforeLabel = 'Before',
   afterLabel = 'After',
+  beforeFocus,
+  afterFocus,
+  beforeScale,
+  afterScale,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState(50)
@@ -56,6 +64,11 @@ export default function BeforeAfterSlider({
     dragging.current = false
   }, [])
 
+  const bfPos = beforeFocus ?? 'center'
+  const afPos = afterFocus ?? 'center'
+  const bfScale = typeof beforeScale === 'string' ? parseFloat(beforeScale) : (beforeScale ?? 1)
+  const afScale = typeof afterScale === 'string' ? parseFloat(afterScale) : (afterScale ?? 1)
+
   return (
     <div className="not-prose my-10 w-full max-w-[680px] mx-auto">
       <div
@@ -66,26 +79,38 @@ export default function BeforeAfterSlider({
         onPointerUp={onPointerUp}
       >
         {/* After image — full background */}
-        <Image
-          src={after}
-          alt={afterAlt}
-          fill
-          sizes="(max-width: 768px) 100vw, 680px"
-          className="object-cover"
-        />
+        <div
+          className="absolute inset-0"
+          style={afScale !== 1 ? { transform: `scale(${afScale})` } : undefined}
+        >
+          <Image
+            src={after}
+            alt={afterAlt}
+            fill
+            sizes="(max-width: 768px) 100vw, 680px"
+            style={{ objectFit: 'cover', objectPosition: afPos }}
+          />
+        </div>
 
         {/* Before image — clipped by slider */}
         <div
           className="absolute inset-0 overflow-hidden"
           style={{ width: `${position}%` }}
         >
-          <div className="relative" style={{ width: width || '100vw', height: '100%' }}>
+          <div
+            className="relative"
+            style={{
+              width: width || '100vw',
+              height: '100%',
+              transform: bfScale !== 1 ? `scale(${bfScale})` : undefined,
+            }}
+          >
             <Image
               src={before}
               alt={beforeAlt}
               fill
               sizes="(max-width: 768px) 100vw, 680px"
-              className="object-cover"
+              style={{ objectFit: 'cover', objectPosition: bfPos }}
             />
           </div>
         </div>
