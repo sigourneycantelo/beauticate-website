@@ -35,22 +35,23 @@ export default function ProductTile({
   cornerLabel, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
-  const fit = cover ? 'object-cover' : 'object-contain p-6'
+  const fit = cover ? 'object-cover' : 'object-contain p-4'
+  const blend = (cover || useNextImage) ? undefined : ({ mixBlendMode: 'multiply' } as const)
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
     return useNextImage ? (
-      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} />
+      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} style={blend} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt} className={cls} />
+      <img src={src} alt={alt} className={cls} style={blend} />
     )
   }
 
   const inner = (
     <>
       {/* Image area — greige for de-etched, full-bleed for lifestyle */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-tile rounded-lg">
+      <div className="relative aspect-[3/4] overflow-hidden bg-tile">
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
@@ -61,7 +62,7 @@ export default function ProductTile({
         {secondarySrc && renderImg(secondarySrc, secondaryAlt, 'opacity-0 transition-opacity duration-500 group-hover:opacity-100')}
 
         {cornerLabel && (
-          <span className="absolute top-3 left-3 font-sans text-[11px] tracking-[0.06em] uppercase font-semibold z-10" style={{ color: '#7A7570' }}>
+          <span className="absolute top-3 left-3 font-sans text-[8.5px] tracking-[0.16em] uppercase font-semibold opacity-50 z-10">
             {cornerLabel}
           </span>
         )}
@@ -75,7 +76,7 @@ export default function ProductTile({
       {!hideMeta && (
         <div className="bg-white pt-3 pb-1">
           {brand && (
-            <p className="font-sans text-[12px] tracking-[0.06em] uppercase font-semibold mb-1" style={{ color: '#7A7570' }}>
+            <p className="font-sans text-[10.5px] tracking-[0.22em] uppercase font-semibold opacity-60 mb-1">
               {brand}
             </p>
           )}
@@ -83,7 +84,7 @@ export default function ProductTile({
             {name}
           </h3>
           {price && (
-            <p className="font-serif text-[16px] mt-1" style={{ color: '#1A1A1A' }}>
+            <p className="font-serif text-[13px] opacity-65 mt-1">
               {price}
               {priceSuffix && <span className="italic opacity-80">{priceSuffix}</span>}
             </p>
