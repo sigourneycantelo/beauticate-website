@@ -170,21 +170,19 @@ export default function VodcastPage() {
 
       {/* ===== 2 · HERO (latest episode) ===== */}
       <section className={styles.hero} id="hero">
-        <Link href={heroHref} aria-label={heroF?.title ?? 'Latest episode'}>
-          <div className={styles.heroImg}>
-            {heroF && (
-              <Image
-                src={episodeImage(heroF.featured_image)}
-                alt={heroF.featured_image_alt ?? heroF.title}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-                style={{ objectPosition: heroF.hero_focus ?? '50% 20%' }}
-              />
-            )}
-          </div>
-        </Link>
+        <div className={styles.heroImg}>
+          {heroF && (
+            <Image
+              src={episodeImage(heroF.featured_image)}
+              alt={heroF.featured_image_alt ?? heroF.title}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: heroF.hero_focus ?? '50% 20%' }}
+            />
+          )}
+        </div>
         <div className={styles.heroScrim} />
 
         <div className={styles.heroRating}>

@@ -154,10 +154,12 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   const pathname = usePathname()
   const isShop = pathname?.startsWith('/shop') ?? false
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [drawer, setDrawer] = useState(false)
   const [openKey, setOpenKey] = useState<string | null>(null)
   const [megaHidden, setMegaHidden] = useState(false)
   const tick = useRef(false)
+  const lastY = useRef(0)
 
   useEffect(() => {
     const onScroll = () => {
@@ -166,6 +168,15 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
       requestAnimationFrame(() => {
         const y = window.scrollY
         setScrolled(prev => (prev ? y > 10 : y > 64))
+        const delta = y - lastY.current
+        if (y <= 200) {
+          setHidden(false)
+        } else if (delta > 8) {
+          setHidden(true)
+        } else if (delta < -8) {
+          setHidden(false)
+        }
+        lastY.current = y
         tick.current = false
       })
     }
@@ -191,7 +202,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   }
 
   return (
-    <header className={`mh${scrolled ? ' mh-scrolled' : ''}${megaHidden ? ' mh-closing' : ''}`}>
+    <header className={`mh${scrolled ? ' mh-scrolled' : ''}${hidden ? ' mh-hidden' : ''}${megaHidden ? ' mh-closing' : ''}`}>
       {/* Utility tier */}
       <div className="mh-utility">
         <div className="mh-util-left">
