@@ -72,7 +72,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
     >
       <style>{`
         .hero-carousel { aspect-ratio: 3/5; transition: aspect-ratio .6s ease; }
-        @media (min-width: 768px) { .hero-carousel { aspect-ratio: ${activeAspect || '12/5'}; min-height: 420px; } }
+        @media (min-width: 768px) { .hero-carousel { aspect-ratio: 12/5; min-height: 420px; } }
         .hero-slide {
           position: absolute; inset: 0;
           opacity: 0; transition: opacity 1s ease;
