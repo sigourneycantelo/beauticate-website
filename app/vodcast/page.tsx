@@ -86,14 +86,14 @@ function trim(excerpt: string | undefined, max = 110): string | undefined {
 }
 
 // ── Curated marquee guest order ─────────────────────────────────────────────
-const CURATED_GUESTS: { name: string; role: string; slug: string }[] = [
-  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep' },
+const CURATED_GUESTS: { name: string; role: string; slug: string; focus?: string }[] = [
+  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep', focus: '50% 30%' },
   { name: 'Trinny Woodall', role: 'Founder · Trinny London', slug: 'trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up' },
-  { name: 'Celeste Barber', role: 'Comedian & writer', slug: 'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media' },
+  { name: 'Celeste Barber', role: 'Comedian & writer', slug: 'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', focus: '55% 15%' },
   { name: 'Gabby Bernstein', role: 'Author & speaker', slug: 'gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream' },
-  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth' },
-  { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame' },
-  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion' },
+  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', focus: '45% 20%' },
+  { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame', focus: '65% 20%' },
+  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion', focus: '50% 30%' },
   { name: 'Susan Yara', role: 'Founder · Naturium', slug: 'susan-yara-on-reinvention-resilience-and-rebuilding-trust' },
   { name: 'Tanya Ali Jalani', role: 'Breathwork facilitator', slug: 'tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing' },
   { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo' },
@@ -146,6 +146,7 @@ export default function VodcastPage() {
     role: g.role,
     href: `/vodcast/episodes/${g.slug}`,
     image: episodeImage(bySlug.get(g.slug)?.featured_image),
+    focus: g.focus,
   }))
 
   // Pull-quote breather: prefer a featured ep's pull_quote, else a curated line.
