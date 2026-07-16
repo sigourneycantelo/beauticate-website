@@ -2,7 +2,6 @@ import { getAllArticles, getHeroArticle, getHeroArticles, getVodcastEpisodes } f
 import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
-import DuoLeft from '@/components/home/DuoLeft'
 import ShopStrip from '@/components/home/ShopStrip'
 import DuoStagger from '@/components/home/DuoStagger'
 import TheCollective from '@/components/shared/TheCollective'
@@ -32,7 +31,6 @@ export default async function HomePage() {
   }).slice(0, 12)
   const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
 
-  // Rolling de-dupe — no article appears twice on the home page
   const shownSlugs = new Set<string>()
 
   function take(n: number) {
@@ -43,12 +41,11 @@ export default async function HomePage() {
 
   const heroArticles = getHeroArticles()
   heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
-  const duoLeftArticles = take(2)
-  const [bigArticle, smallArticle] = take(2)
+  const earlyTrioArticles = take(3)
   const trio1Articles = take(3)
+  const [bigArticle, smallArticle] = take(2)
   const [splitArticle] = take(1)
   const trio2Articles = take(3)
-  const trio3Articles = take(3)
 
   return (
     <>
@@ -61,6 +58,9 @@ export default async function HomePage() {
       {/* 3 — Shop by Category */}
       <ShopByCategory />
 
+      {/* 3a — Early story grid of three */}
+      {earlyTrioArticles.length > 0 && <StoriesTrio articles={earlyTrioArticles as any} />}
+
       {/* 4 — Voices line */}
       <TheCollective />
 
@@ -71,41 +71,34 @@ export default async function HomePage() {
       <SectionTitle eyebrow="Editorial" title="Must-read stories" italic="stories" />
       {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
 
-      {/* 7 — Subscribe */}
-      <InsidersBar />
-
-      {/* 8 — Asymmetric two-story block */}
+      {/* 7 — Asymmetric two-story block */}
       {bigArticle && smallArticle && (
         <DuoStagger big={bigArticle as any} small={smallArticle as any} />
       )}
 
-      {/* 9 — Podcast */}
+      {/* 8 — Podcast */}
       <PodcastSection episodes={vodcastEpisodes} />
 
-      {/* 10 — Single highlighted article */}
+      {/* 9 — Single highlighted article */}
       {splitArticle && <HeroSplit article={splitArticle as any} />}
 
-      {/* 11 — Shop by Moment */}
+      {/* 10 — Shop by Moment */}
       <ShopByMoment />
 
-      {/* 12 — Articles worth your time */}
+      {/* 10a — Subscribe */}
+      <InsidersBar />
+
+      {/* 11 — Articles worth your time */}
       <SectionTitle eyebrow="Keep reading" title="Articles worth your time" italic="your time" />
       {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
 
-      {/* 13 — Two stories */}
-      {duoLeftArticles.length > 0 && <DuoLeft articles={duoLeftArticles as any} />}
-
-      {/* 14 — More to explore */}
-      <SectionTitle eyebrow="Editorial" title="More to explore" italic="explore" />
-      {trio3Articles.length > 0 && <StoriesTrio articles={trio3Articles as any} />}
-
-      {/* 15 — Instagram feed */}
+      {/* 12 — Instagram feed */}
       <InstagramFeed />
 
       {/* Explore all link */}
       <div
         className="text-center"
-        style={{ padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)' }}
+        style={{ padding: 'clamp(32px,4vw,52px) clamp(20px,6vw,104px)' }}
       >
         <a
           href="/beauty-style"

@@ -19,7 +19,7 @@ export default function InsidersBar() {
       className="text-center"
       style={{
         background: '#FFFFFF',
-        padding: 'clamp(34px,4vw,52px) clamp(20px,6vw,104px)',
+        padding: 'clamp(24px,3vw,40px) clamp(20px,6vw,104px)',
       }}
     >
       <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(22px,2.6vw,32px)' }}>

@@ -26,7 +26,7 @@ export default function InstagramFeed() {
   return (
     <section
       className="reveal text-center"
-      style={{ padding: 'clamp(48px,6vw,84px) clamp(20px,6vw,104px)' }}
+      style={{ padding: 'clamp(32px,4vw,52px) clamp(20px,6vw,104px)' }}
     >
       <span
         className="block font-sans text-[11px] tracking-[0.34em] uppercase font-medium"

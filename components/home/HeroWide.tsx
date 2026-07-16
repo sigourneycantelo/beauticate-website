@@ -121,7 +121,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
             />
             <div
               className="absolute inset-0 z-[1]"
-              style={{ background: 'linear-gradient(to top,rgba(10,10,10,.88) 0%,rgba(10,10,10,.65) 30%,rgba(10,10,10,.3) 55%,rgba(10,10,10,.08) 80%,transparent 100%)' }}
+              style={{ background: 'linear-gradient(to top,rgba(10,10,10,.62) 0%,rgba(10,10,10,.38) 25%,rgba(10,10,10,.14) 50%,transparent 75%)' }}
             />
             <div
               className="absolute bottom-0 left-0 right-0 z-10 text-white text-left"

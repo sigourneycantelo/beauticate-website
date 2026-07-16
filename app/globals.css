@@ -235,8 +235,8 @@
 .mh-wordmark-group{ justify-self:center; display:flex; flex-direction:column; align-items:center; padding:14px 0 10px; }
 .mh-wordmark{ display:flex; align-items:center; }
 .mh-strapline{
-  font-family:var(--font-serif); font-size:14.5px; font-weight:400; font-style:italic; letter-spacing:.01em;
-  color:var(--mh-ink); opacity:.65; margin-top:2px; white-space:nowrap;
+  font-family:var(--font-serif); font-size:clamp(16px,1.8vw,20px); font-weight:400; font-style:italic; letter-spacing:.02em;
+  color:var(--mh-ink); opacity:.72; margin-top:4px; white-space:nowrap;
 }
 .mh-logo{ display:block; width:auto; }
 .mh-logo-lg{ height:24px; }
@@ -533,6 +533,7 @@
 .ptb-trust{
   font-family:var(--font-sans); font-size:11px; font-weight:600;
   letter-spacing:.2em; text-transform:uppercase; color:#1C1A17;
+  margin-top:clamp(16px,2vw,26px);
 }
 .ptb-trust a{ transition:color .2s; }
 .ptb-trust a:hover{ color:#7a2733; }

@@ -46,7 +46,7 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
           </span>
         )}
       </div>
-      <h4 className="font-serif font-normal leading-[1.25] mt-3" style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: '#1C1A17' }}>
+      <h4 className="font-serif font-normal leading-[1.25] mt-3" style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: '#1C1A17', textTransform: 'none', letterSpacing: 'normal' }}>
         {f.title}
       </h4>
     </a>
@@ -63,7 +63,7 @@ export default function PodcastSection({ episodes }: Props) {
       className="reveal"
       style={{
         background: '#E8E3DB',
-        padding: 'clamp(46px,6vw,78px) clamp(20px,6vw,104px)',
+        padding: 'clamp(32px,4vw,52px) clamp(20px,6vw,104px)',
       }}
     >
       {/* Header */}

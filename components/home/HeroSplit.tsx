@@ -26,7 +26,7 @@ export default function HeroSplit({ article }: { article: Article }) {
       className="reveal grid grid-cols-1 md:grid-cols-[1.05fr_1fr] items-center"
       style={{
         gap: 'clamp(30px,5vw,80px)',
-        padding: 'clamp(34px,5vw,70px) clamp(20px,6vw,104px)',
+        padding: 'clamp(28px,4vw,52px) clamp(20px,6vw,104px)',
       }}
     >
       {/* Image */}

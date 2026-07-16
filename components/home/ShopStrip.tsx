@@ -40,7 +40,7 @@ export default function ShopStrip({ products }: { products: ShopifyProduct[] }) 
   return (
     <section
       className="reveal"
-      style={{ padding: 'clamp(46px,6vw,78px) clamp(20px,6vw,104px)' }}
+      style={{ padding: 'clamp(32px,4vw,52px) clamp(20px,6vw,104px)' }}
     >
       <div className="text-center mb-8">
         <p
