@@ -87,16 +87,17 @@ function trim(excerpt: string | undefined, max = 110): string | undefined {
 
 // ── Curated marquee guest order ─────────────────────────────────────────────
 const CURATED_GUESTS: { name: string; role: string; slug: string; focus?: string }[] = [
-  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep', focus: '50% 30%' },
+  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep', focus: '45% 15%' },
   { name: 'Trinny Woodall', role: 'Founder · Trinny London', slug: 'trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up' },
   { name: 'Celeste Barber', role: 'Comedian & writer', slug: 'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', focus: '55% 15%' },
   { name: 'Gabby Bernstein', role: 'Author & speaker', slug: 'gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream' },
-  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', focus: '45% 20%' },
+  { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo', focus: '55% 25%' },
   { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame', focus: '65% 20%' },
-  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion', focus: '50% 30%' },
+  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion', focus: '55% 10%' },
   { name: 'Susan Yara', role: 'Founder · Naturium', slug: 'susan-yara-on-reinvention-resilience-and-rebuilding-trust' },
   { name: 'Tanya Ali Jalani', role: 'Breathwork facilitator', slug: 'tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing' },
-  { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo' },
+  { name: 'Davinia Taylor', role: 'Author & biohacker', slug: 'davinia-taylor-on-alcohol-addiction-mental-health', focus: '55% 20%' },
+  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', focus: '45% 20%' },
 ]
 
 const APPLE_ICON = (
@@ -138,6 +139,17 @@ export default function VodcastPage() {
   const present = new Set<string>()
   pool.forEach(ep => ep.themes.forEach(t => present.add(t)))
   const pills = ['All', ...THEMES.filter(t => present.has(t))]
+
+  // Build deduplicated theme pools: once an episode appears under an earlier
+  // theme (left-to-right in the pill bar), it won't repeat in later ones.
+  const claimed = new Set<string>()
+  const themePools: Record<string, ArchiveEpisode[]> = { All: pool }
+  for (const theme of pills) {
+    if (theme === 'All') continue
+    const unique = pool.filter(ep => ep.themes.includes(theme) && !claimed.has(ep.slug))
+    themePools[theme] = unique
+    unique.forEach(ep => claimed.add(ep.slug))
+  }
 
   // Resolve curated guest list against the episodes, skipping any not found.
   const bySlug = new Map(episodes.map(ep => [ep.frontmatter.slug, ep.frontmatter]))
@@ -250,7 +262,7 @@ export default function VodcastPage() {
       <GuestRail styles={styles} guests={guests} />
 
       {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
-      <ThemeArchive styles={styles} pool={pool} pills={pills} quote={quote} />
+      <ThemeArchive styles={styles} pool={pool} pills={pills} quote={quote} themePools={themePools} />
 
       {/* ===== 8 · CURATOR.IO STRIP ===== */}
       <CuratorFeed styles={styles} />
