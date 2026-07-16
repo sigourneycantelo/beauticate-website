@@ -67,13 +67,12 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
   return (
     <section
       className="hero-carousel relative overflow-hidden max-w-[1200px] mx-auto"
-      style={activeAspect ? { aspectRatio: activeAspect } as React.CSSProperties : undefined}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
       <style>{`
-        .hero-carousel { aspect-ratio: 4/5; transition: aspect-ratio .6s ease; }
-        @media (min-width: 768px) { .hero-carousel { aspect-ratio: 12/5; min-height: 420px; } }
+        .hero-carousel { aspect-ratio: 3/5; transition: aspect-ratio .6s ease; }
+        @media (min-width: 768px) { .hero-carousel { aspect-ratio: ${activeAspect || '12/5'}; min-height: 420px; } }
         .hero-slide {
           position: absolute; inset: 0;
           opacity: 0; transition: opacity 1s ease;
@@ -125,20 +124,21 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
             />
             <div
               className="absolute bottom-0 left-0 right-0 z-10 text-white text-left"
-              style={{ width: 'min(840px,92%)', margin: '0 auto', paddingBottom: 'clamp(40px,6vw,80px)' }}
+              style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(28px,5vw,80px)' }}
             >
               <span
-                className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3.5 font-medium"
+                className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3 font-medium"
                 style={{ color: 'rgba(255,255,255,.85)' }}
               >
                 {eyebrow}
               </span>
               <h2
-                className="font-serif font-normal leading-[1.08] whitespace-nowrap"
+                className="font-serif font-normal leading-[1.12]"
                 style={{
-                  fontSize: 'clamp(20px,2.8vw,38px)',
+                  fontSize: 'clamp(22px,2.8vw,38px)',
                   letterSpacing: '-.01em',
                   textShadow: '0 1px 20px rgba(0,0,0,.35)',
+                  maxWidth: '20ch',
                 }}
               >
                 {heroTitle}
