@@ -37,6 +37,7 @@ const VENUE_TYPES = [
   { value: 'bathhouse', label: 'Bathhouses' },
   { value: 'retreat', label: 'Retreats' },
   { value: 'hotel', label: 'Hotels' },
+  { value: 'wellness', label: 'Wellness' },
 ] as const
 
 const TYPE_LABELS: Record<string, string> = {
@@ -46,6 +47,7 @@ const TYPE_LABELS: Record<string, string> = {
   bathhouse: 'Bathhouse',
   retreat: 'Retreat',
   hotel: 'Hotel',
+  wellness: 'Wellness',
 }
 
 function venueHref(v: Venue) {

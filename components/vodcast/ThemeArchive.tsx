@@ -33,20 +33,25 @@ export default function ThemeArchive({
   pool,
   pills,
   quote,
+  themePools,
 }: {
   styles: Styles
   pool: ArchiveEpisode[]
   pills: string[]
   quote: QuoteBreather
+  themePools?: Record<string, ArchiveEpisode[]>
 }) {
   const [active, setActive] = useState('All')
   const [visible, setVisible] = useState(BATCH)
 
-  // Filter the whole pool by the selected theme — the highlighted pair AND the
-  // grids below are derived from this, so choosing a theme updates everything.
+  // Use the deduplicated theme pool when available (episodes claimed by an
+  // earlier theme are excluded), falling back to the simple filter.
   const filtered = useMemo(
-    () => (active === 'All' ? pool : pool.filter(ep => ep.themes.includes(active))),
-    [pool, active]
+    () => {
+      if (themePools && active !== 'All' && themePools[active]) return themePools[active]
+      return active === 'All' ? pool : pool.filter(ep => ep.themes.includes(active))
+    },
+    [pool, active, themePools]
   )
 
   const pair = filtered.slice(0, 2)

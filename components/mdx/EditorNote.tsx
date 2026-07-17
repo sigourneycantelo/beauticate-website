@@ -36,7 +36,7 @@ export default function EditorNote({
 
   return (
     <aside className="not-prose my-12 border border-cream-200 bg-parchment p-6 sm:p-8">
-      <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-terracotta mb-3">
+      <p className="font-sans text-[11px] tracking-[0.3em] uppercase text-wine mb-3">
         {label}
       </p>
       <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
@@ -70,7 +70,7 @@ export default function EditorNote({
             {productPrice && (
               <p className="font-sans text-xs text-charcoal-light mt-0.5">{productPrice}</p>
             )}
-            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-terracotta mt-1.5">
+            <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-wine mt-1.5">
               {shopLabel}
             </p>
           </a>

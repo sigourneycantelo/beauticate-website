@@ -11,6 +11,7 @@ export interface Guest {
   role: string
   image?: string
   href: string
+  focus?: string
 }
 
 export default function GuestRail({
@@ -63,6 +64,7 @@ export default function GuestRail({
                   fill
                   sizes="(max-width: 768px) 60vw, 260px"
                   className="object-cover"
+                  style={g.focus ? { objectPosition: g.focus } : undefined}
                 />
               )}
             </div>
