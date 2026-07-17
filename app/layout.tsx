@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, Hanken_Grotesk, Playfair_Display } from 'next/font/google'
+import { EB_Garamond, Hanken_Grotesk, Italiana } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import MastheadData from '@/components/layout/MastheadData'
@@ -13,13 +13,12 @@ const ebGaramond = EB_Garamond({
   style: ['normal', 'italic'],
 })
 
-// Playfair Display — display numerals (NumberedSection)
-const playfairDisplay = Playfair_Display({
+// Italiana — display numerals (NumberedSection)
+const italiana = Italiana({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400'],
 })
 
 // Hanken Grotesk — eyebrows, breadcrumbs, nav, tags, buttons
@@ -116,7 +115,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable} ${playfairDisplay.variable}`}>
+    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable} ${italiana.variable}`}>
       <body>
         <Script
           id="schema-org"
