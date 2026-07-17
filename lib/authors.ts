@@ -526,6 +526,198 @@ const AUTHORS: Author[] = [
       'https://www.instagram.com/abigailoneill/',
     ],
   },
+  {
+    name: 'Beauticate Editorial',
+    slug: 'beauticate-editorial',
+    role: 'Editorial Team',
+    sameAs: [
+      `${SITE_URL}/about-beauticate`,
+    ],
+  },
+  {
+    name: 'Samantha Blanchfield',
+    slug: 'samantha-blanchfield',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Catherine Barnes',
+    slug: 'catherine-barnes',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Mariah Bovee',
+    slug: 'mariah-bovee',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Sarina Zoe',
+    slug: 'sarina-zoe',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Libby Moffet',
+    slug: 'libby-moffet',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Emily Dee',
+    slug: 'emily-dee',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Faarah Ameerally',
+    slug: 'faarah-ameerally',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Emma Trimbur',
+    slug: 'emma-trimbur',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Annie Lin',
+    slug: 'annie-lin',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Nicola Donovan',
+    slug: 'nicola-donovan',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Velvet Garvey',
+    slug: 'velvet-garvey',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Sarah Jagger',
+    slug: 'sarah-jagger',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Canna Campbell',
+    slug: 'canna-campbell',
+    role: 'Finance & Lifestyle Writer',
+    instagram: 'https://www.instagram.com/sugarmamma.tv/',
+    sameAs: [
+      'https://www.instagram.com/sugarmamma.tv/',
+      'https://www.youtube.com/@SugarMammaTv',
+    ],
+  },
+  {
+    name: 'Jess Bowman',
+    slug: 'jess-bowman',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Lauren Rose Burke',
+    slug: 'lauren-rose-burke',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Jessica Sepel',
+    slug: 'jessica-sepel',
+    role: 'Nutrition & Wellness Expert',
+    instagram: 'https://www.instagram.com/jshealth/',
+    sameAs: [
+      'https://www.instagram.com/jshealth/',
+      'https://www.jshealth.com/',
+    ],
+  },
+  {
+    name: 'Josephine Taylor',
+    slug: 'josephine-taylor',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Bryce Anable',
+    slug: 'bryce-anable',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Natasha Ciesielski',
+    slug: 'natasha-ciesielski',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Gemma Dawkins',
+    slug: 'gemma-dawkins',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Grace Fernan',
+    slug: 'grace-fernan',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Angelica Xidias',
+    slug: 'angelica-xidias',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Julie Wakely',
+    slug: 'julie-wakely',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Jasmine Turvey',
+    slug: 'jasmine-turvey',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Shannon Carley',
+    slug: 'shannon-carley',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Sarah McLean',
+    slug: 'sarah-mclean',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Melinda Nanovsky',
+    slug: 'melinda-nanovsky',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Lyn Nguyen',
+    slug: 'lyn-nguyen',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Georgie Abay',
+    slug: 'georgie-abay',
+    role: 'Contributing Writer',
+    instagram: 'https://www.instagram.com/georgieabay/',
+    sameAs: [
+      'https://www.instagram.com/georgieabay/',
+    ],
+  },
+  {
+    name: 'Amy Verner',
+    slug: 'amy-verner',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Katarina Diquez',
+    slug: 'katarina-diquez',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Clara Williams Roldan',
+    slug: 'clara-williams-roldan',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Han Hye Jin',
+    slug: 'han-hye-jin',
+    role: 'Contributing Writer',
+  },
+  {
+    name: 'Sara Srochi',
+    slug: 'sara-srochi',
+    role: 'Contributing Writer',
+  },
 ]
 
 const INDEX = new Map(AUTHORS.map(a => [a.name.toLowerCase(), a]))

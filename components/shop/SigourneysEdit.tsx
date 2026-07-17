@@ -27,13 +27,18 @@ export default async function SigourneysEdit() {
 
       <EditCarousel products={products} />
 
-      <div className="text-center mt-10">
+      <div className="text-center mt-10 space-y-4">
         <Link
           href="/shop/collections/editors-essentials"
           className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase border border-ink px-7 py-3 rounded-[1px] hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Shop the edit
         </Link>
+        <p className="font-serif text-charcoal-light/60" style={{ fontSize: 'clamp(14px,1.4vw,16px)' }}>
+          <Link href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">
+            Tell us what we should be stocking
+          </Link>
+        </p>
       </div>
     </section>
   )

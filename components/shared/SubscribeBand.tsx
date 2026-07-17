@@ -34,10 +34,10 @@ export default function SubscribeBand() {
       ) : (
         <>
           <p className="font-serif text-[22px] leading-[1.35] text-charcoal mb-2">
-            The beauty edit, in your inbox.
+            The edit, in your inbox.
           </p>
           <p className="font-sans text-[11px] tracking-[0.18em] uppercase text-charcoal-light mb-7">
-            Expert picks, honest reviews, stories worth reading — weekly.
+            Beauty, fashion, wellness, living and destinations — weekly.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 max-w-sm mx-auto">
             <input

@@ -86,17 +86,18 @@ function trim(excerpt: string | undefined, max = 110): string | undefined {
 }
 
 // ── Curated marquee guest order ─────────────────────────────────────────────
-const CURATED_GUESTS: { name: string; role: string; slug: string }[] = [
-  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep' },
+const CURATED_GUESTS: { name: string; role: string; slug: string; focus?: string }[] = [
+  { name: 'Miranda Kerr', role: 'Founder · KORA Organics', slug: 'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep', focus: '45% 15%' },
   { name: 'Trinny Woodall', role: 'Founder · Trinny London', slug: 'trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up' },
-  { name: 'Celeste Barber', role: 'Comedian & writer', slug: 'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media' },
+  { name: 'Celeste Barber', role: 'Comedian & writer', slug: 'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', focus: '55% 15%' },
   { name: 'Gabby Bernstein', role: 'Author & speaker', slug: 'gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream' },
-  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth' },
-  { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame' },
-  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion' },
+  { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo', focus: '55% 25%' },
+  { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame', focus: '65% 20%' },
+  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion', focus: '55% 10%' },
   { name: 'Susan Yara', role: 'Founder · Naturium', slug: 'susan-yara-on-reinvention-resilience-and-rebuilding-trust' },
   { name: 'Tanya Ali Jalani', role: 'Breathwork facilitator', slug: 'tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing' },
-  { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo' },
+  { name: 'Davinia Taylor', role: 'Author & biohacker', slug: 'davinia-taylor-on-alcohol-addiction-mental-health', focus: '55% 20%' },
+  { name: 'Guy Sebastian', role: 'Musician', slug: 'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth', focus: '45% 20%' },
 ]
 
 const APPLE_ICON = (
@@ -139,6 +140,17 @@ export default function VodcastPage() {
   pool.forEach(ep => ep.themes.forEach(t => present.add(t)))
   const pills = ['All', ...THEMES.filter(t => present.has(t))]
 
+  // Build deduplicated theme pools: once an episode appears under an earlier
+  // theme (left-to-right in the pill bar), it won't repeat in later ones.
+  const claimed = new Set<string>()
+  const themePools: Record<string, ArchiveEpisode[]> = { All: pool }
+  for (const theme of pills) {
+    if (theme === 'All') continue
+    const unique = pool.filter(ep => ep.themes.includes(theme) && !claimed.has(ep.slug))
+    themePools[theme] = unique
+    unique.forEach(ep => claimed.add(ep.slug))
+  }
+
   // Resolve curated guest list against the episodes, skipping any not found.
   const bySlug = new Map(episodes.map(ep => [ep.frontmatter.slug, ep.frontmatter]))
   const guests: Guest[] = CURATED_GUESTS.filter(g => bySlug.has(g.slug)).map(g => ({
@@ -146,6 +158,7 @@ export default function VodcastPage() {
     role: g.role,
     href: `/vodcast/episodes/${g.slug}`,
     image: episodeImage(bySlug.get(g.slug)?.featured_image),
+    focus: g.focus,
   }))
 
   // Pull-quote breather: prefer a featured ep's pull_quote, else a curated line.
@@ -169,21 +182,19 @@ export default function VodcastPage() {
 
       {/* ===== 2 · HERO (latest episode) ===== */}
       <section className={styles.hero} id="hero">
-        <Link href={heroHref} aria-label={heroF?.title ?? 'Latest episode'}>
-          <div className={styles.heroImg}>
-            {heroF && (
-              <Image
-                src={episodeImage(heroF.featured_image)}
-                alt={heroF.featured_image_alt ?? heroF.title}
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover"
-                style={{ objectPosition: heroF.hero_focus ?? '50% 20%' }}
-              />
-            )}
-          </div>
-        </Link>
+        <div className={styles.heroImg}>
+          {heroF && (
+            <Image
+              src={episodeImage(heroF.featured_image)}
+              alt={heroF.featured_image_alt ?? heroF.title}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+              style={{ objectPosition: heroF.hero_focus ?? '50% 20%' }}
+            />
+          )}
+        </div>
         <div className={styles.heroScrim} />
 
         <div className={styles.heroRating}>
@@ -251,7 +262,7 @@ export default function VodcastPage() {
       <GuestRail styles={styles} guests={guests} />
 
       {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
-      <ThemeArchive styles={styles} pool={pool} pills={pills} quote={quote} />
+      <ThemeArchive styles={styles} pool={pool} pills={pills} quote={quote} themePools={themePools} />
 
       {/* ===== 8 · CURATOR.IO STRIP ===== */}
       <CuratorFeed styles={styles} />

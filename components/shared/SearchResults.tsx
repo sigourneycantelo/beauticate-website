@@ -36,6 +36,10 @@ export default function SearchResults({ query }: Props) {
         {query ? `Results for "${query}"` : 'Search'}
       </h1>
       <div id="pagefind-search" />
+      <p className="mt-10 text-center font-serif text-charcoal-light/60" style={{ fontSize: 'clamp(14px,1.4vw,16px)' }}>
+        Not finding what you&apos;re after?{' '}
+        <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>
+      </p>
     </div>
   )
 }

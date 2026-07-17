@@ -301,6 +301,12 @@ export default function AboutPage() {
                 Contact Sigourney
               </a>
             </div>
+            <p className="font-serif text-sm text-cream/50 mt-10">
+              Sell through the Shop?{' '}
+              <Link href="/shop/partners" className="text-cream/70 hover:text-cream transition-colors underline underline-offset-2">
+                Find out how it works
+              </Link>
+            </p>
             <p className="font-sans text-[10px] tracking-widest uppercase text-cream/30 mt-8">
               Cantelo Corporation Pty Ltd · ABN 71 105 175 317
             </p>
