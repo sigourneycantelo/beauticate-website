@@ -114,17 +114,16 @@ Google News doesn't require 2000 words. The minimum for a credible news piece:
 
 ## Google News Publisher Center
 
-Once beauticate.com is live (domain switch July 20):
+Beauticate has been approved in Google News for ~10 years. On domain switch
+(July 20), update the Publisher Center settings:
 
-1. Submit to Google News Publisher Center at
-   https://publishercenter.google.com/
-2. Add beauticate.com as a publication
-3. Set content labels: Beauty, Lifestyle, Wellness, Fashion
-4. Point it at `/sitemap-news.xml`
-5. Wait 2–4 weeks for review
+1. Go to https://publishercenter.google.com/
+2. Update the publication URL from the old WordPress domain to beauticate.com
+3. Point the news sitemap at `https://www.beauticate.com/sitemap-news.xml`
+4. Verify content labels are current: Beauty, Lifestyle, Wellness, Fashion
 
-This is a one-time setup. After approval, news-tagged articles appear in
-Google News within minutes of publication.
+No re-approval needed — just a URL update. After that, news-tagged articles
+appear in Google News within minutes of publication.
 
 ---
 
