@@ -71,8 +71,8 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
       onMouseLeave={() => setPaused(false)}
     >
       <style>{`
-        .hero-carousel { aspect-ratio: 3/5; transition: aspect-ratio .6s ease; }
-        @media (min-width: 768px) { .hero-carousel { aspect-ratio: 12/5; min-height: 420px; } }
+        .hero-carousel { height: calc(100svh - 56px); max-height: 900px; }
+        @media (min-width: 901px) { .hero-carousel { height: auto; aspect-ratio: 12/5; min-height: 420px; max-height: none; } }
         .hero-slide {
           position: absolute; inset: 0;
           opacity: 0; transition: opacity 1s ease;
@@ -82,15 +82,16 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
           .hero-slide { transition: none; }
         }
         .hero-dots {
-          position: absolute; bottom: clamp(14px,3vw,28px); left: 50%;
+          position: absolute; bottom: clamp(18px,3vw,28px); left: 50%;
           transform: translateX(-50%); z-index: 10;
-          display: flex; gap: 10px;
+          display: flex; gap: 12px;
         }
         .hero-dot {
           width: 28px; height: 2px; background: rgba(255,255,255,.4);
-          cursor: pointer; border: none; padding: 0; transition: background .3s;
+          cursor: pointer; border: none; padding: 10px 0; transition: background .3s;
+          background-clip: content-box;
         }
-        .hero-dot.is-active { background: rgba(255,255,255,.95); }
+        .hero-dot.is-active { background: rgba(255,255,255,.95); background-clip: content-box; }
       `}</style>
 
       {articles.map((article, i) => {
@@ -135,7 +136,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
               <h2
                 className="font-serif font-normal leading-[1.12]"
                 style={{
-                  fontSize: 'clamp(22px,2.8vw,38px)',
+                  fontSize: 'clamp(26px,2.8vw,38px)',
                   letterSpacing: '-.01em',
                   textShadow: '0 1px 20px rgba(0,0,0,.35)',
                   maxWidth: '20ch',
