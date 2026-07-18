@@ -225,6 +225,18 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
     .slice(0, limit)
 }
 
+export function getArticlesByAuthor(authorName: string) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.author?.toLowerCase() === authorName.toLowerCase())
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+}
+
 export function getRelatedArticles(
   currentSlug: string,
   category: string,

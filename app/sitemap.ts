@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getArticleSlugs, getArticleBySlug } from '@/lib/content'
 import { getAllProductHandles, getAllCollectionHandles } from '@/lib/shopify'
+import { getAllAuthorsWithPages } from '@/lib/authors'
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com').replace(/\/$/, '')
 
@@ -56,6 +57,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
   for (const s of sections) {
     entries.push({ url: `${SITE}/${s}`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 })
+  }
+
+  for (const author of getAllAuthorsWithPages()) {
+    entries.push({
+      url: `${SITE}/author/${author.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    })
   }
 
   try {

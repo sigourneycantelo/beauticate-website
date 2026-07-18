@@ -10,7 +10,7 @@ export interface Author {
   sameAs?: string[]       // all known profile URLs for Person schema
 }
 
-const AUTHORS: Author[] = [
+export const AUTHORS: Author[] = [
   {
     name: 'Sigourney Cantelo',
     slug: 'sigourney-cantelo',
@@ -726,12 +726,20 @@ export function getAuthor(name: string): Author | undefined {
   return INDEX.get(name.toLowerCase())
 }
 
+export function getAllAuthorsWithPages(): Author[] {
+  return AUTHORS.filter(a => a.photo)
+}
+
+export function getAuthorBySlug(slug: string): Author | undefined {
+  return AUTHORS.find(a => a.slug === slug)
+}
+
 export function buildPersonSchema(author: Author, siteUrl: string) {
   return {
     '@type': 'Person',
     name: author.name,
     jobTitle: author.role,
-    url: `${siteUrl}/about-beauticate`,
+    url: author.photo ? `${siteUrl}/author/${author.slug}` : `${siteUrl}/about-beauticate`,
     ...(author.photo ? { image: `${siteUrl}${author.photo}` } : {}),
     ...(author.sameAs && author.sameAs.length > 0 ? { sameAs: author.sameAs } : {}),
     worksFor: {

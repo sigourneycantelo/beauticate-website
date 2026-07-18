@@ -1,0 +1,29 @@
+# Beauticate
+
+> Australian beauty, wellness and lifestyle publisher. Founded 2014 by Sigourney Cantelo, former Vogue Australia Beauty & Health Director. 3.1M monthly readers.
+
+## Content
+
+- Beauty & Style: skincare, makeup, hair, fragrance, beauty tips
+- Interviews: founders, models, actors, creatives, tastemakers
+- Destinations: spas, retreats, clinics, salons, travel
+- Living: entertaining, interiors, wellness
+- Sigourney's Edit: personal recommendations
+- Shop: curated beauty products
+- Beautiful Inside: vodcast / podcast
+
+## Key pages
+
+- /about: about Beauticate and the editorial team
+- /shop: curated beauty store
+- /vodcast: Beautiful Inside podcast
+- /archive: full article archive
+- /press: press and media enquiries
+
+## Authors
+
+- Sigourney Cantelo: Founder & Editor-in-Chief
+- Kate Waterhouse: Style Editor
+- Rae Morris: Makeup Editor
+- Jocelyn Petroni: Skin Editor
+- Monique McMahon: Hair Editor
