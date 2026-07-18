@@ -780,6 +780,10 @@ const nextConfig: NextConfig = {
     ]
   },
 
+  outputFileTracingExcludes: {
+    '*': ['./content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif'],
+  },
+
   webpack(config, { dev }) {
     config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] })
     if (dev) {
