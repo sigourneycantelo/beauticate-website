@@ -34,6 +34,7 @@ import rehypeShopGrid from '@/lib/rehype-shop-grid'
 import rehypeVenueContact from '@/lib/rehype-venue-contact'
 import NearbyVenues from './NearbyVenues'
 import VenueCTA from './VenueCTA'
+import VenueContact from './VenueContact'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -183,6 +184,17 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
             options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypeShopGrid, rehypeVenueContact] } }}
           />
         </div>
+
+        {/* Venue contact — structured component replaces the old markdown ## CONTACT */}
+        {f.venueType && (
+          <VenueContact
+            name={f.title}
+            address={f.address}
+            telephone={f.telephone}
+            instagram={f.instagram}
+            bookingUrl={f.booking_url}
+          />
+        )}
 
         {/* Shop the Edit */}
         {productLinks.length > 0 && (

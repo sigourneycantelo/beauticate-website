@@ -56,16 +56,9 @@ const rehypeVenueContact: Plugin<[], Root> = () => {
       }
     }
 
-    // Wrap contact section in a div
+    // Strip the ## CONTACT section entirely — the VenueContact component renders it from frontmatter
     if (contactIdx >= 0) {
-      const contactChildren = children.splice(contactIdx) as Element[]
-      const wrapper: Element = {
-        type: 'element',
-        tagName: 'div',
-        properties: { className: ['venue-contact'] },
-        children: contactChildren,
-      }
-      children.push(wrapper)
+      children.splice(contactIdx)
     }
 
     tree.children = children as RootContent[]
