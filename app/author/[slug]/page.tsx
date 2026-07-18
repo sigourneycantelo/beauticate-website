@@ -17,11 +17,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!author) return {}
   return {
     title: `${author.name} — ${author.role} | Beauticate`,
-    description: `Articles by ${author.name}, ${author.role} at Beauticate.`,
+    description: author.bio ?? `Articles by ${author.name}, ${author.role} at Beauticate.`,
     alternates: { canonical: `${SITE_URL}/author/${author.slug}` },
     openGraph: {
       title: `${author.name} — ${author.role}`,
-      description: `Articles by ${author.name}, ${author.role} at Beauticate.`,
+      description: author.bio ?? `Articles by ${author.name}, ${author.role} at Beauticate.`,
       url: `${SITE_URL}/author/${author.slug}`,
       type: 'profile',
       ...(author.photo ? { images: [{ url: `${SITE_URL}${author.photo}` }] } : {}),
@@ -61,9 +61,14 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
           <h1 className="font-serif text-[28px] md:text-[34px] leading-[1.15] mb-1.5">
             {author.name}
           </h1>
-          <p className="font-sans text-[11px] tracking-[.22em] uppercase text-charcoal-light mb-4">
+          <p className="font-sans text-[11px] tracking-[.22em] uppercase text-charcoal-light mb-3">
             {author.role}
           </p>
+          {author.bio && (
+            <p className="text-[14px] leading-[1.7] text-charcoal-light max-w-[52ch] mb-4">
+              {author.bio}
+            </p>
+          )}
           {author.sameAs && author.sameAs.length > 0 && (
             <div className="flex gap-4 text-[12px] text-charcoal-light">
               {author.instagram && (
