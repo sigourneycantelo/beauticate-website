@@ -33,7 +33,7 @@
 
   /* Editorial typography — serif body, sans navigation */
   h1 { @apply font-serif text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight; }
-  h2 { @apply font-display text-2xl md:text-3xl lg:text-4xl leading-tight font-medium; }
+  h2 { @apply font-display text-2xl md:text-3xl lg:text-4xl leading-tight font-normal; }
   h3 { @apply font-display leading-snug font-normal; font-size: clamp(22px, 2.6vw, 25px); }
   h4 { @apply font-sans text-xs tracking-[0.34em] uppercase; }
 
