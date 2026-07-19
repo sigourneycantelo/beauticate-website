@@ -168,8 +168,16 @@ if (files.length === 0) {
 let suggestions = 0
 
 for (const file of files) {
-  const raw = fs.readFileSync(file, 'utf-8')
-  const { data: frontmatter, content } = matter(raw)
+  let raw, frontmatter, content
+  try {
+    raw = fs.readFileSync(file, 'utf-8')
+    const parsed = matter(raw)
+    frontmatter = parsed.data
+    content = parsed.content
+  } catch (e) {
+    console.error(`⚠️  Skipping (parse error): ${path.relative(process.cwd(), file)}`)
+    continue
+  }
   const { score, signals, recommend } = scoreArticle(frontmatter, content)
 
   if (recommend) {
