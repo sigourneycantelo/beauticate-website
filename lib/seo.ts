@@ -105,7 +105,6 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
     publisher: ORGANIZATION_SCHEMA,
     image: { '@type': 'ImageObject', url: imageUrl, contentUrl: imageUrl },
     mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
-    keywords: f.tags?.join(', '),
     articleSection: f.category,
     isAccessibleForFree: true,
     speakable: {
