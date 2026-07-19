@@ -27,15 +27,13 @@ export default function PressTrustBand() {
       </div>
 
       {/* Trust panel */}
-      <p className="ptb-trust">
+      <div className="ptb-trust">
         <Link href="/about">
-          25 Years of Trusted Journalism
-          <span className="ptb-dot"> · </span>
-          3 Million Monthly Touchpoints
-          <span className="ptb-dot"> · </span>
-          Expertly-Curated Shop
+          <span className="ptb-trust-line">25 Years of Trusted Journalism</span>
+          <span className="ptb-trust-line">3 Million Monthly Touchpoints</span>
+          <span className="ptb-trust-line">Expertly Curated Shop</span>
         </Link>
-      </p>
+      </div>
     </section>
   )
 }

@@ -52,13 +52,10 @@ export default async function HomePage() {
       {/* 1 — Cycling hero */}
       {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
 
-      {/* 2 — Press & trust band */}
-      <PressTrustBand />
-
-      {/* 3 — Shop by Category */}
+      {/* 2 — Shop by Category */}
       <ShopByCategory />
 
-      {/* 3a — Early story grid of three */}
+      {/* 3 — Early story grid of three */}
       {earlyTrioArticles.length > 0 && <StoriesTrio articles={earlyTrioArticles as any} />}
 
       {/* 4 — Voices line */}
@@ -66,6 +63,9 @@ export default async function HomePage() {
 
       {/* 5 — Product rail */}
       <ShopStrip products={shopProducts} />
+
+      {/* 6 — Press & trust band */}
+      <PressTrustBand />
 
       {/* 6 — Must-read stories */}
       <SectionTitle eyebrow="Editorial" title="Must-read stories" italic="stories" />
