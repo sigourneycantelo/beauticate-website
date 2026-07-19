@@ -2,6 +2,7 @@ import { getAllArticles, getHeroArticle, getHeroArticles, getVodcastEpisodes } f
 import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
+import DuoLeft from '@/components/home/DuoLeft'
 import ShopStrip from '@/components/home/ShopStrip'
 import DuoStagger from '@/components/home/DuoStagger'
 import TheCollective from '@/components/shared/TheCollective'
@@ -41,10 +42,10 @@ export default async function HomePage() {
 
   const heroArticles = getHeroArticles()
   heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
-  const earlyTrioArticles = take(3)
+  const duo1Articles = take(2)
   const trio1Articles = take(3)
-  const [bigArticle, smallArticle] = take(2)
   const [splitArticle] = take(1)
+  const duo2Articles = take(2)
   const trio2Articles = take(3)
 
   return (
@@ -55,44 +56,40 @@ export default async function HomePage() {
       {/* 2 — Shop by Category */}
       <ShopByCategory />
 
-      {/* 3 — Early story grid of three */}
-      {earlyTrioArticles.length > 0 && <StoriesTrio articles={earlyTrioArticles as any} />}
-
-      {/* 4 — Voices line */}
+      {/* 3 — Voices line */}
       <TheCollective />
 
-      {/* 5 — Product rail */}
+      {/* 4 — Product rail */}
       <ShopStrip products={shopProducts} />
 
-      {/* 6 — Press & trust band */}
+      {/* 5 — Press & trust band */}
       <PressTrustBand />
 
-      {/* 6 — Must-read stories */}
-      <SectionTitle eyebrow="Editorial" title="Must-read stories" italic="stories" />
-      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
+      {/* 6 — Duo (most recent two stories) */}
+      {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} />}
 
-      {/* 7 — Asymmetric two-story block */}
-      {bigArticle && smallArticle && (
-        <DuoStagger big={bigArticle as any} small={smallArticle as any} />
-      )}
-
-      {/* 8 — Podcast */}
+      {/* 7 — Podcast */}
       <PodcastSection episodes={vodcastEpisodes} />
+
+      {/* 8 — Trio */}
+      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
 
       {/* 9 — Single highlighted article */}
       {splitArticle && <HeroSplit article={splitArticle as any} />}
 
-      {/* 10 — Shop by Moment */}
+      {/* 10 — Duo */}
+      {duo2Articles.length > 0 && <DuoLeft articles={duo2Articles as any} />}
+
+      {/* 11 — Shop by Moment */}
       <ShopByMoment />
 
-      {/* 10a — Subscribe */}
+      {/* 12 — Subscribe */}
       <InsidersBar />
 
-      {/* 11 — Articles worth your time */}
-      <SectionTitle eyebrow="Keep reading" title="Articles worth your time" italic="your time" />
+      {/* 13 — Trio */}
       {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
 
-      {/* 12 — Instagram feed */}
+      {/* 14 — Instagram feed */}
       <InstagramFeed />
 
       {/* Explore all link */}
