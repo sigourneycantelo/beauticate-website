@@ -1,5 +1,6 @@
 import { getArticlesByCategory } from '@/lib/content'
 import { getProductsByTag } from '@/lib/shopify'
+import ArticleGrid from '@/components/article/ArticleGrid'
 import { notFound } from 'next/navigation'
 
 import HeroSplit from '@/components/home/HeroSplit'
@@ -7,7 +8,6 @@ import StoriesTrio from '@/components/home/StoriesTrio'
 import DuoStagger from '@/components/home/DuoStagger'
 import DuoLeft from '@/components/home/DuoLeft'
 import ShopStrip from '@/components/home/ShopStrip'
-import SectionTitle from '@/components/home/SectionTitle'
 
 const CATEGORY_LABELS: Record<string, string> = {
   'beauty-style': 'Beauty & Style',
@@ -23,6 +23,8 @@ const CATEGORY_SHOP_TAG: Record<string, string> = {
   wellness: 'wellness',
 }
 
+const EDITORIAL_CATEGORIES = new Set(['beauty-style', 'wellness', 'living'])
+
 interface Props { params: Promise<{ category: string }> }
 
 export default async function CategoryPage({ params }: Props) {
@@ -30,10 +32,19 @@ export default async function CategoryPage({ params }: Props) {
   const articles = getArticlesByCategory(category)
   if (!articles.length) notFound()
 
+  const label = CATEGORY_LABELS[category] ?? category.replace(/-/g, ' ')
+
+  if (!EDITORIAL_CATEGORIES.has(category)) {
+    return (
+      <div className="max-w-wide mx-auto px-4 py-12">
+        <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-8">{label}</h1>
+        <ArticleGrid articles={articles as any} />
+      </div>
+    )
+  }
+
   const shopTag = CATEGORY_SHOP_TAG[category]
   const shopProducts = shopTag ? await getProductsByTag(shopTag, 12) : []
-
-  const label = CATEGORY_LABELS[category] ?? category.replace(/-/g, ' ')
 
   // Consume articles into layout sections using a rolling index
   let i = 0
