@@ -71,8 +71,8 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
       onMouseLeave={() => setPaused(false)}
     >
       <style>{`
-        .hero-carousel { height: calc(100svh - 56px); max-height: 900px; }
-        @media (min-width: 901px) { .hero-carousel { height: auto; aspect-ratio: 12/5; min-height: 420px; max-height: none; } }
+        .hero-carousel { aspect-ratio: 1/1; }
+        @media (min-width: 901px) { .hero-carousel { aspect-ratio: 12/5; min-height: 420px; } }
         .hero-slide {
           position: absolute; inset: 0;
           opacity: 0; transition: opacity 1s ease;
