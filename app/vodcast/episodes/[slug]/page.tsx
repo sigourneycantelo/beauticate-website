@@ -9,6 +9,8 @@ import FAQPanel from '@/components/shared/FAQPanel'
 import ProductInset from '@/components/mdx/ProductInset'
 import { ShopGrid, ShopItem, ShopCTA } from '@/components/mdx/ShopGrid'
 import ProductTile from '@/components/shared/ProductTile'
+import NumberedSection from '@/components/mdx/NumberedSection'
+import PullQuote from '@/components/mdx/PullQuote'
 import { getProductsByHandles } from '@/lib/shopify'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
 
@@ -161,7 +163,7 @@ export default async function EpisodePage({ params }: Props) {
       />
     )
   }
-  const components = { ...mdxComponents, ShopItem: ShopItemCard }
+  const components = { ...mdxComponents, ShopItem: ShopItemCard, NumberedSection, PullQuote }
 
   // ── Structured data: PodcastEpisode + Article + Video + FAQ + Breadcrumb ──
   const episodeSchema = buildVodcastSchema(f, `/vodcast/episodes/${f.slug}`, anchorUrl)
