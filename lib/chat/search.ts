@@ -6,6 +6,7 @@ export interface ChatArticle {
   slug: string
   category: string
   subcategory: string
+  author: string
   tags: string[]
   excerpt: string
   date: string

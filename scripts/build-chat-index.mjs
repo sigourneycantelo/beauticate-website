@@ -72,6 +72,7 @@ function walk(dir, parts, results) {
           slug,
           category,
           subcategory,
+          author: data.author || '',
           tags: data.tags || [],
           excerpt: data.excerpt || '',
           date: data.date_published || '',
