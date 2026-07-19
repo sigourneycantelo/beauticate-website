@@ -56,31 +56,31 @@ export default function AskSigLauncher() {
       {open && <AskSigPanel onClose={() => setOpen(false)} />}
 
       {!open && (
-        <div className="fixed bottom-6 right-6 z-[9998] flex items-end gap-3">
+        <div className="fixed bottom-6 right-6 z-[9998] flex flex-col items-center">
           {showBubble && (
             <div
               onClick={handleOpen}
-              className="relative cursor-pointer animate-fade-in mb-1 max-w-[200px]"
+              className="relative cursor-pointer animate-fade-in mb-[-28px] max-w-[200px]"
             >
-              <div className="bg-white rounded-2xl rounded-br-sm shadow-lg px-4 py-3 border border-line">
+              <div className="bg-white rounded-2xl shadow-lg px-4 py-3 pb-5 border border-line">
+                <button
+                  onClick={handleDismiss}
+                  className="absolute top-2 right-2 w-5 h-5 bg-white rounded-full shadow border border-line flex items-center justify-center text-muted hover:text-ink transition-colors"
+                  aria-label="Dismiss"
+                >
+                  <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M1 1l6 6M7 1L1 7" />
+                  </svg>
+                </button>
                 <p className="text-[11px] font-sans font-semibold tracking-[0.2em] uppercase text-wine mb-0.5">Ask Sig</p>
-                <p className="text-sm font-sans text-ink leading-snug">{prompt}</p>
+                <p className="text-sm font-sans text-ink leading-snug pr-4">{prompt}</p>
               </div>
-              <button
-                onClick={handleDismiss}
-                className="absolute -top-2 -left-2 w-5 h-5 bg-white rounded-full shadow border border-line flex items-center justify-center text-muted hover:text-ink transition-colors"
-                aria-label="Dismiss"
-              >
-                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M1 1l6 6M7 1L1 7" />
-                </svg>
-              </button>
             </div>
           )}
 
           <button
             onClick={handleOpen}
-            className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow group ring-[3px] ring-wine overflow-hidden shrink-0"
+            className="relative w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow group ring-[3px] ring-wine overflow-hidden shrink-0"
             aria-label="Ask Sig"
           >
             <Image
