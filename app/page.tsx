@@ -1,13 +1,11 @@
-import { getAllArticles, getHeroArticle, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
+import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
 import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
 import ShopStrip from '@/components/home/ShopStrip'
-import DuoStagger from '@/components/home/DuoStagger'
 import TheCollective from '@/components/shared/TheCollective'
 import InstagramFeed from '@/components/home/InstagramFeed'
-import SectionTitle from '@/components/home/SectionTitle'
 import StoriesTrio from '@/components/home/StoriesTrio'
 import PodcastSection from '@/components/home/PodcastSection'
 import InsidersBar from '@/components/home/InsidersBar'
@@ -43,63 +41,54 @@ export default async function HomePage() {
 
   const heroArticles = getHeroArticles()
   heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
-  const duoLeftArticles = take(2)
-  const [bigArticle, smallArticle] = take(2)
+  const duo1Articles = take(2)
   const trio1Articles = take(3)
   const [splitArticle] = take(1)
+  const duo2Articles = take(2)
   const trio2Articles = take(3)
-  const trio3Articles = take(3)
 
   return (
     <>
       {/* 1 — Cycling hero */}
       {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
 
-      {/* 2 — Press & trust band */}
-      <PressTrustBand />
-
-      {/* 3 — Shop by Category */}
+      {/* 2 — Shop by Category */}
       <ShopByCategory />
 
-      {/* 4 — Voices line */}
+      {/* 3 — Voices line */}
       <TheCollective />
 
-      {/* 5 — Product rail */}
+      {/* 4 — Product rail */}
       <ShopStrip products={shopProducts} />
 
-      {/* 6 — Must-read stories */}
-      <SectionTitle eyebrow="Editorial" title="Must-read stories" italic="stories" />
-      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
+      {/* 5 — Press & trust band */}
+      <PressTrustBand />
 
-      {/* 7 — Subscribe */}
-      <InsidersBar />
+      {/* 6 — Duo (most recent two stories) */}
+      {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} />}
 
-      {/* 8 — Asymmetric two-story block */}
-      {bigArticle && smallArticle && (
-        <DuoStagger big={bigArticle as any} small={smallArticle as any} />
-      )}
-
-      {/* 9 — Podcast */}
+      {/* 7 — Podcast */}
       <PodcastSection episodes={vodcastEpisodes} />
 
-      {/* 10 — Single highlighted article */}
+      {/* 8 — Trio */}
+      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
+
+      {/* 9 — Single highlighted article */}
       {splitArticle && <HeroSplit article={splitArticle as any} />}
+
+      {/* 10 — Duo */}
+      {duo2Articles.length > 0 && <DuoLeft articles={duo2Articles as any} />}
 
       {/* 11 — Shop by Moment */}
       <ShopByMoment />
 
-      {/* 12 — Articles worth your time */}
-      <SectionTitle eyebrow="Keep reading" title="Articles worth your time" italic="your time" />
+      {/* 12 — Subscribe */}
+      <InsidersBar />
+
+      {/* 13 — Trio */}
       {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
 
-      {/* 13 — Two stories */}
-      {duoLeftArticles.length > 0 && <DuoLeft articles={duoLeftArticles as any} />}
-
-      {/* 14 — More to explore */}
-      <SectionTitle eyebrow="Editorial" title="More to explore" italic="explore" />
-      {trio3Articles.length > 0 && <StoriesTrio articles={trio3Articles as any} />}
-
-      {/* 15 — Instagram feed */}
+      {/* 14 — Instagram feed */}
       <InstagramFeed />
 
       {/* Explore all link */}
