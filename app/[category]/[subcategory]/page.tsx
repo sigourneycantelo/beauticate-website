@@ -55,8 +55,8 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
 
   // Otherwise render subcategory archive (folder members + any `also_in` cross-posts)
   const rawArticles = getArticlesBySubcategory(category, subcategory)
-  const articles = rawArticles.filter((a): a is NonNullable<typeof a> => a != null && a.frontmatter != null)
-  if (!articles.length) notFound()
+  const allArticles = rawArticles.filter((a): a is NonNullable<typeof a> => a != null && a.frontmatter != null)
+  if (!allArticles.length) notFound()
 
   const EDITORIAL_CATEGORIES = new Set(['beauty-style', 'wellness', 'living'])
   if (!EDITORIAL_CATEGORIES.has(category)) {
@@ -64,10 +64,13 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
     return (
       <div className="max-w-wide mx-auto px-4 py-12">
         <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-8">{subcategory.replace(/-/g, ' ')}</h1>
-        <ArticleGrid articles={articles as any} />
+        <ArticleGrid articles={allArticles as any} />
       </div>
     )
   }
+
+  const MAX_EDITORIAL = 34
+  const articles = allArticles.slice(0, MAX_EDITORIAL)
 
   const SUBCATEGORY_SHOP_TAG: Record<string, string> = {
     skincare: 'skincare',

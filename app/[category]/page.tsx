@@ -30,8 +30,8 @@ interface Props { params: Promise<{ category: string }> }
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params
   const rawArticles = getArticlesByCategory(category)
-  const articles = rawArticles.filter((a): a is NonNullable<typeof a> => a != null && a.frontmatter != null)
-  if (!articles.length) notFound()
+  const allArticles = rawArticles.filter((a): a is NonNullable<typeof a> => a != null && a.frontmatter != null)
+  if (!allArticles.length) notFound()
 
   const label = CATEGORY_LABELS[category] ?? category.replace(/-/g, ' ')
 
@@ -39,10 +39,14 @@ export default async function CategoryPage({ params }: Props) {
     return (
       <div className="max-w-wide mx-auto px-4 py-12">
         <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-8">{label}</h1>
-        <ArticleGrid articles={articles as any} />
+        <ArticleGrid articles={allArticles as any} />
       </div>
     )
   }
+
+  // Cap editorial layout to keep the RSC payload manageable
+  const MAX_EDITORIAL = 34
+  const articles = allArticles.slice(0, MAX_EDITORIAL)
 
   const shopTag = CATEGORY_SHOP_TAG[category]
   const shopProducts = shopTag ? await getProductsByTag(shopTag, 12) : []
