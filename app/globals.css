@@ -418,7 +418,8 @@
   height: auto;
   object-fit: contain;
   border-radius: 2px;
-  background: #f5f3f0;
+  background: #F0EFED;
+  mix-blend-mode: multiply;
 }
 .shop-grid-caption {
   font-family: var(--font-sans);

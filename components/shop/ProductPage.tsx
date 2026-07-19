@@ -64,6 +64,7 @@ export default function ProductPage({ product: p, related = [] }: Props) {
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-contain p-5"
+                style={{ mixBlendMode: 'multiply' }}
                 priority={i === 0}
               />
             </div>

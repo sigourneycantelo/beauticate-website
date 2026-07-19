@@ -3,11 +3,12 @@ import ProductTile from '@/components/shared/ProductTile'
 
 interface Props {
   product: ShopifyProduct
-  /** Pass true when the image is a model/lifestyle shot — fills the tile edge-to-edge instead of the centred cut-out layout */
+  /** Pass true to force model/lifestyle layout; auto-detected from the Shopify "lifestyle" tag when omitted */
   photoMode?: boolean
 }
 
-export default function ProductCard({ product: p, photoMode = false }: Props) {
+export default function ProductCard({ product: p, photoMode }: Props) {
+  const isLifestyle = photoMode ?? p.tags?.some(t => t.toLowerCase() === 'lifestyle')
   const price = p.priceRange.minVariantPrice
   const formatted = new Intl.NumberFormat('en-AU', {
     style: 'currency',
@@ -23,7 +24,7 @@ export default function ProductCard({ product: p, photoMode = false }: Props) {
     <ProductTile
       href={`/shop/products/${p.handle}`}
       useNextImage
-      cover={photoMode}
+      cover={isLifestyle}
       primarySrc={primary?.url}
       primaryAlt={primary?.altText ?? p.title}
       secondarySrc={secondary?.url}
