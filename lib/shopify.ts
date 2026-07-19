@@ -157,7 +157,10 @@ export async function getProductTypes(): Promise<string[]> {
   return data.productTypes?.edges.map(e => e.node).filter(Boolean) ?? []
 }
 
-export async function getProductsByType(type: string, first = 8): Promise<ShopifyProduct[]> {
+export async function getProductsByType(type: string, first = 8, vendor?: string): Promise<ShopifyProduct[]> {
+  const query = vendor
+    ? `product_type:${type} vendor:${vendor}`
+    : `product_type:${type}`
   const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
     query ProductsByType($query: String!, $first: Int!) {
       products(first: $first, query: $query) {
@@ -165,7 +168,7 @@ export async function getProductsByType(type: string, first = 8): Promise<Shopif
       }
     }
     ${PRODUCT_FRAGMENT}
-  `, { query: `product_type:${type}`, first })
+  `, { query, first })
   return data.products?.nodes ?? []
 }
 

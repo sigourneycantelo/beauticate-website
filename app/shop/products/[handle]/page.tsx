@@ -26,8 +26,13 @@ export default async function ProductRoute({ params }: Props) {
   const product = await getProductByHandle(handle)
   if (!product) notFound()
 
-  let pool: ShopifyProduct[] = product.productType ? await getProductsByType(product.productType, 8) : []
-  if (pool.length < 5) pool = [...pool, ...(await getProducts(8))]
+  let pool: ShopifyProduct[] = product.productType
+    ? await getProductsByType(product.productType, 8, product.vendor)
+    : []
+  if (pool.length < 5) {
+    const extra = await getProducts(8)
+    pool = [...pool, ...extra.filter(p => p.vendor === product.vendor)]
+  }
 
   const seen = new Set<string>([product.handle])
   const related = pool.filter(r => {
