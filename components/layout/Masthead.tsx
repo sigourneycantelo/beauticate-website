@@ -54,6 +54,7 @@ function Card({ c }: { c: MegaCard }) {
 }
 
 function PillarItem({ p }: { p: Pillar }) {
+  const pathname = usePathname()
   const [active, setActive] = useState(p.subs[0]?.label ?? '')
   const activeSub = p.subs.find(s => s.label === active) ?? p.subs[0]
   const cards = activeSub?.cards ?? []
@@ -68,6 +69,12 @@ function PillarItem({ p }: { p: Pillar }) {
   const onEnter = () => { clearTimeout(closeT.current); openT.current = setTimeout(() => setOpen(true), 90) }
   const onLeave = () => { clearTimeout(openT.current); closeT.current = setTimeout(() => setOpen(false), 260) }
   useEffect(() => () => { clearTimeout(openT.current); clearTimeout(closeT.current) }, [])
+
+  useEffect(() => {
+    clearTimeout(openT.current)
+    clearTimeout(closeT.current)
+    setOpen(false)
+  }, [pathname])
 
   return (
     <li className={`mh-pillar${p.isShop ? ' is-shop' : ''}${open ? ' open' : ''}`} onMouseEnter={onEnter} onMouseLeave={onLeave}>
@@ -190,10 +197,12 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   }, [drawer])
 
   useEffect(() => {
-    if (megaHidden) {
-      const t = setTimeout(() => setMegaHidden(false), 400)
-      return () => clearTimeout(t)
-    }
+    if (!megaHidden) return
+    let armed = false
+    const arm = setTimeout(() => { armed = true }, 300)
+    const onMove = () => { if (armed) setMegaHidden(false) }
+    window.addEventListener('mousemove', onMove, { once: true })
+    return () => { clearTimeout(arm); window.removeEventListener('mousemove', onMove) }
   }, [pathname, megaHidden])
 
   const handleNavClick = (e: React.MouseEvent) => {
