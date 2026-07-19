@@ -27,6 +27,7 @@ function articleHref(f: Article['frontmatter']) {
 
 const CATEGORY_LABELS: Record<string, string> = {
   'beauty-style': 'Beauty & Style',
+  'sigourneys-edit': "Sigourney's Edit",
   wellness: 'Wellness',
   living: 'Living',
   destinations: 'Destinations',
@@ -38,6 +39,8 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined)
+  const touchStartX = useRef(0)
+  const touchDelta = useRef(0)
   const count = articles.length
   const prefersReducedMotion = useRef(false)
 
@@ -49,26 +52,54 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
     setActive(prev => (prev + 1) % count)
   }, [count])
 
+  const goTo = useCallback((i: number) => {
+    setActive(i)
+    clearInterval(timerRef.current)
+  }, [])
+
+  const goPrev = useCallback(() => {
+    setActive(prev => (prev - 1 + count) % count)
+    clearInterval(timerRef.current)
+  }, [count])
+
+  const goNext = useCallback(() => {
+    setActive(prev => (prev + 1) % count)
+    clearInterval(timerRef.current)
+  }, [count])
+
   useEffect(() => {
     if (count <= 1 || paused || prefersReducedMotion.current) return
     timerRef.current = setInterval(advance, 4500)
     return () => clearInterval(timerRef.current)
   }, [count, paused, advance])
 
-  const goTo = (i: number) => {
-    setActive(i)
-    clearInterval(timerRef.current)
-  }
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchDelta.current = 0
+  }, [])
+
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    touchDelta.current = e.touches[0].clientX - touchStartX.current
+  }, [])
+
+  const onTouchEnd = useCallback(() => {
+    if (Math.abs(touchDelta.current) > 50) {
+      if (touchDelta.current < 0) goNext()
+      else goPrev()
+    }
+    touchDelta.current = 0
+  }, [goNext, goPrev])
 
   if (!articles.length) return null
-
-  const activeAspect = articles[active]?.frontmatter.hero_aspect
 
   return (
     <section
       className="hero-carousel relative overflow-hidden max-w-[1200px] mx-auto"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       <style>{`
         .hero-carousel { aspect-ratio: 1/1; }
@@ -80,6 +111,23 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         .hero-slide.is-active { opacity: 1; z-index: 2; }
         @media (prefers-reduced-motion: reduce) {
           .hero-slide { transition: none; }
+        }
+        .hero-arrow {
+          position: absolute; top: 50%; z-index: 10;
+          transform: translateY(-50%);
+          width: 44px; height: 44px;
+          display: flex; align-items: center; justify-content: center;
+          background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
+          border: none; cursor: pointer; color: #fff;
+          transition: background .2s;
+        }
+        .hero-arrow:hover { background: rgba(255,255,255,.3); }
+        .hero-arrow--prev { left: 12px; }
+        .hero-arrow--next { right: 12px; }
+        @media (max-width: 900px) {
+          .hero-arrow { width: 36px; height: 36px; }
+          .hero-arrow--prev { left: 8px; }
+          .hero-arrow--next { right: 8px; }
         }
         .hero-dots {
           position: absolute; bottom: clamp(18px,3vw,28px); left: 50%;
@@ -125,7 +173,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
             />
             <div
               className="absolute bottom-0 left-0 right-0 z-10 text-white text-left"
-              style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(28px,5vw,80px)' }}
+              style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(48px,6vw,80px)' }}
             >
               <span
                 className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3 font-medium"
@@ -134,12 +182,12 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
                 {eyebrow}
               </span>
               <h2
-                className="font-serif font-normal leading-[1.12]"
+                className="font-serif font-normal leading-[1.15]"
                 style={{
-                  fontSize: 'clamp(26px,2.8vw,38px)',
+                  fontSize: 'clamp(24px,2.8vw,38px)',
                   letterSpacing: '-.01em',
                   textShadow: '0 1px 20px rgba(0,0,0,.35)',
-                  maxWidth: '20ch',
+                  maxWidth: '18ch',
                 }}
               >
                 {heroTitle}
@@ -163,22 +211,37 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         )
       })}
 
-      {/* Invisible spacer to hold the aspect ratio since slides are position:absolute */}
       <div className="invisible" aria-hidden>
         <div style={{ aspectRatio: 'inherit' }} />
       </div>
 
       {count > 1 && (
-        <div className="hero-dots">
-          {articles.map((_, i) => (
-            <button
-              key={i}
-              className={`hero-dot${i === active ? ' is-active' : ''}`}
-              onClick={(e) => { e.preventDefault(); goTo(i) }}
-              aria-label={`Slide ${i + 1}`}
-            />
-          ))}
-        </div>
+        <>
+          <button
+            className="hero-arrow hero-arrow--prev"
+            onClick={(e) => { e.preventDefault(); goPrev() }}
+            aria-label="Previous slide"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          <button
+            className="hero-arrow hero-arrow--next"
+            onClick={(e) => { e.preventDefault(); goNext() }}
+            aria-label="Next slide"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+          <div className="hero-dots">
+            {articles.map((_, i) => (
+              <button
+                key={i}
+                className={`hero-dot${i === active ? ' is-active' : ''}`}
+                onClick={(e) => { e.preventDefault(); goTo(i) }}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
       )}
     </section>
   )
