@@ -43,7 +43,7 @@ export default function PortraitQuote({ src, alt, name, role, side = 'left', chi
           <p className="font-serif italic text-[clamp(18px,2vw,28px)] leading-[1.3] text-charcoal opacity-50 mb-6">{role}</p>
         )}
         <hr className="border-charcoal/20 w-16 mb-6" />
-        <blockquote className="font-serif italic text-[clamp(17px,1.5vw,22px)] leading-[1.7] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
+        <blockquote className="font-serif italic text-[clamp(22px,2.4vw,34px)] leading-[1.55] text-charcoal [&_a]:text-wine [&_a:hover]:text-charcoal">
           {children}
         </blockquote>
       </figcaption>
