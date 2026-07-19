@@ -212,6 +212,10 @@ export default function AskSigDemo() {
                   </button>
                 ))}
               </div>
+
+              <p className="mt-8 text-xs font-sans text-muted">
+                Your questions help shape what we write about next.
+              </p>
             </div>
           )}
           {messages.map(msg => (

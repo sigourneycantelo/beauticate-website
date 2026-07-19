@@ -1,5 +1,6 @@
 import { searchArticles, searchProducts } from '@/lib/chat/search'
 import { getVoicePrompt } from '@/lib/chat/voice'
+import { appendToSheet } from '@/lib/sheets'
 
 export const runtime = 'nodejs'
 export const maxDuration = 30
@@ -108,6 +109,15 @@ export async function POST(req: Request) {
 
     const lastUserMessage = messages.filter(m => m.role === 'user').pop()
     const queryText = lastUserMessage?.content || ''
+
+    if (queryText) {
+      appendToSheet('Ask Sig Queries', [
+        new Date().toISOString(),
+        queryText.slice(0, 500),
+        'ask-sig-chat',
+      ]).catch(() => {})
+    }
+
     const relevant = queryText ? searchArticles(queryText, 6) : []
     const relevantProducts = queryText ? searchProducts(queryText, 4) : []
 
