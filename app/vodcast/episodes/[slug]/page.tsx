@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 import { getVodcastEpisode, getVodcastEpisodes } from '@/lib/content'
 import FAQPanel from '@/components/shared/FAQPanel'
 import ProductInset from '@/components/mdx/ProductInset'
-import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
+import { ShopGrid, ShopItem, ShopCTA } from '@/components/mdx/ShopGrid'
 import ProductTile from '@/components/shared/ProductTile'
 import { getProductsByHandles } from '@/lib/shopify'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
@@ -75,6 +75,7 @@ const mdxComponents = {
   ProductInset,
   ShopGrid,
   ShopItem,
+  ShopCTA,
 }
 
 // Subscribe destinations, rendered as clickable platform logos at the top of

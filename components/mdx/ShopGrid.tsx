@@ -1,4 +1,5 @@
 import { Children } from 'react'
+import Link from 'next/link'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
 
@@ -52,6 +53,28 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
       name={name}
       price={price}
     />
+  )
+}
+
+interface ShopCTAProps {
+  label: string
+  href: string
+}
+
+export function ShopCTA({ label, href }: ShopCTAProps) {
+  return (
+    <Link href={href} className="group flex flex-col">
+      <div className="relative aspect-[3/4] overflow-hidden bg-tile flex items-center justify-center px-6">
+        <p className="font-serif italic text-center text-[clamp(18px,1.8vw,24px)] leading-[1.4] text-charcoal group-hover:text-wine transition-colors">
+          {label}
+        </p>
+      </div>
+      <div className="bg-white pt-3 pb-4 px-2 text-center">
+        <p className="font-sans text-[10px] tracking-[0.15em] uppercase text-charcoal/60 group-hover:text-wine transition-colors">
+          Shop the collection →
+        </p>
+      </div>
+    </Link>
   )
 }
 

@@ -15,7 +15,7 @@ import ShareButtons from './ShareButtons'
 import { resolveSchemaType } from '@/lib/seo'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
-import { ShopGrid, ShopItem } from '@/components/mdx/ShopGrid'
+import { ShopGrid, ShopItem, ShopCTA } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
 import QuickAnswer from '@/components/mdx/QuickAnswer'
@@ -26,6 +26,7 @@ import NumberedSection from '@/components/mdx/NumberedSection'
 import BeforeAfterSlider from '@/components/mdx/BeforeAfterSlider'
 import Caption from '@/components/mdx/Caption'
 import InlineImage from '@/components/mdx/InlineImage'
+import StatBand, { Stat } from '@/components/mdx/StatBand'
 import ProductTile from '@/components/shared/ProductTile'
 import SubscribeBand from '@/components/shared/SubscribeBand'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
@@ -113,8 +114,8 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
-    InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard,
-    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, SubscribeBand, Caption, InlineImage, BeforeAfterSlider,
+    InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
+    ProductInset, EditorNote, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
       return isExternal
