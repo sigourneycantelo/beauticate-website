@@ -44,9 +44,10 @@ export default async function CategoryPage({ params }: Props) {
     )
   }
 
-  // Cap editorial layout to keep the RSC payload manageable
   const MAX_EDITORIAL = 34
-  const articles = allArticles.slice(0, MAX_EDITORIAL)
+  const articles = allArticles.slice(0, MAX_EDITORIAL).map(a => ({
+    frontmatter: a.frontmatter,
+  }))
 
   const shopTag = CATEGORY_SHOP_TAG[category]
   const shopProducts = shopTag ? await getProductsByTag(shopTag, 12) : []

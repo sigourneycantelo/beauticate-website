@@ -70,7 +70,9 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
   }
 
   const MAX_EDITORIAL = 34
-  const articles = allArticles.slice(0, MAX_EDITORIAL)
+  const articles = allArticles.slice(0, MAX_EDITORIAL).map(a => ({
+    frontmatter: a.frontmatter,
+  }))
 
   const SUBCATEGORY_SHOP_TAG: Record<string, string> = {
     skincare: 'skincare',
