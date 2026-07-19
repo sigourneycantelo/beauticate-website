@@ -85,7 +85,11 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   function InlineProduct({ handle }: { handle: string }) {
     const shopProduct = shopProductMap[handle]
     const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
-    return <ProductEmbed product={productLink} shopProduct={shopProduct} />
+    return (
+      <div className="max-w-[380px] mx-auto">
+        <ProductEmbed product={productLink} shopProduct={shopProduct} />
+      </div>
+    )
   }
 
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
@@ -201,7 +205,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {productLinks.length > 0 && (
           <div className="mt-12 pt-10 border-t border-cream-200">
             <h4 className="font-sans text-xs tracking-[0.34em] uppercase mb-6">Shop the Edit</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className={`grid gap-4 ${productLinks.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 md:grid-cols-3'}`}>
               {productLinks.map((p, i) => (
                 <ProductEmbed
                   key={i}

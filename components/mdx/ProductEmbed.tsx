@@ -24,7 +24,7 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
     const secondary = imgs[1]
 
     return (
-      <div className="not-prose my-8 max-w-[300px] mx-auto">
+      <div className="not-prose my-8">
         <ProductTile
           href={`/shop/products/${shopProduct.handle}`}
           useNextImage
@@ -46,7 +46,7 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
   const retailer = (product.retailer ?? retailerFromUrl(product.url)) || product.name?.split(' ')[0] || ''
 
   return (
-    <div className="not-prose my-8 max-w-[300px] mx-auto">
+    <div className="not-prose my-8">
       <ProductTile
         href={href}
         external
