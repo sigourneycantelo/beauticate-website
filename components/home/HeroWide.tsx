@@ -173,7 +173,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
             />
             <div
               className="absolute bottom-0 left-0 right-0 z-10 text-white text-left"
-              style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(48px,6vw,80px)' }}
+              style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(56px,7vw,88px)' }}
             >
               <span
                 className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3 font-medium"
@@ -184,10 +184,9 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
               <h2
                 className="font-serif font-normal leading-[1.15]"
                 style={{
-                  fontSize: 'clamp(24px,2.8vw,38px)',
+                  fontSize: 'clamp(24px,3vw,40px)',
                   letterSpacing: '-.01em',
                   textShadow: '0 1px 20px rgba(0,0,0,.35)',
-                  maxWidth: '18ch',
                 }}
               >
                 {heroTitle}
