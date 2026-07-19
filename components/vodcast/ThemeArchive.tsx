@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -20,6 +20,9 @@ export interface QuoteBreather {
   author: string
 }
 
+const QUOTE_INTERVAL = 8000
+const QUOTE_FADE = 600
+
 const PLAY_ICON = (
   <svg viewBox="0 0 24 24">
     <path d="M8 5v14l11-7z" />
@@ -32,17 +35,36 @@ export default function ThemeArchive({
   styles,
   pool,
   pills,
-  quote,
+  quotes,
   themePools,
 }: {
   styles: Styles
   pool: ArchiveEpisode[]
   pills: string[]
-  quote: QuoteBreather
+  quotes: QuoteBreather[]
   themePools?: Record<string, ArchiveEpisode[]>
 }) {
   const [active, setActive] = useState('All')
   const [visible, setVisible] = useState(BATCH)
+
+  const [qIdx, setQIdx] = useState(0)
+  const [qFade, setQFade] = useState(true)
+
+  const advanceQuote = useCallback(() => {
+    setQFade(false)
+    setTimeout(() => {
+      setQIdx(i => (i + 1) % quotes.length)
+      setQFade(true)
+    }, QUOTE_FADE)
+  }, [quotes.length])
+
+  useEffect(() => {
+    if (quotes.length <= 1) return
+    const id = setInterval(advanceQuote, QUOTE_INTERVAL)
+    return () => clearInterval(id)
+  }, [advanceQuote, quotes.length])
+
+  const currentQuote = quotes[qIdx] ?? quotes[0]
 
   // Use the deduplicated theme pool when available (episodes claimed by an
   // earlier theme are excluded), falling back to the simple filter.
@@ -152,8 +174,15 @@ export default function ThemeArchive({
         {secondGrid.length > 0 && (
           <div className={`${styles.quoteband} ${styles.rev}`}>
             <span className={styles.eyebrow}>From the episodes</span>
-            <blockquote>{quote.quote}</blockquote>
-            <cite>{quote.author}</cite>
+            <div
+              style={{
+                opacity: qFade ? 1 : 0,
+                transition: `opacity ${QUOTE_FADE}ms ease`,
+              }}
+            >
+              <blockquote>{currentQuote.quote}</blockquote>
+              <cite>{currentQuote.author}</cite>
+            </div>
           </div>
         )}
 

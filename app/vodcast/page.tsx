@@ -161,20 +161,17 @@ export default function VodcastPage() {
     focus: g.focus,
   }))
 
-  // Pull-quote breather: prefer a featured ep's pull_quote, else a curated line.
-  const pullEp = episodes.find(ep => ep.frontmatter.pull_quote)
-  const quote = pullEp
-    ? {
-        quote: pullEp.frontmatter.pull_quote as string,
-        author:
-          (pullEp.frontmatter.pull_quote_author ??
-            pullEp.frontmatter.guest_name ??
-            pullEp.frontmatter.title) + ' · Beautiful Inside',
-      }
-    : {
-        quote: 'The most beautiful thing we can do is come home to ourselves.',
-        author: 'Beautiful Inside by Beauticate',
-      }
+  // Pull-quote breather: curated quotes from the episodes, cycled on a timer.
+  const quotes: { quote: string; author: string }[] = [
+    { quote: "Any mental health issue that anyone struggles with, don't wish it away. It's going to give you everything you need.", author: 'Jess Sepel · Beautiful Inside' },
+    { quote: 'Trying to be everything to everyone is just a fast road to being unwell.', author: 'Guy Sebastian · Beautiful Inside' },
+    { quote: "I don't regret my years when I had a tough time because it's made me what I am today.", author: 'Trinny Woodall · Beautiful Inside' },
+    { quote: 'I was addicted to thinking that a number could determine my self-worth.', author: 'Jess Sepel · Beautiful Inside' },
+    { quote: "I name my inner critic. Her name's Becky. When that negative voice comes in, I go, 'Hey Becky, I know you're trying to help, but we're not doing that today.'", author: 'Celeste Barber · Beautiful Inside' },
+    { quote: "I'm the sum total of all those impacts. And it's up to me how I deal with that.", author: 'Terri Vinson Jones · Beautiful Inside' },
+    { quote: "We've never been more connected to people, but we've actually never felt more alone with our struggles.", author: 'Jess Sepel · Beautiful Inside' },
+    { quote: 'The most beautiful thing we can do is come home to ourselves.', author: 'Beautiful Inside by Beauticate' },
+  ]
 
   return (
     <div className={styles.podcastPage}>
@@ -262,7 +259,7 @@ export default function VodcastPage() {
       <GuestRail styles={styles} guests={guests} />
 
       {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
-      <ThemeArchive styles={styles} pool={pool} pills={pills} quote={quote} themePools={themePools} />
+      <ThemeArchive styles={styles} pool={pool} pills={pills} quotes={quotes} themePools={themePools} />
 
       {/* ===== 8 · CURATOR.IO STRIP ===== */}
       <CuratorFeed styles={styles} />
