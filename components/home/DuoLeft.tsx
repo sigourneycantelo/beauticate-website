@@ -30,8 +30,9 @@ function ScrimCard({
   sizes: string
   titleSize?: string
 }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
   return (
     <article style={{ marginTop }}>
       <Link href={articleHref(f)} className="block group">

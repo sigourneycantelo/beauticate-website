@@ -33,8 +33,9 @@ function ScrimCard({
   marginTop?: string
   sizes: string
 }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
 
   return (
     <article style={{ marginTop }}>

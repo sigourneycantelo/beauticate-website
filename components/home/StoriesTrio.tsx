@@ -18,8 +18,9 @@ function articleHref(f: Article['frontmatter']) {
 }
 
 function Card({ article }: { article: Article }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
   return (
     <article>
       <Link href={articleHref(f)} className="block group">
