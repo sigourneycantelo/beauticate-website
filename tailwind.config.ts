@@ -20,9 +20,8 @@ const config: Config = {
         greige:    '#efece6',
         muted:     '#7a7268',
         line:      'rgba(42,38,33,0.14)',
-        // product-card tile — matches the warm grey Shopify product-photo background
-        // so shop shots sit natively and white article shots multiply onto it
-        tile:      '#F0EFED',
+        // product-card tile — sampled from actual Shopify product-photo backgrounds
+        tile:      '#ECEAE8',
         eucalypt:  '#8E9A82',
         teal:      '#104760',
         chocolate:  '#3a2a22',
