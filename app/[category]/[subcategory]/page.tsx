@@ -54,7 +54,8 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
   }
 
   // Otherwise render subcategory archive (folder members + any `also_in` cross-posts)
-  const articles = getArticlesBySubcategory(category, subcategory)
+  const rawArticles = getArticlesBySubcategory(category, subcategory)
+  const articles = rawArticles.filter((a): a is NonNullable<typeof a> => a != null && a.frontmatter != null)
   if (!articles.length) notFound()
 
   const EDITORIAL_CATEGORIES = new Set(['beauty-style', 'wellness', 'living'])

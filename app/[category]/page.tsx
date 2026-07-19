@@ -29,7 +29,8 @@ interface Props { params: Promise<{ category: string }> }
 
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params
-  const articles = getArticlesByCategory(category)
+  const rawArticles = getArticlesByCategory(category)
+  const articles = rawArticles.filter((a): a is NonNullable<typeof a> => a != null && a.frontmatter != null)
   if (!articles.length) notFound()
 
   const label = CATEGORY_LABELS[category] ?? category.replace(/-/g, ' ')

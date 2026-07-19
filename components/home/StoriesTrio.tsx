@@ -59,7 +59,7 @@ export default function StoriesTrio({ articles }: { articles: Article[] }) {
         padding: 'clamp(28px,4vw,52px) clamp(20px,6vw,104px)',
       }}
     >
-      {articles.slice(0, 3).map((article) => (
+      {articles.slice(0, 3).filter(a => a?.frontmatter).map((article) => (
         <Card key={article.frontmatter.slug} article={article} />
       ))}
     </section>
