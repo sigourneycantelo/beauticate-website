@@ -120,102 +120,125 @@ const decades: Decade[] = [
 
 function SpreadHeader({ label }: { label: 'Skin Staples' | 'Superstars' }) {
   return (
-    <div className="text-center mb-10 md:mb-14">
-      <p className="font-sans text-[10px] tracking-[0.3em] uppercase font-medium mb-1" style={{ opacity: 0.4 }}>
+    <div className="relative mb-10 md:mb-14">
+      <p
+        className="hidden md:block absolute top-0 right-0 font-sans text-[10px] tracking-[0.35em] uppercase font-medium"
+        style={{ opacity: 0.4 }}
+      >
         beauticate.
       </p>
-      <p className="font-serif italic text-xl md:text-2xl mb-1" style={{ color: '#8B7355' }}>
-        Shop The Edit:
-      </p>
-      <h3 className="font-sans text-2xl md:text-3xl tracking-[0.15em] uppercase font-medium">
-        {label}
-      </h3>
-      <p className="font-sans text-[11px] mt-3" style={{ opacity: 0.4 }}>
-        Every product is shoppable — just click the image or use the shop button.
-      </p>
+      <div className="text-center md:text-left">
+        <p className="font-serif italic text-xl md:text-2xl mb-1" style={{ color: '#8B7355' }}>
+          Shop The Edit:
+        </p>
+        <h3
+          className="font-sans tracking-[0.15em] uppercase font-medium"
+          style={{ fontSize: 'clamp(28px, 4vw, 42px)' }}
+        >
+          {label}
+        </h3>
+        <p className="font-sans text-[11px] mt-3" style={{ opacity: 0.4 }}>
+          Every product is shoppable — just click the image or use the shop button (don&apos;t forget to use the codes).
+        </p>
+      </div>
     </div>
   )
 }
 
-const SCATTER_LAYOUTS: Record<string, { col: string; row: string; scale: string; z: number; nudge: string }[]> = {
-  a: [
-    { col: '1 / 7',   row: '1 / 3',  scale: 'w-[85%]',  z: 2, nudge: 'ml-0 mt-0' },
-    { col: '6 / 13',  row: '1 / 3',  scale: 'w-[70%]',  z: 3, nudge: 'ml-auto mt-8' },
-    { col: '1 / 6',   row: '3 / 5',  scale: 'w-[65%]',  z: 1, nudge: 'ml-4 -mt-12' },
-    { col: '5 / 10',  row: '3 / 5',  scale: 'w-[75%]',  z: 4, nudge: 'mx-auto -mt-6' },
-    { col: '9 / 13',  row: '3 / 5',  scale: 'w-[68%]',  z: 2, nudge: 'ml-auto -mt-16' },
-  ],
-  b: [
-    { col: '1 / 6',   row: '1 / 3',  scale: 'w-[72%]',  z: 1, nudge: 'ml-2 mt-4' },
-    { col: '5 / 11',  row: '1 / 3',  scale: 'w-[80%]',  z: 3, nudge: 'mx-auto mt-0' },
-    { col: '10 / 13', row: '1 / 3',  scale: 'w-[68%]',  z: 2, nudge: 'ml-auto mt-10' },
-    { col: '1 / 7',   row: '3 / 5',  scale: 'w-[78%]',  z: 2, nudge: 'ml-0 -mt-8' },
-    { col: '7 / 13',  row: '3 / 5',  scale: 'w-[72%]',  z: 4, nudge: 'ml-8 -mt-14' },
-  ],
+interface PlacedProduct {
+  top: string
+  left: string
+  imgW: string
+  textW: string
+  textAlign?: 'left' | 'right' | 'center'
+  z: number
 }
 
-function ScatterSpread({ products, variant }: { products: Product[]; variant: 'a' | 'b' }) {
-  const layout = SCATTER_LAYOUTS[variant]
+const COLLAGE_A: PlacedProduct[] = [
+  { top: '0%',  left: '30%', imgW: '28%', textW: '22%', textAlign: 'right', z: 3 },
+  { top: '18%', left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
+  { top: '12%', left: '50%', imgW: '26%', textW: '22%', textAlign: 'right', z: 4 },
+  { top: '62%', left: '2%',  imgW: '20%', textW: '24%', textAlign: 'left',  z: 2 },
+  { top: '64%', left: '50%', imgW: '22%', textW: '26%', textAlign: 'right', z: 3 },
+]
+
+const COLLAGE_B: PlacedProduct[] = [
+  { top: '0%',  left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
+  { top: '0%',  left: '44%', imgW: '26%', textW: '22%', textAlign: 'right', z: 4 },
+  { top: '38%', left: '0%',  imgW: '24%', textW: '22%', textAlign: 'left',  z: 3 },
+  { top: '62%', left: '2%',  imgW: '22%', textW: '22%', textAlign: 'left',  z: 3 },
+  { top: '48%', left: '48%', imgW: '30%', textW: '22%', textAlign: 'right', z: 2 },
+]
+
+function ProductCluster({ product, pos }: { product: Product; pos: PlacedProduct }) {
+  const isRight = pos.textAlign === 'right'
   return (
     <div
-      className="hidden md:grid gap-0"
-      style={{ gridTemplateColumns: 'repeat(12, 1fr)', gridTemplateRows: 'repeat(4, auto)' }}
+      className="absolute"
+      style={{ top: pos.top, left: pos.left, width: `calc(${pos.imgW} + ${pos.textW})`, zIndex: pos.z }}
     >
-      {products.map((product, i) => {
-        const pos = layout[i]
-        const r = retailerFromUrl(product.url)
-        return (
-          <div
-            key={product.number}
-            style={{ gridColumn: pos.col, gridRow: pos.row, zIndex: pos.z }}
-            className={`${pos.nudge} relative`}
+      <div className={`flex ${isRight ? 'flex-row' : 'flex-row-reverse'} items-start gap-[3%]`}>
+        {/* Image column */}
+        <div style={{ width: '50%', flexShrink: 0 }}>
+          <Link
+            href={product.url}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className="block group"
           >
-            <div className={`${pos.scale}`}>
-              <span
-                className="block font-serif leading-none select-none"
-                style={{ fontSize: 'clamp(48px, 7vw, 90px)', color: '#C4B5A0', opacity: 0.5 }}
-                aria-hidden
-              >
-                {product.number}.
-              </span>
-              <Link
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="block group -mt-3 mb-3"
-              >
-                <div className="aspect-square overflow-hidden bg-tile">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-              </Link>
-              <h4 className="font-sans text-[12px] tracking-[0.08em] uppercase font-semibold leading-snug mb-1">
-                {product.nickname}
-              </h4>
-              <p className="font-serif text-[12px] leading-relaxed mb-2" style={{ opacity: 0.7 }}>
-                {product.description}
-              </p>
-              <p className="font-serif text-[11px] mb-1" style={{ opacity: 0.5 }}>
-                {product.name}{product.price ? `, ${product.price}` : ''}
-              </p>
-              <Link
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="inline-flex items-center font-sans text-[9px] tracking-[0.15em] uppercase font-semibold px-3 py-1.5 border mt-1 transition-colors hover:bg-charcoal hover:text-white"
-                style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
-              >
-                shop{r ? ` via ${r}` : ''} ↗
-              </Link>
-            </div>
-          </div>
-        )
-      })}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-lg"
+              loading="lazy"
+            />
+          </Link>
+        </div>
+        {/* Number + Text column */}
+        <div className={`flex-1 ${isRight ? '' : 'text-right'}`}>
+          <span
+            className="block font-serif leading-[0.85] select-none"
+            style={{ fontSize: 'clamp(52px, 7vw, 110px)', color: '#8B7355', opacity: 0.75 }}
+            aria-hidden
+          >
+            {product.number}.
+          </span>
+          <h4
+            className="font-sans text-[11px] tracking-[0.06em] uppercase font-bold leading-snug mt-2 mb-1.5"
+            style={{ color: '#1C1A17' }}
+          >
+            {product.nickname}
+          </h4>
+          <p className="font-serif text-[11px] leading-[1.55] mb-2" style={{ opacity: 0.7, color: '#1C1A17' }}>
+            {product.description}
+          </p>
+          <p className="font-serif text-[10.5px] mb-1.5" style={{ opacity: 0.55, color: '#1C1A17' }}>
+            <span className="underline">{product.name}</span>
+            {product.price ? `, ${product.price}` : ''}
+          </p>
+          <Link
+            href={product.url}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className={`inline-flex items-center font-sans text-[9px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border transition-colors hover:bg-charcoal hover:text-white ${isRight ? '' : 'ml-auto'}`}
+            style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
+          >
+            shop
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function CollageSpreads({ products, variant }: { products: Product[]; variant: 'a' | 'b' }) {
+  const positions = variant === 'a' ? COLLAGE_A : COLLAGE_B
+  return (
+    <div className="hidden md:block relative" style={{ paddingBottom: '130%' }}>
+      {products.map((product, i) => (
+        <ProductCluster key={product.number} product={product} pos={positions[i]} />
+      ))}
     </div>
   )
 }
@@ -226,7 +249,7 @@ function MobileProduct({ product }: { product: Product }) {
     <div className="flex flex-col">
       <span
         className="font-serif leading-none select-none"
-        style={{ fontSize: '56px', color: '#C4B5A0', opacity: 0.5 }}
+        style={{ fontSize: '48px', color: '#8B7355', opacity: 0.7 }}
         aria-hidden
       >
         {product.number}.
@@ -235,35 +258,34 @@ function MobileProduct({ product }: { product: Product }) {
         href={product.url}
         target="_blank"
         rel="noopener noreferrer sponsored"
-        className="block group -mt-3 mb-3"
+        className="block group -mt-2 mb-3"
       >
-        <div className="aspect-square overflow-hidden bg-tile">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-auto object-contain drop-shadow-md transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
       </Link>
-      <h4 className="font-sans text-[13px] tracking-[0.08em] uppercase font-semibold leading-snug mb-2">
+      <h4 className="font-sans text-[11px] tracking-[0.06em] uppercase font-bold leading-snug mb-1.5">
         {product.nickname}
       </h4>
-      <p className="font-serif text-[13px] leading-relaxed mb-3" style={{ opacity: 0.75 }}>
+      <p className="font-serif text-[12px] leading-relaxed mb-2" style={{ opacity: 0.7 }}>
         {product.description}
       </p>
-      <p className="font-serif text-[12px] mb-1" style={{ opacity: 0.55 }}>
-        {product.name}{product.price ? `, ${product.price}` : ''}
+      <p className="font-serif text-[11px] mb-1" style={{ opacity: 0.5 }}>
+        <span className="underline">{product.name}</span>
+        {product.price ? `, ${product.price}` : ''}
       </p>
       <Link
         href={product.url}
         target="_blank"
         rel="noopener noreferrer sponsored"
-        className="inline-flex items-center font-sans text-[10px] tracking-[0.15em] uppercase font-semibold px-4 py-2 border mt-2 transition-colors hover:bg-charcoal hover:text-white self-start"
+        className="inline-flex items-center font-sans text-[9px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border mt-1.5 transition-colors hover:bg-charcoal hover:text-white self-start"
         style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
       >
-        shop{r ? ` via ${r}` : ''} ↗
+        shop{r ? ` via ${r}` : ''}
       </Link>
     </div>
   )
@@ -326,6 +348,59 @@ export default function Top50SkincarePage() {
         </div>
       </section>
 
+      {/* ─── Discount Codes ─────────────────────────────────── */}
+      <section className="py-14 md:py-20" style={{ background: CREAM }}>
+        <div className="max-w-2xl mx-auto px-6">
+          <p className="font-sans text-[10px] tracking-[0.35em] uppercase font-medium text-center mb-2" style={{ opacity: 0.4 }}>
+            beauticate.
+          </p>
+          <h2
+            className="font-sans tracking-[0.12em] uppercase font-medium text-center mb-10"
+            style={{ fontSize: 'clamp(24px, 3.5vw, 36px)' }}
+          >
+            Discount Codes
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
+              <thead>
+                <tr style={{ background: CREAM_DARK }}>
+                  <th className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-3">Brand</th>
+                  <th className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-3">Offer</th>
+                  <th className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-3">How to Redeem</th>
+                </tr>
+              </thead>
+              <tbody className="font-serif text-[13px]" style={{ opacity: 0.8 }}>
+                <tr className="border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
+                  <td className="px-4 py-4"><span className="underline">Adore Beauty</span></td>
+                  <td className="px-4 py-4">$25 off orders over $120</td>
+                  <td className="px-4 py-4">Enter code: <strong>PARBEAUTICATE</strong> at checkout</td>
+                </tr>
+                <tr className="border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
+                  <td className="px-4 py-4"><span className="underline">San Lueur LED</span></td>
+                  <td className="px-4 py-4">10% Off</td>
+                  <td className="px-4 py-4">Code: <strong>BEAUTICATE10</strong> at checkout</td>
+                </tr>
+                <tr className="border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
+                  <td className="px-4 py-4"><span className="underline">Qure Devices</span></td>
+                  <td className="px-4 py-4">10% Off</td>
+                  <td className="px-4 py-4">Discount applies automatically via link</td>
+                </tr>
+                <tr className="border-b" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
+                  <td className="px-4 py-4"><span className="underline">JS Health</span></td>
+                  <td className="px-4 py-4">15% Off</td>
+                  <td className="px-4 py-4">Code: <strong>SIGOURNEY15</strong> at checkout</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-4"><span className="underline">Infraredi</span></td>
+                  <td className="px-4 py-4">10% Off</td>
+                  <td className="px-4 py-4">Code: <strong>BEAUTICATE10</strong> at checkout</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Decade Sections ──────────────────────────────────── */}
       {decades.map((decade) => {
         const staples = decade.products.slice(0, 5)
@@ -350,7 +425,7 @@ export default function Top50SkincarePage() {
             {/* Skin Staples spread */}
             <div className="max-w-6xl mx-auto px-6 py-14 md:py-20" style={{ background: CREAM }}>
               <SpreadHeader label="Skin Staples" />
-              <ScatterSpread products={staples} variant="a" />
+              <CollageSpreads products={staples} variant="a" />
               {/* Mobile: 2-col grid */}
               <div className="grid grid-cols-2 gap-x-5 gap-y-8 md:hidden">
                 {staples.map((product) => (
@@ -362,7 +437,7 @@ export default function Top50SkincarePage() {
             {/* Superstars spread */}
             <div className="max-w-6xl mx-auto px-6 py-14 md:py-20" style={{ background: CREAM }}>
               <SpreadHeader label="Superstars" />
-              <ScatterSpread products={superstars} variant="b" />
+              <CollageSpreads products={superstars} variant="b" />
               {/* Mobile: 2-col grid */}
               <div className="grid grid-cols-2 gap-x-5 gap-y-8 md:hidden">
                 {superstars.map((product) => (
