@@ -126,10 +126,10 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
         </div>
         <button
           onClick={onClose}
-          className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-greige transition-colors text-muted"
+          className="w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-greige/60 sm:bg-transparent hover:bg-greige transition-colors text-ink sm:text-muted"
           aria-label="Close chat"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="sm:w-4 sm:h-4">
             <path d="M4 4l8 8M12 4l-8 8" />
           </svg>
         </button>
