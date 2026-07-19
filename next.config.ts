@@ -777,6 +777,13 @@ const nextConfig: NextConfig = {
       { source: '/living/lifestyle/home-apartment', destination: '/beauty-style/beauty-tips/home-apartment', permanent: true },
       { source: '/destination/travel/escape-here-the-south-coast-sanctuary-for-self-care', destination: '/destinations/travel/escape-here-the-south-coast-sanctuary-for-self-care', permanent: true },
       { source: '/beauty-style/beauty-tips/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials', destination: '/beauty-style/skin-care/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials', permanent: true },
+
+      // ── Catch-all redirects for old WP category patterns ────────────────────
+      { source: '/how-tos/interiors/:path*', destination: '/living/interiors', permanent: true },
+      { source: '/how-tos/:path*', destination: '/beauty-style', permanent: true },
+      { source: '/tag/:path*', destination: '/', permanent: false },
+      { source: '/offers/:path*', destination: '/', permanent: false },
+      { source: '/product/:path*', destination: '/', permanent: false },
     ]
   },
 
