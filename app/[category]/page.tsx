@@ -37,8 +37,8 @@ export default async function CategoryPage({ params }: Props) {
 
   if (!EDITORIAL_CATEGORIES.has(category)) {
     return (
-      <div className="max-w-wide mx-auto px-4 py-12">
-        <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-8">{label}</h1>
+      <div className="max-w-wide mx-auto px-4 py-6 sm:py-12">
+        <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-6 sm:mb-8">{label}</h1>
         <ArticleGrid articles={allArticles as any} />
       </div>
     )
