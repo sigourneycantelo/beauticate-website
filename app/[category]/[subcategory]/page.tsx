@@ -57,6 +57,17 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
   const articles = getArticlesBySubcategory(category, subcategory)
   if (!articles.length) notFound()
 
+  const EDITORIAL_CATEGORIES = new Set(['beauty-style', 'wellness', 'living'])
+  if (!EDITORIAL_CATEGORIES.has(category)) {
+    const ArticleGrid = (await import('@/components/article/ArticleGrid')).default
+    return (
+      <div className="max-w-wide mx-auto px-4 py-12">
+        <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-8">{subcategory.replace(/-/g, ' ')}</h1>
+        <ArticleGrid articles={articles as any} />
+      </div>
+    )
+  }
+
   const SUBCATEGORY_SHOP_TAG: Record<string, string> = {
     skincare: 'skincare',
     makeup: 'makeup',
