@@ -199,162 +199,108 @@
 .heroPlat a:hover svg {
   opacity: 1;
 }
-.heroRating {
-  position: absolute;
-  top: clamp(20px, 4vh, 40px);
-  right: var(--gut);
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(8px);
-  padding: 9px 14px;
-  border-radius: 1px;
-  color: #fff;
-}
-.heroRating b {
-  font-family: var(--serif);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1;
-}
-.heroRating small {
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.78;
-  display: block;
-}
-.heroRating .stars {
-  color: #f0c14b;
-  font-size: 11px;
-  letter-spacing: 1px;
-}
 
-/* ---------- getting ready (vertical reel beside copy) ---------- */
-.gr {
-  padding: clamp(54px, 8vh, 96px) 0;
+/* ---------- about band (rating + description + platforms) ---------- */
+.about {
+  padding: clamp(48px, 7vh, 80px) 0;
   border-bottom: 1px solid var(--line-soft);
 }
-.grGrid {
+.aboutGrid {
   display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: clamp(34px, 6vw, 84px);
-  align-items: center;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
 }
-.grVideo {
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-  aspect-ratio: 9 / 16;
-  border-radius: 3px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 24px 60px rgba(25, 22, 19, 0.16);
-  background: linear-gradient(140deg, #e0cabb, #cbab98);
-}
-.grEmbed {
-  width: 100%;
-  max-width: 360px;
-  margin: 0 auto;
-}
-.grEmbed :global(.instagram-media) {
-  border-radius: 3px !important;
-  box-shadow: 0 24px 60px rgba(25, 22, 19, 0.16) !important;
-}
-.grVideo video,
-.grVideo img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 20%;
-}
-.grVideo .scr {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(15, 13, 11, 0.6), rgba(15, 13, 11, 0) 52%);
-  z-index: 2;
-}
-.grVideo .cap {
-  position: absolute;
-  z-index: 3;
-  left: 0;
-  bottom: 0;
-  padding: 18px 20px;
-  color: #fff;
-}
-.grVideo .cap .eyebrow {
-  color: rgba(255, 255, 255, 0.78);
-}
-.grVideo .cap b {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: 20px;
-  display: block;
-  margin-top: 5px;
-}
-.grPlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(4px);
-  display: grid;
-  place-items: center;
-  transition: transform 0.3s var(--ease), background 0.3s;
-}
-.grVideo:hover .grPlay {
-  transform: translate(-50%, -50%) scale(1.08);
-  background: rgba(255, 255, 255, 0.26);
-}
-.grPlay svg {
-  width: 18px;
-  height: 18px;
-  fill: #fff;
-  margin-left: 2px;
-}
-.grCopy h2 {
+.aboutCopy h2 {
   font-family: var(--serif);
   font-weight: 500;
   font-size: clamp(26px, 3.4vw, 40px);
   line-height: 1.12;
   letter-spacing: -0.01em;
-  max-width: 18ch;
+  max-width: 20ch;
 }
-.grCopy .lede2 {
+.aboutCopy .lede2 {
   margin-top: 18px;
-  max-width: 46ch;
+  max-width: 50ch;
   color: var(--ink-soft);
   font-size: 15.5px;
+  line-height: 1.6;
 }
-.grCopy .pull {
-  margin-top: 26px;
+.aboutSide {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.ratingCard {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 24px 28px;
+  background: var(--beige);
+  border-radius: 2px;
+}
+.ratingStars {
+  color: #f0c14b;
+  font-size: 22px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.ratingScore {
   font-family: var(--serif);
-  font-style: italic;
-  font-size: clamp(19px, 2.3vw, 26px);
-  line-height: 1.34;
-  color: var(--ink);
-  border-left: 2px solid var(--ink);
-  padding-left: 24px;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.ratingLabel {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  width: 100%;
+  margin-top: 2px;
+}
+.platformLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.platLabel {
+  margin-bottom: 14px;
+}
+.platLink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.platLink:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+.platLink:hover {
+  color: var(--wine);
+}
+.platLink svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--ink);
+  flex-shrink: 0;
+  transition: fill 0.2s;
+}
+.platLink:hover svg {
+  fill: var(--wine);
 }
 @media (max-width: 900px) {
-  .grGrid {
+  .aboutGrid {
     grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  .grVideo {
-    max-width: 300px;
+    gap: 36px;
   }
 }
 

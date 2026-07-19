@@ -6,7 +6,6 @@ import { getVodcastEpisodes } from '@/lib/content'
 import styles from './podcast.module.css'
 import PodcastReveal from '@/components/vodcast/PodcastReveal'
 import StickyPlayer from '@/components/vodcast/StickyPlayer'
-import GettingReadyReel from '@/components/vodcast/GettingReadyReel'
 import GuestRail, { type Guest } from '@/components/vodcast/GuestRail'
 import ThemeArchive, { type ArchiveEpisode } from '@/components/vodcast/ThemeArchive'
 import CuratorFeed from '@/components/vodcast/CuratorFeed'
@@ -177,7 +176,7 @@ export default function VodcastPage() {
     <div className={styles.podcastPage}>
       <PodcastReveal revClass={styles.rev} inClass={styles.in} />
 
-      {/* ===== 2 · HERO (latest episode) ===== */}
+      {/* ===== HERO (latest episode) ===== */}
       <section className={styles.hero} id="hero">
         <div className={styles.heroImg}>
           {heroF && (
@@ -193,14 +192,6 @@ export default function VodcastPage() {
           )}
         </div>
         <div className={styles.heroScrim} />
-
-        <div className={styles.heroRating}>
-          <div>
-            <small>Apple Podcasts</small>
-            <span className={styles.stars}>★★★★★</span>
-          </div>
-          <b>4.9</b>
-        </div>
 
         <div className={`${styles.heroInner} ${styles.rev}`}>
           <div className={`${styles.heroEyebrow} ${styles.eyebrow}`}>
@@ -218,39 +209,42 @@ export default function VodcastPage() {
               </span>{' '}
               Play episode
             </Link>
-            <div className={styles.heroPlat}>
-              <span>Also on</span>
-              <a href={PLATFORMS.spotify} target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-                {SPOTIFY_ICON}
-              </a>
-              <a href={PLATFORMS.apple} target="_blank" rel="noopener noreferrer" aria-label="Apple Podcasts">
-                {APPLE_ICON}
-              </a>
-              <a href={PLATFORMS.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                {YOUTUBE_ICON}
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== 4 · GETTING READY reel ===== */}
-      <section className={styles.gr}>
-        <div className={`${styles.wrap} ${styles.grGrid}`}>
-          <div className={styles.rev}>
-            <GettingReadyReel styles={styles} />
-          </div>
-          <div className={`${styles.grCopy} ${styles.rev}`}>
+      {/* ===== ABOUT BAND (rating + description + platform links) ===== */}
+      <section className={styles.about}>
+        <div className={`${styles.wrap} ${styles.aboutGrid}`}>
+          <div className={`${styles.aboutCopy} ${styles.rev}`}>
             <h2>Inside the homes, routines and inner lives of fascinating people.</h2>
             <p className={styles.lede2}>
               Each week we go beyond the surface with the experts, founders and thought leaders
               shaping how we live. The science and psychology of beauty and self-care, and the tools
               to look and feel the best you ever have, inside and out.
             </p>
-            <p className={styles.pull}>
-              We talk to the people improving our mindset, our health and the way we cultivate our
-              own inner beauty.
-            </p>
+          </div>
+          <div className={`${styles.aboutSide} ${styles.rev}`}>
+            <div className={styles.ratingCard}>
+              <span className={styles.ratingStars}>★★★★★</span>
+              <span className={styles.ratingScore}>4.9</span>
+              <span className={styles.ratingLabel}>on Apple Podcasts</span>
+            </div>
+            <div className={styles.platformLinks}>
+              <span className={`${styles.eyebrow} ${styles.platLabel}`}>Listen &amp; watch</span>
+              <a href={PLATFORMS.spotify} target="_blank" rel="noopener noreferrer" className={styles.platLink}>
+                {SPOTIFY_ICON}
+                <span>Spotify</span>
+              </a>
+              <a href={PLATFORMS.apple} target="_blank" rel="noopener noreferrer" className={styles.platLink}>
+                {APPLE_ICON}
+                <span>Apple Podcasts</span>
+              </a>
+              <a href={PLATFORMS.youtube} target="_blank" rel="noopener noreferrer" className={styles.platLink}>
+                {YOUTUBE_ICON}
+                <span>YouTube</span>
+              </a>
+            </div>
           </div>
         </div>
       </section>
