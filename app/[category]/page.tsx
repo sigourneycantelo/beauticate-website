@@ -10,8 +10,8 @@ export default async function CategoryPage({ params }: Props) {
   if (!articles.length) notFound()
 
   return (
-    <div className="max-w-wide mx-auto px-4 py-12">
-      <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-8">{category.replace(/-/g, ' ')}</h1>
+    <div className="max-w-wide mx-auto px-4 py-6 sm:py-12">
+      <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-6 sm:mb-8">{category.replace(/-/g, ' ')}</h1>
       <ArticleGrid articles={articles as any} />
     </div>
   )

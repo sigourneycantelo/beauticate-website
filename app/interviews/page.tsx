@@ -41,7 +41,7 @@ export default async function InterviewsPage() {
     <div className="bg-white">
 
       {/* Header */}
-      <section className="max-w-4xl mx-auto px-6 pt-16 pb-10 text-center">
+      <section className="max-w-4xl mx-auto px-6 pt-8 sm:pt-16 pb-8 sm:pb-10 text-center">
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Interviews</p>
         <h1 className="font-serif text-4xl md:text-5xl text-charcoal leading-tight mb-5">
           The people shaping beauty
@@ -93,7 +93,7 @@ export default async function InterviewsPage() {
       {/* Featured three */}
       {featured.length > 0 && (
         <section className="border-t border-gray-100 py-12">
-          <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
             {featured.map(a => (
               <Link
                 key={a.frontmatter.slug}
@@ -140,7 +140,7 @@ export default async function InterviewsPage() {
                 See all
               </Link>
             </div>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
               {articles.slice(0, 4).map(a => (
                 <Link
                   key={a.frontmatter.slug}

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function SigourneysEditPage() {
   const articles = getArticlesByCategory('sigourneys-edit')
   return (
-    <div className="max-w-wide mx-auto px-4 py-12">
+    <div className="max-w-wide mx-auto px-4 py-6 sm:py-12">
       <h1 className="mb-4">Sigourney's Edit</h1>
       <p className="text-lg text-charcoal-light mb-10 max-w-2xl">
         The products, rituals and discoveries I can't live without.
