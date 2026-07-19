@@ -93,7 +93,7 @@ const CURATED_GUESTS: { name: string; role: string; slug: string; focus?: string
   { name: 'Gabby Bernstein', role: 'Author & speaker', slug: 'gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream' },
   { name: 'Lindsay Price', role: 'Actor', slug: 'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo', focus: '55% 25%' },
   { name: 'Dr Shefali Tsabary', role: 'Clinical psychologist', slug: 'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame', focus: '65% 20%' },
-  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion', focus: '55% 10%' },
+  { name: 'Pip Edwards', role: 'Founder · P.E Nation', slug: 'pip-edwards-from-perfectionism-to-self-compassion', focus: '50% 20%' },
   { name: 'Susan Yara', role: 'Founder · Naturium', slug: 'susan-yara-on-reinvention-resilience-and-rebuilding-trust' },
   { name: 'Tanya Ali Jalani', role: 'Breathwork facilitator', slug: 'tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing' },
   { name: 'Davinia Taylor', role: 'Author & biohacker', slug: 'davinia-taylor-on-alcohol-addiction-mental-health', focus: '55% 20%' },
