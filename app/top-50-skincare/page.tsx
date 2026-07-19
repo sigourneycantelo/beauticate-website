@@ -32,8 +32,8 @@ interface Decade {
   products: Product[]
 }
 
-const CREAM = '#FBF5EE'
-const CREAM_DARK = '#F5EDE3'
+const BG = '#FFFFFF'
+const BG_ALT = '#F9F6F2'
 
 const decades: Decade[] = [
   {
@@ -120,7 +120,7 @@ const decades: Decade[] = [
 
 function SpreadHeader({ label }: { label: 'Skin Staples' | 'Superstars' }) {
   return (
-    <div className="relative mb-10 md:mb-14">
+    <div className="relative mb-6 md:mb-8">
       <p
         className="hidden md:block absolute top-0 right-0 font-sans text-[10px] tracking-[0.35em] uppercase font-medium"
         style={{ opacity: 0.4 }}
@@ -155,19 +155,19 @@ interface PlacedProduct {
 }
 
 const COLLAGE_A: PlacedProduct[] = [
-  { top: '0%',  left: '30%', imgW: '28%', textW: '22%', textAlign: 'right', z: 3 },
-  { top: '18%', left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
-  { top: '12%', left: '50%', imgW: '26%', textW: '22%', textAlign: 'right', z: 4 },
-  { top: '62%', left: '2%',  imgW: '20%', textW: '24%', textAlign: 'left',  z: 2 },
-  { top: '64%', left: '50%', imgW: '22%', textW: '26%', textAlign: 'right', z: 3 },
+  { top: '0%',  left: '25%', imgW: '28%', textW: '24%', textAlign: 'right', z: 3 },
+  { top: '8%',  left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
+  { top: '5%',  left: '52%', imgW: '26%', textW: '22%', textAlign: 'right', z: 4 },
+  { top: '55%', left: '0%',  imgW: '20%', textW: '26%', textAlign: 'left',  z: 2 },
+  { top: '54%', left: '48%', imgW: '24%', textW: '26%', textAlign: 'right', z: 3 },
 ]
 
 const COLLAGE_B: PlacedProduct[] = [
   { top: '0%',  left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
-  { top: '0%',  left: '44%', imgW: '26%', textW: '22%', textAlign: 'right', z: 4 },
-  { top: '38%', left: '0%',  imgW: '24%', textW: '22%', textAlign: 'left',  z: 3 },
-  { top: '62%', left: '2%',  imgW: '22%', textW: '22%', textAlign: 'left',  z: 3 },
-  { top: '48%', left: '48%', imgW: '30%', textW: '22%', textAlign: 'right', z: 2 },
+  { top: '0%',  left: '30%', imgW: '28%', textW: '22%', textAlign: 'right', z: 4 },
+  { top: '0%',  left: '62%', imgW: '20%', textW: '18%', textAlign: 'right', z: 3 },
+  { top: '52%', left: '0%',  imgW: '24%', textW: '24%', textAlign: 'left',  z: 3 },
+  { top: '46%', left: '46%', imgW: '30%', textW: '24%', textAlign: 'right', z: 2 },
 ]
 
 function ProductCluster({ product, pos }: { product: Product; pos: PlacedProduct }) {
@@ -235,7 +235,7 @@ function ProductCluster({ product, pos }: { product: Product; pos: PlacedProduct
 function CollageSpreads({ products, variant }: { products: Product[]; variant: 'a' | 'b' }) {
   const positions = variant === 'a' ? COLLAGE_A : COLLAGE_B
   return (
-    <div className="hidden md:block relative" style={{ paddingBottom: '130%' }}>
+    <div className="hidden md:block relative" style={{ paddingBottom: '105%' }}>
       {products.map((product, i) => (
         <ProductCluster key={product.number} product={product} pos={positions[i]} />
       ))}
@@ -293,9 +293,9 @@ function MobileProduct({ product }: { product: Product }) {
 
 export default function Top50SkincarePage() {
   return (
-    <main style={{ background: CREAM, color: '#1C1A17' }}>
+    <main style={{ background: BG, color: '#1C1A17' }}>
       {/* ─── Cover ────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ background: '#2A2622', minHeight: '70vh' }}>
+      <section className="relative overflow-hidden" style={{ background: '#2A2622', minHeight: '60vh' }}>
         <div className="absolute inset-0 flex items-end justify-center pb-16 md:pb-24">
           <div className="text-center text-white px-6">
             <p
@@ -318,7 +318,7 @@ export default function Top50SkincarePage() {
       </section>
 
       {/* ─── Welcome / Intro ──────────────────────────────────── */}
-      <section className="max-w-xl mx-auto px-6 py-16 md:py-24">
+      <section className="max-w-xl mx-auto px-6 py-10 md:py-16">
         <p className="font-sans text-[10px] tracking-[0.3em] uppercase font-medium text-center mb-4" style={{ opacity: 0.4 }}>
           beauticate.
         </p>
@@ -349,13 +349,13 @@ export default function Top50SkincarePage() {
       </section>
 
       {/* ─── Discount Codes ─────────────────────────────────── */}
-      <section className="py-14 md:py-20" style={{ background: CREAM }}>
+      <section className="py-10 md:py-14" style={{ background: BG }}>
         <div className="max-w-2xl mx-auto px-6">
           <p className="font-sans text-[10px] tracking-[0.35em] uppercase font-medium text-center mb-2" style={{ opacity: 0.4 }}>
             beauticate.
           </p>
           <h2
-            className="font-sans tracking-[0.12em] uppercase font-medium text-center mb-10"
+            className="font-sans tracking-[0.12em] uppercase font-medium text-center mb-6"
             style={{ fontSize: 'clamp(24px, 3.5vw, 36px)' }}
           >
             Discount Codes
@@ -363,7 +363,7 @@ export default function Top50SkincarePage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
               <thead>
-                <tr style={{ background: CREAM_DARK }}>
+                <tr style={{ background: BG_ALT }}>
                   <th className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-3">Brand</th>
                   <th className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-3">Offer</th>
                   <th className="font-sans text-[10px] tracking-[0.15em] uppercase font-bold px-4 py-3">How to Redeem</th>
@@ -408,8 +408,8 @@ export default function Top50SkincarePage() {
         return (
           <section key={decade.title}>
             {/* Decade opener */}
-            <div style={{ background: CREAM_DARK }}>
-              <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+            <div style={{ background: BG_ALT }}>
+              <div className="max-w-3xl mx-auto px-6 py-10 md:py-14">
                 <h2
                   className="font-sans uppercase tracking-[0.06em] font-medium leading-none mb-6"
                   style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}
@@ -423,7 +423,7 @@ export default function Top50SkincarePage() {
             </div>
 
             {/* Skin Staples spread */}
-            <div className="max-w-6xl mx-auto px-6 py-14 md:py-20" style={{ background: CREAM }}>
+            <div className="max-w-6xl mx-auto px-6 py-8 md:py-12" style={{ background: BG }}>
               <SpreadHeader label="Skin Staples" />
               <CollageSpreads products={staples} variant="a" />
               {/* Mobile: 2-col grid */}
@@ -435,7 +435,7 @@ export default function Top50SkincarePage() {
             </div>
 
             {/* Superstars spread */}
-            <div className="max-w-6xl mx-auto px-6 py-14 md:py-20" style={{ background: CREAM }}>
+            <div className="max-w-6xl mx-auto px-6 py-8 md:py-12" style={{ background: BG }}>
               <SpreadHeader label="Superstars" />
               <CollageSpreads products={superstars} variant="b" />
               {/* Mobile: 2-col grid */}
@@ -450,7 +450,7 @@ export default function Top50SkincarePage() {
       })}
 
       {/* ─── Closing ──────────────────────────────────────────── */}
-      <section className="py-16 md:py-24 text-center" style={{ background: CREAM_DARK }}>
+      <section className="py-10 md:py-16 text-center" style={{ background: BG_ALT }}>
         <div className="max-w-xl mx-auto px-6">
           <div className="font-serif text-[15px] leading-relaxed space-y-5" style={{ opacity: 0.75 }}>
             <p>
@@ -472,7 +472,7 @@ export default function Top50SkincarePage() {
       </section>
 
       {/* ─── Affiliate disclosure ─────────────────────────────── */}
-      <div className="max-w-xl mx-auto px-6 py-10 text-center" style={{ background: CREAM }}>
+      <div className="max-w-xl mx-auto px-6 py-10 text-center" style={{ background: BG }}>
         <p className="font-sans text-[11px]" style={{ opacity: 0.3 }}>
           This is an affiliate edit — when you shop via these links, you're supporting Beauticate at no extra cost to you.
         </p>
