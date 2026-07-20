@@ -309,7 +309,7 @@ export default function AdvertisePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.platform}
-                className="text-charcoal/40 hover:text-wine transition-colors w-5 h-5"
+                className="text-charcoal/40 hover:text-wine transition-colors w-9 h-9"
               >
                 {s.platform === 'Instagram' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>}
                 {s.platform === 'YouTube' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><rect x="2.5" y="6" width="19" height="12" rx="3.5" /><path d="M10.5 9.2v5.6l4.5-2.8z" fill="currentColor" stroke="none" /></svg>}
