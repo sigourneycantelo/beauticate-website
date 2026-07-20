@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { getArticlesBySubcategory } from '@/lib/content'
-import ArticleGrid from '@/components/article/ArticleGrid'
 import InsidersBar from '@/components/home/InsidersBar'
+import EditorialSections from '@/components/shared/EditorialSections'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -25,14 +25,16 @@ function articleHref(f: { category: string; subcategory?: string; slug: string }
 
 export default function TravelPage() {
   const allTravel = getArticlesBySubcategory('destinations', 'travel')
-    .filter(a => !!a)
+    .filter(a => a != null && a.frontmatter.published !== false)
 
   const heroArticle = allTravel.find(a => a?.frontmatter.isTravelHero) ?? allTravel[0]
   const hf = heroArticle?.frontmatter
   const heroImage = hf?.hero_image ?? hf?.featured_image
 
-  const gridArticles = allTravel
-    .filter(a => a?.frontmatter.slug !== heroArticle?.frontmatter.slug)
+  const editorialArticles = allTravel
+    .filter(a => a?.frontmatter.slug !== heroArticle?.frontmatter.slug && a?.frontmatter.featured_image)
+    .slice(0, 34)
+    .map(a => ({ frontmatter: a!.frontmatter }))
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -116,16 +118,8 @@ export default function TravelPage() {
         </div>
       </section>
 
-      {/* ALL TRAVEL — paginated grid */}
-      <section className="pt-[66px] pb-[40px]">
-        <div className="max-w-[1240px] mx-auto px-8">
-          <p className="font-sans text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#A8735A' }}>
-            All stories
-          </p>
-          <h2 className="font-serif font-medium text-[34px] tracking-[0.01em] mb-[26px]">Latest travel</h2>
-          <ArticleGrid articles={gridArticles as any} />
-        </div>
-      </section>
+      {/* EDITORIAL LAYOUT */}
+      <EditorialSections articles={editorialArticles} />
 
       {/* SUBSCRIBE */}
       <InsidersBar />
