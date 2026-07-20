@@ -414,21 +414,26 @@ export default function AdvertisePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mt-10">
+          <p className="font-serif text-sm text-charcoal/50 mt-10 mb-4">Watch Sig&rsquo;s recap on Instagram</p>
+          <div className="flex gap-4">
             {[
-              { href: 'https://www.instagram.com/p/C5iBNusSje2/', label: 'Avène event recap' },
-              { href: 'https://www.instagram.com/p/C8bihICShBt/', label: 'SkinCeuticals event recap' },
-              { href: 'https://www.instagram.com/p/C6IkQevyHsL/', label: 'Synternals event recap' },
+              { href: 'https://www.instagram.com/p/C5iBNusSje2/', logo: '/images/advertise/avene-logo.png', alt: 'Avène' },
+              { href: 'https://www.instagram.com/p/C8bihICShBt/', logo: '/images/advertise/skinceuticals-logo.png', alt: 'SkinCeuticals' },
+              { href: 'https://www.instagram.com/p/C6IkQevyHsL/', logo: '/images/advertise/synternals-logo.png', alt: 'Synternals' },
             ].map(v => (
               <a
                 key={v.href}
                 href={v.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block border border-camel/20 bg-paper p-5 text-center hover:border-wine/40 transition-colors"
+                className="group flex items-center gap-3 border border-camel/20 bg-paper px-4 py-3 hover:border-wine/40 transition-colors"
               >
-                <div className="font-sans text-[18px] text-wine/60 group-hover:text-wine mb-2 transition-colors">&#9654;</div>
-                <div className="font-sans text-[10px] tracking-[0.16em] uppercase text-charcoal/40 group-hover:text-charcoal/60 transition-colors">{v.label}</div>
+                <span className="shrink-0 w-8 h-8 rounded-full border border-wine/30 flex items-center justify-center group-hover:border-wine group-hover:bg-wine/5 transition-colors">
+                  <svg viewBox="0 0 16 16" className="w-3 h-3 text-wine/60 group-hover:text-wine transition-colors" fill="currentColor"><path d="M5 3l8 5-8 5V3z" /></svg>
+                </span>
+                <div className="relative h-4 w-16">
+                  <Image src={v.logo} alt={v.alt} fill className="object-contain object-left" sizes="64px" />
+                </div>
               </a>
             ))}
           </div>
