@@ -465,25 +465,25 @@ export default function AdvertisePage() {
             </div>
           </div>
           <div className="order-2 md:order-2">
-            <div className="space-y-4">
+            <div className="space-y-5">
               {TRIAL_TEAMS.map(t => (
                 <Link
                   key={t.href}
                   href={t.href}
-                  className="group flex gap-4 border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
+                  className="group block border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
                 >
-                  <div className="relative w-28 shrink-0 bg-ink/5">
+                  <div className="relative aspect-[16/9] bg-ink/5">
                     <Image
                       src={t.image}
                       alt={t.imageAlt}
                       fill
-                      className="object-cover"
-                      sizes="112px"
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 45vw"
                     />
                   </div>
-                  <div className="py-3 pr-4">
+                  <div className="p-4">
                     <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-1">{t.brand}</div>
-                    <h3 className="font-serif text-sm text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
+                    <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
                   </div>
                 </Link>
               ))}
