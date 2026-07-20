@@ -195,7 +195,7 @@ export default function AdvertisePage() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
             <Image
-              src="/images/advertise/7.jpg"
+              src="/images/advertise/advertise-sigourney.jpg"
               alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
               fill
               className="object-cover object-[center_20%]"
