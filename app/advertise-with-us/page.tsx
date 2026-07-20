@@ -116,19 +116,6 @@ export default function AdvertisePage() {
   return (
     <div className="bg-paper">
 
-      {/* Hero image — full bleed, no overlay */}
-      <section>
-        <Image
-          src="/images/advertise/advertise-hero.jpg"
-          alt="Sigourney Cantelo writing at a café table"
-          width={3600}
-          height={2400}
-          className="block w-full h-auto"
-          sizes="100vw"
-          priority
-        />
-      </section>
-
       {/* Heading on beige */}
       <section className="bg-parchment py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
@@ -195,7 +182,7 @@ export default function AdvertisePage() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
             <Image
-              src="/images/advertise/advertise-sigourney.jpg"
+              src="/images/advertise/advertise-hero-new.jpg"
               alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
               fill
               className="object-cover object-[center_20%]"
