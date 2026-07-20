@@ -116,6 +116,19 @@ export default function AdvertisePage() {
   return (
     <div className="bg-paper">
 
+      {/* Hero image — full bleed */}
+      <section>
+        <Image
+          src="/images/advertise/advertise-hero.jpg"
+          alt="Sigourney Cantelo writing at a café table"
+          width={3600}
+          height={2400}
+          className="block w-full h-auto"
+          sizes="100vw"
+          priority
+        />
+      </section>
+
       {/* Heading on beige */}
       <section className="bg-parchment py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
