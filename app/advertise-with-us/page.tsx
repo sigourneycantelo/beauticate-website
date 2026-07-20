@@ -433,32 +433,7 @@ export default function AdvertisePage() {
       {/* Trial teams */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="order-2 md:order-1">
-            <div className="space-y-4">
-              {TRIAL_TEAMS.map(t => (
-                <Link
-                  key={t.href}
-                  href={t.href}
-                  className="group block border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
-                >
-                  <div className="relative aspect-[16/9] bg-ink/5">
-                    <Image
-                      src={t.image}
-                      alt={t.imageAlt}
-                      fill
-                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 45vw"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-1">{t.brand}</div>
-                    <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
+          <div className="order-1 md:order-1">
             <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Trial teams</p>
             <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Real reviews. Real results. Real influence.</h2>
             <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-6">
@@ -479,6 +454,31 @@ export default function AdvertisePage() {
                 className="object-contain object-left"
                 sizes="320px"
               />
+            </div>
+          </div>
+          <div className="order-2 md:order-2">
+            <div className="space-y-4">
+              {TRIAL_TEAMS.map(t => (
+                <Link
+                  key={t.href}
+                  href={t.href}
+                  className="group flex gap-4 border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
+                >
+                  <div className="relative w-28 shrink-0 bg-ink/5">
+                    <Image
+                      src={t.image}
+                      alt={t.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="112px"
+                    />
+                  </div>
+                  <div className="py-3 pr-4">
+                    <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-1">{t.brand}</div>
+                    <h3 className="font-serif text-sm text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
@@ -509,7 +509,7 @@ export default function AdvertisePage() {
       {/* Testimonial */}
       <section className="max-w-3xl mx-auto px-6 py-16 text-center">
         <blockquote className="font-serif text-lg md:text-xl text-ink leading-relaxed italic mb-6">
-          &ldquo;Sigourney&apos;s credibility and audience trust made this one of our most successful digital partnerships to date. Our package with Beauticate translated into direct sales, contributing to over $50k revenue.&rdquo;
+          &ldquo;Sigourney&apos;s credibility and audience trust made this one of our most successful digital partnerships to date. Our package with Beauticate translated into direct sales, contributing to over $75k revenue.&rdquo;
         </blockquote>
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40">
           Lucija Pejnovi&#263; &middot; Influencer &amp; Marketing, Qure Skincare
