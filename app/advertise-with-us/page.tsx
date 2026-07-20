@@ -359,12 +359,13 @@ export default function AdvertisePage() {
       </section>
 
       {/* Editorial divider — mood */}
-      <section className="relative w-full aspect-[21/9] md:aspect-[3/1]">
+      <section>
         <Image
           src="/images/advertise/advertise-mood.jpg"
           alt="Sigourney Cantelo laughing candidly"
-          fill
-          className="object-cover object-top"
+          width={3600}
+          height={2400}
+          className="block w-full h-auto"
           sizes="100vw"
         />
       </section>

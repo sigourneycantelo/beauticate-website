@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://www.beauticate.com/about-beauticate' },
   openGraph: {
     title: 'About Beauticate | Founded by Sigourney Cantelo',
-    description: 'Eleven years of trusted beauty, wellness and lifestyle editorial. Meet the founder, the team, and the story behind Australia\'s most-cited beauty brand.',
+    description: 'Twelve years of trusted beauty, wellness and lifestyle editorial. Meet the founder, the team, and the story behind Australia\'s most-cited beauty brand.',
     url: 'https://www.beauticate.com/about-beauticate',
     type: 'website',
   },
@@ -176,8 +176,8 @@ export default function AboutPage() {
               <p>After years of writing for magazines, I wanted to create something of my own. A space that honoured beauty properly. Not as something trivial, but as something powerful.</p>
               <p>The name came from two words: beauty + educate. But over time, it&apos;s become something deeper. To Beauticate is to live beautifully and well. To be curious, to question, to seek pleasure, purpose and presence in equal measure.</p>
 
-              <blockquote className="my-8 border-l-2 border-wine/50 pl-6">
-                <p className="font-serif italic text-2xl md:text-[28px] text-charcoal leading-snug">Real beauty has never been just about what you put on your skin.</p>
+              <blockquote className="my-10 py-8 border-t border-b border-wine/20 text-center">
+                <p className="font-serif italic text-charcoal text-center" style={{ fontSize: 'clamp(24px, 3.2vw, 32px)', lineHeight: 1.35 }}>Real beauty has never been just about what you put on your skin.</p>
               </blockquote>
 
               <p>It&apos;s the bold lip that gets you through a hard morning. The fragrance that makes a stranger smile. The bath that finally lets you exhale. Small things that are actually enormous things.</p>
@@ -211,8 +211,8 @@ export default function AboutPage() {
         {/* Press band */}
         <section className="bg-white border-t border-b border-gray-100 py-10">
           <div className="max-w-5xl mx-auto px-6 text-center">
-            <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal/40 mb-7">As seen in</p>
             <Link href="/press" className="group block">
+              <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal/40 group-hover:text-wine transition-colors mb-7">As seen in</p>
               <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
                 {PRESS_LOGOS.map(logo => (
                   <div key={logo.src} className="relative h-7 w-[120px] grayscale opacity-45 group-hover:opacity-70 transition-opacity">
@@ -230,8 +230,9 @@ export default function AboutPage() {
         {/* Our Editors & Experts */}
         <section className="bg-gray-50 border-t border-b border-gray-100 py-16">
           <div className="max-w-5xl mx-auto px-6">
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted mb-3 text-center">The Collective</p>
-            <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-4 text-center">Our editors &amp; experts</h2>
+            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">The Collective</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 text-center">Our editors &amp; experts</h2>
+            <div className="w-10 h-[1.5px] bg-wine/40 mx-auto mb-4" />
             <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-3xl mx-auto text-center mb-12">
               The Beauticate Collective is a curated group of editors and experts who shape the voice, perspective and vision of this platform. From beauty editors and cosmetic physicians to wellness coaches, nutritionists and interior designers, together they cover every pillar of a beautifully lived life.
             </p>
@@ -252,7 +253,9 @@ export default function AboutPage() {
 
         {/* The Team */}
         <section className="max-w-5xl mx-auto px-6 py-16">
-          <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-12 text-center">The team</h2>
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Behind the scenes</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-charcoal mb-2 text-center">The team</h2>
+          <div className="w-10 h-[1.5px] bg-wine/40 mx-auto mb-12" />
           <div className="grid sm:grid-cols-2 gap-x-10 gap-y-12">
             {team.map(p => (
               <div key={p.name}>
@@ -269,7 +272,9 @@ export default function AboutPage() {
 
         {/* FAQ: visible on page for AI extractability (Doug: "not hidden in code") */}
         <section className="max-w-4xl mx-auto px-6 py-16">
-          <h2 className="font-serif text-2xl text-charcoal mb-8">Frequently asked questions</h2>
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">FAQ</p>
+          <h2 className="font-serif text-2xl text-charcoal mb-2">Frequently asked questions</h2>
+          <div className="w-10 h-[1.5px] bg-wine/40 mb-8" />
           <div className="space-y-6">
             {faqs.map(f => (
               <div key={f.question} className="border-b border-gray-100 pb-6">

@@ -178,9 +178,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
         const delta = y - lastY.current
         if (y <= 200) {
           setHidden(false)
-        } else if (delta > 8) {
+        } else if (delta > 20) {
           setHidden(true)
-        } else if (delta < -8) {
+        } else if (delta < -20) {
           setHidden(false)
         }
         lastY.current = y

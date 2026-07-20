@@ -163,15 +163,16 @@
 .story-rail-wrap { position: relative; }
 .story-arrow {
   display: none; position: absolute; top: 50%; transform: translateY(-50%);
-  z-index: 10; width: 36px; height: 36px; border-radius: 9999px;
-  background: rgba(255,255,255,.9); border: 1px solid rgba(28,26,23,.1);
+  z-index: 10; width: 44px; height: 44px; border-radius: 9999px;
+  background: #fff; border: 1.5px solid rgba(28,26,23,.15);
   color: #2a2621; cursor: pointer; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity .25s ease; box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  opacity: 0; transition: opacity .25s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 .story-arrow.is-visible { opacity: 1; }
-.story-arrow:hover { background: #fff; border-color: rgba(28,26,23,.2); }
-.story-arrow--left { left: -4px; }
-.story-arrow--right { right: -4px; }
+.story-arrow:hover { background: #fff; border-color: #7a2733; color: #7a2733; box-shadow: 0 2px 12px rgba(122,39,51,.15); }
+.story-arrow--left { left: -8px; }
+.story-arrow--right { right: -8px; }
 
 /* Reveal state — only applied once JS is present, so no-JS shows everything. */
 .story--js .milestone { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
