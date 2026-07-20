@@ -197,7 +197,7 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = [], excludeS
     .filter(isPublished)
     .filter(a => a?.frontmatter.featured_image)
     .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
-    .filter(a => !excludeSubcategories.includes(a!.frontmatter.subcategory))
+    .filter(a => !excludeSubcategories.includes(a!.frontmatter.subcategory ?? ''))
     .sort((a, b) => {
       const rankA = a?.frontmatter.home_rank ?? Infinity
       const rankB = b?.frontmatter.home_rank ?? Infinity

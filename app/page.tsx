@@ -19,7 +19,7 @@ export default async function HomePage() {
   const [taggedProducts, winterCollection, allProducts, vodcastEpisodes] = await Promise.all([
     getProductsByTag('team', 24),
     getCollectionByHandle('autumn-edit'),
-    getProducts(12),
+    getProducts(24),
     Promise.resolve(getVodcastEpisodes()),
   ])
   const collectionProducts = winterCollection?.products?.nodes ?? []
@@ -28,8 +28,9 @@ export default async function HomePage() {
     if (seen.has(p.handle)) return false
     seen.add(p.handle)
     return true
-  }).slice(0, 12)
+  }).slice(0, 24)
   const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
+  const shopProducts2 = allProducts.filter(p => !seen.has(p.handle))
 
   const shownSlugs = new Set<string>()
   const DIRECTORY_SUBS = ['bathhouses', 'clinics', 'salons', 'spas-retreats', 'wellness']
@@ -82,6 +83,14 @@ export default async function HomePage() {
 
       {/* 11 — Duo */}
       {duo2Articles.length > 0 && <DuoLeft articles={duo2Articles as any} />}
+
+      {/* 11b — Second product rail */}
+      <ShopStrip
+        products={shopProducts2}
+        eyebrow="More to explore"
+        heading={<>New in the <em className="italic">shop</em></>}
+        subheading="Fresh finds, hand-picked by the team"
+      />
 
       {/* 12 — Shop by Moment */}
       <ShopByMoment />

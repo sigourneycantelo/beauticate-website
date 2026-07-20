@@ -10,7 +10,17 @@ function formatPrice(p: ShopifyProduct) {
   return `$${num % 1 === 0 ? num.toFixed(0) : num.toFixed(2)}`
 }
 
-export default function ShopStrip({ products }: { products: ShopifyProduct[] }) {
+export default function ShopStrip({
+  products,
+  eyebrow = 'Beauticate Shop',
+  heading,
+  subheading = 'Curated by the Beauticate Collective',
+}: {
+  products: ShopifyProduct[]
+  eyebrow?: string
+  heading?: React.ReactNode
+  subheading?: string
+}) {
   const railRef = useRef<HTMLDivElement>(null)
   const [paused, setPaused] = useState(false)
 
@@ -47,16 +57,16 @@ export default function ShopStrip({ products }: { products: ShopifyProduct[] }) 
           className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold"
           style={{ color: '#8E9A82' }}
         >
-          Beauticate Shop
+          {eyebrow}
         </p>
         <h2
           className="font-serif font-normal mt-2"
           style={{ fontSize: 'clamp(24px,3vw,34px)' }}
         >
-          What the team is buying <em className="italic">this week</em>
+          {heading ?? <>What the team is buying <em className="italic">this week</em></>}
         </h2>
         <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.58 }}>
-          Curated by the Beauticate Collective
+          {subheading}
         </p>
       </div>
 
