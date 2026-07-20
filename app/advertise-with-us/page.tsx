@@ -140,7 +140,7 @@ export default function AdvertisePage() {
       </section>
 
       {/* Stats band */}
-      <section className="border-b border-camel/30 py-12 bg-parchment">
+      <section className="border-b border-camel/30 py-12 bg-paper">
         <div className="max-w-3xl mx-auto px-6 grid grid-cols-3 gap-8 text-center">
           {STATS.map(s => (
             <div key={s.label}>
