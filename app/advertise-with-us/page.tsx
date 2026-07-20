@@ -421,70 +421,43 @@ export default function AdvertisePage() {
 
       {/* Trial teams */}
       <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="order-1 md:order-1">
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Trial teams</p>
-            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Real reviews. Real results. Real influence.</h2>
-            <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-6">
-              Our hand-picked team of beauty-obsessed testers delivers high-quality, high-trust product reviews that drive clicks, conversation, and conversions.
-            </p>
-            <ul className="space-y-2 font-serif text-sm text-charcoal/70 leading-relaxed mb-6">
-              <li>4&ndash;8 targeted reviewers matched to your product</li>
-              <li>Reviews professionally edited by Beauticate for credibility</li>
-              <li>Blog feature with holding shot and reviewer imagery</li>
-              <li>Instagram story + feed post + Facebook post</li>
-              <li>EDM inclusion driving direct traffic</li>
-            </ul>
-          </div>
-          <div className="order-2 md:order-2">
-            <div className="space-y-5">
-              {TRIAL_TEAMS.map(t => (
-                <Link
-                  key={t.href}
-                  href={t.href}
-                  className="group block border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
-                >
-                  <div className="relative aspect-[16/9] bg-ink/5">
-                    <Image
-                      src={t.image}
-                      alt={t.imageAlt}
-                      fill
-                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 45vw"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <div className="relative h-5 w-16 mb-2">
-                      <Image src={t.logo} alt={t.brand} fill className="object-contain object-left" sizes="64px" />
-                    </div>
-                    <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Listicle features */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Entry-level features</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Listicle features</h2>
-          <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Our SEO-optimised &ldquo;Best Of&rdquo; roundups are a smart, search-friendly way for brands to appear in curated editorial features with ongoing visibility. Ideal for emerging brands or new product discovery &mdash; a premium, low-barrier entry point into the Beauticate ecosystem with lasting value.
+        <div className="text-center mb-10">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Trial teams</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Real reviews. Real results. Real influence.</h2>
+          <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-6">
+            Our hand-picked team of beauty-obsessed testers delivers high-quality, high-trust product reviews that drive clicks, conversation, and conversions.
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {LISTICLES.map(l => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="group block border border-camel/20 bg-paper p-6 hover:border-wine/40 transition-colors"
-              >
-                <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{l.title}</h3>
-              </Link>
-            ))}
-          </div>
+          <ul className="inline-grid md:grid-cols-2 gap-x-10 gap-y-2 text-left font-serif text-sm text-charcoal/70 leading-relaxed">
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>4&ndash;8 targeted reviewers matched to your product</span></li>
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Reviews professionally edited for credibility</span></li>
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Blog feature with holding shot and imagery</span></li>
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Instagram story + feed post + Facebook post</span></li>
+          </ul>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+          {TRIAL_TEAMS.map(t => (
+            <Link
+              key={t.href}
+              href={t.href}
+              className="group block border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
+            >
+              <div className="relative aspect-[4/3] bg-ink/5">
+                <Image
+                  src={t.image}
+                  alt={t.imageAlt}
+                  fill
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
+              <div className="p-4">
+                <div className="relative h-5 w-16 mb-2">
+                  <Image src={t.logo} alt={t.brand} fill className="object-contain object-left" sizes="64px" />
+                </div>
+                <h3 className="font-serif text-sm text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -500,19 +473,6 @@ export default function AdvertisePage() {
 
       {/* Our story timeline */}
       <StoryTimeline />
-
-      {/* Editorial policy */}
-      <section className="bg-parchment py-14">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2 className="font-serif text-2xl text-ink mb-5">Our editorial policy</h2>
-          <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-2xl">
-            Advertising never dictates editorial content. Sponsored partnerships are always
-            clearly labelled. Beauticate does not publish positive coverage in exchange for
-            payment &mdash; commercial arrangements do not influence what we recommend, test or
-            feature in our independent editorial.
-          </p>
-        </div>
-      </section>
 
       {/* CTA with running image */}
       <section className="bg-ink">
@@ -537,6 +497,19 @@ export default function AdvertisePage() {
               Cantelo Corporation Pty Ltd &middot; ABN 71 105 175 317
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Editorial policy */}
+      <section className="bg-parchment py-14">
+        <div className="max-w-4xl mx-auto px-6">
+          <h2 className="font-serif text-2xl text-ink mb-5">Our editorial policy</h2>
+          <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-2xl">
+            Advertising never dictates editorial content. Sponsored partnerships are always
+            clearly labelled. Beauticate does not publish positive coverage in exchange for
+            payment &mdash; commercial arrangements do not influence what we recommend, test or
+            feature in our independent editorial.
+          </p>
         </div>
       </section>
 
