@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { getArticlesByTravelType, getArticlesByFeeling, getArticlesBySubcategory } from '@/lib/content'
-import DuoStagger from '@/components/home/DuoStagger'
-import DuoLeft from '@/components/home/DuoLeft'
+import { getArticlesBySubcategory } from '@/lib/content'
+import ArticleGrid from '@/components/article/ArticleGrid'
 import InsidersBar from '@/components/home/InsidersBar'
 import type { Metadata } from 'next'
 
@@ -20,100 +19,20 @@ const FEELINGS = [
   { slug: 'romantic', title: 'Romantic escapes', sub: 'Mini-breaks made for two', image: '/destinations/feeling-weekender.jpg' },
 ]
 
-const TYPE_LABELS: Record<string, string> = {
-  guide: 'Guide',
-  'hotel-review': 'Hotel',
-  'travel-beauty': 'Travel Beauty',
-  'sigs-edit': "Sig's Edit",
-}
-
-function articleHref(f: { category: string; subcategory?: string; slug: string; also_in?: string[] }) {
+function articleHref(f: { category: string; subcategory?: string; slug: string }) {
   return `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
-}
-
-function TravelCard({ article, tall, imageOverride }: { article: any; tall?: boolean; imageOverride?: string }) {
-  const f = article.frontmatter
-  const imageSrc = imageOverride ?? f.featured_image
-  return (
-    <Link href={articleHref(f)} className="group block">
-      <div className={`relative overflow-hidden rounded-[3px] ${tall ? 'h-[300px]' : 'h-[250px]'}`}>
-        {f.travelType && (
-          <span
-            className="absolute top-3 left-3 z-10 font-sans text-[10px] tracking-[0.12em] uppercase px-2.5 py-1.5 rounded-[2px]"
-            style={{ background: 'rgba(251,246,238,0.92)', color: '#211E19' }}
-          >
-            {TYPE_LABELS[f.travelType] ?? f.travelType}
-          </span>
-        )}
-        {imageSrc ? (
-          <Image
-            src={imageSrc}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 900px) 50vw, 25vw"
-          />
-        ) : (
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(130% 100% at 50% 30%,#C9A98A,#7E6247)' }} />
-        )}
-      </div>
-      <h3 className="font-serif font-medium text-[21px] leading-[1.14] mt-4 group-hover:text-wine transition-colors">
-        {f.title}
-      </h3>
-      <p className="font-sans text-[11.5px] tracking-[0.12em] uppercase mt-2" style={{ color: '#6E655A' }}>
-        {f.state ? `${f.state}` : f.category?.replace(/-/g, ' ')}
-      </p>
-    </Link>
-  )
-}
-
-function FeelingStrip({ feeling }: { feeling: typeof FEELINGS[number] }) {
-  const articles = getArticlesByFeeling(feeling.slug).slice(0, 3)
-  if (!articles.length) return null
-  return (
-    <section className="pt-5 pb-[66px]">
-      <div className="max-w-[1240px] mx-auto px-8">
-        <p className="font-sans text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#A8735A' }}>
-          {feeling.sub}
-        </p>
-        <div className="flex items-baseline justify-between mb-[26px]">
-          <h2 className="font-serif font-medium text-[34px] tracking-[0.01em]">{feeling.title}</h2>
-          <Link
-            href={`/destinations/travel/feeling/${feeling.slug}`}
-            className="font-sans text-xs tracking-[0.14em] uppercase"
-            style={{ color: '#6E655A' }}
-          >
-            See all
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {articles.map(a => (
-            <TravelCard
-              key={a!.frontmatter.slug}
-              article={a}
-              imageOverride={a!.frontmatter.feeling_images?.[feeling.slug]}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  )
 }
 
 export default function TravelPage() {
   const allTravel = getArticlesBySubcategory('destinations', 'travel')
     .filter(a => !!a)
-  const typedTravel = allTravel.filter(a => !!a?.frontmatter.travelType)
 
-  const heroArticle = typedTravel.find(a => a?.frontmatter.isTravelHero) ?? allTravel[0]
-  const sigsEdits = getArticlesByTravelType('sigs-edit').slice(0, 3)
-
-  const recentEditorial = allTravel
-    .filter(a => a?.frontmatter.slug !== heroArticle?.frontmatter.slug)
-    .slice(0, 7)
-
+  const heroArticle = allTravel.find(a => a?.frontmatter.isTravelHero) ?? allTravel[0]
   const hf = heroArticle?.frontmatter
   const heroImage = hf?.hero_image ?? hf?.featured_image
+
+  const gridArticles = allTravel
+    .filter(a => a?.frontmatter.slug !== heroArticle?.frontmatter.slug)
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -167,13 +86,6 @@ export default function TravelPage() {
           </p>
           <div className="flex items-baseline justify-between mb-[26px]">
             <h2 className="font-serif font-medium text-[34px] tracking-[0.01em]">Where do you want to go?</h2>
-            <Link
-              href="/destinations/travel"
-              className="font-sans text-xs tracking-[0.14em] uppercase"
-              style={{ color: '#6E655A' }}
-            >
-              All collections
-            </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-[22px]">
             {FEELINGS.map(f => (
@@ -204,86 +116,19 @@ export default function TravelPage() {
         </div>
       </section>
 
-      {/* WHERE TO GO NOW — latest 3 */}
-      <section className="pt-5 pb-[66px]">
+      {/* ALL TRAVEL — paginated grid */}
+      <section className="pt-[66px] pb-[40px]">
         <div className="max-w-[1240px] mx-auto px-8">
           <p className="font-sans text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#A8735A' }}>
-            Seasonal edit
+            All stories
           </p>
-          <div className="flex items-baseline justify-between mb-[26px]">
-            <h2 className="font-serif font-medium text-[34px] tracking-[0.01em]">Where to go now</h2>
-            <Link
-              href="/destinations/travel"
-              className="font-sans text-xs tracking-[0.14em] uppercase"
-              style={{ color: '#6E655A' }}
-            >
-              See all travel
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {recentEditorial.slice(0, 3).map(a => (
-              <TravelCard key={a!.frontmatter.slug} article={a} />
-            ))}
-          </div>
+          <h2 className="font-serif font-medium text-[34px] tracking-[0.01em] mb-[26px]">Latest travel</h2>
+          <ArticleGrid articles={gridArticles as any} />
         </div>
       </section>
 
-      {/* STAGGERED DUO — articles 4 & 5 */}
-      {recentEditorial.length >= 5 && (
-        <DuoStagger big={recentEditorial[3] as any} small={recentEditorial[4] as any} />
-      )}
-
-      {/* FEELING STRIP 1 — Girls trip */}
-      <FeelingStrip feeling={FEELINGS[0]} />
-
-      {/* FEELING STRIP 2 — Reset & heal */}
-      <FeelingStrip feeling={FEELINGS[1]} />
-
       {/* SUBSCRIBE */}
       <InsidersBar />
-
-      {/* FEELING STRIP 3 — Switch off */}
-      <FeelingStrip feeling={FEELINGS[2]} />
-
-      {/* DUO LEFT — articles 6 & 7 */}
-      {recentEditorial.length >= 7 && (
-        <DuoLeft articles={[recentEditorial[5] as any, recentEditorial[6] as any]} />
-      )}
-
-      {/* FEELING STRIP 4 — City */}
-      <FeelingStrip feeling={FEELINGS[3]} />
-
-      {/* FEELING STRIP 5 — Family */}
-      <FeelingStrip feeling={FEELINGS[4]} />
-
-      {/* FEELING STRIP 6 — Romantic */}
-      <FeelingStrip feeling={FEELINGS[5]} />
-
-      {/* SIG'S TRAVEL EDITS — 3 across */}
-      {sigsEdits.length > 0 && (
-        <section className="pt-5 pb-[66px]">
-          <div className="max-w-[1240px] mx-auto px-8">
-            <p className="font-sans text-xs tracking-[0.2em] uppercase mb-2" style={{ color: '#A8735A' }}>
-              In her words
-            </p>
-            <div className="flex items-baseline justify-between mb-[26px]">
-              <h2 className="font-serif font-medium text-[34px] tracking-[0.01em]">Sig&rsquo;s travel edits</h2>
-              <Link
-                href="/sigourneys-edit"
-                className="font-sans text-xs tracking-[0.14em] uppercase"
-                style={{ color: '#6E655A' }}
-              >
-                More from Sigourney
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {sigsEdits.map(a => (
-                <TravelCard key={a!.frontmatter.slug} article={a} tall />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* CROSS BAND — DIRECTORY LINK */}
       <section className="pt-5 pb-[66px]">
