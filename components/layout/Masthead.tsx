@@ -209,6 +209,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
           <button className="mh-hamburger" aria-label="Open menu" onClick={() => setDrawer(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" /></svg>
           </button>
+          <button className="mh-back" aria-label="Go back" onClick={() => window.history.back()}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="15 18 9 12 15 6" /></svg>
+          </button>
           {isShop && (
             <Link href="/" className="mh-back-site" aria-label="Back to Beauticate">
               <span aria-hidden>&larr;</span> Beauticate
