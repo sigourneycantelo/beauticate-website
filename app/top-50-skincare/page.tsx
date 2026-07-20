@@ -146,98 +146,95 @@ function SpreadHeader({ label }: { label: 'Skin Staples' | 'Superstars' }) {
 }
 
 interface PlacedProduct {
-  top: string
-  left: string
-  imgW: string
-  textW: string
-  textAlign?: 'left' | 'right' | 'center'
-  z: number
+  imgTop: string; imgLeft: string; imgW: string; imgZ: number
+  txtTop: string; txtLeft: string; txtW: string
+  txtAlign?: 'left' | 'right' | 'center'
 }
 
 const COLLAGE_A: PlacedProduct[] = [
-  { top: '0%',  left: '25%', imgW: '28%', textW: '24%', textAlign: 'right', z: 3 },
-  { top: '8%',  left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
-  { top: '5%',  left: '52%', imgW: '26%', textW: '22%', textAlign: 'right', z: 4 },
-  { top: '55%', left: '0%',  imgW: '20%', textW: '26%', textAlign: 'left',  z: 2 },
-  { top: '54%', left: '48%', imgW: '24%', textW: '26%', textAlign: 'right', z: 3 },
+  { imgTop: '0%',  imgLeft: '22%', imgW: '28%', imgZ: 3, txtTop: '0%',  txtLeft: '52%', txtW: '28%', txtAlign: 'left'  },
+  { imgTop: '20%', imgLeft: '12%', imgW: '20%', imgZ: 2, txtTop: '18%', txtLeft: '0%',  txtW: '20%', txtAlign: 'center' },
+  { imgTop: '10%', imgLeft: '42%', imgW: '26%', imgZ: 5, txtTop: '8%',  txtLeft: '65%', txtW: '28%', txtAlign: 'left'  },
+  { imgTop: '60%', imgLeft: '15%', imgW: '18%', imgZ: 3, txtTop: '58%', txtLeft: '0%',  txtW: '22%', txtAlign: 'left'  },
+  { imgTop: '58%', imgLeft: '48%', imgW: '22%', imgZ: 4, txtTop: '58%', txtLeft: '67%', txtW: '28%', txtAlign: 'left'  },
 ]
 
 const COLLAGE_B: PlacedProduct[] = [
-  { top: '0%',  left: '0%',  imgW: '22%', textW: '20%', textAlign: 'left',  z: 2 },
-  { top: '0%',  left: '30%', imgW: '28%', textW: '22%', textAlign: 'right', z: 4 },
-  { top: '0%',  left: '62%', imgW: '20%', textW: '18%', textAlign: 'right', z: 3 },
-  { top: '52%', left: '0%',  imgW: '24%', textW: '24%', textAlign: 'left',  z: 3 },
-  { top: '46%', left: '46%', imgW: '30%', textW: '24%', textAlign: 'right', z: 2 },
+  { imgTop: '4%',  imgLeft: '18%', imgW: '18%', imgZ: 3, txtTop: '0%',  txtLeft: '0%',  txtW: '22%', txtAlign: 'left'  },
+  { imgTop: '0%',  imgLeft: '36%', imgW: '24%', imgZ: 5, txtTop: '0%',  txtLeft: '60%', txtW: '28%', txtAlign: 'left'  },
+  { imgTop: '42%', imgLeft: '14%', imgW: '22%', imgZ: 4, txtTop: '40%', txtLeft: '0%',  txtW: '20%', txtAlign: 'left'  },
+  { imgTop: '62%', imgLeft: '18%', imgW: '18%', imgZ: 3, txtTop: '60%', txtLeft: '0%',  txtW: '24%', txtAlign: 'left'  },
+  { imgTop: '48%', imgLeft: '52%', imgW: '28%', imgZ: 5, txtTop: '50%', txtLeft: '72%', txtW: '26%', txtAlign: 'left'  },
 ]
 
-function ProductCluster({ product, pos }: { product: Product; pos: PlacedProduct }) {
-  const isRight = pos.textAlign === 'right'
+function ProductOnSpread({ product, pos }: { product: Product; pos: PlacedProduct }) {
   return (
-    <div
-      className="absolute"
-      style={{ top: pos.top, left: pos.left, width: `calc(${pos.imgW} + ${pos.textW})`, zIndex: pos.z }}
-    >
-      <div className={`flex ${isRight ? 'flex-row' : 'flex-row-reverse'} items-start gap-[3%]`}>
-        {/* Image column */}
-        <div style={{ width: '50%', flexShrink: 0 }}>
-          <Link
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="block group"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-lg"
-              loading="lazy"
-            />
-          </Link>
-        </div>
-        {/* Number + Text column */}
-        <div className={`flex-1 ${isRight ? '' : 'text-right'}`}>
-          <span
-            className="block font-serif leading-[0.85] select-none"
-            style={{ fontSize: 'clamp(52px, 7vw, 110px)', color: '#8B7355', opacity: 0.75 }}
-            aria-hidden
-          >
-            {product.number}.
-          </span>
-          <h4
-            className="font-sans text-[11px] tracking-[0.06em] uppercase font-bold leading-snug mt-2 mb-1.5"
-            style={{ color: '#1C1A17' }}
-          >
-            {product.nickname}
-          </h4>
-          <p className="font-serif text-[11px] leading-[1.55] mb-2" style={{ opacity: 0.7, color: '#1C1A17' }}>
-            {product.description}
-          </p>
-          <p className="font-serif text-[10.5px] mb-1.5" style={{ opacity: 0.55, color: '#1C1A17' }}>
-            <span className="underline">{product.name}</span>
-            {product.price ? `, ${product.price}` : ''}
-          </p>
-          <Link
-            href={product.url}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className={`inline-flex items-center font-sans text-[9px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border transition-colors hover:bg-charcoal hover:text-white ${isRight ? '' : 'ml-auto'}`}
-            style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
-          >
-            shop
-          </Link>
-        </div>
+    <>
+      {/* Image — floats independently */}
+      <Link
+        href={product.url}
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        className="absolute block group"
+        style={{ top: pos.imgTop, left: pos.imgLeft, width: pos.imgW, zIndex: pos.imgZ }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-auto object-contain drop-shadow-lg transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+        />
+      </Link>
+      {/* Number + text block — positioned separately */}
+      <div
+        className="absolute"
+        style={{
+          top: pos.txtTop, left: pos.txtLeft, width: pos.txtW,
+          zIndex: pos.imgZ + 1,
+          textAlign: pos.txtAlign || 'left',
+        }}
+      >
+        <span
+          className="block font-serif leading-[0.85] select-none"
+          style={{ fontSize: 'clamp(48px, 6.5vw, 96px)', color: '#8B7355', opacity: 0.8 }}
+          aria-hidden
+        >
+          {product.number}.
+        </span>
+        <h4
+          className="font-sans text-[11px] tracking-[0.06em] uppercase font-bold leading-snug mt-1 mb-1"
+          style={{ color: '#1C1A17' }}
+        >
+          {product.nickname}
+        </h4>
+        <p className="font-serif text-[11px] leading-[1.5] mb-1.5" style={{ opacity: 0.7, color: '#1C1A17' }}>
+          {product.description}
+        </p>
+        <p className="font-serif text-[10.5px] mb-1" style={{ opacity: 0.55, color: '#1C1A17' }}>
+          <span className="underline">{product.name}</span>
+          {product.price ? `, ${product.price}` : ''}
+        </p>
+        <Link
+          href={product.url}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          className="inline-flex items-center font-sans text-[9px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border transition-colors hover:bg-charcoal hover:text-white"
+          style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
+        >
+          shop
+        </Link>
       </div>
-    </div>
+    </>
   )
 }
 
 function CollageSpreads({ products, variant }: { products: Product[]; variant: 'a' | 'b' }) {
   const positions = variant === 'a' ? COLLAGE_A : COLLAGE_B
   return (
-    <div className="hidden md:block relative" style={{ paddingBottom: '105%' }}>
+    <div className="hidden md:block relative" style={{ paddingBottom: '110%' }}>
       {products.map((product, i) => (
-        <ProductCluster key={product.number} product={product} pos={positions[i]} />
+        <ProductOnSpread key={product.number} product={product} pos={positions[i]} />
       ))}
     </div>
   )
