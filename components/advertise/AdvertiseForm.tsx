@@ -28,7 +28,7 @@ export default function AdvertiseForm() {
       <div className="max-w-md mx-auto text-center">
         <p className="font-serif text-xl text-paper mb-2">You&rsquo;re in.</p>
         <p className="font-serif text-sm text-paper/60 leading-relaxed">
-          Sigourney will be in touch shortly with partnership options tailored to you.
+          We&rsquo;ll be in touch shortly with partnership options tailored to you.
         </p>
       </div>
     )
@@ -53,6 +53,9 @@ export default function AdvertiseForm() {
           {status === 'loading' ? '...' : 'Get in touch'}
         </button>
       </div>
+      <p className="font-sans text-[11px] text-paper/40 text-center leading-relaxed">
+        You&rsquo;ll receive partnership updates and be subscribed to the Beauticate newsletter.
+      </p>
       <label className="flex items-start gap-2.5 cursor-pointer justify-center">
         <input
           type="checkbox"
@@ -61,7 +64,7 @@ export default function AdvertiseForm() {
           className="mt-0.5 accent-paper"
         />
         <span className="font-sans text-[11px] text-paper/40 leading-relaxed">
-          Don&rsquo;t subscribe me to the Beauticate newsletter
+          Don&rsquo;t subscribe me to the newsletter
         </span>
       </label>
       {status === 'error' && (

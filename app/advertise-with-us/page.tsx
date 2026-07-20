@@ -138,67 +138,8 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Audience insights */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Audience insights</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-2 text-center">
-            Beauty-lovers with influence &mdash; and buying power
-          </h2>
-          <p className="font-serif text-base text-charcoal/60 text-center mb-10 max-w-xl mx-auto">
-            High-intent, discerning shoppers who act on what they trust.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
-            {AUDIENCE_STATS.map(s => (
-              <div key={s.label}>
-                <div className="font-serif text-3xl md:text-4xl text-ink mb-1">{s.value}</div>
-                <div className="font-sans text-[10px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
-              </div>
-            ))}
-          </div>
-          <p className="font-sans text-[9px] tracking-wide uppercase text-charcoal/30 text-center mt-8">Source: reader survey &amp; Mailchimp</p>
-        </div>
-      </section>
-
-      {/* Founder / Sigourney */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="relative aspect-[3/4] bg-ink/5 overflow-hidden">
-            <Image
-              src="/images/advertise/7.jpg"
-              alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <div>
-            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
-            <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
-            <ul className="space-y-3 font-serif text-sm text-charcoal/70 leading-relaxed">
-              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>25 years in beauty and health media</span></li>
-              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Former Beauty &amp; Health Director, Vogue Australia</span></li>
-              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Six Jasmine Awards &middot; Six Star Beauty Awards</span></li>
-            </ul>
-            <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
-              Read the full story &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Inline CTA — Let's partner */}
-      <section className="bg-ink py-10 text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <p className="font-serif text-base text-paper/70 mb-5">
-            Let&apos;s partner. Drop your email and Sigourney will reach out.
-          </p>
-          <AdvertiseForm />
-        </div>
-      </section>
-
       {/* Partnership formats */}
-      <section className="py-16">
+      <section className="bg-parchment py-14">
         <div className="max-w-4xl mx-auto px-6">
           <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Partnership formats</p>
           <h2 className="font-serif text-2xl md:text-3xl text-ink mb-3 text-center">
@@ -229,6 +170,86 @@ export default function AdvertisePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Audience insights */}
+      <section className="bg-parchment py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Audience insights</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-2 text-center">
+            Beauty-lovers with influence &mdash; and buying power
+          </h2>
+          <p className="font-serif text-base text-charcoal/60 text-center mb-10 max-w-xl mx-auto">
+            High-intent, discerning shoppers who act on what they trust.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+            {AUDIENCE_STATS.map(s => (
+              <div key={s.label}>
+                <div className="font-serif text-3xl md:text-4xl text-ink mb-1">{s.value}</div>
+                <div className="font-sans text-[10px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <p className="font-sans text-[9px] tracking-wide uppercase text-charcoal/30 text-center mt-8">Source: reader survey &amp; Mailchimp</p>
+        </div>
+      </section>
+
+      {/* Founder / Sigourney */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
+            <Image
+              src="/images/advertise/7.jpg"
+              alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
+              fill
+              className="object-cover object-[center_20%]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div>
+            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
+            <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
+            <ul className="space-y-3 font-serif text-sm text-charcoal/70 leading-relaxed">
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>25 years in beauty and health media</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Former Beauty &amp; Health Director, Vogue Australia</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Six Jasmine Awards &middot; Six Star Beauty Awards</span></li>
+            </ul>
+            <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
+              Read the full story &rarr;
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* As seen in */}
+      <section className="border-t border-b border-camel/20 py-10">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal/40 mb-7">As seen in</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            {[
+              { src: '/images/press/vogue.png', alt: 'Vogue' },
+              { src: '/images/press/marie-claire.png', alt: 'marie claire' },
+              { src: '/images/press/daily-telegraph.png', alt: 'The Daily Telegraph' },
+              { src: '/images/press/daily-mail.png', alt: 'Daily Mail' },
+              { src: '/images/press/mumbrella.png', alt: 'Mumbrella' },
+              { src: '/images/press/beauty-directory.png', alt: 'Beauty Directory' },
+            ].map(logo => (
+              <div key={logo.src} className="relative h-7 w-[120px] grayscale opacity-45">
+                <Image src={logo.src} alt={logo.alt} fill className="object-contain" sizes="120px" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Inline CTA — Let's partner */}
+      <section className="bg-ink py-10 text-center">
+        <div className="max-w-2xl mx-auto px-6">
+          <p className="font-serif text-base text-paper/70 mb-5">
+            Let&apos;s partner. Drop your email and we&apos;ll reach out.
+          </p>
+          <AdvertiseForm />
         </div>
       </section>
 
@@ -519,7 +540,7 @@ export default function AdvertisePage() {
           <div className="flex flex-col justify-center px-8 md:px-14 py-16">
             <h2 className="font-serif text-2xl md:text-3xl text-paper mb-3">Catch us while you can</h2>
             <p className="font-serif text-sm text-paper/60 leading-relaxed mb-8">
-              We&apos;re always onto the next story. Drop your email and Sigourney will
+              We&apos;re always onto the next story. Drop your email and we&apos;ll
               be in touch with partnership options tailored to your brand.
             </p>
             <AdvertiseForm />
