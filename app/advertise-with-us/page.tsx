@@ -180,15 +180,6 @@ export default function AdvertisePage() {
       {/* Founder / Sigourney — on white to break up beige sections */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
-            <Image
-              src="/images/advertise/advertise-hero-new.jpg"
-              alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
-              fill
-              className="object-cover object-[center_20%]"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
           <div>
             <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
             <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
@@ -206,6 +197,15 @@ export default function AdvertisePage() {
             <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
               Read the full story &rarr;
             </Link>
+          </div>
+          <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
+            <Image
+              src="/images/advertise/advertise-hero-new.jpg"
+              alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
+              fill
+              className="object-cover object-[center_20%] scale-x-[-1]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </div>
         </div>
       </section>
@@ -265,14 +265,15 @@ export default function AdvertisePage() {
 
       {/* Beautiful Inside podcast — full image, text below */}
       <section className="bg-paper">
-        <Image
-          src="/images/advertise/8.jpg"
-          alt="Behind the scenes filming the Beautiful Inside podcast"
-          width={2400}
-          height={1600}
-          className="block w-full h-auto"
-          sizes="100vw"
-        />
+        <div className="relative w-full aspect-[2/1]">
+          <Image
+            src="/images/advertise/8.jpg"
+            alt="Behind the scenes filming the Beautiful Inside podcast"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
         <div className="max-w-3xl mx-auto px-6 py-14 text-center">
           <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Beautiful Inside by Beauticate</p>
           <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">
