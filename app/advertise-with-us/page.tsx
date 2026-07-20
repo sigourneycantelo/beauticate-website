@@ -75,6 +75,13 @@ const TRIAL_TEAMS = [
     image: '/content/beauty-style/beauty-tips/qure-micro-infusion-system-review/hero.jpg',
     imageAlt: 'Before and after results using the Qure Micro-Infusion System',
   },
+  {
+    brand: 'La Mer',
+    title: 'La Mer the Concentrate Reviews: Is It Worth It?',
+    href: '/beauty-style/skin-care/la-mer-the-concentrate-reviews',
+    image: '/content/beauty-style/skin-care/la-mer-the-concentrate-reviews/hero.jpg',
+    imageAlt: 'La Mer The Concentrate in deep green glass bottle displayed with skincare products',
+  },
 ]
 
 const LISTICLES = [
@@ -432,20 +439,20 @@ export default function AdvertisePage() {
                 <Link
                   key={t.href}
                   href={t.href}
-                  className="group flex gap-4 border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
+                  className="group block border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
                 >
-                  <div className="relative w-24 shrink-0 bg-ink/5">
+                  <div className="relative aspect-[16/9] bg-ink/5">
                     <Image
                       src={t.image}
                       alt={t.imageAlt}
                       fill
-                      className="object-cover"
-                      sizes="96px"
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 45vw"
                     />
                   </div>
-                  <div className="py-4 pr-4">
+                  <div className="p-4">
                     <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-1">{t.brand}</div>
-                    <h3 className="font-serif text-sm text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
+                    <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
                   </div>
                 </Link>
               ))}
