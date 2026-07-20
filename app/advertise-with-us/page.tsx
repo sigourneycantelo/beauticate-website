@@ -272,16 +272,14 @@ export default function AdvertisePage() {
 
       {/* Beautiful Inside podcast — full image, text below */}
       <section className="bg-paper">
-        <div className="relative w-full">
-          <Image
-            src="/images/advertise/8.jpg"
-            alt="Behind the scenes filming the Beautiful Inside podcast"
-            width={2400}
-            height={1600}
-            className="w-full h-auto"
-            sizes="100vw"
-          />
-        </div>
+        <Image
+          src="/images/advertise/8.jpg"
+          alt="Behind the scenes filming the Beautiful Inside podcast"
+          width={2400}
+          height={1600}
+          className="block w-full h-auto"
+          sizes="100vw"
+        />
         <div className="max-w-3xl mx-auto px-6 py-14 text-center">
           <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Beautiful Inside by Beauticate</p>
           <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">
@@ -349,11 +347,9 @@ export default function AdvertisePage() {
                 />
               </div>
               <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30">{c.type}</div>
-                  <div className="relative h-5 w-16">
-                    <Image src={c.logo} alt={c.brand} fill className="object-contain" sizes="64px" />
-                  </div>
+                <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-3">{c.type}</div>
+                <div className="relative h-5 w-16 mb-2">
+                  <Image src={c.logo} alt={c.brand} fill className="object-contain object-left" sizes="64px" />
                 </div>
                 <h3 className="font-serif text-lg text-ink group-hover:text-wine transition-colors">{c.title}</h3>
               </div>
