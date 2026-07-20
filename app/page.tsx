@@ -32,9 +32,10 @@ export default async function HomePage() {
   const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
 
   const shownSlugs = new Set<string>()
+  const DIRECTORY_SUBS = ['bathhouses', 'clinics', 'salons', 'spas-retreats', 'wellness']
 
   function take(n: number) {
-    const articles = getAllArticles(n, [...shownSlugs])
+    const articles = getAllArticles(n, [...shownSlugs], DIRECTORY_SUBS)
     articles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
