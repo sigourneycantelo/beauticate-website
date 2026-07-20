@@ -201,9 +201,13 @@ export default function AdvertisePage() {
           <div>
             <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
             <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
+            <blockquote className="font-serif text-base text-ink/80 italic leading-relaxed mb-6 border-l-2 border-wine/30 pl-4">
+              &ldquo;I love working with brands to create show-stopping content that enthrals and entertains our reader &mdash; content that doesn&rsquo;t feel sponsored.&rdquo;
+            </blockquote>
             <ul className="space-y-3 font-serif text-sm text-charcoal/70 leading-relaxed">
-              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>25 years in beauty and health media</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Journalist with over 25 years in beauty and health media</span></li>
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Former Beauty &amp; Health Director, Vogue Australia</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Podcaster, content creator and e-commerce founder</span></li>
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Six Jasmine Awards &middot; Six Star Beauty Awards</span></li>
             </ul>
             <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
