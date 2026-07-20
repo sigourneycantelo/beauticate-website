@@ -1,6 +1,6 @@
 import { subscribeToList } from '@/lib/klaviyo'
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
-import { addLeadToCampaign } from '@/lib/lemlist'
+import { addProspect } from '@/lib/woodpecker'
 import { NextResponse } from 'next/server'
 
 const ADVERTISER_LIST_ID = process.env.KLAVIYO_ADVERTISER_LIST_ID!
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     subscribeToListWithProperties(ADVERTISER_LIST_ID, email, '', {
       source: 'advertise_page',
     }),
-    addLeadToCampaign(email),
+    addProspect(email),
   ]
 
   if (subscribeNewsletter) {
