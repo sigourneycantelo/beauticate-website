@@ -180,29 +180,7 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Audience insights */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Audience insights</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-2 text-center">
-            Beauty-lovers with influence &mdash; and buying power
-          </h2>
-          <p className="font-serif text-base text-charcoal/60 text-center mb-10 max-w-xl mx-auto">
-            High-intent, discerning shoppers who act on what they trust.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
-            {AUDIENCE_STATS.map(s => (
-              <div key={s.label}>
-                <div className="font-serif text-3xl md:text-4xl text-ink mb-1">{s.value}</div>
-                <div className="font-sans text-[10px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
-              </div>
-            ))}
-          </div>
-          <p className="font-sans text-[9px] tracking-wide uppercase text-charcoal/30 text-center mt-8">Source: reader survey &amp; Mailchimp</p>
-        </div>
-      </section>
-
-      {/* Founder / Sigourney */}
+      {/* Founder / Sigourney — on white to break up beige sections */}
       <section className="max-w-5xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
@@ -250,6 +228,28 @@ export default function AdvertisePage() {
         </div>
       </section>
 
+      {/* Audience insights — on beige after white Sigourney section */}
+      <section className="bg-parchment py-16">
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Audience insights</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-2 text-center">
+            Beauty-lovers with influence &mdash; and buying power
+          </h2>
+          <p className="font-serif text-base text-charcoal/60 text-center mb-10 max-w-xl mx-auto">
+            High-intent, discerning shoppers who act on what they trust.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+            {AUDIENCE_STATS.map(s => (
+              <div key={s.label}>
+                <div className="font-serif text-3xl md:text-4xl text-ink mb-1">{s.value}</div>
+                <div className="font-sans text-[10px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <p className="font-sans text-[9px] tracking-wide uppercase text-charcoal/30 text-center mt-8">Source: reader survey &amp; Mailchimp</p>
+        </div>
+      </section>
+
       {/* Inline CTA — Let's partner */}
       <section className="bg-ink py-10 text-center">
         <div className="max-w-2xl mx-auto px-6">
@@ -260,32 +260,32 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Beautiful Inside podcast */}
-      <section className="relative text-paper">
-        <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
+      {/* Beautiful Inside podcast — full image, text below */}
+      <section className="bg-paper">
+        <div className="relative w-full">
           <Image
             src="/images/advertise/8.jpg"
             alt="Behind the scenes filming the Beautiful Inside podcast"
-            fill
-            className="object-cover"
+            width={2400}
+            height={1600}
+            className="w-full h-auto"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-ink/50" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-3">Beautiful Inside by Beauticate</p>
-            <h2 className="font-serif text-2xl md:text-3xl text-paper mb-4">
-              A chart-topping video podcast
-            </h2>
-            <p className="font-serif text-base text-paper/70 leading-relaxed max-w-2xl mx-auto mb-6">
-              Raw, intimate interviews filmed in the homes and spaces of inspiring people &mdash; with elevated editorial polish. Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King.
-            </p>
-            <Link
-              href="/vodcast"
-              className="font-sans text-[11px] tracking-[0.16em] uppercase text-paper/70 hover:text-paper transition-colors"
-            >
-              Check out our podcast &rarr;
-            </Link>
-          </div>
+        </div>
+        <div className="max-w-3xl mx-auto px-6 py-14 text-center">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Beautiful Inside by Beauticate</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">
+            A chart-topping video podcast
+          </h2>
+          <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-6">
+            Raw, intimate interviews filmed in the homes and spaces of inspiring people &mdash; with elevated editorial polish. Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King.
+          </p>
+          <Link
+            href="/vodcast"
+            className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors"
+          >
+            Check out our podcast &rarr;
+          </Link>
         </div>
       </section>
 
