@@ -35,15 +35,6 @@ const SOCIALS = [
 
 const POLISHED_CONTENT = [
   {
-    brand: 'Armani Beauty',
-    title: 'A Day in the Life of Our Editor',
-    href: '/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day',
-    type: 'Professional production',
-    image: '/content/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day/hero.jpg',
-    imageAlt: 'Sigourney Cantelo wearing Armani Power Fabric foundation during editorial shoot',
-    logo: '/images/advertise/armani-logo.png',
-  },
-  {
     brand: 'Chanel',
     title: "Sigourney on Chanel's New Skin Tint",
     href: '/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint',
@@ -51,6 +42,15 @@ const POLISHED_CONTENT = [
     image: '/content/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint/hero.jpg',
     imageAlt: 'Chanel Les Beiges Eau De Teint bottle with kabuki brush on neutral background',
     logo: '/images/advertise/chanel-logo.png',
+  },
+  {
+    brand: 'Armani Beauty',
+    title: 'A Day in the Life of Our Editor',
+    href: '/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day',
+    type: 'Professional production',
+    image: '/content/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day/hero.jpg',
+    imageAlt: 'Sigourney Cantelo wearing Armani Power Fabric foundation during editorial shoot',
+    logo: '/images/advertise/armani-logo.png',
   },
   {
     brand: 'Weleda',
