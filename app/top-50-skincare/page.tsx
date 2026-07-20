@@ -152,19 +152,19 @@ interface PlacedProduct {
 }
 
 const COLLAGE_A: PlacedProduct[] = [
-  { imgTop: '0%',  imgLeft: '22%', imgW: '28%', imgZ: 3, txtTop: '0%',  txtLeft: '52%', txtW: '28%', txtAlign: 'left'  },
-  { imgTop: '20%', imgLeft: '12%', imgW: '20%', imgZ: 2, txtTop: '18%', txtLeft: '0%',  txtW: '20%', txtAlign: 'center' },
-  { imgTop: '10%', imgLeft: '42%', imgW: '26%', imgZ: 5, txtTop: '8%',  txtLeft: '65%', txtW: '28%', txtAlign: 'left'  },
-  { imgTop: '60%', imgLeft: '15%', imgW: '18%', imgZ: 3, txtTop: '58%', txtLeft: '0%',  txtW: '22%', txtAlign: 'left'  },
-  { imgTop: '58%', imgLeft: '48%', imgW: '22%', imgZ: 4, txtTop: '58%', txtLeft: '67%', txtW: '28%', txtAlign: 'left'  },
+  { imgTop: '0%', imgLeft: '28%', imgW: '30%', imgZ: 3, txtTop: '0%', txtLeft: '62%', txtW: '34%', txtAlign: 'left' },
+  { imgTop: '28%', imgLeft: '0%', imgW: '18%', imgZ: 2, txtTop: '18%', txtLeft: '0%', txtW: '24%', txtAlign: 'center' },
+  { imgTop: '30%', imgLeft: '24%', imgW: '26%', imgZ: 5, txtTop: '28%', txtLeft: '54%', txtW: '38%', txtAlign: 'left' },
+  { imgTop: '64%', imgLeft: '2%', imgW: '20%', imgZ: 3, txtTop: '58%', txtLeft: '0%', txtW: '28%', txtAlign: 'left' },
+  { imgTop: '58%', imgLeft: '46%', imgW: '26%', imgZ: 4, txtTop: '54%', txtLeft: '50%', txtW: '40%', txtAlign: 'left' },
 ]
 
 const COLLAGE_B: PlacedProduct[] = [
-  { imgTop: '4%',  imgLeft: '18%', imgW: '18%', imgZ: 3, txtTop: '0%',  txtLeft: '0%',  txtW: '22%', txtAlign: 'left'  },
-  { imgTop: '0%',  imgLeft: '36%', imgW: '24%', imgZ: 5, txtTop: '0%',  txtLeft: '60%', txtW: '28%', txtAlign: 'left'  },
-  { imgTop: '42%', imgLeft: '14%', imgW: '22%', imgZ: 4, txtTop: '40%', txtLeft: '0%',  txtW: '20%', txtAlign: 'left'  },
-  { imgTop: '62%', imgLeft: '18%', imgW: '18%', imgZ: 3, txtTop: '60%', txtLeft: '0%',  txtW: '24%', txtAlign: 'left'  },
-  { imgTop: '48%', imgLeft: '52%', imgW: '28%', imgZ: 5, txtTop: '50%', txtLeft: '72%', txtW: '26%', txtAlign: 'left'  },
+  { imgTop: '2%', imgLeft: '4%', imgW: '24%', imgZ: 3, txtTop: '0%', txtLeft: '0%', txtW: '30%', txtAlign: 'left' },
+  { imgTop: '0%', imgLeft: '40%', imgW: '28%', imgZ: 5, txtTop: '0%', txtLeft: '70%', txtW: '28%', txtAlign: 'left' },
+  { imgTop: '38%', imgLeft: '6%', imgW: '22%', imgZ: 4, txtTop: '36%', txtLeft: '0%', txtW: '30%', txtAlign: 'left' },
+  { imgTop: '42%', imgLeft: '34%', imgW: '26%', imgZ: 5, txtTop: '40%', txtLeft: '62%', txtW: '34%', txtAlign: 'left' },
+  { imgTop: '70%', imgLeft: '18%', imgW: '22%', imgZ: 3, txtTop: '68%', txtLeft: '42%', txtW: '40%', txtAlign: 'left' },
 ]
 
 function ProductOnSpread({ product, pos }: { product: Product; pos: PlacedProduct }) {
@@ -232,7 +232,7 @@ function ProductOnSpread({ product, pos }: { product: Product; pos: PlacedProduc
 function CollageSpreads({ products, variant }: { products: Product[]; variant: 'a' | 'b' }) {
   const positions = variant === 'a' ? COLLAGE_A : COLLAGE_B
   return (
-    <div className="hidden md:block relative" style={{ paddingBottom: '110%' }}>
+    <div className="hidden md:block relative" style={{ paddingBottom: '105%' }}>
       {products.map((product, i) => (
         <ProductOnSpread key={product.number} product={product} pos={positions[i]} />
       ))}
