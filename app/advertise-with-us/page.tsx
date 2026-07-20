@@ -116,23 +116,27 @@ export default function AdvertisePage() {
   return (
     <div className="bg-paper">
 
-      {/* Hero with image scrim */}
-      <section className="relative text-paper py-28 md:py-36">
+      {/* Hero image — full bleed, no overlay */}
+      <section>
         <Image
           src="/images/advertise/advertise-hero.jpg"
           alt="Sigourney Cantelo writing at a café table"
-          fill
-          className="object-cover object-center"
+          width={3600}
+          height={2400}
+          className="block w-full h-auto"
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-ink/60" />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-paper/50 mb-5">Work with us</p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight mb-6">
+      </section>
+
+      {/* Heading on beige */}
+      <section className="bg-parchment py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-charcoal/40 mb-5">Work with us</p>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-ink leading-tight mb-6">
             Advertise with Beauticate
           </h1>
-          <p className="font-serif text-lg md:text-xl text-paper/70 leading-relaxed max-w-2xl mx-auto">
+          <p className="font-serif text-lg md:text-xl text-charcoal/60 leading-relaxed max-w-2xl mx-auto">
             Over a decade of Australian audience trust and editorial authority.
             Aspirational yet authentic content that sparks awareness and delivers lasting results.
           </p>
