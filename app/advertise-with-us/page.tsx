@@ -205,8 +205,10 @@ export default function AdvertisePage() {
           <div>
             <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
             <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
-            <blockquote className="font-serif text-base text-ink/80 italic leading-relaxed mb-6 border-l-2 border-wine/30 pl-4">
-              &ldquo;I love working with brands to create show-stopping content that enthrals and entertains our reader &mdash; content that doesn&rsquo;t feel sponsored.&rdquo;
+            <blockquote className="my-8 py-8 border-t border-b border-wine/20">
+              <p className="font-serif italic text-ink/80" style={{ fontSize: 'clamp(22px, 3vw, 30px)', lineHeight: 1.4 }}>
+                &ldquo;I love working with brands to create show-stopping content that enthrals and entertains our reader &mdash; content that doesn&rsquo;t feel sponsored.&rdquo;
+              </p>
             </blockquote>
             <ul className="space-y-3 font-serif text-sm text-charcoal/70 leading-relaxed">
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Journalist with over 25 years in beauty and health media</span></li>
