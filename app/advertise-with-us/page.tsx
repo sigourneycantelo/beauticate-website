@@ -103,9 +103,18 @@ export default function AdvertisePage() {
   return (
     <div className="bg-paper">
 
-      {/* Hero */}
-      <section className="relative bg-ink text-paper py-20 md:py-28">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      {/* Hero with image scrim */}
+      <section className="relative text-paper py-28 md:py-36">
+        <Image
+          src="/images/advertise/advertise-hero.jpg"
+          alt="Sigourney Cantelo writing at a café table"
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-ink/60" />
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
           <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-paper/50 mb-5">Work with us</p>
           <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight mb-6">
             Advertise with Beauticate
@@ -223,87 +232,55 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Editorial divider — hero */}
-      <section className="relative w-full aspect-[21/9] md:aspect-[3/1]">
-        <Image
-          src="/images/advertise/advertise-hero.jpg"
-          alt="Sigourney Cantelo writing at a café table"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-          priority
-        />
-      </section>
-
       {/* Beautiful Inside podcast */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="text-center mb-10">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Beautiful Inside by Beauticate</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-3">
-            A chart-topping video podcast
-          </h2>
-          <p className="font-serif text-base text-charcoal/60 leading-relaxed max-w-2xl mx-auto">
-            Raw, intimate interviews filmed in the homes and spaces of inspiring people &mdash; with elevated editorial polish.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-4 mb-10">
-          <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
-            <Image
-              src="/images/advertise/8.jpg"
-              alt="Behind the scenes filming the Beautiful Inside podcast"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+      <section className="relative text-paper">
+        <div className="relative w-full aspect-[21/9] md:aspect-[3/1]">
+          <Image
+            src="/images/advertise/8.jpg"
+            alt="Behind the scenes filming the Beautiful Inside podcast"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-ink/50" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-paper/50 mb-3">Beautiful Inside by Beauticate</p>
+            <h2 className="font-serif text-2xl md:text-3xl text-paper mb-4">
+              A chart-topping video podcast
+            </h2>
+            <p className="font-serif text-base text-paper/70 leading-relaxed max-w-2xl mx-auto mb-6">
+              Raw, intimate interviews filmed in the homes and spaces of inspiring people &mdash; with elevated editorial polish. Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King.
+            </p>
+            <Link
+              href="/vodcast"
+              className="font-sans text-[11px] tracking-[0.16em] uppercase text-paper/70 hover:text-paper transition-colors"
+            >
+              Check out our podcast &rarr;
+            </Link>
           </div>
-          <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
-            <Image
-              src="/images/advertise/4.jpg"
-              alt="Beautiful Inside podcast guests including Miranda Kerr, Pip Edwards and Trinny Woodall"
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center mb-10">
-          {PODCAST_STATS.map(s => (
-            <div key={s.label}>
-              <div className="font-serif text-2xl text-ink mb-1">{s.value}</div>
-              <div className="font-sans text-[10px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <p className="font-serif text-sm text-charcoal/60 leading-relaxed mb-5 max-w-xl mx-auto">
-            Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King.
-          </p>
-          <Link
-            href="/vodcast"
-            className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors"
-          >
-            Listen to the podcast &rarr;
-          </Link>
         </div>
       </section>
 
       {/* Social strip */}
       <section className="bg-parchment py-12">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 mb-6">Follow Beauticate</p>
-          <div className="flex items-center justify-center gap-8 flex-wrap">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 mb-6">Find us everywhere</p>
+          <div className="flex items-center justify-center gap-6">
             {SOCIALS.map(s => (
               <a
                 key={s.platform}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-[11px] tracking-[0.16em] uppercase text-charcoal/50 hover:text-wine transition-colors"
+                aria-label={s.platform}
+                className="text-charcoal/40 hover:text-wine transition-colors w-5 h-5"
               >
-                {s.platform}
+                {s.platform === 'Instagram' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>}
+                {s.platform === 'YouTube' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><rect x="2.5" y="6" width="19" height="12" rx="3.5" /><path d="M10.5 9.2v5.6l4.5-2.8z" fill="currentColor" stroke="none" /></svg>}
+                {s.platform === 'TikTok' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.6 3.4 3.5 3.6v2.4c-1.3.1-2.5-.3-3.5-1v6.3c0 3.2-2.4 5.4-5.3 5.4-2.7 0-4.9-2-4.9-4.7 0-2.9 2.4-4.8 5.2-4.5v2.5c-.4-.1-.8-.2-1.2-.1-1.2.2-2 1.1-1.9 2.3.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.3z" /></svg>}
+                {s.platform === 'Pinterest' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><circle cx="12" cy="12" r="9.2" /><path d="M12 7.4c-2.2 0-3.6 1.5-3.6 3.3 0 .9.4 1.9 1.2 2.2.1 0 .2 0 .2-.1l.2-.7c0-.1 0-.2-.1-.3-.3-.4-.5-.9-.5-1.4 0-1.5 1.1-2.6 2.8-2.6 1.5 0 2.4.9 2.4 2.2 0 1.6-.7 3-1.8 3-.6 0-1-.5-.9-1.1.2-.7.5-1.5.5-2 0-.5-.2-.9-.8-.9-.6 0-1.1.6-1.1 1.5 0 .5.2.9.2.9l-.8 3.2c-.2.9-.1 2 0 2.4l.1.1c.5-.7 1-1.6 1.2-2.3l.4-1.5c.3.5 1 .9 1.7.9 2.2 0 3.7-2 3.7-4.6 0-2-1.7-3.8-4.4-3.8z" fill="currentColor" stroke="none" /></svg>}
+                {s.platform === 'Facebook' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12z" /></svg>}
+                {s.platform === 'Threads' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.3 11.3c-.1 0-.2-.1-.3-.1-.2-1.5-1-2.6-2.7-2.7-1 0-1.9.4-2.5 1.2l1.1.8c.4-.5.9-.7 1.4-.7.5 0 1 .2 1.2.6.2.3.2.7.2 1.1-.5-.1-1.1-.1-1.7 0-1.6.2-2.7 1.1-2.6 2.5 0 .7.4 1.3.9 1.7.5.3 1.1.5 1.8.5 1.1-.1 1.8-.5 2.3-1.3.4.5.5 1.3.5 2.2 0 2.3-1.4 3.4-3.5 3.4-2.3 0-3.8-1.3-3.8-4.4 0-2.9 1.3-4.8 3.8-4.8.7 0 1.3.1 1.8.4l.7-1.3c-.7-.4-1.5-.5-2.5-.5-3.4 0-5.2 2.5-5.2 6.2 0 3.9 1.9 5.8 5.2 5.8 3 0 4.9-1.6 4.9-4.8 0-1.8-.2-3.1-1.1-3.8zm-2.2 2.9c-.1.8-.7 1.4-1.7 1.4-.5 0-1.1-.2-1.1-.9 0-.8.7-1.1 1.5-1.2.4 0 .9 0 1.3.1v.6z" /></svg>}
               </a>
             ))}
           </div>
