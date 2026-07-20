@@ -88,6 +88,14 @@ const TRIAL_TEAMS = [
     imageAlt: 'La Mer The Concentrate in deep green glass bottle displayed with skincare products',
     logo: '/images/advertise/la-mer-logo.png',
   },
+  {
+    brand: 'Ultraceuticals',
+    title: 'Does Vitamin A Do All That It Claims? Readers Weigh In',
+    href: '/beauty-style/skin-care/does-vitamin-a-do-all-that-it-claims-readers-weigh-in',
+    image: '/content/beauty-style/skin-care/does-vitamin-a-do-all-that-it-claims-readers-weigh-in/hero.jpg',
+    imageAlt: 'Before and after skincare results from vitamin A serum treatment',
+    logo: '/images/advertise/ultraceuticals-logo.png',
+  },
 ]
 
 const LISTICLES = [
@@ -447,7 +455,7 @@ export default function AdvertisePage() {
             <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Instagram story + feed post + Facebook post</span></li>
           </ul>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 gap-5 max-w-3xl mx-auto">
           {TRIAL_TEAMS.map(t => (
             <Link
               key={t.href}
