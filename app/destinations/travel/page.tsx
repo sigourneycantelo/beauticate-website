@@ -31,8 +31,9 @@ function articleHref(f: { category: string; subcategory?: string; slug: string; 
   return `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 }
 
-function TravelCard({ article, tall }: { article: any; tall?: boolean }) {
+function TravelCard({ article, tall, imageOverride }: { article: any; tall?: boolean; imageOverride?: string }) {
   const f = article.frontmatter
+  const imageSrc = imageOverride ?? f.featured_image
   return (
     <Link href={articleHref(f)} className="group block">
       <div className={`relative overflow-hidden rounded-[3px] ${tall ? 'h-[300px]' : 'h-[250px]'}`}>
@@ -44,9 +45,9 @@ function TravelCard({ article, tall }: { article: any; tall?: boolean }) {
             {TYPE_LABELS[f.travelType] ?? f.travelType}
           </span>
         )}
-        {f.featured_image ? (
+        {imageSrc ? (
           <Image
-            src={f.featured_image}
+            src={imageSrc}
             alt={f.featured_image_alt ?? f.title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -87,7 +88,11 @@ function FeelingStrip({ feeling }: { feeling: typeof FEELINGS[number] }) {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {articles.map(a => (
-            <TravelCard key={a!.frontmatter.slug} article={a} />
+            <TravelCard
+              key={a!.frontmatter.slug}
+              article={a}
+              imageOverride={a!.frontmatter.feeling_images?.[feeling.slug]}
+            />
           ))}
         </div>
       </div>

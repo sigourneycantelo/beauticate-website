@@ -53,7 +53,12 @@ export default async function FeelingPage({ params }: Props) {
   const info = FEELINGS[feeling]
   if (!info) notFound()
 
-  const articles = getArticlesByFeeling(feeling)
+  const rawArticles = getArticlesByFeeling(feeling)
+  const articles = rawArticles.map(a => {
+    const override = a?.frontmatter.feeling_images?.[feeling]
+    if (!override) return a
+    return { ...a, frontmatter: { ...a!.frontmatter, featured_image: override } }
+  })
 
   return (
     <div className="max-w-wide mx-auto px-4 py-12">

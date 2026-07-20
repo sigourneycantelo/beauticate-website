@@ -76,6 +76,7 @@ export interface ArticleFrontmatter {
   booking_url?: string          // direct booking/enquiry URL
   state?: 'NSW' | 'VIC' | 'QLD' | 'WA' | 'SA' | 'TAS' | 'ACT' | 'NT'
   feeling?: string[]
+  feeling_images?: Record<string, string>
   verdict?: string
   showNearbyVenues?: boolean
   isTravelHero?: boolean

@@ -12,7 +12,7 @@ export default function ScrollReveal() {
           }
         })
       },
-      { threshold: 0.08, rootMargin: '0px 0px 200px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px 400px 0px' }
     )
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
     return () => obs.disconnect()
