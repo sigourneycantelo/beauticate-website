@@ -381,18 +381,6 @@ export default function AdvertisePage() {
                 <li>Optional competition mechanic to drive hype and engagement</li>
                 <li>Post-event editorial or video wrap-up</li>
               </ul>
-              <p className="font-serif text-sm text-charcoal/50 mb-3">Previous event partners:</p>
-              <div className="flex items-center gap-4">
-                {[
-                  { src: '/images/advertise/avene-logo.png', alt: 'Avène' },
-                  { src: '/images/advertise/synternals-logo.png', alt: 'Synternals' },
-                  { src: '/images/advertise/skinceuticals-logo.png', alt: 'SkinCeuticals' },
-                ].map(l => (
-                  <div key={l.src} className="relative h-8 w-20">
-                    <Image src={l.src} alt={l.alt} fill className="object-contain" sizes="80px" />
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
               <Image
@@ -406,7 +394,7 @@ export default function AdvertisePage() {
           </div>
 
           <p className="font-serif text-sm text-charcoal/50 mt-10 mb-4">Watch Sig&rsquo;s recap on Instagram</p>
-          <div className="flex gap-4">
+          <div className="grid grid-cols-3 gap-4">
             {[
               { href: 'https://www.instagram.com/p/C5iBNusSje2/', logo: '/images/advertise/avene-logo.png', alt: 'Avène' },
               { href: 'https://www.instagram.com/p/C8bihICShBt/', logo: '/images/advertise/skinceuticals-logo.png', alt: 'SkinCeuticals' },
@@ -417,13 +405,13 @@ export default function AdvertisePage() {
                 href={v.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 border border-camel/20 bg-paper px-4 py-3 hover:border-wine/40 transition-colors"
+                className="group flex items-center justify-center gap-4 border border-camel/20 bg-paper px-6 py-5 hover:border-wine/40 transition-colors"
               >
-                <span className="shrink-0 w-8 h-8 rounded-full border border-wine/30 flex items-center justify-center group-hover:border-wine group-hover:bg-wine/5 transition-colors">
-                  <svg viewBox="0 0 16 16" className="w-3 h-3 text-wine/60 group-hover:text-wine transition-colors" fill="currentColor"><path d="M5 3l8 5-8 5V3z" /></svg>
+                <span className="shrink-0 w-10 h-10 rounded-full border border-wine/30 flex items-center justify-center group-hover:border-wine group-hover:bg-wine/5 transition-colors">
+                  <svg viewBox="0 0 16 16" className="w-4 h-4 text-wine/60 group-hover:text-wine transition-colors" fill="currentColor"><path d="M5 3l8 5-8 5V3z" /></svg>
                 </span>
-                <div className="relative h-4 w-16">
-                  <Image src={v.logo} alt={v.alt} fill className="object-contain object-left" sizes="64px" />
+                <div className="relative h-7 w-28">
+                  <Image src={v.logo} alt={v.alt} fill className="object-contain object-left" sizes="112px" />
                 </div>
               </a>
             ))}
@@ -447,18 +435,6 @@ export default function AdvertisePage() {
               <li>Instagram story + feed post + Facebook post</li>
               <li>EDM inclusion driving direct traffic</li>
             </ul>
-            <p className="font-serif text-sm text-charcoal/50 mb-3">Previous trial team partners:</p>
-            <div className="flex items-center gap-4">
-              {[
-                { src: '/images/advertise/thalgo-logo.png', alt: 'Thalgo' },
-                { src: '/images/advertise/qure-logo.png', alt: 'Qure' },
-                { src: '/images/advertise/la-mer-logo.png', alt: 'La Mer' },
-              ].map(l => (
-                <div key={l.src} className="relative h-8 w-20">
-                  <Image src={l.src} alt={l.alt} fill className="object-contain" sizes="80px" />
-                </div>
-              ))}
-            </div>
           </div>
           <div className="order-2 md:order-2">
             <div className="space-y-5">
@@ -478,7 +454,9 @@ export default function AdvertisePage() {
                     />
                   </div>
                   <div className="p-4">
-                    <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-1">{t.brand}</div>
+                    <div className="relative h-5 w-16 mb-2">
+                      <Image src={t.logo} alt={t.brand} fill className="object-contain object-left" sizes="64px" />
+                    </div>
                     <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
                   </div>
                 </Link>
