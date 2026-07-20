@@ -41,6 +41,7 @@ const POLISHED_CONTENT = [
     type: 'Professional production',
     image: '/content/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day/hero.jpg',
     imageAlt: 'Sigourney Cantelo wearing Armani Power Fabric foundation during editorial shoot',
+    logo: '/images/advertise/armani-logo.png',
   },
   {
     brand: 'Chanel',
@@ -49,6 +50,7 @@ const POLISHED_CONTENT = [
     type: 'Sponsored editorial',
     image: '/content/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint/hero.jpg',
     imageAlt: 'Chanel Les Beiges Eau De Teint bottle with kabuki brush on neutral background',
+    logo: '/images/advertise/chanel-logo.png',
   },
   {
     brand: 'Weleda',
@@ -57,6 +59,7 @@ const POLISHED_CONTENT = [
     type: 'Video feature',
     image: '/content/beauty-style/skin-care/video-sigourney-on-how-to-nourish-your-skin/hero.jpg',
     imageAlt: 'Sigourney on how to nourish your skin with Weleda',
+    logo: '/images/advertise/weleda-logo.png',
   },
 ]
 
@@ -67,6 +70,7 @@ const TRIAL_TEAMS = [
     href: '/beauty-style/skin-care/systeme-bio-plus-oil-serum-review',
     image: '/content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/hero.jpg',
     imageAlt: 'Système Bio+ Oil Serum before and after skin results',
+    logo: '/images/advertise/thalgo-logo.png',
   },
   {
     brand: 'Qure',
@@ -74,6 +78,7 @@ const TRIAL_TEAMS = [
     href: '/beauty-style/skin-care/qure-micro-infusion-system-review',
     image: '/content/beauty-style/beauty-tips/qure-micro-infusion-system-review/hero.jpg',
     imageAlt: 'Before and after results using the Qure Micro-Infusion System',
+    logo: '/images/advertise/qure-logo.png',
   },
   {
     brand: 'La Mer',
@@ -81,6 +86,7 @@ const TRIAL_TEAMS = [
     href: '/beauty-style/skin-care/la-mer-the-concentrate-reviews',
     image: '/content/beauty-style/skin-care/la-mer-the-concentrate-reviews/hero.jpg',
     imageAlt: 'La Mer The Concentrate in deep green glass bottle displayed with skincare products',
+    logo: '/images/advertise/la-mer-logo.png',
   },
 ]
 
@@ -339,23 +345,16 @@ export default function AdvertisePage() {
                 />
               </div>
               <div className="p-6">
-                <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-3">{c.type}</div>
-                <div className="font-sans text-[11px] tracking-widest uppercase text-charcoal/50 mb-1">{c.brand}</div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30">{c.type}</div>
+                  <div className="relative h-5 w-16">
+                    <Image src={c.logo} alt={c.brand} fill className="object-contain" sizes="64px" />
+                  </div>
+                </div>
                 <h3 className="font-serif text-lg text-ink group-hover:text-wine transition-colors">{c.title}</h3>
               </div>
             </Link>
           ))}
-        </div>
-        <div className="mt-10 flex justify-center">
-          <div className="relative h-10 w-72">
-            <Image
-              src="/images/advertise/polished-content-logos.jpg"
-              alt="Brand partners: Armani Beauty, Chanel, Weleda"
-              fill
-              className="object-contain"
-              sizes="288px"
-            />
-          </div>
         </div>
       </section>
 
@@ -388,14 +387,16 @@ export default function AdvertisePage() {
                 <li>Post-event editorial or video wrap-up</li>
               </ul>
               <p className="font-serif text-sm text-charcoal/50 mb-3">Previous event partners:</p>
-              <div className="relative h-12 w-64">
-                <Image
-                  src="/images/advertise/sig-hosting-logos.jpg"
-                  alt="Event partners: Avène, Synternals, SkinCeuticals"
-                  fill
-                  className="object-contain object-left"
-                  sizes="256px"
-                />
+              <div className="flex items-center gap-4">
+                {[
+                  { src: '/images/advertise/avene-logo.png', alt: 'Avène' },
+                  { src: '/images/advertise/synternals-logo.png', alt: 'Synternals' },
+                  { src: '/images/advertise/skinceuticals-logo.png', alt: 'SkinCeuticals' },
+                ].map(l => (
+                  <div key={l.src} className="relative h-8 w-20">
+                    <Image src={l.src} alt={l.alt} fill className="object-contain" sizes="80px" />
+                  </div>
+                ))}
               </div>
             </div>
             <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
@@ -446,14 +447,17 @@ export default function AdvertisePage() {
               <li>Instagram story + feed post + Facebook post</li>
               <li>EDM inclusion driving direct traffic</li>
             </ul>
-            <div className="relative h-16 w-full max-w-xs">
-              <Image
-                src="/images/advertise/trial-team-logos.jpg"
-                alt="Trial team partners: Thalgo, La Mer"
-                fill
-                className="object-contain object-left"
-                sizes="320px"
-              />
+            <p className="font-serif text-sm text-charcoal/50 mb-3">Previous trial team partners:</p>
+            <div className="flex items-center gap-4">
+              {[
+                { src: '/images/advertise/thalgo-logo.png', alt: 'Thalgo' },
+                { src: '/images/advertise/qure-logo.png', alt: 'Qure' },
+                { src: '/images/advertise/la-mer-logo.png', alt: 'La Mer' },
+              ].map(l => (
+                <div key={l.src} className="relative h-8 w-20">
+                  <Image src={l.src} alt={l.alt} fill className="object-contain" sizes="80px" />
+                </div>
+              ))}
             </div>
           </div>
           <div className="order-2 md:order-2">
