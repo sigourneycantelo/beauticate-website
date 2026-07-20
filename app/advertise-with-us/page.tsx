@@ -89,12 +89,12 @@ const TRIAL_TEAMS = [
     logo: '/images/advertise/la-mer-logo.png',
   },
   {
-    brand: 'Ultraceuticals',
-    title: 'Does Vitamin A Do All That It Claims? Readers Weigh In',
-    href: '/beauty-style/skin-care/does-vitamin-a-do-all-that-it-claims-readers-weigh-in',
-    image: '/content/beauty-style/skin-care/does-vitamin-a-do-all-that-it-claims-readers-weigh-in/hero.jpg',
-    imageAlt: 'Before and after skincare results from vitamin A serum treatment',
-    logo: '/images/advertise/ultraceuticals-logo.png',
+    brand: 'Thalgo',
+    title: 'We Put a New Hyaluronic Range Promising Glowing, Hydrated Skin to the Test',
+    href: '/beauty-style/skin-care/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test',
+    image: '/content/beauty-style/beauty-tips/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test/hero.jpg',
+    imageAlt: 'Thalgo Hyalu-ProCollagène trial team before and after results',
+    logo: '/images/advertise/thalgo-logo.png',
   },
 ]
 
