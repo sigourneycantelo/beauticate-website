@@ -190,13 +190,14 @@ export function getFeaturedArticles(limit = 6) {
 // (editorial curation — e.g. keep a just-demoted hero or a launch piece up top);
 // everything else flows newest-first by date_published.
 // Use excludeSlugs to avoid repeating articles already shown elsewhere on the page.
-export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
+export function getAllArticles(limit = 20, excludeSlugs: string[] = [], excludeSubcategories: string[] = []) {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
     .filter(a => a?.frontmatter.featured_image)
     .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
+    .filter(a => !excludeSubcategories.includes(a!.frontmatter.subcategory))
     .sort((a, b) => {
       const rankA = a?.frontmatter.home_rank ?? Infinity
       const rankB = b?.frontmatter.home_rank ?? Infinity
