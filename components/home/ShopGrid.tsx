@@ -68,7 +68,7 @@ export default function ShopGrid({
   return (
     <section
       ref={sectionRef}
-      className="reveal"
+      className="full-bleed reveal"
       style={{ padding: 'clamp(28px,3.5vw,44px) 0' }}
     >
       <div className="text-center mb-7" style={{ padding: '0 clamp(20px,6vw,104px)' }}>
@@ -82,10 +82,10 @@ export default function ShopGrid({
           className="font-serif font-normal mt-2"
           style={{ fontSize: 'clamp(24px,3vw,34px)' }}
         >
-          {heading ?? <>What the team is buying <em className="italic">this week</em></>}
+          {heading ?? <>Essentials for living beautifully.<br /><em className="italic">Curated by editors and experts, not algorithms.</em></>}
         </h2>
-        <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.58 }}>
-          {subheading}
+        <p className="font-sans mt-3" style={{ fontSize: '13px', opacity: 0.55, lineHeight: 1.6 }}>
+          Every product tested, used and recommended by our team before it earns a place here.
         </p>
       </div>
 
