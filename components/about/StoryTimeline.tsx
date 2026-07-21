@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -9,15 +8,11 @@ const MILESTONES: {
   text: string
   href: string | null
   cta?: string
-  image?: string
-  imageAlt?: string
 }[] = [
   {
     year: '2014',
     text: 'While at Vogue, Sigourney starts Beauticate as a side project. Rapid growth sees her leave to go all in.',
     href: null,
-    image: '/images/sigourney-about.jpg',
-    imageAlt: 'Sigourney Cantelo, founder of Beauticate',
   },
   {
     year: '2015',
@@ -53,8 +48,6 @@ const MILESTONES: {
     text: 'Beautiful Inside, the video podcast, launches and debuts at #3 on Apple.',
     href: '/vodcast',
     cta: 'Listen to the Podcast',
-    image: '/images/podcast/cover.jpg',
-    imageAlt: 'Beautiful Inside podcast',
   },
   {
     year: '2024',
@@ -64,7 +57,7 @@ const MILESTONES: {
   },
   {
     year: '2025',
-    text: 'Podcast reach triples to 3.1 million a month.',
+    text: 'Thanks to the podcast launch and new social audiences, Beauticate reach triples to 3.1 million a month.',
     href: '/vodcast',
     cta: 'Listen to the Podcast',
   },
@@ -73,8 +66,6 @@ const MILESTONES: {
     text: 'Beauticate rebuilt for the AI age. The Beauticate Shop launches, and the Collective forms.',
     href: '/shop',
     cta: 'Visit the Shop',
-    image: '/images/beauticate-collective.jpg',
-    imageAlt: 'The Beauticate Collective',
   },
 ]
 
@@ -133,10 +124,11 @@ export default function StoryTimeline() {
       className={`story bg-[#FBF9F4] border-t border-b border-gray-100 py-16 ${js ? 'story--js' : ''} ${shown ? 'is-shown' : ''}`}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-muted mb-3 text-center">Our story</p>
-        <h2 id="story-heading" className="font-serif text-2xl md:text-3xl text-charcoal mb-4 text-center">
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Our story</p>
+        <h2 id="story-heading" className="font-serif text-2xl md:text-3xl text-charcoal mb-2 text-center">
           A decade in the making
         </h2>
+        <div className="w-10 h-[1.5px] bg-wine/40 mx-auto mb-4" />
         <p className="font-sans text-[12px] tracking-wide text-charcoal/40 mb-10 text-center hidden md:block">
           Swipe or drag to explore &rarr;
         </p>
@@ -148,14 +140,14 @@ export default function StoryTimeline() {
             onClick={() => scroll('left')}
             className={`story-arrow story-arrow--left ${canScrollLeft ? 'is-visible' : ''}`}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 4L7 12L15 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
           <button
             aria-label="Scroll right"
             onClick={() => scroll('right')}
             className={`story-arrow story-arrow--right ${canScrollRight ? 'is-visible' : ''}`}
           >
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 4L17 12L9 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
 
           <div ref={railRef} className="story-rail relative">
@@ -164,18 +156,6 @@ export default function StoryTimeline() {
               {MILESTONES.map((m, i) => (
                 <li key={`${m.year}-${i}`} className="milestone" style={{ transitionDelay: `${Math.min(i * 70, 560)}ms` }}>
                   <span aria-hidden="true" className="story-dot" />
-
-                  {m.image && (
-                    <div className="milestone-img">
-                      <Image
-                        src={m.image}
-                        alt={m.imageAlt || ''}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 240px"
-                      />
-                    </div>
-                  )}
 
                   <time dateTime={m.year} className="font-serif text-[34px] md:text-[40px] leading-none text-charcoal block mb-3">
                     {m.year}

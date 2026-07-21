@@ -103,8 +103,8 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
 
 export default async function MastheadData() {
   const beauty = editorialPillar('beauty', 'Beauty & Style', 'beauty-style', 'Beauty & Style', [
-    ['Skin Care', 'skin-care'], ['Makeup', 'makeup'], ['Hair', 'hair'], ['Style', 'style'],
-    ['Fragrance', 'fragrance'], ['Nails', 'nails'], ['Beauty Tips', 'beauty-tips'],
+    ['Skin Care', 'skin-care'], ['Makeup', 'makeup'], ['Hair', 'hair'], ['Cosmetic', 'cosmetic'],
+    ['Style', 'style'], ['Fragrance', 'fragrance'], ['Nails', 'nails'], ['Beauty Tips', 'beauty-tips'],
   ])
   const wellness = editorialPillar('wellness', 'Wellness', 'wellness', 'Wellness', [
     ['Health', 'health'], ['Fitness', 'fitness'], ['Mindset', 'mindset'], ['Biohacking', 'biohacking'],

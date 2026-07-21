@@ -46,7 +46,7 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
           </span>
         )}
       </div>
-      <h4 className="font-serif font-normal leading-[1.25] mt-3" style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: '#1C1A17' }}>
+      <h4 className="font-serif font-normal leading-[1.25] mt-3 normal-case tracking-normal" style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: '#1C1A17' }}>
         {f.title}
       </h4>
     </a>

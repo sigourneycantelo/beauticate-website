@@ -12,9 +12,6 @@ export const metadata: Metadata = {
 const STATS = [
   { value: '3.1M+', label: 'Monthly reach across all platforms' },
   { value: '12', label: 'Years of editorial authority' },
-  { value: '159K', label: 'Podcast downloads since launch' },
-  { value: '53K+', label: 'Instagram followers' },
-  { value: '9,400', label: 'Newsletter subscribers' },
   { value: '2,082', label: 'Referring domains' },
 ]
 
@@ -38,41 +35,66 @@ const SOCIALS = [
 
 const POLISHED_CONTENT = [
   {
-    brand: 'Armani Beauty',
-    title: 'A Day in the Life of Our Editor',
-    href: '/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day',
-    type: 'Professional production',
-    image: '/images/advertise/11.jpg',
-    imageAlt: 'Sigourney Cantelo at the Armani Beauty x Beauticate event',
-  },
-  {
     brand: 'Chanel',
     title: "Sigourney on Chanel's New Skin Tint",
     href: '/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint',
     type: 'Sponsored editorial',
-    image: '/images/advertise/10.jpg',
-    imageAlt: 'Sigourney with Chanel N°1 de Chanel serum',
+    image: '/content/sigourneys-edit/edit/sigourney-on-chanels-new-skin-tint/hero.jpg',
+    imageAlt: 'Chanel Les Beiges Eau De Teint bottle with kabuki brush on neutral background',
+    logo: '/images/advertise/chanel-logo.png',
+  },
+  {
+    brand: 'Armani Beauty',
+    title: 'A Day in the Life of Our Editor',
+    href: '/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day',
+    type: 'Professional production',
+    image: '/content/sigourneys-edit/edit/armani-beauty-follows-sigourney-for-a-day/hero.jpg',
+    imageAlt: 'Sigourney Cantelo wearing Armani Power Fabric foundation during editorial shoot',
+    logo: '/images/advertise/armani-logo.png',
   },
   {
     brand: 'Weleda',
     title: 'Sigourney on How to Nourish Your Skin',
     href: '/beauty-style/skin-care/video-sigourney-on-how-to-nourish-your-skin',
     type: 'Video feature',
-    image: '/images/advertise/5.jpg',
-    imageAlt: 'Behind the scenes editorial product shoot',
+    image: '/content/beauty-style/skin-care/video-sigourney-on-how-to-nourish-your-skin/hero.jpg',
+    imageAlt: 'Sigourney on how to nourish your skin with Weleda',
+    logo: '/images/advertise/weleda-logo.png',
   },
 ]
 
 const TRIAL_TEAMS = [
   {
-    brand: 'Systeme',
-    title: 'Beauticate Readers Trial Systeme Bio+ Oil Serum',
+    brand: 'Système',
+    title: 'Beauticate Readers Trial Système Bio+ Oil Serum',
     href: '/beauty-style/skin-care/systeme-bio-plus-oil-serum-review',
+    image: '/content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/hero.jpg',
+    imageAlt: 'Système Bio+ Oil Serum before and after skin results',
+    logo: '/images/advertise/thalgo-logo.png',
   },
   {
     brand: 'Qure',
     title: '4 Beauticate Readers Trial the Qure Micro-Infusion System',
     href: '/beauty-style/skin-care/qure-micro-infusion-system-review',
+    image: '/content/beauty-style/beauty-tips/qure-micro-infusion-system-review/hero.jpg',
+    imageAlt: 'Before and after results using the Qure Micro-Infusion System',
+    logo: '/images/advertise/qure-logo.png',
+  },
+  {
+    brand: 'La Mer',
+    title: 'La Mer the Concentrate Reviews: Is It Worth It?',
+    href: '/beauty-style/skin-care/la-mer-the-concentrate-reviews',
+    image: '/content/beauty-style/skin-care/la-mer-the-concentrate-reviews/hero.jpg',
+    imageAlt: 'La Mer The Concentrate in deep green glass bottle displayed with skincare products',
+    logo: '/images/advertise/la-mer-logo.png',
+  },
+  {
+    brand: 'Thalgo',
+    title: 'We Put a New Hyaluronic Range Promising Glowing, Hydrated Skin to the Test',
+    href: '/beauty-style/skin-care/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test',
+    image: '/content/beauty-style/beauty-tips/beauty-on-trial-we-put-a-new-hyaluronic-range-promising-glowing-hydrated-skin-to-the-test/hero.jpg',
+    imageAlt: 'Thalgo Hyalu-ProCollagène trial team before and after results',
+    logo: '/images/advertise/thalgo-logo.png',
   },
 ]
 
@@ -102,26 +124,36 @@ export default function AdvertisePage() {
   return (
     <div className="bg-paper">
 
-      {/* Hero */}
-      <section className="relative bg-ink text-paper py-20 md:py-28">
+      {/* Hero image — full bleed */}
+      <section>
+        <Image
+          src="/images/advertise/advertise-hero.jpg"
+          alt="Sigourney Cantelo writing at a café table"
+          width={3600}
+          height={2400}
+          className="block w-full h-auto"
+          sizes="100vw"
+          priority
+        />
+      </section>
+
+      {/* Heading on beige */}
+      <section className="bg-parchment py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-paper/50 mb-5">Work with us</p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight mb-6">
+          <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-charcoal/40 mb-5">Work with us</p>
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-ink leading-tight mb-6">
             Advertise with Beauticate
           </h1>
-          <p className="font-serif text-lg md:text-xl text-paper/70 leading-relaxed max-w-2xl mx-auto mb-4">
-            Twelve years of earned trust with Australia&apos;s most engaged beauty, wellness and
-            lifestyle audience. 3.1 million monthly touchpoints across editorial, podcast, social and email.
-          </p>
-          <p className="font-serif text-base text-paper/50 italic">
-            Proven content that blends credibility, creativity, and conversion.
+          <p className="font-serif text-lg md:text-xl text-charcoal/60 leading-relaxed max-w-2xl mx-auto">
+            Over a decade of Australian audience trust and editorial authority.
+            Aspirational yet authentic content that sparks awareness and delivers lasting results.
           </p>
         </div>
       </section>
 
       {/* Stats band */}
-      <section className="border-b border-camel/30 py-12 bg-parchment">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+      <section className="border-b border-camel/30 py-12 bg-paper">
+        <div className="max-w-3xl mx-auto px-6 grid grid-cols-3 gap-8 text-center">
           {STATS.map(s => (
             <div key={s.label}>
               <div className="font-serif text-3xl text-ink mb-1">{s.value}</div>
@@ -131,30 +163,96 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* What sets us apart */}
-      <section className="max-w-4xl mx-auto px-6 py-16 text-center">
-        <h2 className="font-serif text-2xl md:text-3xl text-ink mb-3">What sets us apart</h2>
-        <div className="w-10 h-[1.5px] bg-camel/40 mx-auto mb-8" />
-        <div className="space-y-3 font-serif text-base md:text-lg text-charcoal/70 leading-relaxed max-w-2xl mx-auto">
-          <p>Over a decade of Australian audience trust and editorial authority</p>
-          <p>Aspirational yet authentic tone that resonates with modern, conscious consumers</p>
-          <p>The perfect blend of content quality, credibility and conversion</p>
-          <p>Brand collaborations that spark awareness and deliver lasting results</p>
-          <p>Multi-platform storytelling that lives far beyond the post</p>
-        </div>
-      </section>
-
-      {/* Inline CTA 1 */}
-      <section className="bg-ink py-10 text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <p className="font-serif text-base text-paper/70 mb-5">
-            Interested? Leave your email and we&apos;ll be in touch.
+      {/* Partnership formats */}
+      <section className="bg-parchment py-14">
+        <div className="max-w-4xl mx-auto px-6">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Partnership formats</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-3 text-center">
+            Ways to work together
+          </h2>
+          <p className="font-serif text-base text-charcoal/60 text-center mb-10 max-w-xl mx-auto">
+            Content that converts &mdash; beautifully.
           </p>
-          <AdvertiseForm />
+
+          <div className="grid md:grid-cols-3 gap-x-10 gap-y-6">
+            {[
+              { title: 'Sponsored editorial', note: 'Long-form content in our voice' },
+              { title: 'Product features', note: 'Expert-led product coverage' },
+              { title: 'Podcast sponsorship', note: 'Chart-topping video podcast' },
+              { title: 'Newsletter', note: 'Dedicated feature or placement' },
+              { title: 'Social & vodcast', note: 'Reels, carousels, IG Live & more' },
+              { title: 'Events', note: 'Co-host, MC & editorial coverage' },
+              { title: 'Trial teams', note: 'Hand-picked reader reviews' },
+              { title: 'Listicle features', note: 'SEO-rich "Best Of" roundups' },
+              { title: 'Professional production', note: 'Photo & video, concept to delivery' },
+            ].map(f => (
+              <div key={f.title} className="flex gap-3 items-start">
+                <span className="text-wine/50 mt-1 text-sm">&bull;</span>
+                <div>
+                  <h3 className="font-serif text-base text-ink">{f.title}</h3>
+                  <p className="font-sans text-[11px] text-charcoal/40">{f.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Audience insights */}
+      {/* Founder / Sigourney — on white to break up beige sections */}
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
+            <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
+            <blockquote className="my-8 py-8 border-t border-b border-wine/20">
+              <p className="font-serif italic text-ink/80" style={{ fontSize: 'clamp(22px, 3vw, 30px)', lineHeight: 1.4 }}>
+                &ldquo;I love working with brands to create show-stopping content that enthrals and entertains our reader &mdash; content that doesn&rsquo;t feel sponsored.&rdquo;
+              </p>
+            </blockquote>
+            <ul className="space-y-3 font-serif text-sm text-charcoal/70 leading-relaxed">
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Journalist with over 25 years in beauty and health media</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Former Beauty &amp; Health Director, Vogue Australia</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Podcaster, content creator and e-commerce founder</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Six Jasmine Awards &middot; Six Star Beauty Awards</span></li>
+            </ul>
+            <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
+              Read the full story &rarr;
+            </Link>
+          </div>
+          <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
+            <Image
+              src="/images/advertise/advertise-hero-new.jpg"
+              alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
+              fill
+              className="object-cover object-[center_20%] scale-x-[-1]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* As seen in */}
+      <section className="border-t border-b border-camel/20 py-10">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal/40 mb-7">As seen in</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            {[
+              { src: '/images/press/vogue.png', alt: 'Vogue' },
+              { src: '/images/press/marie-claire.png', alt: 'marie claire' },
+              { src: '/images/press/daily-telegraph.png', alt: 'The Daily Telegraph' },
+              { src: '/images/press/daily-mail.png', alt: 'Daily Mail' },
+              { src: '/images/press/mumbrella.png', alt: 'Mumbrella' },
+              { src: '/images/press/beauty-directory.png', alt: 'Beauty Directory' },
+            ].map(logo => (
+              <div key={logo.src} className="relative h-7 w-[120px] grayscale opacity-45">
+                <Image src={logo.src} alt={logo.alt} fill className="object-contain" sizes="120px" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Audience insights — on beige after white Sigourney section */}
       <section className="bg-parchment py-16">
         <div className="max-w-5xl mx-auto px-6">
           <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Audience insights</p>
@@ -176,203 +274,66 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Founder / Sigourney */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="relative aspect-[3/4] bg-ink/5 overflow-hidden">
-            <Image
-              src="/images/advertise/7.jpg"
-              alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <div>
-            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-1">Sigourney Cantelo</h2>
-            <p className="font-serif text-base text-charcoal/50 italic mb-6">Founder &amp; Publisher</p>
-            <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-6">
-              Curated by one of Australia&apos;s most trusted beauty and health experts.
-            </p>
-            <ul className="space-y-2 font-serif text-sm text-charcoal/70 leading-relaxed">
-              <li>25 years in beauty and health media</li>
-              <li>Former Beauty &amp; Health Director at Vogue Australia</li>
-              <li>Editorial roles at Glamour, Body+Soul &amp; Qantas Magazine</li>
-              <li>Six Jasmine Awards &middot; Six Star Beauty Awards</li>
-              <li>Best Blogger at My Face My Body Awards</li>
-            </ul>
-            <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
-              Read the full story &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Partnership formats */}
-      <section className="bg-ink text-paper py-16">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="font-sans text-[11px] tracking-[0.25em] uppercase text-paper/40 mb-3 text-center">Partnership opportunities</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-paper mb-3 text-center">
-            Where editorial excellence meets brand impact
-          </h2>
-          <p className="font-serif text-base text-paper/50 text-center mb-12 max-w-2xl mx-auto">
-            From video podcast sponsorships to viral Reels and SEO-rich editorial features, Beauticate creates content that converts &mdash; beautifully.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Sponsored editorial',
-                description: 'Long-form content written in Beauticate\'s editorial voice, published on the site and promoted across all channels. Full editorial treatment — no banner ads, no bolt-ons.',
-              },
-              {
-                title: 'Product features',
-                description: 'Dedicated product coverage within relevant editorial contexts — skincare, wellness, fragrance and more. Honest, expert-led, with genuine reader engagement.',
-              },
-              {
-                title: 'Podcast sponsorship',
-                description: 'Beautiful Inside by Beauticate — a chart-topping video podcast. Full-season sponsorship, host-read ads, show notes inclusion and 36 social mentions across six platforms.',
-              },
-              {
-                title: 'Newsletter',
-                description: 'Reach 9,400 engaged subscribers with a dedicated feature or "Currently Loving" placement. 23% open rate, 99% delivery.',
-              },
-              {
-                title: 'Social & vodcast',
-                description: 'Authentic integrations across Instagram (53K), TikTok, YouTube, Pinterest (1.3M views) and more. Reels, carousels, IG Live — not scripted testimonials.',
-              },
-              {
-                title: 'Events',
-                description: 'Sigourney to co-host or MC — concept-to-execution support with editorial coverage across all platforms. Custom invitations via solus EDM.',
-              },
-              {
-                title: 'Trial teams',
-                description: '4–8 hand-picked reviewers trial your product. Reviews professionally edited for credibility, published with before/after imagery and social amplification.',
-              },
-              {
-                title: 'Listicle features',
-                description: 'SEO-optimised "Best Of" roundups — a smart, low-barrier entry point into the Beauticate ecosystem with evergreen visibility and trusted editorial voice.',
-              },
-              {
-                title: 'Professional production',
-                description: 'Full-scale photo and video shoots — concept to delivery. Available with or without Sigourney as talent. Polished production that elevates brand storytelling.',
-              },
-            ].map(f => (
-              <div key={f.title} className="border-l border-paper/20 pl-6">
-                <h3 className="font-serif text-lg text-paper mb-2">{f.title}</h3>
-                <p className="font-serif text-sm text-paper/50 leading-relaxed">{f.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Inline CTA 2 */}
+      {/* Inline CTA — Let's partner */}
       <section className="bg-ink py-10 text-center">
         <div className="max-w-2xl mx-auto px-6">
           <p className="font-serif text-base text-paper/70 mb-5">
-            Ready to partner? Drop your email and Sigourney will reach out.
+            Let&apos;s partner. Drop your email and we&apos;ll reach out.
           </p>
           <AdvertiseForm />
         </div>
       </section>
 
-      {/* Beautiful Inside podcast */}
-      <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div>
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Beautiful Inside by Beauticate</p>
-            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">
-              A chart-topping video podcast
-            </h2>
-            <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-6">
-              Where self-care meets authentic, long-form storytelling. Filmed in the homes and spaces of inspiring people &mdash; raw, intimate interviews with elevated editorial polish.
-            </p>
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              {PODCAST_STATS.map(s => (
-                <div key={s.label}>
-                  <div className="font-serif text-2xl text-ink">{s.value}</div>
-                  <div className="font-sans text-[10px] tracking-widest uppercase text-charcoal/40">{s.label}</div>
-                </div>
-              ))}
-            </div>
-            <p className="font-serif text-sm text-charcoal/60 leading-relaxed mb-6">
-              Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King. Distributed across Apple Podcasts, Spotify, YouTube and seven social channels.
-            </p>
-            <Link
-              href="/vodcast"
-              className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors"
-            >
-              Listen to the podcast &rarr;
-            </Link>
-          </div>
-          <div className="space-y-4">
-            <div className="relative aspect-[3/4] bg-ink/5 overflow-hidden">
-              <Image
-                src="/images/advertise/8.jpg"
-                alt="Behind the scenes filming the Beautiful Inside podcast"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-            <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
-              <Image
-                src="/images/advertise/4.jpg"
-                alt="Beautiful Inside podcast guests including Miranda Kerr, Pip Edwards and Trinny Woodall"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
+      {/* Beautiful Inside podcast — full image, text below */}
+      <section className="bg-paper">
+        <div className="relative w-full aspect-[2/1]">
+          <Image
+            src="/images/advertise/8.jpg"
+            alt="Behind the scenes filming the Beautiful Inside podcast"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+        <div className="max-w-3xl mx-auto px-6 py-14 text-center">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Beautiful Inside by Beauticate</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">
+            A chart-topping video podcast
+          </h2>
+          <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-6">
+            Raw, intimate interviews filmed in the homes and spaces of inspiring people &mdash; with elevated editorial polish. Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King.
+          </p>
+          <Link
+            href="/vodcast"
+            className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors"
+          >
+            Check out our podcast &rarr;
+          </Link>
         </div>
       </section>
 
-      {/* Social reach */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3 text-center">Social reach</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-2 text-center">
-            Our community doesn&apos;t just scroll &mdash; they save, shop, and share
-          </h2>
-          <p className="font-serif text-base text-charcoal/60 text-center mb-10 max-w-xl mx-auto">
-            From curated video to viral pins, our followers are active, loyal and ready to buy.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+      {/* Social strip */}
+      <section className="bg-parchment py-12">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 mb-6">Find us everywhere</p>
+          <div className="flex items-center justify-center gap-6">
             {SOCIALS.map(s => (
               <a
                 key={s.platform}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block border border-camel/20 bg-paper p-6 text-center hover:border-wine/40 transition-colors"
+                aria-label={s.platform}
+                className="text-charcoal/40 hover:text-wine transition-colors w-9 h-9"
               >
-                <div className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 mb-2">{s.platform}</div>
-                <div className="font-serif text-lg text-ink mb-1">{s.stat}</div>
-                <div className="font-sans text-[10px] tracking-wide text-charcoal/40">{s.handle}</div>
+                {s.platform === 'Instagram' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>}
+                {s.platform === 'YouTube' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><rect x="2.5" y="6" width="19" height="12" rx="3.5" /><path d="M10.5 9.2v5.6l4.5-2.8z" fill="currentColor" stroke="none" /></svg>}
+                {s.platform === 'TikTok' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.6 3.4 3.5 3.6v2.4c-1.3.1-2.5-.3-3.5-1v6.3c0 3.2-2.4 5.4-5.3 5.4-2.7 0-4.9-2-4.9-4.7 0-2.9 2.4-4.8 5.2-4.5v2.5c-.4-.1-.8-.2-1.2-.1-1.2.2-2 1.1-1.9 2.3.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.3z" /></svg>}
+                {s.platform === 'Pinterest' && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><circle cx="12" cy="12" r="9.2" /><path d="M12 7.4c-2.2 0-3.6 1.5-3.6 3.3 0 .9.4 1.9 1.2 2.2.1 0 .2 0 .2-.1l.2-.7c0-.1 0-.2-.1-.3-.3-.4-.5-.9-.5-1.4 0-1.5 1.1-2.6 2.8-2.6 1.5 0 2.4.9 2.4 2.2 0 1.6-.7 3-1.8 3-.6 0-1-.5-.9-1.1.2-.7.5-1.5.5-2 0-.5-.2-.9-.8-.9-.6 0-1.1.6-1.1 1.5 0 .5.2.9.2.9l-.8 3.2c-.2.9-.1 2 0 2.4l.1.1c.5-.7 1-1.6 1.2-2.3l.4-1.5c.3.5 1 .9 1.7.9 2.2 0 3.7-2 3.7-4.6 0-2-1.7-3.8-4.4-3.8z" fill="currentColor" stroke="none" /></svg>}
+                {s.platform === 'Facebook' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12z" /></svg>}
+                {s.platform === 'Threads' && <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.3 11.3c-.1 0-.2-.1-.3-.1-.2-1.5-1-2.6-2.7-2.7-1 0-1.9.4-2.5 1.2l1.1.8c.4-.5.9-.7 1.4-.7.5 0 1 .2 1.2.6.2.3.2.7.2 1.1-.5-.1-1.1-.1-1.7 0-1.6.2-2.7 1.1-2.6 2.5 0 .7.4 1.3.9 1.7.5.3 1.1.5 1.8.5 1.1-.1 1.8-.5 2.3-1.3.4.5.5 1.3.5 2.2 0 2.3-1.4 3.4-3.5 3.4-2.3 0-3.8-1.3-3.8-4.4 0-2.9 1.3-4.8 3.8-4.8.7 0 1.3.1 1.8.4l.7-1.3c-.7-.4-1.5-.5-2.5-.5-3.4 0-5.2 2.5-5.2 6.2 0 3.9 1.9 5.8 5.2 5.8 3 0 4.9-1.6 4.9-4.8 0-1.8-.2-3.1-1.1-3.8zm-2.2 2.9c-.1.8-.7 1.4-1.7 1.4-.5 0-1.1-.2-1.1-.9 0-.8.7-1.1 1.5-1.2.4 0 .9 0 1.3.1v.6z" /></svg>}
               </a>
             ))}
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="relative aspect-[9/16] max-h-[420px] bg-ink/5 overflow-hidden mx-auto w-full max-w-[220px]">
-              <Image
-                src="/images/advertise/1.jpg"
-                alt="Beauticate Instagram Reel featuring Miranda Kerr"
-                fill
-                className="object-cover object-top"
-                sizes="220px"
-              />
-            </div>
-            <div className="relative aspect-[9/16] max-h-[420px] bg-ink/5 overflow-hidden mx-auto w-full max-w-[220px]">
-              <Image
-                src="/images/advertise/2.jpg"
-                alt="Sigourney interviewing Elsa Pataky for Instagram Reels"
-                fill
-                className="object-cover object-top"
-                sizes="220px"
-              />
-            </div>
           </div>
         </div>
       </section>
@@ -402,12 +363,26 @@ export default function AdvertisePage() {
               </div>
               <div className="p-6">
                 <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-3">{c.type}</div>
-                <div className="font-sans text-[11px] tracking-widest uppercase text-charcoal/50 mb-1">{c.brand}</div>
+                <div className="relative h-5 w-16 mb-2">
+                  <Image src={c.logo} alt={c.brand} fill className="object-contain object-left" sizes="64px" />
+                </div>
                 <h3 className="font-serif text-lg text-ink group-hover:text-wine transition-colors">{c.title}</h3>
               </div>
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* Editorial divider — mood */}
+      <section>
+        <Image
+          src="/images/advertise/advertise-mood.jpg"
+          alt="Sigourney Cantelo laughing candidly"
+          width={3600}
+          height={2400}
+          className="block w-full h-auto"
+          sizes="100vw"
+        />
       </section>
 
       {/* Event hosting */}
@@ -427,118 +402,90 @@ export default function AdvertisePage() {
                 <li>Optional competition mechanic to drive hype and engagement</li>
                 <li>Post-event editorial or video wrap-up</li>
               </ul>
-              <p className="font-serif text-sm text-charcoal/50 mb-2">Previous event partners:</p>
-              <div className="flex flex-wrap gap-x-6 gap-y-1 font-sans text-[11px] tracking-widest uppercase text-charcoal/40">
-                <span>Av&egrave;ne</span>
-                <span>Synternals</span>
-                <span>SkinCeuticals</span>
-                <span>KORA Organics</span>
-              </div>
             </div>
-            <div className="space-y-4">
-              <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
-                <Image
-                  src="/images/advertise/6.jpg"
-                  alt="Sigourney MCing an event in partnership with Chemist Warehouse"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
-                <Image
-                  src="/images/advertise/9.jpg"
-                  alt="Sigourney hosting the Av&egrave;ne skincare panel"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
-                <Image
-                  src="/images/advertise/3.jpg"
-                  alt="Sigourney interviewing Miranda Kerr at the KORA Organics x David Jones launch"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+            <div className="relative aspect-[16/10] bg-ink/5 overflow-hidden">
+              <Image
+                src="/images/advertise/6.jpg"
+                alt="Sigourney MCing an event in partnership with Chemist Warehouse"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
+          </div>
+
+          <p className="font-serif text-sm text-charcoal/50 mt-10 mb-4">Watch Sig&rsquo;s recap on Instagram</p>
+          <div className="grid grid-cols-3 gap-4">
+            {[
+              { href: 'https://www.instagram.com/p/C5iBNusSje2/', logo: '/images/advertise/avene-logo.png', alt: 'Avène' },
+              { href: 'https://www.instagram.com/p/C8bihICShBt/', logo: '/images/advertise/skinceuticals-logo.png', alt: 'SkinCeuticals' },
+              { href: 'https://www.instagram.com/p/C6IkQevyHsL/', logo: '/images/advertise/synternals-logo.png', alt: 'Synternals' },
+            ].map(v => (
+              <a
+                key={v.href}
+                href={v.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center gap-4 border border-camel/20 bg-paper px-6 py-5 hover:border-wine/40 transition-colors"
+              >
+                <span className="shrink-0 w-10 h-10 rounded-full border border-wine/30 flex items-center justify-center group-hover:border-wine group-hover:bg-wine/5 transition-colors">
+                  <svg viewBox="0 0 16 16" className="w-4 h-4 text-wine/60 group-hover:text-wine transition-colors" fill="currentColor"><path d="M5 3l8 5-8 5V3z" /></svg>
+                </span>
+                <div className="relative h-7 w-28">
+                  <Image src={v.logo} alt={v.alt} fill className="object-contain object-left" sizes="112px" />
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Trial teams */}
       <section className="max-w-5xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="order-2 md:order-1">
-            <div className="space-y-4">
-              {TRIAL_TEAMS.map(t => (
-                <Link
-                  key={t.href}
-                  href={t.href}
-                  className="group block border border-camel/20 p-6 hover:border-wine/40 transition-colors"
-                >
-                  <div className="font-sans text-[10px] tracking-[0.2em] uppercase text-charcoal/30 mb-2">Trial team</div>
-                  <div className="font-sans text-[11px] tracking-widest uppercase text-charcoal/50 mb-1">{t.brand}</div>
-                  <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors">{t.title}</h3>
-                </Link>
-              ))}
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Trial teams</p>
-            <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Real reviews. Real results. Real influence.</h2>
-            <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-6">
-              Our hand-picked team of beauty-obsessed testers delivers high-quality, high-trust product reviews that drive clicks, conversation, and conversions.
-            </p>
-            <ul className="space-y-2 font-serif text-sm text-charcoal/70 leading-relaxed">
-              <li>4&ndash;8 targeted reviewers matched to your product</li>
-              <li>Reviews professionally edited by Beauticate for credibility</li>
-              <li>Blog feature with holding shot and reviewer imagery</li>
-              <li>Instagram story + feed post + Facebook post</li>
-              <li>EDM inclusion driving direct traffic</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Listicle features */}
-      <section className="bg-parchment py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Entry-level features</p>
-          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Listicle features</h2>
-          <p className="font-serif text-base text-charcoal/70 leading-relaxed mb-8 max-w-2xl mx-auto">
-            Our SEO-optimised &ldquo;Best Of&rdquo; roundups are a smart, search-friendly way for brands to appear in curated editorial features with ongoing visibility. Ideal for emerging brands or new product discovery &mdash; a premium, low-barrier entry point into the Beauticate ecosystem with lasting value.
+        <div className="text-center mb-10">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Trial teams</p>
+          <h2 className="font-serif text-2xl md:text-3xl text-ink mb-4">Real reviews. Real results. Real influence.</h2>
+          <p className="font-serif text-base text-charcoal/70 leading-relaxed max-w-2xl mx-auto mb-6">
+            Our hand-picked team of beauty-obsessed testers delivers high-quality, high-trust product reviews that drive clicks, conversation, and conversions.
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
-            {LISTICLES.map(l => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="group block border border-camel/20 bg-paper p-6 hover:border-wine/40 transition-colors"
-              >
-                <h3 className="font-serif text-base text-ink group-hover:text-wine transition-colors leading-snug">{l.title}</h3>
-              </Link>
-            ))}
-          </div>
+          <ul className="inline-grid md:grid-cols-2 gap-x-10 gap-y-2 text-left font-serif text-sm text-charcoal/70 leading-relaxed">
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>4&ndash;8 targeted reviewers matched to your product</span></li>
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Reviews professionally edited for credibility</span></li>
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Blog feature with holding shot and imagery</span></li>
+            <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Instagram story + feed post + Facebook post</span></li>
+          </ul>
         </div>
-      </section>
-
-      {/* Inline CTA 3 */}
-      <section className="bg-ink py-10 text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <p className="font-serif text-base text-paper/70 mb-5">
-            Like what you see? Let&apos;s talk.
-          </p>
-          <AdvertiseForm />
+        <div className="grid grid-cols-2 gap-5 max-w-3xl mx-auto">
+          {TRIAL_TEAMS.map(t => (
+            <Link
+              key={t.href}
+              href={t.href}
+              className="group block border border-camel/20 hover:border-wine/40 transition-colors overflow-hidden"
+            >
+              <div className="relative aspect-[4/3] bg-ink/5">
+                <Image
+                  src={t.image}
+                  alt={t.imageAlt}
+                  fill
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
+              <div className="p-4">
+                <div className="relative h-5 w-16 mb-2">
+                  <Image src={t.logo} alt={t.brand} fill className="object-contain object-left" sizes="64px" />
+                </div>
+                <h3 className="font-serif text-sm text-ink group-hover:text-wine transition-colors leading-snug">{t.title}</h3>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
       {/* Testimonial */}
       <section className="max-w-3xl mx-auto px-6 py-16 text-center">
         <blockquote className="font-serif text-lg md:text-xl text-ink leading-relaxed italic mb-6">
-          &ldquo;Sigourney&apos;s credibility and audience trust made this one of our most successful digital partnerships to date. Our package with Beauticate translated into direct sales, contributing to over $50k revenue.&rdquo;
+          &ldquo;Sigourney&apos;s credibility and audience trust made this one of our most successful digital partnerships to date. Our package with Beauticate translated into direct sales, contributing to over $75k revenue.&rdquo;
         </blockquote>
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40">
           Lucija Pejnovi&#263; &middot; Influencer &amp; Marketing, Qure Skincare
@@ -547,6 +494,32 @@ export default function AdvertisePage() {
 
       {/* Our story timeline */}
       <StoryTimeline />
+
+      {/* CTA with running image */}
+      <section className="bg-ink">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2">
+          <div className="relative aspect-[3/4] md:aspect-auto">
+            <Image
+              src="/images/advertise/advertise-running.jpg"
+              alt="Sigourney Cantelo striding through the city"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div className="flex flex-col justify-center px-8 md:px-14 py-16">
+            <h2 className="font-serif text-2xl md:text-3xl text-paper mb-3">Catch us while you can</h2>
+            <p className="font-serif text-sm text-paper/60 leading-relaxed mb-8">
+              We&apos;re always onto the next story. Drop your email and we&apos;ll
+              be in touch with partnership options tailored to your brand.
+            </p>
+            <AdvertiseForm />
+            <p className="font-sans text-[10px] tracking-widest uppercase text-paper/30 mt-10">
+              Cantelo Corporation Pty Ltd &middot; ABN 71 105 175 317
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Editorial policy */}
       <section className="bg-parchment py-14">
@@ -557,21 +530,6 @@ export default function AdvertisePage() {
             clearly labelled. Beauticate does not publish positive coverage in exchange for
             payment &mdash; commercial arrangements do not influence what we recommend, test or
             feature in our independent editorial.
-          </p>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-ink py-16 text-center">
-        <div className="max-w-2xl mx-auto px-6">
-          <h2 className="font-serif text-2xl text-paper mb-4">Start the conversation</h2>
-          <p className="font-serif text-sm text-paper/70 leading-relaxed mb-8">
-            Tell us about your brand and what you&apos;re hoping to achieve. We&apos;ll be in touch within 2
-            business days with partnership options tailored to you.
-          </p>
-          <AdvertiseForm />
-          <p className="font-sans text-[10px] tracking-widest uppercase text-paper/30 mt-8">
-            Cantelo Corporation Pty Ltd &middot; ABN 71 105 175 317
           </p>
         </div>
       </section>

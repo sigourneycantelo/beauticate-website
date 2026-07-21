@@ -30,7 +30,7 @@ function Card({ article }: { article: Article }) {
               src={f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+              className="object-cover object-[50%_20%] transition-transform duration-700 group-hover:scale-[1.04]"
               sizes="(max-width:768px) 100vw, 30vw"
             />
           ) : (

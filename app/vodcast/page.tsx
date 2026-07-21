@@ -9,6 +9,7 @@ import StickyPlayer from '@/components/vodcast/StickyPlayer'
 import GuestRail, { type Guest } from '@/components/vodcast/GuestRail'
 import ThemeArchive, { type ArchiveEpisode } from '@/components/vodcast/ThemeArchive'
 import CuratorFeed from '@/components/vodcast/CuratorFeed'
+import EditorialSections from '@/components/shared/EditorialSections'
 
 export const metadata: Metadata = {
   title: 'Beautiful Inside — Podcast by Beauticate',
@@ -254,6 +255,13 @@ export default function VodcastPage() {
 
       {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
       <ThemeArchive styles={styles} pool={pool} pills={pills} quotes={quotes} themePools={themePools} />
+
+      {/* ===== EDITORIAL LAYOUT ===== */}
+      <EditorialSections
+        articles={episodes.slice(1).filter(ep => ep.frontmatter.featured_image).slice(0, 34).map(ep => ({
+          frontmatter: { ...ep.frontmatter, category: 'vodcast' },
+        }))}
+      />
 
       {/* ===== 8 · CURATOR.IO STRIP ===== */}
       <CuratorFeed styles={styles} />

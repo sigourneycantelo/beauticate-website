@@ -178,9 +178,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
         const delta = y - lastY.current
         if (y <= 200) {
           setHidden(false)
-        } else if (delta > 8) {
+        } else if (delta > 20) {
           setHidden(true)
-        } else if (delta < -8) {
+        } else if (delta < -20) {
           setHidden(false)
         }
         lastY.current = y
@@ -217,6 +217,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
         <div className="mh-util-left">
           <button className="mh-hamburger" aria-label="Open menu" onClick={() => setDrawer(true)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.4}><line x1="3" y1="7" x2="21" y2="7" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="17" x2="21" y2="17" /></svg>
+          </button>
+          <button className="mh-back" aria-label="Go back" onClick={() => window.history.back()}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="15 18 9 12 15 6" /></svg>
           </button>
           {isShop && (
             <Link href="/" className="mh-back-site" aria-label="Back to Beauticate">
@@ -268,10 +271,10 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
             const open = openKey === p.key
             return (
               <div key={p.key} className={`mh-d-item${open ? ' open' : ''}`}>
-                <button className={`mh-d-pillar${p.isShop ? ' is-shop' : ''}`} onClick={() => setOpenKey(open ? null : p.key)} aria-expanded={open}>
-                  <span>{p.label}</span>
-                  <span className="mh-d-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></span>
-                </button>
+                <div className={`mh-d-pillar${p.isShop ? ' is-shop' : ''}`}>
+                  <Link href={p.href} onClick={() => setDrawer(false)}>{p.label}</Link>
+                  <button className="mh-d-chev" onClick={() => setOpenKey(open ? null : p.key)} aria-expanded={open} aria-label={`${open ? 'Collapse' : 'Expand'} ${p.label}`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></button>
+                </div>
                 <div className="mh-d-subs">
                   {p.subs.map(s => s.disabled
                     ? <span key={s.label} className="mh-d-soon">{s.label} <em>Soon</em></span>
