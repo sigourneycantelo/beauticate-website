@@ -10,6 +10,14 @@ export interface ProductLink {
   price?: string         // optional fallback display price
 }
 
+export interface ShopProduct {
+  name: string
+  brand: string
+  image: string
+  price: string
+  url: string
+}
+
 export interface FAQ {
   question: string
   answer: string
@@ -53,6 +61,8 @@ export interface ArticleFrontmatter {
   review_cons?: string[]
 
   // Commerce
+  shop_collection?: string
+  shop_products?: ShopProduct[]
   product_links?: ProductLink[]
   related_products?: string[]
   related_collections?: string[]
