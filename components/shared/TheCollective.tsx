@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function TheCollective() {
   return (
     <section
-      className="reveal text-center"
+      className="full-bleed reveal text-center"
       style={{
         padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)',
         background: '#FFFFFF',

@@ -24,6 +24,7 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -515,6 +516,11 @@
 }
 
 /* Press & Trust band (under hero) */
+/* Site-wide content cap — keeps content readable on ultra-wide monitors.
+   Full-bleed sections break out via the .full-bleed utility. */
+.site-wrap{ max-width:1600px; margin-left:auto; margin-right:auto; }
+.full-bleed{ width:100vw; position:relative; left:50%; margin-left:-50vw; }
+
 .press-trust-band{
   text-align:center;
   padding:clamp(18px,2.5vw,30px) clamp(20px,6vw,104px) clamp(14px,2vw,22px);

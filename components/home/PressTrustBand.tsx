@@ -11,7 +11,7 @@ const LOGOS = [
 
 export default function PressTrustBand() {
   return (
-    <section className="press-trust-band">
+    <section className="full-bleed press-trust-band">
       {/* Trust panel */}
       <div className="ptb-trust">
         <Link href="/about">

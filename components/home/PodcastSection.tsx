@@ -60,7 +60,7 @@ export default function PodcastSection({ episodes }: Props) {
 
   return (
     <section
-      className="reveal"
+      className="full-bleed reveal"
       style={{
         background: '#E8E3DB',
         padding: 'clamp(46px,6vw,78px) clamp(20px,6vw,104px)',

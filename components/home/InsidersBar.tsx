@@ -16,7 +16,7 @@ export default function InsidersBar() {
   return (
     <section
       id="insiders"
-      className="text-center"
+      className="full-bleed text-center"
       style={{
         background: '#FFFFFF',
         padding: 'clamp(34px,4vw,52px) clamp(20px,6vw,104px)',

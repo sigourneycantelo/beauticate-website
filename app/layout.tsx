@@ -136,7 +136,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ScrollReveal />
           <BetaTicker />
           <MastheadData />
-          <main id="main" data-pagefind-body>{children}</main>
+          <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
           <Footer />
           <CartDrawer />
           <AskSigLauncher />
