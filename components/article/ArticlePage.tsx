@@ -35,6 +35,7 @@ import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
 import rehypeVenueContact from '@/lib/rehype-venue-contact'
 import NearbyVenues from './NearbyVenues'
+import ShopEditRail from './ShopEditRail'
 import VenueCTA from './VenueCTA'
 import VenueContact from './VenueContact'
 
@@ -87,9 +88,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     const shopProduct = shopProductMap[handle]
     const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
     return (
-      <div className="max-w-[540px] mx-auto">
-        <ProductEmbed product={productLink} shopProduct={shopProduct} />
-      </div>
+      <ProductEmbed product={productLink} shopProduct={shopProduct} />
     )
   }
 
@@ -220,6 +219,14 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>
             </p>
           </div>
+        )}
+
+        {/* Shop the Edit — product rail from shop_products */}
+        {f.shop_products && f.shop_products.length > 0 && (
+          <ShopEditRail
+            products={f.shop_products}
+            collectionHandle={f.shop_collection}
+          />
         )}
 
         {/* Nearby venues — only on flagged travel articles */}
