@@ -62,14 +62,14 @@ export default async function HomePage() {
       {/* 3 — Shop by Category */}
       <ShopByCategory />
 
+      {/* 3b — Product scroll (directly under categories) */}
+      <ShopGrid products={shopProducts} />
+
       {/* 4 — Voices line */}
       <TheCollective />
 
       {/* 5 — As Seen In */}
       <AsSeenIn />
-
-      {/* 6 — Product grid */}
-      <ShopGrid products={shopProducts} />
 
       {/* 7 — Duo (most recent two stories) */}
       {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} />}
