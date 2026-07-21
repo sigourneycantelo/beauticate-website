@@ -259,7 +259,7 @@ export default function VodcastPage() {
       {/* ===== EDITORIAL LAYOUT ===== */}
       <EditorialSections
         articles={episodes.slice(1).filter(ep => ep.frontmatter.featured_image).slice(0, 34).map(ep => ({
-          frontmatter: ep.frontmatter,
+          frontmatter: { ...ep.frontmatter, category: 'vodcast' },
         }))}
       />
 
