@@ -18,7 +18,7 @@ export default function InstagramFeed() {
       />
       <div className="text-center mt-6">
         <a href="https://www.instagram.com/beauticate/" target="_blank" rel="noopener noreferrer"
-          className="text-sm tracking-widest uppercase hover:text-gold transition-colors">
+          className="text-sm tracking-widest uppercase hover:text-wine transition-colors">
           Follow @beauticate →
         </a>
       </div>

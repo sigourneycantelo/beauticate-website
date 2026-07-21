@@ -1,21 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const STATS = [
-  { value: '12 years', label: 'of trusted beauty journalism' },
-  { value: '3 million', label: 'monthly touchpoints' },
-  { value: 'Expert-led', label: 'written by specialists, not algorithms' },
-]
-
 export default function TheCollective() {
   return (
     <section
-      className="reveal text-center"
+      className="full-bleed reveal text-center"
       style={{
         padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)',
-        background: '#FBF9F4',
-        borderTop: '1px solid rgba(28,26,23,.10)',
-        borderBottom: '1px solid rgba(28,26,23,.10)',
+        background: '#FFFFFF',
       }}
     >
       <span
@@ -31,33 +23,11 @@ export default function TheCollective() {
         The voices behind every recommendation
       </h2>
       <p
-        className="font-sans mt-2 mx-auto"
-        style={{ fontSize: '13px', opacity: 0.66, maxWidth: '60ch', marginBottom: '14px' }}
+        className="font-serif italic mt-3 mx-auto mb-8"
+        style={{ fontSize: 'clamp(15px,1.6vw,19px)', opacity: 0.7, whiteSpace: 'nowrap' }}
       >
-        Trusted by women for over a decade. Every story is written, tested and stood behind by a named expert, not an algorithm.
+        Our advice comes from editors, experts, facialists, doctors, designers and stylists, not influencers or algorithms
       </p>
-
-      {/* Stats */}
-      <div
-        className="flex justify-center flex-wrap mx-auto pt-2 mb-8"
-        style={{ gap: 'clamp(20px,4vw,54px)' }}
-      >
-        {STATS.map(s => (
-          <div
-            key={s.value}
-            className="font-sans text-[10px] tracking-[0.16em] uppercase"
-            style={{ opacity: 0.6 }}
-          >
-            <b
-              className="block font-serif font-normal"
-              style={{ fontSize: '24px', letterSpacing: 0, textTransform: 'none', opacity: 1, marginBottom: '3px', fontStyle: 'italic' }}
-            >
-              {s.value}
-            </b>
-            {s.label}
-          </div>
-        ))}
-      </div>
 
       {/* Contact-sheet image */}
       <div

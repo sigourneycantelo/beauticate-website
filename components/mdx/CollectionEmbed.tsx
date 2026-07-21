@@ -13,7 +13,7 @@ export default async function CollectionEmbed({ handle, title }: Props) {
     <div className="my-8 border-t border-b border-cream-200 py-8">
       <div className="flex justify-between items-baseline mb-6">
         <h3>{title ?? collection.title}</h3>
-        <Link href={`/shop/collections/${handle}`} className="text-xs tracking-widest uppercase hover:text-gold">
+        <Link href={`/shop/collections/${handle}`} className="text-xs tracking-widest uppercase hover:text-wine">
           See all →
         </Link>
       </div>

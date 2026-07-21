@@ -18,6 +18,7 @@ export default function ArticleCard({ frontmatter: f, href, size = 'default' }: 
               src={f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
+
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               unoptimized={f.featured_image.endsWith('.gif')}
             />
@@ -25,11 +26,11 @@ export default function ArticleCard({ frontmatter: f, href, size = 'default' }: 
         </div>
         <div className="mt-3">
           {f.category && (
-            <p className="text-xs tracking-widest uppercase text-charcoal-light mb-1">
+            <p className="font-sans text-xs tracking-widest uppercase text-charcoal-light mb-1">
               {f.category.replace(/-/g, ' ')}
             </p>
           )}
-          <h3 className={`font-serif leading-snug group-hover:text-gold transition-colors ${size === 'small' ? 'text-base' : 'text-lg md:text-xl'}`}>
+          <h3 className={`font-serif leading-snug group-hover:text-wine transition-colors ${size === 'small' ? 'text-base' : 'text-lg md:text-xl'}`}>
             {f.title}
           </h3>
           {size !== 'small' && f.excerpt && (

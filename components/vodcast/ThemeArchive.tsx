@@ -1,0 +1,210 @@
+'use client'
+
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+type Styles = Record<string, string>
+
+export interface ArchiveEpisode {
+  slug: string
+  title: string
+  excerpt?: string
+  kicker?: string
+  image?: string
+  themes: string[]
+}
+
+export interface QuoteBreather {
+  quote: string
+  author: string
+}
+
+const QUOTE_INTERVAL = 8000
+const QUOTE_FADE = 600
+
+const PLAY_ICON = (
+  <svg viewBox="0 0 24 24">
+    <path d="M8 5v14l11-7z" />
+  </svg>
+)
+
+const BATCH = 9
+
+export default function ThemeArchive({
+  styles,
+  pool,
+  pills,
+  quotes,
+  themePools,
+}: {
+  styles: Styles
+  pool: ArchiveEpisode[]
+  pills: string[]
+  quotes: QuoteBreather[]
+  themePools?: Record<string, ArchiveEpisode[]>
+}) {
+  const [active, setActive] = useState('All')
+  const [visible, setVisible] = useState(BATCH)
+
+  const [qIdx, setQIdx] = useState(0)
+  const [qFade, setQFade] = useState(true)
+
+  const advanceQuote = useCallback(() => {
+    setQFade(false)
+    setTimeout(() => {
+      setQIdx(i => (i + 1) % quotes.length)
+      setQFade(true)
+    }, QUOTE_FADE)
+  }, [quotes.length])
+
+  useEffect(() => {
+    if (quotes.length <= 1) return
+    const id = setInterval(advanceQuote, QUOTE_INTERVAL)
+    return () => clearInterval(id)
+  }, [advanceQuote, quotes.length])
+
+  const currentQuote = quotes[qIdx] ?? quotes[0]
+
+  // Use the deduplicated theme pool when available (episodes claimed by an
+  // earlier theme are excluded), falling back to the simple filter.
+  const filtered = useMemo(
+    () => {
+      if (themePools && active !== 'All' && themePools[active]) return themePools[active]
+      return active === 'All' ? pool : pool.filter(ep => ep.themes.includes(active))
+    },
+    [pool, active, themePools]
+  )
+
+  const pair = filtered.slice(0, 2)
+  const gridPool = filtered.slice(2)
+  const shown = gridPool.slice(0, visible)
+  const firstGrid = shown.slice(0, 6)
+  const secondGrid = shown.slice(6)
+  const allShown = visible >= gridPool.length
+
+  const selectPill = (pill: string) => {
+    setActive(pill)
+    setVisible(BATCH)
+  }
+
+  const renderCard = (ep: ArchiveEpisode) => (
+    <Link key={ep.slug} className={styles.ep} href={`/vodcast/episodes/${ep.slug}`}>
+      <div className={styles.epImg}>
+        {ep.image && (
+          <Image
+            src={ep.image}
+            alt={ep.title}
+            fill
+            sizes="(max-width: 620px) 100vw, (max-width: 900px) 50vw, 33vw"
+            className="object-cover"
+          />
+        )}
+      </div>
+      {ep.kicker && <span className={`${styles.cat} ${styles.eyebrow}`}>{ep.kicker}</span>}
+      <h3>{ep.title}</h3>
+      {ep.excerpt && <p>{ep.excerpt}</p>}
+      <span className={styles.listen}>
+        {PLAY_ICON}
+        <span>Listen</span>
+      </span>
+    </Link>
+  )
+
+  return (
+    <section className={styles.archive}>
+      <div className={styles.wrap}>
+        <div className={`${styles.secHead} ${styles.rev}`} style={{ marginBottom: 0 }}>
+          <div>
+            <span className={styles.eyebrow}>All episodes</span>
+            <h2>Find your next listen</h2>
+          </div>
+          <span className={styles.eyebrow}>
+            {filtered.length} {filtered.length === 1 ? 'episode' : 'episodes'}
+            {active !== 'All' ? ` · ${active}` : ''}
+          </span>
+        </div>
+
+        <div className={`${styles.moodbar} ${styles.rev}`}>
+          {pills.map(pill => (
+            <button
+              key={pill}
+              className={`${styles.mood} ${active === pill ? styles.active : ''}`}
+              onClick={() => selectPill(pill)}
+            >
+              {pill}
+            </button>
+          ))}
+        </div>
+
+        {/* Staggered featured pair — the two most recent in the current theme */}
+        {pair.length > 0 && (
+          <div className={`${styles.pair} ${styles.rev}`}>
+            {pair.map(ep => (
+              <Link
+                key={ep.slug}
+                className={styles.epScrim}
+                href={`/vodcast/episodes/${ep.slug}`}
+              >
+                <div className={styles.pairImg}>
+                  {ep.image && (
+                    <Image
+                      src={ep.image}
+                      alt={ep.title}
+                      fill
+                      sizes="(max-width: 620px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  )}
+                </div>
+                <div className={styles.scr} />
+                <div className={styles.epCopy}>
+                  {ep.kicker && <span className={styles.eyebrow}>{ep.kicker}</span>}
+                  <h3>{ep.title}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {/* First 3-up grid */}
+        {firstGrid.length > 0 && <div className={styles.grid3}>{firstGrid.map(renderCard)}</div>}
+
+        {/* Pull-quote breather (only when there is a second grid to separate) */}
+        {secondGrid.length > 0 && (
+          <div className={`${styles.quoteband} ${styles.rev}`}>
+            <span className={styles.eyebrow}>From the episodes</span>
+            <div
+              style={{
+                opacity: qFade ? 1 : 0,
+                transition: `opacity ${QUOTE_FADE}ms ease`,
+              }}
+            >
+              <blockquote>{currentQuote.quote}</blockquote>
+              <cite>{currentQuote.author}</cite>
+            </div>
+          </div>
+        )}
+
+        {/* Second 3-up grid */}
+        {secondGrid.length > 0 && (
+          <div className={styles.grid3}>{secondGrid.map(renderCard)}</div>
+        )}
+
+        {filtered.length === 0 && (
+          <p className={styles.curNote}>No episodes in this theme yet.</p>
+        )}
+
+        {gridPool.length > BATCH && (
+          <button
+            className={styles.loadmore}
+            disabled={allShown}
+            onClick={() => setVisible(v => v + BATCH)}
+          >
+            {allShown ? 'You are all caught up' : 'Load more episodes'}
+          </button>
+        )}
+      </div>
+    </section>
+  )
+}

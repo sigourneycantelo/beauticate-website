@@ -1,0 +1,748 @@
+Rank,Tier,Page Path,Title,Organic Sessions,Engagement Rate,Avg Eng Time (s),Affiliate Clicks,Conversions,Priority Score,Duplicate?,Recommended Action
+1,1 - Refresh first,/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,The Best Italian Hair Products And Secrets You Need To Know,1642,100%,51,384,11,71.9,YES,KEEP as canonical; redirect duplicate(s) here
+2,1 - Refresh first,/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,"I tried a new DIY micro-infusion device, here’s what I thought…",3027,66%,81,269,0,69.1,YES,KEEP as canonical; redirect duplicate(s) here
+3,1 - Refresh first,/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,I’ve Got Fine But Frizzy Hair and This Is Exactly What I Use To Look After It,3516,58%,53,292,0,68.4,YES,KEEP as canonical; redirect duplicate(s) here
+4,1 - Refresh first,/interviews/founders/the-exact-products-melanie-grant-uses-to-look-flawless,The Exact Products Melanie Grant Uses To Look Flawless,1472,59%,125,343,0,65.2,YES,KEEP as canonical; redirect duplicate(s) here
+5,1 - Refresh first,/beauty-style/hair/best-hair-tools-for-fine-hair,Review: The Best Hair Tools for Fine Hair,1952,64%,51,236,0,64.6,YES,KEEP as canonical; redirect duplicate(s) here
+6,1 - Refresh first,/how-to/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,I’ve Got Fine But Frizzy Hair and This Is Exactly What I Use To Look After It,2080,57%,53,211,0,63.8,YES,CONSOLIDATE -> redirect to /beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it
+7,1 - Refresh first,/reviews/luxury-skincare-review,Honest Review: Luxury Skincare Products Worth The Price Tag,1924,63%,61,28,0,62.3,YES,KEEP as canonical; redirect duplicate(s) here
+8,1 - Refresh first,/beauty-style/beauty-tips/how-to-choose-the-right-products-for-your-skin,How To Choose The Right Products for your Skin,570,85%,236,4,0,61.8,YES,KEEP as canonical; redirect duplicate(s) here
+9,1 - Refresh first,/interviews/tastemakers/riley-minford-the-trans-model-owning-her-beauty,"Riley Minford, The Trans Model Owning Her Beauty",2509,46%,73,8,0,61.6,YES,KEEP as canonical; redirect duplicate(s) here
+10,1 - Refresh first,/beauty-style/beauty-tips/i-got-an-under-eye-concealer-tattoo,I Got an Under-eye Concealer Tattoo!,1870,57%,85,11,0,61.6,YES,KEEP as canonical; redirect duplicate(s) here
+11,1 - Refresh first,/beauty-style/beauty-tips/cheek-blush-tattoo,Permanent Cheek Blush Tattoo: Everything You Need To Know,748,100%,68,1,0,61.3,YES,KEEP as canonical; redirect duplicate(s) here
+12,1 - Refresh first,/who/influencers/riley-minford-the-trans-model-owning-her-beauty,"Riley Minford, The Trans Model Owning Her Beauty",705,100%,54,4,0,60.6,YES,CONSOLIDATE -> redirect to /interviews/tastemakers/riley-minford-the-trans-model-owning-her-beauty
+13,1 - Refresh first,/beauty-style/qure-micro-infusion-system-review,Qure Micro-Infusion System Review: Real Reader Results,1717,48%,59,151,0,60.5,,Migrate + preserve metadata
+14,1 - Refresh first,/beauty-style/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,The Best Italian Pharmacy Buys (You Can Find Online).,561,100%,61,74,0,60.1,YES,KEEP as canonical; redirect duplicate(s) here
+15,1 - Refresh first,/interviews/creatives/sibella-court-interior-stylist-and-author,"Sibella Court, Interior Stylist & Author",1246,54%,85,112,0,59.6,YES,KEEP as canonical; redirect duplicate(s) here
+16,2 - Priority migrate,/ask/should-you-apply-fake-tan-on-top-of-an-existing-tan,Can I apply fake tan on top of an existing tan?,2400,40%,32,0,0,59.2,,Migrate + preserve metadata
+17,2 - Priority migrate,/interviews/actors-presenters/nathalie-kelley-the-actress-finding-her-purpose-outside-of-hollywood,"Nathalie Kelley, The Actress Finding Her Purpose Outside of Hollywood",1460,50%,85,21,0,59,YES,KEEP as canonical; redirect duplicate(s) here
+18,2 - Priority migrate,/wellness/breast-cancer-beauty-routine,Breast Cancer at 43: Colette’s Story,629,73%,134,59,2,58.9,,Migrate + preserve metadata
+19,2 - Priority migrate,/living/lifestyle/best-ai-image-generator-app-review-glam-ai,Best AI Image Generator App? Glam AI Review,1463,48%,48,115,0,58.8,YES,KEEP as canonical; redirect duplicate(s) here
+20,2 - Priority migrate,/beauty-style/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,Rose-Marie Swift’s 10 Beauty Rules For Older Skin,620,68%,124,141,0,58.4,YES,KEEP as canonical; redirect duplicate(s) here
+21,2 - Priority migrate,/interviews/models/helena-vestergaard-on-modelling-and-mental-health,Helena Vestergaard On Modelling And Mental Health,934,55%,115,79,0,58.3,YES,KEEP as canonical; redirect duplicate(s) here
+22,2 - Priority migrate,/beauty-style/qure-neck-decolletage-led-device,Qure Neck & Décolletage LED Device Review | Beauticate,465,100%,54,50,0,58.3,,Migrate + preserve metadata
+23,2 - Priority migrate,/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities,Adaptive Makeup Tools for Enhanced Accessibility,1033,62%,38,92,0,58.1,YES,KEEP as canonical; redirect duplicate(s) here
+24,2 - Priority migrate,/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,"I tried a new DIY micro-infusion device, here’s what I thought…",919,62%,80,52,0,58,YES,CONSOLIDATE -> redirect to /beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought
+25,2 - Priority migrate,/interviews/tastemakers/princess-diana,Princess Diana,1267,43%,83,112,0,58,YES,KEEP as canonical; redirect duplicate(s) here
+26,2 - Priority migrate,/interviews/actors-presenters/abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,"Abbey Gelmi, The Sports Reporter Making Her Thirties All About Finding Balance",1077,55%,89,22,0,57.8,YES,KEEP as canonical; redirect duplicate(s) here
+27,2 - Priority migrate,/beauty-style/hair/olaplex-review-is-it-worth-the-hype,Olaplex Review: Is It Worth The Hype?,929,58%,96,34,0,57.6,YES,KEEP as canonical; redirect duplicate(s) here
+28,2 - Priority migrate,/who/influencers/stella-kim,Stella Kim: Why I Left The KPOP World To Become A Marketing Professional,612,66%,153,21,0,57.4,YES,CONSOLIDATE -> redirect to /interviews/tastemakers/stella-kim
+29,2 - Priority migrate,/interviews/creatives/tamsin-johnson-interior-designer,"Tamsin Johnson, Interior Designer",305,100%,99,73,0,57,YES,KEEP as canonical; redirect duplicate(s) here
+30,2 - Priority migrate,/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,Darren Palmer & Olivier Duvillard,3577,-,43,40,0,56.6,YES,KEEP as canonical; redirect duplicate(s) here
+31,2 - Priority migrate,/interviews/tastemakers/stella-kim,Stella Kim: Why I Left The KPOP World To Become A Marketing Professional,2408,-,123,73,0,56.5,YES,KEEP as canonical; redirect duplicate(s) here
+32,2 - Priority migrate,/destination/travel,TRAVEL - vacation and holiday destinations,850,64%,42,3,0,56.2,YES,KEEP as canonical; redirect duplicate(s) here
+33,2 - Priority migrate,/beauty-style/hair,HAIRSTYLES - short hairstyles and hairstyles for long hair,468,92%,37,2,0,56.1,,Migrate + preserve metadata
+34,2 - Priority migrate,/interviews/founders/fiona-myer-entrepreneur,"Fiona Myer, White Story",455,70%,148,21,0,55.9,YES,KEEP as canonical; redirect duplicate(s) here
+35,2 - Priority migrate,/interviews/kate-waterhouse-style-beauty,"Kate Waterhouse on Style, Beauty & Confidence",560,73%,75,30,0,55.9,,Migrate + preserve metadata
+36,2 - Priority migrate,/wellness/fitness,FITNESS - Women's fitness and exercise plans,355,100%,53,2,0,55.9,,Migrate + preserve metadata
+37,2 - Priority migrate,/sigourneys-edit/sensitive-scalp-moogoo-shampoo-review,Moogoo Shampoo Review: Product that Saved My Scalp,922,52%,68,27,0,55.8,,Migrate + preserve metadata
+38,2 - Priority migrate,/interviews/models/why-this-model-mum-of-two-doesnt-own-a-hair-dryer,Why This Model Mum-of-Two Doesn't Own A Hair Dryer,698,61%,86,14,0,55.7,YES,KEEP as canonical; redirect duplicate(s) here
+39,2 - Priority migrate,/interviews/creatives/dina-broadhurst-artist,"Dina Broadhurst, Artist",839,56%,55,25,0,55.5,YES,KEEP as canonical; redirect duplicate(s) here
+40,2 - Priority migrate,/beauty-style/skin-care/the-extreme-beauty-standards-flight-attendants-adhere-to,The Extreme Beauty Standards Flight Attendants Adhere To,943,50%,72,0,0,55.5,YES,KEEP as canonical; redirect duplicate(s) here
+41,2 - Priority migrate,/beauty-style/skin-care/la-mer-the-concentrate-reviews,La Mer The Concentrate Reviews: See what our readers had to say.. is La Mer worth it?,694,62%,79,0,0,55.5,YES,KEEP as canonical; redirect duplicate(s) here
+42,2 - Priority migrate,/beauty-style/fragrance,Fragrance,366,100%,26,1,0,55.4,YES,KEEP as canonical; redirect duplicate(s) here
+43,2 - Priority migrate,/how-to/best-hair-tools-for-fine-hair,Review: The Best Hair Tools for Fine Hair,606,66%,56,78,0,55.4,YES,CONSOLIDATE -> redirect to /beauty-style/hair/best-hair-tools-for-fine-hair
+44,2 - Priority migrate,/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details,Sig's Slim Aarons Poolside Birthday – All The Details,777,61%,43,33,0,55.4,YES,KEEP as canonical; redirect duplicate(s) here
+45,2 - Priority migrate,/interviews/tastemakers/rozalia-russian-influencer,"Rozalia Russian, Influencer",747,56%,80,15,0,55.2,YES,KEEP as canonical; redirect duplicate(s) here
+46,2 - Priority migrate,/interviews/creatives/rae-morris-interview,"Rae Morris on Beauty, Mistakes and a Career Made by Chance",456,60%,150,75,0,55.1,YES,KEEP as canonical; redirect duplicate(s) here
+47,2 - Priority migrate,/beauty-style/makeup/louis-vuitton-makeup-review-australia,Louis Vuitton Makeup Australia Review | Beauticate,682,66%,46,10,0,55.1,,Migrate + preserve metadata
+48,2 - Priority migrate,/beauty-style/skin-care,SKIN CARE - The best skin care and cosmetics,704,64%,46,3,0,55,YES,KEEP as canonical; redirect duplicate(s) here
+49,2 - Priority migrate,/interviews/models/rebecca-burrow-entrepreneur-and-model,"Rebecca Burrow, Model",701,59%,66,19,0,54.9,,Migrate + preserve metadata
+50,2 - Priority migrate,/interviews/actors-presenters/farrah-fawcett-actress,"Farrah Fawcett, Actress",796,47%,85,52,0,54.9,YES,KEEP as canonical; redirect duplicate(s) here
+51,3 - Standard migrate,/beauty-style/beauticate-collective-editors-experts,"Meet The Beauticate Collective | Beauty, Wellness & Style Experts",763,49%,62,92,0,54.7,,Migrate + preserve metadata
+52,3 - Standard migrate,/how-to/hairstyles/the-best-italian-hair-products-and-secrets-you-need-to-know,The Best Italian Hair Products And Secrets You Need To Know,684,55%,53,97,0,54.7,YES,CONSOLIDATE -> redirect to /beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know
+53,3 - Standard migrate,/interviews/creatives/who-sarah-jagger-make-up-artist,"Sarah Jagger, Makeup Artist",781,45%,102,37,0,54.7,YES,KEEP as canonical; redirect duplicate(s) here
+54,3 - Standard migrate,/interviews/founders/olivia-chantecaille-born-into-beauty-now-saving-the-world,"Olivia Chantecaille, Born Into Beauty, Now Saving The World",725,52%,88,7,0,54.6,YES,KEEP as canonical; redirect duplicate(s) here
+55,3 - Standard migrate,/living/sustainability,Sustainability,302,100%,45,0,0,54.6,,Migrate + preserve metadata
+56,3 - Standard migrate,/interviews/founders/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,The Glamorous Cosmetic Injector You’ll Want to Fly to Perth to See,522,58%,123,42,0,54.5,YES,KEEP as canonical; redirect duplicate(s) here
+57,3 - Standard migrate,/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home,"Alyce Tran, The Entrepreneur Who Will Persuade You To Bring Colour Into Your Home",652,55%,77,53,0,54.5,YES,KEEP as canonical; redirect duplicate(s) here
+58,3 - Standard migrate,/beauty-style/makeup,MAKEUP TUTORIALS - videos and instructions on how to apply makeup,521,75%,43,0,0,54.5,YES,KEEP as canonical; redirect duplicate(s) here
+59,3 - Standard migrate,/beauty-style/skin-care/systeme-bio-plus-oil-serum-review,Système Bio+ Oil Serum Review: Real Reader Results,288,100%,32,51,0,54.5,,Migrate + preserve metadata
+60,3 - Standard migrate,/beauty-style/hair/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,"5 Tips From A Spiritual Hair Advisor (Yep, They Exist)",1121,48%,0,0,0,54.4,YES,KEEP as canonical; redirect duplicate(s) here
+61,3 - Standard migrate,/how-to/beauty-tips/how-to-choose-the-right-products-for-your-skin,How To Choose The Right Products for your Skin,203,89%,182,0,0,54.1,YES,CONSOLIDATE -> redirect to /beauty-style/beauty-tips/how-to-choose-the-right-products-for-your-skin
+62,3 - Standard migrate,/destination/travel/hotels-resorts/city-guides,City Guides,273,100%,47,0,0,54,,Migrate + preserve metadata
+63,3 - Standard migrate,/destination/travel/hotels-resorts,Hotels & Resorts,272,100%,42,1,0,53.9,,Migrate + preserve metadata
+64,3 - Standard migrate,/interviews/tastemakers/bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect,Brooke Blurton at Home Interview: Her Journey and Beauty Loves,632,54%,87,1,0,53.8,YES,KEEP as canonical; redirect duplicate(s) here
+65,3 - Standard migrate,/sigourneys-edit/dyson-supersonic-r-hair-dryer-review,Dyson Supersonic R Hair Dryer Review and Features,511,65%,62,17,0,53.6,,Migrate + preserve metadata
+66,3 - Standard migrate,/interviews/creatives/melanie-grant-skin-specialist,Melanie Grant Skincare Routine for Radiant Skin,301,70%,166,3,0,53.5,YES,KEEP as canonical; redirect duplicate(s) here
+67,3 - Standard migrate,/interviews/founders/anastasia-soare-on-turning-perfect-brows-into-a-global-empire,Anastasia Soare On Turning Perfect Brows Into A Global Empire,644,53%,66,14,0,53.4,YES,KEEP as canonical; redirect duplicate(s) here
+68,3 - Standard migrate,/beauty-style/beauty-tips/these-are-the-beauty-brands-working-towards-better-packaging,These Are The Beauty Brands Working Towards Better Packaging,966,47%,5,4,0,53.4,YES,KEEP as canonical; redirect duplicate(s) here
+69,3 - Standard migrate,/interviews/actors-presenters/elsa-pataky-on-falling-utterly-in-love-with-byron-bay,Elsa Pataky On Falling Utterly In Love With Byron Bay,566,51%,101,18,0,53.3,YES,KEEP as canonical; redirect duplicate(s) here
+70,3 - Standard migrate,/beauty-style/christmas-led-skincare-gift,The Only Christmas Hint I’m Leaving Out This Year: Better Skin,236,100%,49,8,0,53.2,YES,KEEP as canonical; redirect duplicate(s) here
+71,3 - Standard migrate,/interviews/creatives/julia-stone-the-musician-all-about-making-meaning,"Julia Stone, The Musician All About Making Meaning",457,52%,139,19,0,53,YES,KEEP as canonical; redirect duplicate(s) here
+72,3 - Standard migrate,/interviews/luxury-pool-design-trends-australia-2,The New Pool Rules: 7 Luxury Pool Trends for Australian Homes,438,65%,75,18,0,52.9,,Migrate + preserve metadata
+73,3 - Standard migrate,/interviews/creatives/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars,Inside the LA Home of Maison Louis Marie Founder Marie du Petit Thouars,450,64%,78,14,0,52.9,YES,KEEP as canonical; redirect duplicate(s) here
+74,3 - Standard migrate,/who/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,Darren Palmer & Olivier Duvillard,954,38%,36,6,0,52.9,YES,CONSOLIDATE -> redirect to /interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard
+75,3 - Standard migrate,/interviews/actors-presenters/grace-kelly-princess-and-actress,Grace Kelly,617,47%,79,36,0,52.8,YES,KEEP as canonical; redirect duplicate(s) here
+76,3 - Standard migrate,/interviews/creatives/who-jocelyn-petroni-beauty-therapist,"Jocleyn Petroni, The A-Listers' Facialist Who Is All About Love",328,65%,138,24,0,52.7,YES,KEEP as canonical; redirect duplicate(s) here
+77,3 - Standard migrate,/sigourneys-edit/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,"I tried a new DIY micro-infusion device, here’s what I thought…",484,58%,62,25,0,52.3,YES,CONSOLIDATE -> redirect to /beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought
+78,3 - Standard migrate,/beauty-style/beauty-tips/the-beauty-secrets-epres-vs-olaplex-whats-the-difference,The Beauty Secrets: Epres vs. Olaplex—What's the Difference?,1324,-,136,5,0,52.1,YES,KEEP as canonical; redirect duplicate(s) here
+79,3 - Standard migrate,/beauty-style/hair/im-a-hair-bleach-addict-heres-how-i-prevent-the-damage,I'm A Hair Bleach Addict - Here's How I Prevent The Damage,481,56%,63,26,0,51.9,YES,KEEP as canonical; redirect duplicate(s) here
+80,3 - Standard migrate,/who/entrepreneurs/the-exact-products-melanie-grant-uses-to-look-flawless,The Exact Products Melanie Grant Uses To Look Flawless,231,67%,162,73,0,51.8,YES,CONSOLIDATE -> redirect to /interviews/founders/the-exact-products-melanie-grant-uses-to-look-flawless
+81,3 - Standard migrate,/beauty-style/skin-care/chic-sunscreens-hats,Chic Sunscreens & Sun Hats for Everyday Protection,391,53%,71,149,0,51.8,,Migrate + preserve metadata
+82,3 - Standard migrate,/interviews/models/rebecca-harding-model,"Rebecca Harding, Model",405,62%,69,7,0,51.6,YES,KEEP as canonical; redirect duplicate(s) here
+83,3 - Standard migrate,/wellness/health/i-spent-a-week-living-like-miranda-kerr-heres-what-happened,"I Spent A Week Living Like Miranda Kerr, Here's What Happened",369,56%,115,2,0,51.4,YES,KEEP as canonical; redirect duplicate(s) here
+84,3 - Standard migrate,/beauty-style/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair,The Top 5 French Hair Secrets From Those in the Know,395,55%,78,60,1,51.3,YES,KEEP as canonical; redirect duplicate(s) here
+85,3 - Standard migrate,/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging,These Are The Beauty Brands Working Towards Better Packaging,582,53%,14,20,0,51.3,YES,CONSOLIDATE -> redirect to /beauty-style/beauty-tips/these-are-the-beauty-brands-working-towards-better-packaging
+86,3 - Standard migrate,/interviews/creatives/the-society-jeweller-with-a-stylish-loungewear-wardrobe,The Society Jeweller With A Stylish Loungewear Wardrobe,415,51%,97,28,0,51.2,YES,KEEP as canonical; redirect duplicate(s) here
+87,3 - Standard migrate,/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,Cher From Clueless Hair: The Ultimate Cher Horowitz Hair Tutorial,512,53%,34,22,0,51.1,YES,KEEP as canonical; redirect duplicate(s) here
+88,3 - Standard migrate,/beauty-style/beauty-tips,"Beauty tips, makeup tutorials, hairstyles and skin care to health, fitness and healthy recipes",507,50%,55,2,0,50.9,YES,KEEP as canonical; redirect duplicate(s) here
+89,3 - Standard migrate,/interviews/creatives/who-bridget-yorston-designer,"Bridget Yorston, Bec & Bridge",449,61%,24,3,0,50.8,YES,KEEP as canonical; redirect duplicate(s) here
+90,3 - Standard migrate,/interviews/models/megan-blake-irwin-the-aussie-model-living-her-best-la-life,Megan Blake Irwin LA Interview: A Modeling Journey,250,73%,96,2,0,50.7,YES,KEEP as canonical; redirect duplicate(s) here
+91,3 - Standard migrate,/how-to/best-ai-image-generator-app-review-glam-ai,Best AI Image Generator App? Glam AI Review,543,44%,46,35,0,50.7,YES,CONSOLIDATE -> redirect to /living/lifestyle/best-ai-image-generator-app-review-glam-ai
+92,3 - Standard migrate,/beauty-style/cosmetic/korean-plastic-surgery,Skull Reshaping? Korean Plastic Surgery and Its Intriguing World,399,57%,67,1,0,50.7,YES,KEEP as canonical; redirect duplicate(s) here
+93,3 - Standard migrate,/interviews/creatives/david-mallet-hair-stylist,"David Mallett, Hair Stylist",374,53%,103,1,0,50.6,YES,KEEP as canonical; redirect duplicate(s) here
+94,3 - Standard migrate,/wellness/fitness/how-i-stay-fit-with-rebecca-judd,How I Stay Fit With Rebecca Judd,485,48%,68,2,0,50.6,YES,KEEP as canonical; redirect duplicate(s) here
+95,3 - Standard migrate,/beauty-style/fragrance/fathers-day-fragrance-gifts,5 Father’s Day Fragrance Gifts to Know,184,100%,17,7,0,50.6,,Migrate + preserve metadata
+96,3 - Standard migrate,/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself,Rozalia Russian Interview: The Reality of Parenthood,334,58%,102,7,0,50.6,YES,KEEP as canonical; redirect duplicate(s) here
+97,3 - Standard migrate,/sigourneys-edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one,Prevage 2.0 Review - Sigourney road tests the Antioxidant All-In-One.,394,53%,87,4,0,50.6,,Migrate + preserve metadata
+98,3 - Standard migrate,/destination/beauty-wellness/clinics/aurora-spa-st-kilda,"Aurora Spa, St Kilda",359,64%,40,24,0,50.5,YES,KEEP as canonical; redirect duplicate(s) here
+99,3 - Standard migrate,/destination/travel/family-ski-holiday-to-japan,Family Ski Holiday to Japan: Nozawa Onsen & Madarao Guide,251,76%,62,22,0,50.5,YES,KEEP as canonical; redirect duplicate(s) here
+100,3 - Standard migrate,/how-to/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,The Best Italian Pharmacy Buys (You Can Find Online).,313,64%,75,24,0,50.5,YES,CONSOLIDATE -> redirect to /beauty-style/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online
+
+Money Rank,Page Path,Money Score,Organic Sessions,Affiliate Clicks,Affiliate Clicks / 1k Sessions,Engagement Score,Newsletter Signups (tracking pending),Recovery-List Tier
+1,/sacred60shop,91.1,1232,911,739.4,58,—,Not in Top 100
+2,/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,51.8,1642,384,233.9,54.6,—,Tier 1
+3,/interviews/founders/the-exact-products-melanie-grant-uses-to-look-flawless,42.8,1472,343,233,40.7,—,Tier 1
+4,/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,41.1,3516,292,83,33.8,—,Tier 1
+5,/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,40.4,3027,269,88.9,40.4,—,Tier 1
+6,/beauty-style/hair/best-hair-tools-for-fine-hair,37,1952,236,120.9,36.7,—,Tier 1
+7,/how-to/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,35.3,2080,211,101.4,33.3,—,Tier 1
+8,/about-beauticate,35,470,194,412.8,56.5,—,Not in Top 100
+9,/vodcast,33.8,292,294,1006.8,25,—,Not in Top 100
+10,/about,31.9,2414,66,27.3,53.3,—,Not in Top 100
+11,/beauty-style/qure-micro-infusion-system-review,30.9,1717,151,87.9,29.1,—,Tier 1
+12,/beauty-style/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,30.2,620,141,227.4,45.2,—,Tier 2
+13,/interviews/creatives/sibella-court-interior-stylist-and-author,28.8,1246,112,89.9,34.7,—,Tier 1
+14,/living/lifestyle/best-ai-image-generator-app-review-glam-ai,28.4,1463,115,78.6,28.4,—,Tier 2
+15,/interviews/tastemakers/princess-diana,28,1267,112,88.4,28.9,—,Tier 2
+16,/beauty-style/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,27.9,561,74,131.9,55.5,—,Tier 1
+17,/404.html,27.8,3156,10,3.2,50.4,—,Not in Top 100
+18,/beauty-style/skin-care/chic-sunscreens-hats,27.7,391,149,381.1,33.1,—,Tier 3
+19,/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities,27.2,1033,92,89.1,34.6,—,Tier 2
+20,/wellness/breast-cancer-beauty-routine,27.1,629,59,93.8,48.8,—,Tier 2
+21,/interviews/creatives/tamsin-johnson-interior-designer,26.8,305,73,239.3,59,—,Tier 2
+22,/interviews/models/helena-vestergaard-on-modelling-and-mental-health,26.7,934,79,84.6,37.9,—,Tier 2
+23,/how-to/hairstyles/the-best-italian-hair-products-and-secrets-you-need-to-know,26.1,684,97,141.8,32.3,—,Tier 3
+24,/beauty-style/qure-neck-decolletage-led-device,26,465,50,107.5,54.9,—,Tier 2
+25,/beauty-style/beauticate-collective-editors-experts,25.8,763,92,120.6,30.1,—,Tier 3
+26,/how-to/best-hair-tools-for-fine-hair,25.6,606,78,128.7,38,—,Tier 2
+27,/interviews/creatives/rae-morris-interview,25.6,456,75,164.5,43.4,—,Tier 2
+28,/reviews/luxury-skincare-review,25.6,1924,28,14.6,37.1,—,Tier 1
+29,/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,25.3,919,52,56.6,38.3,—,Tier 2
+30,/beauty-style/beauty-tips/how-to-choose-the-right-products-for-your-skin,25.3,570,4,7,63.7,—,Tier 1
+31,/top-50-skincare-products,24.9,395,42,106.3,53.2,—,Not in Top 100
+32,/beauty-style/beauty-tips/cheek-blush-tattoo,24.7,748,1,1.3,56.1,—,Tier 1
+33,/advertise-with-us,24.7,712,10,14,54.2,—,Not in Top 100
+34,/interviews/tastemakers/stella-kim,24.7,2408,73,30.3,11.1,—,Tier 2
+35,/beauty-style,24.6,2631,9,3.4,32.2,—,Not in Top 100
+36,/beauty-style/skin-care/systeme-bio-plus-oil-serum-review,24.6,288,51,177.1,52.9,—,Tier 3
+37,/who/entrepreneurs/the-exact-products-melanie-grant-uses-to-look-flawless,24.5,231,73,316,48,—,Tier 3
+38,/who/influencers/riley-minford-the-trans-model-owning-her-beauty,24.5,705,4,5.7,54.9,—,Tier 1
+39,/living/outdoors/pool-accessories-that-changed-our-lives,24.5,346,101,291.9,31,—,Not in Top 100
+40,/beauty-style/beauty-tips/i-got-an-under-eye-concealer-tattoo,24.4,1870,11,5.9,36,—,Tier 1
+41,/beauty-style/nightly-beauty-routine,24.3,448,95,212.1,24.9,—,Not in Top 100
+42,/beauty-style/hair/olaplex-review-is-it-worth-the-hype,24.2,929,34,36.6,37.5,—,Tier 2
+43,/interviews/tastemakers/riley-minford-the-trans-model-owning-her-beauty,24,2509,8,3.2,29.7,—,Tier 1
+44,/who/influencers/stella-kim,23.9,612,21,34.3,46.8,—,Tier 2
+45,/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home,23.9,652,53,81.3,34.4,—,Tier 3
+46,/interviews/actors-presenters/nathalie-kelley-the-actress-finding-her-purpose-outside-of-hollywood,23.9,1460,21,14.4,32.7,—,Tier 2
+47,/interviews/actors-presenters/farrah-fawcett-actress,23.9,796,52,65.3,31.2,—,Tier 2
+48,/news,23.7,1461,1,0.7,38.7,—,Not in Top 100
+49,/interviews/actors-presenters/abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,23.6,1077,22,20.4,35.4,—,Tier 2
+50,/interviews/founders/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,23.6,522,42,80.5,39.9,—,Tier 3
+51,/interviews/kate-waterhouse-style-beauty,23.6,560,30,53.6,43.4,—,Tier 2
+52,/beauty-style/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair,23.5,395,60,151.9,34.4,—,Tier 3
+53,/interviews/founders/fiona-myer-entrepreneur,23.4,455,21,46.2,48.5,—,Tier 2
+54,/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details,23.2,777,33,42.5,34.4,—,Tier 2
+55,/interviews,23.1,1383,5,3.6,34.6,—,Not in Top 100
+56,/interviews/creatives/who-sarah-jagger-make-up-artist,23.1,781,37,47.4,31.7,—,Tier 3
+57,/beauty-style/beauty-tips/three-of-the-best-wisteria-scents,23,966,100,103.5,4.5,—,Not in Top 100
+58,/sigourneys-edit/sensitive-scalp-moogoo-shampoo-review,23,922,27,29.3,31.9,—,Tier 2
+59,/destinations,22.9,709,0,0,45.6,—,Not in Top 100
+60,/interviews/creatives/dina-broadhurst-artist,22.8,839,25,29.8,33.1,—,Tier 2
+
+URL,Traffic (sessions),Traffic Category,Affiliate Clicks,Affiliate Revenue Category,Shop Product Opportunity
+/sacred60shop,1232,Medium,911,High,General curated product edit aligned to article topic
+/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,1642,Medium,384,High,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/interviews/founders/the-exact-products-melanie-grant-uses-to-look-flawless,1472,Medium,343,High,"""Shop the expert"" — Melanie Grant's exact products as a curated collection"
+/vodcast,292,Low,294,High,General curated product edit aligned to article topic
+/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,3516,High,292,High,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,3027,High,269,High,At-home device shop — micro-infusion/microstamping tools + serums
+/beauty-style/hair/best-hair-tools-for-fine-hair,1952,Medium,236,High,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/how-to/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,2080,High,211,High,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/about-beauticate,470,Low,194,High,General curated product edit aligned to article topic
+/beauty-style/qure-micro-infusion-system-review,1717,Medium,151,High,At-home device shop — micro-infusion/microstamping tools + serums
+/beauty-style/skin-care/chic-sunscreens-hats,391,Low,149,Medium,"Chic SPF & sun-hat edit — high efficiency, seasonal shop collection"
+/beauty-style/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,620,Low,141,Medium,"""Shop the expert"" — Rose-Marie Swift / RMS Beauty product edit"
+/living/lifestyle/best-ai-image-generator-app-review-glam-ai,1463,Medium,115,Medium,General curated product edit aligned to article topic
+/interviews/creatives/sibella-court-interior-stylist-and-author,1246,Medium,112,Medium,General curated product edit aligned to article topic
+/interviews/tastemakers/princess-diana,1267,Medium,112,Medium,General curated product edit aligned to article topic
+/living/outdoors/pool-accessories-that-changed-our-lives,346,Low,101,Medium,Outdoor/lifestyle edit — pool & summer accessories collection
+/beauty-style/beauty-tips/three-of-the-best-wisteria-scents,966,Medium,100,Medium,General curated product edit aligned to article topic
+/how-to/hairstyles/the-best-italian-hair-products-and-secrets-you-need-to-know,684,Low,97,Medium,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/beauty-style/nightly-beauty-routine,448,Low,95,Medium,General curated product edit aligned to article topic
+/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities,1033,Medium,92,Medium,"Makeup tools shop section (brushes, sponges)"
+/beauty-style/beauticate-collective-editors-experts,763,Low,92,Medium,General curated product edit aligned to article topic
+/interviews/models/helena-vestergaard-on-modelling-and-mental-health,934,Medium,79,Medium,General curated product edit aligned to article topic
+/how-to/best-hair-tools-for-fine-hair,606,Low,78,Medium,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/interviews/creatives/rae-morris-interview,456,Low,75,Medium,General curated product edit aligned to article topic
+/beauty-style/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,561,Low,74,Medium,General curated product edit aligned to article topic
+/interviews/creatives/tamsin-johnson-interior-designer,305,Low,73,Medium,General curated product edit aligned to article topic
+/interviews/tastemakers/stella-kim,2408,High,73,Medium,General curated product edit aligned to article topic
+/who/entrepreneurs/the-exact-products-melanie-grant-uses-to-look-flawless,231,Low,73,Medium,"""Shop the expert"" — Melanie Grant's exact products as a curated collection"
+/about,2414,High,66,Medium,General curated product edit aligned to article topic
+/beauty-style/skin-care/masks-for-stressed-skin,305,Low,65,Medium,General curated product edit aligned to article topic
+/beauty-style/skin-care/qure-glowcase-review,327,Low,62,Medium,Micro-infusion system + refills as recurring-purchase shop item
+/beauty-style/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair,395,Low,60,Medium,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/wellness/breast-cancer-beauty-routine,629,Low,59,Medium,General curated product edit aligned to article topic
+/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home,652,Low,53,Medium,General curated product edit aligned to article topic
+/beauty-style/best-hair-tools-for-fine-hair,420,Low,53,Medium,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,919,Medium,52,Medium,At-home device shop — micro-infusion/microstamping tools + serums
+/interviews/actors-presenters/farrah-fawcett-actress,796,Low,52,Medium,General curated product edit aligned to article topic
+/destination/travel/hotels-resorts/mondrian-gold-coast-review,293,Low,52,Medium,General curated product edit aligned to article topic
+/beauty-style/skin-care/systeme-bio-plus-oil-serum-review,288,Low,51,Medium,General curated product edit aligned to article topic
+/beauty-style/qure-neck-decolletage-led-device,465,Low,50,Medium,Micro-infusion system + refills as recurring-purchase shop item
+/beauty-style/hair/damaged-hair-repair-tips,274,Low,50,Medium,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/beauty-style/hair/red-light-therapy-hair-thinning,327,Low,45,Low,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/sigourneys-edit/red-light-therapy-infraredi-review,138,Minimal,44,Low,Red-light / at-home device shop — Sigourney's Edit converts well
+/top-50-skincare-products,395,Low,42,Low,"Luxury skincare edit — ""worth the price"" curated collection"
+/interviews/founders/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,522,Low,42,Low,General curated product edit aligned to article topic
+/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,3577,High,40,Low,General curated product edit aligned to article topic
+/interviews/creatives/who-sarah-jagger-make-up-artist,781,Low,37,Low,General curated product edit aligned to article topic
+/interviews/actors-presenters/grace-kelly-princess-and-actress,617,Low,36,Low,General curated product edit aligned to article topic
+/destination/travel/bannisters-port-stephens-family-getaway,360,Low,36,Low,General curated product edit aligned to article topic
+/how-to/best-ai-image-generator-app-review-glam-ai,543,Low,35,Low,General curated product edit aligned to article topic
+/interviews/founders/anna-heinrich-on-quitting-law-and-finding-her-inner-entrepreneur,261,Low,35,Low,General curated product edit aligned to article topic
+/beauty-style/style/the-5-chic-podcasts-were-currently-streaming,130,Minimal,35,Low,Lifestyle/affiliate gift edit tied to recommendations
+/beauty-style/hair/olaplex-review-is-it-worth-the-hype,929,Medium,34,Low,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/beauty-style/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral,203,Low,34,Low,General curated product edit aligned to article topic
+/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details,777,Low,33,Low,Outdoor/lifestyle edit — pool & summer accessories collection
+/living/lifestyle/lazy-girls-guide-summer-entertaining,298,Low,32,Low,General curated product edit aligned to article topic
+/who/influencers/princess-diana,195,Minimal,32,Low,General curated product edit aligned to article topic
+/beauty-style/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it,283,Low,32,Low,General curated product edit aligned to article topic
+/beauty-style/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy,230,Low,31,Low,General curated product edit aligned to article topic
+/destination/beauty-wellness/reve-skin-beauty-annandale,158,Minimal,31,Low,General curated product edit aligned to article topic
+/interviews/kate-waterhouse-style-beauty,560,Low,30,Low,General curated product edit aligned to article topic
+/interviews/creatives/gucci-westman-makeup-artist,287,Low,30,Low,General curated product edit aligned to article topic
+/uncategorized/family-ski-holiday-to-japan,144,Minimal,29,Low,General curated product edit aligned to article topic
+/reviews/luxury-skincare-review,1924,Medium,28,Low,"Luxury skincare edit — ""worth the price"" curated collection"
+/interviews/creatives/the-society-jeweller-with-a-stylish-loungewear-wardrobe,415,Low,28,Low,General curated product edit aligned to article topic
+/how-to/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,161,Minimal,28,Low,"""Shop the expert"" — Rose-Marie Swift / RMS Beauty product edit"
+/destination/beauty-wellness/clinics/paddington-beauty-room-paddington,135,Minimal,28,Low,General curated product edit aligned to article topic
+/sigourneys-edit/sensitive-scalp-moogoo-shampoo-review,922,Medium,27,Low,General curated product edit aligned to article topic
+/beauty-style/the-led-mask-the-industry-is-buzzing-about,338,Low,27,Low,General curated product edit aligned to article topic
+/destination/travel/1-hotel-melbourne-review,275,Low,27,Low,General curated product edit aligned to article topic
+/beauty-style/hair/im-a-hair-bleach-addict-heres-how-i-prevent-the-damage,481,Low,26,Low,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/wellness/fitness/supermodel-fitness-secrets-the-best-personal-trainers-for-models,436,Low,26,Low,General curated product edit aligned to article topic
+/sigourneys-edit/qure-shower-filter-review,274,Low,26,Low,Micro-infusion system + refills as recurring-purchase shop item
+/interviews/creatives/dina-broadhurst-artist,839,Medium,25,Low,General curated product edit aligned to article topic
+/sigourneys-edit/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,484,Low,25,Low,At-home device shop — micro-infusion/microstamping tools + serums
+/beauty-style/best-ai-image-generator-app-review-glam-ai,459,Low,25,Low,General curated product edit aligned to article topic
+/living/interiors/living-room-transformation,96,Minimal,25,Low,General curated product edit aligned to article topic
+/interviews/creatives/who-jocelyn-petroni-beauty-therapist,328,Low,24,Low,General curated product edit aligned to article topic
+/how-to/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,313,Low,24,Low,General curated product edit aligned to article topic
+/destination/beauty-wellness/clinics/aurora-spa-st-kilda,359,Low,24,Low,General curated product edit aligned to article topic
+/destination/travel/sun-ranch-byron-bay-retreat,385,Low,24,Low,General curated product edit aligned to article topic
+/vodcast-by-beauticate/sacred-six-the-rituals-practices-helping-me-heal-from-burnout,382,Low,23,Low,General curated product edit aligned to article topic
+/interviews/actors-presenters/abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,1077,Medium,22,Low,General curated product edit aligned to article topic
+/destination/travel/family-ski-holiday-to-japan,251,Low,22,Low,General curated product edit aligned to article topic
+/news/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy,287,Low,22,Low,General curated product edit aligned to article topic
+/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,512,Low,22,Low,"Hair tools & care — curated hair product edit (brushes, treatments, the Italian range that already converts)"
+/who/entrepreneurs/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,204,Low,22,Low,General curated product edit aligned to article topic
+/wellness/health/how-to-prime-your-skin-for-peri-and-menopause,155,Minimal,22,Low,General curated product edit aligned to article topic
+/who/influencers/stella-kim,612,Low,21,Low,General curated product edit aligned to article topic
+/interviews/actors-presenters/nathalie-kelley-the-actress-finding-her-purpose-outside-of-hollywood,1460,Medium,21,Low,General curated product edit aligned to article topic
+/interviews/founders/fiona-myer-entrepreneur,455,Low,21,Low,General curated product edit aligned to article topic
+/interviews/models/lara-bingle,340,Low,21,Low,General curated product edit aligned to article topic
+/sigourneys-edit/latest-injectable-trends,335,Low,21,Low,General curated product edit aligned to article topic
+/beauty-style/skin-care/how-a-beauty-writer-manages-her-rosacea,166,Minimal,21,Low,General curated product edit aligned to article topic
+/the-go-tos/beauty-maintenance/aurora-spa-st-kilda,112,Minimal,21,Low,General curated product edit aligned to article topic
+/interviews/creatives/jess-blanch-publisher-editor-in-chief-russh,256,Low,20,Low,General curated product edit aligned to article topic
+/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging,582,Low,20,Low,General curated product edit aligned to article topic
+/interviews/creatives/who-jodhi-meares,298,Low,20,Low,General curated product edit aligned to article topic
+/living/lifestyle/8-at-trinity,214,Low,20,Low,General curated product edit aligned to article topic
+/interviews/creatives/pippa-holt-a-fashion-insiders-guide-to-summer-beauty-and-statement-dressing,104,Minimal,20,Low,General curated product edit aligned to article topic
+/sigourneys-edit/winter-beauty-rituals,299,Low,20,Low,General curated product edit aligned to article topic
+
+Priority,Opportunity Type,Page,Avg Position,Impressions/yr,Clicks/yr,CTR %,Est. Extra Clicks if Fixed,3mo Click Trend,Recommended Fix
+1,STRIKING DISTANCE — refresh to reach pg 1,/living/lifestyle/best-ai-image-generator-app-review-glam-ai,8.5,178174,839,0.47,9851,-239,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+2,STRIKING DISTANCE — refresh to reach pg 1,/ask/should-you-apply-fake-tan-on-top-of-an-existing-tan,9,139293,1575,1.13,6782,+262,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+3,STRIKING DISTANCE — refresh to reach pg 1,/sigourneys-edit/sensitive-scalp-moogoo-shampoo-review,9.7,97911,623,0.64,5251,+42,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+4,STRIKING DISTANCE — refresh to reach pg 1,/how-to/beauty-tips/how-to-remove-fake-tan-from-white-clothes,19.9,58069,347,0.6,3137,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+5,STRIKING DISTANCE — refresh to reach pg 1,/sigourneys-edit/dyson-supersonic-r-hair-dryer-review,15,51100,204,0.4,2862,+62,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+6,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/skin-care/la-mer-the-concentrate-reviews,14.1,50649,264,0.52,2774,-5,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+7,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/skin-care/byredo-hand-cream-review-is-it-worth-it,9,34954,193,0.55,1904,-15,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+8,STRIKING DISTANCE — refresh to reach pg 1,/reviews/products/olaplex-review-is-it-worth-the-hype,14.4,33153,134,0.4,1855,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+9,STRIKING DISTANCE — refresh to reach pg 1,/interviews/tastemakers/bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect,10.7,33217,178,0.54,1815,+31,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+10,STRIKING DISTANCE — refresh to reach pg 1,/interviews/founders/anna-heinrich-on-quitting-law-and-finding-her-inner-entrepreneur,8.4,31051,129,0.42,1734,-32,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+11,STRIKING DISTANCE — refresh to reach pg 1,/reviews/products/byredo-hand-cream-review-is-it-worth-it,10.9,31340,186,0.59,1694,-1,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+12,STRIKING DISTANCE — refresh to reach pg 1,/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,12.4,34146,455,1.33,1593,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+13,STRIKING DISTANCE — refresh to reach pg 1,/interviews/models/samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties,10.7,26270,148,0.56,1428,-5,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+14,STRIKING DISTANCE — refresh to reach pg 1,/vodcast-by-beauticate/david-the-medium-on-intuition-healing-and-life-after-death,9.4,27179,208,0.77,1422,+16,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+15,STRIKING DISTANCE — refresh to reach pg 1,/sigourneys-edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one,15.2,24773,270,1.09,1216,-9,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+16,STRIKING DISTANCE — refresh to reach pg 1,/how-to/best-ai-image-generator-app-review-glam-ai,11.7,24272,242,1,1214,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+17,STRIKING DISTANCE — refresh to reach pg 1,/how-to/best-hair-tools-for-fine-hair,19.6,26275,480,1.83,1096,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+18,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/hair/the-hair-dye-for-sensitive-scalps,12.1,20235,124,0.61,1090,+20,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+19,STRIKING DISTANCE — refresh to reach pg 1,/interviews/tastemakers/youtube-queen-lauren-curtis-shares-her-experience-growing-up-online,9.1,17646,71,0.4,987,-4,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+20,STRIKING DISTANCE — refresh to reach pg 1,/how-to/hairstyles/the-best-italian-hair-products-and-secrets-you-need-to-know,10.8,23271,414,1.78,982,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+21,STRIKING DISTANCE — refresh to reach pg 1,/interviews/actors-presenters/elsa-pataky-on-falling-utterly-in-love-with-byron-bay,9.9,16835,71,0.42,939,+7,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+22,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/best-hair-tools-for-fine-hair,8.2,17142,227,1.32,801,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+23,STRIKING DISTANCE — refresh to reach pg 1,/interviews/tastemakers/margaret-zhang,9,14019,95,0.68,746,-1,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+24,STRIKING DISTANCE — refresh to reach pg 1,/how-to/beauty-tips/how-to-get-fuller-brows-using-aloe-vera-seriously,18.2,13703,80,0.58,742,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+25,STRIKING DISTANCE — refresh to reach pg 1,/how-to/beauty-tips/the-extreme-beauty-standards-flight-attendants-adhere-to,11.7,13876,111,0.8,721,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+26,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/cosmetic/does-eyeliner-tattoo-hurt,17.9,12669,56,0.44,704,-2,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+27,STRIKING DISTANCE — refresh to reach pg 1,/interviews/creatives/amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,11.1,13099,115,0.88,670,-12,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+28,STRIKING DISTANCE — refresh to reach pg 1,/sigourneys-edit/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,13.1,15253,248,1.63,667,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+29,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/qure-neck-decolletage-led-device,14.1,12065,72,0.6,651,+8,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+30,STRIKING DISTANCE — refresh to reach pg 1,/interviews/models/silvana-philippoussis-model-and-actress,8.4,11560,96,0.83,597,-2,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+31,STRIKING DISTANCE — refresh to reach pg 1,/interviews/founders/snezana-markoski-and-sam-wood-tv-personalities,8,11075,78,0.7,586,+5,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+32,STRIKING DISTANCE — refresh to reach pg 1,/interviews/creatives/samantha-jade-singer,8.6,10554,48,0.45,585,-18,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+33,STRIKING DISTANCE — refresh to reach pg 1,/interviews/actors-presenters/sophie-falkiner-tv-presenter,9.7,10526,53,0.5,578,+4,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+34,STRIKING DISTANCE — refresh to reach pg 1,/vodcast-by-beauticate/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey,14.3,10834,79,0.73,571,+4,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+35,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/beauty-tips/the-blush-lipstick-combinations-that-always-give-me-compliments,13.1,10490,59,0.56,570,-11,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+36,STRIKING DISTANCE — refresh to reach pg 1,/how-to/hairstyles/the-hair-dye-for-sensitive-scalps,19.6,10522,72,0.68,559,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+37,STRIKING DISTANCE — refresh to reach pg 1,/who/models/samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties,9.2,10386,73,0.7,550,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+38,STRIKING DISTANCE — refresh to reach pg 1,/destination/travel/bannisters-port-stephens-family-getaway,9.1,10132,75,0.74,532,+33,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+39,STRIKING DISTANCE — refresh to reach pg 1,/sigourneys-edit/qure-shower-filter-review,12.7,9480,48,0.51,520,-3,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+40,STRIKING DISTANCE — refresh to reach pg 1,/interviews/founders/linda-rodin-stylist-and-entrepreneur,11.8,9970,80,0.8,518,+4,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+41,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/qure-micro-infusion-system-review,9.2,9211,37,0.4,515,+33,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+42,STRIKING DISTANCE — refresh to reach pg 1,/interviews/actors-presenters/shaynna-blaze-tvs-interior-designer-on-feeling-your-best-at-every-age,9.4,9653,69,0.71,510,+2,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+43,STRIKING DISTANCE — refresh to reach pg 1,/destination/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,18.2,9030,45,0.5,496,-13,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+44,STRIKING DISTANCE — refresh to reach pg 1,/interviews/models/bambi-northwood-blyth-model,9.2,8988,46,0.51,493,-1,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+45,STRIKING DISTANCE — refresh to reach pg 1,/who/entrepreneurs/olivia-chantecaille-born-into-beauty-now-saving-the-world,14.5,9165,68,0.74,481,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+46,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/hair/hairstyles-for-wet-and-windy-days,8.3,9004,59,0.66,481,-13,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+47,STRIKING DISTANCE — refresh to reach pg 1,/interviews/creatives/david-mallet-hair-stylist,10.5,11478,214,1.86,474,+38,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+48,STRIKING DISTANCE — refresh to reach pg 1,/interviews/founders/the-exact-products-melanie-grant-uses-to-look-flawless,9,18016,641,3.56,439,+16,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+49,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/the-led-mask-the-industry-is-buzzing-about,8.6,9676,169,1.75,411,-15,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+50,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/beauty-tips/beauty-secrets-from-the-happiest-kingdom-on-earth,9,8469,123,1.45,385,+3,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+51,STRIKING DISTANCE — refresh to reach pg 1,/interviews/creatives/melanie-grant-skin-specialist,11.3,8006,95,1.19,385,-6,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+52,STRIKING DISTANCE — refresh to reach pg 1,/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities,8.9,11443,307,2.68,379,-3,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+53,STRIKING DISTANCE — refresh to reach pg 1,/destination/beauty-wellness/clinics/aurora-spa-st-kilda,11.2,9665,262,2.71,317,+8,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+54,STRIKING DISTANCE — refresh to reach pg 1,/who/influencers/riley-minford-the-trans-model-owning-her-beauty,10.4,13493,573,4.25,236,,Refresh content + add internal links + target the ranking query in H2s. Ranks pos 8-20 — small push reaches page 1.
+55,DECLINING — refresh urgently,/beauty-style/hair/olaplex-review-is-it-worth-the-hype,6.8,138403,435,0.31,,-62,"Lost position recently. Update for freshness, re-optimize title, rebuild internal links before it slips further."
+56,DECLINING — refresh urgently,/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,9.5,99190,944,0.95,,-137,"Lost position recently. Update for freshness, re-optimize title, rebuild internal links before it slips further."
+57,DECLINING — refresh urgently,/beauty-style/beauty-tips/how-to-remove-fake-tan-from-white-clothes,8.3,71816,329,0.46,,-32,"Lost position recently. Update for freshness, re-optimize title, rebuild internal links before it slips further."
+58,DECLINING — refresh urgently,/interviews/tastemakers/stella-kim,5.8,63692,1605,2.52,,-354,"Lost position recently. Update for freshness, re-optimize title, rebuild internal links before it slips further."
+59,DECLINING — refresh urgently,/beauty-style/beauty-tips/the-beauty-secrets-epres-vs-olaplex-whats-the-difference,5.2,40815,732,1.79,,-46,"Lost position recently. Update for freshness, re-optimize title, rebuild internal links before it slips further."
+60,TITLE/META rewrite — underclicking,/interviews/tastemakers/princess-diana,3.6,128726,864,0.67,4285,-44,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+61,TITLE/META rewrite — underclicking,/interviews/models/helena-vestergaard-on-modelling-and-mental-health,3.6,76595,481,0.63,2582,+55,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+62,TITLE/META rewrite — underclicking,/beauty-style/hair/best-hair-tools-for-fine-hair,7.1,89139,1444,1.62,2121,-377,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+63,TITLE/META rewrite — underclicking,/beauty-style/beauty-tips/how-to-get-fuller-brows-using-aloe-vera-seriously,4.6,62712,398,0.63,2110,-5,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+64,TITLE/META rewrite — underclicking,/interviews/creatives/dina-broadhurst-artist,7.5,51508,335,0.65,1725,-131,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+65,TITLE/META rewrite — underclicking,/who/actors-presenters/elsa-pataky-on-falling-utterly-in-love-with-byron-bay,6.4,39331,87,0.22,1486,-1,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+66,TITLE/META rewrite — underclicking,/interviews/models/grace-elizabeth-model,9.7,38320,74,0.19,1458,+5,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+67,TITLE/META rewrite — underclicking,/interviews/creatives/who-jodhi-meares,9.5,37976,116,0.31,1403,+3,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+68,TITLE/META rewrite — underclicking,/interviews/creatives/kristen-fisher-eyebrow-stylist,8.1,37686,112,0.3,1395,+20,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+69,TITLE/META rewrite — underclicking,/beauty-style/best-ai-image-generator-app-review-glam-ai,8.6,36911,103,0.28,1373,,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+70,TITLE/META rewrite — underclicking,/interviews/actors-presenters/abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,6.4,52222,772,1.48,1316,+68,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+71,TITLE/META rewrite — underclicking,/interviews/actors-presenters/zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,6.5,37775,206,0.55,1305,+29,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+72,TITLE/META rewrite — underclicking,/interviews/creatives/julia-stone-the-musician-all-about-making-meaning,7.9,36529,175,0.48,1286,+65,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+73,TITLE/META rewrite — underclicking,/who/models/helena-vestergaard-on-modelling-and-mental-health,2.7,33467,166,0.5,1172,,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+74,TITLE/META rewrite — underclicking,/beauty-style/skin-care/the-extreme-beauty-standards-flight-attendants-adhere-to,7,42063,513,1.22,1169,+44,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+75,TITLE/META rewrite — underclicking,/interviews/actors-presenters/grace-kelly-princess-and-actress,4.4,36932,331,0.9,1146,+61,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+76,TITLE/META rewrite — underclicking,/how-to/nails/are-at-home-gel-nail-kits-worth-the-investment,7.4,27069,22,0.08,1060,,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+77,TITLE/META rewrite — underclicking,/beauty-style/beauty-tips/three-of-the-best-wisteria-scents,6.1,40484,566,1.4,1053,+163,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+78,TITLE/META rewrite — underclicking,/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,7.5,49813,982,1.97,1010,+240,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+79,TITLE/META rewrite — underclicking,/interviews/models/megan-blake-irwin-the-aussie-model-living-her-best-la-life,6.8,27195,102,0.38,985,-2,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+80,TITLE/META rewrite — underclicking,/beauty-style/hair/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,6,44179,849,1.92,918,+6,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+81,TITLE/META rewrite — underclicking,/interviews/creatives/ruby-rose,7.7,22188,14,0.06,873,+4,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+82,TITLE/META rewrite — underclicking,/interviews/actors-presenters/farrah-fawcett-actress,4.9,25326,228,0.9,785,+6,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+83,TITLE/META rewrite — underclicking,/who/models/grace-elizabeth-model,5.4,19848,21,0.11,772,,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+84,TITLE/META rewrite — underclicking,/interviews/actors-presenters/jodi-anasta-actress,9.5,20652,60,0.29,766,+19,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+85,TITLE/META rewrite — underclicking,/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,4.8,23805,190,0.8,762,-11,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+86,TITLE/META rewrite — underclicking,/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details,7.6,28878,415,1.44,740,-90,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+87,TITLE/META rewrite — underclicking,/interviews/models/rebecca-harding-model,7.8,24600,272,1.11,712,+79,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+88,TITLE/META rewrite — underclicking,/beauty-style/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it,6.7,19736,81,0.41,708,-18,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+89,TITLE/META rewrite — underclicking,/who/influencers/princess-diana,4.5,21408,167,0.78,689,,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+90,TITLE/META rewrite — underclicking,/destination/beauty-wellness/clinics/the-parlour-room,7,17501,26,0.15,674,-7,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+91,TITLE/META rewrite — underclicking,/interviews/founders/lindy-klim-designer-entrepreneur,6.9,18753,77,0.41,673,,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+92,TITLE/META rewrite — underclicking,/beauty-style/skin-care/filorga-the-cult-french-pharmacy-brand-making-waves,5.1,18111,138,0.76,586,-28,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+93,TITLE/META rewrite — underclicking,/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself,7.5,17722,127,0.72,581,+21,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+94,TITLE/META rewrite — underclicking,/ask/q-how-can-i-keep-powders-ruining-my-flawless-foundation,7.6,17986,139,0.77,580,+11,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+95,TITLE/META rewrite — underclicking,/beauty-style/beauty-tips/cheek-blush-tattoo,5.1,25131,455,1.81,550,-2,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+96,TITLE/META rewrite — underclicking,/interviews/models/abigail-oneill-model-and-author,4.9,16228,145,0.89,504,+36,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+97,TITLE/META rewrite — underclicking,/interviews/founders/olivia-chantecaille-born-into-beauty-now-saving-the-world,7.6,22343,390,1.75,503,+14,"Good position but few clicks. Rewrite title tag + meta description to be more compelling. Low effort, fast win."
+98,Page-1 edge — light refresh,/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,6,66015,2067,3.13,,+5,Sits pos 5-10. Minor content/title tweak can lift into top results.
+99,Page-1 edge — light refresh,/beauty-style/beauty-tips/i-got-an-under-eye-concealer-tattoo,7.1,53344,1307,2.45,,+344,Sits pos 5-10. Minor content/title tweak can lift into top results.
+100,Page-1 edge — light refresh,/interviews/tastemakers/riley-minford-the-trans-model-owning-her-beauty,6,30102,1668,5.54,,-156,Sits pos 5-10. Minor content/title tweak can lift into top results.
+101,Page-1 edge — light refresh,/who/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,5.7,24705,996,4.03,,,Sits pos 5-10. Minor content/title tweak can lift into top results.
+102,Page-1 edge — light refresh,/interviews/tastemakers/rozalia-russian-influencer,6.7,22539,468,2.08,,+30,Sits pos 5-10. Minor content/title tweak can lift into top results.
+103,Page-1 edge — light refresh,/wellness/fitness/how-i-stay-fit-with-rebecca-judd,6.9,14638,211,1.44,,-13,Sits pos 5-10. Minor content/title tweak can lift into top results.
+104,Page-1 edge — light refresh,/living/lifestyle/selfie-lighting-tricks,7,14563,23,0.16,,-1,Sits pos 5-10. Minor content/title tweak can lift into top results.
+105,Page-1 edge — light refresh,/interviews/tastemakers/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara,7.1,14195,44,0.31,,+10,Sits pos 5-10. Minor content/title tweak can lift into top results.
+106,Page-1 edge — light refresh,/interviews/creatives/ruby-hammer-the-celebrity-makeup-artist-shares-the-hard-won-life-and-beauty-lessons-she-has-learned-in-her-50s,8.6,14159,45,0.32,,+1,Sits pos 5-10. Minor content/title tweak can lift into top results.
+107,Page-1 edge — light refresh,/interviews/actors-presenters/anna-bamford-actor,5.2,13608,28,0.21,,+7,Sits pos 5-10. Minor content/title tweak can lift into top results.
+108,Page-1 edge — light refresh,/interviews/founders/deborah-symond-fashion-buyer-and-entrepreneur,5.6,13471,161,1.2,,+21,Sits pos 5-10. Minor content/title tweak can lift into top results.
+109,Page-1 edge — light refresh,/interviews/models/rebecca-burrow-entrepreneur-and-model,7.2,12967,379,2.92,,-218,Sits pos 5-10. Minor content/title tweak can lift into top results.
+110,Page-1 edge — light refresh,/interviews/actors-presenters/isabella-giovinazzo-actress,8.8,12906,18,0.14,,-6,Sits pos 5-10. Minor content/title tweak can lift into top results.
+111,Page-1 edge — light refresh,/who/entrepreneurs/terry-de-gunzberg,6.6,12655,33,0.26,,,Sits pos 5-10. Minor content/title tweak can lift into top results.
+112,Page-1 edge — light refresh,/interviews/models/monika-radulovic-model,8.1,12436,25,0.2,,+7,Sits pos 5-10. Minor content/title tweak can lift into top results.
+113,Page-1 edge — light refresh,/beauty-style/hair/kristin-ess-hair-double-conditioning,5.7,12150,101,0.83,,-21,Sits pos 5-10. Minor content/title tweak can lift into top results.
+114,Page-1 edge — light refresh,/interviews/founders/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,7.8,11442,225,1.97,,-23,Sits pos 5-10. Minor content/title tweak can lift into top results.
+115,Page-1 edge — light refresh,/beauty-style/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair,7.3,11359,162,1.43,,-43,Sits pos 5-10. Minor content/title tweak can lift into top results.
+116,Page-1 edge — light refresh,/interviews/actors-presenters/guy-sebastian-on-his-fame-family-and-his-new-fragrance,9.2,10958,40,0.37,,+0,Sits pos 5-10. Minor content/title tweak can lift into top results.
+117,Page-1 edge — light refresh,/interviews/founders/terry-de-gunzberg,7,10720,18,0.17,,-2,Sits pos 5-10. Minor content/title tweak can lift into top results.
+118,Page-1 edge — light refresh,/beauty-style/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral,7.3,10384,68,0.65,,-12,Sits pos 5-10. Minor content/title tweak can lift into top results.
+119,Page-1 edge — light refresh,/who/actors-presenters/grace-kelly-princess-and-actress,6.3,10102,89,0.88,,,Sits pos 5-10. Minor content/title tweak can lift into top results.
+120,Page-1 edge — light refresh,/interviews/creatives/who-sarah-jagger-make-up-artist,6.5,10009,452,4.52,,-21,Sits pos 5-10. Minor content/title tweak can lift into top results.
+
+Money Pages Score — what it measures,,,,
+Weighting,Affiliate clicks 50% + Conversions 15% + Organic traffic 20% + Engagement 15%,,,
+Purpose,"Ranks pages by REVENUE value, not traffic volume. A 1,200-visit page can outrank a 3,500-visit page if it drives more affiliate clicks.",,,
+Newsletter signups,NOT yet included — only 17 pages had any tracked key event all year. Tracking must be implemented first; column is a placeholder.,,,
+,,,,
+Affiliate Revenue Categories (by total affiliate clicks),,,,
+High,150+ affiliate clicks/year,,,
+Medium,50–149 affiliate clicks/year,,,
+Low,10–49 affiliate clicks/year,,,
+Minimal,under 10,,,
+,,,,
+Traffic Categories (organic sessions/year),,,,
+High,"2,000+",,,
+Medium,"800–1,999",,,
+Low,200–799,,,
+Minimal,under 200,,,
+,,,,
+Affiliate Clicks / 1k Sessions,"""Efficiency"" — how hard each page works per visitor. High efficiency + low traffic = a page punching above its weight, ideal shop candidate.",,,
+,,,,
+Key cross-finding,"/sacred60shop is the #1 Money Page (911 clicks) but gets almost no search traffic, so it never appears on the traffic-recovery list. Different lists, different jobs — recovery list = what to migrate first; Money list = what to monetize hardest.",,,
+
+Slug,Keep (Canonical) URL,Canonical Sessions,Duplicate URL to Redirect,Dup Sessions,Combined Sessions
+ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,3516,/how-to/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,2080,5596
+darren-palmer-interiors-designer-and-olivier-duvillard,/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,3577,/who/creatives/darren-palmer-interiors-designer-and-olivier-duvillard,954,4531
+i-tried-a-new-diy-microstamping-device-heres-what-i-thought,/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,3027,/how-to/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,919,3946
+ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,3516,/beauty-style/hairs/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,176,3692
+ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,3516,/beauty-style/hairstyles/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it,166,3682
+i-tried-a-new-diy-microstamping-device-heres-what-i-thought,/beauty-style/skin-care/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,3027,/sigourneys-edit/i-tried-a-new-diy-microstamping-device-heres-what-i-thought,484,3511
+riley-minford-the-trans-model-owning-her-beauty,/interviews/tastemakers/riley-minford-the-trans-model-owning-her-beauty,2509,/who/influencers/riley-minford-the-trans-model-owning-her-beauty,705,3214
+stella-kim,/interviews/tastemakers/stella-kim,2408,/who/influencers/stella-kim,612,3020
+best-hair-tools-for-fine-hair,/beauty-style/hair/best-hair-tools-for-fine-hair,1952,/how-to/best-hair-tools-for-fine-hair,606,2558
+best-hair-tools-for-fine-hair,/beauty-style/hair/best-hair-tools-for-fine-hair,1952,/beauty-style/best-hair-tools-for-fine-hair,420,2372
+the-best-italian-hair-products-and-secrets-you-need-to-know,/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,1642,/how-to/hairstyles/the-best-italian-hair-products-and-secrets-you-need-to-know,684,2326
+best-hair-tools-for-fine-hair,/beauty-style/hair/best-hair-tools-for-fine-hair,1952,/beauty-style/hairs/best-hair-tools-for-fine-hair,62,2014
+best-ai-image-generator-app-review-glam-ai,/living/lifestyle/best-ai-image-generator-app-review-glam-ai,1463,/how-to/best-ai-image-generator-app-review-glam-ai,543,2006
+best-hair-tools-for-fine-hair,/beauty-style/hair/best-hair-tools-for-fine-hair,1952,/beauty-style/hairstyles/best-hair-tools-for-fine-hair,47,1999
+luxury-skincare-review,/reviews/luxury-skincare-review,1924,/beauty-style/beauty-tips/luxury-skincare-review,32,1956
+best-ai-image-generator-app-review-glam-ai,/living/lifestyle/best-ai-image-generator-app-review-glam-ai,1463,/beauty-style/best-ai-image-generator-app-review-glam-ai,459,1922
+i-got-an-under-eye-concealer-tattoo,/beauty-style/beauty-tips/i-got-an-under-eye-concealer-tattoo,1870,/how-to/beauty-tips/i-got-an-under-eye-concealer-tattoo,29,1899
+nathalie-kelley-the-actress-finding-her-purpose-outside-of-hollywood,/interviews/actors-presenters/nathalie-kelley-the-actress-finding-her-purpose-outside-of-hollywood,1460,/who/actors-presenters/nathalie-kelley-the-actress-finding-her-purpose-outside-of-hollywood,370,1830
+the-best-italian-hair-products-and-secrets-you-need-to-know,/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,1642,/beauty-style/hairs/the-best-italian-hair-products-and-secrets-you-need-to-know,92,1734
+the-best-italian-hair-products-and-secrets-you-need-to-know,/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know,1642,/beauty-style/hairstyles/the-best-italian-hair-products-and-secrets-you-need-to-know,63,1705
+the-exact-products-melanie-grant-uses-to-look-flawless,/interviews/founders/the-exact-products-melanie-grant-uses-to-look-flawless,1472,/who/entrepreneurs/the-exact-products-melanie-grant-uses-to-look-flawless,231,1703
+these-are-the-beauty-brands-working-towards-better-packaging,/beauty-style/beauty-tips/these-are-the-beauty-brands-working-towards-better-packaging,966,/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging,582,1548
+the-beauty-secrets-epres-vs-olaplex-whats-the-difference,/beauty-style/beauty-tips/the-beauty-secrets-epres-vs-olaplex-whats-the-difference,1324,/how-to/beauty-tips/the-beauty-secrets-epres-vs-olaplex-whats-the-difference,172,1496
+princess-diana,/interviews/tastemakers/princess-diana,1267,/who/influencers/princess-diana,195,1462
+sibella-court-interior-stylist-and-author,/interviews/creatives/sibella-court-interior-stylist-and-author,1246,/who/sibella-court-interior-stylist-and-author,169,1415
+the-makeup-tools-for-people-with-disabilities,/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities,1033,/how-to/beauty-tips/the-makeup-tools-for-people-with-disabilities,328,1361
+5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,/beauty-style/hair/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,1121,/how-to/hairstyles/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,218,1339
+sibella-court-interior-stylist-and-author,/interviews/creatives/sibella-court-interior-stylist-and-author,1246,/who/creatives/sibella-court-interior-stylist-and-author,53,1299
+olaplex-review-is-it-worth-the-hype,/beauty-style/hair/olaplex-review-is-it-worth-the-hype,929,/reviews/products/olaplex-review-is-it-worth-the-hype,346,1275
+abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,/interviews/actors-presenters/abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,1077,/who/actors-presenters/abbey-gelmi-the-sports-reporter-making-her-thirties-all-about-finding-balance,142,1219
+the-extreme-beauty-standards-flight-attendants-adhere-to,/beauty-style/skin-care/the-extreme-beauty-standards-flight-attendants-adhere-to,943,/how-to/beauty-tips/the-extreme-beauty-standards-flight-attendants-adhere-to,251,1194
+5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,/beauty-style/hair/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,1121,/beauty-style/hairstyles/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,69,1190
+5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,/beauty-style/hair/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,1121,/beauty-style/hairs/5-tips-from-hair-guru-that-will-help-you-embrace-your-inner-power,60,1181
+helena-vestergaard-on-modelling-and-mental-health,/interviews/models/helena-vestergaard-on-modelling-and-mental-health,934,/who/models/helena-vestergaard-on-modelling-and-mental-health,222,1156
+three-of-the-best-wisteria-scents,/beauty-style/beauty-tips/three-of-the-best-wisteria-scents,966,/how-to/beauty-tips/three-of-the-best-wisteria-scents,176,1142
+the-extreme-beauty-standards-flight-attendants-adhere-to,/beauty-style/skin-care/the-extreme-beauty-standards-flight-attendants-adhere-to,943,/beauty-style/beauty-tips/the-extreme-beauty-standards-flight-attendants-adhere-to,199,1142
+the-makeup-tools-for-people-with-disabilities,/beauty-style/beauty-tips/the-makeup-tools-for-people-with-disabilities,1033,/news/the-makeup-tools-for-people-with-disabilities,105,1138
+these-are-the-beauty-brands-working-towards-better-packaging,/beauty-style/beauty-tips/these-are-the-beauty-brands-working-towards-better-packaging,966,/how-to/go-green/these-are-the-beauty-brands-working-towards-better-packaging,94,1060
+sigs-slim-aarons-poolside-birthday-all-the-details,/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details,777,/beauty-style/sigs-slim-aarons-poolside-birthday-all-the-details,250,1027
+travel,/destination/travel,850,/reviews/travel,172,1022
+how-to-remove-fake-tan-from-white-clothes,/how-to/beauty-tips/how-to-remove-fake-tan-from-white-clothes,528,/beauty-style/beauty-tips/how-to-remove-fake-tan-from-white-clothes,450,978
+who-sarah-jagger-make-up-artist,/interviews/creatives/who-sarah-jagger-make-up-artist,781,/who/creatives/who-sarah-jagger-make-up-artist,192,973
+cheek-blush-tattoo,/beauty-style/beauty-tips/cheek-blush-tattoo,748,/how-to/beauty-tips/cheek-blush-tattoo,210,958
+sigs-slim-aarons-poolside-birthday-all-the-details,/sigourneys-edit/sigs-slim-aarons-poolside-birthday-all-the-details,777,/how-to/sigs-slim-aarons-poolside-birthday-all-the-details,174,951
+farrah-fawcett-actress,/interviews/actors-presenters/farrah-fawcett-actress,796,/who/actors-presenters/farrah-fawcett-actress,130,926
+dina-broadhurst-artist,/interviews/creatives/dina-broadhurst-artist,839,/who/creatives/dina-broadhurst-artist,75,914
+the-best-italian-pharmacy-buys-you-can-buy-online,/beauty-style/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,561,/how-to/beauty-tips/the-best-italian-pharmacy-buys-you-can-buy-online,313,874
+olivia-chantecaille-born-into-beauty-now-saving-the-world,/interviews/founders/olivia-chantecaille-born-into-beauty-now-saving-the-world,725,/who/entrepreneurs/olivia-chantecaille-born-into-beauty-now-saving-the-world,134,859
+why-this-model-mum-of-two-doesnt-own-a-hair-dryer,/interviews/models/why-this-model-mum-of-two-doesnt-own-a-hair-dryer,698,/who/models/why-this-model-mum-of-two-doesnt-own-a-hair-dryer,160,858
+rozalia-russian-influencer,/interviews/tastemakers/rozalia-russian-influencer,747,/who/influencers/rozalia-russian-influencer,89,836
+la-mer-the-concentrate-reviews,/beauty-style/skin-care/la-mer-the-concentrate-reviews,694,/how-to/skin-care/la-mer-the-concentrate-reviews,113,807
+alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home,/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home,652,/who/entrepreneurs/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home,148,800
+cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,512,/how-to/hairstyles/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,281,793
+rose-marie-swifts-10-beauty-rules-for-older-skin,/beauty-style/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,620,/how-to/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,161,781
+how-to-choose-the-right-products-for-your-skin,/beauty-style/beauty-tips/how-to-choose-the-right-products-for-your-skin,570,/how-to/beauty-tips/how-to-choose-the-right-products-for-your-skin,203,773
+skin-care,/beauty-style/skin-care,704,/how-to/skin-care,61,765
+im-a-hair-bleach-addict-heres-how-i-prevent-the-damage,/beauty-style/hair/im-a-hair-bleach-addict-heres-how-i-prevent-the-damage,481,/how-to/hairstyles/im-a-hair-bleach-addict-heres-how-i-prevent-the-damage,277,758
+grace-kelly-princess-and-actress,/interviews/actors-presenters/grace-kelly-princess-and-actress,617,/who/actors-presenters/grace-kelly-princess-and-actress,137,754
+the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,/interviews/founders/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,522,/who/entrepreneurs/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see,204,726
+how-to-get-fuller-brows-using-aloe-vera-seriously,/beauty-style/beauty-tips/how-to-get-fuller-brows-using-aloe-vera-seriously,617,/how-to/beauty-tips/how-to-get-fuller-brows-using-aloe-vera-seriously,108,725
+rose-marie-swifts-10-beauty-rules-for-older-skin,/beauty-style/beauty-tips/rose-marie-swifts-10-beauty-rules-for-older-skin,620,/beauty-style/makeup/rose-marie-swifts-10-beauty-rules-for-older-skin,81,701
+elsa-pataky-on-falling-utterly-in-love-with-byron-bay,/interviews/actors-presenters/elsa-pataky-on-falling-utterly-in-love-with-byron-bay,566,/who/actors-presenters/elsa-pataky-on-falling-utterly-in-love-with-byron-bay,118,684
+anastasia-soare-on-turning-perfect-brows-into-a-global-empire,/interviews/founders/anastasia-soare-on-turning-perfect-brows-into-a-global-empire,644,/who/entrepreneurs/anastasia-soare-on-turning-perfect-brows-into-a-global-empire,33,677
+bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect,/interviews/tastemakers/bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect,632,/who/influencers/bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect,37,669
+beauty-tips,/beauty-style/beauty-tips,507,/how-to/beauty-tips,59,566
+how-i-stay-fit-with-rebecca-judd,/wellness/fitness/how-i-stay-fit-with-rebecca-judd,485,/how-to/fitness/how-i-stay-fit-with-rebecca-judd,81,566
+cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,512,/beauty-style/hairs/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,44,556
+makeup,/beauty-style/makeup,521,/makeup,35,556
+cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,/beauty-style/hair/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,512,/beauty-style/hairstyles/cher-from-clueless-hair-the-ultimate-cher-horowitz-hair-tutorial,32,544
+byredo-hand-cream-review-is-it-worth-it,/reviews/products/byredo-hand-cream-review-is-it-worth-it,280,/beauty-style/skin-care/byredo-hand-cream-review-is-it-worth-it,263,543
+5-french-hair-secrets-for-effortlessly-cool-hair,/beauty-style/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair,395,/how-to/beauty-tips/5-french-hair-secrets-for-effortlessly-cool-hair,144,539
+who-jocelyn-petroni-beauty-therapist,/interviews/creatives/who-jocelyn-petroni-beauty-therapist,328,/who/creatives/who-jocelyn-petroni-beauty-therapist,198,526
+julia-stone-the-musician-all-about-making-meaning,/interviews/creatives/julia-stone-the-musician-all-about-making-meaning,457,/who/creatives/julia-stone-the-musician-all-about-making-meaning,64,521
+why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy,/news/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy,287,/beauty-style/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy,230,517
+inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars,/interviews/creatives/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars,450,/who/creatives/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars,66,516
+fiona-myer-entrepreneur,/interviews/founders/fiona-myer-entrepreneur,455,/who/entrepreneurs/fiona-myer-entrepreneur,58,513
+rae-morris-interview,/interviews/creatives/rae-morris-interview,456,/interviews/tastemakers/rae-morris-interview,56,512
+nightly-beauty-routine,/beauty-style/nightly-beauty-routine,448,/beauty-style/skin-care/nightly-beauty-routine,45,493
+supermodel-fitness-secrets-the-best-personal-trainers-for-models,/wellness/fitness/supermodel-fitness-secrets-the-best-personal-trainers-for-models,436,/how-to/fitness/supermodel-fitness-secrets-the-best-personal-trainers-for-models,55,491
+korean-plastic-surgery,/beauty-style/cosmetic/korean-plastic-surgery,399,/how-to/cosmetic/korean-plastic-surgery,91,490
+creatives,/interviews/creatives,453,/who/creatives,35,488
+the-society-jeweller-with-a-stylish-loungewear-wardrobe,/interviews/creatives/the-society-jeweller-with-a-stylish-loungewear-wardrobe,415,/who/creatives/the-society-jeweller-with-a-stylish-loungewear-wardrobe,65,480
+who-bridget-yorston-designer,/interviews/creatives/who-bridget-yorston-designer,449,/who/creatives/who-bridget-yorston-designer,31,480
+models,/interviews/models,384,/who/models,87,471
+aurora-spa-st-kilda,/destination/beauty-wellness/clinics/aurora-spa-st-kilda,359,/the-go-tos/beauty-maintenance/aurora-spa-st-kilda,112,471
+fragrance,/beauty-style/fragrance,366,/beauty-style/beauty-tips/fragrance,98,464
+rebecca-harding-model,/interviews/models/rebecca-harding-model,405,/who/models/rebecca-harding-model,54,459
+sun-ranch-byron-bay-retreat,/destination/travel/sun-ranch-byron-bay-retreat,385,/sigourneys-edit/sun-ranch-byron-bay-retreat,73,458
+interiors,/living/interiors,364,/how-to/interiors,85,449
+beauty-secrets-from-the-happiest-kingdom-on-earth,/beauty-style/beauty-tips/beauty-secrets-from-the-happiest-kingdom-on-earth,388,/how-to/beauty-tips/beauty-secrets-from-the-happiest-kingdom-on-earth,60,448
+celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media,/vodcast-by-beauticate/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media,279,/interviews/actors-presenters/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media,166,445
+healthy-snacks-that-models-eat,/wellness/health/healthy-snacks-that-models-eat,408,/how-to/health/healthy-snacks-that-models-eat,35,443
+bannisters-port-stephens-family-getaway,/destination/travel/bannisters-port-stephens-family-getaway,360,/sigourneys-edit/bannisters-port-stephens-family-getaway,70,430
+zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,/interviews/actors-presenters/zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,383,/who/actors-presenters/zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,44,427
+david-mallet-hair-stylist,/interviews/creatives/david-mallet-hair-stylist,374,/who/creatives/david-mallet-hair-stylist,51,425
+miranda-kerr-on-faith-family-and-that-first-date,/interviews/models/miranda-kerr-on-faith-family-and-that-first-date,281,/who/models/miranda-kerr-on-faith-family-and-that-first-date,141,422
+beth-levis-the-fashion-exec-bringing-her-design-eye-to-her-own-wellness-brand,/interviews/founders/beth-levis-the-fashion-exec-bringing-her-design-eye-to-her-own-wellness-brand,383,/who/entrepreneurs/beth-levis-the-fashion-exec-bringing-her-design-eye-to-her-own-wellness-brand,36,419
+i-spent-a-week-living-like-miranda-kerr-heres-what-happened,/wellness/health/i-spent-a-week-living-like-miranda-kerr-heres-what-happened,369,/how-to/health/i-spent-a-week-living-like-miranda-kerr-heres-what-happened,42,411
+the-led-mask-the-industry-is-buzzing-about,/beauty-style/the-led-mask-the-industry-is-buzzing-about,338,/how-to/the-led-mask-the-industry-is-buzzing-about,72,410
+zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,/interviews/actors-presenters/zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,383,/interviews/tastemakers/zanna-roberts-rassi-the-fashion-darling-re-energising-the-beauty-game,22,405
+magnesium-pools-wellness-design-australia,/beauty-style/magnesium-pools-wellness-design-australia,253,/how-to/magnesium-pools-wellness-design-australia,148,401
+family-ski-holiday-to-japan,/destination/travel/family-ski-holiday-to-japan,251,/uncategorized/family-ski-holiday-to-japan,144,395
+melanie-grant-skin-specialist,/interviews/creatives/melanie-grant-skin-specialist,301,/who/creatives/melanie-grant-skin-specialist,94,395
+samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties,/interviews/models/samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties,293,/who/models/samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties,94,387
+how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself,/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself,334,/who/influencers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself,52,386
+sari-ella-thaiday-the-indigenous-beauty-influencer-using-tiktok-for-good,/interviews/tastemakers/sari-ella-thaiday-the-indigenous-beauty-influencer-using-tiktok-for-good,321,/who/influencers/sari-ella-thaiday-the-indigenous-beauty-influencer-using-tiktok-for-good,64,385
+5-times-elisabeth-moss-schooled-us-on-great-hair,/beauty-style/hair/5-times-elisabeth-moss-schooled-us-on-great-hair,247,/how-to/hairstyles/5-times-elisabeth-moss-schooled-us-on-great-hair,129,376
+lara-bingle,/interviews/models/lara-bingle,340,/who/models/lara-bingle,27,367
+tamsin-johnson-interior-designer,/interviews/creatives/tamsin-johnson-interior-designer,305,/who/creatives/tamsin-johnson-interior-designer,60,365
+damaged-hair-repair-tips,/beauty-style/hair/damaged-hair-repair-tips,274,/beauty-style/hairs/damaged-hair-repair-tips,89,363
+family-ski-holiday-to-japan,/destination/travel/family-ski-holiday-to-japan,251,/reviews/travel/family-ski-holiday-to-japan,109,360
+valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur,/interviews/models/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur,256,/who/models/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur,104,360
+inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder,/interviews/founders/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder,295,/who/entrepreneurs/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder,56,351
+actors-presenters,/interviews/actors-presenters,312,/who/actors-presenters,37,349
+qure-glowcase-review,/beauty-style/skin-care/qure-glowcase-review,327,/sigourneys-edit/qure-glowcase-review,21,348
+red-light-therapy-hair-thinning,/beauty-style/hair/red-light-therapy-hair-thinning,327,/sigourneys-edit/red-light-therapy-hair-thinning,21,348
+steve-cordony-interior-stylist,/interviews/steve-cordony-interior-stylist,191,/who/steve-cordony-interior-stylist,154,345
+abigail-oneill-model-and-author,/interviews/models/abigail-oneill-model-and-author,292,/who/models/abigail-oneill-model-and-author,47,339
+kristen-fisher-eyebrow-stylist,/interviews/creatives/kristen-fisher-eyebrow-stylist,291,/who/creatives/kristen-fisher-eyebrow-stylist,48,339
+why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it,/beauty-style/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it,283,/how-to/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it,46,329
+lazy-girls-guide-summer-entertaining,/living/lifestyle/lazy-girls-guide-summer-entertaining,298,/sigourneys-edit/lazy-girls-guide-summer-entertaining,30,328
+peek-inside-this-fashion-doyennes-lush-palm-beach-villa,/interviews/creatives/peek-inside-this-fashion-doyennes-lush-palm-beach-villa,257,/who/creatives/peek-inside-this-fashion-doyennes-lush-palm-beach-villa,68,325
+the-hair-dye-for-sensitive-scalps,/beauty-style/hair/the-hair-dye-for-sensitive-scalps,241,/how-to/hairstyles/the-hair-dye-for-sensitive-scalps,79,320
+jennifer-hawkins-model-and-entrepreneur,/interviews/models/jennifer-hawkins-model-and-entrepreneur,293,/who/models/jennifer-hawkins-model-and-entrepreneur,25,318
+gucci-westman-makeup-artist,/interviews/creatives/gucci-westman-makeup-artist,287,/who/creatives/gucci-westman-makeup-artist,28,315
+mondrian-gold-coast-review,/destination/travel/hotels-resorts/mondrian-gold-coast-review,293,/sigourneys-edit/mondrian-gold-coast-review,22,315
+rojin-torabi-the-lawyer-and-beauty-skinfluencer,/interviews/tastemakers/rojin-torabi-the-lawyer-and-beauty-skinfluencer,265,/who/influencers/rojin-torabi-the-lawyer-and-beauty-skinfluencer,49,314
+linda-rodin-stylist-and-entrepreneur,/interviews/founders/linda-rodin-stylist-and-entrepreneur,274,/who/entrepreneurs/linda-rodin-stylist-and-entrepreneur,33,307
+megan-blake-irwin-the-aussie-model-living-her-best-la-life,/interviews/models/megan-blake-irwin-the-aussie-model-living-her-best-la-life,250,/who/models/megan-blake-irwin-the-aussie-model-living-her-best-la-life,57,307
+hypochlorous-acid-why-this-dermal-mist-has-gone-viral,/beauty-style/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral,203,/how-to/beauty-tips/hypochlorous-acid-why-this-dermal-mist-has-gone-viral,103,306
+rachael-taylor-actress,/interviews/actors-presenters/rachael-taylor-actress,269,/who/actors-presenters/rachael-taylor-actress,34,303
+damaged-hair-repair-tips,/beauty-style/hair/damaged-hair-repair-tips,274,/uncategorized/damaged-hair-repair-tips,28,302
+anna-heinrich-on-quitting-law-and-finding-her-inner-entrepreneur,/interviews/founders/anna-heinrich-on-quitting-law-and-finding-her-inner-entrepreneur,261,/who/entrepreneurs/anna-heinrich-on-quitting-law-and-finding-her-inner-entrepreneur,38,299
+seven-timeless-oc-beauty-favourites,/beauty-style/beauty-tips/seven-timeless-oc-beauty-favourites,246,/how-to/beauty-tips/seven-timeless-oc-beauty-favourites,52,298
+caudalies-mathilde-thomas-on-must-visit-paris-destinations-and-the-importance-of-pleasure,/interviews/founders/caudalies-mathilde-thomas-on-must-visit-paris-destinations-and-the-importance-of-pleasure,230,/who/entrepreneurs/caudalies-mathilde-thomas-on-must-visit-paris-destinations-and-the-importance-of-pleasure,64,294
+magnesium-pools-wellness-design-australia,/beauty-style/magnesium-pools-wellness-design-australia,253,/sigourneys-edit/magnesium-pools-wellness-design-australia,41,294
+margaret-zhang,/interviews/tastemakers/margaret-zhang,244,/who/influencers/margaret-zhang,47,291
+delta-goodrem-on-stepping-into-her-power,/interviews/creatives/delta-goodrem-on-stepping-into-her-power,242,/who/creatives/delta-goodrem-on-stepping-into-her-power,46,288
+lucy-vincent-entrepreneur,/interviews/founders/lucy-vincent-entrepreneur,229,/who/entrepreneurs/lucy-vincent-entrepreneur,55,284
+celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame,/interviews/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame,223,/who/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame,60,283
+jess-blanch-publisher-editor-in-chief-russh,/interviews/creatives/jess-blanch-publisher-editor-in-chief-russh,256,/who/creatives/jess-blanch-publisher-editor-in-chief-russh,24,280
+how-sheer-curtains-can-transform-a-space,/living/interiors/how-sheer-curtains-can-transform-a-space,184,/beauty-style/style/how-sheer-curtains-can-transform-a-space,96,280
+goldfield-and-banks-interview-dimitri-weber,/vodcast-by-beauticate/goldfield-and-banks-interview-dimitri-weber,235,/interviews/goldfield-and-banks-interview-dimitri-weber,40,275
+grace-elizabeth-model,/interviews/models/grace-elizabeth-model,239,/who/models/grace-elizabeth-model,36,275
+jane-birkin-beauty-icon,/interviews/creatives/jane-birkin-beauty-icon,198,/who/creatives/jane-birkin-beauty-icon,75,273
+miranda-kerr-model,/interviews/models/miranda-kerr-model,248,/who/models/miranda-kerr-model,24,272
+5-times-elisabeth-moss-schooled-us-on-great-hair,/beauty-style/hair/5-times-elisabeth-moss-schooled-us-on-great-hair,247,/beauty-style/hairs/5-times-elisabeth-moss-schooled-us-on-great-hair,22,269
+christmas-led-skincare-gift,/beauty-style/christmas-led-skincare-gift,236,/sigourneys-edit/christmas-led-skincare-gift,30,266
+phu-quoc-vietnams-new-go-to-luxury-destination,/destination/travel/phu-quoc-vietnams-new-go-to-luxury-destination,198,/reviews/travel/phu-quoc-vietnams-new-go-to-luxury-destination,68,266
+bahar-etminan-author-and-editor,/interviews/creatives/bahar-etminan-author-and-editor,232,/who/creatives/bahar-etminan-author-and-editor,34,266
+steffanie-ball-the-interiors-guru-with-the-most-beautiful-neutral-home,/interviews/founders/steffanie-ball-the-interiors-guru-with-the-most-beautiful-neutral-home,206,/who/entrepreneurs/steffanie-ball-the-interiors-guru-with-the-most-beautiful-neutral-home,58,264
+terry-de-gunzberg,/interviews/founders/terry-de-gunzberg,188,/who/entrepreneurs/terry-de-gunzberg,76,264
+last-minute-christmas-gifts,/sigourneys-edit/last-minute-christmas-gifts,135,/beauty-style/last-minute-christmas-gifts,126,261
+phu-quoc-vietnams-new-go-to-luxury-destination,/destination/travel/phu-quoc-vietnams-new-go-to-luxury-destination,198,/sigourneys-edit/phu-quoc-vietnams-new-go-to-luxury-destination,63,261
+steve-cordony-interior-stylist,/interviews/steve-cordony-interior-stylist,191,/interviews/tastemakers/steve-cordony-interior-stylist,69,260
+hermione-underwood-publicist-and-travel-blogger,/interviews/tastemakers/hermione-underwood-publicist-and-travel-blogger,196,/who/influencers/hermione-underwood-publicist-and-travel-blogger,59,255
+kristin-ess-hair-double-conditioning,/beauty-style/hair/kristin-ess-hair-double-conditioning,213,/how-to/hairstyles/kristin-ess-hair-double-conditioning,40,253
+amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,/interviews/creatives/amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,200,/who/creatives/amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,50,250
+isabel-lucas-actress,/interviews/actors-presenters/isabel-lucas-actress,218,/who/actors-presenters/isabel-lucas-actress,31,249
+8-at-trinity,/living/lifestyle/8-at-trinity,214,/sigourneys-edit/8-at-trinity,30,244
+8-at-trinity,/living/lifestyle/8-at-trinity,214,/how-to/lifestyle/8-at-trinity,27,241
+best-korean-beauty-products-2025,/beauty-style/best-korean-beauty-products-2025,178,/how-to/best-korean-beauty-products-2025,62,240
+jane-birkin-beauty-icon,/interviews/creatives/jane-birkin-beauty-icon,198,/interviews/models/jane-birkin-beauty-icon,34,232
+amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,/interviews/creatives/amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,200,/amelia-webb-on-loving-the-career-she-never-even-knew-she-wanted,26,226
+filomena-natoli-makeup-artist,/interviews/creatives/filomena-natoli-makeup-artist,201,/who/creatives/filomena-natoli-makeup-artist,25,226
+honest-review-best-eye-cream-for-puffiness-under-eye-darkness-hydration,/beauty-style/beauty-tips/honest-review-best-eye-cream-for-puffiness-under-eye-darkness-hydration,187,/how-to/beauty-tips/honest-review-best-eye-cream-for-puffiness-under-eye-darkness-hydration,37,224
+nadia-rose-entrepreneur-infuencer,/interviews/founders/nadia-rose-entrepreneur-infuencer,166,/who/entrepreneurs/nadia-rose-entrepreneur-infuencer,58,224
+the-supermodel-weapon-for-a-sculpted-face-jade-roller-benefits,/reviews/products/the-supermodel-weapon-for-a-sculpted-face-jade-roller-benefits,152,/beauty-style/beauty-tips/the-supermodel-weapon-for-a-sculpted-face-jade-roller-benefits,70,222
+hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds,/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds,193,/who/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds,28,221
+the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts,/interviews/founders/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts,135,/who/entrepreneurs/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts,84,219
+georgina-austin-designer,/interviews/creatives/georgina-austin-designer,190,/who/creatives/georgina-austin-designer,28,218
+trinny-woodall-shares-the-most-important-thing-about-ageing,/interviews/founders/trinny-woodall-shares-the-most-important-thing-about-ageing,178,/who/entrepreneurs/trinny-woodall-shares-the-most-important-thing-about-ageing,37,215
+best-korean-beauty-products-2025,/beauty-style/best-korean-beauty-products-2025,178,/beauty-style/skin-care/best-korean-beauty-products-2025,36,214
+the-10-secret-to-bella-hadid-hair-plus-her-other-genius-hacks,/beauty-style/beauty-tips/the-10-secret-to-bella-hadid-hair-plus-her-other-genius-hacks,165,/how-to/beauty-tips/the-10-secret-to-bella-hadid-hair-plus-her-other-genius-hacks,48,213
+elle-ferguson-elle-effect,/interviews/tastemakers/elle-ferguson-elle-effect,173,/who/influencers/elle-ferguson-elle-effect,36,209
+guy-sebastian-on-his-fame-family-and-his-new-fragrance,/interviews/actors-presenters/guy-sebastian-on-his-fame-family-and-his-new-fragrance,138,/who/actors-presenters/guy-sebastian-on-his-fame-family-and-his-new-fragrance,70,208
+stevie-knicks-musician-and-icon,/interviews/creatives/stevie-knicks-musician-and-icon,178,/who/creatives/stevie-knicks-musician-and-icon,29,207
+rebecca-vallance-designer,/interviews/creatives/rebecca-vallance-designer,184,/who/creatives/rebecca-vallance-designer,22,206
+the-5-chic-podcasts-were-currently-streaming,/beauty-style/style/the-5-chic-podcasts-were-currently-streaming,130,/living/lifestyle/the-5-chic-podcasts-were-currently-streaming,75,205
+how-sheer-curtains-can-transform-a-space,/living/interiors/how-sheer-curtains-can-transform-a-space,184,/how-to/interiors/how-sheer-curtains-can-transform-a-space,21,205
+how-a-beauty-writer-manages-her-rosacea,/beauty-style/skin-care/how-a-beauty-writer-manages-her-rosacea,166,/how-to/skin-care/how-a-beauty-writer-manages-her-rosacea,37,203
+lindy-klim-designer-entrepreneur,/interviews/founders/lindy-klim-designer-entrepreneur,167,/interviews/tastemakers/lindy-klim-designer-entrepreneur,31,198
+kelly-smythe-stylist,/interviews/creatives/kelly-smythe-stylist,126,/who/creatives/kelly-smythe-stylist,72,198
+i-tried-the-22-hairbrush-celebrities-are-obsessed-with-the-results-surprised-me,/beauty-style/beauty-tips/i-tried-the-22-hairbrush-celebrities-are-obsessed-with-the-results-surprised-me,166,/how-to/beauty-tips/i-tried-the-22-hairbrush-celebrities-are-obsessed-with-the-results-surprised-me,31,197
+stephanie-darling-author-and-editor,/interviews/creatives/stephanie-darling-author-and-editor,165,/who/creatives/stephanie-darling-author-and-editor,32,197
+alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother,/interviews/founders/alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother,156,/interviews/creatives/alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother,40,196
+how-to-make-raw-chocolate-with-abigail-oneill,/wellness/health/how-to-make-raw-chocolate-with-abigail-oneill,162,/how-to/health/how-to-make-raw-chocolate-with-abigail-oneill,34,196
+dyson-v16-review,/living/dyson-v16-review,173,/living/lifestyle/dyson-v16-review,23,196
+snezana-markoski-and-sam-wood-tv-personalities,/interviews/founders/snezana-markoski-and-sam-wood-tv-personalities,164,/who/entrepreneurs/snezana-markoski-and-sam-wood-tv-personalities,31,195
+egg-yolk-hair-mask-the-diy-recipe-for-glossy-hair,/beauty-style/hair/egg-yolk-hair-mask-the-diy-recipe-for-glossy-hair,173,/how-to/hairstyles/egg-yolk-hair-mask-the-diy-recipe-for-glossy-hair,21,194
+lindy-klim-designer-entrepreneur,/interviews/founders/lindy-klim-designer-entrepreneur,167,/who/entrepreneurs/lindy-klim-designer-entrepreneur,23,190
+the-best-eye-creams-and-mascaras-for-super-sensitive-eyes,/beauty-style/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes,158,/how-to/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes,30,188
+alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother,/interviews/founders/alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother,156,/who/entrepreneurs/alina-barlow-the-alinka-jewellery-designer-on-the-lessons-she-learned-from-her-mother,30,186
+kerala-travel-guide,/destination/travel/kerala-travel-guide,151,/sigourneys-edit/kerala-travel-guide,35,186
+wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science,/beauty-style/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science,147,/how-to/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science,37,184
+maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara,/interviews/tastemakers/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara,162,/who/influencers/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara,20,182
+ada-nicodemou-the-lifelong-tv-star-who-loves-to-be-a-beauty-guinea-pig,/interviews/actors-presenters/ada-nicodemou-the-lifelong-tv-star-who-loves-to-be-a-beauty-guinea-pig,148,/who/actors-presenters/ada-nicodemou-the-lifelong-tv-star-who-loves-to-be-a-beauty-guinea-pig,32,180
+the-blush-lipstick-combinations-that-always-give-me-compliments,/beauty-style/beauty-tips/the-blush-lipstick-combinations-that-always-give-me-compliments,149,/how-to/beauty-tips/the-blush-lipstick-combinations-that-always-give-me-compliments,29,178
+8-must-try-nail-trends-for-the-new-season,/beauty-style/nails/8-must-try-nail-trends-for-the-new-season,142,/8-must-try-nail-trends-for-the-new-season,36,178
+anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv,/interviews/actors-presenters/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv,129,/interviews/tastemakers/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv,49,178
+emily-berlach-the-most-laidback-fashion-designer-on-the-planet,/interviews/creatives/emily-berlach-the-most-laidback-fashion-designer-on-the-planet,153,/who/creatives/emily-berlach-the-most-laidback-fashion-designer-on-the-planet,24,177
+shaynna-blaze-tvs-interior-designer-on-feeling-your-best-at-every-age,/interviews/actors-presenters/shaynna-blaze-tvs-interior-designer-on-feeling-your-best-at-every-age,139,/who/actors-presenters/shaynna-blaze-tvs-interior-designer-on-feeling-your-best-at-every-age,37,176
+kerala-travel-guide,/destination/travel/kerala-travel-guide,151,/reviews/travel/kerala-travel-guide,23,174
+bambi-northwood-blyth-model,/interviews/models/bambi-northwood-blyth-model,144,/who/models/bambi-northwood-blyth-model,29,173
+clementine-mcveigh-model,/interviews/models/clementine-mcveigh-model,150,/who/models/clementine-mcveigh-model,22,172
+8-must-try-nail-trends-for-the-new-season,/beauty-style/nails/8-must-try-nail-trends-for-the-new-season,142,/interviews/models/8-must-try-nail-trends-for-the-new-season,26,168
+money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends,/beauty-style/beauty-tips/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends,132,/how-to/beauty-tips/money-pieces-e-girl-70s-bangs-everything-you-need-to-know-about-this-seasons-hair-trends,35,167
+natarsha-belling-news-presenter,/interviews/actors-presenters/natarsha-belling-news-presenter,134,/who/actors-presenters/natarsha-belling-news-presenter,33,167
+actress-and-eco-activist-nathalie-kelleys-top-tips-to-be-more-sustainable,/interviews/actors-presenters/actress-and-eco-activist-nathalie-kelleys-top-tips-to-be-more-sustainable,143,/who/actors-presenters/actress-and-eco-activist-nathalie-kelleys-top-tips-to-be-more-sustainable,22,165
+the-art-of-tablescaping-the-chic-trend-taking-over-instagram,/beauty-style/the-art-of-tablescaping-the-chic-trend-taking-over-instagram,108,/living/interiors/the-art-of-tablescaping-the-chic-trend-taking-over-instagram,57,165
+does-eyeliner-tattoo-hurt,/beauty-style/cosmetic/does-eyeliner-tattoo-hurt,130,/how-to/cosmetic/does-eyeliner-tattoo-hurt,33,163
+youtube-queen-lauren-curtis-shares-her-experience-growing-up-online,/interviews/tastemakers/youtube-queen-lauren-curtis-shares-her-experience-growing-up-online,133,/who/influencers/youtube-queen-lauren-curtis-shares-her-experience-growing-up-online,29,162
+timeless-beauty-the-effortless-no-makeup-makeup-look,/beauty-style/timeless-beauty-the-effortless-no-makeup-makeup-look,140,/how-to/timeless-beauty-the-effortless-no-makeup-makeup-look,20,160
+revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet,/beauty-style/beauty-tips/revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet,128,/how-to/beauty-tips/revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet,31,159
+the-5-chic-podcasts-were-currently-streaming,/beauty-style/style/the-5-chic-podcasts-were-currently-streaming,130,/how-to/lifestyle/the-5-chic-podcasts-were-currently-streaming,29,159
+go-tos-natures-energy-glebe,/destination/beauty-wellness/clinics/go-tos-natures-energy-glebe,133,/the-go-tos/beauty-maintenance/go-tos-natures-energy-glebe,26,159
+your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style,/beauty-style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style,136,/how-to/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style,22,158
+ultrahuman-ring-air-review,/reviews/products/ultrahuman-ring-air-review,101,/wellness/ultrahuman-ring-air-review,57,158
+how-to-magically-de-bloat-your-face,/beauty-style/skin-care/how-to-magically-de-bloat-your-face,117,/how-to/skin-care/how-to-magically-de-bloat-your-face,41,158
+we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,/destination/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,115,/sigourneys-edit/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,42,157
+candice-rose-and-karla-rose-fashion-designers,/interviews/creatives/candice-rose-and-karla-rose-fashion-designers,112,/who/creatives/candice-rose-and-karla-rose-fashion-designers,44,156
+paddington-beauty-room-paddington,/destination/beauty-wellness/clinics/paddington-beauty-room-paddington,135,/the-go-tos/beauty-maintenance/paddington-beauty-room-paddington,21,156
+kat-von-d,/interviews/creatives/kat-von-d,129,/who/creatives/kat-von-d,27,156
+sandra-sully-journalist-and-news-presenter,/interviews/actors-presenters/sandra-sully-journalist-and-news-presenter,132,/who/actors-presenters/sandra-sully-journalist-and-news-presenter,24,156
+the-best-sea-salt-sprays-reader-review,/beauty-style/hair/the-best-sea-salt-sprays-reader-review,105,/how-to/hairstyles/the-best-sea-salt-sprays-reader-review,50,155
+the-glow-up-secrets-behind-hollywoods-best-makeover-scenes,/beauty-style/beauty-tips/the-glow-up-secrets-behind-hollywoods-best-makeover-scenes,119,/how-to/beauty-tips/the-glow-up-secrets-behind-hollywoods-best-makeover-scenes,34,153
+11-years-of-beauticate-a-love-letter,/interviews/11-years-of-beauticate-a-love-letter,93,/who/11-years-of-beauticate-a-love-letter,60,153
+anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv,/interviews/actors-presenters/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv,129,/who/actors-presenters/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv,23,152
+i-was-about-to-get-botox-and-tried-this-instead-2,/beauty-style/skin-care/i-was-about-to-get-botox-and-tried-this-instead-2,129,/how-to/skin-care/i-was-about-to-get-botox-and-tried-this-instead-2,23,152
+everything-you-need-to-know-before-buying-tape-in-hair-extensions,/beauty-style/hair/everything-you-need-to-know-before-buying-tape-in-hair-extensions,122,/how-to/hairstyles/everything-you-need-to-know-before-buying-tape-in-hair-extensions,29,151
+we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2,/reviews/products/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2,80,/living/sustainability/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2,71,151
+living-room-transformation,/living/interiors/living-room-transformation,96,/sigourneys-edit/living-room-transformation,54,150
+jo-malone-cbe-the-queen-of-fragrance-who-loves-a-good-story,/interviews/founders/jo-malone-cbe-the-queen-of-fragrance-who-loves-a-good-story,88,/interviews/creatives/jo-malone-cbe-the-queen-of-fragrance-who-loves-a-good-story,62,150
+the-ultimate-guide-to-fuller-lips-sans-needles,/beauty-style/beauty-tips/the-ultimate-guide-to-fuller-lips-sans-needles,119,/how-to/beauty-tips/the-ultimate-guide-to-fuller-lips-sans-needles,29,148
+dr-kate-jameson-cosmetic-physician,/interviews/founders/dr-kate-jameson-cosmetic-physician,106,/who/entrepreneurs/dr-kate-jameson-cosmetic-physician,41,147
+8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines,/beauty-style/beauty-tips/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines,118,/how-to/beauty-tips/8-flight-attendants-share-their-rigorous-pre-flight-beauty-routines,29,147
+french-vs-korean-skincare,/beauty-style/skin-care/french-vs-korean-skincare,109,/how-to/skin-care/french-vs-korean-skincare,38,147
+discover-beauty-at-melbournes-most-luxurious-spa,/destination/discover-beauty-at-melbournes-most-luxurious-spa,117,/the-go-tos/discover-beauty-at-melbournes-most-luxurious-spa,28,145
+seven-sex-and-the-city-hair-lessons,/beauty-style/hair/seven-sex-and-the-city-hair-lessons,98,/how-to/hairstyles/seven-sex-and-the-city-hair-lessons,45,143
+how-to-model-workout,/wellness/fitness/how-to-model-workout,121,/how-to/fitness/how-to-model-workout,22,143
+libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian,/interviews/founders/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian,120,/who/entrepreneurs/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian,22,142
+we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,/destination/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,115,/reviews/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict,26,141
+cult-cool-girl-fragrances,/beauty-style/beauty-tips/cult-cool-girl-fragrances,97,/how-to/beauty-tips/cult-cool-girl-fragrances,44,141
+nadia-fairfax-fashion-blogger,/interviews/tastemakers/nadia-fairfax-fashion-blogger,107,/who/influencers/nadia-fairfax-fashion-blogger,34,141
+skincare-success-my-eight-week-transformation-with-professional-grade-products,/beauty-style/beauty-tips/skincare-success-my-eight-week-transformation-with-professional-grade-products,109,/how-to/beauty-tips/skincare-success-my-eight-week-transformation-with-professional-grade-products,31,140
+penelope-mitchell-actress,/interviews/actors-presenters/penelope-mitchell-actress,114,/who/actors-presenters/penelope-mitchell-actress,21,135
+youth-lab-joondalup,/destination/beauty-wellness/skin-salons/youth-lab-joondalup,94,/the-go-tos/high-tech-treatments/youth-lab-joondalup,41,135
+carla-oates-the-beauty-chef,/interviews/founders/carla-oates-the-beauty-chef,106,/who/entrepreneurs/carla-oates-the-beauty-chef,28,134
+pippa-holt-a-fashion-insiders-guide-to-summer-beauty-and-statement-dressing,/interviews/creatives/pippa-holt-a-fashion-insiders-guide-to-summer-beauty-and-statement-dressing,104,/who/creatives/pippa-holt-a-fashion-insiders-guide-to-summer-beauty-and-statement-dressing,30,134
+dr-ateh-jewel-the-beauty-journalist-on-how-it-feels-to-see-diversity-properly-start-to-matter,/beauty-style/beauty-tips/dr-ateh-jewel-the-beauty-journalist-on-how-it-feels-to-see-diversity-properly-start-to-matter,112,/how-to/beauty-tips/dr-ateh-jewel-the-beauty-journalist-on-how-it-feels-to-see-diversity-properly-start-to-matter,22,134
+renya-xydis-hairdresser,/interviews/creatives/renya-xydis-hairdresser,88,/who/creatives/renya-xydis-hairdresser,46,134
+brigitte-bardot,/interviews/actors-presenters/brigitte-bardot,74,/interviews/models/brigitte-bardot,59,133
+the-art-of-tablescaping-the-chic-trend-taking-over-instagram,/beauty-style/the-art-of-tablescaping-the-chic-trend-taking-over-instagram,108,/how-to/interiors/the-art-of-tablescaping-the-chic-trend-taking-over-instagram,22,130
+how-to-do-french-girl-beauty-like-an-icon,/beauty-style/beauty-tips/how-to-do-french-girl-beauty-like-an-icon,99,/how-to/beauty-tips/how-to-do-french-girl-beauty-like-an-icon,29,128
+amalie-gassmann-model,/interviews/models/amalie-gassmann-model,103,/who/models/amalie-gassmann-model,24,127
+11-years-of-beauticate-a-love-letter,/interviews/11-years-of-beauticate-a-love-letter,93,/sigourneys-edit/11-years-of-beauticate-a-love-letter,34,127
+self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing,/beauty-style/beauty-tips/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing,89,/how-to/beauty-tips/self-care-routine-the-little-luxuries-the-beauticate-team-are-swearing-by-to-survive-social-distancing,37,126
+the-girl-you-love-glebe,/destination/beauty-wellness/clinics/the-girl-you-love-glebe,70,/the-go-tos/the-girl-you-love-glebe,54,124
+selfie-lighting-tricks,/living/lifestyle/selfie-lighting-tricks,95,/how-to/lifestyle/selfie-lighting-tricks,27,122
+arizona-muse-the-supermodel-and-eco-activists-on-everyday-ways-to-be-more-sustainable,/interviews/models/arizona-muse-the-supermodel-and-eco-activists-on-everyday-ways-to-be-more-sustainable,101,/who/models/arizona-muse-the-supermodel-and-eco-activists-on-everyday-ways-to-be-more-sustainable,20,121
+glass-hair,/beauty-style/beauty-tips/glass-hair,86,/how-to/beauty-tips/glass-hair,34,120
+camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls,/beauty-style/hair/camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls,93,/how-to/hairstyles/camille-friend-marvels-master-hairstylist-on-creating-movie-magic-and-how-to-get-your-own-superhuman-curls,27,120
+why-makeup-shaming-has-to-stop,/beauty-style/beauty-tips/why-makeup-shaming-has-to-stop,82,/living/lifestyle/why-makeup-shaming-has-to-stop,37,119
+dr-sam-bunting-the-skin-expert-determined-to-get-you-glowing,/interviews/founders/dr-sam-bunting-the-skin-expert-determined-to-get-you-glowing,91,/who/entrepreneurs/dr-sam-bunting-the-skin-expert-determined-to-get-you-glowing,28,119
+sigs-hair-hit-list,/beauty-style/hair/sigs-hair-hit-list,98,/beauty-style/hairstyles/sigs-hair-hit-list,20,118
+struggling-to-sleep-this-mattress-changed-everything-for-me,/living/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me,88,/sigourneys-edit/struggling-to-sleep-this-mattress-changed-everything-for-me,30,118
+elyse-taylor-on-how-to-be-happy,/wellness/health/elyse-taylor-on-how-to-be-happy,77,/living/lifestyle/elyse-taylor-on-how-to-be-happy,40,117
+lucy-folk-jeweller-designer,/interviews/founders/lucy-folk-jeweller-designer,97,/who/entrepreneurs/lucy-folk-jeweller-designer,20,117
+rowi-singh-the-creative-makeup-genius-on-finding-her-identity-through-makeup,/interviews/creatives/rowi-singh-the-creative-makeup-genius-on-finding-her-identity-through-makeup,94,/who/creatives/rowi-singh-the-creative-makeup-genius-on-finding-her-identity-through-makeup,20,114
+the-exact-products-a-beauty-editor-packs-for-europe,/beauty-style/the-exact-products-a-beauty-editor-packs-for-europe,76,/how-to/beauty-tips/the-exact-products-a-beauty-editor-packs-for-europe,38,114
+tash-sefton-fashion-entrepreneur,/interviews/tash-sefton-fashion-entrepreneur,73,/who/tash-sefton-fashion-entrepreneur,41,114
+jessica-mauboy,/interviews/creatives/jessica-mauboy,91,/who/creatives/jessica-mauboy,22,113
+the-best-strobing-products-reader-review-1,/beauty-style/makeup/the-best-strobing-products-reader-review-1,72,/how-to/makeup-tutorials/the-best-strobing-products-reader-review-1,38,110
+ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards,/beauty-style/beauty-tips/ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards,76,/beauty-style/makeup/ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards,33,109
+elements-day-spa-darwin,/destination/beauty-wellness/clinics/elements-day-spa-darwin,76,/destination/beauty-wellness/skin-salons/elements-day-spa-darwin,33,109
+atong-atem-the-colour-loving-artist-on-beauty-as-self-expression-and-self-care,/interviews/creatives/atong-atem-the-colour-loving-artist-on-beauty-as-self-expression-and-self-care,83,/who/creatives/atong-atem-the-colour-loving-artist-on-beauty-as-self-expression-and-self-care,26,109
+video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty,/living/sustainability/video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty,62,/interviews/creatives/video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty,46,108
+our-top-six-tips-for-how-to-shop-your-beauty-stash,/living/sustainability/our-top-six-tips-for-how-to-shop-your-beauty-stash,69,/beauty-style/beauty-tips/our-top-six-tips-for-how-to-shop-your-beauty-stash,39,108
+struggling-to-sleep-this-mattress-changed-everything-for-me,/living/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me,88,/how-to/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me,20,108
+we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2,/reviews/products/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2,80,/how-to/go-green/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2,27,107
+the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet,/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet,75,/beauty-style/skin-care/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet,31,106
+chakana-day-spa-wellbeing-avalon-2,/destination/beauty-wellness/clinics/chakana-day-spa-wellbeing-avalon-2,79,/the-go-tos/beauty-maintenance/chakana-day-spa-wellbeing-avalon-2,27,106
+are-at-home-led-masks-worth-the-cost,/beauty-style/beauty-tips/are-at-home-led-masks-worth-the-cost,77,/uncategorized/are-at-home-led-masks-worth-the-cost,27,104
+go-tos,/go-tos,54,/staging/go-tos,50,104
+tash-sefton-fashion-entrepreneur,/interviews/tash-sefton-fashion-entrepreneur,73,/interviews/founders/tash-sefton-fashion-entrepreneur,29,102
+are-at-home-gel-nail-kits-worth-the-investment,/beauty-style/nails/are-at-home-gel-nail-kits-worth-the-investment,68,/beauty-style/beauty-tips/are-at-home-gel-nail-kits-worth-the-investment,33,101
+zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt,/beauty-style/beauty-tips/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt,75,/beauty-style/skin-care/zero-waste-beauty-the-sustainable-swaps-that-are-super-easy-to-adopt,25,100
+2,/interviews/page/2,61,/beauty-style/hairstyles/page/2,39,100
+2,/interviews/page/2,61,/vodcast-by-beauticate/page/2,39,100
+airgarden,/living/sustainability/airgarden,63,/beauty-style/airgarden,36,99
+are-at-home-led-masks-worth-the-cost,/beauty-style/beauty-tips/are-at-home-led-masks-worth-the-cost,77,/how-to/beauty-tips/are-at-home-led-masks-worth-the-cost,21,98
+the-exact-products-a-beauty-editor-packs-for-europe,/beauty-style/the-exact-products-a-beauty-editor-packs-for-europe,76,/how-to/the-exact-products-a-beauty-editor-packs-for-europe,22,98
+elyse-taylor-on-how-to-be-happy,/wellness/health/elyse-taylor-on-how-to-be-happy,77,/how-to/lifestyle/elyse-taylor-on-how-to-be-happy,20,97
+how-to-do-barefaced-beauty-like-a-beatnik,/beauty-style/beauty-tips/how-to-do-barefaced-beauty-like-a-beatnik,68,/beauty-style/makeup/how-to-do-barefaced-beauty-like-a-beatnik,29,97
+me-skin-and-body-south-yarra,/destination/beauty-wellness/clinics/me-skin-and-body-south-yarra,58,/destination/beauty-wellness/skin-salons/me-skin-and-body-south-yarra,38,96
+are-at-home-gel-nail-kits-worth-the-investment,/beauty-style/nails/are-at-home-gel-nail-kits-worth-the-investment,68,/how-to/nails/are-at-home-gel-nail-kits-worth-the-investment,27,95
+jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful,/how-to/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful,54,/living/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful,41,95
+we-tried-samsungs-latest-statement-making-tv,/living/interiors/we-tried-samsungs-latest-statement-making-tv,68,/how-to/interiors/we-tried-samsungs-latest-statement-making-tv,27,95
+2,/interviews/page/2,61,/sigourneys-edit/page/2,33,94
+built-by-damo-the-best-deck-on-the-block,/living/interiors/built-by-damo-the-best-deck-on-the-block,73,/news/built-by-damo-the-best-deck-on-the-block,21,94
+chateau-elan-spa-the-hunter-valley-nsw,/destination/travel/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw,71,/destination/beauty-wellness/skin-salons/chateau-elan-spa-the-hunter-valley-nsw,21,92
+2,/interviews/page/2,61,/tag/video/page/2,31,92
+2,/interviews/page/2,61,/wellness/fitness/page/2,30,91
+our-top-six-tips-for-how-to-shop-your-beauty-stash,/living/sustainability/our-top-six-tips-for-how-to-shop-your-beauty-stash,69,/how-to/go-green/our-top-six-tips-for-how-to-shop-your-beauty-stash,22,91
+how-to-get-nice-hair,/beauty-style/how-to-get-nice-hair,63,/beauty-style/hair/how-to-get-nice-hair,26,89
+these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider,/beauty-style/hair/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider,59,/how-to/hairstyles/these-are-the-post-iso-hair-changes-we-suggest-you-strongly-consider,30,89
+jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful,/how-to/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful,54,/beauty-style/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful,34,88
+sophia-loren-actress-and-icon,/interviews/actors-presenters/sophia-loren-actress-and-icon,67,/who/actors-presenters/sophia-loren-actress-and-icon,21,88
+how-to-do-barefaced-beauty-like-a-beatnik,/beauty-style/beauty-tips/how-to-do-barefaced-beauty-like-a-beatnik,68,/how-to/beauty-tips/how-to-do-barefaced-beauty-like-a-beatnik,20,88
+teresa-palmer-and-chrissy-duigan-on-their-new-supplements,/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements,47,/beauty-style/hair/teresa-palmer-and-chrissy-duigan-on-their-new-supplements,40,87
+why-the-central-coast-is-worth-revisiting,/destination/travel/why-the-central-coast-is-worth-revisiting,61,/reviews/travel/why-the-central-coast-is-worth-revisiting,25,86
+melanie-grant-skin-health-double-bay,/destination/beauty-wellness/clinics/melanie-grant-skin-health-double-bay,50,/destination/beauty-wellness/skin-salons/melanie-grant-skin-health-double-bay,35,85
+is-the-natural-no-surgery-boob-job-the-most-innovative-procedure-ever,/beauty-style/cosmetic/is-the-natural-no-surgery-boob-job-the-most-innovative-procedure-ever,59,/how-to/cosmetic/is-the-natural-no-surgery-boob-job-the-most-innovative-procedure-ever,25,84
+the-beauticate-guide-to-hair-repair,/beauty-style/hair/the-beauticate-guide-to-hair-repair,59,/how-to/hairstyles/the-beauticate-guide-to-hair-repair,24,83
+2,/interviews/page/2,61,/interviews/actors-presenters/page/2,22,83
+dyson-supersonic-hair-dryer-review-is-it-worth-699,/beauty-style/hair/dyson-supersonic-hair-dryer-review-is-it-worth-699,44,/reviews/dyson-supersonic-hair-dryer-review-is-it-worth-699,39,83
+products,/reviews/products,49,/tag/products,33,82
+3,/interviews/models/page/3,53,/destination/beauty-wellness/page/3,28,81
+test,/test,57,/product/test,23,80
+a-22-year-old-brand-founder-on-how-to-get-dumpling-skin,/beauty-style/beauty-tips/a-22-year-old-brand-founder-on-how-to-get-dumpling-skin,57,/how-to/beauty-tips/a-22-year-old-brand-founder-on-how-to-get-dumpling-skin,23,80
+melanie-burnicle-makeup-artist,/interviews/creatives/melanie-burnicle-makeup-artist,41,/who/creatives/melanie-burnicle-makeup-artist,38,79
+how-to-tint-your-brows-without-a-beauty-diploma,/beauty-style/beauty-tips/how-to-tint-your-brows-without-a-beauty-diploma,57,/how-to/beauty-tips/how-to-tint-your-brows-without-a-beauty-diploma,21,78
+how-to-tint-your-brows-without-a-beauty-diploma,/beauty-style/beauty-tips/how-to-tint-your-brows-without-a-beauty-diploma,57,/beauty-style/makeup/how-to-tint-your-brows-without-a-beauty-diploma,21,78
+skincare-mecca-why-you-need-to-visit-myeongdong,/beauty-style/skin-care/skincare-mecca-why-you-need-to-visit-myeongdong,39,/destination/travel/skincare-mecca-why-you-need-to-visit-myeongdong,38,77
+how-to-nail-summer-beauty-with-coral-makeup,/beauty-style/beauty-tips/how-to-nail-summer-beauty-with-coral-makeup,45,/how-to/beauty-tips/how-to-nail-summer-beauty-with-coral-makeup,28,73
+vagina-skincare,/wellness/health/vagina-skincare,49,/beauty-style/beauty-tips/vagina-skincare,22,71
+hairstyles,/how-to/hairstyles,36,/beauty-style/hairstyles,33,69
+how-to-create-dreamy-bedrooms,/living/interiors/how-to-create-dreamy-bedrooms,46,/sigourneys-edit/how-to-create-dreamy-bedrooms,22,68
+6-products-to-help-pollution-proof-your-beauty-routine,/beauty-style/skin-care/6-products-to-help-pollution-proof-your-beauty-routine,38,/how-to/skin-care/6-products-to-help-pollution-proof-your-beauty-routine,28,66
+max-laser-treatment-review,/beauty-style/cosmetic/max-laser-treatment-review,43,/beauty-style/skin-care/max-laser-treatment-review,21,64
+megan-gale-on-being-an-earth-mother,/beauty-style/megan-gale-on-being-an-earth-mother,38,/beauty-style/beauty-tips/megan-gale-on-being-an-earth-mother,25,63
+video-elle-ferguson-shows-us-her-beauty-stash,/beauty-style/beauty-tips/video-elle-ferguson-shows-us-her-beauty-stash,29,/beauty-style/skin-care/video-elle-ferguson-shows-us-her-beauty-stash,29,58
+the-new-interiors-trends-and-how-to-work-them,/living/interiors/the-new-interiors-trends-and-how-to-work-them,28,/beauty-style/beauty-tips/the-new-interiors-trends-and-how-to-work-them,28,56
+sophie-monk-tv-personality,/interviews/actors-presenters/sophie-monk-tv-personality,34,/who/actors-presenters/sophie-monk-tv-personality,22,56
+home-apartment,/living/interiors/home-apartment,33,/living/lifestyle/home-apartment,20,53
+escape-here-the-south-coast-sanctuary-for-self-care,/sigourneys-edit/escape-here-the-south-coast-sanctuary-for-self-care,25,/destination/travel/escape-here-the-south-coast-sanctuary-for-self-care,22,47
+video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials,/beauty-style/skin-care/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials,26,/beauty-style/beauty-tips/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials,21,47

@@ -1,0 +1,686 @@
+[
+  {
+    "slug": "sensitive-scalp-moogoo-shampoo-review",
+    "category": "sigourneys-edit",
+    "subcategory": "edit",
+    "mdx_path": "content/sigourneys-edit/edit/sensitive-scalp-moogoo-shampoo-review/sensitive-scalp-moogoo-shampoo-review.mdx",
+    "wp_path": ".firecrawl/wp/sensitive-scalp-moogoo-shampoo-review.json",
+    "mdx_words": 845,
+    "wp_words": 1848
+  },
+  {
+    "slug": "realskin-clinic-hamilton",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/realskin-clinic-hamilton/realskin-clinic-hamilton.mdx",
+    "wp_path": ".firecrawl/wp/realskin-clinic-hamilton.json",
+    "mdx_words": 13,
+    "wp_words": 770
+  },
+  {
+    "slug": "chuan-spa-the-langham-melbourne-1",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/chuan-spa-the-langham-melbourne-1/chuan-spa-the-langham-melbourne-1.mdx",
+    "wp_path": ".firecrawl/wp/chuan-spa-the-langham-melbourne-1.json",
+    "mdx_words": 76,
+    "wp_words": 933
+  },
+  {
+    "slug": "get-ready-with-sigourney",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/get-ready-with-sigourney/get-ready-with-sigourney.mdx",
+    "wp_path": ".firecrawl/wp/get-ready-with-sigourney.json",
+    "mdx_words": 175,
+    "wp_words": 368
+  },
+  {
+    "slug": "clear-skincare-clinic-clarence-street-sydney",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/clear-skincare-clinic-clarence-street-sydney.mdx",
+    "wp_path": ".firecrawl/wp/clear-skincare-clinic-clarence-street-sydney.json",
+    "mdx_words": 45,
+    "wp_words": 797
+  },
+  {
+    "slug": "the-parlour-room",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/the-parlour-room/the-parlour-room.mdx",
+    "wp_path": ".firecrawl/wp/the-parlour-room.json",
+    "mdx_words": 26,
+    "wp_words": 778
+  },
+  {
+    "slug": "the-spa-raes-on-wategos-byron-bay",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/the-spa-raes-on-wategos-byron-bay/the-spa-raes-on-wategos-byron-bay.mdx",
+    "wp_path": ".firecrawl/wp/the-spa-raes-on-wategos-byron-bay.json",
+    "mdx_words": 25,
+    "wp_words": 873
+  },
+  {
+    "slug": "bixie-colour",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/bixie-colour/bixie-colour.mdx",
+    "wp_path": ".firecrawl/wp/bixie-colour.json",
+    "mdx_words": 26,
+    "wp_words": 747
+  },
+  {
+    "slug": "crown-spa-melbourne",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/crown-spa-melbourne/crown-spa-melbourne.mdx",
+    "wp_path": ".firecrawl/wp/crown-spa-melbourne.json",
+    "mdx_words": 23,
+    "wp_words": 798
+  },
+  {
+    "slug": "stables-day-spa-at-mount-lofty-house-crafers",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers/stables-day-spa-at-mount-lofty-house-crafers.mdx",
+    "wp_path": ".firecrawl/wp/stables-day-spa-at-mount-lofty-house-crafers.json",
+    "mdx_words": 17,
+    "wp_words": 116
+  },
+  {
+    "slug": "how-to-stop-your-hair-getting-old",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/how-to-stop-your-hair-getting-old/how-to-stop-your-hair-getting-old.mdx",
+    "wp_path": ".firecrawl/wp/how-to-stop-your-hair-getting-old.json",
+    "mdx_words": 37,
+    "wp_words": 1862
+  },
+  {
+    "slug": "edwards-and-co-surry-hills",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/edwards-and-co-surry-hills/edwards-and-co-surry-hills.mdx",
+    "wp_path": ".firecrawl/wp/edwards-and-co-surry-hills.json",
+    "mdx_words": 13,
+    "wp_words": 93
+  },
+  {
+    "slug": "endota-spa-glenelg",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/endota-spa-glenelg/endota-spa-glenelg.mdx",
+    "wp_path": ".firecrawl/wp/endota-spa-glenelg.json",
+    "mdx_words": 15,
+    "wp_words": 95
+  },
+  {
+    "slug": "spaq-qt-port-douglas",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/spaq-qt-port-douglas/spaq-qt-port-douglas.mdx",
+    "wp_path": ".firecrawl/wp/spaq-qt-port-douglas.json",
+    "mdx_words": 17,
+    "wp_words": 101
+  },
+  {
+    "slug": "head-studio-perth",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/head-studio-perth/head-studio-perth.mdx",
+    "wp_path": ".firecrawl/wp/head-studio-perth.json",
+    "mdx_words": 15,
+    "wp_words": 114
+  },
+  {
+    "slug": "temple-day-spa",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/temple-day-spa/temple-day-spa.mdx",
+    "wp_path": ".firecrawl/wp/temple-day-spa.json",
+    "mdx_words": 15,
+    "wp_words": 95
+  },
+  {
+    "slug": "concept-cosmetic-medicine-newcastle",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/concept-cosmetic-medicine-newcastle/concept-cosmetic-medicine-newcastle.mdx",
+    "wp_path": ".firecrawl/wp/concept-cosmetic-medicine-newcastle.json",
+    "mdx_words": 14,
+    "wp_words": 100
+  },
+  {
+    "slug": "esteem-medi-spa-gold-coast",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/esteem-medi-spa-gold-coast/esteem-medi-spa-gold-coast.mdx",
+    "wp_path": ".firecrawl/wp/esteem-medi-spa-gold-coast.json",
+    "mdx_words": 16,
+    "wp_words": 102
+  },
+  {
+    "slug": "daly-st-salon-adelaide",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/daly-st-salon-adelaide/daly-st-salon-adelaide.mdx",
+    "wp_path": ".firecrawl/wp/daly-st-salon-adelaide.json",
+    "mdx_words": 15,
+    "wp_words": 114
+  },
+  {
+    "slug": "spaq-qt-gold-coast",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/spaq-qt-gold-coast/spaq-qt-gold-coast.mdx",
+    "wp_path": ".firecrawl/wp/spaq-qt-gold-coast.json",
+    "mdx_words": 17,
+    "wp_words": 101
+  },
+  {
+    "slug": "salon-x-paddington",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/salon-x-paddington/salon-x-paddington.mdx",
+    "wp_path": ".firecrawl/wp/salon-x-paddington.json",
+    "mdx_words": 15,
+    "wp_words": 114
+  },
+  {
+    "slug": "wellness-spa-daintree-ecolodge",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/wellness-spa-daintree-ecolodge/wellness-spa-daintree-ecolodge.mdx",
+    "wp_path": ".firecrawl/wp/wellness-spa-daintree-ecolodge.json",
+    "mdx_words": 15,
+    "wp_words": 92
+  },
+  {
+    "slug": "aurora-spa-palazzo-versace-gold-coast-main-beach",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/aurora-spa-palazzo-versace-gold-coast-main-beach/aurora-spa-palazzo-versace-gold-coast-main-beach.mdx",
+    "wp_path": ".firecrawl/wp/aurora-spa-palazzo-versace-gold-coast-main-beach.json",
+    "mdx_words": 18,
+    "wp_words": 95
+  },
+  {
+    "slug": "spaq-qt-sydney",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/spaq-qt-sydney/spaq-qt-sydney.mdx",
+    "wp_path": ".firecrawl/wp/spaq-qt-sydney.json",
+    "mdx_words": 12,
+    "wp_words": 110
+  },
+  {
+    "slug": "sigourneys-edit-inside-a-skincare-lab",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/sigourneys-edit-inside-a-skincare-lab/sigourneys-edit-inside-a-skincare-lab.mdx",
+    "wp_path": ".firecrawl/wp/sigourneys-edit-inside-a-skincare-lab.json",
+    "mdx_words": 120,
+    "wp_words": 1074
+  },
+  {
+    "slug": "how-to-get-ready-with-bambi-erin-and-zippora",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/how-to-get-ready-with-bambi-erin-and-zippora/how-to-get-ready-with-bambi-erin-and-zippora.mdx",
+    "wp_path": ".firecrawl/wp/how-to-get-ready-with-bambi-erin-and-zippora.json",
+    "mdx_words": 169,
+    "wp_words": 1388
+  },
+  {
+    "slug": "how-to-make-up-like-a-makeup-artist-with-sarah-jagger",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/how-to-make-up-like-a-makeup-artist-with-sarah-jagger/how-to-make-up-like-a-makeup-artist-with-sarah-jagger.mdx",
+    "wp_path": ".firecrawl/wp/how-to-make-up-like-a-makeup-artist-with-sarah-jagger.json",
+    "mdx_words": 17,
+    "wp_words": 174
+  },
+  {
+    "slug": "how-to-be-camera-ready-with-lauren-curtis-beauty-vlogger",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/how-to-be-camera-ready-with-lauren-curtis-beauty-vlogger/how-to-be-camera-ready-with-lauren-curtis-beauty-vlogger.mdx",
+    "wp_path": ".firecrawl/wp/how-to-be-camera-ready-with-lauren-curtis-beauty-vlogger.json",
+    "mdx_words": 70,
+    "wp_words": 208
+  },
+  {
+    "slug": "blanc-wa",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/blanc-wa/blanc-wa.mdx",
+    "wp_path": ".firecrawl/wp/blanc-wa.json",
+    "mdx_words": 50,
+    "wp_words": 629
+  },
+  {
+    "slug": "video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic/video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic.mdx",
+    "wp_path": ".firecrawl/wp/video-the-eco-warrior-model-on-her-best-ways-to-minimise-plastic.json",
+    "mdx_words": 47,
+    "wp_words": 193
+  },
+  {
+    "slug": "video-megan-gale-on-rituals-crystals-and-meditation",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/video-megan-gale-on-rituals-crystals-and-meditation/video-megan-gale-on-rituals-crystals-and-meditation.mdx",
+    "wp_path": ".firecrawl/wp/video-megan-gale-on-rituals-crystals-and-meditation.json",
+    "mdx_words": 31,
+    "wp_words": 175
+  },
+  {
+    "slug": "french-vs-korean-skincare",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/french-vs-korean-skincare/french-vs-korean-skincare.mdx",
+    "wp_path": ".firecrawl/wp/french-vs-korean-skincare.json",
+    "mdx_words": 289,
+    "wp_words": 911
+  },
+  {
+    "slug": "the-sydney-salons-ive-been-visiting-this-summer-sigourneys-edit",
+    "category": "beauty-style",
+    "subcategory": "hair",
+    "mdx_path": "content/beauty-style/hair/the-sydney-salons-ive-been-visiting-this-summer-sigourneys-edit/the-sydney-salons-ive-been-visiting-this-summer-sigourneys-edit.mdx",
+    "wp_path": ".firecrawl/wp/the-sydney-salons-ive-been-visiting-this-summer-sigourneys-edit.json",
+    "mdx_words": 125,
+    "wp_words": 299
+  },
+  {
+    "slug": "video-how-to-fill-in-your-brows-with-kristin-fisher",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/video-how-to-fill-in-your-brows-with-kristin-fisher/video-how-to-fill-in-your-brows-with-kristin-fisher.mdx",
+    "wp_path": ".firecrawl/wp/video-how-to-fill-in-your-brows-with-kristin-fisher.json",
+    "mdx_words": 96,
+    "wp_words": 221
+  },
+  {
+    "slug": "video-jodi-anastas-amazing-lash-enhancing-trick",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/video-jodi-anastas-amazing-lash-enhancing-trick/video-jodi-anastas-amazing-lash-enhancing-trick.mdx",
+    "wp_path": ".firecrawl/wp/video-jodi-anastas-amazing-lash-enhancing-trick.json",
+    "mdx_words": 121,
+    "wp_words": 281
+  },
+  {
+    "slug": "video-sigourneys-in-flight-beauty-routine",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/video-sigourneys-in-flight-beauty-routine/video-sigourneys-in-flight-beauty-routine.mdx",
+    "wp_path": ".firecrawl/wp/video-sigourneys-in-flight-beauty-routine.json",
+    "mdx_words": 68,
+    "wp_words": 329
+  },
+  {
+    "slug": "video-the-one-product-you-shouldnt-be-without",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/video-the-one-product-you-shouldnt-be-without/video-the-one-product-you-shouldnt-be-without.mdx",
+    "wp_path": ".firecrawl/wp/video-the-one-product-you-shouldnt-be-without.json",
+    "mdx_words": 109,
+    "wp_words": 480
+  },
+  {
+    "slug": "video-my-tanning-routine-sigourneys-edit",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/video-my-tanning-routine-sigourneys-edit/video-my-tanning-routine-sigourneys-edit.mdx",
+    "wp_path": ".firecrawl/wp/video-my-tanning-routine-sigourneys-edit.json",
+    "mdx_words": 45,
+    "wp_words": 299
+  },
+  {
+    "slug": "how-to-do-a-party-look-with-mineral-makeup-and-win-a-holiday",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/how-to-do-a-party-look-with-mineral-makeup-and-win-a-holiday/how-to-do-a-party-look-with-mineral-makeup-and-win-a-holiday.mdx",
+    "wp_path": ".firecrawl/wp/how-to-do-a-party-look-with-mineral-makeup-and-win-a-holiday.json",
+    "mdx_words": 143,
+    "wp_words": 349
+  },
+  {
+    "slug": "video-at-home-and-in-the-studio-with-tory-burch",
+    "category": "interviews",
+    "subcategory": "creatives",
+    "mdx_path": "content/interviews/creatives/video-at-home-and-in-the-studio-with-tory-burch/video-at-home-and-in-the-studio-with-tory-burch.mdx",
+    "wp_path": ".firecrawl/wp/video-at-home-and-in-the-studio-with-tory-burch.json",
+    "mdx_words": 4,
+    "wp_words": 191
+  },
+  {
+    "slug": "tessa-james-go-to-beauty-essentials",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/tessa-james-go-to-beauty-essentials/tessa-james-go-to-beauty-essentials.mdx",
+    "wp_path": ".firecrawl/wp/tessa-james-go-to-beauty-essentials.json",
+    "mdx_words": 83,
+    "wp_words": 258
+  },
+  {
+    "slug": "video-kate-ritchies-beauty-essentials",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/video-kate-ritchies-beauty-essentials/video-kate-ritchies-beauty-essentials.mdx",
+    "wp_path": ".firecrawl/wp/video-kate-ritchies-beauty-essentials.json",
+    "mdx_words": 118,
+    "wp_words": 314
+  },
+  {
+    "slug": "video-tash-seftons-sixty-second-eyeliner-trick",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/video-tash-seftons-sixty-second-eyeliner-trick/video-tash-seftons-sixty-second-eyeliner-trick.mdx",
+    "wp_path": ".firecrawl/wp/video-tash-seftons-sixty-second-eyeliner-trick.json",
+    "mdx_words": 17,
+    "wp_words": 269
+  },
+  {
+    "slug": "video-six-steps-to-a-zenned-out-complexion",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/video-six-steps-to-a-zenned-out-complexion/video-six-steps-to-a-zenned-out-complexion.mdx",
+    "wp_path": ".firecrawl/wp/video-six-steps-to-a-zenned-out-complexion.json",
+    "mdx_words": 142,
+    "wp_words": 493
+  },
+  {
+    "slug": "video-how-to-settle-a-baby",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/video-how-to-settle-a-baby/video-how-to-settle-a-baby.mdx",
+    "wp_path": ".firecrawl/wp/video-how-to-settle-a-baby.json",
+    "mdx_words": 179,
+    "wp_words": 405
+  },
+  {
+    "slug": "video-winter-body-routine-sigourneys-edit",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/video-winter-body-routine-sigourneys-edit/video-winter-body-routine-sigourneys-edit.mdx",
+    "wp_path": ".firecrawl/wp/video-winter-body-routine-sigourneys-edit.json",
+    "mdx_words": 176,
+    "wp_words": 425
+  },
+  {
+    "slug": "the-beauty-cupboard-edit-july",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/the-beauty-cupboard-edit-july/the-beauty-cupboard-edit-july.mdx",
+    "wp_path": ".firecrawl/wp/the-beauty-cupboard-edit-july.json",
+    "mdx_words": 35,
+    "wp_words": 245
+  },
+  {
+    "slug": "video-how-to-do-a-gold-foil-pedicure",
+    "category": "beauty-style",
+    "subcategory": "nails",
+    "mdx_path": "content/beauty-style/nails/video-how-to-do-a-gold-foil-pedicure/video-how-to-do-a-gold-foil-pedicure.mdx",
+    "wp_path": ".firecrawl/wp/video-how-to-do-a-gold-foil-pedicure.json",
+    "mdx_words": 25,
+    "wp_words": 349
+  },
+  {
+    "slug": "fresh-glowy-makeup-in-5-minutes-sigourneys-edit",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/fresh-glowy-makeup-in-5-minutes-sigourneys-edit/fresh-glowy-makeup-in-5-minutes-sigourneys-edit.mdx",
+    "wp_path": ".firecrawl/wp/fresh-glowy-makeup-in-5-minutes-sigourneys-edit.json",
+    "mdx_words": 118,
+    "wp_words": 596
+  },
+  {
+    "slug": "how-to-make-the-most-of-your-time-at-the-beauty-salon",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/how-to-make-the-most-of-your-time-at-the-beauty-salon/how-to-make-the-most-of-your-time-at-the-beauty-salon.mdx",
+    "wp_path": ".firecrawl/wp/how-to-make-the-most-of-your-time-at-the-beauty-salon.json",
+    "mdx_words": 248,
+    "wp_words": 1245
+  },
+  {
+    "slug": "loccitane-petit-spa",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/loccitane-petit-spa/loccitane-petit-spa.mdx",
+    "wp_path": ".firecrawl/wp/loccitane-petit-spa.json",
+    "mdx_words": 23,
+    "wp_words": 925
+  },
+  {
+    "slug": "my-evening-skincare-routine-sigourneys-edit",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/my-evening-skincare-routine-sigourneys-edit/my-evening-skincare-routine-sigourneys-edit.mdx",
+    "wp_path": ".firecrawl/wp/my-evening-skincare-routine-sigourneys-edit.json",
+    "mdx_words": 175,
+    "wp_words": 432
+  },
+  {
+    "slug": "empire-retreat-yallingup",
+    "category": "destinations",
+    "subcategory": "spas-retreats",
+    "mdx_path": "content/destinations/spas-retreats/empire-retreat-yallingup/empire-retreat-yallingup.mdx",
+    "wp_path": ".firecrawl/wp/empire-retreat-yallingup.json",
+    "mdx_words": 15,
+    "wp_words": 113
+  },
+  {
+    "slug": "sharkra-medispa-hobart",
+    "category": "destinations",
+    "subcategory": "spas-retreats",
+    "mdx_path": "content/destinations/spas-retreats/sharkra-medispa-hobart/sharkra-medispa-hobart.mdx",
+    "wp_path": ".firecrawl/wp/sharkra-medispa-hobart.json",
+    "mdx_words": 18,
+    "wp_words": 110
+  },
+  {
+    "slug": "facialistas-hyde-park",
+    "category": "destinations",
+    "subcategory": "spas-retreats",
+    "mdx_path": "content/destinations/spas-retreats/facialistas-hyde-park/facialistas-hyde-park.mdx",
+    "wp_path": ".firecrawl/wp/facialistas-hyde-park.json",
+    "mdx_words": 16,
+    "wp_words": 108
+  },
+  {
+    "slug": "spa-qualia-hamilton-island",
+    "category": "destinations",
+    "subcategory": "spas-retreats",
+    "mdx_path": "content/destinations/spas-retreats/spa-qualia-hamilton-island/spa-qualia-hamilton-island.mdx",
+    "wp_path": ".firecrawl/wp/spa-qualia-hamilton-island.json",
+    "mdx_words": 16,
+    "wp_words": 99
+  },
+  {
+    "slug": "como-the-treasury-perth",
+    "category": "destinations",
+    "subcategory": "spas-retreats",
+    "mdx_path": "content/destinations/spas-retreats/como-the-treasury-perth/como-the-treasury-perth.mdx",
+    "wp_path": ".firecrawl/wp/como-the-treasury-perth.json",
+    "mdx_words": 15,
+    "wp_words": 113
+  },
+  {
+    "slug": "peninsula-life-medi-spa-mornington-peninsula",
+    "category": "destinations",
+    "subcategory": "clinics",
+    "mdx_path": "content/destinations/clinics/peninsula-life-medi-spa-mornington-peninsula/peninsula-life-medi-spa-mornington-peninsula.mdx",
+    "wp_path": ".firecrawl/wp/peninsula-life-medi-spa-mornington-peninsula.json",
+    "mdx_words": 15,
+    "wp_words": 101
+  },
+  {
+    "slug": "lee-preston-hairdressing-south-perth",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/lee-preston-hairdressing-south-perth/lee-preston-hairdressing-south-perth.mdx",
+    "wp_path": ".firecrawl/wp/lee-preston-hairdressing-south-perth.json",
+    "mdx_words": 16,
+    "wp_words": 114
+  },
+  {
+    "slug": "brad-ngata-darlinghurst",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/brad-ngata-darlinghurst/brad-ngata-darlinghurst.mdx",
+    "wp_path": ".firecrawl/wp/brad-ngata-darlinghurst.json",
+    "mdx_words": 15,
+    "wp_words": 113
+  },
+  {
+    "slug": "joh-bailey-double-bay",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/joh-bailey-double-bay/joh-bailey-double-bay.mdx",
+    "wp_path": ".firecrawl/wp/joh-bailey-double-bay.json",
+    "mdx_words": 16,
+    "wp_words": 114
+  },
+  {
+    "slug": "la-boutique-double-bay",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/la-boutique-double-bay/la-boutique-double-bay.mdx",
+    "wp_path": ".firecrawl/wp/la-boutique-double-bay.json",
+    "mdx_words": 13,
+    "wp_words": 110
+  },
+  {
+    "slug": "yots-hair-north-adelaide",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/yots-hair-north-adelaide/yots-hair-north-adelaide.mdx",
+    "wp_path": ".firecrawl/wp/yots-hair-north-adelaide.json",
+    "mdx_words": 16,
+    "wp_words": 114
+  },
+  {
+    "slug": "toni-and-guy-subiaco",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/toni-and-guy-subiaco/toni-and-guy-subiaco.mdx",
+    "wp_path": ".firecrawl/wp/toni-and-guy-subiaco.json",
+    "mdx_words": 19,
+    "wp_words": 117
+  },
+  {
+    "slug": "roji-canberra",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/roji-canberra/roji-canberra.mdx",
+    "wp_path": ".firecrawl/wp/roji-canberra.json",
+    "mdx_words": 17,
+    "wp_words": 115
+  },
+  {
+    "slug": "agape-hair-hobart",
+    "category": "destinations",
+    "subcategory": "travel",
+    "mdx_path": "content/destinations/travel/agape-hair-hobart/agape-hair-hobart.mdx",
+    "wp_path": ".firecrawl/wp/agape-hair-hobart.json",
+    "mdx_words": 15,
+    "wp_words": 113
+  },
+  {
+    "slug": "how-to-double-protect-your-skin",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/how-to-double-protect-your-skin/how-to-double-protect-your-skin.mdx",
+    "wp_path": ".firecrawl/wp/how-to-double-protect-your-skin.json",
+    "mdx_words": 127,
+    "wp_words": 521
+  },
+  {
+    "slug": "my-morning-skincare-routine-sigourneys-edit",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/my-morning-skincare-routine-sigourneys-edit/my-morning-skincare-routine-sigourneys-edit.mdx",
+    "wp_path": ".firecrawl/wp/my-morning-skincare-routine-sigourneys-edit.json",
+    "mdx_words": 86,
+    "wp_words": 426
+  },
+  {
+    "slug": "how-to-tv-ready-skin-with-sally-obermeder",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/how-to-tv-ready-skin-with-sally-obermeder/how-to-tv-ready-skin-with-sally-obermeder.mdx",
+    "wp_path": ".firecrawl/wp/how-to-tv-ready-skin-with-sally-obermeder.json",
+    "mdx_words": 29,
+    "wp_words": 223
+  },
+  {
+    "slug": "how-to-create-bold-beautiful-brows",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/how-to-create-bold-beautiful-brows/how-to-create-bold-beautiful-brows.mdx",
+    "wp_path": ".firecrawl/wp/how-to-create-bold-beautiful-brows.json",
+    "mdx_words": 120,
+    "wp_words": 292
+  },
+  {
+    "slug": "how-to-be-a-beauty-rebel-with-ruby-rose",
+    "category": "beauty-style",
+    "subcategory": "beauty-tips",
+    "mdx_path": "content/beauty-style/beauty-tips/how-to-be-a-beauty-rebel-with-ruby-rose/how-to-be-a-beauty-rebel-with-ruby-rose.mdx",
+    "wp_path": ".firecrawl/wp/how-to-be-a-beauty-rebel-with-ruby-rose.json",
+    "mdx_words": 139,
+    "wp_words": 312
+  },
+  {
+    "slug": "how-to-fill-in-your-brows-with-desiree-wise",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/how-to-fill-in-your-brows-with-desiree-wise/how-to-fill-in-your-brows-with-desiree-wise.mdx",
+    "wp_path": ".firecrawl/wp/how-to-fill-in-your-brows-with-desiree-wise.json",
+    "mdx_words": 167,
+    "wp_words": 528
+  },
+  {
+    "slug": "how-to-fake-gorgeous-skin",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/how-to-fake-gorgeous-skin/how-to-fake-gorgeous-skin.mdx",
+    "wp_path": ".firecrawl/wp/how-to-fake-gorgeous-skin.json",
+    "mdx_words": 127,
+    "wp_words": 421
+  },
+  {
+    "slug": "super-easy-eye-liner",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/super-easy-eye-liner/super-easy-eye-liner.mdx",
+    "wp_path": ".firecrawl/wp/super-easy-eye-liner.json",
+    "mdx_words": 83,
+    "wp_words": 277
+  },
+  {
+    "slug": "apply-mascara-like-a-pro",
+    "category": "beauty-style",
+    "subcategory": "makeup",
+    "mdx_path": "content/beauty-style/makeup/apply-mascara-like-a-pro/apply-mascara-like-a-pro.mdx",
+    "wp_path": ".firecrawl/wp/apply-mascara-like-a-pro.json",
+    "mdx_words": 131,
+    "wp_words": 482
+  },
+  {
+    "slug": "remove-make-up-with-coconut-oil",
+    "category": "beauty-style",
+    "subcategory": "skin-care",
+    "mdx_path": "content/beauty-style/skin-care/remove-make-up-with-coconut-oil/remove-make-up-with-coconut-oil.mdx",
+    "wp_path": ".firecrawl/wp/remove-make-up-with-coconut-oil.json",
+    "mdx_words": 249,
+    "wp_words": 568
+  }
+]

@@ -1,4 +1,4 @@
-import type { Root, Element, Node } from 'hast'
+import type { Root, Element, ElementContent, Node } from 'hast'
 import type { Plugin } from 'unified'
 
 /**
@@ -14,79 +14,120 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
     let i = 0
 
     while (i < children.length) {
-      const runStart = i
-
-      // Find the length of a run of image-only paragraphs starting at i
-      while (
-        i < children.length &&
-        isImageOnlyParagraph(children[i])
-      ) {
-        i++
-      }
-
-      const runLength = i - runStart
-
-      if (runLength === 0) {
-        // Non-image node — advance so the outer loop doesn't spin forever
+      if (!isImageOnlyParagraph(children[i])) {
         i++
         continue
       }
 
-      if (runLength >= 2) {
-        // Extract the <img> elements from each <p>
-        const imgNodes = children
-          .slice(runStart, runStart + runLength)
-          .map((p) => {
-            const para = p as Element
-            const img = para.children.find(
-              (c): c is Element => c.type === 'element' && c.tagName === 'img'
-            )!
-            img.properties = {
-              ...img.properties,
-              class: 'w-full h-auto object-contain',
-            }
-            return img
-          })
-
-        // Chunk into rows: prefer exactly-3 only when the whole run is 3,
-        // otherwise use rows of 2 so we get a 2-column layout.
-        const chunkSize = runLength === 3 ? 3 : 2
-        const gridNodes: Element[] = []
-        for (let j = 0; j < imgNodes.length; j += chunkSize) {
-          const chunk = imgNodes.slice(j, j + chunkSize)
-          // A leftover single image is shown full-width — skip wrapping
-          if (chunk.length === 1) {
-            gridNodes.push({
-              type: 'element',
-              tagName: 'p',
-              properties: {},
-              children: [chunk[0]],
-            })
-            continue
+      // Collect a run of image-unit groups (image + optional caption),
+      // skipping whitespace text nodes between them.
+      const units: { imgIdx: number; captionIdx?: number }[] = []
+      let j = i
+      while (j < children.length) {
+        if (isImageOnlyParagraph(children[j])) {
+          const unit: { imgIdx: number; captionIdx?: number } = { imgIdx: j }
+          let next = j + 1
+          // skip whitespace
+          while (next < children.length && isWhitespaceText(children[next])) next++
+          // check if next node is a caption (h6, or italic-only paragraph)
+          if (next < children.length && isCaption(children[next])) {
+            unit.captionIdx = next
+            j = next + 1
+          } else {
+            j = next
           }
-          const cols = chunk.length === 2 ? 2 : 3
-          const gridClass =
-            cols === 2
-              ? 'not-prose grid grid-cols-2 gap-3 my-6'
-              : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
-          gridNodes.push({
-            type: 'element',
-            tagName: 'div',
-            properties: { class: gridClass },
-            children: chunk.map((img) => ({
+          units.push(unit)
+        } else if (isWhitespaceText(children[j])) {
+          j++
+        } else {
+          break
+        }
+      }
+
+      const runLength = units.length
+
+      if (runLength < 2) {
+        i = j
+        continue
+      }
+
+      // Extract the <img> elements and optional captions from each unit
+      const imgUnits = units.map((unit) => {
+        const para = children[unit.imgIdx] as Element
+        const img = para.children.find(
+          (c): c is Element => c.type === 'element' && c.tagName === 'img'
+        )!
+        img.properties = {
+          ...img.properties,
+          class: 'w-full h-full object-cover',
+        }
+        const caption = unit.captionIdx !== undefined
+          ? (children[unit.captionIdx] as Element)
+          : undefined
+        return { img, caption }
+      })
+
+      // Chunk into rows: prefer exactly-3 only when the whole run is 3,
+      // otherwise use rows of 2 so we get a 2-column layout.
+      const chunkSize = runLength === 3 ? 3 : 2
+      const gridNodes: Element[] = []
+      for (let k = 0; k < imgUnits.length; k += chunkSize) {
+        const chunk = imgUnits.slice(k, k + chunkSize)
+        // A leftover single image is shown full-width — skip wrapping
+        if (chunk.length === 1) {
+          const cellChildren: Element[] = [
+            { type: 'element', tagName: 'p', properties: {}, children: [chunk[0].img] },
+          ]
+          if (chunk[0].caption) cellChildren.push(chunk[0].caption)
+          gridNodes.push(...cellChildren)
+          continue
+        }
+        const cols = chunk.length === 2 ? 2 : 3
+        const gridClass =
+          cols === 2
+            ? 'not-prose grid gap-3 my-6'
+            : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
+        const gridStyle = cols === 2 ? 'grid-template-columns:2fr 1fr' : undefined
+        gridNodes.push({
+          type: 'element',
+          tagName: 'div',
+          properties: { class: gridClass, style: gridStyle },
+          children: chunk.map(({ img, caption }) => {
+            const cellChildren: ElementContent[] = [img as ElementContent]
+            if (caption) {
+              caption.properties = {
+                ...caption.properties,
+                class: 'text-center text-xs mt-1',
+              }
+              cellChildren.push(caption)
+            }
+            return {
               type: 'element' as const,
               tagName: 'div' as const,
-              properties: { class: 'flex items-center justify-center' },
-              children: [img],
-            })),
-          })
-        }
-
-        children.splice(runStart, runLength, ...gridNodes)
-        i = runStart + gridNodes.length
+              properties: { class: 'flex flex-col items-center justify-center' },
+              children: cellChildren,
+            }
+          }),
+        })
       }
+
+      const spliceStart = units[0].imgIdx
+      const spliceCount = j - spliceStart
+      children.splice(spliceStart, spliceCount, ...gridNodes)
+      i = spliceStart + gridNodes.length
     }
   }
+}
+
+function isCaption(node: Node): boolean {
+  if (node.type !== 'element') return false
+  const el = node as Element
+  return el.tagName === 'h6'
+}
+
+function isWhitespaceText(node: Node): boolean {
+  if (node.type !== 'text') return false
+  return (node as unknown as { value: string }).value.trim() === ''
 }
 
 function isImageOnlyParagraph(node: Node): boolean {

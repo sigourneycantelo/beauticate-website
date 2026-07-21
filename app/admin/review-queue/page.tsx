@@ -109,7 +109,7 @@ export default function ReviewQueuePage() {
   ]
 
   // Group by category for the filter links at top
-  const categories = [...new Set(items.map(i => i.category))].sort()
+  const categories = [...new Set(items.map(i => i.category).filter(Boolean))].sort()
 
   return (
     <div className="min-h-screen bg-[#f7f6f4] p-6 md:p-10">
@@ -124,7 +124,7 @@ export default function ReviewQueuePage() {
           <div className="flex gap-3 text-xs text-gray-500 flex-wrap">
             {categories.map(cat => (
               <a key={cat} href={`#${cat}`} className="hover:text-gray-800 transition-colors capitalize">
-                {cat.replace(/-/g, ' ')}
+                {cat?.replace(/-/g, ' ')}
               </a>
             ))}
           </div>
@@ -179,14 +179,14 @@ export default function ReviewQueuePage() {
                   >
                     <td className="py-2.5 px-4">
                       <Link href={item.path} target="_blank" className="group">
-                        <div className="font-medium text-gray-900 leading-snug max-w-[280px] text-sm group-hover:text-gold transition-colors">{item.title}</div>
+                        <div className="font-medium text-gray-900 leading-snug max-w-[280px] text-sm group-hover:text-wine transition-colors">{item.title}</div>
                         <div className="text-xs text-gray-400 mt-0.5 truncate max-w-[280px]">{item.slug}</div>
                       </Link>
                     </td>
                     <td className="py-2.5 px-4 text-xs text-gray-500 whitespace-nowrap">
-                      <span className="capitalize">{item.category.replace(/-/g, ' ')}</span>
+                      <span className="capitalize">{item.category?.replace(/-/g, ' ')}</span>
                       {item.subcategory && (
-                        <div className="text-gray-400 capitalize">{item.subcategory.replace(/-/g, ' ')}</div>
+                        <div className="text-gray-400 capitalize">{item.subcategory?.replace(/-/g, ' ')}</div>
                       )}
                     </td>
                     <td className="py-2.5 px-4 text-xs text-gray-400 whitespace-nowrap">

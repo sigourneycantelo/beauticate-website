@@ -1,0 +1,232 @@
+// ─── Broad shop categories ────────────────────────────────────────────────────
+// The shop nav mirrors the editorial pillars: broad categories first
+// (Beauty · Wellness · Living · Style), each mapped to a real Shopify collection
+// the team curated. Every broad category is a curated superset collection; its
+// `subs` are the sub-collections used both as mega-menu thumbnails and as the
+// in-page filter buttons. Style has no products yet and shows "coming soon".
+//
+// Handles below are the live Shopify collection handles — keep them in sync with
+// the store (see `getcols.py`).
+
+export type SubCat = {
+  slug: string     // url filter value, e.g. ?cat=makeup
+  label: string    // button / card label
+  handle?: string  // Shopify collection handle (omit for classify-only filters, e.g. Living)
+  comingSoon?: boolean  // greyed, non-clickable tile with no products yet (e.g. Nails)
+  // Auto-classification signals — used to place a product in this bucket when it
+  // isn't (or is wrongly) filed in the Shopify sub-collection. productTypes match
+  // Shopify's productType exactly; keywords are substring-matched (case-insensitive)
+  // against productType + title + tags. Order of subs matters: first match wins.
+  productTypes?: string[]
+  keywords?: string[]
+}
+
+export type BroadCat = {
+  slug: string       // /shop/<slug>
+  label: string
+  handle?: string    // Shopify collection handle for the full product list + hero image
+  comingSoon?: boolean
+  subs: SubCat[]
+}
+
+export const BROAD_CATEGORIES: BroadCat[] = [
+  {
+    slug: 'beauty',
+    label: 'Beauty',
+    handle: 'beauty-1',
+    subs: [
+      {
+        slug: 'makeup', label: 'Makeup', handle: 'makeup',
+        productTypes: ['Lipstick', 'Lipgloss', 'Eyeliner', 'Eyeshadow', 'Concealer', 'Mascara', 'BB Cream', 'Illuminator', 'Multi-Use Tint', 'Eyebrow Pencil', 'Eyebrow Tint and Gel', 'Foundation', 'Blush', 'Bronzer', 'Highlighter', 'Setting Powder', 'Lip Liner', 'Lip Balm'],
+        keywords: ['lipstick', 'lip gloss', 'lipgloss', 'mascara', 'eyeliner', 'eyeshadow', 'concealer', 'foundation', 'blush', 'bronzer', 'highlighter', 'eyebrow', 'brow ', 'lip tint', 'lip balm', 'makeup', 'make-up'],
+      },
+      {
+        slug: 'skincare', label: 'Skincare', handle: 'skincare',
+        productTypes: ['Masque', 'Serum', 'Skincare', 'Skin Care', 'Eye & Lip Care', 'Mist', 'Cleanser', 'Moisturiser', 'Moisturizer', 'Toner', 'Exfoliant', 'SPF', 'Sunscreen', 'Face Oil', 'Pigmentation & uneven skin tone', 'Acne Prone', 'Dry & Dehydration'],
+        keywords: ['serum', 'cleanser', 'moisturis', 'moisturiz', 'toner', 'masque', 'face mask', 'spf', 'sunscreen', 'exfoliat', 'retinol', 'hyaluronic', 'eye cream', 'face oil', 'skin '],
+      },
+      {
+        slug: 'hair', label: 'Hair', handle: 'hair',
+        productTypes: ['Shampoo', 'Conditioner', 'Conditioners', 'Haircare', 'Hair Care', 'Hair Serum', 'Hair Oil', 'Hair Mask', 'Leave-in', 'Pre-Shampoo Treatment', 'Scalp Treatment', 'Dry Shampoo'],
+        keywords: ['shampoo', 'conditioner', 'scalp', 'hair '],
+      },
+      {
+        slug: 'fragrance', label: 'Fragrance', handle: 'fragrance-1',
+        productTypes: ['Perfume', 'Eau de Parfum', 'Eau de Toilette', 'Perfume Oil', 'Cologne', 'Fragrance', 'Solid Perfume'],
+        keywords: ['perfume', 'fragrance', 'cologne', 'eau de parfum', 'eau de toilette', 'parfum'],
+      },
+      {
+        slug: 'body', label: 'Body', handle: 'body',
+        productTypes: ['Hand & Body Wash', 'Hand & Body Lotion', 'Hand & Body Cream', 'Body Oil', 'Body Glow', 'Hand Cream', 'Hand Wash', 'Body Wash', 'Body Lotion', 'Body Cream', 'Body Scrub', 'Deodorant', 'Bath Soak', 'Scented Soap'],
+        keywords: ['body wash', 'body lotion', 'body cream', 'body oil', 'body glow', 'hand cream', 'hand wash', 'deodorant', 'body scrub', 'bath soak', 'shower'],
+      },
+      {
+        slug: 'accessories', label: 'Accessories', handle: 'beauty-accessories',
+        productTypes: ['Beauty Tools', 'Makeup Brush Holder', 'Makeup sponge', 'Vanity Toiletry Cosmetic bags', 'Accessories', 'Accessory'],
+        keywords: ['makeup brush', 'beauty tool', 'makeup sponge', 'cosmetic bag', 'vanity bag', 'tweezer', 'applicator'],
+      },
+      { slug: 'nails', label: 'Nails', comingSoon: true },
+    ],
+  },
+  {
+    slug: 'wellness',
+    label: 'Wellness',
+    handle: 'wellness',
+    subs: [
+      {
+        slug: 'supplements', label: 'Supplements', handle: 'supplements',
+        productTypes: ['Nutrition', 'Vitamin', 'Collagen Supplement', 'Collagen', 'Supplement Powder', 'Supplement', 'Probiotic', 'Protein', 'Tea', 'Tonic'],
+        keywords: ['vitamin', 'supplement', 'collagen', 'probiotic', 'magnesium', 'protein', 'nutrition', 'capsule', 'powder', 'adaptogen'],
+      },
+      {
+        slug: 'tools', label: 'Tools', handle: 'wellness-accessories',
+        productTypes: ['Massager', 'Foam Roller', 'Acupressure Mat', 'Body Brush', 'Wellness Device', 'Period Relief Device', 'Sleep Mask', 'Bluelight', 'Wearable Wellness Patch', 'Accessories', 'Accessory'],
+        keywords: ['massager', 'foam roller', 'acupressure', 'body brush', 'device', 'wellness patch', 'sleep mask', 'blue light', 'bluelight', 'gua sha'],
+      },
+    ],
+  },
+  {
+    slug: 'living',
+    label: 'Living',
+    handle: 'living-interiors',
+    // No Shopify sub-collections exist for Living, so these filters are classify-only
+    // (matched from productType / title). handle omitted on purpose.
+    subs: [
+      {
+        slug: 'candles', label: 'Candles & Incense',
+        productTypes: ['Candles', 'Candle', 'Incense & Holders', 'Essential Oils & Burners'],
+        keywords: ['candle', 'incense', 'burner'],
+      },
+      {
+        slug: 'glassware', label: 'Glassware & Barware',
+        productTypes: ['Glassware', 'Serveware', 'Decanter', 'Carafe', 'Jug', 'Serving Spoon'],
+        keywords: ['glass', 'carafe', 'decanter', 'tumbler', 'coupe', 'flute', 'jug', 'pitcher', 'serving', 'vinaigrette', 'balsamic', 'cake server', 'whisk', 'culinary'],
+      },
+      {
+        slug: 'home-fragrance', label: 'Home Fragrance',
+        productTypes: ['Room Spray', 'Scented Water', 'Scented Soap', 'Mist'],
+        keywords: ['room spray', 'scented water', 'scented soap', 'pot pourri', 'potpourri'],
+      },
+      {
+        slug: 'decor', label: 'Vases & Décor',
+        productTypes: ['Vases', 'Vase', 'Furniture'],
+        keywords: ['vase', 'furniture', 'blanket', 'cushion', 'throw'],
+      },
+    ],
+  },
+  {
+    slug: 'style',
+    label: 'Style',
+    handle: 'style',   // placeholder collection — only used for the tile image; stays coming-soon
+    comingSoon: true,
+    subs: [],
+  },
+]
+
+export function getBroad(slug: string): BroadCat | undefined {
+  return BROAD_CATEGORIES.find(b => b.slug === slug)
+}
+
+// ─── Shop by Brand ────────────────────────────────────────────────────────────
+// Mirrors the beauticate.shop "Shop by Brand" menu. `handle` is the live Shopify
+// collection handle → /shop/brands/<handle>.
+
+export type ShopBrand = { name: string; handle: string }
+
+// Ordered by profile / recognition (not alphabetical) — most well-known first.
+// Easy to re-rank: this array order drives both the Brands index and the nav list.
+export const SHOP_BRANDS: ShopBrand[] = [
+  { name: 'Maison Balzac', handle: 'maison-balzac-1' },
+  { name: 'Booie Beauty', handle: 'booie-beauty' },
+  { name: 'Lumira', handle: 'lumira-1' },
+  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
+  { name: 'Mukti Organics', handle: 'mukti-organics-1' },
+  { name: 'Saint Louve', handle: 'saintlouve-1' },
+  { name: 'Christophe Robin', handle: 'christophe-robin' },
+  { name: 'Lamav', handle: 'lamav' },
+  { name: 'Subtle Energies', handle: 'subtle-energies' },
+  { name: 'Sunescape', handle: 'sunescape' },
+  { name: 'Tulita Parfum', handle: 'tulita-parfum' },
+  { name: 'Archer Farrar Perfume Atelier', handle: 'archer-farrar-perfume-atelier' },
+  { name: 'Chiquita', handle: 'chiquita' },
+  { name: 'Estetika', handle: 'estetika-1' },
+  { name: 'Eir Women', handle: 'eir-women' },
+  { name: 'Innour', handle: 'innour' },
+  { name: 'Bon Wellness', handle: 'bon-patch' },
+  { name: 'OiTO Haircare', handle: 'oito-haircare' },
+  { name: 'Lash Armour', handle: 'lash-armour-1' },
+  { name: 'Buj', handle: 'buj' },
+  { name: 'Kiicity', handle: 'kiicity' },
+  { name: 'Sontse.', handle: 'sontse-1' },
+  { name: 'St Louis Says', handle: 'st-louis-says' },
+  { name: 'Basics by B', handle: 'basics-by-b' },
+]
+
+// ─── Shop by Moment ───────────────────────────────────────────────────────────
+// Mirrors the beauticate.shop "Shop by Moment" menu. `handle` is the live Shopify
+// collection handle → /shop/collections/<handle>.
+
+export type ShopMoment = { name: string; handle: string }
+
+export const SHOP_MOMENTS: ShopMoment[] = [
+  { name: 'Winter Edit', handle: 'autumn-edit' },
+  { name: 'Deepest Sleep', handle: 'evening-unwind' },
+  { name: 'Fit Girl Glow', handle: 'fit-girl-glow' },
+  { name: 'Selfcare Sunday', handle: 'selfcare-sunday' },
+  { name: 'Winter Skin', handle: 'winter-skin' },
+  { name: 'Best Friend Birthday', handle: 'best-friend-bday' },
+  { name: 'Mama Love', handle: 'mothers-day' },
+  { name: 'Little Luxuries — Under $50', handle: 'little-luxuries-under-50' },
+  { name: 'Thoughtful Gestures — Under $100', handle: 'thoughtful-gestures-under-100' },
+  { name: 'Luxe Lovers — Under $300', handle: 'luxe-lovers-under-300' },
+]
+
+// Gifting edits are the occasion / price-tier moments; they live under the "Gifting"
+// nav item and the /shop/gifting page. Everything else is a "mood" moment shown under
+// Shop by Moment (/shop/by-moment). Order in SHOP_MOMENTS = newest first.
+export const GIFTING_HANDLES = new Set<string>([
+  'best-friend-bday', 'mothers-day', 'little-luxuries-under-50',
+  'thoughtful-gestures-under-100', 'luxe-lovers-under-300',
+])
+export const MOOD_MOMENTS: ShopMoment[] = SHOP_MOMENTS.filter(m => !GIFTING_HANDLES.has(m.handle))
+export const GIFTING_MOMENTS: ShopMoment[] = SHOP_MOMENTS.filter(m => GIFTING_HANDLES.has(m.handle))
+
+// ─── New In Shop ──────────────────────────────────────────────────────────────
+// The latest brands to onboard, curated by hand (Shopify's Storefront API exposes no
+// collection creation date). Update this list when a new brand comes on board.
+export const NEW_IN_BRANDS: ShopBrand[] = [
+  { name: 'WaterRower', handle: 'waterrower' },
+  { name: 'NOHRD', handle: 'nohrd' },
+  { name: 'Kiicity', handle: 'kiicity' },
+]
+
+// ─── Curator edits (Editor's Picks → "Shop by Curator") ───────────────────────
+// The curated "picks" collections shown as previews under Editor's Picks. Will grow
+// into a "Shop by Curator" section as more curators are added.
+export type CuratorEdit = { name: string; handle: string }
+export const CURATOR_EDITS: CuratorEdit[] = [
+  { name: "Editor's Essentials", handle: 'editors-essentials' },
+  { name: 'Team Picks', handle: 'team-picks' },
+]
+
+// Auto-classify a product into one of a broad category's sub-buckets from its own
+// signals, for when it isn't filed in the Shopify sub-collection. First sub to match
+// wins (subs are ordered most-specific first). Returns undefined if nothing matches.
+export function classifySub(
+  broad: BroadCat,
+  product: { productType?: string | null; title?: string | null; tags?: string[] | null },
+): string | undefined {
+  const type = (product.productType ?? '').trim().toLowerCase()
+  const hay = [product.productType ?? '', product.title ?? '', ...(product.tags ?? [])].join(' ').toLowerCase()
+  // Pass 1: exact productType match (most reliable) wins across all buckets.
+  if (type) {
+    for (const sub of broad.subs) {
+      if (sub.productTypes?.some(t => t.toLowerCase() === type)) return sub.slug
+    }
+  }
+  // Pass 2: keyword match, respecting sub order (most-specific first).
+  for (const sub of broad.subs) {
+    if (sub.keywords?.some(k => hay.includes(k))) return sub.slug
+  }
+  return undefined
+}

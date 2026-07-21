@@ -1,20 +1,30 @@
 import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
 
 const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './content/**/*.{mdx}',
+    './content/**/*.mdx',
   ],
   theme: {
     extend: {
       colors: {
         // Beauticate brand colours — update with exact hex once confirmed
         paper:     '#FFFFFF',
-        parchment: '#FBF9F4',
-        ink:       '#1C1A17',
+        parchment: '#F5F3F0',
+        ink:       '#2a2621',
+        // v15 canonical accents (mock is the source of truth)
+        wine:      '#7a2733',
+        choc:      '#3a2a22',
+        greige:    '#efece6',
+        muted:     '#7a7268',
+        line:      'rgba(42,38,33,0.14)',
+        // product-card tile — sampled from actual Shopify product-photo backgrounds
+        tile:      '#ECEAE8',
         eucalypt:  '#8E9A82',
         teal:      '#104760',
+        chocolate:  '#3a2a22',
         // brand accents — use sparingly
         camel:      '#DBCEB9',
         terracotta: '#B5613A',
@@ -22,12 +32,13 @@ const config: Config = {
         aqua:       '#BFFFF5',
         // legacy aliases kept so existing components don't break
         cream:    { DEFAULT: '#FFFFFF', 50: '#FFFFFF', 100: '#FBF9F4', 200: '#ebebeb' },
-        charcoal: { DEFAULT: '#1C1A17', light: '#3d3d3d' },
+        charcoal: { DEFAULT: '#2a2621', light: '#3d3d3d' },
       },
       fontFamily: {
-        // Update once brand fonts confirmed
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         sans:  ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+        numeral: ['var(--font-numeral)', 'Georgia', 'serif'],
       },
       typography: {
         DEFAULT: {
@@ -38,12 +49,34 @@ const config: Config = {
             lineHeight: '1.8',
             a: { color: '#1C1A17', '&:hover': { color: '#8E9A82' } },
             h1: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.02em' },
-            h2: { fontFamily: 'var(--font-serif)', letterSpacing: '-0.01em', fontWeight: '600' },
-            h3: { fontFamily: 'var(--font-serif)', fontWeight: '500' },
-            h4: { fontFamily: 'var(--font-sans)', textTransform: 'uppercase', letterSpacing: '0.34em', fontSize: '0.7rem', fontWeight: '400' },
+            h2: { fontFamily: 'var(--font-display)', letterSpacing: '-0.01em', fontWeight: '400' },
+            h3: { fontFamily: 'var(--font-display)', fontWeight: '400' },
+            h4: { fontFamily: 'var(--font-serif)', textTransform: 'none', letterSpacing: 'normal', fontSize: '1.125rem', fontWeight: '600', color: '#1C1A17', lineHeight: '1.8' },
             p:  { fontFamily: 'var(--font-serif)' },
+            figcaption: {
+              fontFamily: 'var(--font-sans)',
+              fontSize: '0.625rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: '#9a9190',
+              marginTop: '0.5rem',
+              a: {
+                color: '#9a9190',
+                textDecoration: 'none',
+                '&:hover': { color: '#3d3d3d' },
+              },
+            },
           },
         },
+      },
+      keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(4px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 0.3s ease-out forwards',
       },
       maxWidth: {
         content: '720px',
@@ -52,7 +85,7 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
+    typography,
   ],
 }
 

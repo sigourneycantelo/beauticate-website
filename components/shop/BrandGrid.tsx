@@ -16,7 +16,7 @@ export default function BrandGrid() {
           <Link
             key={brand}
             href={`/shop/brands/${brand.toLowerCase().replace(/\s+/g, '-')}`}
-            className="border border-cream-200 p-4 text-sm text-center hover:border-gold hover:text-gold transition-colors"
+            className="border border-cream-200 p-4 text-sm text-center hover:border-wine hover:text-wine transition-colors"
           >
             {brand}
           </Link>

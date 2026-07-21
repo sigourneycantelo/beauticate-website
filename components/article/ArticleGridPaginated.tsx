@@ -39,11 +39,11 @@ function Card({ article }: { article: Article }) {
         </div>
         <div className="mt-3">
           {f.category && (
-            <p className="text-xs tracking-widest uppercase text-charcoal-light mb-1">
+            <p className="font-sans text-xs tracking-widest uppercase text-charcoal-light mb-1">
               {f.category.replace(/-/g, ' ')}
             </p>
           )}
-          <h3 className="font-serif text-lg md:text-xl leading-snug group-hover:text-gold transition-colors">
+          <h3 className="font-serif text-lg md:text-xl leading-snug group-hover:text-wine transition-colors">
             {f.title}
           </h3>
           {f.excerpt && (
@@ -62,7 +62,7 @@ export default function ArticleGridPaginated({ articles }: { articles: any[] }) 
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {visible.map((article, i) => {
           const f = article?.frontmatter
           if (!f) return null

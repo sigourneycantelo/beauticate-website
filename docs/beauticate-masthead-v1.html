@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauticate — Masthead Mock v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFFFFF;
+  --paper-2:#efece6;
+  --greige:#e7e2da;
+  --ink:#2a2621;
+  --muted:#7a7268;
+  --wine:#7a2733;
+  --choc:#3a2a22;
+  --line:rgba(42,38,33,.14);
+  --line-soft:rgba(42,38,33,.08);
+  --serif:'EB Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --util-h:46px;
+  --nav-h:52px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+
+/* ---------- MASTHEAD ---------- */
+.masthead{position:sticky;top:0;z-index:1000;background:var(--paper);border-bottom:1px solid var(--line)}
+
+/* utility tier */
+.utility{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  height:var(--util-h);padding:0 34px;gap:16px;
+  border-bottom:1px solid var(--line-soft);
+  transition:height .32s ease,opacity .24s ease,border-color .32s ease;
+  overflow:hidden;
+}
+.util-left{display:flex;align-items:center;gap:20px;justify-self:start}
+.util-right{display:flex;align-items:center;gap:20px;justify-self:end}
+.social{display:flex;align-items:center;gap:13px}
+.social a{color:var(--ink);opacity:.72;transition:opacity .2s,color .2s;display:flex}
+.social a:hover{opacity:1;color:var(--wine)}
+.social svg{width:16px;height:16px}
+.util-link{
+  font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink);opacity:.85;
+  padding:4px 0;transition:color .2s,opacity .2s;white-space:nowrap;
+}
+.util-link:hover{color:var(--wine);opacity:1}
+.icon-btn{display:flex;align-items:center;color:var(--ink);opacity:.85;transition:color .2s,opacity .2s}
+.icon-btn:hover{color:var(--wine);opacity:1}
+.icon-btn svg{width:18px;height:18px}
+.bag-wrap{position:relative}
+.bag-count{
+  position:absolute;top:-6px;right:-8px;background:var(--wine);color:#fff;
+  font-size:8.5px;font-weight:600;line-height:1;min-width:14px;height:14px;
+  border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 3px;letter-spacing:0;
+}
+
+/* wordmark */
+.wordmark{
+  justify-self:center;font-family:var(--sans);font-weight:300;
+  font-size:23px;letter-spacing:.30em;text-transform:uppercase;color:var(--ink);
+  padding-left:.30em;white-space:nowrap;
+}
+.wordmark .dot{color:var(--ink);font-weight:500}
+
+/* primary tier */
+.primary{position:relative;height:var(--nav-h);display:flex;align-items:center;justify-content:center}
+.pillars{list-style:none;display:flex;align-items:center;gap:34px;height:100%}
+.pillar{height:100%;display:flex;align-items:center}
+.pillar>a{
+  font-family:var(--sans);font-size:11.5px;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink);height:100%;display:flex;align-items:center;
+  position:relative;transition:color .2s;
+}
+.pillar>a::after{
+  content:"";position:absolute;left:0;right:0;bottom:14px;height:1px;background:var(--wine);
+  transform:scaleX(0);transform-origin:center;transition:transform .28s ease;
+}
+.pillar:hover>a,.pillar:focus-within>a{color:var(--wine)}
+.pillar:hover>a::after,.pillar:focus-within>a::after{transform:scaleX(1)}
+.pillar.is-shop>a{color:var(--wine)}
+
+/* mini brand shown when scrolled */
+.brand-mini{
+  position:absolute;left:34px;top:50%;transform:translateY(-50%);
+  font-family:var(--sans);font-weight:300;font-size:16px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink);opacity:0;pointer-events:none;
+  transition:opacity .3s ease;padding-left:.24em;
+}
+.brand-mini .dot{color:var(--ink);font-weight:500}
+
+/* scrolled collapse */
+.masthead.scrolled .utility{height:0;opacity:0;border-color:transparent}
+.masthead.scrolled .brand-mini{opacity:1;pointer-events:auto}
+
+/* ---------- MEGA MENU ---------- */
+.mega{
+  position:absolute;left:0;right:0;top:100%;
+  background:var(--paper);border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 18px 40px -28px rgba(42,38,33,.35);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .26s ease,transform .26s ease,visibility .26s;
+  z-index:5;
+}
+.pillar:hover .mega,.pillar:focus-within .mega{opacity:1;visibility:visible;transform:translateY(0)}
+.mega-inner{
+  max-width:1180px;margin:0 auto;padding:36px 34px 40px;
+  display:grid;grid-template-columns:216px 1fr;gap:52px;align-items:start;
+}
+.mega-subs{border-right:1px solid var(--line-soft);padding-right:8px}
+.mega-eyebrow{
+  display:block;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;
+}
+.mega-subs ul{list-style:none}
+.mega-subs li{margin:0}
+.mega-subs a{
+  display:flex;align-items:center;gap:9px;padding:7px 0;
+  font-size:12px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink);opacity:.82;transition:color .18s,opacity .18s;
+}
+.mega-subs a::before{
+  content:"";width:0;height:1px;background:var(--wine);transition:width .22s ease;flex:none;
+}
+.mega-subs a:hover,.mega-subs a.active{color:var(--wine);opacity:1}
+.mega-subs a:hover::before,.mega-subs a.active::before{width:14px}
+.mega-all{
+  display:inline-block;margin-top:18px;font-family:var(--serif);font-style:italic;
+  font-size:15px;color:var(--wine);
+}
+.mega-all:hover{text-decoration:underline;text-underline-offset:3px}
+
+.mega-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.mcard{display:block;opacity:0;animation:cardIn .34s ease forwards}
+.mcard-img{
+  aspect-ratio:4/5;width:100%;background:var(--greige);margin-bottom:11px;
+  position:relative;overflow:hidden;
+}
+.mcard-img::after{content:"";position:absolute;inset:0;background:rgba(58,42,34,.04)}
+.tone-1{background:linear-gradient(150deg,#dcd5ca,#c8bfb1)}
+.tone-2{background:linear-gradient(150deg,#d3c9c6,#b9adaa)}
+.tone-3{background:linear-gradient(150deg,#cfd2cc,#b6bcb3)}
+.tone-4{background:linear-gradient(150deg,#dacfca,#c2b3ab)}
+.mcard-eye{
+  font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--wine);margin-bottom:5px;
+}
+.mcard-title{font-family:var(--serif);font-weight:400;font-size:16.5px;line-height:1.24;color:var(--ink);margin-bottom:5px}
+.mcard:hover .mcard-title{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:.5px}
+.mcard-meta{font-size:10.5px;color:var(--muted);letter-spacing:.02em}
+@keyframes cardIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* simple dropdown for shop/podcast style menus reuse mega, fine */
+
+/* ---------- MOBILE BITS ---------- */
+.hamburger{display:none;align-items:center;color:var(--ink)}
+.hamburger svg{width:22px;height:22px}
+.m-only{display:none}
+
+/* ---------- DEMO PAGE BODY ---------- */
+.hero{max-width:1180px;margin:44px auto 0;padding:0 34px;display:grid;grid-template-columns:1.05fr .95fr;min-height:440px}
+.hero-panel{background:var(--paper-2);display:flex;flex-direction:column;justify-content:center;padding:56px 54px}
+.hero-eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--wine);margin-bottom:20px}
+.hero-title{font-family:var(--serif);font-weight:400;font-size:44px;line-height:1.08;letter-spacing:-.01em;color:var(--ink);margin-bottom:22px}
+.hero-stand{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.4;color:var(--muted);max-width:30ch;margin-bottom:30px}
+.hero-cta{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--wine);padding-bottom:5px;transition:color .2s}
+.hero-cta:hover{color:var(--wine)}
+.hero-img{background:linear-gradient(150deg,#d3c9c6,#b9adaa)}
+
+.tagline{max-width:1180px;margin:0 auto;padding:40px 34px;text-align:center;border-bottom:1px solid var(--line-soft)}
+.tagline .k{font-family:var(--serif);font-size:22px;color:var(--ink)}
+.tagline .k b{font-weight:500}
+.tagline .s{margin-top:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+.filler{max-width:1180px;margin:0 auto;padding:46px 34px 90px}
+.filler h2{font-family:var(--serif);font-weight:400;font-size:15px;letter-spacing:.02em;color:var(--muted);text-align:center;margin-bottom:30px;font-style:italic}
+.frow{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.fcard .mcard-img{aspect-ratio:4/5;margin-bottom:14px}
+.fcard .mcard-title{font-size:20px}
+.note{max-width:1180px;margin:0 auto 70px;padding:0 34px;text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1080px){
+  .pillars{gap:24px}
+  .mega-cards{grid-template-columns:repeat(4,1fr);gap:16px}
+}
+@media(max-width:900px){
+  .utility{grid-template-columns:auto 1fr auto;padding:0 18px;height:56px}
+  .util-left{gap:0}
+  .util-left .social,.util-left .util-link{display:none}
+  .hamburger{display:flex;justify-self:start}
+  .util-right{gap:16px}
+  .util-right .util-link{display:none}
+  .wordmark{font-size:19px;letter-spacing:.24em}
+  .primary{display:none}
+  .masthead.scrolled .utility{height:56px;opacity:1;border-color:var(--line-soft)}
+  .hero{grid-template-columns:1fr;margin-top:0;padding:0}
+  .hero-panel{padding:44px 24px;order:2}
+  .hero-img{min-height:320px;order:1}
+  .hero-title{font-size:34px}
+  .frow{grid-template-columns:1fr 1fr;gap:16px}
+  .filler{padding:40px 18px 70px}
+  .tagline .k{font-size:18px}
+}
+@media(max-width:560px){
+  .frow{grid-template-columns:1fr}
+}
+
+/* ---------- MOBILE DRAWER ---------- */
+.scrim{position:fixed;inset:0;background:rgba(42,38,33,.4);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:1100}
+.scrim.open{opacity:1;visibility:visible}
+.drawer{
+  position:fixed;top:0;left:0;bottom:0;width:min(86vw,380px);background:var(--paper);
+  transform:translateX(-100%);transition:transform .34s cubic-bezier(.4,0,.2,1);z-index:1200;
+  display:flex;flex-direction:column;overflow-y:auto;
+}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-bottom:1px solid var(--line)}
+.drawer-head .wordmark{font-size:18px;justify-self:auto;letter-spacing:.22em}
+.drawer-close{color:var(--ink);display:flex}
+.drawer-close svg{width:20px;height:20px}
+.d-nav{padding:8px 0}
+.d-item{border-bottom:1px solid var(--line-soft)}
+.d-pillar{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 22px;font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
+}
+.d-pillar.is-shop{color:var(--wine)}
+.d-chev{transition:transform .26s ease;color:var(--muted)}
+.d-chev svg{width:14px;height:14px}
+.d-item.open .d-chev{transform:rotate(180deg)}
+.d-subs{max-height:0;overflow:hidden;transition:max-height .3s ease;background:var(--paper-2)}
+.d-item.open .d-subs{max-height:360px}
+.d-subs a{display:block;padding:11px 22px 11px 34px;font-size:11.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);opacity:.82}
+.d-subs a:active{color:var(--wine)}
+.d-foot{margin-top:auto;padding:22px;border-top:1px solid var(--line)}
+.d-foot a{display:block;padding:9px 0;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.d-social{display:flex;gap:16px;margin-top:16px}
+.d-social a{color:var(--ink);opacity:.75;padding:0}
+.d-social svg{width:18px;height:18px}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== MASTHEAD ===================== -->
+<header class="masthead" id="masthead">
+  <div class="utility">
+    <div class="util-left">
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+      </button>
+      <div class="social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.6 3.4 3.5 3.6v2.4c-1.3.1-2.5-.3-3.5-1v6.3c0 3.2-2.4 5.4-5.3 5.4-2.7 0-4.9-2-4.9-4.7 0-2.9 2.4-4.8 5.2-4.5v2.5c-.4-.1-.8-.2-1.2-.1-1.2.2-2 1.1-1.9 2.3.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.3z"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="6" width="19" height="12" rx="3.5"/><path d="M10.5 9.2v5.6l4.5-2.8z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.2"/><path d="M12 7.4c-2.2 0-3.6 1.5-3.6 3.3 0 .9.4 1.9 1.2 2.2.1 0 .2 0 .2-.1l.2-.7c0-.1 0-.2-.1-.3-.3-.4-.5-.9-.5-1.4 0-1.5 1.1-2.6 2.8-2.6 1.5 0 2.4.9 2.4 2.2 0 1.6-.7 3-1.8 3-.6 0-1-.5-.9-1.1.2-.7.5-1.5.5-2 0-.5-.2-.9-.8-.9-.6 0-1.1.6-1.1 1.5 0 .5.2.9.2.9l-.8 3.2c-.2.9-.1 2 0 2.4l.1.1c.5-.7 1-1.6 1.2-2.3l.4-1.5c.3.5 1 .9 1.7.9 2.2 0 3.7-2 3.7-4.6 0-2-1.7-3.8-4.4-3.8z" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Spotify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.2"/><path d="M7.6 10.2c2.8-.7 5.8-.5 8.3 1M8.1 13c2.3-.5 4.6-.3 6.6.9M8.7 15.5c1.8-.4 3.4-.2 4.9.7"/></svg></a>
+      </div>
+      <a href="#" class="util-link">Subscribe</a>
+      <a href="#" class="util-link">About</a>
+    </div>
+
+    <a href="#" class="wordmark">Beauticate<span class="dot">.</span></a>
+
+    <div class="util-right">
+      <button class="icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><line x1="16.2" y1="16.2" x2="21" y2="21"/></svg>
+      </button>
+      <a href="#" class="util-link">Sign In</a>
+      <button class="icon-btn bag-wrap" aria-label="Bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span class="bag-count">2</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="primary" aria-label="Primary">
+    <a href="#" class="brand-mini">Beauticate<span class="dot">.</span></a>
+    <ul class="pillars">
+      <li class="pillar is-shop" data-pillar="shop"><a href="#">Shop</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Shop</span><ul></ul>
+            <a href="#" class="mega-all">Shop all →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+      <li class="pillar" data-pillar="beauty"><a href="#">Beauty &amp; Style</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Beauty &amp; Style</span><ul></ul>
+            <a href="#" class="mega-all">View all Beauty &amp; Style →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+      <li class="pillar" data-pillar="wellness"><a href="#">Wellness</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Wellness</span><ul></ul>
+            <a href="#" class="mega-all">View all Wellness →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+      <li class="pillar" data-pillar="living"><a href="#">Living</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Living</span><ul></ul>
+            <a href="#" class="mega-all">View all Living →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+      <li class="pillar" data-pillar="destinations"><a href="#">Destinations</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Destinations</span><ul></ul>
+            <a href="#" class="mega-all">View all Destinations →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+      <li class="pillar" data-pillar="interviews"><a href="#">Interviews</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Interviews</span><ul></ul>
+            <a href="#" class="mega-all">View all Interviews →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+      <li class="pillar" data-pillar="podcast"><a href="#">Podcast</a>
+        <div class="mega"><div class="mega-inner">
+          <div class="mega-subs"><span class="mega-eyebrow">Beautiful Inside</span><ul></ul>
+            <a href="#" class="mega-all">All episodes →</a></div>
+          <div class="mega-cards"></div>
+        </div></div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===================== DEMO BODY ===================== -->
+<section class="hero">
+  <div class="hero-panel">
+    <span class="hero-eyebrow">Hair</span>
+    <h1 class="hero-title">The Hair Tool Everyone's Quietly Talking About</h1>
+    <p class="hero-stand">The under-the-radar buy our editors keep reaching for, and the styling shift behind it.</p>
+    <a href="#" class="hero-cta">Read the story</a>
+  </div>
+  <div class="hero-img"></div>
+</section>
+
+<div class="tagline">
+  <div class="k"><b>Beauty.</b> Wellness. Style. Living.</div>
+  <div class="s">Delivered thoughtfully, from Australia</div>
+</div>
+
+<section class="filler">
+  <h2>Hover any menu above to see the mega-menu, then hover the subcategories to watch the stories swap</h2>
+  <div class="frow">
+    <a href="#" class="fcard"><div class="mcard-img tone-1"></div><div class="mcard-eye">Style</div><div class="mcard-title">The Staples Worth The Investment</div><div class="mcard-meta">Buy once, wear for years</div></a>
+    <a href="#" class="fcard"><div class="mcard-img tone-3"></div><div class="mcard-eye">Wellness</div><div class="mcard-title">The Longevity Habits Worth Keeping</div><div class="mcard-meta">What the experts actually do</div></a>
+    <a href="#" class="fcard"><div class="mcard-img tone-2"></div><div class="mcard-eye">Destinations</div><div class="mcard-title">Saffire, And The Case For Slow Travel</div><div class="mcard-meta">Tasmania, unhurried</div></a>
+  </div>
+</section>
+
+<div class="note">Beauticate · masthead mock v1 · scroll to see the utility row collapse</div>
+
+<!-- ===================== MOBILE DRAWER ===================== -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-head">
+    <span class="wordmark">Beauticate<span class="dot">.</span></span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="d-nav" id="dNav"></nav>
+  <div class="d-foot">
+    <a href="#">Subscribe</a>
+    <a href="#">About</a>
+    <a href="#">Sign In</a>
+    <div class="d-social">
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2 1.6 3.4 3.5 3.6v2.4c-1.3.1-2.5-.3-3.5-1v6.3c0 3.2-2.4 5.4-5.3 5.4-2.7 0-4.9-2-4.9-4.7 0-2.9 2.4-4.8 5.2-4.5v2.5c-.4-.1-.8-.2-1.2-.1-1.2.2-2 1.1-1.9 2.3.1 1.1 1 1.9 2.1 1.9 1.3 0 2.2-1 2.2-2.5V3h3.3z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="6" width="19" height="12" rx="3.5"/><path d="M10.5 9.2v5.6l4.5-2.8z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="Spotify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.2"/><path d="M7.6 10.2c2.8-.7 5.8-.5 8.3 1M8.1 13c2.3-.5 4.6-.3 6.6.9M8.7 15.5c1.8-.4 3.4-.2 4.9.7"/></svg></a>
+    </div>
+  </div>
+</aside>
+
+<script>
+/* ---------- taxonomy + story data (mirrors the locked tree) ---------- */
+const T = {2:'tone-1',3:'tone-2',0:'tone-3',1:'tone-4'};
+const tone = i => T[i%4];
+
+const PILLARS = {
+  shop:{ subs:['New In','Bestsellers','The Edit','Gifting','Shop All'],
+    cards:{ 'New In':[
+      ['New In',"This Week's Arrivals",'Fresh to the edit'],
+      ['Bestsellers',"What You're All Buying",'The repeat purchases'],
+      ['The Edit',"Sig's Investment Picks",'Worth the spend'],
+      ['Gifting','Beautiful Things To Give','For every list']]}},
+  beauty:{ subs:['Skin Care','Makeup','Hair','Style','Fragrance','Nails','Beauty Tips'],
+    cards:{
+      'Skin Care':[
+        ['Skin Care','The Serums Our Editors Repurchase','Tried, tested, bought again'],
+        ['Skin Care','What A Dermatologist Does At Night','The expert routine'],
+        ['Skin Care','The Quiet Rise Of Barrier Repair','Less, but better'],
+        ['Skin Care','Retinol, Without The Regret','How to start slow']],
+      'Makeup':[
+        ['Makeup','The Ten-Minute Face, Perfected','For real mornings'],
+        ['Makeup','Rae Morris On The Brushes That Matter','The master class'],
+        ['Makeup','A Case For The Bold Lip, Again','One product, done'],
+        ['Makeup','Cream Blush Is Having A Moment','The warm flush']],
+      'Hair':[
+        ['Hair',"The Hair Tool Everyone's Talking About",'Worth the hype'],
+        ['Hair','Gloss Treatments, Ranked','Salon shine at home'],
+        ['Hair','How To Grow Out A Fringe','The awkward months, solved'],
+        ['Hair','The Scalp Care Shift','Where healthy hair starts']],
+      'Style':[
+        ['Style','The Staples Worth The Investment','Buy once, wear for years'],
+        ['Style','Kate Waterhouse On Dressing With Ease','Effortless, decoded'],
+        ['Style','The White Shirt, Reconsidered','A wardrobe cornerstone'],
+        ['Style','Building A Wardrobe That Lasts','Anti-trend dressing']],
+      'Fragrance':[
+        ['Fragrance','The Scents That Feel Like You','Signature, found'],
+        ['Fragrance','Wisteria, Bottled','The season in a spritz'],
+        ['Fragrance','Layering, The Right Way','Make it last'],
+        ['Fragrance','The Quiet Luxury Of Skin Scents','Barely there, unforgettable']],
+      'Nails':[
+        ['Nails','The Manicure That Goes With Everything','The forever shade'],
+        ['Nails','Strengthen, Then Grow','Weak-nail rescue'],
+        ['Nails','Gel, Without The Damage','Do it properly'],
+        ['Nails','The At-Home Salon Kit','Save the trip']]}},
+  wellness:{ subs:['Health','Fitness','Mindset','Biohacking'],
+    cards:{
+      'Health':[
+        ['Health','The Longevity Habits Worth Keeping','What the experts actually do'],
+        ['Health','Magnesium, Explained Properly','Cutting through the noise'],
+        ['Health','The Case For Walking More','The underrated basics'],
+        ['Health','Gut Health Without The Gimmicks','Sensible, science-led']],
+      'Fitness':[
+        ['Fitness','Strength Training After 40','Why it matters most now'],
+        ['Fitness','The Pilates Effect','Long, lean, real'],
+        ['Fitness','Recovery Is The Workout','Rest, reframed'],
+        ['Fitness','Movement You Will Actually Keep','Consistency over intensity']],
+      'Mindset':[
+        ['Mindset','On Boundaries, And Keeping Them','The quiet skill'],
+        ['Mindset','The Morning That Sets The Day','Small, protective rituals'],
+        ['Mindset','Rest Without The Guilt','Permission granted'],
+        ['Mindset','Ambition, Recalibrated','On your own terms']],
+      'Biohacking':[
+        ['Biohacking','Red Light, The Evidence','Hype versus help'],
+        ['Biohacking','Sleep, Optimised Simply','The basics beat gadgets'],
+        ['Biohacking','Cold Water, Honestly','Worth the shiver?'],
+        ['Biohacking','Tracking, Without Obsessing','Data with a light touch']]}},
+  living:{ subs:['Lifestyle','Interiors','Sustainability','Entertaining'],
+    cards:{
+      'Lifestyle':[
+        ['Lifestyle','Sunday Rituals Worth Protecting','The slow reset'],
+        ['Interiors','How Sheer Curtains Transform A Room','A small, big change'],
+        ['Entertaining','The Effortless Dinner, Solved','Host without the stress'],
+        ['Sustainability','Beautiful Things, Made To Last','Buy better, less often']],
+      'Interiors':[
+        ['Interiors','How Sheer Curtains Transform A Room','A small, big change'],
+        ['Interiors','The Case For One Good Lamp','Light changes everything'],
+        ['Interiors','Styling A Shelf, Slowly','Collected, not bought'],
+        ['Interiors','Warm Minimalism At Home','Calm, not cold']],
+      'Sustainability':[
+        ['Sustainability','Beautiful Things, Made To Last','Buy better, less often'],
+        ['Sustainability','The Refill Brands Worth It','Less waste, same ritual'],
+        ['Sustainability','Vintage, Reconsidered','Old is the new new'],
+        ['Sustainability','Reading A Beauty Label','What actually matters']],
+      'Entertaining':[
+        ['Entertaining','The Effortless Dinner, Solved','Host without the stress'],
+        ['Entertaining','A Cheese Board, Elevated','The lazy showstopper'],
+        ['Entertaining',"The Non-Drinker's Aperitif",'Beautiful, alcohol-free'],
+        ['Entertaining','Table Settings, Simplified','Quiet occasion']]}},
+  destinations:{ subs:['Travel','Clinics','Spas & Retreats'],
+    cards:{
+      'Travel':[
+        ['Travel','Saffire, And The Case For Slow Travel','Tasmania, unhurried'],
+        ['Travel','A Considered Weekend In Byron','Where to stay and eat'],
+        ['Travel','The Long Weekend Packing Edit','Carry-on only'],
+        ['Travel','Italy, The Quiet Corners','Beyond the postcard']],
+      'Clinics':[
+        ['Clinics','The Skin Clinics Worth The Trip','Editor-approved'],
+        ['Clinics','What To Ask Before A Treatment','Do your homework'],
+        ['Clinics','Tweakments, Demystified','Subtle, not obvious'],
+        ['Clinics','The Facialists We Trust','By city']],
+      'Spas & Retreats':[
+        ['Spas & Retreats',"The Retreats We'd Return To",'Reset, properly'],
+        ['Spas & Retreats','A Day Spa Worth The Splurge','Switch off completely'],
+        ['Spas & Retreats','Wellness Escapes Near The City','No flight required'],
+        ['Spas & Retreats','The Bathhouse Revival','Soak, breathe, repeat']]}},
+  interviews:{ subs:['Creatives','Founders','Actors & Presenters','Models','Tastemakers'],
+    cards:{
+      'Creatives':[
+        ['Creatives',"Inside A Makeup Artist's Kit",'Tools of the trade'],
+        ['Founders','Alyce Tran On Building A Brand','The long game'],
+        ['Actors & Presenters','Abbey Gelmi On Balance','On and off screen'],
+        ['Models','The Off-Duty Beauty Edit','What they really use']],
+      'Founders':[
+        ['Founders','Alyce Tran On Building A Brand','The long game'],
+        ['Founders','The Beauty Founders To Watch','New names, big ideas'],
+        ['Founders','On Starting Again At 40','The pivot stories'],
+        ['Founders','Building Slow, Building Well','Against the hustle']],
+      'Actors & Presenters':[
+        ['Actors & Presenters','Abbey Gelmi On Balance','On and off screen'],
+        ['Actors & Presenters','The Green Room Beauty Bag','What they never travel without'],
+        ['Actors & Presenters','On Confidence, Off Camera','The real version'],
+        ['Actors & Presenters','A Life In Front Of The Lens','Lessons learned']],
+      'Models':[
+        ['Models','The Off-Duty Beauty Edit','What they really use'],
+        ['Models','Skin First, Always','The pared-back approach'],
+        ['Models','Life After The Runway','What comes next'],
+        ['Models','The Well-Travelled Routine','Beauty on the move']],
+      'Tastemakers':[
+        ['Tastemakers','The Women Whose Taste We Trust','Follow their lead'],
+        ['Tastemakers','A Curated Life','How they choose'],
+        ['Tastemakers','The Objects They Treasure','Considered collecting'],
+        ['Tastemakers','On Style, And Substance','More than surface']]}},
+  podcast:{ subs:['Latest Episode','By Guest','By Theme','All Episodes'],
+    cards:{ 'Latest Episode':[
+      ['Beautiful Inside','Celeste Barber On Boundaries','Listen now · 48 min'],
+      ['Beautiful Inside','Rae Morris On A Life In Beauty','Listen now · 52 min'],
+      ['Beautiful Inside','Guy Sebastian, Unguarded','Listen now · 45 min'],
+      ['Beautiful Inside','Tanya Alijani On Fragrance','Listen now · 39 min']]}}
+};
+
+/* ---------- render mega menus ---------- */
+function makeCard([eye,title,meta],i){
+  const a=document.createElement('a');a.href='#';a.className='mcard';a.style.animationDelay=(i*45)+'ms';
+  a.innerHTML=`<div class="mcard-img ${tone(i)}"></div><div class="mcard-eye">${eye}</div><div class="mcard-title">${title}</div><div class="mcard-meta">${meta}</div>`;
+  return a;
+}
+function defaultSub(p){return Object.keys(PILLARS[p].cards)[0] || PILLARS[p].subs[0];}
+function cardsFor(p,sub){
+  const c=PILLARS[p].cards;
+  if(c[sub]) return c[sub];
+  // fall back to first set but relabel the eyebrow to the hovered sub, so the swap reads truthfully
+  return c[defaultSub(p)].map(([_,t,m])=>[sub,t,m]);
+}
+function renderCards(container,p,sub){
+  container.innerHTML='';
+  cardsFor(p,sub).forEach((c,i)=>container.appendChild(makeCard(c,i)));
+}
+
+document.querySelectorAll('.pillar').forEach(li=>{
+  const p=li.dataset.pillar;const data=PILLARS[p];if(!data)return;
+  const ul=li.querySelector('.mega-subs ul');
+  const cardBox=li.querySelector('.mega-cards');
+  const def=defaultSub(p);
+  data.subs.forEach(sub=>{
+    const item=document.createElement('li');
+    const a=document.createElement('a');a.href='#';a.textContent=sub;
+    if(sub===def)a.classList.add('active');
+    const swap=()=>{
+      ul.querySelectorAll('a').forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');renderCards(cardBox,p,sub);
+    };
+    a.addEventListener('mouseenter',swap);
+    a.addEventListener('focus',swap);
+    item.appendChild(a);ul.appendChild(item);
+  });
+  renderCards(cardBox,p,def);
+});
+
+/* ---------- scroll collapse ---------- */
+const mast=document.getElementById('masthead');
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(!ticking){requestAnimationFrame(()=>{
+    mast.classList.toggle('scrolled',window.scrollY>64);ticking=false;});ticking=true;}
+});
+
+/* ---------- mobile drawer ---------- */
+const drawer=document.getElementById('drawer');
+const scrim=document.getElementById('scrim');
+const dNav=document.getElementById('dNav');
+function openDrawer(){drawer.classList.add('open');scrim.classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){drawer.classList.remove('open');scrim.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('hamburger').addEventListener('click',openDrawer);
+document.getElementById('drawerClose').addEventListener('click',closeDrawer);
+scrim.addEventListener('click',closeDrawer);
+
+const PILLAR_LABELS={shop:'Shop',beauty:'Beauty & Style',wellness:'Wellness',living:'Living',destinations:'Destinations',interviews:'Interviews',podcast:'Podcast'};
+Object.keys(PILLAR_LABELS).forEach(p=>{
+  const item=document.createElement('div');item.className='d-item';
+  const btn=document.createElement('button');btn.className='d-pillar'+(p==='shop'?' is-shop':'');
+  btn.innerHTML=`<span>${PILLAR_LABELS[p]}</span><span class="d-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="6 9 12 15 18 9"/></svg></span>`;
+  const subs=document.createElement('div');subs.className='d-subs';
+  (PILLARS[p]?.subs||[]).forEach(s=>{const a=document.createElement('a');a.href='#';a.textContent=s;subs.appendChild(a);});
+  btn.addEventListener('click',()=>{
+    const wasOpen=item.classList.contains('open');
+    dNav.querySelectorAll('.d-item').forEach(x=>x.classList.remove('open'));
+    if(!wasOpen)item.classList.add('open');
+  });
+  item.appendChild(btn);item.appendChild(subs);dNav.appendChild(item);
+});
+</script>
+</body>
+</html>

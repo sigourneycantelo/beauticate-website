@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-pagefind-index.mjs && node scripts/build-chat-index.mjs && next build",
+    "build:search": "node scripts/build-pagefind-index.mjs",
+    "build:chat": "node scripts/build-chat-index.mjs",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "npx pagefind --site .next/server/app --output-path public/pagefind || true",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",
     "send-email": "npx tsx scripts/send-email.ts"
   },
@@ -15,6 +16,7 @@
     "@anthropic-ai/sdk": "^0.105.0",
     "@next/third-parties": "^16.2.9",
     "@tailwindcss/typography": "^0.5.20",
+    "@vercel/blob": "^2.6.1",
     "embla-carousel-react": "^8.6.0",
     "graphql": "^16.9.0",
     "graphql-request": "^7.4.0",

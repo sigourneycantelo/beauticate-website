@@ -33,8 +33,9 @@ function ScrimCard({
   marginTop?: string
   sizes: string
 }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
 
   return (
     <article style={{ marginTop }}>
@@ -61,7 +62,7 @@ function ScrimCard({
           {/* Gradient overlay */}
           <div
             className="absolute inset-0 z-[1]"
-            style={{ background: 'linear-gradient(to top,rgba(12,12,12,.64),rgba(12,12,12,.14) 46%,transparent 72%)' }}
+            style={{ background: 'linear-gradient(to top,rgba(12,12,12,.74),rgba(12,12,12,.18) 46%,transparent 72%)' }}
           />
           {/* Text */}
           <div className="relative z-[2]">

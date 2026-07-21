@@ -1,93 +1,115 @@
-import { getAllArticles, getHeroArticle, getVodcastEpisodes } from '@/lib/content'
-import { getProducts } from '@/lib/shopify'
+import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
+import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
+import ShopGrid from '@/components/home/ShopGrid'
 import ShopStrip from '@/components/home/ShopStrip'
-import DuoStagger from '@/components/home/DuoStagger'
 import TheCollective from '@/components/shared/TheCollective'
 import InstagramFeed from '@/components/home/InstagramFeed'
-import SectionTitle from '@/components/home/SectionTitle'
 import StoriesTrio from '@/components/home/StoriesTrio'
 import PodcastSection from '@/components/home/PodcastSection'
 import InsidersBar from '@/components/home/InsidersBar'
 import HeroSplit from '@/components/home/HeroSplit'
 import ShopByMoment from '@/components/home/ShopByMoment'
+import ShopByCategory from '@/components/home/ShopByCategory'
+import TrustPanel from '@/components/home/TrustPanel'
+import AsSeenIn from '@/components/home/AsSeenIn'
 
 export default async function HomePage() {
-  const [shopProducts, vodcastEpisodes] = await Promise.all([
-    getProducts(12),
+  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes] = await Promise.all([
+    getProductsByTag('team', 24),
+    getCollectionByHandle('autumn-edit'),
+    getProducts(24),
     Promise.resolve(getVodcastEpisodes()),
   ])
+  const collectionProducts = winterCollection?.products?.nodes ?? []
+  const seen = new Set<string>()
+  const curatedProducts = [...taggedProducts, ...collectionProducts].filter(p => {
+    if (seen.has(p.handle)) return false
+    seen.add(p.handle)
+    return true
+  }).slice(0, 24)
+  const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
+  const shopProducts2 = allProducts.filter(p => !seen.has(p.handle))
 
   // Rolling de-dupe — no article appears twice on the home page
   const shownSlugs = new Set<string>()
+  const DIRECTORY_SUBS = ['bathhouses', 'clinics', 'salons', 'spas-retreats', 'wellness']
 
   function take(n: number) {
-    const articles = getAllArticles(n, [...shownSlugs])
+    const articles = getAllArticles(n, [...shownSlugs], DIRECTORY_SUBS)
     articles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
 
-  const heroArticle = getHeroArticle()
-  if (heroArticle) shownSlugs.add(heroArticle.frontmatter.slug)
-  const duoLeftArticles = take(2)
-  const [bigArticle, smallArticle] = take(2)
+  const heroArticles = getHeroArticles()
+  heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
+  const duo1Articles = take(2)
   const trio1Articles = take(3)
   const [splitArticle] = take(1)
+  const duo2Articles = take(2)
   const trio2Articles = take(3)
-  const trio3Articles = take(3)
 
   return (
     <>
-      {/* 1 — Wide landscape hero */}
-      {heroArticle && <HeroWide article={heroArticle as any} />}
+      {/* 1 — Cycling hero */}
+      {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
 
-      {/* 2 — Insiders subscribe strip */}
-      <InsidersBar />
+      {/* 2 — Trust panel */}
+      <TrustPanel />
 
-      {/* 3 — Two stories */}
-      {duoLeftArticles.length > 0 && <DuoLeft articles={duoLeftArticles as any} />}
+      {/* 3 — Shop by Category */}
+      <ShopByCategory />
 
-      {/* 4 — Shop strip */}
-      <ShopStrip products={shopProducts} />
+      {/* 3b — Product scroll (directly under categories) */}
+      <ShopGrid products={shopProducts} />
 
-      {/* 5 — Staggered scrim pair */}
-      {bigArticle && smallArticle && (
-        <DuoStagger big={bigArticle as any} small={smallArticle as any} />
-      )}
-
-      {/* 6 — The Collective */}
+      {/* 4 — Voices line */}
       <TheCollective />
 
-      {/* 7 — Instagram feed (Curator.io) */}
-      <InstagramFeed />
+      {/* 5 — As Seen In */}
+      <AsSeenIn />
 
-      {/* 8 — Stories worth your time */}
-      <SectionTitle eyebrow="Editorial" title="Stories worth your time" italic="your time" />
-      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
+      {/* 7 — Duo (most recent two stories) */}
+      {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} />}
 
-      {/* 9 — Beautiful Inside podcast (video reels, warm greige) */}
+      {/* 8 — Podcast */}
       <PodcastSection episodes={vodcastEpisodes} />
 
-      {/* 10 — Image-left / text-right featured story */}
+      {/* 9 — Trio */}
+      {trio1Articles.length > 0 && <StoriesTrio articles={trio1Articles as any} />}
+
+      {/* 10 — Single highlighted article */}
       {splitArticle && <HeroSplit article={splitArticle as any} />}
 
-      {/* 11 — The edit */}
-      <SectionTitle eyebrow="Shop" title="The edit" italic="edit" />
-      {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
+      {/* 11 — Duo */}
+      {duo2Articles.length > 0 && <DuoLeft articles={duo2Articles as any} />}
+
+      {/* 11b — Second product rail */}
+      <ShopStrip
+        products={shopProducts2}
+        eyebrow="More to explore"
+        heading={<>New in the <em className="italic">shop</em></>}
+        subheading="Fresh finds, hand-picked by the team"
+      />
 
       {/* 12 — Shop by Moment */}
       <ShopByMoment />
 
-      {/* 13 — More to explore */}
-      <SectionTitle eyebrow="Keep reading" title="More to explore" italic="explore" />
-      {trio3Articles.length > 0 && <StoriesTrio articles={trio3Articles as any} />}
+      {/* 13 — Subscribe */}
+      <InsidersBar />
+
+      {/* 14 — Trio */}
+      {trio2Articles.length > 0 && <StoriesTrio articles={trio2Articles as any} />}
+
+      {/* 15 — Instagram feed */}
+      <InstagramFeed />
 
       {/* Explore all link */}
       <div
         className="text-center"
-        style={{ padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)', borderTop: '1px solid rgba(28,26,23,.10)' }}
+        style={{ padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)' }}
       >
         <a
           href="/beauty-style"

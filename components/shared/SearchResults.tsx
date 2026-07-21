@@ -19,11 +19,13 @@ export default function SearchResults({ query }: Props) {
     script.src = '/pagefind/pagefind-ui.js'
     script.onload = () => {
       // @ts-ignore — pagefind-ui.js is a generated static file, not an npm package
-      new window.PagefindUI({
+      const ui = new window.PagefindUI({
         element: '#pagefind-search',
         showSubResults: true,
-        defaultValue: query,
       })
+      // Run the query from the URL (?q=). PagefindUI has no `defaultValue`
+      // option — triggerSearch fills the box and executes the search.
+      if (query) ui.triggerSearch(query)
     }
     document.head.appendChild(script)
   }, []) // init once — Pagefind owns its own input state after mount
@@ -34,6 +36,10 @@ export default function SearchResults({ query }: Props) {
         {query ? `Results for "${query}"` : 'Search'}
       </h1>
       <div id="pagefind-search" />
+      <p className="mt-10 text-center font-serif text-charcoal-light/60" style={{ fontSize: 'clamp(14px,1.4vw,16px)' }}>
+        Not finding what you&apos;re after?{' '}
+        <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>
+      </p>
     </div>
   )
 }

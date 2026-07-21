@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { EB_Garamond, Hanken_Grotesk } from 'next/font/google'
+import { EB_Garamond, Hanken_Grotesk, Italiana, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
-import HeaderWithData from '@/components/layout/HeaderWithData'
+import MastheadData from '@/components/layout/MastheadData'
 
 // EB Garamond — headlines, intros, body, links
 const ebGaramond = EB_Garamond({
@@ -10,6 +10,23 @@ const ebGaramond = EB_Garamond({
   variable: '--font-serif',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+})
+
+// Italiana — big section numerals (NumberedSection)
+const italiana = Italiana({
+  subsets: ['latin'],
+  variable: '--font-numeral',
+  display: 'swap',
+  weight: ['400'],
+})
+
+// Playfair Display — section titles and subheadings
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  weight: ['400', '500', '700'],
   style: ['normal', 'italic'],
 })
 
@@ -21,11 +38,11 @@ const hankenGrotesk = Hanken_Grotesk({
   weight: ['400', '500'],
 })
 import Footer from '@/components/layout/Footer'
-import AnnouncementBar from '@/components/layout/AnnouncementBar'
 import CartProvider from '@/components/shop/CartProvider'
 import ScrollReveal from '@/components/shared/ScrollReveal'
 import BetaTicker from '@/components/home/BetaTicker'
 import CartDrawer from '@/components/shop/CartDrawer'
+import AskSigLauncher from '@/components/chat/AskSigLauncher'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
@@ -71,6 +88,7 @@ const orgSchema = {
         'https://www.youtube.com/@beauticate',
         'https://www.pinterest.com.au/beauticate/',
         'https://beauticate.shop',
+        'https://www.wikidata.org/wiki/Q139643093',
       ],
     },
     {
@@ -81,8 +99,9 @@ const orgSchema = {
       worksFor: { '@id': 'https://www.beauticate.com/#organization' },
       url: 'https://www.beauticate.com/about-beauticate',
       sameAs: [
-        'https://www.instagram.com/sigourney.cantelo/',
-        'https://www.linkedin.com/in/sigourneycantelo/',
+        'https://www.instagram.com/sigourneycantelo/',
+        'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
+        'https://www.wikidata.org/wiki/Q139644159',
       ],
       knowsAbout: ['Beauty', 'Wellness', 'Lifestyle', 'Skincare', 'Fashion'],
       alumniOf: 'Vogue Australia',
@@ -105,7 +124,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable}`}>
+    <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable} ${playfairDisplay.variable} ${italiana.variable}`}>
       <body>
         <Script
           id="schema-org"
@@ -116,15 +135,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <ScrollReveal />
           <BetaTicker />
-          <AnnouncementBar message="Shop the Beauticate Edit — curated beauty, wellness & style" href="/shop" />
-          <HeaderWithData />
-          <main id="main" data-pagefind-body>{children}</main>
+          <MastheadData />
+          <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
           <Footer />
           <CartDrawer />
+          <AskSigLauncher />
         </CartProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
+        <Script
+          id="klaviyo-sdk"
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )

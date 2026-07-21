@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import NewsletterForm from '@/components/shared/NewsletterForm'
 
 const SOCIAL_LINKS = [
   { label: 'Instagram', href: 'https://www.instagram.com/beauticate/' },
@@ -13,12 +14,17 @@ const SOCIAL_LINKS = [
 
 const FOOTER_NAV = [
   { label: 'About', href: '/about-beauticate' },
+  { label: "Sigourney's Edit", href: '/sigourneys-edit' },
+  { label: 'Press', href: '/press' },
+  { label: 'From the Archive', href: '/archive' },
   { label: 'Advertise With Us', href: '/advertise-with-us' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
   { label: 'Exclusive Offers', href: '/offers' },
   { label: 'Shipping Policy', href: '/shop/shipping' },
   { label: 'Refund Policy', href: '/shop/refund-policy' },
+  { label: 'Partner With Us', href: '/shop/partners' },
+  { label: 'Suggest a Brand', href: '/shop/suggest' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -44,23 +50,22 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav */}
-          <div>
-            <h4 className="text-xs tracking-widest text-cream/50 uppercase mb-4">Navigate</h4>
-            <ul className="space-y-2">
-              {FOOTER_NAV.map(item => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-cream/70 hover:text-cream transition-colors">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Nav — two columns, no heading */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+            {FOOTER_NAV.map(item => (
+              <Link key={item.href} href={item.href} className="text-sm text-cream/70 hover:text-cream transition-colors">
+                {item.label}
+              </Link>
+            ))}
           </div>
 
-          {/* Contact + Social */}
+          {/* Newsletter + Contact + Social */}
           <div>
-            <h4 className="text-xs tracking-widest text-cream/50 uppercase mb-4">Get In Touch</h4>
+            <h4 className="text-xs tracking-widest text-cream/50 uppercase mb-4">The Edit, In Your Inbox</h4>
+            <p className="text-sm text-cream/50 mb-4">Beauty intel, no noise.</p>
+            <div className="mb-6">
+              <NewsletterForm variant="dark" />
+            </div>
             <a href="mailto:info@beauticate.com" className="text-sm text-cream/70 hover:text-cream transition-colors block mb-6">
               info@beauticate.com
             </a>
@@ -83,9 +88,6 @@ export default function Footer() {
         <div className="border-t border-cream/10 pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <p className="text-xs text-cream/40">
             © Beauticate {new Date().getFullYear()}, All Rights Reserved.
-          </p>
-          <p className="text-xs text-cream/40">
-            Beauticate occasionally uses affiliate links and may receive a small commission on purchases.
           </p>
         </div>
       </div>

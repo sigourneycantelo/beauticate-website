@@ -16,11 +16,11 @@ export default function VodcastPage({ episodes }: Props) {
         </p>
         <div className="flex justify-center gap-6 mt-6">
           <a href="https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q" target="_blank" rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase hover:text-gold transition-colors">Spotify</a>
+            className="text-xs tracking-widest uppercase hover:text-wine transition-colors">Spotify</a>
           <a href="https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721" target="_blank" rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase hover:text-gold transition-colors">Apple Podcasts</a>
+            className="text-xs tracking-widest uppercase hover:text-wine transition-colors">Apple Podcasts</a>
           <a href="https://www.youtube.com/c/sigourneycantelo" target="_blank" rel="noopener noreferrer"
-            className="text-xs tracking-widest uppercase hover:text-gold transition-colors">YouTube</a>
+            className="text-xs tracking-widest uppercase hover:text-wine transition-colors">YouTube</a>
         </div>
       </div>
 
@@ -37,10 +37,10 @@ export default function VodcastPage({ episodes }: Props) {
               <div>
                 <p className="text-xs text-charcoal-light mb-2">{f.date_published}</p>
                 <h2 className="text-lg md:text-xl mb-2">
-                  <Link href={`/vodcast/${f.slug}`} className="hover:text-gold transition-colors">{f.title}</Link>
+                  <Link href={`/vodcast/${f.slug}`} className="hover:text-wine transition-colors">{f.title}</Link>
                 </h2>
                 <p className="text-sm text-charcoal-light line-clamp-2">{f.excerpt}</p>
-                <Link href={`/vodcast/${f.slug}`} className="text-xs tracking-widest uppercase mt-3 inline-block hover:text-gold transition-colors">
+                <Link href={`/vodcast/${f.slug}`} className="text-xs tracking-widest uppercase mt-3 inline-block hover:text-wine transition-colors">
                   Listen →
                 </Link>
               </div>

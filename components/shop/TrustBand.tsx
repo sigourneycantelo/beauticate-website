@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 // Thin credibility band beneath the hero — Hanken caps, wide tracking.
 export default function TrustBand() {
   return (
@@ -15,7 +17,18 @@ export default function TrustBand() {
       >
         Trusted by women for over a decade
         <span className="mx-2 opacity-50">·</span>
-        By the editors of Beauticate.com
+        By the editors of{' '}
+        <Link href="/" className="underline decoration-[0.5px] underline-offset-2 hover:opacity-70 transition-opacity">
+          Beauticate.com
+        </Link>
+      </p>
+      <p
+        className="font-sans mt-1.5"
+        style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.45 }}
+      >
+        <Link href="/press" className="hover:opacity-70 transition-opacity">
+          As featured in Vogue, Marie Claire, The Daily Telegraph, Daily Mail, Body+Soul and Mumbrella
+        </Link>
       </p>
     </div>
   )

@@ -18,8 +18,9 @@ function articleHref(f: Article['frontmatter']) {
 }
 
 function Card({ article }: { article: Article }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
   return (
     <article>
       <Link href={articleHref(f)} className="block group">
@@ -29,7 +30,7 @@ function Card({ article }: { article: Article }) {
               src={f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+              className="object-cover object-[50%_20%] transition-transform duration-700 group-hover:scale-[1.04]"
               sizes="(max-width:768px) 100vw, 30vw"
             />
           ) : (
@@ -41,7 +42,7 @@ function Card({ article }: { article: Article }) {
         </span>
         <h3
           className="font-serif font-normal text-ink leading-[1.2]"
-          style={{ fontSize: 'clamp(16px,1.6vw,22px)', maxWidth: '22ch' }}
+          style={{ fontSize: 'clamp(16px,1.6vw,22px)' }}
         >
           {f.title}
         </h3>
@@ -59,7 +60,7 @@ export default function StoriesTrio({ articles }: { articles: Article[] }) {
         padding: 'clamp(28px,4vw,52px) clamp(20px,6vw,104px)',
       }}
     >
-      {articles.slice(0, 3).map((article) => (
+      {articles.slice(0, 3).filter(a => a?.frontmatter).map((article) => (
         <Card key={article.frontmatter.slug} article={article} />
       ))}
     </section>

@@ -30,8 +30,9 @@ function ScrimCard({
   sizes: string
   titleSize?: string
 }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
   return (
     <article style={{ marginTop }}>
       <Link href={articleHref(f)} className="block group">
@@ -50,7 +51,7 @@ function ScrimCard({
               src={f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+              className="object-cover object-[50%_20%] transition-transform duration-700 group-hover:scale-[1.04]"
               sizes={sizes}
             />
           ) : (

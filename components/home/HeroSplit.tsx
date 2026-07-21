@@ -18,8 +18,9 @@ function articleHref(f: Article['frontmatter']) {
 }
 
 export default function HeroSplit({ article }: { article: Article }) {
+  if (!article?.frontmatter) return null
   const f = article.frontmatter
-  const label = (f.subcategory ?? f.category).replace(/-/g, ' ')
+  const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
 
   return (
     <section
@@ -39,7 +40,7 @@ export default function HeroSplit({ article }: { article: Article }) {
             src={f.featured_image}
             alt={f.featured_image_alt ?? f.title}
             fill
-            className="object-cover object-top transition-transform duration-[1000ms] group-hover:scale-[1.03]"
+            className="object-cover object-[50%_20%] transition-transform duration-[1000ms] group-hover:scale-[1.03]"
             sizes="(max-width:768px) 100vw, 50vw"
           />
         ) : (

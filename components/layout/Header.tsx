@@ -1,7 +1,8 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import CartButton from '@/components/shop/CartButton'
 import SearchBar from '@/components/shared/SearchBar'
 
@@ -54,12 +55,14 @@ export interface MegaMenuEntry {
   href: string
   articles: MegaArticle[]
   groupHeader?: string  // if set, renders a group label above this entry
+  hidden?: boolean      // used as the default preview but not shown as a tab
 }
 
 export interface MegaMenuData {
   beauty: MegaMenuEntry[]
   style: MegaMenuEntry[]
   wellness: MegaMenuEntry[]
+  living: MegaMenuEntry[]
   destinations: MegaMenuEntry[]
   interviews: MegaMenuEntry[]
 }
@@ -78,7 +81,7 @@ const NAV_ITEMS = [
   { label: 'Style', href: '/beauty-style/style', megaKey: 'style' as const },
   { label: 'Wellness', href: '/wellness', megaKey: 'wellness' as const },
   { label: 'Destinations', href: '/destinations', megaKey: 'destinations' as const },
-  { label: 'Living', href: '/living' },
+  { label: 'Living', href: '/living', megaKey: 'living' as const },
   { label: 'Podcast', href: '/vodcast' },
   { label: 'Interviews', href: '/interviews', megaKey: 'interviews' as const },
 ]
@@ -124,7 +127,7 @@ function MegaMenu({
         <p className="font-sans text-[9.5px] tracking-[0.2em] uppercase mb-1" style={{ opacity: 0.45 }}>
           Browse
         </p>
-        {entries.map(e => (
+        {entries.filter(e => !e.hidden).map(e => (
           <div key={e.href}>
             {e.groupHeader && (
               <p className="font-sans text-[9.5px] tracking-[0.2em] uppercase mt-3 mb-1" style={{ opacity: 0.45 }}>
@@ -182,10 +185,21 @@ interface Props {
 }
 
 export default function Header({ megaMenuArticles }: Props) {
+  const pathname = usePathname()
+  // On the shop, the main nav sits above a Beauticate.shop wordmark so it reads
+  // as a sub-brand you can navigate back out of.
+  const isShop = pathname?.startsWith('/shop') ?? false
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [openMega, setOpenMega] = useState<string | null>(null)
+  const [slim, setSlim] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    const onScroll = () => setSlim(window.scrollY > 72)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const cancelClose = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
@@ -206,14 +220,16 @@ export default function Header({ megaMenuArticles }: Props) {
     >
       {/* ── Top bar: social | logo | actions ── */}
       <div
-        className="grid items-center gap-4"
+        className="grid items-center gap-4 transition-[padding] duration-200"
         style={{
           gridTemplateColumns: '1fr auto 1fr',
-          padding: '18px clamp(20px,6vw,104px) 0',
+          padding: slim
+            ? '9px clamp(20px,6vw,104px) 9px'
+            : isShop ? '14px clamp(20px,6vw,104px) 18px' : '18px clamp(20px,6vw,104px) 0',
         }}
       >
-        {/* Social — desktop only */}
-        <div className="hidden md:flex gap-4 items-center">
+        {/* Social — desktop only, hidden when slim */}
+        <div className={`hidden md:flex gap-4 items-center transition-opacity duration-200 ${slim ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
           {SOCIAL.map(s => (
             <a
               key={s.href}
@@ -232,16 +248,27 @@ export default function Header({ megaMenuArticles }: Props) {
         </div>
         <div className="md:hidden" />
 
-        {/* Logo */}
-        <Link href="/" className="justify-self-center">
-          <Image
-            src="/logo-dark.png"
-            alt="Beauticate"
-            width={360}
-            height={49}
-            priority
-            className="h-7 w-auto mix-blend-multiply"
-          />
+        {/* Logo — Beauticate.shop wordmark on the shop, the master logo elsewhere */}
+        <Link href={isShop ? '/shop' : '/'} className="justify-self-center">
+          {isShop ? (
+            <Image
+              src="/beauticate-shop-logo.png"
+              alt="Beauticate Shop"
+              width={600}
+              height={240}
+              priority
+              className={`w-auto mix-blend-multiply transition-all duration-200 ${slim ? 'h-[52px]' : 'h-[clamp(72px,9vw,118px)]'}`}
+            />
+          ) : (
+            <Image
+              src="/logo-dark.png"
+              alt="Beauticate"
+              width={360}
+              height={49}
+              priority
+              className={`w-auto mix-blend-multiply transition-all duration-200 ${slim ? 'h-5' : 'h-7'}`}
+            />
+          )}
         </Link>
 
         {/* Actions */}
@@ -287,14 +314,16 @@ export default function Header({ megaMenuArticles }: Props) {
 
       {/* ── Desktop nav ── */}
       <nav
-        className="hidden lg:flex items-center justify-center relative"
+        className="hidden lg:flex items-center justify-center relative transition-[padding,margin] duration-200"
         style={{
-          gap: '38px',
-          fontSize: '11.5px',
-          letterSpacing: '.18em',
-          marginTop: '18px',
-          paddingBottom: '15px',
+          gap: isShop ? '26px' : '38px',
+          fontSize: isShop ? '9.5px' : '11.5px',
+          letterSpacing: isShop ? '.16em' : '.18em',
+          marginTop: slim ? 0 : isShop ? 0 : '18px',
+          paddingTop: slim ? '7px' : isShop ? '10px' : 0,
+          paddingBottom: slim ? '7px' : isShop ? '10px' : '15px',
           borderTop: '1px solid rgba(28,26,23,.10)',
+          borderBottom: isShop ? '1px solid rgba(28,26,23,.10)' : 'none',
         }}
       >
         {NAV_ITEMS.map(item => {
@@ -318,6 +347,10 @@ export default function Header({ megaMenuArticles }: Props) {
                   color: isOpen ? '#B5613A' : undefined,
                   opacity: isOpen ? 1 : (item.lead ? 1 : 0.66),
                   fontWeight: item.lead ? 600 : 500,
+                  // Inline beats the global `nav a { 12.5px }` rule so the shop's
+                  // back-to-site nav reads smaller than the shop sub-nav.
+                  fontSize: isShop ? '9.5px' : undefined,
+                  letterSpacing: isShop ? '0.16em' : undefined,
                 }}
                 onMouseEnter={e => { if (!hasMega) e.currentTarget.style.color = '#B5613A' }}
                 onMouseLeave={e => { if (!hasMega) e.currentTarget.style.color = '' }}
@@ -374,3 +407,4 @@ export default function Header({ megaMenuArticles }: Props) {
     </header>
   )
 }
+

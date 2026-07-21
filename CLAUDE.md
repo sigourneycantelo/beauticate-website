@@ -4,6 +4,27 @@
 
 Beauticate is a beauty/lifestyle editorial site migrated from WordPress to Next.js (app router) on Vercel. Content lives in `content/<category>/<subcategory>/<slug>/<slug>.mdx` files rendered via `next-mdx-remote`.
 
+## Local development — do NOT run from a cloud-synced folder
+
+**`next dev` breaks when the repo lives in a cloud-synced directory** (iCloud "Desktop & Documents", or Google Drive):
+
+- **iCloud (e.g. `~/Desktop/...`):** the file watcher throws `Watchpack Error: EINTR: interrupted system call` and the first page compile hangs — the server looks "down" even though it started.
+- **Google Drive (`~/Library/CloudStorage/GoogleDrive-.../`):** native `node_modules` binaries get SIGKILL'd, and local git refs/objects get torn.
+
+**Fix:** keep the working copy in a plain, non-synced local folder such as `~/dev/` or `~/code/` (anything under Home that is *not* Desktop, Documents, or Drive):
+
+```bash
+git clone https://github.com/sigourneycantelo/beauticate-website.git ~/dev/beauticate-website
+cd ~/dev/beauticate-website && npm install
+cp /path/to/existing/.env.local .env.local   # bring your env over
+npm run dev                                    # localhost:3000, fast + stable
+```
+
+If port 3000 shows "in use" from a hung server: `lsof -tiTCP:3000 | xargs kill -9`.
+
+**Previewing the latest without local dev:** the Vercel deploy of `main` is always a full, current preview — use that URL rather than fighting a synced-folder dev server. (Because local git is unreliable on Drive, changes are pushed to `main` via the GitHub API and verified against the live deploy.)
+
+
 ## WordPress source rule
 
 **Any article with `date_published` before `2026-06-18` originated on the WordPress site and may have body images or content that was not fully migrated.**
@@ -16,6 +37,11 @@ When working on such articles:
 The migration date was June 18, 2026. Articles dated on or after that date were written directly for the Vercel site and will not have a WordPress source.
 
 ## Ongoing article cleanup
+
+> **Full playbook:** see [`docs/article-audit-and-fix.md`](docs/article-audit-and-fix.md)
+> for the end-to-end audit & fix process, the script toolbox, and hard-won
+> gotchas. ([`docs/wp-audit-process.md`](docs/wp-audit-process.md) covers the
+> detector internals.)
 
 There is a standing mandate to clean up articles as they are encountered. Two types of work:
 
@@ -56,6 +82,47 @@ When publishing a new story, always ask:
 2. **"Please provide a landscape holding shot for the hero."** — This is a wide-crop image optimised for the full-bleed `HeroWide` banner. Save it to the article's content directory and set `hero_image: /content/<category>/<subcategory>/<slug>/hero.jpg` in the frontmatter. If no dedicated shot is provided, `featured_image` is used as fallback.
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
+
+## Product card design rules
+
+All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
+
+**Structure — two halves:**
+1. **Image area (top)** — portrait 3:4 aspect ratio. Two modes:
+   - *De-etched* (default): pack shot on greige (`bg-tile`) background. Used for beauty products with clean cut-out images.
+   - *Lifestyle/editorial* (`cover={true}`): model shot, flat-lay, or contextual image. These keep their own background — no greige overlay.
+2. **Text area (bottom)** — **always white background**. Brand name (uppercase sans), product name (serif), price (smaller, muted). This must blend into the white page, never sit on greige.
+
+The white text strip is the constant across both modes. The image area is the variable. This consistency is what makes a grid of mixed product shots look curated. Reference: SheerLuxe product cards.
+
+**Image rule:** Product images in ShopItem cards must always be de-etched product shots — the product on a neutral or transparent background, outside its retail packaging. Never use retail box or packaging shots. This applies to all product cards site-wide.
+
+## Editorial category layout
+
+All category and subcategory archive pages use the same **editorial magazine layout** — a repeating pattern of layout components fed by articles sorted newest-first. The shared component is `components/shared/EditorialSections.tsx`.
+
+**The pattern (repeating cycle):**
+
+1. **HeroSplit** — latest article, image left + headline right
+2. **StoriesTrio** — strip of 3 article cards
+3. **ShopStrip** — horizontal product rail (once only, first cycle only, only when the category/subcategory has a matching Shopify tag: `beauty-style→beauty`, `wellness→wellness`, `skincare`, `makeup`, `fragrance`, `hair`)
+4. **DuoStagger** — asymmetric duo with staggered right card (scrim overlay text)
+5. **StoriesTrio** — strip of 3
+6. **HeroSplit** — single highlighted article
+7. **DuoLeft** — asymmetric duo, larger left card (scrim overlay text)
+8. **StoriesTrio** — strip of 3
+9. Repeats from step 2 (without ShopStrip on subsequent cycles)
+
+**Which pages get it:**
+- `beauty-style`, `wellness`, `living` — full editorial layout (category + subcategory pages)
+- `interviews` — editorial layout below the intro header + A–Z link
+- `destinations/travel` — editorial layout below the full-bleed hero + "Where do you want to go?" feeling tiles
+- `vodcast` (podcast) — editorial layout below the ThemeArchive ("Find your next listen") section
+- `destinations/directory` — keeps its own directory-specific layout (no editorial)
+
+**RSC payload rule:** Only pass `{ frontmatter }` to `EditorialSections` — strip `content` and `products` fields. Serialising full MDX bodies for 34 articles blows Vercel's RSC payload limit. Cap at `MAX_EDITORIAL = 34` articles.
+
+**Image crop:** All editorial components use `object-[50%_20%]` (not `object-top`) so portrait crops keep headroom and don't chop off the top of heads.
 
 ## Category page order
 

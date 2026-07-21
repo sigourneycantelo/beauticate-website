@@ -42,15 +42,21 @@ export function getArticleBySlug(slugParts: string[]): {
   if (!fs.existsSync(mdxPath)) return null
 
   const raw = fs.readFileSync(mdxPath, 'utf-8')
-  const { data, content } = matter(raw)
+
+  let parsed: matter.GrayMatterFile<string>
+  try {
+    parsed = matter(raw)
+  } catch {
+    return null
+  }
 
   // product_links live in frontmatter; fall back to products.json for legacy articles
-  const products = (data.product_links as import('@/types/content').ProductLink[] | undefined)
+  const products = (parsed.data.product_links as import('@/types/content').ProductLink[] | undefined)
     ?? (fs.existsSync(productsPath) ? JSON.parse(fs.readFileSync(productsPath, 'utf-8')) : [])
 
   return {
-    frontmatter: data as ArticleFrontmatter,
-    content,
+    frontmatter: parsed.data as ArticleFrontmatter,
+    content: parsed.content,
     products,
   }
 }
@@ -62,17 +68,94 @@ function isPublished(a: { frontmatter: ArticleFrontmatter } | null): boolean {
 
 export function getArticlesByCategory(category: string, subcategory?: string) {
   const allSlugs = getArticleSlugs()
-  return allSlugs
+  const inFolder = allSlugs
     .filter(parts => {
       if (subcategory) return parts[0] === category && parts[1] === subcategory
       return parts[0] === category
     })
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
+
+  // Also include cross-listed articles (via also_in) at the category level
+  if (!subcategory) {
+    const seen = new Set(inFolder.map(a => a?.frontmatter.slug))
+    const crossListed = allSlugs
+      .map(parts => getArticleBySlug(parts))
+      .filter(isPublished)
+      .filter(a => (a?.frontmatter.also_in ?? []).some(ai => ai.startsWith(`${category}/`)))
+      .filter(a => !seen.has(a?.frontmatter.slug))
+    return [...inFolder, ...crossListed].sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+  }
+
+  return inFolder.sort((a, b) => {
+    const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+    const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+    return dateB - dateA
+  })
+}
+
+// Subcategory archive listing: folder members PLUS any published article that
+// opts in via `also_in: ["<category>/<subcategory>"]` (explicit cross-listing —
+// e.g. a fragrance interview that lives under /interviews but should also appear
+// in the fragrance archive). Deduped by slug, newest first.
+export function getArticlesBySubcategory(category: string, subcategory: string) {
+  const key = `${category}/${subcategory}`
+  const inFolder = getArticlesByCategory(category, subcategory)
+  const seen = new Set(inFolder.map(a => a?.frontmatter.slug))
+  const crossListed = getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => (a?.frontmatter.also_in ?? []).includes(key))
+    .filter(a => !seen.has(a?.frontmatter.slug))
+  return [...inFolder, ...crossListed].sort((a, b) => {
+    const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+    const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+    return dateB - dateA
+  })
+}
+
+export function getArticlesByFeeling(feeling: string) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => (a?.frontmatter.feeling ?? []).includes(feeling))
     .sort((a, b) => {
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
       const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
       return dateB - dateA
+    })
+}
+
+export function getArticlesByTravelType(travelType: string) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.travelType === travelType)
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+}
+
+export function getDirectoryListings(filters?: { state?: string; venueType?: string }) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => !!a?.frontmatter.venueType)
+    .filter(a => !filters?.state || a?.frontmatter.state === filters.state)
+    .filter(a => !filters?.venueType || a?.frontmatter.venueType === filters.venueType)
+    .sort((a, b) => {
+      const stateA = a?.frontmatter.state ?? 'ZZZ'
+      const stateB = b?.frontmatter.state ?? 'ZZZ'
+      if (stateA !== stateB) return stateA.localeCompare(stateB)
+      const titleA = a?.frontmatter.title ?? ''
+      const titleB = b?.frontmatter.title ?? ''
+      return titleA.localeCompare(titleB)
     })
 }
 
@@ -84,6 +167,15 @@ export function getHeroArticle() {
     .find(a => a?.frontmatter.is_hero) ?? null
 }
 
+export function getHeroArticles() {
+  const allSlugs = getArticleSlugs()
+  return allSlugs
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.is_hero)
+    .sort((a, b) => (a!.frontmatter.hero_order ?? 99) - (b!.frontmatter.hero_order ?? 99))
+}
+
 export function getFeaturedArticles(limit = 6) {
   const allSlugs = getArticleSlugs()
   return allSlugs
@@ -93,16 +185,23 @@ export function getFeaturedArticles(limit = 6) {
     .slice(0, limit)
 }
 
-// Returns all published articles with images, sorted by date (newest first).
+// Returns all published articles with images for the home page grid.
+// Articles with `home_rank` are pinned to the top in ascending rank order
+// (editorial curation — e.g. keep a just-demoted hero or a launch piece up top);
+// everything else flows newest-first by date_published.
 // Use excludeSlugs to avoid repeating articles already shown elsewhere on the page.
-export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
+export function getAllArticles(limit = 20, excludeSlugs: string[] = [], excludeSubcategories: string[] = []) {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
     .filter(a => a?.frontmatter.featured_image)
     .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
+    .filter(a => !excludeSubcategories.includes(a!.frontmatter.subcategory ?? ''))
     .sort((a, b) => {
+      const rankA = a?.frontmatter.home_rank ?? Infinity
+      const rankB = b?.frontmatter.home_rank ?? Infinity
+      if (rankA !== rankB) return rankA - rankB   // pinned articles first, by rank
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
       const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
       return dateB - dateA
@@ -110,11 +209,23 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = []) {
     .slice(0, limit)
 }
 
+export function getArticlesByAuthor(authorName: string) {
+  return getArticleSlugs()
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.author?.toLowerCase() === authorName.toLowerCase())
+    .sort((a, b) => {
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+}
+
 export function getRelatedArticles(
   currentSlug: string,
   category: string,
   tags: string[],
-  limit = 4
+  limit = 6
 ) {
   return getArticlesByCategory(category)
     .filter(isPublished)

@@ -1,24 +1,19 @@
 import Link from 'next/link'
 import { getCollectionByHandle } from '@/lib/shopify'
-import ProductCard from './ProductCard'
+import EditCarousel from './EditCarousel'
 
 // Sigourney's permanent edit is the "Editor's Essentials" Shopify collection.
 const EDIT_HANDLE = 'editors-essentials'
 
 export default async function SigourneysEdit() {
   const collection = await getCollectionByHandle(EDIT_HANDLE)
-  const products = (collection?.products.nodes ?? []).slice(0, 8)
+  const products = (collection?.products.nodes ?? []).slice(0, 16)
   if (!products.length) return null
 
   return (
-    <section className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] py-[clamp(48px,7vw,90px)] border-t border-cream-200">
-      {/* Press strip */}
-      <p className="text-center font-sans" style={{ fontSize: '10.5px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.5 }}>
-        As featured in Vogue, Marie Claire, The Daily Telegraph, Daily Mail, Body+Soul and Mumbrella
-      </p>
-
+    <section className="max-w-wide mx-auto px-[clamp(20px,6vw,104px)] pt-[clamp(24px,3vw,40px)] pb-[clamp(48px,7vw,90px)]">
       {/* Edit header */}
-      <div className="text-center mt-10 mb-9">
+      <div className="text-center mb-9">
         <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase', opacity: 0.55 }}>
           Sigourney's Edit
         </p>
@@ -30,18 +25,20 @@ export default async function SigourneysEdit() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {products.map(p => <ProductCard key={p.id} product={p} />)}
-      </div>
+      <EditCarousel products={products} />
 
-      <div className="text-center mt-10">
+      <div className="text-center mt-10 space-y-4">
         <Link
           href="/shop/collections/editors-essentials"
-          className="inline-block font-sans text-ink"
-          style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', borderBottom: '1px solid currentColor', paddingBottom: '2px' }}
+          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase border border-ink px-7 py-3 rounded-[1px] hover:bg-ink hover:text-white transition-colors duration-300"
         >
           Shop the edit
         </Link>
+        <p className="font-serif text-charcoal-light/60" style={{ fontSize: 'clamp(14px,1.4vw,16px)' }}>
+          <Link href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">
+            Tell us what we should be stocking
+          </Link>
+        </p>
       </div>
     </section>
   )

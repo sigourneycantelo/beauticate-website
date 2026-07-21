@@ -60,7 +60,7 @@ export default function InterviewsAZPage() {
 
       {/* Header */}
       <section className="max-w-4xl mx-auto px-6 pt-16 pb-10 text-center">
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-gold mb-3">Interviews</p>
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-wine mb-3">Interviews</p>
         <h1 className="font-serif text-4xl md:text-5xl text-charcoal leading-tight mb-5">
           A–Z
         </h1>
@@ -77,7 +77,7 @@ export default function InterviewsAZPage() {
         <div className="max-w-4xl mx-auto px-6 flex flex-wrap gap-x-3 gap-y-1 justify-center">
           {alphabet.map(l => (
             byLetter[l]
-              ? <a key={l} href={`#letter-${l}`} className="font-sans text-[12px] tracking-widest text-charcoal hover:text-gold transition-colors font-medium">{l}</a>
+              ? <a key={l} href={`#letter-${l}`} className="font-sans text-[12px] tracking-widest text-charcoal hover:text-wine transition-colors font-medium">{l}</a>
               : <span key={l} className="font-sans text-[12px] tracking-widest text-charcoal/20">{l}</span>
           ))}
         </div>
@@ -89,7 +89,7 @@ export default function InterviewsAZPage() {
           {letters.map(letter => (
             <div key={letter} id={`letter-${letter}`} className="scroll-mt-20">
               <div className="flex items-baseline gap-4 mb-4 border-b border-gray-100 pb-2">
-                <span className="font-serif text-3xl text-gold">{letter}</span>
+                <span className="font-serif text-3xl text-wine">{letter}</span>
                 <span className="font-sans text-[10px] tracking-widest uppercase text-charcoal/30">
                   {byLetter[letter].length} {byLetter[letter].length === 1 ? 'interview' : 'interviews'}
                 </span>
@@ -99,9 +99,9 @@ export default function InterviewsAZPage() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group flex items-baseline gap-3 py-1.5 border-b border-gray-50 hover:border-gold/30 transition-colors"
+                    className="group flex items-baseline gap-3 py-1.5 border-b border-gray-50 hover:border-wine/30 transition-colors"
                   >
-                    <span className="font-serif text-base text-charcoal group-hover:text-gold transition-colors whitespace-nowrap">
+                    <span className="font-serif text-base text-charcoal group-hover:text-wine transition-colors whitespace-nowrap">
                       {item.name}
                     </span>
                     <span className="font-sans text-[10px] tracking-wide text-charcoal/40 truncate">
@@ -119,7 +119,7 @@ export default function InterviewsAZPage() {
       <div className="text-center pb-16">
         <Link
           href="/interviews"
-          className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 hover:text-gold transition-colors border-b border-charcoal/20 pb-0.5"
+          className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/40 hover:text-wine transition-colors border-b border-charcoal/20 pb-0.5"
         >
           ← All interviews
         </Link>

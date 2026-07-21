@@ -1,65 +1,74 @@
-import { getCollections } from '@/lib/shopify'
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Metadata } from 'next'
+import { getCollections } from '@/lib/shopify'
+import { MOOD_MOMENTS } from '@/lib/shop-taxonomy'
 
-export const dynamic = 'force-dynamic'
+const SITE = 'https://www.beauticate.com'
 
 export const metadata: Metadata = {
-  title: 'Shop by Moment | Beauticate',
-  description: 'Curated beauty edits for every moment — from your morning ritual to the weekend away.',
+  title: 'Shop by Moment | Beauticate Shop',
+  description: 'Shop by moment — curated Beauticate edits for however you feel, from The Winter Edit and Deepest Sleep to Fit Girl Glow and Selfcare Sunday.',
+  alternates: { canonical: `${SITE}/shop/by-moment` },
 }
 
 export default async function ShopByMomentPage() {
-  const collections = await getCollections(48)
+  const collections = await getCollections(100)
+  const imgByHandle = new Map<string, string>()
+  for (const c of collections) {
+    const url = c.image?.url ?? c.products?.nodes?.[0]?.featuredImage?.url
+    if (url) imgByHandle.set(c.handle, url)
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Shop', item: `${SITE}/shop` },
+      { '@type': 'ListItem', position: 3, name: 'Shop by Moment', item: `${SITE}/shop/by-moment` },
+    ],
+  }
 
   return (
-    <div className="max-w-wide mx-auto px-4 py-12 md:py-16">
+    <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      <header className="mb-10 md:mb-14">
-        <p className="label-editorial mb-2">Curated edits</p>
-        <h1 className="font-serif text-3xl md:text-4xl text-ink mb-4">Shop by Moment</h1>
-        <p className="font-serif text-base text-charcoal/60 max-w-xl leading-relaxed">
-          Not just what you need — but when and how you need it. Each collection is built around a
-          real moment in your day, your week, your season.
+      <header className="text-center max-w-wide mx-auto px-[clamp(20px,6vw,104px)] pt-[clamp(40px,6vw,80px)] pb-[clamp(4px,2vw,16px)]">
+        <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal-light/60">Shop</p>
+        <h1 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(36px,5vw,64px)', lineHeight: 1 }}>Shop by Moment</h1>
+        <p className="font-serif mx-auto mt-4 max-w-[54ch] text-charcoal-light" style={{ fontSize: 'clamp(15px,1.5vw,18px)' }}>
+          Curated edits for however you feel — find exactly what you need, right now.
         </p>
       </header>
 
-      {collections.length === 0 ? (
-        <p className="font-serif text-charcoal/50">Collections coming soon.</p>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
-          {collections.map(c => (
-            <Link
-              key={c.id}
-              href={`/shop/collections/${c.handle}`}
-              className="group relative aspect-[3/4] overflow-hidden bg-parchment block"
-            >
-              {c.image ? (
-                <Image
-                  src={c.image.url}
-                  alt={c.image.altText ?? c.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                />
-              ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-camel/30 to-parchment" />
-              )}
-              {/* Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="font-serif text-paper text-lg leading-tight">{c.title}</p>
-                {c.description && (
-                  <p className="font-sans text-[10px] tracking-[0.15em] uppercase text-paper/60 mt-1 line-clamp-1">
-                    {c.description}
-                  </p>
-                )}
-              </div>
-            </Link>
-          ))}
+      <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
+        <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-8">
+          <Link href="/" className="hover:text-ink transition-colors">Home</Link>
+          <span className="mx-2 opacity-40">/</span>
+          <Link href="/shop" className="hover:text-ink transition-colors">Shop</Link>
+          <span className="mx-2 opacity-40">/</span>
+          <span className="text-ink">Shop by Moment</span>
+        </nav>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {MOOD_MOMENTS.map(m => {
+            const img = imgByHandle.get(m.handle)
+            return (
+              <Link key={m.handle} href={`/shop/collections/${m.handle}`} className="group block">
+                <div className="relative aspect-square overflow-hidden bg-tile mb-3">
+                  {img ? (
+                    <Image src={img} alt={m.name} fill sizes="(max-width:768px) 100vw, 420px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                  ) : (
+                    <span className="absolute inset-0 flex items-center justify-center font-serif text-lg italic opacity-30 px-4 text-center">{m.name}</span>
+                  )}
+                </div>
+                <p className="font-serif text-[20px] leading-tight group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]">{m.name}</p>
+              </Link>
+            )
+          })}
         </div>
-      )}
+      </div>
     </div>
   )
 }

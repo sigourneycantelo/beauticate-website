@@ -16,7 +16,7 @@ const GRADIENTS = [
 
 export default function ShopByMoment() {
   return (
-    <section className="bg-white border-b border-cream-200 px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
+    <section className="full-bleed bg-white px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
       <div className="text-center mb-10">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold text-eucalypt">
           Shop by Moment
@@ -32,7 +32,7 @@ export default function ShopByMoment() {
             key={m.href}
             href={m.href}
             className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
-            style={{ aspectRatio: '4/5' }}
+            style={{ aspectRatio: '1/1' }}
           >
             {/* Background */}
             <div

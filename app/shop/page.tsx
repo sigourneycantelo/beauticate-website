@@ -1,8 +1,30 @@
-import Link from 'next/link'
-import { getProducts } from '@/lib/shopify'
-import ProductCard from '@/components/shop/ProductCard'
+import { getCollections } from '@/lib/shopify'
 import HeroVideo from '@/components/shop/HeroVideo'
+import TrustBand from '@/components/shop/TrustBand'
+import FounderIntro from '@/components/shop/FounderIntro'
+import ShopByMoment from '@/components/shop/ShopByMoment'
+import Collective from '@/components/shop/Collective'
+import SigourneysEdit from '@/components/shop/SigourneysEdit'
+import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
+import ShopNewsletter from '@/components/shop/ShopNewsletter'
+import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
+
+// The four "moment" collections, in display order. Matched by title with a
+// fallback to any image-bearing collections so the grid always fills.
+const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
+
+function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
+  const picked = MOMENT_TITLES
+    .map(t => collections.find(c => c.title.toLowerCase() === t))
+    .filter(Boolean) as ShopifyCollection[]
+  const have = new Set(picked.map(c => c.id))
+  for (const c of collections) {
+    if (picked.length >= 4) break
+    if (!have.has(c.id) && c.image) picked.push(c)
+  }
+  return picked.slice(0, 4)
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -11,133 +33,71 @@ export const metadata: Metadata = {
   description: 'Curated beauty, wellness and lifestyle — recommended by the editors and experts of Beauticate. Fewer, better things, chosen by editors not algorithms.',
 }
 
-const SHOP_SECTIONS = [
-  {
-    href: '/shop/by-brand',
-    label: 'Shop by Brand',
-    description: 'Discover the carefully chosen brands behind the edit.',
-  },
-  {
-    href: '/shop/by-category',
-    label: 'Shop by Category',
-    description: 'Skincare, fragrance, hair, wellness and more.',
-  },
-  {
-    href: '/shop/by-moment',
-    label: 'Shop by Moment',
-    description: 'Curated for how you actually live — not just what you need to buy.',
-  },
-]
-
 export default async function ShopPage() {
-  const newArrivals = await getProducts(8)
+  const collections = await getCollections(48)
+  const moments = pickMoments(collections)
 
   return (
     <div>
 
-      {/* Hero — 100vw breakout so no parent padding/constraint clips the video */}
+      {/* Hero — full-bleed video, headline top-left (mirrors beauticate.shop).
+          100vw breakout so no parent padding/constraint clips the video. */}
       <section
         className="relative bg-ink overflow-hidden"
         style={{
           width: '100vw',
           marginLeft: 'calc(50% - 50vw)',
-          minHeight: 'clamp(480px, 65vh, 780px)',
+          minHeight: 'clamp(500px, 72vh, 820px)',
         }}
       >
         <HeroVideo />
 
-        {/* Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
-
-        {/* Hero content */}
+        {/* Scrim — darkens the top-left corner so the headline stays legible */}
         <div
-          className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-16 pt-24"
-          style={{ minHeight: 'clamp(480px, 65vh, 780px)' }}
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.20) 40%, transparent 72%)' }}
+        />
+
+        {/* Hero content — top-left */}
+        <div
+          className="relative z-10 flex flex-col items-start justify-start text-left px-[clamp(24px,6vw,104px)] pt-[clamp(34px,6vw,76px)]"
+          style={{ minHeight: 'clamp(500px, 72vh, 820px)' }}
         >
-          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-paper/60 mb-4">
-            The Beauticate Edit
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-paper leading-tight max-w-2xl mb-5">
-            Essentials for a beautiful life.
+          <h1
+            className="font-serif font-normal text-paper"
+            style={{ fontSize: 'clamp(22px, 2.9vw, 40px)', lineHeight: 1.08 }}
+          >
+            essentials for a <em className="italic">beautiful</em> life.
           </h1>
-          <p className="font-serif text-lg md:text-xl text-paper/70 max-w-sm leading-relaxed mb-10">
-            Curated by editors and experts.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/shop/by-category" className="btn-primary">
-              Explore the Edit
-            </Link>
-            <Link href="/shop/by-brand" className="inline-flex items-center justify-center px-6 py-3 border border-paper/40 text-paper text-xs font-sans tracking-[0.34em] uppercase transition-colors hover:bg-paper hover:text-ink">
-              Shop by Brand
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Section teasers — 3 columns */}
-      <section className="border-b border-camel/30 bg-parchment">
-        <div className="max-w-wide mx-auto px-4 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-camel/30">
-          {SHOP_SECTIONS.map(s => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className="group flex flex-col items-center text-center px-8 py-10 hover:bg-camel/10 transition-colors"
-            >
-              <h3 className="font-sans text-[11px] tracking-[0.25em] uppercase text-ink mb-3 group-hover:text-eucalypt transition-colors">
-                {s.label}
-              </h3>
-              <p className="font-serif text-sm text-charcoal/60 leading-relaxed max-w-xs">
-                {s.description}
-              </p>
-              <span className="mt-4 font-sans text-[10px] tracking-[0.2em] uppercase text-eucalypt">
-                Browse →
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* New Arrivals */}
-      {newArrivals.length > 0 && (
-        <section className="max-w-wide mx-auto px-4 py-14 md:py-20">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="label-editorial mb-2">Just arrived</p>
-              <h2 className="font-serif text-2xl md:text-3xl text-ink">New to the edit</h2>
-            </div>
-            <Link href="/shop/by-category" className="hidden md:block font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal/50 hover:text-ink transition-colors">
-              View all →
-            </Link>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
-            {newArrivals.slice(0, 4).map(p => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-          {newArrivals.length > 4 && (
-            <div className="mt-10 text-center">
-              <Link href="/shop/by-category" className="btn-secondary">
-                See all new arrivals
-              </Link>
-            </div>
-          )}
-        </section>
-      )}
-
-      {/* Editorial note */}
-      <section className="bg-ink py-14 md:py-20">
-        <div className="max-w-content mx-auto px-6 text-center">
-          <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-paper/40 mb-6">
-            Our philosophy
-          </p>
-          <blockquote className="font-serif text-2xl md:text-3xl text-paper leading-relaxed mb-8">
-            &ldquo;I only stock things I would recommend to my closest friends. That&rsquo;s the whole edit.&rdquo;
-          </blockquote>
-          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-paper/50">
-            Sigourney Cantelo — Founder &amp; Editor-in-Chief
+          <p
+            className="font-serif font-normal text-paper/90 mt-2"
+            style={{ fontSize: 'clamp(22px, 2.9vw, 40px)', lineHeight: 1.082, marginLeft: 'clamp(14px, 2.5vw, 36px)' }}
+          >
+            curated by editors and experts.
           </p>
         </div>
       </section>
+
+      {/* Trust band */}
+      <TrustBand />
+
+      {/* Founder introduction — portrait left, letter right */}
+      <FounderIntro />
+
+      {/* Shop by Moment — four portrait tiles */}
+      <ShopByMoment collections={moments} />
+
+      {/* Meet the Beauticate Collective */}
+      <Collective />
+
+      {/* Press strip + Sigourney's Edit (editors-essentials collection) */}
+      <SigourneysEdit />
+
+      {/* Shop by Category */}
+      <ShopCategoryGrid />
+
+      {/* The edit, in your inbox — newsletter */}
+      <ShopNewsletter />
 
     </div>
   )
