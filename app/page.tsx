@@ -3,6 +3,7 @@ import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shop
 
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
+import ShopGrid from '@/components/home/ShopGrid'
 import ShopStrip from '@/components/home/ShopStrip'
 import TheCollective from '@/components/shared/TheCollective'
 import InstagramFeed from '@/components/home/InstagramFeed'
@@ -67,8 +68,8 @@ export default async function HomePage() {
       {/* 5 — As Seen In */}
       <AsSeenIn />
 
-      {/* 6 — Product rail */}
-      <ShopStrip products={shopProducts} />
+      {/* 6 — Product grid */}
+      <ShopGrid products={shopProducts} />
 
       {/* 7 — Duo (most recent two stories) */}
       {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} />}
