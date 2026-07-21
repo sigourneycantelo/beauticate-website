@@ -26,10 +26,10 @@ export default function ShopGrid({
 
   return (
     <section
-      className="reveal"
+      className="full-bleed reveal"
       style={{ padding: 'clamp(32px,4vw,52px) clamp(20px,6vw,104px)' }}
     >
-      <div className="text-center mb-8">
+      <div className="text-center mb-10 mx-auto" style={{ maxWidth: '540px' }}>
         <p
           className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold"
           style={{ color: '#8E9A82' }}
@@ -37,17 +37,17 @@ export default function ShopGrid({
           {eyebrow}
         </p>
         <h2
-          className="font-serif font-normal mt-2"
+          className="font-serif font-normal mt-3"
           style={{ fontSize: 'clamp(24px,3vw,34px)' }}
         >
-          {heading ?? <>What the team is buying <em className="italic">this week</em></>}
+          {heading ?? <>Essentials for living beautifully.<br /><em className="italic">Curated by editors and experts, not algorithms.</em></>}
         </h2>
-        <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.58 }}>
-          {subheading}
+        <p className="font-sans mt-3" style={{ fontSize: '13px', opacity: 0.55, lineHeight: 1.6 }}>
+          Every product tested, used and recommended by our team before it earns a place here.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+      <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
         {visible.map(p => {
           const imgs = p.images?.nodes ?? []
           const primary = imgs[0] ?? p.featuredImage
