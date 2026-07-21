@@ -97,6 +97,33 @@ The white text strip is the constant across both modes. The image area is the va
 
 **Image rule:** Product images in ShopItem cards must always be de-etched product shots — the product on a neutral or transparent background, outside its retail packaging. Never use retail box or packaging shots. This applies to all product cards site-wide.
 
+## Editorial category layout
+
+All category and subcategory archive pages use the same **editorial magazine layout** — a repeating pattern of layout components fed by articles sorted newest-first. The shared component is `components/shared/EditorialSections.tsx`.
+
+**The pattern (repeating cycle):**
+
+1. **HeroSplit** — latest article, image left + headline right
+2. **StoriesTrio** — strip of 3 article cards
+3. **ShopStrip** — horizontal product rail (once only, first cycle only, only when the category/subcategory has a matching Shopify tag: `beauty-style→beauty`, `wellness→wellness`, `skincare`, `makeup`, `fragrance`, `hair`)
+4. **DuoStagger** — asymmetric duo with staggered right card (scrim overlay text)
+5. **StoriesTrio** — strip of 3
+6. **HeroSplit** — single highlighted article
+7. **DuoLeft** — asymmetric duo, larger left card (scrim overlay text)
+8. **StoriesTrio** — strip of 3
+9. Repeats from step 2 (without ShopStrip on subsequent cycles)
+
+**Which pages get it:**
+- `beauty-style`, `wellness`, `living` — full editorial layout (category + subcategory pages)
+- `interviews` — editorial layout below the intro header + A–Z link
+- `destinations/travel` — editorial layout below the full-bleed hero + "Where do you want to go?" feeling tiles
+- `vodcast` (podcast) — editorial layout below the ThemeArchive ("Find your next listen") section
+- `destinations/directory` — keeps its own directory-specific layout (no editorial)
+
+**RSC payload rule:** Only pass `{ frontmatter }` to `EditorialSections` — strip `content` and `products` fields. Serialising full MDX bodies for 34 articles blows Vercel's RSC payload limit. Cap at `MAX_EDITORIAL = 34` articles.
+
+**Image crop:** All editorial components use `object-[50%_20%]` (not `object-top`) so portrait crops keep headroom and don't chop off the top of heads.
+
 ## Category page order
 
 Articles appear on category pages sorted newest-first by `date_published`. The "first 12 stories" on each page are the 12 most recent articles by date.

@@ -45,7 +45,10 @@
       "Bash(git commit -m ' *)",
       "Bash(git reset *)",
       "Bash(git rev-list *)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "mcp__69d1b337-18c4-44e4-9484-777346be4387__get_projects",
+      "mcp__69d1b337-18c4-44e4-9484-777346be4387__create_tasks",
+      "mcp__69d1b337-18c4-44e4-9484-777346be4387__create_task_preview_v4"
     ]
   }
 }
