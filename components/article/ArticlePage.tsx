@@ -87,7 +87,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     const shopProduct = shopProductMap[handle]
     const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
     return (
-      <div className="max-w-md mx-auto">
+      <div className="max-w-[540px] mx-auto">
         <ProductEmbed product={productLink} shopProduct={shopProduct} />
       </div>
     )
