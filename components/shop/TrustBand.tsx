@@ -12,19 +12,19 @@ export default function TrustBand() {
       }}
     >
       <p
-        className="font-sans"
-        style={{ fontSize: '11px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.6 }}
+        className="font-sans font-semibold"
+        style={{ fontSize: '11px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.7 }}
       >
         Trusted by women for over a decade
-        <span className="mx-2 opacity-50">·</span>
-        By the editors of{' '}
+        <span className="mx-2 font-normal opacity-40">·</span>
+        <span className="font-normal opacity-70">By the editors of{' '}
         <Link href="/" className="underline decoration-[0.5px] underline-offset-2 hover:opacity-70 transition-opacity">
           Beauticate.com
-        </Link>
+        </Link></span>
       </p>
       <p
         className="font-sans mt-1.5"
-        style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', opacity: 0.45 }}
+        style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9a9590' }}
       >
         <Link href="/press" className="hover:opacity-70 transition-opacity">
           As featured in Vogue, Marie Claire, The Daily Telegraph, Daily Mail, Body+Soul and Mumbrella

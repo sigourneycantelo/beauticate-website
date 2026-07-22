@@ -1,4 +1,4 @@
-import { getCollections, getProducts, getProductsByTag, getCollectionByHandle } from '@/lib/shopify'
+import { getCollections, getProducts, getProductsByTag } from '@/lib/shopify'
 import { getVodcastEpisodes } from '@/lib/content'
 import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
@@ -8,7 +8,7 @@ import Collective from '@/components/shop/Collective'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
-import ShopGrid from '@/components/home/ShopGrid'
+import ShopProductGrid from '@/components/shop/ShopProductGrid'
 import PodcastSection from '@/components/home/PodcastSection'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
@@ -44,12 +44,12 @@ export default async function ShopPage() {
   const moments = pickMoments(collections)
 
   const seen = new Set<string>()
-  const curatedProducts = [...taggedProducts].filter(p => {
+  const curatedProducts = [...taggedProducts, ...allProducts].filter(p => {
     if (seen.has(p.handle)) return false
     seen.add(p.handle)
     return true
-  }).slice(0, 24)
-  const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
+  })
+  const shopProducts = curatedProducts.slice(0, 16)
 
   return (
     <div>
@@ -92,8 +92,20 @@ export default async function ShopPage() {
       {/* Trust band */}
       <TrustBand />
 
-      {/* Product grid — the main shopping area */}
-      <ShopGrid products={shopProducts} />
+      {/* Product grid — 16 products immediately visible */}
+      <ShopProductGrid
+        products={shopProducts}
+        heading={
+          <>
+            <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
+              The Edit
+            </p>
+            <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
+              What the team is buying <em className="italic">this week</em>
+            </h2>
+          </>
+        }
+      />
 
       {/* Founder introduction */}
       <FounderIntro />
