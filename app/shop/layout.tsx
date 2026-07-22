@@ -1,6 +1,27 @@
+import Script from 'next/script'
 import ShopSubNav, { type SubNavItem } from '@/components/shop/ShopSubNav'
 import { getCollections } from '@/lib/shopify'
 import { BROAD_CATEGORIES, SHOP_BRANDS, MOOD_MOMENTS } from '@/lib/shop-taxonomy'
+
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
+
+const shopOrgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Beauticate',
+  url: SITE,
+  logo: { '@type': 'ImageObject', url: `${SITE}/logo-dark.png` },
+  description: 'Australia\'s most trusted independent beauty publisher. Beauticate Shop is the curated beauty and wellness edit, chosen by editors and experts.',
+  founder: { '@type': 'Person', name: 'Sigourney Cantelo', url: `${SITE}/about-beauticate` },
+  sameAs: [
+    'https://www.instagram.com/beauticate/',
+    'https://www.facebook.com/beauticate',
+    'https://www.linkedin.com/company/beauticate.com',
+    'https://www.youtube.com/@beauticate',
+    'https://au.pinterest.com/beauticate/',
+    'https://www.wikidata.org/wiki/Q139643093',
+  ],
+}
 
 export default async function ShopLayout({ children }: { children: React.ReactNode }) {
   const collections = await getCollections(100)
@@ -21,6 +42,9 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
 
   return (
     <>
+      <Script id="shop-org-schema" type="application/ld+json" strategy="beforeInteractive">
+        {JSON.stringify(shopOrgSchema)}
+      </Script>
       <ShopSubNav category={category} brands={brands} moments={moments} />
       {children}
     </>

@@ -56,6 +56,8 @@ const PRODUCT_FRAGMENT = `
         id
         title
         availableForSale
+        sku
+        barcode
         price { amount currencyCode }
         compareAtPrice { amount currencyCode }
         selectedOptions { name value }
