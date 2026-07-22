@@ -16,7 +16,6 @@ export default function PressTrustBand() {
       <div className="ptb-trust">
         <Link href="/about">
           <span className="ptb-trust-line">25 Years of Trusted Journalism</span>
-          <span className="ptb-trust-line">3 Million Monthly Touchpoints</span>
           <span className="ptb-trust-line">Expertly Curated Shop</span>
         </Link>
       </div>
