@@ -27,6 +27,7 @@ import NumberedSection from '@/components/mdx/NumberedSection'
 import BeforeAfterSlider from '@/components/mdx/BeforeAfterSlider'
 import Caption from '@/components/mdx/Caption'
 import InlineImage from '@/components/mdx/InlineImage'
+import TravelWidget from '@/components/mdx/TravelWidget'
 import StatBand, { Stat } from '@/components/mdx/StatBand'
 import ProductTile from '@/components/shared/ProductTile'
 import SubscribeBand from '@/components/shared/SubscribeBand'
@@ -119,7 +120,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
     InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
-    ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider,
+    ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
       return isExternal
