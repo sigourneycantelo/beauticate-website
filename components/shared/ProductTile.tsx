@@ -35,16 +35,16 @@ export default function ProductTile({
   cornerLabel, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
-  const fit = cover ? 'object-cover' : 'object-contain p-4'
-  const blend = cover ? undefined : ({ mixBlendMode: 'multiply' } as const)
+  // mix-blend-multiply makes white/grey product backgrounds blend into bg-tile greige — DO NOT REMOVE
+  const fit = cover ? 'object-cover' : 'object-contain p-4 mix-blend-multiply'
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
     return useNextImage ? (
-      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} style={blend} />
+      <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt} className={cls} style={blend} />
+      <img src={src} alt={alt} className={cls} />
     )
   }
 
