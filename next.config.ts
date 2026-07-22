@@ -781,6 +781,22 @@ const nextConfig: NextConfig = {
       // ── Catch-all redirects for old WP category patterns ────────────────────
       { source: '/how-tos/interiors/:path*', destination: '/living/interiors', permanent: true },
       { source: '/how-tos/:path*', destination: '/beauty-style', permanent: true },
+
+      // ── GO-TOs directory (old venue listings) ──────────────────────────────
+      { source: '/the-go-tos/beauty-maintenance/:path*', destination: '/destinations/directory', permanent: true },
+      { source: '/the-go-tos/high-tech-treatments/:path*', destination: '/destinations/directory', permanent: true },
+      { source: '/the-go-tos/:path*', destination: '/destinations/directory', permanent: true },
+
+      // ── Vodcast-by-beauticate bare path ────────────────────────────────────
+      { source: '/vodcast-by-beauticate', destination: '/vodcast', permanent: true },
+
+      // ── /destination/ (singular) parent paths ──────────────────────────────
+      { source: '/destination/beauty-wellness/clinics/:path*', destination: '/destinations/directory', permanent: true },
+      { source: '/destination/beauty-wellness/skin-salons/:path*', destination: '/destinations/directory', permanent: true },
+      { source: '/destination/beauty-wellness/:path*', destination: '/destinations/directory', permanent: true },
+      { source: '/destination/travel/:path*', destination: '/destinations/travel', permanent: true },
+      { source: '/destination/:path*', destination: '/destinations/directory', permanent: true },
+
       { source: '/tag/:path*', destination: '/', permanent: false },
       { source: '/offers/:path*', destination: '/', permanent: false },
       { source: '/product/:path*', destination: '/', permanent: false },
