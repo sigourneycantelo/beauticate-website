@@ -1,4 +1,5 @@
-import { getCollections } from '@/lib/shopify'
+import { getCollections, getProducts, getProductsByTag, getCollectionByHandle } from '@/lib/shopify'
+import { getVodcastEpisodes } from '@/lib/content'
 import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
@@ -7,11 +8,11 @@ import Collective from '@/components/shop/Collective'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
+import ShopGrid from '@/components/home/ShopGrid'
+import PodcastSection from '@/components/home/PodcastSection'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
-// The four "moment" collections, in display order. Matched by title with a
-// fallback to any image-bearing collections so the grid always fills.
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
 
 function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
@@ -34,14 +35,26 @@ export const metadata: Metadata = {
 }
 
 export default async function ShopPage() {
-  const collections = await getCollections(48)
+  const [collections, taggedProducts, allProducts, vodcastEpisodes] = await Promise.all([
+    getCollections(48),
+    getProductsByTag('team', 24),
+    getProducts(24),
+    Promise.resolve(getVodcastEpisodes()),
+  ])
   const moments = pickMoments(collections)
+
+  const seen = new Set<string>()
+  const curatedProducts = [...taggedProducts].filter(p => {
+    if (seen.has(p.handle)) return false
+    seen.add(p.handle)
+    return true
+  }).slice(0, 24)
+  const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
 
   return (
     <div>
 
-      {/* Hero — full-bleed video, headline top-left (mirrors beauticate.shop).
-          100vw breakout so no parent padding/constraint clips the video. */}
+      {/* Hero — full-bleed video */}
       <section
         className="relative bg-ink overflow-hidden"
         style={{
@@ -52,13 +65,11 @@ export default async function ShopPage() {
       >
         <HeroVideo />
 
-        {/* Scrim — darkens the top-left corner so the headline stays legible */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.20) 40%, transparent 72%)' }}
         />
 
-        {/* Hero content — top-left */}
         <div
           className="relative z-10 flex flex-col items-start justify-start text-left px-[clamp(24px,6vw,104px)] pt-[clamp(34px,6vw,76px)]"
           style={{ minHeight: 'clamp(500px, 72vh, 820px)' }}
@@ -81,22 +92,28 @@ export default async function ShopPage() {
       {/* Trust band */}
       <TrustBand />
 
-      {/* Founder introduction — portrait left, letter right */}
+      {/* Product grid — the main shopping area */}
+      <ShopGrid products={shopProducts} />
+
+      {/* Founder introduction */}
       <FounderIntro />
 
-      {/* Shop by Moment — four portrait tiles */}
+      {/* Shop by Moment — full-width tiles */}
       <ShopByMoment collections={moments} />
 
-      {/* Meet the Beauticate Collective */}
-      <Collective />
-
-      {/* Press strip + Sigourney's Edit (editors-essentials collection) */}
+      {/* Sigourney's Edit */}
       <SigourneysEdit />
 
       {/* Shop by Category */}
       <ShopCategoryGrid />
 
-      {/* The edit, in your inbox — newsletter */}
+      {/* Meet the Beauticate Collective */}
+      <Collective />
+
+      {/* Podcast — founder interviews */}
+      <PodcastSection episodes={vodcastEpisodes} />
+
+      {/* Newsletter */}
       <ShopNewsletter />
 
     </div>
