@@ -15,6 +15,7 @@ import ShareButtons from './ShareButtons'
 import { resolveSchemaType } from '@/lib/seo'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import PullQuote from '@/components/mdx/PullQuote'
+import ImageCarousel, { CarouselSlide } from '@/components/mdx/ImageCarousel'
 import { ShopGrid, ShopItem, ShopCTA } from '@/components/mdx/ShopGrid'
 import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
@@ -118,7 +119,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
-    InlineProduct, PullQuote, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
+    InlineProduct, PullQuote, ImageCarousel, CarouselSlide, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
     ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
