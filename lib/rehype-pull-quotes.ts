@@ -8,7 +8,7 @@ import type { Plugin } from 'unified'
  * In interview articles, these are the section-opening quotes like:
  *   *"I had a really nice, normal upbringing..."*
  *
- * They render as bold-italic at ~1.5x body font size.
+ * They render as centred italic pull-quotes matching the PullQuote component.
  */
 const CREDIT_PATTERN = /^(story by|photography by|words by|images? by|interview by|hair by|makeup by|styled by|produced by|directed by|shot by|written by|videography by)/i
 

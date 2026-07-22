@@ -103,14 +103,16 @@
   color: #3d3d3d;
 }
 
-/* Interview pull-quotes — italic-only paragraphs promoted to 1.5× bold-italic */
+/* Interview pull-quotes — italic-only paragraphs styled as centred pull-quotes */
 .prose .interview-pull-quote {
-  font-size: 1.5em;
+  font-size: clamp(26px, 3.2vw, 32px);
   line-height: 1.35;
-  font-weight: 600;
+  font-weight: normal;
   font-style: italic;
-  margin-top: 2rem;
-  margin-bottom: 0.25rem;
+  text-align: center;
+  max-width: 520px;
+  margin: 3rem auto;
+  color: #3a2a22;
 }
 .prose .interview-pull-quote em {
   font-style: inherit;
