@@ -66,9 +66,22 @@ function PillarItem({ p }: { p: Pillar }) {
   const [open, setOpen] = useState(false)
   const openT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const onEnter = () => { clearTimeout(closeT.current); openT.current = setTimeout(() => setOpen(true), 90) }
+  const onEnter = () => {
+    clearTimeout(closeT.current)
+    openT.current = setTimeout(() => {
+      setOpen(true)
+      if (p.isShop) window.dispatchEvent(new CustomEvent('mega-open'))
+    }, 90)
+  }
   const onLeave = () => { clearTimeout(openT.current); closeT.current = setTimeout(() => setOpen(false), 260) }
   useEffect(() => () => { clearTimeout(openT.current); clearTimeout(closeT.current) }, [])
+
+  useEffect(() => {
+    if (!p.isShop) return
+    const onSubnav = () => { clearTimeout(openT.current); setOpen(false) }
+    window.addEventListener('subnav-open', onSubnav)
+    return () => window.removeEventListener('subnav-open', onSubnav)
+  }, [p.isShop])
 
   useEffect(() => {
     clearTimeout(openT.current)

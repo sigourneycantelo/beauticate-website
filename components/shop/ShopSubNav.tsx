@@ -31,16 +31,33 @@ function Card({ label, href, image, soon }: SubNavItem) {
 export default function ShopSubNav({ category, brands, moments }: Props) {
   const path = usePathname()
   const [open, setOpen] = useState<string | null>(null)
+  const [mastheadHidden, setMastheadHidden] = useState(false)
   const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const openMenu = (k: string) => { clearTimeout(closeT.current); setOpen(k) }
+  const openMenu = (k: string) => {
+    clearTimeout(closeT.current)
+    setOpen(k)
+    window.dispatchEvent(new CustomEvent('subnav-open'))
+  }
   const closeSoon = () => { closeT.current = setTimeout(() => setOpen(null), 220) }
   useEffect(() => { setOpen(null) }, [path])
   useEffect(() => () => clearTimeout(closeT.current), [])
 
+  useEffect(() => {
+    const mh = document.querySelector<HTMLElement>('.mh')
+    if (!mh) return
+    const ob = new MutationObserver(() => {
+      setMastheadHidden(mh.classList.contains('mh-hidden'))
+    })
+    ob.observe(mh, { attributes: true, attributeFilter: ['class'] })
+    const onMega = () => { clearTimeout(closeT.current); setOpen(null) }
+    window.addEventListener('mega-open', onMega)
+    return () => { ob.disconnect(); window.removeEventListener('mega-open', onMega) }
+  }, [])
+
   const listFor = (k: string | null) => (k === 'brand' ? brands : k === 'moment' ? moments : [])
 
   return (
-    <div className="bg-white shop-subnav-sticky relative" style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }} onMouseLeave={closeSoon}>
+    <div className={`bg-white shop-subnav-sticky relative${mastheadHidden ? ' mh-away' : ''}`} style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }} onMouseLeave={closeSoon}>
       <nav aria-label="Shop navigation" className="max-w-wide mx-auto flex items-center justify-center flex-nowrap" style={{ gap: '0', padding: '16px clamp(20px,6vw,104px)' }}>
         {TABS.map((tab, i) => {
           const active = tab.match(path) || open === tab.key
