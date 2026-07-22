@@ -95,6 +95,30 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
   return (data as any)?.products?.nodes ?? []
 }
 
+// One product per brand, most recently created first — gives a varied "new arrivals"
+// grid rather than a dump of one vendor's catalogue.
+export async function getNewArrivals(maxBrands = 8): Promise<ShopifyProduct[]> {
+  const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
+    ${PRODUCT_FRAGMENT}
+    query NewArrivals($first: Int!) {
+      products(first: $first, sortKey: CREATED_AT, reverse: true) {
+        nodes { ...ProductFields }
+      }
+    }
+  `, { first: 80 })
+  const all = (data as any)?.products?.nodes ?? []
+  const seen = new Set<string>()
+  const picks: ShopifyProduct[] = []
+  for (const p of all) {
+    const brand = (p.vendor ?? '').toLowerCase()
+    if (seen.has(brand)) continue
+    seen.add(brand)
+    picks.push(p)
+    if (picks.length >= maxBrands) break
+  }
+  return picks
+}
+
 // A collection with a fuller product list than getCollectionByHandle (which caps at 24) —
 // used by the broad category pages that need every product in the group.
 export async function getCollectionFull(handle: string, first = 250): Promise<ShopifyCollection | null> {

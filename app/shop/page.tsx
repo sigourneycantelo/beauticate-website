@@ -1,4 +1,4 @@
-import { getCollections, getProducts, getProductsByTag } from '@/lib/shopify'
+import { getCollections, getProducts, getProductsByTag, getNewArrivals, getCollectionByHandle } from '@/lib/shopify'
 import { getVodcastEpisodes } from '@/lib/content'
 import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
@@ -9,11 +9,13 @@ import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
 import ShopProductGrid from '@/components/shop/ShopProductGrid'
+import CollectionFeature from '@/components/shop/CollectionFeature'
 import PodcastSection from '@/components/home/PodcastSection'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
+const FEATURED_COLLECTIONS = ['deepest-sleep', 'fit-girl-glow']
 
 function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
   const picked = MOMENT_TITLES
@@ -35,13 +37,16 @@ export const metadata: Metadata = {
 }
 
 export default async function ShopPage() {
-  const [collections, taggedProducts, allProducts, vodcastEpisodes] = await Promise.all([
+  const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...featuredColls] = await Promise.all([
     getCollections(48),
     getProductsByTag('team', 24),
     getProducts(24),
+    getNewArrivals(8),
     Promise.resolve(getVodcastEpisodes()),
+    ...FEATURED_COLLECTIONS.map(h => getCollectionByHandle(h)),
   ])
   const moments = pickMoments(collections)
+  const featured = (featuredColls as (ShopifyCollection | null)[]).filter(Boolean) as ShopifyCollection[]
 
   const seen = new Set<string>()
   const curatedProducts = [...taggedProducts, ...allProducts].filter(p => {
@@ -107,8 +112,34 @@ export default async function ShopPage() {
         }
       />
 
+      {/* New Arrivals — one product per brand, most recently onboarded */}
+      {newArrivals.length > 0 && (
+        <ShopProductGrid
+          products={newArrivals}
+          maxProducts={8}
+          heading={
+            <>
+              <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
+                Just Landed
+              </p>
+              <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
+                New brands, <em className="italic">fresh finds</em>
+              </h2>
+              <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.55 }}>
+                One pick from each of the latest brands to join the shop
+              </p>
+            </>
+          }
+        />
+      )}
+
       {/* Founder introduction */}
       <FounderIntro />
+
+      {/* Collection feature cards */}
+      {featured.map(c => (
+        <CollectionFeature key={c.id} collection={c} />
+      ))}
 
       {/* Shop by Moment — full-width tiles */}
       <ShopByMoment collections={moments} />
