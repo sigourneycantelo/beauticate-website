@@ -20,12 +20,39 @@ function getTextContent(node: Node): string {
   return ''
 }
 
+function isImageParagraph(node: Node): boolean {
+  if (node.type !== 'element') return false
+  const el = node as Element
+  if (el.tagName !== 'p') return false
+  const meaningful = el.children.filter(
+    (c) => !(c.type === 'text' && (c as Text).value.trim() === '')
+  )
+  return (
+    meaningful.length === 1 &&
+    meaningful[0].type === 'element' &&
+    (meaningful[0] as Element).tagName === 'img'
+  )
+}
+
+function isHr(node: Node): boolean {
+  return node.type === 'element' && (node as Element).tagName === 'hr'
+}
+
 const rehypePullQuotes: Plugin<[], Root> = () => {
   return (tree: Root) => {
-    for (const node of tree.children) {
-      if (node.type !== 'element') continue
-      const el = node as Element
+    const elements = tree.children.filter((c) => c.type === 'element')
+    let afterHr = false
+
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i] as Element
+
+      if (isHr(el)) {
+        afterHr = true
+        continue
+      }
+
       if (el.tagName !== 'p') continue
+      if (afterHr) continue
 
       const meaningful = el.children.filter(
         (c) => !(c.type === 'text' && (c as Text).value.trim() === '')
@@ -38,6 +65,9 @@ const rehypePullQuotes: Plugin<[], Root> = () => {
       ) {
         const text = getTextContent(meaningful[0]).trim()
         if (CREDIT_PATTERN.test(text)) continue
+
+        const prev = i > 0 ? elements[i - 1] : null
+        if (prev && isImageParagraph(prev)) continue
 
         el.properties = {
           ...el.properties,
