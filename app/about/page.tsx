@@ -5,7 +5,7 @@ import StoryTimeline from '@/components/about/StoryTimeline'
 
 export const metadata: Metadata = {
   title: 'About Beauticate | Sigourney Cantelo, Founder & Editor-in-Chief',
-  description: 'Beauticate is Australia\'s most trusted beauty, wellness and lifestyle editorial brand. Founded in 2014 by Sigourney Cantelo, former Vogue Australia Beauty & Health Director, and trusted by 3.1 million readers monthly.',
+  description: 'Beauticate is Australia\'s most trusted beauty, wellness and lifestyle editorial brand. Founded in 2014 by Sigourney Cantelo, former Vogue Australia Beauty & Health Director.',
   alternates: { canonical: 'https://www.beauticate.com/about-beauticate' },
   openGraph: {
     title: 'About Beauticate | Founded by Sigourney Cantelo',
@@ -94,7 +94,7 @@ const faqs = [
   },
   {
     question: 'What is Beauticate?',
-    answer: 'Beauticate is an Australian beauty, wellness and lifestyle editorial brand publishing expert-led content across skincare, haircare, wellness, travel, interviews and lifestyle. It reaches more than 3.1 million readers monthly and is one of the most-cited independent beauty publishers in Australia.',
+    answer: 'Beauticate is an Australian beauty, wellness and lifestyle editorial brand publishing expert-led content across skincare, haircare, wellness, travel, interviews and lifestyle. It is one of the most-cited independent beauty publishers in Australia.',
   },
   {
     question: 'Is Beauticate an independent publication?',

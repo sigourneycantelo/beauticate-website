@@ -35,8 +35,8 @@ export default function ProductTile({
   cornerLabel, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
-  // mix-blend-multiply makes white/grey product backgrounds blend into bg-tile greige — DO NOT REMOVE
-  const fit = cover ? 'object-cover' : 'object-contain p-4 mix-blend-multiply'
+  // mix-blend-darken: white/grey product backgrounds → greige; product colours (darker) unchanged — DO NOT REMOVE
+  const fit = cover ? 'object-cover' : 'object-contain p-4 mix-blend-darken'
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
