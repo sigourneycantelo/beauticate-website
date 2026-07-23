@@ -14,6 +14,8 @@ export interface ShopifyProductVariant {
   id: string
   title: string
   availableForSale: boolean
+  sku: string | null
+  barcode: string | null
   price: ShopifyPrice
   compareAtPrice: ShopifyPrice | null
   selectedOptions: { name: string; value: string }[]

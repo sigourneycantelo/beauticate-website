@@ -11,8 +11,6 @@ const GRADIENTS = [
   'linear-gradient(150deg,#b6bfae,#7c8770)',
 ]
 
-// Shop by Moment — four portrait tiles in the home-page treatment, fed by the
-// real moment collections so each tile shows its own image.
 export default function ShopByMoment({ collections }: Props) {
   const moments = collections.slice(0, 4)
   if (!moments.length) return null
@@ -28,20 +26,20 @@ export default function ShopByMoment({ collections }: Props) {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {moments.map((c, i) => (
           <Link
             key={c.id}
             href={`/shop/collections/${c.handle}`}
-            className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
-            style={{ aspectRatio: '1/1' }}
+            className="group relative overflow-hidden rounded-[2px] flex items-end p-[clamp(18px,3vw,32px)]"
+            style={{ aspectRatio: '16/9' }}
           >
             {c.image ? (
               <Image
                 src={c.image.url}
                 alt={c.image.altText ?? c.title}
                 fill
-                sizes="(max-width:768px) 50vw, 25vw"
+                sizes="(max-width:640px) 100vw, 50vw"
                 className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
               />
             ) : (
@@ -50,11 +48,9 @@ export default function ShopByMoment({ collections }: Props) {
                 style={{ background: GRADIENTS[i % GRADIENTS.length] }}
               />
             )}
-            {/* Scrim */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,16,14,.62)] to-[rgba(18,16,14,0)_62%]" />
-            {/* Text */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,16,14,.58)] to-[rgba(18,16,14,0)_55%]" />
             <div className="relative z-10 text-white">
-              <h3 className="font-serif font-normal leading-[1.1]" style={{ fontSize: 'clamp(20px, 2.2vw, 28px)' }}>
+              <h3 className="font-serif font-normal leading-[1.1]" style={{ fontSize: 'clamp(22px, 2.8vw, 34px)' }}>
                 {c.title}
               </h3>
               <span className="inline-block mt-2.5 font-sans text-[9px] tracking-[0.18em] uppercase border-b border-white/70 pb-0.5">

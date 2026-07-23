@@ -21,20 +21,12 @@ export default function FounderIntro() {
           <p className="font-sans" style={{ fontSize: '11px', letterSpacing: '0.28em', textTransform: 'uppercase', opacity: 0.55 }}>
             Sigourney Cantelo, Founder &amp; Publisher
           </p>
-          <div className="font-serif mt-4 space-y-4" style={{ fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.6 }}>
+          <div className="font-serif mt-4 space-y-3" style={{ fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.6 }}>
             <p>
-              I'm Sigourney. I've spent more than 25 years in media, first as an editor at titles
-              including Vogue and Glamour, and for the last twelve as the founder of Beauticate.
+              This isn't a marketplace. Every product here has been tested and chosen by me and the Beauticate Collective — the editors and experts behind our stories. Nothing is here by accident.
             </p>
             <p>
-              Beauticate Shop is a new kind of shop. Editorial first, commerce second. Every product
-              here has been considered, tested, and chosen by me and our editors, the Beauticate
-              Collective, and our guest curators. Nothing is here by accident.
-            </p>
-            <p>
-              I want to help women live more beautifully, every day. To do the work so you don't have
-              to. When you shop with us, you're supporting independent editorial. Every order helps us
-              keep bringing you the stories and recommendations you trust.
+              When you shop with us, you're supporting the editorial that has always been free and ungated. Every order helps us keep bringing you honest recommendations without paywalls or sponsored content.
             </p>
           </div>
           <Link

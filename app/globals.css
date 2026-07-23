@@ -450,9 +450,12 @@
 /* Shop sub-nav sticks below the collapsed masthead */
 .shop-subnav-sticky{
   position:sticky; top:calc(var(--mh-nav-h, 52px) + 1px); z-index:999;
+  transition:top .32s cubic-bezier(.4,0,.2,1);
 }
+.shop-subnav-sticky.mh-away{ top:0; }
 @media(max-width:900px){
   .shop-subnav-sticky{ top:57px; }
+  .shop-subnav-sticky.mh-away{ top:0; }
 }
 
 /* ── Author bio / footer — everything after the final <hr> ── */

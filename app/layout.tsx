@@ -149,6 +149,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
           strategy="afterInteractive"
         />
+        {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (
+          <Script
+            id="travelpayouts-sdk"
+            src={`https://tp.media/content?marker=${process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER}`}
+            strategy="afterInteractive"
+          />
+        )}
       </body>
     </html>
   )

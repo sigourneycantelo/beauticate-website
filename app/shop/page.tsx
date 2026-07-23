@@ -1,4 +1,5 @@
-import { getCollections } from '@/lib/shopify'
+import { getCollections, getProducts, getProductsByTag, getNewArrivals, getCollectionByHandle } from '@/lib/shopify'
+import { getVodcastEpisodes } from '@/lib/content'
 import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
@@ -7,12 +8,14 @@ import Collective from '@/components/shop/Collective'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
+import ShopProductGrid from '@/components/shop/ShopProductGrid'
+import CollectionFeature from '@/components/shop/CollectionFeature'
+import PodcastSection from '@/components/home/PodcastSection'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
-// The four "moment" collections, in display order. Matched by title with a
-// fallback to any image-bearing collections so the grid always fills.
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
+const FEATURED_COLLECTIONS = ['deepest-sleep', 'fit-girl-glow']
 
 function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
   const picked = MOMENT_TITLES
@@ -34,14 +37,29 @@ export const metadata: Metadata = {
 }
 
 export default async function ShopPage() {
-  const collections = await getCollections(48)
+  const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...featuredColls] = await Promise.all([
+    getCollections(48),
+    getProductsByTag('team', 24),
+    getProducts(24),
+    getNewArrivals(8),
+    Promise.resolve(getVodcastEpisodes()),
+    ...FEATURED_COLLECTIONS.map(h => getCollectionByHandle(h)),
+  ])
   const moments = pickMoments(collections)
+  const featured = (featuredColls as (ShopifyCollection | null)[]).filter(Boolean) as ShopifyCollection[]
+
+  const seen = new Set<string>()
+  const curatedProducts = [...taggedProducts, ...allProducts].filter(p => {
+    if (seen.has(p.handle)) return false
+    seen.add(p.handle)
+    return true
+  })
+  const shopProducts = curatedProducts.slice(0, 16)
 
   return (
     <div>
 
-      {/* Hero — full-bleed video, headline top-left (mirrors beauticate.shop).
-          100vw breakout so no parent padding/constraint clips the video. */}
+      {/* Hero — full-bleed video */}
       <section
         className="relative bg-ink overflow-hidden"
         style={{
@@ -52,13 +70,11 @@ export default async function ShopPage() {
       >
         <HeroVideo />
 
-        {/* Scrim — darkens the top-left corner so the headline stays legible */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'linear-gradient(135deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.20) 40%, transparent 72%)' }}
         />
 
-        {/* Hero content — top-left */}
         <div
           className="relative z-10 flex flex-col items-start justify-start text-left px-[clamp(24px,6vw,104px)] pt-[clamp(34px,6vw,76px)]"
           style={{ minHeight: 'clamp(500px, 72vh, 820px)' }}
@@ -81,22 +97,66 @@ export default async function ShopPage() {
       {/* Trust band */}
       <TrustBand />
 
-      {/* Founder introduction — portrait left, letter right */}
+      {/* Product grid — 16 products immediately visible */}
+      <ShopProductGrid
+        products={shopProducts}
+        heading={
+          <>
+            <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
+              The Edit
+            </p>
+            <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
+              What the team is buying <em className="italic">this week</em>
+            </h2>
+          </>
+        }
+      />
+
+      {/* New Arrivals — one product per brand, most recently onboarded */}
+      {newArrivals.length > 0 && (
+        <ShopProductGrid
+          products={newArrivals}
+          maxProducts={8}
+          heading={
+            <>
+              <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
+                Just Landed
+              </p>
+              <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
+                New brands, <em className="italic">fresh finds</em>
+              </h2>
+              <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.55 }}>
+                One pick from each of the latest brands to join the shop
+              </p>
+            </>
+          }
+        />
+      )}
+
+      {/* Founder introduction */}
       <FounderIntro />
 
-      {/* Shop by Moment — four portrait tiles */}
+      {/* Collection feature cards */}
+      {featured.map(c => (
+        <CollectionFeature key={c.id} collection={c} />
+      ))}
+
+      {/* Shop by Moment — full-width tiles */}
       <ShopByMoment collections={moments} />
 
-      {/* Meet the Beauticate Collective */}
-      <Collective />
-
-      {/* Press strip + Sigourney's Edit (editors-essentials collection) */}
+      {/* Sigourney's Edit */}
       <SigourneysEdit />
 
       {/* Shop by Category */}
       <ShopCategoryGrid />
 
-      {/* The edit, in your inbox — newsletter */}
+      {/* Meet the Beauticate Collective */}
+      <Collective />
+
+      {/* Podcast — founder interviews */}
+      <PodcastSection episodes={vodcastEpisodes} />
+
+      {/* Newsletter */}
       <ShopNewsletter />
 
     </div>

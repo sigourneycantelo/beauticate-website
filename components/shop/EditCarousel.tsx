@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import ProductCard from './ProductCard'
 import type { ShopifyProduct } from '@/types/shopify'
 
@@ -8,10 +8,15 @@ import type { ShopifyProduct } from '@/types/shopify'
 // pauses on hover, and gives arrow controls so you can drive it manually.
 export default function EditCarousel({ products }: { products: ShopifyProduct[] }) {
   const ref = useRef<HTMLDivElement>(null)
+  const [overflows, setOverflows] = useState(false)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    const check = () => setOverflows(el.scrollWidth > el.clientWidth + 1)
+    check()
+    const ro = new ResizeObserver(check)
+    ro.observe(el)
     let paused = false
     let raf = 0
     const enter = () => { paused = true }
@@ -28,6 +33,7 @@ export default function EditCarousel({ products }: { products: ShopifyProduct[] 
     raf = requestAnimationFrame(step)
     return () => {
       cancelAnimationFrame(raf)
+      ro.disconnect()
       el.removeEventListener('mouseenter', enter)
       el.removeEventListener('mouseleave', leave)
     }
@@ -50,8 +56,8 @@ export default function EditCarousel({ products }: { products: ShopifyProduct[] 
 
   return (
     <div className="relative">
-      {arrow(-1, 'Scroll left', 'left-1')}
-      {arrow(1, 'Scroll right', 'right-1')}
+      {overflows && arrow(-1, 'Scroll left', 'left-1')}
+      {overflows && arrow(1, 'Scroll right', 'right-1')}
       <div ref={ref} className="flex gap-6 overflow-x-auto scrollbar-none" style={{ scrollSnapType: 'x proximity' }}>
         {products.map(p => (
           <div key={p.id} className="shrink-0 w-[clamp(190px,44vw,250px)]" style={{ scrollSnapAlign: 'start' }}>

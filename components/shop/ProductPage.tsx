@@ -9,9 +9,13 @@ interface Props { product: ShopifyProduct; related?: ShopifyProduct[] }
 const SITE = 'https://www.beauticate.com'
 
 export default function ProductPage({ product: p, related = [] }: Props) {
-  const price = p.priceRange.minVariantPrice
   const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
   const available = p.variants.nodes.some(v => v.availableForSale)
+
+  const variants = p.variants.nodes
+  const minPrice = p.priceRange.minVariantPrice
+  const maxPrice = p.priceRange.maxVariantPrice
+  const hasMultipleVariants = variants.length > 1
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -21,13 +25,27 @@ export default function ProductPage({ product: p, related = [] }: Props) {
     description: p.description,
     brand: { '@type': 'Brand', name: p.vendor },
     ...(p.productType ? { category: p.productType } : {}),
-    offers: {
-      '@type': 'Offer',
-      price: parseFloat(price.amount).toFixed(2),
-      priceCurrency: price.currencyCode,
-      availability: available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-      url: `${SITE}/shop/products/${p.handle}`,
-    },
+    ...(variants[0]?.sku ? { sku: variants[0].sku } : {}),
+    ...(variants[0]?.barcode ? { gtin: variants[0].barcode } : {}),
+    offers: hasMultipleVariants
+      ? {
+          '@type': 'AggregateOffer',
+          lowPrice: parseFloat(minPrice.amount).toFixed(2),
+          highPrice: parseFloat(maxPrice.amount).toFixed(2),
+          priceCurrency: minPrice.currencyCode,
+          offerCount: variants.length,
+          availability: available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+          url: `${SITE}/shop/products/${p.handle}`,
+          seller: { '@type': 'Organization', name: 'Beauticate' },
+        }
+      : {
+          '@type': 'Offer',
+          price: parseFloat(minPrice.amount).toFixed(2),
+          priceCurrency: minPrice.currencyCode,
+          availability: available ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+          url: `${SITE}/shop/products/${p.handle}`,
+          seller: { '@type': 'Organization', name: 'Beauticate' },
+        },
   }
 
   const crumbs = [
