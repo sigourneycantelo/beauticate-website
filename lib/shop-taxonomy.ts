@@ -107,11 +107,11 @@ export const BROAD_CATEGORIES: BroadCat[] = [
         productTypes: ['Room Spray', 'Scented Water', 'Scented Soap', 'Mist'],
         keywords: ['room spray', 'scented water', 'scented soap', 'pot pourri', 'potpourri'],
       },
-      {
-        slug: 'decor', label: 'Vases & Décor',
-        productTypes: ['Vases', 'Vase', 'Furniture'],
-        keywords: ['vase', 'furniture', 'blanket', 'cushion', 'throw'],
-      },
+      // {
+      //   slug: 'decor', label: 'Vases & Décor',
+      //   productTypes: ['Vases', 'Vase', 'Furniture'],
+      //   keywords: ['vase', 'furniture', 'blanket', 'cushion', 'throw'],
+      // },
     ],
   },
   {

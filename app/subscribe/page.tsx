@@ -1,11 +1,28 @@
-import InsidersBar from '@/components/home/InsidersBar'
+'use client'
 
-export const metadata = {
-  title: 'Join the Beauticate Insiders',
-  description: 'One beautifully edited email a week. Delivered to your inbox, every Sunday.',
-}
+import { useState, FormEvent } from 'react'
 
 export default function SubscribePage() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!res.ok) throw new Error()
+      setStatus('success')
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <main
       style={{
@@ -44,32 +61,45 @@ export default function SubscribePage() {
         One beautifully edited email a week. Delivered to your inbox, every Sunday.
       </p>
 
-      <form
-        action="/api/subscribe"
-        method="POST"
-        className="flex flex-col sm:flex-row gap-3 w-full"
-        style={{ maxWidth: '440px' }}
-      >
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="Your email address"
-          className="flex-1 font-sans text-[13px] px-4 py-3 rounded-[1px] outline-none"
-          style={{
-            border: '1px solid rgba(28,26,23,.25)',
-            background: '#fff',
-            color: '#1C1A17',
-          }}
-        />
-        <button
-          type="submit"
-          className="font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium px-6 py-3 rounded-[1px] transition-opacity hover:opacity-80 whitespace-nowrap"
-          style={{ background: '#1C1A17', color: '#fff', border: '1px solid #1C1A17' }}
+      {status === 'success' ? (
+        <p className="font-serif italic" style={{ fontSize: 'clamp(16px,1.8vw,20px)', opacity: 0.75 }}>
+          You&rsquo;re in. The first edit lands in your inbox soon.
+        </p>
+      ) : (
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row gap-3 w-full"
+          style={{ maxWidth: '440px' }}
         >
-          Subscribe
-        </button>
-      </form>
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            placeholder="Your email address"
+            className="flex-1 font-sans text-[13px] px-4 py-3 rounded-[1px] outline-none"
+            style={{
+              border: '1px solid rgba(28,26,23,.25)',
+              background: '#fff',
+              color: '#1C1A17',
+            }}
+          />
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium px-6 py-3 rounded-[1px] transition-opacity hover:opacity-80 whitespace-nowrap disabled:opacity-50"
+            style={{ background: '#1C1A17', color: '#fff', border: '1px solid #1C1A17' }}
+          >
+            {status === 'loading' ? '...' : 'Subscribe'}
+          </button>
+        </form>
+      )}
+
+      {status === 'error' && (
+        <p className="font-sans mt-4" style={{ fontSize: '12px', color: '#B5613A' }}>
+          Something went wrong. Please try again.
+        </p>
+      )}
 
       <p
         className="font-sans mt-5"

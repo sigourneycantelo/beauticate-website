@@ -2,7 +2,7 @@
 
 // Sub-category filters render as large image tiles (two rows of four), with a second
 // row of product-type filter buttons for whichever sub-category is selected.
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import ProductGrid from './ProductGrid'
 import type { ShopifyProduct } from '@/types/shopify'
@@ -22,6 +22,7 @@ export default function CategoryBrowser({ products, subs, initialSub, allImage }
   const valid = initialSub && subs.some(s => s.slug === initialSub && !s.comingSoon) ? initialSub : 'all'
   const [active, setActive] = useState(valid)
   const [activeType, setActiveType] = useState('all')
+  const resultsRef = useRef<HTMLDivElement>(null)
 
   const inSub = active === 'all' ? products : products.filter(p => p.subSlugs?.includes(active))
   const filtered = activeType === 'all' ? inSub : inSub.filter(p => (p.productType ?? '').trim() === activeType)
@@ -35,7 +36,13 @@ export default function CategoryBrowser({ products, subs, initialSub, allImage }
   const types = [...typeCounts.entries()].filter(([, n]) => n >= 2).sort((a, b) => b[1] - a[1]).map(([t]) => t)
   const showTypes = active !== 'all' && types.length > 1
 
-  const pick = (slug: string) => { setActive(slug); setActiveType('all') }
+  const pick = (slug: string) => {
+    setActive(slug)
+    setActiveType('all')
+    if (window.innerWidth < 768) {
+      setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80)
+    }
+  }
 
   const tiles: SubTile[] = [{ slug: 'all', label: 'All', image: allImage }, ...subs]
 
@@ -90,7 +97,7 @@ export default function CategoryBrowser({ products, subs, initialSub, allImage }
         </div>
       )}
 
-      <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light mb-6">
+      <p ref={resultsRef} className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light mb-6">
         {filtered.length} {filtered.length === 1 ? 'piece' : 'pieces'}
       </p>
 

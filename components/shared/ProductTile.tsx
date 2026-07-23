@@ -62,7 +62,7 @@ export default function ProductTile({
         {secondarySrc && renderImg(secondarySrc, secondaryAlt, 'opacity-0 transition-opacity duration-500 group-hover:opacity-100')}
 
         {cornerLabel && (
-          <span className="absolute top-3 left-3 font-sans text-[8.5px] tracking-[0.16em] uppercase font-semibold opacity-50 z-10">
+          <span className={`absolute top-3 left-3 font-sans text-[8.5px] tracking-[0.16em] uppercase font-semibold z-10 ${cover ? 'text-white opacity-90 drop-shadow' : 'opacity-50'}`}>
             {cornerLabel}
           </span>
         )}

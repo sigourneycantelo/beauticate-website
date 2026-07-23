@@ -8,8 +8,12 @@ export default function InsidersBar() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
-    const data = new FormData(form)
-    await fetch('/api/subscribe', { method: 'POST', body: data })
+    const email = new FormData(form).get('email') as string
+    await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    })
     setSubmitted(true)
   }
 
@@ -23,10 +27,10 @@ export default function InsidersBar() {
       }}
     >
       <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(22px,2.6vw,32px)' }}>
-        The art of living beautifully, edited.
+        Become a Beauticate Insider
       </h2>
       <p className="font-sans mt-2 mb-5 mx-auto" style={{ fontSize: '13px', opacity: 0.62, maxWidth: '52ch' }}>
-        The best of beauty, wellness, style and travel. Plus what we&rsquo;re buying and who we&rsquo;re interviewing. Every fortnight.
+        Early access to every shop drop. The beauty, wellness and travel we&rsquo;re actually buying. Plus who we&rsquo;re interviewing. Every fortnight.
       </p>
 
       {submitted ? (
@@ -48,7 +52,7 @@ export default function InsidersBar() {
             className="font-sans text-[10.5px] tracking-[0.2em] uppercase text-white px-5 cursor-pointer"
             style={{ background: '#1C1A17', border: '1px solid #1C1A17' }}
           >
-            Join the edit
+            Join the Insiders
           </button>
         </form>
       )}

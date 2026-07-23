@@ -265,7 +265,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
       {/* Primary tier */}
       <nav className="mh-primary" aria-label="Primary" onClick={handleNavClick}>
         <Link href="/" className="mh-brand-mini" aria-label="Beauticate home"><Wordmark className="mh-logo mh-logo-mini" /></Link>
+        {isShop && <Link href="/" className="mh-home-link" aria-label="Back to Beauticate home">&larr; Home</Link>}
         <ul className="mh-pillars">
+          <li className="mh-pillar"><Link href="/about" className="mh-pillar-link">About</Link></li>
           {pillars.map(p => <PillarItem key={p.key} p={p} />)}
         </ul>
       </nav>

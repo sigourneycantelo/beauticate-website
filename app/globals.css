@@ -273,9 +273,16 @@
   font-weight:300; font-size:16px; letter-spacing:.24em; text-transform:uppercase;
   color:var(--mh-ink); opacity:0; pointer-events:none; transition:opacity .3s ease; padding-left:.24em;
 }
+.mh-home-link{
+  position:absolute; left:34px; top:50%; transform:translateY(-50%);
+  font-family:var(--font-sans); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--mh-ink); opacity:0; pointer-events:none; transition:opacity .3s ease; white-space:nowrap;
+}
+.mh-home-link:hover{ color:var(--mh-wine); }
 .mh-scrolled .mh-utility{ height:0; opacity:0; border-color:transparent; }
 .mh-scrolled .mh-strapline{ display:none; }
 .mh-scrolled .mh-brand-mini{ opacity:1; pointer-events:auto; }
+.mh-scrolled .mh-home-link{ opacity:.72; pointer-events:auto; left:160px; }
 .mh{ transition:transform .32s cubic-bezier(.4,0,.2,1); }
 .mh-hidden{ transform:translateY(-100%); pointer-events:none; }
 .mh-hidden .mh-mega{ opacity:0 !important; visibility:hidden !important; pointer-events:none !important; }
