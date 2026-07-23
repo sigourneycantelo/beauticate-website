@@ -35,9 +35,86 @@ const CATEGORY_LABELS: Record<string, string> = {
   vodcast: 'Podcast',
 }
 
+function Slide({
+  article,
+  isActive,
+  index,
+}: {
+  article: Article
+  isActive: boolean
+  index: number
+}) {
+  const f = article.frontmatter
+  const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.png'
+  const heroTitle = f.hero_title ?? f.title
+  const eyebrow = f.hero_eyebrow ?? CATEGORY_LABELS[f.category] ?? f.category
+  const focus = f.hero_focus ?? 'center 25%'
+
+  return (
+    <Link
+      href={articleHref(f)}
+      className={`hero-slide block${isActive ? ' is-active' : ''}`}
+      aria-hidden={!isActive}
+      tabIndex={isActive ? 0 : -1}
+    >
+      <Image
+        src={heroImage}
+        alt={f.featured_image_alt ?? f.title}
+        fill
+        priority={index === 0}
+        loading={index === 0 ? 'eager' : 'lazy'}
+        className="object-cover"
+        style={{ objectPosition: focus }}
+        sizes="(max-width: 1200px) 100vw, 1200px"
+        unoptimized={heroImage.endsWith('.gif')}
+      />
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{ background: 'linear-gradient(to top,rgba(10,10,10,.62) 0%,rgba(10,10,10,.38) 25%,rgba(10,10,10,.14) 50%,transparent 75%)' }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 z-10 text-white text-left"
+        style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(56px,7vw,88px)' }}
+      >
+        <span
+          className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3 font-medium"
+          style={{ color: 'rgba(255,255,255,.85)' }}
+        >
+          {eyebrow}
+        </span>
+        <h2
+          className="font-serif font-normal leading-[1.15]"
+          style={{
+            fontSize: 'clamp(24px,3vw,40px)',
+            letterSpacing: '-.01em',
+            textShadow: '0 1px 20px rgba(0,0,0,.35)',
+          }}
+        >
+          {heroTitle}
+        </h2>
+        {f.excerpt && (
+          <p
+            className="hidden sm:block font-sans mt-3 overflow-hidden whitespace-nowrap text-ellipsis"
+            style={{ fontSize: '13px', opacity: 0.88, maxWidth: '52ch' }}
+          >
+            {f.excerpt}
+          </p>
+        )}
+        <span
+          className="inline-block mt-4 font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium"
+          style={{ color: 'rgba(255,255,255,.85)', borderBottom: '1px solid rgba(255,255,255,.5)', paddingBottom: '2px' }}
+        >
+          Read the story
+        </span>
+      </div>
+    </Link>
+  )
+}
+
 export default function HeroWide({ articles }: { articles: Article[] }) {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined)
   const touchStartX = useRef(0)
   const touchDelta = useRef(0)
@@ -46,6 +123,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
 
   useEffect(() => {
     prefersReducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    setMounted(true)
   }, [])
 
   const advance = useCallback(() => {
@@ -94,7 +172,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
 
   return (
     <section
-      className="hero-carousel relative overflow-hidden max-w-[1200px] mx-auto"
+      className="hero-carousel relative overflow-hidden max-w-[1200px] mx-auto bg-[#1C1A17]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={onTouchStart}
@@ -142,73 +220,13 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         .hero-dot.is-active { background: rgba(255,255,255,.95); background-clip: content-box; }
       `}</style>
 
-      {articles.map((article, i) => {
-        const f = article.frontmatter
-        const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.png'
-        const heroTitle = f.hero_title ?? f.title
-        const eyebrow = f.hero_eyebrow ?? CATEGORY_LABELS[f.category] ?? f.category
-        const focus = f.hero_focus ?? 'center 25%'
+      {/* First slide always renders (SSR + priority preload) */}
+      <Slide article={articles[0]} isActive={active === 0} index={0} />
 
-        return (
-          <Link
-            key={f.slug}
-            href={articleHref(f)}
-            className={`hero-slide block${i === active ? ' is-active' : ''}`}
-            aria-hidden={i !== active}
-            tabIndex={i === active ? 0 : -1}
-          >
-            <Image
-              src={heroImage}
-              alt={f.featured_image_alt ?? f.title}
-              fill
-              priority={i === 0}
-              className="object-cover"
-              style={{ objectPosition: focus }}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              unoptimized={heroImage.endsWith('.gif')}
-            />
-            <div
-              className="absolute inset-0 z-[1]"
-              style={{ background: 'linear-gradient(to top,rgba(10,10,10,.62) 0%,rgba(10,10,10,.38) 25%,rgba(10,10,10,.14) 50%,transparent 75%)' }}
-            />
-            <div
-              className="absolute bottom-0 left-0 right-0 z-10 text-white text-left"
-              style={{ width: 'min(840px,88%)', margin: '0 auto', paddingBottom: 'clamp(56px,7vw,88px)' }}
-            >
-              <span
-                className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3 font-medium"
-                style={{ color: 'rgba(255,255,255,.85)' }}
-              >
-                {eyebrow}
-              </span>
-              <h2
-                className="font-serif font-normal leading-[1.15]"
-                style={{
-                  fontSize: 'clamp(24px,3vw,40px)',
-                  letterSpacing: '-.01em',
-                  textShadow: '0 1px 20px rgba(0,0,0,.35)',
-                }}
-              >
-                {heroTitle}
-              </h2>
-              {f.excerpt && (
-                <p
-                  className="hidden sm:block font-sans mt-3 overflow-hidden whitespace-nowrap text-ellipsis"
-                  style={{ fontSize: '13px', opacity: 0.88, maxWidth: '52ch' }}
-                >
-                  {f.excerpt}
-                </p>
-              )}
-              <span
-                className="inline-block mt-4 font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium"
-                style={{ color: 'rgba(255,255,255,.85)', borderBottom: '1px solid rgba(255,255,255,.5)', paddingBottom: '2px' }}
-              >
-                Read the story
-              </span>
-            </div>
-          </Link>
-        )
-      })}
+      {/* Remaining slides deferred until hydration to avoid competing for bandwidth */}
+      {mounted && articles.slice(1).map((article, i) => (
+        <Slide key={article.frontmatter.slug} article={article} isActive={active === i + 1} index={i + 1} />
+      ))}
 
       <div className="invisible" aria-hidden>
         <div style={{ aspectRatio: 'inherit' }} />

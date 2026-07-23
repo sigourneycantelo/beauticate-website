@@ -89,7 +89,7 @@ export default function ShopStrip({
   return (
     <section
       className="full-bleed reveal"
-      style={{ padding: 'clamp(46px,6vw,78px) clamp(20px,6vw,104px)' }}
+      style={{ padding: 'clamp(34px,4.5vw,58px) clamp(20px,6vw,104px)' }}
     >
       {/* Shop explainer */}
       <div className="text-center mb-10 mx-auto" style={{ maxWidth: '540px' }}>

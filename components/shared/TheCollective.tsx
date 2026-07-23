@@ -6,7 +6,7 @@ export default function TheCollective() {
     <section
       className="full-bleed reveal text-center"
       style={{
-        padding: 'clamp(48px,6vw,82px) clamp(20px,6vw,104px)',
+        padding: 'clamp(34px,4.5vw,58px) clamp(20px,6vw,104px)',
         background: '#FFFFFF',
       }}
     >

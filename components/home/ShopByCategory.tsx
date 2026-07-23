@@ -10,7 +10,7 @@ const CATEGORIES = [
 
 export default function ShopByCategory() {
   return (
-    <section className="full-bleed bg-white px-[clamp(20px,6vw,104px)] py-[clamp(38px,5vw,68px)]">
+    <section className="full-bleed bg-white px-[clamp(20px,6vw,104px)] py-[clamp(30px,4vw,52px)]">
       <div className="text-center mb-10">
         <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(24px, 3vw, 38px)' }}>
           Shop by <em className="italic">category</em>

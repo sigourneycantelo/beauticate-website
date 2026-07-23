@@ -16,7 +16,7 @@ const GRADIENTS = [
 
 export default function ShopByMoment() {
   return (
-    <section className="full-bleed bg-white px-[clamp(20px,6vw,104px)] py-[clamp(46px,6vw,82px)]">
+    <section className="full-bleed bg-white px-[clamp(20px,6vw,104px)] py-[clamp(34px,4.5vw,58px)]">
       <div className="text-center mb-10">
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold text-eucalypt">
           Shop by Moment

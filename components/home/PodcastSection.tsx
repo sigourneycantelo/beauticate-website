@@ -63,7 +63,7 @@ export default function PodcastSection({ episodes }: Props) {
       className="full-bleed reveal"
       style={{
         background: '#E8E3DB',
-        padding: 'clamp(46px,6vw,78px) clamp(20px,6vw,104px)',
+        padding: 'clamp(34px,4.5vw,58px) clamp(20px,6vw,104px)',
       }}
     >
       {/* Header */}
