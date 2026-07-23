@@ -6,7 +6,7 @@ import AdvertiseForm from '@/components/advertise/AdvertiseForm'
 
 export const metadata: Metadata = {
   title: 'Advertise with Beauticate | Brand Partnerships',
-  description: 'Partner with Beauticate — Australia\'s most-trusted independent beauty publisher. 3.1 million monthly readers, 12 years of editorial authority. Sponsored content, podcast, events, trial teams and more.',
+  description: 'Partner with Beauticate — Australia\'s most-trusted independent beauty publisher. Over a decade of editorial authority. Sponsored content, podcast, events, trial teams and more.',
 }
 
 const STATS = [

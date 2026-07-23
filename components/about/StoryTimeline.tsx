@@ -57,7 +57,7 @@ const MILESTONES: {
   },
   {
     year: '2025',
-    text: 'Thanks to the podcast launch and new social audiences, Beauticate reach triples to 3.1 million a month.',
+    text: 'The podcast launch and new social audiences triple Beauticate\'s reach across editorial, audio and social.',
     href: '/vodcast',
     cta: 'Listen to the Podcast',
   },
