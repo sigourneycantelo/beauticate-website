@@ -4,10 +4,13 @@ interface Props {
 
 export default function PullQuote({ children }: Props) {
   return (
-    <blockquote className="not-prose px-8 md:px-0" style={{ margin: '3rem auto', maxWidth: '520px' }}>
+    <blockquote
+      className="not-prose"
+      style={{ margin: '3rem 0', paddingLeft: 'clamp(24px, 4vw, 48px)', borderLeft: '2px solid var(--color-charcoal, #2c2c2c)', maxWidth: '600px' }}
+    >
       <p
-        className="font-serif italic text-chocolate text-center"
-        style={{ fontSize: 'clamp(26px, 3.2vw, 32px)', lineHeight: 1.35 }}
+        className="font-serif italic text-chocolate"
+        style={{ fontSize: 'clamp(22px, 2.8vw, 28px)', lineHeight: 1.45 }}
       >
         {children}
       </p>

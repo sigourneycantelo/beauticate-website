@@ -48,7 +48,11 @@
       "Bash(npx next *)",
       "mcp__69d1b337-18c4-44e4-9484-777346be4387__get_projects",
       "mcp__69d1b337-18c4-44e4-9484-777346be4387__create_tasks",
-      "mcp__69d1b337-18c4-44e4-9484-777346be4387__create_task_preview_v4"
+      "mcp__69d1b337-18c4-44e4-9484-777346be4387__create_task_preview_v4",
+      "Bash(git rebase *)",
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(GIT_EDITOR=\"echo\" git rebase --continue)",
+      "Bash(git -c core.editor=true rebase --continue)"
     ]
   }
 }

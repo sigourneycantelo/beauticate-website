@@ -103,16 +103,19 @@
   color: #3d3d3d;
 }
 
-/* Interview pull-quotes — italic-only paragraphs styled as centred pull-quotes */
+/* Interview pull-quotes — indented editorial style with left border */
 .prose .interview-pull-quote {
-  font-size: clamp(26px, 3.2vw, 32px);
-  line-height: 1.35;
-  font-weight: normal;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(22px, 2.8vw, 28px);
+  line-height: 1.45;
+  font-weight: 400;
   font-style: italic;
-  text-align: center;
-  max-width: 520px;
-  margin: 3rem auto;
-  color: #3a2a22;
+  color: var(--color-chocolate, #3d3d3d);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  padding-left: clamp(24px, 4vw, 48px);
+  border-left: 2px solid var(--color-charcoal, #2c2c2c);
+  max-width: 600px;
 }
 .prose .interview-pull-quote em {
   font-style: inherit;
@@ -453,6 +456,36 @@
 @media(max-width:900px){
   .shop-subnav-sticky{ top:57px; }
   .shop-subnav-sticky.mh-away{ top:0; }
+}
+
+/* ── Author bio / footer — everything after the final <hr> ── */
+.article-body > hr ~ p,
+.article-body > hr ~ ul {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: #7a7268;
+}
+.article-body > hr ~ p.interview-pull-quote {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.7;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.article-body > hr ~ ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.article-body > hr ~ ul a,
+.article-body > hr ~ p a {
+  color: #7a7268;
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,0.15);
+  text-underline-offset: 3px;
+}
+.article-body > hr ~ ul a:hover,
+.article-body > hr ~ p a:hover {
+  color: #3d3d3d;
 }
 
 /* ── Dotted margin rules ──────────────────────────────────────
