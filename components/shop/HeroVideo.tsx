@@ -1,26 +1,36 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
-const VIDEO_ID   = 'ec2590621cbfc04df0bb835a09c7950e'
-const POSTER_URL = `https://videodelivery.net/${VIDEO_ID}/thumbnails/thumbnail.jpg?time=0s&height=1080`
-const STREAM_URL = `https://iframe.videodelivery.net/${VIDEO_ID}?autoplay=true&muted=true&loop=true&controls=false&background=true&preload=auto`
+const DESKTOP_ID = 'ec2590621cbfc04df0bb835a09c7950e'
+const MOBILE_ID  = 'a70724dd7fca31bd76ce799562307e7b'
+
+function streamUrl(id: string) {
+  return `https://iframe.videodelivery.net/${id}?autoplay=true&muted=true&loop=true&controls=false&background=true&preload=auto`
+}
+function posterUrl(id: string) {
+  return `https://videodelivery.net/${id}/thumbnails/thumbnail.jpg?time=0s&height=1080`
+}
 
 export default function HeroVideo() {
   const [visible, setVisible] = useState(false)
+  const [mobile, setMobile] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // IntersectionObserver fires when the hero enters the viewport (instant on page load).
-    // We wait for it rather than a bare timeout so the fade only triggers once the
-    // element is actually on screen — correct behaviour if the component ever moves.
+    const mq = window.matchMedia('(max-width: 768px)')
+    setMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  useEffect(() => {
     const el = containerRef.current
     if (!el) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Small delay lets the poster render before the iframe starts painting,
-          // giving a clean cross-fade rather than a flash.
           const t = setTimeout(() => setVisible(true), 600)
           observer.disconnect()
           return () => clearTimeout(t)
@@ -32,38 +42,35 @@ export default function HeroVideo() {
     return () => observer.disconnect()
   }, [])
 
+  const videoId = mobile ? MOBILE_ID : DESKTOP_ID
+
   return (
     <div
       ref={containerRef}
       style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}
     >
-      {/* Poster frame — loads instantly, sits underneath the video */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={POSTER_URL}
+        src={posterUrl(videoId)}
         alt=""
         aria-hidden
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         fetchPriority="high"
       />
 
-      {/* Cloudflare Stream iframe — fades in over the poster once ready.
-          Inline styles guarantee full coverage regardless of UA stylesheet specificity. */}
       <iframe
-        src={STREAM_URL}
+        key={videoId}
+        src={streamUrl(videoId)}
         allow="autoplay; fullscreen; picture-in-picture"
         style={{
-          // Full-bleed cover: force the iframe to a 16:9 box always large enough
-          // to fill the container, centred and cropped. A 100%×100% iframe instead
-          // letterboxes the video inside the Stream player.
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: '100vw',
-          height: '56.25vw',     // 16:9 derived from width
-          minHeight: '100vh',
-          minWidth: '177.78vh',  // 16:9 derived from height
+          width: mobile ? '100vw' : '100vw',
+          height: mobile ? '100vh' : '56.25vw',
+          minHeight: mobile ? '100vh' : '100vh',
+          minWidth: mobile ? '100vw' : '177.78vh',
           border: 'none',
           pointerEvents: 'none',
           opacity: visible ? 1 : 0,
