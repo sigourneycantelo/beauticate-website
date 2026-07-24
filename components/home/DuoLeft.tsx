@@ -106,7 +106,7 @@ export default function DuoLeft({ articles }: { articles: Article[] }) {
           aspectRatio="4/5"
           marginTop="clamp(48px,9vw,130px)"
           sizes="(max-width:640px) 100vw, 38vw"
-          titleSize="clamp(20px,2vw,30px)"
+          titleSize="clamp(24px,2vw,30px)"
         />
       )}
     </section>
