@@ -5,8 +5,6 @@ const LOGOS = [
   'marie claire',
   'Daily Telegraph',
   'DailyMail.com',
-  'Mumbrella',
-  'BEAUTYDIRECTORY',
 ]
 
 export default function PressTrustBand() {
