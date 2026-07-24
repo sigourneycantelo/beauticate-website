@@ -2,11 +2,11 @@ import Link from 'next/link'
 
 const LOGOS = [
   'VOGUE',
-  'The Daily Telegraph',
   'marie claire',
-  'body+soul',
-  'Mamamia',
-  'The Daily Mail',
+  'Daily Telegraph',
+  'DailyMail.com',
+  'Mumbrella',
+  'BEAUTYDIRECTORY',
 ]
 
 export default function PressTrustBand() {
