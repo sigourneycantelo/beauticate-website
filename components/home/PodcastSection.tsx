@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef, useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { VodcastFrontmatter } from '@/types/content'
@@ -5,6 +8,20 @@ import type { VodcastFrontmatter } from '@/types/content'
 interface Props {
   episodes: { frontmatter: VodcastFrontmatter }[]
 }
+
+const CURATED_SLUGS = [
+  'miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep',
+  'trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up',
+  'celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media',
+  'gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream',
+  'lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo',
+  'dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame',
+  'pip-edwards-from-perfectionism-to-self-compassion',
+  'susan-yara-on-reinvention-resilience-and-rebuilding-trust',
+  'tanya-ali-jalani-on-awakening-mental-health-and-the-human-side-of-healing',
+  'davinia-taylor-on-alcohol-addiction-mental-health',
+  'guy-sebastian-on-identity-inner-circles-and-rebuilding-self-worth',
+]
 
 function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
   const f = ep.frontmatter
@@ -19,7 +36,6 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
       className="group block"
-      style={{ scrollSnapAlign: 'start' }}
     >
       <div
         className="relative overflow-hidden rounded-[3px]"
@@ -54,9 +70,46 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
 }
 
 export default function PodcastSection({ episodes }: Props) {
-  if (!episodes.length) return null
+  const railRef = useRef<HTMLDivElement>(null)
+  const [paused, setPaused] = useState(false)
 
-  const reelEps = episodes.slice(0, 8)
+  const sorted = useMemo(() => {
+    const slugIndex = new Map(CURATED_SLUGS.map((s, i) => [s, i]))
+    const curated: typeof episodes = []
+    const rest: typeof episodes = []
+    for (const ep of episodes) {
+      if (slugIndex.has(ep.frontmatter.slug)) {
+        curated.push(ep)
+      } else {
+        rest.push(ep)
+      }
+    }
+    curated.sort((a, b) => (slugIndex.get(a.frontmatter.slug) ?? 0) - (slugIndex.get(b.frontmatter.slug) ?? 0))
+    return [...curated, ...rest]
+  }, [episodes])
+
+  useEffect(() => {
+    const el = railRef.current
+    if (!el) return
+
+    let raf: number
+    const speed = 0.5
+
+    function step() {
+      if (!paused && el) {
+        el.scrollLeft += speed
+        if (el.scrollLeft >= el.scrollWidth - el.clientWidth) {
+          el.scrollLeft = 0
+        }
+      }
+      raf = requestAnimationFrame(step)
+    }
+
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
+  }, [paused])
+
+  if (!episodes.length) return null
 
   return (
     <section
@@ -85,19 +138,23 @@ export default function PodcastSection({ episodes }: Props) {
         </Link>
       </div>
 
-      {/* Reels */}
-      <p className="font-sans text-[10px] tracking-[0.2em] uppercase mb-4" style={{ opacity: 0.5, color: '#1C1A17' }}>Watch</p>
+      {/* Auto-scrolling rail */}
       <div
-        className="flex gap-4 overflow-x-auto pb-3 scrollbar-hide"
+        ref={railRef}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
+        onTouchEnd={() => setPaused(false)}
+        className="flex overflow-x-auto pb-3 scrollbar-hide"
         style={{
+          gap: '16px',
           scrollSnapType: 'x mandatory',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
-          paddingRight: 'clamp(20px,6vw,104px)',
         }}
       >
-        {reelEps.map((ep, i) => (
-          <div key={i} className="shrink-0" style={{ width: 'clamp(160px, 20vw, 200px)', scrollSnapAlign: 'start' }}>
+        {sorted.map((ep, i) => (
+          <div key={ep.frontmatter.slug ?? i} className="snap-start shrink-0" style={{ width: 'clamp(150px, 18vw, 190px)' }}>
             <ReelCard ep={ep} />
           </div>
         ))}
