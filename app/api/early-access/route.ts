@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const EARLY_ACCESS_PASSWORD = process.env.EARLY_ACCESS_PASSWORD ?? 'BEAUTICATE2026'
+const EARLY_ACCESS_PASSWORD = process.env.EARLY_ACCESS_PASSWORD ?? 'Early2026'
 
 export async function POST(req: NextRequest) {
   const { password } = await req.json()

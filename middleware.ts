@@ -8,7 +8,7 @@ const PROD_HOSTS = new Set(['www.beauticate.com', 'beauticate.com'])
 
 // Early-access gate — set to true to require a password before viewing the site.
 // Remove or set to false for full public launch.
-const EARLY_ACCESS_GATE = true
+const EARLY_ACCESS_GATE = false
 
 const GATE_ALLOW = new Set([
   '/early-access',

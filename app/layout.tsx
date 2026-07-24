@@ -124,7 +124,7 @@ const orgSchema = {
 }
 
 // Early-access gate — matches middleware.ts. Set false for full public launch.
-const EARLY_ACCESS_GATE = true
+const EARLY_ACCESS_GATE = false
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies()
