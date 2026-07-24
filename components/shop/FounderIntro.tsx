@@ -9,11 +9,11 @@ export default function FounderIntro() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-[clamp(28px,5vw,72px)] items-center">
         <div className="relative aspect-[4/5] overflow-hidden rounded-[2px] bg-cream-100">
           <Image
-            src="/images/sigourney-about.jpg"
-            alt="Sigourney Cantelo, founder and publisher of Beauticate"
+            src="/content/sigourneys-edit/beauticate-shop-launch/welcome-to-new-beauticate-hero.jpg"
+            alt="Sigourney Cantelo testing beauty products at her desk"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover grayscale"
+            className="object-cover"
           />
         </div>
 
