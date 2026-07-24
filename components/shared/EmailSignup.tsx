@@ -10,7 +10,7 @@ export default function EmailSignup() {
     setStatus('loading')
     const res = await fetch('/api/subscribe', {
       method: 'POST',
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, source: 'email-signup-section' }),
       headers: { 'Content-Type': 'application/json' },
     })
     setStatus(res.ok ? 'success' : 'error')

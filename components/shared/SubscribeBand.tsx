@@ -13,7 +13,7 @@ export default function SubscribeBand() {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'article-band' }),
       })
       setStatus(res.ok ? 'done' : 'error')
     } catch {

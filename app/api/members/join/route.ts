@@ -1,7 +1,7 @@
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
 import { NextResponse } from 'next/server'
 
-const INTEREST_LIST_ID = process.env.KLAVIYO_INTEREST_LIST_ID!
+const LIST_ID = process.env.NEXT_PUBLIC_KLAVIYO_LIST_ID!
 
 export async function POST(req: Request) {
   const { email, firstName } = await req.json()
@@ -10,8 +10,9 @@ export async function POST(req: Request) {
   }
 
   try {
-    await subscribeToListWithProperties(INTEREST_LIST_ID, email, firstName, {
+    await subscribeToListWithProperties(LIST_ID, email, firstName, {
       source: 'members-club-landing',
+      founding_member: true,
     })
     return NextResponse.json({ success: true })
   } catch {

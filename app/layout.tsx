@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { cookies } from 'next/headers'
 import { EB_Garamond, Hanken_Grotesk, Italiana, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
@@ -122,7 +123,13 @@ const orgSchema = {
   ],
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// Early-access gate — matches middleware.ts. Set false for full public launch.
+const EARLY_ACCESS_GATE = true
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies()
+  const showChrome = !EARLY_ACCESS_GATE || cookieStore.has('early_access')
+
   return (
     <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable} ${playfairDisplay.variable} ${italiana.variable}`}>
       <body>
@@ -132,29 +139,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
           strategy="beforeInteractive"
         />
-        <CartProvider>
-          <ScrollReveal />
-          <BetaTicker />
-          <MastheadData />
-          <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
-          <Footer />
-          <CartDrawer />
-          <AskSigLauncher />
-        </CartProvider>
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        {showChrome ? (
+          <CartProvider>
+            <ScrollReveal />
+            <BetaTicker />
+            <MastheadData />
+            <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
+            <Footer />
+            <CartDrawer />
+            <AskSigLauncher />
+          </CartProvider>
+        ) : (
+          children
         )}
-        <Script
-          id="klaviyo-sdk"
-          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
-          strategy="afterInteractive"
-        />
-        {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (
-          <Script
-            id="travelpayouts-sdk"
-            src={`https://tp.media/content?marker=${process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER}`}
-            strategy="afterInteractive"
-          />
+        {showChrome && (
+          <>
+            {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+              <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+            )}
+            <Script
+              id="klaviyo-sdk"
+              src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
+              strategy="afterInteractive"
+            />
+            {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (
+              <Script
+                id="travelpayouts-sdk"
+                src={`https://tp.media/content?marker=${process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER}`}
+                strategy="afterInteractive"
+              />
+            )}
+          </>
         )}
       </body>
     </html>

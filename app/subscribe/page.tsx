@@ -13,7 +13,7 @@ export default function SubscribePage() {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'subscribe-page' }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')

@@ -15,7 +15,7 @@ export default function NewsletterForm({ variant = 'light' }: { variant?: Varian
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: 'footer' }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')

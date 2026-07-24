@@ -16,7 +16,7 @@ export default function FoundingMemberForm() {
       const res = await fetch('/api/members/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, firstName }),
+        body: JSON.stringify({ email, firstName, source: 'members-club-landing' }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')

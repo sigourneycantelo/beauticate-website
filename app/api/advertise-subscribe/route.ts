@@ -1,9 +1,8 @@
-import { subscribeToList } from '@/lib/klaviyo'
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
 import { NextResponse } from 'next/server'
 
-const ADVERTISER_LIST_ID = process.env.KLAVIYO_ADVERTISER_LIST_ID!
+const LIST_ID = process.env.NEXT_PUBLIC_KLAVIYO_LIST_ID!
 
 export async function POST(req: Request) {
   const { email, subscribeNewsletter } = await req.json()
@@ -12,23 +11,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Email required' }, { status: 400 })
   }
 
-  const tasks: Promise<unknown>[] = [
-    subscribeToListWithProperties(ADVERTISER_LIST_ID, email, '', {
-      source: 'advertise_page',
-    }),
-    addProspect(email),
-  ]
+  const tasks: Promise<unknown>[] = [addProspect(email)]
 
-  if (subscribeNewsletter) {
-    tasks.push(subscribeToList(email))
+  // Default: subscribed unless they explicitly opt out
+  if (subscribeNewsletter !== false) {
+    tasks.push(
+      subscribeToListWithProperties(LIST_ID, email, '', {
+        source: 'advertise_page',
+      })
+    )
   }
 
   const results = await Promise.allSettled(tasks)
+  const anyOk = results.some(r => r.status === 'fulfilled')
 
-  const advertiserOk =
-    results[0].status === 'fulfilled' || results[1].status === 'fulfilled'
-
-  if (!advertiserOk) {
+  if (!anyOk) {
     return NextResponse.json(
       { error: 'Subscription failed' },
       { status: 500 }
