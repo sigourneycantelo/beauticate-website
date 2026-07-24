@@ -1,11 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
 const AskSigPanel = dynamic(() => import('./AskSigPanel'), { ssr: false })
+
+function getCategoryFromPath(pathname: string): string {
+  const match = pathname.match(/^\/([\w-]+)/)
+  return match ? match[1] : ''
+}
 
 const SECTION_PROMPTS: Record<string, string> = {
   '/shop': 'Looking for something specific?',
@@ -30,6 +35,7 @@ export default function AskSigLauncher() {
   const [showBubble, setShowBubble] = useState(false)
   const [dismissed, setDismissed] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     if (dismissed || open) return
@@ -59,7 +65,10 @@ export default function AskSigLauncher() {
         <div className="fixed bottom-6 right-6 z-[9998]">
           {showBubble ? (
             <div
-              onClick={handleOpen}
+              onClick={() => {
+                const cat = getCategoryFromPath(pathname)
+                router.push(cat ? `/ask-sig?from=${encodeURIComponent(cat)}` : '/ask-sig')
+              }}
               className="relative cursor-pointer animate-fade-in max-w-[240px]"
             >
               <div className="bg-white rounded-2xl shadow-lg px-4 py-3 border border-line flex items-start gap-3">
