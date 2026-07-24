@@ -140,17 +140,6 @@ export default function VodcastPage() {
   pool.forEach(ep => ep.themes.forEach(t => present.add(t)))
   const pills = ['All', ...THEMES.filter(t => present.has(t))]
 
-  // Build deduplicated theme pools: once an episode appears under an earlier
-  // theme (left-to-right in the pill bar), it won't repeat in later ones.
-  const claimed = new Set<string>()
-  const themePools: Record<string, ArchiveEpisode[]> = { All: pool }
-  for (const theme of pills) {
-    if (theme === 'All') continue
-    const unique = pool.filter(ep => ep.themes.includes(theme) && !claimed.has(ep.slug))
-    themePools[theme] = unique
-    unique.forEach(ep => claimed.add(ep.slug))
-  }
-
   // Resolve curated guest list against the episodes, skipping any not found.
   const bySlug = new Map(episodes.map(ep => [ep.frontmatter.slug, ep.frontmatter]))
   const guests: Guest[] = CURATED_GUESTS.filter(g => bySlug.has(g.slug)).map(g => ({
@@ -254,7 +243,7 @@ export default function VodcastPage() {
       <GuestRail styles={styles} guests={guests} />
 
       {/* ===== 6 + 7 · THEME FILTER + ARCHIVE ===== */}
-      <ThemeArchive styles={styles} pool={pool} pills={pills} quotes={quotes} themePools={themePools} />
+      <ThemeArchive styles={styles} pool={pool} pills={pills} quotes={quotes} />
 
       {/* ===== EDITORIAL LAYOUT ===== */}
       <EditorialSections

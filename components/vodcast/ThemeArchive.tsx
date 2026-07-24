@@ -36,13 +36,11 @@ export default function ThemeArchive({
   pool,
   pills,
   quotes,
-  themePools,
 }: {
   styles: Styles
   pool: ArchiveEpisode[]
   pills: string[]
   quotes: QuoteBreather[]
-  themePools?: Record<string, ArchiveEpisode[]>
 }) {
   const [active, setActive] = useState('All')
   const [visible, setVisible] = useState(BATCH)
@@ -66,15 +64,14 @@ export default function ThemeArchive({
 
   const currentQuote = quotes[qIdx] ?? quotes[0]
 
-  // Use the deduplicated theme pool when available (episodes claimed by an
-  // earlier theme are excluded), falling back to the simple filter.
-  const filtered = useMemo(
-    () => {
-      if (themePools && active !== 'All' && themePools[active]) return themePools[active]
-      return active === 'All' ? pool : pool.filter(ep => ep.themes.includes(active))
-    },
-    [pool, active, themePools]
-  )
+  const filtered = useMemo(() => {
+    if (active === 'All') return pool
+    const themed = pool.filter(ep => ep.themes.includes(active))
+    const idx = pills.indexOf(active)
+    if (idx <= 0 || themed.length <= 2) return themed
+    const offset = (idx * 2) % themed.length
+    return [...themed.slice(offset), ...themed.slice(0, offset)]
+  }, [pool, active, pills])
 
   const pair = filtered.slice(0, 2)
   const gridPool = filtered.slice(2)
