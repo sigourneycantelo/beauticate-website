@@ -1,10 +1,16 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import type { ShopifyCollection } from '@/types/shopify'
 
-const MOMENTS = [
-  { eyebrow: 'Sleep', title: 'Deepest\nSleep', href: '/shop/collections/sleep', img: null },
-  { eyebrow: 'Winter', title: 'The Winter\nEdit', href: '/shop/collections/winter-edit', img: null },
-  { eyebrow: 'Sunday', title: 'Selfcare\nSunday', href: '/shop/collections/selfcare', img: null },
-  { eyebrow: 'Strength', title: 'Chic\nStrength', href: '/shop/collections/strength', img: null },
+interface Props {
+  collections?: ShopifyCollection[]
+}
+
+const FALLBACK_MOMENTS = [
+  { eyebrow: 'Sleep', title: 'Deepest\nSleep', href: '/shop/collections/sleep' },
+  { eyebrow: 'Winter', title: 'The Winter\nEdit', href: '/shop/collections/winter-edit' },
+  { eyebrow: 'Sunday', title: 'Selfcare\nSunday', href: '/shop/collections/selfcare' },
+  { eyebrow: 'Strength', title: 'Chic\nStrength', href: '/shop/collections/strength' },
 ]
 
 const GRADIENTS = [
@@ -14,7 +20,9 @@ const GRADIENTS = [
   'linear-gradient(150deg,#b6bfae,#7c8770)',
 ]
 
-export default function ShopByMoment() {
+export default function ShopByMoment({ collections }: Props) {
+  const moments = collections && collections.length > 0 ? collections.slice(0, 4) : null
+
   return (
     <section className="full-bleed bg-white px-[clamp(20px,6vw,104px)] py-[clamp(34px,4.5vw,58px)]">
       <div className="text-center mb-10">
@@ -27,21 +35,52 @@ export default function ShopByMoment() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {MOMENTS.map((m, i) => (
+        {moments ? moments.map((c, i) => (
+          <Link
+            key={c.id}
+            href={`/shop/collections/${c.handle}`}
+            className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
+            style={{ aspectRatio: '1/1' }}
+          >
+            {c.image ? (
+              <Image
+                src={c.image.url}
+                alt={c.image.altText ?? c.title}
+                fill
+                sizes="(max-width:640px) 100vw, (max-width:768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
+              />
+            ) : (
+              <div
+                className="absolute inset-0 transition-transform duration-[900ms] group-hover:scale-[1.04]"
+                style={{ background: GRADIENTS[i % GRADIENTS.length] }}
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,16,14,.62)] to-[rgba(18,16,14,0)_62%]" />
+            <div className="relative z-10 text-white">
+              <h3
+                className="font-serif font-normal leading-[1.1] whitespace-pre-line"
+                style={{ fontSize: 'clamp(22px, 2.2vw, 28px)' }}
+              >
+                {c.title}
+              </h3>
+              <span className="inline-block mt-2.5 font-sans text-[9px] tracking-[0.18em] uppercase border-b border-white/70 pb-0.5">
+                Shop now
+              </span>
+            </div>
+          </Link>
+        )) : FALLBACK_MOMENTS.map((m, i) => (
           <Link
             key={m.href}
             href={m.href}
             className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
             style={{ aspectRatio: '1/1' }}
           >
-            {/* Background */}
             <div
               className="absolute inset-0 transition-transform duration-[900ms] group-hover:scale-[1.04]"
               style={{ background: GRADIENTS[i] }}
             />
-            {/* Scrim */}
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(18,16,14,.62)] to-[rgba(18,16,14,0)_62%]" />
-            {/* Text */}
             <div className="relative z-10 text-white">
               <p className="font-sans text-[9.5px] tracking-[0.22em] uppercase opacity-85">{m.eyebrow}</p>
               <h3

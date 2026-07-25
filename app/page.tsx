@@ -1,5 +1,6 @@
 import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
-import { getProductsByTag, getCollectionByHandle, getProducts } from '@/lib/shopify'
+import { getProductsByTag, getCollectionByHandle, getProducts, getCollections } from '@/lib/shopify'
+import type { ShopifyCollection } from '@/types/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
@@ -16,13 +17,29 @@ import ShopByCategory from '@/components/home/ShopByCategory'
 import TrustPanel from '@/components/home/TrustPanel'
 import AsSeenIn from '@/components/home/AsSeenIn'
 
+const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
+
+function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
+  const picked = MOMENT_TITLES
+    .map(t => collections.find(c => c.title.toLowerCase() === t))
+    .filter(Boolean) as ShopifyCollection[]
+  const have = new Set(picked.map(c => c.id))
+  for (const c of collections) {
+    if (picked.length >= 4) break
+    if (!have.has(c.id) && c.image) picked.push(c)
+  }
+  return picked.slice(0, 4)
+}
+
 export default async function HomePage() {
-  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes] = await Promise.all([
+  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes, allCollections] = await Promise.all([
     getProductsByTag('team', 24),
     getCollectionByHandle('autumn-edit'),
     getProducts(24),
     Promise.resolve(getVodcastEpisodes()),
+    getCollections(48),
   ])
+  const moments = pickMoments(allCollections)
   const collectionProducts = winterCollection?.products?.nodes ?? []
   const seen = new Set<string>()
   const curatedProducts = [...taggedProducts, ...collectionProducts].filter(p => {
@@ -95,7 +112,7 @@ export default async function HomePage() {
       />
 
       {/* 12 — Shop by Moment */}
-      <ShopByMoment />
+      <ShopByMoment collections={moments} />
 
       {/* 13 — Subscribe */}
       <InsidersBar />
