@@ -6,6 +6,7 @@ import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
 import ShopByMoment from '@/components/shop/ShopByMoment'
 import Collective from '@/components/shop/Collective'
+import FoundersPanel from '@/components/shop/FoundersPanel'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
@@ -167,6 +168,9 @@ export default async function ShopPage() {
 
       {/* Shop by Category */}
       <ShopCategoryGrid />
+
+      {/* Female-founded brands */}
+      <FoundersPanel />
 
       {/* Meet the Beauticate Collective */}
       <Collective />
