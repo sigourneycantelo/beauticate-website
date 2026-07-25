@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllAuthorsWithPages, getAuthorBySlug, buildPersonSchema } from '@/lib/authors'
 import { getArticlesByAuthor } from '@/lib/content'
+import { getCollectionByHandle } from '@/lib/shopify'
+import ShopStrip from '@/components/home/ShopStrip'
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com').replace(/\/$/, '')
 
@@ -35,6 +37,10 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
   if (!author || !author.photo) notFound()
 
   const articles = getArticlesByAuthor(author.name)
+  const collection = author.shopCollection
+    ? await getCollectionByHandle(author.shopCollection)
+    : null
+  const collectionProducts = collection?.products.nodes ?? []
   const personSchema = {
     '@context': 'https://schema.org',
     ...buildPersonSchema(author, SITE_URL),
@@ -85,6 +91,16 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
           )}
         </div>
       </section>
+
+      {collectionProducts.length > 0 && (
+        <ShopStrip
+          products={collectionProducts}
+          eyebrow="Beauticate Shop"
+          heading={<>Shop {author.name.split(' ')[0]}&rsquo;s Favourite Products</>}
+          subheading={`Curated by ${author.name}, ${author.role}`}
+          cta={{ label: 'View all', href: `/shop/collections/${author.shopCollection}` }}
+        />
+      )}
 
       <section className="max-w-6xl mx-auto px-5 pb-20">
         <h2 className="font-sans text-[11px] tracking-[.22em] uppercase text-charcoal-light mb-8">

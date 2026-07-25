@@ -9,6 +9,7 @@ export interface Author {
   instagram?: string      // full URL
   linkedin?: string       // full URL
   sameAs?: string[]       // all known profile URLs for Person schema
+  shopCollection?: string // Shopify collection handle for "Shop {Name}'s Favourites"
 }
 
 export const AUTHORS: Author[] = [
@@ -35,6 +36,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/kate-waterhouse.png',
     instagram: 'https://www.instagram.com/katewaterhouse7/',
     sameAs: ['https://www.instagram.com/katewaterhouse7/'],
+    shopCollection: 'kates-favourites',
   },
   {
     name: 'Rae Morris',
@@ -44,6 +46,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/rae-morris.png',
     instagram: 'https://www.instagram.com/raemorrismakeup/',
     sameAs: ['https://www.instagram.com/raemorrismakeup/'],
+    shopCollection: 'raes-favourites',
   },
   {
     name: 'Jocelyn Petroni',
@@ -53,6 +56,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/jocelyn-petroni.png',
     instagram: 'https://www.instagram.com/jocelynpetroni/',
     sameAs: ['https://www.instagram.com/jocelynpetroni/'],
+    shopCollection: 'jocelyns-favourites',
   },
   {
     name: 'Monique McMahon',
@@ -62,6 +66,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/monique-mcmahon.png',
     instagram: 'https://www.instagram.com/moniquemcmahoncolour/',
     sameAs: ['https://www.instagram.com/moniquemcmahoncolour/'],
+    shopCollection: 'moniques-favourites',
   },
   {
     name: 'Michelle Bridges',
@@ -71,6 +76,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/michelle-bridges.png',
     instagram: 'https://www.instagram.com/mishbridges/',
     sameAs: ['https://www.instagram.com/mishbridges/'],
+    shopCollection: 'michelles-favourites',
   },
   {
     name: 'Jacqueline Alwill',
@@ -80,6 +86,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/jacquiline-alwill.png',
     instagram: 'https://www.instagram.com/brownpapernutrition/',
     sameAs: ['https://www.instagram.com/brownpapernutrition/'],
+    shopCollection: 'jacquelines-favourites',
   },
   {
     name: 'Camilla Thompson',
@@ -89,6 +96,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/camille-thomson.png',
     instagram: 'https://www.instagram.com/camilla_thompson/',
     sameAs: ['https://www.instagram.com/camilla_thompson/'],
+    shopCollection: 'camillas-favourites',
   },
   {
     name: 'Brooke Stevenson',
@@ -98,6 +106,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/brooke-stevenson.png',
     instagram: 'https://www.instagram.com/luxehealthconsulting/',
     sameAs: ['https://www.instagram.com/luxehealthconsulting/'],
+    shopCollection: 'brookes-favourites',
   },
   {
     name: 'Kristin Rawson',
@@ -107,6 +116,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/kristin-rawson.png',
     instagram: 'https://www.instagram.com/kristinrawsoninteriordesign/',
     sameAs: ['https://www.instagram.com/kristinrawsoninteriordesign/'],
+    shopCollection: 'kristins-favourites',
   },
   {
     name: 'Shentel Lee',
@@ -116,6 +126,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/shentel-lee.png',
     instagram: 'https://www.instagram.com/shentel/',
     sameAs: ['https://www.instagram.com/shentel/'],
+    shopCollection: 'shentels-favourites',
   },
   {
     name: 'Dr Amy Chahal',
@@ -125,6 +136,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/amy-chahal.png',
     instagram: 'https://www.instagram.com/drachahal/',
     sameAs: ['https://www.instagram.com/drachahal/'],
+    shopCollection: 'amys-favourites',
   },
   {
     name: 'Dr Leanne Girgis',
@@ -134,6 +146,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/leanne-girgis.png',
     instagram: 'https://www.instagram.com/leannegirgis/',
     sameAs: ['https://www.instagram.com/leannegirgis/'],
+    shopCollection: 'leannes-favourites',
   },
   {
     name: 'Kerrie Gentle',
@@ -143,6 +156,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/kerrie-gentle.png',
     instagram: 'https://www.instagram.com/kerriegentlemakeupandbeauty/',
     sameAs: ['https://www.instagram.com/kerriegentlemakeupandbeauty/'],
+    shopCollection: 'kerries-favourites',
   },
   {
     name: 'Simone Aspinall',
@@ -152,6 +166,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/simone-aspinall.png',
     instagram: 'https://www.instagram.com/simoneaspinallmakeup/',
     sameAs: ['https://www.instagram.com/simoneaspinallmakeup/'],
+    shopCollection: 'simones-favourites',
   },
   {
     name: 'Jayde Balderston',
