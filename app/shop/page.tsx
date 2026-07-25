@@ -139,10 +139,10 @@ export default async function ShopPage() {
                 Just Landed
               </p>
               <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
-                New brands, <em className="italic">fresh finds</em>
+                New in <em className="italic">shop</em>
               </h2>
               <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.55 }}>
-                The latest brands to join the shop
+                Our picks from the latest brands to join Beauticate shop
               </p>
             </>
           }

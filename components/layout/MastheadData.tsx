@@ -97,7 +97,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     { label: 'Shop by Category', href: '/shop', cards: categoryCards },
     { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards, list: brandList },
     { label: 'Shop by Moment', href: '/shop/by-moment', cards: momentCards, list: momentList },
-    { label: 'New In Shop', href: '/shop/brands', cards: newInCards },
+    { label: 'New In Shop', href: '/shop/new-in-shop', cards: newInCards },
     { label: 'Free Shipping', href: '/shop/free-shipping', cards: freeShipCards },
     { label: "Editor's Picks", href: '/shop/collections/editors-essentials', cards: curatorCards },
     { label: 'Gifting', href: '/shop/gifting', cards: giftingCards, list: giftingList },
