@@ -210,10 +210,14 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = [], excludeS
 }
 
 export function getArticlesByAuthor(authorName: string) {
+  const lower = authorName.toLowerCase()
   return getArticleSlugs()
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
-    .filter(a => a?.frontmatter.author?.toLowerCase() === authorName.toLowerCase())
+    .filter(a =>
+      a?.frontmatter.author?.toLowerCase() === lower ||
+      a?.frontmatter.contributors?.some(c => c.toLowerCase() === lower)
+    )
     .sort((a, b) => {
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
       const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()

@@ -104,6 +104,7 @@ export interface ArticleFrontmatter {
   sigourneys_edit?: boolean
   sponsored?: boolean
   affiliate_disclosure?: boolean
+  contributors?: string[]        // collective members featured in team/collaborative articles
 }
 
 export interface VodcastFrontmatter {
