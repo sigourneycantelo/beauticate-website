@@ -29,8 +29,8 @@ export default function InsidersBar() {
       <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(22px,2.6vw,32px)' }}>
         Become a Beauticate Insider
       </h2>
-      <p className="font-sans mt-2 mb-5 mx-auto" style={{ fontSize: '13px', opacity: 0.62, maxWidth: '52ch' }}>
-        Early access to every shop drop. The beauty, wellness and travel we&rsquo;re actually buying. Plus who we&rsquo;re interviewing. Every fortnight.
+      <p className="font-sans mt-2 mb-5 mx-auto" style={{ fontSize: '15px', opacity: 0.62, maxWidth: '52ch' }}>
+        The best of beauty, wellness, style and travel. Plus what we&rsquo;re buying and who we&rsquo;re interviewing. Every fortnight.
       </p>
 
       {submitted ? (
@@ -44,7 +44,7 @@ export default function InsidersBar() {
             name="email"
             required
             placeholder="Your email address"
-            className="flex-1 font-sans text-[13px] px-4 py-3 bg-white"
+            className="flex-1 font-sans text-[16px] px-4 py-3 bg-white"
             style={{ border: '1px solid #1C1A17', borderRight: 'none' }}
           />
           <button

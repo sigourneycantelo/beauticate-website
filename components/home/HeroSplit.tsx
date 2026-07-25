@@ -68,14 +68,14 @@ export default function HeroSplit({ article }: { article: Article }) {
         {f.excerpt && (
           <p
             className="font-sans leading-[1.55]"
-            style={{ fontSize: '14px', opacity: 0.72, margin: '18px 0 24px', maxWidth: '40ch' }}
+            style={{ fontSize: '16px', opacity: 0.72, margin: '18px 0 24px', maxWidth: '40ch' }}
           >
             {f.excerpt}
           </p>
         )}
         <Link
           href={articleHref(f)}
-          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium px-7 py-3 rounded-[1px] transition-colors hover:bg-white hover:text-ink"
+          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium px-7 py-3.5 rounded-[1px] transition-colors hover:bg-white hover:text-ink"
           style={{ background: '#1C1A17', color: '#fff', border: '1px solid #1C1A17' }}
         >
           Read the story

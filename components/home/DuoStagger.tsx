@@ -81,7 +81,7 @@ function ScrimCard({
             {f.excerpt && (
               <p
                 className="font-sans mt-2"
-                style={{ color: 'rgba(255,255,255,.85)', fontSize: '13px', maxWidth: '40ch' }}
+                style={{ color: 'rgba(255,255,255,.85)', fontSize: '15px', maxWidth: '40ch' }}
               >
                 {f.excerpt}
               </p>

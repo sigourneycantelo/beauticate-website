@@ -42,7 +42,7 @@ function Card({ article }: { article: Article }) {
         </span>
         <h3
           className="font-serif font-normal text-ink leading-[1.2]"
-          style={{ fontSize: 'clamp(16px,1.6vw,22px)' }}
+          style={{ fontSize: 'clamp(20px,1.6vw,22px)' }}
         >
           {f.title}
         </h3>

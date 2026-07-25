@@ -203,7 +203,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         .hero-arrow--prev { left: 12px; }
         .hero-arrow--next { right: 12px; }
         @media (max-width: 900px) {
-          .hero-arrow { width: 36px; height: 36px; }
+          .hero-arrow { width: 44px; height: 44px; }
           .hero-arrow--prev { left: 8px; }
           .hero-arrow--next { right: 8px; }
         }
@@ -214,7 +214,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
         }
         .hero-dot {
           width: 28px; height: 2px; background: rgba(255,255,255,.4);
-          cursor: pointer; border: none; padding: 10px 0; transition: background .3s;
+          cursor: pointer; border: none; padding: 12px 8px; transition: background .3s;
           background-clip: content-box;
         }
         .hero-dot.is-active { background: rgba(255,255,255,.95); background-clip: content-box; }
