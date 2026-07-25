@@ -1,7 +1,7 @@
 import Masthead, { type Pillar, type MegaCard, type MegaSub, type MegaLink } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
 import { getCollections } from '@/lib/shopify'
-import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS, CURATOR_EDITS } from '@/lib/shop-taxonomy'
+import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS, CURATOR_EDITS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
 
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
@@ -77,6 +77,13 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     title: c.name, href: `/shop/collections/${c.handle}`, image: imgByHandle.get(c.handle), imageAlt: c.name, eyebrow: 'Curated',
   }))
 
+  // Free Shipping — brands that ship free on every order.
+  const FREE_SHIP_FEATURED = ['subtle-energies', 'bon-patch', 'archer-farrar-perfume-atelier']
+  const freeShipCards: MegaCard[] = FREE_SHIP_FEATURED
+    .map(h => SHOP_BRANDS.find(b => b.handle === h))
+    .filter((b): b is NonNullable<typeof b> => Boolean(b))
+    .map((b): MegaCard => ({ title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'Free Shipping' }))
+
   // Gifting — the occasion / price-tier edits; the /shop/gifting page lists them all.
   // Featured previews are the three price tiers (under $50 / $100 / $300).
   const FEATURED_GIFTING = ['little-luxuries-under-50', 'thoughtful-gestures-under-100', 'luxe-lovers-under-300']
@@ -91,6 +98,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards, list: brandList },
     { label: 'Shop by Moment', href: '/shop/by-moment', cards: momentCards, list: momentList },
     { label: 'New In Shop', href: '/shop/brands', cards: newInCards },
+    { label: 'Free Shipping', href: '/shop/free-shipping', cards: freeShipCards },
     { label: "Editor's Picks", href: '/shop/collections/editors-essentials', cards: curatorCards },
     { label: 'Gifting', href: '/shop/gifting', cards: giftingCards, list: giftingList },
   ]

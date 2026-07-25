@@ -48,7 +48,7 @@ export default async function ShopPage() {
     getCollections(48),
     getProductsByTag('team', 24),
     getProducts(24),
-    getNewArrivals(8),
+    getNewArrivals(6, 4),
     Promise.resolve(getVodcastEpisodes()),
     ...FEATURED_COLLECTIONS.map(h => getCollectionByHandle(h)),
     ...FREE_SHIP_HANDLES.map(h => getCollectionFull(h, 50)),
@@ -132,7 +132,7 @@ export default async function ShopPage() {
       {newArrivals.length > 0 && (
         <ShopProductGrid
           products={newArrivals}
-          maxProducts={8}
+          maxProducts={24}
           heading={
             <>
               <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
@@ -142,7 +142,7 @@ export default async function ShopPage() {
                 New brands, <em className="italic">fresh finds</em>
               </h2>
               <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.55 }}>
-                One pick from each of the latest brands to join the shop
+                The latest brands to join the shop
               </p>
             </>
           }

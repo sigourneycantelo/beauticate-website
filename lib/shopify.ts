@@ -95,9 +95,10 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
   return (data as any)?.products?.nodes ?? []
 }
 
-// One product per brand, most recently created first — gives a varied "new arrivals"
-// grid rather than a dump of one vendor's catalogue.
-export async function getNewArrivals(maxBrands = 8): Promise<ShopifyProduct[]> {
+// Round-robin interleave: take up to `perBrand` products from each of the last
+// `maxBrands` onboarded brands, ordered A1 B1 C1 … A2 B2 C2 … so adjacent cards
+// are always different brands.
+export async function getNewArrivals(maxBrands = 6, perBrand = 4): Promise<ShopifyProduct[]> {
   const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
     ${PRODUCT_FRAGMENT}
     query NewArrivals($first: Int!) {
@@ -105,16 +106,26 @@ export async function getNewArrivals(maxBrands = 8): Promise<ShopifyProduct[]> {
         nodes { ...ProductFields }
       }
     }
-  `, { first: 80 })
+  `, { first: 200 })
   const all = (data as any)?.products?.nodes ?? []
-  const seen = new Set<string>()
-  const picks: ShopifyProduct[] = []
+  const buckets = new Map<string, ShopifyProduct[]>()
+  const brandOrder: string[] = []
   for (const p of all) {
     const brand = (p.vendor ?? '').toLowerCase()
-    if (seen.has(brand)) continue
-    seen.add(brand)
-    picks.push(p)
-    if (picks.length >= maxBrands) break
+    if (!buckets.has(brand)) {
+      buckets.set(brand, [])
+      brandOrder.push(brand)
+    }
+    const bucket = buckets.get(brand)!
+    if (bucket.length < perBrand) bucket.push(p)
+    if (brandOrder.length >= maxBrands && [...buckets.values()].every(b => b.length >= perBrand)) break
+  }
+  const picks: ShopifyProduct[] = []
+  for (let round = 0; round < perBrand; round++) {
+    for (const brand of brandOrder.slice(0, maxBrands)) {
+      const bucket = buckets.get(brand)!
+      if (round < bucket.length) picks.push(bucket[round])
+    }
   }
   return picks
 }
