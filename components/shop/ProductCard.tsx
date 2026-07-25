@@ -1,5 +1,6 @@
 import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
+import { isFreeShipping } from '@/lib/shop-taxonomy'
 
 interface Props {
   product: ShopifyProduct
@@ -30,6 +31,7 @@ export default function ProductCard({ product: p, photoMode }: Props) {
       secondarySrc={secondary?.url}
       secondaryAlt={secondary?.altText ?? p.title}
       cornerLabel="In our shop"
+      badge={isFreeShipping(p.vendor) ? 'Free Shipping' : undefined}
       brand={p.vendor}
       name={p.title}
       price={formatted}

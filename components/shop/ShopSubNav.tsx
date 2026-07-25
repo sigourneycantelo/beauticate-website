@@ -13,6 +13,7 @@ const TABS = [
   { key: 'category', label: 'Shop by Category', href: '/shop', match: (p: string) => p === '/shop' || /^\/shop\/(beauty|wellness|living|style)/.test(p) },
   { key: 'brand', label: 'Shop by Brand', href: '/shop/brands', match: (p: string) => p.startsWith('/shop/brands') },
   { key: 'moment', label: 'Shop by Moment', href: '/shop/by-moment', match: (p: string) => p.startsWith('/shop/by-moment') || p.startsWith('/shop/collections') },
+  { key: 'freeship', label: 'Free Shipping', href: '/shop/free-shipping', match: (p: string) => p === '/shop/free-shipping' },
   { key: 'about', label: 'About', href: '/about', match: (p: string) => p === '/about' },
 ] as const
 

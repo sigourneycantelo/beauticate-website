@@ -14,16 +14,15 @@ export default function BetaTicker() {
   const [dismissed, setDismissed] = useState(false)
   if (dismissed) return null
 
-  // On the shop, a single static beta banner mirroring beauticate.shop.
+  // On the shop, a single static banner promoting free shipping brands.
   if (isShop) {
     return (
       <div className="relative bg-ink text-white text-center">
-        <p className="px-10 py-[10px] font-sans text-[10px] tracking-[0.2em] uppercase opacity-90" style={{ lineHeight: 1.7 }}>
-          Beauticate Shop is in beta. We&rsquo;re still refining things, your feedback shapes what we build next.{' '}
-          <a href="/contact" className="underline underline-offset-2 hover:opacity-100">Get in touch &rarr;</a>
-        </p>
+        <a href="/shop/free-shipping" className="block px-10 py-[10px] font-sans text-[10px] tracking-[0.2em] uppercase opacity-90 hover:opacity-100 transition-opacity" style={{ lineHeight: 1.7 }}>
+          Free shipping on select brands &rarr;
+        </a>
         <button
-          onClick={() => setDismissed(true)}
+          onClick={(e) => { e.preventDefault(); setDismissed(true) }}
           aria-label="Dismiss"
           className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-base leading-none"
         >

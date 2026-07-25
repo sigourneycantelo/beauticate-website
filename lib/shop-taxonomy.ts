@@ -209,6 +209,24 @@ export const CURATOR_EDITS: CuratorEdit[] = [
   { name: 'Team Picks', handle: 'team-picks' },
 ]
 
+// ─── Free Shipping Brands ────────────────────────────────────────────────────
+// Vendor names (matching Shopify product.vendor) that offer free shipping on all
+// orders. Sourced from the Master Brand List spreadsheet, column D. Brands with
+// conditional free shipping (e.g. "over $110") are excluded — only unconditional.
+export const FREE_SHIPPING_VENDORS = new Set<string>([
+  'Archer Farrar Perfume Atelier',
+  'Bon Wellness',
+  'Buj',
+  'Estetika',
+  'Kiicity',
+  'St Louis Says',
+  'Subtle Energies',
+])
+
+export function isFreeShipping(vendor: string): boolean {
+  return FREE_SHIPPING_VENDORS.has(vendor)
+}
+
 // Auto-classify a product into one of a broad category's sub-buckets from its own
 // signals, for when it isn't filed in the Shopify sub-collection. First sub to match
 // wins (subs are ordered most-specific first). Returns undefined if nothing matches.

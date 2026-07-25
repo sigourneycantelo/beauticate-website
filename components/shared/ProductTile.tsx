@@ -20,6 +20,7 @@ export interface ProductTileProps {
   useNextImage?: boolean
   cover?: boolean
   cornerLabel?: string
+  badge?: string
   brand?: string
   name: string
   price?: string
@@ -32,7 +33,7 @@ export default function ProductTile({
   href, external = false, follow = false,
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, cover = false,
-  cornerLabel, brand, name, price, priceSuffix, className = '', hideMeta = false,
+  cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain p-4'
@@ -86,6 +87,11 @@ export default function ProductTile({
             <p className="font-serif text-[13px] opacity-65 mt-1">
               {price}
               {priceSuffix && <span className="italic opacity-80">{priceSuffix}</span>}
+            </p>
+          )}
+          {badge && (
+            <p className="font-sans text-[9px] tracking-[0.14em] uppercase text-eucalypt font-semibold mt-1.5">
+              {badge}
             </p>
           )}
         </div>

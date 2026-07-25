@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useCart } from './CartProvider'
 import type { ShopifyProduct } from '@/types/shopify'
+import { isFreeShipping } from '@/lib/shop-taxonomy'
 
 const fmt = (amount: string, currency: string) =>
   new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(parseFloat(amount))
@@ -78,7 +79,9 @@ export default function ProductBuyBox({ product: p }: { product: ShopifyProduct 
       </div>
 
       <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/70 text-center mt-3">
-        Free shipping over $99 &middot; 30-day returns
+        {isFreeShipping(p.vendor)
+          ? <><span className="text-eucalypt font-semibold tracking-[0.12em] uppercase">Free shipping</span> &middot; 30-day returns</>
+          : <>Free shipping over $99 &middot; 30-day returns</>}
       </p>
 
       {p.descriptionHtml && (
