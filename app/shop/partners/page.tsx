@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: 'What does it cost to join?',
-    a: 'Nothing upfront. There is no listing fee and no joining fee. It is a commission model, so we only earn when you sell. Commission ranges from 25 to 35 percent depending on the editorial package you choose, plus a 5 percent platform fee to Modern Dropship. You receive the balance.',
+    a: 'Nothing upfront. There is no listing fee and no joining fee. It is a commission model, so we only earn when you sell. Commission varies depending on the editorial package you choose, plus a 5 percent platform fee to Modern Dropship. You receive the balance.',
   },
   {
     q: 'How does the technology work?',
@@ -47,20 +47,12 @@ const FAQS = [
     a: 'The customer belongs to both of us. Beauticate does not receive or hold your existing customer list, and we do not solicit it. Customers who discover you through Beauticate Shop are shared.',
   },
   {
-    q: 'What images do you use?',
-    a: 'Only the assets you upload to us. We will not pull imagery from your website or anywhere else. If any of your content features contracted talent you cannot sub-licence, do not upload it and it will not be used. If we ever want to use something outside what you have uploaded, we will come to you in writing for clearance first.',
-  },
-  {
-    q: 'Do you discount?',
-    a: 'No. Beauticate Shop does not run discount-led sales or urgency promotions. We sell through trust and taste, not price.',
-  },
-  {
     q: 'What do you expect from us?',
     a: 'Quality imagery and your brand story. A willingness to collaborate on content, interviews and events. And an understanding that this is not a passive sales channel. Our partners get the most out of it when they lean in.',
   },
   {
     q: 'What happens next?',
-    a: 'If you would like to move forward, we send you three things. Your Modern Dropship invitation to activate your product listings. Your briefing form for product details, imagery and founder story. And your partner agreement. It takes most brands under an hour.',
+    a: 'If you think your brand is a fit, apply below and register your email address. Our editorial team will review your product to see whether it belongs in the edit. If it does, we will send you instructions on next steps including onboarding, imagery and your partner agreement.',
   },
 ]
 

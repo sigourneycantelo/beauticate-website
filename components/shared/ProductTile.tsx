@@ -36,7 +36,7 @@ export default function ProductTile({
   cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
-  const fit = cover ? 'object-cover' : 'object-contain p-4'
+  const fit = cover ? 'object-cover' : 'object-contain px-4 pt-[11px] pb-4'
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
@@ -51,7 +51,7 @@ export default function ProductTile({
   const inner = (
     <>
       {/* Image area — greige for de-etched, full-bleed for lifestyle */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-tile">
+      <div className="relative aspect-[5/6] overflow-hidden bg-tile">
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
