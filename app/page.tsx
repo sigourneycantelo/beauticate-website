@@ -103,7 +103,7 @@ export default async function HomePage() {
       <AsSeenIn />
 
       {/* 7 — Duo (most recent two stories) */}
-      {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} />}
+      {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} eager />}
 
       {/* 8 — Podcast */}
       <PodcastSection episodes={vodcastEpisodes} />

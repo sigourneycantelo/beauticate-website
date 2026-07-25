@@ -25,12 +25,14 @@ function ScrimCard({
   marginTop,
   sizes,
   titleSize = 'clamp(22px,2.2vw,32px)',
+  eager,
 }: {
   article: Article
   aspectRatio: string
   marginTop?: string
   sizes: string
   titleSize?: string
+  eager?: boolean
 }) {
   if (!article?.frontmatter) return null
   const f = article.frontmatter
@@ -55,6 +57,7 @@ function ScrimCard({
               src={cardSrc}
               alt={cardAlt}
               fill
+              loading={eager ? 'eager' : 'lazy'}
               className="object-cover object-[50%_20%] transition-transform duration-700 group-hover:scale-[1.04]"
               sizes={sizes}
             />
@@ -87,7 +90,7 @@ function ScrimCard({
   )
 }
 
-export default function DuoLeft({ articles }: { articles: Article[] }) {
+export default function DuoLeft({ articles, eager }: { articles: Article[]; eager?: boolean }) {
   const [a, b] = articles
   if (!a) return null
   return (
@@ -103,6 +106,7 @@ export default function DuoLeft({ articles }: { articles: Article[] }) {
         aspectRatio="3/4"
         sizes="(max-width:640px) 100vw, 58vw"
         titleSize="clamp(24px,2.6vw,38px)"
+        eager={eager}
       />
       {b && (
         <ScrimCard
@@ -111,6 +115,7 @@ export default function DuoLeft({ articles }: { articles: Article[] }) {
           marginTop="clamp(48px,9vw,130px)"
           sizes="(max-width:640px) 100vw, 38vw"
           titleSize="clamp(24px,2vw,30px)"
+          eager={eager}
         />
       )}
     </section>
