@@ -10,6 +10,7 @@ import GuestRail, { type Guest } from '@/components/vodcast/GuestRail'
 import ThemeArchive, { type ArchiveEpisode } from '@/components/vodcast/ThemeArchive'
 import CuratorFeed from '@/components/vodcast/CuratorFeed'
 import EditorialSections from '@/components/shared/EditorialSections'
+import VodcastSubscribeForm from './VodcastSubscribeForm'
 
 export const metadata: Metadata = {
   title: 'Beautiful Inside — Podcast by Beauticate',
@@ -263,16 +264,7 @@ export default function VodcastPage() {
           Your weekly fix of who&apos;s worth knowing and how to live well, plus exclusive gifts,
           discounts and events, straight to your inbox.
         </p>
-        <form className={styles.subform} action="/api/subscribe" method="POST">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email address"
-            aria-label="Email address"
-            required
-          />
-          <button type="submit">Subscribe</button>
-        </form>
+        <VodcastSubscribeForm className={styles.subform} />
       </section>
 
       {/* ===== 3 · STICKY PLAYER (fixed, slides up past hero) ===== */}
