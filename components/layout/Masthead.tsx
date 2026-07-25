@@ -267,6 +267,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
                   <button className="mh-d-chev" onClick={() => setOpenKey(open ? null : p.key)} aria-expanded={open} aria-label={`${open ? 'Collapse' : 'Expand'} ${p.label}`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></button>
                 </div>
                 <div className="mh-d-subs">
+                  <Link href={p.href} className="mh-d-viewall" onClick={() => setDrawer(false)}>{p.allLabel}</Link>
                   {p.subs.map(s => s.disabled
                     ? <span key={s.label} className="mh-d-soon">{s.label} <em>Soon</em></span>
                     : s.children ? (
