@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllAuthorsWithPages, getAuthorBySlug, buildPersonSchema } from '@/lib/authors'
 import { getArticlesByAuthor } from '@/lib/content'
-import { getCollectionByHandle } from '@/lib/shopify'
-import ShopStrip from '@/components/home/ShopStrip'
+import { AUTHOR_PRODUCTS } from '@/lib/author-products'
+import ProductTile from '@/components/shared/ProductTile'
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com').replace(/\/$/, '')
 
@@ -37,10 +37,7 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
   if (!author || !author.photo) notFound()
 
   const articles = getArticlesByAuthor(author.name)
-  const collection = author.shopCollection
-    ? await getCollectionByHandle(author.shopCollection)
-    : null
-  const collectionProducts = collection?.products.nodes ?? []
+  const picks = AUTHOR_PRODUCTS[slug] ?? []
   const personSchema = {
     '@context': 'https://schema.org',
     ...buildPersonSchema(author, SITE_URL),
@@ -92,14 +89,28 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {collectionProducts.length > 0 && (
-        <ShopStrip
-          products={collectionProducts}
-          eyebrow="Beauticate Shop"
-          heading={<>Shop {author.name.split(' ')[0]}&rsquo;s Favourite Products</>}
-          subheading={`Curated by ${author.name}, ${author.role}`}
-          cta={{ label: 'View all', href: `/shop/collections/${author.shopCollection}` }}
-        />
+      {picks.length > 0 && (
+        <section className="max-w-6xl mx-auto px-5 pb-14">
+          <h2 className="font-sans text-[11px] tracking-[.22em] uppercase text-charcoal-light mb-8">
+            Shop {author.name.split(' ')[0]}&rsquo;s Favourite Products
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-8">
+            {picks.map(p => (
+              <ProductTile
+                key={p.name}
+                href={p.handle ? `/shop/products/${p.handle}` : p.url!}
+                external={!p.handle}
+                useNextImage
+                primarySrc={p.image}
+                primaryAlt={`${p.brand} ${p.name}`}
+                brand={p.brand}
+                name={p.name}
+                price={p.price}
+                cover
+              />
+            ))}
+          </div>
+        </section>
       )}
 
       <section className="max-w-6xl mx-auto px-5 pb-20">
