@@ -296,6 +296,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
                   <span className="mh-d-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></span>
                 </button>
                 <div className="mh-d-subs">
+                  <Link href={p.href} className="mh-d-viewall" onClick={() => setDrawer(false)}>{p.allLabel}</Link>
                   {p.subs.map(s => s.disabled
                     ? <span key={s.label} className="mh-d-soon">{s.label} <em>Soon</em></span>
                     : s.children ? (
