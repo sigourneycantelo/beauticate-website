@@ -1,35 +1,43 @@
 'use client'
 
 import Link from 'next/link'
+import type { ReactNode } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 const MILESTONES: {
   year: string
-  text: string
+  text: ReactNode
   href: string | null
   cta?: string
 }[] = [
   {
     year: '2014',
-    text: 'While at Vogue, Sigourney starts Beauticate as a side project. Rapid growth sees her leave to go all in.',
+    text: "While at Vogue, Sigourney starts Beauticate (the WHO's and HOW-TO's of Beauty) as a side project. Rapid growth sees her leave to go all in.",
     href: null,
   },
   {
     year: '2015',
-    text: 'The GO-TOs Spa and Salon Directory launches and the travel vertical grows.',
-    href: '/destinations',
-    cta: 'Explore Destinations',
-  },
-  {
-    year: '2016',
     text: 'The WHOs series takes off. Polished at-home shoots blend beauty, interiors and the lives of industry insiders.',
     href: '/interviews',
     cta: 'Read the Interviews',
   },
   {
+    year: '2016',
+    text: <>Sigourney launches GO-TO&apos;s Australia&apos;s first Spa &amp; Salon Directory and the <Link href="/destinations/travel" className="text-wine hover:text-charcoal transition-colors underline underline-offset-2">travel</Link> vertical grows.</>,
+    href: '/destinations/directory',
+    cta: 'Explore Beauty & Wellness Directory',
+  },
+  {
     year: '2017',
     text: 'The Top 100 best beauty buys lands, expertly curated.',
-    href: null,
+    href: '/shop',
+    cta: 'Visit the Shop',
+  },
+  {
+    year: '2018',
+    text: 'The Interiors section launches and Beauticate becomes a full lifestyle platform.',
+    href: '/living/interiors',
+    cta: 'Explore Interiors',
   },
   {
     year: '2019',
@@ -38,28 +46,28 @@ const MILESTONES: {
     cta: 'Visit the Shop',
   },
   {
-    year: '2019',
-    text: 'The Interiors section launches and Beauticate becomes a full lifestyle platform.',
-    href: '/living',
-    cta: 'Explore Living',
+    year: '2021',
+    text: 'Beauticate launches Cosmetic section to keep abreast of the latest cosmeceuticals and clinical treatments interviewing top dermatologists and practitioners.',
+    href: '/beauty-style/cosmetic',
+    cta: 'Explore Cosmetic',
   },
   {
     year: '2022',
-    text: 'Beautiful Inside, the video podcast, launches and debuts at #3 on Apple.',
+    text: 'Beautiful Inside, the video podcast, launches and debuts at #3 on Apple in the Arts & Culture category.',
     href: '/vodcast',
     cta: 'Listen to the Podcast',
   },
   {
     year: '2024',
-    text: 'GO-TOs expands into wellness and aesthetics, profiling leading clinics and practitioners.',
-    href: '/wellness',
-    cta: 'Explore Wellness',
+    text: 'The site expands into wellness, longevity and aesthetics with new verticals and adds wellness clinics and practitioners. GO-TOs becomes Beauty & Wellness Directory.',
+    href: '/destinations/directory',
+    cta: 'Explore Beauty & Wellness Directory',
   },
   {
     year: '2025',
-    text: 'The podcast launch and new social audiences triple Beauticate\'s reach across editorial, audio and social.',
-    href: '/vodcast',
-    cta: 'Listen to the Podcast',
+    text: "The podcast launch and new social audiences triple Beauticate's reach across editorial, audio and social.",
+    href: '/advertise-with-us',
+    cta: 'Advertise with Us',
   },
   {
     year: '2026',

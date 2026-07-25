@@ -37,11 +37,13 @@ export default function ShopStrip({
   eyebrow = 'Beauticate Shop',
   heading,
   subheading = 'Curated by the Beauticate Collective',
+  cta,
 }: {
   products: ShopifyProduct[]
   eyebrow?: string
   heading?: React.ReactNode
   subheading?: string
+  cta?: { label: string; href: string }
 }) {
   const railRef = useRef<HTMLDivElement>(null)
   const mobileRef = useRef<HTMLDivElement>(null)
@@ -189,11 +191,11 @@ export default function ShopStrip({
 
       <div className="text-center mt-9">
         <Link
-          href="/shop"
+          href={cta?.href ?? '/shop'}
           className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase px-7 py-3.5 rounded-[1px] transition-colors hover:bg-ink hover:text-white"
           style={{ border: '1px solid #1C1A17' }}
         >
-          Explore the shop
+          {cta?.label ?? 'Explore the shop'}
         </Link>
       </div>
     </section>

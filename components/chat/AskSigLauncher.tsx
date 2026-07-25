@@ -1,23 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
+import { useCart } from '@/components/shop/CartProvider'
 
 const AskSigPanel = dynamic(() => import('./AskSigPanel'), { ssr: false })
-
-function getCategoryFromPath(pathname: string): string {
-  const match = pathname.match(/^\/([\w-]+)/)
-  return match ? match[1] : ''
-}
 
 const SECTION_PROMPTS: Record<string, string> = {
   '/shop': 'Looking for something specific?',
   '/beauty-style': 'Need a product recommendation?',
   '/wellness': "What's your wellness goal?",
   '/destinations': 'Where do you want to go?',
-  '/interviews': 'Ask me about anyone I’ve interviewed',
+  '/interviews': "Ask me about anyone I've interviewed",
   '/vodcast': 'Ask me about any episode',
   '/living': 'Need a home or lifestyle tip?',
 }
@@ -34,15 +30,24 @@ export default function AskSigLauncher() {
   const [open, setOpen] = useState(false)
   const [showBubble, setShowBubble] = useState(false)
   const [dismissed, setDismissed] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const pathname = usePathname()
-  const router = useRouter()
+  const { isOpen: cartOpen } = useCart()
 
   useEffect(() => {
-    if (dismissed || open) return
+    const mq = window.matchMedia('(max-width: 640px)')
+    setIsMobile(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  useEffect(() => {
+    if (dismissed || open || isMobile) return
     setShowBubble(false)
     const timer = setTimeout(() => setShowBubble(true), 3000)
     return () => clearTimeout(timer)
-  }, [pathname, dismissed, open])
+  }, [pathname, dismissed, open, isMobile])
 
   function handleOpen() {
     setOpen(true)
@@ -57,18 +62,17 @@ export default function AskSigLauncher() {
 
   const prompt = getPromptForPath(pathname)
 
+  if (cartOpen && isMobile) return null
+
   return (
     <>
       {open && <AskSigPanel onClose={() => setOpen(false)} />}
 
       {!open && (
         <div className="fixed bottom-6 right-6 z-[9998]">
-          {showBubble ? (
+          {showBubble && !isMobile ? (
             <div
-              onClick={() => {
-                const cat = getCategoryFromPath(pathname)
-                router.push(cat ? `/ask-sig?from=${encodeURIComponent(cat)}` : '/ask-sig')
-              }}
+              onClick={handleOpen}
               className="relative cursor-pointer animate-fade-in max-w-[240px]"
             >
               <div className="bg-white rounded-2xl shadow-lg px-4 py-3 border border-line flex items-start gap-3">

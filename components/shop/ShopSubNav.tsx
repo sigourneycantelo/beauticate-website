@@ -10,11 +10,10 @@ export type SubNavItem = { label: string; href: string; image?: string; soon?: b
 interface Props { category: SubNavItem[]; brands: SubNavItem[]; moments: SubNavItem[] }
 
 const TABS = [
-  { key: 'category', label: 'Shop by Category', href: '/shop/by-category', match: (p: string) => p === '/shop/by-category' || /^\/shop\/(beauty|wellness|living|style)/.test(p) },
-  { key: 'brand', label: 'Shop by Brand', href: '/shop/brands', match: (p: string) => p.startsWith('/shop/brands') },
-  { key: 'moment', label: 'Shop by Moment', href: '/shop/by-moment', match: (p: string) => p.startsWith('/shop/by-moment') || p.startsWith('/shop/collections') },
-  { key: 'freeship', label: 'Free Shipping', href: '/shop/free-shipping', match: (p: string) => p === '/shop/free-shipping' },
-  { key: 'about', label: 'About', href: '/about', match: (p: string) => p === '/about' },
+  { key: 'category', label: 'Shop by Category', shortLabel: 'Category', href: '/shop/by-category', match: (p: string) => p === '/shop/by-category' || /^\/shop\/(beauty|wellness|living|style)/.test(p) },
+  { key: 'brand', label: 'Shop by Brand', shortLabel: 'Brand', href: '/shop/brands', match: (p: string) => p.startsWith('/shop/brands') },
+  { key: 'moment', label: 'Shop by Moment', shortLabel: 'Moment', href: '/shop/by-moment', match: (p: string) => p.startsWith('/shop/by-moment') || p.startsWith('/shop/collections') },
+  { key: 'freeship', label: 'Free Shipping', shortLabel: 'Free Shipping', href: '/shop/free-shipping', match: (p: string) => p === '/shop/free-shipping' },
 ] as const
 
 function Card({ label, href, image, soon }: SubNavItem) {
@@ -71,14 +70,16 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
   return (
     <div className={`bg-white shop-subnav-sticky relative${mastheadHidden ? ' mh-away' : ''}`} style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }} onMouseLeave={closeSoon}>
       <nav aria-label="Shop navigation" className="max-w-wide mx-auto flex items-center justify-center flex-nowrap" style={{ gap: '0', padding: '16px clamp(20px,6vw,104px)' }}>
+        <span className="shop-subnav-prefix font-sans whitespace-nowrap" style={{ fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase', opacity: 0.6, marginRight: '6px' }}>Shop by:</span>
         {TABS.map((tab, i) => {
           const active = tab.match(path) || open === tab.key
-          const hasMenu = tab.key !== 'about' && tab.key !== 'freeship'
+          const hasMenu = tab.key !== 'freeship'
+          const mobileHide = tab.key === 'freeship' ? ' shop-subnav-hide-mobile' : ''
           return (
             <Fragment key={tab.key}>
-              {i > 0 && <span aria-hidden className="select-none" style={{ opacity: 0.28, margin: '0 clamp(16px,2.4vw,32px)' }}>·</span>}
+              {i > 0 && <span aria-hidden className={`select-none${mobileHide}`} style={{ opacity: 0.28, margin: '0 clamp(8px,2.4vw,32px)' }}>·</span>}
               <span
-                className="inline-flex"
+                className={`inline-flex${mobileHide}`}
                 onMouseEnter={() => (hasMenu ? openMenu(tab.key) : setOpen(null))}
                 onMouseLeave={closeSoon}
               >
@@ -87,7 +88,8 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
                   className="font-sans whitespace-nowrap transition-colors duration-150 hover:!opacity-100"
                   style={{ fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase', opacity: active ? 1 : 0.6, color: active ? '#1C1A17' : undefined }}
                 >
-                  {tab.label}
+                  <span className="shop-subnav-full">{tab.label}</span>
+                  <span className="shop-subnav-short">{tab.shortLabel}</span>
                 </Link>
               </span>
             </Fragment>

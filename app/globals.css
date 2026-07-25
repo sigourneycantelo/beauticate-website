@@ -198,10 +198,15 @@
   .story-rail { overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: .5rem;
     scrollbar-width: none; -ms-overflow-style: none; }
   .story-rail::-webkit-scrollbar { display: none; }
-  .story-track { flex-direction: row; gap: 0; }
+  .story-track { flex-direction: row; gap: 0; position: relative; }
   .milestone { flex: 0 0 clamp(240px, 26vw, 300px); scroll-snap-align: start; padding-left: 0; padding-right: 2rem; padding-top: 2.9rem; }
-  .story-line { left: 0; right: 0; top: 13px; bottom: auto; width: auto; height: 2px; transform: scaleX(0); transform-origin: left; }
-  .story--js.is-shown .story-line { transform: scaleX(1); }
+  .story-line { display: none; }
+  .story-track::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 13px; height: 2px;
+    background: rgba(28, 26, 23, .16);
+    transform: scaleX(0); transform-origin: left; transition: transform 1.1s ease;
+  }
+  .story--js.is-shown .story-track::before { transform: scaleX(1); }
   .story-dot { left: 0; top: 8px; }
   .story-fade { display: block; position: absolute; top: 0; right: -1px; width: 56px; height: 100%; pointer-events: none;
     background: linear-gradient(to right, rgba(251, 249, 244, 0), #FBF9F4); }
@@ -212,6 +217,7 @@
 @media (prefers-reduced-motion: reduce) {
   .story--js .milestone { opacity: 1 !important; transform: none !important; transition: none; }
   .story-line { transform: none !important; transition: none; }
+  .story-track::before { transform: none !important; transition: none; }
 }
 
 /* ================= Global Masthead (v15) ================= */
@@ -471,9 +477,19 @@
   transition:top .32s cubic-bezier(.4,0,.2,1);
 }
 .shop-subnav-sticky.mh-away{ top:0; }
+
+/* Sub-nav: full labels on desktop, compact on mobile */
+.shop-subnav-prefix{ display:none; }
+.shop-subnav-short{ display:none; }
+.shop-subnav-full{ display:inline; }
+
 @media(max-width:900px){
   .shop-subnav-sticky{ top:56px; }
   .shop-subnav-sticky.mh-away{ top:0; }
+  .shop-subnav-prefix{ display:inline; }
+  .shop-subnav-short{ display:inline; }
+  .shop-subnav-full{ display:none; }
+  .shop-subnav-hide-mobile{ display:none; }
 }
 
 /* ── Author bio / footer — everything after the final <hr> ── */

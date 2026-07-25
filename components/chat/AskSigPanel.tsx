@@ -108,7 +108,7 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
   }
 
   return (
-    <div className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[9999] w-full sm:w-[400px] h-[100dvh] sm:h-[min(600px,80vh)] flex flex-col bg-[#f7f6f4] sm:rounded-2xl shadow-2xl overflow-hidden border border-line">
+    <div className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-[9999] w-full sm:w-[400px] h-[60dvh] sm:h-[min(600px,80vh)] flex flex-col bg-[#f7f6f4] rounded-t-2xl sm:rounded-2xl shadow-2xl overflow-hidden border border-line">
       {/* Header */}
       <div className="flex items-center gap-3 px-4 py-3 bg-white border-b border-line shrink-0">
         <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-wine shrink-0">
