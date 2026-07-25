@@ -27,13 +27,26 @@ export default async function FreeShippingPage() {
     FREE_SHIP_HANDLES.map(h => getCollectionFull(h, 50))
   )
   const seen = new Set<string>()
-  const products: ShopifyProduct[] = []
+  const buckets = new Map<string, ShopifyProduct[]>()
+  const brandOrder: string[] = []
   for (const col of collections) {
     for (const p of col?.products?.nodes ?? []) {
-      if (!seen.has(p.handle)) {
-        seen.add(p.handle)
-        products.push(p)
+      if (seen.has(p.handle)) continue
+      seen.add(p.handle)
+      const brand = (p.vendor ?? '').toLowerCase()
+      if (!buckets.has(brand)) {
+        buckets.set(brand, [])
+        brandOrder.push(brand)
       }
+      buckets.get(brand)!.push(p)
+    }
+  }
+  const maxPerBrand = Math.max(...[...buckets.values()].map(b => b.length), 0)
+  const products: ShopifyProduct[] = []
+  for (let round = 0; round < maxPerBrand; round++) {
+    for (const brand of brandOrder) {
+      const bucket = buckets.get(brand)!
+      if (round < bucket.length) products.push(bucket[round])
     }
   }
 

@@ -94,7 +94,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
   const giftingList: MegaLink[] = GIFTING_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}` }))
 
   const subs: MegaSub[] = [
-    { label: 'Shop by Category', href: '/shop', cards: categoryCards },
+    { label: 'Shop by Category', href: '/shop/by-category', cards: categoryCards },
     { label: 'Shop by Brand', href: '/shop/brands', cards: brandCards, list: brandList },
     { label: 'Shop by Moment', href: '/shop/by-moment', cards: momentCards, list: momentList },
     { label: 'New In Shop', href: '/shop/new-in-shop', cards: newInCards },
