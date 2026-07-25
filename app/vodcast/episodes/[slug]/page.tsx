@@ -50,7 +50,8 @@ const mdxComponents = {
       <a
         {...props}
         className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity"
-        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        target="_blank"
+        rel={external ? 'noopener noreferrer' : 'noopener'}
       />
     )
   },

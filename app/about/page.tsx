@@ -117,12 +117,12 @@ const faqSchema = {
   })),
 }
 
-const PRESS_LOGOS = [
+const PRESS_LOGOS: { src?: string; alt: string; text?: string }[] = [
   { src: '/images/press/vogue.png', alt: 'Vogue' },
   { src: '/images/press/marie-claire.png', alt: 'marie claire' },
   { src: '/images/press/daily-telegraph.png', alt: 'The Daily Telegraph' },
   { src: '/images/press/daily-mail.png', alt: 'Daily Mail' },
-  { src: '/images/press/mamamia.svg', alt: 'Mamamia' },
+  { alt: 'Mamamia', text: 'Mamamia' },
 ]
 
 export default function AboutPage() {
@@ -133,8 +133,12 @@ export default function AboutPage() {
 
       <main className="bg-white">
 
+        <div className="max-w-6xl mx-auto px-6 pt-6 sm:pt-10">
+          <h1 className="font-sans uppercase tracking-[0.34em] text-xs mb-0">About Beauticate</h1>
+        </div>
+
         {/* Founder letter: portrait left, letter right */}
-        <section className="max-w-6xl mx-auto px-6 pt-14 pb-12 md:grid md:grid-cols-[minmax(0,440px)_1fr] md:gap-16 items-start">
+        <section className="max-w-6xl mx-auto px-6 pt-8 pb-12 md:grid md:grid-cols-[minmax(0,440px)_1fr] md:gap-16 items-start">
           {/* Portrait + identity */}
           <div className="md:sticky md:top-24 mb-10 md:mb-0">
             <div className="relative w-full aspect-[2/3] bg-gray-100 overflow-hidden">
@@ -170,7 +174,6 @@ export default function AboutPage() {
           {/* Letter */}
           <div>
             <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-muted mb-4">From the Founder</p>
-            <h1 className="font-serif text-3xl md:text-4xl text-charcoal leading-tight mb-7">About Beauticate</h1>
             <div className="font-serif text-base text-charcoal/80 leading-relaxed space-y-4">
               <p>Beauticate began more than a decade ago, as a side project, while I was Beauty &amp; Health Director at Vogue Australia.</p>
               <p>After years of writing for magazines, I wanted to create something of my own. A space that honoured beauty properly. Not as something trivial, but as something powerful.</p>
@@ -219,8 +222,12 @@ export default function AboutPage() {
           <Link href="/press" className="group block">
             <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
               {PRESS_LOGOS.map(logo => (
-                <div key={logo.src} className="relative h-7 w-[120px] opacity-50 group-hover:opacity-70 transition-opacity">
-                  <Image src={logo.src} alt={logo.alt} fill className="object-contain" sizes="120px" />
+                <div key={logo.alt} className="relative h-7 w-[120px] opacity-50 group-hover:opacity-70 transition-opacity flex items-center justify-center">
+                  {logo.src ? (
+                    <Image src={logo.src} alt={logo.alt} fill className="object-contain" sizes="120px" />
+                  ) : (
+                    <span className="font-serif text-[22px] text-charcoal italic whitespace-nowrap">{logo.text}</span>
+                  )}
                 </div>
               ))}
             </div>

@@ -88,10 +88,33 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
   function InlineProduct({ handle }: { handle: string }) {
-    const shopProduct = shopProductMap[handle]
-    const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
+    const sp = shopProductMap[handle]
+    if (!sp) {
+      const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
+      return <ProductEmbed product={productLink} />
+    }
+    const price = sp.priceRange?.minVariantPrice
+    const formatted = price
+      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(parseFloat(price.amount))
+      : undefined
+    const imgs = sp.images?.nodes ?? []
+    const primary = imgs[0] ?? sp.featuredImage
+    const secondary = imgs[1]
     return (
-      <ProductEmbed product={productLink} shopProduct={shopProduct} />
+      <span className="not-prose sm:float-left sm:mr-7 sm:clear-left mb-5 w-full sm:w-[42%] max-w-[260px] block mx-auto sm:mx-0">
+        <ProductTile
+          href={`/shop/products/${sp.handle}`}
+          useNextImage
+          primarySrc={primary?.url}
+          primaryAlt={primary?.altText ?? sp.title}
+          secondarySrc={secondary?.url}
+          secondaryAlt={secondary?.altText ?? sp.title}
+          cornerLabel="In our shop"
+          brand={sp.vendor}
+          name={sp.title}
+          price={formatted}
+        />
+      </span>
     )
   }
 
@@ -125,9 +148,9 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
-      return isExternal
-        ? <a {...props} target="_blank" rel="noopener noreferrer" />
-        : <a {...props} />
+      return (
+        <a {...props} target="_blank" rel={isExternal ? 'noopener noreferrer' : 'noopener'} />
+      )
     },
   }
 

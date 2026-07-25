@@ -83,6 +83,19 @@ When publishing a new story, always ask:
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
 
+## Links — open in a new tab
+
+Readers should never be navigated away from what they're reading.
+
+### Article body links (MDX content)
+**All links** in article/vodcast body content open in a new tab — both internal and external. This is handled by the custom `a` component in `ArticlePage.tsx` and the vodcast episode page. No action needed for inline markdown links.
+
+### Component / page links outside article bodies
+- **External `<a>` tags**: add `target="_blank" rel="noopener noreferrer"`.
+- **Next.js `<Link>`** pointing to an external URL: add `target="_blank" rel="noopener noreferrer"`.
+- **Affiliate / sponsored links**: use `target="_blank" rel="sponsored noopener"` (the existing convention).
+- **Site navigation** (header, footer, nav menus, article cards): stays in the same tab — these are how readers browse, not mid-read departures.
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
