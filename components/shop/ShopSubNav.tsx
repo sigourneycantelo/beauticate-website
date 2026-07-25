@@ -69,6 +69,7 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
               <span
                 className="inline-flex"
                 onMouseEnter={() => (hasMenu ? openMenu(tab.key) : setOpen(null))}
+                onMouseLeave={closeSoon}
               >
                 <Link
                   href={tab.href}
