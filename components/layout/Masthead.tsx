@@ -241,7 +241,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
           </button>
           {isShop && (
             <Link href="/" className="mh-back-site" aria-label="Back to Beauticate">
-              <span aria-hidden>&larr;</span> Beauticate
+              Beauticate
             </Link>
           )}
           <div className="mh-social">
@@ -270,7 +270,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
       {/* Primary tier */}
       <nav className="mh-primary" aria-label="Primary" onClick={handleNavClick}>
         <Link href="/" className="mh-brand-mini" aria-label="Beauticate home"><Wordmark className="mh-logo mh-logo-mini" /></Link>
-        {isShop && <Link href="/" className="mh-home-link" aria-label="Back to Beauticate home">&larr; Home</Link>}
+        {isShop && <Link href="/" className="mh-home-link" aria-label="Back to Beauticate home">Home</Link>}
         <ul className="mh-pillars">
           <li className="mh-pillar"><Link href="/about" className="mh-pillar-link">About</Link></li>
           {pillars.map(p => <PillarItem key={p.key} p={p} />)}
@@ -287,6 +287,9 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
           </button>
         </div>
         <nav className="mh-d-nav">
+          {isShop && (
+            <Link href="/" className="mh-d-back" onClick={() => setDrawer(false)}>Beauticate</Link>
+          )}
           {pillars.map(p => {
             const open = openKey === p.key
             return (

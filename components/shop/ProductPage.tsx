@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
+import ProductImageCarousel from './ProductImageCarousel'
 import type { ShopifyProduct } from '@/types/shopify'
 
 interface Props { product: ShopifyProduct; related?: ShopifyProduct[] }
@@ -73,20 +73,7 @@ export default function ProductPage({ product: p, related = [] }: Props) {
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
-        <div className="flex flex-col gap-3">
-          {images.map((img, i) => (
-            <div key={img.url + i} className="relative bg-tile rounded-[2px] overflow-hidden" style={{ aspectRatio: '3/4' }}>
-              <Image
-                src={img.url}
-                alt={img.altText ?? `${p.vendor} ${p.title}`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-contain p-5"
-                priority={i === 0}
-              />
-            </div>
-          ))}
-        </div>
+        <ProductImageCarousel images={images} vendor={p.vendor} title={p.title} />
 
         <ProductBuyBox product={p} />
       </div>
