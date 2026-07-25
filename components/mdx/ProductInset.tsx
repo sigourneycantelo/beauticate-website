@@ -19,24 +19,28 @@ interface Props {
  * Used for "listicle" articles where each product has its own paragraph.
  */
 export default function ProductInset({ image, name, url, price, brand, retailer, cover, side = 'left', inline }: Props) {
-  const float = side === 'left' ? 'sm:float-left sm:mr-7 sm:clear-left' : 'sm:float-right sm:ml-7 sm:clear-right'
   const r = retailer ?? retailerFromUrl(url)
-  const cls = inline
-    ? 'not-prose block w-full'
-    : `not-prose ${float} mb-5 w-full sm:w-[42%] max-w-[260px] block mx-auto sm:mx-0`
+
+  const tile = (
+    <ProductTile
+      href={url}
+      external
+      cover={cover}
+      primarySrc={image}
+      primaryAlt={name}
+      cornerLabel="shop from brand"
+      brand={brand}
+      name={name}
+      price={price}
+    />
+  )
+
+  if (inline) return tile
+
+  const float = side === 'left' ? 'sm:float-left sm:mr-7 sm:clear-left' : 'sm:float-right sm:ml-7 sm:clear-right'
   return (
-    <span className={cls}>
-      <ProductTile
-        href={url}
-        external
-        cover={cover}
-        primarySrc={image}
-        primaryAlt={name}
-        cornerLabel="shop from brand"
-        brand={brand}
-        name={name}
-        price={price}
-      />
+    <span className={`not-prose ${float} mb-5 w-full sm:w-[42%] max-w-[260px] block mx-auto sm:mx-0`}>
+      {tile}
     </span>
   )
 }
