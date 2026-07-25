@@ -26,20 +26,20 @@ export default function ShopByMoment({ collections }: Props) {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {moments.map((c, i) => (
           <Link
             key={c.id}
             href={`/shop/collections/${c.handle}`}
-            className="group relative overflow-hidden rounded-[2px] flex items-end p-[clamp(18px,3vw,32px)]"
-            style={{ aspectRatio: '16/9' }}
+            className="group relative overflow-hidden rounded-[2px] flex items-end p-[22px]"
+            style={{ aspectRatio: '1/1' }}
           >
             {c.image ? (
               <Image
                 src={c.image.url}
                 alt={c.image.altText ?? c.title}
                 fill
-                sizes="(max-width:640px) 100vw, 50vw"
+                sizes="(max-width:640px) 100vw, (max-width:768px) 50vw, 25vw"
                 className="object-cover transition-transform duration-[900ms] group-hover:scale-[1.04]"
               />
             ) : (
