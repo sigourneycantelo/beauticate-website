@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!collection) return {}
   const desc = (collection.description?.slice(0, 160)) || `Shop the ${collection.title} edit — curated by the editors and experts of Beauticate.`
   return {
-    title: `${collection.title} | Beauticate Shop`,
+    title: `${collection.title} | Shop`,
     description: desc,
     alternates: { canonical: `${SITE}/shop/collections/${handle}` },
     openGraph: { title: collection.title, description: desc, images: collection.image ? [collection.image.url] : [] },

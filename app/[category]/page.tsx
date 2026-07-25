@@ -1,11 +1,19 @@
 import { getArticlesByCategory } from '@/lib/content'
 import { getCollectionByHandle, getProductsByHandles } from '@/lib/shopify'
+import { buildCategoryMetadata } from '@/lib/seo'
 import ArticleGrid from '@/components/article/ArticleGrid'
 import EditorialSections from '@/components/shared/EditorialSections'
 import ShopStrip from '@/components/home/ShopStrip'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 
 interface Props { params: Promise<{ category: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category } = await params
+  if (!getArticlesByCategory(category).length) return {}
+  return buildCategoryMetadata(category)
+}
 
 // Top-level category pages that get the full editorial magazine layout
 // (HeroSplit → trio → shop rail → duo → trio → hero → duo-left → trio, repeating),

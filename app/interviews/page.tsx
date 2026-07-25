@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import EditorialSections from '@/components/shared/EditorialSections'
 
 export const metadata: Metadata = {
-  title: 'Interviews — Beauticate',
+  title: 'Interviews',
   description: 'In-depth conversations with the people shaping beauty, wellness and the way we live — from makeup artists and dermatologists to founders and cultural icons.',
 }
 

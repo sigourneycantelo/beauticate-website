@@ -6,7 +6,7 @@ import PressLogoBar from '@/components/shared/PressLogoBar'
 import { getAuthor } from '@/lib/authors'
 
 export const metadata: Metadata = {
-  title: 'About Beauticate | Sigourney Cantelo, Founder & Editor-in-Chief',
+  title: 'About | Sigourney Cantelo, Founder & Editor-in-Chief',
   description: 'Beauticate is Australia\'s most trusted beauty, wellness and lifestyle editorial brand. Founded in 2014 by Sigourney Cantelo, former Vogue Australia Beauty & Health Director.',
   alternates: { canonical: 'https://www.beauticate.com/about-beauticate' },
   openGraph: {

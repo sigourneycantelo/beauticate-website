@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params
   const broad = getBroad(category)
   if (!broad) return {}
-  const title = `${broad.label} | Beauticate Shop`
+  const title = `${broad.label} | Shop`
   const description = broad.comingSoon
     ? `${broad.label} is coming soon to the Beauticate shop.`
     : `Shop the Beauticate ${broad.label} edit — curated by the editors and experts behind Beauticate.`

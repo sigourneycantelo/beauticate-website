@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Returns & Refunds | Beauticate Shop',
+  title: 'Returns & Refunds | Shop',
   description: 'Returns and refund policy for Beauticate Shop — how returns work with our brand-direct model.',
 }
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import AskSigCTA from './AskSigCTA'
 
 export const metadata: Metadata = {
-  title: 'Contact | Beauticate',
+  title: 'Contact',
   description: 'Get in touch with Beauticate — general enquiries, advertising, brand partnerships, PR, events and marketing.',
 }
 

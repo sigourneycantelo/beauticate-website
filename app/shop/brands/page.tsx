@@ -6,7 +6,7 @@ import { getCollections, brandsFromCollections } from '@/lib/shopify'
 const SITE = 'https://www.beauticate.com'
 
 export const metadata: Metadata = {
-  title: 'Shop by Brand | Beauticate Shop',
+  title: 'Shop by Brand',
   description: 'Every brand in the Beauticate edit — chosen on merit alone by our editorial team and founder Sigourney Cantelo.',
   alternates: { canonical: `${SITE}/shop/brands` },
 }

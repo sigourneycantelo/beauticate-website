@@ -4,7 +4,7 @@ import DirectoryClient from './DirectoryClient'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'The Beauty & Wellness Directory — Beauticate',
+  title: 'The Beauty & Wellness Directory',
   description: 'The spas, salons, skin clinics and bathhouses we actually rate, all around Australia.',
 }
 
