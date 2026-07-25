@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import BrandApplyForm from '@/components/shop/BrandApplyForm'
 
 export const metadata: Metadata = {
@@ -28,6 +29,12 @@ export default function ApplyPage() {
             <p>
               If you think your brand belongs here, tell us about it. We review every submission as a
               team and we come back to the brands that feel like a fit.
+            </p>
+            <p>
+              Have questions about how it works?{' '}
+              <Link href="/shop/partners" className="text-wine hover:text-wine/70 underline underline-offset-2 decoration-[0.5px] transition-colors">
+                Read our partner FAQs
+              </Link>.
             </p>
           </div>
           <div className="mt-10 relative aspect-[3/4] max-w-[420px]">

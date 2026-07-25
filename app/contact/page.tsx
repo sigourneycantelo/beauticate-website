@@ -7,14 +7,14 @@ export const metadata: Metadata = {
 
 const CONTACT_TYPES = [
   {
-    heading: 'Editorial & press',
-    detail: 'Story submissions, press releases, product send-ins and editorial enquiries.',
-    email: 'editor@beauticate.com',
+    heading: 'PR & Marketing',
+    detail: 'Press releases, product send-ins, story submissions and editorial enquiries.',
+    email: 'jayde@beauticate.com',
   },
   {
-    heading: 'Brand partnerships',
+    heading: 'Advertising & Brand Partnerships',
     detail: 'Advertising, sponsored content, events and commercial partnerships.',
-    email: 'sigourney@beauticate.com',
+    email: 'sales@beauticate.com',
   },
   {
     heading: 'Shop support',
