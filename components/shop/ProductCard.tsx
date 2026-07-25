@@ -30,7 +30,6 @@ export default function ProductCard({ product: p, photoMode }: Props) {
       primaryAlt={primary?.altText ?? p.title}
       secondarySrc={secondary?.url}
       secondaryAlt={secondary?.altText ?? p.title}
-      cornerLabel="In our shop"
       badge={isFreeShipping(p.vendor) ? 'Free Shipping' : undefined}
       brand={p.vendor}
       name={p.title}

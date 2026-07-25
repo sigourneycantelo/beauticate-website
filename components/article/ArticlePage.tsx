@@ -134,7 +134,6 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         primarySrc={props.image ?? (imgs[0] ?? sp.featuredImage)?.url}
         primaryAlt={props.name ?? sp.title}
         secondarySrc={usingShopImage ? imgs[1]?.url : undefined}
-        cornerLabel="In our shop"
         brand={props.brand}
         name={props.name ?? sp.title}
         price={price}

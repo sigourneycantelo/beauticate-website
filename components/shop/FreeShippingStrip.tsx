@@ -23,7 +23,6 @@ function Card({ p }: { p: ShopifyProduct }) {
       primaryAlt={primary?.altText ?? p.title}
       secondarySrc={secondary?.url}
       secondaryAlt={secondary?.altText ?? p.title}
-      cornerLabel="In our shop"
       badge="Free Shipping"
       brand={p.vendor}
       name={p.title}

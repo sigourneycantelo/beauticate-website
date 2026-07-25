@@ -36,9 +36,9 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
   const detected = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
   const r = detected || brand || ''
   const cornerLabel = internal
-    ? 'In our shop'
+    ? undefined
     : url
-      ? (r ? `shop via ${r} ↗` : 'shop ↗')
+      ? 'shop from brand'
       : undefined
   return (
     <ProductTile

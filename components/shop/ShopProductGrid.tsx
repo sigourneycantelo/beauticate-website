@@ -45,7 +45,6 @@ export default function ShopProductGrid({
               primaryAlt={primary?.altText ?? p.title}
               secondarySrc={secondary?.url}
               secondaryAlt={secondary?.altText ?? p.title}
-              cornerLabel="In our shop"
               brand={p.vendor}
               name={p.title}
               price={formatPrice(p)}

@@ -36,7 +36,7 @@ export default function ShopEditRail({ products, collectionHandle, collectionTit
                 external
                 primarySrc={p.image}
                 primaryAlt={p.name}
-                cornerLabel={retailer ? `shop via ${retailer} ↗` : 'Shop ↗'}
+                cornerLabel="shop from brand"
                 brand={p.brand}
                 name={p.name}
                 price={p.price ? `$${parseFloat(p.price) % 1 === 0 ? parseFloat(p.price).toFixed(0) : p.price}` : undefined}

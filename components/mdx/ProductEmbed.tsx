@@ -32,7 +32,6 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
           primaryAlt={primary?.altText ?? shopProduct.title}
           secondarySrc={secondary?.url}
           secondaryAlt={secondary?.altText ?? shopProduct.title}
-          cornerLabel="In our shop"
           brand={shopProduct.vendor}
           name={shopProduct.title}
           price={formatted}
@@ -50,7 +49,7 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
       <ProductTile
         href={href}
         external
-        cornerLabel={retailer ? `shop via ${retailer} ↗` : 'shop ↗'}
+        cornerLabel="shop from brand"
         brand={retailer || undefined}
         name={product.name}
         price={product.price}

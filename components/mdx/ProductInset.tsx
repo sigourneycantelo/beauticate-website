@@ -32,7 +32,7 @@ export default function ProductInset({ image, name, url, price, brand, retailer,
         cover={cover}
         primarySrc={image}
         primaryAlt={name}
-        cornerLabel={r ? `shop via ${r} ↗` : 'shop ↗'}
+        cornerLabel="shop from brand"
         brand={brand}
         name={name}
         price={price}
