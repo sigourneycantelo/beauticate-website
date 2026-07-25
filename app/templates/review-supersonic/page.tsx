@@ -28,7 +28,7 @@ export default function ReviewSupersonicTemplate() {
       <div className="max-w-[1200px] mx-auto">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/JUNE-EDM-17.gif"
+          src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/june-edm-17.gif"
           alt={f.featured_image_alt ?? f.title}
           className="w-full h-auto"
         />
@@ -75,7 +75,7 @@ export default function ReviewSupersonicTemplate() {
         <div className="my-8">
           <div className="relative w-full aspect-[4/3] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-306.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_dyson505d-306.jpg"
               alt="Dyson Supersonic R hair dryer styled on set"
               fill
               sizes="720px"
@@ -97,7 +97,7 @@ export default function ReviewSupersonicTemplate() {
         <div className="my-8 grid grid-cols-2 gap-4">
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1430-1.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/img_1430-1.jpg"
               alt="Sigourney Cantelo using the Dyson Supersonic R hair dryer"
               fill
               sizes="360px"
@@ -106,7 +106,7 @@ export default function ReviewSupersonicTemplate() {
           </div>
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-1006.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_dyson505d-1006.jpg"
               alt="Supermodel blowout styled with the Dyson Supersonic R"
               fill
               sizes="360px"
@@ -124,7 +124,7 @@ export default function ReviewSupersonicTemplate() {
         <div className="my-8 grid grid-cols-2 gap-4">
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1426-1.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/img_1426-1.jpg"
               alt="Dyson Supersonic R hair dryer in Ceramic Pink"
               fill
               sizes="360px"
@@ -133,7 +133,7 @@ export default function ReviewSupersonicTemplate() {
           </div>
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_Dyson505D-320.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/250430_dyson505d-320.jpg"
               alt="Dyson Supersonic R editorial styling shot"
               fill
               sizes="360px"
@@ -152,7 +152,7 @@ export default function ReviewSupersonicTemplate() {
         <div className="my-8 grid grid-cols-2 gap-4">
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1415.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/img_1415.jpg"
               alt="Dyson Chitosan Pre-Style Cream"
               fill
               sizes="360px"
@@ -161,7 +161,7 @@ export default function ReviewSupersonicTemplate() {
           </div>
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1407-1.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/img_1407-1.jpg"
               alt="Dyson Supersonic R hair dryer detail"
               fill
               sizes="360px"
@@ -183,7 +183,7 @@ export default function ReviewSupersonicTemplate() {
         <div className="my-8 grid grid-cols-2 gap-4">
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1444-1.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/img_1444-1.jpg"
               alt="Blowdry result using the Dyson Supersonic R"
               fill
               sizes="360px"
@@ -192,7 +192,7 @@ export default function ReviewSupersonicTemplate() {
           </div>
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/Siriano206.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/siriano206.jpg"
               alt="Dyson Supersonic R backstage at fashion week"
               fill
               sizes="360px"
@@ -223,7 +223,7 @@ export default function ReviewSupersonicTemplate() {
           </div>
           <div className="relative w-full aspect-[3/4] overflow-hidden">
             <Image
-              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/skEeZdGT8mjAh2UcFA4ojF-1.jpg"
+              src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/skeezdgt8mjah2ucfa4ojf-1.jpg"
               alt="Dyson Supersonic R Flyaway Smoother attachment"
               fill
               sizes="360px"
@@ -311,7 +311,7 @@ export default function ReviewSupersonicTemplate() {
             <a href="https://www.dyson.com.au/flyaway-971618-02" target="_blank" rel="noopener noreferrer sponsored" className="bg-parchment p-5 sm:p-6 group block">
               <div className="relative w-full aspect-square overflow-hidden bg-white mb-3">
                 <Image
-                  src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/skEeZdGT8mjAh2UcFA4ojF-1.jpg"
+                  src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/skeezdgt8mjah2ucfa4ojf-1.jpg"
                   alt="Dyson Flyaway Attachment"
                   fill
                   sizes="320px"
@@ -325,7 +325,7 @@ export default function ReviewSupersonicTemplate() {
             <a href="https://www.dyson.com.au/newsroom/choosing-your-dyson-chitosan-pre-style-cream" target="_blank" rel="noopener noreferrer sponsored" className="bg-parchment p-5 sm:p-6 group block">
               <div className="relative w-full aspect-square overflow-hidden bg-white mb-3">
                 <Image
-                  src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/IMG_1415.jpg"
+                  src="/content/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review/img_1415.jpg"
                   alt="Dyson Chitosan Pre-Style Cream"
                   fill
                   sizes="320px"

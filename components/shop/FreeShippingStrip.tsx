@@ -45,7 +45,9 @@ export default function FreeShippingStrip({ products }: { products: ShopifyProdu
   const railRef = useRef<HTMLDivElement>(null)
   const [paused, setPaused] = useState(false)
 
-  const shuffled = useMemo(() => shuffle(products.filter(p => isFreeShipping(p.vendor))), [products])
+  const eligible = useMemo(() => products.filter(p => isFreeShipping(p.vendor)), [products])
+  const [shuffled, setShuffled] = useState(eligible)
+  useEffect(() => { setShuffled(shuffle(eligible)) }, [eligible])
 
   useEffect(() => {
     const el = railRef.current

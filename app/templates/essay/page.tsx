@@ -100,7 +100,7 @@ export default function EssayTemplate() {
           <div className="bg-parchment p-4">
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-white">
               <Image
-                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/Aveda-2.jpeg"
+                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/aveda-2.jpeg"
                 alt="Aveda Smooth Infusion shampoo for fine frizzy hair"
                 fill
                 sizes="320px"
@@ -112,7 +112,7 @@ export default function EssayTemplate() {
           <div className="bg-parchment p-4">
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-white">
               <Image
-                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/Aveda-1.jpeg"
+                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/aveda-1.jpeg"
                 alt="Aveda Smooth Infusion conditioner bottle on white background"
                 fill
                 sizes="320px"
@@ -128,7 +128,7 @@ export default function EssayTemplate() {
           <div className="md:sticky md:top-24">
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-tile">
               <Image
-                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/Elasticizer.png"
+                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/elasticizer.png"
                 alt="Philip Kingsley Elasticizer pre-shampoo treatment for fine hair"
                 fill
                 sizes="(max-width: 768px) 100vw, 360px"
@@ -168,7 +168,7 @@ export default function EssayTemplate() {
           <div className="bg-parchment p-4">
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-white">
               <Image
-                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/Moroccanoil.jpeg"
+                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/moroccanoil.jpeg"
                 alt="Moroccanoil Dry Scalp Treatment oil serum for scalp health"
                 fill
                 sizes="320px"
@@ -180,7 +180,7 @@ export default function EssayTemplate() {
           <div className="bg-parchment p-4">
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-white">
               <Image
-                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/Aveda-3.jpeg"
+                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/aveda-3.jpeg"
                 alt="Aveda Invati Advanced Intensive Hair and Scalp masque"
                 fill
                 sizes="320px"
@@ -203,7 +203,7 @@ export default function EssayTemplate() {
           <div className="bg-parchment p-4">
             <div className="relative w-full aspect-[3/4] overflow-hidden bg-white">
               <Image
-                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/GHD.jpeg"
+                src="/content/beauty-style/hair/ive-got-fine-but-frizzy-hair-and-this-is-exactly-what-i-use-to-look-after-it/ghd.jpeg"
                 alt="GHD Curve Soft Curl Tong for adding volume to fine frizzy hair"
                 fill
                 sizes="320px"
