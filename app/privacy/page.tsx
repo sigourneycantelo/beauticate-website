@@ -13,100 +13,136 @@ export default function PrivacyPage() {
         <p className="label-editorial mb-2">Legal</p>
         <h1 className="font-serif text-3xl md:text-4xl text-ink">Privacy Policy</h1>
         <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
       </header>
 
       <div className="font-serif text-charcoal/80 leading-relaxed space-y-8">
 
+        <p>
+          This Privacy Policy explains how Cantelo Corporation Pty Ltd (ABN 71 105 175 317),
+          trading as Beauticate, collects, uses, shares and protects your personal information.
+          It covers beauticate.com, our shop at beauticate.com/shop, our newsletter and our
+          podcast. In this policy, Beauticate, we and us mean Cantelo Corporation Pty Ltd.
+        </p>
+        <p>
+          We handle your personal information in line with the Australian Privacy Act 1988 and the
+          Australian Privacy Principles.
+        </p>
+
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Who we are</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">How our shop works, and why it matters for your privacy</h2>
           <p>
-            Beauticate is operated by Cantelo Corporation Pty Ltd (ABN 71 105 175 317), a company
-            registered in New South Wales, Australia. In this policy, &ldquo;Beauticate&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;
-            and &ldquo;our&rdquo; refer to Cantelo Corporation Pty Ltd. Our website is{' '}
-            <a href="https://www.beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
-              www.beauticate.com
-            </a>
-            {' '}and our shop is{' '}
-            <a href="https://beauticate.shop" className="text-ink hover:text-eucalypt transition-colors">
-              beauticate.shop
-            </a>.
+            Beauticate is a curated editorial shop. We select, describe and sell the products. The
+            brands we partner with hold the stock and post your order to you direct from their own
+            warehouses, through a fulfilment platform called Modern Dropship. This means that when
+            you place an order, some of your details are passed to the brand that ships it, so your
+            order can reach you. We set out exactly what we share, and with whom, below.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-xl text-ink mb-4">Information we collect</h2>
-          <p>We collect information you provide to us directly, including:</p>
+          <p>
+            We collect only what we need to run the shop, deliver your order and keep you updated.
+            This includes:
+          </p>
           <ul className="list-disc list-inside space-y-2 text-charcoal/70 mt-3">
-            <li>Name and email address when you subscribe to our newsletter</li>
-            <li>Name, address, email and payment information when you place an order through Beauticate Shop</li>
-            <li>Any information you provide when you contact us by email</li>
+            <li><strong>Contact and order details.</strong> Your name, email address, delivery and billing address, phone number if you give it, and the details of what you have ordered.</li>
+            <li><strong>Payment information.</strong> Processed securely by our payment provider. We do not see or store your full card number.</li>
+            <li><strong>Account and marketing preferences.</strong> Newsletter subscriptions and your communication choices.</li>
+            <li><strong>Site and usage data.</strong> Cookies, IP address and how you browse the site, so we can keep it working well.</li>
           </ul>
           <p className="mt-4">
-            We also collect certain information automatically when you visit our site, including
-            your IP address, browser type, pages viewed and referring URLs. This is collected via
-            Google Analytics and similar tools.
+            You can browse most of the site without telling us who you are. To place an order or
+            subscribe, we need the details above.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-xl text-ink mb-4">How we use your information</h2>
-          <p>We use your information to:</p>
+          <p>
+            We use your personal information to process and deliver your orders, send you order and
+            shipping updates, answer your questions, send you our newsletter and offers where you
+            have opted in, improve the site and our editorial, prevent fraud and meet our legal
+            obligations. You can unsubscribe from marketing at any time using the link in any email,
+            or by contacting us.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">How we share your information</h2>
+          <p>
+            We share only what is needed, only with the parties below, and never for their own
+            unrelated marketing. We do not sell your personal information.
+          </p>
           <ul className="list-disc list-inside space-y-2 text-charcoal/70 mt-3">
-            <li>Process and fulfil orders placed through Beauticate Shop</li>
-            <li>Send you our newsletter and editorial updates (only with your consent)</li>
-            <li>Respond to your enquiries and provide customer support</li>
-            <li>Improve our website and editorial content</li>
-            <li>Comply with our legal obligations</li>
+            <li><strong>Shopify.</strong> Our ecommerce platform, which hosts the shop and processes your order.</li>
+            <li><strong>Modern Dropship.</strong> The platform that routes your order to the brand that fulfils it.</li>
+            <li><strong>The fulfilling brand or supplier.</strong> Receives your name and delivery address so it can pick, pack and post your order. An order with items from more than one brand is shared with each of those brands.</li>
+            <li><strong>Stripe.</strong> Processes your payment securely.</li>
+            <li><strong>Klaviyo.</strong> Manages our order emails and newsletters.</li>
+            <li><strong>Google.</strong> Provides analytics that help us understand how the site is used.</li>
+            <li><strong>Couriers and Australia Post.</strong> Deliver your parcel, arranged by the brand that ships it.</li>
+            <li><strong>Authorities and advisers.</strong> Where we are required or authorised by law, or need to protect our legal rights.</li>
           </ul>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Sharing your information</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Overseas transfer</h2>
           <p>
-            We do not sell your personal information. We may share your information with
-            trusted third-party service providers who assist us in operating our website and
-            fulfilling orders — including Shopify (e-commerce platform), Mailchimp (email),
-            and Google Analytics (site analytics). These providers are required to protect your
-            information and may only use it for the specific services they provide to us.
+            Some of our providers, including Shopify, Stripe, Klaviyo and Google, store data on
+            servers outside Australia, including in the United States. Where your information is
+            handled overseas, we take reasonable steps to ensure it is protected consistent with
+            the Australian Privacy Principles.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-xl text-ink mb-4">Cookies</h2>
           <p>
-            Our website uses cookies to improve your experience, measure traffic and enable
-            certain features. You can disable cookies in your browser settings, though this may
-            affect the functionality of our site and shop.
+            Our site uses cookies to remember your preferences, keep your cart working through
+            checkout and help us understand site usage. Most browsers accept cookies automatically.
+            You can set your browser to decline them, though some parts of the site may not work
+            as well if you do.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Your rights</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Keeping your information secure</h2>
           <p>
-            Under Australian privacy law you have the right to access, correct and request
-            deletion of the personal information we hold about you. To exercise these rights,
-            please contact us at{' '}
+            We take reasonable steps to protect your personal information from misuse, loss and
+            unauthorised access, including through our platform partners&apos; security measures.
+            No system is ever completely secure, but we work only with reputable providers and
+            hold your information for no longer than we need it.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Accessing or correcting your information</h2>
+          <p>
+            You can ask us for a copy of the personal information we hold about you, or ask us to
+            correct it, at any time. Email us at{' '}
             <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
               hello@beauticate.com
-            </a>.
+            </a>{' '}
+            and we will respond as quickly as we can.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-xl text-ink mb-4">Changes to this policy</h2>
           <p>
-            We may update this policy from time to time. Material changes will be noted at the
-            top of this page with a revised date. Continued use of our site following any changes
-            constitutes acceptance of the updated policy.
+            We may update this policy from time to time. The current version will always be posted
+            on this page, with the date it was last updated.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Contact</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Contact us</h2>
           <p>
-            For any privacy-related enquiries, please contact us at{' '}
+            Cantelo Corporation Pty Ltd (ABN 71 105 175 317), trading as Beauticate.
+            Email{' '}
             <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
               hello@beauticate.com
             </a>.
@@ -114,7 +150,7 @@ export default function PrivacyPage() {
         </section>
 
         <p className="text-xs text-charcoal/40 font-sans pt-6 border-t border-camel/20">
-          Cantelo Corporation Pty Ltd · ABN 71 105 175 317 · Sydney, Australia
+          Cantelo Corporation Pty Ltd · ABN 71 105 175 317
         </p>
       </div>
     </div>

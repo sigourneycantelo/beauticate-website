@@ -13,89 +13,144 @@ export default function TermsPage() {
         <p className="label-editorial mb-2">Legal</p>
         <h1 className="font-serif text-3xl md:text-4xl text-ink">Terms &amp; Conditions</h1>
         <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
-          Last updated: June 2026
+          Last updated: July 2026
         </p>
       </header>
 
       <div className="font-serif text-charcoal/80 leading-relaxed space-y-8">
 
+        <p>
+          These terms apply when you use beauticate.com or shop at beauticate.com/shop. The shop is
+          operated by Cantelo Corporation Pty Ltd (ABN 71 105 175 317), trading as Beauticate. By
+          placing an order you agree to these terms. Please read them alongside our{' '}
+          <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">Privacy Policy</a>,{' '}
+          <a href="/shop/shipping" className="text-ink hover:text-eucalypt transition-colors">Shipping Policy</a>{' '}
+          and{' '}
+          <a href="/shop/refund-policy" className="text-ink hover:text-eucalypt transition-colors">Returns &amp; Refunds Policy</a>.
+        </p>
+
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">1. About these terms</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">How Beauticate Shop works</h2>
           <p>
-            These terms and conditions govern your use of the Beauticate website (
-            <a href="https://www.beauticate.com" className="text-ink hover:text-eucalypt transition-colors">www.beauticate.com</a>)
-            and Beauticate Shop (
-            <a href="https://beauticate.shop" className="text-ink hover:text-eucalypt transition-colors">beauticate.shop</a>)
-            operated by Cantelo Corporation Pty Ltd (ABN 71 105 175 317). By accessing or using
-            our site or shop, you agree to be bound by these terms.
+            Beauticate is a curated editorial shop. We choose, describe and sell the products you
+            see. The brands we partner with hold the stock and fulfil, pack and post your order
+            direct from their own warehouses, through a fulfilment platform called Modern Dropship.
+            When you buy from us, your sale is with Beauticate, and your order is supplied and
+            shipped by the brand. Each brand manages its own dispatch, shipping and returns.
+          </p>
+          <p className="mt-4">
+            This model does not reduce your rights. Under the Australian Consumer Law you are
+            entitled to consumer guarantees on the goods you buy from us, and nothing in these
+            terms excludes, restricts or modifies those guarantees. Where a product is faulty or
+            not as described, your rights sit with us and we will make sure it is put right.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">2. Editorial content</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Products, prices and availability</h2>
           <p>
-            All editorial content on Beauticate is provided for informational purposes only. While
-            we take care to publish accurate and expert-led content, nothing on our site should
-            be treated as professional medical, dermatological or health advice. Always consult a
-            qualified professional for advice specific to your circumstances.
+            Prices are shown in Australian dollars and include GST. We work hard to keep listings
+            accurate, but from time to time an error in price, description or availability may slip
+            through. Where that happens we may correct it, or decline or cancel an affected order,
+            and we will let you know. Stock depends on each brand&apos;s availability, so a product
+            may sell out or be withdrawn.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">3. Affiliate links &amp; commercial relationships</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Affiliate and editorial disclosure</h2>
           <p>
-            Beauticate may earn a commission on purchases made through affiliate links on our
-            site. All affiliate relationships are disclosed. Commission arrangements do not
-            influence our editorial recommendations — we only link to products we would
-            genuinely recommend regardless of commercial arrangements.
+            Beauticate is an editorial platform first. Some of our articles, guides and emails
+            contain affiliate links, and if you buy through one we may earn a small commission at
+            no extra cost to you. We only ever feature products we rate, and our editorial opinions
+            are our own. They are never for sale. Whether a product sits in our shop or is linked
+            as an affiliate, our recommendation is based on merit.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">4. Purchases from Beauticate Shop</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Orders and payment</h2>
           <p>
-            Purchases made through Beauticate Shop are subject to the purchase price, shipping
-            costs and any applicable taxes displayed at checkout. By completing a purchase you
-            confirm that you are authorised to use the payment method provided and that the
-            information you have given is accurate.
-          </p>
-          <p className="mt-3">
-            Beauticate Shop is powered by Shopify. Purchases are processed via Shopify Payments
-            in accordance with Shopify&apos;s terms of service and payment processing policies.
+            Placing an order is an offer to buy. Your order is accepted when we send you an order
+            confirmation. Payment is processed securely through Stripe at checkout. We may refuse
+            or cancel an order where there is a pricing or stock error, a payment issue or
+            suspected fraud, and we will refund you in full if we do.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">5. Intellectual property</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Shipping and delivery</h2>
           <p>
-            All content on Beauticate — including editorial articles, photography, logos, brand
-            assets and design — is the property of Cantelo Corporation Pty Ltd or its
-            contributors and is protected by Australian and international copyright law.
-            Reproduction without written permission is prohibited.
+            We ship Australia-wide. Because each brand ships its own products from its own
+            warehouse, shipping is set per brand, and an order with items from more than one brand
+            may arrive in separate parcels, with separate tracking, on different days. Full detail
+            is in our{' '}
+            <a href="/shop/shipping" className="text-ink hover:text-eucalypt transition-colors">Shipping Policy</a>.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">6. Limitation of liability</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Returns and refunds</h2>
           <p>
-            To the fullest extent permitted by law, Cantelo Corporation Pty Ltd will not be
-            liable for any indirect, incidental or consequential loss arising from use of our
-            site, reliance on our editorial content, or purchases made through Beauticate Shop.
+            Because each order is fulfilled and shipped by the brand, returns are managed by the
+            brand that sent your item, in line with that brand&apos;s own policy and the Australian
+            Consumer Law. Our{' '}
+            <a href="/shop/refund-policy" className="text-ink hover:text-eucalypt transition-colors">Returns &amp; Refunds Policy</a>{' '}
+            explains how. Your consumer guarantees under the Australian Consumer Law always apply,
+            whatever our policy says.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">7. Governing law</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Product information and health claims</h2>
           <p>
-            These terms are governed by the laws of New South Wales, Australia. Any disputes
-            will be subject to the exclusive jurisdiction of the courts of New South Wales.
+            Our editorial and product information is provided for general purposes and is not
+            medical or professional advice. Some of our brands sell supplements, skincare and
+            wellness products. Always read the label, follow the directions for use, and speak
+            with your doctor or a qualified professional before starting a supplement or if you
+            have a health concern.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">8. Contact</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Intellectual property</h2>
           <p>
-            For questions about these terms, please contact us at{' '}
+            The content on beauticate.com, including our articles, photography, brand name and
+            design, is owned by Beauticate or our partners and is protected by copyright. Product
+            imagery and brand assets belong to the relevant brands. You may not reproduce,
+            republish or use any of it without our written permission.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Our liability</h2>
+          <p>
+            Nothing in these terms excludes or limits the consumer guarantees or other rights you
+            have under the Australian Consumer Law. To the extent the law allows, Beauticate is
+            not liable for indirect or consequential loss, and our liability for any claim is
+            limited to resupplying the product or refunding what you paid for it.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Privacy</h2>
+          <p>
+            We handle your personal information in line with our{' '}
+            <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">Privacy Policy</a>{' '}
+            and the Australian Privacy Act 1988.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Governing law</h2>
+          <p>These terms are governed by the laws of New South Wales, Australia.</p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Contact us</h2>
+          <p>
+            Cantelo Corporation Pty Ltd (ABN 71 105 175 317), trading as Beauticate.
+            Email{' '}
             <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
               hello@beauticate.com
             </a>.
@@ -103,7 +158,7 @@ export default function TermsPage() {
         </section>
 
         <p className="text-xs text-charcoal/40 font-sans pt-6 border-t border-camel/20">
-          Cantelo Corporation Pty Ltd · ABN 71 105 175 317 · Sydney, Australia
+          Cantelo Corporation Pty Ltd · ABN 71 105 175 317
         </p>
       </div>
     </div>

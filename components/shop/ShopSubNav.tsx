@@ -34,13 +34,24 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
   const [open, setOpen] = useState<string | null>(null)
   const [mastheadHidden, setMastheadHidden] = useState(false)
   const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const openRef = useRef<string | null>(null)
   const openMenu = (k: string) => {
     clearTimeout(closeT.current)
+    openRef.current = k
     setOpen(k)
     window.dispatchEvent(new CustomEvent('subnav-open'))
   }
-  const closeSoon = () => { closeT.current = setTimeout(() => setOpen(null), 220) }
-  useEffect(() => { setOpen(null) }, [path])
+  const closeSoon = () => {
+    clearTimeout(closeT.current)
+    const snapshot = openRef.current
+    closeT.current = setTimeout(() => {
+      if (openRef.current === snapshot) {
+        openRef.current = null
+        setOpen(null)
+      }
+    }, 220)
+  }
+  useEffect(() => { openRef.current = null; setOpen(null) }, [path])
   useEffect(() => () => clearTimeout(closeT.current), [])
 
   useEffect(() => {

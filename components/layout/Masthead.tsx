@@ -180,6 +180,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   const [megaHidden, setMegaHidden] = useState(false)
   const tick = useRef(false)
   const lastY = useRef(0)
+  const wasHidden = useRef(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -208,6 +209,13 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
     document.body.style.overflow = drawer ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [drawer])
+
+  useEffect(() => {
+    if (wasHidden.current && !hidden) {
+      setMegaHidden(true)
+    }
+    wasHidden.current = hidden
+  }, [hidden])
 
   useEffect(() => {
     if (!megaHidden) return

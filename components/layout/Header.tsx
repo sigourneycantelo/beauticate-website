@@ -194,6 +194,8 @@ export default function Header({ megaMenuArticles }: Props) {
   const [openMega, setOpenMega] = useState<string | null>(null)
   const [slim, setSlim] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const openMegaRef = useRef<string | null>(null)
+  const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const onScroll = () => setSlim(window.scrollY > 72)
@@ -201,20 +203,51 @@ export default function Header({ megaMenuArticles }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    openMegaRef.current = null
+    setOpenMega(null)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!openMega) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { openMegaRef.current = null; setOpenMega(null) } }
+    const onClick = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        openMegaRef.current = null
+        setOpenMega(null)
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    document.addEventListener('click', onClick)
+    return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('click', onClick) }
+  }, [openMega])
+
+  useEffect(() => {
+    return () => { if (closeTimer.current) clearTimeout(closeTimer.current) }
+  }, [])
+
   const cancelClose = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current)
+    if (closeTimer.current) { clearTimeout(closeTimer.current); closeTimer.current = null }
   }
   const scheduleClose = () => {
     cancelClose()
-    closeTimer.current = setTimeout(() => setOpenMega(null), 400)
+    const snapshot = openMegaRef.current
+    closeTimer.current = setTimeout(() => {
+      if (openMegaRef.current === snapshot) {
+        openMegaRef.current = null
+        setOpenMega(null)
+      }
+    }, 300)
   }
   const openMenu = (href: string) => {
     cancelClose()
+    openMegaRef.current = href
     setOpenMega(href)
   }
 
   return (
     <header
+      ref={headerRef}
       className="sticky top-0 z-50"
       style={{ background: 'rgba(255,255,255,.97)', backdropFilter: 'blur(8px)', borderBottom: '1px solid rgba(28,26,23,.10)' }}
     >
@@ -322,8 +355,8 @@ export default function Header({ megaMenuArticles }: Props) {
           marginTop: slim ? 0 : isShop ? 0 : '18px',
           paddingTop: slim ? '7px' : isShop ? '10px' : 0,
           paddingBottom: slim ? '7px' : isShop ? '10px' : '15px',
-          borderTop: '1px solid rgba(28,26,23,.10)',
-          borderBottom: isShop ? '1px solid rgba(28,26,23,.10)' : 'none',
+          borderTop: 'none',
+          borderBottom: 'none',
         }}
       >
         {NAV_ITEMS.map(item => {
