@@ -8,9 +8,9 @@ interface Props {
 }
 
 export default function Portrait({ src, alt, caption, side = 'left' }: Props) {
-  const float = side === 'left' ? 'float-left mr-8 mb-4' : 'float-right ml-8 mb-4'
+  const float = side === 'left' ? 'sm:float-left sm:mr-8 mb-4' : 'sm:float-right sm:ml-8 mb-4'
   return (
-    <span className={`${float} w-[45%] max-w-[360px] block clear-${side}`}>
+    <span className={`${float} w-full sm:w-[45%] max-w-[360px] block sm:clear-${side}`}>
       <Image
         src={src}
         alt={alt}

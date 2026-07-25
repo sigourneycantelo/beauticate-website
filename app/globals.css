@@ -122,6 +122,14 @@
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 border border-ink text-ink text-xs font-sans tracking-[0.34em] uppercase transition-colors hover:bg-ink hover:text-paper;
   }
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-6 py-3 text-xs font-sans tracking-[0.34em] uppercase transition-colors;
+    background: #C4A265;
+    color: #fff;
+  }
+  .btn-gold:hover {
+    background: #b08f52;
+  }
 
   /* Article card with goop/SheerLuxe-style image hover */
   .card-image-wrap {
@@ -455,6 +463,8 @@
     border-right: 1px dashed #CFC9BE;
   }
 }
+
+.article-body { overflow-x: hidden; }
 
 /* ── Article body width tiers ──────────────────────────────────
    Narrow (720px) default, .article-wide breaks out to full parent. */

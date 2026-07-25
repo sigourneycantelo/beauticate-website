@@ -111,7 +111,7 @@ export default function ShopStrip({
       <div className="text-center mt-9">
         <Link
           href="/shop"
-          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase px-7 py-3 rounded-[1px] transition-colors hover:bg-ink hover:text-white"
+          className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase px-7 py-3.5 rounded-[1px] transition-colors hover:bg-ink hover:text-white"
           style={{ border: '1px solid #1C1A17' }}
         >
           Explore the shop

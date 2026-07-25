@@ -51,9 +51,9 @@ export default function Footer() {
           </div>
 
           {/* Nav — two columns, no heading */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3">
             {FOOTER_NAV.map(item => (
-              <Link key={item.href} href={item.href} className="text-sm text-cream/70 hover:text-cream transition-colors">
+              <Link key={item.href} href={item.href} className="text-sm text-cream/70 hover:text-cream transition-colors py-1">
                 {item.label}
               </Link>
             ))}
@@ -76,7 +76,7 @@ export default function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-cream/50 hover:text-cream transition-colors"
+                  className="text-xs text-cream/50 hover:text-cream transition-colors py-1.5"
                 >
                   {s.label}
                 </a>

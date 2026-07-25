@@ -46,7 +46,7 @@ function ReelCard({ ep }: { ep: { frontmatter: VodcastFrontmatter } }) {
           </span>
         )}
       </div>
-      <h4 className="font-serif font-normal leading-[1.25] mt-3" style={{ fontSize: 'clamp(14px,1.4vw,17px)', color: '#1C1A17', textTransform: 'none', letterSpacing: 'normal' }}>
+      <h4 className="font-serif font-normal leading-[1.25] mt-3" style={{ fontSize: 'clamp(16px,1.4vw,17px)', color: '#1C1A17', textTransform: 'none', letterSpacing: 'normal' }}>
         {f.title}
       </h4>
     </a>
@@ -78,7 +78,7 @@ export default function PodcastSection({ episodes }: Props) {
         </div>
         <Link
           href="/vodcast"
-          className="font-sans text-[10.5px] tracking-[0.2em] uppercase px-5 py-2.5 rounded-[1px] transition-colors hover:bg-ink hover:text-white"
+          className="font-sans text-[10.5px] tracking-[0.2em] uppercase px-5 py-3.5 rounded-[1px] transition-colors hover:bg-ink hover:text-white"
           style={{ border: '1px solid rgba(28,26,23,.4)', color: '#1C1A17' }}
         >
           All episodes
