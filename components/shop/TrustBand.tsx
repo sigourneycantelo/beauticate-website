@@ -27,7 +27,7 @@ export default function TrustBand() {
         style={{ fontSize: '10px', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#9a9590' }}
       >
         <Link href="/press" className="hover:opacity-70 transition-opacity">
-          As featured in Vogue, Marie Claire, The Daily Telegraph and Daily Mail
+          As featured in Vogue, Marie Claire, The Daily Telegraph and Mamamia
         </Link>
       </p>
     </div>

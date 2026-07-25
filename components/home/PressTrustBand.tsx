@@ -4,7 +4,7 @@ const LOGOS = [
   'VOGUE',
   'marie claire',
   'Daily Telegraph',
-  'DailyMail.com',
+  'Mamamia',
 ]
 
 export default function PressTrustBand() {
