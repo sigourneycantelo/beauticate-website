@@ -54,6 +54,12 @@ export default function AskSigLauncher() {
     setShowBubble(false)
   }
 
+  useEffect(() => {
+    const handler = () => handleOpen()
+    window.addEventListener('open-ask-sig', handler)
+    return () => window.removeEventListener('open-ask-sig', handler)
+  })
+
   function handleDismiss(e: React.MouseEvent) {
     e.stopPropagation()
     setShowBubble(false)
@@ -62,7 +68,7 @@ export default function AskSigLauncher() {
 
   const prompt = getPromptForPath(pathname)
 
-  if (cartOpen && isMobile) return null
+  if (cartOpen) return null
 
   return (
     <>

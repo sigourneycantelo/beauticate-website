@@ -73,11 +73,17 @@ export default function CartDrawer() {
             </ul>
             <div className="border-t border-cream-200 px-6 py-4 space-y-3">
               {total && (
-                <div className="flex justify-between text-sm mb-2">
+                <div className="flex justify-between text-sm">
                   <span>Subtotal</span>
                   <span className="font-medium">{total}</span>
                 </div>
               )}
+              <button
+                onClick={closeCart}
+                className="block text-xs font-sans tracking-[0.06em] text-charcoal-light hover:text-ink transition-colors underline underline-offset-2"
+              >
+                Edit cart
+              </button>
               {cart?.checkoutUrl && (
                 <a href={cart.checkoutUrl} className="btn-primary w-full text-center block">
                   Checkout

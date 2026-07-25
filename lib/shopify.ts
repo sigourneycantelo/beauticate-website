@@ -261,6 +261,33 @@ export async function createCart(): Promise<Cart | null> {
   return (data as any)?.cartCreate?.cart ?? null
 }
 
+export async function getCart(cartId: string): Promise<Cart | null> {
+  if (!STORE_DOMAIN || !PRIVATE_TOKEN) return null
+  const data = await shopifyFetch<{ cart: Cart }>(`
+    query GetCart($cartId: ID!) {
+      cart(id: $cartId) {
+        id checkoutUrl totalQuantity
+        cost {
+          subtotalAmount { amount currencyCode }
+          totalAmount { amount currencyCode }
+        }
+        lines(first: 100) { nodes {
+          id quantity
+          merchandise {
+            ... on ProductVariant {
+              id title
+              price { amount currencyCode }
+              selectedOptions { name value }
+              product { id handle title featuredImage { url altText width height } }
+            }
+          }
+        }}
+      }
+    }
+  `, { cartId })
+  return (data as any)?.cart ?? null
+}
+
 export async function addToCart(cartId: string, variantId: string, quantity = 1): Promise<Cart> {
   const data = await shopifyFetch<{ cartLinesAdd: { cart: Cart } }>(`
     mutation AddToCart($cartId: ID!, $lines: [CartLineInput!]!) {

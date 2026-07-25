@@ -1,30 +1,23 @@
 import type { Metadata } from 'next'
+import AskSigCTA from './AskSigCTA'
 
 export const metadata: Metadata = {
   title: 'Contact | Beauticate',
-  description: 'Get in touch with Beauticate — editorial enquiries, brand partnerships, shop support and general contact.',
+  description: 'Get in touch with Beauticate — general enquiries, advertising, brand partnerships, PR, events and marketing.',
 }
 
 const CONTACT_TYPES = [
   {
-    heading: 'PR & Marketing',
-    detail: 'Press releases, product send-ins, story submissions and editorial enquiries.',
-    email: 'jayde@beauticate.com',
+    heading: 'General',
+    email: 'hello@beauticate.com',
   },
   {
     heading: 'Advertising & Brand Partnerships',
-    detail: 'Advertising, sponsored content, events and commercial partnerships.',
     email: 'sales@beauticate.com',
   },
   {
-    heading: 'Shop support',
-    detail: 'Order questions, shipping, returns and product enquiries for Beauticate Shop.',
-    email: 'shop@beauticate.com',
-  },
-  {
-    heading: 'General',
-    detail: 'Anything else — we read every email.',
-    email: 'hello@beauticate.com',
+    heading: 'PR, Events & Marketing',
+    email: 'jayde@beauticate.com',
   },
 ]
 
@@ -37,15 +30,19 @@ export default function ContactPage() {
         <h1 className="font-serif text-3xl md:text-4xl text-ink mb-5">Contact Beauticate</h1>
         <p className="font-serif text-base text-charcoal/60 leading-relaxed">
           We are a small, independent team. We read every message and aim to reply within
-          1–2 business days.
+          1&ndash;2 business days.
         </p>
       </header>
 
-      <div className="grid md:grid-cols-2 gap-px bg-camel/20 mb-14">
+      {/* Ask Sig CTA */}
+      <div className="flex flex-col items-center mb-14">
+        <AskSigCTA />
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-px bg-camel/20 mb-14">
         {CONTACT_TYPES.map(c => (
           <div key={c.heading} className="bg-paper px-8 py-8 hover:bg-parchment transition-colors">
-            <h2 className="font-sans text-[11px] tracking-[0.2em] uppercase text-ink mb-2">{c.heading}</h2>
-            <p className="font-serif text-sm text-charcoal/60 leading-relaxed mb-4">{c.detail}</p>
+            <h2 className="font-sans text-[11px] tracking-[0.2em] uppercase text-ink mb-3">{c.heading}</h2>
             <a
               href={`mailto:${c.email}`}
               className="font-sans text-[11px] tracking-[0.15em] uppercase text-ink hover:text-eucalypt transition-colors underline underline-offset-4"

@@ -1,6 +1,34 @@
 'use client'
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react'
 import type { Cart } from '@/types/shopify'
+
+const STORAGE_KEY = 'beauticate_cart_id'
+const STORAGE_TTL = 30 * 24 * 60 * 60 * 1000 // 30 days
+
+function saveCartId(id: string) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ id, ts: Date.now() }))
+  } catch {}
+}
+
+function loadCartId(): string | null {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (!raw) return null
+    const { id, ts } = JSON.parse(raw)
+    if (Date.now() - ts > STORAGE_TTL) {
+      localStorage.removeItem(STORAGE_KEY)
+      return null
+    }
+    return id
+  } catch {
+    return null
+  }
+}
+
+function clearCartId() {
+  try { localStorage.removeItem(STORAGE_KEY) } catch {}
+}
 
 interface CartContextType {
   cart: Cart | null
@@ -23,6 +51,25 @@ export default function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Cart | null>(null)
   const [isOpen, setIsOpen] = useState(false)
 
+  useEffect(() => {
+    const savedId = loadCartId()
+    if (!savedId) return
+    fetch('/api/cart', {
+      method: 'POST',
+      body: JSON.stringify({ action: 'get', cartId: savedId }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(r => r.json())
+      .then(data => {
+        if (data?.id && data.lines?.nodes?.length > 0) {
+          setCart(data)
+        } else {
+          clearCartId()
+        }
+      })
+      .catch(() => clearCartId())
+  }, [])
+
   const getOrCreateCart = useCallback(async () => {
     if (cart) return cart
     const res = await fetch('/api/cart', {
@@ -36,6 +83,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       return null
     }
     setCart(newCart)
+    saveCartId(newCart.id)
     return newCart
   }, [cart])
 
@@ -49,6 +97,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     }).then(r => r.json())
     if (updated?.id) {
       setCart(updated)
+      saveCartId(updated.id)
       setIsOpen(true)
     }
   }, [getOrCreateCart])
@@ -60,7 +109,10 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       body: JSON.stringify({ action: 'remove', cartId: cart.id, lineIds: [lineId] }),
       headers: { 'Content-Type': 'application/json' },
     }).then(r => r.json())
-    if (updated?.id) setCart(updated)
+    if (updated?.id) {
+      setCart(updated)
+      if (updated.lines?.nodes?.length === 0) clearCartId()
+    }
   }, [cart])
 
   return (
