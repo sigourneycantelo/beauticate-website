@@ -11,6 +11,8 @@ interface Article {
     excerpt?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
   }
 }
 
@@ -25,13 +27,15 @@ function articleHref(f: Article['frontmatter']) {
 
 function StoryCard({ article, aspectClass = 'aspect-[4/5]' }: { article: Article; aspectClass?: string }) {
   const f = article.frontmatter
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
   return (
     <Link href={articleHref(f)} className="group block">
       <div className={`relative overflow-hidden rounded-[2px] border border-cream-200 ${aspectClass}`}>
-        {f.featured_image ? (
+        {cardSrc ? (
           <Image
-            src={f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
+            src={cardSrc}
+            alt={cardAlt}
             fill
             className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
             sizes="(max-width: 768px) 100vw, 45vw"

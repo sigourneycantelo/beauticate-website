@@ -9,6 +9,8 @@ interface Article {
     subcategory?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
     excerpt?: string
   }
 }
@@ -29,12 +31,15 @@ export default function HeroBand({ articles }: Props) {
     <section className="relative w-full" style={{ height: 'clamp(440px, 64vh, 660px)' }}>
       {/* 5-image grid */}
       <div className="absolute inset-0 grid grid-cols-3 md:grid-cols-5">
-        {cells.map((a, i) => (
+        {cells.map((a, i) => {
+          const src = a?.frontmatter.thumbnailPortrait ?? a?.frontmatter.featured_image
+          const alt = a?.frontmatter.thumbnailPortrait_alt ?? a?.frontmatter.featured_image_alt ?? a?.frontmatter.title
+          return (
           <div key={i} className={`relative overflow-hidden ${i >= 3 ? 'hidden md:block' : ''}`}>
-            {a?.frontmatter.featured_image ? (
+            {src ? (
               <Image
-                src={a.frontmatter.featured_image}
-                alt={a.frontmatter.featured_image_alt ?? a.frontmatter.title}
+                src={src}
+                alt={alt}
                 fill
                 className="object-cover object-top transition-transform duration-[1200ms] group-hover:scale-[1.03]"
                 sizes="(max-width: 768px) 33vw, 20vw"
@@ -44,7 +49,7 @@ export default function HeroBand({ articles }: Props) {
               <div className="absolute inset-0 bg-gradient-to-b from-[#d8cfc6] to-[#efe9e2]" />
             )}
           </div>
-        ))}
+        )})}
       </div>
 
       {/* Veil gradient — bottom fade to parchment so caption reads cleanly */}

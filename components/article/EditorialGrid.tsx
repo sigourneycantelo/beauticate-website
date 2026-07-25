@@ -10,6 +10,8 @@ interface Article {
     excerpt?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
     author?: string
     date_published?: string
   }
@@ -35,12 +37,14 @@ function CategoryLabel({ category, cream }: { category: string; cream?: boolean 
 // Large card — tall portrait, full-bleed with lower-third text overlay
 function HeroCard({ article }: { article: Article }) {
   const f = article.frontmatter
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
   return (
     <Link href={articleHref(f)} className="group relative block overflow-hidden aspect-[4/5] bg-cream-100">
-      {f.featured_image && (
+      {cardSrc && (
         <Image
-          src={f.featured_image}
-          alt={f.featured_image_alt ?? f.title}
+          src={cardSrc}
+          alt={cardAlt}
           fill
           className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 55vw"
@@ -70,12 +74,14 @@ function HeroCard({ article }: { article: Article }) {
 // Standard card — square image with lower-third overlay
 function Card({ article, showExcerpt = false }: { article: Article; showExcerpt?: boolean }) {
   const f = article.frontmatter
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
   return (
     <Link href={articleHref(f)} className="group relative block overflow-hidden aspect-square bg-cream-100">
-      {f.featured_image && (
+      {cardSrc && (
         <Image
-          src={f.featured_image}
-          alt={f.featured_image_alt ?? f.title}
+          src={cardSrc}
+          alt={cardAlt}
           fill
           className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"

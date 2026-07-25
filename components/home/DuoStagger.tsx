@@ -10,6 +10,8 @@ interface Article {
     excerpt?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
   }
 }
 
@@ -36,6 +38,8 @@ function ScrimCard({
   if (!article?.frontmatter) return null
   const f = article.frontmatter
   const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
 
   return (
     <article style={{ marginTop }}>
@@ -45,10 +49,10 @@ function ScrimCard({
           style={{ aspectRatio, padding: 'clamp(22px,2.6vw,38px)', position: 'relative' }}
         >
           {/* Image */}
-          {f.featured_image ? (
+          {cardSrc ? (
             <Image
-              src={f.featured_image}
-              alt={f.featured_image_alt ?? f.title}
+              src={cardSrc}
+              alt={cardAlt}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
               sizes={sizes}

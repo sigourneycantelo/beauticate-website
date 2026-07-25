@@ -10,6 +10,8 @@ interface Article {
     excerpt?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
   }
 }
 
@@ -21,6 +23,8 @@ export default function HeroSplit({ article }: { article: Article }) {
   if (!article?.frontmatter) return null
   const f = article.frontmatter
   const label = (f.subcategory ?? f.category ?? '').replace(/-/g, ' ')
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
 
   return (
     <section
@@ -35,10 +39,10 @@ export default function HeroSplit({ article }: { article: Article }) {
         className="group relative overflow-hidden rounded-[2px]"
         style={{ aspectRatio: '4/5', border: '1px solid rgba(28,26,23,.10)' }}
       >
-        {f.featured_image ? (
+        {cardSrc ? (
           <Image
-            src={f.featured_image}
-            alt={f.featured_image_alt ?? f.title}
+            src={cardSrc}
+            alt={cardAlt}
             fill
             className="object-cover object-[50%_20%] transition-transform duration-[1000ms] group-hover:scale-[1.03]"
             sizes="(max-width:768px) 100vw, 50vw"

@@ -9,18 +9,20 @@ interface Props {
 }
 
 export default function ArticleCard({ frontmatter: f, href, size = 'default' }: Props) {
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
   return (
     <article className="group">
       <Link href={href} className="block">
         <div className={`relative overflow-hidden bg-cream-100 ${size === 'large' ? 'aspect-[3/2]' : 'aspect-square'}`}>
-          {f.featured_image && (
+          {cardSrc && (
             <Image
-              src={f.featured_image}
-              alt={f.featured_image_alt ?? f.title}
+              src={cardSrc}
+              alt={cardAlt}
               fill
 
               className="object-cover transition-transform duration-500 group-hover:scale-105"
-              unoptimized={f.featured_image.endsWith('.gif')}
+              unoptimized={cardSrc.endsWith('.gif')}
             />
           )}
         </div>

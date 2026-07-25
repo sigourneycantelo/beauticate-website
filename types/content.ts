@@ -36,6 +36,8 @@ export interface ArticleFrontmatter {
   excerpt: string
   featured_image: string
   featured_image_alt: string
+  thumbnailPortrait?: string
+  thumbnailPortrait_alt?: string
 
   // SEO
   seo_title?: string

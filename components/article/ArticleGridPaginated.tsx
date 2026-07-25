@@ -15,6 +15,8 @@ interface Article {
     excerpt?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
   }
 }
 
@@ -24,14 +26,16 @@ function articleHref(f: Article['frontmatter']) {
 
 function Card({ article }: { article: Article }) {
   const f = article.frontmatter
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
   return (
     <article className="group">
       <Link href={articleHref(f)} className="block">
         <div className="relative overflow-hidden bg-parchment aspect-square">
-          {f.featured_image && (
+          {cardSrc && (
             <Image
-              src={f.featured_image}
-              alt={f.featured_image_alt ?? f.title}
+              src={cardSrc}
+              alt={cardAlt}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />

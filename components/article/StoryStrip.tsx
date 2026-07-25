@@ -9,6 +9,8 @@ interface Article {
     subcategory?: string
     featured_image?: string
     featured_image_alt?: string
+    thumbnailPortrait?: string
+    thumbnailPortrait_alt?: string
     excerpt?: string
   }
 }
@@ -24,12 +26,14 @@ function articleHref(f: Article['frontmatter']) {
 // Single story card — portrait ratio, image fills frame, lowercase serif title overlay
 function StoryCard({ article }: { article: Article }) {
   const f = article.frontmatter
+  const cardSrc = f.thumbnailPortrait ?? f.featured_image
+  const cardAlt = f.thumbnailPortrait_alt ?? f.featured_image_alt ?? f.title
   return (
     <Link href={articleHref(f)} className="group relative block flex-none w-[220px] md:w-[260px] aspect-[3/4] overflow-hidden bg-cream-100">
-      {f.featured_image && (
+      {cardSrc && (
         <Image
-          src={f.featured_image}
-          alt={f.featured_image_alt ?? f.title}
+          src={cardSrc}
+          alt={cardAlt}
           fill
           className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
           sizes="260px"
@@ -53,7 +57,7 @@ function StoryCard({ article }: { article: Article }) {
 }
 
 export default function StoryStrip({ articles }: Props) {
-  const cards = articles.filter(a => a?.frontmatter.featured_image).slice(0, 4)
+  const cards = articles.filter(a => a?.frontmatter.thumbnailPortrait || a?.frontmatter.featured_image).slice(0, 4)
   if (!cards.length) return null
 
   return (
