@@ -62,7 +62,7 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
       <nav aria-label="Shop navigation" className="max-w-wide mx-auto flex items-center justify-center flex-nowrap" style={{ gap: '0', padding: '16px clamp(20px,6vw,104px)' }}>
         {TABS.map((tab, i) => {
           const active = tab.match(path) || open === tab.key
-          const hasMenu = tab.key !== 'about'
+          const hasMenu = tab.key !== 'about' && tab.key !== 'freeship'
           return (
             <Fragment key={tab.key}>
               {i > 0 && <span aria-hidden className="select-none" style={{ opacity: 0.28, margin: '0 clamp(16px,2.4vw,32px)' }}>·</span>}
@@ -83,7 +83,7 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
         })}
       </nav>
 
-      {open && open !== 'about' && (
+      {open && open !== 'about' && open !== 'freeship' && (
         <div
           className="absolute left-0 right-0 top-full bg-white border-t border-b border-[rgba(42,38,33,.10)] shadow-[0_18px_40px_-28px_rgba(42,38,33,.35)] z-[60]"
           onMouseEnter={() => clearTimeout(closeT.current)}

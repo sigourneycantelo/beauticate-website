@@ -1,5 +1,6 @@
-import { getCollections, getProducts, getProductsByTag, getNewArrivals, getCollectionByHandle } from '@/lib/shopify'
+import { getCollections, getProducts, getProductsByTag, getNewArrivals, getCollectionByHandle, getCollectionFull } from '@/lib/shopify'
 import { getVodcastEpisodes } from '@/lib/content'
+import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import HeroVideo from '@/components/shop/HeroVideo'
 import TrustBand from '@/components/shop/TrustBand'
 import FounderIntro from '@/components/shop/FounderIntro'
@@ -11,6 +12,7 @@ import ShopNewsletter from '@/components/shop/ShopNewsletter'
 import ShopProductGrid from '@/components/shop/ShopProductGrid'
 import CollectionFeature from '@/components/shop/CollectionFeature'
 import PodcastSection from '@/components/home/PodcastSection'
+import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
 
@@ -36,17 +38,23 @@ export const metadata: Metadata = {
   description: 'Curated beauty, wellness and lifestyle — recommended by the editors and experts of Beauticate. Fewer, better things, chosen by editors not algorithms.',
 }
 
+const FREE_SHIP_HANDLES = SHOP_BRANDS
+  .filter(b => FREE_SHIPPING_VENDORS.has(b.name))
+  .map(b => b.handle)
+
 export default async function ShopPage() {
-  const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...featuredColls] = await Promise.all([
+  const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...rest] = await Promise.all([
     getCollections(48),
     getProductsByTag('team', 24),
     getProducts(24),
     getNewArrivals(8),
     Promise.resolve(getVodcastEpisodes()),
     ...FEATURED_COLLECTIONS.map(h => getCollectionByHandle(h)),
+    ...FREE_SHIP_HANDLES.map(h => getCollectionFull(h, 50)),
   ])
   const moments = pickMoments(collections)
-  const featured = (featuredColls as (ShopifyCollection | null)[]).filter(Boolean) as ShopifyCollection[]
+  const featured = (rest.slice(0, FEATURED_COLLECTIONS.length) as (ShopifyCollection | null)[]).filter(Boolean) as ShopifyCollection[]
+  const freeShipCols = rest.slice(FEATURED_COLLECTIONS.length)
 
   const seen = new Set<string>()
   const curatedProducts = [...taggedProducts, ...allProducts].filter(p => {
@@ -55,6 +63,13 @@ export default async function ShopPage() {
     return true
   })
   const shopProducts = curatedProducts.slice(0, 16)
+
+  const seenFS = new Set<string>()
+  const freeShipProducts = freeShipCols.flatMap(c => (c as any)?.products?.nodes ?? []).filter((p: any) => {
+    if (seenFS.has(p.handle)) return false
+    seenFS.add(p.handle)
+    return true
+  })
 
   return (
     <div>
@@ -146,6 +161,9 @@ export default async function ShopPage() {
 
       {/* Sigourney's Edit */}
       <SigourneysEdit />
+
+      {/* Free Shipping — shuffled product rail */}
+      <FreeShippingStrip products={freeShipProducts} />
 
       {/* Shop by Category */}
       <ShopCategoryGrid />

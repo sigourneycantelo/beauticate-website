@@ -1,5 +1,6 @@
 import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
-import { getProductsByTag, getCollectionByHandle, getProducts, getCollections } from '@/lib/shopify'
+import { getProductsByTag, getCollectionByHandle, getProducts, getCollections, getCollectionFull } from '@/lib/shopify'
+import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
 
 import HeroWide from '@/components/home/HeroWide'
@@ -16,6 +17,7 @@ import ShopByMoment from '@/components/home/ShopByMoment'
 import ShopByCategory from '@/components/home/ShopByCategory'
 import TrustPanel from '@/components/home/TrustPanel'
 import AsSeenIn from '@/components/home/AsSeenIn'
+import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
 
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
 
@@ -31,15 +33,28 @@ function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
   return picked.slice(0, 4)
 }
 
+const FREE_SHIP_HANDLES = SHOP_BRANDS
+  .filter(b => FREE_SHIPPING_VENDORS.has(b.name))
+  .map(b => b.handle)
+
 export default async function HomePage() {
-  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes, allCollections] = await Promise.all([
+  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes, allCollections, ...freeShipCols] = await Promise.all([
     getProductsByTag('team', 24),
     getCollectionByHandle('autumn-edit'),
     getProducts(24),
     Promise.resolve(getVodcastEpisodes()),
     getCollections(48),
+    ...FREE_SHIP_HANDLES.map(h => getCollectionFull(h, 50)),
   ])
   const moments = pickMoments(allCollections)
+
+  const seenFS = new Set<string>()
+  const freeShipProducts = freeShipCols.flatMap(c => (c as any)?.products?.nodes ?? []).filter((p: any) => {
+    if (seenFS.has(p.handle)) return false
+    seenFS.add(p.handle)
+    return true
+  })
+
   const collectionProducts = winterCollection?.products?.nodes ?? []
   const seen = new Set<string>()
   const curatedProducts = [...taggedProducts, ...collectionProducts].filter(p => {
@@ -50,7 +65,6 @@ export default async function HomePage() {
   const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
   const shopProducts2 = allProducts.filter(p => !seen.has(p.handle))
 
-  // Rolling de-dupe — no article appears twice on the home page
   const shownSlugs = new Set<string>()
   const DIRECTORY_SUBS = ['bathhouses', 'clinics', 'salons', 'spas-retreats', 'wellness']
 
@@ -113,6 +127,9 @@ export default async function HomePage() {
 
       {/* 12 — Shop by Moment */}
       <ShopByMoment collections={moments} />
+
+      {/* 12b — Free Shipping rail */}
+      <FreeShippingStrip products={freeShipProducts} />
 
       {/* 13 — Subscribe */}
       <InsidersBar />
