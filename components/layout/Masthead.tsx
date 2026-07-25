@@ -291,10 +291,10 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
             const open = openKey === p.key
             return (
               <div key={p.key} className={`mh-d-item${open ? ' open' : ''}`}>
-                <button className={`mh-d-pillar${p.isShop ? ' is-shop' : ''}`} onClick={() => setOpenKey(open ? null : p.key)} aria-expanded={open}>
-                  <span>{p.label}</span>
-                  <span className="mh-d-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></span>
-                </button>
+                <div className={`mh-d-pillar${p.isShop ? ' is-shop' : ''}`}>
+                  <Link href={p.href} onClick={() => setDrawer(false)}>{p.label}</Link>
+                  <button className="mh-d-chev" onClick={() => setOpenKey(open ? null : p.key)} aria-expanded={open} aria-label={`${open ? 'Collapse' : 'Expand'} ${p.label}`}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}><polyline points="6 9 12 15 18 9" /></svg></button>
+                </div>
                 <div className="mh-d-subs">
                   <Link href={p.href} className="mh-d-viewall" onClick={() => setDrawer(false)}>{p.allLabel}</Link>
                   {p.subs.map(s => s.disabled
