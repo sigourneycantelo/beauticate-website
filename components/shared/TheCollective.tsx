@@ -24,7 +24,7 @@ export default function TheCollective() {
       </h2>
       <p
         className="font-serif italic mt-3 mx-auto mb-8"
-        style={{ fontSize: 'clamp(15px,1.6vw,19px)', opacity: 0.7, whiteSpace: 'nowrap' }}
+        style={{ fontSize: 'clamp(15px,1.6vw,19px)', opacity: 0.7 }}
       >
         Our advice comes from editors, experts, facialists, doctors, designers and stylists, not influencers or algorithms
       </p>

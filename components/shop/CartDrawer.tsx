@@ -18,11 +18,12 @@ export default function CartDrawer() {
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 z-40 bg-charcoal/30"
+        className="fixed inset-0 bg-charcoal/30"
+        style={{ zIndex: 1300 }}
         onClick={closeCart}
       />
       {/* Drawer */}
-      <aside className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-cream shadow-2xl flex flex-col">
+      <aside className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-cream shadow-2xl flex flex-col" style={{ zIndex: 1400 }}>
         <div className="flex items-center justify-between px-6 py-4 border-b border-cream-200">
           <h2 className="text-base">Your Cart ({lines.length})</h2>
           <button onClick={closeCart} className="p-1 hover:text-wine transition-colors">✕</button>
