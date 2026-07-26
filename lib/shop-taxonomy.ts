@@ -33,7 +33,7 @@ export const BROAD_CATEGORIES: BroadCat[] = [
   {
     slug: 'beauty',
     label: 'Beauty',
-    handle: 'beauty-1',
+    handle: 'beauty',
     subs: [
       {
         slug: 'makeup', label: 'Makeup', handle: 'makeup',
@@ -51,7 +51,7 @@ export const BROAD_CATEGORIES: BroadCat[] = [
         keywords: ['shampoo', 'conditioner', 'scalp', 'hair '],
       },
       {
-        slug: 'fragrance', label: 'Fragrance', handle: 'fragrance-1',
+        slug: 'fragrance', label: 'Fragrance', handle: 'fragrance',
         productTypes: ['Perfume', 'Eau de Parfum', 'Eau de Toilette', 'Perfume Oil', 'Cologne', 'Fragrance', 'Solid Perfume'],
         keywords: ['perfume', 'fragrance', 'cologne', 'eau de parfum', 'eau de toilette', 'parfum'],
       },
@@ -133,32 +133,35 @@ export function getBroad(slug: string): BroadCat | undefined {
 
 export type ShopBrand = { name: string; handle: string }
 
-// Ordered by profile / recognition (not alphabetical) — most well-known first.
-// Easy to re-rank: this array order drives both the Brands index and the nav list.
+// The brand menus/index are now built dynamically from Shopify collections, named from
+// each collection's title and sorted alphabetically (see `brandsFromCollections`). This
+// static list is retained only as the vendor→collection-handle lookup that maps
+// FREE_SHIPPING_VENDORS to the collections fetched by the free-shipping pages — so each
+// `name` here must match the Shopify vendor string exactly for that join to work.
 export const SHOP_BRANDS: ShopBrand[] = [
-  { name: 'Maison Balzac', handle: 'maison-balzac-1' },
+  { name: 'Maison Balzac', handle: 'maison-balzac' },
   { name: 'Booie Beauty', handle: 'booie-beauty' },
-  { name: 'Lumira', handle: 'lumira-1' },
-  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins-aus' },
-  { name: 'Mukti Organics', handle: 'mukti-organics-1' },
-  { name: 'Saint Louve', handle: 'saintlouve-1' },
+  { name: 'Lumira', handle: 'lumira' },
+  { name: 'JSHealth Vitamins', handle: 'jshealth-vitamins' },
+  { name: 'Mukti Organics', handle: 'mukti-organics' },
+  { name: 'Saint Louve', handle: 'saint-louve' },
   { name: 'Christophe Robin', handle: 'christophe-robin' },
   { name: 'Lamav', handle: 'lamav' },
   { name: 'Subtle Energies', handle: 'subtle-energies' },
   { name: 'Sunescape', handle: 'sunescape' },
-  { name: 'Tulita Parfum', handle: 'tulita-parfum' },
+  { name: 'Tulita', handle: 'tulita' },
   { name: 'Archer Farrar Perfume Atelier', handle: 'archer-farrar-perfume-atelier' },
   { name: 'Chiquita', handle: 'chiquita' },
-  { name: 'Estetika', handle: 'estetika-1' },
+  { name: 'Estetika', handle: 'estetika' },
   { name: 'Eir Women', handle: 'eir-women' },
   { name: 'Innour', handle: 'innour' },
   { name: 'Bon Wellness', handle: 'bon-patch' },
   { name: 'OiTO Haircare', handle: 'oito-haircare' },
-  { name: 'Lash Armour', handle: 'lash-armour-1' },
-  { name: 'Buj', handle: 'buj' },
+  { name: 'Lash Armour', handle: 'lash-armour' },
+  { name: 'buj', handle: 'buj' },
   { name: 'Kiicity', handle: 'kiicity' },
-  { name: 'Sontse.', handle: 'sontse-1' },
-  { name: 'St Louis Says', handle: 'st-louis-says' },
+  { name: 'Sontse.', handle: 'sontse' },
+  { name: 'St. Louis Says', handle: 'st-louis-says' },
   { name: 'Basics by B', handle: 'basics-by-b' },
 ]
 
@@ -223,16 +226,32 @@ export const CURATOR_EDITS: CuratorEdit[] = [
 export const FREE_SHIPPING_VENDORS = new Set<string>([
   'Archer Farrar Perfume Atelier',
   'Bon Wellness',
-  'Buj',
+  'buj',
   'Estetika',
   'Kiicity',
-  'St Louis Says',
+  'St. Louis Says',
   'Subtle Energies',
 ])
 
 export function isFreeShipping(vendor: string): boolean {
   return FREE_SHIPPING_VENDORS.has(vendor)
 }
+
+// ─── Brand collection discovery ───────────────────────────────────────────────
+// Collection handles that are NOT brands: the broad categories + their sub-collections,
+// moments / gifting tiers, curator edits, and Shopify system / non-brand edit
+// collections. Everything else in the store is treated as a brand collection, so newly
+// onboarded brands (e.g. Avive Hydration) surface in "Shop by Brand" with no code change.
+// See `brandsFromCollections` in lib/shopify.ts.
+export const NON_BRAND_COLLECTION_HANDLES = new Set<string>(
+  [
+    ...BROAD_CATEGORIES.flatMap(b => [b.handle, ...b.subs.map(s => s.handle)]),
+    ...SHOP_MOMENTS.map(m => m.handle),
+    ...CURATOR_EDITS.map(c => c.handle),
+    // system + non-brand edits with no home in the taxonomy above
+    'frontpage', 'affiliate-products', 'summer-lovin', 'fine-hair-club',
+  ].filter((h): h is string => Boolean(h)),
+)
 
 // Auto-classify a product into one of a broad category's sub-buckets from its own
 // signals, for when it isn't filed in the Shopify sub-collection. First sub to match

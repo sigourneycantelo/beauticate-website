@@ -1,7 +1,7 @@
 import Masthead, { type Pillar, type MegaCard, type MegaSub, type MegaLink } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
-import { getCollections } from '@/lib/shopify'
-import { BROAD_CATEGORIES, SHOP_BRANDS, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS, CURATOR_EDITS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
+import { getCollections, brandsFromCollections } from '@/lib/shopify'
+import { BROAD_CATEGORIES, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS, CURATOR_EDITS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
 
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
@@ -40,6 +40,11 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     if (url) imgByHandle.set(c.handle, url)
   }
 
+  // Brand names come from Shopify (vendor, alphabetical) — the single source of truth.
+  const brands = brandsFromCollections(collections)
+  const brandName = (handle: string, fallback = handle) =>
+    brands.find(b => b.handle === handle)?.name ?? fallback
+
   const categoryCards: MegaCard[] = BROAD_CATEGORIES.map((b): MegaCard => ({
     title: b.label,
     href: `/shop/${b.slug}`,
@@ -51,14 +56,12 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
 
   // Brand & Moment scale past what image cards can show, so they render as a full text
   // list with a few featured image highlights on top.
-  const FEATURED_BRANDS = ['maison-balzac-1', 'lumira-1', 'tulita-parfum']
+  const FEATURED_BRANDS = ['maison-balzac', 'lumira', 'tulita']
   const FEATURED_MOMENTS = ['autumn-edit', 'evening-unwind', 'fit-girl-glow']
 
   const brandCards: MegaCard[] = FEATURED_BRANDS
-    .map(h => SHOP_BRANDS.find(b => b.handle === h))
-    .filter((b): b is NonNullable<typeof b> => Boolean(b))
-    .map((b): MegaCard => ({ title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'Brand' }))
-  const brandList: MegaLink[] = SHOP_BRANDS.map(b => ({ label: b.name, href: `/shop/brands/${b.handle}` }))
+    .map((h): MegaCard => ({ title: brandName(h), href: `/shop/brands/${h}`, image: imgByHandle.get(h), imageAlt: brandName(h), eyebrow: 'Brand' }))
+  const brandList: MegaLink[] = brands.map(b => ({ label: b.name, href: `/shop/brands/${b.handle}` }))
 
   // Shop by Moment = the mood edits only (gifting edits move to the Gifting item).
   const momentCards: MegaCard[] = FEATURED_MOMENTS
@@ -69,7 +72,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
 
   // New In Shop — the three latest brands to onboard, as image cards.
   const newInCards: MegaCard[] = NEW_IN_BRANDS.map((b): MegaCard => ({
-    title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'New In',
+    title: brandName(b.handle, b.name), href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: brandName(b.handle, b.name), eyebrow: 'New In',
   }))
 
   // Editor's Picks — curator edits shown as previews (becomes "Shop by Curator").
@@ -80,9 +83,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
   // Free Shipping — brands that ship free on every order.
   const FREE_SHIP_FEATURED = ['subtle-energies', 'bon-patch', 'archer-farrar-perfume-atelier']
   const freeShipCards: MegaCard[] = FREE_SHIP_FEATURED
-    .map(h => SHOP_BRANDS.find(b => b.handle === h))
-    .filter((b): b is NonNullable<typeof b> => Boolean(b))
-    .map((b): MegaCard => ({ title: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: b.name, eyebrow: 'Free Shipping' }))
+    .map((h): MegaCard => ({ title: brandName(h), href: `/shop/brands/${h}`, image: imgByHandle.get(h), imageAlt: brandName(h), eyebrow: 'Free Shipping' }))
 
   // Gifting — the occasion / price-tier edits; the /shop/gifting page lists them all.
   // Featured previews are the three price tiers (under $50 / $100 / $300).

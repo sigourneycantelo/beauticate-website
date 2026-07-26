@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { getCollections } from '@/lib/shopify'
-import { SHOP_BRANDS } from '@/lib/shop-taxonomy'
+import { getCollections, brandsFromCollections } from '@/lib/shopify'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -20,7 +19,7 @@ export default async function ShopBrandsPage() {
     if (url) imgByHandle.set(c.handle, url)
   }
 
-  const brands = SHOP_BRANDS   // curated order (most well-known first)
+  const brands = brandsFromCollections(collections)   // curated order first, then discovered brands
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',

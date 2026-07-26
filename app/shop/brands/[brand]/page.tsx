@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { getCollectionFull } from '@/lib/shopify'
+import { getBrandCollection } from '@/lib/shopify'
 import ProductGrid from '@/components/shop/ProductGrid'
 import CollectionHero from '@/components/shop/CollectionHero'
 
@@ -11,7 +11,7 @@ interface Props { params: Promise<{ brand: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { brand } = await params
-  const collection = await getCollectionFull(brand)
+  const collection = await getBrandCollection(brand)
   if (!collection) return {}
   const desc = (collection.description?.slice(0, 160)) || `Shop ${collection.title} at Beauticate — curated by our editorial team and founder Sigourney Cantelo.`
   return {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BrandPage({ params }: Props) {
   const { brand } = await params
-  const collection = await getCollectionFull(brand)
+  const collection = await getBrandCollection(brand)
   if (!collection) notFound()
 
   const products = collection.products.nodes

@@ -130,7 +130,7 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
 
   // The category grid is the UNION of the broad collection and its sub-collections.
   // Relying on the broad collection alone hides products that were filed into a
-  // sub-collection (e.g. a perfume in `fragrance-1`) but never added to the broad
+  // sub-collection (e.g. a perfume in `fragrance`) but never added to the broad
   // parent — so we merge both and dedupe. Home items (candles, room sprays) that are
   // filed into a beauty sub but really belong in Living are dropped via the Living
   // membership set, so they show under Living only, not Beauty.

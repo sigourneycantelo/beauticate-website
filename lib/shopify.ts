@@ -1,4 +1,5 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
+import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
@@ -226,6 +227,73 @@ export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
     }
   `, { first })
   return (data as any)?.collections?.nodes ?? []
+}
+
+// ─── Brands ──────────────────────────────────────────────────────────────────
+
+// The full "Shop by Brand" list: every brand collection in Shopify (not a category,
+// moment, or curator edit), named from its title and sorted alphabetically. Keeps the
+// brand menu / index complete as new brands onboard, with no code change. Pure — pass
+// already-fetched collections to avoid a second fetch.
+export function brandsFromCollections(collections: ShopifyCollection[]): ShopBrand[] {
+  const seen = new Set<string>()
+  const brands: ShopBrand[] = []
+  for (const c of collections) {
+    if (NON_BRAND_COLLECTION_HANDLES.has(c.handle) || seen.has(c.handle)) continue
+    seen.add(c.handle)
+    // Name + image + description all come from the (smart) collection — the single source
+    // for each brand's presentation, shared with the brand page hero. Keep the collection
+    // title aligned to the vendor name in Shopify so the menu and page stay consistent.
+    brands.push({ name: c.title, handle: c.handle })
+  }
+  return brands.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
+}
+
+// Same list, fetching the collections itself — for callers that don't already have them.
+export async function getShopBrands(): Promise<ShopBrand[]> {
+  return brandsFromCollections(await getCollections(100))
+}
+
+// Products filed under a vendor — the fallback for a brand page when no collection
+// matches the handle (a drifted/absent collection handle, or a vendor-only brand).
+// vendor matches product.vendor exactly.
+export async function getProductsByVendor(vendor: string, first = 250): Promise<ShopifyProduct[]> {
+  const data = await shopifyFetch<{ products: { nodes: ShopifyProduct[] } }>(`
+    ${PRODUCT_FRAGMENT}
+    query ProductsByVendor($query: String!, $first: Int!) {
+      products(first: $first, query: $query) {
+        nodes { ...ProductFields }
+      }
+    }
+  `, { query: `vendor:"${vendor.replace(/"/g, '\\"')}"`, first })
+  return (data as any)?.products?.nodes ?? []
+}
+
+// A brand page's collection resolved leniently: the real Shopify collection for the
+// handle if one exists, else a synthetic collection built from the matching vendor's
+// products — so a drifted or absent collection handle degrades to a working brand page
+// instead of a 404. Returns null only when neither path yields products.
+export async function getBrandCollection(handle: string): Promise<ShopifyCollection | null> {
+  const collection = await getCollectionFull(handle)
+  if (collection) return collection
+
+  // Guess the vendor from the handle: "subtle-energies" -> "Subtle Energies".
+  const vendorGuess = handle
+    .replace(/-\d+$/, '')            // drop Shopify's -1/-2 handle-dedupe suffix
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')
+  const products = await getProductsByVendor(vendorGuess)
+  if (!products.length) return null
+
+  return {
+    id: `vendor:${handle}`,
+    handle,
+    title: products[0].vendor || vendorGuess,
+    description: '',
+    image: products[0].featuredImage ?? null,
+    products: { nodes: products },
+  }
 }
 
 // ─── Product types / categories ──────────────────────────────────────────────
