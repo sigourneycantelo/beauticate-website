@@ -145,13 +145,11 @@ function PillarItem({ p }: { p: Pillar }) {
               </div>
             ) : activeSub?.children ? (
               <div className="mh-cards"><p className="mh-soon-note">Browse our curated directory of salons, spas, clinics &amp; wellness destinations.</p></div>
-            ) : activeSub?.list ? (
+            ) : activeSub?.list && activeSub.list.length > 4 ? (
+              // >4 items → list only (no thumbnails), matching the sticky shop
+              // sub-nav rule. Thumbnails alongside a long list make the mega
+              // menu too tall.
               <div className="mh-mega-list">
-                {cards.length > 0 && (
-                  <div className="mh-featured">
-                    {cards.map((c, i) => <Card key={`${active}-f-${i}`} c={c} />)}
-                  </div>
-                )}
                 <ul className="mh-list">
                   {activeSub.list.map((l) => (
                     <li key={l.href}><Link href={l.href}>{l.label}</Link></li>
