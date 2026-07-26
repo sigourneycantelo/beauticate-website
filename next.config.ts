@@ -44,6 +44,9 @@ const nextConfig: NextConfig = {
       // ── Legacy pages ─────────────────────────────────────────────────────
       { source: '/about-beauticate', destination: '/about', permanent: true },
 
+      // ── Beauty Expo refreshed 2025 → 2026 campaign slug ──────────────────
+      { source: '/sigourneys-edit/beauty-expo-australia-2025-for-founders-why-im-going-and-you-should-too', destination: '/sigourneys-edit/beauty-expo-australia-2026-for-founders-why-im-going-and-you-should-too', permanent: true },
+
       // ── Duplicate consolidation ──────────────────────────────────────────────────
       { source: '/living/giving-back-became-non-negotiable', destination: '/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee', permanent: true },
       { source: '/destinations/where-family-memories-are-made', destination: '/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review', permanent: true },
