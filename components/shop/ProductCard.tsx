@@ -4,12 +4,11 @@ import { isFreeShipping } from '@/lib/shop-taxonomy'
 
 interface Props {
   product: ShopifyProduct
-  /** Pass true to force model/lifestyle layout; auto-detected from the Shopify "lifestyle" tag when omitted */
+  /** Deprecated — kept for call-site compatibility. Shop cards are always full-bleed now. */
   photoMode?: boolean
 }
 
-export default function ProductCard({ product: p, photoMode }: Props) {
-  const isLifestyle = photoMode ?? p.tags?.some(t => t.toLowerCase() === 'lifestyle')
+export default function ProductCard({ product: p }: Props) {
   const price = p.priceRange.minVariantPrice
   const formatted = new Intl.NumberFormat('en-AU', {
     style: 'currency',
@@ -25,7 +24,7 @@ export default function ProductCard({ product: p, photoMode }: Props) {
     <ProductTile
       href={`/shop/products/${p.handle}`}
       useNextImage
-      cover={isLifestyle}
+      cover
       primarySrc={primary?.url}
       primaryAlt={primary?.altText ?? p.title}
       secondarySrc={secondary?.url}

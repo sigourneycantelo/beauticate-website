@@ -32,7 +32,7 @@ export interface ProductTileProps {
 export default function ProductTile({
   href, external = false, follow = false,
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
-  useNextImage = false, cover = false,
+  useNextImage = false, cover = true,
   cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
@@ -50,8 +50,9 @@ export default function ProductTile({
 
   const inner = (
     <>
-      {/* Image area — greige for de-etched, full-bleed for lifestyle */}
-      <div className="relative aspect-[5/6] overflow-hidden bg-tile">
+      {/* Image area — full-bleed (cover) sits on white so transparent shots blend
+          into the card; de-etched (contain) keeps the greige backdrop. */}
+      <div className={`relative aspect-[5/6] overflow-hidden ${cover ? 'bg-white' : 'bg-tile'}`}>
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
@@ -67,7 +68,7 @@ export default function ProductTile({
           </span>
         )}
 
-        <span className={`absolute top-3 right-3 w-[18px] h-[18px] z-10 ${cover ? 'text-white opacity-90 drop-shadow' : 'text-ink opacity-55'}`}>
+        <span className="absolute top-3 right-3 w-[18px] h-[18px] z-10 text-ink opacity-60 [filter:drop-shadow(0_1px_2px_rgba(255,255,255,0.85))]">
           <HeartIcon />
         </span>
       </div>
