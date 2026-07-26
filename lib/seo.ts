@@ -24,7 +24,7 @@ export type SchemaType = 'Article' | 'NewsArticle' | 'Review' | 'HowTo' | 'FAQPa
 
 export function resolveSchemaType(f: ArticleFrontmatter): SchemaType {
   const tags = (f.tags ?? []).join(' ').toLowerCase()
-  const title = f.title.toLowerCase()
+  const title = (f.title ?? '').toLowerCase()
   const category = (f.category ?? '').toLowerCase()
   const subcategory = (f.subcategory ?? '').toLowerCase()
   const isReview = tags.includes('review') || title.includes('review') ||
