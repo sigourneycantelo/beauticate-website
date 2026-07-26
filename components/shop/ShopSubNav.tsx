@@ -68,7 +68,13 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
     return () => { ob.disconnect(); window.removeEventListener('mega-open', onMega) }
   }, [])
 
-  const listFor = (k: string | null) => (k === 'brand' ? brands : k === 'moment' ? moments : [])
+  // Items for the open tab. The dropdown layout is chosen by count: a thumbnail
+  // grid for a short set (≤4, e.g. Shop by Category) or a plain multi-column list
+  // for a long set (>4, e.g. Shop by Brand) — thumbnails there make the mega menu
+  // too tall next to the list.
+  const itemsFor = (k: string | null): SubNavItem[] =>
+    k === 'category' ? category : k === 'brand' ? brands : k === 'moment' ? moments : []
+  const openItems = itemsFor(open)
 
   return (
     <div className={`bg-white shop-subnav-sticky relative${mastheadHidden ? ' mh-away' : ''}`} style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }} onMouseEnter={cancelClose} onMouseLeave={closeSoon}>
@@ -104,24 +110,18 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
           className="absolute left-0 right-0 top-full bg-white border-t border-b border-[rgba(42,38,33,.10)] shadow-[0_18px_40px_-28px_rgba(42,38,33,.35)] z-[60]"
         >
           <div className="max-w-wide mx-auto px-[clamp(24px,5vw,64px)] py-9">
-            {open === 'category' && (
+            {openItems.length <= 4 ? (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {category.map(c => <Card key={c.href} {...c} />)}
+                {openItems.map(c => <Card key={c.href} {...c} />)}
               </div>
-            )}
-            {(open === 'brand' || open === 'moment') && (
-              <div className="grid md:grid-cols-[1.1fr_1.4fr] gap-x-12 gap-y-6 items-start">
-                <ul className="columns-2 gap-x-8" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                  {listFor(open).map(it => (
-                    <li key={it.href} className="break-inside-avoid">
-                      <Link href={it.href} className="block py-1.5 font-sans text-[12px] tracking-[0.06em] uppercase text-ink/80 hover:text-wine transition-colors">{it.label}</Link>
-                    </li>
-                  ))}
-                </ul>
-                <div className="grid grid-cols-3 gap-5">
-                  {listFor(open).slice(0, 3).map(c => <Card key={c.href} {...c} />)}
-                </div>
-              </div>
+            ) : (
+              <ul className="columns-2 sm:columns-3 md:columns-4 gap-x-10" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                {openItems.map(it => (
+                  <li key={it.href} className="break-inside-avoid">
+                    <Link href={it.href} className="block py-1.5 font-sans text-[12px] tracking-[0.06em] uppercase text-ink/80 hover:text-wine transition-colors">{it.label}</Link>
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
         </div>
