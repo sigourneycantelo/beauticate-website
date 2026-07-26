@@ -39,11 +39,16 @@ export default function CartDrawer() {
             <ul className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
               {lines.map(line => {
                 const img = line.merchandise.product.featuredImage
-                const unitPrice = line.merchandise?.price ?? line.cost?.totalAmount
-                const price = unitPrice
-                  ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
-                      .format(parseFloat(unitPrice.amount) * (line.quantity ?? 1))
-                  : null
+                // Shopify clamps a sold-out line's quantity to 0 (this happens even
+                // when the product query reported availableForSale: true), which is
+                // why such lines used to render as "$0". Detect it and label the line
+                // truthfully instead of showing a price.
+                const soldOut = (line.quantity ?? 0) < 1
+                // Line-level cost is Shopify's canonical figure (already ×quantity);
+                // fall back to per-unit price × quantity only if the line cost is absent.
+                const lineCost = parseFloat(line.cost?.totalAmount?.amount ?? '0')
+                const price = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
+                  .format(lineCost > 0 ? lineCost : parseFloat(line.merchandise.price.amount) * (line.quantity ?? 1))
                 return (
                   <li key={line.id} className="flex gap-3">
                     {img && (
@@ -59,7 +64,9 @@ export default function CartDrawer() {
                       {line.merchandise.title !== 'Default Title' && (
                         <p className="text-xs text-charcoal-light">{line.merchandise.title}</p>
                       )}
-                      {price && <p className="text-sm mt-1">{price}</p>}
+                      {soldOut
+                        ? <p className="text-sm mt-1 text-wine">Sold out</p>
+                        : <p className="text-sm mt-1">{price}</p>}
                     </div>
                     <button
                       onClick={() => removeItem(line.id)}

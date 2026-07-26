@@ -4,13 +4,20 @@ import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
 import type { ShopifyProduct } from '@/types/shopify'
 
-interface Props { product: ShopifyProduct; related?: ShopifyProduct[] }
+interface Props {
+  product: ShopifyProduct
+  related?: ShopifyProduct[]
+  /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
+  availability?: Record<string, boolean>
+}
 
 const SITE = 'https://www.beauticate.com'
 
-export default function ProductPage({ product: p, related = [] }: Props) {
+export default function ProductPage({ product: p, related = [], availability }: Props) {
   const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
-  const available = p.variants.nodes.some(v => v.availableForSale)
+  const isVariantAvailable = (v: ShopifyProduct['variants']['nodes'][number]) =>
+    availability?.[v.id] ?? v.availableForSale
+  const available = p.variants.nodes.some(isVariantAvailable)
 
   const variants = p.variants.nodes
   const minPrice = p.priceRange.minVariantPrice
@@ -75,7 +82,7 @@ export default function ProductPage({ product: p, related = [] }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
         <ProductImageCarousel images={images} vendor={p.vendor} title={p.title} />
 
-        <ProductBuyBox product={p} />
+        <ProductBuyBox product={p} availability={availability} />
       </div>
 
       {related.length > 0 && (

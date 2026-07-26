@@ -1,4 +1,4 @@
-import { getProductByHandle, getProductsByType, getProducts } from '@/lib/shopify'
+import { getProductByHandle, getProductsByType, getProducts, getVariantAvailability } from '@/lib/shopify'
 import ProductPage from '@/components/shop/ProductPage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -26,6 +26,10 @@ export default async function ProductRoute({ params }: Props) {
   const product = await getProductByHandle(handle)
   if (!product) notFound()
 
+  // Probe real-time stock in parallel with the related-products fetch (see
+  // getVariantAvailability — the product query's availableForSale can't be trusted).
+  const availabilityPromise = getVariantAvailability(product.variants.nodes.map(v => v.id))
+
   let pool: ShopifyProduct[] = product.productType
     ? await getProductsByType(product.productType, 8, product.vendor)
     : []
@@ -41,5 +45,7 @@ export default async function ProductRoute({ params }: Props) {
     return true
   }).slice(0, 4)
 
-  return <ProductPage product={product} related={related} />
+  const availability = await availabilityPromise
+
+  return <ProductPage product={product} related={related} availability={availability} />
 }

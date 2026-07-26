@@ -60,7 +60,10 @@ export interface ShopifyCollection {
 export interface CartLine {
   id: string
   quantity: number
-  cost: { totalAmount: ShopifyPrice }
+  cost: {
+    amountPerQuantity: ShopifyPrice
+    totalAmount: ShopifyPrice
+  }
   merchandise: {
     id: string
     title: string
