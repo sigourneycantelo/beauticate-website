@@ -3,6 +3,7 @@ import ProductPage from '@/components/shop/ProductPage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import type { ShopifyProduct } from '@/types/shopify'
+import { cleanProductTitle } from '@/lib/product-format'
 
 interface Props { params: Promise<{ handle: string }> }
 
@@ -10,12 +11,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
   const product = await getProductByHandle(handle)
   if (!product) return {}
+  const title = cleanProductTitle(product.title)
   return {
-    title: `${product.title} — ${product.vendor}`,
+    title: `${title} — ${product.vendor}`,
     description: product.description.slice(0, 160),
     alternates: { canonical: `https://www.beauticate.com/shop/products/${handle}` },
     openGraph: {
-      title: `${product.title} — ${product.vendor}`,
+      title: `${title} — ${product.vendor}`,
       images: product.featuredImage ? [product.featuredImage.url] : [],
     },
   }

@@ -3,8 +3,11 @@
 // Sub-category filters render as large image tiles (two rows of four), with a second
 // row of product-type filter buttons for whichever sub-category is selected.
 import { useState, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import ProductGrid from './ProductGrid'
+import SortSelect from './SortSelect'
+import { sortProducts } from '@/lib/product-sort'
 import type { ShopifyProduct } from '@/types/shopify'
 
 export type BrowsableProduct = ShopifyProduct & { subSlugs?: string[] }
@@ -24,8 +27,11 @@ export default function CategoryBrowser({ products, subs, initialSub, allImage }
   const [activeType, setActiveType] = useState('all')
   const resultsRef = useRef<HTMLDivElement>(null)
 
+  const searchParams = useSearchParams()
   const inSub = active === 'all' ? products : products.filter(p => p.subSlugs?.includes(active))
   const filtered = activeType === 'all' ? inSub : inSub.filter(p => (p.productType ?? '').trim() === activeType)
+  // Sort runs after the sub/type filters so it reorders exactly what's on screen.
+  const sorted = sortProducts(filtered, searchParams.get('sort'))
 
   // Obvious product types within the selected sub-category (those with 2+ pieces).
   const typeCounts = new Map<string, number>()
@@ -97,12 +103,15 @@ export default function CategoryBrowser({ products, subs, initialSub, allImage }
         </div>
       )}
 
-      <p ref={resultsRef} className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light mb-6">
-        {filtered.length} {filtered.length === 1 ? 'piece' : 'pieces'}
-      </p>
+      <div ref={resultsRef} className="flex items-center justify-between gap-4 mb-6">
+        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light">
+          {filtered.length} {filtered.length === 1 ? 'piece' : 'pieces'}
+        </p>
+        {filtered.length > 1 && <SortSelect />}
+      </div>
 
-      {filtered.length > 0 ? (
-        <ProductGrid products={filtered} />
+      {sorted.length > 0 ? (
+        <ProductGrid products={sorted} />
       ) : (
         <p className="font-serif text-charcoal-light/60 py-16 text-center">Nothing in this edit just yet.</p>
       )}

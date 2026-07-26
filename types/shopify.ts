@@ -25,6 +25,8 @@ export interface ShopifyProduct {
   id: string
   handle: string
   title: string
+  /** ISO 8601 timestamp — used for the "Newest" grid sort. */
+  createdAt?: string
   description: string
   descriptionHtml: string
   vendor: string

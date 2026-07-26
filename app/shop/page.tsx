@@ -113,9 +113,10 @@ export default async function ShopPage() {
       {/* Trust band */}
       <TrustBand />
 
-      {/* Product grid — 16 products immediately visible */}
+      {/* Product grid — capped to 2 rows (8 products); "Shop all products" carries the rest */}
       <ShopProductGrid
         products={shopProducts}
+        maxProducts={8}
         heading={
           <>
             <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>

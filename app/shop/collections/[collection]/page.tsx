@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { getCollectionByHandle } from '@/lib/shopify'
 import { getArticlesByCategory } from '@/lib/content'
 import ProductGrid from '@/components/shop/ProductGrid'
+import SortSelect from '@/components/shop/SortSelect'
+import { sortProducts } from '@/lib/product-sort'
 import ArticleGrid from '@/components/article/ArticleGrid'
 import CollectionHero from '@/components/shop/CollectionHero'
 import { notFound } from 'next/navigation'
@@ -9,7 +11,10 @@ import type { Metadata } from 'next'
 
 const SITE = 'https://www.beauticate.com'
 
-interface Props { params: Promise<{ collection: string }> }
+interface Props {
+  params: Promise<{ collection: string }>
+  searchParams: Promise<{ sort?: string }>
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { collection: handle } = await params
@@ -24,12 +29,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function CollectionPage({ params }: Props) {
+export default async function CollectionPage({ params, searchParams }: Props) {
   const { collection: handle } = await params
+  const { sort } = await searchParams
   const collection = await getCollectionByHandle(handle)
   if (!collection) notFound()
 
-  const products = collection.products.nodes
+  const products = sortProducts(collection.products.nodes, sort)
   const relatedArticles = getArticlesByCategory('sigourneys-edit').slice(0, 3)
 
   const crumbs = [
@@ -70,9 +76,12 @@ export default async function CollectionPage({ params }: Props) {
           <span className="text-ink">{collection.title}</span>
         </nav>
 
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light mb-6">
-          {products.length} {products.length === 1 ? 'piece' : 'pieces'}
-        </p>
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light">
+            {products.length} {products.length === 1 ? 'piece' : 'pieces'}
+          </p>
+          {products.length > 1 && <SortSelect />}
+        </div>
 
         <ProductGrid products={products} />
 

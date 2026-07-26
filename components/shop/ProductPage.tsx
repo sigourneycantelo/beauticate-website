@@ -3,6 +3,7 @@ import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
 import type { ShopifyProduct } from '@/types/shopify'
+import { cleanProductTitle } from '@/lib/product-format'
 
 interface Props {
   product: ShopifyProduct
@@ -15,6 +16,7 @@ const SITE = 'https://www.beauticate.com'
 
 export default function ProductPage({ product: p, related = [], availability }: Props) {
   const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
+  const title = cleanProductTitle(p.title)
   const isVariantAvailable = (v: ShopifyProduct['variants']['nodes'][number]) =>
     availability?.[v.id] ?? v.availableForSale
   const available = p.variants.nodes.some(isVariantAvailable)
@@ -27,7 +29,7 @@ export default function ProductPage({ product: p, related = [], availability }: 
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: p.title,
+    name: title,
     image: images.map(i => i.url),
     description: p.description,
     brand: { '@type': 'Brand', name: p.vendor },
@@ -58,7 +60,7 @@ export default function ProductPage({ product: p, related = [], availability }: 
   const crumbs = [
     { name: 'Home', url: `${SITE}/` },
     { name: 'Shop', url: `${SITE}/shop` },
-    { name: p.title, url: `${SITE}/shop/products/${p.handle}` },
+    { name: title, url: `${SITE}/shop/products/${p.handle}` },
   ]
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -76,7 +78,7 @@ export default function ProductPage({ product: p, related = [], availability }: 
         <span className="mx-2 opacity-40">/</span>
         <Link href="/shop" className="hover:text-ink transition-colors">Shop</Link>
         <span className="mx-2 opacity-40">/</span>
-        <span className="text-ink">{p.title}</span>
+        <span className="text-ink">{title}</span>
       </nav>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">

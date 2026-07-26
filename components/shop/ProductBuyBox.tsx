@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useCart } from './CartProvider'
 import type { ShopifyProduct } from '@/types/shopify'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
+import { cleanProductTitle } from '@/lib/product-format'
 
 const fmt = (amount: string, currency: string) =>
   new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(parseFloat(amount))
@@ -42,7 +43,7 @@ export default function ProductBuyBox({ product: p, availability }: {
   return (
     <div className="lg:sticky lg:top-28 self-start">
       <p className="font-sans text-[10px] tracking-[0.28em] uppercase text-eucalypt font-semibold">{p.vendor}</p>
-      <h1 className="font-serif font-normal mt-1.5" style={{ fontSize: 'clamp(24px,3vw,34px)', lineHeight: 1.15 }}>{p.title}</h1>
+      <h1 className="font-serif font-normal mt-1.5" style={{ fontSize: 'clamp(24px,3vw,34px)', lineHeight: 1.15 }}>{cleanProductTitle(p.title)}</h1>
 
       <div className="flex items-baseline gap-3 mt-3">
         <span className="font-serif" style={{ fontSize: '20px' }}>{fmt(price.amount, price.currencyCode)}</span>

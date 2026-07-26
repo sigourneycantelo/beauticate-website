@@ -3,11 +3,16 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getBrandCollection } from '@/lib/shopify'
 import ProductGrid from '@/components/shop/ProductGrid'
+import SortSelect from '@/components/shop/SortSelect'
+import { sortProducts } from '@/lib/product-sort'
 import CollectionHero from '@/components/shop/CollectionHero'
 
 const SITE = 'https://www.beauticate.com'
 
-interface Props { params: Promise<{ brand: string }> }
+interface Props {
+  params: Promise<{ brand: string }>
+  searchParams: Promise<{ sort?: string }>
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { brand } = await params
@@ -22,12 +27,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function BrandPage({ params }: Props) {
+export default async function BrandPage({ params, searchParams }: Props) {
   const { brand } = await params
+  const { sort } = await searchParams
   const collection = await getBrandCollection(brand)
   if (!collection) notFound()
 
-  const products = collection.products.nodes
+  const products = sortProducts(collection.products.nodes, sort)
   const crumbs = [
     { name: 'Home', url: `${SITE}/` },
     { name: 'Shop', url: `${SITE}/shop` },
@@ -66,9 +72,12 @@ export default async function BrandPage({ params }: Props) {
           <span className="text-ink">{collection.title}</span>
         </nav>
 
-        <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light mb-6">
-          {products.length} {products.length === 1 ? 'piece' : 'pieces'}
-        </p>
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light">
+            {products.length} {products.length === 1 ? 'piece' : 'pieces'}
+          </p>
+          {products.length > 1 && <SortSelect />}
+        </div>
 
         {products.length > 0 ? (
           <ProductGrid products={products} />
