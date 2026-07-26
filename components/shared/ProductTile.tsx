@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { cleanProductTitle } from '@/lib/product-format'
 
 function HeartIcon() {
   return (
@@ -37,6 +38,7 @@ export default function ProductTile({
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   const fit = cover ? 'object-cover' : 'object-contain px-4 pt-[11px] pb-4'
+  const displayName = cleanProductTitle(name)
 
   const renderImg = (src: string, alt: string, extra: string) => {
     const cls = `absolute inset-0 w-full h-full ${fit} ${extra}`
@@ -58,7 +60,7 @@ export default function ProductTile({
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
             <span className="absolute inset-0 flex items-center justify-center font-serif text-sm italic opacity-30 px-4 text-center">
-              {name}
+              {displayName}
             </span>
           )}
         {secondarySrc && renderImg(secondarySrc, secondaryAlt, 'opacity-0 transition-opacity duration-500 group-hover:opacity-100')}
@@ -83,7 +85,7 @@ export default function ProductTile({
             </p>
           )}
           <h3 className={`font-serif text-[19px] leading-[1.2] ${hasHover ? 'group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]' : ''}`}>
-            {name}
+            {displayName}
           </h3>
           {price && (
             <p className="font-serif text-[13px] opacity-65 mt-1">
