@@ -15,8 +15,7 @@ import InsidersBar from '@/components/home/InsidersBar'
 import HeroSplit from '@/components/home/HeroSplit'
 import ShopByMoment from '@/components/home/ShopByMoment'
 import ShopByCategory from '@/components/home/ShopByCategory'
-import TrustPanel from '@/components/home/TrustPanel'
-import AsSeenIn from '@/components/home/AsSeenIn'
+import PressLogoBar from '@/components/shared/PressLogoBar'
 import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
 
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
@@ -87,8 +86,8 @@ export default async function HomePage() {
       {/* 1 — Cycling hero */}
       {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
 
-      {/* 2 — Trust panel */}
-      <TrustPanel />
+      {/* 2 — Trust + press logos (one credibility moment under the hero) */}
+      <PressLogoBar className="py-12" />
 
       {/* 3 — Shop by Category */}
       <ShopByCategory />
@@ -98,9 +97,6 @@ export default async function HomePage() {
 
       {/* 4 — Voices line */}
       <TheCollective />
-
-      {/* 5 — As Seen In */}
-      <AsSeenIn />
 
       {/* 7 — Duo (most recent two stories) */}
       {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} eager />}
