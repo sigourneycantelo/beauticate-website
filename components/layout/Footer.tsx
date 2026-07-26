@@ -21,6 +21,7 @@ const FOOTER_NAV = [
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
   { label: 'Exclusive Offers', href: '/offers' },
+  { label: 'How the Shop Works', href: '/shop/how-it-works' },
   { label: 'Shipping Policy', href: '/shop/shipping' },
   { label: 'Refund Policy', href: '/shop/refund-policy' },
   { label: 'Partner With Us', href: '/shop/partners' },
@@ -66,8 +67,8 @@ export default function Footer() {
             <div className="mb-6">
               <NewsletterForm variant="dark" />
             </div>
-            <a href="mailto:info@beauticate.com" className="text-sm text-cream/70 hover:text-cream transition-colors block mb-6">
-              info@beauticate.com
+            <a href="mailto:hello@beauticate.com" className="text-sm text-cream/70 hover:text-cream transition-colors block mb-6">
+              hello@beauticate.com
             </a>
             <div className="flex flex-wrap gap-3">
               {SOCIAL_LINKS.map(s => (

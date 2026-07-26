@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import { useCart } from './CartProvider'
 import type { ShopifyProduct } from '@/types/shopify'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
@@ -8,17 +9,26 @@ const fmt = (amount: string, currency: string) =>
   new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(parseFloat(amount))
 
 // Sticky right-hand buy box: brand, title, price, editorial note, variant, qty, add-to-cart.
-export default function ProductBuyBox({ product: p }: { product: ShopifyProduct }) {
+export default function ProductBuyBox({ product: p, availability }: {
+  product: ShopifyProduct
+  /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
+  availability?: Record<string, boolean>
+}) {
   const variants = p.variants.nodes
   const [variantId, setVariantId] = useState(variants[0]?.id)
   const [qty, setQty] = useState(1)
   const [loading, setLoading] = useState(false)
   const { addItem } = useCart()
 
+  // The product query's availableForSale can't be trusted (see getVariantAvailability),
+  // so prefer the real-time cart probe when we have it for this variant.
+  const isVariantAvailable = (v: typeof variants[number]) =>
+    (availability?.[v.id] ?? v.availableForSale) ?? false
+
   const selected = variants.find(v => v.id === variantId) ?? variants[0]
   const price = selected?.price ?? p.priceRange.minVariantPrice
   const compareAt = selected?.compareAtPrice
-  const available = selected?.availableForSale ?? false
+  const available = selected ? isVariantAvailable(selected) : false
   const onSale = compareAt && parseFloat(compareAt.amount) > parseFloat(price.amount)
   const hasOptions = variants.length > 1
 
@@ -54,11 +64,14 @@ export default function ProductBuyBox({ product: p }: { product: ShopifyProduct 
             onChange={e => setVariantId(e.target.value)}
             className="w-full border border-cream-200 rounded-[2px] px-3 py-2.5 font-sans text-sm bg-white"
           >
-            {variants.map(v => (
-              <option key={v.id} value={v.id} disabled={!v.availableForSale}>
-                {v.title}{v.availableForSale ? '' : ' — sold out'}
-              </option>
-            ))}
+            {variants.map(v => {
+              const vAvailable = isVariantAvailable(v)
+              return (
+                <option key={v.id} value={v.id} disabled={!vAvailable}>
+                  {v.title}{vAvailable ? '' : ' — sold out'}
+                </option>
+              )
+            })}
           </select>
         </div>
       )}
@@ -82,6 +95,11 @@ export default function ProductBuyBox({ product: p }: { product: ShopifyProduct 
         {isFreeShipping(p.vendor)
           ? <><span className="text-eucalypt font-semibold tracking-[0.12em] uppercase">Free shipping</span> &middot; 30-day returns</>
           : <>Free shipping over $99 &middot; 30-day returns</>}
+      </p>
+      <p className="text-center mt-2">
+        <Link href="/shop/how-it-works" className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/50 hover:text-ink transition-colors underline underline-offset-2 decoration-[0.5px]">
+          How Beauticate Shop works
+        </Link>
       </p>
 
       {p.descriptionHtml && (

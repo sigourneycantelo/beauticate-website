@@ -58,13 +58,13 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Affiliate and editorial disclosure</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Affiliate and sponsored content</h2>
           <p>
-            Beauticate is an editorial platform first. Some of our articles, guides and emails
-            contain affiliate links, and if you buy through one we may earn a small commission at
-            no extra cost to you. We only ever feature products we rate, and our editorial opinions
-            are our own. They are never for sale. Whether a product sits in our shop or is linked
-            as an affiliate, our recommendation is based on merit.
+            Beauticate is an editorial platform. Some of our content contains affiliate links, and
+            some content is sponsored or produced in paid partnership with a brand. Where content is
+            sponsored or contains affiliate links, we aim to make this clear. If you buy through an
+            affiliate link, we may earn a commission at no extra cost to you. Products in our shop
+            are selected by our team, and we choose what to feature on merit.
           </p>
         </section>
 
