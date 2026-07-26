@@ -12,6 +12,7 @@ import ProductTile from '@/components/shared/ProductTile'
 import NumberedSection from '@/components/mdx/NumberedSection'
 import PullQuote from '@/components/mdx/PullQuote'
 import { getProductsByHandles } from '@/lib/shopify'
+import { formatCardPrice } from '@/lib/product-format'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
 
 interface Props {
@@ -144,10 +145,7 @@ export default async function EpisodePage({ params }: Props) {
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
     const sp = props.handle ? shopProductMap[props.handle] : undefined
     if (!sp) return <ShopItem {...props} />
-    const mp = sp.priceRange?.minVariantPrice
-    const price = mp
-      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
-      : props.price
+    const price = sp.priceRange?.minVariantPrice ? formatCardPrice(sp) : props.price
     const imgs = sp.images?.nodes ?? []
     const usingShopImage = !props.image
     return (

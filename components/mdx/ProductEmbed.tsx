@@ -2,6 +2,7 @@ import type { ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
+import { formatCardPrice } from '@/lib/product-format'
 
 interface Props {
   product: ProductLink
@@ -13,11 +14,8 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
 
   // ── Own Shopify product ───────────────────────────────────────────
   if (product.type === 'shop' && shopProduct) {
-    const price = shopProduct.priceRange?.minVariantPrice
-    const formatted = price
-      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(
-          parseFloat(price.amount)
-        )
+    const formatted = shopProduct.priceRange?.minVariantPrice
+      ? formatCardPrice(shopProduct)
       : undefined
     const imgs = shopProduct.images?.nodes ?? []
     const primary = imgs[0] ?? shopProduct.featuredImage

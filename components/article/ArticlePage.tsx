@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
+import { formatCardPrice } from '@/lib/product-format'
 import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
 import YouTubeEmbed from '@/components/mdx/YouTubeEmbed'
@@ -93,10 +94,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
       return <ProductEmbed product={productLink} />
     }
-    const price = sp.priceRange?.minVariantPrice
-    const formatted = price
-      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(parseFloat(price.amount))
-      : undefined
+    const formatted = sp.priceRange?.minVariantPrice ? formatCardPrice(sp) : undefined
     const imgs = sp.images?.nodes ?? []
     const primary = imgs[0] ?? sp.featuredImage
     const secondary = imgs[1]
@@ -121,10 +119,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
     const sp = props.handle ? shopProductMap[props.handle] : undefined
     if (!sp) return <ShopItem {...props} />
-    const mp = sp.priceRange?.minVariantPrice
-    const price = mp
-      ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: mp.currencyCode }).format(parseFloat(mp.amount))
-      : undefined
+    const price = sp.priceRange?.minVariantPrice ? formatCardPrice(sp) : undefined
     const imgs = sp.images?.nodes ?? []
     const usingShopImage = !props.image
     return (

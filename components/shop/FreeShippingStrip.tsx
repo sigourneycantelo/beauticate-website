@@ -6,10 +6,7 @@ import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
 
-function formatPrice(p: ShopifyProduct) {
-  const num = parseFloat(p.priceRange.minVariantPrice.amount)
-  return `$${num % 1 === 0 ? num.toFixed(0) : num.toFixed(2)}`
-}
+import { formatCardPrice } from '@/lib/product-format'
 
 function Card({ p }: { p: ShopifyProduct }) {
   const imgs = p.images?.nodes ?? []
@@ -26,7 +23,7 @@ function Card({ p }: { p: ShopifyProduct }) {
       badge="Free Shipping"
       brand={p.vendor}
       name={p.title}
-      price={formatPrice(p)}
+      price={formatCardPrice(p)}
     />
   )
 }
