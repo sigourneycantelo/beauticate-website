@@ -41,13 +41,13 @@ export default function ProductImageCarousel({ images, vendor, title }: Props) {
 
   if (images.length === 1) {
     return (
-      <div className="relative bg-tile rounded-[2px] overflow-hidden" style={{ aspectRatio: '3/4' }}>
+      <div className="relative bg-white rounded-[2px] overflow-hidden" style={{ aspectRatio: '1/1' }}>
         <Image
           src={images[0].url}
           alt={images[0].altText ?? `${vendor} ${title}`}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-contain p-5"
+          className="object-cover"
           priority
         />
       </div>
@@ -67,13 +67,13 @@ export default function ProductImageCarousel({ images, vendor, title }: Props) {
               key={img.url + i}
               className="flex-none w-full snap-center"
             >
-              <div className="relative bg-tile rounded-[2px] overflow-hidden" style={{ aspectRatio: '3/4' }}>
+              <div className="relative bg-white rounded-[2px] overflow-hidden" style={{ aspectRatio: '1/1' }}>
                 <Image
                   src={img.url}
                   alt={img.altText ?? `${vendor} ${title}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-contain p-5"
+                  className="object-cover"
                   priority={i === 0}
                 />
               </div>
