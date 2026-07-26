@@ -50,9 +50,10 @@ export default function ProductTile({
 
   const inner = (
     <>
-      {/* Image area — full-bleed (cover) sits on white so transparent shots blend
+      {/* Image area — square so the (mostly square) product shots fill full-bleed
+          with no crop. Full-bleed (cover) sits on white so transparent shots blend
           into the card; de-etched (contain) keeps the greige backdrop. */}
-      <div className={`relative aspect-[5/6] overflow-hidden ${cover ? 'bg-white' : 'bg-tile'}`}>
+      <div className={`relative aspect-square overflow-hidden ${cover ? 'bg-white' : 'bg-tile'}`}>
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
