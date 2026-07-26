@@ -10,7 +10,8 @@
     "start": "next start",
     "lint": "next lint",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",
-    "send-email": "npx tsx scripts/send-email.ts"
+    "send-email": "npx tsx scripts/send-email.ts",
+    "test-gift-webhook": "npx tsx scripts/test-gift-webhook.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",
