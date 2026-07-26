@@ -180,24 +180,43 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   const [megaHidden, setMegaHidden] = useState(false)
   const tick = useRef(false)
   const lastY = useRef(0)
+  const isDesktop = useRef(true)
   const wasHidden = useRef(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 901px)')
+    isDesktop.current = mq.matches
+    const onChange = (e: MediaQueryListEvent) => {
+      isDesktop.current = e.matches
+      // Desktop is pure CSS — clear any mobile hide/compact classes on the switch.
+      if (e.matches) { setScrolled(false); setHidden(false) }
+    }
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   useEffect(() => {
     const onScroll = () => {
       if (tick.current) return
       tick.current = true
       requestAnimationFrame(() => {
-        const y = window.scrollY
-        setScrolled(prev => (prev ? y > 10 : y > 64))
-        const delta = y - lastY.current
-        if (y <= 200) {
-          setHidden(false)
-        } else if (delta > 20) {
-          setHidden(true)
-        } else if (delta < -20) {
-          setHidden(false)
+        // Desktop hide is handled entirely by CSS sticky positioning (see the
+        // `.mh` rules in globals.css): the top tiers scroll off the page
+        // naturally and the persistent tier pins to the top. No JS threshold
+        // means no bounce, and no transform means no jump.
+        //
+        // Only mobile uses a JS hide — there the pillar row is a burger drawer,
+        // so we hide the bar on scroll-down and reveal it on scroll-up to keep
+        // the menu and cart reachable.
+        if (!isDesktop.current) {
+          const y = window.scrollY
+          setScrolled(prev => (prev ? y > 10 : y > 64))
+          const delta = y - lastY.current
+          if (y <= 200) setHidden(false)
+          else if (delta > 20) setHidden(true)
+          else if (delta < -20) setHidden(false)
+          lastY.current = y
         }
-        lastY.current = y
         tick.current = false
       })
     }
@@ -232,7 +251,7 @@ export default function Masthead({ pillars }: { pillars: Pillar[] }) {
   }
 
   return (
-    <header className={`mh${scrolled ? ' mh-scrolled' : ''}${hidden ? ' mh-hidden' : ''}${megaHidden ? ' mh-closing' : ''}`}>
+    <header className={`mh${isShop ? ' mh-shop' : ''}${scrolled ? ' mh-scrolled' : ''}${hidden ? ' mh-hidden' : ''}${megaHidden ? ' mh-closing' : ''}`}>
       {/* Utility tier */}
       <div className="mh-utility">
         <div className="mh-util-left">

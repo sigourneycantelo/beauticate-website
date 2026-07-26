@@ -40,15 +40,18 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
     setOpen(k)
     window.dispatchEvent(new CustomEvent('subnav-open'))
   }
+  // The dropdown is a DOM child of this container, so the container's boundary is
+  // the single source of truth: any exit (bar OR dropdown) fires onMouseLeave and
+  // closes; re-entering cancels. A short grace period covers the tab→dropdown
+  // travel. No per-tab / per-dropdown leave handlers (they raced and could leave
+  // the menu stuck open on continuous mouse-out).
+  const cancelClose = () => clearTimeout(closeT.current)
   const closeSoon = () => {
     clearTimeout(closeT.current)
-    const snapshot = openRef.current
     closeT.current = setTimeout(() => {
-      if (openRef.current === snapshot) {
-        openRef.current = null
-        setOpen(null)
-      }
-    }, 220)
+      openRef.current = null
+      setOpen(null)
+    }, 150)
   }
   useEffect(() => { openRef.current = null; setOpen(null) }, [path])
   useEffect(() => () => clearTimeout(closeT.current), [])
@@ -68,7 +71,7 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
   const listFor = (k: string | null) => (k === 'brand' ? brands : k === 'moment' ? moments : [])
 
   return (
-    <div className={`bg-white shop-subnav-sticky relative${mastheadHidden ? ' mh-away' : ''}`} style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }} onMouseLeave={closeSoon}>
+    <div className={`bg-white shop-subnav-sticky relative${mastheadHidden ? ' mh-away' : ''}`} style={{ borderBottom: '1px solid rgba(28,26,23,.10)' }} onMouseEnter={cancelClose} onMouseLeave={closeSoon}>
       <nav aria-label="Shop navigation" className="max-w-wide mx-auto flex items-center justify-center flex-nowrap" style={{ gap: '0', padding: '16px clamp(20px,6vw,104px)' }}>
         <span className="shop-subnav-prefix font-sans whitespace-nowrap" style={{ fontSize: '13px', letterSpacing: '0.18em', textTransform: 'uppercase', opacity: 0.6, marginRight: '6px' }}>Shop by:</span>
         {TABS.map((tab, i) => {
@@ -81,7 +84,6 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
               <span
                 className={`inline-flex${mobileHide}`}
                 onMouseEnter={() => (hasMenu ? openMenu(tab.key) : setOpen(null))}
-                onMouseLeave={closeSoon}
               >
                 <Link
                   href={tab.href}
@@ -100,8 +102,6 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
       {open && open !== 'about' && open !== 'freeship' && (
         <div
           className="absolute left-0 right-0 top-full bg-white border-t border-b border-[rgba(42,38,33,.10)] shadow-[0_18px_40px_-28px_rgba(42,38,33,.35)] z-[60]"
-          onMouseEnter={() => clearTimeout(closeT.current)}
-          onMouseLeave={closeSoon}
         >
           <div className="max-w-wide mx-auto px-[clamp(24px,5vw,64px)] py-9">
             {open === 'category' && (

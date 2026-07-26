@@ -24,13 +24,16 @@
 @layer base {
   html {
     @apply scroll-smooth;
-    overflow-x: hidden;
+    /* `clip` prevents horizontal scroll without creating a scroll container,
+       so it does not break `position: sticky` on the masthead / shop sub-nav.
+       (Plain `overflow-x: hidden` here resolves overflow-y to `auto` and kills sticky.) */
+    overflow-x: clip;
   }
 
   body {
     @apply bg-paper text-ink antialiased;
     font-family: var(--font-serif);
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* Editorial typography — serif body, sans navigation */
@@ -228,6 +231,19 @@
   position:sticky; top:0; z-index:1000; background:var(--mh-paper);
   border-bottom:none; font-family:var(--font-sans);
 }
+
+/* Desktop hide-on-scroll is pure CSS — the top tiers scroll off the page
+   naturally and the persistent tier pins to the top. No JS threshold (so no
+   bounce) and no transform (so nothing jumps off). */
+@media(min-width:901px){
+  /* Non-shop: the utility tier (level 1) scrolls off the top while the pillar
+     nav (level 2) sticks all the way down. Negative top = utility height, so the
+     pillar row pins at exactly 0 once the utility has scrolled past. */
+  .mh:not(.mh-shop){ top: calc(-1 * var(--mh-util-h)); }
+  /* Shop: the whole masthead (levels 1 & 2) scrolls away in normal flow; the
+     shop sub-nav (level 3) is the sticky element that pins to the top. */
+  .mh-shop{ position:relative; top:auto; }
+}
 .mh a{ color:inherit; text-decoration:none; }
 .mh-dot{ font-weight:500; }
 
@@ -294,7 +310,10 @@
   color:var(--mh-ink); opacity:0; pointer-events:none; transition:opacity .3s ease; white-space:nowrap;
 }
 .mh-home-link:hover{ color:var(--mh-wine); }
-.mh-scrolled .mh-utility{ height:0; opacity:0; border-color:transparent; }
+/* The rules below (compact utility, mini-brand, transform hide) now apply on
+   MOBILE only — desktop hide is pure CSS via sticky positioning (see the .mh
+   media block above). On mobile the pillar row is a burger drawer, so the bar
+   hides on scroll-down and reveals on scroll-up to stay reachable. */
 .mh-scrolled .mh-strapline{ display:none; }
 .mh-scrolled .mh-brand-mini{ opacity:1; pointer-events:auto; }
 .mh-scrolled .mh-home-link{ opacity:.72; pointer-events:auto; left:160px; }
@@ -471,12 +490,12 @@
 }
 .shop-grid-caption a:hover { color: #3d3d3d; }
 
-/* Shop sub-nav sticks below the collapsed masthead */
+/* Shop sub-nav (level 3). On desktop the masthead scrolls away in normal flow,
+   so the sub-nav simply pins to the very top. On mobile the utility bar stays
+   sticky above it (or hides via JS, when `mh-away` pins the sub-nav to 0). */
 .shop-subnav-sticky{
-  position:sticky; top:var(--mh-nav-h, 52px); z-index:999;
-  transition:top .32s cubic-bezier(.4,0,.2,1);
+  position:sticky; top:0; z-index:999;
 }
-.shop-subnav-sticky.mh-away{ top:0; }
 
 /* Sub-nav: full labels on desktop, compact on mobile */
 .shop-subnav-prefix{ display:none; }
@@ -484,7 +503,7 @@
 .shop-subnav-full{ display:inline; }
 
 @media(max-width:900px){
-  .shop-subnav-sticky{ top:56px; }
+  .shop-subnav-sticky{ top:56px; transition:top .32s cubic-bezier(.4,0,.2,1); }
   .shop-subnav-sticky.mh-away{ top:0; }
   .shop-subnav-prefix{ display:inline; }
   .shop-subnav-short{ display:inline; }
