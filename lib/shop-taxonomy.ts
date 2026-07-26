@@ -189,7 +189,14 @@ export const GIFTING_HANDLES = new Set<string>([
   'thoughtful-gestures-under-100', 'luxe-lovers-under-300',
 ])
 export const MOOD_MOMENTS: ShopMoment[] = SHOP_MOMENTS.filter(m => !GIFTING_HANDLES.has(m.handle))
-export const GIFTING_MOMENTS: ShopMoment[] = SHOP_MOMENTS.filter(m => GIFTING_HANDLES.has(m.handle))
+// Explicit display order for the Gifting menu: price tiers first, then occasions.
+const GIFTING_ORDER = [
+  'little-luxuries-under-50', 'thoughtful-gestures-under-100', 'luxe-lovers-under-300',
+  'best-friend-bday', 'mothers-day',
+]
+export const GIFTING_MOMENTS: ShopMoment[] = GIFTING_ORDER
+  .map(h => SHOP_MOMENTS.find(m => m.handle === h))
+  .filter((m): m is ShopMoment => Boolean(m))
 
 // ─── New In Shop ──────────────────────────────────────────────────────────────
 // The latest brands to onboard, curated by hand (Shopify's Storefront API exposes no
