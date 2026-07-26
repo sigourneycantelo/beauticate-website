@@ -67,6 +67,41 @@ const PRODUCT_FRAGMENT = `
   }
 `
 
+// Cart line prices are resolved in the cart's market context, so a cart is always
+// created with an AU buyer identity to match the AUD storefront pricing shown on
+// product pages. Line-level `cost` is the canonical "what the customer pays" figure
+// (already quantity-inclusive); `merchandise.price` is kept as a per-unit fallback.
+const CART_FRAGMENT = `
+  fragment CartFields on Cart {
+    id
+    checkoutUrl
+    totalQuantity
+    cost {
+      subtotalAmount { amount currencyCode }
+      totalAmount { amount currencyCode }
+    }
+    lines(first: 100) {
+      nodes {
+        id
+        quantity
+        cost {
+          amountPerQuantity { amount currencyCode }
+          totalAmount { amount currencyCode }
+        }
+        merchandise {
+          ... on ProductVariant {
+            id
+            title
+            price { amount currencyCode }
+            selectedOptions { name value }
+            product { id handle title vendor featuredImage { url altText width height } }
+          }
+        }
+      }
+    }
+  }
+`
+
 // ─── Products ────────────────────────────────────────────────────────────────
 
 export async function getProductByHandle(handle: string): Promise<ShopifyProduct | null> {
@@ -303,26 +338,10 @@ export async function getBrandCollection(handle: string): Promise<ShopifyCollect
 export async function createCart(): Promise<Cart | null> {
   if (!STORE_DOMAIN || !PRIVATE_TOKEN) return null
   const data = await shopifyFetch<{ cartCreate: { cart: Cart } }>(`
+    ${CART_FRAGMENT}
     mutation CreateCart {
-      cartCreate {
-        cart {
-          id checkoutUrl totalQuantity
-          cost {
-            subtotalAmount { amount currencyCode }
-            totalAmount { amount currencyCode }
-          }
-          lines(first: 100) { nodes {
-            id quantity
-            merchandise {
-              ... on ProductVariant {
-                id title
-                price { amount currencyCode }
-                selectedOptions { name value }
-                product { id handle title featuredImage { url altText width height } }
-              }
-            }
-          }}
-        }
+      cartCreate(input: { buyerIdentity: { countryCode: AU } }) {
+        cart { ...CartFields }
       }
     }
   `)
@@ -332,25 +351,9 @@ export async function createCart(): Promise<Cart | null> {
 export async function getCart(cartId: string): Promise<Cart | null> {
   if (!STORE_DOMAIN || !PRIVATE_TOKEN) return null
   const data = await shopifyFetch<{ cart: Cart }>(`
+    ${CART_FRAGMENT}
     query GetCart($cartId: ID!) {
-      cart(id: $cartId) {
-        id checkoutUrl totalQuantity
-        cost {
-          subtotalAmount { amount currencyCode }
-          totalAmount { amount currencyCode }
-        }
-        lines(first: 100) { nodes {
-          id quantity
-          merchandise {
-            ... on ProductVariant {
-              id title
-              price { amount currencyCode }
-              selectedOptions { name value }
-              product { id handle title featuredImage { url altText width height } }
-            }
-          }
-        }}
-      }
+      cart(id: $cartId) { ...CartFields }
     }
   `, { cartId })
   return (data as any)?.cart ?? null
@@ -358,26 +361,10 @@ export async function getCart(cartId: string): Promise<Cart | null> {
 
 export async function addToCart(cartId: string, variantId: string, quantity = 1): Promise<Cart> {
   const data = await shopifyFetch<{ cartLinesAdd: { cart: Cart } }>(`
+    ${CART_FRAGMENT}
     mutation AddToCart($cartId: ID!, $lines: [CartLineInput!]!) {
       cartLinesAdd(cartId: $cartId, lines: $lines) {
-        cart {
-          id checkoutUrl totalQuantity
-          cost {
-            subtotalAmount { amount currencyCode }
-            totalAmount { amount currencyCode }
-          }
-          lines(first: 100) { nodes {
-            id quantity
-            merchandise {
-              ... on ProductVariant {
-                id title
-                price { amount currencyCode }
-                selectedOptions { name value }
-                product { id handle title featuredImage { url altText width height } }
-              }
-            }
-          }}
-        }
+        cart { ...CartFields }
       }
     }
   `, { cartId, lines: [{ merchandiseId: variantId, quantity }] })
@@ -386,30 +373,50 @@ export async function addToCart(cartId: string, variantId: string, quantity = 1)
 
 export async function removeFromCart(cartId: string, lineIds: string[]): Promise<Cart> {
   const data = await shopifyFetch<{ cartLinesRemove: { cart: Cart } }>(`
+    ${CART_FRAGMENT}
     mutation RemoveFromCart($cartId: ID!, $lineIds: [ID!]!) {
       cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
-        cart {
-          id checkoutUrl totalQuantity
-          cost {
-            subtotalAmount { amount currencyCode }
-            totalAmount { amount currencyCode }
-          }
-          lines(first: 100) { nodes {
-            id quantity
-            merchandise {
-              ... on ProductVariant {
-                id title
-                price { amount currencyCode }
-                selectedOptions { name value }
-                product { id handle title featuredImage { url altText width height } }
-              }
-            }
-          }}
-        }
+        cart { ...CartFields }
       }
     }
   `, { cartId, lineIds })
   return data.cartLinesRemove.cart
+}
+
+// Real-time per-variant availability. The plain product query's `availableForSale`
+// is unreliable when the Storefront token lacks the product-inventory scope — it
+// defaults to `true` even for sold-out items. A cart, however, resolves inventory
+// for real, so we probe by creating a throwaway cart containing every variant and
+// seeing which lines Shopify clamps to quantity 0. Returns { [variantId]: true } when
+// purchasable. Fails open: an empty map means "assume available", so an API hiccup
+// never hides a sellable product (the cart drawer still catches a true out-of-stock).
+export async function getVariantAvailability(variantIds: string[]): Promise<Record<string, boolean>> {
+  if (!STORE_DOMAIN || !PRIVATE_TOKEN || variantIds.length === 0) return {}
+  const data = await shopifyFetch<{
+    cartCreate: { cart: { lines: { nodes: { quantity: number; merchandise: { id: string } }[] } } | null }
+  }>(`
+    mutation ProbeAvailability($lines: [CartLineInput!]!) {
+      cartCreate(input: { buyerIdentity: { countryCode: AU }, lines: $lines }) {
+        cart {
+          lines(first: 100) {
+            nodes {
+              quantity
+              merchandise { ... on ProductVariant { id } }
+            }
+          }
+        }
+      }
+    }
+  `, { lines: variantIds.map(id => ({ merchandiseId: id, quantity: 1 })) })
+
+  const nodes = (data as any)?.cartCreate?.cart?.lines?.nodes
+  if (!nodes) return {}
+  const map: Record<string, boolean> = {}
+  for (const n of nodes) {
+    const id = n?.merchandise?.id
+    if (id) map[id] = (n.quantity ?? 0) >= 1
+  }
+  return map
 }
 
 // ─── Sitemap helpers (lightweight, paginated) ─────────────────────────────────
