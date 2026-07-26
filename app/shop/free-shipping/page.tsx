@@ -69,7 +69,7 @@ export default async function FreeShippingPage() {
         image={null}
         eyebrow="Shop"
         title="Free Shipping"
-        description="Complimentary delivery on every order from these select brands — no minimum spend."
+        description="Complimentary delivery on orders from these select brands — no minimum spend."
       />
 
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
