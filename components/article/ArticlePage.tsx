@@ -15,6 +15,7 @@ import ArticleHero from './ArticleHero'
 import ShareButtons from './ShareButtons'
 import { resolveSchemaType } from '@/lib/seo'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
+import CollectionRail from '@/components/mdx/CollectionRail'
 import PullQuote from '@/components/mdx/PullQuote'
 import ImageCarousel, { CarouselSlide } from '@/components/mdx/ImageCarousel'
 import { ShopGrid, ShopItem, ShopCTA } from '@/components/mdx/ShopGrid'
@@ -137,7 +138,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   }
 
   const mdxComponents = {
-    YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed,
+    YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, CollectionRail,
     InlineProduct, PullQuote, ImageCarousel, CarouselSlide, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
     ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
