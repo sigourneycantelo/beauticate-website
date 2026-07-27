@@ -3,10 +3,7 @@ import Image from 'next/image'
 import type { ShopifyCollection, ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
 
-function formatPrice(p: ShopifyProduct) {
-  const num = parseFloat(p.priceRange.minVariantPrice.amount)
-  return `$${num % 1 === 0 ? num.toFixed(0) : num.toFixed(2)}`
-}
+import { formatCardPrice } from '@/lib/product-format'
 
 export default function CollectionFeature({ collection }: { collection: ShopifyCollection }) {
   const products = (collection.products?.nodes ?? []).slice(0, 4)
@@ -64,7 +61,7 @@ export default function CollectionFeature({ collection }: { collection: ShopifyC
                 secondaryAlt={secondary?.altText ?? p.title}
                 brand={p.vendor}
                 name={p.title}
-                price={formatPrice(p)}
+                price={formatCardPrice(p)}
               />
             )
           })}

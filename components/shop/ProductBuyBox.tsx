@@ -16,7 +16,17 @@ export default function ProductBuyBox({ product: p, availability }: {
   availability?: Record<string, boolean>
 }) {
   const variants = p.variants.nodes
-  const [variantId, setVariantId] = useState(variants[0]?.id)
+  // Open on the cheapest in-stock variant so the price shown matches the card's
+  // "From $X" (Shopify's first variant is often not the cheapest). Falls back to
+  // cheapest overall, then the first variant.
+  const cheapestFirst = [...variants].sort(
+    (a, b) => parseFloat(a.price.amount) - parseFloat(b.price.amount)
+  )
+  const defaultVariant =
+    cheapestFirst.find(v => (availability?.[v.id] ?? v.availableForSale)) ??
+    cheapestFirst[0] ??
+    variants[0]
+  const [variantId, setVariantId] = useState(defaultVariant?.id)
   const [qty, setQty] = useState(1)
   const [loading, setLoading] = useState(false)
   const { addItem } = useCart()
