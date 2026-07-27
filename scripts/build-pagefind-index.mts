@@ -93,7 +93,7 @@ function walkArticles(dir: string, results: Record_[]): void {
         .filter(Boolean)
         .join('. ')
 
-      const meta: Meta = { title: String(fm.title) }
+      const meta: Meta = { title: String(fm.title), type: 'Article' }
       if (fm.featured_image) meta.image = String(fm.featured_image)
       if (fm.featured_image_alt) meta.image_alt = String(fm.featured_image_alt)
       if (fm.excerpt) meta.excerpt = String(fm.excerpt)
@@ -128,16 +128,17 @@ async function buildShopRecords(): Promise<Record_[]> {
       const content = [p.title, p.vendor, p.productType, ...(p.tags ?? []), p.description]
         .filter(Boolean)
         .join('. ')
-      const meta: Meta = { title: p.title }
+      const meta: Meta = { title: p.title, type: 'Product' }
       if (p.vendor) meta.brand = p.vendor
       if (p.featuredImage?.url) meta.image = p.featuredImage.url
       if (p.featuredImage?.altText) meta.image_alt = p.featuredImage.altText
-      const price = p.priceRange?.minVariantPrice
-      if (price?.amount) {
-        const amount = Math.round(Number(price.amount)).toString()
-        meta.excerpt = [p.vendor, `$${amount} ${price.currencyCode ?? ''}`.trim()].filter(Boolean).join(' · ')
-      } else if (p.vendor) {
-        meta.excerpt = p.vendor
+      // Card price: "From $X" for a variant range, plain "$X" for a single price —
+      // mirrors formatCardPrice so search cards read the same as shop grids.
+      const min = Number(p.priceRange?.minVariantPrice?.amount)
+      if (Number.isFinite(min)) {
+        const max = Number(p.priceRange?.maxVariantPrice?.amount ?? min)
+        const money = (n: number) => `$${Number.isInteger(n) ? n.toFixed(0) : n.toFixed(2)}`
+        meta.price = max > min + 0.001 ? `From ${money(min)}` : money(min)
       }
       records.push({
         url: `/shop/products/${p.handle}`,
@@ -160,7 +161,7 @@ async function buildShopRecords(): Promise<Record_[]> {
       if (!c.handle || !c.title || NON_BRAND_COLLECTION_HANDLES.has(c.handle)) continue
       const productTitles = (c.products?.nodes ?? []).map(n => n.title).filter(Boolean)
       const content = [c.title, c.description, ...productTitles].filter(Boolean).join('. ')
-      const meta: Meta = { title: c.title }
+      const meta: Meta = { title: c.title, type: 'Brand' }
       if (c.image?.url) meta.image = c.image.url
       if (c.image?.altText) meta.image_alt = c.image.altText
       meta.excerpt = c.description ? String(c.description).slice(0, 160) : 'Shop the brand'
