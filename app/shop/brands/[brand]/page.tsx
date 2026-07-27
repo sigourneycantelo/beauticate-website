@@ -6,6 +6,9 @@ import ProductGrid from '@/components/shop/ProductGrid'
 import SortSelect from '@/components/shop/SortSelect'
 import { sortProducts } from '@/lib/product-sort'
 import CollectionHero from '@/components/shop/CollectionHero'
+import { BRAND_HEROES } from '@/data/brand-heroes'
+import { BRAND_DESCRIPTIONS } from '@/data/brand-descriptions'
+import { SHOP_FOUNDERS } from '@/data/shop-founders'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -18,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { brand } = await params
   const collection = await getBrandCollection(brand)
   if (!collection) return {}
-  const desc = (collection.description?.slice(0, 160)) || `Shop ${collection.title} at Beauticate — curated by our editorial team and founder Sigourney Cantelo.`
+  const desc = (BRAND_DESCRIPTIONS[brand] || collection.description)?.slice(0, 160) || `Shop ${collection.title} at Beauticate — curated by our editorial team and founder Sigourney Cantelo.`
   return {
     title: `${collection.title} | Beauticate Shop`,
     description: desc,
@@ -59,7 +62,19 @@ export default async function BrandPage({ params, searchParams }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
-      <CollectionHero image={collection.image} eyebrow="Brand" title={collection.title} description={collection.description} />
+      <CollectionHero
+        image={BRAND_HEROES[brand] ? { url: BRAND_HEROES[brand], altText: collection.title } : collection.image}
+        eyebrow="Brand"
+        title={collection.title}
+        description={BRAND_DESCRIPTIONS[brand] || collection.description}
+        founder={(() => {
+          const f = SHOP_FOUNDERS.find(f => {
+            const h = f.href.replace('/shop/brands/', '')
+            return h === brand || `${h}-1` === brand || h === brand.replace(/-1$/, '')
+          })
+          return f ? { name: f.name, image: f.image, brand: f.brand } : undefined
+        })()}
+      />
 
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
         <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-5">
