@@ -1,6 +1,5 @@
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
-import { appendToSheet } from '@/lib/sheets'
 import { NextResponse } from 'next/server'
 
 // Dedicated "Shop Partner Interest" list — kept separate from the consumer
@@ -20,14 +19,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Email required' }, { status: 400 })
   }
 
-  const submittedAt = new Date().toISOString()
-
-  // Fan out: Klaviyo (tag on dedicated list), Google Sheet (Woodpecker handoff),
-  // and a direct Woodpecker push. Independent — one failing must not lose the lead.
-  const tasks: Promise<unknown>[] = [
-    appendToSheet('Partner Interest', [submittedAt, email, 'partners_page']),
-    addProspect(email),
-  ]
+  // Fan out to Klaviyo (tagged on the dedicated list) and Woodpecker (cold-outreach
+  // prospect). Independent — one failing must not lose the lead.
+  const tasks: Promise<unknown>[] = [addProspect(email)]
 
   if (PARTNER_LIST_ID) {
     tasks.push(
@@ -38,8 +32,7 @@ export async function POST(req: Request) {
   }
 
   const results = await Promise.allSettled(tasks)
-  // appendToSheet resolves `false` when unconfigured/failed — don't count that as success.
-  const anyOk = results.some(r => r.status === 'fulfilled' && r.value !== false)
+  const anyOk = results.some(r => r.status === 'fulfilled')
 
   if (!anyOk) {
     return NextResponse.json({ error: 'Registration failed' }, { status: 500 })
