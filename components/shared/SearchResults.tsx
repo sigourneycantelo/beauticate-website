@@ -22,6 +22,11 @@ export default function SearchResults({ query }: Props) {
       const ui = new window.PagefindUI({
         element: '#pagefind-search',
         showSubResults: true,
+        showImages: true,
+        // Group results by record type (Article / Product / Brand). Pagefind reads
+        // the `type` filter baked into each record at build time and renders the
+        // filter panel automatically.
+        filters: { type: true },
       })
       // Run the query from the URL (?q=). PagefindUI has no `defaultValue`
       // option — triggerSearch fills the box and executes the search.

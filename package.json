@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/build-pagefind-index.mjs && node scripts/build-chat-index.mjs && next build",
-    "build:search": "node scripts/build-pagefind-index.mjs",
+    "build": "npx tsx scripts/build-pagefind-index.mts && node scripts/build-chat-index.mjs && next build",
+    "build:search": "npx tsx scripts/build-pagefind-index.mts",
     "build:chat": "node scripts/build-chat-index.mjs",
     "start": "next start",
     "lint": "next lint",
