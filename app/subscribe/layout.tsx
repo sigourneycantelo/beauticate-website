@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Join the Beauticate Insiders',
-  description: 'One beautifully edited email a week. Delivered to your inbox, every Sunday.',
+  title: 'Subscribe to The Edit',
+  description: 'Beauty, wellness, style, living and travel, delivered fortnightly. Subscribe to The Edit for first access to events, offers and more.',
 }
 
 export default function SubscribeLayout({ children }: { children: React.ReactNode }) {
