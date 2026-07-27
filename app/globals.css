@@ -201,7 +201,7 @@
   .story-rail { overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: .5rem;
     scrollbar-width: none; -ms-overflow-style: none; }
   .story-rail::-webkit-scrollbar { display: none; }
-  .story-track { flex-direction: row; gap: 0; position: relative; }
+  .story-track { flex-direction: row; gap: 0; position: relative; width: max-content; }
   .milestone { flex: 0 0 clamp(240px, 26vw, 300px); scroll-snap-align: start; padding-left: 0; padding-right: 2rem; padding-top: 2.9rem; }
   .story-line { display: none; }
   .story-track::before {
