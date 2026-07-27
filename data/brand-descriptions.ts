@@ -2,6 +2,7 @@
 // SHOP_FOUNDERS, the description should mention the founder by name with context.
 // Key = Shopify collection handle (try both with and without -1 suffix).
 export const BRAND_DESCRIPTIONS: Record<string, string> = {
+  'maison-balzac': 'Founded by French-born, Sydney-based designer Elise Pioch, Maison Balzac creates hand-poured candles, glassware and objets for the home — each piece a nod to Parisian elegance and Australian ease.',
   'maison-balzac-1': 'Founded by French-born, Sydney-based designer Elise Pioch, Maison Balzac creates hand-poured candles, glassware and objets for the home — each piece a nod to Parisian elegance and Australian ease.',
   'lumira': 'Created by Almira Armstrong in Sydney, Lumira is a fine fragrance house known for its evocative, travel-inspired scents. Each candle and perfume is crafted to transport — from Arabian oud to Tuscan fig groves.',
   'lumira-1': 'Created by Almira Armstrong in Sydney, Lumira is a fine fragrance house known for its evocative, travel-inspired scents. Each candle and perfume is crafted to transport — from Arabian oud to Tuscan fig groves.',
