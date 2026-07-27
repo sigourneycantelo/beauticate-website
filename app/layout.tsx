@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { cookies } from 'next/headers'
 import { EB_Garamond, Hanken_Grotesk, Italiana, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
@@ -44,6 +45,7 @@ import ScrollReveal from '@/components/shared/ScrollReveal'
 import BetaTicker from '@/components/home/BetaTicker'
 import CartDrawer from '@/components/shop/CartDrawer'
 import AskSigLauncher from '@/components/chat/AskSigLauncher'
+import MetaPixel from '@/components/analytics/MetaPixel'
 import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
@@ -63,6 +65,13 @@ export const metadata: Metadata = {
     site: '@beauticate',
   },
   robots: { index: true, follow: true },
+  // Meta (Facebook) domain verification for beauticate.com — renders
+  // <meta name="facebook-domain-verification" ...> into <head> on every page.
+  verification: {
+    other: {
+      'facebook-domain-verification': 'ja6130rj6o80vjdzsv8qo3d8utdyl8',
+    },
+  },
 }
 
 // Organisation + Person schema — tells AI engines exactly who Beauticate is.
@@ -156,6 +165,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <>
             {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
               <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+            )}
+            {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+              <Suspense fallback={null}>
+                <MetaPixel />
+              </Suspense>
             )}
             <Script
               id="klaviyo-sdk"

@@ -1,6 +1,7 @@
 'use client'
 import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react'
 import type { Cart } from '@/types/shopify'
+import { track } from '@/lib/meta/pixel'
 
 const STORAGE_KEY = 'beauticate_cart_id'
 const STORAGE_TTL = 30 * 24 * 60 * 60 * 1000 // 30 days
@@ -99,6 +100,25 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       setCart(updated)
       saveCartId(updated.id)
       setIsOpen(true)
+
+      // Meta Pixel + CAPI: AddToCart for a real on-site cart add. This covers
+      // every add-to-cart entry point (AddToCartButton, ProductBuyBox, MDX
+      // ProductEmbed) since they all funnel through here.
+      try {
+        const line = updated.lines?.nodes?.find((l: any) => l.merchandise?.id === variantId)
+        const m = line?.merchandise
+        const price = m?.price
+        const productId = m?.product?.id ?? variantId
+        track('AddToCart', {
+          content_type: 'product',
+          content_ids: [productId],
+          ...(m?.product?.title ? { content_name: m.product.title } : {}),
+          contents: [{ id: productId, quantity }],
+          ...(price ? { value: parseFloat(price.amount) * quantity, currency: price.currencyCode } : {}),
+        })
+      } catch {
+        // analytics must never break add-to-cart
+      }
     }
   }, [getOrCreateCart])
 

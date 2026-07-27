@@ -83,6 +83,7 @@ export default function PrivacyPage() {
             <li><strong>Stripe.</strong> Processes your payment securely.</li>
             <li><strong>Klaviyo.</strong> Manages our order emails and newsletters.</li>
             <li><strong>Google.</strong> Provides analytics that help us understand how the site is used.</li>
+            <li><strong>Meta (Facebook &amp; Instagram).</strong> We use the Meta Pixel and Conversions API to measure how our advertising performs and to show more relevant ads. This may involve sharing limited data such as your IP address, browser information and the pages you view. You can control ad personalisation in your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener noreferrer" className="underline">Meta ad preferences</a>.</li>
             <li><strong>Couriers and Australia Post.</strong> Deliver your parcel, arranged by the brand that ships it.</li>
             <li><strong>Authorities and advisers.</strong> Where we are required or authorised by law, or need to protect our legal rights.</li>
           </ul>
@@ -91,7 +92,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-serif text-xl text-ink mb-4">Overseas transfer</h2>
           <p>
-            Some of our providers, including Shopify, Stripe, Klaviyo and Google, store data on
+            Some of our providers, including Shopify, Stripe, Klaviyo, Google and Meta, store data on
             servers outside Australia, including in the United States. Where your information is
             handled overseas, we take reasonable steps to ensure it is protected consistent with
             the Australian Privacy Principles.
@@ -102,9 +103,12 @@ export default function PrivacyPage() {
           <h2 className="font-serif text-xl text-ink mb-4">Cookies</h2>
           <p>
             Our site uses cookies to remember your preferences, keep your cart working through
-            checkout and help us understand site usage. Most browsers accept cookies automatically.
+            checkout and help us understand site usage. Some of these are analytics and advertising
+            cookies — including Google Analytics and the Meta (Facebook) Pixel — which help us
+            measure how the site and our ads perform. Most browsers accept cookies automatically.
             You can set your browser to decline them, though some parts of the site may not work
-            as well if you do.
+            as well if you do. You can also opt out of personalised ads through your{' '}
+            <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener noreferrer" className="underline">Meta ad preferences</a>.
           </p>
         </section>
 

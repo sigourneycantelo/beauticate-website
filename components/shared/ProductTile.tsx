@@ -107,8 +107,21 @@ export default function ProductTile({
 
   if (!href) return <div className={cls}>{inner}</div>
 
+  // Outbound "shop this" links fire a Meta AddToCart via the delegated listener
+  // in MetaPixel. Only external (affiliate / brand) links are tagged — internal
+  // tiles just navigate to a PDP, which fires its own ViewContent.
+  const trackAttrs = external
+    ? {
+        'data-mp-addtocart': '',
+        'data-mp-name': displayName,
+        ...(brand ? { 'data-mp-brand': brand } : {}),
+        ...(price ? { 'data-mp-price': price.replace(/[^0-9.]/g, '') } : {}),
+        'data-mp-currency': 'AUD',
+      }
+    : {}
+
   return external ? (
-    <a href={href} target="_blank" rel={follow ? 'noopener' : 'sponsored noopener'} className={cls}>
+    <a href={href} target="_blank" rel={follow ? 'noopener' : 'sponsored noopener'} className={cls} {...trackAttrs}>
       {inner}
     </a>
   ) : (

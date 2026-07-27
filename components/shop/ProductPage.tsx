@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import MetaViewContent from '@/components/analytics/MetaViewContent'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
@@ -68,8 +69,19 @@ export default function ProductPage({ product: p, related = [], availability }: 
     itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
   }
 
+  const metaContentId = p.id?.split('/').pop() || p.handle
+
   return (
     <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(20px,4vw,56px)]">
+      {/* Meta Pixel + CAPI: ViewContent for this product */}
+      <MetaViewContent
+        contentType="product"
+        contentIds={[metaContentId]}
+        contentName={title}
+        contentCategory={p.productType || p.vendor}
+        value={minPrice.amount}
+        currency={minPrice.currencyCode}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 

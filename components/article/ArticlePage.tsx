@@ -35,6 +35,7 @@ import FoundersPanel from '@/components/shop/FoundersPanel'
 import StatBand, { Stat } from '@/components/mdx/StatBand'
 import ProductTile from '@/components/shared/ProductTile'
 import SubscribeBand from '@/components/shared/SubscribeBand'
+import MetaViewContent from '@/components/analytics/MetaViewContent'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
@@ -153,6 +154,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
   return (
     <article className="pb-16 md:pb-0">
+      {/* Meta Pixel + CAPI: ViewContent for this article */}
+      <MetaViewContent
+        contentType="article"
+        contentIds={[f.slug]}
+        contentName={f.title}
+        contentCategory={f.subcategory ? `${f.category}/${f.subcategory}` : f.category}
+      />
       {/* Hero: full-bleed landscape or editorial split */}
       <ArticleHero frontmatter={f} />
 
