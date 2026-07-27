@@ -32,13 +32,13 @@ export default function CollectionHero({ image, eyebrow, title, description: raw
         <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal-light/60">{eyebrow}</p>
         <h1 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(36px,5vw,64px)', lineHeight: 1 }}>{title}</h1>
         {(description || founder) && (
-          <div className="flex items-start justify-center gap-5 mt-5 mx-auto max-w-[54ch]">
+          <div className="flex items-stretch justify-center gap-5 mt-5 mx-auto max-w-[54ch]">
             {founder && (
-              <div className="shrink-0">
-                <div className="relative overflow-hidden rounded-[2px]" style={{ width: 72, height: 72 }}>
-                  <Image src={founder.image} alt={founder.name} fill sizes="72px" className="object-cover object-[50%_20%]" />
+              <div className="shrink-0 flex flex-col items-center">
+                <div className="relative overflow-hidden rounded-[2px] flex-1" style={{ width: 120, minHeight: 100 }}>
+                  <Image src={founder.image} alt={founder.name} fill sizes="120px" className="object-cover object-[50%_20%]" />
                 </div>
-                <p className="font-sans mt-1.5 text-center" style={{ fontSize: '9px', letterSpacing: '0.04em', opacity: 0.5 }}>{founder.name}</p>
+                <p className="font-sans mt-1.5 text-center" style={{ fontSize: '10px', letterSpacing: '0.04em', opacity: 0.5 }}>{founder.name}</p>
               </div>
             )}
             {description && (
@@ -55,7 +55,7 @@ export default function CollectionHero({ image, eyebrow, title, description: raw
   return (
     <section
       className="relative w-full overflow-hidden"
-      style={{ aspectRatio: '16 / 9', backgroundColor: '#141210' }}
+      style={{ aspectRatio: '3 / 2', backgroundColor: '#141210' }}
     >
       <Image src={image.url} alt={image.altText ?? title} fill priority sizes="100vw" className="object-cover" />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.40) 100%)' }} />
@@ -63,13 +63,13 @@ export default function CollectionHero({ image, eyebrow, title, description: raw
         <p className="font-sans text-paper/80 mb-3" style={{ fontSize: '11px', letterSpacing: '0.34em', textTransform: 'uppercase' }}>{eyebrow}</p>
         <h1 className="font-serif font-normal text-paper" style={{ fontSize: 'clamp(38px,5.5vw,66px)', letterSpacing: '0.03em', textShadow: '0 1px 24px rgba(0,0,0,0.28)' }}>{title}</h1>
         {(description || founder) && (
-          <div className="flex items-start justify-center gap-4 mt-5 max-w-[56ch]">
+          <div className="flex items-stretch justify-center gap-4 mt-5 max-w-[56ch]">
             {founder && (
-              <div className="shrink-0">
-                <div className="relative overflow-hidden rounded-[2px] ring-1 ring-white/20" style={{ width: 64, height: 64 }}>
-                  <Image src={founder.image} alt={founder.name} fill sizes="64px" className="object-cover object-[50%_20%]" />
+              <div className="shrink-0 flex flex-col items-center">
+                <div className="relative overflow-hidden rounded-[2px] ring-1 ring-white/20 flex-1" style={{ width: 110, minHeight: 90 }}>
+                  <Image src={founder.image} alt={founder.name} fill sizes="110px" className="object-cover object-[50%_20%]" />
                 </div>
-                <p className="font-sans mt-1 text-center text-paper/70" style={{ fontSize: '9px', letterSpacing: '0.04em' }}>{founder.name}</p>
+                <p className="font-sans mt-1 text-center text-paper/70" style={{ fontSize: '10px', letterSpacing: '0.04em' }}>{founder.name}</p>
               </div>
             )}
             {description && (
