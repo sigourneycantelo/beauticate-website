@@ -4,7 +4,19 @@ import { useState, FormEvent } from 'react'
 
 type Variant = 'light' | 'dark'
 
-export default function NewsletterForm({ variant = 'light' }: { variant?: Variant }) {
+export default function NewsletterForm({
+  variant = 'light',
+  source = 'footer',
+  endpoint = '/api/subscribe',
+  buttonLabel = 'Subscribe',
+  successMessage = 'You’re in. Welcome to the edit.',
+}: {
+  variant?: Variant
+  source?: string
+  endpoint?: string
+  buttonLabel?: string
+  successMessage?: string
+}) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
@@ -12,10 +24,10 @@ export default function NewsletterForm({ variant = 'light' }: { variant?: Varian
     e.preventDefault()
     setStatus('loading')
     try {
-      const res = await fetch('/api/subscribe', {
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'footer' }),
+        body: JSON.stringify({ email, source }),
       })
       if (!res.ok) throw new Error()
       setStatus('success')
@@ -30,7 +42,7 @@ export default function NewsletterForm({ variant = 'light' }: { variant?: Varian
   if (status === 'success') {
     return (
       <p className={`font-serif italic text-sm ${isDark ? 'text-cream/70' : 'opacity-70'}`}>
-        You&rsquo;re in. Welcome to the edit.
+        {successMessage}
       </p>
     )
   }
@@ -52,13 +64,13 @@ export default function NewsletterForm({ variant = 'light' }: { variant?: Varian
       <button
         type="submit"
         disabled={status === 'loading'}
-        className={`font-sans text-[10.5px] tracking-[0.2em] uppercase px-5 cursor-pointer disabled:opacity-50 ${
+        className={`font-sans text-[10.5px] tracking-[0.2em] uppercase px-5 whitespace-nowrap cursor-pointer disabled:opacity-50 ${
           isDark
             ? 'bg-cream text-charcoal border border-cream'
             : 'bg-charcoal text-white border border-charcoal'
         }`}
       >
-        {status === 'loading' ? '...' : 'Subscribe'}
+        {status === 'loading' ? '...' : buttonLabel}
       </button>
     </form>
   )
