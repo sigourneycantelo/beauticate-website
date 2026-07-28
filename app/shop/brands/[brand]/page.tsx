@@ -7,7 +7,6 @@ import SortSelect from '@/components/shop/SortSelect'
 import { sortProducts } from '@/lib/product-sort'
 import CollectionHero from '@/components/shop/CollectionHero'
 import { BRAND_HEROES } from '@/data/brand-heroes'
-import { BRAND_DESCRIPTIONS } from '@/data/brand-descriptions'
 import { SHOP_FOUNDERS } from '@/data/shop-founders'
 
 const SITE = 'https://www.beauticate.com'
@@ -21,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { brand } = await params
   const collection = await getBrandCollection(brand)
   if (!collection) return {}
-  const desc = (BRAND_DESCRIPTIONS[brand] || collection.description)?.slice(0, 160) || `Shop ${collection.title} at Beauticate — curated by our editorial team and founder Sigourney Cantelo.`
+  const desc = (collection.description?.slice(0, 160)) || `Shop ${collection.title} at Beauticate — curated by our editorial team and founder Sigourney Cantelo.`
   return {
     title: `${collection.title} | Beauticate Shop`,
     description: desc,
@@ -66,7 +65,7 @@ export default async function BrandPage({ params, searchParams }: Props) {
         image={BRAND_HEROES[brand] ? { url: BRAND_HEROES[brand], altText: collection.title } : collection.image}
         eyebrow="Brand"
         title={collection.title}
-        description={BRAND_DESCRIPTIONS[brand] || collection.description}
+        description={collection.description}
         founder={(() => {
           const f = SHOP_FOUNDERS.find(f => {
             const h = f.href.replace('/shop/brands/', '')
