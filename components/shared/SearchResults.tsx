@@ -86,9 +86,9 @@ export default function SearchResults({ query }: Props) {
 
   const tabs: { key: Tab; label: string; count: number }[] = [
     { key: 'all', label: 'All', count: total },
+    { key: 'Article', label: 'Stories', count: groups.Article.length },
     { key: 'Product', label: 'Products', count: groups.Product.length },
     { key: 'Brand', label: 'Brands', count: groups.Brand.length },
-    { key: 'Article', label: 'Stories', count: groups.Article.length },
   ]
 
   return (
@@ -138,9 +138,24 @@ export default function SearchResults({ query }: Props) {
         </p>
       )}
 
-      {/* Sections — order puts the shop first, stories last. In a dedicated tab,
-          only that group renders (uncapped). */}
+      {/* Sections — editorial first: Stories lead whenever there are article
+          matches, then the shop. Sections only render when they have results, so
+          a query with no articles falls back to Products/Brands leading. In a
+          dedicated tab, only that group renders (uncapped). */}
       <div className="mt-8 space-y-14">
+        {(tab === 'all' || tab === 'Article') && groups.Article.length > 0 && (
+          <Section
+            title="Stories" count={groups.Article.length}
+            showAll={tab === 'Article'} onViewAll={() => setTab('Article')}
+          >
+            <div className="divide-y divide-charcoal/10 border-t border-charcoal/10">
+              {(tab === 'all' ? groups.Article.slice(0, PREVIEW.Article) : groups.Article).map(h => (
+                <ArticleRow key={h.url} hit={h} />
+              ))}
+            </div>
+          </Section>
+        )}
+
         {(tab === 'all' || tab === 'Product') && groups.Product.length > 0 && (
           <Section
             title="Products" count={groups.Product.length}
@@ -170,19 +185,6 @@ export default function SearchResults({ query }: Props) {
                   primarySrc={h.meta.image} primaryAlt={h.meta.image_alt || h.meta.title}
                   cornerLabel="Brand" name={h.meta.title || ''}
                 />
-              ))}
-            </div>
-          </Section>
-        )}
-
-        {(tab === 'all' || tab === 'Article') && groups.Article.length > 0 && (
-          <Section
-            title="Stories" count={groups.Article.length}
-            showAll={tab === 'Article'} onViewAll={() => setTab('Article')}
-          >
-            <div className="divide-y divide-charcoal/10 border-t border-charcoal/10">
-              {(tab === 'all' ? groups.Article.slice(0, PREVIEW.Article) : groups.Article).map(h => (
-                <ArticleRow key={h.url} hit={h} />
               ))}
             </div>
           </Section>
