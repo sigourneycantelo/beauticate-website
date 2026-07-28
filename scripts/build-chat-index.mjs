@@ -140,7 +140,7 @@ async function fetchShopifyProducts() {
       price: p.priceRange?.minVariantPrice?.amount,
       currency: p.priceRange?.minVariantPrice?.currencyCode,
       available: p.variants?.nodes?.[0]?.availableForSale ?? false,
-      url: `https://beauticate.shop/products/${p.handle}`,
+      url: `/shop/products/${p.handle}`,
     }))
     console.log(`  Shopify: ${products.length} products fetched`)
     return products

@@ -23,9 +23,9 @@ Style:
 
 Links and products:
 - When you mention a Beauticate article, link to it: [Article Title](url)
-- When you mention a product from beauticate.shop, link to it: [Product Name](https://beauticate.shop/products/handle)
-- ARTICLE BEFORE PRODUCT: When recommending a product, always link the relevant Beauticate article first so the reader can get educated, then link the product. E.g. "I reviewed the [Dyson Supersonic R](/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review) and it's proper good. You can grab it [here](https://beauticate.shop/products/...)." The article link comes first in the copy, the shop link second.
-- PRODUCT PRIORITY: Always recommend beauticate.shop products first. Only mention affiliate or external retailer products if the shop doesn't stock something relevant. Weave product suggestions in casually and naturally, never be salesy.
+- When you mention a product we stock, link to it on our own shop: [Product Name](/shop/products/handle) — always use the internal /shop path, never an external shop domain.
+- ARTICLE BEFORE PRODUCT: When recommending a product, always link the relevant Beauticate article first so the reader can get educated, then link the product. E.g. "I reviewed the [Dyson Supersonic R](/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review) and it's proper good. You can grab it [here](/shop/products/...)." The article link comes first in the copy, the shop link second.
+- PRODUCT PRIORITY: Always recommend our own shop products first. Only mention affiliate or external retailer products if the shop doesn't stock something relevant. Weave product suggestions in casually and naturally, never be salesy.
 - Every response should drive readers back to Beauticate content where possible.
 - AUTHORSHIP RULE: NEVER say "I wrote about this" or "I reviewed this" unless the article's author is Sigourney Cantelo. For articles by other authors, say "we covered this on Beauticate" or "there's a great piece on this on Beauticate" and link it. You are Sigourney, so "I wrote" must only refer to your own work.
 
@@ -105,13 +105,13 @@ function buildSystemPrompt(
       return `- [${p.title}](${p.url})${price} by ${p.vendor}${avail}\n  ${p.description.slice(0, 150)}`
     }).join('\n')
 
-    parts.push(`\n\n## Shop products (beauticate.shop)\nThese are products we stock. Casually suggest them where relevant. Always link to the shop URL.\n\n${productContext}`)
+    parts.push(`\n\n## Shop products (our shop)\nThese are products we stock. Casually suggest them where relevant. Always link to the internal /shop URL.\n\n${productContext}`)
   }
 
   if (articles.length > 0) {
     const context = articles.map(a => {
       const articleProducts = a.products.length > 0
-        ? `\nShop products: ${a.products.map(p => p.handle ? `[${p.name}](https://beauticate.shop/products/${p.handle})` : p.name).join(', ')}`
+        ? `\nShop products: ${a.products.map(p => p.handle ? `[${p.name}](/shop/products/${p.handle})` : p.name).join(', ')}`
         : ''
       const author = a.author ? `\nAuthor: ${a.author}` : ''
       return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}\n${a.excerpt}\n\n${a.body}${articleProducts}`
