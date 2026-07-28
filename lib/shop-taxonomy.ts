@@ -155,7 +155,7 @@ export const SHOP_BRANDS: ShopBrand[] = [
   { name: 'Estetika', handle: 'estetika' },
   { name: 'Eir Women', handle: 'eir-women' },
   { name: 'Innour', handle: 'innour' },
-  { name: 'Bon Wellness', handle: 'bon-patch' },
+  { name: 'Bonwellness', handle: 'bon-patch' },
   { name: 'OiTO Haircare', handle: 'oito-haircare' },
   { name: 'Lash Armour', handle: 'lash-armour' },
   { name: 'buj', handle: 'buj' },
@@ -225,7 +225,7 @@ export const CURATOR_EDITS: CuratorEdit[] = [
 // conditional free shipping (e.g. "over $110") are excluded — only unconditional.
 export const FREE_SHIPPING_VENDORS = new Set<string>([
   'Archer Farrar Perfume Atelier',
-  'Bon Wellness',
+  'Bonwellness',
   'buj',
   'Estetika',
   'Kiicity',
