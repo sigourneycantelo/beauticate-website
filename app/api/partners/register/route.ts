@@ -4,8 +4,10 @@ import { appendToSheet } from '@/lib/sheets'
 import { NextResponse } from 'next/server'
 
 // Dedicated "Shop Partner Interest" list — kept separate from the consumer
-// newsletter so registering brands never receive reader emails.
-const PARTNER_LIST_ID = process.env.KLAVIYO_PARTNER_LIST_ID
+// newsletter so registering brands never receive reader emails. Defaults to the
+// live list id (not secret) so the flow works without extra env config; the env
+// var can still override it.
+const PARTNER_LIST_ID = process.env.KLAVIYO_PARTNER_LIST_ID || 'XXNYny'
 
 export async function POST(req: Request) {
   let email: string | undefined
