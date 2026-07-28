@@ -12,7 +12,7 @@ export const BRAND_DESCRIPTIONS: Record<string, string> = {
   'mukti-organics-1': 'Mukti is the founder of one of Australia\'s most respected organic skincare brands and the author of Truth in Beauty. Her certified-organic formulas are made in Byron Bay with potent botanicals and a deep commitment to clean beauty.',
   'eir-women': 'Co-founded by Kate Guaran and Lisa Walker, Eir Women creates targeted wellness supplements for women at every stage — hormonal balance, fertility, pregnancy and postpartum, grounded in naturopathic science.',
   'innour': 'Founded by dermatologist Dr Leanne Girgis, Innour bridges clinical-grade skincare with luxurious textures. Every formula is developed from her years of practice treating real skin concerns.',
-  'bon-patch': 'Created by Nicole Gazal O\'Neill, Bon Wellness delivers targeted wellness through transdermal patches — a modern, no-fuss approach to supplements, from sleep support to energy and recovery.',
+  'bon-patch': 'Created by Nicole Gazal O\'Neill, Bonwellness delivers targeted wellness through wearable patches — a modern, no-fuss approach to supplements, from sleep support to energy and recovery.',
   'saint-louve': 'Founded by Elly Seymour, Saint Louve is a results-driven Australian skincare brand that puts ingredient integrity first — potent, active formulas without the fluff.',
   'saintlouve-1': 'Founded by Elly Seymour, Saint Louve is a results-driven Australian skincare brand that puts ingredient integrity first — potent, active formulas without the fluff.',
   'lamav': 'Founded by Tarj Mavi, Lamav is a certified-organic skincare line that combines bio-active botanicals with clinical results — proving that natural and effective don\'t have to be a trade-off.',
