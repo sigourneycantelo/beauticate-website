@@ -325,11 +325,11 @@ const nextConfig: NextConfig = {
 
       // ── Biohacking subcategory consolidation (moved into /wellness/biohacking) ──
       { source: '/wellness/health/sigourneys-sleep-edit', destination: '/wellness/biohacking/sigourneys-sleep-edit', permanent: true },
-      { source: '/wellness/health/sacred-six-the-rituals-practices-helping-me-heal-from-burnout', destination: '/wellness/biohacking/sacred-six-the-rituals-practices-helping-me-heal-from-burnout', permanent: true },
+      { source: '/wellness/health/sacred-six-the-rituals-practices-helping-me-heal-from-burnout', destination: '/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout', permanent: true },
       { source: '/sigourneys-edit/latest-injectable-trends', destination: '/wellness/biohacking/latest-injectable-trends', permanent: true },
       { source: '/beauty-style/beauty-tips/red-light-therapy-infraredi-review', destination: '/wellness/biohacking/red-light-therapy-infraredi-review', permanent: true },
       { source: '/beauty-style/skin-care/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar', destination: '/wellness/biohacking/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar', permanent: true },
-      { source: '/wellness/longevity/sacred-six-6-ways-im-going-to-live-longer', destination: '/wellness/biohacking/sacred-six-6-ways-im-going-to-live-longer', permanent: true },
+      { source: '/wellness/longevity/sacred-six-6-ways-im-going-to-live-longer', destination: '/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer', permanent: true },
       { source: '/wellness/longevity/wellness-tech-red-light-sauna-sleep-tracker-review', destination: '/wellness/biohacking/wellness-tech-red-light-sauna-sleep-tracker-review', permanent: true },
 
       // ── Living subcategory retag (interiors split into lifestyle/entertaining/sustainability) ──

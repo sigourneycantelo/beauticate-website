@@ -83,6 +83,31 @@ When publishing a new story, always ask:
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
 
+### Every article needs BOTH a landscape holding shot and a portrait thumbnail
+
+The site surfaces each article in two shapes, and there are two frontmatter fields to match:
+
+- **`hero_image`** = the **landscape** holding shot (~2:1). Used full-bleed for the home hero (`HeroWide`) and the article's own top banner (`ArticleHero`). A triptych works well.
+- **`featured_image`** = the **portrait** thumbnail (~3:4). Used for every grid card / thumbnail site-wide (`StoriesTrio`, `DuoLeft`, `DuoStagger`, `HeroSplit`, `ArticleCard`, …).
+
+**Always set both.** The code falls back to `featured_image` when `hero_image` is missing (`HeroWide.tsx`, `ArticleHero.tsx`) — which silently stretches the portrait thumbnail into the wide hero slot and crops it badly. That fallback is a safety net, **not** the intended state: if a landscape holding shot exists in the article directory (e.g. `holding.jpg`), wire it to `hero_image`. Never leave a real holding shot orphaned while the hero renders a cropped portrait.
+
+### Image orientation — bake it in
+
+Phone photos carry an EXIF orientation flag. Downloading/processing frequently strips the flag without applying the rotation, leaving portrait shots stored as sideways landscape pixels. **Always auto-rotate images so the pixels themselves are upright** (`PIL.ImageOps.exif_transpose`), then view the result to confirm. A portrait must end up taller than it is wide. (Fix applied to the Colette cancer article: 11 selfies were sideways and had to be rotated 90°.)
+
+## Editorial voice & attribution — the Ed's note rule
+
+In a bylined first-person piece, **never put words in the author's mouth.** Do not invent sentences and slip them into the author's voice — not even to carry an SEO internal link. Authors notice words they never wrote (this happened on Colette Harvey's cancer piece, where inserted first-person link-bridge sentences read as hers).
+
+When the publication needs to add its own words to someone else's first-person story — an editorial aside, a "related reading" internal link — mark it explicitly as an **Ed's note** so it's clearly Beauticate's voice, not theirs. Convention (see existing usage, e.g. `sigourneys-edit-wolgan-valley`): a blockquote italic aside —
+
+```
+> *Ed's note: If you're drawn to this, our [guide to X](/link) is a good place to start.*
+```
+
+Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
+
 ## Links — open in a new tab
 
 Readers should never be navigated away from what they're reading.

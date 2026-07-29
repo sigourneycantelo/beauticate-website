@@ -39,7 +39,13 @@ Map the user's editorial category to the site's directory structure:
 - View each image to identify content and spot duplicates (Drive folders often have high-res + low-res pairs of the same image)
 - Keep the higher-resolution version of each duplicate pair
 - Rename all images with descriptive kebab-case filenames (e.g. `meditation-candles-mudra.jpg`, not `image-9.jpg`)
-- Ask the user which image is the featured/holding image if not specified
+- **Bake in EXIF orientation on every image.** Phone photos carry an EXIF orientation flag; downloading/processing often strips the flag without applying the rotation, so a portrait shot lands sideways (stored as landscape pixels). After download, auto-rotate each image so the pixels are upright (`PIL.ImageOps.exif_transpose`, or rotate by hand and re-save), then **view the result to confirm faces/bodies are upright** before continuing. A portrait selfie must end up with portrait pixel dimensions (taller than wide).
+
+**Holding shots — always produce BOTH crops.** Every article needs two curated images, because the site surfaces articles in two shapes:
+- **Landscape holding shot** → `holding.jpg`, roughly 2:1 (e.g. 2400×1200). Used full-bleed for the home-page hero (`HeroWide`) and the article's own top banner. A triptych (three stacked panels) works well here. This maps to the `hero_image` frontmatter field.
+- **Portrait thumbnail** → a tall ~3:4 crop. Used for every grid card and thumbnail across the site. This maps to the `featured_image` frontmatter field.
+
+Never set only one. If you set `featured_image` (portrait) without `hero_image` (landscape), the home/article hero silently falls back to the portrait and crops it into the wide slot — the exact bug this rule prevents. Ask the user for a dedicated landscape holding shot if they only supply a portrait.
 
 ### 2. Build the MDX file with audit baked in
 
@@ -50,9 +56,11 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 - `slug` — URL-safe, matches directory name
 - `category` and `subcategory` — from category mapping
 - `excerpt` — 1-2 sentence summary for cards/feeds
-- `featured_image` — path to holding image: `/content/<category>/<subcategory>/<slug>/holding.jpg`
-- `featured_image_alt` — descriptive alt text for the featured image
+- `featured_image` — **portrait** thumbnail (~3:4), used for grid cards site-wide: `/content/<category>/<subcategory>/<slug>/<portrait-crop>.jpg`
+- `featured_image_alt` — descriptive alt text for the portrait thumbnail
 - `featured_image_caption` — format: `"Article Title - subcategory feature on Beauticate"`
+- `hero_image` — **landscape** holding shot (~2:1), used for the home hero and article top banner: `/content/<category>/<subcategory>/<slug>/holding.jpg`. Always set this — see the holding-shots rule in step 1.
+- `hero_image_alt` — descriptive alt text for the landscape holding shot
 - `seo_title` — **under 60 characters**. Trim the user's SEO title if needed.
 - `meta_description` — **under 160 characters**. Trim if needed.
 - `author` — from `lib/authors.ts` or blank
@@ -68,6 +76,7 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 **Body content standards:**
 - Proper heading hierarchy: h2 sections only, no level jumps
 - 2-3 internal links to other Beauticate articles (search the `content/` directory to find topically relevant articles)
+- **Never put words in the author's mouth.** In a bylined first-person piece, do NOT invent sentences and slip them into the author's voice — not even to carry an internal link. The author will notice words they never wrote. When you add an editorial aside or an SEO internal-link bridge to someone else's first-person story, mark it explicitly as the publication's voice with an **Ed's note**, e.g. a blockquote: `> *Ed's note: If you're drawn to this, our [guide to X](/link) is a good place to start.*` The intro standfirst and closing resource lines (already italicised editorial framing) are fine as-is. Prefer weaving internal links onto words the author DID write; only fall back to an Ed's note when there's no natural anchor. Verify every internal link resolves to a **published** article before inserting it.
 - Descriptive alt text on every body image
 - Image captions in italics below each image
 - No broken markdown delimiters (watch for WordPress migration artifacts: space-before-closing-bold, mismatched openers/closers, stray `****` lines)
@@ -89,10 +98,12 @@ Images must exist in BOTH locations or they won't render on the live site:
 ### 4. Preview
 
 Start the dev server (`npm run dev` via `.claude/launch.json`) and verify:
-- Featured image renders at the top in 16:9 aspect ratio
+- The landscape `hero_image` (holding shot) renders full-bleed at the top — NOT a cropped portrait
+- Every image is upright (no sideways/rotated portraits)
 - All body images display (not just alt text)
 - ShopGrid product cards show with images and prices
-- Internal links resolve
+- Internal links resolve to published articles (a `published: false` target 404s)
+- Any editorial insertions in a first-person piece are marked as an Ed's note, not written in the author's voice
 - Heading hierarchy and italic captions look correct
 
 Ask the user to confirm before committing.
