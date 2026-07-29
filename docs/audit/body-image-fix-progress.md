@@ -41,7 +41,20 @@ de-glued the clinic/about Contact blocks. Tool: `scripts/resolve-conflicts.py`
 | 2 | 23 files — merge-conflict resolution + junk/bold cleanup | ✅ pushed | 99745b2bd |
 | 3 | 118 files — MS-Word paste-junk removal (mso-* CSS blocks + residue tokens) | ✅ applied | (pending) |
 
-| 4 | 2 files — genuine unclosed-bold fixes | ✅ applied | (pending) |
+| 4 | 2 files — genuine unclosed-bold fixes | ✅ pushed | abfaf0eab |
+| 5 | 11 files — MDX parse errors causing HTTP 500 (blank pages) | ✅ applied | (pending) |
+
+## Full-site 500 sweep + MDX compile audit (batch 5)
+Swept all 1,750 published article URLs on Vercel → **10 live 500s** (plus 9 404s
+that were just my URL-derivation artifacts for refiled articles). Root causes,
+found by compiling each body with `@mdx-js/mdx` (the same parser MDXRemote uses):
+- **Curly/smart quotes in JSX attributes** (`<YouTubeEmbed url=”…”/>`) — invalid
+  JSX. 8 files. Fixed only `=”…”` delimiters (prose curly quotes untouched).
+- **Malformed ShopItem tags**: `\"ARTHUR\"` escaped quotes (lipstick), `//>`
+  double-slash self-close (how-to-choose ×2), stray ` / url=` mid-tag (anna
+  ×3).
+Then compiled **all 1,846 MDX files → 0 parse failures**. Every article now
+parses; all blank/500 pages resolved.
 
 ## Unbalanced-bold scan (batch 4)
 Scanned every body line for an odd count of `**` (unbalanced → stray asterisks
