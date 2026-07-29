@@ -307,7 +307,7 @@ export default function Header({ megaMenuArticles }: Props) {
         {/* Actions */}
         <div className="justify-self-end flex items-center gap-5">
           <Link
-            href="/#insiders"
+            href="/#subscribe"
             className="hidden md:inline font-sans text-[10.5px] tracking-[0.16em] uppercase transition-opacity"
             style={{ opacity: 0.7 }}
           >

@@ -59,10 +59,12 @@ export const metadata: Metadata = {
     siteName: 'Beauticate',
     type: 'website',
     locale: 'en_AU',
+    images: [{ url: '/og-default.jpg', width: 1200, height: 630, alt: 'Beauticate' }],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@beauticate',
+    images: ['/og-default.jpg'],
   },
   robots: { index: true, follow: true },
   // Meta (Facebook) domain verification for beauticate.com — renders
@@ -97,7 +99,6 @@ const orgSchema = {
         'https://www.linkedin.com/company/beauticate.com',
         'https://www.youtube.com/@beauticate',
         'https://www.pinterest.com.au/beauticate/',
-        'https://beauticate.shop',
         'https://www.wikidata.org/wiki/Q139643093',
       ],
     },

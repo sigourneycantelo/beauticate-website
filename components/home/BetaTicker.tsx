@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 const ITEMS: { text: string; href: string }[] = [
   { text: 'Listen to the podcast', href: '/vodcast' },
   { text: 'Shop the winter edit', href: '/shop' },
-  { text: 'Beauticate Insiders get early access, subscribe', href: '/subscribe' },
+  { text: 'The Edit: beauty, wellness, style, living and travel, delivered fortnightly. Subscribe now.', href: '/subscribe' },
 ]
 
 export default function BetaTicker() {

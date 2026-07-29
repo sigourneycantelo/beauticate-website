@@ -30,6 +30,7 @@ export async function POST(req: Request) {
     }
     return NextResponse.json({ success: true })
   } catch (e) {
+    console.error('[subscribe] Klaviyo subscription failed:', e)
     return NextResponse.json({ error: 'Subscription failed' }, { status: 500 })
   }
 }

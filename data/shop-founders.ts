@@ -13,7 +13,7 @@ export const SHOP_FOUNDERS: ShopFounder[] = [
   { name: 'Mukti', brand: 'Mukti Organics', image: '/images/founders/mukti_mukti.jpg', href: '/shop/brands/mukti-organics' },
   { name: 'Kate Guaran & Lisa Walker', brand: 'Eir Women', image: '/images/founders/kate_guaran_lisa_walker_eir_women.jpg', href: '/shop/brands/eir-women' },
   { name: 'Dr Leanne Girgis', brand: 'Innour', image: '/images/founders/leanne_girgis_innour.jpg', href: '/shop/brands/innour' },
-  { name: "Nicole Gazal O'Neill", brand: 'Bon Wellness', image: '/images/founders/nicole_gazal_oneill_bon_wellness.jpg', href: '/shop/brands/bon-patch' },
+  { name: "Nicole Gazal O'Neill", brand: 'BonWellness', image: '/images/founders/nicole_gazal_oneill_bon_wellness.jpg', href: '/shop/brands/bon-patch' },
   { name: 'Elly Seymour', brand: 'Saint Louve', image: '/images/founders/elly_seymour_saint_louve.jpg', href: '/shop/brands/saint-louve' },
   { name: 'Tarj Mavi', brand: 'Lamav', image: '/images/founders/tarj_mavi_la_mav.jpg', href: '/shop/brands/lamav' },
   { name: 'Farida Irani', brand: 'Subtle Energies', image: '/images/founders/farida_irani_subtle_energies.jpg', href: '/shop/brands/subtle-energies' },

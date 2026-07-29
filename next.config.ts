@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
     return [
       // ── Refreshed article: "I'm 41" → "I'm 44" skincare routine ──────────
       { source: '/beauty-style/skin-care/im-41-this-is-everything-i-do-for-my-skin', destination: '/beauty-style/skin-care/im-44-everything-i-use-on-my-skin', permanent: true },
+
+      // ── Members' Club (The Insiders) hidden pre-launch → home ────────────
+      // Temporary (302): remove these two entries to bring /members back.
+      { source: '/members', destination: '/', permanent: false },
+      { source: '/members/:path*', destination: '/', permanent: false },
+
       // ── Duplicate vodcast episodes removed → canonical episode ───────────
       { source: '/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3', destination: '/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream', permanent: true },
       { source: '/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b', destination: '/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand', permanent: true },

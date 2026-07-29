@@ -19,7 +19,7 @@ export default function InsidersBar() {
 
   return (
     <section
-      id="insiders"
+      id="subscribe"
       className="full-bleed text-center"
       style={{
         background: '#FFFFFF',
@@ -27,10 +27,10 @@ export default function InsidersBar() {
       }}
     >
       <h2 className="font-serif font-normal" style={{ fontSize: 'clamp(22px,2.6vw,32px)' }}>
-        Become a Beauticate Insider
+        The Edit, in your inbox
       </h2>
       <p className="font-sans mt-2 mb-5 mx-auto" style={{ fontSize: '15px', opacity: 0.62, maxWidth: '52ch' }}>
-        The best of beauty, wellness, style and travel. Plus what we&rsquo;re buying and who we&rsquo;re interviewing. Every fortnight.
+        Beauty, wellness, style, living and travel, curated fortnightly. Plus first access to events, offers and the odd surprise.
       </p>
 
       {submitted ? (
@@ -52,7 +52,7 @@ export default function InsidersBar() {
             className="font-sans text-[10.5px] tracking-[0.2em] uppercase text-white px-5 cursor-pointer"
             style={{ background: '#1C1A17', border: '1px solid #1C1A17' }}
           >
-            Join the Insiders
+            Subscribe
           </button>
         </form>
       )}

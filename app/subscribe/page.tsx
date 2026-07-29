@@ -40,13 +40,13 @@ export default function SubscribePage() {
         className="block font-sans text-[11px] tracking-[0.34em] uppercase font-medium mb-4"
         style={{ opacity: 0.55 }}
       >
-        Beauticate Insiders
+        The Edit
       </span>
       <h1
         className="font-serif font-normal"
         style={{ fontSize: 'clamp(30px,4vw,52px)', letterSpacing: '-.015em', marginBottom: '12px' }}
       >
-        Join the Beauticate Insiders
+        Subscribe to The Edit
       </h1>
       <p
         className="font-serif italic"
@@ -58,7 +58,7 @@ export default function SubscribePage() {
         className="font-sans"
         style={{ fontSize: '14px', opacity: 0.7, maxWidth: '44ch', marginBottom: '36px', lineHeight: 1.6 }}
       >
-        One beautifully edited email a week. Delivered to your inbox, every Sunday.
+        One beautifully edited email, every fortnight. The best interviews, intel and buys curated by our editors, not algorithms. Subscribers get first access to events, and exclusive offers.
       </p>
 
       {status === 'success' ? (
