@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // ── Refreshed article: "I'm 41" → "I'm 44" skincare routine ──────────
+      { source: '/beauty-style/skin-care/im-41-this-is-everything-i-do-for-my-skin', destination: '/beauty-style/skin-care/im-44-everything-i-use-on-my-skin', permanent: true },
+
       // ── Members' Club (The Insiders) hidden pre-launch → home ────────────
       // Temporary (302): remove these two entries to bring /members back.
       { source: '/members', destination: '/', permanent: false },
