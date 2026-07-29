@@ -38,4 +38,15 @@ de-glued the clinic/about Contact blocks. Tool: `scripts/resolve-conflicts.py`
 | Batch | Articles | Status | Commit |
 |-------|----------|--------|--------|
 | 1 | 8 files — case-only stray refs (Bucket A) | ✅ pushed | 357b6a529 |
-| 2 | 23 files — merge-conflict resolution + junk/bold cleanup | ✅ applied | (pending) |
+| 2 | 23 files — merge-conflict resolution + junk/bold cleanup | ✅ pushed | 99745b2bd |
+| 3 | 118 files — MS-Word paste-junk removal (mso-* CSS blocks + residue tokens) | ✅ applied | (pending) |
+
+## Word-junk find (batch 3)
+Another live-render blight: MS-Word paste junk (`mso-*` CSS dumps,
+`table.MsoNormalTable`, and residue tokens `nic`/`JA`/`X-NONE`/`14.0`/empty `###`)
+sitting in article bodies. 10 files had full CSS blocks (up to 1000+ junk lines
+each), 108 more had residue tokens. Real prose glued after `;}` was salvaged.
+Tools: `scripts/strip-word-junk.py` (mso blocks, dry-run flags any prose-looking
+drop) + `scripts/strip-word-residue.py` (token residue). 921 residue tokens +
+~1800 mso lines removed; frontmatter intact on all 118; no real prices/ratings/
+headings lost (verified).
