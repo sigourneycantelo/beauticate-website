@@ -19,12 +19,21 @@ interface Article {
   }
 }
 
+interface ShopStripCopy {
+  eyebrow?: string
+  heading?: React.ReactNode
+  subheading?: string
+  cta?: { label: string; href: string }
+}
+
 interface Props {
   articles: Article[]
   shopProducts?: ShopifyProduct[]
+  /** Optional custom copy for the embedded shop rail (first cycle only). */
+  shopStrip?: ShopStripCopy
 }
 
-export default function EditorialSections({ articles, shopProducts = [] }: Props) {
+export default function EditorialSections({ articles, shopProducts = [], shopStrip }: Props) {
   let i = 0
   function take(n: number) {
     const slice = articles.slice(i, i + n).filter(Boolean)
@@ -101,7 +110,16 @@ export default function EditorialSections({ articles, shopProducts = [] }: Props
           case 'duo-left':
             return <DuoLeft key={`duo-l-${idx}`} articles={section.articles as any} />
           case 'shop':
-            return <ShopStrip key={`shop-${idx}`} products={shopProducts} />
+            return (
+              <ShopStrip
+                key={`shop-${idx}`}
+                products={shopProducts}
+                eyebrow={shopStrip?.eyebrow}
+                heading={shopStrip?.heading}
+                subheading={shopStrip?.subheading}
+                cta={shopStrip?.cta}
+              />
+            )
           default:
             return null
         }
