@@ -1,0 +1,7 @@
+# Image refs with NO tracked file in any casing — genuine gaps (WP restore candidates)
+# 2 articles, 2 refs
+
+content/beauty-style/skin-care/best-vitamin-c-serums-australia/best-vitamin-c-serums-australia.mdx
+    /content/beauty-style/skin-care/best-vitamin-c-serums-australia/hero.jpg
+content/beauty-style/skin-care/skin-flooding-barrier-banking-method/skin-flooding-barrier-banking-method.mdx
+    /content/beauty-style/skin-care/skin-flooding-barrier-banking-method/hero.jpg
