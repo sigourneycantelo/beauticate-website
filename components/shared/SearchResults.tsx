@@ -28,7 +28,12 @@ type Tab = 'all' | 'Product' | 'Brand' | 'Article'
 let pagefindPromise: Promise<any> | null = null
 function loadPagefind(): Promise<any> {
   if (!pagefindPromise) {
-    pagefindPromise = import(/* webpackIgnore: true */ '/pagefind/pagefind.js')
+    // pagefind.js is generated into /public at build time, so it isn't a
+    // resolvable module at type-check time. Hold the path in a variable so
+    // TypeScript treats this as a dynamic import (Promise<any>) instead of
+    // trying — and failing — to resolve the specifier.
+    const pagefindSrc = '/pagefind/pagefind.js'
+    pagefindPromise = import(/* webpackIgnore: true */ pagefindSrc)
       .then(async (pf: any) => { await pf.options?.({ excerptLength: 20 }); await pf.init?.(); return pf })
   }
   return pagefindPromise
@@ -43,7 +48,7 @@ export default function SearchResults({ query }: Props) {
   const [hits, setHits] = useState<Hit[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [tab, setTab] = useState<Tab>('all')
-  const debounce = useRef<ReturnType<typeof setTimeout>>()
+  const debounce = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   const runSearch = useCallback(async (q: string) => {
     const trimmed = q.trim()
