@@ -1,4 +1,4 @@
-import { getCollections, getProducts, getProductsByTag, getNewArrivals, getCollectionByHandle, getCollectionFull } from '@/lib/shopify'
+import { getCollections, getProducts, getTeamRailProducts, getNewArrivals, getCollectionByHandle, getCollectionFull } from '@/lib/shopify'
 import { getVodcastEpisodes } from '@/lib/content'
 import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import HeroVideo from '@/components/shop/HeroVideo'
@@ -44,9 +44,9 @@ const FREE_SHIP_HANDLES = SHOP_BRANDS
   .map(b => b.handle)
 
 export default async function ShopPage() {
-  const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...rest] = await Promise.all([
+  const [collections, curatedProducts, allProducts, newArrivals, vodcastEpisodes, ...rest] = await Promise.all([
     getCollections(48),
-    getProductsByTag('team', 48),
+    getTeamRailProducts(),
     getProducts(48),
     getNewArrivals(6, 4),
     Promise.resolve(getVodcastEpisodes()),
@@ -57,13 +57,9 @@ export default async function ShopPage() {
   const featured = (rest.slice(0, FEATURED_COLLECTIONS.length) as (ShopifyCollection | null)[]).filter(Boolean) as ShopifyCollection[]
   const freeShipCols = rest.slice(FEATURED_COLLECTIONS.length)
 
-  const seen = new Set<string>()
-  const curatedProducts = [...taggedProducts, ...allProducts].filter(p => {
-    if (seen.has(p.handle)) return false
-    seen.add(p.handle)
-    return true
-  })
-  const shopProducts = curatedProducts.slice(0, 48)
+  // Same curated "team" edit as the home page (see getTeamRailProducts); fall
+  // back to the general catalogue only if the curated set is somehow empty.
+  const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts.slice(0, 48)
 
   const seenFS = new Set<string>()
   const freeShipProducts = freeShipCols.flatMap(c => (c as any)?.products?.nodes ?? []).filter((p: any) => {

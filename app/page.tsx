@@ -1,5 +1,5 @@
 import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
-import { getProductsByTag, getProducts, getCollections, getCollectionFull, getProductsByVendor } from '@/lib/shopify'
+import { getProducts, getCollections, getCollectionFull, getTeamRailProducts } from '@/lib/shopify'
 import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
@@ -21,21 +21,10 @@ import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
 
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
 
-// ─── Homepage "Essentials" product rail — editor curation ────────────────────
-// The carousel under "Essentials for living beautifully" feeds from ALL three
-// levels below. Add to any of them and matching products flow in (deduped,
-// capped at HOMEPAGE_MAX):
-//   • HOMEPAGE_TAG         — any PRODUCT carrying this Shopify product tag
-//   • HOMEPAGE_VENDORS     — whole BRANDS, by exact Shopify vendor name
-//   • HOMEPAGE_COLLECTIONS — whole COLLECTIONS, by Shopify collection handle
-// Note: Shopify collections can't carry storefront-readable tags, so brands and
-// collections are curated by name/handle here (not by tagging them in Shopify).
-// Tip: in Shopify admin you can bulk-add the product tag to every product in a
-// collection or brand in two clicks, and it flows in via HOMEPAGE_TAG alone.
-const HOMEPAGE_TAG = 'team'
-const HOMEPAGE_VENDORS: string[] = []
-const HOMEPAGE_COLLECTIONS = ['team-picks', 'editors-essentials', 'autumn-edit']
-const HOMEPAGE_MAX = 48
+// The homepage "Essentials for living beautifully" carousel and the shop home
+// page's "The Edit" rail share ONE curation source — getTeamRailProducts (see
+// lib/shopify.ts). To change what the team is buying, edit the TEAM_RAIL_* config
+// there and both rails update together.
 
 function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
   const picked = MOMENT_TITLES
@@ -61,10 +50,8 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  const [taggedProducts, vendorProductLists, curatedCollections, allProducts, vodcastEpisodes, allCollections, freeShipCols] = await Promise.all([
-    getProductsByTag(HOMEPAGE_TAG, HOMEPAGE_MAX),
-    Promise.all(HOMEPAGE_VENDORS.map(v => getProductsByVendor(v, HOMEPAGE_MAX))),
-    Promise.all(HOMEPAGE_COLLECTIONS.map(h => getCollectionFull(h, HOMEPAGE_MAX))),
+  const [curatedProducts, allProducts, vodcastEpisodes, allCollections, freeShipCols] = await Promise.all([
+    getTeamRailProducts(),
     getProducts(24),
     Promise.resolve(getVodcastEpisodes()),
     getCollections(48),
@@ -79,16 +66,9 @@ export default async function HomePage() {
     return true
   })
 
-  const vendorProducts = vendorProductLists.flat()
-  const collectionProducts = curatedCollections.flatMap(c => c?.products?.nodes ?? [])
-  const seen = new Set<string>()
-  const curatedProducts = [...taggedProducts, ...vendorProducts, ...collectionProducts].filter(p => {
-    if (seen.has(p.handle)) return false
-    seen.add(p.handle)
-    return true
-  }).slice(0, HOMEPAGE_MAX)
   const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
-  const shopProducts2 = allProducts.filter(p => !seen.has(p.handle))
+  const curatedHandles = new Set(curatedProducts.map(p => p.handle))
+  const shopProducts2 = allProducts.filter(p => !curatedHandles.has(p.handle))
 
   const shownSlugs = new Set<string>()
   const DIRECTORY_SUBS = ['bathhouses', 'clinics', 'salons', 'spas-retreats', 'wellness']

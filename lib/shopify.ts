@@ -456,3 +456,36 @@ export async function getAllCollectionHandles(): Promise<string[]> {
   `)
   return (data?.collections?.nodes ?? []).map(n => n.handle).filter(Boolean)
 }
+
+// ─── The team "Edit" product rail — single source of truth ────────────────────
+// The curated carousel that appears as "Essentials for living beautifully"
+// (home page ShopGrid) and "What the team is buying this week" (shop home page).
+// BOTH pages must feed from this one function so the two rails never drift apart.
+// Feeds from three levels, deduped by handle and capped at TEAM_RAIL_MAX:
+//   • TEAM_RAIL_TAG         — any PRODUCT carrying this Shopify product tag
+//   • TEAM_RAIL_VENDORS     — whole BRANDS, by exact Shopify vendor name
+//   • TEAM_RAIL_COLLECTIONS — whole COLLECTIONS, by Shopify collection handle
+// Note: Shopify collections can't carry storefront-readable tags, so brands and
+// collections are curated by name/handle here (not by tagging them in Shopify).
+export const TEAM_RAIL_TAG = 'team'
+export const TEAM_RAIL_VENDORS: string[] = []
+export const TEAM_RAIL_COLLECTIONS = ['team-picks', 'editors-essentials', 'autumn-edit']
+export const TEAM_RAIL_MAX = 48
+
+export async function getTeamRailProducts(max = TEAM_RAIL_MAX): Promise<ShopifyProduct[]> {
+  const [taggedProducts, vendorProductLists, curatedCollections] = await Promise.all([
+    getProductsByTag(TEAM_RAIL_TAG, max),
+    Promise.all(TEAM_RAIL_VENDORS.map(v => getProductsByVendor(v, max))),
+    Promise.all(TEAM_RAIL_COLLECTIONS.map(h => getCollectionFull(h, max))),
+  ])
+  const vendorProducts = vendorProductLists.flat()
+  const collectionProducts = curatedCollections.flatMap(c => c?.products?.nodes ?? [])
+  const seen = new Set<string>()
+  return [...taggedProducts, ...vendorProducts, ...collectionProducts]
+    .filter(p => {
+      if (seen.has(p.handle)) return false
+      seen.add(p.handle)
+      return true
+    })
+    .slice(0, max)
+}
