@@ -1,7 +1,8 @@
 import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
-import { getProductsByTag, getCollectionByHandle, getProducts, getCollections, getCollectionFull } from '@/lib/shopify'
+import { getProductsByTag, getProducts, getCollections, getCollectionFull, getProductsByVendor } from '@/lib/shopify'
 import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
+import type { Metadata } from 'next'
 
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
@@ -20,6 +21,22 @@ import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
 
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
 
+// ─── Homepage "Essentials" product rail — editor curation ────────────────────
+// The carousel under "Essentials for living beautifully" feeds from ALL three
+// levels below. Add to any of them and matching products flow in (deduped,
+// capped at HOMEPAGE_MAX):
+//   • HOMEPAGE_TAG         — any PRODUCT carrying this Shopify product tag
+//   • HOMEPAGE_VENDORS     — whole BRANDS, by exact Shopify vendor name
+//   • HOMEPAGE_COLLECTIONS — whole COLLECTIONS, by Shopify collection handle
+// Note: Shopify collections can't carry storefront-readable tags, so brands and
+// collections are curated by name/handle here (not by tagging them in Shopify).
+// Tip: in Shopify admin you can bulk-add the product tag to every product in a
+// collection or brand in two clicks, and it flows in via HOMEPAGE_TAG alone.
+const HOMEPAGE_TAG = 'team'
+const HOMEPAGE_VENDORS: string[] = []
+const HOMEPAGE_COLLECTIONS = ['team-picks', 'editors-essentials', 'autumn-edit']
+const HOMEPAGE_MAX = 48
+
 function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
   const picked = MOMENT_TITLES
     .map(t => collections.find(c => c.title.toLowerCase() === t))
@@ -36,14 +53,22 @@ const FREE_SHIP_HANDLES = SHOP_BRANDS
   .filter(b => FREE_SHIPPING_VENDORS.has(b.name))
   .map(b => b.handle)
 
+// Self-referencing canonical for the home page. Other routes set their own
+// canonical in generateMetadata; the root layout can't (it would point every
+// page at '/'), so the home page declares it here.
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
+
 export default async function HomePage() {
-  const [taggedProducts, winterCollection, allProducts, vodcastEpisodes, allCollections, ...freeShipCols] = await Promise.all([
-    getProductsByTag('team', 24),
-    getCollectionByHandle('autumn-edit'),
+  const [taggedProducts, vendorProductLists, curatedCollections, allProducts, vodcastEpisodes, allCollections, freeShipCols] = await Promise.all([
+    getProductsByTag(HOMEPAGE_TAG, HOMEPAGE_MAX),
+    Promise.all(HOMEPAGE_VENDORS.map(v => getProductsByVendor(v, HOMEPAGE_MAX))),
+    Promise.all(HOMEPAGE_COLLECTIONS.map(h => getCollectionFull(h, HOMEPAGE_MAX))),
     getProducts(24),
     Promise.resolve(getVodcastEpisodes()),
     getCollections(48),
-    ...FREE_SHIP_HANDLES.map(h => getCollectionFull(h, 50)),
+    Promise.all(FREE_SHIP_HANDLES.map(h => getCollectionFull(h, 50))),
   ])
   const moments = pickMoments(allCollections)
 
@@ -54,13 +79,14 @@ export default async function HomePage() {
     return true
   })
 
-  const collectionProducts = winterCollection?.products?.nodes ?? []
+  const vendorProducts = vendorProductLists.flat()
+  const collectionProducts = curatedCollections.flatMap(c => c?.products?.nodes ?? [])
   const seen = new Set<string>()
-  const curatedProducts = [...taggedProducts, ...collectionProducts].filter(p => {
+  const curatedProducts = [...taggedProducts, ...vendorProducts, ...collectionProducts].filter(p => {
     if (seen.has(p.handle)) return false
     seen.add(p.handle)
     return true
-  }).slice(0, 24)
+  }).slice(0, HOMEPAGE_MAX)
   const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts
   const shopProducts2 = allProducts.filter(p => !seen.has(p.handle))
 
