@@ -42,7 +42,18 @@ de-glued the clinic/about Contact blocks. Tool: `scripts/resolve-conflicts.py`
 | 3 | 118 files — MS-Word paste-junk removal (mso-* CSS blocks + residue tokens) | ✅ applied | (pending) |
 
 | 4 | 2 files — genuine unclosed-bold fixes | ✅ pushed | abfaf0eab |
-| 5 | 11 files — MDX parse errors causing HTTP 500 (blank pages) | ✅ applied | (pending) |
+| 5 | 11 files — MDX parse errors causing HTTP 500 (blank pages) | ✅ pushed + live-verified (10/10 → 200) | 5ab92128e |
+
+## Final state (2026-07-30)
+All render-breaking classes cleared and verified live:
+- 0 MDX parse failures across 1,846 files (was ≥19 pages 500ing).
+- 0 merge-conflict markers, 0 `mso-` Word junk, 0 unbalanced bold (bar swears),
+  0 curly-quote JSX attributes in content.
+- Body/featured image references ~100% healthy.
+Remaining (lower-priority, not render-breaking): broad cosmetic delimiter polish
+(glued `**label:**text` missing a space) and optional surfacing of already-on-disk
+images into sparse article bodies — left for a supervised pass since WP can no
+longer be used to confirm intended image sets.
 
 ## Full-site 500 sweep + MDX compile audit (batch 5)
 Swept all 1,750 published article URLs on Vercel → **10 live 500s** (plus 9 404s
