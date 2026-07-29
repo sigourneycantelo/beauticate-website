@@ -8,7 +8,6 @@ const PRESS_LOGOS: { src?: string; alt: string; text?: string }[] = [
   { src: '/images/press/vogue.png', alt: 'Vogue' },
   { src: '/images/press/marie-claire.png', alt: 'marie claire' },
   { src: '/images/press/daily-telegraph.png', alt: 'The Daily Telegraph' },
-  { src: '/images/press/daily-mail.png', alt: 'Daily Mail' },
   { alt: 'Mamamia', text: 'Mamamia' },
 ]
 
