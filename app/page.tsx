@@ -7,7 +7,7 @@ import type { Metadata } from 'next'
 import HeroWide from '@/components/home/HeroWide'
 import DuoLeft from '@/components/home/DuoLeft'
 import ShopGrid from '@/components/home/ShopGrid'
-import ShopStrip from '@/components/home/ShopStrip'
+import ProductRail from '@/components/shared/ProductRail'
 import TheCollective from '@/components/shared/TheCollective'
 import InstagramFeed from '@/components/home/InstagramFeed'
 import StoriesTrio from '@/components/home/StoriesTrio'
@@ -140,11 +140,13 @@ export default async function HomePage() {
       {duo2Articles.length > 0 && <DuoLeft articles={duo2Articles as any} />}
 
       {/* 11b — Second product rail */}
-      <ShopStrip
+      <ProductRail
         products={shopProducts2}
+        rows={1}
         eyebrow="More to explore"
         heading={<>New in the <em className="italic">shop</em></>}
-        subheading="Fresh finds, hand-picked by the team"
+        description="Fresh finds, hand-picked by the team"
+        cta={{ label: 'Explore the shop', href: '/shop' }}
       />
 
       {/* 12 — Shop by Moment */}

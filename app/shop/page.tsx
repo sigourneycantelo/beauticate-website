@@ -10,7 +10,7 @@ import FoundersPanel from '@/components/shop/FoundersPanel'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
-import ShopProductGrid from '@/components/shop/ShopProductGrid'
+import ProductRail from '@/components/shared/ProductRail'
 import CollectionFeature from '@/components/shop/CollectionFeature'
 import PodcastSection from '@/components/home/PodcastSection'
 import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
@@ -46,8 +46,8 @@ const FREE_SHIP_HANDLES = SHOP_BRANDS
 export default async function ShopPage() {
   const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...rest] = await Promise.all([
     getCollections(48),
-    getProductsByTag('team', 24),
-    getProducts(24),
+    getProductsByTag('team', 48),
+    getProducts(48),
     getNewArrivals(6, 4),
     Promise.resolve(getVodcastEpisodes()),
     ...FEATURED_COLLECTIONS.map(h => getCollectionByHandle(h)),
@@ -63,7 +63,7 @@ export default async function ShopPage() {
     seen.add(p.handle)
     return true
   })
-  const shopProducts = curatedProducts.slice(0, 16)
+  const shopProducts = curatedProducts.slice(0, 48)
 
   const seenFS = new Set<string>()
   const freeShipProducts = freeShipCols.flatMap(c => (c as any)?.products?.nodes ?? []).filter((p: any) => {
@@ -113,40 +113,24 @@ export default async function ShopPage() {
       {/* Trust band */}
       <TrustBand />
 
-      {/* Product grid — capped to 2 rows (8 products); "Shop all products" carries the rest */}
-      <ShopProductGrid
+      {/* The Edit — two-row slow-scroll rail */}
+      <ProductRail
         products={shopProducts}
-        maxProducts={8}
-        heading={
-          <>
-            <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
-              The Edit
-            </p>
-            <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
-              What the team is buying <em className="italic">this week</em>
-            </h2>
-          </>
-        }
+        rows={2}
+        eyebrow="The Edit"
+        heading={<>What the team is buying <em className="italic">this week</em></>}
+        cta={{ label: 'Shop all products', href: '/shop/beauty' }}
       />
 
-      {/* New Arrivals — one product per brand, most recently onboarded */}
+      {/* New Arrivals — one product per brand, most recently onboarded (1 row) */}
       {newArrivals.length > 0 && (
-        <ShopProductGrid
+        <ProductRail
           products={newArrivals}
-          maxProducts={24}
-          heading={
-            <>
-              <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
-                Just Landed
-              </p>
-              <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
-                New in <em className="italic">shop</em>
-              </h2>
-              <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.55 }}>
-                Our picks from the latest brands to join Beauticate shop
-              </p>
-            </>
-          }
+          rows={1}
+          eyebrow="Just Landed"
+          heading={<>New in <em className="italic">shop</em></>}
+          description="Our picks from the latest brands to join Beauticate shop"
+          cta={{ label: 'Shop all products', href: '/shop/beauty' }}
         />
       )}
 
