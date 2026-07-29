@@ -17,7 +17,7 @@ export type Sacred60Item = {
 }
 
 const WP = 'https://www.beauticate.com/wp-content/uploads/2026/01'
-const SHOP = 'https://beauticate.shop'
+const SHOP = '/shop'
 
 export const SACRED_60: Sacred60Section[] = [
   {

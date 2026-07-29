@@ -5,7 +5,7 @@ const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
 const API_URL = STORE_DOMAIN ? `https://${STORE_DOMAIN}/api/2024-10/graphql.json` : ''
 
-async function shopifyFetch<T>(query: string, variables?: object): Promise<T> {
+async function shopifyFetch<T>(query: string, variables?: object, opts?: { noStore?: boolean }): Promise<T> {
   if (!STORE_DOMAIN || !PRIVATE_TOKEN) return { data: null } as T
   try {
     const res = await fetch(API_URL, {
@@ -15,7 +15,12 @@ async function shopifyFetch<T>(query: string, variables?: object): Promise<T> {
         'Shopify-Storefront-Private-Token': PRIVATE_TOKEN,
       },
       body: JSON.stringify({ query, variables }),
-      next: { revalidate: 300 }, // cache 5 min — new Shopify images/products show quickly while the shop is actively curated
+      // Cart requests must always hit Shopify live — caching a cart read for even
+      // a few minutes serves a stale snapshot (e.g. missing a just-added item),
+      // which is how items "disappear" after navigating away and back. Everything
+      // else (products/collections) is fine to cache for 5 min so freshly curated
+      // shop content shows quickly.
+      ...(opts?.noStore ? { cache: 'no-store' } : { next: { revalidate: 300 } }),
     })
 
     if (!res.ok) {
@@ -345,7 +350,7 @@ export async function createCart(): Promise<Cart | null> {
         cart { ...CartFields }
       }
     }
-  `)
+  `, undefined, { noStore: true })
   return (data as any)?.cartCreate?.cart ?? null
 }
 
@@ -356,7 +361,7 @@ export async function getCart(cartId: string): Promise<Cart | null> {
     query GetCart($cartId: ID!) {
       cart(id: $cartId) { ...CartFields }
     }
-  `, { cartId })
+  `, { cartId }, { noStore: true })
   return (data as any)?.cart ?? null
 }
 
@@ -368,7 +373,7 @@ export async function addToCart(cartId: string, variantId: string, quantity = 1)
         cart { ...CartFields }
       }
     }
-  `, { cartId, lines: [{ merchandiseId: variantId, quantity }] })
+  `, { cartId, lines: [{ merchandiseId: variantId, quantity }] }, { noStore: true })
   return data.cartLinesAdd.cart
 }
 
@@ -380,7 +385,7 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
         cart { ...CartFields }
       }
     }
-  `, { cartId, lineIds })
+  `, { cartId, lineIds }, { noStore: true })
   return data.cartLinesRemove.cart
 }
 
