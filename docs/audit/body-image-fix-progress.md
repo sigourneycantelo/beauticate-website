@@ -41,6 +41,15 @@ de-glued the clinic/about Contact blocks. Tool: `scripts/resolve-conflicts.py`
 | 2 | 23 files — merge-conflict resolution + junk/bold cleanup | ✅ pushed | 99745b2bd |
 | 3 | 118 files — MS-Word paste-junk removal (mso-* CSS blocks + residue tokens) | ✅ applied | (pending) |
 
+| 4 | 2 files — genuine unclosed-bold fixes | ✅ applied | (pending) |
+
+## Unbalanced-bold scan (batch 4)
+Scanned every body line for an odd count of `**` (unbalanced → stray asterisks
+render). Only 6 files flagged; 4 were censored swears (`B**tch`, `f***`, `f**k`)
+— correct to leave. 2 genuine unclosed-bold labels fixed: mini-bags "Miu Miu"
+heading, how-to-choose "Rich Moisturizer". (Noted: storm-keating body paragraph
+appears duplicated — separate issue, not addressed here.)
+
 ## Word-junk find (batch 3)
 Another live-render blight: MS-Word paste junk (`mso-*` CSS dumps,
 `table.MsoNormalTable`, and residue tokens `nic`/`JA`/`X-NONE`/`14.0`/empty `###`)
