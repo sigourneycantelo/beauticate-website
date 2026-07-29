@@ -5,6 +5,20 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com
 const SITE_NAME = 'Beauticate'
 const PUBLISHER_LOGO = `${SITE_URL}/logo-dark.png`
 
+// Append a brand suffix exactly once. Frontmatter `seo_title` values often
+// already end in "| Beauticate", and the root layout's title template
+// ('%s | Beauticate') appends another — producing "… | Beauticate | Beauticate".
+// Callers use this and return the result as `title: { absolute }` so the root
+// template never doubles it. Strips a trailing "| Beauticate" / "| Beautiful
+// Inside" (any pipe/dash separator) before re-adding the canonical suffix.
+function withBrandSuffix(base: string, suffix: string): string {
+  const cleaned = base
+    .replace(/\s*[|\-–—]\s*Beauticate\s*$/i, '')
+    .replace(/\s*[|\-–—]\s*Beautiful Inside\s*$/i, '')
+    .trim()
+  return `${cleaned} | ${suffix}`
+}
+
 const ORGANIZATION_SCHEMA = {
   '@type': 'Organization',
   name: SITE_NAME,
@@ -243,14 +257,14 @@ export function buildBreadcrumbSchema(crumbs: { name: string; url: string }[]) {
 
 // Generate Next.js Metadata object for an article
 export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
-  const title = f.seo_title ?? `${f.title} | Beauticate`
+  const title = withBrandSuffix(f.seo_title ?? f.title, 'Beauticate')
   const description = f.meta_description ?? f.excerpt ?? ''
   const image = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
   const canonical = `${SITE_URL}${url}`
   const schemaType = resolveSchemaType(f)
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical },
     openGraph: {
@@ -305,14 +319,14 @@ const PODCAST = {
 // Next.js Metadata for a podcast episode — full parity with articles
 // (canonical, Open Graph, Twitter, robots) but branded "| Beautiful Inside".
 export function buildVodcastMetadata(f: VodcastFrontmatter, url: string) {
-  const title = f.seo_title ?? `${f.title} | Beautiful Inside`
+  const title = withBrandSuffix(f.seo_title ?? f.title, 'Beautiful Inside')
   const description = f.meta_description ?? f.excerpt ?? ''
   const image = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
   const canonical = `${SITE_URL}${url}`
   const dateModified = (f as { date_modified?: string }).date_modified ?? f.date_published
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical },
     openGraph: {
