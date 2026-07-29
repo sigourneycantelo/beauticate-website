@@ -4,6 +4,14 @@ import { NextResponse } from 'next/server'
 const ASANA_PROJECT_ID = '1216468486442578'
 const ASANA_SECTION_ID = '1216468471485268'
 
+const MAX_SCREENSHOT_BYTES = 10 * 1024 * 1024 // 10MB
+const ALLOWED_IMAGE_TYPES: Record<string, string> = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/webp': 'webp',
+  'image/heic': 'heic',
+}
+
 export async function POST(req: Request) {
   const token = process.env.ASANA_PAT
   if (!token) {
@@ -26,10 +34,29 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid action type' }, { status: 400 })
     }
 
+    // Validate the upload: only images, within a size limit. The client
+    // filename and content type are attacker-controlled, so never trust them
+    // for the stored object — derive a safe extension from the allow-list and
+    // generate a random server-side key so arbitrary (e.g. HTML/SVG) content
+    // can't be hosted from our public blob domain.
+    const ext = ALLOWED_IMAGE_TYPES[screenshot.type]
+    if (!ext) {
+      return NextResponse.json(
+        { error: 'Screenshot must be a PNG, JPEG, WebP or HEIC image' },
+        { status: 400 }
+      )
+    }
+    if (screenshot.size > MAX_SCREENSHOT_BYTES) {
+      return NextResponse.json(
+        { error: 'Screenshot is too large (max 10MB)' },
+        { status: 400 }
+      )
+    }
+
     const blob = await put(
-      `instagram-submissions/${Date.now()}-${screenshot.name}`,
+      `instagram-submissions/${Date.now()}-${crypto.randomUUID()}.${ext}`,
       screenshot,
-      { access: 'public' }
+      { access: 'public', contentType: screenshot.type, addRandomSuffix: true }
     )
 
     const taskName = `Instagram ${actionType}: @${handle.replace('@', '')} (${email})`
