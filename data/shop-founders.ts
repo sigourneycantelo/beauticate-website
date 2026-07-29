@@ -21,7 +21,6 @@ export const SHOP_FOUNDERS: ShopFounder[] = [
   { name: 'Katrina Cochrane', brand: 'Archer Farrar', image: '/images/founders/katrina_cochrane_archer_farrar.jpg', href: '/shop/brands/archer-farrar-perfume-atelier' },
   { name: 'Chiquita Searle', brand: 'Chiquita', image: '/images/founders/chiquita_searle_chiquita.jpg', href: '/shop/brands/chiquita' },
   { name: 'Wanda Szychowska', brand: 'Estetika', image: '/images/founders/wanda_szychowska_estetika,.jpg', href: '/shop/brands/estetika' },
-  { name: 'K Orford', brand: 'OiTO Haircare', image: '/images/founders/k_orford_oito.jpg', href: '/shop/brands/oito-haircare' },
   { name: 'Michelle Doub', brand: 'Lash Armour', image: '/images/founders/michelle_doub_lash_armour.jpg', href: '/shop/brands/lash-armour' },
   { name: 'Annabelle', brand: 'Buj', image: '/images/founders/annabelle_buj.jpg', href: '/shop/brands/buj' },
   { name: 'Jayde Houndalas', brand: 'Sontse.', image: '/images/founders/jayde_houndalas_sontse.jpg', href: '/shop/brands/sontse' },
