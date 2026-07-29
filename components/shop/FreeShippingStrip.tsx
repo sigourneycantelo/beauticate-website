@@ -14,6 +14,10 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
+// Cap the rail so it scrolls a curated set rather than the full eligible list,
+// matching the hero rail's length. Shuffled first, so the 48 shown rotate.
+const MAX_RAIL = 48
+
 export default function FreeShippingStrip({ products }: { products: ShopifyProduct[] }) {
   const eligible = useMemo(() => products.filter(p => isFreeShipping(p.vendor)), [products])
   const [shuffled, setShuffled] = useState(eligible)
@@ -23,7 +27,7 @@ export default function FreeShippingStrip({ products }: { products: ShopifyProdu
 
   return (
     <ProductRail
-      products={shuffled}
+      products={shuffled.slice(0, MAX_RAIL)}
       rows={2}
       eyebrow="Free Shipping"
       heading="Complimentary delivery on select brands"
