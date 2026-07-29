@@ -207,9 +207,6 @@ export default function AboutPage() {
         {/* Trust + press logos */}
         <PressLogoBar className="pb-14" />
 
-        {/* Our Story timeline */}
-        <StoryTimeline />
-
         {/* Our Editors & Experts */}
         <section className="bg-gray-50 border-t border-b border-gray-100 py-16">
           <div className="max-w-5xl mx-auto px-6">
@@ -272,6 +269,9 @@ export default function AboutPage() {
             })}
           </div>
         </section>
+
+        {/* Our Story timeline */}
+        <StoryTimeline />
 
         {/* FAQ: visible on page for AI extractability (Doug: "not hidden in code") */}
         <section className="max-w-4xl mx-auto px-6 py-16">
