@@ -50,3 +50,11 @@ Tools: `scripts/strip-word-junk.py` (mso blocks, dry-run flags any prose-looking
 drop) + `scripts/strip-word-residue.py` (token residue). 921 residue tokens +
 ~1800 mso lines removed; frontmatter intact on all 118; no real prices/ratings/
 headings lost (verified).
+
+**Bonus: batch 3 REPAIRS ~9 previously-500ing articles.** The `{mso-style-name…}`
+junk contained `{` which MDX parses as a JS expression → those 9 pages were
+throwing 500s (blank pages) before, not just showing ugly text. Verified via
+`git show ed3713ce3` that they carried 1–67 body braces each; the cleaned files
+have zero. A full-body brace scan confirms only 2 other files use braces, both
+valid JSX (`style={{…}}`, Tailwind `text-[10px]`). **Verified live:** all 5
+spot-checked pages flipped 500 → 200 after the 4d032589a build deployed.
