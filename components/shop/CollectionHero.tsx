@@ -23,7 +23,7 @@ export default function CollectionHero({ image, eyebrow, title, description, fou
         {(description || founder) && (
           <div className="flex items-stretch justify-center gap-6 mt-5 mx-auto max-w-[64ch]">
             {founder && (
-              <div className="shrink-0 flex flex-col items-center">
+              <div className="hidden md:flex shrink-0 flex-col items-center">
                 <div className="relative overflow-hidden rounded-[2px] flex-1" style={{ width: 200, minHeight: 140 }}>
                   <Image src={founder.image} alt={founder.name} fill sizes="200px" className="object-cover object-[50%_20%]" />
                 </div>
@@ -31,7 +31,7 @@ export default function CollectionHero({ image, eyebrow, title, description, fou
               </div>
             )}
             {description && (
-              <p className={`font-serif text-charcoal-light ${founder ? 'text-left' : ''}`} style={{ fontSize: 'clamp(15px,1.5vw,18px)' }}>{description}</p>
+              <p className={`font-serif text-charcoal-light ${founder ? 'md:text-left' : ''}`} style={{ fontSize: 'clamp(15px,1.5vw,18px)' }}>{description}</p>
             )}
           </div>
         )}
@@ -52,7 +52,7 @@ export default function CollectionHero({ image, eyebrow, title, description, fou
         {(description || founder) && (
           <div className="flex items-stretch justify-center gap-5 mt-5 max-w-[64ch]">
             {founder && (
-              <div className="shrink-0 flex flex-col items-center">
+              <div className="hidden md:flex shrink-0 flex-col items-center">
                 <div className="relative overflow-hidden rounded-[2px] ring-1 ring-white/20 flex-1" style={{ width: 180, minHeight: 120 }}>
                   <Image src={founder.image} alt={founder.name} fill sizes="180px" className="object-cover object-[50%_20%]" />
                 </div>
@@ -60,7 +60,7 @@ export default function CollectionHero({ image, eyebrow, title, description, fou
               </div>
             )}
             {description && (
-              <p className={`font-sans text-paper/90 ${founder ? 'text-left' : ''}`} style={{ fontSize: 'clamp(13px,1.4vw,15px)', lineHeight: 1.65 }}>{description}</p>
+              <p className={`font-sans text-paper/90 ${founder ? 'md:text-left' : ''} line-clamp-4 md:line-clamp-none`} style={{ fontSize: 'clamp(13px,1.4vw,15px)', lineHeight: 1.65 }}>{description}</p>
             )}
           </div>
         )}
