@@ -38,17 +38,19 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
     )
   }
 
-  // ── Affiliate / external product (no product image available) ─────
+  // ── Affiliate / external product — self-hosted de-etched image ────
   const href = product.url ?? '#'
-  const retailer = (product.retailer ?? retailerFromUrl(product.url)) || product.name?.split(' ')[0] || ''
+  const brand = product.brand || product.retailer || retailerFromUrl(product.url) || product.name?.split(' ')[0] || ''
 
   return (
     <div className="not-prose my-8">
       <ProductTile
         href={href}
         external
+        primarySrc={product.image}
+        primaryAlt={product.name}
         cornerLabel="shop from brand"
-        brand={retailer || undefined}
+        brand={brand || undefined}
         name={product.name}
         price={product.price}
       />

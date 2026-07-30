@@ -8,6 +8,9 @@ export interface ProductLink {
   retailer?: string      // e.g. 'MECCA', 'Sephora', 'Brand direct'
   note?: string          // e.g. "Sigourney's Edit", "Reader favourite"
   price?: string         // optional fallback display price
+  image?: string         // REQUIRED for affiliate/external — de-etched product shot self-hosted in the repo
+                         // (e.g. /content/<cat>/<sub>/<slug>/<product>.jpg). Shop products get images from Shopify.
+  brand?: string         // display brand for affiliate cards (falls back to retailer)
 }
 
 export interface ShopProduct {
@@ -66,6 +69,9 @@ export interface ArticleFrontmatter {
   shop_collection?: string
   shop_products?: ShopProduct[]
   product_links?: ProductLink[]
+  moment_title?: string             // display name for the auto-generated Shop-by-Moment page (defaults to article title)
+  moment_image?: string             // tile/hero image for the moment page (defaults to hero_image → featured_image)
+  moment_exclude?: boolean          // opt OUT of auto-moment generation even with 6+ products
   related_products?: string[]
   related_collections?: string[]
   youtube_embed?: string

@@ -2,6 +2,7 @@ import Script from 'next/script'
 import ShopSubNav, { type SubNavItem } from '@/components/shop/ShopSubNav'
 import { getCollections, brandsFromCollections } from '@/lib/shopify'
 import { BROAD_CATEGORIES, MOOD_MOMENTS } from '@/lib/shop-taxonomy'
+import { getArticleMoments } from '@/lib/article-moments'
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 
@@ -38,7 +39,10 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
     soon: b.comingSoon,
   }))
   const brands: SubNavItem[] = brandsFromCollections(collections).map(b => ({ label: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle) }))
-  const moments: SubNavItem[] = MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) }))
+  const moments: SubNavItem[] = [
+    ...MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) })),
+    ...getArticleMoments().map(m => ({ label: m.title, href: `/shop/moments/${m.slug}`, image: m.image })),
+  ]
 
   return (
     <>

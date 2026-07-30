@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { getCollections } from '@/lib/shopify'
 import { MOOD_MOMENTS } from '@/lib/shop-taxonomy'
+import { getArticleMoments } from '@/lib/article-moments'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -19,6 +20,15 @@ export default async function ShopByMomentPage() {
     const url = c.image?.url ?? c.products?.nodes?.[0]?.featuredImage?.url
     if (url) imgByHandle.set(c.handle, url)
   }
+
+  // Auto-generated moment pages from shopping articles (6+ products).
+  const articleMoments = getArticleMoments()
+
+  // Shopify "mood" moments + article moments, rendered in one grid.
+  const tiles = [
+    ...MOOD_MOMENTS.map(m => ({ key: m.handle, name: m.name, href: `/shop/collections/${m.handle}`, img: imgByHandle.get(m.handle) })),
+    ...articleMoments.map(m => ({ key: `article-${m.slug}`, name: m.title, href: `/shop/moments/${m.slug}`, img: m.image })),
+  ]
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -52,21 +62,18 @@ export default async function ShopByMomentPage() {
         </nav>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {MOOD_MOMENTS.map(m => {
-            const img = imgByHandle.get(m.handle)
-            return (
-              <Link key={m.handle} href={`/shop/collections/${m.handle}`} className="group block">
-                <div className="relative aspect-square overflow-hidden bg-tile mb-3">
-                  {img ? (
-                    <Image src={img} alt={m.name} fill sizes="(max-width:768px) 100vw, 420px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                  ) : (
-                    <span className="absolute inset-0 flex items-center justify-center font-serif text-lg italic opacity-30 px-4 text-center">{m.name}</span>
-                  )}
-                </div>
-                <p className="font-serif text-[20px] leading-tight group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]">{m.name}</p>
-              </Link>
-            )
-          })}
+          {tiles.map(t => (
+            <Link key={t.key} href={t.href} className="group block">
+              <div className="relative aspect-square overflow-hidden bg-tile mb-3">
+                {t.img ? (
+                  <Image src={t.img} alt={t.name} fill sizes="(max-width:768px) 100vw, 420px" className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                ) : (
+                  <span className="absolute inset-0 flex items-center justify-center font-serif text-lg italic opacity-30 px-4 text-center">{t.name}</span>
+                )}
+              </div>
+              <p className="font-serif text-[20px] leading-tight group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]">{t.name}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

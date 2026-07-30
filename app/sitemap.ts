@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getArticleSlugs, getArticleBySlug } from '@/lib/content'
+import { getArticleMoments } from '@/lib/article-moments'
 import { getAllProductHandles, getAllCollectionHandles } from '@/lib/shopify'
 import { getAllAuthorsWithPages } from '@/lib/authors'
 
@@ -57,6 +58,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
   for (const s of sections) {
     entries.push({ url: `${SITE}/${s}`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 })
+  }
+
+  for (const m of getArticleMoments()) {
+    entries.push({
+      url: `${SITE}/shop/moments/${m.slug}`,
+      lastModified: safeDate(m.date_published, now),
+      changeFrequency: 'weekly',
+      priority: 0.5,
+    })
   }
 
   for (const author of getAllAuthorsWithPages()) {
