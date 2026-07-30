@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // ── Legacy shop domains → beauticate.com/shop (all paths) ────────────
+      // Requires beauticate.shop / shop.beauticate.com to be added as domains
+      // on this Vercel project with DNS pointed here.
+      { source: '/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
+      { source: '/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
+
       // ── Refreshed article: "I'm 41" → "I'm 44" skincare routine ──────────
       { source: '/beauty-style/skin-care/im-41-this-is-everything-i-do-for-my-skin', destination: '/beauty-style/skin-care/im-44-everything-i-use-on-my-skin', permanent: true },
 
