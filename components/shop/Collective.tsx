@@ -14,7 +14,7 @@ export default function Collective() {
           Meet your <em className="italic">personal shoppers</em>
         </h2>
         <p className="font-serif mt-3 mx-auto" style={{ fontSize: 'clamp(15px,1.5vw,18px)', lineHeight: 1.4, opacity: 0.7, maxWidth: '46ch' }}>
-          The editors, experts and trusted voices behind every recommendation.
+          Editors, experts and trusted voices — each sharing the products they personally use and love.
         </p>
       </div>
 

@@ -21,7 +21,7 @@ export default function FounderIntro() {
           </p>
           <div className="font-serif mt-4 space-y-3" style={{ fontSize: 'clamp(16px,1.5vw,19px)', lineHeight: 1.6 }}>
             <p>
-              Welcome to Beauticate Shop. This isn&apos;t a marketplace. Every product here has been tested and chosen by me and the Beauticate Collective, our team of editors and experts. Nothing is here by accident.
+              Welcome to Beauticate Shop. This isn&apos;t a marketplace. Every product here has been tested and chosen by me and the Beauticate editorial team. Nothing is here by accident.
             </p>
             <p>
               When you shop with us, you&apos;re backing independent journalism. A share of every sale comes back to Beauticate, and it helps fund the writing you come here for. So every order does two lovely things at once. It brings you something we love, and it supports the stories that led you to it.
