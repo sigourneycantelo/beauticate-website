@@ -28,6 +28,9 @@ export interface ProductTileProps {
   priceSuffix?: string
   className?: string
   hideMeta?: boolean
+  /** Force the de-etched greige tile treatment regardless of `cover` — used to make
+   *  a whole grid share one background colour (see ShopGrid `tile`). */
+  forceTile?: boolean
 }
 
 export default function ProductTile({
@@ -35,9 +38,13 @@ export default function ProductTile({
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, cover = true,
   cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
+  forceTile = false,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
-  const fit = cover ? 'object-cover' : 'object-contain px-4 pt-[11px] pb-4'
+  // forceTile collapses cover/lifestyle shots into the same de-etched greige treatment
+  // so a mixed grid reads as one consistent background.
+  const effCover = cover && !forceTile
+  const fit = effCover ? 'object-cover' : 'object-contain px-4 pt-[11px] pb-4'
   const displayName = cleanProductTitle(name)
 
   const renderImg = (src: string, alt: string, extra: string) => {
@@ -55,7 +62,7 @@ export default function ProductTile({
       {/* Image area — square so the (mostly square) product shots fill full-bleed
           with no crop. Full-bleed (cover) sits on white so transparent shots blend
           into the card; de-etched (contain) keeps the greige backdrop. */}
-      <div className={`relative aspect-square overflow-hidden ${cover ? 'bg-white' : 'bg-tile'}`}>
+      <div className={`relative aspect-[3/4] overflow-hidden ${effCover ? 'bg-white' : 'bg-tile'}`}>
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (

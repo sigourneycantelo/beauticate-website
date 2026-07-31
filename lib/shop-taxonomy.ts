@@ -172,7 +172,7 @@ export const SHOP_BRANDS: ShopBrand[] = [
 export type ShopMoment = { name: string; handle: string }
 
 export const SHOP_MOMENTS: ShopMoment[] = [
-  { name: 'Winter Edit', handle: 'autumn-edit' },
+  { name: 'Winter Edit', handle: 'winter-edit' },
   { name: 'Deepest Sleep', handle: 'evening-unwind' },
   { name: 'Fit Girl Glow', handle: 'fit-girl-glow' },
   { name: 'Selfcare Sunday', handle: 'selfcare-sunday' },
@@ -249,7 +249,9 @@ export const NON_BRAND_COLLECTION_HANDLES = new Set<string>(
     ...SHOP_MOMENTS.map(m => m.handle),
     ...CURATOR_EDITS.map(c => c.handle),
     // system + non-brand edits with no home in the taxonomy above
-    'frontpage', 'affiliate-products', 'summer-lovin', 'fine-hair-club',
+    // ('autumn-edit' = the legacy Shopify "Winter Edit" collection, superseded by the
+    //  local /shop/collections/winter-edit page but still a non-brand collection.)
+    'frontpage', 'affiliate-products', 'summer-lovin', 'fine-hair-club', 'autumn-edit',
   ].filter((h): h is string => Boolean(h)),
 )
 

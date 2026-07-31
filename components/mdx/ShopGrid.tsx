@@ -1,4 +1,4 @@
-import { Children } from 'react'
+import { Children, cloneElement, isValidElement, type ReactElement } from 'react'
 import Link from 'next/link'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
@@ -22,6 +22,8 @@ interface ShopItemProps {
   follow?: boolean
   /** Lifestyle/model shot — fills the tile edge-to-edge (no parchment frame). */
   cover?: boolean
+  /** Injected by a `<ShopGrid tile>` parent — forces the de-etched greige treatment. */
+  forceTile?: boolean
 }
 
 /**
@@ -30,7 +32,7 @@ interface ShopItemProps {
  * difference is the affiliate cue and that it clicks out to the retailer with
  * no hover state.
  */
-export function ShopItem({ image, alt, name, price, url, handle, brand, retailer, follow, cover }: ShopItemProps) {
+export function ShopItem({ image, alt, name, price, url, handle, brand, retailer, follow, cover, forceTile }: ShopItemProps) {
   const internal = !!handle
   const href = internal ? `/shop/products/${handle}` : url
   const detected = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
@@ -46,6 +48,7 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
       external={!internal && !!url}
       follow={follow}
       cover={cover}
+      forceTile={forceTile}
       primarySrc={image}
       primaryAlt={alt ?? name}
       cornerLabel={cornerLabel}
@@ -80,17 +83,27 @@ export function ShopCTA({ label, href }: ShopCTAProps) {
 
 interface ShopGridProps {
   children: React.ReactNode
+  /** Give every card the same de-etched greige tile background, so a grid mixing
+   *  lifestyle and packshot images reads as one consistent block. */
+  tile?: boolean
 }
 
-export function ShopGrid({ children }: ShopGridProps) {
-  const count = Children.count(children)
+export function ShopGrid({ children, tile = false }: ShopGridProps) {
+  const kids = tile
+    ? Children.map(children, (child) =>
+        isValidElement(child)
+          ? cloneElement(child as ReactElement<{ forceTile?: boolean }>, { forceTile: true })
+          : child,
+      )
+    : children
+  const count = Children.count(kids)
   const cols = Math.min(count, 3)
 
   if (cols === 1) {
     return (
       <div className="not-prose my-10 flex justify-center">
         <div style={{ maxWidth: '420px', width: '100%' }}>
-          {children}
+          {kids}
         </div>
       </div>
     )
@@ -105,12 +118,12 @@ export function ShopGrid({ children }: ShopGridProps) {
         style={is3up ? undefined : { gridTemplateColumns: `repeat(${cols}, 1fr)` }}
       >
         {is3up
-          ? Children.map(children, (child) => (
+          ? Children.map(kids, (child) => (
               <div className="flex-none w-[70vw] snap-start sm:w-auto sm:flex-auto">
                 {child}
               </div>
             ))
-          : children}
+          : kids}
       </div>
     </div>
   )
