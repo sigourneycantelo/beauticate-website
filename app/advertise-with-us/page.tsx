@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 }
 
 const STATS = [
-  { value: '3.1M+', label: 'Monthly reach across all platforms' },
   { value: '12', label: 'Years of editorial authority' },
   { value: '2,082', label: 'Referring domains' },
 ]
@@ -153,7 +152,7 @@ export default function AdvertisePage() {
 
       {/* Stats band */}
       <section className="border-b border-camel/30 py-12 bg-paper">
-        <div className="max-w-3xl mx-auto px-6 grid grid-cols-3 gap-8 text-center">
+        <div className="max-w-2xl mx-auto px-6 grid grid-cols-2 gap-8 text-center">
           {STATS.map(s => (
             <div key={s.label}>
               <div className="font-serif text-3xl text-ink mb-1">{s.value}</div>
