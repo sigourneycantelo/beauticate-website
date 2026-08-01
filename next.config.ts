@@ -14,11 +14,18 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
-      // ── Legacy shop domains → beauticate.com/shop (all paths) ────────────
+      // ── Legacy shop domains → beauticate.com/shop (all paths except Shopify's own checkout) ─
       // Requires beauticate.shop / shop.beauticate.com to be added as domains
       // on this Vercel project with DNS pointed here.
+      //
+      // shop.beauticate.com is ALSO the Shopify Storefront API's primary domain —
+      // cart.checkoutUrl (CartDrawer.tsx) points there (e.g. /cart/c/<id> which
+      // Shopify hands off to /checkouts/cn/...). A blanket redirect here previously
+      // caught those paths before they reached Shopify, sending every customer who
+      // tapped "Checkout" straight back to /shop instead of completing their order.
+      // Exclude cart/checkout paths so Shopify's hosted checkout still works.
       { source: '/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
-      { source: '/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
+      { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
 
       // ── Refreshed article: "I'm 41" → "I'm 44" skincare routine ──────────
       { source: '/beauty-style/skin-care/im-41-this-is-everything-i-do-for-my-skin', destination: '/beauty-style/skin-care/im-44-everything-i-use-on-my-skin', permanent: true },
