@@ -35,7 +35,7 @@ function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Shop | Beauticate',
+  title: 'Shop',
   description: 'Curated beauty, wellness and lifestyle — recommended by the editors and experts of Beauticate. Fewer, better things, chosen by editors not algorithms.',
 }
 

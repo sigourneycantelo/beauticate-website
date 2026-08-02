@@ -7,7 +7,7 @@ import { GIFTING_MOMENTS } from '@/lib/shop-taxonomy'
 const SITE = 'https://www.beauticate.com'
 
 export const metadata: Metadata = {
-  title: 'Gifting | Beauticate Shop',
+  title: 'Gifting | Shop',
   description: 'Beauticate gifting edits for every occasion and budget — from Best Friend Birthday to Little Luxuries under $50, Thoughtful Gestures under $100 and Luxe Lovers under $300.',
   alternates: { canonical: `${SITE}/shop/gifting` },
 }

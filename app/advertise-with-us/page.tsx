@@ -5,7 +5,7 @@ import StoryTimeline from '@/components/about/StoryTimeline'
 import AdvertiseForm from '@/components/advertise/AdvertiseForm'
 
 export const metadata: Metadata = {
-  title: 'Advertise with Beauticate | Brand Partnerships',
+  title: 'Advertise with Us | Brand Partnerships',
   description: 'Partner with Beauticate — Australia\'s most-trusted independent beauty publisher. Over a decade of editorial authority. Sponsored content, podcast, events, trial teams and more.',
 }
 

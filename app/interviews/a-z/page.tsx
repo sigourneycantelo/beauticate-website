@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'A–Z of Interviews — Beauticate',
+  title: 'A–Z of Interviews',
   description: 'Every person Sigourney Cantelo has interviewed — makeup artists, dermatologists, models, founders, actors and icons. Alphabetical index of 25 years of beauty conversations.',
 }
 

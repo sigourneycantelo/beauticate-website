@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | Beauticate',
+  title: 'Terms & Conditions',
   description: 'Terms and conditions for use of Beauticate — the editorial site and Beauticate Shop.',
 }
 

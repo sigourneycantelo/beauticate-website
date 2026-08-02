@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const info = FEELINGS[feeling]
   if (!info) return {}
   return {
-    title: `${info.title} — Travel — Beauticate`,
+    title: `${info.title} — Travel`,
     description: info.description,
   }
 }

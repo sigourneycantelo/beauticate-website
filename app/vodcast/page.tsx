@@ -13,7 +13,7 @@ import EditorialSections from '@/components/shared/EditorialSections'
 import VodcastSubscribeForm from './VodcastSubscribeForm'
 
 export const metadata: Metadata = {
-  title: 'Beautiful Inside — Podcast by Beauticate',
+  title: 'Beautiful Inside — Podcast',
   description:
     'Sigourney Cantelo in conversation with the experts, founders and thought leaders shaping how we live. Watch on YouTube or listen on Spotify and Apple Podcasts.',
 }

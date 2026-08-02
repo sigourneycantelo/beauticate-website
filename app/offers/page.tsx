@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Exclusive Offers | Beauticate',
+  title: 'Exclusive Offers',
   description: 'Exclusive offers and subscriber benefits from Beauticate — beauty, wellness and lifestyle deals curated by our editors.',
 }
 

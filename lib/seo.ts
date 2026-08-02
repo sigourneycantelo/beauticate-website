@@ -304,6 +304,62 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
   }
 }
 
+// ─── Category / subcategory archive pages ────────────────────────────────────
+
+export const CATEGORY_LABELS: Record<string, string> = {
+  'beauty-style': 'Beauty & Style',
+  wellness: 'Wellness',
+  living: 'Living',
+  destinations: 'Destinations',
+  interviews: 'Interviews',
+}
+
+const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+  'beauty-style': "Skincare, makeup, hair and fragrance — beauty and style edits, product reviews and expert tips from the Beauticate team.",
+  wellness: "Health, mindset and the rituals that make life feel better — wellness stories from Beauticate's editors and experts.",
+  living: "Lifestyle, home and the little luxuries that make everyday life better, curated by the Beauticate team.",
+  destinations: 'Hotel reviews, travel guides and destination edits from Beauticate.',
+}
+
+function humanizeSlug(slug: string): string {
+  return slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+}
+
+// Next.js Metadata for a category or subcategory archive page (e.g. /wellness,
+// /beauty-style/skin-care). Title is left without a "| Beauticate" suffix —
+// the root layout's title template already appends it.
+export function buildCategoryMetadata(category: string, subcategory?: string) {
+  const categoryLabel = CATEGORY_LABELS[category] ?? humanizeSlug(category)
+  const path = subcategory ? `/${category}/${subcategory}` : `/${category}`
+  const canonical = `${SITE_URL}${path}`
+
+  const title = subcategory ? `${humanizeSlug(subcategory)} — ${categoryLabel}` : categoryLabel
+  const description = subcategory
+    ? `${humanizeSlug(subcategory)} stories from Beauticate's ${categoryLabel} edit — tips, reviews and expert advice.`
+    : (CATEGORY_DESCRIPTIONS[category] ?? `The latest ${categoryLabel} stories, tips and expert advice from Beauticate.`)
+
+  return {
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: SITE_NAME,
+      locale: 'en_AU',
+      type: 'website' as const,
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      site: '@beauticate',
+      title,
+      description,
+    },
+    robots: { index: true, follow: true },
+  }
+}
+
 // ─── Vodcast / podcast episodes ──────────────────────────────────────────────
 
 const PODCAST = {

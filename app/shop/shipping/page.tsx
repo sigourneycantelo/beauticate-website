@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | Beauticate Shop',
+  title: 'Shipping Policy | Shop',
   description: 'Shipping information for Beauticate Shop — how brands ship direct to you across Australia.',
 }
 

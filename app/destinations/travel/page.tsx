@@ -6,7 +6,7 @@ import EditorialSections from '@/components/shared/EditorialSections'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Travel — Beauticate',
+  title: 'Travel',
   description: 'Destination guides, hotel reviews, travel beauty and Sigourney\'s travel edits — curated for the beauty-obsessed traveller.',
 }
 

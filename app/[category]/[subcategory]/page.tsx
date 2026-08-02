@@ -1,5 +1,6 @@
 import { getArticleBySlug, getArticlesBySubcategory, getRelatedArticles } from '@/lib/content'
 import { getProductsByHandles, getProductsByTag } from '@/lib/shopify'
+import { buildCategoryMetadata } from '@/lib/seo'
 import ArticlePage from '@/components/article/ArticlePage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -11,20 +12,25 @@ interface Props { params: Promise<{ category: string; subcategory: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, subcategory } = await params
   const article = getArticleBySlug([category, subcategory])
-  if (!article) return {}
-  const { frontmatter: f } = article
-  return {
-    title: f.seo_title ?? f.title,
-    description: f.seo_description,
-    openGraph: {
-      title: f.title,
+  if (article) {
+    const { frontmatter: f } = article
+    return {
+      title: f.seo_title ?? f.title,
       description: f.seo_description,
-      images: f.og_image ? [f.og_image] : [],
-      type: 'article',
-      publishedTime: f.date_published,
-      modifiedTime: f.date_modified,
-    },
+      openGraph: {
+        title: f.title,
+        description: f.seo_description,
+        images: f.og_image ? [f.og_image] : [],
+        type: 'article',
+        publishedTime: f.date_published,
+        modifiedTime: f.date_modified,
+      },
+    }
   }
+
+  // Not a 2-level article — check whether it's a subcategory archive instead
+  if (!getArticlesBySubcategory(category, subcategory).length) return {}
+  return buildCategoryMetadata(category, subcategory)
 }
 
 export default async function SubcategoryOrArticlePage({ params }: Props) {
