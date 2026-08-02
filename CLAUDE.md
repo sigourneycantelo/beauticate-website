@@ -59,6 +59,14 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 ![alt text](/content/<category>/<subcategory>/<slug>/filename.jpg)
 ```
 
+## Directory listings (`content/destinations/{clinics,salons,spas-retreats,bathhouses,wellness}`)
+
+**`published: false` is a deliberate, sticky editorial decision — never touch it in bulk.** A listing gets drafted for real reasons (bad/missing holding shot, venue closed, details stale) and must stay draft until someone actually fixes that reason. Never run a blanket "publish everything" pass — a past cleanup session did exactly that and silently republished every listing that had been deliberately hidden, including ones with no photo at all.
+
+- **Always check `draft_reason`** before changing a listing's `published` status. It's required whenever `published: false` — record *why*, not just that it's hidden, so the next person (human or Claude) doesn't have to guess or re-discover it.
+- **Re-filing a listing to a new subcategory means `git mv`, not copy-and-leave-the-original.** Several listings exist twice — once at a stale `clinics/` (or similar) path and once at the corrected path — because a re-file copied the file instead of moving it. When you copy content to a new path, delete or draft the old one in the same change; don't leave an orphaned duplicate.
+- **Before publishing or unpublishing any listing, check for near-duplicates first** — same venue name filed under a different subcategory/slug is the recurring failure mode here. `scripts/audit-directory-duplicates.py` does this check; run it before any bulk directory work.
+
 ## Git workflow
 
 - Feature branch: `claude/vercel-article-cleanup-duw0tz`
