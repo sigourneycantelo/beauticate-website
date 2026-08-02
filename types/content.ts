@@ -102,6 +102,9 @@ export interface ArticleFrontmatter {
 
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
+  draft_reason?: string        // why this is unpublished — required context before ever republishing.
+                                // Never bulk-flip `published` back to true without checking this per-listing;
+                                // see "Directory listings" in CLAUDE.md.
   reviewed?: boolean           // true = SEO/AEO review done; used by /admin/review-queue
   is_featured?: boolean
   is_news?: boolean            // true = NewsArticle schema + Google News signals
