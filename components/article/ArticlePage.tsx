@@ -38,6 +38,7 @@ import SubscribeBand from '@/components/shared/SubscribeBand'
 import MetaViewContent from '@/components/analytics/MetaViewContent'
 import rehypeImageGrid from '@/lib/rehype-image-grid'
 import rehypePullQuotes from '@/lib/rehype-pull-quotes'
+import rehypePortraitImages from '@/lib/rehype-portrait-images'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
 import rehypeVenueContact from '@/lib/rehype-venue-contact'
 import NearbyVenues from './NearbyVenues'
@@ -215,7 +216,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypeShopGrid, rehypeVenueContact] } }}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypePortraitImages, rehypeShopGrid, rehypeVenueContact] } }}
           />
         </div>
 
