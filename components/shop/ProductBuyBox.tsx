@@ -102,11 +102,15 @@ export default function ProductBuyBox({ product: p, availability }: {
         </button>
       </div>
 
-      <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/70 text-center mt-3">
-        {isFreeShipping(p.vendor)
-          ? <><span className="text-eucalypt font-semibold tracking-[0.12em] uppercase">Free shipping</span> &middot; 30-day returns</>
-          : <>Free shipping over $99 &middot; 30-day returns</>}
-      </p>
+      {isFreeShipping(p.vendor) ? (
+        <p className="font-sans text-[12px] tracking-[0.16em] uppercase text-eucalypt font-semibold text-center mt-3.5">
+          Free Shipping
+        </p>
+      ) : (
+        <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/70 text-center mt-3">
+          Free shipping over $99
+        </p>
+      )}
       <p className="text-center mt-2">
         <Link href="/shop/how-it-works" className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/50 hover:text-ink transition-colors underline underline-offset-2 decoration-[0.5px]">
           How Beauticate Shop works
