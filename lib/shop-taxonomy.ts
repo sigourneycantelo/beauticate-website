@@ -240,16 +240,6 @@ export function isFreeShipping(vendor: string): boolean {
   return FREE_SHIPPING_VENDORS.has(vendor)
 }
 
-// ─── Brand handle aliases ─────────────────────────────────────────────────────
-// Public-facing collection handle → live Shopify collection handle, for brands
-// whose site-facing name/URL changed but whose Shopify collection handle wasn't
-// updated to match. Resolved in getCollectionFull, so every caller (brand pages,
-// free-shipping page, etc.) gets the right products regardless of which handle
-// they pass in.
-export const BRAND_HANDLE_ALIASES: Record<string, string> = {
-  bonwellness: 'bon-patch', // BonWellness (formerly Bon Patch) — Shopify collection handle still 'bon-patch'
-}
-
 // ─── Brand collection discovery ───────────────────────────────────────────────
 // Collection handles that are NOT brands: the broad categories + their sub-collections,
 // moments / gifting tiers, curator edits, and Shopify system / non-brand edit
