@@ -226,11 +226,14 @@ export const CURATOR_EDITS: CuratorEdit[] = [
 export const FREE_SHIPPING_VENDORS = new Set<string>([
   'Archer Farrar Perfume Atelier',
   'BonWellness',
+  'Booie Beauty',
   'buj',
   'Estetika',
   'Kiicity',
+  'Lamav',
   'St. Louis Says',
   'Subtle Energies',
+  'Tulita',
 ])
 
 export function isFreeShipping(vendor: string): boolean {
