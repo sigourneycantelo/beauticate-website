@@ -35,6 +35,9 @@ const nextConfig: NextConfig = {
       { source: '/members', destination: '/', permanent: false },
       { source: '/members/:path*', destination: '/', permanent: false },
 
+      // ── Bon Patch rebrand → BonWellness ───────────────────────────────────
+      { source: '/shop/brands/bon-patch', destination: '/shop/brands/bonwellness', permanent: true },
+
       // ── Duplicate vodcast episodes removed → canonical episode ───────────
       { source: '/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream-3', destination: '/vodcast/episodes/gabby-bernstein-on-manifesting-with-compassion-healing-shame-living-the-dream', permanent: true },
       { source: '/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-b', destination: '/vodcast/episodes/jane-wurwand-on-overcoming-adversity-finding-purpose-building-a-billion-dollar-brand', permanent: true },

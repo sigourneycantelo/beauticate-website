@@ -155,7 +155,7 @@ export const SHOP_BRANDS: ShopBrand[] = [
   { name: 'Estetika', handle: 'estetika' },
   { name: 'Eir Women', handle: 'eir-women' },
   { name: 'Innour', handle: 'innour' },
-  { name: 'BonWellness', handle: 'bon-patch' },
+  { name: 'BonWellness', handle: 'bonwellness' },
   { name: 'OiTO Haircare', handle: 'oito-haircare' },
   { name: 'Lash Armour', handle: 'lash-armour' },
   { name: 'buj', handle: 'buj' },
@@ -238,6 +238,16 @@ export const FREE_SHIPPING_VENDORS = new Set<string>([
 
 export function isFreeShipping(vendor: string): boolean {
   return FREE_SHIPPING_VENDORS.has(vendor)
+}
+
+// ─── Brand handle aliases ─────────────────────────────────────────────────────
+// Public-facing collection handle → live Shopify collection handle, for brands
+// whose site-facing name/URL changed but whose Shopify collection handle wasn't
+// updated to match. Resolved in getCollectionFull, so every caller (brand pages,
+// free-shipping page, etc.) gets the right products regardless of which handle
+// they pass in.
+export const BRAND_HANDLE_ALIASES: Record<string, string> = {
+  bonwellness: 'bon-patch', // BonWellness (formerly Bon Patch) — Shopify collection handle still 'bon-patch'
 }
 
 // ─── Brand collection discovery ───────────────────────────────────────────────

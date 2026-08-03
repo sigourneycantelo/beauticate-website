@@ -1,5 +1,5 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
-import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
+import { NON_BRAND_COLLECTION_HANDLES, BRAND_HANDLE_ALIASES, type ShopBrand } from './shop-taxonomy'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
@@ -175,6 +175,7 @@ export async function getNewArrivals(maxBrands = 6, perBrand = 4): Promise<Shopi
 // A collection with a fuller product list than getCollectionByHandle (which caps at 24) —
 // used by the broad category pages that need every product in the group.
 export async function getCollectionFull(handle: string, first = 250): Promise<ShopifyCollection | null> {
+  const resolvedHandle = BRAND_HANDLE_ALIASES[handle] ?? handle
   const data = await shopifyFetch<{ collection: ShopifyCollection | null }>(`
     ${PRODUCT_FRAGMENT}
     query GetCollectionFull($handle: String!, $first: Int!) {
@@ -184,7 +185,7 @@ export async function getCollectionFull(handle: string, first = 250): Promise<Sh
         products(first: $first) { nodes { ...ProductFields } }
       }
     }
-  `, { handle, first })
+  `, { handle: resolvedHandle, first })
   return (data as any)?.collection ?? null
 }
 
