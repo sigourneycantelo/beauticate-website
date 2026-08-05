@@ -1,0 +1,273 @@
+import type { Metadata } from 'next'
+
+/* ══════════════════════════════════════════════════════════════════════════
+   EDIT PER COMPETITION — the variable facts. Update this object each time a
+   new competition runs; the summary box and the prose below both read from it,
+   so the dates/prize/draw only need changing in one place. The numbered
+   sections flagged “EDIT PER COMPETITION” carry wording that also changes
+   (eligibility, entry mechanics, prize detail, chance-vs-skill). Everything
+   flagged “STANDING” is identical every competition and rarely changes.
+   ══════════════════════════════════════════════════════════════════════════ */
+const comp = {
+  name: 'Beauticate x Beauty Expo Australia 2026 Giveaway',
+  lastUpdated: 'July 2026',
+  entryPeriod: 'Opened 9 July 2026, closed 11:59pm AEST on 31 July 2026',
+  entryMethod:
+    'Comment on the nominated Beauticate Instagram post or reel, or reply to the nominated story, then provide a valid email address when prompted by direct message',
+  prize:
+    'Two passes to Beauty Expo Australia 2026 (15–16 August 2026, ICC Sydney), each including a goodie bag upgrade',
+  prizeValue: 'A$80 minimum (excluding goodie bag contents)',
+  draw: 'Drawn at random 3 August 2026 (game of chance)',
+}
+
+export const metadata: Metadata = {
+  title: `${comp.name} Terms & Conditions | Beauticate`,
+  description:
+    'Terms and conditions for competitions, prize draws and giveaways run by Beauticate.',
+}
+
+export default function CompetitionTermsPage() {
+  return (
+    <div className="max-w-content mx-auto px-6 py-14 md:py-20">
+
+      <header className="mb-10 border-b border-camel/30 pb-8">
+        <p className="label-editorial mb-2">Legal</p>
+        <h1 className="font-serif text-3xl md:text-4xl text-ink">
+          Competition Terms &amp; Conditions
+        </h1>
+        <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
+          Last updated: {comp.lastUpdated}
+        </p>
+      </header>
+
+      <div className="font-serif text-charcoal/80 leading-relaxed space-y-8">
+
+        <p>
+          These terms apply to competitions, prize draws and giveaways
+          (each a &ldquo;Competition&rdquo;) run by Beauticate. By entering a
+          Competition you accept these terms together with the specific details
+          for the current Competition set out below. Please read them alongside
+          our{' '}
+          <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">Privacy Policy</a>{' '}
+          and{' '}
+          <a href="/terms" className="text-ink hover:text-eucalypt transition-colors">Terms &amp; Conditions</a>.
+        </p>
+
+        {/* ─── Current competition at a glance (reads from `comp`) ─────────── */}
+        <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
+          <h2 className="font-serif text-xl text-ink mb-4">{comp.name}</h2>
+          <dl className="space-y-3 text-[15px]">
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Prize</dt>
+              <dd>{comp.prize}</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Total prize value</dt>
+              <dd>{comp.prizeValue}</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Entry period</dt>
+              <dd>{comp.entryPeriod}</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Draw</dt>
+              <dd>{comp.draw}</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">How to enter</dt>
+              <dd>{comp.entryMethod}</dd>
+            </div>
+          </dl>
+        </section>
+
+        {/* ─── 1. The promoter — STANDING ─────────────────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">1. The promoter</h2>
+          <p>
+            This promotion is conducted by Cantelo Corporation Pty Ltd trading as
+            Beauticate (&ldquo;the Promoter&rdquo;). Enquiries can be directed to{' '}
+            <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
+              hello@beauticate.com
+            </a>.
+          </p>
+        </section>
+
+        {/* ─── 2. Who can enter — EDIT PER COMPETITION ────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">2. Who can enter</h2>
+          <p>
+            Entry is open to Australian residents aged 18 years and over who are
+            qualified beauty industry professionals. This includes registered
+            nurses, beauty therapists, dermal clinicians, salon and clinic
+            owners, and other industry practitioners.
+          </p>
+          <p className="mt-4">
+            Beauty Expo Australia is a trade-only event. Entrants who are not
+            qualified professionals are not eligible to attend and therefore not
+            eligible to win.
+          </p>
+          <p className="mt-4">
+            Employees of the Promoter and of Beauty Expo Australia, and their
+            immediate families, are not eligible to enter.
+          </p>
+        </section>
+
+        {/* ─── 3. Entry period — EDIT PER COMPETITION ─────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">3. Entry period</h2>
+          <p>
+            The promotion opened on 9 July 2026 and closed at 11:59pm AEST on
+            31 July 2026.
+          </p>
+          <p className="mt-4">Entries received outside this period will not be accepted.</p>
+        </section>
+
+        {/* ─── 4. How to enter — EDIT PER COMPETITION ─────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">4. How to enter</h2>
+          <p>
+            Entry is free. To enter, entrants comment on the nominated Beauticate
+            Instagram post or reel, or reply to the nominated Beauticate
+            Instagram story, and then provide a valid email address when prompted
+            in the resulting direct message conversation.
+          </p>
+          <p className="mt-4">
+            An entry is only valid once a valid email address has been submitted.
+          </p>
+          <p className="mt-4">
+            One entry per person. The Promoter reserves the right to disqualify
+            duplicate entries.
+          </p>
+        </section>
+
+        {/* ─── 5. The prize — EDIT PER COMPETITION ────────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">5. The prize</h2>
+          <p>
+            There is one prize consisting of two passes to Beauty Expo Australia
+            2026, held on 15 and 16 August 2026 at ICC Sydney, each including a
+            goodie bag upgrade. Expo passes are valued at A$40 each. The value of
+            the goodie bag is indeterminate. Total minimum prize value is A$80
+            excluding goodie bag contents.
+          </p>
+          <p className="mt-4">
+            The prize is not transferable, not exchangeable, and cannot be
+            redeemed for cash. The prize does not include travel, accommodation,
+            parking, meals or any other cost associated with attending the event.
+            All such costs are the responsibility of the winner.
+          </p>
+          <p className="mt-4">
+            If the prize becomes unavailable for reasons beyond the Promoter&apos;s
+            control, the Promoter reserves the right to substitute a prize of
+            equal or greater value, subject to any written directions from a
+            relevant regulatory authority.
+          </p>
+        </section>
+
+        {/* ─── 6. How the winner is chosen — EDIT PER COMPETITION ─────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">6. How the winner is chosen</h2>
+          <p>
+            This is a game of chance. Skill plays no part in determining the
+            winner.
+          </p>
+          <p className="mt-4">
+            The winner will be drawn at random from all valid entries on 3 August
+            2026, using a random number generator. The draw will be conducted
+            electronically and no physical draw location applies.
+          </p>
+        </section>
+
+        {/* ─── 7. Notifying the winner — EDIT PER COMPETITION ─────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">7. Notifying the winner</h2>
+          <p>
+            The winner will be notified by email and by Instagram direct message
+            within two business days of the draw.
+          </p>
+          <p className="mt-4">
+            The winner&apos;s first name and general location may be announced on
+            Beauticate&apos;s Instagram account and in the Beauticate newsletter.
+          </p>
+          <p className="mt-4">
+            The winner must respond to confirm acceptance within 7 days of
+            notification. If the winner cannot be contacted, does not respond
+            within that period, or is found to be ineligible, the Promoter
+            reserves the right to redraw. Any redraw will be conducted
+            electronically by the same method within 5 business days, and the
+            redrawn winner will be notified within two business days.
+          </p>
+        </section>
+
+        {/* ─── 8. Personal information — STANDING ─────────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">8. Personal information</h2>
+          <p>
+            By entering, entrants consent to receiving marketing communications
+            from Beauticate, including the Beauticate newsletter. Entrants may
+            unsubscribe at any time using the link in any email.
+          </p>
+          <p className="mt-4">
+            Personal information collected will be handled in accordance with the
+            Beauticate{' '}
+            <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">privacy policy</a>.
+            The Promoter will not sell entrants&apos; personal information.
+          </p>
+          <p className="mt-4">
+            Entrants&apos; email addresses are stored in the Promoter&apos;s email
+            platform for the purpose of administering this promotion and sending
+            marketing communications.
+          </p>
+        </section>
+
+        {/* ─── 9. General — STANDING ──────────────────────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">9. General</h2>
+          <p>
+            The Promoter&apos;s decision is final and no correspondence will be
+            entered into.
+          </p>
+          <p className="mt-4">
+            The Promoter reserves the right to verify the validity of any entry
+            and to disqualify any entrant who tampers with the entry process,
+            submits an entry that is not in accordance with these terms, or
+            engages in conduct that is fraudulent, misleading or damaging to the
+            goodwill of the Promoter.
+          </p>
+          <p className="mt-4">
+            The Promoter is not responsible for entries that are lost, delayed or
+            not received for any reason.
+          </p>
+          <p className="mt-4">
+            Nothing in these terms limits, excludes or modifies any rights
+            entrants have under the Australian Consumer Law.
+          </p>
+          <p className="mt-4">
+            By entering, entrants agree to be bound by these terms and conditions.
+          </p>
+        </section>
+
+        {/* ─── 10. Instagram and Meta — STANDING ──────────────────────────── */}
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">10. Instagram and Meta</h2>
+          <p>
+            This promotion is in no way sponsored, endorsed, administered by, or
+            associated with Meta Platforms, Inc. or Instagram. Entrants release
+            Meta and Instagram completely in relation to this promotion. Any
+            questions, comments or complaints about the promotion must be
+            directed to the Promoter, not to Meta or Instagram.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Governing law</h2>
+          <p>These terms are governed by the laws of New South Wales, Australia.</p>
+        </section>
+
+        <p className="text-xs text-charcoal/40 font-sans pt-6 border-t border-camel/20">
+          Cantelo Corporation Pty Ltd · ABN 71 105 175 317
+        </p>
+      </div>
+    </div>
+  )
+}
