@@ -1,4 +1,4 @@
-import { getCollections, getProducts, getTeamRailProducts, getNewArrivals, getCollectionByHandle, getCollectionFull } from '@/lib/shopify'
+import { getCollections, getProducts, getProductsByTag, getNewArrivals, getCollectionByHandle, getCollectionFull } from '@/lib/shopify'
 import { getVodcastEpisodes } from '@/lib/content'
 import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import HeroVideo from '@/components/shop/HeroVideo'
@@ -10,7 +10,7 @@ import FoundersPanel from '@/components/shop/FoundersPanel'
 import SigourneysEdit from '@/components/shop/SigourneysEdit'
 import ShopCategoryGrid from '@/components/shop/ShopCategoryGrid'
 import ShopNewsletter from '@/components/shop/ShopNewsletter'
-import ProductRail from '@/components/shared/ProductRail'
+import ShopProductGrid from '@/components/shop/ShopProductGrid'
 import CollectionFeature from '@/components/shop/CollectionFeature'
 import PodcastSection from '@/components/home/PodcastSection'
 import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
@@ -35,7 +35,7 @@ function pickMoments(collections: ShopifyCollection[]): ShopifyCollection[] {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Shop',
+  title: 'Shop | Beauticate',
   description: 'Curated beauty, wellness and lifestyle — recommended by the editors and experts of Beauticate. Fewer, better things, chosen by editors not algorithms.',
 }
 
@@ -44,10 +44,10 @@ const FREE_SHIP_HANDLES = SHOP_BRANDS
   .map(b => b.handle)
 
 export default async function ShopPage() {
-  const [collections, curatedProducts, allProducts, newArrivals, vodcastEpisodes, ...rest] = await Promise.all([
+  const [collections, taggedProducts, allProducts, newArrivals, vodcastEpisodes, ...rest] = await Promise.all([
     getCollections(48),
-    getTeamRailProducts(),
-    getProducts(48),
+    getProductsByTag('team', 24),
+    getProducts(24),
     getNewArrivals(6, 4),
     Promise.resolve(getVodcastEpisodes()),
     ...FEATURED_COLLECTIONS.map(h => getCollectionByHandle(h)),
@@ -57,9 +57,13 @@ export default async function ShopPage() {
   const featured = (rest.slice(0, FEATURED_COLLECTIONS.length) as (ShopifyCollection | null)[]).filter(Boolean) as ShopifyCollection[]
   const freeShipCols = rest.slice(FEATURED_COLLECTIONS.length)
 
-  // Same curated "team" edit as the home page (see getTeamRailProducts); fall
-  // back to the general catalogue only if the curated set is somehow empty.
-  const shopProducts = curatedProducts.length > 0 ? curatedProducts : allProducts.slice(0, 48)
+  const seen = new Set<string>()
+  const curatedProducts = [...taggedProducts, ...allProducts].filter(p => {
+    if (seen.has(p.handle)) return false
+    seen.add(p.handle)
+    return true
+  })
+  const shopProducts = curatedProducts.slice(0, 16)
 
   const seenFS = new Set<string>()
   const freeShipProducts = freeShipCols.flatMap(c => (c as any)?.products?.nodes ?? []).filter((p: any) => {
@@ -109,29 +113,47 @@ export default async function ShopPage() {
       {/* Trust band */}
       <TrustBand />
 
-      {/* The Edit — two-row slow-scroll rail */}
-      <ProductRail
+      {/* Product grid — 16 products immediately visible */}
+      <ShopProductGrid
         products={shopProducts}
-        rows={2}
-        eyebrow="The Edit"
-        heading={<>What the team is buying <em className="italic">this week</em></>}
-        cta={{ label: 'Shop all products', href: '/shop/beauty' }}
+        heading={
+          <>
+            <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
+              The Edit
+            </p>
+            <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
+              What the team is buying <em className="italic">this week</em>
+            </h2>
+          </>
+        }
       />
 
-      {/* New Arrivals — one product per brand, most recently onboarded (1 row) */}
+      {/* New Arrivals — one product per brand, most recently onboarded */}
       {newArrivals.length > 0 && (
-        <ProductRail
+        <ShopProductGrid
           products={newArrivals}
-          rows={1}
-          eyebrow="Just Landed"
-          heading={<>New in <em className="italic">shop</em></>}
-          description="Our picks from the latest brands to join Beauticate shop"
-          cta={{ label: 'Shop all products', href: '/shop/beauty' }}
+          maxProducts={24}
+          heading={
+            <>
+              <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
+                Just Landed
+              </p>
+              <h2 className="font-serif font-normal mt-2" style={{ fontSize: 'clamp(24px,3vw,34px)' }}>
+                New in <em className="italic">shop</em>
+              </h2>
+              <p className="font-sans mt-2" style={{ fontSize: '12.5px', opacity: 0.55 }}>
+                Our picks from the latest brands to join Beauticate shop
+              </p>
+            </>
+          }
         />
       )}
 
       {/* Founder introduction */}
       <FounderIntro />
+
+      {/* Female-founded brands */}
+      <FoundersPanel />
 
       {/* Collection feature cards */}
       {featured.map(c => (
@@ -149,9 +171,6 @@ export default async function ShopPage() {
 
       {/* Shop by Category */}
       <ShopCategoryGrid />
-
-      {/* Female-founded brands */}
-      <FoundersPanel />
 
       {/* Meet the Beauticate Collective */}
       <Collective />
