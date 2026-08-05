@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // ── Old WP competitions landing → competition T&Cs ───────────────────
+      { source: '/competitions', destination: '/competitions/terms', permanent: true },
+
       // ── Legacy shop domains → beauticate.com/shop (all paths except Shopify's own checkout) ─
       // Requires beauticate.shop / shop.beauticate.com to be added as domains
       // on this Vercel project with DNS pointed here.
