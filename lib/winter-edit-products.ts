@@ -61,7 +61,7 @@ export const WINTER_EDIT_PRODUCTS: WinterEditProduct[] = [
   { name: 'Lumira Cuban Tobacco Parfum', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/screenshot-2026-04-19-041105.png', price: '$159', handle: 'cuban-tobacco-eau-de-parfum' },
   { name: 'Maison Balzac Bordeaux Wine Glasses', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/screenshot-2026-04-19-041714.png', price: '$199', handle: '2-bordeaux-wine-glasses-clear-amber' },
   { name: 'Victoria Beckham Bitten Lip Tint', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/vb-bitten-lip-tint.webp', price: '$58', url: 'https://victoriabeckhambeauty.com/products/bitten-lip-tint', cover: true },
-  { name: 'Scanlan Theodore Crepe Knit Barrel Trouser', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/scanlan-theodore-barrel-trouser.jpg', price: '$650', url: 'https://www.scanlantheodore.com/au/products/crepe-knit-barrel-trouser-1', cover: true },
+  { name: 'Scanlan Theodore Crepe Knit Barrel Trouser', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/scanlan-theodore-barrel-trouser.jpg', price: '$650', url: 'https://bit.ly/45Eg9Cr', cover: true },
   { name: 'Saint Louve 15% Vitamin C Lustrum Serum', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/saint-louve-vitamin-c.png', handle: '15-vitamin-c-lustrum-serum' },
   { name: 'Innour Marine Collagen Sachets', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/innour-marine-collagen-cut.png', price: '$75', handle: 'natural-marine-collagen-natural-30-sachets' },
   { name: 'Tulita Agati EDP', image: '/content/beauty-style/beauty-tips/beauticate-team-winter-edit/tulita-agati.webp', handle: 'agati' },
