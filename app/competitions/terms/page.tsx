@@ -67,7 +67,10 @@ export default function CompetitionTermsPage() {
 
         {/* Current competition at a glance (reads from `comp`) */}
         <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
-          <h3 className="font-serif text-xl text-ink mb-4">{comp.name}</h3>
+          <h3 className="font-serif text-xl text-ink mb-4">
+            {comp.name}{' '}
+            <span className="text-charcoal/40 font-normal">(closed)</span>
+          </h3>
           <dl className="space-y-3 text-[15px]">
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Prize</dt>
