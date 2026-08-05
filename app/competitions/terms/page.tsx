@@ -1,23 +1,24 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { pastCompetitions } from '../pastCompetitions'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   EDIT PER COMPETITION — the variable facts. Update this object each time a
-   new competition runs; the summary box and the prose below both read from it,
-   so the dates/prize/draw only need changing in one place. The numbered
-   sections flagged “EDIT PER COMPETITION” carry wording that also changes
-   (eligibility, entry mechanics, prize detail, chance-vs-skill). Everything
-   flagged “STANDING” is identical every competition and rarely changes.
+   PART ONE — “This competition”. The variable facts. Update this object each
+   time a new competition runs; the summary box and the Part One prose both read
+   from it, so dates/prize/draw only change in one place. Everything in Part Two
+   (“General terms”) is identical every competition and rarely changes.
    ══════════════════════════════════════════════════════════════════════════ */
 const comp = {
   name: 'Beauticate x Beauty Expo Australia 2026 Giveaway',
   lastUpdated: 'July 2026',
-  entryPeriod: 'Opened 9 July 2026, closed 11:59pm AEST on 31 July 2026',
+  entryOpen: '9 July 2026',
+  entryClose: '11:59pm AEST on 31 July 2026',
+  drawDate: '3 August 2026',
   entryMethod:
     'Comment on the nominated Beauticate Instagram post or reel, or reply to the nominated story, then provide a valid email address when prompted by direct message',
   prize:
     'Two passes to Beauty Expo Australia 2026 (15–16 August 2026, ICC Sydney), each including a goodie bag upgrade',
   prizeValue: 'A$80 minimum (excluding goodie bag contents)',
-  draw: 'Drawn at random 3 August 2026 (game of chance)',
 }
 
 export const metadata: Metadata = {
@@ -43,19 +44,30 @@ export default function CompetitionTermsPage() {
       <div className="font-serif text-charcoal/80 leading-relaxed space-y-8">
 
         <p>
-          These terms apply to competitions, prize draws and giveaways
-          (each a &ldquo;Competition&rdquo;) run by Beauticate. By entering a
-          Competition you accept these terms together with the specific details
-          for the current Competition set out below. Please read them alongside
+          These terms have two parts. <strong className="font-normal text-ink">This competition</strong>{' '}
+          covers the specific details of the giveaway currently running.{' '}
+          <strong className="font-normal text-ink">General terms</strong> apply to
+          every Beauticate competition. By entering you accept both, together with
           our{' '}
           <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">Privacy Policy</a>{' '}
           and{' '}
           <a href="/terms" className="text-ink hover:text-eucalypt transition-colors">Terms &amp; Conditions</a>.
         </p>
 
-        {/* ─── Current competition at a glance (reads from `comp`) ─────────── */}
+        {/* ══════════════════════════════════════════════════════════════════
+            PART ONE — THIS COMPETITION (edit per competition)
+           ══════════════════════════════════════════════════════════════════ */}
+        <div className="pt-4 border-t border-camel/30">
+          <p className="label-editorial mb-2">Part one</p>
+          <h2 className="font-serif text-2xl text-ink">This competition</h2>
+          <p className="text-sm text-charcoal/50 mt-1">
+            The details specific to the giveaway currently running.
+          </p>
+        </div>
+
+        {/* Current competition at a glance (reads from `comp`) */}
         <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
-          <h2 className="font-serif text-xl text-ink mb-4">{comp.name}</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">{comp.name}</h3>
           <dl className="space-y-3 text-[15px]">
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Prize</dt>
@@ -67,11 +79,11 @@ export default function CompetitionTermsPage() {
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Entry period</dt>
-              <dd>{comp.entryPeriod}</dd>
+              <dd>Opened {comp.entryOpen}, closed {comp.entryClose}</dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Draw</dt>
-              <dd>{comp.draw}</dd>
+              <dd>Drawn at random {comp.drawDate} (game of chance)</dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">How to enter</dt>
@@ -80,21 +92,8 @@ export default function CompetitionTermsPage() {
           </dl>
         </section>
 
-        {/* ─── 1. The promoter — STANDING ─────────────────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">1. The promoter</h2>
-          <p>
-            This promotion is conducted by Cantelo Corporation Pty Ltd trading as
-            Beauticate (&ldquo;the Promoter&rdquo;). Enquiries can be directed to{' '}
-            <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
-              hello@beauticate.com
-            </a>.
-          </p>
-        </section>
-
-        {/* ─── 2. Who can enter — EDIT PER COMPETITION ────────────────────── */}
-        <section>
-          <h2 className="font-serif text-xl text-ink mb-4">2. Who can enter</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">Who can enter</h3>
           <p>
             Entry is open to Australian residents aged 18 years and over who are
             qualified beauty industry professionals. This includes registered
@@ -112,19 +111,16 @@ export default function CompetitionTermsPage() {
           </p>
         </section>
 
-        {/* ─── 3. Entry period — EDIT PER COMPETITION ─────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">3. Entry period</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">Entry period</h3>
           <p>
-            The promotion opened on 9 July 2026 and closed at 11:59pm AEST on
-            31 July 2026.
+            The promotion opened on {comp.entryOpen} and closed at {comp.entryClose}.
           </p>
           <p className="mt-4">Entries received outside this period will not be accepted.</p>
         </section>
 
-        {/* ─── 4. How to enter — EDIT PER COMPETITION ─────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">4. How to enter</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">How to enter</h3>
           <p>
             Entry is free. To enter, entrants comment on the nominated Beauticate
             Instagram post or reel, or reply to the nominated Beauticate
@@ -140,9 +136,8 @@ export default function CompetitionTermsPage() {
           </p>
         </section>
 
-        {/* ─── 5. The prize — EDIT PER COMPETITION ────────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">5. The prize</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">The prize</h3>
           <p>
             There is one prize consisting of two passes to Beauty Expo Australia
             2026, held on 15 and 16 August 2026 at ICC Sydney, each including a
@@ -164,23 +159,43 @@ export default function CompetitionTermsPage() {
           </p>
         </section>
 
-        {/* ─── 6. How the winner is chosen — EDIT PER COMPETITION ─────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">6. How the winner is chosen</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">How the winner is chosen</h3>
           <p>
             This is a game of chance. Skill plays no part in determining the
             winner.
           </p>
           <p className="mt-4">
-            The winner will be drawn at random from all valid entries on 3 August
-            2026, using a random number generator. The draw will be conducted
+            The winner will be drawn at random from all valid entries on {comp.drawDate},
+            using a random number generator. The draw will be conducted
             electronically and no physical draw location applies.
           </p>
         </section>
 
-        {/* ─── 7. Notifying the winner — EDIT PER COMPETITION ─────────────── */}
+        {/* ══════════════════════════════════════════════════════════════════
+            PART TWO — GENERAL TERMS (standing — apply to every competition)
+           ══════════════════════════════════════════════════════════════════ */}
+        <div className="pt-6 border-t border-camel/30">
+          <p className="label-editorial mb-2">Part two</p>
+          <h2 className="font-serif text-2xl text-ink">General terms</h2>
+          <p className="text-sm text-charcoal/50 mt-1">
+            These apply to every Beauticate competition.
+          </p>
+        </div>
+
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">7. Notifying the winner</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">The promoter</h3>
+          <p>
+            This promotion is conducted by Cantelo Corporation Pty Ltd trading as
+            Beauticate (&ldquo;the Promoter&rdquo;). Enquiries can be directed to{' '}
+            <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
+              hello@beauticate.com
+            </a>.
+          </p>
+        </section>
+
+        <section>
+          <h3 className="font-serif text-xl text-ink mb-4">Notifying the winner</h3>
           <p>
             The winner will be notified by email and by Instagram direct message
             within two business days of the draw.
@@ -199,9 +214,8 @@ export default function CompetitionTermsPage() {
           </p>
         </section>
 
-        {/* ─── 8. Personal information — STANDING ─────────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">8. Personal information</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">Personal information</h3>
           <p>
             By entering, entrants consent to receiving marketing communications
             from Beauticate, including the Beauticate newsletter. Entrants may
@@ -220,9 +234,8 @@ export default function CompetitionTermsPage() {
           </p>
         </section>
 
-        {/* ─── 9. General — STANDING ──────────────────────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">9. General</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">General</h3>
           <p>
             The Promoter&apos;s decision is final and no correspondence will be
             entered into.
@@ -247,9 +260,8 @@ export default function CompetitionTermsPage() {
           </p>
         </section>
 
-        {/* ─── 10. Instagram and Meta — STANDING ──────────────────────────── */}
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">10. Instagram and Meta</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">Instagram and Meta</h3>
           <p>
             This promotion is in no way sponsored, endorsed, administered by, or
             associated with Meta Platforms, Inc. or Instagram. Entrants release
@@ -260,9 +272,17 @@ export default function CompetitionTermsPage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Governing law</h2>
+          <h3 className="font-serif text-xl text-ink mb-4">Governing law</h3>
           <p>These terms are governed by the laws of New South Wales, Australia.</p>
         </section>
+
+        {pastCompetitions.length > 0 && (
+          <p className="pt-6 border-t border-camel/20">
+            <Link href="/competitions/archive" className="text-ink hover:text-eucalypt transition-colors">
+              Past competitions →
+            </Link>
+          </p>
+        )}
 
         <p className="text-xs text-charcoal/40 font-sans pt-6 border-t border-camel/20">
           Cantelo Corporation Pty Ltd · ABN 71 105 175 317

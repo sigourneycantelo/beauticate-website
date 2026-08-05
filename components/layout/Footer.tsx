@@ -20,6 +20,7 @@ const FOOTER_NAV = [
   { label: 'Advertise With Us', href: '/advertise-with-us' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
+  { label: 'Competitions', href: '/competitions/terms' },
   { label: 'Exclusive Offers', href: '/offers' },
   { label: 'How the Shop Works', href: '/shop/how-it-works' },
   { label: 'Shipping Policy', href: '/shop/shipping' },
