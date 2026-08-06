@@ -4,5 +4,19 @@
   "installCommand": "npm install",
   "env": {
     "NEXT_PUBLIC_SITE_URL": "https://www.beauticate.com"
-  }
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://beauticate.com/shop",
+      "permanent": true,
+      "has": [{ "type": "host", "value": "shop.beauticate.com" }]
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://beauticate.com/shop",
+      "permanent": true,
+      "has": [{ "type": "host", "value": "beauticate.shop" }]
+    }
+  ]
 }
