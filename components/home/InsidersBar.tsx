@@ -30,7 +30,7 @@ export default function InsidersBar() {
         The Edit, in your inbox
       </h2>
       <p className="font-sans mt-2 mb-5 mx-auto" style={{ fontSize: '15px', opacity: 0.62, maxWidth: '52ch' }}>
-        Beauty, wellness, style, living and travel, curated fortnightly. Plus first access to events, offers and the odd surprise.
+        Beauty, wellness, style, living and travel, curated weekly. Plus first access to events, offers and the odd surprise.
       </p>
 
       {submitted ? (
