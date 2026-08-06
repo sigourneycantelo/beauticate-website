@@ -58,7 +58,7 @@ export default function SubscribePage() {
         className="font-sans"
         style={{ fontSize: '14px', opacity: 0.7, maxWidth: '44ch', marginBottom: '36px', lineHeight: 1.6 }}
       >
-        One beautifully edited email, every fortnight. The best interviews, intel and buys curated by our editors, not algorithms. Subscribers get first access to events, and exclusive offers.
+        One beautifully edited email, every week. The best interviews, intel and buys curated by our editors, not algorithms. Subscribers get first access to events, and exclusive offers.
       </p>
 
       {status === 'success' ? (
