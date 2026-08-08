@@ -146,49 +146,53 @@ export default function DirectoryClient({ venues }: { venues: Venue[] }) {
         style={{ background: '#FFFFFF', borderBottom: '1px solid #E8E2D8' }}
       >
         <div className="max-w-[1240px] mx-auto px-8">
-          <div className="flex items-center gap-2 flex-wrap mb-3">
-            <span className="font-sans text-[11px] tracking-[0.16em] uppercase mr-1" style={{ color: '#6E655A' }}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2 mb-3">
+            <span className="font-sans text-[11px] tracking-[0.16em] uppercase sm:mr-1" style={{ color: '#6E655A' }}>
               State
             </span>
-            <Chip
-              active={stateFilter === 'all'}
-              onClick={() => setStateFilter('all')}
-              onMouseEnter={() => setHoverVenue(null)}
-              onMouseLeave={() => setHoverVenue(null)}
-            >All</Chip>
-            {STATES.map(s => (
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide -mx-8 px-8 sm:contents">
               <Chip
-                key={s}
-                active={stateFilter === s}
-                onClick={() => setStateFilter(s)}
-                onMouseEnter={() => setHoverVenue(getPreviewForState(s))}
+                active={stateFilter === 'all'}
+                onClick={() => setStateFilter('all')}
+                onMouseEnter={() => setHoverVenue(null)}
                 onMouseLeave={() => setHoverVenue(null)}
-              >{s}</Chip>
-            ))}
+              >All</Chip>
+              {STATES.map(s => (
+                <Chip
+                  key={s}
+                  active={stateFilter === s}
+                  onClick={() => setStateFilter(s)}
+                  onMouseEnter={() => setHoverVenue(getPreviewForState(s))}
+                  onMouseLeave={() => setHoverVenue(null)}
+                >{s}</Chip>
+              ))}
+            </div>
           </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="font-sans text-[11px] tracking-[0.16em] uppercase mr-1" style={{ color: '#6E655A' }}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:flex-wrap gap-2">
+            <span className="font-sans text-[11px] tracking-[0.16em] uppercase sm:mr-1" style={{ color: '#6E655A' }}>
               Type
             </span>
-            <Chip
-              active={typeFilter === 'all'}
-              onClick={() => setTypeFilter('all')}
-              onMouseEnter={() => setHoverVenue(null)}
-              onMouseLeave={() => setHoverVenue(null)}
-              isType
-            >All</Chip>
-            {VENUE_TYPES.map(t => (
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide -mx-8 px-8 sm:contents">
               <Chip
-                key={t.value}
-                active={typeFilter === t.value}
-                onClick={() => setTypeFilter(t.value)}
-                onMouseEnter={() => setHoverVenue(getPreviewForType(t.value))}
+                active={typeFilter === 'all'}
+                onClick={() => setTypeFilter('all')}
+                onMouseEnter={() => setHoverVenue(null)}
                 onMouseLeave={() => setHoverVenue(null)}
                 isType
-              >
-                {t.label}
-              </Chip>
-            ))}
+              >All</Chip>
+              {VENUE_TYPES.map(t => (
+                <Chip
+                  key={t.value}
+                  active={typeFilter === t.value}
+                  onClick={() => setTypeFilter(t.value)}
+                  onMouseEnter={() => setHoverVenue(getPreviewForType(t.value))}
+                  onMouseLeave={() => setHoverVenue(null)}
+                  isType
+                >
+                  {t.label}
+                </Chip>
+              ))}
+            </div>
           </div>
         </div>
       </div>
