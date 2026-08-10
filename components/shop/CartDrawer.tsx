@@ -3,12 +3,12 @@ import { useCart } from './CartProvider'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { gaViewCart, gaBeginCheckout, GAItem } from '@/lib/ga/events'
+import { gaViewCart, gaBeginCheckout, gidToId, GAItem } from '@/lib/ga/events'
 import { track } from '@/lib/meta/pixel'
 
 function cartToGAItems(lines: any[]): GAItem[] {
   return lines.map((line: any) => ({
-    item_id: line.merchandise?.product?.id ?? line.merchandise?.id,
+    item_id: gidToId(line.merchandise?.product?.id ?? line.merchandise?.id ?? ''),
     item_name: line.merchandise?.product?.title ?? line.merchandise?.title,
     item_brand: line.merchandise?.product?.vendor,
     price: parseFloat(line.merchandise?.price?.amount ?? '0'),
