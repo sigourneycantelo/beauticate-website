@@ -19,7 +19,17 @@ export default function Sacred60Page() {
     <main className="bg-cream-50 text-charcoal">
       {/* ─── Hero ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ background: '#F5F0E8' }}>
-        <div className="max-w-5xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+        <div className="absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/content/sacred60/hero.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            style={{ opacity: 0.16 }}
+            aria-hidden
+          />
+        </div>
+        <div className="relative max-w-5xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center gap-12 md:gap-16">
           {/* Left: copy */}
           <div className="flex-1 text-center md:text-left">
             <p
@@ -95,7 +105,7 @@ export default function Sacred60Page() {
         <div className="w-full md:w-[280px] shrink-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://www.beauticate.com/wp-content/uploads/2026/01/NEW-Sacred-Sixty-1.gif"
+            src="/content/sacred60/guide-preview.gif"
             alt="The Sacred 60 guide preview"
             className="w-full"
             loading="lazy"
