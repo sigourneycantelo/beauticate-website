@@ -16,7 +16,7 @@ export type Sacred60Item = {
   isShop?: boolean
 }
 
-const WP = 'https://www.beauticate.com/wp-content/uploads/2026/01'
+const IMG = '/content/sacred60'
 const SHOP = '/shop'
 
 export const SACRED_60: Sacred60Section[] = [
@@ -30,7 +30,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Try the 4-7-8 breath: inhale through the nose for 4 counts, hold for 7, exhale slowly for 8. Repeat for 4 rounds. This rhythm activates the parasympathetic nervous system, slows the heart rate, and quiets a racing mind. A Moon Lamp helps illuminate the scene.',
         product: 'Moon Lamp',
         url: 'https://amzn.to/44F25sW',
-        image: `${WP}/REWIRE-YOUR-STRESS-RESPONSE.png`,
+        image: `${IMG}/item1_moonlamp.png`,
       },
       {
         number: 2,
@@ -39,7 +39,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'The Five Minute Journal',
         brand: 'Intelligent Change',
         url: 'https://amzn.to/3GTFUpB',
-        image: `${WP}/A-LIFE-CHANGING-DAILY-PRACTICE.png`,
+        image: `${IMG}/item2_fiveminutejournal.png`,
       },
       {
         number: 3,
@@ -47,7 +47,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Sound healing rituals have been used for centuries to soothe the body and brain. Binaural beats, crystal bowls or your favourite mantra all count. DIY with Tingsha Cymbals Bells.',
         product: 'Tingsha Cymbals Bells',
         url: 'https://amzn.to/45dMCQw',
-        image: `${WP}/BATHE-YOUR-BRAIN-IN-SOUND.png`,
+        image: `${IMG}/item3_tingsha.png`,
       },
       {
         number: 4,
@@ -55,7 +55,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Emotional Freedom Technique (EFT) uses acupressure points to calm the brain. The Neurofit App is a nervous system coaching app that includes tapping exercises among many other somatic hacks to calm and reprogram your stress response.',
         product: 'Neurofit App',
         url: 'https://neurofit.app/app-checkout?c=SIGOURNEYCANTELO20',
-        image: `${WP}/TAP-YOUR-WAY-TO-INNER-PEACE.png`,
+        image: `${IMG}/item4_neurofit.png`,
         discount: '20% off with code SIGOURNEYCANTELO20',
       },
       {
@@ -65,7 +65,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "Life Cykel Lion's Mane Liquid Extract",
         brand: 'Life Cykel',
         url: 'https://lifecykel.com/products/australian-lions-mane-mushroom-extract',
-        image: `${WP}/MICRODOSE-YOUR-MINDSET.png`,
+        image: `${IMG}/item5_lionsmane.png`,
       },
       {
         number: 6,
@@ -73,7 +73,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'The Pulsetto stimulates your vagus nerve via gentle, non-invasive impulses, helping shift you from fight-or-flight into a grounded, relaxed state.',
         product: 'Pulsetto',
         url: 'https://pulsetto-gb.myshopify.com/?sca_ref=7074273.5OdIohWvEy2',
-        image: `${WP}/TUNE-YOUR-NERVE.png`,
+        image: `${IMG}/item6_pulsetto.png`,
       },
       {
         number: 7,
@@ -82,7 +82,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Infraredi Pro Max',
         brand: 'Infraredi',
         url: 'https://infraredi.com.au/products/infraredi-pro-max?variant=39980135153744&sca_ref=6635739.8kg23hwHHr',
-        image: `${WP}/LET-LIGHT-SHIFT-YOUR-MOOD.png`,
+        image: `${IMG}/item7_infraredi.png`,
         discount: '10% off',
       },
       {
@@ -92,7 +92,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Manifest Journal',
         brand: 'Roxie Nafousi',
         url: 'https://amzn.to/3GLIIVS',
-        image: `${WP}/SCRIPT-YOUR-DREAM-LIFE.png`,
+        image: `${IMG}/item8_manifest.png`,
       },
       {
         number: 9,
@@ -100,7 +100,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Self-hypnosis and subconscious reprogramming sound woo — until you try them. The Mindvalley App is my go-to for upgrading my mindset. It's packed with transformative courses, mood-shifting meditations — try the Hypnotic Trance for Bliss.",
         product: 'Mindvalley App',
         url: 'https://join.mindvalley.com/r/b0MaYT8Zn9dK',
-        image: `${WP}/REPROGRAM-YOUR-MIND.png`,
+        image: `${IMG}/item9_mindvalley.png`,
       },
       {
         number: 10,
@@ -108,7 +108,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Just five quiet minutes of breath or meditation can reset your whole day. I light palo santo, flip my glass meditation timer, and let the stillness do its work.',
         product: 'Palo Santo Stick & Hourglass Timer',
         url: 'https://amzn.to/3GBbrN7',
-        image: `${WP}/Palo-Santo-Stick-e1768553698756.png`,
+        image: `${IMG}/item10_palosanto_hourglass.png`,
       },
     ],
   },
@@ -122,7 +122,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'I keep a Cork Trigger Point Ball by my desk and use it (against the floor or wall) to melt tension in my shoulders, hips, or jaw. Just 60 seconds of pressure can calm the nervous system and release stuck stress from the body.',
         product: 'Cork Trigger Point Ball',
         url: 'https://amzn.to/49qXJIh',
-        image: `${WP}/ONE-BALL-TO-RELEASE-IT-ALL.png`,
+        image: `${IMG}/item11_corkball.png`,
       },
       {
         number: 12,
@@ -130,7 +130,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Dancing gently wakes up the lymphatic system and doubles as a \"joy practice\" and play. I dance in the kitchen to old-school hip hop or Spotify's 'Dance Party' playlist. Tip: Create a \"Mood Reset\" playlist and move your body for one full song.",
         product: 'Your Spotify Playlist',
         url: 'https://open.spotify.com',
-        image: `${WP}/OIL-UP.png`,
+        image: `${IMG}/item12-spotify.png`,
       },
       {
         number: 13,
@@ -138,7 +138,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Contrast therapy (sauna + cold plunge) activates heat shock proteins, improves circulation and supports mitochondria. Try magnesium bath flakes post-sauna to support detox and sleep.',
         product: 'Salts & CO. Pure Magnesium Bath Flakes',
         url: 'https://amzn.to/4jJmsL9',
-        image: `${WP}/HOT-COLD-SALTY.png`,
+        image: `${IMG}/item13_magflakes.png`,
       },
       {
         number: 14,
@@ -147,7 +147,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Grounding Well Mats & Sheets',
         brand: 'Grounding Well',
         url: 'https://www.groundingwell.com/GWSIGOURNEY10',
-        image: `${WP}/GET-GROUNDED.png`,
+        image: `${IMG}/item14-groundingwell.png`,
         discount: '10% off with code GWSIGOURNEY10',
       },
       {
@@ -157,7 +157,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Ashaya In Flow Body Oil',
         brand: 'Ashaya',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fashaya%2Fashaya-in-flow-body-oil-100ml.html',
-        image: `${WP}/OIL-UP-BEFORE-YOU-GLOW-UP.png`,
+        image: `${IMG}/item15_ashaya.png`,
       },
       {
         number: 16,
@@ -166,7 +166,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Theragun Relief',
         brand: 'Therabody',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Ftherabody%2Ftherabody-theragun-relief-navy.html',
-        image: `${WP}/MASSAGE-MAGIC.png`,
+        image: `${IMG}/item16-theragun.png`,
       },
       {
         number: 17,
@@ -174,7 +174,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Weighted vests add gentle, wearable resistance to daily movement and can help build strength, boost metabolism, and support bone density — a must as hormones shift.',
         product: 'Weighted Vest',
         url: 'https://amzn.to/4pFIBvm',
-        image: `${WP}/WEARABLE-WEIGHT-TRAINING.png`,
+        image: `${IMG}/item17_vest.png`,
       },
       {
         number: 18,
@@ -182,7 +182,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Lifting weights builds muscle mass, supports hormonal balance and strengthens bones — especially important after 40. MERACH Adjustable Dumbbells are a sleek (and affordable) addition to your home gym.",
         product: 'MERACH Adjustable Dumbbells',
         url: 'https://amzn.to/4m75E0Q',
-        image: `${WP}/BUILDABLE-WEIGHTS.png`,
+        image: `${IMG}/item18_dumbbells.png`,
       },
       {
         number: 19,
@@ -191,7 +191,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'ThermaTouch Body Massager',
         brand: 'Kiicity',
         url: `${SHOP}/products/thermatouch-body-massager`,
-        image: `${WP}/NECK-KNEADED.png`,
+        image: `${IMG}/item19-thermatouch.jpg`,
         isShop: true,
       },
       {
@@ -201,7 +201,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Lululemon Fast and Free Running Belt',
         brand: 'Lululemon',
         url: 'https://t.cfjump.com/68150/t/43371?Url=https%3a%2f%2fwww.lululemon.com.au%2fen-au%2fp%2ffast-and-free-running-belt%2fprod9590060.html',
-        image: `${WP}/RUN-IT-OUT.png`,
+        image: `${IMG}/item20_runningbelt.png`,
       },
     ],
   },
@@ -216,7 +216,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "Qure Rejuvalite LED Mask",
         brand: 'Qure',
         url: 'https://www.qureskincare.com/SIGOURNEY57027',
-        image: `${WP}/THE-EXPRESS-LED-MASK.png`,
+        image: `${IMG}/item21_quremask.png`,
       },
       {
         number: 22,
@@ -225,7 +225,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "Dermalogica Multivitamin Power Recovery Cream",
         brand: 'Dermalogica',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fdermalogica%2Fdermalogica-multivitamin-power-recovery-cream-50ml.html',
-        image: `${WP}/Feed-Your-face.png`,
+        image: `${IMG}/item22_dermalogica.png`,
       },
       {
         number: 23,
@@ -234,7 +234,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "Muji Mild Cleansing Oil",
         brand: 'Muji',
         url: 'https://amzn.to/4sxfzAI',
-        image: `${WP}/CLEANSING-AS-MEDITATION.png`,
+        image: `${IMG}/item23-muji.jpg`,
       },
       {
         number: 24,
@@ -243,7 +243,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Jade Gua Sha',
         brand: 'Salt by Hendrix',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fsalt-by-hendrix%2Fsalt-by-hendrix-jade-gua-sha.html',
-        image: `${WP}/DRAIN-SCULPT.png`,
+        image: `${IMG}/item24_guasha.png`,
       },
       {
         number: 25,
@@ -252,7 +252,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Ultra Violette Supreme Screen SPF50+',
         brand: 'Ultra Violette',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https://www.adorebeauty.com.au/p/ultra-violette/ultra-violette-supreme-screen-spf-50-hydrating-facial-sunscreen-75ml.html',
-        image: `${WP}/A-VERY-WEARABLE-SUNSCREEN.png`,
+        image: `${IMG}/item25-ultraviolette.jpg`,
       },
       {
         number: 26,
@@ -261,7 +261,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Qure Micro-Infusion System',
         brand: 'Qure',
         url: 'https://www.qureskincare.com/SIGOURNEY57027',
-        image: `${WP}/THE-DERMASTAMPING-SERUM.png`,
+        image: `${IMG}/item26_quremicroinfusion.png`,
       },
       {
         number: 27,
@@ -270,7 +270,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Sodashi Body Brush',
         brand: 'Sodashi',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fsodashi%2Fsodashi-body-brush.html',
-        image: `${WP}/BRUSH-IT-OFFLITERALLY.png`,
+        image: `${IMG}/item27-sodashi-brush.png`,
       },
       {
         number: 28,
@@ -279,7 +279,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Weleda Skin Food',
         brand: 'Weleda',
         url: 'https://amzn.to/451Ykh0',
-        image: `${WP}/THE-BARRIER-HERO.png`,
+        image: `${IMG}/item28-weleda.jpg`,
       },
       {
         number: 29,
@@ -288,7 +288,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "Qure Neck & Décolletage LED Light Therapy",
         brand: 'Qure',
         url: 'https://www.qureskincare.com/SIGOURNEY57027',
-        image: `${WP}/THE-NECK-AND-DEC-LED-1.png`,
+        image: `${IMG}/item29_qureneckled.png`,
       },
       {
         number: 30,
@@ -297,7 +297,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "Aesop Immediate Moisture Facial Hydrosol",
         brand: 'Aesop',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Faesop%2Faesop-immediate-moisture-facial-hydrosol-50ml.html',
-        image: `${WP}/HYDRATION-HIT.png`,
+        image: `${IMG}/item30-aesop-hydrosol.png`,
       },
     ],
   },
@@ -311,7 +311,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "This Buzio Sherpa weighted blanket will help you sink into your sheets. It's chic and comfy — and will promote amazingly deep sleep.",
         product: 'Buzio Sherpa Weighted Blanket',
         url: 'https://amzn.to/4aSMnxR',
-        image: `${WP}/THE-WEIGHTED-BLANKET.png`,
+        image: `${IMG}/item31_weightedblanket.png`,
       },
       {
         number: 32,
@@ -320,7 +320,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'JSHealth Advanced Magnesium+ Powder',
         brand: 'JSHealth',
         url: `${SHOP}/products/advanced-magnesium-powder-peach`,
-        image: `${WP}/MAGNESIUM-THE-MINERAL-OF-CALM.png`,
+        image: `${IMG}/item32-jshealth-magnesium.png`,
         isShop: true,
       },
       {
@@ -329,7 +329,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Mouth taping overnight encourages nasal breathing, which supports oxygen flow and better rest.',
         product: 'Mouth Tape',
         url: 'https://amzn.to/4pByoAe',
-        image: `${WP}/TAPE-YOUR-WAY-TO-DEEP-SLEEP.png`,
+        image: `${IMG}/item33_mouthtape.png`,
       },
       {
         number: 34,
@@ -338,7 +338,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Loop Dream Earplugs',
         brand: 'Loop',
         url: 'https://au.loopearplugs.com/products/dream?variant=51753167290706',
-        image: `${WP}/SLEEP-UNDISTURBED.png`,
+        image: `${IMG}/item34-loop-earplugs.png`,
       },
       {
         number: 35,
@@ -346,7 +346,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "This simple yoga pose reduces swelling, eases lower back pain, and sends a gentle \"all is well\" signal to your body. Hold for 5–10 minutes before bed, ideally in a dark room with soft music with a weighted eye mask.",
         product: 'Weighted Eye Mask',
         url: 'https://amzn.to/4pByoAe',
-        image: `${WP}/LEGS-UP-THE-WALL-YOUR-SLEEP-SECRET-WEAPON.png`,
+        image: `${IMG}/item35-eyepillow.jpg`,
       },
       {
         number: 36,
@@ -355,7 +355,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Bedgear Performance Pillows',
         brand: 'Bedgear',
         url: 'https://amzn.to/4pByoAe',
-        image: `${WP}/PILLOWS-THAT-CHANGE-YOUR-SLEEP.png`,
+        image: `${IMG}/item36-bedgear.jpg`,
       },
       {
         number: 37,
@@ -363,7 +363,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'A pinch of Baja Gold salt in water can replenish trace minerals, support adrenal health, and ease middle-of-the-night wake ups. Try a few pinches in warm water before bed.',
         product: 'Baja Gold Salt',
         url: 'https://bit.ly/4b9BkNx',
-        image: `${WP}/SLEEP-SYNCING-WITH-SALT-WATER.png`,
+        image: `${IMG}/item37_bajagoldsalt.png`,
       },
       {
         number: 38,
@@ -372,7 +372,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'JSHealth Advanced Sleep+ Powder',
         brand: 'JSHealth',
         url: `${SHOP}/products/advanced-sleep-powder`,
-        image: `${WP}/Wind-down.png`,
+        image: `${IMG}/item38-jshealth-sleep.png`,
         isShop: true,
       },
       {
@@ -381,7 +381,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Can't sleep? Try a \"brain dump\" journaling session before bed to offload your thoughts. It clears cognitive clutter and helps your mind unwind.",
         product: 'Sleep: A Restful Mind Journal',
         url: 'https://amzn.to/4b093fH',
-        image: `${WP}/DITCH-THE-DOOM-SCROLL.png`,
+        image: `${IMG}/item39_sleepjournal.png`,
       },
       {
         number: 40,
@@ -390,7 +390,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Vrindavan Castor Oil & Organic Cotton Packs',
         brand: 'Vrindavan',
         url: 'https://t.cfjump.com/68150/t/66899?Url=https%3a%2f%2fwww.thewellstore.com.au%2fproducts%2fvrindavan-castor-oil-organic-cotton-pack-natural-flora',
-        image: `${WP}/REDUCE-BLOAT-OVERNIGHT.png`,
+        image: `${IMG}/item40_castoroil.png`,
       },
     ],
   },
@@ -405,7 +405,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Le Soleil Incense',
         brand: 'Maison Balzac',
         url: `${SHOP}/products/le-soleil-incense`,
-        image: `${WP}/RITUAL-FOR-THE-SOUL.png`,
+        image: `${IMG}/item41-le-soleil-incense.jpg`,
         isShop: true,
       },
       {
@@ -415,7 +415,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'GreenPan Padova Frypan',
         brand: 'GreenPan',
         url: 'https://amzn.to/4sJstf1',
-        image: `${WP}/SWAP-OUT-YOUR-COOKWARE.png`,
+        image: `${IMG}/item42-greenpan.jpg`,
       },
       {
         number: 43,
@@ -423,7 +423,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Composting doesn't have to be gross. Today's benchtop composters are compact, odour-free and design-forward.",
         product: 'Food Cycler Kitchen Composter',
         url: 'https://amzn.to/4pMoz2i',
-        image: `${WP}/LET-IT-ROT-IN-STYLE.png`,
+        image: `${IMG}/item43_composter.png`,
       },
       {
         number: 44,
@@ -432,7 +432,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Bala Bangles',
         brand: 'Bala',
         url: 'https://amzn.to/4r8vmVl',
-        image: `${WP}/STACK-YOUR-HABITS-STYLE-YOUR-SPACE.png`,
+        image: `${IMG}/item44_balabangles.png`,
       },
       {
         number: 45,
@@ -440,7 +440,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Plastic chopping boards can shed microplastics into food. This Australian-made camphor laurel board is naturally antibacterial, knife-friendly, and a far healthier, plastic-free choice.',
         product: 'Camphor Laurel Chopping Board',
         url: 'https://amzn.to/4puPDD1',
-        image: `${WP}/DITCH-PLASTIC.png`,
+        image: `${IMG}/item45-camphorboard.jpg`,
       },
       {
         number: 46,
@@ -448,7 +448,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Forget cramming bottles in the cupboard. A beautiful organiser can turn a forgotten ritual into a daily habit.",
         product: 'Weekly Pill Organiser',
         url: 'https://www.kogan.com/au/buy/yotsuba-weekly-pill-organizer-travel-pill-box-7-compartments-daily-pill-case-travel-travel-pillcase/',
-        image: `${WP}/THE-TRIPLE-STRENGTH-HYDRATOR.png`,
+        image: `${IMG}/item46_pillorganiser.png`,
       },
       {
         number: 47,
@@ -456,7 +456,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "This Portable Steam Sauna heats to 60°C in under 10 minutes, packs away neatly, and turns stress, sore muscles and sluggish skin into a nightly ritual you can do at home.",
         product: 'Portable Steam Sauna',
         url: 'https://amzn.to/3NdEwRD',
-        image: `${WP}/TRY-A-POP-UP-SAUNA.png`,
+        image: `${IMG}/item47-sauna.jpg`,
       },
       {
         number: 48,
@@ -464,7 +464,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "I leave my LED mask in a ceramic bowl on the coffee table. Part art piece, part habit nudge. Beautiful enough to live on display, powerful enough to become a habit.",
         product: 'LED Face Mask',
         url: 'https://amzn.to/416FfId',
-        image: `${WP}/THE-BIG-GUNS-LED-MASK.png`,
+        image: `${IMG}/item48_ledmaskbox.png`,
       },
       {
         number: 49,
@@ -472,7 +472,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "When meditating or timing your winding down for an evening, avoid being jarred by your phone's blue light or an alarm and opt for a sand hourglass timer for a more intentional wind-down.",
         product: 'Hourglass Timer',
         url: 'https://bit.ly/3vdBG6D',
-        image: `${WP}/SET-THE-TONE-WITH-TIMERS.png`,
+        image: `${IMG}/item49_hourglasstimer.png`,
       },
       {
         number: 50,
@@ -481,7 +481,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Lumira Balinese Ylang Ylang Candle',
         brand: 'Lumira',
         url: `${SHOP}/products/balinese-ylang-ylang-candle`,
-        image: `${WP}/CLEAN-CANDLES-ONLY-PLEASE-1.png`,
+        image: `${IMG}/item50-lumira-candle.jpg`,
         isShop: true,
       },
     ],
@@ -497,7 +497,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "J'ai Soif Carafe & Glass",
         brand: 'Maison Balzac',
         url: `${SHOP}/products/jai-soif-carafe-glass-miel`,
-        image: `${WP}/HYDRATION-AS-A-RITUAL.png`,
+        image: `${IMG}/item51-jai-soif-carafe.jpg`,
         isShop: true,
       },
       {
@@ -507,7 +507,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Kurk Original',
         brand: 'Kurk',
         url: 'https://t.cfjump.com/68150/t/92062?Url=https%3a%2f%2fkurk.au%2fproducts%2fkurk-essential',
-        image: `${WP}/GOLDEN-DROP.png`,
+        image: `${IMG}/item52-kurk.png`,
       },
       {
         number: 53,
@@ -516,7 +516,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Calmerceuticals Liquid Collagen',
         brand: 'Calmerceuticals',
         url: 'https://t.cfjump.com/68150/t/91937?Url=https%3a%2f%2fwww.calmerceuticals.com%2f',
-        image: `${WP}/ON-THE-GO-GLOW.png`,
+        image: `${IMG}/item53_calmerceuticals.png`,
       },
       {
         number: 54,
@@ -525,7 +525,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Koala Eco Fruit & Vege Wash',
         brand: 'Koala Eco',
         url: 'https://t.cfjump.com/68150/t/77112?Url=https%3a%2f%2fkoala.eco%2fproducts%2fnatural-fruit-vege-wash',
-        image: `${WP}/WASH-WHAT-YOU-EAT.png`,
+        image: `${IMG}/item54-koalaeco-wash.jpg`,
       },
       {
         number: 55,
@@ -534,7 +534,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'JSHealth Fish Oil Formula',
         brand: 'JSHealth',
         url: `${SHOP}/products/fish-oil-formula`,
-        image: `${WP}/NO-MORE-FISHY-BUSINESS.png`,
+        image: `${IMG}/item55-fish-oil.png`,
         isShop: true,
       },
       {
@@ -543,7 +543,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'This sleek hydrogen water cup infuses everyday water with antioxidant-rich hydrogen in minutes. A simple, portable ritual for hydration, recovery and cellular support.',
         product: 'Hydrogen Water Cup',
         url: 'https://amzn.to/4r24Bli',
-        image: `${WP}/ON-THE-RUN-HYDROGEN.png`,
+        image: `${IMG}/item56-hydrogencup.png`,
       },
       {
         number: 57,
@@ -551,7 +551,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Fresh herbs, zero effort. This indoor herb garden uses smart LED light to grow basil, mint and parsley on your benchtop year-round. Perfect for renters, cooks and serial plant killers alike.',
         product: 'Indoor Herb Garden with Grow Light',
         url: 'https://amzn.to/4sshh6m',
-        image: `${WP}/GROW-IT-YOURSELF.png`,
+        image: `${IMG}/item57_airgarden.png`,
       },
       {
         number: 58,
@@ -560,7 +560,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Flame Aromatherapy Diffuser',
         brand: 'Kiicity',
         url: `${SHOP}/products/flame-aromatherapy-diffuser`,
-        image: `${WP}/FIRELIGHT-CALM.png`,
+        image: `${IMG}/item58-flame-diffuser.jpg`,
         isShop: true,
       },
       {
@@ -569,7 +569,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "Ancient, simple, effective and weirdly addictive: a copper or stainless steel tongue scraper clears overnight buildup and supports gut health, according to Ayurvedic medicine.",
         product: 'Copper Tongue Scraper',
         url: 'https://amzn.to/3ILrZTn',
-        image: `${WP}/AN-AYURVEDIC-SECRET.png`,
+        image: `${IMG}/item59_tonguescraper.png`,
       },
       {
         number: 60,
@@ -578,7 +578,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Acupressure Massage Mat',
         brand: 'Kiicity',
         url: `${SHOP}/products/acupressure-massage-mat`,
-        image: `${WP}/THE-HANDSFREE-ACUPRESSU-RE-MAT.png`,
+        image: `${IMG}/item60-acupressure-mat.jpg`,
         isShop: true,
       },
     ],
