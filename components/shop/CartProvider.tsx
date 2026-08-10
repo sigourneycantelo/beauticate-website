@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, useCallback, useEffect, useRef, ReactNode } from 'react'
 import type { Cart } from '@/types/shopify'
 import { track } from '@/lib/meta/pixel'
-import { gaAddToCart } from '@/lib/ga/events'
+import { gaAddToCart, gidToId } from '@/lib/ga/events'
 import { syncAttributionToCart } from '@/lib/attribution'
 
 const STORAGE_KEY = 'beauticate_cart_id'
@@ -222,7 +222,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
           })
           gaAddToCart(
             {
-              item_id: productId,
+              item_id: gidToId(productId),
               item_name: m?.product?.title ?? productId,
               item_brand: m?.product?.vendor,
               price: price ? parseFloat(price.amount) : undefined,

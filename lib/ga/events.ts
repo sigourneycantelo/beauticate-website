@@ -30,6 +30,16 @@ declare global {
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
+// Shopify Storefront API ids are full GIDs (e.g. "gid://shopify/Product/123").
+// GA4's gtag.js silently drops an event whose item_id contains that shape —
+// confirmed by production testing: add_to_cart/view_cart calls carrying a raw
+// GID as item_id sat correctly formed in `window.dataLayer` but never produced
+// a network hit, while the same call with a bare numeric id worked immediately.
+// Always pass ecommerce item ids through this first.
+export function gidToId(gid: string): string {
+  return gid.split('/').pop() || gid
+}
+
 export interface GAItem {
   item_id: string
   item_name: string
