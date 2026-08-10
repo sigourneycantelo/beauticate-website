@@ -4,22 +4,27 @@
 //
 // @next/third-parties' <GoogleAnalytics> component (mounted in app/layout.tsx)
 // injects an inline script that synchronously creates `window.dataLayer` and
-// pushes the 'js'/'config' commands, then loads gtag.js (async) to process the
-// queue. It does NOT expose a global `window.gtag` function — the supported way
-// to send additional events is pushing directly onto `window.dataLayer`.
+// pushes the 'js'/'config' commands, then loads the real gtag.js library
+// (async). That external script — not the inline snippet — is what defines a
+// GLOBAL `window.gtag` function and overrides `dataLayer.push` to actually
+// transmit hits to Google's collect endpoint.
 //
-// Because that init script uses Next's "afterInteractive" Script strategy, a
-// component higher in the tree can attempt to fire an event before the init
-// script has run. Pushing to `window.dataLayer` before 'config' has been queued
-// would misorder the queue (event before config), so — mirroring the queue used
-// in lib/meta/pixel.ts for the same race against fbq — we wait for
-// `window.dataLayer` to exist (it only ever comes into existence already
-// containing 'js' + 'config', pushed synchronously in one script) before
-// sending our own events.
+// IMPORTANT: pushing raw arrays onto `window.dataLayer` before that override
+// installs does NOT work the way it looks like it should. The array accepts
+// the push silently (it's still a plain array at that point), but unlike the
+// 'js'/'config' commands from the inline snippet, gtag.js does not replay
+// arbitrary 'event' entries from that backlog once it loads — confirmed by
+// production testing: a pushed `['event','view_item',{...}]` entry sat
+// visibly in `window.dataLayer` but never produced a network request to
+// analytics.google.com/g/collect, while a direct `window.gtag('event', ...)`
+// call fired immediately. So we wait for `window.gtag` to exist as a function
+// (the real signal that live event firing is wired up) and call it directly,
+// exactly like any other gtag.js consumer would.
 
 declare global {
   interface Window {
     dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
   }
 }
 
@@ -39,7 +44,7 @@ let flushTimer: ReturnType<typeof setInterval> | null = null
 
 function runOrQueue(fn: () => void) {
   if (typeof window === 'undefined') return
-  if (Array.isArray(window.dataLayer)) {
+  if (typeof window.gtag === 'function') {
     fn()
     return
   }
@@ -48,7 +53,7 @@ function runOrQueue(fn: () => void) {
   let tries = 0
   flushTimer = setInterval(() => {
     tries++
-    if (Array.isArray(window.dataLayer)) {
+    if (typeof window.gtag === 'function') {
       pending.splice(0).forEach((f) => f())
     } else if (tries < 50) {
       return // keep waiting (~5s max)
@@ -64,7 +69,7 @@ function runOrQueue(fn: () => void) {
 function gaEvent(name: string, params: Record<string, unknown>) {
   if (!GA_MEASUREMENT_ID || typeof window === 'undefined') return
   runOrQueue(() => {
-    window.dataLayer!.push(['event', name, params])
+    window.gtag!('event', name, params)
   })
 }
 
