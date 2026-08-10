@@ -79,6 +79,7 @@ export default function ProductPage({ product: p, related = [], availability }: 
         contentIds={[metaContentId]}
         contentName={title}
         contentCategory={p.productType || p.vendor}
+        contentBrand={p.vendor}
         value={minPrice.amount}
         currency={minPrice.currencyCode}
       />

@@ -1,13 +1,14 @@
-import { createCart, getCart, addToCart, removeFromCart } from '@/lib/shopify'
+import { createCart, getCart, addToCart, removeFromCart, updateCartAttributes } from '@/lib/shopify'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
-  const { action, cartId, variantId, lineIds, quantity } = await req.json()
+  const { action, cartId, variantId, lineIds, quantity, attributes } = await req.json()
   try {
     if (action === 'create') return NextResponse.json(await createCart())
     if (action === 'get') return NextResponse.json(await getCart(cartId))
     if (action === 'add') return NextResponse.json(await addToCart(cartId, variantId, quantity))
     if (action === 'remove') return NextResponse.json(await removeFromCart(cartId, lineIds))
+    if (action === 'attributes') return NextResponse.json(await updateCartAttributes(cartId, attributes))
     return NextResponse.json({ error: 'Unknown action' }, { status: 400 })
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e)

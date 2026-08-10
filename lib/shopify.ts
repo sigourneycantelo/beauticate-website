@@ -389,6 +389,24 @@ export async function removeFromCart(cartId: string, lineIds: string[]): Promise
   return data.cartLinesRemove.cart
 }
 
+// Writes analytics attribution (GA4 client_id, Meta fbp/fbc, user agent) onto the
+// cart as custom attributes. Shopify carries cart.attributes through to the
+// order's note_attributes on checkout, which is the only way the orders-created
+// webhook (a server-to-server call from Shopify, with no browser cookies) can
+// attribute a completed Purchase back to the session that made it. Best-effort:
+// callers should fire-and-forget this, never block the UI on it.
+export async function updateCartAttributes(cartId: string, attributes: Record<string, string>): Promise<Cart | null> {
+  const data = await shopifyFetch<{ cartAttributesUpdate: { cart: Cart } }>(`
+    ${CART_FRAGMENT}
+    mutation UpdateCartAttributes($cartId: ID!, $attributes: [AttributeInput!]!) {
+      cartAttributesUpdate(cartId: $cartId, attributes: $attributes) {
+        cart { ...CartFields }
+      }
+    }
+  `, { cartId, attributes: Object.entries(attributes).map(([key, value]) => ({ key, value })) }, { noStore: true })
+  return (data as any)?.cartAttributesUpdate?.cart ?? null
+}
+
 // Real-time per-variant availability. The plain product query's `availableForSale`
 // is unreliable when the Storefront token lacks the product-inventory scope — it
 // defaults to `true` even for sold-out items. A cart, however, resolves inventory

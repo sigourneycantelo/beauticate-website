@@ -2,13 +2,55 @@
 import { useCart } from './CartProvider'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
+import { gaViewCart, gaBeginCheckout, GAItem } from '@/lib/ga/events'
+import { track } from '@/lib/meta/pixel'
+
+function cartToGAItems(lines: any[]): GAItem[] {
+  return lines.map((line: any) => ({
+    item_id: line.merchandise?.product?.id ?? line.merchandise?.id,
+    item_name: line.merchandise?.product?.title ?? line.merchandise?.title,
+    item_brand: line.merchandise?.product?.vendor,
+    price: parseFloat(line.merchandise?.price?.amount ?? '0'),
+    quantity: line.quantity,
+  }))
+}
 
 export default function CartDrawer() {
   const { cart, isOpen, closeCart, removeItem } = useCart()
+  const lines = cart?.lines?.nodes ?? []
+  const currency = cart?.cost?.totalAmount?.currencyCode ?? 'AUD'
+  const cartValue = cart?.cost?.totalAmount ? parseFloat(cart.cost.totalAmount.amount) : 0
+
+  // cart_viewed (GA4 view_cart only — Meta has no standard "cart viewed" event).
+  // Fires once per open transition, not on every re-render while open.
+  const firedForOpenRef = useRef(false)
+  useEffect(() => {
+    if (isOpen && lines.length > 0 && !firedForOpenRef.current) {
+      firedForOpenRef.current = true
+      gaViewCart(cartToGAItems(lines), cartValue, currency)
+    }
+    if (!isOpen) firedForOpenRef.current = false
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen])
+
+  const handleCheckoutClick = () => {
+    // checkout_started — fired via the same sendBeacon path Meta CAPI already
+    // uses (lib/meta/pixel.ts `track`), so it survives the outbound navigation
+    // without delaying it. This is a plain <a href> click — nothing here calls
+    // preventDefault or awaits anything, so the browser's redirect chain through
+    // to Shop Pay checkout starts immediately, unblocked.
+    track('InitiateCheckout', {
+      content_type: 'product',
+      contents: lines.map((l: any) => ({ id: l.merchandise?.product?.id ?? l.merchandise?.id, quantity: l.quantity })),
+      value: cartValue,
+      currency,
+    })
+    gaBeginCheckout(cartToGAItems(lines), cartValue, currency)
+  }
 
   if (!isOpen) return null
 
-  const lines = cart?.lines?.nodes ?? []
   const total = cart?.cost?.totalAmount
     ? new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
         .format(parseFloat(cart.cost.totalAmount.amount))
@@ -92,7 +134,11 @@ export default function CartDrawer() {
                 Edit cart
               </button>
               {cart?.checkoutUrl && (
-                <a href={cart.checkoutUrl} className="btn-primary w-full text-center block">
+                <a
+                  href={cart.checkoutUrl}
+                  onClick={handleCheckoutClick}
+                  className="btn-primary w-full text-center block"
+                >
                   Checkout
                 </a>
               )}
