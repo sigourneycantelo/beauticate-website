@@ -7,7 +7,9 @@
 //   [gift-audit] {"ts":"…","event":"emailed","order":"#1042","brand":"maison-balzac", …}
 //
 // Events: received, invalid_hmac, duplicate, no_match, below_min_spend, over_cap,
-// emailed, email_failed, tagged, tag_failed, final_gift, state_written, error.
+// emailed, email_failed, tagged, tag_failed, final_gift, state_written, error,
+// analytics_sent (Meta CAPI + GA4 Measurement Protocol Purchase — not gift-specific,
+// but logged here since it shares this webhook and log drain).
 
 export type GiftEvent =
   | 'received'
@@ -24,6 +26,7 @@ export type GiftEvent =
   | 'final_gift'
   | 'state_written'
   | 'error'
+  | 'analytics_sent'
 
 export function giftLog(event: GiftEvent, fields: Record<string, unknown> = {}): void {
   const line = JSON.stringify({ ts: new Date().toISOString(), event, ...fields })

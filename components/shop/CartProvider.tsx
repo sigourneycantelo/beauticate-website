@@ -2,6 +2,8 @@
 import { createContext, useContext, useState, useCallback, useEffect, useRef, ReactNode } from 'react'
 import type { Cart } from '@/types/shopify'
 import { track } from '@/lib/meta/pixel'
+import { gaAddToCart } from '@/lib/ga/events'
+import { syncAttributionToCart } from '@/lib/attribution'
 
 const STORAGE_KEY = 'beauticate_cart_id'
 const STORAGE_TTL = 30 * 24 * 60 * 60 * 1000 // 30 days
@@ -132,6 +134,14 @@ export default function CartProvider({ children }: { children: ReactNode }) {
   // "an item disappeared from my cart." A shared in-flight ref serialises
   // concurrent adds so two quick clicks can't each create a cart either.
   const resolveCartRef = useRef<Promise<Cart | null> | null>(null)
+  // Attribution (GA4 client_id, Meta fbp/fbc) only needs writing once per cart
+  // id per page load — guards against re-syncing on every getOrCreateCart call.
+  const attributionSyncedRef = useRef<string | null>(null)
+  const ensureAttributionSynced = useCallback((cartId: string) => {
+    if (attributionSyncedRef.current === cartId) return
+    attributionSyncedRef.current = cartId
+    syncAttributionToCart(cartId)
+  }, [])
   const getOrCreateCart = useCallback(async () => {
     if (cart) return cart
     if (resolveCartRef.current) return resolveCartRef.current
@@ -149,6 +159,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
         if (existing?.id) {
           setCart(existing)
           saveCartId(existing.id)
+          ensureAttributionSynced(existing.id)
           return existing
         }
         // Stale / expired id — drop it before creating a fresh cart.
@@ -166,6 +177,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       }
       setCart(newCart)
       saveCartId(newCart.id)
+      ensureAttributionSynced(newCart.id)
       return newCart
     })()
 
@@ -175,7 +187,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     } finally {
       resolveCartRef.current = null
     }
-  }, [cart])
+  }, [cart, ensureAttributionSynced])
 
   const addItem = useCallback(async (variantId: string, quantity = 1) => {
     mutatingRef.current = true
@@ -193,9 +205,9 @@ export default function CartProvider({ children }: { children: ReactNode }) {
         saveCartId(updated.id)
         setIsOpen(true)
 
-        // Meta Pixel + CAPI: AddToCart for a real on-site cart add. This covers
-        // every add-to-cart entry point (AddToCartButton, ProductBuyBox, MDX
-        // ProductEmbed) since they all funnel through here.
+        // Meta Pixel + CAPI + GA4: AddToCart / add_to_cart for a real on-site
+        // cart add. This covers every add-to-cart entry point (AddToCartButton,
+        // ProductBuyBox, MDX ProductEmbed) since they all funnel through here.
         try {
           const line = updated.lines?.nodes?.find((l: any) => l.merchandise?.id === variantId)
           const m = line?.merchandise
@@ -208,6 +220,16 @@ export default function CartProvider({ children }: { children: ReactNode }) {
             contents: [{ id: productId, quantity }],
             ...(price ? { value: parseFloat(price.amount) * quantity, currency: price.currencyCode } : {}),
           })
+          gaAddToCart(
+            {
+              item_id: productId,
+              item_name: m?.product?.title ?? productId,
+              item_brand: m?.product?.vendor,
+              price: price ? parseFloat(price.amount) : undefined,
+              quantity,
+            },
+            price?.currencyCode ?? 'AUD'
+          )
         } catch {
           // analytics must never break add-to-cart
         }

@@ -31,6 +31,8 @@ import { claimOnce, releaseInFlight } from '@/lib/gift-idempotency'
 import { sendGiftEmail, emailConfigured } from '@/lib/gift-email'
 import { writeGiftState } from '@/lib/gift-state'
 import { giftLog } from '@/lib/gift-log'
+import { sendCapiEvent } from '@/lib/meta/capi'
+import { sendPurchase } from '@/lib/ga/measurement-protocol'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -58,9 +60,97 @@ type ShopifyOrderPayload = {
   order_number?: number
   total_price?: string
   current_total_price?: string
-  line_items?: (OrderLineItem & { vendor?: string | null })[]
+  currency?: string
+  email?: string | null
+  phone?: string | null
+  customer?: { email?: string | null; phone?: string | null } | null
+  note_attributes?: { name: string; value: string }[]
+  line_items?: (OrderLineItem & {
+    vendor?: string | null
+    title?: string
+    product_id?: number | string
+    variant_id?: number | string
+    sku?: string | null
+  })[]
   shipping_address?: { city?: string | null; province_code?: string | null; province?: string | null } | null
   billing_address?: { city?: string | null; province_code?: string | null; province?: string | null } | null
+}
+
+function noteAttr(order: ShopifyOrderPayload, name: string): string | undefined {
+  return order.note_attributes?.find(a => a.name === name)?.value || undefined
+}
+
+// checkout_completed: Meta Purchase (CAPI) + GA4 purchase (Measurement Protocol).
+// note_attributes carries ga_client_id/fbp/fbc/user_agent through from the cart
+// (see lib/attribution.ts + lib/shopify.ts `updateCartAttributes`) — Shopify
+// copies cart.attributes onto the order automatically, which is the only bridge
+// available since this webhook is a server-to-server call with no browser cookies.
+async function sendPurchaseAnalytics(order: ShopifyOrderPayload, orderName: string): Promise<void> {
+  const value = parseFloat(order.total_price ?? order.current_total_price ?? '0') || 0
+  const currency = order.currency || 'AUD'
+  const email = order.email || order.customer?.email || undefined
+  const phone = order.phone || order.customer?.phone || undefined
+  const gaClientId = noteAttr(order, 'ga_client_id')
+  const fbp = noteAttr(order, 'fbp')
+  const fbc = noteAttr(order, 'fbc')
+  const userAgent = noteAttr(order, 'user_agent')
+
+  const metaContentIds = (order.line_items ?? []).map(li => (li.product_id != null ? String(li.product_id) : li.sku ?? undefined)).filter(Boolean) as string[]
+  const metaContents = (order.line_items ?? []).map(li => ({
+    id: li.product_id != null ? String(li.product_id) : li.sku,
+    quantity: li.quantity ?? 1,
+    item_price: parseFloat(li.price ?? '0') || 0,
+  }))
+
+  const gaItems = (order.line_items ?? []).map(li => ({
+    item_id: li.product_id != null ? String(li.product_id) : (li.sku ?? 'unknown'),
+    item_name: li.title ?? 'Unknown product',
+    item_brand: li.vendor ?? undefined,
+    price: parseFloat(li.price ?? '0') || 0,
+    quantity: li.quantity ?? 1,
+  }))
+
+  const [metaResult, gaResult] = await Promise.all([
+    sendCapiEvent({
+      eventName: 'Purchase',
+      // Stable per-order id — Meta dedupes repeated (event_name, event_id), so
+      // a Shopify webhook retry for the same order never double-counts revenue.
+      eventId: `purchase-${order.id}`,
+      actionSource: 'website',
+      customData: {
+        content_type: 'product',
+        content_ids: metaContentIds,
+        contents: metaContents,
+        value,
+        currency,
+        order_id: String(order.id),
+      },
+      userData: {
+        client_user_agent: userAgent,
+        fbp,
+        fbc,
+        email,
+        phone,
+      },
+    }),
+    sendPurchase({
+      clientId: gaClientId ?? `order-${order.id}`, // synthetic fallback if never captured client-side
+      syntheticClientId: !gaClientId,
+      transactionId: String(order.id),
+      value,
+      currency,
+      items: gaItems,
+    }),
+  ])
+
+  giftLog('analytics_sent', {
+    order: orderName,
+    meta: metaResult,
+    ga: gaResult,
+    hadGaClientId: Boolean(gaClientId),
+    hadFbp: Boolean(fbp),
+    hadFbc: Boolean(fbc),
+  })
 }
 
 function shipToLabel(order: ShopifyOrderPayload): string {
@@ -97,6 +187,19 @@ export async function POST(req: Request) {
   const claimKey = `order:${order.id}`
 
   giftLog('received', { order: orderName, webhookId, topic })
+
+  // checkout_completed — Meta Purchase (CAPI) + GA4 purchase (Measurement
+  // Protocol). Runs for every order regardless of gift-with-purchase eligibility
+  // or config, and is deliberately NOT gated behind the gift claimOnce lock below
+  // (a retry re-sending this is harmless: both destinations dedupe on the stable
+  // event_id/transaction_id derived from the order id, so a duplicate delivery
+  // never double-counts revenue). Awaited (not fire-and-forget) — a Vercel
+  // serverless function isn't guaranteed to keep running background work after
+  // the response ships, so an un-awaited send could get dropped. Wrapped so an
+  // analytics failure can never affect gift-with-purchase processing.
+  await sendPurchaseAnalytics(order, orderName).catch(err => {
+    giftLog('error', { order: orderName, reason: 'analytics failed', error: String(err) })
+  })
 
   // Config sanity — if we can't act, ask Shopify to retry (self-heals once fixed).
   if (!adminConfigured() || !emailConfigured()) {
