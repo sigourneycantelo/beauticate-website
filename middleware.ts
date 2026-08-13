@@ -1,10 +1,29 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import redirectSlugMap from './data/redirect-slug-map.json'
 
 // Only the production domain should be indexable. Every other host
 // (Vercel preview URLs, *.vercel.app, local) gets X-Robots-Tag: noindex
 // so staging never competes with beauticate.com in search.
 const PROD_HOSTS = new Set(['www.beauticate.com', 'beauticate.com'])
+
+// Old-URL fallback for articles: catches WordPress-era paths (/news/<slug>,
+// /reviews/products/<slug>, /interviews/creatives/<slug>, etc.) and articles
+// that were moved to a different subcategory during editorial re-filing —
+// neither of which is a clean 1:1 prefix rename, so next.config.ts redirects
+// can't express it as a pattern. redirect-slug-map.json (built by
+// scripts/generate-redirect-map.mjs on every `npm run build`) maps every
+// unambiguous published-article slug to where it lives today; this only
+// looks a request up in that map when the first path segment is a category
+// name — current or historical — that actually holds articles, so it can
+// never catch /shop, /api, /author, static pages, etc.
+const ARTICLE_PREFIXES = new Set([
+  // current top-level content categories
+  'beauty-style', 'destinations', 'interviews', 'living', 'news', 'sigourneys-edit', 'vodcast', 'wellness',
+  // retired WordPress-era category prefixes (confirmed via docs/wordpress-sitemap-audit.md
+  // and the existing next.config.ts redirects for these same prefixes)
+  'destination', 'reviews', 'how-to', 'uncategorized', 'vodcast-by-beauticate', 'ask',
+])
 
 // Early-access gate — set to true to require a password before viewing the site.
 // Remove or set to false for full public launch.
@@ -27,6 +46,15 @@ export function middleware(req: NextRequest) {
 
     if (!isAllowed && !req.cookies.has('early_access')) {
       return NextResponse.redirect(new URL('/early-access', req.url))
+    }
+  }
+
+  const segments = pathname.split('/').filter(Boolean)
+  if (segments.length >= 2 && ARTICLE_PREFIXES.has(segments[0])) {
+    const slug = segments[segments.length - 1]
+    const canonicalPath = (redirectSlugMap as Record<string, string>)[slug]
+    if (canonicalPath && canonicalPath !== segments.join('/')) {
+      return NextResponse.redirect(new URL(`/${canonicalPath}`, req.url), 308)
     }
   }
 
