@@ -23,6 +23,9 @@ const ARTICLE_PREFIXES = new Set([
   // retired WordPress-era category prefixes (confirmed via docs/wordpress-sitemap-audit.md
   // and the existing next.config.ts redirects for these same prefixes)
   'destination', 'reviews', 'how-to', 'uncategorized', 'vodcast-by-beauticate', 'ask',
+  // 'who' — Beauticate's old celebrity-profile format/taxonomy, not a category in
+  // the WP audit's tree but confirmed by Doug's 404 export (66 of 959 dead URLs)
+  'who',
 ])
 
 // Early-access gate — set to true to require a password before viewing the site.
