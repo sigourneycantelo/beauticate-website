@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import { getCollectionFull } from '@/lib/shopify'
 import { BROAD_CATEGORIES } from '@/lib/shop-taxonomy'
@@ -69,11 +70,13 @@ export default async function ShopByCategoryPage() {
           <span className="text-ink">Shop by Category</span>
         </nav>
 
-        <CategoryBrowser
-          products={products}
-          subs={tiles}
-          allImage={collections[0]?.image?.url}
-        />
+        <Suspense fallback={null}>
+          <CategoryBrowser
+            products={products}
+            subs={tiles}
+            allImage={collections[0]?.image?.url}
+          />
+        </Suspense>
       </div>
     </div>
   )

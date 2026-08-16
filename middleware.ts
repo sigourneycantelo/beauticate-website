@@ -28,29 +28,9 @@ const ARTICLE_PREFIXES = new Set([
   'who',
 ])
 
-// Early-access gate — set to true to require a password before viewing the site.
-// Remove or set to false for full public launch.
-const EARLY_ACCESS_GATE = false
-
-const GATE_ALLOW = new Set([
-  '/early-access',
-  '/api/early-access',
-])
-
 export function middleware(req: NextRequest) {
   const host = (req.headers.get('host') ?? '').split(':')[0]
   const { pathname } = req.nextUrl
-
-  if (EARLY_ACCESS_GATE) {
-    const isAllowed =
-      GATE_ALLOW.has(pathname) ||
-      pathname.startsWith('/_next/') ||
-      pathname.startsWith('/favicon')
-
-    if (!isAllowed && !req.cookies.has('early_access')) {
-      return NextResponse.redirect(new URL('/early-access', req.url))
-    }
-  }
 
   const segments = pathname.split('/').filter(Boolean)
   if (segments.length >= 2 && ARTICLE_PREFIXES.has(segments[0])) {
