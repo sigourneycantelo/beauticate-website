@@ -212,7 +212,7 @@ export default function AdvertisePage() {
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Journalist with over 25 years in beauty and health media</span></li>
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Former Beauty &amp; Health Director, Vogue Australia</span></li>
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Podcaster, content creator and e-commerce founder</span></li>
-              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Five Jasmine Awards &middot; Six Star Beauty Awards</span></li>
+              <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Six Jasmine Awards &middot; Six Star Beauty Awards</span></li>
             </ul>
             <Link href="/archive" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 block">
               See Sigourney&rsquo;s work &rarr;
