@@ -828,22 +828,20 @@ const nextConfig: NextConfig = {
       { source: '/how-tos/interiors/:path*', destination: '/living/interiors', permanent: true },
       { source: '/how-tos/:path*', destination: '/beauty-style', permanent: true },
 
-      // ── GO-TOs directory (old venue listings) ──────────────────────────────
-      { source: '/the-go-tos/beauty-maintenance/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/the-go-tos/high-tech-treatments/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/the-go-tos/:path*', destination: '/destinations/directory', permanent: true },
-
       // ── Vodcast-by-beauticate bare path ────────────────────────────────────
       { source: '/vodcast-by-beauticate', destination: '/vodcast', permanent: true },
 
-      // ── /destination/ (singular) parent paths ──────────────────────────────
-      { source: '/destination/beauty-wellness/clinics/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/destination/beauty-wellness/skin-salons/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/destination/beauty-wellness/:path*', destination: '/destinations/directory', permanent: true },
+      // ── /destination/ (singular) parent path — travel keeps its own section
+      // fallback since it's still topically specific. The old blanket
+      // "/the-go-tos/*" and "/destination/beauty-wellness/*" → /destinations/directory
+      // rules were removed: they fired before middleware.ts's slug-based lookup
+      // ever got a chance, so real venues with a real current page (confirmed via
+      // Doug's Search Console "Page with redirect" export, e.g. mr-burrows-newtown,
+      // brad-ngata-darlinghurst) were being sent to the generic directory instead
+      // of their actual page. Removing them lets the middleware fallback resolve
+      // the ones that exist and 404 honestly on the ones that don't — a genuine
+      // 404 beats a redirect to an irrelevant page (per Doug's brief).
       { source: '/destination/travel/:path*', destination: '/destinations/travel', permanent: true },
-      { source: '/destination/:path*', destination: '/destinations/directory', permanent: true },
-
-      { source: '/tag/:path*', destination: '/', permanent: false },
       { source: '/offers/:path*', destination: '/', permanent: false },
       { source: '/product/:path*', destination: '/', permanent: false },
     ]
