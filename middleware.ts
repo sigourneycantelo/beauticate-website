@@ -26,6 +26,10 @@ const ARTICLE_PREFIXES = new Set([
   // 'who' — Beauticate's old celebrity-profile format/taxonomy, not a category in
   // the WP audit's tree but confirmed by Doug's 404 export (66 of 959 dead URLs)
   'who',
+  // 'the-go-tos' — old venue-directory prefix. Its next.config.ts wildcard
+  // redirects to the generic /destinations/directory got removed (see
+  // next.config.ts) because they were shadowing real per-venue matches here.
+  'the-go-tos',
 ])
 
 export function middleware(req: NextRequest) {
