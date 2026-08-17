@@ -99,6 +99,10 @@ const orgSchema = {
         'https://www.youtube.com/@beauticate',
         'https://www.pinterest.com.au/beauticate/',
         'https://www.wikidata.org/wiki/Q139643093',
+        // Beautiful Inside podcast — same reasoning as the sitelinks above:
+        // nothing previously told a machine this podcast belongs to Beauticate.
+        'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
+        'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
       ],
     },
     {
@@ -111,9 +115,19 @@ const orgSchema = {
       sameAs: [
         'https://www.instagram.com/sigourneycantelo/',
         'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
+        'https://www.youtube.com/sigourneycantelo',
         'https://www.wikidata.org/wiki/Q139644159',
       ],
-      knowsAbout: ['Beauty', 'Wellness', 'Lifestyle', 'Skincare', 'Fashion'],
+      // Matches app/about/page.tsx's fuller Person block — this one renders
+      // sitewide, that one only on /about, so the two had drifted apart.
+      knowsAbout: [
+        'Beauty', 'Skincare', 'Wellness', 'Lifestyle', 'Health', 'Fashion', 'Cosmetics',
+        'Anti-ageing', 'Beauty Journalism', 'Content Strategy',
+      ],
+      award: [
+        'Jasmine Award for Journalistic Excellence, Vogue Australia (The Ultimate Guide to Fragrance)',
+        'Jasmine Award, Vogue Australia (Distilling Provence)',
+      ],
       alumniOf: 'Vogue Australia',
       description: 'Sigourney Cantelo is the founder of Beauticate and a 25-year veteran beauty journalist, former Vogue Australia Beauty & Health Director.',
     },

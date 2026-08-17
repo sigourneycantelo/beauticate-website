@@ -42,17 +42,17 @@ Ships Australia-wide. Prices in AUD.
 
 ## Key pages
 
-- /about: about Beauticate and the editorial team
-- /shop: curated beauty and wellness store
-- /vodcast: Beautiful Inside podcast
-- /interviews: full interview archive with A-Z index
-- /sigourneys-edit: the founder's personal recommendations
-- /archive: full article archive
-- /press: press and media enquiries
+- [About](https://www.beauticate.com/about): about Beauticate and the editorial team
+- [Shop](https://www.beauticate.com/shop): curated beauty and wellness store
+- [Beautiful Inside](https://www.beauticate.com/vodcast): the podcast
+- [Interviews](https://www.beauticate.com/interviews): full interview archive with A-Z index
+- [Sigourney's Edit](https://www.beauticate.com/sigourneys-edit): the founder's personal recommendations
+- [Archive](https://www.beauticate.com/archive): full article archive
+- [Press](https://www.beauticate.com/press): press and media enquiries
 
 ## For detailed information
 
-See /llms-full.txt for the complete brand list, category taxonomy, editorial team, and content structure.
+See [llms-full.txt](https://www.beauticate.com/llms-full.txt) for the complete brand list, category taxonomy, editorial team, and content structure.
 
 ## Authors
 
