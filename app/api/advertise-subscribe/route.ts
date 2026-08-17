@@ -1,4 +1,4 @@
-import { subscribeToListWithProperties } from '@/lib/klaviyo'
+import { subscribeToListWithProperties, upsertProfile } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
 import { NextResponse } from 'next/server'
 
@@ -11,6 +11,20 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Email required' }, { status: 400 })
   }
 
+  // Guaranteed capture: every advertise-page inquiry is recorded as a Klaviyo
+  // profile regardless of Woodpecker's health or the newsletter opt-in, so a
+  // lead can never be silently lost even if the other integrations fail.
+  try {
+    await upsertProfile(email, '', {
+      source: 'advertise_page',
+      advertise_page_inquiry: true,
+      newsletter_opt_in: subscribeNewsletter !== false,
+    })
+  } catch (err) {
+    console.error(`advertise-subscribe: guaranteed Klaviyo capture failed for ${email}:`, err)
+    return NextResponse.json({ error: 'Subscription failed' }, { status: 500 })
+  }
+
   const tasks: { name: string; promise: Promise<unknown> }[] = [
     { name: 'woodpecker', promise: addProspect(email) },
   ]
@@ -18,7 +32,7 @@ export async function POST(req: Request) {
   // Default: subscribed unless they explicitly opt out
   if (subscribeNewsletter !== false) {
     tasks.push({
-      name: 'klaviyo',
+      name: 'klaviyo-list-subscribe',
       promise: subscribeToListWithProperties(LIST_ID, email, '', {
         source: 'advertise_page',
       }),
@@ -32,15 +46,6 @@ export async function POST(req: Request) {
       console.error(`advertise-subscribe: ${tasks[i].name} failed for ${email}:`, result.reason)
     }
   })
-
-  const anyOk = results.some(r => r.status === 'fulfilled')
-
-  if (!anyOk) {
-    return NextResponse.json(
-      { error: 'Subscription failed' },
-      { status: 500 }
-    )
-  }
 
   return NextResponse.json({ success: true })
 }
