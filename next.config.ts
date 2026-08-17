@@ -12,6 +12,22 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // CSP deliberately excluded — it's the one header that breaks sites when set
+  // carelessly (embeds, analytics, Shopify checkout) and needs its own pass
+  // with Content-Security-Policy-Report-Only first, not bundled in here.
+  async headers() {
+    return [{
+      source: '/:path*',
+      headers: [
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+        { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      ],
+    }]
+  },
+
   async redirects() {
     return [
       // ── Old WP competitions landing → competition T&Cs ───────────────────
