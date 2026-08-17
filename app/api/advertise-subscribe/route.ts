@@ -11,18 +11,28 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Email required' }, { status: 400 })
   }
 
-  const tasks: Promise<unknown>[] = [addProspect(email)]
+  const tasks: { name: string; promise: Promise<unknown> }[] = [
+    { name: 'woodpecker', promise: addProspect(email) },
+  ]
 
   // Default: subscribed unless they explicitly opt out
   if (subscribeNewsletter !== false) {
-    tasks.push(
-      subscribeToListWithProperties(LIST_ID, email, '', {
+    tasks.push({
+      name: 'klaviyo',
+      promise: subscribeToListWithProperties(LIST_ID, email, '', {
         source: 'advertise_page',
-      })
-    )
+      }),
+    })
   }
 
-  const results = await Promise.allSettled(tasks)
+  const results = await Promise.allSettled(tasks.map(t => t.promise))
+
+  results.forEach((result, i) => {
+    if (result.status === 'rejected') {
+      console.error(`advertise-subscribe: ${tasks[i].name} failed for ${email}:`, result.reason)
+    }
+  })
+
   const anyOk = results.some(r => r.status === 'fulfilled')
 
   if (!anyOk) {
