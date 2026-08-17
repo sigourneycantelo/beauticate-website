@@ -46,6 +46,10 @@ const nextConfig: NextConfig = {
       { source: '/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
 
+      // ── Canonical host: www.beauticate.com. Both bare and www resolved
+      // with no redirect between them, splitting link/ranking signal in two.
+      { source: '/:path*', has: [{ type: 'host', value: 'beauticate.com' }], destination: 'https://www.beauticate.com/:path*', permanent: true },
+
       // ── Refreshed article: "I'm 41" → "I'm 44" skincare routine ──────────
       { source: '/beauty-style/skin-care/im-41-this-is-everything-i-do-for-my-skin', destination: '/beauty-style/skin-care/im-44-everything-i-use-on-my-skin', permanent: true },
 
