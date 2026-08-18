@@ -69,17 +69,39 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 
 ## Git workflow
 
-- Feature branch: `claude/vercel-article-cleanup-duw0tz`
-- **Always push fixes to BOTH the feature branch AND `main`** — Vercel deploys from `main`.
-- Use cherry-pick via temp branch to push to main (branches have diverged):
-  ```
-  git fetch origin main
-  git checkout -b tmp-main-push origin/main
-  git cherry-pick <commit>
-  git push origin tmp-main-push:main
-  git checkout claude/vercel-article-cleanup-duw0tz
-  git branch -D tmp-main-push
-  ```
+**Open a pull request. Do not push straight to `main`.** The repo has branch
+protection requiring a PR, and bypassing it caused real problems: every push to
+`main` had to be a cherry-pick, which made the feature branch and `main` diverge,
+and a later merge of that branch would have silently reverted the
+shop.beauticate.com redirects in `vercel.json` along with several other files
+that had moved on `main` in the meantime.
+
+```
+git checkout -b claude/<short-description> origin/main   # always branch from main
+# ... work, commit ...
+git push -u origin claude/<short-description>
+gh pr create --fill                                       # then merge in GitHub
+```
+
+Rules that follow from this:
+
+- **Branch from `origin/main`, never from another feature branch.** A branch cut
+  from a stale base is how work gets reverted on merge.
+- **Never cherry-pick to `main` to get something live.** Merge the PR instead.
+  Vercel deploys `main` on merge, so the PR is the deploy.
+- **Check `git diff origin/main <branch> --name-only` before merging.** If files
+  you never touched appear, your base is stale: rebase onto `origin/main` first.
+- If something genuinely must ship before review (a live compliance breach, for
+  example), say so explicitly and get a human to confirm, rather than bypassing
+  the protection rule quietly.
+
+### Generated files
+
+`docs/audit/testimonial-audit.{csv,md}` and `lines-to-fix.json` are rebuilt by
+the audit scripts and are gitignored. `docs/audit/tga-review.xlsx` stays tracked
+because it records which fixes were approved. `data/chat-index.json` stays
+tracked deliberately: Ask Sig reads it at runtime and it has not been verified
+to survive as a build-only artefact.
 
 ## Home page hero curation
 
