@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   }
 
   const tasks: { name: string; promise: Promise<unknown> }[] = [
-    { name: 'woodpecker', promise: addProspect(email) },
+    { name: 'woodpecker', promise: addProspect(email, { tags: '#advertiser_lead' }) },
   ]
 
   // Default: subscribed unless they explicitly opt out

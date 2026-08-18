@@ -29,7 +29,7 @@ export async function POST(req: Request) {
   // failing must not lose the lead.
   const tasks: Promise<unknown>[] = [
     appendToSheet('Partner Interest', [submittedAt, email, 'partners_page']),
-    addProspect(email),
+    addProspect(email, { tags: '#shop_partner_lead' }),
   ]
 
   if (PARTNER_LIST_ID) {
