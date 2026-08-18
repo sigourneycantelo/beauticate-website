@@ -62,6 +62,14 @@ const TRIGGERS = [
         "\\bI use\\b", "\\bI'm using\\b", "\\bI am using\\b",
         "\\bmy go[\\s-]?to\\b", "\\bI never travel without\\b",
         "\\bevery (?:morning|night|day) I\\b",
+        // Added after a manual read found these in live articles that the
+        // first pass scored clean. Personal use has more shapes than "I take".
+        "\\bI (?:stir|add|added|rotate|pop|swear|trust|love|swapped?)\\b",
+        "\\bI(?:'ve| have) (?:been )?(?:trialling|trialing|testing|added|loved)\\b",
+        "\\bI(?:'m| am) (?:testing|trialling|trialing|loving)\\b",
+        "\\bmy (?:current )?(?:favourite|favorite|hero|pick)\\b",
+        "\\bI keep coming back to\\b", "\\bthe ones I trust\\b",
+        "\\bI(?:'ve| have) used\\b", "\\bI rely on\\b",
         "\\bit changed my\\b", "\\bchanged my (?:skin|life|energy|gut|sleep)\\b",
         "\\bI noticed (?:a |the )?difference\\b",
         "\\bworked for me\\b", "\\bI felt (?:better|amazing|calmer|clearer)\\b",
@@ -114,6 +122,29 @@ const TRIGGERS = [
         "\\bclinically proven\\b", "\\bscientifically proven\\b",
         "\\bstudies show\\b", "\\bresearch (?:shows|proves)\\b",
         "\\bfixes?\\b", "\\bgets? rid of\\b",
+        // "kills acne-causing bacteria" shipped live and the first pass missed
+        // it, which is why these are here.
+        "\\bkills?\\b", "\\bfight(?:s|ing)? (?:a )?(?:breakout|acne|infection)\\b",
+        "\\btargets? (?:breakouts?|acne|pigmentation)\\b",
+        "\\bclinic[\\s-]?grade\\b", "\\bmedical[\\s-]?grade\\b",
+        "\\bprofessional results\\b", "\\bdoes more for\\b",
+        "\\bstimulates? collagen\\b", "\\bboosts? collagen\\b",
+      ].join('|'),
+      'gi'
+    ),
+  },
+  {
+    // Not itself a breach, but decisive: receiving valuable consideration makes
+    // the person "engaged in marketing or supply", which turns any nearby
+    // testimonial from questionable into prohibited.
+    kind: 'CONSIDERATION',
+    severity: 2,
+    re: new RegExp(
+      [
+        '\\bcode [A-Z0-9]{4,}\\b', '\\buse (?:my |the )?code\\b',
+        '\\bper cent off\\b', '\\b\\d+% off\\b', '\\bdiscount code\\b',
+        '\\baffiliate\\b', '\\bgifted\\b', '\\bPR sample\\b', '\\bc\\/o\\b',
+        '\\bsca_ref=', '\\bsjv\\.io\\b', '\\bpaid partnership\\b',
       ].join('|'),
       'gi'
     ),
@@ -157,6 +188,17 @@ const VENDOR_RE = VENDORS.length
  * medicines, applied to the face they are ordinary cosmetics and out of scope
  * entirely. If the surrounding text reads topical, drop the hit.
  */
+/**
+ * Referring someone to a professional is the compliant behaviour, not a breach.
+ * Without this, the remediation ("that is one for your GP or dermatologist")
+ * flags itself and people learn to ignore the PRACTITIONER category.
+ */
+const REFERRAL = /(?:one for|speak (?:with|to)|talk to|see|check with|ask|consult|conversation with)\s+(?:your|a|an)\s+(?:own\s+)?(?:GP|doctor|derm|pharmacist|professional|specialist|practitioner)/i
+
+function isReferralContext(body, at) {
+  return REFERRAL.test(body.slice(Math.max(0, at - 60), at + 60))
+}
+
 const AMBIGUOUS = /vitamin|tonic|elixir|collagen/i
 const TOPICAL = /serum|cream|moisturis|cleanser|toner|lotion|balm|oil\b|apply|applied|topical|face mask|sheet mask|spf|smooth(?:ed)? (?:on|over)|rub/i
 
@@ -180,7 +222,7 @@ function parse(file) {
   const front = m ? m[1] : ''
   const body = m ? raw.slice(m[0].length) : raw
   const get = k => (front.match(new RegExp(`^${k}:\\s*["']?(.+?)["']?\\s*$`, 'm')) || [])[1] || ''
-  return { body, offset: m ? m[0].length : 0, raw, title: get('title'), date: get('date_published'), author: get('author') }
+  return { front, body, offset: m ? m[0].length : 0, raw, title: get('title'), date: get('date_published'), author: get('author') }
 }
 
 function lineOf(raw, index) {
@@ -208,36 +250,49 @@ for (const file of files) {
   if (limit && scanned >= limit) break
   scanned++
 
-  // Every restricted-good mention in the body, with its position.
-  const goods = [...doc.body.matchAll(RESTRICTED)].map(m => ({ term: m[0], at: m.index }))
-  if (goods.length === 0) continue
+  // Frontmatter is scanned too. It carries excerpt, meta_description, image alt
+  // text and the FAQ pairs that become schema.org markup in search results, and
+  // a testimonial there reaches more people than one buried in the body. The
+  // first version of this script stripped frontmatter and missed a live FAQ
+  // answering "does red light therapy actually work" with felt benefits.
+  const zones = [
+    { name: 'frontmatter', text: doc.front, base: 4 },
+    { name: 'body', text: doc.body, base: doc.offset },
+  ]
 
-  for (const trig of TRIGGERS) {
-    for (const t of doc.body.matchAll(trig.re)) {
-      const near = goods.find(
-        g => Math.abs(g.at - t.index) <= WINDOW && !isTopicalContext(doc.body, g.at, g.term)
-      )
-      if (!near) continue
+  for (const zone of zones) {
+    if (!zone.text) continue
+    const goods = [...zone.text.matchAll(RESTRICTED)].map(m => ({ term: m[0], at: m.index }))
+    if (goods.length === 0) continue
 
-      // A brand we stock inside the same window promotes the finding: that is
-      // the merchant-of-record case, and it is the one to fix first.
-      const around = doc.body.slice(Math.max(0, t.index - WINDOW), t.index + WINDOW)
-      const vendorHit = VENDOR_RE ? (around.match(VENDOR_RE) || [])[0] : undefined
+    for (const trig of TRIGGERS) {
+      for (const t of zone.text.matchAll(trig.re)) {
+        if (trig.kind === 'PRACTITIONER' && isReferralContext(zone.text, t.index)) continue
+        const near = goods.find(
+          g => Math.abs(g.at - t.index) <= WINDOW && !isTopicalContext(zone.text, g.at, g.term)
+        )
+        if (!near) continue
 
-      findings.push({
-        kind: trig.kind,
-        confidence: vendorHit ? 'HIGH' : 'REVIEW',
-        vendor: vendorHit || '',
-        severity: vendorHit ? trig.severity : trig.severity + 10,
-        file: path.relative(process.cwd(), file),
-        line: lineOf(doc.raw, doc.offset + t.index),
-        title: doc.title,
-        date: doc.date,
-        author: doc.author,
-        good: near.term,
-        matched: t[0],
-        snippet: snippet(doc.body, t.index, t[0].length),
-      })
+        const around = zone.text.slice(Math.max(0, t.index - WINDOW), t.index + WINDOW)
+        const vendorHit = VENDOR_RE ? (around.match(VENDOR_RE) || [])[0] : undefined
+
+        findings.push({
+          kind: trig.kind,
+          zone: zone.name,
+          confidence: vendorHit ? 'HIGH' : 'REVIEW',
+          vendor: vendorHit || '',
+          // Frontmatter reaches search results, so weight it above body copy.
+          severity: (vendorHit ? trig.severity : trig.severity + 10) - (zone.name === 'frontmatter' ? 0.5 : 0),
+          file: path.relative(process.cwd(), file),
+          line: lineOf(doc.raw, zone.base + t.index),
+          title: doc.title,
+          date: doc.date,
+          author: doc.author,
+          good: near.term,
+          matched: t[0],
+          snippet: snippet(zone.text, t.index, t[0].length),
+        })
+      }
     }
   }
 }
@@ -246,7 +301,7 @@ for (const file of files) {
 // first, count the rest, so the report stays readable.
 const grouped = new Map()
 for (const f of findings) {
-  const key = `${f.file}::${f.kind}::${f.confidence}`
+  const key = `${f.file}::${f.zone}::${f.kind}::${f.matched.toLowerCase()}`
   if (!grouped.has(key)) grouped.set(key, { ...f, repeats: 0 })
   else grouped.get(key).repeats++
 }
@@ -256,8 +311,8 @@ const rows = [...grouped.values()].sort(
 
 fs.mkdirSync(OUT_DIR, { recursive: true })
 
-const csv = ['confidence,kind,file,line,date,author,shop_vendor,restricted_term,matched,repeats,title']
-  .concat(rows.map(r => [r.confidence, r.kind, r.file, r.line, r.date, r.author, r.vendor, r.good, r.matched, r.repeats, r.title]
+const csv = ['confidence,zone,kind,file,line,date,author,shop_vendor,restricted_term,matched,repeats,title']
+  .concat(rows.map(r => [r.confidence, r.zone, r.kind, r.file, r.line, r.date, r.author, r.vendor, r.good, r.matched, r.repeats, r.title]
     .map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(',')))
   .join('\n')
 fs.writeFileSync(path.join(OUT_DIR, 'testimonial-audit.csv'), csv)
@@ -287,12 +342,13 @@ const md = [
   `| CLAIM | ${byKind.CLAIM || 0} | Treat / cure / prevent / proven language near a restricted good. |`,
   `| SERIOUS | ${byKind.SERIOUS || 0} | A serious condition named near a restricted good. |`,
   `| THIRD_PARTY | ${byKind.THIRD_PARTY || 0} | Someone else's use account. Beauticate owns any testimonial it publishes. |`,
+  `| CONSIDERATION | ${byKind.CONSIDERATION || 0} | Discount code, affiliate link or gifting near a restricted good. Not a breach alone, but it makes any nearby testimonial prohibited. |`,
   '',
   '## Findings',
   '',
 ]
 for (const r of rows) {
-  md.push(`### [${r.confidence}] ${r.kind} — ${r.title || path.basename(r.file)}`)
+  md.push(`### [${r.confidence}] ${r.kind} (${r.zone}) — ${r.title || path.basename(r.file)}`)
   md.push(`\`${r.file}:${r.line}\`${r.date ? ` · ${r.date}` : ''}${r.author ? ` · ${r.author}` : ''}${r.repeats ? ` · +${r.repeats} more in file` : ''}`)
   md.push('')
   md.push(`Restricted term: **${r.good}** · matched: **${r.matched}**${r.vendor ? ` · shop brand: **${r.vendor}**` : ''}`)
