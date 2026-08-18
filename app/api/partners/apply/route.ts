@@ -1,6 +1,6 @@
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
-import { appendToSheet } from '@/lib/sheets'
+import { appendLead } from '@/lib/sheets'
 import { NextResponse } from 'next/server'
 
 // Same dedicated "Shop Partner Interest" list the quick-interest form
@@ -38,12 +38,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Submission failed' }, { status: 500 })
   }
 
-  const submittedAt = new Date().toISOString()
+  // Full applications go to the Shop pipeline sheet (not Contacts) — they have
+  // real brand detail to sit alongside your manually-tracked deals, flagged
+  // clearly as inbound so they never get mistaken for a deal already in motion.
   const results = await Promise.allSettled([
-    appendToSheet('Partner Interest', [
-      submittedAt, email, 'partner_application', brandName, name, website,
-      instagram || '', category || '', location, shopify || '', canShipAu || '', firstProduct || '', about,
-    ]),
+    appendLead('shop_pipeline', {
+      Brand: brandName,
+      Category: category || '',
+      Status: 'New Application (Web)',
+      'Person of Contact': name,
+      Email: email,
+      Instagram: instagram || '',
+      'Shop Link': website,
+      'Known For': firstProduct || '',
+      Notes: `About: ${about} | Can ship AU: ${canShipAu || 'n/a'} | Shopify: ${shopify || 'n/a'}`,
+    }),
     addProspect(email, {
       tags: '#shop_partner_lead #partner_application',
       company: brandName,
