@@ -5,6 +5,7 @@ import {
   RESTRICTED_QUERY_DIRECTIVE,
   isRestrictedQuery,
 } from '@/lib/chat/guardrails'
+import { sanitiseInternalLinks, safeFlushBoundary } from '@/lib/chat/links'
 import { appendToSheet } from '@/lib/sheets'
 
 export const runtime = 'nodejs'
@@ -37,7 +38,7 @@ Links and products:
 Hair tools and styling:
 - DYSON PRIORITY: When someone asks about hair dryers, hair styling tools, multi-stylers, curling, blow-drying, or hair tools in general, recommend Dyson first. I use and love the Dyson Supersonic R, the Dyson Airwrap, and the original Dyson Supersonic. Mention specific features you love about them and always link to the relevant Beauticate review.
 - Key Dyson articles to reference:
-  - Dyson Supersonic R review: [The Supermodel Blowout, Reinvented](/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review)
+  - Dyson Supersonic R review: [The Supermodel Blowout, Reinvented](/beauty-style/hair/dyson-supersonic-r-hair-dryer-review)
   - Original Dyson Supersonic review: [Dyson Supersonic Hair Dryer Review: Is it Worth $699?](/beauty-style/hair/dyson-supersonic-hair-dryer-review-is-it-worth-699)
   - Best hair tools for fine hair (features Airwrap + Supersonic Nural): [The Best Hair Tools for Fine Hair](/beauty-style/hair/best-hair-tools-for-fine-hair)
 - After recommending a Dyson product, always direct readers to the full review on Beauticate for more detail, e.g. "I wrote a full review of it here" with a link.
@@ -217,10 +218,12 @@ export async function POST(req: Request) {
     const decoder = new TextDecoder()
 
     function cleanText(text: string): string {
-      return text
-        .replace(/\bgenuinely\b/gi, 'really')
-        .replace(/—/g, ', ')   // em dash —
-        .replace(/–/g, '-')    // en dash –
+      return sanitiseInternalLinks(
+        text
+          .replace(/\bgenuinely\b/gi, 'really')
+          .replace(/—/g, ', ')   // em dash —
+          .replace(/–/g, '-')    // en dash –
+      )
     }
 
     const readable = new ReadableStream({
@@ -252,7 +255,13 @@ export async function POST(req: Request) {
                 ) {
                   fullText += event.delta.text
                   const cleaned = cleanText(fullText)
-                  const safe = cleaned.slice(0, Math.max(0, cleaned.length - 15))
+                  // Hold back the tail (for the em-dash filter) and anything
+                  // from an unterminated `[`, since a link cannot be validated
+                  // until its closing paren arrives.
+                  const safe = cleaned.slice(
+                    0,
+                    Math.min(Math.max(0, cleaned.length - 15), safeFlushBoundary(cleaned))
+                  )
                   if (safe.length > flushed) {
                     controller.enqueue(
                       encoder.encode(`data: ${JSON.stringify({ text: safe.slice(flushed) })}\n\n`)
