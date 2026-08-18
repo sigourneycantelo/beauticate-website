@@ -30,7 +30,7 @@ const WIKIDATA_QID = 'Q139644159'
 // check runs without a TS build step; the assertion below proves they agree.
 const SAME_AS = [
   'https://www.instagram.com/sigourneycantelo/',
-  'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
+  'https://www.linkedin.com/in/sigourney-cantelo/',
   'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
   'https://www.facebook.com/sigourneycantelobeauticate',
   'https://www.marieclaire.com.au/author/sigourney-cantelo/',

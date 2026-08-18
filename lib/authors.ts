@@ -18,7 +18,7 @@ export const SIGOURNEY_PERSON_ID = `${SITE_URL}/#sigourney-cantelo`
 
 export const SIGOURNEY_SAMEAS = [
   'https://www.instagram.com/sigourneycantelo/',
-  'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
+  'https://www.linkedin.com/in/sigourney-cantelo/',
   'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
   'https://www.facebook.com/sigourneycantelobeauticate',
   'https://www.marieclaire.com.au/author/sigourney-cantelo/',
@@ -26,12 +26,30 @@ export const SIGOURNEY_SAMEAS = [
 ] as const
 
 /**
- * Canonical one-line identity. Reused verbatim across schema, llms.txt and
- * off-site profiles — consistency across properties is what entity resolution
- * actually reads.
+ * Canonical one-line identity. SIGNED OFF 18 Aug 2026.
+ *
+ * Reused verbatim across schema, llms.txt, Wikidata and off-site profiles.
+ * Consistency across properties is what entity resolution actually reads, so
+ * change it here and nowhere else.
+ *
+ * Why it reads the way it does:
+ *  - "journalist" is deliberate. It is the trust word that separates a trained
+ *    reporter from a content creator, which is the distinction E-E-A-T is
+ *    assessing and the one Sigourney's own positioning rests on.
+ *  - "beauty" is the category anchor. Dropping it for breadth would put her in
+ *    a field of thousands of generic journalists.
+ *  - "editorial e-commerce" is her own coined framework, used consistently
+ *    across her writing. A distinctive ownable phrase is what AI answer engines
+ *    latch onto; a generic one gives them nothing to hold.
+ *  - Vogue is a credential, not a title. It lives in the bio and in Wikidata
+ *    (P108 employer), never in the identity line.
  */
+export const SIGOURNEY_IDENTITY_LINE =
+  'Beauty journalist and publisher. Founder of Beauticate, Australia\'s first editorial e-commerce platform.'
+
+/** Longer form, for schema `description` and bios. */
 export const SIGOURNEY_DESCRIPTION =
-  'Sigourney Cantelo is an Australian beauty journalist, editor and digital publisher with 25 years of experience. She is the founder of Beauticate and former Beauty & Health Director at Vogue Australia.'
+  'Sigourney Cantelo is an Australian beauty journalist and publisher with 25 years across print, digital and broadcast. She is the founder of Beauticate, Australia\'s first editorial e-commerce platform, and former Beauty & Health Director at Vogue Australia.'
 
 export interface Author {
   name: string
@@ -53,7 +71,7 @@ export const AUTHORS: Author[] = [
     bio: SIGOURNEY_DESCRIPTION,
     photo: '/images/authors/sigourney-cantelo.png',
     instagram: 'https://www.instagram.com/sigourneycantelo/',
-    linkedin: 'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
+    linkedin: 'https://www.linkedin.com/in/sigourney-cantelo/',
     sameAs: [...SIGOURNEY_SAMEAS, `${SITE_URL}/about`],
   },
   {
