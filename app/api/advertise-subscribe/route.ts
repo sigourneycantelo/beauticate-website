@@ -1,5 +1,6 @@
 import { subscribeToListWithProperties, upsertProfile } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
+import { appendLead } from '@/lib/sheets'
 import { NextResponse } from 'next/server'
 
 const LIST_ID = process.env.NEXT_PUBLIC_KLAVIYO_LIST_ID!
@@ -27,6 +28,14 @@ export async function POST(req: Request) {
 
   const tasks: { name: string; promise: Promise<unknown> }[] = [
     { name: 'woodpecker', promise: addProspect(email, { tags: '#advertiser_lead' }) },
+    {
+      name: 'contacts-sheet',
+      promise: appendLead('contacts', {
+        Email: email,
+        'Contact Group': 'Advertiser Lead (Web)',
+        'Appears In (sources)': 'Website - Advertise Page',
+      }),
+    },
   ]
 
   // Default: subscribed unless they explicitly opt out
