@@ -33,8 +33,8 @@ Beauticate Shop is, who founded it, and that it's the same entity as beauticate.
         "name": "Sigourney Cantelo",
         "url": "https://www.beauticate.com/about-beauticate",
         "sameAs": [
-          "https://www.instagram.com/sigourney.cantelo/",
-          "https://www.linkedin.com/in/sigourneycantelo/"
+          "https://www.instagram.com/sigourneycantelo/",
+          "https://www.linkedin.com/in/sigourney-cantelo-027a38b/"
         ]
       },
       "sameAs": [
@@ -42,7 +42,7 @@ Beauticate Shop is, who founded it, and that it's the same entity as beauticate.
         "https://www.instagram.com/beauticate/",
         "https://www.facebook.com/beauticate",
         "https://www.linkedin.com/company/beauticate.com",
-        "https://www.youtube.com/@beauticate",
+        "https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA",
         "https://www.pinterest.com.au/beauticate/"
       ],
       "email": "hello@beauticate.com",
@@ -198,8 +198,8 @@ Add the schema version of the above to `<head>` alongside snippet #1.
   "description": "Sigourney Cantelo is an Australian beauty journalist and publisher with over 25 years of experience, including her tenure as Beauty & Health Director at Vogue Australia.",
   "url": "https://www.beauticate.com/about-beauticate",
   "sameAs": [
-    "https://www.instagram.com/sigourney.cantelo/",
-    "https://www.linkedin.com/in/sigourneycantelo/",
+    "https://www.instagram.com/sigourneycantelo/",
+    "https://www.linkedin.com/in/sigourney-cantelo-027a38b/",
     "https://www.beauticate.com"
   ],
   "alumniOf": { "@type": "Organization", "name": "Vogue Australia" },

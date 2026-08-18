@@ -1,0 +1,204 @@
+### QuickStatements batch — Sigourney Cantelo (Q139644159)
+###
+### HOW TO USE
+###   1. Go to https://quickstatements.toolforge.org/
+###   2. Sign in with your own Wikidata account (authorise via OAuth)
+###   3. "New batch" -> paste the statement lines below (not these comments)
+###   4. Review the parsed preview carefully, then Run
+###
+### STATUS: lines prefixed "# APPLIED" are already live on Wikidata and must
+### NOT be re-run. Remaining live lines are still to do.
+###
+### Every statement carries a reference (S854 = reference URL, S813 = retrieved).
+### Unreferenced statements about a living person can be challenged and removed,
+### and a padded unsourced item raises deletion risk. Do not strip the refs.
+###
+### Apply these in two or three sittings rather than one burst. A dozen rapid
+### automated edits to a living person's item is the pattern that draws a
+### notability review, which is what deleted Doug Lord's entry.
+###
+### NOT INCLUDED, and why:
+###   - P166 (award received) for the 6 Jasmine and 6 Star Beauty Awards.
+###     P166 requires an ITEM value, and no Wikidata items exist for either
+###     award. They must be created first, each needing independent sourcing.
+###     See the notes at the bottom of this file.
+###   - P856 for sigourneycantelo.com. Add this once the site is LIVE, not
+###     before. An official-website statement pointing at a dead domain is worse
+###     than no statement. It is the highest-value single edit on the list.
+###   - P18 (image). Requires a Wikimedia Commons upload under a free licence.
+###     Blocked on photographer copyright permission.
+###   - P569 (date of birth). Sigourney's call, entirely optional.
+
+
+### --- Employer: Vogue Australia -------------------------------------------
+### Sourced to Beauty Directory's report of her departure.
+# APPLIED 17-18 Aug 2026 (employer Vogue Australia) -- do not re-run
+# Q139644159	P108	Q16682865	S854	"https://www.beautydirectory.com.au/news/magazines/sigourney-cantelo-farewells-vogue"	S813	+2026-08-17T00:00:00Z/11
+
+
+### --- Educated at: University of Technology Sydney -------------------------
+### SOURCED 18 Aug 2026. Found in a published ParlourX interview with her:
+###   "Back when I went to uni (I did a BA Comms at UTS) there was very little
+###    practical teaching about magazines, let alone digital - I learnt
+###    everything I know now on the job."
+### https://www.parlourx.com/blogs/news/sigourney-cantelo
+### A third-party published interview, which is what Wikidata needs. A photo of
+### a graduation certificate would NOT work: primary source / original research.
+# APPLIED 17-18 Aug 2026 (educated at UTS) -- do not re-run
+# Q139644159	P69	Q1145731	S854	"https://www.parlourx.com/blogs/news/sigourney-cantelo"	S813	+2026-08-18T00:00:00Z/11
+
+
+### --- Occupation: broaden beyond "journalist" ------------------------------
+### She is currently only listed as a journalist. These four are all evidenced
+### by the press coverage already on beauticate.com/press.
+# APPLIED 17-18 Aug 2026 (occupation editor) -- do not re-run
+# Q139644159	P106	Q1607826	S854	"https://mumbrella.com.au/vogues-sigourney-cantelo-departs-run-site-233667"	S813	+2026-08-17T00:00:00Z/11
+Q139644159	P106	Q106568011	S854	"https://www.beautydirectory.com.au/news/magazines/sigourney-cantelo-farewells-vogue"	S813	+2026-08-17T00:00:00Z/11
+# APPLIED 17-18 Aug 2026 (occupation television presenter) -- do not re-run
+# Q139644159	P106	Q947873	S854	"https://hercanberra.com.au/style/sigourney-cantelo-shares-her-beauty-secrets/"	S813	+2026-08-17T00:00:00Z/11
+
+
+### --- Connect the person and the company ----------------------------------
+### Beauticate (Q139643093) and Sigourney (Q139644159) currently do not
+### reference each other. To a knowledge graph they are two unrelated entities.
+### This is the pair of statements that fixes that.
+# ALREADY PRESENT on the Beauticate item since before this work -- verified
+# 17 Aug 2026. Do not re-run.
+# Q139643093	P112	Q139644159	S854	"https://mumbrella.com.au/vogues-sigourney-cantelo-departs-run-site-233667"	S813	+2026-08-17T00:00:00Z/11
+# REDUNDANT. The person<->company link is already carried twice: P112 on the
+# Beauticate item, and P39 (position held: founder) with a Beauticate employer
+# qualifier on this item. Adding P800 as well says nothing new.
+# Q139644159	P800	Q139643093	S854	"https://www.beautydirectory.com.au/news/digital/gamble-pays-off-for-sigourney-cantelo"	S813	+2026-08-17T00:00:00Z/11
+
+
+### --- REMAINING IDENTIFIERS (not yet applied) -----------------------------
+### All three accounts verified live by loading the actual profile, not by
+### HTTP status (status codes lie: Instagram returns 200 for dead profiles).
+###   TikTok    "Sigourney Cantelo x Beauticate", 1,365 followers
+###   Pinterest profile confirmed
+###   Threads   "Sigourney: Beauty from the Inside Out"
+### P7085 (TikTok) was applied manually on 17 Aug. These two remain.
+### No references needed: the existing identifier statements on this item
+### (Instagram, Facebook, YouTube, LinkedIn) all carry zero references, which
+### is normal practice for self-evidencing identifiers.
+# APPLIED 17-18 Aug 2026 (Pinterest) -- do not re-run
+# Q139644159	P3836	"sigourneycantelo"
+# APPLIED 17-18 Aug 2026 (Threads) -- do not re-run
+# Q139644159	P11892	"sigourneycantelo"
+
+### --- BEAUTICATE ITEM (Q139643093) ----------------------------------------
+### Its social graph is thinner than Sigourney's: it has Instagram, X and
+### LinkedIn only. VERIFY EACH PROFILE BY LOADING IT before running these --
+### facebook.com/beauticate returned 400 to a bot and was never confirmed, and
+### youtube.com/@beauticate is CONFIRMED DEAD (404), which is why the site's
+### Organization schema now points at the channel-ID URL instead.
+### Beauticate publishes via Sigourney's own TikTok and YouTube (confirmed by
+### Sig), so the org item should carry those same handles.
+# Q139643093	P2397	"UCfuyyVnNfbiwovULXTRQiVA"
+# Q139643093	P7085	"sigourneycantelo"
+# Q139643093	P3836	"beauticate"
+# Q139643093	P2013	"beauticate"
+
+### --- Add AFTER the site is live -------------------------------------------
+### Uncomment this line only once https://sigourneycantelo.com resolves.
+### Keep the existing beauticate.com P856 statement; both are hers.
+# Q139644159	P856	"https://sigourneycantelo.com"
+
+
+### ==========================================================================
+### THE AWARDS
+### ==========================================================================
+###
+### P166 requires an ITEM value and no Wikidata item exists for either award,
+### so nothing can be added today. But the Jasmine Awards turn out to be far
+### better documented than assumed, and an award item now looks viable.
+###
+### SOURCING FOUND (all live, verified):
+###   - The Fragrance Foundation (UK), which runs the awards, launched 1990:
+###     https://www.fragrancefoundation.org.uk/jasmine-awards
+###   - Beauty Directory on the Australian awards being discontinued after a
+###     ~10-year run (independent trade coverage of the AU edition):
+###     https://www.beautydirectory.com.au/news/awards/jasmine-awards-to-be-discontinued
+###   - Australian Perfume Junkies, Jasmine Awards Australia 2014 photo essay:
+###     https://australianperfumejunkies.com/2014/05/01/jasmine-awards-australia-2014-photo-essay/
+###   - Vogue Australia on Sigourney's own win (HTTP 200, verified):
+###     https://www.vogue.com.au/beauty/news/beauty-pageant/news-story/6faf67bde5e339f4f4342b4af1f88552
+###
+### That is an institution with independent coverage, which is what an award
+### item needs. Two documented wins:
+###   - "Vogue's Ultimate Guide to Fragrance" -- top prize
+###   - "Distilling Provence", Vogue Australia, published July 2013
+###
+### Once a Jasmine Awards item exists, the statements become:
+###   Q139644159  P166  <award-QID>  P585  +2014-00-00T00:00:00Z/9  S854 "<vogue url>"
+###   Q139644159  P166  <award-QID>  P585  +2010-00-00T00:00:00Z/9  S854 "<source url>"
+###
+### STAR BEAUTY AWARDS: no comparable sourcing found yet. Leave in site schema
+### only until something citable turns up.
+###
+### AWARD COUNT -- SETTLED: SIX.
+### Confirmed by Sigourney, 17 Aug 2026, against her original bio. Some
+### secondary coverage still says FIVE; that is out of date and should not be
+### treated as authoritative. app/about/page.tsx already says six (corrected in
+### commit aeb062d3e), so the site and the source of truth now agree.
+### Canonical wording: six Jasmine Awards, two of them for Journalistic
+### Excellence (2010 and 2014), plus six Star Beauty Awards.
+###
+### RECOMMENDATION: site schema now (already done, zero risk); create the
+### Jasmine Awards item as a separate, unhurried piece of work. Do not rush it
+### -- a badly-sourced award item that gets deleted is worse than no item, and
+### the deletion discussion can spill onto the person item linking to it.
+
+
+### ==========================================================================
+### SESSION LOG -- 17/18 AUGUST 2026
+### ==========================================================================
+###
+### Item went from 10 properties to 18. All applied live under the
+### SigourneyCantelo account (created this session; the items had previously
+### been edited only from temporary/logged-out accounts).
+###
+### ADDED:
+###   P108  employer          Vogue Australia        [ref: Beauty Directory]
+###   P69   educated at       UTS                    [ref: ParlourX interview]
+###          + P512 qualifier Bachelor of Arts
+###   P106  occupation        television presenter   [ref: HerCanberra]
+###   P106  occupation        editor                 [ref: Mumbrella]
+###   P7085 TikTok            sigourneycantelo
+###   P3836 Pinterest         sigourneycantelo
+###   P11892 Threads          sigourneycantelo
+###   P21   sex or gender     female
+###   P1412 languages         English
+###   P937  work location     Sydney
+###
+### WHAT IS LEFT, AND WHY
+###
+### 1. AWARDS (P166) -- blocked on creating a "Jasmine Awards" item first.
+###    Sourcing exists (see above). The single biggest credential still absent.
+###
+### 2. IMAGE (P18) -- blocked on a Wikimedia Commons upload under a free
+###    licence, which needs the photographer's written consent (paying for a
+###    shoot does not transfer copyright).
+###
+### 3. DATE OF BIRTH (P569) -- Sigourney is willing, but it needs a published
+###    source like anything else. Low value: its main job is disambiguating
+###    people who share a name, and nobody shares hers.
+###
+### 4. PODCAST AS ITS OWN ITEM -- "Beautiful Inside by Beauticate", 44
+###    episodes, on Spotify / Apple / YouTube. Creating an item for the show
+###    and linking it from her item (P800 notable work) is the largest
+###    remaining STRUCTURAL addition. Podcasts are routinely notable enough.
+###
+### 5. IMDb (P345) -- she has NO IMDb page (checked, zero results). But the
+###    acting credits are real: Home & Away, Always Greener, ABC's Blue Water
+###    High, plus commercials for Commonwealth Bank, KFC, Fox 8 and 7up.
+###    An IMDb page can be submitted through IMDb's contributor process, and
+###    an IMDb ID is a strong authority identifier that feeds Wikidata and
+###    Google Knowledge Panels. Separate project, real payoff.
+###
+### NOT APPLICABLE:
+###   P2002 X/Twitter -- no personal account exists (404).
+###   P735/P734 given & family name -- no Wikidata items exist for
+###     "Sigourney" or "Cantelo" as names.
+###   VIAF / ISNI / Library of Congress -- authority IDs for published
+###     book authors. Would apply only if she publishes a book.
