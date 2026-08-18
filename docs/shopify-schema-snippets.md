@@ -34,7 +34,7 @@ Beauticate Shop is, who founded it, and that it's the same entity as beauticate.
         "url": "https://www.beauticate.com/about-beauticate",
         "sameAs": [
           "https://www.instagram.com/sigourneycantelo/",
-          "https://www.linkedin.com/in/sigourney-cantelo-027a38b/"
+          "https://www.linkedin.com/in/sigourney-cantelo/"
         ]
       },
       "sameAs": [
@@ -199,7 +199,7 @@ Add the schema version of the above to `<head>` alongside snippet #1.
   "url": "https://www.beauticate.com/about-beauticate",
   "sameAs": [
     "https://www.instagram.com/sigourneycantelo/",
-    "https://www.linkedin.com/in/sigourney-cantelo-027a38b/",
+    "https://www.linkedin.com/in/sigourney-cantelo/",
     "https://www.beauticate.com"
   ],
   "alumniOf": { "@type": "Organization", "name": "Vogue Australia" },
