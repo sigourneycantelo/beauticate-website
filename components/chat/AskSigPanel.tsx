@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import ChatMessage from './ChatMessage'
+import { UI_DISCLAIMER } from '@/lib/chat/guardrails'
 
 interface Message {
   id: string
@@ -178,6 +179,10 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
             </svg>
           </button>
         </div>
+        <p className="mt-2 text-[11px] leading-snug font-sans text-muted">
+          {UI_DISCLAIMER}{' '}
+          <a href="/terms" className="underline hover:text-ink transition-colors">Terms</a>
+        </p>
       </div>
     </div>
   )

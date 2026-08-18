@@ -113,6 +113,33 @@ export default function TermsPage() {
         </section>
 
         <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Ask Sig (AI assistant)</h2>
+          <p>
+            Ask Sig is an automated assistant powered by artificial intelligence. It is provided
+            for general information and entertainment only. It is not medical, health,
+            diagnostic or professional advice, it is not a substitute for consulting a qualified
+            health practitioner, and it must not be relied on to diagnose, treat or manage any
+            health condition.
+          </p>
+          <p className="mt-4">
+            Ask Sig generates responses automatically and can be inaccurate, incomplete or out of
+            date, including on prices, availability, ingredients and product details. Nothing it
+            says is a testimonial, endorsement or recommendation of any therapeutic good, and no
+            statement it makes should be taken as a claim that any product treats, cures or
+            prevents any condition. Always read the label, follow the directions for use, and
+            speak with your doctor, pharmacist or a qualified professional before starting any
+            supplement or if you have a health concern. If you are experiencing a medical
+            emergency, call 000.
+          </p>
+          <p className="mt-4">
+            Conversations with Ask Sig are logged so we can improve it. Please do not enter
+            sensitive personal or health information. We handle anything you do provide in line
+            with our{' '}
+            <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">Privacy Policy</a>.
+          </p>
+        </section>
+
+        <section>
           <h2 className="font-serif text-xl text-ink mb-4">Intellectual property</h2>
           <p>
             The content on beauticate.com, including our articles, photography, brand name and
