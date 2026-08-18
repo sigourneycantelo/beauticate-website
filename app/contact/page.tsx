@@ -61,7 +61,7 @@ export default function ContactPage() {
             { label: 'Instagram', href: 'https://www.instagram.com/beauticate/' },
             { label: 'TikTok', href: 'https://www.tiktok.com/@beauticate' },
             { label: 'Pinterest', href: 'https://www.pinterest.com.au/beauticate/' },
-            { label: 'YouTube', href: 'https://www.youtube.com/@beauticate' },
+            { label: 'YouTube', href: 'https://www.youtube.com/sigourneycantelo' },
           ].map(s => (
             <a
               key={s.label}

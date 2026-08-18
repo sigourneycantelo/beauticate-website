@@ -12,7 +12,8 @@
     "lint": "next lint",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",
     "send-email": "npx tsx scripts/send-email.ts",
-    "test-gift-webhook": "npx tsx scripts/test-gift-webhook.ts"
+    "test-gift-webhook": "npx tsx scripts/test-gift-webhook.ts",
+    "verify:entity": "node scripts/verify-entity-graph.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",
