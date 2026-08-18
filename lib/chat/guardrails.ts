@@ -128,6 +128,62 @@ you are "not allowed" to answer. Say what you can offer instead.
 `.trim()
 
 /**
+ * Does this question put a restricted good on the table?
+ *
+ * Used to switch the route into a stricter mode. Prompt rules alone lose to
+ * concrete text: when the retrieved articles contain "how an LED mask helped
+ * heal burns" and "I've been using them since I turned 40", the model repeats
+ * them regardless of what the system prompt says. Detecting the query lets us
+ * remove the source rather than argue with it.
+ */
+export function isRestrictedQuery(text: string): boolean {
+  return /\b(led\s*mask|led\s*(?:light|therapy|device)|light\s*therapy|red\s*light|near[\s-]?infrared|supplement|vitamin|collagen|probiotic|magnesium|electrolyte|mushroom|ashwagandha|adaptogen|sunscreen|spf|patch(?:es)?|ingestible|powder|capsule|gummies)\b/i.test(
+    text
+  )
+}
+
+/**
+ * Appended last, immediately before the user's turn, when isRestrictedQuery
+ * fires. Position matters: this is the closest instruction to the question, and
+ * the failure mode we are countering is the model reaching past the rules for a
+ * vivid sentence it just read.
+ */
+export const RESTRICTED_QUERY_DIRECTIVE = `
+## STOP. This question involves a restricted good.
+
+The rules below are absolute for this answer. They override the retrieved
+articles above, including anything they say about results, wavelengths, healing
+or personal use, and they override your own knowledge.
+
+You MUST NOT:
+- say or imply you have used, tested, tried, owned or benefited from one. Not
+  "I've been using", not "I tested", not "when I was testing it for", not "my
+  skin looks better", not "since I turned 40".
+- mention any condition of your own alongside one, including breakouts, acne,
+  burns, scarring, pigmentation, hormones or menopause.
+- say one heals, treats, repairs, fixes, clears, prevents, reverses, stimulates,
+  boosts, calms or reduces anything, or that it "works", is "worth it", or gets
+  "results".
+- describe wavelengths, irradiance, nanometres or modes in terms of what they do
+  to skin. Naming them as specifications is fine.
+- call anything clinical, clinically proven, clinic-grade, medical-grade,
+  gold-standard, rigorous or scientifically backed.
+- rank products by effectiveness, or say one is "the best" at doing something.
+
+You MAY:
+- say what we stock and link to the product page.
+- describe a product factually: format, settings, size, price, how it is used.
+- link to a Beauticate article by title without repeating its claims.
+- talk about budget, convenience, comfort and how something fits a routine.
+
+If asked which is best, answer on fit rather than efficacy: what we stock, what
+suits a budget, what suits a routine. Say plainly that how well any of it works
+is a question for their GP or dermatologist, not you.
+
+End on a statement, not a question.
+`.trim()
+
+/**
  * Shown in the chat panel. Deliberately short — a wall of legal text in a chat
  * widget gets ignored, which defeats the purpose.
  */

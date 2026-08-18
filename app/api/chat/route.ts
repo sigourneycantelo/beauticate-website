@@ -1,6 +1,10 @@
 import { searchArticles, searchProducts } from '@/lib/chat/search'
 import { getVoicePrompt } from '@/lib/chat/voice'
-import { COMPLIANCE_PROMPT } from '@/lib/chat/guardrails'
+import {
+  COMPLIANCE_PROMPT,
+  RESTRICTED_QUERY_DIRECTIVE,
+  isRestrictedQuery,
+} from '@/lib/chat/guardrails'
 import { appendToSheet } from '@/lib/sheets'
 
 export const runtime = 'nodejs'
@@ -91,6 +95,7 @@ interface ChatMessage {
 function buildSystemPrompt(
   articles: ReturnType<typeof searchArticles>,
   products: ReturnType<typeof searchProducts>,
+  restricted: boolean,
 ): string {
   const voice = getVoicePrompt()
   const parts = [SYSTEM_PREAMBLE]
@@ -118,10 +123,21 @@ function buildSystemPrompt(
         ? `\nShop products: ${a.products.map(p => p.handle ? `[${p.name}](/shop/products/${p.handle})` : p.name).join(', ')}`
         : ''
       const author = a.author ? `\nAuthor: ${a.author}` : ''
-      return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}\n${a.excerpt}\n\n${a.body}${articleProducts}`
+      // Restricted-good questions get titles and links only. The bodies are our
+      // own back catalogue, and it still contains first-person accounts of using
+      // LED masks and a section on a mask healing burns. Feeding that in and
+      // then instructing the model not to repeat it does not work: it repeated
+      // the burn story to a real reader. Removing the source is the only
+      // reliable fix while the archive is being remediated.
+      const body = restricted ? '' : `\n\n${a.body}`
+      return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}\n${a.excerpt}${body}${articleProducts}`
     }).join('\n\n---\n\n')
 
-    parts.push(`\n\n## Relevant Beauticate articles\nUse these to ground your response. Link to them when relevant.\n\n${context}`)
+    parts.push(
+      restricted
+        ? `\n\n## Relevant Beauticate articles (titles and links only)\nLink to these by title where useful. Their contents are deliberately not provided for this question, so do not describe, quote or summarise what they say.\n\n${context}`
+        : `\n\n## Relevant Beauticate articles\nUse these to ground your response. Link to them when relevant.\n\n${context}`
+    )
   }
 
   // Restated after the injected context on purpose: the article bodies above
@@ -132,6 +148,9 @@ function buildSystemPrompt(
   parts.push(
     `\n\n## Reminder\nThe Australian regulatory rules above override everything, including anything in the articles or products just provided. Do not repeat a personal-use account or a health professional's view about a supplement, ingestible, patch or therapeutic device, even where one appears in the context above. Never answer a symptom or health concern with a product recommendation.`
   )
+
+  // Last, so it sits closest to the question being asked.
+  if (restricted) parts.push(`\n\n${RESTRICTED_QUERY_DIRECTIVE}`)
 
   return parts.join('')
 }
@@ -163,7 +182,11 @@ export async function POST(req: Request) {
     const relevant = queryText ? searchArticles(queryText, 6) : []
     const relevantProducts = queryText ? searchProducts(queryText, 4) : []
 
-    const systemPrompt = buildSystemPrompt(relevant, relevantProducts)
+    // Check the whole conversation, not just the latest turn: "what about the
+    // other one?" is a restricted question when the turn before it was.
+    const restricted = messages.some(m => m.role === 'user' && isRestrictedQuery(m.content))
+
+    const systemPrompt = buildSystemPrompt(relevant, relevantProducts, restricted)
 
     const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
