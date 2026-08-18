@@ -1,8 +1,12 @@
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
+import { appendToSheet } from '@/lib/sheets'
 import { NextResponse } from 'next/server'
 
-const NEWSLETTER_LIST_ID = process.env.NEXT_PUBLIC_KLAVIYO_LIST_ID!
+// Same dedicated "Shop Partner Interest" list the quick-interest form
+// (/shop/partners) uses — applicants must never be silently dropped onto the
+// general reader newsletter list, they're evaluating a business relationship.
+const PARTNER_LIST_ID = process.env.KLAVIYO_PARTNER_LIST_ID || 'XXNYny'
 
 export async function POST(req: Request) {
   const body = await req.json()
@@ -14,10 +18,10 @@ export async function POST(req: Request) {
   }
 
   // Guaranteed capture in Klaviyo first — this must succeed for the submission
-  // to count. Woodpecker is best-effort and logged on failure, same pattern as
-  // the advertise page, so a brand application can never be silently lost.
+  // to count. Sheet + Woodpecker are best-effort and logged on failure, same
+  // pattern as the advertise page, so a brand application can never be lost.
   try {
-    await subscribeToListWithProperties(NEWSLETTER_LIST_ID, email, name, {
+    await subscribeToListWithProperties(PARTNER_LIST_ID, email, name, {
       brand_name: brandName,
       website,
       instagram: instagram || '',
@@ -34,14 +38,25 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Submission failed' }, { status: 500 })
   }
 
-  try {
-    await addProspect(email, {
+  const submittedAt = new Date().toISOString()
+  const results = await Promise.allSettled([
+    appendToSheet('Partner Interest', [
+      submittedAt, email, 'partner_application', brandName, name, website,
+      instagram || '', category || '', location, shopify || '', canShipAu || '', firstProduct || '', about,
+    ]),
+    addProspect(email, {
       tags: '#shop_partner_lead #partner_application',
       company: brandName,
       website,
-    })
-  } catch (err) {
-    console.error(`partners/apply: woodpecker failed for ${email}:`, err)
+    }),
+  ])
+
+  const [sheetResult, woodpeckerResult] = results
+  if (sheetResult.status === 'rejected') {
+    console.error(`partners/apply: sheet append failed for ${email}:`, sheetResult.reason)
+  }
+  if (woodpeckerResult.status === 'rejected') {
+    console.error(`partners/apply: woodpecker failed for ${email}:`, woodpeckerResult.reason)
   }
 
   return NextResponse.json({ success: true })
