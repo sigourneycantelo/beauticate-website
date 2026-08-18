@@ -129,6 +129,15 @@ const TRIGGERS = [
         "\\bclinic[\\s-]?grade\\b", "\\bmedical[\\s-]?grade\\b",
         "\\bprofessional results\\b", "\\bdoes more for\\b",
         "\\bstimulates? collagen\\b", "\\bboosts? collagen\\b",
+        // All of these were found by reading articles, not by the detector.
+        "\\b(?:has |have |been )?proven to\\b", "\\bshown to\\b",
+        "\\bspeeds? up (?:recovery|healing)\\b",
+        "\\bpromotes? (?:healing|recovery|rejuvenation|regrowth|growth)\\b",
+        "\\bcombats?\\b", "\\bsubsiding\\b", "\\bsoothes? inflammation\\b",
+        "\\brepairs?\\b", "\\bregrow(?:s|th)?\\b", "\\bhair growth\\b",
+        "\\bdetoxification\\b", "\\bimmunity\\b",
+        "\\bpost[\\s-]?op\\b", "\\bwound\\b", "\\bskin trauma\\b",
+        "\\bworth it\\b", "\\bactually works?\\b", "\\beffective\\b",
       ].join('|'),
       'gi'
     ),
@@ -145,6 +154,18 @@ const TRIGGERS = [
         '\\bper cent off\\b', '\\b\\d+% off\\b', '\\bdiscount code\\b',
         '\\baffiliate\\b', '\\bgifted\\b', '\\bPR sample\\b', '\\bc\\/o\\b',
         '\\bsca_ref=', '\\bsjv\\.io\\b', '\\bpaid partnership\\b',
+      ].join('|'),
+      'gi'
+    ),
+  },
+  {
+    kind: 'SYMPTOM_PITCH',
+    severity: 1,
+    re: new RegExp(
+      [
+        "\\bif you(?:'re| are)[^.?!]{0,80}\\b(?:tired|exhausted|burnt out|burned out|foggy|sore|flat|bloated|stressed|struggling|breaking out|dealing with)\\b",
+        "\\bstruggling with\\b", "\\bsuffer(?:ing)? from\\b",
+        "\\bif (?:your|you have) [^.?!]{0,50}\\b(?:acne|breakouts?|pigmentation|redness|thinning|loss)\\b",
       ].join('|'),
       'gi'
     ),
@@ -200,11 +221,41 @@ function isReferralContext(body, at) {
 }
 
 const AMBIGUOUS = /vitamin|tonic|elixir|collagen/i
-const TOPICAL = /serum|cream|moisturis|cleanser|toner|lotion|balm|oil\b|apply|applied|topical|face mask|sheet mask|spf|smooth(?:ed)? (?:on|over)|rub/i
+
+/**
+ * "Vitamin C", "collagen" and friends are only therapeutic goods when they are
+ * swallowed. In beauty copy they are overwhelmingly topical - vitamin C serums,
+ * collagen creams - which are ordinary cosmetics and entirely out of scope.
+ * Requiring an ingestion marker nearby, rather than merely excluding obvious
+ * topical words, is what separates the two. Without this, topical serum lines
+ * dominated the "high confidence" tier and drowned the real findings.
+ */
+const INGESTION = /\b(?:take|takes|taking|took|swallow|capsule|tablet|supplement|powder|sachet|gummy|gummies|drink|drank|drinking|ingest|oral|stir|scoop|dose|dosage|daily serve)\b/i
 
 function isTopicalContext(body, at, term) {
   if (!AMBIGUOUS.test(term)) return false
-  return TOPICAL.test(body.slice(Math.max(0, at - 80), at + 80))
+  return !INGESTION.test(body.slice(Math.max(0, at - 120), at + 120))
+}
+
+/**
+ * FAQ questions phrase things as "Should I use..." and "What should I add...",
+ * which look exactly like first-person use claims to a regex and are the
+ * opposite: a reader asking, not the publication claiming.
+ */
+const INTERROGATIVE = /(?:should|can|could|would|how|what|when|why|do|does|did|is|are)\s+(?:i|you|we|it|they|the|a|an|this|that)\b/i
+
+function isQuestionContext(text, at) {
+  // Whole enclosing line, not a fixed window: FAQ questions are long, and a
+  // trigger near the end of one sat well past any short lookback. "What
+  // at-home devices actually work for ageing skin?" was being reported as an
+  // efficacy claim.
+  const lineStart = text.lastIndexOf('\n', at) + 1
+  let lineEnd = text.indexOf('\n', at)
+  if (lineEnd === -1) lineEnd = text.length
+  const line = text.slice(lineStart, lineEnd)
+  if (/^\s*(?:-\s*)?question:/i.test(line)) return true
+  if (line.includes('?')) return true
+  return INTERROGATIVE.test(text.slice(Math.max(0, at - 45), at + 12))
 }
 
 function walk(dir, out = []) {
@@ -268,6 +319,8 @@ for (const file of files) {
     for (const trig of TRIGGERS) {
       for (const t of zone.text.matchAll(trig.re)) {
         if (trig.kind === 'PRACTITIONER' && isReferralContext(zone.text, t.index)) continue
+        if (trig.kind !== 'CONSIDERATION' && isQuestionContext(zone.text, t.index)) continue
+        if (trig.kind === 'SYMPTOM_PITCH' && isReferralContext(zone.text, t.index)) continue
         const near = goods.find(
           g => Math.abs(g.at - t.index) <= WINDOW && !isTopicalContext(zone.text, g.at, g.term)
         )
@@ -301,7 +354,7 @@ for (const file of files) {
 // first, count the rest, so the report stays readable.
 const grouped = new Map()
 for (const f of findings) {
-  const key = `${f.file}::${f.zone}::${f.kind}::${f.matched.toLowerCase()}`
+  const key = `${f.file}::${f.zone}::${f.kind}::${f.snippet.slice(0, 70).toLowerCase()}`
   if (!grouped.has(key)) grouped.set(key, { ...f, repeats: 0 })
   else grouped.get(key).repeats++
 }

@@ -5,48 +5,34 @@
 > sources: [`docs/ask-sig-compliance.md`](../ask-sig-compliance.md).
 
 - Articles scanned: **1846**
-- Articles with at least one flag: **399**
-- Total flags (deduped per file+kind): **927**
-- **HIGH confidence (a brand we stock is named in the same passage): 16 flags across 9 articles** — fix these first.
+- Articles with at least one flag: **297**
+- Total flags (deduped per file+kind): **761**
+- **HIGH confidence (a brand we stock is named in the same passage): 7 flags across 5 articles** — fix these first.
 
 | Kind | Count | What it means |
 | --- | --- | --- |
-| TESTIMONIAL | 308 | First-person use of a restricted good. Prohibited outright for Beauticate. |
-| PRACTITIONER | 130 | A health professional's view near a restricted good. Prohibited source. |
-| CLAIM | 344 | Treat / cure / prevent / proven language near a restricted good. |
-| SERIOUS | 55 | A serious condition named near a restricted good. |
-| THIRD_PARTY | 52 | Someone else's use account. Beauticate owns any testimonial it publishes. |
-| CONSIDERATION | 38 | Discount code, affiliate link or gifting near a restricted good. Not a breach alone, but it makes any nearby testimonial prohibited. |
+| TESTIMONIAL | 241 | First-person use of a restricted good. Prohibited outright for Beauticate. |
+| PRACTITIONER | 108 | A health professional's view near a restricted good. Prohibited source. |
+| CLAIM | 270 | Treat / cure / prevent / proven language near a restricted good. |
+| SERIOUS | 47 | A serious condition named near a restricted good. |
+| THIRD_PARTY | 49 | Someone else's use account. Beauticate owns any testimonial it publishes. |
+| CONSIDERATION | 39 | Discount code, affiliate link or gifting near a restricted good. Not a breach alone, but it makes any nearby testimonial prohibited. |
 
 ## Findings
 
-### [HIGH] CLAIM (frontmatter) — New Year New Skin: 6 Quick Ways to a Glow Up
-`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:28` · 2024-01-30 · Sigourney Cantelo
+### [HIGH] CLAIM (frontmatter) — Glow Up This Winter: 3 Smoothies That Will Transform Your Skin
+`content/wellness/health/smoothies-to-transform-skin/smoothies-to-transform-skin.mdx:22` · 2024-06-02 · Sigourney Cantelo
 
-Restricted term: **LED mask** · matched: **medical-grade** · shop brand: **San Lueur**
+Restricted term: **supplement** · matched: **immunity** · shop brand: **Innour**
 
-> …s from multiple at-home LED devices, with the San Lueur LED Mask and the Dermalux Flex (a medical-grade professional device) both praised. The author notes that generally you get what you pay f…
+> …llagen, olive leaf extract, and greens powder can support skin elasticity, hydration, and immunity from within." - question: "What should I add to my smoothie for better skin?" answe…
 
-### [HIGH] CLAIM (frontmatter) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:25` · 2024-03-16 · Sigourney Cantelo
+### [HIGH] CLAIM (frontmatter) — What Nobody Told Me About My Body After 40, and Why I Had to Find Out Myself
+`content/wellness/health/what-nobody-told-me-about-my-body-after-40/what-nobody-told-me-about-my-body-after-40.mdx:51` · 2026-06-21 · Lisa Walker
 
-Restricted term: **collagen** · matched: **target breakout** · shop brand: **San Lueur**
+Restricted term: **adaptogen** · matched: **effective** · shop brand: **Eir Women**
 
-> …answer: "LED masks like San Lueur support collagen and calm the skin, blue-light devices target breakout-causing bacteria, and microcurrent tools like NuFACE and FaceGym Pro tighten and lift the…
-
-### [HIGH] CLAIM (frontmatter) — The LED Mask the Industry is Buzzing About
-`content/wellness/biohacking/the-led-mask-the-industry-is-buzzing-about/the-led-mask-the-industry-is-buzzing-about.mdx:22` · 2023-11-23 · Sigourney Cantelo
-
-Restricted term: **LED mask** · matched: **target breakouts** · shop brand: **San Lueur**
-
-> …Light Therapy Facial Mask uses three clinically approved wavelengths: 415nm blue light to target breakouts, 633nm red light to revive tired complexions, and 830nm near-infrared light to restore yo…
-
-### [HIGH] PRACTITIONER (frontmatter) — How to Prime Your Skin for Peri and Menopause
-`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:26` · 2024-10-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Light Therapy** · matched: **Dr J** · shop brand: **San Lueur**
-
-> …to Prime Your Skin for Perimenopause and Menopause" meta_description: "Cosmetic physician Dr Joseph Hkeik shares his essential guide to preparing your skin for perimenopause." auto_faq…
+> …nutritional support for hormonal balance. Always choose formulations dosed at clinically effective levels, not fairy-dust quantities." - question: "Why do women feel dismissed by doctors…
 
 ### [HIGH] PRACTITIONER (frontmatter) — Montarna McDonald, the Audience Agency
 `content/interviews/founders/montarna-mcdonald-publicist/montarna-mcdonald-publicist.mdx:25` · 2018-02-22 · Zoe Briggs
@@ -54,13 +40,6 @@ Restricted term: **Light Therapy** · matched: **Dr J** · shop brand: **San Lue
 Restricted term: **supplement** · matched: **Dr. D** · shop brand: **Sunescape**
 
 > …ModelCo's Tan In A Can and the full Sunescape tan-extending product range. She also uses Dr. Dennis Gross tan pads as an additional option." auto_faqs: true
-
-### [HIGH] TESTIMONIAL (frontmatter) — Glow Up This Winter: 3 Smoothies That Will Transform Your Skin
-`content/wellness/health/smoothies-to-transform-skin/smoothies-to-transform-skin.mdx:23` · 2024-06-02 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **I add** · shop brand: **Innour**
-
-> …support skin elasticity, hydration, and immunity from within." - question: "What should I add to my smoothie for better skin?" answer: "The article recommends Natural Marine Colla…
 
 ### [HIGH] CLAIM (body) — I’m 44, Here’s Everything I Use on My Skin
 `content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:54` · 2024-03-16 · Sigourney Cantelo
@@ -72,30 +51,9 @@ Restricted term: **LED mask** · matched: **get rid of** · shop brand: **Saint 
 ### [HIGH] TESTIMONIAL (body) — I’m 44, Here’s Everything I Use on My Skin
 `content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:58` · 2024-03-16 · Sigourney Cantelo
 
-Restricted term: **vitamin C** · matched: **I rotate** · shop brand: **Saint Louve**
+Restricted term: **sunscreen** · matched: **I rotate** · shop brand: **Saint Louve**
 
-> …Ferulic](https://myer.sjv.io/VORXgE) or the Saint Louve vitamin C serum I’m testing, and I rotate my A, B and C serums through the week. Then sunscreen, always. My hero SPF at the moment…
-
-### [HIGH] TESTIMONIAL (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:60` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **My hero** · shop brand: **Saint Louve**
-
-> …I’m testing, and I rotate my A, B and C serums through the week. Then sunscreen, always. My hero SPF at the moment is [mesoestetic](https://www.mesoestetic.com/sunscreens). It’s a beauti…
-
-### [HIGH] TESTIMONIAL (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:60` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **sunscreen** · matched: **I reach for** · shop brand: **BOOIE Beauty**
-
-> …tly under makeup and never leaves that heavy white cast, which is why it’s become the one I reach for most. If I’m going to be out in the sun for a while I’ll use [Ultra Violette Lean Screen…
-
-### [HIGH] TESTIMONIAL (body) — Elise Pioch, Maison Balzac
-`content/interviews/creatives/elise-pioch-candle-designer-1/elise-pioch-candle-designer-1.mdx:130` · 2015-08-06 · Chrisanthi Kaliviotis
-
-Restricted term: **sunscreen** · matched: **I use** · shop brand: **Maison Balzac**
-
-> …Candles _In the bathroom, I always have fresh roses from the garden_ My skin ritual is I use Aesop and Rationale everything; serum, moisturiser, sunscreen, even a facial at their cli…
+> …Ferulic](https://myer.sjv.io/VORXgE) or the Saint Louve vitamin C serum I’m testing, and I rotate my A, B and C serums through the week. Then sunscreen, always. The SPF we rate at the mo…
 
 ### [HIGH] TESTIMONIAL (body) — Almira Armstrong, Lumira
 `content/interviews/founders/almira-armstrong-lumira/almira-armstrong-lumira.mdx:62` · 2019-06-05 · Zoe Briggs
@@ -104,124 +62,33 @@ Restricted term: **SPF 20** · matched: **I rely on** · shop brand: **lumira**
 
 > …Almira portrait 3](/interviews/founders/almira-armstrong-lumira/Almira-Portrait-3-1.jpg) I rely on Dermalogica Vitamin C serum and Prisma Protect Moisturiser for the day. I also really lik…
 
-### [HIGH] CONSIDERATION (body) — Sigourney's Sacred Six for Ultimate Wellness
-`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:49` · 2024-08-27 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **LED mask** · matched: **per cent off** · shop brand: **San Lueur**
-
-> …l-mask-pre-order-6a3a0cc33da42e584cde6b4a) is the one we stock, code BEAUTICATE10 for ten per cent off. It suits a slower morning, when there is time to sit while it runs. These are designed t…
-
 ### [HIGH] CONSIDERATION (body) — I’m 44, Here’s Everything I Use on My Skin
 `content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:58` · 2024-03-16 · Sigourney Cantelo
 
-Restricted term: **vitamin C** · matched: **sjv.io** · shop brand: **Saint Louve**
+Restricted term: **sunscreen** · matched: **sjv.io** · shop brand: **Saint Louve**
 
 > …mask comes off I press in a vitamin C, either my [SkinCeuticals CE Ferulic](https://myer.sjv.io/VORXgE) or the Saint Louve vitamin C serum I’m testing, and I rotate my A, B and C serums…
 
-### [HIGH] CONSIDERATION (body) — Sigourney's Sacred Six for Ultimate Wellness
-`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:49` · 2024-08-27 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — 7 Beauty Innovations to Avoid a Beach Disaster
+`content/beauty-style/beauty-tips/avoid-beach-disaster/avoid-beach-disaster.mdx:24` · 2013-12-27 · Ashley Ropati
 
-Restricted term: **Light Therapy** · matched: **code BEAUTICATE10** · shop brand: **San Lueur**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …ed-led-light-therapy-facial-mask-pre-order-6a3a0cc33da42e584cde6b4a) is the one we stock, code BEAUTICATE10 for ten per cent off. It suits a slower morning, when there is time to sit while it runs.…
+> …beach?" answer: "A dedicated sunscreen applied 20 minutes before sun exposure is most effective for UV protection. You can layer a lightweight SPF product with minimal coverage on top f…
 
-### [HIGH] CONSIDERATION (body) — The LED Mask the Industry is Buzzing About
-`content/wellness/biohacking/the-led-mask-the-industry-is-buzzing-about/the-led-mask-the-industry-is-buzzing-about.mdx:128` · 2023-11-23 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Great Aussie Products We Love and How We Use Them
+`content/beauty-style/beauty-tips/great-aussie-products-we-love-and-how-we-use-them/great-aussie-products-we-love-and-how-we-use-them.mdx:26` · 2017-01-25 · Beauticate Editorial
 
-Restricted term: **Light Therapy** · matched: **10% off** · shop brand: **San Lueur**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …r-6a3a0cc33da42e584cde6b4a) in our shop. For a limited time Beauticate readers can claim 10% off using code: Beauticate10 ![> Story by Sigourney Cantelo. In partnership with San Lueur L…
+> …e reason, plus Actinica on her son's face during the day, which she describes as the most effective on the market." - question: "What Aussie fashion brands do these women love for summer?…
 
-### [REVIEW] CLAIM (frontmatter) — Sigourney Road Tests a Hair-Loss Preventing Strand-Boosting Elixir
-`content/beauty-style/hair/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir.mdx:2` · 2018-07-05 · Sigourney Cantelo · +5 more in file
+### [REVIEW] CLAIM (frontmatter) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:28` · 2021-09-21 · Zoe Briggs
 
-Restricted term: **Elixir** · matched: **Preventing**
+Restricted term: **supplement** · matched: **immunity**
 
-> title: "Sigourney Road Tests a Hair-Loss Preventing Strand-Boosting Elixir" slug: "sigourney-road-tests-a-hair-loss-preventing-strand-boostin…
-
-### [REVIEW] CLAIM (frontmatter) — How to Put Your Skin Into Rehab with Vitamin E
-`content/beauty-style/skin-care/how-to-put-your-skin-into-rehab-with-vitamin-e/how-to-put-your-skin-into-rehab-with-vitamin-e.mdx:24` · 2017-07-12 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **collagen** · matched: **healing**
-
-> …"Can vitamin E serum help fade scars?" answer: "Absolutely. Vitamin E is excellent at healing scars through regular massage application. Many people see significant fading of scars ov…
-
-### [REVIEW] CLAIM (frontmatter) — in:HAUS Wellness, Byron Bay
-`content/destinations/wellness/inhaus-wellness-byron-bay/inhaus-wellness-byron-bay.mdx:7` · 2026-01-15 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **infrared** · matched: **healing**
-
-> …bcategory: wellness excerpt: >- Reformer Pilates, infrared sauna, barre, yoga and sound healing in an open-plan, light-filled studio in Byron Bay's Arts and Industrial Estate. featured_…
-
-### [REVIEW] CLAIM (frontmatter) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
-`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:8` · 2025-08-28 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **Infrared** · matched: **heal**
-
-> …." featured_image: "/content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout-holding.jpg" f…
-
-### [REVIEW] CLAIM (frontmatter) — Our Expert-Approved Guide on How to Prevent Hair Loss
-`content/beauty-style/hair/how-to-prevent-hair-loss/how-to-prevent-hair-loss.mdx:23` · 2021-06-08 · Kristina Zhou · +1 more in file
-
-Restricted term: **zinc** · matched: **prevent**
-
-> …so some shedding is expected and healthy." - question: "What vitamins and minerals help prevent hair loss?" answer: "Vitamins A, B, C, and D, along with iron, selenium, and zinc, pl…
-
-### [REVIEW] CLAIM (frontmatter) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
-`content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:22` · 2025-12-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **light therapy** · matched: **reduce inflammation**
-
-> …ar-infrared LED light therapy has been clinically shown to stimulate collagen production, reduce inflammation, improve skin tone and texture, and support overall skin health. The light triggers cellu…
-
-### [REVIEW] CLAIM (frontmatter) — Cleopatra's Beauty Secret: The Benefits of Pearl Powder for Skin
-`content/beauty-style/skin-care/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin.mdx:18` · 2021-05-24 · Kristina Zhou · +1 more in file
-
-Restricted term: **collagen** · matched: **anti-inflammatory**
-
-> …ed dermatologist Dr Leslie Baumann: 'Pearl powder is known to have exhibited anti-ageing, anti-inflammatory, and antioxidant." auto_faqs: true faqs: - question: "What does pearl powder actually d…
-
-### [REVIEW] CLAIM (frontmatter) — The Single Ingredient I Know Will Keep Me Looking Young – Sigourney’s Edit
-`content/beauty-style/skin-care/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit.mdx:22` · 2017-05-17 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Vitamin A** · matched: **reverse**
-
-> …i-ageing actives because it addresses multiple concerns at once - it reduces and can even reverse wrinkles by speeding up cell turnover and boosting collagen production, brightens skin, s…
-
-### [REVIEW] CLAIM (frontmatter) — Merse Wellness, Osborne Park
-`content/destinations/bathhouses/merse-wellness-osborne-park/merse-wellness-osborne-park.mdx:8` · 2026-01-15 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **magnesium** · matched: **healing**
-
-> …ls, two saunas and a full recovery lounge with compression boots, LED therapy and sound healing on Scarborough Beach Road. featured_image: /content/destinations/bathhouses/merse-welln…
-
-### [REVIEW] CLAIM (frontmatter) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
-`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:22` · 2021-06-15 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin ** · matched: **studies show**
-
-> …ant. It's more lipid soluble than CoQ10, meaning it penetrates skin more effectively, and studies show it's more effective at reducing oxidative stress than vitamin E, vitamin C, and lipoic ac…
-
-### [REVIEW] CLAIM (frontmatter) — Best New Beauty Gadgets
-`content/beauty-style/beauty-tips/best-new-beauty-gadgets/best-new-beauty-gadgets.mdx:22` · 2018-02-21 · Beauticate Editorial
-
-Restricted term: **Light therapy** · matched: **stimulate collagen**
-
-> …the Neutrogena Light Therapy Mask use clinically-proven red and blue light technology to stimulate collagen production and reduce fine lines. Devices such as the Silkn Revit combine radiofrequency…
-
-### [REVIEW] CLAIM (frontmatter) — Essential Beauty Products for This Wedding Season
-`content/beauty-style/beauty-tips/essential-beauty-products-for-this-wedding-season/essential-beauty-products-for-this-wedding-season.mdx:22` · 2023-09-18 · Sigourney Cantelo
-
-Restricted term: **light therapy** · matched: **boost collagen**
-
-> …r hydration, and consider LED light therapy like the Dr Gross Spectralite Faceware Pro to boost collagen production and combat breakout-causing bacteria." - question: "What is the best foundat…
-
-### [REVIEW] CLAIM (frontmatter) — How to: Anti-Aging Skin Care with Kelly Smythe
-`content/beauty-style/beauty-tips/how-to-skin-with-kelly-smythe/how-to-skin-with-kelly-smythe.mdx:28` · 2014-05-08 · Sigourney Cantelo
-
-Restricted term: **Vitamin C** · matched: **boost collagen**
-
-> …ing ingredients that address fine lines, brightness, and hydration. These actives work to boost collagen production, protect against free radical damage, and maintain skin plumpness. Look for st…
+> …" answer: "Magdalena takes Superfeast Jing (an adaptogenic mushroom blend) to support immunity and Superfeast Tremella for hydration. She also takes magnesium before bed and enjoys war…
 
 ### [REVIEW] CLAIM (frontmatter) — Mother's Day Treats for Every Mama
 `content/beauty-style/beauty-tips/mothers-day-treats-for-every-mama/mothers-day-treats-for-every-mama.mdx:26` · 2015-05-04 · Chrisanthi Kaliviotis
@@ -230,68 +97,75 @@ Restricted term: **supplement** · matched: **treats**
 
 > …mat, wellness supplements such as The Beauty Chef Collagen Inner Beauty Boost and healthy treats like Pana Chocolate." - question: "What fragrance options suit the Classic Mama?" a…
 
-### [REVIEW] CLAIM (frontmatter) — The Best New Launches That Will Get You Excited About Beauty Again
-`content/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/the-best-new-launches-that-will-get-you-excited-about-beauty-again.mdx:22` · 2021-06-28 · Zoe Briggs
-
-Restricted term: **Collagen** · matched: **anti-inflammatory**
-
-> …eel is a gentle at-home exfoliating treatment containing three acids - mandelic, Asiatic (anti-inflammatory and collagen-boosting) and lactobionic. Applied for fifteen minutes then removed with a w…
-
-### [REVIEW] CLAIM (frontmatter) — The Beauty Massage Models Swear By
-`content/beauty-style/cosmetic/beauty-massage-models-swear-by/beauty-massage-models-swear-by.mdx:26` · 2019-01-23 · Molly Gay
-
-Restricted term: **collagen** · matched: **boost collagen**
-
-> …s, plus allergies, acne and scarring. The increased circulation and cellular regeneration boost collagen production and improve skin tone and texture, leaving skin looking tighter and more rejuv…
-
-### [REVIEW] CLAIM (frontmatter) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:22` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …wer: "Chanel injections use Filorga's 53-ingredient cocktail to boost hyaluronic acid and stimulate collagen directly, brightening skin and reducing age spots. Hermès (Rejuner) works differently by…
-
-### [REVIEW] CLAIM (frontmatter) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:23` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **cure**
-
-> …s offers a gentler, regenerative approach." - question: "Is Agnes treatment a permanent cure for acne?" answer: "Agnes uses radiofrequency-delivered microneedles to permanently d…
-
-### [REVIEW] CLAIM (frontmatter) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:26` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **stimulates collagen**
-
-> …S layer-the same deep facial structure surgeons tighten during a traditional facelift. It stimulates collagen and elastin production for firmer, lifted skin without downtime, though results develop g…
-
-### [REVIEW] CLAIM (frontmatter) — Max RF – Fractional Radio Frequency Facial Review
-`content/beauty-style/cosmetic/max-laser-treatment-review/max-laser-treatment-review.mdx:26` · 2015-06-17 · Chrisanthi Kaliviotis
-
-Restricted term: **collagen** · matched: **healing**
-
-> …fine needles to create controlled thermal damage, which triggers the skin's natural wound-healing response. This stimulates the production of new collagen and elastin, resulting in firmer…
-
-### [REVIEW] CLAIM (frontmatter) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:22` · 2017-07-06 · Sigourney Cantelo
-
-Restricted term: **sunscreen** · matched: **prevents**
-
-> …ccording to cosmetic physician Dr. Joseph Hkeik, sunscreen is the number one essential-it prevents lines, irregular tone and texture, and skin cancer. Prevention is always better than tryi…
-
 ### [REVIEW] CLAIM (frontmatter) — The Turn-Back-Time Tweaks That Actually Work
 `content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:22` · 2017-07-06 · Sigourney Cantelo
 
 Restricted term: **sunscreen** · matched: **reverse**
 
-> …, irregular tone and texture, and skin cancer. Prevention is always better than trying to reverse damage later, so a daily effective sunscreen should be the foundation of any anti-aging r…
+> …ik says sunscreen is the number one essential. Prevention is always better than trying to reverse damage later, so a daily effective sunscreen should be the foundation of any anti-aging r…
 
 ### [REVIEW] CLAIM (frontmatter) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:24` · 2017-07-06 · Sigourney Cantelo
+`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:22` · 2017-07-06 · Sigourney Cantelo
 
-Restricted term: **Vitamin A** · matched: **scientifically proven**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …roves skin clarity, reduces pigmentation issues, and decreases sebum production-making it scientifically proven for anti-aging benefits." - question: "Can diet affect skin aging?" answer: "Absolu…
+> …ne essential. Prevention is always better than trying to reverse damage later, so a daily effective sunscreen should be the foundation of any anti-aging routine." - question: "Does retino…
+
+### [REVIEW] CLAIM (frontmatter) — Our Expert-Approved Guide on How to Prevent Hair Loss
+`content/beauty-style/hair/how-to-prevent-hair-loss/how-to-prevent-hair-loss.mdx:24` · 2021-06-08 · Kristina Zhou
+
+Restricted term: **zinc** · matched: **hair growth**
+
+> …r: "Vitamins A, B, C, and D, along with iron, selenium, and zinc, play essential roles in hair growth and retention. Since your body doesn't naturally produce zinc and selenium, you'll need t…
+
+### [REVIEW] CLAIM (frontmatter) — Our Expert-Approved Guide on How to Prevent Hair Loss
+`content/beauty-style/hair/how-to-prevent-hair-loss/how-to-prevent-hair-loss.mdx:26` · 2021-06-08 · Kristina Zhou
+
+Restricted term: **supplement** · matched: **prevent**
+
+> …s?" answer: "No, washing your hair daily doesn't cause hair loss-in fact, it may help prevent it by keeping your scalp clean and removing product buildup and bacteria that can block h…
+
+### [REVIEW] CLAIM (frontmatter) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:8` · 2026-02-05 · Sigourney Cantelo
+
+Restricted term: **red light therapy** · matched: **hair growth**
+
+> …hair/red-light-therapy-hair-thinning/hero.jpg" featured_image_alt: "Qure Q-Renew LLLT LED hair growth helmet worn at home for red light therapy treatment" author: "Sigourney Cantelo" date_pub…
+
+### [REVIEW] CLAIM (frontmatter) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:20` · 2026-02-05 · Sigourney Cantelo
+
+Restricted term: **Red light therapy** · matched: **hair growth**
+
+> …Red light therapy appears to support scalp health and circulation rather than create new hair growth overnight." - question: "How long does it take to see results from red light therapy fo…
+
+### [REVIEW] CLAIM (frontmatter) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:22` · 2026-02-05 · Sigourney Cantelo
+
+Restricted term: **red light therapy** · matched: **Hair growth**
+
+> …ta comes from a 16-week study, suggesting that's a realistic timeframe to notice changes. Hair growth cycles are slow, so patience and consistency matter more than expecting overnight transfo…
+
+### [REVIEW] CLAIM (frontmatter) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:26` · 2026-02-05 · Sigourney Cantelo
+
+Restricted term: **red light therapy** · matched: **regrowth**
+
+> …differently and shows modest results, whereas minoxidil has stronger clinical backing for regrowth. Some people use both approaches together, but this is a conversation to have with your d…
+
+### [REVIEW] CLAIM (frontmatter) — Sigourney's Edit – Hair
+`content/beauty-style/hair/sigourneys-edit-hair/sigourneys-edit-hair.mdx:24` · 2014-05-07 · Sigourney Cantelo
+
+Restricted term: **zinc** · matched: **regrowth**
+
+> …runettes who need a quick refresh without leaving a white residue. It also helps disguise regrowth and grey hairs along the part line." - question: "How does Sigourney care for a flaky,…
+
+### [REVIEW] CLAIM (frontmatter) — The Best Italian Hair Products and Secrets You Need to Know
+`content/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know/the-best-italian-hair-products-and-secrets-you-need-to-know.mdx:29` · 2019-10-29 · Kristina Zhou
+
+Restricted term: **supplement** · matched: **repair**
+
+> …oo with water before applying. Sophia Loren applies olive oil to the ends of her hair for repair. Start with a healthy foundation using a hair supplement with zinc and iodine, wash less…
 
 ### [REVIEW] CLAIM (frontmatter) — I Got an Under-Eye Concealer Tattoo!
 `content/beauty-style/makeup/i-got-an-under-eye-concealer-tattoo/i-got-an-under-eye-concealer-tattoo.mdx:28` · 2024-04-22 · Kristina Zhou
@@ -314,12 +188,19 @@ Restricted term: **SPF 30** · matched: **healing**
 
 > …he area, and sun protection with SPF 30+ sunscreen and sunglasses is essential during the healing period." reading_time: 3 auto_enriched: true featured_image_caption: "Permanent Under-Eye…
 
-### [REVIEW] CLAIM (frontmatter) — The Eyelash Serums That Actually Work
-`content/beauty-style/makeup/the-eyelash-serums-that-actually-work/the-eyelash-serums-that-actually-work.mdx:26` · 2019-01-21 · Kristina Zhou
+### [REVIEW] CLAIM (frontmatter) — Six Products That Actually Changed Your Life
+`content/beauty-style/makeup/six-products-that-actually-changed-your-life/six-products-that-actually-changed-your-life.mdx:24` · 2017-08-02 · Claudia De Berardinis
 
-Restricted term: **vitamin ** · matched: **clinically proven**
+Restricted term: **omega 3** · matched: **repair**
 
-> …hes?" answer: "Yes, according to the article. Green tea contains EGCG, an antioxidant clinically proven to promote hair growth and activate dormant hair follicles. It also contains vitamin B5 t…
+> …wer: "This concentrate of essential oils and omega 3 fatty acids works while you sleep to repair and restore skin. One reader reports waking to more radiant skin, with blemishes either g…
+
+### [REVIEW] CLAIM (frontmatter) — 4 Skin-Loving Easter Treats
+`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:22` · 2018-03-28 · Beauticate Editorial
+
+Restricted term: **magnesium** · matched: **detoxification**
+
+> …idants than goji berries, along with sulfur and magnesium that support the body's natural detoxification, plus flavonoids with anti-inflammatory and immune-boosting benefits. This is very differ…
 
 ### [REVIEW] CLAIM (frontmatter) — 4 Skin-Loving Easter Treats
 `content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:22` · 2018-03-28 · Beauticate Editorial
@@ -331,37 +212,65 @@ Restricted term: **magnesium** · matched: **anti-inflammatory**
 ### [REVIEW] CLAIM (frontmatter) — 4 Skin-Loving Easter Treats
 `content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:24` · 2018-03-28 · Beauticate Editorial
 
-Restricted term: **vitamin ** · matched: **reduces inflammation**
+Restricted term: **probiotic** · matched: **reduces inflammation**
 
 > …within, red wine's resveratrol helps slow ageing, and carrots deliver beta-carotene that reduces inflammation and supports healing." - question: "How does gut health affect skin?" answer: "A he…
 
 ### [REVIEW] CLAIM (frontmatter) — 4 Skin-Loving Easter Treats
 `content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:24` · 2018-03-28 · Beauticate Editorial
 
-Restricted term: **vitamin ** · matched: **healing**
+Restricted term: **probiotic** · matched: **healing**
 
 > …lps slow ageing, and carrots deliver beta-carotene that reduces inflammation and supports healing." - question: "How does gut health affect skin?" answer: "A healthy gut contributes…
 
-### [REVIEW] CLAIM (frontmatter) — Beauty Boost Treatment: We Chat This Cult Favourite Facial
-`content/beauty-style/skin-care/beauty-boost-treatment-we-chat-this-cult-favourite-facial/beauty-boost-treatment-we-chat-this-cult-favourite-facial.mdx:22` · 2021-03-24 · Tess Schlink
+### [REVIEW] CLAIM (frontmatter) — New Year New Skin: 6 Quick Ways to a Glow Up
+`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:28` · 2024-01-30 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulates collagen**
+Restricted term: **LED mask** · matched: **medical-grade**
 
-> …hyaluronic acid, amino acids, vitamins, and antioxidants, while the needling process also stimulates collagen production for improved skin texture." - question: "Who is the Beauty Boost treatment b…
+> …s from multiple at-home LED devices, with the San Lueur LED Mask and the Dermalux Flex (a medical-grade professional device) both praised. The author notes that generally you get what you pay f…
 
-### [REVIEW] CLAIM (frontmatter) — Beauty Enhanced: Introducing a Game-Changing Collagen Mask Innovation
-`content/beauty-style/skin-care/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation.mdx:24` · 2023-09-11 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:16` · 2026-03-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **clinically proven**
+Restricted term: **Sunscreen** · matched: **actually work**
 
-> …re benefits of Col-Frag remastered™ collagen?" answer: "Col-Frag remastered™ has been clinically proven to increase procollagen type I content by over 100%, delivering wrinkle reduction, skin b…
+> …ats for Aussies" meta_description: "Discover premium sunscreens and stylish sun hats that actually work. Beauticate's guide to chic sun safety for the whole family." auto_faqs: true faqs: - q…
 
 ### [REVIEW] CLAIM (frontmatter) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
 `content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:22` · 2025-12-16 · Sigourney Cantelo
 
-Restricted term: **Light Therapy** · matched: **stimulate collagen**
+Restricted term: **light therapy** · matched: **repair**
 
-> …?" answer: "Yes. Red and near-infrared LED light therapy has been clinically shown to stimulate collagen production, reduce inflammation, improve skin tone and texture, and support overall skin…
+> …ne and texture. Follow the manufacturer's directions for use. The light triggers cellular repair and regeneration at a deeper level, which is why dermatologists and medi-spas use it prof…
+
+### [REVIEW] CLAIM (frontmatter) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
+`content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:24` · 2025-12-16 · Sigourney Cantelo
+
+Restricted term: **infrared** · matched: **repair**
+
+> …ar-infrared light penetrates deeper and supports circulation, muscle recovery, and tissue repair. Different wavelengths target different concerns, but red light is the gold standard for…
+
+### [REVIEW] CLAIM (frontmatter) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
+`content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:26` · 2025-12-16 · Sigourney Cantelo
+
+Restricted term: **LED device** · matched: **reduce inflammation**
+
+> …ork effectively on shoulders, upper back, lower back, and stomach to support circulation, reduce inflammation, and aid recovery. This makes them versatile wellness tools beyond just facial skincare,…
+
+### [REVIEW] CLAIM (frontmatter) — Cleopatra's Beauty Secret: The Benefits of Pearl Powder for Skin
+`content/beauty-style/skin-care/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin.mdx:18` · 2021-05-24 · Kristina Zhou
+
+Restricted term: **collagen** · matched: **anti-inflammatory**
+
+> …ed dermatologist Dr Leslie Baumann: 'Pearl powder is known to have exhibited anti-ageing, anti-inflammatory, and antioxidant." auto_faqs: true faqs: - question: "What does pearl powder actually d…
+
+### [REVIEW] CLAIM (frontmatter) — Cleopatra's Beauty Secret: The Benefits of Pearl Powder for Skin
+`content/beauty-style/skin-care/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin.mdx:22` · 2021-05-24 · Kristina Zhou
+
+Restricted term: **collagen** · matched: **anti-inflammatory**
+
+> …roduction. According to dermatologist Dr Leslie Baumann, it has demonstrated anti-ageing, anti-inflammatory, and antioxidant properties, and research from Korea's Yeungnam University found it can b…
 
 ### [REVIEW] CLAIM (frontmatter) — Cleopatra's Beauty Secret: The Benefits of Pearl Powder for Skin
 `content/beauty-style/skin-care/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin.mdx:22` · 2021-05-24 · Kristina Zhou
@@ -378,11 +287,32 @@ Restricted term: **collagen** · matched: **healing**
 > …rom Korea's Yeungnam University found it can boost collagen formation and accelerate skin healing." - question: "How often should you use pearl powder as a face mask?" answer: "Once…
 
 ### [REVIEW] CLAIM (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
+`content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:22` · 2020-09-16 · Sigourney Cantelo
+
+Restricted term: **Capsule** · matched: **effective**
+
+> …of hyaluronic acid (which draws moisture to skin) and ceramides (which lock it in) proved effective for reducing flakiness, plumping the skin, and improving overall texture within days for…
+
+### [REVIEW] CLAIM (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
 `content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:28` · 2020-09-16 · Sigourney Cantelo
 
 Restricted term: **capsule** · matched: **prevents**
 
 > …w do single-dose beauty capsules keep ingredients fresh?" answer: "The capsule design prevents oxygen exposure until you twist the top open, which keeps the formula fresh and ingredien…
+
+### [REVIEW] CLAIM (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
+`content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:30` · 2020-09-16 · Sigourney Cantelo
+
+Restricted term: **Capsule** · matched: **repair**
+
+> …different skin types, the capsules delivered consistent hydration, plumping, and barrier-repair results that justified the investment. The single-dose format means no product waste or o…
+
+### [REVIEW] CLAIM (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
+`content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:32` · 2020-09-16 · Sigourney Cantelo
+
+Restricted term: **capsule** · matched: **repair**
+
+> …pairs multi-weight hyaluronic acid with ceramides specifically for hydration and barrier repair, while the original Ceramide capsules focus more broadly on anti-ageing and moisture rete…
 
 ### [REVIEW] CLAIM (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
 `content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:41` · 2020-09-16 · Sigourney Cantelo
@@ -391,68 +321,12 @@ Restricted term: **Capsule** · matched: **prevent**
 
 > …rone, and compromised skin barriers" - "Single-dose capsules keep ingredients fresh and prevent oxidation" - "Doubles as a serum and makeup primer in one step" - "Sits well under ma…
 
-### [REVIEW] CLAIM (frontmatter) — Fast Tips from a Top Facialist
-`content/beauty-style/skin-care/facialist-skin-tips/facialist-skin-tips.mdx:26` · 2019-02-25 · Stephanie Russo
-
-Restricted term: **probiotic** · matched: **anti-inflammatory**
-
-> …this grazes the skin. Sanitise afterwards with toner, and if it is a blind pimple use an anti-inflammatory gel to reduce swelling instead." - question: "Does gut health affect skin?" answer:…
-
-### [REVIEW] CLAIM (frontmatter) — Fix Freckles, Pimples and Wrinkles with a Trip to the Gym
-`content/beauty-style/skin-care/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym.mdx:25` · 2015-06-06 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **treat**
-
-> …treatments without the risk of re-exposure making it worse." - question: "How does IPL treat sun-induced freckles and pigmentation?" answer: "IPL targets surface pigmentation, ca…
-
-### [REVIEW] CLAIM (frontmatter) — Fix Freckles, Pimples and Wrinkles with a Trip to the Gym
-`content/beauty-style/skin-care/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym.mdx:26` · 2015-06-06 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulates collagen**
-
-> …sing it to darken over a day or two before it flakes away within about five days. It also stimulates collagen and elastin production, leaving skin looking plumper and more radiant." - question: "Wh…
-
-### [REVIEW] CLAIM (frontmatter) — Get Your Skin Ready for the Party Season
-`content/beauty-style/skin-care/get-your-skin-ready-for-the-party-season/get-your-skin-ready-for-the-party-season.mdx:22` · 2016-11-14 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …does it work?" answer: "IPL (Intense Pulsed Light) rejuvenation uses light energy to stimulate collagen production and improve skin texture and tone. It works by delivering fast bursts of heat…
-
-### [REVIEW] CLAIM (frontmatter) — 3 Holy Grail Eye Creams That Actually Make a Difference
-`content/beauty-style/skin-care/honest-review-best-eye-cream-for-puffiness-under-eye-darkness-hydration/honest-review-best-eye-cream-for-puffiness-under-eye-darkness-hydration.mdx:28` · 2022-06-02 · Kristina Zhou
-
-Restricted term: **vitamin C** · matched: **prevent**
-
-> …amin C gradually to avoid irritation. Always use only a pea-sized amount for both eyes to prevent puffiness and over-application." reading_time: 4 auto_enriched: true featured_image_capti…
-
-### [REVIEW] CLAIM (frontmatter) — How a Beauty Writer Manages Her Rosacea
-`content/beauty-style/skin-care/how-a-beauty-writer-manages-her-rosacea/how-a-beauty-writer-manages-her-rosacea.mdx:26` · 2022-05-17 · Zoe Briggs
-
-Restricted term: **vitamin A** · matched: **treat**
-
-> …l tolerance levels. Some people can occasionally use gentle AHAs like lactic acid or spot-treat with BHA (salicylic acid), but strong retinoids and vitamin A are generally best avoided.…
-
 ### [REVIEW] CLAIM (frontmatter) — How to (Easily) Fix Your Skin from Stress Damage
 `content/beauty-style/skin-care/how-stress-is-affecting-your-skin/how-stress-is-affecting-your-skin.mdx:22` · 2017-07-11 · Emily Algar
 
-Restricted term: **collagen** · matched: **healing**
+Restricted term: **magnesium** · matched: **repair**
 
-> …ounce and firmness. This leads to increased wrinkles, reduced skin elasticity, and slower healing. Stress also disrupts sleep quality, preventing your skin from entering its natural repai…
-
-### [REVIEW] CLAIM (frontmatter) — How to (Easily) Fix Your Skin from Stress Damage
-`content/beauty-style/skin-care/how-stress-is-affecting-your-skin/how-stress-is-affecting-your-skin.mdx:22` · 2017-07-11 · Emily Algar
-
-Restricted term: **collagen** · matched: **preventing**
-
-> …rinkles, reduced skin elasticity, and slower healing. Stress also disrupts sleep quality, preventing your skin from entering its natural repair phase and creating a cycle of ongoing damage."…
-
-### [REVIEW] CLAIM (frontmatter) — How to (Easily) Fix Your Skin from Stress Damage
-`content/beauty-style/skin-care/how-stress-is-affecting-your-skin/how-stress-is-affecting-your-skin.mdx:23` · 2017-07-11 · Emily Algar
-
-Restricted term: **magnesium** · matched: **reverse**
-
-> …its natural repair phase and creating a cycle of ongoing damage." - question: "Can you reverse stress-related skin damage?" answer: "Yes, with the right skincare ingredients and ro…
+> …aling. Stress also disrupts sleep quality, preventing your skin from entering its natural repair phase and creating a cycle of ongoing damage." - question: "Can you reverse stress-rela…
 
 ### [REVIEW] CLAIM (frontmatter) — How to (Easily) Fix Your Skin from Stress Damage
 `content/beauty-style/skin-care/how-stress-is-affecting-your-skin/how-stress-is-affecting-your-skin.mdx:24` · 2017-07-11 · Emily Algar
@@ -468,27 +342,6 @@ Restricted term: **magnesium** · matched: **prevent**
 
 > …These ingredients work together to protect your skin barrier, maintain lipid levels, and prevent collagen degradation caused by stress hormones." - question: "Is there a specific skinc…
 
-### [REVIEW] CLAIM (frontmatter) — How to Bio-Hack Your Skin Routine
-`content/beauty-style/skin-care/how-to-bio-hack-your-skin-routine/how-to-bio-hack-your-skin-routine.mdx:22` · 2024-02-03 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **Studies show**
-
-> …lly work for skin health?" answer: "Yes, when combined with a solid skincare routine. Studies show that hydrolysed collagen and hyaluronic acid can improve skin elasticity and hydration, p…
-
-### [REVIEW] CLAIM (frontmatter) — How to Create Your Own French Beauty Regimen
-`content/beauty-style/skin-care/how-to-create-your-own-french-skincare-routine/how-to-create-your-own-french-skincare-routine.mdx:22` · 2019-11-11 · Zoe Briggs
-
-Restricted term: **vitamin A** · matched: **fixes**
-
-> …answer: "The French skincare approach focuses on long-term skin health rather than quick fixes, emphasising commitment to a simple, consistent routine with proven ingredients like vita…
-
-### [REVIEW] CLAIM (frontmatter) — How to Get the Most Out of Active Skincare
-`content/beauty-style/skin-care/how-to-get-the-most-out-of-active-skincare/how-to-get-the-most-out-of-active-skincare.mdx:22` · 2022-05-25 · Zoe Briggs
-
-Restricted term: **vitamin A** · matched: **scientifically proven**
-
-> …e ingredients and which ones actually work?" answer: "Active skincare ingredients are scientifically proven to create visible change in the skin. The main ones include AHAs (glycolic and lactic aci…
-
 ### [REVIEW] CLAIM (frontmatter) — How to Get the Most Out of Active Skincare
 `content/beauty-style/skin-care/how-to-get-the-most-out-of-active-skincare/how-to-get-the-most-out-of-active-skincare.mdx:28` · 2022-05-25 · Zoe Briggs
 
@@ -496,19 +349,12 @@ Restricted term: **sunscreen** · matched: **prevent**
 
 > …sential during active skincare routines to protect this sensitive, newly exposed skin and prevent damage. Skipping SPF can undermine the benefits of your actives and lead to further skin…
 
-### [REVIEW] CLAIM (frontmatter) — How to Prime Your Skin for Peri and Menopause
-`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:31` · 2024-10-16 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — PSA: Micro Beads Are Out – Here's What to Use Instead
+`content/beauty-style/skin-care/how-to-save-the-environment-without-sacrificing-your-glow-2/how-to-save-the-environment-without-sacrificing-your-glow-2.mdx:24` · 2018-07-03 · Michelle Mullen
 
-Restricted term: **Collagen** · matched: **treating**
+Restricted term: **omega-3** · matched: **effective**
 
-> …h Dr Joseph Hkeik covers in detail in this article." - question: "When should you start treating perimenopausal skin?" answer: "Dr Hkeik recommends starting collagen stimulation trea…
-
-### [REVIEW] CLAIM (frontmatter) — How to Put Your Skin Into Rehab with Vitamin E
-`content/beauty-style/skin-care/how-to-put-your-skin-into-rehab-with-vitamin-e/how-to-put-your-skin-into-rehab-with-vitamin-e.mdx:22` · 2017-07-12 · Sigourney Cantelo
-
-Restricted term: **vitamin ** · matched: **anti-inflammatory**
-
-> …ring damaged skin?" answer: "Yes, vitamin E is a powerful antioxidant that creates an anti-inflammatory response in the skin and produces Connective Tissue Growth Factors, helping your skin men…
+> …te my skin?" answer: "Coffee grounds, peach seeds, sea salt and walnut shells are all effective natural exfoliants. Coffee grounds target cellulite and scarring, peach seeds contain Alp…
 
 ### [REVIEW] CLAIM (frontmatter) — PSA: Micro Beads Are Out – Here's What to Use Instead
 `content/beauty-style/skin-care/how-to-save-the-environment-without-sacrificing-your-glow-2/how-to-save-the-environment-without-sacrificing-your-glow-2.mdx:26` · 2018-07-03 · Michelle Mullen
@@ -518,39 +364,46 @@ Restricted term: **omega-3** · matched: **anti-inflammatory**
 > …ure." - question: "Is coffee good for your skin?" answer: "Yes. Coffee grounds have anti-inflammatory and antioxidant properties, making them particularly soothing for skin prone to breakouts…
 
 ### [REVIEW] CLAIM (frontmatter) — How to Shop for Skincare Like a Cosmetic Chemist
-`content/beauty-style/skin-care/how-to-shop-for-skincare-like-a-cosmetic-chemist/how-to-shop-for-skincare-like-a-cosmetic-chemist.mdx:28` · 2017-12-13 · Rikki Hodge-Smith
+`content/beauty-style/skin-care/how-to-shop-for-skincare-like-a-cosmetic-chemist/how-to-shop-for-skincare-like-a-cosmetic-chemist.mdx:26` · 2017-12-13 · Rikki Hodge-Smith
 
-Restricted term: **Sunscreen** · matched: **prevents**
+Restricted term: **Sunscreen** · matched: **effective**
 
-> …Terri Vinson states that UV protection is the most important skincare product because it prevents both the potential for skin cancer and the acceleration of premature ageing, ranking abov…
+> …marine extracts. Note that an ingredient does not need to be high on the label list to be effective - potency depends on the dosage required." - question: "What is the most important skin…
 
-### [REVIEW] CLAIM (frontmatter) — Is it Safe to Use Retinol on Your Eye Area?
-`content/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/is-it-safe-to-use-retinol-on-your-eye-area.mdx:18` · 2020-05-04 · Yadira Galarza Cauchi
+### [REVIEW] CLAIM (frontmatter) — I’m 44, Here’s Everything I Use on My Skin
+`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:27` · 2024-03-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **boost collagen**
+Restricted term: **supplement** · matched: **detoxification**
 
-> …Eye Area? | Beauticate" meta_description: "Retinol is an ingredient that can effectively boost collagen production and in turn, help smooth fine lines and prevent wrinkles, making it a great."…
+> …our skin?" answer: "It certainly helps mine. A regular sweat supports circulation and detoxification, and as long as you rehydrate well while you use it, it can leave skin looking glowy and…
 
-### [REVIEW] CLAIM (frontmatter) — Is it Safe to Use Retinol on Your Eye Area?
-`content/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/is-it-safe-to-use-retinol-on-your-eye-area.mdx:18` · 2020-05-04 · Yadira Galarza Cauchi
+### [REVIEW] CLAIM (frontmatter) — The Luxe Products Your Skin Needs This Spring
+`content/beauty-style/skin-care/luxe-products-for-spring/luxe-products-for-spring.mdx:22` · 2018-11-21 · Tess Schlink
 
-Restricted term: **collagen** · matched: **prevent**
+Restricted term: **Capsule** · matched: **effective**
 
-> …nt that can effectively boost collagen production and in turn, help smooth fine lines and prevent wrinkles, making it a great." auto_faqs: true faqs: - question: "Is it safe to use reti…
+> …tinol Ceramide Capsules combine retinol with skin-barrier-boosting ceramides, making them effective for refreshing skin that looks tired or dull." - question: "What is the best moisturise…
 
-### [REVIEW] CLAIM (frontmatter) — Is it Safe to Use Retinol on Your Eye Area?
-`content/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/is-it-safe-to-use-retinol-on-your-eye-area.mdx:22` · 2020-05-04 · Yadira Galarza Cauchi
+### [REVIEW] CLAIM (frontmatter) — Move Over SPF. Your Skin Now Needs Environmental Protection.
+`content/beauty-style/skin-care/move-over-spf-your-skin-now-needs-environmental-protection/move-over-spf-your-skin-now-needs-environmental-protection.mdx:26` · 2017-02-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **boosts collagen**
+Restricted term: **infrared** · matched: **combat**
 
-> …es, retinol can be used safely around the eyes and is recommended for this purpose, as it boosts collagen production, re-firms the delicate skin and encourages cellular turnover. The key is to us…
+> …y anti-pollutant spray developed by cosmetic chemist Terri Vinson. It contains Elix-IR to combat infrared damage and Exo-P to shield against heavy metals, hydrocarbons and smog. It is ap…
 
-### [REVIEW] CLAIM (frontmatter) — Korean Skin Treatments That We Predict We’ll Be Seeing More Of
-`content/beauty-style/skin-care/korean-skin-treatments-that-we-predict-well-be-seeing-more-of/korean-skin-treatments-that-we-predict-well-be-seeing-more-of.mdx:26` · 2024-12-20 · Kristina Zhou
+### [REVIEW] CLAIM (frontmatter) — New Beauty Buys: Body
+`content/beauty-style/skin-care/new-beauty-buys-body/new-beauty-buys-body.mdx:22` · 2015-03-10 · Madeleine Boyd
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **probiotic** · matched: **repair**
 
-> …t?" answer: "InMode Lifting uses radiofrequency energy to heat deeper skin layers and stimulate collagen production without needles. While some people experience temporary swelling, redness, mil…
+> …nzyme-packed probiotic drink that works from the inside out - packed with antioxidants to repair and firm skin, fight free radicals and boost overall radiance." - question: "Which body…
+
+### [REVIEW] CLAIM (frontmatter) — Prep Your Skin for Your Most Glow-Worthy Winter Yet
+`content/beauty-style/skin-care/prep-your-skin-for-your-most-glow-worthy-winter-yet-2/prep-your-skin-for-your-most-glow-worthy-winter-yet-2.mdx:26` · 2018-06-11 · Tess Schlink
+
+Restricted term: **Zinc** · matched: **effective**
+
+> …htens the complexion. The Ordinary's Niacinamide 10% + Zinc 1% serum is highlighted as an effective and affordable option, with zinc being particularly beneficial for acne-prone skin." -…
 
 ### [REVIEW] CLAIM (frontmatter) — PSA: This New Australian Range is Perfect for Nixing Dehydration
 `content/beauty-style/skin-care/psa-this-new-australian-range-is-perfect-for-nixing-dehydration/psa-this-new-australian-range-is-perfect-for-nixing-dehydration.mdx:22` · 2019-10-09 · Sigourney Cantelo
@@ -558,20 +411,6 @@ Restricted term: **collagen** · matched: **stimulate collagen**
 Restricted term: **probiotic** · matched: **boost collagen**
 
 > …sey's hydration range that mimics the beneficial bacteria in our gut microbiome. It helps boost collagen production, improve oxygen uptake, and support skin's natural moisture retention for a he…
-
-### [REVIEW] CLAIM (frontmatter) — Reader Review: Eye Creams
-`content/beauty-style/skin-care/reader-review-eye-creams/reader-review-eye-creams.mdx:24` · 2015-12-14 · Amy Mattes-Harris
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …Correct Eye Serum is praised for off-the-charts hydration. It contains copper peptides to stimulate collagen and elastin and visibly reduced fine smile lines in the reviewer's experience." - quest…
-
-### [REVIEW] CLAIM (frontmatter) — How a Healthy Skin Barrier Can Keep You Looking Young
-`content/beauty-style/skin-care/repair-your-skin-barrier/repair-your-skin-barrier.mdx:26` · 2018-11-28 · Yadira Galarza Cauchi
-
-Restricted term: **vitamin ** · matched: **prevents**
-
-> …icity, and niacinamide (vitamin B3) stimulates the skin's natural ceramide production and prevents transepidermal water loss." - question: "What skincare habits damage the skin barrier?"…
 
 ### [REVIEW] CLAIM (frontmatter) — What’s in Sigourney’s Bathroom Cabinet?
 `content/beauty-style/skin-care/sigourney-cantelo-bathroom-cabinet/sigourney-cantelo-bathroom-cabinet.mdx:22` · 2018-08-06 · Sigourney Cantelo
@@ -581,53 +420,39 @@ Restricted term: **Zinc** · matched: **treats**
 > …, and Ultraceuticals Ultra A Skin Perfecting Serum for anti-ageing. She also keeps luxury treats like La Prairie White Caviar Creme Extraordinaire." - question: "What are the best beau…
 
 ### [REVIEW] CLAIM (frontmatter) — Skin Care: How to Deal with Adult Acne
+`content/beauty-style/skin-care/skin-care-how-to-deal-with-adult-acne/skin-care-how-to-deal-with-adult-acne.mdx:24` · 2016-06-20 · Emily Algar
+
+Restricted term: **Vitamin A** · matched: **treating**
+
+> …ples, topical Vitamin A from your GP, and an oil-free moisturiser. The key is consistency-treating the underlying cause takes time and patience." - question: "Can the contraceptive pill…
+
+### [REVIEW] CLAIM (frontmatter) — Skin Care: How to Deal with Adult Acne
+`content/beauty-style/skin-care/skin-care-how-to-deal-with-adult-acne/skin-care-how-to-deal-with-adult-acne.mdx:26` · 2016-06-20 · Emily Algar
+
+Restricted term: **Vitamin A** · matched: **effective**
+
+> …"Can the contraceptive pill cure adult acne?" answer: "The contraceptive pill can be effective at controlling acne, but breakouts often return once you stop taking it. It's a temporary…
+
+### [REVIEW] CLAIM (frontmatter) — Skin Care: How to Deal with Adult Acne
 `content/beauty-style/skin-care/skin-care-how-to-deal-with-adult-acne/skin-care-how-to-deal-with-adult-acne.mdx:26` · 2016-06-20 · Emily Algar
 
 Restricted term: **light therapy** · matched: **cure**
 
 > …s often return once you stop taking it. It's a temporary solution rather than a permanent cure, which is why dermatologists often recommend addressing the root cause through targeted t…
 
-### [REVIEW] CLAIM (frontmatter) — Skincare Success: My Eight-Week Transformation with Professional-Grade Products
-`content/beauty-style/skin-care/skincare-success-my-eight-week-transformation-with-professional-grade-products/skincare-success-my-eight-week-transformation-with-professional-grade-products.mdx:26` · 2023-09-29 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Summer Style and Beauty Essentials – Sigourney's Edit
+`content/beauty-style/skin-care/summer-style-essentials/summer-style-essentials.mdx:22` · 2016-12-08 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **medical-grade**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …This frequency is compared to receiving a professional HydraFacial once weekly, providing medical-grade exfoliation at home." - question: "What ingredients should I look for in professional-g…
+> …e for summer sun protection?" answer: "A straw boater is recommended as a stylish and effective option. Hats provide more protection against sun damage than sunscreen alone." - questi…
 
-### [REVIEW] CLAIM (frontmatter) — The Best Eye Creams and Mascaras for Super Sensitive Eyes
-`content/beauty-style/skin-care/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes/the-best-eye-creams-and-mascaras-for-super-sensitive-eyes.mdx:26` · 2024-05-16 · Zoe Briggs
+### [REVIEW] CLAIM (frontmatter) — The Best Cruelty-Free, Vegan Beauty Buys According to a Former Beauty Therapist
+`content/beauty-style/skin-care/the-best-cruelty-free-vegan-beauty-buys-according-to-a-former-beauty-therapist/the-best-cruelty-free-vegan-beauty-buys-according-to-a-former-beauty-therapist.mdx:24` · 2024-01-01 · Karina Wharton
 
-Restricted term: **collagen** · matched: **prevent**
+Restricted term: **reishi** · matched: **effective**
 
-> …ave long been shown to increase collagen production, and it uses a silver airless pump to prevent oxidation." - question: "What is the best way to remove mascara when you have sensitive…
-
-### [REVIEW] CLAIM (frontmatter) — The Best Pigmentation Treatments – Reader Review
-`content/beauty-style/skin-care/the-best-pigmentation-treatments-reader-review/the-best-pigmentation-treatments-reader-review.mdx:21` · 2016-08-23 · Katherine Ring
-
-Restricted term: **Vitamin ** · matched: **treating**
-
-> …pert Product Reviews" auto_faqs: true faqs: - question: "What ingredients work best for treating pigmentation?" answer: "According to the reviews, Niacinamide (Vitamin B3), Ascorbic…
-
-### [REVIEW] CLAIM (frontmatter) — The Best Pigmentation Treatments – Reader Review
-`content/beauty-style/skin-care/the-best-pigmentation-treatments-reader-review/the-best-pigmentation-treatments-reader-review.mdx:22` · 2016-08-23 · Katherine Ring
-
-Restricted term: **Vitamin C** · matched: **prevent**
-
-> …fades discolouration and promotes brighter skin-tone, whilst hydroxy acids exfoliate and prevent melanin production. The best choice depends on your skin sensitivity and desired results…
-
-### [REVIEW] CLAIM (frontmatter) — The Single Ingredient I Know Will Keep Me Looking Young – Sigourney’s Edit
-`content/beauty-style/skin-care/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit.mdx:24` · 2017-05-17 · Sigourney Cantelo
-
-Restricted term: **Vitamin A** · matched: **prevent**
-
-> …in your skincare routine?" answer: "From your late twenties onwards is ideal, to help prevent fine lines setting in. It can then be continued well into your thirties and forties to ac…
-
-### [REVIEW] CLAIM (frontmatter) — The Skincare Ingredients That Will Fade Redness for Good
-`content/beauty-style/skin-care/the-skincare-ingredients-that-will-fade-redness-for-good/the-skincare-ingredients-that-will-fade-redness-for-good.mdx:22` · 2018-04-30 · Beauticate Editorial
-
-Restricted term: **Vitamin B** · matched: **reducing inflammation**
-
-> …ucosamine are highly effective for calming red, irritated skin. These ingredients work by reducing inflammation, strengthening the skin barrier and promoting skin regeneration. For best results, a holi…
+> …ating. Synergie Skin's ReClaim moisturiser is also praised for being cruelty-free, highly effective, and suitable for fussy skin." - question: "Is Olaplex No.3 vegan?" answer: "Yes, O…
 
 ### [REVIEW] CLAIM (frontmatter) — The Skincare Ingredients That Will Fade Redness for Good
 `content/beauty-style/skin-care/the-skincare-ingredients-that-will-fade-redness-for-good/the-skincare-ingredients-that-will-fade-redness-for-good.mdx:28` · 2018-04-30 · Beauticate Editorial
@@ -636,19 +461,12 @@ Restricted term: **sunscreen** · matched: **anti-inflammatory**
 
 > …compromised skin. Instead, focus on gentle, fragrance-free formulations with soothing and anti-inflammatory ingredients. A skincare professional can recommend specific products tailored to your ski…
 
-### [REVIEW] CLAIM (frontmatter) — This Pharmacy Night Routine Gets My Big Tick of Approval
-`content/beauty-style/skin-care/this-pharmacy-night-routine-gets-my-big-tick-of-approval/this-pharmacy-night-routine-gets-my-big-tick-of-approval.mdx:24` · 2020-08-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — These Beauties Will Help You Refresh Your Skincare Regime
+`content/beauty-style/skin-care/these-beauties-will-help-you-refresh-your-skincare-regime/these-beauties-will-help-you-refresh-your-skincare-regime.mdx:26` · 2021-03-02 · Tess Schlink
 
-Restricted term: **collagen** · matched: **reverse**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …similar healthy skin responses without the irritation. A double blind study found it can reverse photodamage appearance, stimulate collagen production, and smooth fine lines, making it i…
-
-### [REVIEW] CLAIM (frontmatter) — This Pharmacy Night Routine Gets My Big Tick of Approval
-`content/beauty-style/skin-care/this-pharmacy-night-routine-gets-my-big-tick-of-approval/this-pharmacy-night-routine-gets-my-big-tick-of-approval.mdx:24` · 2020-08-12 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …without the irritation. A double blind study found it can reverse photodamage appearance, stimulate collagen production, and smooth fine lines, making it ideal for those who can't tolerate tradition…
+> …care ingredients give overnight results?" answer: "Exfoliating acids are particularly effective for overnight results, leaving skin glowier by morning. Lactic acid and glycolic acid ser…
 
 ### [REVIEW] CLAIM (frontmatter) — Video: How to Do a Luxe Skincare Ritual with Caviar
 `content/beauty-style/skin-care/video-how-to-do-a-luxe-skincare-ritual-with-caviar/video-how-to-do-a-luxe-skincare-ritual-with-caviar.mdx:26` · 2017-01-16 · Sigourney Cantelo
@@ -657,82 +475,47 @@ Restricted term: **SPF 15** · matched: **treat**
 
 > …e Skin Caviar ritual aim to do for skin?" answer: "The ritual is designed to prepare, treat, hydrate and perfect the complexion in one complete sequence."
 
-### [REVIEW] CLAIM (frontmatter) — Video: Why You Should Be Using a Home Roller
-`content/beauty-style/skin-care/video-why-you-should-be-using-a-home-roller/video-why-you-should-be-using-a-home-roller.mdx:24` · 2016-03-16 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Video: Teresa Palmer and Chrissy Duigan on Their Travel Essentials
+`content/beauty-style/skin-care/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials/video-teresa-palmer-and-chrissy-duigan-on-their-travel-essentials.mdx:34` · 2019-06-05 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **boost collagen**
+Restricted term: **supplement** · matched: **immunity**
 
-> …re products work significantly harder by improving their absorption into the skin. It can boost collagen production, improve skin texture, and enhance the overall results of your existing serum…
-
-### [REVIEW] CLAIM (frontmatter) — Is This the Best Value LED Mask on the Market?
-`content/beauty-style/skin-care/what-is-the-best-value-led-mask-on-the-market-qure/what-is-the-best-value-led-mask-on-the-market-qure.mdx:26` · 2024-05-14 · Sigourney Cantelo
-
-Restricted term: **LED mask** · matched: **boost collagen**
-
-> …t modes. The Anti-Aging Treatment uses Red, Deep Red, Infrared, Amber, and Blue lights to boost collagen and elastin production, while the Anti-Breakout Treatment uses Blue and Red lights to tac…
+> …oo for refreshing hair between washes, and Frequent Flyer Health Boost Tablets to support immunity on long flights. They also travel with their own Lovewell supplements." - question: "Wh…
 
 ### [REVIEW] CLAIM (frontmatter) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
-`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:22` · 2017-11-22 · Sigourney Cantelo
+`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:24` · 2017-11-22 · Sigourney Cantelo
 
-Restricted term: **Vitamin C** · matched: **prevent**
+Restricted term: **Vitamin C** · matched: **effective**
 
-> …r skincare routine?" answer: "The article recommends using Vitamin C every morning to prevent UV and environmental damage, Vitamin B morning or evening to build moisture, and Vitamins…
-
-### [REVIEW] CLAIM (frontmatter) — Why You Really Need Vitamin B in Your Life
-`content/beauty-style/skin-care/why-you-really-need-vitamin-b-in-your-life/why-you-really-need-vitamin-b-in-your-life.mdx:22` · 2017-04-19 · Sigourney Cantelo
-
-Restricted term: **Vitamin B** · matched: **treat**
-
-> …otects the skin's barrier, helps with pigmentation, combats signs of ageing, and can even treat acne. It is described in this article as an all-round skincare superstar that addresses m…
+> …for skin?" answer: "Yes. According to the article, topical Vitamin C is 20 times more effective than the oral form when it comes to skin benefits. It works to suppress melanin productio…
 
 ### [REVIEW] CLAIM (frontmatter) — Why You Need Probiotics in Your Skincare Routine
-`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:22` · 2018-05-14 · Yadira Galarza Cauchi
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:26` · 2018-05-14 · Yadira Galarza Cauchi
 
-Restricted term: **probiotic** · matched: **reduce inflammation**
+Restricted term: **probiotic** · matched: **repair**
 
-> …cing the skin's natural microflora. When the bacteria on your skin are in balance, it can reduce inflammation, lower sebum production and help keep conditions like acne, psoriasis and redness at bay.…
+> …by a toning product with a lactic acid base, then a probiotic sleeping mask for overnight repair." - question: "Who should use probiotic skincare?" answer: "Dr. Luis recommends pro…
 
-### [REVIEW] CLAIM (frontmatter) — You Should Gua Sha Your Neck, Too
-`content/beauty-style/skin-care/why-you-should-gua-sha-your-neck-too/why-you-should-gua-sha-your-neck-too.mdx:26` · 2023-04-20 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Merse Wellness, Osborne Park
+`content/destinations/bathhouses/merse-wellness-osborne-park/merse-wellness-osborne-park.mdx:8` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **magnesium** · matched: **healing**
 
-> …decolletage?" answer: "Gua sha on the neck helps reduce puffiness, improve skin tone, stimulate collagen production and promote lymphatic drainage. The technique, rooted in ancient Chinese medic…
+> …ls, two saunas and a full recovery lounge with compression boots, LED therapy and sound healing on Scarborough Beach Road. featured_image: /content/destinations/bathhouses/merse-welln…
 
-### [REVIEW] CLAIM (frontmatter) — Assure Cosmetic Centre, Subiaco, WA
-`content/destinations/clinics/assure-cosmetic-centre-subiaco-wa/assure-cosmetic-centre-subiaco-wa.mdx:34` · 2026-01-15 · Amy Mattes-Harris
+### [REVIEW] CLAIM (frontmatter) — Merse Wellness, Osborne Park
+`content/destinations/bathhouses/merse-wellness-osborne-park/merse-wellness-osborne-park.mdx:38` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **light therapy** · matched: **medical-grade**
+Restricted term: **LED therapy** · matched: **healing**
 
-> …therapy, microdermabrasion, and surgical rejuvenation procedures. The clinic stocks medical-grade skincare from brands like SkinCeuticals and features specialist dermal therapists a…
+> …rse includes compression boots, LED therapy in four colours, massage guns and sound healing on a loop. Between bathing rounds there are also monsoon showers and a steam room.…
 
 ### [REVIEW] CLAIM (frontmatter) — Liberty Belle, Melbourne
 `content/destinations/clinics/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians.mdx:37` · 2026-01-15 · Zoe Briggs
 
 Restricted term: **light therapy** · matched: **prevent**
 
-> …erform manual extractions strategically, avoiding spots not yet ready to surface to prevent further damage, and apply special sensitive-skin balms post-treatment. The cl…
-
-### [REVIEW] CLAIM (frontmatter) — Liberty Belle, Melbourne
-`content/destinations/clinics/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians/the-sleek-skin-clinic-favoured-by-in-the-know-melburnians.mdx:39` · 2026-01-15 · Zoe Briggs
-
-Restricted term: **light therapy** · matched: **healing**
-
-> …kin balms post-treatment. The clinic's yellow LED light therapy also promotes wound healing and rejuvenation. - question: What happens during a Liberty Belle facial treatmen…
-
-### [REVIEW] CLAIM (frontmatter) — The Youth Lab, Perth
-`content/destinations/clinics/the-youth-lab-perth/the-youth-lab-perth.mdx:25` · 2026-01-15 · Lucy Searle
-
-Restricted term: **LED therapy** · matched: **medical-grade**
-
-> …tion: >- The Youth Lab in West Perth offers Hydrafacial, LED therapy, injectables and medical-grade skin treatments led by Dr Kate Jameson. Book online. auto_faqs: true faqs: - question:…
-
-### [REVIEW] CLAIM (frontmatter) — The Youth Lab, Perth
-`content/destinations/clinics/the-youth-lab-perth/the-youth-lab-perth.mdx:46` · 2026-01-15 · Lucy Searle
-
-Restricted term: **light therapy** · matched: **healing**
-
-> …t therapy that enhances the body's natural cellular recovery processes. It improves healing time, promotes skin rejuvenation and can help subside active acne. At Youth Lab, it…
+> …erform manual extractions strategically, avoiding spots not yet ready to surface to prevent further damage, and apply special sensitive-skin balms post-treatment. The Th…
 
 ### [REVIEW] CLAIM (frontmatter) — Vaia Beauty, Darlinghurst
 `content/destinations/clinics/vaia-beauty-darlinghurst/vaia-beauty-darlinghurst.mdx:6` · 2026-01-15 · Sigourney Cantelo
@@ -741,12 +524,12 @@ Restricted term: **infrared** · matched: **treat**
 
 > …to this Darlinghurst clinic, where customised facials, infrared sauna and herbal formulas treat skin from the inside out.' meta_description: 'Vaia Beauty in Darlinghurst, Sydney offers…
 
-### [REVIEW] CLAIM (frontmatter) — Osborn House, Bundanoon
-`content/destinations/spas-retreats/osborn-house-bundanoon/osborn-house-bundanoon.mdx:29` · 2026-01-15 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Youth Lab, Claremont
+`content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx:36` · 2026-01-15 · Tess Schlink
 
-Restricted term: **infrared** · matched: **medical-grade**
+Restricted term: **light therapy** · matched: **repair**
 
-> …answer: >- The spa runs a full sequence including sauna, steam room, infrared and medical-grade LED. Outside there is a twenty-five metre heated pool and a jacuzzi overlooking Morton Na…
+> …el, therapeutic massage, nourishing mask, and Healite II LED light therapy for skin repair and a glowing complexion. - question: Who is the designer behind Youth Lab Clarem…
 
 ### [REVIEW] CLAIM (frontmatter) — Salus Spa, the Lakehouse, Daylesford
 `content/destinations/spas-retreats/salus-spa-the-lakehouse-daylesford/salus-spa-the-lakehouse-daylesford.mdx:34` · 2026-01-15 · Sigourney Cantelo
@@ -755,26 +538,33 @@ Restricted term: **magnesium** · matched: **treat**
 
 > …al-rich waters, containing magnesium and sodium bicarbonate, have long been used to treat everything from eczema to arthritis. - question: What skincare brand does Salus S…
 
-### [REVIEW] CLAIM (frontmatter) — Kim Cattrall, Actress
-`content/interviews/actors-presenters/kim-cattrall-actress/kim-cattrall-actress.mdx:23` · 2016-11-24 · Rikki Hodge-Smith
+### [REVIEW] CLAIM (frontmatter) — in:HAUS Wellness, Byron Bay
+`content/destinations/wellness/inhaus-wellness-byron-bay/inhaus-wellness-byron-bay.mdx:7` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulates collagen**
+Restricted term: **infrared** · matched: **healing**
 
-> …l recommend it?" answer: "Thermage is a non-invasive treatment that tightens skin and stimulates collagen. Kim likes it because it has no downtime and the results improve over the course of a yea…
+> …bcategory: wellness excerpt: >- Reformer Pilates, infrared sauna, barre, yoga and sound healing in an open-plan, light-filled studio in Byron Bay's Arts and Industrial Estate. featured_…
 
-### [REVIEW] CLAIM (frontmatter) — Tessa James, Actress
-`content/interviews/actors-presenters/tessa-james-actress/tessa-james-actress.mdx:25` · 2016-06-02 · Emily Algar
+### [REVIEW] CLAIM (frontmatter) — in:HAUS Wellness, Byron Bay
+`content/destinations/wellness/inhaus-wellness-byron-bay/inhaus-wellness-byron-bay.mdx:23` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **magnesium** · matched: **healing**
+Restricted term: **infrared** · matched: **healing**
 
-> …inks apple cider vinegar and takes magnesium, enterocare and zinc before bed to help with healing, relaxation and skin health." - question: "What wellness retreat did Tessa attend and w…
+> …ron Bay offers reformer Pilates, infrared sauna with chromotherapy, barre, yoga and sound healing in the Arts and Industrial Estate. reviewed: false auto_faqs: true faqs: - question: Wh…
 
-### [REVIEW] CLAIM (frontmatter) — Georgina Austin, Cable Melbourne
-`content/interviews/creatives/georgina-austin-designer/georgina-austin-designer.mdx:25` · 2016-07-28 · Emily Algar
+### [REVIEW] CLAIM (frontmatter) — in:HAUS Wellness, Byron Bay
+`content/destinations/wellness/inhaus-wellness-byron-bay/inhaus-wellness-byron-bay.mdx:29` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **infrared** · matched: **healing**
 
-> …nt at James Vivian Dermal Therapies combining triple exfoliation, Cutera Laser Genesis to stimulate collagen, a light chemical peel and a custom mask - all completed in about an hour." - question:…
+> …HAUS offers reformer Pilates, Trapeze table, Wunda Chair, mat Pilates, barre, yoga, sound healing and compression boots. There is also a two-person infrared sauna with a chromotherapy pan…
+
+### [REVIEW] CLAIM (frontmatter) — Kristin Rawson, Interior Designer & Editor
+`content/interviews/creatives/kristin-rawson-interior-designer-editor/kristin-rawson-interior-designer-editor.mdx:25` · 2018-09-20 · Zoe Briggs
+
+Restricted term: **magnesium** · matched: **detoxification**
+
+> …Kristin Rawson's top beauty tips?" answer: "Her main tips are coconut oil pulling for detoxification and whiter teeth, regular eyebrow waxing and tinting, and an eyelash perm and tint. She a…
 
 ### [REVIEW] CLAIM (frontmatter) — Sarina Zoe, Makeup Artist & Yogi
 `content/interviews/creatives/sarina-zoe-makeup-artist-and-yogi/sarina-zoe-makeup-artist-and-yogi.mdx:25` · 2016-09-08 · Stephanie Russo
@@ -783,12 +573,19 @@ Restricted term: **light therapy** · matched: **heals**
 
 > …and visits LiteLuxe in Double Bay at least once a week for light therapy, which she says heals breakouts around three times faster." - question: "What is Sarina's approach to skincar…
 
+### [REVIEW] CLAIM (frontmatter) — Stephanie Davies, Founder La Boheme Lifestyle
+`content/interviews/creatives/stephanie-davies-founder-la-boheme-lifestyle/stephanie-davies-founder-la-boheme-lifestyle.mdx:21` · 2023-08-02 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **hair growth**
+
+> …oil as their daily supplement stack. She also mentions Wellbel vitamins specifically for hair growth and health." - question: "What is Stephanie Davies' everyday no-makeup makeup look?"…
+
 ### [REVIEW] CLAIM (frontmatter) — The Beauty-Obsessed Florist Everyone's Using Right Now
-`content/interviews/creatives/the-beauty-obsessed-florist-everyones-using-right-now/the-beauty-obsessed-florist-everyones-using-right-now.mdx:29` · 2019-12-04 · Zoe Briggs
+`content/interviews/creatives/the-beauty-obsessed-florist-everyones-using-right-now/the-beauty-obsessed-florist-everyones-using-right-now.mdx:30` · 2019-12-04 · Zoe Briggs
 
-Restricted term: **LED mask** · matched: **clear skin**
+Restricted term: **LED mask** · matched: **effective**
 
-> …epped properly before use." - question: "What's the best nighttime skincare routine for clear skin?" answer: "An effective evening routine should include gentle cleansing, exfoliation,…
+> …- question: "What's the best nighttime skincare routine for clear skin?" answer: "An effective evening routine should include gentle cleansing, exfoliation, targeted treatment (like an…
 
 ### [REVIEW] CLAIM (frontmatter) — Carla Oates & the Beauty Chef
 `content/interviews/founders/carla-oates-the-beauty-chef/carla-oates-the-beauty-chef.mdx:29` · 2017-02-08 · Rikki Hodge-Smith
@@ -797,26 +594,12 @@ Restricted term: **magnesium** · matched: **heal**
 
 > …or?" answer: "The Beauty Fix Balm is a fermented coconut balm designed to hydrate and heal skin, smooth fine lines, and soothe conditions such as psoriasis and eczema. Its fermenta…
 
-### [REVIEW] CLAIM (frontmatter) — Lucy Vincent, Sans [Ceuticals]
-`content/interviews/founders/lucy-vincent-entrepreneur/lucy-vincent-entrepreneur.mdx:27` · 2018-06-07 · Zoe Briggs
-
-Restricted term: **supplement** · matched: **anti-inflammatory**
-
-> …contain omega-7, an oil she describes as the closest thing to your natural sebum - highly anti-inflammatory, well absorbed and excellent for skin. She also ensures she gets enough B vitamins, eggs…
-
 ### [REVIEW] CLAIM (frontmatter) — Terry De Gunzburg, by Terry
 `content/interviews/founders/terry-de-gunzberg/terry-de-gunzberg.mdx:28` · 2015-11-17 · Claudia De Berardinis
 
 Restricted term: **SPF 50** · matched: **prevent**
 
 > …g SPF 50 sunscreen consistently, and applying sunscreen to hands instead of hand cream to prevent sunspots." reading_time: 5 auto_enriched: true featured_image_caption: "Terry de Gunzburg…
-
-### [REVIEW] CLAIM (frontmatter) — Why You Should Copy Jessica Sepel's Sloth Sundays in 2020
-`content/interviews/founders/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2.mdx:27` · 2020-01-29 · Zoe Briggs
-
-Restricted term: **magnesium** · matched: **prevent**
-
-> …a highlights selenium, magnesium, vitamin C and vitamin E as essential minerals that help prevent early signs of ageing and support body functions. She believes it's difficult to obtain a…
 
 ### [REVIEW] CLAIM (frontmatter) — Jessica Gomes, Model
 `content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:27` · 2014-09-25 · Sigourney Cantelo
@@ -825,6 +608,13 @@ Restricted term: **protein powder** · matched: **treats**
 
 > …gh protein foods, lots of greens, protein powders after training and plenty of water. She treats it like an athlete preparing for a game." auto_faqs: true
 
+### [REVIEW] CLAIM (frontmatter) — Monika Radulovic, Model
+`content/interviews/models/monika-radulovic-model/monika-radulovic-model.mdx:27` · 2019-01-10 · Zoe Briggs
+
+Restricted term: **infrared** · matched: **detoxification**
+
+> …?" answer: "She uses an infrared sauna for around 30 minutes most days to assist with detoxification, and attends weekly cryotherapy sessions at Koa Recovery for muscle recovery and to decre…
+
 ### [REVIEW] CLAIM (frontmatter) — Lola Berry, Nutritionist
 `content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:21` · 2018-02-08 · Sigourney Cantelo
 
@@ -832,12 +622,12 @@ Restricted term: **Omega 3** · matched: **treat**
 
 > …salmon with avocado or eggs with avocado salad for dinner. She finishes with a raw vegan treat to satisfy her sweet tooth." - question: "What skincare routine does Lola Berry follow?…
 
-### [REVIEW] CLAIM (frontmatter) — How I Navigate Working from Home
-`content/living/lifestyle/how-i-navigate-working-from-home/how-i-navigate-working-from-home.mdx:27` · 2021-03-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — The Injectable-Free Lip Cheat That Fashion Influencer Pepa Mack Loves
+`content/interviews/tastemakers/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2.mdx:25` · 2020-01-14 · Zoe Briggs
 
-Restricted term: **supplement** · matched: **prevents**
+Restricted term: **sunscreen** · matched: **combat**
 
-> …upplement lighting if you're calling on your laptop." - question: "What ergonomic setup prevents back and neck pain when working at a dining table?" answer: "Your elbows and knees sh…
+> …ight due to her delicate eye area, and finishes with a rich moisturiser in the evening to combat her dry complexion." - question: "How often should you wash fine hair like Pepa Mack's?…
 
 ### [REVIEW] CLAIM (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
 `content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:26` · 2021-11-01 · Karina Wharton
@@ -846,26 +636,26 @@ Restricted term: **sunscreen** · matched: **prevent**
 
 > …Andric recommends applying it in the morning before sunscreen to protect skin structures, prevent pigmentation and delay ageing." - question: "What skincare ingredients should I use tog…
 
-### [REVIEW] CLAIM (frontmatter) — All About Emface: A New Non-Invasive Beauty Treatment
-`content/sigourneys-edit/edit/is-emface-the-new-needle-free-alternative-to-fillers/is-emface-the-new-needle-free-alternative-to-fillers.mdx:22` · 2024-02-23 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
+`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:24` · 2021-06-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **sunscreen** · matched: **repair**
 
-> …mbines High-Intensity Facial Electrical Stimulation (HIFES) with radiofrequency energy to stimulate collagen and improve facial muscle tone. The sensation is similar to Emsculpt-you'll notice muscle…
-
-### [REVIEW] CLAIM (frontmatter) — Our New Daily Routine – Sigourney's Edit
-`content/sigourneys-edit/edit/our-new-daily-routine-sigourneys-edit/our-new-daily-routine-sigourneys-edit.mdx:25` · 2020-04-07 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **fixes**
-
-> …ntain structure and mental health for the whole family." - question: "What quick beauty fixes work best when working from home?" answer: "Focus on strategic products: curled lashe…
+> …works alongside sunscreen to neutralise UV-induced free radicals, while evening use helps repair the day's damage. Many skincare experts recommend using antioxidants twice daily for maxi…
 
 ### [REVIEW] CLAIM (frontmatter) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
-`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:22` · 2021-06-15 · Sigourney Cantelo
+`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:24` · 2021-06-15 · Sigourney Cantelo
 
-Restricted term: **vitamin ** · matched: **treat**
+Restricted term: **sunscreen** · matched: **repair**
 
-> …debenone is a powerful antioxidant derivative of Coenzyme Q10 that was originally used to treat Alzheimer's disease and preserve organs during transplant. It's more lipid soluble than C…
+> …Many skincare experts recommend using antioxidants twice daily for maximum protection and repair. This approach ensures your skin receives antioxidant protection both preventatively and…
+
+### [REVIEW] CLAIM (frontmatter) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
+`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:34` · 2021-06-15 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **repair**
+
+> …ng and evening — maximises both its preventative UV-protection benefits and its overnight repair action." review_rating: 4.5 review_item: "Prevage 2.0 Anti-Aging Daily Serum" review_bran…
 
 ### [REVIEW] CLAIM (frontmatter) — Sigourney's Edit – Endless Summer
 `content/sigourneys-edit/edit/sigourneys-edit-endless-summer/sigourneys-edit-endless-summer.mdx:26` · 2014-02-27 · Sigourney Cantelo
@@ -881,12 +671,33 @@ Restricted term: **sunscreen** · matched: **professional results**
 
 > …esidue, and pair them with a proper application mitt to prevent finger streaks and ensure professional results." - question: "Which summer fragrances smell like sunscreen and tropical holidays?"…
 
-### [REVIEW] CLAIM (frontmatter) — Why You Need to Try This Antioxidant-Pumped Range
-`content/sigourneys-edit/edit/why-you-need-to-try-this-antioxidant-pumped-range/why-you-need-to-try-this-antioxidant-pumped-range.mdx:22` · 2020-09-23 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — This Pharmacy Product Fixed My Freaked Out Skin
+`content/sigourneys-edit/edit/this-pharmacy-product-fixed-my-freaked-out-skin/this-pharmacy-product-fixed-my-freaked-out-skin.mdx:22` · 2020-11-11 · Sigourney Cantelo
 
-Restricted term: **vitamin C** · matched: **preventing**
+Restricted term: **Vitamin ** · matched: **effective**
 
-> …ining 100 times more vitamin C than orange, making it exceptional for skin protection and preventing cellular breakdown." - question: "How do you use the Minenssey Superfood Facial Elixir?…
+> …maintains moisture within it, improving skin smoothness and suppleness. It's particularly effective for repairing compromised skin barriers and reducing redness and discomfort from irritati…
+
+### [REVIEW] CLAIM (frontmatter) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
+`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:8` · 2025-08-28 · Sigourney Cantelo
+
+Restricted term: **Infrared** · matched: **heal**
+
+> …." featured_image: "/content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout-holding.jpg" f…
+
+### [REVIEW] CLAIM (frontmatter) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
+`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:8` · 2025-08-28 · Sigourney Cantelo
+
+Restricted term: **Infrared** · matched: **heal**
+
+> …ituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout-holding.jpg" featured_image_alt: "Sigourney Cantelo kneeling beside her Infr…
+
+### [REVIEW] CLAIM (frontmatter) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
+`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:10` · 2025-08-28 · Sigourney Cantelo
+
+Restricted term: **Infrared** · matched: **Heal**
+
+> …de by Beauticate" featured_image_caption: "Sacred Six: The Rituals & Practices Helping Me Heal From Burnout, Beautiful Inside by Beauticate" author: "Sigourney Cantelo" date_published:…
 
 ### [REVIEW] CLAIM (frontmatter) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
 `content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:26` · 2025-08-28 · Sigourney Cantelo
@@ -895,33 +706,19 @@ Restricted term: **Infrared** · matched: **healing**
 
 > …gy healing, Dr Sarah Jane's Spinal Energetics, Tanya Alijani's Soulchemy breath and sound healing, yin yoga at Modern Movement, and Mel Robbins' mindset tools." - question: "What does S…
 
-### [REVIEW] CLAIM (frontmatter) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:24` · 2023-05-10 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
+`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:30` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **light therapy** · matched: **boosts collagen**
+Restricted term: **Red Light Therapy** · matched: **effective**
 
-> …penetrates the skin at different depths, stimulating cell growth and repair. This process boosts collagen production, reduces inflammation and improves skin texture over time with regular use."…
+> …tion-free skin, reduced neck tension and deeper sleep with consistent use" - "More cost-effective long term than repeated in-clinic sessions at $110 to $145 each" - "Pulsing+ and Dimmin…
 
-### [REVIEW] CLAIM (frontmatter) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:24` · 2023-05-10 · Sigourney Cantelo
+### [REVIEW] CLAIM (frontmatter) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
+`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:45` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **light therapy** · matched: **reduces inflammation**
+Restricted term: **Infrared** · matched: **effective**
 
-> …rent depths, stimulating cell growth and repair. This process boosts collagen production, reduces inflammation and improves skin texture over time with regular use." - question: "How long do you nee…
-
-### [REVIEW] CLAIM (frontmatter) — Cryotherapy, the Beauty Trend You Need to Have on Your Radar
-`content/wellness/biohacking/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar.mdx:22` · 2021-04-27 · Tess Schlink
-
-Restricted term: **collagen** · matched: **stimulates collagen**
-
-> …applied locally through cryo facials or tools, cold (typically around 6 degrees Celsius) stimulates collagen and elastin production, reduces pore size, and decreases inflammation. The cold causes va…
-
-### [REVIEW] CLAIM (frontmatter) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:26` · 2025-09-05 · Jayde Balderston
-
-Restricted term: **LED device** · matched: **clinically proven**
-
-> …and types. It's non-invasive, gentle, and causes no redness, tingling, or irritation. The clinically proven wavelengths used are the same ones dermatologists use in professional treatments." - qu…
+> …unlimited at-home sessions for the whole household make the panel significantly more cost-effective than ongoing clinic visits or the accumulated cost of pain management alternatives." -…
 
 ### [REVIEW] CLAIM (frontmatter) — 6 Reasons to Eat More (Raw) Chocolate This Easter
 `content/wellness/health/6-reasons-to-eat-more-raw-chocolate-this-easter/6-reasons-to-eat-more-raw-chocolate-this-easter.mdx:24` · 2015-04-03 · Sigourney Cantelo
@@ -937,47 +734,12 @@ Restricted term: **prebiotic** · matched: **prevents**
 
 > …om screens, an afternoon snack with healthy fats, and a nourishing dinner. This structure prevents mindless grazing and ensures you're eating proper meals at regular intervals throughout t…
 
-### [REVIEW] CLAIM (frontmatter) — A Nutritionist on Binning Bad Lockdown Eating Habits
-`content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:25` · 2020-06-16 · Tess Schlink
+### [REVIEW] CLAIM (frontmatter) — How to Make a Decadent Dairy- and Sugar-Free Raw Hot Chocolate
+`content/wellness/health/how-to-decadent-dairy-free-raw-hot-chocolate/how-to-decadent-dairy-free-raw-hot-chocolate.mdx:22` · 2020-08-05 · Sigourney Cantelo
 
-Restricted term: **prebiotic** · matched: **boost immunity**
+Restricted term: **magnesium** · matched: **hair growth**
 
-> …e eating proper meals at regular intervals throughout the day." - question: "What foods boost immunity according to nutritionists?" answer: "Focus on prebiotic-rich foods like leeks, onion…
-
-### [REVIEW] CLAIM (frontmatter) — How to Get Glowing Skin with Nuts and Seeds (That Aren't Almonds…)
-`content/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin.mdx:21` · 2017-07-25 · Samantha Blanchfield
-
-Restricted term: **vitamin ** · matched: **clear skin**
-
-> …Beauty Sprinkles" auto_faqs: true faqs: - question: "Which nuts and seeds are best for clear skin?" answer: "Walnuts, pistachios and chia seeds are exceptional for skin clarity. Walnu…
-
-### [REVIEW] CLAIM (frontmatter) — How to Get Glowing Skin with Nuts and Seeds (That Aren't Almonds…)
-`content/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin.mdx:22` · 2017-07-25 · Samantha Blanchfield
-
-Restricted term: **vitamin ** · matched: **prevent**
-
-> …ds are exceptional for skin clarity. Walnuts contain vitamin E to balance blood sugar and prevent insulin spikes that trigger breakouts, whilst pistachios help control the acne-causing ho…
-
-### [REVIEW] CLAIM (frontmatter) — How to Get Glowing Skin with Nuts and Seeds (That Aren't Almonds…)
-`content/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin.mdx:28` · 2017-07-25 · Samantha Blanchfield
-
-Restricted term: **vitamin B** · matched: **reduces inflammation**
-
-> …, which help fight fine lines and support skin elasticity. Their antioxidant content also reduces inflammation and puffiness, contributing to a more youthful, radiant complexion. Regular consumption a…
-
-### [REVIEW] CLAIM (frontmatter) — How to Bring a ‘Skincare Routine Approach’ to Your Teeth
-`content/wellness/health/how-to-bring-a-skincare-routine-approach-to-your-teeth/how-to-bring-a-skincare-routine-approach-to-your-teeth.mdx:26` · 2022-11-02 · Zoe Briggs
-
-Restricted term: **vitamin C** · matched: **stimulate collagen**
-
-> …tissue and fighting free radicals. When combined into a complex as Keeko does, they help stimulate collagen production in your gums, supporting stronger and healthier gum tissue over time." - que…
-
-### [REVIEW] CLAIM (frontmatter) — How to Detox in Winter: Prodjuice Cleanse Review
-`content/wellness/health/how-to-detox-in-winter-prodjuice-cleanse-review/how-to-detox-in-winter-prodjuice-cleanse-review.mdx:43` · 2016-07-27 · Sigourney Cantelo
-
-Restricted term: **ashwagandha** · matched: **treat**
-
-> …enough to avoid extreme hunger" - "Golden ashwagandha almond milk is a soothing nightly treat" review_cons: - "Immune Booster shot has an intense raw garlic flavour" - "Very diffi…
+> …stronger antioxidant levels than acai, macqui and blueberries. It's also high in iron for hair growth and magnesium for alkaline balance, making it superior for beauty and wellness benefits."…
 
 ### [REVIEW] CLAIM (frontmatter) — How to Make Jessica Sepel’s Beauty Brownie
 `content/wellness/health/how-to-make-jessica-sepels-beauty-brownie/how-to-make-jessica-sepels-beauty-brownie.mdx:22` · 2014-10-22 · Madeleine Boyd
@@ -1008,32 +770,25 @@ Restricted term: **Vitamin B** · matched: **anti-inflammatory**
 > …free range or organic chicken reduces the risk of skin disorders. Red cabbage works as an anti-inflammatory and the dish is packed with Vitamin B." - question: "How long does this recipe take to…
 
 ### [REVIEW] CLAIM (frontmatter) — Spring Wellness Reboot
-`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:23` · 2023-11-06 · Beauticate Editorial
+`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:22` · 2023-11-06 · Beauticate Editorial
 
-Restricted term: **vitamin C** · matched: **boost immunity**
+Restricted term: **supplement** · matched: **combat**
 
-> …ting your body through dietary or hormonal changes." - question: "What natural remedies boost immunity in spring?" answer: "Monique recommends vitamin C, zinc, manuka honey, and immune-boo…
+> …utritionist Monique recommends quercetin, nettle, glutathione, and high-dose vitamin C to combat histamine overload and allergy-related symptoms. She emphasises understanding your person…
 
-### [REVIEW] CLAIM (frontmatter) — Spring Wellness Reboot
-`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:24` · 2023-11-06 · Beauticate Editorial
+### [REVIEW] CLAIM (frontmatter) — Teresa Palmer and Chrissy Duigan on Their New Supplements
+`content/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements/teresa-palmer-and-chrissy-duigan-on-their-new-supplements.mdx:24` · 2019-05-24 · Kristina Zhou
 
-Restricted term: **zinc** · matched: **anti-inflammatory**
+Restricted term: **supplement** · matched: **immunity**
 
-> …le in liquid, lozenge, or capsule form - is specifically highlighted for its antioxidant, anti-inflammatory, antiviral, and antibacterial properties." - question: "What supplements support skin h…
+> …le for the whole family, including children, and focuses on strengthening bones, boosting immunity and improving cognitive function." - question: "Is Lovewell supplement vegan and ethica…
 
-### [REVIEW] CLAIM (frontmatter) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:26` · 2017-07-11 · Madeleine Boyd
+### [REVIEW] CLAIM (frontmatter) — The New Superfoods and How to Eat Them
+`content/wellness/health/the-top-superfoods-for-spring/the-top-superfoods-for-spring.mdx:22` · 2015-09-14 · Claudia De Berardinis
 
-Restricted term: **collagen** · matched: **boost collagen**
+Restricted term: **vitamin C** · matched: **detoxification**
 
-> …Australian personal trainers recommend incorporating whey protein into daily smoothies to boost collagen levels. Whey protein is rich in amino acids that provide structure to skin tissue and hel…
-
-### [REVIEW] CLAIM (frontmatter) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:26` · 2017-07-11 · Madeleine Boyd
-
-Restricted term: **collagen** · matched: **prevent**
-
-> …evels. Whey protein is rich in amino acids that provide structure to skin tissue and help prevent sagging, making it an excellent addition to your wellness routine." - question: "Why ar…
+> …and can be added to smoothies, porridge, yoghurt or water for optimal hydration and liver detoxification." - question: "Are garden weeds actually safe to eat and nutritious?" answer: "Yes,…
 
 ### [REVIEW] CLAIM (frontmatter) — The New Superfoods and How to Eat Them
 `content/wellness/health/the-top-superfoods-for-spring/the-top-superfoods-for-spring.mdx:26` · 2015-09-14 · Claudia De Berardinis
@@ -1049,89 +804,26 @@ Restricted term: **magnesium** · matched: **healing**
 
 > …onest piece of writing became the foundation for a global wellness brand, and how her own healing journey from disordered eating and OCD shaped the brand's philosophy of nourishing from t…
 
-### [REVIEW] PRACTITIONER (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:8` · 2021-11-01 · Karina Wharton · +4 more in file
+### [REVIEW] CLAIM (frontmatter) — Lindsay Price on Healing Childhood Trauma, Life with Curtis Stone and Her Hollywood Journey
+`content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey.mdx:26` · 2025-04-09 · Sigourney Cantelo
 
-Restricted term: **vitamin C** · matched: **dermatologist**
+Restricted term: **infrared** · matched: **hair growth**
 
-> …gredients that have got her excited." featured_image: "/content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/hero.jpg" featured_image_alt: "Derm…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Academy Face and Body, Subiaco, WA
-`content/destinations/clinics/academy-face-and-body-subiaco-wa/academy-face-and-body-subiaco-wa.mdx:8` · 2026-01-15 · Beauticate Editorial · +2 more in file
-
-Restricted term: **LED therapy** · matched: **Dr J**
-
-> …iaco-wa category: destinations subcategory: clinics excerpt: >- Led by cosmetic surgeon Dr Jayson Oates, this discreet Subiaco clinic delivers beautifully natural results across LE…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Spring Wellness Reboot
-`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:10` · 2023-11-06 · Beauticate Editorial · +2 more in file
-
-Restricted term: **supplement** · matched: **Nutritionist**
-
-> …y" seo_title: "Spring Wellness Reboot: Expert Tips for the New Season" meta_description: "Nutritionist Monique's guide to spring wellness - from beating allergies and boosting immunity to gut…
-
-### [REVIEW] PRACTITIONER (frontmatter) — How to Prime Your Skin for Peri and Menopause
-`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:32` · 2024-10-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **collagen** · matched: **Dr H**
-
-> …rticle." - question: "When should you start treating perimenopausal skin?" answer: "Dr Hkeik recommends starting collagen stimulation treatments before menopause rather than wait…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Why You Need Probiotics in Your Skincare Routine
-`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:24` · 2018-05-14 · Yadira Galarza Cauchi · +1 more in file
-
-Restricted term: **probiotic** · matched: **Dr. L**
-
-> …- question: "Can probiotics in skincare help with acne?" answer: "Yes, according to Dr. Luis, Medical Director for Mesoestetic, imbalanced microflora on the skin can present as ac…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Youth Lab, Claremont
-`content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx:6` · 2026-01-15 · Tess Schlink · +1 more in file
-
-Restricted term: **LED therapy** · matched: **Dr K**
-
-> …laremont' slug: youth-lab-claremont category: destinations subcategory: clinics excerpt: 'Dr Kate Jameson''s Claremont outpost pairs advanced Hydrafacials, LED therapy and injectables…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Youth Lab, Joondalup
-`content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx:6` · 2026-01-15 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **LED therapy** · matched: **Dr K**
-
-> …: youth-lab-joondalup category: destinations subcategory: clinics excerpt: 'The latest in Dr Kate Jameson''s Youth Lab empire brings Hydrafacials, laser pigmentation correction and LED…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Myra Perez, My Violet
-`content/interviews/founders/myra-perez-floral-designer/myra-perez-floral-designer.mdx:21` · 2018-12-20 · Zoe Briggs · +1 more in file
-
-Restricted term: **SPF50** · matched: **Immunologist**
-
-> …a quick shower, then applies the first half of the Rationale Essential Six including the Immunologist Serum, Super Antioxidant Serum and Immunologist UltraCreme. She always applies SPF50+ wit…
-
-### [REVIEW] PRACTITIONER (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:9` · 2021-11-01 · Karina Wharton · +1 more in file
-
-Restricted term: **vitamin C** · matched: **Dr S**
-
-> …beauty-brand-thats-doing-right-by-the-planet/hero.jpg" featured_image_alt: "Dermatologist Dr Shreya Andric holding premium skincare products featuring niacinamide, vitamin C and bakuch…
-
-### [REVIEW] PRACTITIONER (frontmatter) — Sacred Six: 6 Ways I'm Going to Live Longer
-`content/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer/sacred-six-6-ways-im-going-to-live-longer.mdx:19` · 2024-11-02 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin D** · matched: **Dr A**
-
-> …ney Cantelo shares six evidence-based longevity habits from her Longevity Assessment with Dr Adam Brown, covering exercise, protein, calcium, vitamin D, mindset and small daily changes…
+> …frared sauna, daily baths, Lashify underlash segments, and castor oil, which she uses for hair growth, lashes, brows, digestion, and melasma."
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Essential Beauty Products for This Wedding Season
 `content/beauty-style/beauty-tips/essential-beauty-products-for-this-wedding-season/essential-beauty-products-for-this-wedding-season.mdx:22` · 2023-09-18 · Sigourney Cantelo
 
 Restricted term: **light therapy** · matched: **Dr D**
 
-> …liation several weeks before the event using gentle AHA or lactic acid wipes, such as the Dr Dennis Gross Universal Daily Peel, to avoid irritation. Follow with a hyaluronic acid serum…
+> …liation several weeks before the event using gentle AHA or lactic acid wipes, such as the Dr Dennis Gross Universal Daily Peel, to avoid irritation. consider an LED light therapy devic…
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Essential Beauty Products for This Wedding Season
 `content/beauty-style/beauty-tips/essential-beauty-products-for-this-wedding-season/essential-beauty-products-for-this-wedding-season.mdx:22` · 2023-09-18 · Sigourney Cantelo
 
 Restricted term: **light therapy** · matched: **Dr G**
 
-> …ollow with a hyaluronic acid serum for hydration, and consider LED light therapy like the Dr Gross Spectralite Faceware Pro to boost collagen production and combat breakout-causing bac…
+> …iversal Daily Peel, to avoid irritation. consider an LED light therapy device such as the Dr Gross Spectralite Faceware Pro" - question: "What is the best foundation for a wedding?"…
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
 `content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:22` · 2021-09-21 · Zoe Briggs
@@ -1152,28 +844,7 @@ Restricted term: **supplement** · matched: **Dr O**
 
 Restricted term: **sunscreen** · matched: **Dr. J**
 
-> …t important anti-aging skincare ingredient?" answer: "According to cosmetic physician Dr. Joseph Hkeik, sunscreen is the number one essential-it prevents lines, irregular tone and t…
-
-### [REVIEW] PRACTITIONER (frontmatter) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:28` · 2017-07-06 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **Dr. H**
-
-> …n and aging." - question: "What antioxidants should I use for anti-aging?" answer: "Dr. Hkeik recommends using antioxidants both topically and orally-applying Vitamin C serums eve…
-
-### [REVIEW] PRACTITIONER (frontmatter) — How to Ease an Angry Scalp
-`content/beauty-style/hair/how-to-ease-an-angry-scalp/how-to-ease-an-angry-scalp.mdx:28` · 2017-10-24 · Claudia De Berardinis
-
-Restricted term: **Tonic** · matched: **Dr N**
-
-> …tion you have." - question: "What oils can help soothe an inflamed scalp?" answer: "Dr Natasha Cook recommends applying alpha keri oil, coconut oil or almond oil to the scalp ove…
-
-### [REVIEW] PRACTITIONER (frontmatter) — How to Ease an Angry Scalp
-`content/beauty-style/hair/how-to-ease-an-angry-scalp/how-to-ease-an-angry-scalp.mdx:28` · 2017-10-24 · Claudia De Berardinis
-
-Restricted term: **Tonic** · matched: **Dr H**
-
-> …il to the scalp overnight to neutralise and recondition the skin. For weekly maintenance, Dr Hauschka's Revitalising Hair and Scalp Tonic with neem leaf extract is a good option that c…
+> …t important anti-aging skincare ingredient?" answer: "According to cosmetic physician Dr. Joseph Hkeik says sunscreen is the number one essential. Prevention is always better than t…
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
 `content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:24` · 2026-02-05 · Sigourney Cantelo
@@ -1203,6 +874,13 @@ Restricted term: **capsule** · matched: **dermatologist**
 
 > …ised skin barriers, and rosacea-prone skin found these capsules to be well-tolerated. The dermatologist-approved ingredients-particularly ceramides and hyaluronic acid-helped strengthen the ski…
 
+### [REVIEW] PRACTITIONER (frontmatter) — How to Prime Your Skin for Peri and Menopause
+`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:26` · 2024-10-16 · Sigourney Cantelo
+
+Restricted term: **Light Therapy** · matched: **Dr J**
+
+> …to Prime Your Skin for Perimenopause and Menopause" meta_description: "Cosmetic physician Dr Joseph Hkeik shares his essential guide to preparing your skin for perimenopause." auto_faq…
+
 ### [REVIEW] PRACTITIONER (frontmatter) — I’m 44, Here’s Everything I Use on My Skin
 `content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:23` · 2024-03-16 · Sigourney Cantelo
 
@@ -1231,13 +909,6 @@ Restricted term: **light therapy** · matched: **Dr M**
 
 > …herapy (especially blue light) destroys acne-causing bacteria at a cellular level, whilst Dr McCaffery's SGA treatment uses tiny probes to permanently remove sebaceous glands with a 90…
 
-### [REVIEW] PRACTITIONER (frontmatter) — The Best Facial Toners – Reader Review
-`content/beauty-style/skin-care/the-best-facial-toners-reader-review/the-best-facial-toners-reader-review.mdx:22` · 2017-05-02 · Juliette Tuck
-
-Restricted term: **vitamin ** · matched: **Dr L**
-
-> …faqs: true faqs: - question: "What is the best facial toner for dry skin?" answer: "Dr Lewinn's Essentials Refining Toner was recommended for dry skin in this review. It delivers…
-
 ### [REVIEW] PRACTITIONER (frontmatter) — Video: Mid-Year Escape Skin and Haircare Must-Haves
 `content/beauty-style/skin-care/video-mid-year-escape-skin-and-haircare-must-haves/video-mid-year-escape-skin-and-haircare-must-haves.mdx:22` · 2019-08-19 · Sigourney Cantelo
 
@@ -1245,12 +916,75 @@ Restricted term: **sunscreen** · matched: **Dr. D**
 
 > …and La Prairie Skin Caviar Luxe Cream for a touch of luxury. A self-tanning product like Dr. Dennis Gross Alpha Beta Glow Pads is also essential." - question: "What is the best sunsc…
 
+### [REVIEW] PRACTITIONER (frontmatter) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:24` · 2018-05-14 · Yadira Galarza Cauchi
+
+Restricted term: **probiotic** · matched: **Dr. L**
+
+> …- question: "Can probiotics in skincare help with acne?" answer: "Yes, according to Dr. Luis, Medical Director for Mesoestetic, imbalanced microflora on the skin can present as ac…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:28` · 2018-05-14 · Yadira Galarza Cauchi
+
+Restricted term: **probiotic** · matched: **Dr. L**
+
+> …sk for overnight repair." - question: "Who should use probiotic skincare?" answer: "Dr. Luis recommends probiotic skincare mainly for those dealing with topical dermatitis, acne,…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Academy Face and Body, Subiaco, WA
+`content/destinations/clinics/academy-face-and-body-subiaco-wa/academy-face-and-body-subiaco-wa.mdx:8` · 2026-01-15 · Beauticate Editorial
+
+Restricted term: **LED therapy** · matched: **Dr J**
+
+> …iaco-wa category: destinations subcategory: clinics excerpt: >- Led by cosmetic surgeon Dr Jayson Oates, this discreet Subiaco clinic delivers beautifully natural results across LE…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Academy Face and Body, Subiaco, WA
+`content/destinations/clinics/academy-face-and-body-subiaco-wa/academy-face-and-body-subiaco-wa.mdx:12` · 2026-01-15 · Beauticate Editorial
+
+Restricted term: **LED therapy** · matched: **Dr J**
+
+> …, WA offers cosmetic surgery, LED therapy, microneedling, laser and dermaplaning led by Dr Jayson Oates. featured_image: '' featured_image_alt: >- Modern aesthetic clinic reception…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Academy Face and Body, Subiaco, WA
+`content/destinations/clinics/academy-face-and-body-subiaco-wa/academy-face-and-body-subiaco-wa.mdx:35` · 2026-01-15 · Beauticate Editorial
+
+Restricted term: **LED therapy** · matched: **Dr J**
+
+> …laser treatments and dermaplaning. Led by internationally renowned cosmetic surgeon Dr Jayson Oates, the clinic specialises in both facial and body aesthetic procedures des…
+
 ### [REVIEW] PRACTITIONER (frontmatter) — The Youth Lab, Perth
 `content/destinations/clinics/the-youth-lab-perth/the-youth-lab-perth.mdx:25` · 2026-01-15 · Lucy Searle
 
 Restricted term: **LED therapy** · matched: **Dr K**
 
-> …h offers Hydrafacial, LED therapy, injectables and medical-grade skin treatments led by Dr Kate Jameson. Book online. auto_faqs: true faqs: - question: What treatments does Youth L…
+> …b in West Perth offers Hydrafacial, LED therapy, injectables and skin treatments led by Dr Kate Jameson. Book online. auto_faqs: true faqs: - question: What treatments does Youth L…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Youth Lab, Claremont
+`content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx:6` · 2026-01-15 · Tess Schlink
+
+Restricted term: **LED therapy** · matched: **Dr K**
+
+> …laremont' slug: youth-lab-claremont category: destinations subcategory: clinics excerpt: 'Dr Kate Jameson''s Claremont outpost pairs advanced Hydrafacials, LED therapy and injectables…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Youth Lab, Claremont
+`content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx:7` · 2026-01-15 · Tess Schlink
+
+Restricted term: **light therapy** · matched: **Dr K**
+
+> …cials, LED light therapy, cosmetic injectables and advanced dermal treatments. Founded by Dr Kate Jameson, WA.' featured_image: /content/destinations/clinics/youth-lab-claremont/hero.j…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Youth Lab, Joondalup
+`content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx:6` · 2026-01-15 · Sigourney Cantelo
+
+Restricted term: **LED therapy** · matched: **Dr K**
+
+> …: youth-lab-joondalup category: destinations subcategory: clinics excerpt: 'The latest in Dr Kate Jameson''s Youth Lab empire brings Hydrafacials, laser pigmentation correction and LED…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Youth Lab, Joondalup
+`content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx:7` · 2026-01-15 · Sigourney Cantelo
+
+Restricted term: **LED therapy** · matched: **Dr K**
+
+> …als, laser for pigmentation and sun damage, LED therapy and advanced skincare. Founded by Dr Kate Jameson, WA.' featured_image: /content/destinations/clinics/youth-lab-joondalup/hero.j…
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Emily Berlach, the Most Laidback Fashion Designer on the Planet
 `content/interviews/creatives/emily-berlach-the-most-laidback-fashion-designer-on-the-planet/emily-berlach-the-most-laidback-fashion-designer-on-the-planet.mdx:23` · 2022-11-24 · Zoe Briggs
@@ -1287,19 +1021,26 @@ Restricted term: **magnesium** · matched: **Dr H**
 
 > …particularly the Luminizer, Buriti Bronzer, Un Cover-Up and Lip2Cheek. For hair, she uses Dr Hauschka Neem Hair Conditioning Oil and coconut oil. She is also a devoted user of magnesiu…
 
-### [REVIEW] PRACTITIONER (frontmatter) — Dr Kate Jameson, Youth Lab
-`content/interviews/founders/dr-kate-jameson-cosmetic-physician/dr-kate-jameson-cosmetic-physician.mdx:24` · 2018-08-09 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **Dr K**
-
-> …a strict home care routine for long-term collagen stimulation." - question: "What does Dr Kate Jameson say about ageing and cosmetic treatments?" answer: "She believes it is a v…
-
 ### [REVIEW] PRACTITIONER (frontmatter) — Hayley Bonham, Entrepreneur
 `content/interviews/founders/hayley-bonham-stylist-publicist-entrepreneur/hayley-bonham-stylist-publicist-entrepreneur.mdx:21` · 2018-08-23 · Zoe Briggs
 
 Restricted term: **supplement** · matched: **Immunologist**
 
 > …year and says it transformed her skin. Her morning routine includes cold water, Rationale Immunologist Serum and Super Antioxidant Serum applied with a jade roller. In the evenings she uses Ra…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Myra Perez, My Violet
+`content/interviews/founders/myra-perez-floral-designer/myra-perez-floral-designer.mdx:21` · 2018-12-20 · Zoe Briggs
+
+Restricted term: **SPF50** · matched: **Immunologist**
+
+> …a quick shower, then applies the first half of the Rationale Essential Six including the Immunologist Serum, Super Antioxidant Serum and Immunologist UltraCreme. She always applies SPF50+ wit…
+
+### [REVIEW] PRACTITIONER (frontmatter) — Myra Perez, My Violet
+`content/interviews/founders/myra-perez-floral-designer/myra-perez-floral-designer.mdx:21` · 2018-12-20 · Zoe Briggs
+
+Restricted term: **SPF50** · matched: **Immunologist**
+
+> …the Rationale Essential Six including the Immunologist Serum, Super Antioxidant Serum and Immunologist UltraCreme. She always applies SPF50+ without fail, wearing a cap or hat when working out…
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Natalie Fitch, Natalie Marie Jewellery
 `content/interviews/founders/natalie-fitch-natalie-marie-jewellery/natalie-fitch-natalie-marie-jewellery.mdx:27` · 2019-04-24 · Zoe Briggs
@@ -1318,9 +1059,30 @@ Restricted term: **probiotic** · matched: **Dr D**
 ### [REVIEW] PRACTITIONER (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
 `content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:26` · 2021-11-01 · Karina Wharton
 
-Restricted term: **vitamin A** · matched: **Dr A**
+Restricted term: **sunscreen** · matched: **Dr A**
 
 > …that stabilises vitamins C and E, doubling the effectiveness of sunscreen when combined. Dr Andric recommends applying it in the morning before sunscreen to protect skin structures, p…
+
+### [REVIEW] PRACTITIONER (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:28` · 2021-11-01 · Karina Wharton
+
+Restricted term: **sunscreen** · matched: **Dermatologist**
+
+> …uestion: "What skincare ingredients should I use together for best results?" answer: "Dermatologist Dr Shreya Andric recommends combining vitamin C with ferulic acid and vitamin E for enhan…
+
+### [REVIEW] PRACTITIONER (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:28` · 2021-11-01 · Karina Wharton
+
+Restricted term: **sunscreen** · matched: **Dr S**
+
+> …skincare ingredients should I use together for best results?" answer: "Dermatologist Dr Shreya Andric recommends combining vitamin C with ferulic acid and vitamin E for enhanced s…
+
+### [REVIEW] PRACTITIONER (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:31` · 2021-11-01 · Karina Wharton
+
+Restricted term: **sunscreen** · matched: **Dermatologist**
+
+> …or optimal skin health." reading_time: 5 auto_enriched: true featured_image_caption: "The Dermatologist-Approved Beauty Brand That’s Doing Right By the Planet - Living feature on Beauticate" fe…
 
 ### [REVIEW] PRACTITIONER (frontmatter) — Sigourney's Edit – Byron Bay
 `content/sigourneys-edit/edit/how-to-get-a-byron-bay-glow/how-to-get-a-byron-bay-glow.mdx:50` · 2014-04-16 · Sigourney Cantelo
@@ -1329,40 +1091,26 @@ Restricted term: **SPF 30** · matched: **Dr. B**
 
 > …screen, a self-tanning product to maintain your glow, and a versatile cleanser like Dr. Bronner's Pure Castile Soap. Consider adding a facial glow pad and a nourishing moist…
 
-### [REVIEW] SERIOUS (frontmatter) — How a Beauty Writer Manages Her Rosacea
-`content/beauty-style/skin-care/how-a-beauty-writer-manages-her-rosacea/how-a-beauty-writer-manages-her-rosacea.mdx:22` · 2022-05-17 · Zoe Briggs · +6 more in file
+### [REVIEW] PRACTITIONER (frontmatter) — Sacred Six: 6 Ways I'm Going to Live Longer
+`content/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer/sacred-six-6-ways-im-going-to-live-longer.mdx:24` · 2024-11-02 · Sigourney Cantelo
 
-Restricted term: **vitamin A** · matched: **rosacea**
+Restricted term: **supplement** · matched: **Dr A**
 
-> …, noticeable capillaries, and small bumps or pustules. Some people also experience ocular rosacea, where the eyes feel gritty, dry, or stinging." - question: "What skincare ingredients…
+> …dence-based longevity habits she took away from a comprehensive Longevity Assessment with Dr Adam Brown: diversifying exercise across strength, cardio and endurance, eating more protei…
 
-### [REVIEW] SERIOUS (frontmatter) — 5 Eczema Facts to Understand and Manage Irritated Skin
-`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:26` · 2017-05-24 · Beauticate Editorial · +3 more in file
+### [REVIEW] PRACTITIONER (frontmatter) — Spring Wellness Reboot
+`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:10` · 2023-11-06 · Beauticate Editorial
 
-Restricted term: **supplement** · matched: **eczema**
+Restricted term: **supplement** · matched: **Nutritionist**
 
-> …t comes from a Greek word meaning \"to boil out,\" reflecting the tendency of people with eczema to overheat because the skin does not regulate temperature properly. Eczema is also used…
+> …y" seo_title: "Spring Wellness Reboot: Expert Tips for the New Season" meta_description: "Nutritionist Monique's guide to spring wellness - from beating allergies and boosting immunity to gut…
 
-### [REVIEW] SERIOUS (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
-`content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:26` · 2020-09-16 · Sigourney Cantelo · +1 more in file
+### [REVIEW] PRACTITIONER (frontmatter) — Spring Wellness Reboot
+`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:22` · 2023-11-06 · Beauticate Editorial
 
-Restricted term: **capsule** · matched: **rosacea**
+Restricted term: **supplement** · matched: **Nutritionist**
 
-> …prone skin?" answer: "Our editors with sensitive skin, compromised skin barriers, and rosacea-prone skin found these capsules to be well-tolerated. The dermatologist-approved ingredie…
-
-### [REVIEW] SERIOUS (frontmatter) — Move Over SPF. Your Skin Now Needs Environmental Protection.
-`content/beauty-style/skin-care/move-over-spf-your-skin-now-needs-environmental-protection/move-over-spf-your-skin-now-needs-environmental-protection.mdx:22` · 2017-02-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **cancer**
-
-> …study found that infrared-A radiation can cause dermal inflammation, photoaging and skin cancer, and it makes up 30% of the light we are exposed to outdoors." - question: "What does i…
-
-### [REVIEW] SERIOUS (frontmatter) — Why You Need Probiotics in Your Skincare Routine
-`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:22` · 2018-05-14 · Yadira Galarza Cauchi · +1 more in file
-
-Restricted term: **Probiotic** · matched: **psoriasis**
-
-> …e, it can reduce inflammation, lower sebum production and help keep conditions like acne, psoriasis and redness at bay." - question: "Can probiotics in skincare help with acne?" answe…
+> …qs: - question: "What supplements help with seasonal allergies in spring?" answer: "Nutritionist Monique recommends quercetin, nettle, glutathione, and high-dose vitamin C to combat hist…
 
 ### [REVIEW] SERIOUS (frontmatter) — The Beauty Advice I’m Giving My Daughter
 `content/beauty-style/beauty-tips/the-beauty-advice-im-giving-my-daughter/the-beauty-advice-im-giving-my-daughter.mdx:22` · 2023-05-03 · Sigourney Cantelo
@@ -1371,12 +1119,26 @@ Restricted term: **sunscreen** · matched: **Cancer**
 
 > …y use on children, and La Roche Posay Anthelios XL Wet Skin Sunscreen for the beach. Kids Cancer Council Roll On sunscreen is also mentioned as a favourite for younger children because i…
 
-### [REVIEW] SERIOUS (frontmatter) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:22` · 2017-07-06 · Sigourney Cantelo
+### [REVIEW] SERIOUS (frontmatter) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:26` · 2017-05-24 · Beauticate Editorial
 
-Restricted term: **sunscreen** · matched: **cancer**
+Restricted term: **supplement** · matched: **eczema**
 
-> …creen is the number one essential-it prevents lines, irregular tone and texture, and skin cancer. Prevention is always better than trying to reverse damage later, so a daily effective su…
+> …t comes from a Greek word meaning \"to boil out,\" reflecting the tendency of people with eczema to overheat because the skin does not regulate temperature properly. Eczema is also used…
+
+### [REVIEW] SERIOUS (frontmatter) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:26` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **supplement** · matched: **Eczema**
+
+> …f people with eczema to overheat because the skin does not regulate temperature properly. Eczema is also used as a general term for any type of itchy dermatitis." - question: "Can supp…
+
+### [REVIEW] SERIOUS (frontmatter) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:28` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **supplement** · matched: **eczema**
+
+> …arch suggests Omega 3 fish oil can help reduce inflammatory substances that contribute to eczema symptoms. While studies are still in their early stages, supplements are considered a use…
 
 ### [REVIEW] SERIOUS (frontmatter) — Sun Safety, but Make it Chic
 `content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:24` · 2026-03-16 · Sigourney Cantelo
@@ -1385,19 +1147,40 @@ Restricted term: **sunscreen** · matched: **cancer**
 
 > …both sunscreen and a hat for comprehensive protection, especially in Australia where skin cancer rates are among the highest in the world. Together, they provide better coverage than eit…
 
-### [REVIEW] SERIOUS (frontmatter) — How to Shop for Skincare Like a Cosmetic Chemist
-`content/beauty-style/skin-care/how-to-shop-for-skincare-like-a-cosmetic-chemist/how-to-shop-for-skincare-like-a-cosmetic-chemist.mdx:28` · 2017-12-13 · Rikki Hodge-Smith
+### [REVIEW] SERIOUS (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
+`content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:26` · 2020-09-16 · Sigourney Cantelo
 
-Restricted term: **Sunscreen** · matched: **cancer**
+Restricted term: **capsule** · matched: **rosacea**
 
-> …on is the most important skincare product because it prevents both the potential for skin cancer and the acceleration of premature ageing, ranking above moisturiser or any other step in…
+> …prone skin?" answer: "Our editors with sensitive skin, compromised skin barriers, and rosacea-prone skin found these capsules to be well-tolerated. The dermatologist-approved ingredie…
 
-### [REVIEW] SERIOUS (frontmatter) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
-`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:28` · 2017-11-22 · Sigourney Cantelo
+### [REVIEW] SERIOUS (frontmatter) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
+`content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:40` · 2020-09-16 · Sigourney Cantelo
 
-Restricted term: **Vitamin ** · matched: **rosacea**
+Restricted term: **Capsule** · matched: **rosacea**
 
-> …is having a reaction - after a peel, laser session, sunburn or during a flare of acne or rosacea. It is proven to reduce inflammatory damage, which is a key driver of premature ageing, s…
+> …w_pros: - "Noticeably plumper, dewier skin within days of use" - "Safe for sensitive, rosacea-prone, and compromised skin barriers" - "Single-dose capsules keep ingredients fresh an…
+
+### [REVIEW] SERIOUS (frontmatter) — Move Over SPF. Your Skin Now Needs Environmental Protection.
+`content/beauty-style/skin-care/move-over-spf-your-skin-now-needs-environmental-protection/move-over-spf-your-skin-now-needs-environmental-protection.mdx:22` · 2017-02-16 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **cancer**
+
+> …study found that infrared-A radiation can cause dermal inflammation, photoaging and skin cancer, and it makes up 30% of the light we are exposed to outdoors." - question: "What does i…
+
+### [REVIEW] SERIOUS (frontmatter) — Move Over SPF. Your Skin Now Needs Environmental Protection.
+`content/beauty-style/skin-care/move-over-spf-your-skin-now-needs-environmental-protection/move-over-spf-your-skin-now-needs-environmental-protection.mdx:24` · 2017-02-16 · Sigourney Cantelo
+
+Restricted term: **Infrared** · matched: **cancer**
+
+> …ible for producing collagen. This can lead to photoaging and, according to research, skin cancer." - question: "What is Synergie Skin Enviroshield?" answer: "Enviroshield is a ligh…
+
+### [REVIEW] SERIOUS (frontmatter) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:28` · 2018-05-14 · Yadira Galarza Cauchi
+
+Restricted term: **probiotic** · matched: **psoriasis**
+
+> …uis recommends probiotic skincare mainly for those dealing with topical dermatitis, acne, psoriasis, redness or scarring. That said, he notes the future of probiotic research is promising f…
 
 ### [REVIEW] SERIOUS (frontmatter) — Why Your Tap Water Might Be Ruining Your Skin (and What to Do About It)
 `content/beauty-style/skin-care/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it.mdx:40` · 2025-02-26 · Jayde Balderston
@@ -1412,13 +1195,6 @@ Restricted term: **magnesium** · matched: **rosacea**
 Restricted term: **magnesium** · matched: **eczema**
 
 > …ne strips the skin of natural oils, hard water minerals clog pores and worsen rosacea and eczema, and heavy metals can cause oxidative stress leading to redness, sensitivity, and prematu…
-
-### [REVIEW] SERIOUS (frontmatter) — Vaia Beauty, Darlinghurst
-`content/destinations/clinics/vaia-beauty-darlinghurst/vaia-beauty-darlinghurst.mdx:30` · 2026-01-15 · Sigourney Cantelo
-
-Restricted term: **infrared** · matched: **psoriasis**
-
-> …sis and natural formulations tailored to individual skin conditions including acne, psoriasis and rosacea. - question: Does Vaia Beauty offer services beyond facials? answer: >-…
 
 ### [REVIEW] SERIOUS (frontmatter) — Vaia Beauty, Darlinghurst
 `content/destinations/clinics/vaia-beauty-darlinghurst/vaia-beauty-darlinghurst.mdx:30` · 2026-01-15 · Sigourney Cantelo
@@ -1441,13 +1217,6 @@ Restricted term: **magnesium** · matched: **arthritis**
 
 > …nd sodium bicarbonate, have long been used to treat everything from eczema to arthritis. - question: What skincare brand does Salus Spa at The Lakehouse use? answer: >-…
 
-### [REVIEW] SERIOUS (frontmatter) — Tessa James, Actress
-`content/interviews/actors-presenters/tessa-james-actress/tessa-james-actress.mdx:24` · 2016-06-02 · Emily Algar
-
-Restricted term: **magnesium** · matched: **cancer**
-
-> …y Laura Worthington." - question: "What does Tessa James eat to support her health post-cancer?" answer: "Tessa eats mostly fish, vegetables and organic food. She avoids red meat w…
-
 ### [REVIEW] SERIOUS (frontmatter) — Matilda Dods, Model & Musician
 `content/interviews/models/matilda-dods-model/matilda-dods-model.mdx:21` · 2014-09-11 · Sigourney Cantelo
 
@@ -1455,68 +1224,19 @@ Restricted term: **capsule** · matched: **eczema**
 
 > …and Rich Compensating Cream - twice daily. She washes with cold water, as heat aggravates eczema, and uses cold spoons held over her eyes to reduce swelling during bad flare-ups." - qu…
 
-### [REVIEW] SERIOUS (frontmatter) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
-`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:22` · 2021-06-15 · Sigourney Cantelo
+### [REVIEW] SYMPTOM_PITCH (frontmatter) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:24` · 2026-02-05 · Sigourney Cantelo
 
-Restricted term: **vitamin ** · matched: **Alzheimer**
+Restricted term: **red light therapy** · matched: **If your hair loss**
 
-> …ne is a powerful antioxidant derivative of Coenzyme Q10 that was originally used to treat Alzheimer's disease and preserve organs during transplant. It's more lipid soluble than CoQ10, mean…
+> …loss?" answer: "The studies reviewed focus on mild to moderate pattern hair thinning. If your hair loss is caused by specific medical conditions, hormonal imbalances, or medications, red light…
 
-### [REVIEW] SERIOUS (frontmatter) — Crispy Coconut Chicken with Mango Salsa
-`content/wellness/health/crispy-coconut-chicken-with-mango-salsa/crispy-coconut-chicken-with-mango-salsa.mdx:22` · 2016-01-15 · Claudia De Berardinis
+### [REVIEW] SYMPTOM_PITCH (frontmatter) — The New Sunscreen Innovations You Need to Try
+`content/beauty-style/skin-care/sunscreen-innovations/sunscreen-innovations.mdx:24` · 2019-01-16 · Tess Schlink
 
-Restricted term: **vitamin A** · matched: **psoriasis**
+Restricted term: **sunscreen** · matched: **suffering from**
 
-> …oconut is known for promoting clear and youthful skin and may help reduce conditions like psoriasis and eczema." - question: "Why is mango a good addition to this dish for skin health?"…
-
-### [REVIEW] SERIOUS (frontmatter) — Crispy Coconut Chicken with Mango Salsa
-`content/wellness/health/crispy-coconut-chicken-with-mango-salsa/crispy-coconut-chicken-with-mango-salsa.mdx:22` · 2016-01-15 · Claudia De Berardinis
-
-Restricted term: **vitamin A** · matched: **eczema**
-
-> …n for promoting clear and youthful skin and may help reduce conditions like psoriasis and eczema." - question: "Why is mango a good addition to this dish for skin health?" answer:…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — Prep Your Skin for Your Most Glow-Worthy Winter Yet
-`content/beauty-style/skin-care/prep-your-skin-for-your-most-glow-worthy-winter-yet-2/prep-your-skin-for-your-most-glow-worthy-winter-yet-2.mdx:23` · 2018-06-11 · Tess Schlink · +1 more in file
-
-Restricted term: **supplement** · matched: **I use**
-
-> …supplement can also help, as glowing skin largely starts in the gut." - question: "Can I use acids on my skin in winter?" answer: "Yes. Winter is actually a good time to bring ac…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:25` · 2021-11-01 · Karina Wharton · +1 more in file
-
-Restricted term: **vitamin A** · matched: **I use**
-
-> …o traditional vitamin A derivatives." - question: "What is ferulic acid and when should I use it?" answer: "Ferulic acid is a plant-based antioxidant that stabilises vitamins C an…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:27` · 2017-07-06 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **I use**
-
-> …r fighting chance against degradation and aging." - question: "What antioxidants should I use for anti-aging?" answer: "Dr. Hkeik recommends using antioxidants both topically and…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — The Best Vitamin C Serums in Australia, Tested and Ranked by Experts
-`content/beauty-style/skin-care/best-vitamin-c-serums-australia/best-vitamin-c-serums-australia.mdx:26` · 2024-03-15 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **I use**
-
-> …. Store in a cool, dark place and use within three months of opening." - question: "Can I use vitamin C with retinol?" answer: "Yes, but not at the same time. Use vitamin C in the…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — Sun Safety, but Make it Chic
-`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:21` · 2026-03-16 · Sigourney Cantelo
-
-Restricted term: **SPF50** · matched: **I use**
-
-> …care rather than a burden, so you'll actually use it consistently." - question: "Should I use mineral or chemical sunscreen for kids?" answer: "Physical (mineral) sunscreens are g…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — How to Get the Most Out of Active Skincare
-`content/beauty-style/skin-care/how-to-get-the-most-out-of-active-skincare/how-to-get-the-most-out-of-active-skincare.mdx:23` · 2022-05-25 · Zoe Briggs
-
-Restricted term: **vitamin ** · matched: **I use**
-
-> …cation, making them distinct from passive moisturisers and cleansers." - question: "Can I use multiple active ingredients together?" answer: "Not everyone's skin tolerates multipl…
+> …hich is essential for the body to produce vitamin D. With almost one in three Australians suffering from a vitamin D deficiency, it is described as a good compromise between skin protection and…
 
 ### [REVIEW] TESTIMONIAL (frontmatter) — I’m 44, Here’s Everything I Use on My Skin
 `content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:16` · 2024-03-16 · Sigourney Cantelo
@@ -1532,152 +1252,12 @@ Restricted term: **LED Mask** · matched: **My pick**
 
 > …4 seo_title: "The Black Friday Skin Deals You Can't Miss | Beauticate" meta_description: "My pick would be the Fade & Firm Bundle Advanced that includes the incredible Q-Rejuvalight Pro L…
 
-### [REVIEW] TESTIMONIAL (frontmatter) — Why You Need Probiotics in Your Skincare Routine
-`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:25` · 2018-05-14 · Yadira Galarza Cauchi
-
-Restricted term: **probiotic** · matched: **I add**
-
-> …reducing the inflammation and sebum that contribute to breakouts." - question: "How do I add probiotics to my skincare routine?" answer: "Start with one product at a time rather…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — How to Do “Mini-Break” Beauty, A Guide to Packing Lightly
-`content/destinations/travel/how-to-do-mini-break-beauty-a-guide-to-packing-lightly/how-to-do-mini-break-beauty-a-guide-to-packing-lightly.mdx:44` · 2014-04-13 · Sigourney Cantelo
-
-Restricted term: **SPF 35** · matched: **I use**
-
-> …bbi Brown BB cream are specifically designed for on-the-go convenience. - question: Can I use BB cream as a full makeup base for travel? answer: >- Yes, a quality BB cream l…
-
 ### [REVIEW] TESTIMONIAL (frontmatter) — Nadia Rosa, Entrepreneur & Influencer
 `content/interviews/founders/nadia-rose-entrepreneur-infuencer/nadia-rose-entrepreneur-infuencer.mdx:25` · 2018-05-31 · Zoe Briggs
 
 Restricted term: **LED therapy** · matched: **since starting**
 
 > …s followed by LED therapy. She says she has noticed a significant improvement in her skin since starting this routine." - question: "How does Nadia Rosa stay healthy?" answer: "Nadia drink…
-
-### [REVIEW] TESTIMONIAL (frontmatter) — The Skincare Finds We Love for Winter
-`content/sigourneys-edit/edit/four-new-skincare-finds-i-love-for-winter-sigourneys-edit/four-new-skincare-finds-i-love-for-winter-sigourneys-edit.mdx:23` · 2019-07-10 · Sigourney Cantelo
-
-Restricted term: **vitamin A** · matched: **I use**
-
-> …a nourishing cream maximises moisture retention during winter months." - question: "Can I use retinol in winter without irritating my skin?" answer: "Yes-gentler retinol alternati…
-
-### [REVIEW] CLAIM (body) — Sigourney Road Tests a Hair-Loss Preventing Strand-Boosting Elixir
-`content/beauty-style/hair/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir.mdx:49` · 2018-07-05 · Sigourney Cantelo · +8 more in file
-
-Restricted term: **elixir** · matched: **preventing**
-
-> …I wash and dry it. ![Nioxin](/content/beauty-style/hair/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir/nioxin1.jpg) ### I’ve heard that Nioxin products are great for pe…
-
-### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
-`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:46` · 2018-03-28 · Beauticate Editorial · +2 more in file
-
-Restricted term: **vitamin ** · matched: **treats**
-
-> …g and boost cell rejuvenation. ![2](/content/beauty-style/skin-care/4-skin-loving-easter-treats/2-1.jpg) <Caption>Healthyish</Caption> ### Mulled Red Wine The coming autumn months ca…
-
-### [REVIEW] CLAIM (body) — How to Stop Your Hair Getting Old
-`content/beauty-style/skin-care/how-to-stop-your-hair-getting-old/how-to-stop-your-hair-getting-old.mdx:30` · 2015-09-30 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **sunscreen** · matched: **prevent**
-
-> Truth be told, I spend a fair chunk of time trying to prevent wrinkles. Obviously there’s that number one anti-aging product I apply daily – sunscreen……
-
-### [REVIEW] CLAIM (body) — Jess Sepel on Ocd, Healing from Disordered Eating, Grief, and Building Jshealth
-`content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart.mdx:30` · 2025-05-14 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **supplement** · matched: **healing**
-
-> …rney Cantelo on the Beautiful Inside podcast](/content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/3.jpg) We go far beyond gr…
-
-### [REVIEW] CLAIM (body) — Lindsay Price on Healing Childhood Trauma, Life with Curtis Stone and Her Hollywood Journey
-`content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey.mdx:62` · 2025-04-09 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **collagen** · matched: **healing**
-
-> …Beautiful Inside podcast guest on Beauticate](/content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/1.jpg) - How she balan…
-
-### [REVIEW] CLAIM (body) — Mother's Day Treats for Every Mama
-`content/beauty-style/beauty-tips/mothers-day-treats-for-every-mama/mothers-day-treats-for-every-mama.mdx:71` · 2015-05-04 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **Collagen** · matched: **treats**
-
-> …u Mum , Pierre Hardy ‘Lilirama’ Sneakers ](/content/beauty-style/beauty-tips/mothers-day-treats-for-every-mama/sporty.png) LULULEMON HIGH TIMES PANT FULLUX, MONREAL LONDON THREE-PIECE…
-
-### [REVIEW] CLAIM (body) — Our Expert-Approved Guide on How to Prevent Hair Loss
-`content/beauty-style/hair/how-to-prevent-hair-loss/how-to-prevent-hair-loss.mdx:45` · 2021-06-08 · Kristina Zhou · +1 more in file
-
-Restricted term: **vitamin C** · matched: **prevent**
-
-> …basil in your diet. ![Source: Instagram @Juliastegner](/content/beauty-style/hair/how-to-prevent-hair-loss/106036876_770515526821885_2187187436903532_n-1.jpg) <Caption>SOURCE: INSTAGRAM…
-
-### [REVIEW] CLAIM (body) — How to Put Your Skin Into Rehab with Vitamin E
-`content/beauty-style/skin-care/how-to-put-your-skin-into-rehab-with-vitamin-e/how-to-put-your-skin-into-rehab-with-vitamin-e.mdx:34` · 2017-07-12 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Vitamin ** · matched: **healing**
-
-> …akiness, bumpiness – these treatments cause micro injuries to the skin, so naturally some healing has to take place. ![How to Put Your Skin Into Rehab with Vitamin E](/content/beauty-sty…
-
-### [REVIEW] CLAIM (body) — The Single Ingredient I Know Will Keep Me Looking Young – Sigourney’s Edit
-`content/beauty-style/skin-care/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit.mdx:42` · 2017-05-17 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin** · matched: **reverse**
-
-> …ally renovates skin. ## What Vitamin A Does for Skin In short: it can reduce – and even reverse – wrinkles by speeding up cell turnover and boosting collagen production; it helps bright…
-
-### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
-`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:110` · 2026-01-15 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **prevent**
-
-> …ily sunscreen (yes, I know I harp on), thorough cleansing and antioxidants to protect and prevent premature ageing. ### 11. The 'Clean' Sunscreen <ProductInset image="/content/beauty-st…
-
-### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
-`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:250` · 2026-01-15 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **Preventing**
-
-> …g away dirt, makeup and sunscreen. And it's beautifully priced, too. ### 32. The Pigment Preventing SPF <ProductInset image="/content/beauty-style/skin-care/top-50-skincare-products/THE-PI…
-
-### [REVIEW] CLAIM (body) — The Sleepwear Brands You Need to Know About
-`content/beauty-style/style/the-sleepwear-brands-you-need-to-know-about/the-sleepwear-brands-you-need-to-know-about.mdx:72` · 2018-05-01 · Paige Murphy · +1 more in file
-
-Restricted term: **collagen** · matched: **Treat**
-
-> …o, so mum won’t be the only woman receiving a gift. *Complete your gift with:* **Essie’s Treat Love and Colour**. Both a nail care and colour, this nail lacquer contains strengthening…
-
-### [REVIEW] CLAIM (body) — The Facial Hub, Ascot
-`content/destinations/clinics/realskin-clinic-hamilton/realskin-clinic-hamilton.mdx:98` · 2026-01-15 · Elyse Goyen · +1 more in file
-
-Restricted term: **Collagen** · matched: **Healing**
-
-> …s/realskin-clinic-hamilton/psx_20170526_130807copy1-1.jpg) ## Collagen Therapy and Reiki Healing It's at this point a Dr Babor's Collagen Ampoule Concentrate is lathered onto my face, t…
-
-### [REVIEW] CLAIM (body) — Teresa Cutter, the Healthy Chef
-`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:154` · 2015-11-24 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Protein Powder** · matched: **Treat**
-
-> …h the Healthy Chef Protein Powder ![Teresa Keeps Lindt Dark Chocolate in Her Fridge for a Treat](/content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/img-13.jpg) ###### T…
-
-### [REVIEW] CLAIM (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:64` · 2021-11-01 · Karina Wharton · +1 more in file
-
-Restricted term: **sunscreen** · matched: **prevent**
-
-> …double the effectiveness of sunscreen. It protects the major skin structures and works to prevent pigmentation from developing, delay skin ageing processes and overall it brightens the co…
-
-### [REVIEW] CLAIM (body) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:44` · 2023-05-10 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **LED mask** · matched: **reverse**
-
-> …kind of like sunbathing but with the OPPOSITE effect. Yep, using LED masks actually help reverse the damage of the sun. How cool is that? <PullQuote>It’s kind of like sunbathing but wit…
-
-### [REVIEW] CLAIM (body) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
-`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:113` · 2025-05-14 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **red light therapy** · matched: **Healing**
-
-> …ht-therapy-infraredi-review/RedLight_Panel_Infraredi_SigourneyCantelo-1-1.jpg) ### Wound Healing & Immunity Used in clinics for years, red light has been proven to speed up recovery and…
 
 ### [REVIEW] CLAIM (body) — 7 Beauty Innovations to Avoid a Beach Disaster
 `content/beauty-style/beauty-tips/avoid-beach-disaster/avoid-beach-disaster.mdx:44` · 2013-12-27 · Ashley Ropati
@@ -1686,19 +1266,19 @@ Restricted term: **sunscreen** · matched: **prevent**
 
 > …sunscreen sheen with Tatcha Blotting Papers. Keeping excess oil mopped up will also help prevent summer breakouts. <NumberedSection number="2" title="Lighten your SPF load" /> Cover yo…
 
-### [REVIEW] CLAIM (body) — Benefits of Rice Water for Face – You Can DIY This Royal Beauty Treatment
-`content/beauty-style/beauty-tips/benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment/benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment.mdx:67` · 2020-09-30 · Kristina Zhou
+### [REVIEW] CLAIM (body) — Essential Beauty Products for This Wedding Season
+`content/beauty-style/beauty-tips/essential-beauty-products-for-this-wedding-season/essential-beauty-products-for-this-wedding-season.mdx:66` · 2023-09-18 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **preventing**
+Restricted term: **light therapy** · matched: **combat**
 
-> …ngredient in SK-II’s legendary beauty essence, known for boosting skin cell regeneration, preventing trans-epidermal water loss, and strengthening the skin barrier. The fermentation process…
+> …4280/) offers dual settings—red light to invigorate collagen production and blue light to combat breakout-inducing bacteria: essential when you’re wedding-bound. Yes, it is an investmen…
 
-### [REVIEW] CLAIM (body) — Bored of Your Deodorant? These Beauties Will Help Elevate Your Morning Routine.
-`content/beauty-style/beauty-tips/bored-of-your-deodorant-these-beauties-will-help-elevate-your-morning-routine/bored-of-your-deodorant-these-beauties-will-help-elevate-your-morning-routine.mdx:45` · 2022-04-13 · Tess Schlink
+### [REVIEW] CLAIM (body) — Miranda Kerr on Motherhood, Mornings and Meditation
+`content/beauty-style/beauty-tips/get-ready-with-miranda-kerr/get-ready-with-miranda-kerr.mdx:30` · 2017-11-16 · Rikki Hodge-Smith
 
-Restricted term: **capsule** · matched: **prevent**
+Restricted term: **supplement** · matched: **shown to**
 
-> …considering it. It smells fresh and zingy, and contains anti-microbial essential oils to prevent odour in the first place alongside jojoba oil to moisturise – especially good if you have…
+> …uted to her natural beauty, her dedication to a healthy, holistic lifestyle has certainly shown to be a fruitful pursuit - and one that has allowed her to build two widely admired brands -…
 
 ### [REVIEW] CLAIM (body) — Our Gift Guide (for Every Type of Beauty Lover)
 `content/beauty-style/beauty-tips/gift-guide-every-beauty-lover/gift-guide-every-beauty-lover.mdx:102` · 2018-12-04 · Tess Schlink
@@ -1707,19 +1287,12 @@ Restricted term: **Collagen** · matched: **treats**
 
 > …et with all your favourites for the year ahead. ## The Wellness Guru For the friend who treats their body like a veritable temple, this Holiday Glow Kit from The Beauty Chef will not d…
 
-### [REVIEW] CLAIM (body) — How to Repair Lashes Naturally: Our Expert-Approved Guide
-`content/beauty-style/beauty-tips/how-to-repair-lashes-naturally-our-expert-approved-guides/how-to-repair-lashes-naturally-our-expert-approved-guides.mdx:49` · 2021-03-23 · Kristina Zhou
+### [REVIEW] CLAIM (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:68` · 2021-09-21 · Zoe Briggs
 
-Restricted term: **vitamin B** · matched: **prevents**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …rting point for growth) and promotes hair regeneration. Abundant in antioxidants, it also prevents lash loss and damage, by forming a protective barrier to ward off free radicals. Caffeine…
-
-### [REVIEW] CLAIM (body) — How to Shop Like a Beauty Editor
-`content/beauty-style/beauty-tips/how-to-shop-like-a-beauty-editor-1/how-to-shop-like-a-beauty-editor-1.mdx:98` · 2016-06-28 · Sigourney Cantelo
-
-Restricted term: **Vitamin C** · matched: **scientifically proven**
-
-> …standing your skin type and how best to manage it. Learn the names of the things that are scientifically proven to address your specific concern. For example if you want exfoliation? Look for AHAs and…
+> …ht with the same NIVEA Naturally Good Micellar Wash with Organic Aloe Vera, which is very effective at removing all makeup (including eye makeup!), sunscreen and impurities from the day and…
 
 ### [REVIEW] CLAIM (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
 `content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:96` · 2021-09-21 · Zoe Briggs
@@ -1728,40 +1301,26 @@ Restricted term: **adaptogen** · matched: **boost immunity**
 
 > …he afternoons.* I’ve also been taking Superfeast Jing (an adaptogenic mushroom blend) to boost immunity and often pop a spoon of Superfeast Tremella (another adaptogenic mushroom used for hydra…
 
+### [REVIEW] CLAIM (body) — Mother's Day Treats for Every Mama
+`content/beauty-style/beauty-tips/mothers-day-treats-for-every-mama/mothers-day-treats-for-every-mama.mdx:75` · 2015-05-04 · Chrisanthi Kaliviotis
+
+Restricted term: **tonic** · matched: **treats**
+
+> …Beauty Chef’s tonics will keep her gleaming while Pana Chocolate’s rich, raw Mother’s Day treats will keep her sweet tooth in (healthy) check. To the damsels of downward dog, we raise ou…
+
+### [REVIEW] CLAIM (body) — Our Father's Day Gift Guide, as Approved by the Men of Beauticate
+`content/beauty-style/beauty-tips/our-fathers-day-gift-guide-as-approved-by-the-men-of-beauticate/our-fathers-day-gift-guide-as-approved-by-the-men-of-beauticate.mdx:74` · 2020-09-02 · Sigourney Cantelo
+
+Restricted term: **zinc** · matched: **repair**
+
+> …n Cream is designed to soothe sensitivity, being rich in copper and zinc sulfates to help repair compromised skins. Thibault appreciated its speedy absorption, which makes getting out th…
+
 ### [REVIEW] CLAIM (body) — The Art of Loving Yourself: A Valentine’s Day for Me
 `content/beauty-style/beauty-tips/the-art-of-loving-yourself-a-valentines-day-for-me/the-art-of-loving-yourself-a-valentines-day-for-me.mdx:61` · 2025-02-13 · Jayde Balderston
 
 Restricted term: **LED Mask** · matched: **treat**
 
 > …bly mess it up a little-but pour a glass of wine and laugh at myself in the process. I’ll treat my skin to a session with my [Qure LED Mask](https://www.qureskincare.com/SIGOURNEY57027)…
-
-### [REVIEW] CLAIM (body) — The Beauty World Can Officially Fix Your Hangover Seriously.
-`content/beauty-style/beauty-tips/the-beauty-world-can-officially-fix-your-hangover-seriously/the-beauty-world-can-officially-fix-your-hangover-seriously.mdx:40` · 2016-11-29 · Beauticate Editorial
-
-Restricted term: **elixir** · matched: **cures**
-
-> …tch this space. They’re not the only brand who are bringing us nifty hangover hiders and cures… Osmosis Skincare Harmoinzed Water (Hangover) is one that might be worth adding to your…
-
-### [REVIEW] CLAIM (body) — The Beauty World Can Officially Fix Your Hangover Seriously.
-`content/beauty-style/beauty-tips/the-beauty-world-can-officially-fix-your-hangover-seriously/the-beauty-world-can-officially-fix-your-hangover-seriously.mdx:40` · 2016-11-29 · Beauticate Editorial
-
-Restricted term: **elixir** · matched: **preventing**
-
-> …es like normal old H2O) apparently balances the body after one too many Christmas toasts, preventing hangovers (or rather, the headaches and nausea associated with the dehydration caused by…
-
-### [REVIEW] CLAIM (body) — The Best New Launches That Will Get You Excited About Beauty Again
-`content/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/the-best-new-launches-that-will-get-you-excited-about-beauty-again.mdx:38` · 2021-06-28 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **anti-inflammatory**
-
-> …ts are three very gentle yet super effective acids: mandelic; new-to-me Asiatic, which is anti-inflammatory and boosts collagen production; and lactobionic, the oxidised and therefore even gentler…
-
-### [REVIEW] CLAIM (body) — The Best New Launches That Will Get You Excited About Beauty Again
-`content/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/the-best-new-launches-that-will-get-you-excited-about-beauty-again.mdx:38` · 2021-06-28 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **boosts collagen**
-
-> …le yet super effective acids: mandelic; new-to-me Asiatic, which is anti-inflammatory and boosts collagen production; and lactobionic, the oxidised and therefore even gentler cousin of my all-tim…
 
 ### [REVIEW] CLAIM (body) — The LA Effect: What Beverly Hills Taught Our Style Editor About Dressing
 `content/beauty-style/beauty-tips/the-la-effect-beverly-hills-style-lessons/the-la-effect-beverly-hills-style-lessons.mdx:177` · 2026-07-21 · Kate Waterhouse
@@ -1770,61 +1329,19 @@ Restricted term: **Infrared** · matched: **fixes**
 
 > …y. There was a strong focus on feeling good from the inside out rather than chasing quick fixes." The most striking shift, she noticed, was in how personalised everything had become. "…
 
-### [REVIEW] CLAIM (body) — Beauty Products to Make Winter More Bearable – Sigourney's Edit
-`content/beauty-style/beauty-tips/winter-warmers-sigourneys-edit/winter-warmers-sigourneys-edit.mdx:83` · 2015-07-28 · Sigourney Cantelo
-
-Restricted term: **Multivitamin** · matched: **treating**
-
-> …ts – they warm on contact with water, so have the added benefit of heating the skin while treating it. This gritty scrub – which warms satisfyingly when you wet it – contains a mix of phys…
-
-### [REVIEW] CLAIM (body) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:40` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **healing**
-
-> …luminous skin. Considered a glass of water for the skin, it activates the skin’s natural healing process and stimulates collagen production. The Chanel injection contains Filorga: a coc…
-
-### [REVIEW] CLAIM (body) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:40` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **stimulates collagen**
-
-> …idered a glass of water for the skin, it activates the skin’s natural healing process and stimulates collagen production. The Chanel injection contains Filorga: a cocktail of 53 ingredients, includi…
-
 ### [REVIEW] CLAIM (body) — Could This Cult Treatment Fix Your Pigmentation?
-`content/beauty-style/cosmetic/could-this-cult-treatment-fix-your-pigmentation/could-this-cult-treatment-fix-your-pigmentation.mdx:82` · 2019-09-03 · Kristin Rawson
+`content/beauty-style/cosmetic/could-this-cult-treatment-fix-your-pigmentation/could-this-cult-treatment-fix-your-pigmentation.mdx:86` · 2019-09-03 · Kristin Rawson
 
-Restricted term: **sunscreen** · matched: **preventing**
+Restricted term: **sunscreen** · matched: **combat**
 
-> …at. ### Wear sunscreen Wearing at least SPF 30 sunscreen every day is a crucial step in preventing and treating hyperpigmentation. But one application isn't enough - you have to reapply, e…
-
-### [REVIEW] CLAIM (body) — Could This Cult Treatment Fix Your Pigmentation?
-`content/beauty-style/cosmetic/could-this-cult-treatment-fix-your-pigmentation/could-this-cult-treatment-fix-your-pigmentation.mdx:82` · 2019-09-03 · Kristin Rawson
-
-Restricted term: **sunscreen** · matched: **treating**
-
-> …unscreen Wearing at least SPF 30 sunscreen every day is a crucial step in preventing and treating hyperpigmentation. But one application isn't enough - you have to reapply, especially if…
-
-### [REVIEW] CLAIM (body) — Max RF – Fractional Radio Frequency Facial Review
-`content/beauty-style/cosmetic/max-laser-treatment-review/max-laser-treatment-review.mdx:62` · 2015-06-17 · Chrisanthi Kaliviotis
-
-Restricted term: **collagen** · matched: **healing**
-
-> …contract without overheating. This then creates a “trauma”, activating the natural wound-healing response in our skin which compels our cells to produce brand-spanking, sexy new collagen…
+> …dioxide. ### Use an antioxidant Worn daily, vitamin C and other antioxidants can help combat sun damage. Try [Douglas Pereira's Antioxidant Serum.](https://www.douglaspereiraskinheal…
 
 ### [REVIEW] CLAIM (body) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:36` · 2017-07-06 · Sigourney Cantelo
+`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:42` · 2017-07-06 · Sigourney Cantelo
 
-Restricted term: **Sunscreen** · matched: **cure**
+Restricted term: **Sunscreen** · matched: **effective**
 
-> …o our bodies and our skin and our face.” He also adds that prevention is better than any cure, so on that note… ## Daily Sun Protection Comes First <NumberedSection number="1" title…
-
-### [REVIEW] CLAIM (body) — The Turn-Back-Time Tweaks That Actually Work
-`content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:84` · 2017-07-06 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulates collagen**
-
-> …therapy (proven to be the most effective), an ultrasound treatment that tightens skin and stimulates collagen production over the next two to three months. <NumberedSection number="9" title="Play wi…
+> …in cancer) Joseph insists that the first step in any skincare routine should always be an effective sunscreen. ![44a2a19e13a2a035ecb4aa98bd3b5fd4](/content/beauty-style/cosmetic/the-turn-b…
 
 ### [REVIEW] CLAIM (body) — French Girl Hair: 6 Secrets from Those in the Know
 `content/beauty-style/hair/5-french-hair-secrets-for-effortlessly-cool-hair/5-french-hair-secrets-for-effortlessly-cool-hair.mdx:94` · 2024-05-22 · Kristina Zhou
@@ -1834,32 +1351,46 @@ Restricted term: **omega 3** · matched: **reducing inflammation**
 > …ates circulation and promotes healthier hair growth. Chamomile extract soothes the scalp, reducing inflammation and irritation. 3. [Leonor Greyl Huile de Palme](https://link.amazon/B081ornaI): Renowned…
 
 ### [REVIEW] CLAIM (body) — How to Achieve Glass Hair at Home
+`content/beauty-style/hair/glass-hair/glass-hair.mdx:72` · 2024-04-25 · Kristina Zhou
+
+Restricted term: **magnesium** · matched: **hair growth**
+
+> …e moisture and ![Xwq0sw](/content/beauty-style/beauty-tips/glass-hair/xWq0Sw.gif) boost hair growth. The gel also imparts a physical sheen and helps tame unruly locks giving a subtle straig…
+
+### [REVIEW] CLAIM (body) — How to Achieve Glass Hair at Home
 `content/beauty-style/hair/glass-hair/glass-hair.mdx:98` · 2024-04-25 · Kristina Zhou
 
 Restricted term: **magnesium** · matched: **prevent**
 
 > …protect the hair from free radicals. Topical application strengthen hair follicles, and prevent breakage, resulting in healthier, lustrous locks. Coconut milk: rich in minerals like ma…
 
-### [REVIEW] CLAIM (body) — What is Hair Botox and Does it Actually Work?
-`content/beauty-style/hair/hair-botox/hair-botox.mdx:44` · 2023-11-27 · Kristina Zhou
+### [REVIEW] CLAIM (body) — Our Expert-Approved Guide on How to Prevent Hair Loss
+`content/beauty-style/hair/how-to-prevent-hair-loss/how-to-prevent-hair-loss.mdx:45` · 2021-06-08 · Kristina Zhou
 
-Restricted term: **Collagen** · matched: **prevents**
+Restricted term: **supplement** · matched: **prevent**
 
-> …is the essential building block for hair structure. Considered a protective protein that prevents hair breakage, it helps rebuild and fortify the hair and increase luminosity. - Collagen…
+> …basil in your diet. ![Source: Instagram @Juliastegner](/content/beauty-style/hair/how-to-prevent-hair-loss/106036876_770515526821885_2187187436903532_n-1.jpg) <Caption>SOURCE: INSTAGRAM…
 
-### [REVIEW] CLAIM (body) — How to Ease an Angry Scalp
-`content/beauty-style/hair/how-to-ease-an-angry-scalp/how-to-ease-an-angry-scalp.mdx:78` · 2017-10-24 · Claudia De Berardinis
+### [REVIEW] CLAIM (body) — Our Expert-Approved Guide on How to Prevent Hair Loss
+`content/beauty-style/hair/how-to-prevent-hair-loss/how-to-prevent-hair-loss.mdx:51` · 2021-06-08 · Kristina Zhou
 
-Restricted term: **Tonic** · matched: **anti-inflammatory**
+Restricted term: **supplement** · matched: **prevent**
 
-> …n. If your skin is feeling more sensitive than usual, she recommends using a prescription anti-inflammatory steroid lotion (available from your dermo/doctor) under the oil. For weekly maintenance,…
+> …on> ## Know what you’re deficient in While hair supplements are often touted in ‘how to prevent hair loss’ articles, it’s important to understand what your body is actually lacking. Som…
 
-### [REVIEW] CLAIM (body) — How to Keep Your Hair Colour Fresh
-`content/beauty-style/hair/how-to-keep-your-hair-colour-fresh/how-to-keep-your-hair-colour-fresh.mdx:66` · 2017-05-24 · Samantha Blanchfield
+### [REVIEW] CLAIM (body) — 8 Ways to Quench Summer-Parched Tresses
+`content/beauty-style/hair/how-to-quench-thirsty-hair/how-to-quench-thirsty-hair.mdx:32` · 2014-03-21 · Ashley Ropati
 
-Restricted term: **sunscreen** · matched: **prevents**
+Restricted term: **supplement** · matched: **Repair**
 
-> …e dimension to be built into the hair, more natural colour starts coming through and this prevents the colour from looking heavy." If you’re spending a lot of time in the sun, don’t forget…
+> …ue remedies reveal all. Before all hope is lost, hair us out.* ## Professional Split-End Repair Serums ![ Image: Instagram @johnnyramirez1 ](/content/beauty-style/hair/how-to-quench-th…
+
+### [REVIEW] CLAIM (body) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:52` · 2026-02-05 · Sigourney Cantelo
+
+Restricted term: **Red Light Therapy** · matched: **hair growth**
+
+> …omises. ## Why We Decided to Try Red Light Therapy for Hair Thinning ![Qure Q-Renew LED hair growth helmet in use, showing the wireless design and adjustable fit](/content/beauty-style/hair…
 
 ### [REVIEW] CLAIM (body) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
 `content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:60` · 2026-02-05 · Sigourney Cantelo
@@ -1869,11 +1400,11 @@ Restricted term: **Red Light Therapy** · matched: **cures**
 > …hand, felt like the perfect guinea pig. That felt honest. So rather than chasing miracle cures or overhauling routines, we decided to add one variable and observe what happened. Calmly…
 
 ### [REVIEW] CLAIM (body) — Can Red Light Therapy Help Hair Thinning? What the Data (and Real Life) Suggests
-`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:117` · 2026-02-05 · Sigourney Cantelo
+`content/beauty-style/hair/red-light-therapy-hair-thinning/red-light-therapy-hair-thinning.mdx:202` · 2026-02-05 · Sigourney Cantelo
 
-Restricted term: **light therapy** · matched: **medical-grade**
+Restricted term: **red light therapy** · matched: **Hair Growth**
 
-> …roducts/hair-growth-helmet?snowball=SIGOURNEY57027)** combines red LED light therapy with medical-grade low-level laser therapy (LLLT). In simple terms: - LEDs deliver dispersed light across…
+> …air-thinning/website-feature-images-dec-9-1.png" brand="Qure Skincare" name="Q-Renew LLLT Hair Growth Helmet" url="https://www.qureskincare.com/SIGOURNEY57027" retailer="Qure" cover /> </Shop…
 
 ### [REVIEW] CLAIM (body) — The Best Italian Hair Products and Secrets You Need to Know
 `content/beauty-style/hair/the-best-italian-hair-products-and-secrets-you-need-to-know/the-best-italian-hair-products-and-secrets-you-need-to-know.mdx:75` · 2019-10-29 · Kristina Zhou
@@ -1882,26 +1413,33 @@ Restricted term: **zinc** · matched: **Treat**
 
 > …la our team keeps repurchasing, made with zinc to help maintain healthy hair from within. Treat it as the foundation. Every product here works harder on hair that is healthy to start wi…
 
-### [REVIEW] CLAIM (body) — I Got an Under-Eye Concealer Tattoo!
-`content/beauty-style/makeup/i-got-an-under-eye-concealer-tattoo/i-got-an-under-eye-concealer-tattoo.mdx:57` · 2024-04-22 · Kristina Zhou
+### [REVIEW] CLAIM (body) — Everything You Need in Your Gym Bag (That Isn't a Water Bottle)
+`content/beauty-style/makeup/gym-bag-essentials-that-arent-a-water-bottle/gym-bag-essentials-that-arent-a-water-bottle.mdx:62` · 2018-07-23 · Molly Gay
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **magnesium** · matched: **actually works**
 
-> …tion for the pigment to be injected. This mechanism is similar to microneedling and helps stimulate collagen production. The pigment is injected approximately 0.3mm under my epidermis using both gen…
+> …or a magnesium spray, and banish the post-sweat scent with an all natural deodorant (that actually works). _Story by Molly Gay. Photos by Dan Hilburn._
 
-### [REVIEW] CLAIM (body) — Permanent Under-Eye Concealer Tattoo: It's Now a Thing
-`content/beauty-style/makeup/permanent-under-eye-concealer/permanent-under-eye-concealer.mdx:45` · 2018-10-23 · Kristina Zhou
+### [REVIEW] CLAIM (body) — Six Products That Actually Changed Your Life
+`content/beauty-style/makeup/six-products-that-actually-changed-your-life/six-products-that-actually-changed-your-life.mdx:52` · 2017-08-02 · Claudia De Berardinis
 
-Restricted term: **collagen** · matched: **stimulates collagen**
+Restricted term: **Omega 3** · matched: **repair**
 
-> …to dispense the pigment provide skin-rejuvenating benefits, similar to microneedling: “It stimulates collagen and improves the quality of the skin,” she explains. In short, it actually can do your sk…
+> …mega 3 fatty acids making up the indulgent yet lightweight formula, skin will be in prime repair and restore mode come sleep time. “When you wake up your skin feels more radiant, and any…
 
-### [REVIEW] CLAIM (body) — The Eyelash Serums That Actually Work
-`content/beauty-style/makeup/the-eyelash-serums-that-actually-work/the-eyelash-serums-that-actually-work.mdx:76` · 2019-01-21 · Kristina Zhou
+### [REVIEW] CLAIM (body) — What Are the Best Nail Hardeners?
+`content/beauty-style/nails/what-are-the-best-nail-hardeners/what-are-the-best-nail-hardeners.mdx:42` · 2015-12-15 · Beauticate Editorial
 
-Restricted term: **vitamin ** · matched: **clinically proven**
+Restricted term: **supplement** · matched: **repair**
 
-> …ious lashes. ### Key Ingredients: Green tea contains EGCG, an antioxidant that has been clinically proven to promote hair growth and activate lazy hair cells. Meanwhile, vitamin B5 strengthens ha…
+> …bit.ly/1OATkE2). These contain an added dose of vitamins and minerals that help to build, repair and protect damaged nails- not to mention boost your hair and skin while they’re at it.…
+
+### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
+`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:36` · 2018-03-28 · Beauticate Editorial
+
+Restricted term: **magnesium** · matched: **detoxification**
+
+> …whole other array of beautifying nutrients. Sulfur and magnesium help the body’s natural detoxification processes, while high levels of flavonoids provide anti-inflammatory and immune-boosting…
 
 ### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
 `content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:36` · 2018-03-28 · Beauticate Editorial
@@ -1911,32 +1449,18 @@ Restricted term: **magnesium** · matched: **anti-inflammatory**
 > …help the body’s natural detoxification processes, while high levels of flavonoids provide anti-inflammatory and immune-boosting benefits. Cacao is also very energizing and great for your mood, in a…
 
 ### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
-`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:44` · 2018-03-28 · Beauticate Editorial
+`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:54` · 2018-03-28 · Beauticate Editorial
 
-Restricted term: **vitamin ** · matched: **prevent**
+Restricted term: **Vitamin A** · matched: **treats**
 
-> …kin repair damage. Its B-vitamins, trace minerals, and vitamin E content work together to prevent early signs of aging and boost cell rejuvenation. ![2](/content/beauty-style/skin-care/4…
-
-### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
-`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:52` · 2018-03-28 · Beauticate Editorial
-
-Restricted term: **Vitamin C** · matched: **fight acne**
-
-> …red wine is not only delicious, and seasonal, it’s rich in antioxidants and tannins that fight acne and slow down the aging process. Reservatrol is one of the magic compounds in red wine, w…
+> …wine is a must. ![Mulled Red Wine](/content/beauty-style/skin-care/4-skin-loving-easter-treats/3-1.jpg) <Caption>David Loftus</Caption> ### Carrot Cake with Greek Yogurt and Cream Ch…
 
 ### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
-`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:60` · 2018-03-28 · Beauticate Editorial
+`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:62` · 2018-03-28 · Beauticate Editorial
 
-Restricted term: **probiotic** · matched: **reduce inflammation**
+Restricted term: **probiotic** · matched: **treats**
 
-> …er vitamins that are excellent for eye health, while its high beta-carotene content helps reduce inflammation and support healing in skin. Carrots are also packed with fiber to help your body detox!…
-
-### [REVIEW] CLAIM (body) — 4 Skin-Loving Easter Treats
-`content/beauty-style/skin-care/4-skin-loving-easter-treats/4-skin-loving-easter-treats.mdx:60` · 2018-03-28 · Beauticate Editorial
-
-Restricted term: **probiotic** · matched: **healing**
-
-> …or eye health, while its high beta-carotene content helps reduce inflammation and support healing in skin. Carrots are also packed with fiber to help your body detox! An added bonus? The…
+> …t contributes to glowing skin! ![5](/content/beauty-style/skin-care/4-skin-loving-easter-treats/5-1.jpg) <Caption>Making Thyme for Health</Caption> Story By: [Zoe Brown](https://www.i…
 
 ### [REVIEW] CLAIM (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
 `content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:54` · 2017-05-24 · Beauticate Editorial
@@ -1946,25 +1470,11 @@ Restricted term: **Supplement** · matched: **treating**
 > …ts are a great way to manage symptoms. Although studies in the efficacy of supplements in treating eczema are in their infancy, research has shown that Omega 3 fish oil helps reduce inflam…
 
 ### [REVIEW] CLAIM (body) — New Year New Skin: 6 Quick Ways to a Glow Up
-`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:42` · 2024-01-30 · Sigourney Cantelo
+`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:82` · 2024-01-30 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **boosts collagen**
+Restricted term: **LED mask** · matched: **effective**
 
-> …of skin issues. You can kiss goodbye those annoying pigment spots and acne scars. It also boosts collagen and elastin production so over time your skin looks better too. It’s not painful, more li…
-
-### [REVIEW] CLAIM (body) — New Year New Skin: 6 Quick Ways to a Glow Up
-`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:58` · 2024-01-30 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulates collagen**
-
-> …m work double-time by pressing tiny holes in your skin (sounds scarier than it is!). This stimulates collagen and helps products soak in better. I love that you can do it yourself and it’s completely…
-
-### [REVIEW] CLAIM (body) — 8 Pampering Products to Add to Cart, Because You Probably Need a Treat Right Now
-`content/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now.mdx:48` · 2021-08-30 · Tess Schlink
-
-Restricted term: **vitamin ** · matched: **treat**
-
-> …nt/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/Laneige-1.png) If you skin is in need of a potent dose of hydration, the Ultra…
+> …aficionado, having now tested at least 8 at home devices and I found most of them really effective (generally you do get what you pay for). Straight after my burn situation the kind folks…
 
 ### [REVIEW] CLAIM (body) — Bathing Secrets: A Love Affair
 `content/beauty-style/skin-care/bathing-a-love-affair/bathing-a-love-affair.mdx:52` · 2024-05-16 · Sigourney Cantelo
@@ -1973,54 +1483,40 @@ Restricted term: **capsule** · matched: **treat**
 
 > …on <NumberedSection number="3" title="Grown up bath bombs" /> Brace yourself for a true treat-Ouai Chill Pills. These little bath bombs are like magic capsules that dissolve stress fa…
 
-### [REVIEW] CLAIM (body) — Beauty Boost Treatment: We Chat This Cult Favourite Facial
-`content/beauty-style/skin-care/beauty-boost-treatment-we-chat-this-cult-favourite-facial/beauty-boost-treatment-we-chat-this-cult-favourite-facial.mdx:39` · 2021-03-24 · Tess Schlink
+### [REVIEW] CLAIM (body) — The Best Vitamin C Serums in Australia, Tested and Ranked by Experts
+`content/beauty-style/skin-care/best-vitamin-c-serums-australia/best-vitamin-c-serums-australia.mdx:56` · 2024-03-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **boosts collagen**
+Restricted term: **magnesium** · matched: **effective**
 
-> …ciated with skin needling: needling creates microinjuries within the skin, which in turns boosts collagen production and can help refine skin texture. ## Does it suit all skins and who is it bes…
+> …sium ascorbyl phosphate, 3-O-ethyl ascorbic acid).** Correct pH.**L-ascorbic acid is only effective at pH 2.5–3.5. Above that and it won't penetrate. This is why so many budget formulas dis…
 
-### [REVIEW] CLAIM (body) — Beauty Enhanced: Introducing a Game-Changing Collagen Mask Innovation
-`content/beauty-style/skin-care/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation.mdx:116` · 2023-09-11 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:129` · 2026-03-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **clear breakout**
+Restricted term: **SPF50** · matched: **effective**
 
-> …eredSection number="2" title="Hydrating" /> Once my skin has settled down and we’re in a clear breakout state, it’s time to introduce the Hydrating Mask to soothe and calm my beauty regimen. T…
+> …rum SPF50+ with a dewy, skin-loving finish that never feels heavy. They're **gentle**, **effective** and **trustworthy** – even if they do leave that tell-tale sheen. This is where hats an…
 
-### [REVIEW] CLAIM (body) — Beauty Enhanced: Introducing a Game-Changing Collagen Mask Innovation
-`content/beauty-style/skin-care/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation/beauty-enhanced-introducing-a-game-changing-collagen-mask-innovation.mdx:132` · 2023-09-11 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:160` · 2026-03-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **fixes**
+Restricted term: **sunscreen** · matched: **Effective**
 
-> …ducing-a-game-changing-collagen-mask-innovation/Minenssey-Ecom10-1-1.jpg) I find that it fixes any dullness and leaves my skin more even-toned and beaming with beauty, as if lit from w…
-
-### [REVIEW] CLAIM (body) — Chanel Schooled Us on Pilates and Wellness
-`content/beauty-style/skin-care/chanel-schooled-us-on-pilates-and-wellness/chanel-schooled-us-on-pilates-and-wellness.mdx:64` · 2019-09-17 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **anti-inflammatory**
-
-> …Le Lift Sérum – Jacqueline suggests popping the herb into salads for its antioxidant and anti-inflammatory properties. Alfalfa sprouts make an appearance on the menu, mirroring the serum’s alfalfa…
-
-### [REVIEW] CLAIM (body) — Chemical Peels: Do You Need One?
-`content/beauty-style/skin-care/chemical-peels-do-you-need-one/chemical-peels-do-you-need-one.mdx:43` · 2020-03-03 · Yadira Galarza Cauchi
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …at the surface, improving the appearance and function of the skin. This process can also stimulate collagen, elastin and pigmentary lightening, ultimately resulting in fresher looking skin with eve…
+> …pray) Lightweight, quick, and far less confronting than cream. - **Mousse (Surprisingly Effective) – The Quick Flick Screen** This one feels like fun – which counts for a lot with kids.…
 
 ### [REVIEW] CLAIM (body) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
 `content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:50` · 2025-12-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **light therapy** · matched: **repair**
 
-> …triggering cellular repair and regeneration. Red light, in particular, has been shown to stimulate collagen production, reduce inflammation, improve skin tone and texture, and support overall skin…
+> …ure) works by delivering specific wavelengths of light into the skin, triggering cellular repair and regeneration. Red light is used for skin tone and texture. But the benefits don't st…
 
 ### [REVIEW] CLAIM (body) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
-`content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:50` · 2025-12-16 · Sigourney Cantelo
+`content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:54` · 2025-12-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **reduce inflammation**
+Restricted term: **infrared** · matched: **repair**
 
-> …regeneration. Red light, in particular, has been shown to stimulate collagen production, reduce inflammation, improve skin tone and texture, and support overall skin health. But the benefits don't…
+> …en linked to improved circulation, muscle recovery, reduced joint pain, and faster tissue repair – which is why athletes use it, longevity enthusiasts swear by it, and increasingly, wome…
 
 ### [REVIEW] CLAIM (body) — Cleopatra's Beauty Secret: The Benefits of Pearl Powder for Skin
 `content/beauty-style/skin-care/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin.mdx:34` · 2021-05-24 · Kristina Zhou
@@ -2036,61 +1532,12 @@ Restricted term: **Capsule** · matched: **healing**
 
 > …eaction. Not only did my skin not freak out, the capsules seemed to actually speed up the healing process. Within a day all the flakes had abated and my skin was feeling comfortable enoug…
 
-### [REVIEW] CLAIM (body) — Dr Dennis Gross on Why You Have to Exfoliate (and How to Do it Properly)
-`content/beauty-style/skin-care/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly.mdx:66` · 2021-04-05 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **get rid of**
-
-> …you have acne, and terrific for rosacea, because they help to normalise oil chemistry and get rid of bacteria. Most of all, they are helpful to boost stimulation of your own collagen, and I…
-
 ### [REVIEW] CLAIM (body) — Dry, Thirsty Skin? Try These 8 Derm-Approved Hydration Hacks
 `content/beauty-style/skin-care/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks/dry-thirsty-skin-try-these-8-derm-approved-hydration-hacks.mdx:82` · 2020-06-23 · Sigourney Cantelo
 
 Restricted term: **supplement** · matched: **prevent**
 
 > …sturising-cream-170g) – this is the perfect hydrator to use on both your face and body to prevent extreme dryness. ![Unnamed](/content/beauty-style/skin-care/dry-thirsty-skin-try-these-8…
-
-### [REVIEW] CLAIM (body) — How I Deal with Eczema – Sigourney’s Edit
-`content/beauty-style/skin-care/eczema-how-i-deal-with-it-sigourneys-edit-2/eczema-how-i-deal-with-it-sigourneys-edit-2.mdx:62` · 2018-05-15 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **heal**
-
-> …back to normal. A few scars remained but the beauty of young collagen is that even those heal with time. ![How Deal With Eczema Sigourney](/content/beauty-style/skin-care/eczema-how-…
-
-### [REVIEW] CLAIM (body) — Fix Freckles, Pimples and Wrinkles with a Trip to the Gym
-`content/beauty-style/skin-care/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym.mdx:40` · 2015-06-06 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **get rid of**
-
-> …ble to sort me out in three months. I’ve had IPL before and I love it – not only does it get rid of surface pigmentation like my Europe-induced freckles, it also kickstarts collagen and ela…
-
-### [REVIEW] CLAIM (body) — Get Glowing Skin with These 5 DIY Treatments
-`content/beauty-style/skin-care/get-glowing-skin-with-these-5-diy-treatments/get-glowing-skin-with-these-5-diy-treatments.mdx:132` · 2019-10-23 · Kristina Zhou
-
-Restricted term: **vitamin ** · matched: **healing**
-
-> …ull skin. With copious amounts of vitamin E, peaches are also excellent at nourishing and healing irritated skin. Plus antioxidant zeaxanthin aids in evening out skin tone. ![via Pintere…
-
-### [REVIEW] CLAIM (body) — Going Outside? Don’t Without Applying This.
-`content/beauty-style/skin-care/going-outside-dont-without-applying-this/going-outside-dont-without-applying-this.mdx:46` · 2017-09-20 · Sigourney Cantelo
-
-Restricted term: **Vitamin C** · matched: **prevent**
-
-> …to the elements. Vitamin C is one of the most widely tested and effective antioxidants to prevent cell breakdown due to pollution, smoking and even sun. To up your vitamin C reserves inte…
-
-### [REVIEW] CLAIM (body) — Going Outside? Don’t Without Applying This.
-`content/beauty-style/skin-care/going-outside-dont-without-applying-this/going-outside-dont-without-applying-this.mdx:84` · 2017-09-20 · Sigourney Cantelo
-
-Restricted term: **Vitamin C** · matched: **stimulates collagen**
-
-> …mps up Your Complexion, Too" /> Is there anything this little wonder can’t do? Vitamin C stimulates collagen production in the dermis, leading to plumper, fresher and more gorgeous skin. And – on cl…
-
-### [REVIEW] CLAIM (body) — How an Australian Skincare Brand is Giving Hollywood Its Glow
-`content/beauty-style/skin-care/how-an-australian-skincare-brand-is-giving-hollywood-its-glow/how-an-australian-skincare-brand-is-giving-hollywood-its-glow.mdx:93` · 2023-04-18 · Zoe Briggs
-
-Restricted term: **Vitamin ** · matched: **heal**
-
-> …o strengthen skin and help repair damage. Vitamin E and panthenol vitamin B5 help work to heal the skin, while hyaluronic acid helps to keep skin supple and smoothe out fine lines." !…
 
 ### [REVIEW] CLAIM (body) — How to (Easily) Fix Your Skin from Stress Damage
 `content/beauty-style/skin-care/how-stress-is-affecting-your-skin/how-stress-is-affecting-your-skin.mdx:38` · 2017-07-11 · Emily Algar
@@ -2107,95 +1554,32 @@ Restricted term: **MAGNESIUM** · matched: **treat**
 > …ogica Stress Positive Eye Lift A newbie hitting shelves, this product is specifically to treat the delicate skin around the eye area during times of stress. “Stress can affect the skin…
 
 ### [REVIEW] CLAIM (body) — How to Get the Most Out of Active Skincare
-`content/beauty-style/skin-care/how-to-get-the-most-out-of-active-skincare/how-to-get-the-most-out-of-active-skincare.mdx:40` · 2022-05-25 · Zoe Briggs
+`content/beauty-style/skin-care/how-to-get-the-most-out-of-active-skincare/how-to-get-the-most-out-of-active-skincare.mdx:46` · 2022-05-25 · Zoe Briggs
 
-Restricted term: **vitamin A** · matched: **scientifically proven**
+Restricted term: **sunscreen** · matched: **Repair**
 
-> …out? Usually, they are considered to be products which contain ingredients that have been scientifically proven to bring about actual change in the skin. These include acids (AHAs like glycolic and lac…
-
-### [REVIEW] CLAIM (body) — How to Prime Your Skin for Peri and Menopause
-`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:50` · 2024-10-16 · Sigourney Cantelo
-
-Restricted term: **Collagen** · matched: **Stimulate Collagen**
-
-> …pare our skin (and mind) for perimenopause? Joseph shares some essential steps:** ## 1\. Stimulate Collagen Now, Not Later. The gradual loss of collagen starts years before menopause, so addressin…
+> …which needs extra protection) to come to the surface. Ultraderm Skin Renew Active Night Repair ## What Matters Most? Some people can tolerate certain actives but not others, or can o…
 
 ### [REVIEW] CLAIM (body) — How to Prime Your Skin for Peri and Menopause
-`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:55` · 2024-10-16 · Sigourney Cantelo
+`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:93` · 2024-10-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulates collagen**
+Restricted term: **supplement** · matched: **effective**
 
-> …comfort. The results can last for 12–18 months. - Sculptra, another injectable treatment, stimulates collagen growth over time and is known for more subtle, gradual results. Sculptra contains poly-L-…
+> …tudies, however, have shown that when managed properly, bioidentical HRT is both safe and effective, offering benefits for both skin and overall well-being. Plant-based options like phytoe…
 
-### [REVIEW] CLAIM (body) — How to Prime Your Skin for Peri and Menopause
-`content/beauty-style/skin-care/how-to-prime-your-skin-for-peri-and-menopause/how-to-prime-your-skin-for-peri-and-menopause.mdx:95` · 2024-10-16 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — How to Stop Your Hair Getting Old
+`content/beauty-style/skin-care/how-to-stop-your-hair-getting-old/how-to-stop-your-hair-getting-old.mdx:70` · 2015-09-30 · Sigourney Cantelo
 
-Restricted term: **supplement** · matched: **balance hormones**
+Restricted term: **sunscreen** · matched: **prevent**
 
-> …T, plant-based options like phytoestrogens (found in soy, flaxseed, and legumes) can help balance hormones naturally. Herbal supplements like black cohosh and evening primrose oil may also provide…
-
-### [REVIEW] CLAIM (body) — How to Put Your Skin Into Rehab with Vitamin E
-`content/beauty-style/skin-care/how-to-put-your-skin-into-rehab-with-vitamin-e/how-to-put-your-skin-into-rehab-with-vitamin-e.mdx:38` · 2017-07-12 · Sigourney Cantelo
-
-Restricted term: **vitamin** · matched: **Treat**
-
-> …l result in a complete complexion meltdown.So… what to do when your skin is FREAKING out? Treat it with as much TLC as possible. Enter Vitamin E serum from Alpha-H’s Vitamin Profiling C…
-
-### [REVIEW] CLAIM (body) — How to Put Your Skin Into Rehab with Vitamin E
-`content/beauty-style/skin-care/how-to-put-your-skin-into-rehab-with-vitamin-e/how-to-put-your-skin-into-rehab-with-vitamin-e.mdx:44` · 2017-07-12 · Sigourney Cantelo
-
-Restricted term: **vitamin** · matched: **anti-inflammatory**
-
-> …n2.jpeg) A super-powered antioxidant, Vitamin E is a fat-soluble vitamin that creates an anti-inflammatory response in the skin – which is just what we need when our dermis is having a hissy fit.…
-
-### [REVIEW] CLAIM (body) — How to Put Your Skin Into Rehab with Vitamin E
-`content/beauty-style/skin-care/how-to-put-your-skin-into-rehab-with-vitamin-e/how-to-put-your-skin-into-rehab-with-vitamin-e.mdx:48` · 2017-07-12 · Sigourney Cantelo
-
-Restricted term: **Vitamin ** · matched: **heal**
-
-> …summer!) Speaking of which, Vitamin E is also great after UV exposure as it can actually heal sun-induced swelling and redness from a severe sunburn. In studies, it was found to reduc…
-
-### [REVIEW] CLAIM (body) — How to Shop for Skincare Like a Cosmetic Chemist
-`content/beauty-style/skin-care/how-to-shop-for-skincare-like-a-cosmetic-chemist/how-to-shop-for-skincare-like-a-cosmetic-chemist.mdx:94` · 2017-12-13 · Rikki Hodge-Smith
-
-Restricted term: **sunscreen** · matched: **prevents**
-
-> …ortant skincare product. “The most important skincare product is sunscreen. UV protection prevents both the potential to develop skin cancer as well as the acceleration of premature ageing…
-
-### [REVIEW] CLAIM (body) — Hypochlorous Acid: Why This Dermal Mist Has Gone Viral
-`content/beauty-style/skin-care/hypochlorous-acid-why-this-dermal-mist-has-gone-viral/hypochlorous-acid-why-this-dermal-mist-has-gone-viral.mdx:97` · 2025-04-25 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **heal**
-
-> …orkout: to prevent sweat-induced breakouts - On bug bites, scratches even eczema to help heal and disinfect - On pillowcases or masks: in between washes - In-flight: to keep skin ca…
-
-### [REVIEW] CLAIM (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:40` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **vitamin A** · matched: **medical-grade**
-
-> …depending on my mood and what my skin needs. Cosmeceuticals are formulated with active, medical-grade ingredients that penetrate deep into the skin, targeting specific concerns like fine line…
-
-### [REVIEW] CLAIM (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:110` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …ount of wrinkle-relaxing injections where needed, then a very fine wash of filler to help stimulate collagen and elastin and give a little volume to the cheeks, without creating that puffed-up look…
+> …ottle and spritzing your hair. Day to day, look for products that contain antioxidants to prevent cell degradation. Tresemmé Youth Boost Youth Correcting Essence contains three times the…
 
 ### [REVIEW] CLAIM (body) — Is it Safe to Use Retinol on Your Eye Area?
-`content/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/is-it-safe-to-use-retinol-on-your-eye-area.mdx:34` · 2020-05-04 · Yadira Galarza Cauchi
+`content/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/is-it-safe-to-use-retinol-on-your-eye-area.mdx:70` · 2020-05-04 · Yadira Galarza Cauchi
 
-Restricted term: **collagen** · matched: **boost collagen**
+Restricted term: **collagen** · matched: **repair**
 
-> …to delve in further. ## What is Retinol? Retinol is an ingredient that can effectively boost collagen production and in turn, help smooth fine lines and prevent wrinkles, making it a great in…
-
-### [REVIEW] CLAIM (body) — Is it Safe to Use Retinol on Your Eye Area?
-`content/beauty-style/skin-care/is-it-safe-to-use-retinol-on-your-eye-area/is-it-safe-to-use-retinol-on-your-eye-area.mdx:34` · 2020-05-04 · Yadira Galarza Cauchi
-
-Restricted term: **collagen** · matched: **prevent**
-
-> …nt that can effectively boost collagen production and in turn, help smooth fine lines and prevent wrinkles, making it a great ingredient to use around the eye area, Angelina tells us. “It…
+> …lar changes that lead to DNA synthesis and mitosis for cellular growth, proliferation and repair. ## Avoid Acids Altogether While retinol is a highly effective skin ingredient, Angelin…
 
 ### [REVIEW] CLAIM (body) — The One Thing Missing from Your Skincare Routine Isn't a Serum
 `content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx:63` · 2026-05-22 · Sigourney Cantelo
@@ -2204,12 +1588,33 @@ Restricted term: **infrared** · matched: **heal**
 
 > …ttle [**wellness pockets**](/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/) at home. Tiny infrastructure for decompression that I can actually access…
 
+### [REVIEW] CLAIM (body) — The One Thing Missing from Your Skincare Routine Isn't a Serum
+`content/beauty-style/skin-care/masks-for-stressed-skin/masks-for-stressed-skin.mdx:87` · 2026-05-22 · Sigourney Cantelo
+
+Restricted term: **Infrared** · matched: **effective**
+
+> …it. Heat opens pores. Clay draws everything out. The two together are genuinely the most effective ten-minute detox I've found. <ProductInset image="/content/beauty-style/skin-care/masks-…
+
 ### [REVIEW] CLAIM (body) — Move Over SPF. Your Skin Now Needs Environmental Protection.
 `content/beauty-style/skin-care/move-over-spf-your-skin-now-needs-environmental-protection/move-over-spf-your-skin-now-needs-environmental-protection.mdx:46` · 2017-02-16 · Sigourney Cantelo
 
 Restricted term: **Infrared** · matched: **prevents**
 
 > …ies. This is combined with hydrators and another protective active, Exo-P – a shield that prevents the penetration of those heavy metals, hydrocarbons and smog. It’s designed to be used af…
+
+### [REVIEW] CLAIM (body) — New Beauty Buys: Body
+`content/beauty-style/skin-care/new-beauty-buys-body/new-beauty-buys-body.mdx:50` · 2015-03-10 · Madeleine Boyd
+
+Restricted term: **probiotic** · matched: **repair**
+
+> …ked, probiotic drink. As the name suggests, it’s bursting with antioxidants that help to repair and rejuvenate and firm skin, fight free radicals and boost your skin’s overall radiance.…
+
+### [REVIEW] CLAIM (body) — Prep Your Skin for Your Most Glow-Worthy Winter Yet
+`content/beauty-style/skin-care/prep-your-skin-for-your-most-glow-worthy-winter-yet-2/prep-your-skin-for-your-most-glow-worthy-winter-yet-2.mdx:34` · 2018-06-11 · Tess Schlink
+
+Restricted term: **TONIC** · matched: **effective**
+
+> …f Pixi’s Glow Tonic – it does exactly what it says on the tin, plus it’s gentle and super effective. PIXI GLOW TONIC THE BEAUTY CHEF GLOW ADVANCED INNER BEAUTY POWDER ## Glow from th…
 
 ### [REVIEW] CLAIM (body) — Prep Your Skin for Your Most Glow-Worthy Winter Yet
 `content/beauty-style/skin-care/prep-your-skin-for-your-most-glow-worthy-winter-yet-2/prep-your-skin-for-your-most-glow-worthy-winter-yet-2.mdx:44` · 2018-06-11 · Tess Schlink
@@ -2225,26 +1630,26 @@ Restricted term: **probiotic** · matched: **boost collagen**
 
 > …lso have a microbiome that needs to be cared for. This cutting-edge ingredient even helps boost collagen production and improve oxygen uptake – it’s a bit of an MVP. ![Minenssey Vogue](/content…
 
-### [REVIEW] CLAIM (body) — Reader Review: Eye Creams
-`content/beauty-style/skin-care/reader-review-eye-creams/reader-review-eye-creams.mdx:64` · 2015-12-14 · Amy Mattes-Harris
+### [REVIEW] CLAIM (body) — The Best After Sun Care – Reader Review
+`content/beauty-style/skin-care/reader-review-after-sun-care/reader-review-after-sun-care.mdx:110` · 2016-02-03 · Beauticate Editorial
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …redient roster made it more than just a colourful gimmick: it includes copper peptides to stimulate collagen and elastin, and spin trap and alpha lipoic acid for protection against free radicals. Mo…
+> …because it’s so dry. No shampoo or conditioner I’ve used over the years has been quite as effective as this hard-working duo: the shampoo removes sunscreen, salt and chlorine residue while…
 
-### [REVIEW] CLAIM (body) — Reader Review: Facial Exfoliants
-`content/beauty-style/skin-care/reader-review-facial-exfoliants/reader-review-facial-exfoliants.mdx:86` · 2015-09-28 · Willa Zheng
+### [REVIEW] CLAIM (body) — Reader Review: Antioxidant Serums
+`content/beauty-style/skin-care/reader-review-antioxidant-serums/reader-review-antioxidant-serums.mdx:63` · 2015-11-09 · Lauren Kennedy
 
-Restricted term: **vitamin C** · matched: **get rid of**
+Restricted term: **sunscreen** · matched: **Repair**
 
-> …ose whose skin is a bit delicate to handle abrasive scrubs and for those who just want to get rid of bits of flaking skin. Peeling gel exfoliants lift dead skin like nobody’s business and ar…
+> …the elements. ## Best for a Splurge ### Elizabeth Arden PREVAGE Anti-Aging + Intensive Repair Daily Serum, $265 ![Elizabeth Arden Prevage Anti-Aging + Intensive Repair Daily Serum](/…
 
-### [REVIEW] CLAIM (body) — How a Healthy Skin Barrier Can Keep You Looking Young
-`content/beauty-style/skin-care/repair-your-skin-barrier/repair-your-skin-barrier.mdx:74` · 2018-11-28 · Yadira Galarza Cauchi
+### [REVIEW] CLAIM (body) — Reader Review: Antioxidant Serums
+`content/beauty-style/skin-care/reader-review-antioxidant-serums/reader-review-antioxidant-serums.mdx:65` · 2015-11-09 · Lauren Kennedy
 
-Restricted term: **vitamin ** · matched: **preventing**
+Restricted term: **sunscreen** · matched: **Repair**
 
-> …ds **niacinamide:** also known as vitamin B3, it stimulates the skin’s natural ceramides, preventing transepidermal water loss and boosting skin immunity. Long term use of this wonder ingred…
+> …ng + Intensive Repair Daily Serum, $265 ![Elizabeth Arden Prevage Anti-Aging + Intensive Repair Daily Serum](/content/beauty-style/skin-care/reader-review-antioxidant-serums/arden.png)…
 
 ### [REVIEW] CLAIM (body) — Sigourney's Edit – Summer Skincare
 `content/beauty-style/skin-care/sigourney-1/sigourney-1.mdx:70` · 2014-01-22 · Sigourney Cantelo
@@ -2267,40 +1672,40 @@ Restricted term: **Light Therapy** · matched: **Clear Skin**
 
 > …t a cellular level- blue light in particular destroys acne-causing bacteria. Exclusive to Clear Skin Care Clinics is Dr McCaffery’s [SGA treatment – which we road tested here](/beauty-style/…
 
-### [REVIEW] CLAIM (body) — Real Results: Beauticate Readers Trial Système Bio+ Oil Serum
-`content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/systeme-bio-plus-oil-serum-review.mdx:308` · 2026-04-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Skincare Success: My Eight-Week Transformation with Professional-Grade Products
+`content/beauty-style/skin-care/skincare-success-my-eight-week-transformation-with-professional-grade-products/skincare-success-my-eight-week-transformation-with-professional-grade-products.mdx:102` · 2023-09-29 · Sigourney Cantelo
 
-Restricted term: **Vitamin C** · matched: **anti-inflammatory**
+Restricted term: **Zinc** · matched: **Repair**
 
-> …rance-free and built around the ANTILEUKINE 6™ complex, which has documented soothing and anti-inflammatory properties. Those with a known sensitivity to Vitamin C should patch test first. **What…
+> …d the eye serum. My skin feels so nourished at this point that I often skip the Rich Skin Repair Moisturising Cream. In the mornings, however, I use the brand's iSolar Protect & Restore…
 
-### [REVIEW] CLAIM (body) — Real Results: Beauticate Readers Trial Système Bio+ Oil Serum
-`content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/systeme-bio-plus-oil-serum-review.mdx:312` · 2026-04-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Summer Style and Beauty Essentials – Sigourney's Edit
+`content/beauty-style/skin-care/summer-style-essentials/summer-style-essentials.mdx:108` · 2016-12-08 · Sigourney Cantelo
 
-Restricted term: **Vitamin C** · matched: **clinically proven**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …a known sensitivity to Vitamin C should patch test first. **What is ANTILEUKINE 6™?** A clinically proven active derived from French golden seaweed. Studies show it improves skin smoothness by 21…
+> …can’t wear hats, but they are the number one best protection against sun damage. WAY more effective than sunscreen. And there are so many gorgeous styles on the market now. I love this [Str…
 
-### [REVIEW] CLAIM (body) — Real Results: Beauticate Readers Trial Système Bio+ Oil Serum
-`content/beauty-style/skin-care/systeme-bio-plus-oil-serum-review/systeme-bio-plus-oil-serum-review.mdx:312` · 2026-04-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — The Best Cruelty-Free, Vegan Beauty Buys According to a Former Beauty Therapist
+`content/beauty-style/skin-care/the-best-cruelty-free-vegan-beauty-buys-according-to-a-former-beauty-therapist/the-best-cruelty-free-vegan-beauty-buys-according-to-a-former-beauty-therapist.mdx:38` · 2024-01-01 · Karina Wharton
 
-Restricted term: **Vitamin C** · matched: **Studies show**
+Restricted term: **Omega-3** · matched: **repair**
 
-> …What is ANTILEUKINE 6™?** A clinically proven active derived from French golden seaweed. Studies show it improves skin smoothness by 21%, reduces dehydration wrinkles by up to 9% in 56 days,…
+> …It's also a beautifully lightweight facial oil full of Omega-6 and Omega-3 fatty acids to repair a compromised barrier and soothe flaky skin; use on it's own for thirsty skin, or add a f…
 
-### [REVIEW] CLAIM (body) — The Black Friday Skin Deals You Can't Miss
-`content/beauty-style/skin-care/the-black-friday-skin-deals-you-cant-miss/the-black-friday-skin-deals-you-cant-miss.mdx:53` · 2024-11-28 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — The Best Night Creams – Reader Review
+`content/beauty-style/skin-care/the-best-night-creams-reader-review/the-best-night-creams-reader-review.mdx:129` · 2017-03-07 · Lucy Searle
 
-Restricted term: **collagen** · matched: **healing**
+Restricted term: **multivitamin** · matched: **repair**
 
-> …l, and since it creates a little trauma to the skin which also boosts the skin’s natural healing process and boosts collagen production. Stamping is preferable to dermarolling because it…
+> …extracts of beta glucan, milk thistle and folic acid, this cream is formulated as a night repair treatment. Enriched with essential ocean minerals and a potent dose of antioxidants, this…
 
-### [REVIEW] CLAIM (body) — The Black Friday Skin Deals You Can't Miss
-`content/beauty-style/skin-care/the-black-friday-skin-deals-you-cant-miss/the-black-friday-skin-deals-you-cant-miss.mdx:53` · 2024-11-28 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — The Best Night Creams – Reader Review
+`content/beauty-style/skin-care/the-best-night-creams-reader-review/the-best-night-creams-reader-review.mdx:129` · 2017-03-07 · Lucy Searle
 
-Restricted term: **collagen** · matched: **boosts collagen**
+Restricted term: **multivitamin** · matched: **repair**
 
-> …ates a little trauma to the skin which also boosts the skin’s natural healing process and boosts collagen production. Stamping is preferable to dermarolling because it doesn’t drag the skin, and…
+> …e of antioxidants, this is a great little multivitamin for the skin to help stimulate DNA repair and restructure skin. While I find the cream to be heavily perfumed, I love how it feels…
 
 ### [REVIEW] CLAIM (body) — The Black Friday Skin Deals You Can't Miss
 `content/beauty-style/skin-care/the-black-friday-skin-deals-you-cant-miss/the-black-friday-skin-deals-you-cant-miss.mdx:63` · 2024-11-28 · Sigourney Cantelo
@@ -2312,79 +1717,79 @@ Restricted term: **LED Mask** · matched: **prevents**
 ### [REVIEW] CLAIM (body) — The French Girl Summer Skin Secrets I Live by – Sigourney’s Edit
 `content/beauty-style/skin-care/the-french-girl-summer-skin-secrets-i-live-by-sigourneys-edit/the-french-girl-summer-skin-secrets-i-live-by-sigourneys-edit.mdx:44` · 2017-09-12 · Sigourney Cantelo
 
-Restricted term: **SPF 50** · matched: **prevent**
+Restricted term: **SPF 50** · matched: **combats**
 
-> …so applying a product with high sun protection (SPF 30 or more) daily is the best way to prevent ageing down the track,” says Joss. ## 3\. They Skip the Heavy Foundation in Favour of a…
+> …s really light weight and non-greasy. It also stimulates the skin’s natural defences and combats premature ageing – being an SPF 50 – which is extremely high for a BB. “I believe anti-ag…
 
-### [REVIEW] CLAIM (body) — Thin is in – The New Approach to Layering Skincare
-`content/beauty-style/skin-care/the-new-approach-to-layering-skincare/the-new-approach-to-layering-skincare.mdx:68` · 2019-03-14 · Zoe Briggs
+### [REVIEW] CLAIM (body) — The Products I Travelled Europe with – Sigourney's Edit
+`content/beauty-style/skin-care/the-products-i-traveled-europe-with/the-products-i-traveled-europe-with.mdx:76` · 2018-12-12 · Sigourney Cantelo
 
-Restricted term: **vitamin C** · matched: **prevent**
+Restricted term: **light Therapy** · matched: **Repair**
 
-> …tweight yet soothingly creamy, so it’s great even on the most sensitive peepers and won’t prevent the final steps in your routine from working if you want to bring them around the eye are…
+> …AID=QFGLnEolOWg&ranSiteID=QFGLnEolOWg-Qz.yKADimhCserlzOQVKOQ) ###### Dermalogica Barrier Repair [![Aesop Ginger Flight Therapy Roll On](/content/beauty-style/skin-care/the-products-i-tr…
 
-### [REVIEW] CLAIM (body) — The New Skin Miracles Mum Needs in Her Life
-`content/beauty-style/skin-care/the-new-s/the-new-s.mdx:104` · 2017-04-24 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — These Are the Essentials Your Skin Needs This Winter
+`content/beauty-style/skin-care/these-are-the-essentials-your-skin-needs-this-winter/these-are-the-essentials-your-skin-needs-this-winter.mdx:110` · 2024-03-31 · Sigourney Cantelo
 
-Restricted term: **Vitamin ** · matched: **preventing**
+Restricted term: **sunscreen** · matched: **worth it**
 
-> …g oils, shea butter and antioxidant Vitamin E to hydrate while minimising crepey skin and preventing more age spots from appearing. It also looks beautiful and doesn’t leave palms too greasy…
+> …mful UV rays, but it also helps control hyperpigmentation. It’s a little pricey, but it’s worth it for the added benefits. If I’m mostly desk bound then I’m happy to stick with a luminisi…
 
-### [REVIEW] CLAIM (body) — The Single Ingredient I Know Will Keep Me Looking Young – Sigourney’s Edit
-`content/beauty-style/skin-care/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit.mdx:42` · 2017-05-17 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — These Are the Essentials Your Skin Needs This Winter
+`content/beauty-style/skin-care/these-are-the-essentials-your-skin-needs-this-winter/these-are-the-essentials-your-skin-needs-this-winter.mdx:130` · 2024-03-31 · Sigourney Cantelo
 
-Restricted term: **Vitamin A** · matched: **gets rid of**
+Restricted term: **spf50** · matched: **combat**
 
-> …peeding up cell turnover and boosting collagen production; it helps brighten the skin and gets rid of age spots; it shrinks large pores, refining skin tone and texture; it thickens the skin,…
+> …olar Serum ## Dial G for Glow Now, let’s talk about some treatments that have helped me combat dull winter skin. On the high tech end of the spectrum, I recently tried the Picosure Las…
 
-### [REVIEW] CLAIM (body) — The Single Ingredient I Know Will Keep Me Looking Young – Sigourney’s Edit
-`content/beauty-style/skin-care/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit.mdx:42` · 2017-05-17 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
+`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:110` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **heal**
+Restricted term: **sunscreen** · matched: **prevent**
 
-> …shrinks large pores, refining skin tone and texture; it thickens the skin, helping it to heal faster AND it can even be used to manage acne and breakouts. Yep, it basically does every…
+> …ily sunscreen (yes, I know I harp on), thorough cleansing and antioxidants to protect and prevent premature ageing. ### 11. The 'Clean' Sunscreen <ProductInset image="/content/beauty-st…
 
-### [REVIEW] CLAIM (body) — The Single Ingredient I Know Will Keep Me Looking Young – Sigourney’s Edit
-`content/beauty-style/skin-care/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit/the-single-ingredient-i-know-will-keep-me-looking-young-sigourneys-edit.mdx:48` · 2017-05-17 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
+`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:248` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **Vitamin A** · matched: **prevent**
+Restricted term: **sunscreen** · matched: **effective**
 
-> …## When to Start Using Vitamin A ### It’s perfect for use in your late twenties to help prevent fine lines setting in and well into your thirties and forties to reverse any skin stress,…
+> …anser-236ml.html" side="right" /> This cleanser is gloriously quenching yet satisfyingly effective at whisking away dirt, makeup and sunscreen. And it's beautifully priced, too. ### 32. T…
 
-### [REVIEW] CLAIM (body) — The Skincare Ingredients That Will Fade Redness for Good
-`content/beauty-style/skin-care/the-skincare-ingredients-that-will-fade-redness-for-good/the-skincare-ingredients-that-will-fade-redness-for-good.mdx:69` · 2018-04-30 · Beauticate Editorial
+### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
+`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:250` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **Vitamin B** · matched: **healing**
+Restricted term: **sunscreen** · matched: **Preventing**
 
-> …tially promotes the growth of human connective tissue. Commonly used to assist with wound healing but is also highly effective for general skin regeneration, particularly when combined wi…
+> …g away dirt, makeup and sunscreen. And it's beautifully priced, too. ### 32. The Pigment Preventing SPF <ProductInset image="/content/beauty-style/skin-care/top-50-skincare-products/THE-PI…
 
-### [REVIEW] CLAIM (body) — The Under $25 Budget Buys We’re Using on Repeat
-`content/beauty-style/skin-care/the-under-25-budget-buys-were-using-on-repeat/the-under-25-budget-buys-were-using-on-repeat.mdx:36` · 2020-08-25 · Tess Schlink
+### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
+`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:252` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **vitamin ** · matched: **heal**
+Restricted term: **sunscreen** · matched: **PREVENTING**
 
-> …duct fits that bill perfectly. It contains 25% urea, a hydrating superstar that will help heal dry feet, as well as nourishing vitamin E and exfoliating AHAs. I don’t feel like my feet…
+> …<ProductInset image="/content/beauty-style/skin-care/top-50-skincare-products/THE-PIGMENT-PREVENTING-SPF.png" name="Mesoestetic Mesoprotech Melan 130 Pigment Control" price="$76.50" brand="M…
 
-### [REVIEW] CLAIM (body) — This Pharmacy Night Routine Gets My Big Tick of Approval
-`content/beauty-style/skin-care/this-pharmacy-night-routine-gets-my-big-tick-of-approval/this-pharmacy-night-routine-gets-my-big-tick-of-approval.mdx:48` · 2020-08-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Top 50 Skincare Products for Every Age
+`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:254` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **reverse**
+Restricted term: **sunscreen** · matched: **prevent**
 
-> …double blind study found that it creates similar healthy responses on the skin, which can reverse appearance of photodamage, stimulate collagen, and iron out fine lines. It’s recently be…
+> …rs I've interviewed have recommended this as a sunscreen that not only protects but helps prevent new pigment forming. Great for people with melasma and recurring pigmentation. ### 33. T…
 
-### [REVIEW] CLAIM (body) — This Pharmacy Night Routine Gets My Big Tick of Approval
-`content/beauty-style/skin-care/this-pharmacy-night-routine-gets-my-big-tick-of-approval/this-pharmacy-night-routine-gets-my-big-tick-of-approval.mdx:48` · 2020-08-12 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — What Are Skin Boosters and Do I Need One?
+`content/beauty-style/skin-care/what-is-a-skin-booster-and-why-do-i-need-one/what-is-a-skin-booster-and-why-do-i-need-one.mdx:70` · 2015-10-07 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **Probiotic** · matched: **effective**
 
-> …eates similar healthy responses on the skin, which can reverse appearance of photodamage, stimulate collagen, and iron out fine lines. It’s recently been cropping up in a variety of high-end skinca…
+> …obiotics in Skincare: The Evidence "Promising evidence suggests that oral probiotics are effective for the management of acne, eczema, wound healing and ageing of the skin due to sun damag…
 
-### [REVIEW] CLAIM (body) — Designer Vagina: Do You Really Need Skincare Down There?
-`content/beauty-style/skin-care/vagina-skincare/vagina-skincare.mdx:64` · 2023-09-07 · Kristina Zhou
+### [REVIEW] CLAIM (body) — What Are Skin Boosters and Do I Need One?
+`content/beauty-style/skin-care/what-is-a-skin-booster-and-why-do-i-need-one/what-is-a-skin-booster-and-why-do-i-need-one.mdx:70` · 2015-10-07 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **Probiotic** · matched: **wound**
 
-> …let gel plasma is what your practitioner will use – as this contains growth factors which stimulate collagen production. When injected into the vagina, it helps tighten the vagina, gradually boost v…
+> …evidence suggests that oral probiotics are effective for the management of acne, eczema, wound healing and ageing of the skin due to sun damage,” she says. ![Dermalogicaskinrenewal](/…
 
 ### [REVIEW] CLAIM (body) — What Are Skin Boosters and Do I Need One?
 `content/beauty-style/skin-care/what-is-a-skin-booster-and-why-do-i-need-one/what-is-a-skin-booster-and-why-do-i-need-one.mdx:70` · 2015-10-07 · Sigourney Cantelo
@@ -2394,60 +1799,32 @@ Restricted term: **Probiotic** · matched: **healing**
 > …nce suggests that oral probiotics are effective for the management of acne, eczema, wound healing and ageing of the skin due to sun damage,” she says. ![Dermalogicaskinrenewal](/content/…
 
 ### [REVIEW] CLAIM (body) — Is This the Best Value LED Mask on the Market?
-`content/beauty-style/skin-care/what-is-the-best-value-led-mask-on-the-market-qure/what-is-the-best-value-led-mask-on-the-market-qure.mdx:34` · 2024-05-14 · Sigourney Cantelo
+`content/beauty-style/skin-care/what-is-the-best-value-led-mask-on-the-market-qure/what-is-the-best-value-led-mask-on-the-market-qure.mdx:42` · 2024-05-14 · Sigourney Cantelo
 
-Restricted term: **LED Mask** · matched: **treat**
+Restricted term: **Infrared** · matched: **combat**
 
-> …lpable. Unlike many other LED masks I’ve tried, which often feel more like a chore than a treat, the Qure mask seems like a breath of fresh air. Designed for the time-poor among us (and…
-
-### [REVIEW] CLAIM (body) — What London Taught Me About Beauty – Sigourney's Edit
-`content/beauty-style/skin-care/what-london-taught-me-about-beauty-sigourneys-edit/what-london-taught-me-about-beauty-sigourneys-edit.mdx:46` · 2019-03-27 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …b-arctic temperatures (-30 degrees celcius to be exact), which help boost circulation and stimulate collagen production. Consultant Clinic is another Brit Girl hot spot and provides subtle and convi…
+> …Red, Deep Red, Infrared, Amber, and Blue lights. It’s perfect for those of us looking to combat fine lines and enhance skin’s firmness through boosted collagen and elastin production.…
 
 ### [REVIEW] CLAIM (body) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
-`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:38` · 2017-11-22 · Sigourney Cantelo
+`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:54` · 2017-11-22 · Sigourney Cantelo
 
-Restricted term: **Vitamin ** · matched: **prevent**
+Restricted term: **Vitamin C** · matched: **Repair**
 
-> …with some hardworking actives. You should be using Vitamin C daily in the morning to help prevent UV and environmental damage, Vitamin B morning and/or evening and, E and A at night – dep…
+> …more effective than the oral form in terms of skin care. ## Vitamin E for Emergency Skin Repair <NumberedSection number="4" title="E is for Emergency Repair" /> If your skin is having…
 
 ### [REVIEW] CLAIM (body) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
-`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:38` · 2017-11-22 · Sigourney Cantelo
+`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:56` · 2017-11-22 · Sigourney Cantelo
 
-Restricted term: **Vitamin B** · matched: **treat**
+Restricted term: **Vitamin C** · matched: **Repair**
 
-> …in needs most that day. It’s also party season (and gift-giving time – you should totally treat yourself!) you need to give your dermis all the TLC you can. To help you decode your skin…
+> …itamin E for Emergency Skin Repair <NumberedSection number="4" title="E is for Emergency Repair" /> If your skin is having a total meltdown due to sensitivity, sunburn, acne or rosacea…
 
-### [REVIEW] CLAIM (body) — Why You Really Need Vitamin B in Your Life
-`content/beauty-style/skin-care/why-you-really-need-vitamin-b-in-your-life/why-you-really-need-vitamin-b-in-your-life.mdx:115` · 2017-04-19 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
+`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:58` · 2017-11-22 · Sigourney Cantelo
 
-Restricted term: **vitamin** · matched: **clinically proven**
+Restricted term: **sunscreen** · matched: **proven to**
 
-> …s Pigmentation Rikki Hodge 4. It helps with pigmentation… Niacinamide has also been clinically proven to lighten pigmentation. It does this by stopping the transfer of melanin to the skin cel…
-
-### [REVIEW] CLAIM (body) — Why You Really Need Vitamin B in Your Life
-`content/beauty-style/skin-care/why-you-really-need-vitamin-b-in-your-life/why-you-really-need-vitamin-b-in-your-life.mdx:125` · 2017-04-19 · Sigourney Cantelo
-
-Restricted term: **vitamin** · matched: **preventing**
-
-> …ee radicals, which, in turn, has an antioxidant effect, increasing cell communication and preventing further damage. ![ capturing the nutritious fare ](/content/beauty-style/skin-care/why-y…
-
-### [REVIEW] CLAIM (body) — Why You Really Need Vitamin B in Your Life
-`content/beauty-style/skin-care/why-you-really-need-vitamin-b-in-your-life/why-you-really-need-vitamin-b-in-your-life.mdx:135` · 2017-04-19 · Sigourney Cantelo
-
-Restricted term: **vitamin** · matched: **Treat**
-
-> …your-life/img-13.jpg) sigourney and michelle doherty, Alpha-H founder ## Can Vitamin B Treat Acne? Rikki Hodge 5. Oh, and acne, too. What can’t it do? A study in the Internatio…
-
-### [REVIEW] CLAIM (body) — Why You Need Probiotics in Your Skincare Routine
-`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:59` · 2018-05-14 · Yadira Galarza Cauchi
-
-Restricted term: **probiotic** · matched: **reduce inflammation**
-
-> …into our skincare could do us some good, and result in a host of benefits- the ability to reduce inflammation and sebum content, that in turn helps to reduce acne. ELIZABETH ARDEN SUPERSTART PROBIOT…
+> …I’ll use a few drops to bolster the skins response and calm everything down. Vitamin E is proven to reduce inflammatory damage, which is a catalyst to extrinsic skin ageing. So not only are…
 
 ### [REVIEW] CLAIM (body) — Why You Need Probiotics in Your Skincare Routine
 `content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:69` · 2018-05-14 · Yadira Galarza Cauchi
@@ -2456,12 +1833,12 @@ Restricted term: **probiotic** · matched: **preventing**
 
 > …obioticSleepingMask.jpg) ## Beyond Acne: Anti-Ageing Skin Benefits Besides fighting and preventing acne, "the application of topical probiotics has been shown to increase the production of…
 
-### [REVIEW] CLAIM (body) — Wildcrafted Organics, Australian Botanical Skincare That Doesn’t Compromise on Science
-`content/beauty-style/skin-care/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science/wildcrafted-organics-australian-botanical-skincare-that-doesnt-compromise-on-science.mdx:72` · 2023-07-05 · Zoe Briggs
+### [REVIEW] CLAIM (body) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:69` · 2018-05-14 · Yadira Galarza Cauchi
 
-Restricted term: **collagen** · matched: **clinically proven**
+Restricted term: **probiotic** · matched: **shown to**
 
-> …oncentration of a wild plum extract made up of three different Australian plums, which is clinically proven to increase collagen and hyaluronic acid levels in the skin.” ![Already accustomed to st…
+> …ts Besides fighting and preventing acne, "the application of topical probiotics has been shown to increase the production of ceramides when applied for more than seven days, which can enh…
 
 ### [REVIEW] CLAIM (body) — Merse Wellness, Osborne Park
 `content/destinations/bathhouses/merse-wellness-osborne-park/merse-wellness-osborne-park.mdx:51` · 2026-01-15 · Sigourney Cantelo
@@ -2470,54 +1847,33 @@ Restricted term: **infrared** · matched: **healing**
 
 > …here the technology lives. Compression boots. LED in four colours. Massage guns and sound healing on a loop. It is a lot of recovery under one roof. You will leave loose. Come early. It f…
 
-### [REVIEW] CLAIM (body) — Clear Skincare, Clarence Street Sydney
-`content/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/clear-skincare-clinic-clarence-street-sydney.mdx:84` · 2026-01-15 · Beauticate Editorial
+### [REVIEW] CLAIM (body) — Spa by Jw, Jw Marriott Gold Coast
+`content/destinations/spas-retreats/spa-by-jw-jw-marriott-gold-coast/spa-by-jw-jw-marriott-gold-coast.mdx:121` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **Light Therapy** · matched: **stimulate collagen**
+Restricted term: **Collagen** · matched: **Repair**
 
-> …ividual skin concerns - **LED Light Therapy**, targeted wavelengths to calm inflammation, stimulate collagen or combat acne - **Microdermabrasion**, mechanical exfoliation for a smoother, more refin…
+> …sa Megan’s full product range, available to take home. From the Metamorphosis Re:Gen Cell Repair Oil with Bakuchiol to the soothing Collagen Boosting Gel, the products promise to continu…
 
-### [REVIEW] CLAIM (body) — La Belle Peau, North Perth
-`content/destinations/clinics/la-belle-peau-north-perth/la-belle-peau-north-perth.mdx:81` · 2026-01-15 · Lucy Searle
+### [REVIEW] CLAIM (body) — Ultimate Holiday Essentials, Sigourney’s Edit
+`content/destinations/travel/ultimate-holiday-essentials-sigourneys-edit/ultimate-holiday-essentials-sigourneys-edit.mdx:79` · 2017-01-05 · Sigourney Cantelo
 
-Restricted term: **light therapy** · matched: **treating**
+Restricted term: **Omega 3** · matched: **Repair**
 
-> …apy (which did sting a little) aimed at reducing facial hair, lightening pigmentation and treating broken capillaries. Kim then placed a layer of numbing cream to my face and left me to re…
+> …ck a big hydration punch. A good natural option is [Vanessa Megan Intensive Organic Night Repair Oil](http://vanessamegan.com/intensive-organic-night-repair-oil/), it’s rich in Omega 3s…
 
-### [REVIEW] CLAIM (body) — The Youth Lab, Perth
-`content/destinations/clinics/the-youth-lab-perth/the-youth-lab-perth.mdx:82` · 2026-01-15 · Lucy Searle
+### [REVIEW] CLAIM (body) — Ultimate Holiday Essentials, Sigourney’s Edit
+`content/destinations/travel/ultimate-holiday-essentials-sigourneys-edit/ultimate-holiday-essentials-sigourneys-edit.mdx:79` · 2017-01-05 · Sigourney Cantelo
 
-Restricted term: **Light Therapy** · matched: **healing**
+Restricted term: **Omega 3** · matched: **repair**
 
-> …Healite. The LED light enhances the body’s natural cellular recovery, including improving healing time, promoting skin rejuvenation and subsiding active acne if present. ![Lab](/content/…
+> …Megan Intensive Organic Night Repair Oil](http://vanessamegan.com/intensive-organic-night-repair-oil/), it’s rich in Omega 3s to help repair any sun exposure and it’s also great when you…
 
-### [REVIEW] CLAIM (body) — Youth Lab, Joondalup
-`content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx:93` · 2026-01-15 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Ultimate Holiday Essentials, Sigourney’s Edit
+`content/destinations/travel/ultimate-holiday-essentials-sigourneys-edit/ultimate-holiday-essentials-sigourneys-edit.mdx:79` · 2017-01-05 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulates collagen**
+Restricted term: **Omega 3** · matched: **repair**
 
-> …thlab.com.au/treatment/healite-ii-led-perth/) which is an 830 nanometre yellow light that stimulates collagen and the healing function in the skin. It feels like lying in the sun but with a host of b…
-
-### [REVIEW] CLAIM (body) — Youth Lab, Joondalup
-`content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx:93` · 2026-01-15 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **healing**
-
-> …te-ii-led-perth/) which is an 830 nanometre yellow light that stimulates collagen and the healing function in the skin. It feels like lying in the sun but with a host of benefits and zero…
-
-### [REVIEW] CLAIM (body) — Osborn House, Bundanoon
-`content/destinations/spas-retreats/osborn-house-bundanoon/osborn-house-bundanoon.mdx:42` · 2026-01-15 · Sigourney Cantelo
-
-Restricted term: **infrared** · matched: **medical-grade**
-
-> …rn House wears it well. The spa runs the full sequence. Sauna, steam room, infrared, then medical-grade LED to finish the skin off properly. Outside, a twenty-five metre heated pool and a jacuz…
-
-### [REVIEW] CLAIM (body) — Winter Weekend Escape to Bells at Killcare, Sigourney’s Edit
-`content/destinations/travel/winter-weekend-escape-to-bells-at-killcare-sigourneys-edit/winter-weekend-escape-to-bells-at-killcare-sigourneys-edit.mdx:83` · 2018-07-25 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **fixes**
-
-> …with its vitamin C, niacinamide and Aussie actives Kakadu Plum and Tasmania Pepper Leaf, fixes my tired and dehydrated complexion in the most enjoyable of ways. In winter I always pack…
+> …tp://vanessamegan.com/intensive-organic-night-repair-oil/), it’s rich in Omega 3s to help repair any sun exposure and it’s also great when you’re flying. You’ll also need a cleanser – I…
 
 ### [REVIEW] CLAIM (body) — in:HAUS Wellness, Byron Bay
 `content/destinations/wellness/inhaus-wellness-byron-bay/inhaus-wellness-byron-bay.mdx:43` · 2026-01-15 · Sigourney Cantelo
@@ -2525,6 +1881,20 @@ Restricted term: **vitamin C** · matched: **fixes**
 Restricted term: **infrared** · matched: **healing**
 
 > …otherapy panel glowing away in the two-person infrared sauna out back. Barre, yoga, sound healing and compression boots round it out. It sits in the Arts and Industrial Estate, where Byro…
+
+### [REVIEW] CLAIM (body) — Cate Blanchett
+`content/interviews/actors-presenters/cate-blanchett-actress-and-director/cate-blanchett-actress-and-director.mdx:39` · 2015-11-19 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **hair growth**
+
+> …s a big fan of YSL Touche Eclatfor concealing and that she takes Viviscal supplements for hair growth and [Lipocils Lash Enhancer](http://mecca.com.au/talika/lipocils-expert-lash-enhancer/I-0…
+
+### [REVIEW] CLAIM (body) — James Tobin, TV Presenter
+`content/interviews/actors-presenters/james-tobin-tv-presenter/james-tobin-tv-presenter.mdx:53` · 2015-05-25 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **actually works**
+
+> …d a number of incidents where squeeze things have opened up in my bag and it sucks. Julia actually works for Elizabeth Arden, she gave me the Eight Hour Cream for my lips to use after bike ridin…
 
 ### [REVIEW] CLAIM (body) — Olympia Valance, Actress
 `content/interviews/actors-presenters/olympia-valance-actress/olympia-valance-actress.mdx:72` · 2017-05-11 · Chrisanthi Kaliviotis
@@ -2540,40 +1910,19 @@ Restricted term: **magnesium** · matched: **heal**
 
 > …hanged my life. I also take magnesium, enterocare and zinc before I go to sleep. It helps heal, relax and calm me and is great for the skin. Oh, and I use coconut oil for everything!"…
 
+### [REVIEW] CLAIM (body) — Ali Cotton, First Base
+`content/interviews/creatives/ali-cotton-designer/ali-cotton-designer.mdx:63` · 2017-11-23 · Rikki Hodge-Smith
+
+Restricted term: **protein powder** · matched: **Repair**
+
+> …time I quickly exfoliate every two or three days before I jump out. I then use Osmosis MD Repair before putting Embryolisse Lait-Creme Concentre Moisturiser on my face, followed by an or…
+
 ### [REVIEW] CLAIM (body) — Beck Wadworth, the Hyper-Organised Stationery Designer on Ways She’s Simplifying Her Life
 `content/interviews/creatives/beck-wadworth/beck-wadworth.mdx:74` · 2020-11-17 · Zoe Briggs
 
 Restricted term: **light therapy** · matched: **prevent**
 
 > …all about ageing gracefully. To date I haven’t had any injectables or other work done to prevent wrinkles!_ I’m a very realistic and open-minded person, so I never say never, but at the…
-
-### [REVIEW] CLAIM (body) — Emily Berlach, the Most Laidback Fashion Designer on the Planet
-`content/interviews/creatives/emily-berlach-the-most-laidback-fashion-designer-on-the-planet/emily-berlach-the-most-laidback-fashion-designer-on-the-planet.mdx:82` · 2022-11-24 · Zoe Briggs
-
-Restricted term: **SPF 50** · matched: **treats**
-
-> …ydration Booster") and an Ultra Violette SPF 50+ each day. If I’m shopping for additional treats, I’m drawn to [Kat Burki](https://www.mecca.com/en-au/kat-burki/) and [Tatcha](https://ww…
-
-### [REVIEW] CLAIM (body) — Georgina Austin, Cable Melbourne
-`content/interviews/creatives/georgina-austin-designer/georgina-austin-designer.mdx:61` · 2016-07-28 · Emily Algar
-
-Restricted term: **collagen** · matched: **stimulate collagen**
-
-> …onsists of a triple exfoliation to deep cleanse; Cutera’s Laser Genesis to non-invasively stimulate collagen, refine pores and help heal breakouts; a light chemical peeling treatment to brighten and…
-
-### [REVIEW] CLAIM (body) — Georgina Austin, Cable Melbourne
-`content/interviews/creatives/georgina-austin-designer/georgina-austin-designer.mdx:61` · 2016-07-28 · Emily Algar
-
-Restricted term: **collagen** · matched: **heal**
-
-> …eanse; Cutera’s Laser Genesis to non-invasively stimulate collagen, refine pores and help heal breakouts; a light chemical peeling treatment to brighten and hydrate; and a custom mask…
-
-### [REVIEW] CLAIM (body) — Jessica Burdon, Writer
-`content/interviews/creatives/jess-burdon-writer/jess-burdon-writer.mdx:73` · 2015-04-30 · Jessica Burdon
-
-Restricted term: **vitamin ** · matched: **reverse**
-
-> …y face. Solar Recover but it's my favorite thing ever. It's all natural ingredients like reverse osmosis filtered water, natural vitamin E, lavender and sesame. It feels as refreshing as…
 
 ### [REVIEW] CLAIM (body) — Natalia Kindler on Leaving Corporate Life for the World of Wellness
 `content/interviews/creatives/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness.mdx:118` · 2020-12-01 · Zoe Briggs
@@ -2589,12 +1938,26 @@ Restricted term: **light therapy** · matched: **heals**
 
 > …com/) in Double Bay at least once a week for a good boost of light therapy. It literally heals any breakout about three times faster and helps to energise my skin. It’s also a really e…
 
+### [REVIEW] CLAIM (body) — Stephanie Davies, Founder La Boheme Lifestyle
+`content/interviews/creatives/stephanie-davies-founder-la-boheme-lifestyle/stephanie-davies-founder-la-boheme-lifestyle.mdx:118` · 2023-08-02 · Sigourney Cantelo
+
+Restricted term: **vitamin ** · matched: **hair growth**
+
+> …reatments, obsessed with all things scalp care. I use WELLBEL as a vitamin supplement for hair growth and health and once a week do a scalp scrub, my fave is followed by their scalp serum… I…
+
 ### [REVIEW] CLAIM (body) — Terri Vinson, Synergie Skin
 `content/interviews/creatives/terri-vinson-cosmetic-chemist/terri-vinson-cosmetic-chemist.mdx:123` · 2015-11-03 · Sigourney Cantelo
 
 Restricted term: **supplement** · matched: **anti-inflammatory**
 
 > …d to supplement our diet. My fave antioxidant is green tea and I also take curcumin as an anti-inflammatory, chlorophyll, spirulina, zinc, esterified vitamin C for immunity and antioxidant protecti…
+
+### [REVIEW] CLAIM (body) — Terri Vinson, Synergie Skin
+`content/interviews/creatives/terri-vinson-cosmetic-chemist/terri-vinson-cosmetic-chemist.mdx:123` · 2015-11-03 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **immunity**
+
+> …curcumin as an anti-inflammatory, chlorophyll, spirulina, zinc, esterified vitamin C for immunity and antioxidant protection, omega oil blend and brahmi for memory. ![A Handful of Her Fa…
 
 ### [REVIEW] CLAIM (body) — Terri Vinson, Synergie Skin
 `content/interviews/creatives/terri-vinson-cosmetic-chemist/terri-vinson-cosmetic-chemist.mdx:136` · 2015-11-03 · Sigourney Cantelo
@@ -2617,13 +1980,6 @@ Restricted term: **vitamin c** · matched: **cure**
 
 > …always using leafy greens as a base. I take also liquid oxygen (it’s an amazing hangover cure) and vitamin c everyday. ## Jodhi’s Yoga and Exercise Routine ### I’m not a gym girl……
 
-### [REVIEW] CLAIM (body) — Alyce Tran, the Entrepreneur Who Will Persuade You to Bring Colour Into Your Home
-`content/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home.mdx:140` · 2022-09-21 · Zoe Briggs
-
-Restricted term: **light therapy** · matched: **get rid of**
-
-> …le is my slight pigmentation. You don’t notice it when I wear makeup, but I would love to get rid of it so then I can be super confident going makeup free <EditorNote title="The quiet fix f…
-
 ### [REVIEW] CLAIM (body) — Carla Oates & the Beauty Chef
 `content/interviews/founders/carla-oates-the-beauty-chef/carla-oates-the-beauty-chef.mdx:88` · 2017-02-08 · Rikki Hodge-Smith
 
@@ -2638,19 +1994,12 @@ Restricted term: **Magnesium** · matched: **Studies show**
 
 > …. A lot of people are deficient in magnesium so it’s a great mineral to supplement with. Studies show that it is more effective if you apply topically than to ingest it. I buy a magnesium oil…
 
-### [REVIEW] CLAIM (body) — Dr Kate Jameson, Youth Lab
-`content/interviews/founders/dr-kate-jameson-cosmetic-physician/dr-kate-jameson-cosmetic-physician.mdx:39` · 2018-08-09 · Zoe Briggs
+### [REVIEW] CLAIM (body) — Inside the Heavenly Home of Kiwi Cult Brand Founder, Emma Lewisham
+`content/interviews/founders/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder.mdx:150` · 2020-09-29 · Zoe Briggs
 
-Restricted term: **vitamin ** · matched: **eliminate**
+Restricted term: **infrared** · matched: **detoxification**
 
-> …is Affirm by Cosmedix, which is enriched with vitamin E, resveratrol and peptides to help eliminate the effects of environmental damage, and give a firmer and healthier looking complexion.…
-
-### [REVIEW] CLAIM (body) — Dr Kate Jameson, Youth Lab
-`content/interviews/founders/dr-kate-jameson-cosmetic-physician/dr-kate-jameson-cosmetic-physician.mdx:95` · 2018-08-09 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **treating**
-
-> …olish for your skin. I always try to get one before special events. I believe strongly in treating my skin at a cellular level with the aim to regenerate and repair. Long term collagen sti…
+> …y face, but I do get massages often, which I think are super important for our health and detoxification. I love Spring in Auckland for spa treatments, and [HANA](http://hana.nz/), which has [in…
 
 ### [REVIEW] CLAIM (body) — Libby Boxall, on How Getting Gorgeous Hair Led to Partnering with a Kardashian
 `content/interviews/founders/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian.mdx:122` · 2021-07-06 · Zoe Briggs
@@ -2666,19 +2015,33 @@ Restricted term: **capsule** · matched: **anti-inflammatory**
 
 > …nd therefore is readily utilised and absorbed. It's the best internal moisturizer, highly anti-inflammatory (more so than fish oil), and great for your skin. Also, I make sure to have B vitamins an…
 
-### [REVIEW] CLAIM (body) — Natalie Fitch, Natalie Marie Jewellery
-`content/interviews/founders/natalie-fitch-natalie-marie-jewellery/natalie-fitch-natalie-marie-jewellery.mdx:101` · 2019-04-24 · Zoe Briggs
+### [REVIEW] CLAIM (body) — Shelley Barrett, ModelCo
+`content/interviews/founders/shelley-barrett-entrepreneur-3/shelley-barrett-entrepreneur-3.mdx:144` · 2015-10-13 · Sigourney Cantelo
 
-Restricted term: **supplement** · matched: **treat**
+Restricted term: **SUPPLEMENT** · matched: **IMMUNITY**
 
-> …s, which make for easy weeknight dinners and leftover lunches. Dark chocolate is my go-to treat, along with a glass of red wine. THESEEKE CLEANSE LIQUID WASH ## Natalie's Holistic Wel…
+> …ks. SHELLEY EATS A HIGH PROTEIN LOW CARB DIET AND TRAINS REGULARLY SUPPLEMENTS KEEP HER IMMUNITY IN CHECK ### I am literally a supplement queen ![Shelley Barrett home kitchen and lifes…
 
-### [REVIEW] CLAIM (body) — The Twenty-Something Entrepreneur Causing Mass Supermarket Sellouts
-`content/interviews/founders/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts.mdx:58` · 2020-09-02 · Zoe Briggs
+### [REVIEW] CLAIM (body) — Teresa Cutter, the Healthy Chef
+`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:154` · 2015-11-24 · Sigourney Cantelo
 
-Restricted term: **Collagen** · matched: **treat**
+Restricted term: **Protein Powder** · matched: **Treat**
 
-> …something-entrepreneur-causing-mass-supermarket-sellouts/Jaimee-2.jpg) To give my skin a treat, I love visiting Amelia at Room 9 in Auckland for an Osmosis Organic Medi Facial. I fall…
+> …h the Healthy Chef Protein Powder ![Teresa Keeps Lindt Dark Chocolate in Her Fridge for a Treat](/content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/img-13.jpg) ###### T…
+
+### [REVIEW] CLAIM (body) — Teresa Cutter, the Healthy Chef
+`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:156` · 2015-11-24 · Sigourney Cantelo
+
+Restricted term: **Protein Powder** · matched: **Treat**
+
+> …-nutritionist-1/img-13.jpg) ###### Teresa Keeps Lindt Dark Chocolate in Her Fridge for a Treat ### For lunch, I mostly have a large salad… made with leafy greens, sunflower seeds, pum…
+
+### [REVIEW] CLAIM (body) — The Glamorous Cosmetic Injector You’ll Want to Fly to Perth to See
+`content/interviews/founders/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see/the-glamorous-cosmetic-injector-youll-want-to-fly-to-perth-to-see.mdx:48` · 2020-07-01 · Zoe Briggs
+
+Restricted term: **Elixir** · matched: **Repair**
+
+> …orks! I cleanse with the Lipid-Balance Cleanser again and follow with my beloved Cellular Repair Elixir by The Secret. This product seriously takes care of everything: pores, pigmentatio…
 
 ### [REVIEW] CLAIM (body) — Trinny Woodall Shares the Most Important Thing About Ageing
 `content/interviews/founders/trinny-woodall-shares-the-most-important-thing-about-ageing/trinny-woodall-shares-the-most-important-thing-about-ageing.mdx:174` · 2020-07-15 · Tess Schlink
@@ -2708,12 +2071,12 @@ Restricted term: **protein powder** · matched: **treat**
 
 > …love dairy though, but just before [the show] I like to keep it all clean foods. My first treat will be a regular latte, with full cream milk and probably some French fries or something…
 
-### [REVIEW] CLAIM (body) — Miranda Kerr, Model & Entrepreneur
-`content/interviews/models/miranda-kerr-model/miranda-kerr-model.mdx:34` · 2015-10-22 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Monika Radulovic, Model
+`content/interviews/models/monika-radulovic-model/monika-radulovic-model.mdx:115` · 2019-01-10 · Zoe Briggs
 
-Restricted term: **tonic** · matched: **treat**
+Restricted term: **infrared** · matched: **detoxification**
 
-> …n the Big Day. I’ve known Miranda since I interviewed her many years ago so it was a real treat when we were finally able to organise a shoot in her amazing Malibu home and get a peek i…
+> …-6.jpeg) This includes using my infrared sauna for half an hour most days to assist with detoxification, and going weekly to Koa Recovery for cryotherapy, which helps with muscle recovery and t…
 
 ### [REVIEW] CLAIM (body) — The Top Model Using Her Platform to Promote Body Positivity and Eco Awareness
 `content/interviews/models/the-top-model-using-her-platform-to-promote-body-positivity-and-eco-awareness/the-top-model-using-her-platform-to-promote-body-positivity-and-eco-awareness.mdx:60` · 2020-07-08 · Zoe Briggs
@@ -2728,6 +2091,13 @@ Restricted term: **sunscreen** · matched: **treat**
 Restricted term: **sunscreen** · matched: **reverse**
 
 > …Well, here I am at ‘later’, and spending a small fortune on lasers and skin treatments to reverse as much sun damage as I can. Please just use the sunscreen, no matter how old you are! !…
+
+### [REVIEW] CLAIM (body) — Jessica Sepel, Nutritionist & Health Blogger
+`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:76` · 2014-07-24 · Madeleine Boyd
+
+Restricted term: **probiotic** · matched: **repairs**
+
+> …r used to do a mask of mashed strawberries because they’re really high in vitamin C which repairs collagen in the skin. Another really good mask for reducing puffiness is mashed avocado b…
 
 ### [REVIEW] CLAIM (body) — Kayla Itsines, Fitness Entrepreneur
 `content/interviews/tastemakers/kayla-itsines-fitness-entrepreneur/kayla-itsines-fitness-entrepreneur.mdx:72` · 2019-01-31 · Zoe Briggs
@@ -2751,25 +2121,53 @@ Restricted term: **magnesium** · matched: **healing**
 > …not a chemical rinse,” says Remonda. “Magnesium pools are softer on the skin, packed with healing properties, and better for kids or people with sensitivities.” She likens the experience…
 
 ### [REVIEW] CLAIM (body) — >-
+`content/living/interiors/magnesium-pools-wellness-design-australia/magnesium-pools-wellness-design-australia.mdx:104` · 2025-07-04 · Sigourney Cantelo
+
+Restricted term: **magnesium** · matched: **worth it**
+
+> …ar basis. Yes, it’s pricier than chlorine or salt, but the beauty and health benefits are worth it. ## Cold Plunges Beyond Elite Athletes <NumberedSection number="3" title="Cold Plunges…
+
+### [REVIEW] CLAIM (body) — >-
 `content/living/interiors/magnesium-pools-wellness-design-australia/magnesium-pools-wellness-design-australia.mdx:143` · 2025-07-04 · Sigourney Cantelo
 
 Restricted term: **magnesium** · matched: **heals**
 
 > …underfoot-all of it contributes to a sensory experience,” she says. “You want a pool that heals, not just cools.” ![Shower1](/content/beauty-style/beauty-tips/magnesium-pools-wellness-…
 
+### [REVIEW] CLAIM (body) — Cosmetics Animal Testing: Ethical Beauty Scores Global Wins
+`content/living/sustainability/ethical-beauty-scores-global-wins/ethical-beauty-scores-global-wins.mdx:32` · 2021-03-15 · Kristina Zhou
+
+Restricted term: **sunblock** · matched: **hair growth**
+
+> …dye, hair perm, sunblock, and deodorants, as well as products for hair and spot removal, hair growth, and whitening. China once required all cosmetics products to undergo ‘pre-market’ and ‘…
+
 ### [REVIEW] CLAIM (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:42` · 2021-11-01 · Karina Wharton
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:64` · 2021-11-01 · Karina Wharton
 
-Restricted term: **vitamin C** · matched: **anti-inflammatory**
+Restricted term: **sunscreen** · matched: **prevent**
 
-> …top picks for beautiful skin: “It helps to reduce signs of ageing and pigmentation and is anti-inflammatory, which means it is well-tolerated by most skin types, especially those with sensitive ski…
+> …double the effectiveness of sunscreen. It protects the major skin structures and works to prevent pigmentation from developing, delay skin ageing processes and overall it brightens the co…
 
-### [REVIEW] CLAIM (body) — All About Emface: A New Non-Invasive Beauty Treatment
-`content/sigourneys-edit/edit/is-emface-the-new-needle-free-alternative-to-fillers/is-emface-the-new-needle-free-alternative-to-fillers.mdx:38` · 2024-02-23 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — These Are the Beauty Brands Working Towards Better Packaging
+`content/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging/these-are-the-beauty-brands-working-towards-better-packaging.mdx:216` · 2021-08-25 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **stimulate collagen**
+Restricted term: **supplement** · matched: **combat**
 
-> …High-Intensity Facial Electrical Stimulation (HIFES) combined with radiofrequency to help stimulate collagen and improve facial muscle tone. The treatment involves adhesive applicators placed on ke…
+> …itane](https://au.loccitane.com/caring-for-sight.html) have also partnered with UNICEF to combat childhood blindness through vitamin A supplementation projects in Bolivia, Myanmar and Pa…
+
+### [REVIEW] CLAIM (body) — Welcome to the New Beauticate and Our Shop
+`content/sigourneys-edit/beauticate-shop-launch/beauticate-shop-launch.mdx:42` · 2026-06-18 · Sigourney Cantelo
+
+Restricted term: **LED mask** · matched: **worth it**
+
+> …w what I would actually choose. The LED mask I'd actually buy. The candle that's actually worth it. The fragrance that's been sitting on my bathroom shelf for three years, not because I fo…
+
+### [REVIEW] CLAIM (body) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
+`content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:71` · 2021-06-15 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **repair**
+
+> …antioxidants help to scavenge UV induced free radicals. While at night they help the skin repair the day’s damage. So I straddled the advice and went for a top and tail approach of morni…
 
 ### [REVIEW] CLAIM (body) — Why Facial Oil is My Holy Grail
 `content/sigourneys-edit/edit/why-facial-oil-is-my-holy-grail/why-facial-oil-is-my-holy-grail.mdx:46` · 2020-10-21 · Sigourney Cantelo
@@ -2781,7 +2179,7 @@ Restricted term: **supplement** · matched: **prevent**
 ### [REVIEW] CLAIM (body) — Why You Need to Try This Antioxidant-Pumped Range
 `content/sigourneys-edit/edit/why-you-need-to-try-this-antioxidant-pumped-range/why-you-need-to-try-this-antioxidant-pumped-range.mdx:62` · 2020-09-23 · Sigourney Cantelo
 
-Restricted term: **vitamin C** · matched: **prevent**
+Restricted term: **sunscreen** · matched: **prevent**
 
 > …ful antioxidant is the ultimate last step in your daily skincare routine and essential to prevent cellular breakdown and collagen degradation. ![Am 29 of](/sigourneys-edit/edit/why-you-n…
 
@@ -2791,6 +2189,13 @@ Restricted term: **vitamin C** · matched: **prevent**
 Restricted term: **supplement** · matched: **healing**
 
 > …yond green powders and supplements, into the harder chapters, and the long, brave work of healing. ## The Day She Let Go of the Scales Jess is candid about the years she spent at war wi…
+
+### [REVIEW] CLAIM (body) — Lindsay Price on Healing Childhood Trauma, Life with Curtis Stone and Her Hollywood Journey
+`content/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo.mdx:59` · 2025-04-09 · Sigourney Cantelo
+
+Restricted term: **infrared** · matched: **hair growth**
+
+> …ashify](https://lashify.com/) underlash segments, and castor oil, which she swears by for hair growth, lashes, brows, digestion and melasma. A special thank you to [Dermalogica](/vodcast/epi…
 
 ### [REVIEW] CLAIM (body) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
 `content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:32` · 2025-08-28 · Sigourney Cantelo
@@ -2806,75 +2211,40 @@ Restricted term: **infrared** · matched: **healing**
 
 > …urneys-edit/red-light-therapy-infraredi-review/) ## 1\. Creating a Sacred Space For me, healing starts with environment. I’ve curated a corner of my home that feels intentional, soothin…
 
+### [REVIEW] CLAIM (body) — Trinny Woodall on Purpose and Picking Yourself Back Up
+`content/vodcast/episodes/trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up/trinny-woodall-on-purpose-pressure-and-picking-yourself-back-up.mdx:86` · 2026-04-02 · Sigourney Cantelo
+
+Restricted term: **elixir** · matched: **repair**
+
+> …g, every day, for thirty-five years - [Take Back Time](https://www.trinnylondon.com), the repair elixir she keeps in every handbag - Bunny hops for lymphatic drainage, facial fascia mass…
+
 ### [REVIEW] CLAIM (body) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:40` · 2023-05-10 · Sigourney Cantelo
+`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:38` · 2023-05-10 · Sigourney Cantelo
 
-Restricted term: **LED mask** · matched: **boost collagen**
+Restricted term: **LED Mask** · matched: **effective**
 
-> …ates the skin at different depths, stimulating cell growth and repair. The light helps to boost collagen production, reduce inflammation, and improve skin texture. I’ll admit, when I first saw…
+> …K-based company that specializes in innovative beauty and wellness devices that are safe, effective, and easy to use at home. Their product range includes everything from anti-aging devices…
 
 ### [REVIEW] CLAIM (body) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:40` · 2023-05-10 · Sigourney Cantelo
+`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:57` · 2023-05-10 · Sigourney Cantelo
 
-Restricted term: **Light therapy** · matched: **reduce inflammation**
+Restricted term: **light therapy** · matched: **shown to**
 
-> …depths, stimulating cell growth and repair. The light helps to boost collagen production, reduce inflammation, and improve skin texture. I’ll admit, when I first saw these masks I found them a littl…
-
-### [REVIEW] CLAIM (body) — Cryotherapy, the Beauty Trend You Need to Have on Your Radar
-`content/wellness/biohacking/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar.mdx:44` · 2021-04-27 · Tess Schlink
-
-Restricted term: **collagen** · matched: **reduce inflammation**
-
-> …ypically around 6 degrees Celsius) to promote collagen and elastin, reduce pore size, and reduce inflammation (including improving rosacea and acne-prone skin),” shares Jacqui. “Immediately post-faci…
-
-### [REVIEW] CLAIM (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:65` · 2025-09-05 · Jayde Balderston
-
-Restricted term: **LED Mask** · matched: **clinically proven**
-
-> …-decolletage-led-device/website-images-29.png) This hands-free, at-home device uses [two clinically proven wavelengths](https://qureskincare.com/pages/led-mask-offer-2?snowball=SIGOURNEY57027) - r…
-
-### [REVIEW] CLAIM (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:65` · 2025-09-05 · Jayde Balderston
-
-Restricted term: **infrared** · matched: **treat**
-
-> …-mask-offer-2?snowball=SIGOURNEY57027) - red light (633nm) and near-infrared (830nm) - to treat fine lines, pigmentation, redness, and loss of firmness. It sits comfortably around your…
-
-### [REVIEW] CLAIM (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:73` · 2025-09-05 · Jayde Balderston
-
-Restricted term: **infrared** · matched: **Studies show**
-
-> …that requires zero effort. It doesn't hurt, there's no downtime, and it's non-invasive. Studies show it can improve firmness, reduce wrinkles, diminish pigmentation, and soothe inflammation.…
+> …forking out for facials and cosmetic treatments. We know that LED light therapy has been shown to have numerous benefits for the skin and cells, including improving skin texture and tone,…
 
 ### [REVIEW] CLAIM (body) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
-`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:115` · 2025-05-14 · Sigourney Cantelo
+`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:95` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **infrared** · matched: **reduce inflammation**
+Restricted term: **red light therapy** · matched: **repair**
 
-> …& Immunity Used in clinics for years, red light has been proven to speed up recovery and reduce inflammation in skin trauma and post-op healing. ### Longevity & Cellular Resilience Emerging data su…
+> …cle Recovery Wavelengths in the **660–850nm** range reduce joint pain, accelerate muscle repair, and boost blood flow. ![Minimalist self-care corner featuring an Infraredi red light th…
 
 ### [REVIEW] CLAIM (body) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
-`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:160` · 2025-05-14 · Sigourney Cantelo
+`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:108` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **red light therapy** · matched: **medical-grade**
+Restricted term: **Red light therapy** · matched: **shown to**
 
-> …egging for. And if you’re ready to try it, go for the best: Infraredi’s panels are sleek, medical-grade, and-most importantly-**effective**. If you’re tempted to try these and frankly, you sho…
-
-### [REVIEW] CLAIM (body) — The LED Mask the Industry is Buzzing About
-`content/wellness/biohacking/the-led-mask-the-industry-is-buzzing-about/the-led-mask-the-industry-is-buzzing-about.mdx:32` · 2023-11-23 · Sigourney Cantelo
-
-Restricted term: **LED mask** · matched: **Heal**
-
-> …d to give it a go... (read on I have a discount code for you!) ## How an LED Mask Helped Heal Burns I had already been using my mask for several weeks before I rather dramatically [b…
-
-### [REVIEW] CLAIM (body) — Get Ready with… Rachael Finch
-`content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx:92` · 2017-06-07 · Sigourney Cantelo
-
-Restricted term: **protein powder** · matched: **treat**
-
-> …fruit. On a regular, super busy work day, my B.O.D Breakfast Smoothies are a time-saving treat. The super indulgent Peanut Butter & Hazelnut Breakfast Smoothie, with vanilla protein po…
+> …oms with just 20 minutes of red light daily.* ### Eye Health Some wavelengths have been shown to improve retinal mitochondrial function. → *A study cited by Infraredi found older adults…
 
 ### [REVIEW] CLAIM (body) — 6 Reasons to Eat More (Raw) Chocolate This Easter
 `content/wellness/health/6-reasons-to-eat-more-raw-chocolate-this-easter/6-reasons-to-eat-more-raw-chocolate-this-easter.mdx:60` · 2015-04-03 · Sigourney Cantelo
@@ -2884,25 +2254,18 @@ Restricted term: **magnesium** · matched: **prevent**
 > …quickly”. Some nutritionists even recommend drinking a cup of hot cacao before a meal to prevent over-indulging and assist in weight loss. ![Gaiahealthblog](/content/wellness/health/6-r…
 
 ### [REVIEW] CLAIM (body) — A Nutritionist on Binning Bad Lockdown Eating Habits
+`content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:70` · 2020-06-16 · Tess Schlink
+
+Restricted term: **prebiotic** · matched: **immunity**
+
+> …binning-bad-lockdown-eating-habits/shoot74514.jpg) _Feed on fibre_ To help support your immunity, focus on eating lots of plant-based whole foods such as leeks, onion, garlic and asparag…
+
+### [REVIEW] CLAIM (body) — A Nutritionist on Binning Bad Lockdown Eating Habits
 `content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:76` · 2020-06-16 · Tess Schlink
 
 Restricted term: **zinc** · matched: **anti-inflammatory**
 
 > …up antioxidants_ Garlic is wonderful thanks to the presence of allicin, which has strong anti-inflammatory and antioxidant benefits. Eat plenty of foods rich in zinc such as legumes (chickpeas and…
-
-### [REVIEW] CLAIM (body) — Anti-Ageing Banana Blueberry Pancakes
-`content/wellness/health/anti-ageing-banana-blueberry-pancakes/anti-ageing-banana-blueberry-pancakes.mdx:34` · 2017-06-06 · Josie Taylor
-
-Restricted term: **Vitamin C** · matched: **prevent**
-
-> …at improve the elasticity of the skin, giving a more youthful complexion and manganese to prevent premature ageing. Oh, and these perfect pancakes, courtesy of [The Fresh Ginger](http://w…
-
-### [REVIEW] CLAIM (body) — How to Get Glowing Skin with Nuts and Seeds (That Aren't Almonds…)
-`content/wellness/health/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin/beauty-sprinkles-six-nuts-and-seeds-to-consume-for-glowing-skin.mdx:42` · 2017-07-25 · Samantha Blanchfield
-
-Restricted term: **Vitamin B** · matched: **prevent**
-
-> …lines. These magic nuts are also rich in Vitamin E, which balances blood sugar levels to prevent insulin spikes that cause stress (read: fast lane to premature ageing and breakouts). The…
 
 ### [REVIEW] CLAIM (body) — 6 Reasons You're Feeling Exhausted and How to Fix It
 `content/wellness/health/f257idrsg86cqyawj8durejzgkzivw/f257idrsg86cqyawj8durejzgkzivw.mdx:43` · 2017-07-11 · Catherine Barnes
@@ -2918,6 +2281,13 @@ Restricted term: **supplement** · matched: **treating**
 
 > …weight) see your GP and have it tested. It's best to follow medical recommendations when treating thyroid problems, but lowering refined carbohydrate intake, gluten intake and including i…
 
+### [REVIEW] CLAIM (body) — How to Make a Decadent Dairy- and Sugar-Free Raw Hot Chocolate
+`content/wellness/health/how-to-decadent-dairy-free-raw-hot-chocolate/how-to-decadent-dairy-free-raw-hot-chocolate.mdx:40` · 2020-08-05 · Sigourney Cantelo
+
+Restricted term: **magnesium** · matched: **hair growth**
+
+> …foods!' says Ricardo. 'It’s the mother of all beauty foods – it’s high in iron (great for hair growth) and magnesium which helps put your body into an alkaline state. It also contains nuts th…
+
 ### [REVIEW] CLAIM (body) — How to Make a Delicious Immune-Boosting Bone Broth
 `content/wellness/health/how-to-make-a-delicious-immune-boosting-bone-broth/how-to-make-a-delicious-immune-boosting-bone-broth.mdx:46` · 2015-07-29 · Sigourney Cantelo
 
@@ -2925,75 +2295,33 @@ Restricted term: **magnesium** · matched: **boost immunity**
 
 > …n soup are produced the world over at the first sign of a sniffle, bone broth is known to boost immunity. Amino acids, magnesium, phosphorus, calcium, and other trace minerals are all present he…
 
-### [REVIEW] CLAIM (body) — How to Make Kombucha
-`content/wellness/health/how-to-make-kombucha/how-to-make-kombucha.mdx:34` · 2015-06-10 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — How to Make Jessica Sepel’s Beauty Brownie
+`content/wellness/health/how-to-make-jessica-sepels-beauty-brownie/how-to-make-jessica-sepels-beauty-brownie.mdx:60` · 2014-10-22 · Madeleine Boyd
 
-Restricted term: **elixir** · matched: **cure**
+Restricted term: **magnesium** · matched: **repair**
 
-> …d Russia, is now almost as ubiquitous as green juice. Devotees claim that it is a magical cure-all that can prevent illness, detox the system and increase energy and it's rich in antio…
+> …gnesium, vitamin C, and omega-6 fatty acids that increase blood flow and promote cellular repair to give you that youthful glow." <NumberedSection number="4" title="Goji Berries" /> ![…
 
-### [REVIEW] CLAIM (body) — How to Make Kombucha
-`content/wellness/health/how-to-make-kombucha/how-to-make-kombucha.mdx:34` · 2015-06-10 · Sigourney Cantelo
+### [REVIEW] CLAIM (body) — Spring Wellness Reboot
+`content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:34` · 2023-11-06 · Beauticate Editorial
 
-Restricted term: **probiotic** · matched: **prevent**
+Restricted term: **supplement** · matched: **combat**
 
-> …lmost as ubiquitous as green juice. Devotees claim that it is a magical cure-all that can prevent illness, detox the system and increase energy and it's rich in antioxidants and pre and p…
-
-### [REVIEW] CLAIM (body) — Nourishing Summer Chicken Salad
-`content/wellness/health/nourishing-summer-chicken-salad/nourishing-summer-chicken-salad.mdx:36` · 2015-12-21 · Isabella Ousby
-
-Restricted term: **collagen** · matched: **prevent**
-
-> …explains Tim. “Plus, the collagen in quinoa rejuvenates your skin, reduces wrinkles, can prevent acne and is excellent for your hair – strengthening follicles and enhancing thickness.” T…
-
-### [REVIEW] CLAIM (body) — Recipe:  Spicy Chicken with Superfood Slaw
-`content/wellness/health/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw/piri-piri-chicken-skewers-with-corn-red-cabbage-slaw.mdx:30` · 2016-03-01 · Beauticate Editorial
-
-Restricted term: **Vitamin B** · matched: **anti-inflammatory**
-
-> …dients that boast high Vitamin B, antioxidants and the red cabbage works as an incredible anti-inflammatory. Either whipped up for a last minute dinner or an impressive addition to your next dinner…
+> …ho recommends supplements like quercetin, nettle, glutathione, and high-dose vitamin C to combat histamine and allergy-related woes. 'Understanding your triggers and supporting your body…
 
 ### [REVIEW] CLAIM (body) — Spring Wellness Reboot
 `content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:40` · 2023-11-06 · Beauticate Editorial
 
-Restricted term: **vitamin C** · matched: **anti-inflammatory**
+Restricted term: **supplement** · matched: **immunity**
 
-> …een traditionally used for its potential medicinal properties, which include antioxidant, anti-inflammatory, antiviral, and antibacterial effects,” says Monique. Comvita Olive Leaf Extract comes in…
+> …ellness-reboot/copy-of-sizing-for-site-landscape-750-x-500.png) "Gut health and boosting immunity are also key this time of year," Monique shares. "People tend to get one last bug before…
 
 ### [REVIEW] CLAIM (body) — Spring Wellness Reboot
 `content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:46` · 2023-11-06 · Beauticate Editorial
 
-Restricted term: **Capsule** · matched: **healing**
+Restricted term: **Capsule** · matched: **anti-inflammatory**
 
-> …nuka honey, which is used for everything from sore throats and digestive issues to wound healing and skin care. “It’s gained international recognition for its unique medicinal properties…
-
-### [REVIEW] CLAIM (body) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:66` · 2017-07-11 · Madeleine Boyd
-
-Restricted term: **vitamin ** · matched: **eliminate**
-
-> …t for stimulating our skin’s collagen production), as well as antioxidants, which help to eliminate toxins from the body. The monounsaturated fat content in avocados can also assist in mois…
-
-### [REVIEW] CLAIM (body) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:108` · 2017-07-11 · Madeleine Boyd
-
-Restricted term: **collagen** · matched: **boost collagen**
-
-> …they need to function at optimum capacity. Whey protein is rich in amino acids which help boost collagen levels in the skin, giving structure to the tissue and preventing sagging. ### Blueberri…
-
-### [REVIEW] CLAIM (body) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:108` · 2017-07-11 · Madeleine Boyd
-
-Restricted term: **collagen** · matched: **preventing**
-
-> …no acids which help boost collagen levels in the skin, giving structure to the tissue and preventing sagging. ### Blueberries Blueberries are another of our favourite superfoods that are a…
-
-### [REVIEW] CLAIM (body) — Teresa Palmer and Chrissy Duigan on Their New Supplements
-`content/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements/teresa-palmer-and-chrissy-duigan-on-their-new-supplements.mdx:92` · 2019-05-24 · Kristina Zhou
-
-Restricted term: **supplement** · matched: **clear skin**
-
-> …upplement cut? Pea and Hemp Protein: protein is the essential building block for crystal clear skin, silky hair and strong nails. But not all protein is created equal: hemp protein contains…
+> …recognition for its unique medicinal properties, including antibacterial, antiviral, and anti-inflammatory effects,” says Monique who suggests taking it by the spoonful or mixed with warm water to…
 
 ### [REVIEW] CLAIM (body) — Teresa Palmer and Chrissy Duigan on Their New Supplements
 `content/wellness/health/teresa-palmer-and-chrissy-duigan-on-their-new-supplements/teresa-palmer-and-chrissy-duigan-on-their-new-supplements.mdx:100` · 2019-05-24 · Kristina Zhou
@@ -3001,13 +2329,6 @@ Restricted term: **supplement** · matched: **clear skin**
 Restricted term: **magnesium** · matched: **boost collagen**
 
 > …d reducing cortisol – the pesky chemical that causes stress and anxiety. Tremella: helps boost collagen and hyaluronic acid in the skin, enhancing its luminosity and hydration – perfect for kee…
-
-### [REVIEW] CLAIM (body) — The Only Cinco De Mayo Recipes You'll Need Today
-`content/wellness/health/the-only-cinco-de-mayo-recipes-youll-need/the-only-cinco-de-mayo-recipes-youll-need.mdx:53` · 2018-05-05 · Molly Gay
-
-Restricted term: **Vitamin A** · matched: **anti-inflammatory**
-
-> …g Ingredient:*** Red Capsicum. Red capsicums (aka, peppers) are high in Vitamin A, C, and anti-inflammatory minerals. All of which work together to leave you looking and feeling *muy caliente*. ##…
 
 ### [REVIEW] CLAIM (body) — The New Superfoods and How to Eat Them
 `content/wellness/health/the-top-superfoods-for-spring/the-top-superfoods-for-spring.mdx:80` · 2015-09-14 · Claudia De Berardinis
@@ -3023,117 +2344,47 @@ Restricted term: **supplement** · matched: **eliminate**
 
 > …balance for stable energy and mood, and building stress resilience rather than trying to eliminate stress. No supplement or HRT will compensate for a chaotic lifestyle.
 
-### [REVIEW] PRACTITIONER (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:42` · 2021-11-01 · Karina Wharton · +3 more in file
+### [REVIEW] CLAIM (body) — Beauty Secrets from the Happiest Kingdom on Earth – Bhutan.
+`content/wellness/mindset/beauty-secrets-from-the-happiest-kingdom-on-earth/beauty-secrets-from-the-happiest-kingdom-on-earth.mdx:92` · 2023-06-15 · Kristina Zhou
 
-Restricted term: **vitamin C** · matched: **Dr A**
+Restricted term: **zinc** · matched: **combat**
 
-> …in tone, it promotes collagen production, and it helps protect against sun damage,” lauds Dr Andric. Arbonne’s BrightenUp range, designed to tackle pigmentation and promote radiant sk…
+> …kin, whilst the tofu (rich in vitamin a and lactic acid) helps clarify the complexion and combat congestion. ![3bb3810e845c333ff6d117448f4bdc95b551d8ce](/content/beauty-style/beauty-tip…
 
-### [REVIEW] PRACTITIONER (body) — Why You Need Probiotics in Your Skincare Routine
-`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:53` · 2018-05-14 · Yadira Galarza Cauchi · +2 more in file
+### [REVIEW] CLAIM (body) — Jess Sepel on Ocd, Healing from Disordered Eating, Grief, and Building Jshealth
+`content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart.mdx:30` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **PROBIOTIC** · matched: **Dr. L**
+Restricted term: **supplement** · matched: **healing**
 
-> …skin-care/why-you-should-be-using-probiotics-for-skincare-2/CareerGirlDailySkincare.jpg) Dr. Luis, Medical Director for Mesoestetic, agrees and states that our skin needs healthy micro…
+> …rney Cantelo on the Beautiful Inside podcast](/content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/3.jpg) We go far beyond gr…
 
-### [REVIEW] PRACTITIONER (body) — Lola Berry, Nutritionist
-`content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:30` · 2018-02-08 · Sigourney Cantelo · +2 more in file
+### [REVIEW] CLAIM (body) — Jess Sepel on Ocd, Healing from Disordered Eating, Grief, and Building Jshealth
+`content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart.mdx:36` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **supplement** · matched: **nutritionist**
+Restricted term: **magnesium** · matched: **healing**
 
-> …must-have addition to any serum and her secret supplement for glowing skin. ![Lola Berry nutritionist lifestyle portrait](/content/interviews/tastemakers/lola-berry-nutritionist/lola-portrait…
+> …Beautiful Inside podcast guest on Beauticate](/content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/38363818-1739270093542-7154…
 
-### [REVIEW] PRACTITIONER (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
-`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:66` · 2021-11-01 · Karina Wharton · +2 more in file
+### [REVIEW] CLAIM (body) — Jess Sepel on Ocd, Healing from Disordered Eating, Grief, and Building Jshealth
+`content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart.mdx:70` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **sunscreen** · matched: **dermatologist**
+Restricted term: **magnesium** · matched: **healing**
 
-> …prior to that all-important sunscreen application. An impressive product combining these dermatologist-approved ingredients is Arbonne’s DermResults Illuminating Skin Therapy Concentrate. With…
+> …de podcast promo, Jess Sepel episode slide 3](/content/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart/3.gif) Blue Haven has spen…
 
-### [REVIEW] PRACTITIONER (body) — A Nutritionist on Binning Bad Lockdown Eating Habits
-`content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:66` · 2020-06-16 · Tess Schlink · +2 more in file
+### [REVIEW] CLAIM (body) — Lindsay Price on Healing Childhood Trauma, Life with Curtis Stone and Her Hollywood Journey
+`content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey.mdx:70` · 2025-04-09 · Sigourney Cantelo
 
-Restricted term: **prebiotic** · matched: **nutritionist**
+Restricted term: **Infrared** · matched: **healing**
 
-> …– and move on. Don’t tap in and out all day. ![Feed on fibre](/content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/shoot74514.jpg) _Feed on fibre_ To help support y…
+> …l Inside podcast promo, Lindsay Price episode](/content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/1.gif) - Spiritual pra…
 
-### [REVIEW] PRACTITIONER (body) — Essential Beauty Products for This Wedding Season
-`content/beauty-style/beauty-tips/essential-beauty-products-for-this-wedding-season/essential-beauty-products-for-this-wedding-season.mdx:66` · 2023-09-18 · Sigourney Cantelo · +1 more in file
+### [REVIEW] CLAIM (body) — Lindsay Price on Healing Childhood Trauma, Life with Curtis Stone and Her Hollywood Journey
+`content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey.mdx:80` · 2025-04-09 · Sigourney Cantelo
 
-Restricted term: **light therapy** · matched: **Dr G**
+Restricted term: **Infrared** · matched: **healing**
 
-> …that emanates from within, consider the transformative power of LED light therapy. The [Dr Gross Spectralite Faceware Pro](https://www.mecca.com/en-au/dr-dennis-gross/drx-spectralite…
-
-### [REVIEW] PRACTITIONER (body) — How to Repair Lashes Naturally: Our Expert-Approved Guide
-`content/beauty-style/beauty-tips/how-to-repair-lashes-naturally-our-expert-approved-guides/how-to-repair-lashes-naturally-our-expert-approved-guides.mdx:37` · 2021-03-23 · Kristina Zhou · +1 more in file
-
-Restricted term: **vitamin ** · matched: **Dr R**
-
-> …ing hype and inspect the ingredients list to determine efficacy. Top aesthetic physician [Dr Rachel Ho](https://www.drrachelho.com/) recommends looking for products infused with peptid…
-
-### [REVIEW] PRACTITIONER (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
-`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:68` · 2021-09-21 · Zoe Briggs · +1 more in file
-
-Restricted term: **sunscreen** · matched: **Dr S**
-
-> …impurities from the day and leaves my skin feeling clean and fresh. I’ll follow with the [Dr Sam's Flawless Nightly Serum](https://drsamus.myshopify.com/products/flawless-nightly-serum…
-
-### [REVIEW] PRACTITIONER (body) — How to Ease an Angry Scalp
-`content/beauty-style/hair/how-to-ease-an-angry-scalp/how-to-ease-an-angry-scalp.mdx:78` · 2017-10-24 · Claudia De Berardinis · +1 more in file
-
-Restricted term: **Tonic** · matched: **Dr H**
-
-> …m your dermo/doctor) under the oil. For weekly maintenance, a little goes a long way with Dr Hauschka’s Revitalising Hair & Scalp Tonic made with neem leaf extract. You simply massage…
-
-### [REVIEW] PRACTITIONER (body) — Chemical Peels: Do You Need One?
-`content/beauty-style/skin-care/chemical-peels-do-you-need-one/chemical-peels-do-you-need-one.mdx:43` · 2020-03-03 · Yadira Galarza Cauchi · +1 more in file
-
-Restricted term: **collagen** · matched: **Dr C**
-
-> …ightening, ultimately resulting in fresher looking skin with even skin tone and texture,” Dr Cara says. ## Which Types of Chemical Peel is Right for Me? There are many different type…
-
-### [REVIEW] PRACTITIONER (body) — Home Alone, but Never Boring: My Nightly Beauty Rituals in December
-`content/beauty-style/skin-care/nightly-beauty-routine/nightly-beauty-routine.mdx:81` · 2025-12-19 · Jayde Balderston · +1 more in file
-
-Restricted term: **vitamin C** · matched: **Dr D**
-
-> …alm the skin and reduce the appearance of redness. Bliss. Every single night, I use my **Dr Dennis Gross LED mask.** No ceremony, no commentary. It fits into real life, usually worn w…
-
-### [REVIEW] PRACTITIONER (body) — Skincare Success: My Eight-Week Transformation with Professional-Grade Products
-`content/beauty-style/skin-care/skincare-success-my-eight-week-transformation-with-professional-grade-products/skincare-success-my-eight-week-transformation-with-professional-grade-products.mdx:66` · 2023-09-29 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **collagen** · matched: **Dr. C**
-
-> …to help with my hormonal breakouts. When I mentioned my concerns about wrinkled eyelids, Dr. Cussell recommended his Restore & Firm Collagen Peptide Eye Serum. He explained that it's…
-
-### [REVIEW] PRACTITIONER (body) — The Product That Made Me Completely Rethink Cleansers
-`content/beauty-style/skin-care/the-product-that-made-me-completely-rethink-cleansers/the-product-that-made-me-completely-rethink-cleansers.mdx:56` · 2021-04-21 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **Dr E**
-
-> …ight. ## Expert Tips for Better Cleansing However, it's not just about what you use, as Dr Eleni reminds us, HOW you cleanse is also important. Dr Eleni recommends cleansing just onc…
-
-### [REVIEW] PRACTITIONER (body) — Emily Berlach, the Most Laidback Fashion Designer on the Planet
-`content/interviews/creatives/emily-berlach-the-most-laidback-fashion-designer-on-the-planet/emily-berlach-the-most-laidback-fashion-designer-on-the-planet.mdx:82` · 2022-11-24 · Zoe Briggs · +1 more in file
-
-Restricted term: **SPF 50** · matched: **Dr. D**
-
-> …AHVgrUvSK-Cr-WTuRjx7eDL_Zn_Osmvq1yXNvru4nIUfE4jbxoCn0MQAvD_BwE&gclsrc=aw.ds). I also use [Dr. Dennis Gross Hyaluronic Marine Hydration Booster](https://www.mecca.com/en-au/dr-dennis-gro…
-
-### [REVIEW] PRACTITIONER (body) — Sibella Court, Interior Stylist & Author
-`content/interviews/creatives/sibella-court-interior-stylist-and-author/sibella-court-interior-stylist-and-author.mdx:50` · 2016-01-14 · Rikki Hodge-Smith · +1 more in file
-
-Restricted term: **Zinc** · matched: **Dr B**
-
-> …s/creatives/sibella-court-interior-stylist-and-author/sibella_still_life-0006-1.jpg) ### Dr Bronner's Soap, Invisible Zinc, Ultraceuticals and Clarisonic Are Among Her Favourites ![D…
-
-### [REVIEW] PRACTITIONER (body) — Teresa Cutter, the Healthy Chef
-`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:151` · 2015-11-24 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Protein Powder** · matched: **nutritionist**
-
-> …with the Healthy Chef Protein Powder](/content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/img-12.jpg) ###### Teresa Loves Smoothies Made with the Healthy Chef Protein Powder ![…
+> …podcast promo, Lindsay Price episode slide 2](/content/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey/2.gif) - Lashify under…
 
 ### [REVIEW] PRACTITIONER (body) — Benefits of Rice Water for Face – You Can DIY This Royal Beauty Treatment
 `content/beauty-style/beauty-tips/benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment/benefits-of-rice-water-for-face-you-can-diy-this-royal-beauty-treatment.mdx:43` · 2020-09-30 · Kristina Zhou
@@ -3148,6 +2399,13 @@ Restricted term: **sunscreen** · matched: **Dermatologist**
 Restricted term: **sunscreen** · matched: **Dr. A**
 
 > …ng results in remedying textural skin damage wrought by UVA/UVB rays. NYC Dermatologist [Dr. Aanand Geria](https://www.geriadermatology.com/) notes that rice water possesses anti-agein…
+
+### [REVIEW] PRACTITIONER (body) — Essential Beauty Products for This Wedding Season
+`content/beauty-style/beauty-tips/essential-beauty-products-for-this-wedding-season/essential-beauty-products-for-this-wedding-season.mdx:66` · 2023-09-18 · Sigourney Cantelo
+
+Restricted term: **light therapy** · matched: **Dr G**
+
+> …that emanates from within, consider the transformative power of LED light therapy. The [Dr Gross Spectralite Faceware Pro](https://www.mecca.com/en-au/dr-dennis-gross/drx-spectralite…
 
 ### [REVIEW] PRACTITIONER (body) — Five Quick Tips to Switch Up Your Routine for Summer – Sigourney’s Edit
 `content/beauty-style/beauty-tips/five-quick-tips-to-switch-up-your-routine-for-summer-sigourneys-edit/five-quick-tips-to-switch-up-your-routine-for-summer-sigourneys-edit.mdx:36` · 2016-11-22 · Sigourney Cantelo
@@ -3170,26 +2428,19 @@ Restricted term: **sunscreen** · matched: **Dr D**
 
 > …d – of course – a selection of sunscreens, since we’re going to into the European summer. Dr Dennis Gross Alpha Beta Glow Pad Anti Aging Exfoliating Self Tanner with Active Vitamin D –…
 
-### [REVIEW] PRACTITIONER (body) — How to Pack Your Beauty Kit – Sigourney’s Edit
-`content/beauty-style/beauty-tips/how-to-pack-your-beauty-kit-sigourneys-edit/how-to-pack-your-beauty-kit-sigourneys-edit.mdx:100` · 2015-06-08 · Sigourney Cantelo
+### [REVIEW] PRACTITIONER (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:68` · 2021-09-21 · Zoe Briggs
 
-Restricted term: **Vitamin D** · matched: **Dr. B**
+Restricted term: **sunscreen** · matched: **Dr S**
 
-> …only exfoliates but wipes on self tanner so you can wake up with a gorgeous, golden glow; Dr. Bronners Pure Castile Soap as you can’t always rely on hotel amenities; [Estee Lauder Re-Nu…
+> …impurities from the day and leaves my skin feeling clean and fresh. I’ll follow with the [Dr Sam's Flawless Nightly Serum](https://drsamus.myshopify.com/products/flawless-nightly-serum…
 
-### [REVIEW] PRACTITIONER (body) — Local Love: New Aussie Brands on the (Beauty) Block
-`content/beauty-style/beauty-tips/local-love-new-aussie-brands-on-the-beauty-block/local-love-new-aussie-brands-on-the-beauty-block.mdx:70` · 2015-06-24 · Chrisanthi Kaliviotis
+### [REVIEW] PRACTITIONER (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:68` · 2021-09-21 · Zoe Briggs
 
-Restricted term: **elixir** · matched: **naturopath**
+Restricted term: **sunscreen** · matched: **Dr S**
 
-> …ible Beauty, they have a power product to match their equally chic branding. Developed by naturopath and nutritionist, Anna Mitsios, Edible Beauty was borne out of love of herbal and natural…
-
-### [REVIEW] PRACTITIONER (body) — Local Love: New Aussie Brands on the (Beauty) Block
-`content/beauty-style/beauty-tips/local-love-new-aussie-brands-on-the-beauty-block/local-love-new-aussie-brands-on-the-beauty-block.mdx:70` · 2015-06-24 · Chrisanthi Kaliviotis
-
-Restricted term: **elixir** · matched: **nutritionist**
-
-> …ey have a power product to match their equally chic branding. Developed by naturopath and nutritionist, Anna Mitsios, Edible Beauty was borne out of love of herbal and natural ingredients. The…
+> …lawless Nightly Serum](https://drsamus.myshopify.com/products/flawless-nightly-serum) by [Dr Sam Bunting](/interviews/founders/dr-sam-bunting-the-skin-expert-determined-to-get-you-glow…
 
 ### [REVIEW] PRACTITIONER (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
 `content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:54` · 2020-04-29 · Tess Schlink
@@ -3204,34 +2455,6 @@ Restricted term: **LED Mask** · matched: **Dr D**
 Restricted term: **zinc** · matched: **Dr H**
 
 > …e importance of taking care of my skin.* I started using natural skin care products from Dr Hauschka at about 12 years old. My mother protected us from the sun from a young age and sm…
-
-### [REVIEW] PRACTITIONER (body) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:58` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **Dr S**
-
-> …re addressed due to the natural collagen and elastin stimulation triggered from the heat. Dr Stefan Mark Szczerba, a board-certified plastic surgeon, says the best non-surgical eye rej…
-
-### [REVIEW] PRACTITIONER (body) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:62` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **Dr T**
-
-> …layer which essentially functions as a structure that the entire face tissue hangs onto,” Dr Teo Wan Lin, a Board-Certified Dermatologist says. The heat produced within the deeper laye…
-
-### [REVIEW] PRACTITIONER (body) — Chanel & Hermès Facial Injections? These Are the Latest Breed of Beauty Treatments
-`content/beauty-style/cosmetic/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments/chanel-hermes-facial-injections-these-are-the-latest-breed-of-beauty-treatments.mdx:62` · 2021-04-12 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **Dermatologist**
-
-> …as a structure that the entire face tissue hangs onto,” Dr Teo Wan Lin, a Board-Certified Dermatologist says. The heat produced within the deeper layers, helps stimulate new collagen and elasti…
-
-### [REVIEW] PRACTITIONER (body) — How to Ease an Angry Scalp
-`content/beauty-style/hair/how-to-ease-an-angry-scalp/how-to-ease-an-angry-scalp.mdx:78` · 2017-10-24 · Claudia De Berardinis
-
-Restricted term: **Tonic** · matched: **Dr C**
-
-> …a Tonic If your scalp is super inflamed, leaving a hair tonic on the scalp over night is Dr Cook’s biggest endorsement. In particular using alpha keri oil, coconut oil and almond oil…
 
 ### [REVIEW] PRACTITIONER (body) — 8 Ways to Quench Summer-Parched Tresses
 `content/beauty-style/hair/how-to-quench-thirsty-hair/how-to-quench-thirsty-hair.mdx:66` · 2014-03-21 · Ashley Ropati
@@ -3275,13 +2498,6 @@ Restricted term: **light therapy** · matched: **dermatologist**
 
 > …care.com/SIGOURNEY57027" side="right" /> ### Enter: LED. If you've been anywhere near a dermatologist's office, a medi-spa, or the skincare-obsessed corner of the internet lately, you'll know…
 
-### [REVIEW] PRACTITIONER (body) — Cleopatra's Beauty Secret: The Benefits of Pearl Powder for Skin
-`content/beauty-style/skin-care/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin/cleopatras-beauty-secret-the-benefits-of-pearl-powder-for-skin.mdx:36` · 2021-05-24 · Kristina Zhou
-
-Restricted term: **collagen** · matched: **Dr W**
-
-> …ation. Amino acids are vital foundations for "collagen production, elastin, and keratin", Dr William Cole, Functional Medicine Practitioner said. Pearl powder is also composed of over…
-
 ### [REVIEW] PRACTITIONER (body) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
 `content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:72` · 2020-09-16 · Sigourney Cantelo
 
@@ -3303,19 +2519,19 @@ Restricted term: **Zinc** · matched: **Dr H**
 
 > …t-weigh-down-oily-skin/aspect-cleanser-aspect-purastat-5-220ml-12413119529038_1024x.jpg) Dr Hkeik recommends the following: **AHAs:** such as lactic and glycolic acid to help refine…
 
-### [REVIEW] PRACTITIONER (body) — I Tried Micro-Infusion at Home. Here's My Honest Review.
-`content/beauty-style/skin-care/micro-infusion-at-home/micro-infusion-at-home.mdx:76` · 2024-04-17 · Sigourney Cantelo
+### [REVIEW] PRACTITIONER (body) — Home Alone, but Never Boring: My Nightly Beauty Rituals in December
+`content/beauty-style/skin-care/nightly-beauty-routine/nightly-beauty-routine.mdx:81` · 2025-12-19 · Jayde Balderston
 
-Restricted term: **collagen** · matched: **dermatologist**
+Restricted term: **LED mask** · matched: **Dr D**
 
-> …. That means a controlled, even depth, and far less risk of tearing the skin. Australian dermatologist <a href="https://drdavinlim.com/" target="_blank" rel="noopener">Dr. Davin Lim</a> puts i…
+> …alm the skin and reduce the appearance of redness. Bliss. Every single night, I use my **Dr Dennis Gross LED mask.** No ceremony, no commentary. It fits into real life, usually worn w…
 
-### [REVIEW] PRACTITIONER (body) — I Tried Micro-Infusion at Home. Here's My Honest Review.
-`content/beauty-style/skin-care/micro-infusion-at-home/micro-infusion-at-home.mdx:76` · 2024-04-17 · Sigourney Cantelo
+### [REVIEW] PRACTITIONER (body) — Home Alone, but Never Boring: My Nightly Beauty Rituals in December
+`content/beauty-style/skin-care/nightly-beauty-routine/nightly-beauty-routine.mdx:89` · 2025-12-19 · Jayde Balderston
 
-Restricted term: **collagen** · matched: **Dr. D**
+Restricted term: **LED mask** · matched: **Dr D**
 
-> …Australian dermatologist <a href="https://drdavinlim.com/" target="_blank" rel="noopener">Dr. Davin Lim</a> puts it beautifully. A little stamping device, its hollow needles finer than…
+> …- Clé de Peau Beauté Hydro Clarifying Essence Lotion ![Gold skincare La Prairie Jurlique Dr Dennis Gross LED mask](/content/beauty-style/skin-care/nightly-beauty-routine/copy-of-websi…
 
 ### [REVIEW] PRACTITIONER (body) — What’s in Sigourney’s Bathroom Cabinet?
 `content/beauty-style/skin-care/sigourney-cantelo-bathroom-cabinet/sigourney-cantelo-bathroom-cabinet.mdx:38` · 2018-08-06 · Sigourney Cantelo
@@ -3331,19 +2547,12 @@ Restricted term: **Light Therapy** · matched: **Dr M**
 
 > …ght in particular destroys acne-causing bacteria. Exclusive to Clear Skin Care Clinics is Dr McCaffery’s [SGA treatment – which we road tested here](/beauty-style/beauty-tips/how-to-bl…
 
-### [REVIEW] PRACTITIONER (body) — Don't Leave the House Without This SPF Makeup
-`content/beauty-style/skin-care/spf-makeup/spf-makeup.mdx:52` · 2019-02-13 · Tess Schlink
+### [REVIEW] PRACTITIONER (body) — Skincare Success: My Eight-Week Transformation with Professional-Grade Products
+`content/beauty-style/skin-care/skincare-success-my-eight-week-transformation-with-professional-grade-products/skincare-success-my-eight-week-transformation-with-professional-grade-products.mdx:108` · 2023-09-29 · Sigourney Cantelo
 
-Restricted term: **SPF 30** · matched: **Dr. P**
+Restricted term: **zinc** · matched: **Dr. C**
 
-> …lawn, you still should keep sun protection front of mind. Keep cheeks looking chic with [Dr. Perricone’s No Blush Blush](https://www.mecca.com.au/perricone-md/no-blush-blush/I-022042.h…
-
-### [REVIEW] PRACTITIONER (body) — The Best Night Creams – Reader Review
-`content/beauty-style/skin-care/the-best-night-creams-reader-review/the-best-night-creams-reader-review.mdx:137` · 2017-03-07 · Lucy Searle
-
-Restricted term: **collagen** · matched: **Dr. L**
-
-> …/the-best-night-creams-reader-review/dr._lewinn-1.jpg) “This super regenerative cream by Dr. LeWinn’s claims to provide the ultimate rejuvenation for mature skin by firming and combatt…
+> …rare find: a lightweight, blendable zinc lotion that doesn't leave a white cast. Bravo to Dr. Cussell for this innovation. ## The Verdict In eight weeks, my skin has improved signific…
 
 ### [REVIEW] PRACTITIONER (body) — What Are Skin Boosters and Do I Need One?
 `content/beauty-style/skin-care/what-is-a-skin-booster-and-why-do-i-need-one/what-is-a-skin-booster-and-why-do-i-need-one.mdx:66` · 2015-10-07 · Sigourney Cantelo
@@ -3351,20 +2560,6 @@ Restricted term: **collagen** · matched: **Dr. L**
 Restricted term: **probiotic** · matched: **Dermatologist**
 
 > …n natural defenses.” Probiotics have been big news in the skincare world recently. While Dermatologist Nina Wines says she would like to see further studies on their topical use, as an ingredi…
-
-### [REVIEW] PRACTITIONER (body) — What Your Skin Needs Now That You’re Stuck Inside
-`content/beauty-style/skin-care/what-your-skin-needs-now-that-youre-stuck-inside/what-your-skin-needs-now-that-youre-stuck-inside.mdx:40` · 2020-04-15 · Sigourney Cantelo
-
-Restricted term: **Collagen** · matched: **Dermatologist**
-
-> …ains lipids, oils and naturally occurring substances like Hyaluronic Acid and Ceramides. Dermatologist Dr Ryan De Cruz explains: “The quality of our barrier is determined mainly by this ‘cemen…
-
-### [REVIEW] PRACTITIONER (body) — What Your Skin Needs Now That You’re Stuck Inside
-`content/beauty-style/skin-care/what-your-skin-needs-now-that-youre-stuck-inside/what-your-skin-needs-now-that-youre-stuck-inside.mdx:40` · 2020-04-15 · Sigourney Cantelo
-
-Restricted term: **Collagen** · matched: **Dr R**
-
-> …ils and naturally occurring substances like Hyaluronic Acid and Ceramides. Dermatologist Dr Ryan De Cruz explains: “The quality of our barrier is determined mainly by this ‘cement’ –…
 
 ### [REVIEW] PRACTITIONER (body) — Why You Need Probiotics in Your Skincare Routine
 `content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:45` · 2018-05-14 · Yadira Galarza Cauchi
@@ -3390,16 +2585,30 @@ Restricted term: **probiotic** · matched: **Dr. E**
 ### [REVIEW] PRACTITIONER (body) — Why You Need Probiotics in Your Skincare Routine
 `content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:53` · 2018-05-14 · Yadira Galarza Cauchi
 
+Restricted term: **PROBIOTIC** · matched: **Dr. L**
+
+> …skin-care/why-you-should-be-using-probiotics-for-skincare-2/CareerGirlDailySkincare.jpg) Dr. Luis, Medical Director for Mesoestetic, agrees and states that our skin needs healthy micro…
+
+### [REVIEW] PRACTITIONER (body) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:53` · 2018-05-14 · Yadira Galarza Cauchi
+
 Restricted term: **probiotic** · matched: **Dr L**
 
 > …roflora using probiotics in our skincare is likely to have positive effects on the skin", Dr Luis explained. ## Signs Your Skin Microflora Is Imbalanced Our question was, "How do we…
 
-### [REVIEW] PRACTITIONER (body) — The Facial Hub, Ascot
-`content/destinations/clinics/realskin-clinic-hamilton/realskin-clinic-hamilton.mdx:100` · 2026-01-15 · Elyse Goyen
+### [REVIEW] PRACTITIONER (body) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:71` · 2018-05-14 · Yadira Galarza Cauchi
 
-Restricted term: **Collagen** · matched: **Dr B**
+Restricted term: **probiotic** · matched: **Dr. L**
 
-> …_20170526_130807copy1-1.jpg) ## Collagen Therapy and Reiki Healing It's at this point a Dr Babor's Collagen Ampoule Concentrate is lathered onto my face, the oils seeping into my ski…
+> …ific evidence, the addition of probiotics in skincare might not be for everyone. In fact, Dr. Luis recommends it mainly to those with conditions such as topical dermatitis, acne, psoria…
+
+### [REVIEW] PRACTITIONER (body) — Why You Need Probiotics in Your Skincare Routine
+`content/beauty-style/skin-care/why-you-should-be-using-probiotics-for-skincare-2/why-you-should-be-using-probiotics-for-skincare-2.mdx:71` · 2018-05-14 · Yadira Galarza Cauchi
+
+Restricted term: **probiotic** · matched: **Dr. L**
+
+> …, redness or scars from injuries. Don't give up hope just yet, with more research to come Dr. Luis reassures us that the future is looking bright. "The skin's microbiota opens up great…
 
 ### [REVIEW] PRACTITIONER (body) — Youth Lab, Claremont
 `content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx:84` · 2026-01-15 · Tess Schlink
@@ -3422,20 +2631,6 @@ Restricted term: **sunscreen** · matched: **Dr. H**
 
 > …using a sunscreen that’s very cool, it’s called Greenfoot Hammer. At the moment I’m using Dr. Hauschka Rose Day Cream. ## Isabel's Favourite Beauty Products ### A few of my favourite…
 
-### [REVIEW] PRACTITIONER (body) — Ali Cotton, First Base
-`content/interviews/creatives/ali-cotton-designer/ali-cotton-designer.mdx:63` · 2017-11-23 · Rikki Hodge-Smith
-
-Restricted term: **protein powder** · matched: **Dr H**
-
-> …ein powder and coconut water for breakfast. Back in the bathroom I’ll do a quick layer of Dr Hauschka Tinted Moisturiser. If it’s a hotter day, I’ll use Chantecaille Future Skin – it's…
-
-### [REVIEW] PRACTITIONER (body) — Inside the LA Home of Maison Louis Marie Founder Marie Du Petit Thouars
-`content/interviews/creatives/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars.mdx:60` · 2023-10-20 · Zoe Briggs
-
-Restricted term: **tonic** · matched: **researcher**
-
-> …there, though – she has an ancestor who was a respected eighteenth century French botany researcher. As a child, Marie enjoyed playing in her grandparents’ garden in Belgium and crafting he…
-
 ### [REVIEW] PRACTITIONER (body) — Kelly Smythe, Stylist
 `content/interviews/creatives/kelly-smythe-stylist/kelly-smythe-stylist.mdx:79` · 2014-05-15 · Sigourney Cantelo
 
@@ -3457,12 +2652,19 @@ Restricted term: **sunscreen** · matched: **Dr K**
 
 > …cause I find my skin does best when I mix things up._ I love [Bespoke Skin Technology by Dr Katherine Armour](https://bespokeskintechnology.com/dr-katherine-armour/), which helps with…
 
-### [REVIEW] PRACTITIONER (body) — Stephanie Davies, Founder La Boheme Lifestyle
-`content/interviews/creatives/stephanie-davies-founder-la-boheme-lifestyle/stephanie-davies-founder-la-boheme-lifestyle.mdx:30` · 2023-08-02 · Sigourney Cantelo
+### [REVIEW] PRACTITIONER (body) — Sibella Court, Interior Stylist & Author
+`content/interviews/creatives/sibella-court-interior-stylist-and-author/sibella-court-interior-stylist-and-author.mdx:50` · 2016-01-14 · Rikki Hodge-Smith
 
-Restricted term: **infrared** · matched: **Dr N**
+Restricted term: **Zinc** · matched: **Dr B**
 
-> …in Avoca, they are now working on an aesthetic and wellness space that will be helmed by Dr Nik and devoted to the realms of cosmetic and functional medicine. Steph invited us into th…
+> …s/creatives/sibella-court-interior-stylist-and-author/sibella_still_life-0006-1.jpg) ### Dr Bronner's Soap, Invisible Zinc, Ultraceuticals and Clarisonic Are Among Her Favourites ![D…
+
+### [REVIEW] PRACTITIONER (body) — Sibella Court, Interior Stylist & Author
+`content/interviews/creatives/sibella-court-interior-stylist-and-author/sibella-court-interior-stylist-and-author.mdx:52` · 2016-01-14 · Rikki Hodge-Smith
+
+Restricted term: **Zinc** · matched: **Dr B**
+
+> …Bronner's Soap, Invisible Zinc, Ultraceuticals and Clarisonic Are Among Her Favourites ![Dr Bronner's Soap, Invisible Zinc, Ultraceuticals and Cla...](/content/interviews/creatives/si…
 
 ### [REVIEW] PRACTITIONER (body) — Anastasia Soare on Turning Perfect Brows Into a Global Empire
 `content/interviews/founders/anastasia-soare-on-turning-perfect-brows-into-a-global-empire/anastasia-soare-on-turning-perfect-brows-into-a-global-empire.mdx:109` · 2023-03-29 · Zoe Briggs
@@ -3470,13 +2672,6 @@ Restricted term: **infrared** · matched: **Dr N**
 Restricted term: **sunscreen** · matched: **Dr. B**
 
 > …Routine _I love to layer products in the morning._ My skin is constantly dry, and the [Dr. Barbara Sturm Hyaluronic Serum](https://www.mecca.com.au/dr-barbara-sturm/hyaluronic-serum/…
-
-### [REVIEW] PRACTITIONER (body) — Kirsten Shanks, Orchard Street
-`content/interviews/founders/kirsten-shanks-naturopath-and-entrepreneur/kirsten-shanks-naturopath-and-entrepreneur.mdx:111` · 2016-02-25 · Chrisanthi Kaliviotis
-
-Restricted term: **elixir** · matched: **naturopath**
-
-> …Shanks herbs and spices for healthy elixirs](/content/interviews/founders/kirsten-shanks-naturopath-and-entrepreneur/p9.jpg) she loves to play with herbs and spices to create healthy elix…
 
 ### [REVIEW] PRACTITIONER (body) — Myra Perez, My Violet
 `content/interviews/founders/myra-perez-floral-designer/myra-perez-floral-designer.mdx:51` · 2018-12-20 · Zoe Briggs
@@ -3492,19 +2687,19 @@ Restricted term: **Elixir** · matched: **nutritionist**
 
 > …ek so I can indulge over the weekends. I get a lot of my recipes from Health with Bec, my nutritionist. She is amazing and offers delicious meal plans to suit your body's needs. I absolutely l…
 
-### [REVIEW] PRACTITIONER (body) — Rosie Huntington-Whiteley, Model
-`content/interviews/models/rosie-huntington-whiteley-model/rosie-huntington-whiteley-model.mdx:70` · 2014-10-02 · Sigourney Cantelo
+### [REVIEW] PRACTITIONER (body) — Teresa Cutter, the Healthy Chef
+`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:151` · 2015-11-24 · Sigourney Cantelo
 
-Restricted term: **Collagen** · matched: **dermatologist**
+Restricted term: **Protein Powder** · matched: **nutritionist**
 
-> …ightStim](http://www.lightstim.com/), which I’m obsessed with… at the moment. It’s at my dermatologist, Dr Lancer’s office, and it is basically a LED light, which is so rejuvenating for the sk…
+> …with the Healthy Chef Protein Powder](/content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/img-12.jpg) ###### Teresa Loves Smoothies Made with the Healthy Chef Protein Powder ![…
 
-### [REVIEW] PRACTITIONER (body) — Rosie Huntington-Whiteley, Model
-`content/interviews/models/rosie-huntington-whiteley-model/rosie-huntington-whiteley-model.mdx:70` · 2014-10-02 · Sigourney Cantelo
+### [REVIEW] PRACTITIONER (body) — Teresa Cutter, the Healthy Chef
+`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:154` · 2015-11-24 · Sigourney Cantelo
 
-Restricted term: **Collagen** · matched: **Dr L**
+Restricted term: **Protein Powder** · matched: **nutritionist**
 
-> …//www.lightstim.com/), which I’m obsessed with… at the moment. It’s at my dermatologist, Dr Lancer’s office, and it is basically a LED light, which is so rejuvenating for the skin… It…
+> …Chocolate in Her Fridge for a Treat](/content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/img-13.jpg) ###### Teresa Keeps Lindt Dark Chocolate in Her Fridge for a Treat ### For…
 
 ### [REVIEW] PRACTITIONER (body) — How Fashionista Rozalia Russian Learned to Be Gentler with Herself
 `content/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself.mdx:127` · 2022-05-04 · Zoe Briggs
@@ -3527,12 +2722,26 @@ Restricted term: **zinc** · matched: **nutritionist**
 
 > …om Ford’s Black Orchid – I find it so sexy](/content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/L-9-1.jpg) But there’s a new one I’ve been using too, the Jimmy Choo perf…
 
-### [REVIEW] PRACTITIONER (body) — Maria Thattil, Miss Universe Australia on the Importance of Representation and Great Mascara
-`content/interviews/tastemakers/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara.mdx:153` · 2021-04-13 · Zoe Briggs
+### [REVIEW] PRACTITIONER (body) — Lola Berry, Nutritionist
+`content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:30` · 2018-02-08 · Sigourney Cantelo
 
-Restricted term: **vitamin ** · matched: **Dr P**
+Restricted term: **supplement** · matched: **nutritionist**
 
-> …n my home town of Melbourne is [Kaya Cosmedica](https://www.kayacosmedica.com.au/), where Dr Parvin Khinda looks after my skin._ I get regular facials there every six weeks which incl…
+> …must-have addition to any serum and her secret supplement for glowing skin. ![Lola Berry nutritionist lifestyle portrait](/content/interviews/tastemakers/lola-berry-nutritionist/lola-portrait…
+
+### [REVIEW] PRACTITIONER (body) — Lola Berry, Nutritionist
+`content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:30` · 2018-02-08 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **nutritionist**
+
+> …![Lola Berry nutritionist lifestyle portrait](/content/interviews/tastemakers/lola-berry-nutritionist/lola-portrait-3.png) ## Lola on Intuition and Following Your Heart ### _”I’m a big beli…
+
+### [REVIEW] PRACTITIONER (body) — Lola Berry, Nutritionist
+`content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:84` · 2018-02-08 · Sigourney Cantelo
+
+Restricted term: **fish oil** · matched: **nutritionist**
+
+> …png) ![Lola Berry feeling beautiful portrait](/content/interviews/tastemakers/lola-berry-nutritionist/lola-portrait-11.jpg) ## Lola's Tips for Glowing Skin ### _My best tip for glowing skin…
 
 ### [REVIEW] PRACTITIONER (body) — Zoe Bingley-Pullin, Nutritionist & Chef
 `content/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef/zoe-bingley-pullin-nutritionist-and-chef.mdx:46` · 2014-04-24 · Sigourney Cantelo
@@ -3540,6 +2749,27 @@ Restricted term: **vitamin ** · matched: **Dr P**
 Restricted term: **Supplement** · matched: **nutritionist**
 
 > …a probiotic – it’s really important.](/content/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef/A29T2080-1.jpg) And fish oils. Right now I’m taking a pregnancy with iron suppl…
+
+### [REVIEW] PRACTITIONER (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:54` · 2021-11-01 · Karina Wharton
+
+Restricted term: **sunscreen** · matched: **Dr A**
+
+> …much better tolerated with less scaling and stinging.</PullQuote> You might have noticed Dr Andric mention bakuchiol as an exciting new ingredient. This plant-based retinol alternativ…
+
+### [REVIEW] PRACTITIONER (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:64` · 2021-11-01 · Karina Wharton
+
+Restricted term: **sunscreen** · matched: **Dr A**
+
+> …eveloping, delay skin ageing processes and overall it brightens the complexion,” explains Dr Andric. She notes it should be used in the morning, prior to that all-important sunscreen a…
+
+### [REVIEW] PRACTITIONER (body) — The Dermatologist-Approved Beauty Brand That’s Doing Right by the Planet
+`content/living/sustainability/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet/the-dermatologist-approved-beauty-brand-thats-doing-right-by-the-planet.mdx:66` · 2021-11-01 · Karina Wharton
+
+Restricted term: **sunscreen** · matched: **dermatologist**
+
+> …prior to that all-important sunscreen application. An impressive product combining these dermatologist-approved ingredients is Arbonne’s DermResults Illuminating Skin Therapy Concentrate. With…
 
 ### [REVIEW] PRACTITIONER (body) — Sigourney's Edit – Byron Bay
 `content/sigourneys-edit/edit/how-to-get-a-byron-bay-glow/how-to-get-a-byron-bay-glow.mdx:94` · 2014-04-16 · Sigourney Cantelo
@@ -3554,34 +2784,6 @@ Restricted term: **SPF 30** · matched: **Dr. B**
 Restricted term: **SPF 30** · matched: **Dr. D**
 
 > …sunscreen; Pure Tan Coconut Cream to keep the tan on; Dr. Bronners Pure Castile Soap and Dr. Dennis Gross Alpha Beta Glow Pad (the most amazing wipe on facial tan). <NumberedSection n…
-
-### [REVIEW] PRACTITIONER (body) — All About Emface: A New Non-Invasive Beauty Treatment
-`content/sigourneys-edit/edit/is-emface-the-new-needle-free-alternative-to-fillers/is-emface-the-new-needle-free-alternative-to-fillers.mdx:40` · 2024-02-23 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **Dr. L**
-
-> …sive applicators placed on key areas of the face during a 20-minute session. According to Dr. Liew, the combination of HIFES and radiofrequency may support collagen stimulation and help…
-
-### [REVIEW] PRACTITIONER (body) — Our New Daily Routine – Sigourney's Edit
-`content/sigourneys-edit/edit/our-new-daily-routine-sigourneys-edit/our-new-daily-routine-sigourneys-edit.mdx:64` · 2020-04-07 · Sigourney Cantelo
-
-Restricted term: **Electrolyte** · matched: **Dr H**
-
-> …stantly spritz on Minenssey Hydrating SOS Mist while I work, and apply Peach Lanolips and Dr Hauschka Cuticle Oil pen. A good non-drip mask to put on while you’re working is [Drunk El…
-
-### [REVIEW] PRACTITIONER (body) — This Pharmacy Product Fixed My Freaked Out Skin
-`content/sigourneys-edit/edit/this-pharmacy-product-fixed-my-freaked-out-skin/this-pharmacy-product-fixed-my-freaked-out-skin.mdx:46` · 2020-11-11 · Sigourney Cantelo
-
-Restricted term: **Vitamin ** · matched: **dermatologist**
-
-> …ery compromised) barrier. I can’t get to the bathroom fast enough to try them out. I ask dermatologist Dr Leona Yip all about why our skin barrier is so important, and how to repair mine. “The…
-
-### [REVIEW] PRACTITIONER (body) — This Pharmacy Product Fixed My Freaked Out Skin
-`content/sigourneys-edit/edit/this-pharmacy-product-fixed-my-freaked-out-skin/this-pharmacy-product-fixed-my-freaked-out-skin.mdx:46` · 2020-11-11 · Sigourney Cantelo
-
-Restricted term: **Vitamin ** · matched: **Dr L**
-
-> …d) barrier. I can’t get to the bathroom fast enough to try them out. I ask dermatologist Dr Leona Yip all about why our skin barrier is so important, and how to repair mine. “The skin…
 
 ### [REVIEW] PRACTITIONER (body) — Winter Beauty Rituals: Luxe Products for Glowing Skin in the Snow
 `content/sigourneys-edit/edit/winter-beauty-rituals/winter-beauty-rituals.mdx:127` · 2025-08-10 · Sigourney Cantelo
@@ -3604,26 +2806,26 @@ Restricted term: **Supplement** · matched: **Dr A**
 
 > …ith age, especially for women, and calcium is the foundation that keeps our bones strong. Dr Adam encouraged me to be far more deliberate about getting enough of it, rather than assumi…
 
-### [REVIEW] PRACTITIONER (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:83` · 2025-09-05 · Jayde Balderston
+### [REVIEW] PRACTITIONER (body) — A Nutritionist on Binning Bad Lockdown Eating Habits
+`content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:66` · 2020-06-16 · Tess Schlink
 
-Restricted term: **collagen** · matched: **Dr S**
+Restricted term: **prebiotic** · matched: **nutritionist**
 
-> …es back), fewer dark spots, and smoother tone overall. And I'm not alone. Dermatologists Dr Shah and Dr Maxfield, along with facial plastic surgeon Dr Prem, all recommend **[Qure's Ne…
+> …– and move on. Don’t tap in and out all day. ![Feed on fibre](/content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/shoot74514.jpg) _Feed on fibre_ To help support y…
 
-### [REVIEW] PRACTITIONER (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:83` · 2025-09-05 · Jayde Balderston
+### [REVIEW] PRACTITIONER (body) — A Nutritionist on Binning Bad Lockdown Eating Habits
+`content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:72` · 2020-06-16 · Tess Schlink
 
-Restricted term: **collagen** · matched: **Dr M**
+Restricted term: **zinc** · matched: **nutritionist**
 
-> …wer dark spots, and smoother tone overall. And I'm not alone. Dermatologists Dr Shah and Dr Maxfield, along with facial plastic surgeon Dr Prem, all recommend **[Qure's Neck & Décolle…
+> …to build immune function and strength. ![Amp up antioxidants](/content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/shoot74421.jpg) _Amp up antioxidants_ Garlic is w…
 
-### [REVIEW] PRACTITIONER (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:83` · 2025-09-05 · Jayde Balderston
+### [REVIEW] PRACTITIONER (body) — A Nutritionist on Binning Bad Lockdown Eating Habits
+`content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/a-nutritionist-on-binning-bad-lockdown-eating-habits.mdx:134` · 2020-06-16 · Tess Schlink
 
-Restricted term: **collagen** · matched: **Dr P**
+Restricted term: **probiotic** · matched: **nutritionist**
 
-> …I'm not alone. Dermatologists Dr Shah and Dr Maxfield, along with facial plastic surgeon Dr Prem, all recommend **[Qure's Neck & Décolletage Device](https://qureskincare.com/pages/led…
+> …s time.” ## Shop Jacqueline’s Picks [![Cub & Scout Carryall](/content/wellness/health/a-nutritionist-on-binning-bad-lockdown-eating-habits/cubscout_b4_007.1080_1296x.jpg)](https://www.cuband…
 
 ### [REVIEW] PRACTITIONER (body) — Spring Wellness Reboot
 `content/wellness/health/spring-wellness-reboot/spring-wellness-reboot.mdx:113` · 2023-11-06 · Beauticate Editorial
@@ -3632,82 +2834,19 @@ Restricted term: **supplement** · matched: **Nutritionist**
 
 > …s/health/spring-wellness-reboot/copy-of-sizing-for-site-portrait-750-x-1125-16-5.jpeg) ![Nutritionist Monique's recommended daily wellness essentials for spring](/content/wellness/health/spri…
 
-### [REVIEW] PRACTITIONER (body) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:60` · 2017-07-11 · Madeleine Boyd
-
-Restricted term: **Collagen** · matched: **Nutritionist**
-
-> …ture <NumberedSection number="2" title="Bannie Williams, The Healthy Ingredient" /> ### Nutritionist, former model and blogger ![Download](/content/wellness/health/superfoods-bloggers-swear…
-
-### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
-`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:30` · 2017-05-24 · Beauticate Editorial · +8 more in file
-
-Restricted term: **Supplement** · matched: **Eczema**
-
-> ![5 Eczema Facts to Understand and Manage Irritated Skin](/content/beauty-style/skin-care/5-eczema-f…
-
-### [REVIEW] SERIOUS (body) — How I Deal with Eczema – Sigourney’s Edit
-`content/beauty-style/skin-care/eczema-how-i-deal-with-it-sigourneys-edit-2/eczema-how-i-deal-with-it-sigourneys-edit-2.mdx:64` · 2018-05-15 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **collagen** · matched: **Eczema**
-
-> …ined but the beauty of young collagen is that even those heal with time. ![How Deal With Eczema Sigourney](/content/beauty-style/skin-care/eczema-how-i-deal-with-it-sigourneys-edit-2/ho…
-
 ### [REVIEW] SERIOUS (body) — How to Pack Your MBFWA Survival Kit
-`content/beauty-style/beauty-tips/how-to-pack-your-mbfwa-survival-kit/how-to-pack-your-mbfwa-survival-kit.mdx:182` · 2014-04-05 · Madeleine Boyd · +1 more in file
+`content/beauty-style/beauty-tips/how-to-pack-your-mbfwa-survival-kit/how-to-pack-your-mbfwa-survival-kit.mdx:182` · 2014-04-05 · Madeleine Boyd
 
-Restricted term: **Probiotic** · matched: **Eczema**
+Restricted term: **Probiotic** · matched: **eczema**
 
-> …ps/how-to-pack-your-mbfwa-survival-kit/family2816of16229thumbnail.jpeg) [How I Deal With Eczema – Sigourney’s Edit](/how-to/eczema-how-i-deal-with-it-sigourneys-edit) about 6 days ago…
+> …kit/family2816of16229thumbnail.jpeg) [How I Deal With Eczema – Sigourney’s Edit](/how-to/eczema-how-i-deal-with-it-sigourneys-edit) about 6 days ago ![Careergirldailyskincare](/conten…
 
 ### [REVIEW] SERIOUS (body) — How to: Anti-Aging Skin Care with Kelly Smythe
-`content/beauty-style/beauty-tips/how-to-skin-with-kelly-smythe/how-to-skin-with-kelly-smythe.mdx:62` · 2014-05-08 · Sigourney Cantelo · +1 more in file
+`content/beauty-style/beauty-tips/how-to-skin-with-kelly-smythe/how-to-skin-with-kelly-smythe.mdx:62` · 2014-05-08 · Sigourney Cantelo
 
-Restricted term: **Probiotic** · matched: **Eczema**
+Restricted term: **Probiotic** · matched: **eczema**
 
-> …eauty-style/beauty-tips/how-to-skin-with-kelly-smythe/browscloseup.jpg) [How I Deal With Eczema – Sigourney’s Edit](/how-to/eczema-how-i-deal-with-it-sigourneys-edit) [Why You Need Pro…
-
-### [REVIEW] SERIOUS (body) — How to Contour Gif Tutorial
-`content/beauty-style/makeup/contour-skin/contour-skin.mdx:76` · 2014-02-12 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Probiotic** · matched: **Eczema**
-
-> …o-pia-muehlenbeck-shares-her-hair-styling-secrets) about 15 hours ago ![How I Deal With Eczema – Sigourney’s Edit](/content/beauty-style/makeup/contour-skin/family2816of16229thumbnail.…
-
-### [REVIEW] SERIOUS (body) — The Best Vitamin C Serums in Australia, Tested and Ranked by Experts
-`content/beauty-style/skin-care/best-vitamin-c-serums-australia/best-vitamin-c-serums-australia.mdx:76` · 2024-03-15 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin C** · matched: **rosacea**
-
-> …itating before, it's the entry point that actually sticks. **Best for:** Sensitive skin, rosacea-prone skin, vitamin C beginners. --- <NumberedSection number="3" title="Rationale Serum…
-
-### [REVIEW] SERIOUS (body) — Sun Safety, but Make it Chic
-`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:48` · 2026-03-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **cancer**
-
-> …that – except to say this: we know the sun is damaging and dangerous, and it causes skin cancer, so we need to be protecting our skin. Period. The real risk with all this noise is that…
-
-### [REVIEW] SERIOUS (body) — Matilda Dods, Model & Musician
-`content/interviews/models/matilda-dods-model/matilda-dods-model.mdx:46` · 2014-09-11 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Vitamin ** · matched: **eczema**
-
-> …day. I am really scared to use new products. I wash it off really gently with cold water, eczema really doesn’t like heat, because eczema holds heat so you want to try and keep it as coo…
-
-### [REVIEW] SERIOUS (body) — 6 Reasons You're Feeling Exhausted and How to Fix It
-`content/wellness/health/f257idrsg86cqyawj8durejzgkzivw/f257idrsg86cqyawj8durejzgkzivw.mdx:67` · 2017-07-11 · Catherine Barnes · +1 more in file
-
-Restricted term: **supplement** · matched: **thyroid**
-
-> …see your GP and have it tested. It's best to follow medical recommendations when treating thyroid problems, but lowering refined carbohydrate intake, gluten intake and including iodine su…
-
-### [REVIEW] SERIOUS (body) — The Beauty Advice I’m Giving My Daughter
-`content/beauty-style/beauty-tips/the-beauty-advice-im-giving-my-daughter/the-beauty-advice-im-giving-my-daughter.mdx:44` · 2023-05-03 · Sigourney Cantelo
-
-Restricted term: **SPF 30** · matched: **Cancer**
-
-> …understand the importance of sunscreen after all my lecturing. Her favourite is the Kids Cancer Council Roll On sunscreen because she finds them easier to apply. For every day I like th…
+> …-with-kelly-smythe/browscloseup.jpg) [How I Deal With Eczema – Sigourney’s Edit](/how-to/eczema-how-i-deal-with-it-sigourneys-edit) [Why You Need Probiotics In Your Skincare Routine ](…
 
 ### [REVIEW] SERIOUS (body) — The Turn-Back-Time Tweaks That Actually Work
 `content/beauty-style/cosmetic/the-turn-back-time-tweaks-that-actually-work/the-turn-back-time-tweaks-that-actually-work.mdx:42` · 2017-07-06 · Sigourney Cantelo
@@ -3716,6 +2855,76 @@ Restricted term: **Sunscreen** · matched: **cancer**
 
 > …that the number one culprit for lines and irregular tone and texture (not to mention skin cancer) Joseph insists that the first step in any skincare routine should always be an effective…
 
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:30` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **Supplement** · matched: **Eczema**
+
+> ![5 Eczema Facts to Understand and Manage Irritated Skin](/content/beauty-style/skin-care/5-eczema-f…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:30` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **Supplement** · matched: **eczema**
+
+> …5 Eczema Facts to Understand and Manage Irritated Skin](/content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/1-2-2.jpg) ## Nutritionist Karen Fischer's…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:32` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **Supplement** · matched: **Eczema**
+
+> …derstand-and-manage-irritated-skin/1-2-2.jpg) ## Nutritionist Karen Fischer's Children's Eczema LED Her to Develop a Diet and Supplement Powder to Help Manage it Eczema, or dermatitis,…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:34` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **Supplement** · matched: **Eczema**
+
+> …er's Children's Eczema LED Her to Develop a Diet and Supplement Powder to Help Manage it Eczema, or dermatitis, is an acute allergic condition on the skin that shows up as red, inflamed…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:50` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **Supplement** · matched: **eczema**
+
+> …t affected less than [10% of children 50 years ago](http://www.abc.net.au/news/2011-09-07/eczema-on-the-rise-in-australia/2874462)), and there’s no absolute reason for the rise, but clim…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:54` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **supplement** · matched: **eczema**
+
+> …h has shown that Omega 3 fish oil helps reduce inflammatory substances that contribute to eczema. And introducing a potent dose of skin-loving supplements. ### Shop ![Bioderma](/conten…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:58` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **Omega 3** · matched: **eczema**
+
+> …dose of skin-loving supplements. ### Shop ![Bioderma](/content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/bioderma-1.jpg) ## Bioderma Atoderm Crème…
+
+### [REVIEW] SERIOUS (body) — 5 Eczema Facts to Understand and Manage Irritated Skin
+`content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/5-eczema-facts-to-understand-and-manage-irritated-skin.mdx:62` · 2017-05-24 · Beauticate Editorial
+
+Restricted term: **supplement** · matched: **eczema**
+
+> …1.jpg) ## Bioderma Atoderm Crème ![Avene Xeracalm Ad](/content/beauty-style/skin-care/5-eczema-facts-to-understand-and-manage-irritated-skin/avene-xeracalm-ad-16299-1.jpg) ## Avene Xe…
+
+### [REVIEW] SERIOUS (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:48` · 2026-03-16 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **cancer**
+
+> …that – except to say this: we know the sun is damaging and dangerous, and it causes skin cancer, so we need to be protecting our skin. Period. The real risk with all this noise is that…
+
+### [REVIEW] SERIOUS (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:52` · 2026-03-16 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **cancer**
+
+> …rns people off sunscreen altogether. In a country with some of the highest rates of skin cancer in the world – **where two out of three Australians will be diagnosed in their lifetime**…
+
 ### [REVIEW] SERIOUS (body) — Do Hydration-Boosting Capsules Work? We Tried Them for 30 Days
 `content/beauty-style/skin-care/do-hydration-boosting-capsules-work-we-tried-them-for-30-days/do-hydration-boosting-capsules-work-we-tried-them-for-30-days.mdx:72` · 2020-09-16 · Sigourney Cantelo
 
@@ -3723,33 +2932,12 @@ Restricted term: **capsule** · matched: **rosacea**
 
 > …them-for-30-days/img_1523.jpg) In an effort to finally take control of my adult acne and rosacea, I am doing the unthinkable for someone working in beauty and, under my dermatologist’s s…
 
-### [REVIEW] SERIOUS (body) — Dr Dennis Gross on Why You Have to Exfoliate (and How to Do it Properly)
-`content/beauty-style/skin-care/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly/dr-dennis-gross-on-why-you-have-to-exfoliate-and-how-to-do-it-properly.mdx:66` · 2021-04-05 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **rosacea**
-
-> …tml) ## Peels for every skin concern Peels are great if you have acne, and terrific for rosacea, because they help to normalise oil chemistry and get rid of bacteria. Most of all, they…
-
 ### [REVIEW] SERIOUS (body) — Five Things You Should Never Do After a Facial
 `content/beauty-style/skin-care/five-things-you-should-never-do-after-a-facial-2/five-things-you-should-never-do-after-a-facial-2.mdx:54` · 2018-07-09 · Yadira Galarza Cauchi
 
 Restricted term: **sunscreen** · matched: **cancer**
 
 > …f particular relevance in Australia where the UV is extremely strong and the rate of skin cancer is high. I prefer to use a chemical free (physical) sunscreen after a facial treatment fo…
-
-### [REVIEW] SERIOUS (body) — How I Improve the Appearance of Cellulite at Home
-`content/beauty-style/skin-care/how-i-improve-the-appearance-of-cellulite-at-home/how-i-improve-the-appearance-of-cellulite-at-home.mdx:34` · 2022-02-01 · Grace Parsons
-
-Restricted term: **collagen** · matched: **thyroid**
-
-> …generally point towards genes, hormones, and lifestyle. Estrogen, insulin, noradrenaline, thyroid hormones, and prolactin are part of the production of cellulite. It is theorised that a d…
-
-### [REVIEW] SERIOUS (body) — How to Shop for Skincare Like a Cosmetic Chemist
-`content/beauty-style/skin-care/how-to-shop-for-skincare-like-a-cosmetic-chemist/how-to-shop-for-skincare-like-a-cosmetic-chemist.mdx:94` · 2017-12-13 · Rikki Hodge-Smith
-
-Restricted term: **sunscreen** · matched: **cancer**
-
-> …skincare product is sunscreen. UV protection prevents both the potential to develop skin cancer as well as the acceleration of premature ageing.” The final big myth to dispel? That tone…
 
 ### [REVIEW] SERIOUS (body) — Move Over SPF. Your Skin Now Needs Environmental Protection.
 `content/beauty-style/skin-care/move-over-spf-your-skin-now-needs-environmental-protection/move-over-spf-your-skin-now-needs-environmental-protection.mdx:38` · 2017-02-16 · Sigourney Cantelo
@@ -3778,20 +2966,6 @@ Restricted term: **adaptogen** · matched: **eczema**
 Restricted term: **adaptogen** · matched: **psoriasis**
 
 > …n and the adaptogenic herbs it contains help balance issues including rosacea, eczema and psoriasis. This product also can be used as a primer, worn underneath makeup to create beautiful, g…
-
-### [REVIEW] SERIOUS (body) — The Sisters Using Science and Astrology to Care for Your Skin
-`content/beauty-style/skin-care/the-sisters-using-science-and-astrology-to-care-for-your-skin/the-sisters-using-science-and-astrology-to-care-for-your-skin.mdx:68` · 2022-12-15 · Zoe Briggs
-
-Restricted term: **Elixir** · matched: **Cancer**
-
-> …s/astrology/products/body-elixir-water-sea-flora-seaweed-water-lily-and-marine-collagen) (Cancer, Scorpio, Pisces) Scent: rose | Helps to: relax | Special ingredient: marine collagen to…
-
-### [REVIEW] SERIOUS (body) — The Skincare Ingredients That Will Fade Redness for Good
-`content/beauty-style/skin-care/the-skincare-ingredients-that-will-fade-redness-for-good/the-skincare-ingredients-that-will-fade-redness-for-good.mdx:63` · 2018-04-30 · Beauticate Editorial
-
-Restricted term: **Vitamin B** · matched: **eczema**
-
-> …horn contains a potent mix of fatty acids that have been shown to significantly alleviate eczema symptoms. ## Niacinamide (Vitamin B) Vitamin B is a powerhouse ingredient when it come t…
 
 ### [REVIEW] SERIOUS (body) — What Are Skin Boosters and Do I Need One?
 `content/beauty-style/skin-care/what-is-a-skin-booster-and-why-do-i-need-one/what-is-a-skin-booster-and-why-do-i-need-one.mdx:70` · 2015-10-07 · Sigourney Cantelo
@@ -3842,6 +3016,13 @@ Restricted term: **magnesium** · matched: **arthritis**
 
 > …ater is an age-old practice believed in many cultures to remedy everything from eczema to arthritis. The [Salus Spa](http://www.lakehouse.com.au/spa) at The Lakehouse is, without a doubt, t…
 
+### [REVIEW] SERIOUS (body) — Matilda Dods, Model & Musician
+`content/interviews/models/matilda-dods-model/matilda-dods-model.mdx:46` · 2014-09-11 · Sigourney Cantelo
+
+Restricted term: **capsule** · matched: **eczema**
+
+> …ts. I wash it off really gently with cold water, eczema really doesn’t like heat, because eczema holds heat so you want to try and keep it as cool as possible. When it’s bad in the morni…
+
 ### [REVIEW] SERIOUS (body) — Bianca Dye on Panic Attacks and Life in the Spotlight
 `content/vodcast/episodes/bianca-dye-on-pressure-performance-and-panic-attacks/bianca-dye-on-pressure-performance-and-panic-attacks.mdx:64` · 2024-10-18 · Sigourney Cantelo
 
@@ -3849,26 +3030,19 @@ Restricted term: **LED Mask** · matched: **Cancer**
 
 > …e seen firsthand the amazing transformations these masks can create. In honour of Breast Cancer Awareness Month, Qure Skincare is including a special pack with every purchase made in Oc…
 
-### [REVIEW] SERIOUS (body) — Cryotherapy, the Beauty Trend You Need to Have on Your Radar
-`content/wellness/biohacking/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar/cryotherapy-the-beauty-trend-you-need-to-have-on-your-radar.mdx:44` · 2021-04-27 · Tess Schlink
+### [REVIEW] SERIOUS (body) — 6 Reasons You're Feeling Exhausted and How to Fix It
+`content/wellness/health/f257idrsg86cqyawj8durejzgkzivw/f257idrsg86cqyawj8durejzgkzivw.mdx:67` · 2017-07-11 · Catherine Barnes
 
-Restricted term: **collagen** · matched: **rosacea**
+Restricted term: **supplement** · matched: **thyroid**
 
-> …mote collagen and elastin, reduce pore size, and reduce inflammation (including improving rosacea and acne-prone skin),” shares Jacqui. “Immediately post-facial, you'll experience a boost…
+> …see your GP and have it tested. It's best to follow medical recommendations when treating thyroid problems, but lowering refined carbohydrate intake, gluten intake and including iodine su…
 
-### [REVIEW] SERIOUS (body) — Crispy Coconut Chicken with Mango Salsa
-`content/wellness/health/crispy-coconut-chicken-with-mango-salsa/crispy-coconut-chicken-with-mango-salsa.mdx:36` · 2016-01-15 · Claudia De Berardinis
+### [REVIEW] SERIOUS (body) — 6 Reasons You're Feeling Exhausted and How to Fix It
+`content/wellness/health/f257idrsg86cqyawj8durejzgkzivw/f257idrsg86cqyawj8durejzgkzivw.mdx:67` · 2017-07-11 · Catherine Barnes
 
-Restricted term: **vitamin A** · matched: **psoriasis**
+Restricted term: **supplement** · matched: **thyroid**
 
-> …y grail – coconut – is legendary for promoting clear and youthful skin, and even reducing psoriasis and eczema. And while you didn’t think it could get any better than that, adding mangos t…
-
-### [REVIEW] SERIOUS (body) — Crispy Coconut Chicken with Mango Salsa
-`content/wellness/health/crispy-coconut-chicken-with-mango-salsa/crispy-coconut-chicken-with-mango-salsa.mdx:36` · 2016-01-15 · Claudia De Berardinis
-
-Restricted term: **vitamin A** · matched: **eczema**
-
-> …nut – is legendary for promoting clear and youthful skin, and even reducing psoriasis and eczema. And while you didn’t think it could get any better than that, adding mangos to the dish…
+> …ke, gluten intake and including iodine supplements in your diet have been known to assist thyroid function. ## Emotional Stress Our mental health has a lot to answer for when it comes t…
 
 ### [REVIEW] SERIOUS (body) — The New Superfoods and How to Eat Them
 `content/wellness/health/the-top-superfoods-for-spring/the-top-superfoods-for-spring.mdx:78` · 2015-09-14 · Claudia De Berardinis
@@ -3877,404 +3051,40 @@ Restricted term: **CHAGA** · matched: **diabetes**
 
 > …nd cholesterol levels while providing relief to those suffering from pain, neuropathy and diabetes. [CHAGA MUSHROOM CUPCAKES](http://www.hyperionherbs.com/medicinal-muffins-pt-chocolate-p…
 
-### [REVIEW] TESTIMONIAL (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
-`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:64` · 2021-09-21 · Zoe Briggs · +2 more in file
+### [REVIEW] SYMPTOM_PITCH (body) — Our 2021 Father's Day Guide, as Chosen by the Discerning Men of Beauticate
+`content/beauty-style/fragrance/our-2021-fathers-day-guide-as-chosen-by-the-discerning-men-of-beauticate/our-2021-fathers-day-guide-as-chosen-by-the-discerning-men-of-beauticate.mdx:56` · 2021-08-31 · Beauticate Editorial
 
-Restricted term: **sunscreen** · matched: **I love**
+Restricted term: **Capsule** · matched: **suffer from**
 
-> …Vera and apply the NIVEA Naturally Good Sensitive Day Cream with Organic Chamomile, which I love. You can spend a fortune on skincare but then there comes along a day cream like this tha…
+> …ve his skin barrier would be a wise place to start: so many people, regardless of gender, suffer from compromised skin barrier-induced sensitivity, and men are certainly not the exception her…
 
-### [REVIEW] TESTIMONIAL (body) — Our Greatest Hits – Beauticate's Most Popular Who Profiles
-`content/beauty-style/beauty-tips/our-greatest-hits-beauticates-most-popular-who-profiles/our-greatest-hits-beauticates-most-popular-who-profiles.mdx:48` · 2016-12-22 · Stephanie Russo · +2 more in file
+### [REVIEW] SYMPTOM_PITCH (body) — How to (Easily) Fix Your Skin from Stress Damage
+`content/beauty-style/skin-care/how-stress-is-affecting-your-skin/how-stress-is-affecting-your-skin.mdx:46` · 2017-07-11 · Emily Algar
 
-Restricted term: **supplement** · matched: **I love**
+Restricted term: **magnesium** · matched: **suffer from**
 
-> …nchovies are the only thing I don't like! I eat pretty well the majority of the time, but I love my lollies, cakes and chocolate — I probably eat chocolate everyday. My lunch will be hea…
+> …alm the mind. It’s even great to pop onto your hands before a meeting or interview if you suffer from sweaty palms. Massage it into your body after one of those everything-went-wrong type day…
 
-### [REVIEW] TESTIMONIAL (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
-`content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:54` · 2020-04-29 · Tess Schlink · +2 more in file
+### [REVIEW] SYMPTOM_PITCH (body) — I’m 44, Here’s Everything I Use on My Skin
+`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:136` · 2024-03-16 · Sigourney Cantelo
 
-Restricted term: **LED Mask** · matched: **I love**
+Restricted term: **Light Therapy** · matched: **If you are dealing with**
 
-> …s://www.mecca.com.au/dr-dennis-gross/spectralite-faceware-pro/I-034280.html). For makeup, I love Kjaer Weis, RMS, and Eye Horus. Eyelash curlers are a must as well, as framing the face…
+> …sion. The NuFACE Trinity is a microcurrent device people often reach for before an event. If you are dealing with persistent breakouts, that is one for your GP or dermatologist rather than a device purch…
 
-### [REVIEW] TESTIMONIAL (body) — Summer Style and Beauty Essentials – Sigourney's Edit
-`content/beauty-style/skin-care/summer-style-essentials/summer-style-essentials.mdx:41` · 2016-12-08 · Sigourney Cantelo · +2 more in file
+### [REVIEW] SYMPTOM_PITCH (body) — The New Sunscreen Innovations You Need to Try
+`content/beauty-style/skin-care/sunscreen-innovations/sunscreen-innovations.mdx:61` · 2019-01-16 · Tess Schlink
 
-Restricted term: **capsule** · matched: **I love**
+Restricted term: **sunscreen** · matched: **suffering from**
 
-> …’ closet. This oversized point-collar shirt by Raey (from Matches Fashion) is perfection. I love it unbuttoned and thrown over a swimsuit (this one is by Heidi Klum) for the beach – it p…
+> …ntial to allow your body to produce vitamin D. With almost 1 in 3 of us here in Australia suffering from a vitamin D deficiency, it’s the perfect compromise – the skin stays protected from sunbu…
 
-### [REVIEW] TESTIMONIAL (body) — The Black Friday Skin Deals You Can't Miss
-`content/beauty-style/skin-care/the-black-friday-skin-deals-you-cant-miss/the-black-friday-skin-deals-you-cant-miss.mdx:39` · 2024-11-28 · Sigourney Cantelo · +2 more in file
+### [REVIEW] SYMPTOM_PITCH (body) — The New Superfoods and How to Eat Them
+`content/wellness/health/the-top-superfoods-for-spring/the-top-superfoods-for-spring.mdx:78` · 2015-09-14 · Claudia De Berardinis
 
-Restricted term: **LED Mask** · matched: **My pick**
+Restricted term: **CHAGA** · matched: **suffering from**
 
-> …hat ever your skin concerns are there is a bundle suitable! ## Skin Bundles For The Win My pick would be the Fade & Firm Bundle Advanced that includes the incredible Q-Rejuvalight Pro L…
-
-### [REVIEW] TESTIMONIAL (body) — Sophie Falkiner, TV Presenter
-`content/interviews/actors-presenters/sophie-falkiner-tv-presenter/sophie-falkiner-tv-presenter.mdx:53` · 2016-04-28 · Chrisanthi Kaliviotis · +2 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …p. But I think sunscreen, supplements, sleep, water and exfoliation are really important. I use this Garnier 3-in-1 – [I use it] in the shower every second day and people always say I h…
-
-### [REVIEW] TESTIMONIAL (body) — Alice McCall, Fashion Designer
-`content/interviews/creatives/alice-mccall-fashion-designer/alice-mccall-fashion-designer.mdx:88` · 2015-02-12 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **Vitamin D** · matched: **I love**
-
-> …I don’t like to use fake tan but I like to go in the sun, I really love the Vitamin D. So I love to spend a bit of time in the sun. I do feel like beauty comes from within, in the respec…
-
-### [REVIEW] TESTIMONIAL (body) — Libby Boxall, on How Getting Gorgeous Hair Led to Partnering with a Kardashian
-`content/interviews/founders/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian.mdx:54` · 2021-07-06 · Zoe Briggs · +2 more in file
-
-Restricted term: **MultiVitamin** · matched: **My favourite**
-
-> …is often the strongest, most courageous thing you can do. ## Libby’s Skincare Routine *My favourite beauty product is the Dermalogica MultiVitamin Power Recovery Masque: this has been a lif…
-
-### [REVIEW] TESTIMONIAL (body) — Libby Boxall, on How Getting Gorgeous Hair Led to Partnering with a Kardashian
-`content/interviews/founders/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian.mdx:84` · 2021-07-06 · Zoe Briggs · +2 more in file
-
-Restricted term: **vitamin C** · matched: **I love**
-
-> …-kardashian/Libby-6-1.jpg) Pregnancy and breastfeeding have really dried out my skin, so I love products and treatments that will help with hydration and pigmentation. Skintopia in Comm…
-
-### [REVIEW] TESTIMONIAL (body) — Ruth Robalino, the Hairdresser Turned Supplement Brand Founder Helping Clients Look and Feel Their Best
-`content/interviews/founders/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best.mdx:42` · 2022-11-16 · Zoe Briggs · +2 more in file
-
-Restricted term: **supplement** · matched: **I love**
-
-> …ping-clients-look-and-feel-their-best/ruth-0-1.jpg) _”Hair has always been my passion._ I love it as an art form, but even more important to me is that, as you transform a client’s hai…
-
-### [REVIEW] TESTIMONIAL (body) — The Injectable-Free Lip Cheat That Fashion Influencer Pepa Mack Loves
-`content/interviews/tastemakers/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2.mdx:41` · 2020-01-14 · Zoe Briggs · +2 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …my face in the shower, only ever using a cream face wash because I have a dry complexion. I use tonic, followed by day cream and finish it with 40+ sunscreen. I have quite dry and delic…
-
-### [REVIEW] TESTIMONIAL (body) — Get Ready with… Rachael Finch
-`content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx:92` · 2017-06-07 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **protein powder** · matched: **I love**
-
-> …loved ones are a regular Sunday ritual in my house, especially if pancakes are involved! I love healthy toppings on mine, like berries and fruit. On a regular, super busy work day, my B…
-
-### [REVIEW] TESTIMONIAL (body) — How to Be Runway Ready – Beauty Products Models Really Use
-`content/beauty-style/beauty-tips/how-to-be-runway-ready/how-to-be-runway-ready.mdx:55` · 2014-04-16 · Madeleine Boyd · +1 more in file
-
-Restricted term: **SPF 30** · matched: **I use**
-
-> …I’m using Sukin Face Scrub and a Nivea moisturizer with an SPF 30+ but that’s about it. I use Moroccan Oil on my hair every time I wash it – that’s probably the one thing that I do co…
-
-### [REVIEW] TESTIMONIAL (body) — Mother's Day Treats for Every Mama
-`content/beauty-style/beauty-tips/mothers-day-treats-for-every-mama/mothers-day-treats-for-every-mama.mdx:71` · 2015-05-04 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **Collagen** · matched: **I Love**
-
-> …, La Vie Boheme Yoga Mat , lisa marie fernandez terry pochette in mint , Pana Chocolate I Love You Mum , Pierre Hardy ‘Lilirama’ Sneakers ](/content/beauty-style/beauty-tips/mothers-d…
-
-### [REVIEW] TESTIMONIAL (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
-`content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:46` · 2020-04-29 · Tess Schlink · +1 more in file
-
-Restricted term: **Collagen** · matched: **I use**
-
-> …llow with a leave-in conditioning treatment with peptides to help with the structure, and I use an Aveda mousse to prevent frizzing. I prefer a lived-in beach look. If I have an event t…
-
-### [REVIEW] TESTIMONIAL (body) — Reader Review: Antioxidant Serums
-`content/beauty-style/skin-care/reader-review-antioxidant-serums/reader-review-antioxidant-serums.mdx:87` · 2015-11-09 · Lauren Kennedy · +1 more in file
-
-Restricted term: **Vitamin ** · matched: **I love**
-
-> …idant protection while biopeptides help reduce the appearance of fine lines and wrinkles. I love that it can also be used on sensitive skin and acne prone skin and paired with other seru…
-
-### [REVIEW] TESTIMONIAL (body) — Sigourney's Edit – Summer Skincare
-`content/beauty-style/skin-care/sigourney-1/sigourney-1.mdx:66` · 2014-01-22 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin D** · matched: **I use**
-
-> …ed on by daylight and helps your skin absorb vitamin D while protecting you from the sun. I use this in place of a full sunscreen if I’m going to be inside all day at my computer. If I’…
-
-### [REVIEW] TESTIMONIAL (body) — The Best Night Creams – Reader Review
-`content/beauty-style/skin-care/the-best-night-creams-reader-review/the-best-night-creams-reader-review.mdx:129` · 2017-03-07 · Lucy Searle · +1 more in file
-
-Restricted term: **multivitamin** · matched: **I love**
-
-> …stimulate DNA repair and restructure skin. While I find the cream to be heavily perfumed, I love how it feels on my skin and I can’t fault the results, nor the chic pink packaging that l…
-
-### [REVIEW] TESTIMONIAL (body) — The French Girl Summer Skin Secrets I Live by – Sigourney’s Edit
-`content/beauty-style/skin-care/the-french-girl-summer-skin-secrets-i-live-by-sigourneys-edit/the-french-girl-summer-skin-secrets-i-live-by-sigourneys-edit.mdx:44` · 2017-09-12 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …ut a Lightweight, Sheer Finish When I’m going to be at the beach or will be in full sun, I use a full strength sunscreen of at least 30+ but day-to-day, when I’m running around, I use…
-
-### [REVIEW] TESTIMONIAL (body) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
-`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:32` · 2017-11-22 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin** · matched: **my current favourite**
-
-> …to cart around a little dropper bottle (even in my smallest of handbags!) of whichever is my current favourite, ready to top my skin’s vitamin levels up at a moments notice! My current favourite is V…
-
-### [REVIEW] TESTIMONIAL (body) — Why You Need Vitamin Serums in Your Skincare Arsenal This Summer
-`content/beauty-style/skin-care/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer/why-you-need-vitamin-serums-in-your-skincare-arsenal-this-summer.mdx:34` · 2017-11-22 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **vitamin ** · matched: **I love**
-
-> …nts notice! My current favourite is Vitamin C. I pile the stuff on in the summer months. I love that they have a featherlight texture so layer beautifully under any other skincare or ma…
-
-### [REVIEW] TESTIMONIAL (body) — Anna Heinrich, Media Personality
-`content/interviews/actors-presenters/anna-heinrich-tv-star-and-lawyer/anna-heinrich-tv-star-and-lawyer.mdx:100` · 2016-02-18 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **supplement** · matched: **I love**
-
-> …nchovies are the only thing I don’t like! I eat pretty well the majority of the time, but I love my lollies, cakes and chocolate – I probably eat chocolate everyday. My lunch will be hea…
-
-### [REVIEW] TESTIMONIAL (body) — James Tobin, TV Presenter
-`content/interviews/actors-presenters/james-tobin-tv-presenter/james-tobin-tv-presenter.mdx:49` · 2015-05-25 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …7282-1.jpg) ## James's Skincare and Sun Protection ### If I come home with make up on… I use Shu Uemura Cleansing Oil. My sister, Julia, who works in Beauty PR gave me that. I don’t…
-
-### [REVIEW] TESTIMONIAL (body) — Penelope Mitchell, Actress
-`content/interviews/actors-presenters/penelope-mitchell-actress/penelope-mitchell-actress.mdx:55` · 2015-03-12 · Madeleine Boyd · +1 more in file
-
-Restricted term: **Probiotic** · matched: **I use**
-
-> …m all about natural skincare. I love Epicuren’s Acidophilus Probiotic Facial Cream which I use daily. It has probiotics in it so it rejuvenates, resurfaces and gives my skin a real glo…
-
-### [REVIEW] TESTIMONIAL (body) — Charlotte Blakeney, by Charlotte
-`content/interviews/creatives/charlotte-blakeney-jewellery-designer/charlotte-blakeney-jewellery-designer.mdx:54` · 2017-12-07 · Velvet Garvey · +1 more in file
-
-Restricted term: **collagen** · matched: **I love**
-
-> …ular microdermabrasion treatments, collagen masks and plenty of hydration inside and out. I love visiting the team at [Heber Davis](http://heberdavis.com.au/) for my skin treatments. I h…
-
-### [REVIEW] TESTIMONIAL (body) — Filomena Natoli, Makeup Artist
-`content/interviews/creatives/filomena-natoli-makeup-artist/filomena-natoli-makeup-artist.mdx:105` · 2014-07-03 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **supplement** · matched: **I love**
-
-> …kale! I don’t take any supplements or vitamins; a balanced diet seem to be working fine. I love to cook with my girls, which probably goes back to my Italian background. I love chilling…
-
-### [REVIEW] TESTIMONIAL (body) — Genevieve Smart, Ginger & Smart
-`content/interviews/creatives/genevieve-smart/genevieve-smart.mdx:38` · 2016-03-10 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …e onset of a nasty cold. ## Genevieve's Skincare Routine ### “I keep it pretty simple. I use Cosmedix Cleansing Oil which gives a deep cleanse, removing sunscreen and makeup. It’s a…
-
-### [REVIEW] TESTIMONIAL (body) — Genevieve Smart, Ginger & Smart
-`content/interviews/creatives/genevieve-smart/genevieve-smart.mdx:54` · 2016-03-10 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **collagen** · matched: **I take**
-
-> …ally natural way to age well. ### I try and look after my skin from the inside… …\[so\] I take vitamins for skin. So much of your skin condition is about your gut lining, so I take pro…
-
-### [REVIEW] TESTIMONIAL (body) — Heidi Carter, Paddo to Palmy
-`content/interviews/creatives/heidi-carter-fashion-designer/heidi-carter-fashion-designer.mdx:154` · 2016-03-31 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **supplement** · matched: **I take**
-
-> …com/) ### I love supplements for overall health. If ever I feel a sore throat coming on I take this glandular tonic and the next day I’m good to go, and I take tissue salts for general…
-
-### [REVIEW] TESTIMONIAL (body) — Julia Stone, the Musician All About Making Meaning
-`content/interviews/creatives/julia-stone-the-musician-all-about-making-meaning/julia-stone-the-musician-all-about-making-meaning.mdx:119` · 2022-12-15 · Zoe Briggs · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …steps 1, 2 and 3 and SPF, though I like to change around exactly which products of theirs I use every couple of weeks. I know it’s not real, but there’s some weird psychological thing w…
-
-### [REVIEW] TESTIMONIAL (body) — Lorna Jane, Activewear Designer
-`content/interviews/creatives/lorna-jane-designer/lorna-jane-designer.mdx:72` · 2018-01-18 · Danielle de Gail · +1 more in file
-
-Restricted term: **Magnesium** · matched: **My favourite**
-
-> …I also love Micro-Dermabrasion to boost my skin (I go to Des at Blow Salon in Brisbane). My favourite spa would have to be Gwinganna on the Gold Coast. I’m not sure if you can book treatments…
-
-### [REVIEW] TESTIMONIAL (body) — Natalia Kindler on Leaving Corporate Life for the World of Wellness
-`content/interviews/creatives/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness.mdx:124` · 2020-12-01 · Zoe Briggs · +1 more in file
-
-Restricted term: **Supplement** · matched: **I take**
-
-> …f-wellness/natalia-13.jpg) ## Natalia’s Supplement Philosophy _I am a supplement queen! I take many different ones, but each has been recommended to me by my naturopath, as suggested b…
-
-### [REVIEW] TESTIMONIAL (body) — Rae Morris, Makeup Artist
-`content/interviews/creatives/rae-morris/rae-morris.mdx:109` · 2013-12-22 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sachet** · matched: **I use**
-
-> …ely put anything on my body. I'm so white you never see my legs or arms anyway. Sometimes I use QV and I do love putting the [Goe Oil](https://www.mecca.com.au/) on elbows or knees. <d…
-
-### [REVIEW] TESTIMONIAL (body) — Steve Cordony, Interior Stylist
-`content/interviews/creatives/steve-cordony-interior-stylist/steve-cordony-interior-stylist.mdx:82` · 2024-08-22 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **infrared** · matched: **I love**
-
-> …daily life. We’re going to build a pool pavilion with a spa like elements like a sauna. I love saunas, both infrared and classic. I also find magnesium salt baths ritualistic and sooth…
-
-### [REVIEW] TESTIMONIAL (body) — Tamsin Johnson, Interior Designer
-`content/interviews/creatives/tamsin-johnson-interior-designer/tamsin-johnson-interior-designer.mdx:116` · 2019-10-16 · Zoe Briggs · +1 more in file
-
-Restricted term: **infrared** · matched: **I love**
-
-> …in. You leave feeling detoxified and cleansed, and it makes for an amazing night’s sleep. I love [Nimbus & Co. in Bondi](https://www.nimbusco.com.au), which is nice to go to either with…
-
-### [REVIEW] TESTIMONIAL (body) — Alyce Tran, the Entrepreneur Who Will Persuade You to Bring Colour Into Your Home
-`content/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home.mdx:106` · 2022-09-21 · Zoe Briggs · +1 more in file
-
-Restricted term: **SPF 15** · matched: **I love**
-
-> …lop between that and the Hourglass Veil Fluid Makeup SPF 15), followed by a bit of blush (I love the [Westman Atelier Baby Cheeks Blush Stick](https://www.mecca.com.au/westman-atelier/ba…
-
-### [REVIEW] TESTIMONIAL (body) — Hayley Hall & Jayde Hall, the Sisters and Brand Co-Founders Embracing Huge Life Changes
-`content/interviews/founders/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes.mdx:92` · 2022-09-07 · Zoe Briggs · +1 more in file
-
-Restricted term: **SPF20** · matched: **I love**
-
-> …r Skin Veil SPF20, depending on the coverage I am wanting.* Due to having such dry skin, I love using my Weleda Skin Food as my primer before makeup as it gives me more of a dewy look.…
-
-### [REVIEW] TESTIMONIAL (body) — Hayley Hall & Jayde Hall, the Sisters and Brand Co-Founders Embracing Huge Life Changes
-`content/interviews/founders/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes.mdx:113` · 2022-09-07 · Zoe Briggs · +1 more in file
-
-Restricted term: **Infrared** · matched: **my favourite**
-
-> …na Vale Skin & Soul makes any treatment feel like absolute heaven.* *Infrared saunas are my favourite way of relaxing and unwinding, and resetting my body and mind. During lockdown I actually…
-
-### [REVIEW] TESTIMONIAL (body) — Inside the Heavenly Home of Kiwi Cult Brand Founder, Emma Lewisham
-`content/interviews/founders/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder.mdx:62` · 2020-09-29 · Zoe Briggs · +1 more in file
-
-Restricted term: **collagen** · matched: **I love**
-
-> …the making, and a lot of the work we were doing was pioneering in the skincare industry. I love the advances we’re seeing in the natural skincare space: we’re seeing more and more highl…
-
-### [REVIEW] TESTIMONIAL (body) — Katrina Brown, Celebrity Spray Tanner
-`content/interviews/founders/katrina-brown-tanning-guru/katrina-brown-tanning-guru.mdx:88` · 2014-10-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I take**
-
-> …nstead of a liquid so it doesn’t mess up your make up. ## Katrina's Fitness Routine ### I take care of my body by walking… ![I take care of my body by walking…](/content/interviews/fo…
-
-### [REVIEW] TESTIMONIAL (body) — Kirsten Shanks, Orchard Street
-`content/interviews/founders/kirsten-shanks-naturopath-and-entrepreneur/kirsten-shanks-naturopath-and-entrepreneur.mdx:109` · 2016-02-25 · Chrisanthi Kaliviotis · +1 more in file
-
-Restricted term: **elixir** · matched: **I love**
-
-> …oing to have for lunch?’ I walk down into this massive cool room with all the things that I love! I love the Green Fields, I have one every day. Sometimes I’ll make sprouted bread and mi…
-
-### [REVIEW] TESTIMONIAL (body) — Lucy Vincent, Sans [Ceuticals]
-`content/interviews/founders/lucy-vincent-entrepreneur/lucy-vincent-entrepreneur.mdx:83` · 2018-06-07 · Zoe Briggs · +1 more in file
-
-Restricted term: **capsule** · matched: **I love**
-
-> …ucy-vincent-entrepreneur/10a-lucy-portrait.jpg) I avoid anything processed, only because I love cooking, I love gardening, and really prefer food in its natural state. My mother always…
-
-### [REVIEW] TESTIMONIAL (body) — Teresa Cutter, the Healthy Chef
-`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:75` · 2015-11-24 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **spf15** · matched: **I love**
-
-> …###### Byredo and Byterry Are Firm Favourites ### I’m a huge fan of By Terry skincare. I love to apply Crème de Rose moisturiser – it helps my skin look fresh and dewy. I generously a…
-
-### [REVIEW] TESTIMONIAL (body) — Why You Should Copy Jessica Sepel's Sloth Sundays in 2020
-`content/interviews/founders/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2.mdx:41` · 2020-01-29 · Zoe Briggs · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …I start my skincare routine in the morning by cleansing my face with natural soap. Then, I use the Kora Organics Vitamin C serum, Trilogy moisturiser and Ultra Violette sunscreen. In…
-
-### [REVIEW] TESTIMONIAL (body) — Bambi Northwood-Blyth, Model
-`content/interviews/models/bambi-northwood-blyth-model/bambi-northwood-blyth-model.mdx:66` · 2016-11-10 · Emily Algar · +1 more in file
-
-Restricted term: **light therapy** · matched: **I love**
-
-> …kin-specialist). I have a lot of cosmetics she recommends. There’s a mint cleanser, which I love, CosMedix Purity Solution. I love La Mer, I use the moisturiser and the eye cream is real…
-
-### [REVIEW] TESTIMONIAL (body) — Helena Vestergaard on Modelling and Mental Health
-`content/interviews/models/helena-vestergaard-on-modelling-and-mental-health/helena-vestergaard-on-modelling-and-mental-health.mdx:70` · 2023-03-01 · Zoe Briggs · +1 more in file
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …y dermatitis was induced by damaging my skin barrier, so I am super careful now with what I use and how often. I only wash my face if I’ve had makeup or sunscreen on, and do so with the…
-
-### [REVIEW] TESTIMONIAL (body) — Jessica Gomes, Model
-`content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:68` · 2014-09-25 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **protein powder** · matched: **I love**
-
-> …greens, protein powders after training. Lots of water, black coffee. No dairy right now. I love dairy though, but just before [the show] I like to keep it all clean foods. My first trea…
-
-### [REVIEW] TESTIMONIAL (body) — Jessica Gomes, Model
-`content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:94` · 2014-09-25 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **SUNSCREEN** · matched: **I use**
-
-> …oning and helps with dark circles, too. Ultraceuticals Eye Cream is really lightweight so I use it during the day underneath my makeup. SUNSCREEN IN AS ESSENTIAL FOR JESSICA WHEN EXERC…
-
-### [REVIEW] TESTIMONIAL (body) — Lucinda Taffs, Model
-`content/interviews/models/lucinda-taffs-model/lucinda-taffs-model.mdx:63` · 2018-11-01 · Zoe Briggs · +1 more in file
-
-Restricted term: **infrared** · matched: **I love**
-
-> …o the best blonde. ### I am so lucky with my work that I get to play around with beauty. I love getting my makeup done and being able try out different looks. ![Lucinda Taffs natural b…
-
-### [REVIEW] TESTIMONIAL (body) — Miranda Kerr, Model & Entrepreneur
-`content/interviews/models/miranda-kerr-model/miranda-kerr-model.mdx:104` · 2015-10-22 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Sunscreen** · matched: **I love**
-
-> …ecca.com.au/rms-beauty/un-cover-up/V-020196.html?cgpath=brands-rmsbeauty-makeup#start=1). I love RMS because it’s so natural. ![Her Beauty Cupboard is Meticulously Filled with Kora Orga…
-
-### [REVIEW] TESTIMONIAL (body) — Samantha Harris, Model
-`content/interviews/models/samantha-harris-model/samantha-harris-model.mdx:50` · 2014-06-19 · Madeleine Boyd · +1 more in file
-
-Restricted term: **SPF15** · matched: **I use**
-
-> …ur in peony and Becca’s Beach Tint. I kind of mix them together to make this super peach. I use the Stila one on my lips sometimes too – it’s so versatile and fun to wear. I love found…
-
-### [REVIEW] TESTIMONIAL (body) — How Fashionista Rozalia Russian Learned to Be Gentler with Herself
-`content/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself.mdx:149` · 2022-05-04 · Zoe Briggs · +1 more in file
-
-Restricted term: **light therapy** · matched: **my favourite**
-
-> …a href="https://www.instagram.com/p/CPrbv_eASnK/">@rozalia_russian</a></Caption> _One of my favourite recent beauty finds has been the Dr. Naomi LED it Glow mask. I have been using it for abo…
-
-### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
-`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:76` · 2014-07-24 · Madeleine Boyd · +1 more in file
-
-Restricted term: **probiotic** · matched: **I use**
-
-> …ud; it’s really antimicrobial and works every time. I also love doing homemade facemasks. I use oats (because they contain a specific ingredient that is really moisturising for the skin…
-
-### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
-`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:92` · 2014-07-24 · Madeleine Boyd · +1 more in file
-
-Restricted term: **supplement** · matched: **I love**
-
-> …ht and among them are zinc, iron and silica, all of which are really great for hair. ### I love the Tom Ford’s Black Orchid – I find it so sexy ![I love the Tom Ford’s Black Orchid – I…
-
-### [REVIEW] TESTIMONIAL (body) — Laura Enever, the Pro Surfer Putting Mental Health Ahead of Championships
-`content/interviews/tastemakers/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships.mdx:114` · 2022-06-28 · Zoe Briggs · +1 more in file
-
-Restricted term: **elixir** · matched: **I love**
-
-> …I like to have my beauty products, and all my different powders, elixirs and supplements. I love the idea that all these little vials of different things help me feel like me. I also tra…
-
-### [REVIEW] TESTIMONIAL (body) — Zoe Bingley-Pullin, Nutritionist & Chef
-`content/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef/zoe-bingley-pullin-nutritionist-and-chef.mdx:44` · 2014-04-24 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Supplement** · matched: **Every day I**
-
-> …Bondi to Bronte a couple of times a week. ## Supplements and Whole Food Philosophy ### Every day I take a probiotic – it’s really important. ![Every day I take a probiotic – it’s really i…
-
-### [REVIEW] TESTIMONIAL (body) — Which Wellness Gadgets Are Worth Your Money?
-`content/wellness/biohacking/wellness-tech-red-light-sauna-sleep-tracker-review/wellness-tech-red-light-sauna-sleep-tracker-review.mdx:60` · 2026-06-21 · Camilla Thompson · +1 more in file
-
-Restricted term: **Infrared** · matched: **I love**
-
-> …ared Sauna My sauna gets used every second day and has become one of my non-negotiables. I love it for relaxation, stress reduction, recovery and longevity. It's one of the few wellness…
+> …that it normalises blood pressure and cholesterol levels while providing relief to those suffering from pain, neuropathy and diabetes. [CHAGA MUSHROOM CUPCAKES](http://www.hyperionherbs.com/me…
 
 ### [REVIEW] TESTIMONIAL (body) — 7 Christmas Essentials – Sigourney's Edit
 `content/beauty-style/beauty-tips/7-christmas-essentials-sigourneys-edit/7-christmas-essentials-sigourneys-edit.mdx:81` · 2014-12-11 · Sigourney Cantelo
@@ -4282,13 +3092,6 @@ Restricted term: **Infrared** · matched: **I love**
 Restricted term: **sunscreen** · matched: **I love**
 
 > …important parts of your beauty routine as they protect you even more than sunscreen can. I love the story behind these hats – Sarah Curtis discovered she had melanoma when she was pregn…
-
-### [REVIEW] TESTIMONIAL (body) — Celebrity Beauty Brands: Are They Actually Worth the Hype?
-`content/beauty-style/beauty-tips/celebrity-beauty-brands-are-they-actually-worth-the-hype-2/celebrity-beauty-brands-are-they-actually-worth-the-hype-2.mdx:74` · 2018-07-31 · Stephanie Russo
-
-Restricted term: **Elixir** · matched: **I drink**
-
-> …y's optimum pH levels, maintain healthy nutrition and make your skin glow and hair shine. I drink it daily, mixing two teaspoons into coconut water. After a bad stint of dealing with horm…
 
 ### [REVIEW] TESTIMONIAL (body) — Everything I Know About Suncare I Learnt from My Mum
 `content/beauty-style/beauty-tips/everything-i-know-about-suncare-i-learnt-from-my-mum/everything-i-know-about-suncare-i-learnt-from-my-mum.mdx:100` · 2018-01-23 · Sigourney Cantelo
@@ -4300,7 +3103,7 @@ Restricted term: **sunscreen** · matched: **I love**
 ### [REVIEW] TESTIMONIAL (body) — Everything I Know About Suncare I Learnt from My Mum
 `content/beauty-style/beauty-tips/everything-i-know-about-suncare-i-learnt-from-my-mum/everything-i-know-about-suncare-i-learnt-from-my-mum.mdx:102` · 2018-01-23 · Sigourney Cantelo
 
-Restricted term: **Vitamin A** · matched: **I use**
+Restricted term: **sunscreen** · matched: **I use**
 
 > …min A because the skin needs TLC when it’s battling the elements.” ### 7\. “Every 3 days I use a gentle scrub like Sukin Facial Scrub… …and once a week the Body Shop Mineral and Ginge…
 
@@ -4312,32 +3115,18 @@ Restricted term: **Sunscreen** · matched: **I love**
 > …your cleansing routine to get it all off, or it can block your pores and cause breakouts. I love cleansing oils, which work by attaching to the oils on your skin and washing them down th…
 
 ### [REVIEW] TESTIMONIAL (body) — Great Aussie Products We Love and How We Use Them
-`content/beauty-style/beauty-tips/great-aussie-products-we-love-and-how-we-use-them/great-aussie-products-we-love-and-how-we-use-them.mdx:98` · 2017-01-25 · Beauticate Editorial
-
-Restricted term: **sunscreen** · matched: **I love**
-
-> …o small children so designer eyewear is not practical. They get destroyed all the time so I love how affordable and cool the styles at H&M are. ### What skincare/suncare products do you…
-
-### [REVIEW] TESTIMONIAL (body) — Great Aussie Products We Love and How We Use Them
 `content/beauty-style/beauty-tips/great-aussie-products-we-love-and-how-we-use-them/great-aussie-products-we-love-and-how-we-use-them.mdx:131` · 2017-01-25 · Beauticate Editorial
 
 Restricted term: **capsule** · matched: **I add**
 
 > …Scanlan Theodore and Bassike form my capsule wardrobe but then depending on the season, I add in more coloured and fun pieces. Zimmermann are great for their summer dresses and playsu…
 
-### [REVIEW] TESTIMONIAL (body) — How I Dealt with My Insomnia
-`content/beauty-style/beauty-tips/how-i-dealt-with-my-insomnia/how-i-dealt-with-my-insomnia.mdx:69` · 2022-10-06 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — How to Be Runway Ready – Beauty Products Models Really Use
+`content/beauty-style/beauty-tips/how-to-be-runway-ready/how-to-be-runway-ready.mdx:55` · 2014-04-16 · Madeleine Boyd
 
-Restricted term: **LED mask** · matched: **my favourite**
+Restricted term: **SPF 30** · matched: **I use**
 
-> …nute Journal by Intelligent Change. The top drawer has my essential oils for my atomizer, my favourite sleep mask. I love the Slip Contour Sleep Mask as it has little hollows over the eyes. No…
-
-### [REVIEW] TESTIMONIAL (body) — How I Dealt with My Insomnia
-`content/beauty-style/beauty-tips/how-i-dealt-with-my-insomnia/how-i-dealt-with-my-insomnia.mdx:69` · 2022-10-06 · Sigourney Cantelo
-
-Restricted term: **LED mask** · matched: **I love**
-
-> …nt Change. The top drawer has my essential oils for my atomizer, my favourite sleep mask. I love the Slip Contour Sleep Mask as it has little hollows over the eyes. Normal masks feel suf…
+> …I’m using Sukin Face Scrub and a Nivea moisturizer with an SPF 30+ but that’s about it. I use Moroccan Oil on my hair every time I wash it – that’s probably the one thing that I do co…
 
 ### [REVIEW] TESTIMONIAL (body) — How to Be Runway Ready – Beauty Products Models Really Use
 `content/beauty-style/beauty-tips/how-to-be-runway-ready/how-to-be-runway-ready.mdx:89` · 2014-04-16 · Madeleine Boyd
@@ -4346,12 +3135,54 @@ Restricted term: **SPF 15** · matched: **I love**
 
 > …eady/img-39.jpg) Maddison Brown, Chic Management ### Maddison Brown, Chic Management “I love Clinique Moisture Surge Extended Thirst Relief Moisturizer. I use it morning and night. I…
 
+### [REVIEW] TESTIMONIAL (body) — How to Be Runway Ready – Beauty Products Models Really Use
+`content/beauty-style/beauty-tips/how-to-be-runway-ready/how-to-be-runway-ready.mdx:89` · 2014-04-16 · Madeleine Boyd
+
+Restricted term: **SPF 15** · matched: **I use**
+
+> …own, Chic Management “I love Clinique Moisture Surge Extended Thirst Relief Moisturizer. I use it morning and night. I also wear this amazing Dior Nude BB crème; it has an SPF 15 and m…
+
 ### [REVIEW] TESTIMONIAL (body) — Insomnia: How I Beat it – Sigourney's Edit
 `content/beauty-style/beauty-tips/how-to-insomnia-cure-tips/how-to-insomnia-cure-tips.mdx:42` · 2019-02-27 · Sigourney Cantelo
 
 Restricted term: **magnesium** · matched: **I love**
 
 > …s and calm the nervous system. You can slather on a lavender scented body oil or lotion (I love Weleda Lavender Relaxing Oil and L’Occitane) and mist yourself and your linen (try Maison…
+
+### [REVIEW] TESTIMONIAL (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:64` · 2021-09-21 · Zoe Briggs
+
+Restricted term: **sunscreen** · matched: **I love**
+
+> …Vera and apply the NIVEA Naturally Good Sensitive Day Cream with Organic Chamomile, which I love. You can spend a fortune on skincare but then there comes along a day cream like this tha…
+
+### [REVIEW] TESTIMONIAL (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:66` · 2021-09-21 · Zoe Briggs
+
+Restricted term: **sunscreen** · matched: **I love**
+
+> …and I’ll have an oat or almond latte. It’s one of the highlights of my day, both because I love coffee but also so enjoy the ritual of the kids riding their bikes to the café and gettin…
+
+### [REVIEW] TESTIMONIAL (body) — Magdalena Roze, the Journo-Meteorologist Living Our Sea Change Dream in Byron
+`content/beauty-style/beauty-tips/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron/magdalena-roze-the-journo-meteorologist-living-our-sea-change-dream-in-byron.mdx:96` · 2021-09-21 · Zoe Briggs
+
+Restricted term: **adaptogen** · matched: **I love**
+
+> …ydration) into a warm drink or a smoothie. I also regularly take magnesium before bed and I love a warm bath with Epsom salts and essentials oils. ## Unplugging for Mental Health *Swit…
+
+### [REVIEW] TESTIMONIAL (body) — Our Greatest Hits – Beauticate's Most Popular Who Profiles
+`content/beauty-style/beauty-tips/our-greatest-hits-beauticates-most-popular-who-profiles/our-greatest-hits-beauticates-most-popular-who-profiles.mdx:48` · 2016-12-22 · Stephanie Russo
+
+Restricted term: **supplement** · matched: **I love**
+
+> …nchovies are the only thing I don't like! I eat pretty well the majority of the time, but I love my lollies, cakes and chocolate — I probably eat chocolate everyday. My lunch will be hea…
+
+### [REVIEW] TESTIMONIAL (body) — Our Greatest Hits – Beauticate's Most Popular Who Profiles
+`content/beauty-style/beauty-tips/our-greatest-hits-beauticates-most-popular-who-profiles/our-greatest-hits-beauticates-most-popular-who-profiles.mdx:48` · 2016-12-22 · Stephanie Russo
+
+Restricted term: **supplement** · matched: **I love**
+
+> …t will be healthy and normally dinner is healthy — unless I have some chips on the side — I love chips! I also don't take any supplements — I think you can get that all from food if you…
 
 ### [REVIEW] TESTIMONIAL (body) — Our Greatest Hits – Beauticate's Most Popular Who Profiles
 `content/beauty-style/beauty-tips/our-greatest-hits-beauticates-most-popular-who-profiles/our-greatest-hits-beauticates-most-popular-who-profiles.mdx:100` · 2016-12-22 · Stephanie Russo
@@ -4360,26 +3191,19 @@ Restricted term: **magnesium** · matched: **My favourite**
 
 > …coli, brown rice cakes, olives, Himalayan sea salt, fresh herbs, olive oil, fresh chilli. My favourite recipe is oven-baked salmon with sweet potato mash and steamed greens and I love Impresse…
 
+### [REVIEW] TESTIMONIAL (body) — Our Greatest Hits – Beauticate's Most Popular Who Profiles
+`content/beauty-style/beauty-tips/our-greatest-hits-beauticates-most-popular-who-profiles/our-greatest-hits-beauticates-most-popular-who-profiles.mdx:100` · 2016-12-22 · Stephanie Russo
+
+Restricted term: **magnesium** · matched: **I love**
+
+> …i. My favourite recipe is oven-baked salmon with sweet potato mash and steamed greens and I love Impressed Juices and cold pressed Ginga Ninja juices — made with carrots, apples, ginger…
+
 ### [REVIEW] TESTIMONIAL (body) — Reader Review: Gradual Tanners
 `content/beauty-style/beauty-tips/reader-review-gradual-tanners/reader-review-gradual-tanners.mdx:108` · 2015-11-23 · Julie Wakely
 
 Restricted term: **SPF 15** · matched: **I reach for**
 
 > …my heart and tends to make me a little nostalgic for Sydney’s Eastern beaches every time I reach for it, but that’s not the only reason I like it. The pump bottle provides convenient and qui…
-
-### [REVIEW] TESTIMONIAL (body) — The Beauty Advice I’m Giving My Daughter
-`content/beauty-style/beauty-tips/the-beauty-advice-im-giving-my-daughter/the-beauty-advice-im-giving-my-daughter.mdx:44` · 2023-05-03 · Sigourney Cantelo
-
-Restricted term: **SPF 30** · matched: **every day I**
-
-> …is the Kids Cancer Council Roll On sunscreen because she finds them easier to apply. For every day I like the Moo Goo Invisible Zinc for Kids and for the beach the La Roche Posay Anthelios X…
-
-### [REVIEW] TESTIMONIAL (body) — The Best New Launches That Will Get You Excited About Beauty Again
-`content/beauty-style/beauty-tips/the-best-new-launches-that-will-get-you-excited-about-beauty-again/the-best-new-launches-that-will-get-you-excited-about-beauty-again.mdx:36` · 2021-06-28 · Zoe Briggs
-
-Restricted term: **Collagen** · matched: **my favourite**
-
-> …Brightening Mask Elemis Pro-Collagen Tri-Acid Peel This peel is a fantastic example of my favourite types of skincare products: those which are carefully formulated and give beautiful resul…
 
 ### [REVIEW] TESTIMONIAL (body) — This Luxury Candle Designer Shares Her Lockdown Essentials
 `content/beauty-style/beauty-tips/this-luxury-candle-designer-shares-whats-getting-her-through-covid-19/this-luxury-candle-designer-shares-whats-getting-her-through-covid-19.mdx:44` · 2020-06-02 · Tess Schlink
@@ -4389,74 +3213,32 @@ Restricted term: **vitamin C** · matched: **I love**
 > …She’s Been Keeping Healthy I am taking a vitamin C powder daily as an immune booster and I love eating lots of fruit and vegetables. I am also trying to take walks when possible at thi…
 
 ### [REVIEW] TESTIMONIAL (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
+`content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:54` · 2020-04-29 · Tess Schlink
+
+Restricted term: **LED Mask** · matched: **I love**
+
+> …s://www.mecca.com.au/dr-dennis-gross/spectralite-faceware-pro/I-034280.html). For makeup, I love Kjaer Weis, RMS, and Eye Horus. Eyelash curlers are a must as well, as framing the face…
+
+### [REVIEW] TESTIMONIAL (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
 `content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:82` · 2020-04-29 · Tess Schlink
 
 Restricted term: **zinc** · matched: **I started using**
 
 > …p artist, so I learnt from an early age about the importance of taking care of my skin.* I started using natural skin care products from Dr Hauschka at about 12 years old. My mother protected us…
 
-### [REVIEW] TESTIMONIAL (body) — Beauty Products to Make Winter More Bearable – Sigourney's Edit
-`content/beauty-style/beauty-tips/winter-warmers-sigourneys-edit/winter-warmers-sigourneys-edit.mdx:83` · 2015-07-28 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
+`content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:110` · 2020-04-29 · Tess Schlink
 
-Restricted term: **Multivitamin** · matched: **I love**
+Restricted term: **sunscreen** · matched: **I love**
 
-> …g facial: Dermalogica Multivitamin Thermafoliant DERMALOGICA MULTIVITAMIN THERMAFOLIANT I love thermal products – they warm on contact with water, so have the added benefit of heating…
+> …y acids and antioxidants, which encourages a brighter glowing complexion – win! Normally I love getting a facial from our Mukti Beauty Rooms in the Sunshine Coast once a month. They hel…
 
-### [REVIEW] TESTIMONIAL (body) — My Queenstown Snow Trip (and What I Packed)
-`content/beauty-style/makeup/my-queenstown-snow-trip-and-what-i-packed/my-queenstown-snow-trip-and-what-i-packed.mdx:100` · 2019-08-14 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — This Mother and Daughter Duo Talk Their Holistic Daily Routines
+`content/beauty-style/beauty-tips/this-mother-and-daughter-duo-talk-their-holistic-daily-routines/this-mother-and-daughter-duo-talk-their-holistic-daily-routines.mdx:120` · 2020-04-29 · Tess Schlink
 
-Restricted term: **sunscreen** · matched: **I pop**
+Restricted term: **collagen** · matched: **I use**
 
-> …green tea, cucumber and rosehip extracts), I give five minutes for it to soak in and then I pop on IT Cosmetics CC Cream, which is also a broad spectrum 50+ with both zinc oxide and tit…
-
-### [REVIEW] TESTIMONIAL (body) — My Queenstown Snow Trip (and What I Packed)
-`content/beauty-style/makeup/my-queenstown-snow-trip-and-what-i-packed/my-queenstown-snow-trip-and-what-i-packed.mdx:100` · 2019-08-14 · Sigourney Cantelo
-
-Restricted term: **zinc** · matched: **I love**
-
-> …harsh winds, a double layer of protection means I’m leaving nothing to chance. For lips? I love Moo Goo Natural Lip Balm SPF 15. ![My Queenstown Snow Trip (and What I Packed)](/content…
-
-### [REVIEW] TESTIMONIAL (body) — New Year New Skin: 6 Quick Ways to a Glow Up
-`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:58` · 2024-01-30 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **I love**
-
-> …(sounds scarier than it is!). This stimulates collagen and helps products soak in better. I love that you can do it yourself and it’s completely sterile and doesn’t drag the skin like so…
-
-### [REVIEW] TESTIMONIAL (body) — 8 Pampering Products to Add to Cart, Because You Probably Need a Treat Right Now
-`content/beauty-style/skin-care/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now/8-pampering-products-to-add-to-cart-because-you-probably-need-a-treat-right-now.mdx:52` · 2021-08-30 · Tess Schlink
-
-Restricted term: **vitamin ** · matched: **I rely on**
-
-> …lation makes it particularly good for dealing with post-treatment sensitivity. Sometimes I rely on a good shower as an effective, if only purely psychological, full stop: a last-dash way o…
-
-### [REVIEW] TESTIMONIAL (body) — A 22-Year-Old Brand Founder on How to Get Dumpling Skin
-`content/beauty-style/skin-care/a-22-year-old-brand-founder-on-how-to-get-dumpling-skin/a-22-year-old-brand-founder-on-how-to-get-dumpling-skin.mdx:42` · 2021-10-11 · Zoe Briggs
-
-Restricted term: **vitamin A** · matched: **I use**
-
-> …ew minutes. Then comes the alphabet: vitamin A in the PM, and vitamins B and C in the AM. I use something super hydrating on top of my serums, like [Drunk Elephant Lala Retro Whipped Cr…
-
-### [REVIEW] TESTIMONIAL (body) — The Best Vitamin C Serums in Australia, Tested and Ranked by Experts
-`content/beauty-style/skin-care/best-vitamin-c-serums-australia/best-vitamin-c-serums-australia.mdx:112` · 2024-03-15 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **I use**
-
-> …ts potency. Store in a cool, dark place and use within three months of opening. **Q: Can I use vitamin C with retinol?** A: Yes, but not at the same time. Use vitamin C in the morning…
-
-### [REVIEW] TESTIMONIAL (body) — Sun Safety, but Make it Chic
-`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:40` · 2026-03-16 · Sigourney Cantelo
-
-Restricted term: **sunscreen** · matched: **I trust**
-
-> …I'm willing to fight over. ### Which is why this guide exists. These are the sunscreens I trust, the ones I'll happily use on myself, and the ones Lulu will tolerate. Plus the hats that…
-
-### [REVIEW] TESTIMONIAL (body) — Sun Safety, but Make it Chic
-`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:104` · 2026-03-16 · Sigourney Cantelo
-
-Restricted term: **Sunscreen** · matched: **I reach for**
-
-> …eens still matter. But let's be honest: a white cast is often part of the deal. The ones I reach for most often: - [ **Mother SPF**](https://go.skimresources.com?id=265664X1750758&xs=1&url=…
+> …three to six months makes a huge difference in the appearance and health of your hair.* I use products that are natural, organic and contain no ‘nasties’, so that’s Mukti of course.…
 
 ### [REVIEW] TESTIMONIAL (body) — Sun Safety, but Make it Chic
 `content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:230` · 2026-03-16 · Sigourney Cantelo
@@ -4464,13 +3246,6 @@ Restricted term: **Sunscreen** · matched: **I reach for**
 Restricted term: **sunscreen** · matched: **I love**
 
 > …rated swimwear (quietly doing a lot of the work) - Rashies that don't feel restrictive – I love Une Piece zip-ups. Very Bond girl. - Timing swims earlier or later when possible **And…
-
-### [REVIEW] TESTIMONIAL (body) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
-`content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:44` · 2025-12-16 · Sigourney Cantelo
-
-Restricted term: **light therapy** · matched: **I've been testing**
-
-> …r from "nice clinic add-on" to serious at-home skincare investment. And for good reason. I've been testing **[Qure's LED](https://www.qureskincare.com/SIGOURNEY57027)** tech for months now, and qu…
 
 ### [REVIEW] TESTIMONIAL (body) — The Only Christmas Hint I'm Leaving Out This Year: Better Skin (Not More Stuff)
 `content/beauty-style/skin-care/christmas-led-skincare-gift/christmas-led-skincare-gift.mdx:66` · 2025-12-16 · Sigourney Cantelo
@@ -4493,20 +3268,6 @@ Restricted term: **LED mask** · matched: **my go-to**
 
 > …an with their revolutionary microinfusion set, which I have been a long time fan of. It’s my go-to when I want sparkling skin before a shoot or an event. Soon after, I fell in love with th…
 
-### [REVIEW] TESTIMONIAL (body) — Fast Tips from a Top Facialist
-`content/beauty-style/skin-care/facialist-skin-tips/facialist-skin-tips.mdx:96` · 2019-02-25 · Stephanie Russo
-
-Restricted term: **vitamin ** · matched: **I love**
-
-> …g from acne to dermatitis. ## One Skin-revitalising Trick You May Never Have Heard is…. I love blending masks or exfoliants to get more varied results. For example instead of just usin…
-
-### [REVIEW] TESTIMONIAL (body) — Fix Freckles, Pimples and Wrinkles with a Trip to the Gym
-`content/beauty-style/skin-care/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym/fix-freckles-pimples-and-wrinkles-with-a-trip-to-the-gym.mdx:40` · 2015-06-06 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **I love**
-
-> …hat a course of IPL will be able to sort me out in three months. I’ve had IPL before and I love it – not only does it get rid of surface pigmentation like my Europe-induced freckles, it…
-
 ### [REVIEW] TESTIMONIAL (body) — How an Australian Skincare Brand is Giving Hollywood Its Glow
 `content/beauty-style/skin-care/how-an-australian-skincare-brand-is-giving-hollywood-its-glow/how-an-australian-skincare-brand-is-giving-hollywood-its-glow.mdx:79` · 2023-04-18 · Zoe Briggs
 
@@ -4514,61 +3275,12 @@ Restricted term: **probiotic** · matched: **I love**
 
 > …of which have are used by some of the world’s most expensive brands in their skin creams. I love the way the sea kelp feels on my skin. As soon as I apply it, I can feel its thirst-quenc…
 
-### [REVIEW] TESTIMONIAL (body) — How to Care for Sensitive Skin (While Still Using Serious Skincare)
-`content/beauty-style/skin-care/how-to-care-for-sensitive-skin-while-still-using-serious-skincare/how-to-care-for-sensitive-skin-while-still-using-serious-skincare.mdx:96` · 2023-03-29 · Zoe Briggs
-
-Restricted term: **vitamin C** · matched: **I love**
-
-> …tating and shelf-stable than a lot of traditional forms of vitamin C. Another ingredient I love is bakuchiol, which some refer to as a gentler, plant-based retinoid alternative for the…
-
-### [REVIEW] TESTIMONIAL (body) — How to Self Prescribe Your Serums
-`content/beauty-style/skin-care/how-to-self-prescribe-your-serums/how-to-self-prescribe-your-serums.mdx:42` · 2017-02-28 · Sigourney Cantelo
-
-Restricted term: **Vitamin ** · matched: **I use**
-
-> …and A at night to address my crows feet and frown lines while my skin is in repair mode. I use Vitamin E if my skin’s feeling a bit stressed for some TLC. I love that I can use any moi…
-
-### [REVIEW] TESTIMONIAL (body) — How to Self Prescribe Your Serums
-`content/beauty-style/skin-care/how-to-self-prescribe-your-serums/how-to-self-prescribe-your-serums.mdx:42` · 2017-02-28 · Sigourney Cantelo
-
-Restricted term: **Vitamin ** · matched: **I love**
-
-> …skin is in repair mode. I use Vitamin E if my skin’s feeling a bit stressed for some TLC. I love that I can use any moisturiser afterwards, and feel secure in the knowledge I’m giving my…
-
-### [REVIEW] TESTIMONIAL (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:32` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **my favourite**
-
-> …ling in different experts to help me along the way. Here is my current treatment plan and my favourite products, in all their line-blitzing, dermal-plumping glory. I’ve organised it the way I…
-
-### [REVIEW] TESTIMONIAL (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:34` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **I use**
-
-> …incare first, because everything starts there. Then the in-clinic tweakments, the devices I use at home and the supplements and protocols I rely on to support that glow from the inside…
-
-### [REVIEW] TESTIMONIAL (body) — I’m 44, Here’s Everything I Use on My Skin
-`content/beauty-style/skin-care/im-44-everything-i-use-on-my-skin/im-44-everything-i-use-on-my-skin.mdx:34` · 2024-03-16 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **I rely on**
-
-> …hen the in-clinic tweakments, the devices I use at home and the supplements and protocols I rely on to support that glow from the inside out. ## The skincare: where everything begins Obvi…
-
 ### [REVIEW] TESTIMONIAL (body) — In-Flight Beauty – How to Look Great at 35,000 Feet
 `content/beauty-style/skin-care/in-flight-beauty-how-to-look-great-at-35000-feet/in-flight-beauty-how-to-look-great-at-35000-feet.mdx:62` · 2017-07-05 · Sigourney Cantelo
 
 Restricted term: **led mask** · matched: **I love**
 
 > …he best I’ve found are Macks Mouldable Silicone Earplugs. Also essential a silk eye mask (I love my embossed initialed mask from Slip) and a cashmere wrap is perfect as it can get really…
-
-### [REVIEW] TESTIMONIAL (body) — The Swap Edit: Ingredient-Smart Beauty & Refined Rituals That Work
-`content/beauty-style/skin-care/ingredient-smart-beauty-swaps/ingredient-smart-beauty-swaps.mdx:102` · 2025-11-11 · Jayde Balderston
-
-Restricted term: **collagen** · matched: **I Keep Coming Back To**
-
-> …4.png)](https://www.mlbotanics.com.au/shop/p/cypress-blue-room-mist) ## The Skin-Soother I Keep Coming Back To [**Jurlique Skin Balancing Face Oil – Calendula.**](https://bit.ly/47K3ApJ) This is one…
 
 ### [REVIEW] TESTIMONIAL (body) — Home Alone, but Never Boring: My Nightly Beauty Rituals in December
 `content/beauty-style/skin-care/nightly-beauty-routine/nightly-beauty-routine.mdx:79` · 2025-12-19 · Jayde Balderston
@@ -4580,16 +3292,9 @@ Restricted term: **sunscreen** · matched: **I reach for**
 ### [REVIEW] TESTIMONIAL (body) — Home Alone, but Never Boring: My Nightly Beauty Rituals in December
 `content/beauty-style/skin-care/nightly-beauty-routine/nightly-beauty-routine.mdx:81` · 2025-12-19 · Jayde Balderston
 
-Restricted term: **vitamin C** · matched: **I use**
+Restricted term: **LED mask** · matched: **I use**
 
 > …act helps calm the skin and reduce the appearance of redness. Bliss. Every single night, I use my **Dr Dennis Gross LED mask.** No ceremony, no commentary. It fits into real life, usua…
-
-### [REVIEW] TESTIMONIAL (body) — Skincare Success: My Eight-Week Transformation with Professional-Grade Products
-`content/beauty-style/skin-care/skincare-success-my-eight-week-transformation-with-professional-grade-products/skincare-success-my-eight-week-transformation-with-professional-grade-products.mdx:92` · 2023-09-29 · Sigourney Cantelo
-
-Restricted term: **Vitamin ** · matched: **My favorite**
-
-> …-success-my-eight-week-transformation-with-professional-grade-products/IMG_5855_1-1.jpg) My favorite, though, is the Repair & Refine ABC Serum often called "the serum to end all serums." Th…
 
 ### [REVIEW] TESTIMONIAL (body) — Skincare Success: My Eight-Week Transformation with Professional-Grade Products
 `content/beauty-style/skin-care/skincare-success-my-eight-week-transformation-with-professional-grade-products/skincare-success-my-eight-week-transformation-with-professional-grade-products.mdx:104` · 2023-09-29 · Sigourney Cantelo
@@ -4598,33 +3303,47 @@ Restricted term: **Zinc** · matched: **I use**
 
 > …int that I often skip the Rich Skin Repair Moisturising Cream. In the mornings, however, I use the brand's iSolar Protect & Restore Invisible Zinc Lotion. ![Rejuvaus4 1](/content/beau…
 
-### [REVIEW] TESTIMONIAL (body) — The New Sunscreen Innovations You Need to Try
-`content/beauty-style/skin-care/sunscreen-innovations/sunscreen-innovations.mdx:80` · 2019-01-16 · Tess Schlink
+### [REVIEW] TESTIMONIAL (body) — Summer Style and Beauty Essentials – Sigourney's Edit
+`content/beauty-style/skin-care/summer-style-essentials/summer-style-essentials.mdx:41` · 2016-12-08 · Sigourney Cantelo
+
+Restricted term: **capsule** · matched: **I love**
+
+> …’ closet. This oversized point-collar shirt by Raey (from Matches Fashion) is perfection. I love it unbuttoned and thrown over a swimsuit (this one is by Heidi Klum) for the beach – it p…
+
+### [REVIEW] TESTIMONIAL (body) — Summer Style and Beauty Essentials – Sigourney's Edit
+`content/beauty-style/skin-care/summer-style-essentials/summer-style-essentials.mdx:108` · 2016-12-08 · Sigourney Cantelo
 
 Restricted term: **sunscreen** · matched: **I love**
 
-> …oice. I have dozens of hats, I even keep one in the car at all times. For travel and ease I love the [ooGee Australia](https://oogee.com.au/) hats – they have a special “flexibraid” mate…
+> …Y more effective than sunscreen. And there are so many gorgeous styles on the market now. I love this [Straw Boater from Fallen Broken Street](https://www.fallenbrokenstreet.com/collecti…
 
-### [REVIEW] TESTIMONIAL (body) — The Best Cruelty-Free, Vegan Beauty Buys According to a Former Beauty Therapist
-`content/beauty-style/skin-care/the-best-cruelty-free-vegan-beauty-buys-according-to-a-former-beauty-therapist/the-best-cruelty-free-vegan-beauty-buys-according-to-a-former-beauty-therapist.mdx:40` · 2024-01-01 · Karina Wharton
+### [REVIEW] TESTIMONIAL (body) — Summer Style and Beauty Essentials – Sigourney's Edit
+`content/beauty-style/skin-care/summer-style-essentials/summer-style-essentials.mdx:118` · 2016-12-08 · Sigourney Cantelo
 
-Restricted term: **omega-3** · matched: **I love**
+Restricted term: **sunscreen** · matched: **I love**
 
-> …ega-3 rich hemp, rose fruit and grape seed oils to soothe dull, dry and compromised skin. I love how a generous application gives my skin a dewy, glass-skin glow. ![Bybi](/content/beaut…
+> …Body Oil ### For the beach, you need a good sunscreen and a hair mask, at bare minimum. I love Sachajuan Hair In The Sun- it’s a gorgeous hair mask that protects your precious colour f…
 
-### [REVIEW] TESTIMONIAL (body) — The Best Pigmentation Treatments – Reader Review
-`content/beauty-style/skin-care/the-best-pigmentation-treatments-reader-review/the-best-pigmentation-treatments-reader-review.mdx:94` · 2016-08-23 · Katherine Ring
+### [REVIEW] TESTIMONIAL (body) — The Black Friday Skin Deals You Can't Miss
+`content/beauty-style/skin-care/the-black-friday-skin-deals-you-cant-miss/the-black-friday-skin-deals-you-cant-miss.mdx:39` · 2024-11-28 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **I use**
+Restricted term: **LED Mask** · matched: **My pick**
 
-> …a bit, and stings in the flaky skin around my mouth. However, the results are undeniable. I use the product for just a few nights (the recommended twice daily felt too much for my sensi…
+> …hat ever your skin concerns are there is a bundle suitable! ## Skin Bundles For The Win My pick would be the Fade & Firm Bundle Advanced that includes the incredible Q-Rejuvalight Pro L…
 
 ### [REVIEW] TESTIMONIAL (body) — The Black Friday Skin Deals You Can't Miss
 `content/beauty-style/skin-care/the-black-friday-skin-deals-you-cant-miss/the-black-friday-skin-deals-you-cant-miss.mdx:47` · 2024-11-28 · Sigourney Cantelo
 
-Restricted term: **infrared** · matched: **I use**
+Restricted term: **LED Mask** · matched: **I use**
 
-> …ear old!) but I want to attack the fine lines and pigmentation on the rest of my face, so I use the Qure app to select the blue and red light anti-breakout setting for my chin and the r…
+> …s according to your skin needs. For me, I want to work on fine lines and pigmentation, so I use the Qure app to select the red light Anti-Aging Treatment. This is a game-changer for tim…
+
+### [REVIEW] TESTIMONIAL (body) — The French Girl Summer Skin Secrets I Live by – Sigourney’s Edit
+`content/beauty-style/skin-care/the-french-girl-summer-skin-secrets-i-live-by-sigourneys-edit/the-french-girl-summer-skin-secrets-i-live-by-sigourneys-edit.mdx:44` · 2017-09-12 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …ut a Lightweight, Sheer Finish When I’m going to be at the beach or will be in full sun, I use a full strength sunscreen of at least 30+ but day-to-day, when I’m running around, I use…
 
 ### [REVIEW] TESTIMONIAL (body) — The New Years Resolutions I’ve Kept so Far – Sigourney’s Edit
 `content/beauty-style/skin-care/the-new-years-resolutions-ive-kept-so-far-sigourneys-edit/the-new-years-resolutions-ive-kept-so-far-sigourneys-edit.mdx:62` · 2015-01-27 · Sigourney Cantelo
@@ -4633,34 +3352,6 @@ Restricted term: **Sunscreen** · matched: **I love**
 
 > …tection and Daily Sunscreen ### 3\. I will…wear more hats and apply sunscreen EVERY day I love that there are so many gorgeous hats in fashion at the moment from the panama to the boat…
 
-### [REVIEW] TESTIMONIAL (body) — The Sisters Using Science and Astrology to Care for Your Skin
-`content/beauty-style/skin-care/the-sisters-using-science-and-astrology-to-care-for-your-skin/the-sisters-using-science-and-astrology-to-care-for-your-skin.mdx:48` · 2022-12-15 · Zoe Briggs
-
-Restricted term: **Elixir** · matched: **my go-to**
-
-> …in extremely dry, which it still is to this day. Since then, face and body oils have been my go-to, so I have used them enthusiastically for over 20 years. [FIRE Body Elixir](https://astr…
-
-### [REVIEW] TESTIMONIAL (body) — The Sisters Using Science and Astrology to Care for Your Skin
-`content/beauty-style/skin-care/the-sisters-using-science-and-astrology-to-care-for-your-skin/the-sisters-using-science-and-astrology-to-care-for-your-skin.mdx:48` · 2022-12-15 · Zoe Briggs
-
-Restricted term: **Elixir** · matched: **I have used**
-
-> …dry, which it still is to this day. Since then, face and body oils have been my go-to, so I have used them enthusiastically for over 20 years. [FIRE Body Elixir](https://astromantique.com.au…
-
-### [REVIEW] TESTIMONIAL (body) — This Pharmacy Night Routine Gets My Big Tick of Approval
-`content/beauty-style/skin-care/this-pharmacy-night-routine-gets-my-big-tick-of-approval/this-pharmacy-night-routine-gets-my-big-tick-of-approval.mdx:66` · 2020-08-12 · Sigourney Cantelo
-
-Restricted term: **sunscreen** · matched: **I love**
-
-> …ash it all away, so it actually leaves the complexion deeply cleansed but still hydrated. I love doing a long juicy massage with it, inhaling the aroma of geranium as I go. ![Oil Cleans…
-
-### [REVIEW] TESTIMONIAL (body) — Why You Really Need Vitamin B in Your Life
-`content/beauty-style/skin-care/why-you-really-need-vitamin-b-in-your-life/why-you-really-need-vitamin-b-in-your-life.mdx:149` · 2017-04-19 · Sigourney Cantelo
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …ment of 62% of the Clindamycin treated group. Rikki Hodge The easiest way to use it? I use it in every morning after cleansing (or just rinsing my face in the shower) and I follow…
-
 ### [REVIEW] TESTIMONIAL (body) — Skin Temple, Melbourne
 `content/destinations/clinics/skin-temple-melbourne/skin-temple-melbourne.mdx:91` · 2026-01-15 · Vickie Zarifopoulos
 
@@ -4668,31 +3359,17 @@ Restricted term: **sunscreen** · matched: **I take**
 
 > …through an aftercare regime; staying out of the sun and using some specific products, so I take home a three day course of skincare. This includes sunscreen and a tinted moisturiser to…
 
-### [REVIEW] TESTIMONIAL (body) — Vaia Beauty, Darlinghurst
-`content/destinations/clinics/vaia-beauty-darlinghurst/vaia-beauty-darlinghurst.mdx:93` · 2026-01-15 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — Spa by Jw, Jw Marriott Gold Coast
+`content/destinations/spas-retreats/spa-by-jw-jw-marriott-gold-coast/spa-by-jw-jw-marriott-gold-coast.mdx:121` · 2026-01-15 · Sigourney Cantelo
 
-Restricted term: **infrared** · matched: **I love**
+Restricted term: **Collagen** · matched: **I take**
 
-> …t witchdoctor, she has that ancient gift of the healer, which is a rare thing these days. I love that you can have a wellness consult with Vaia, but also get your beauty maintenance seen…
-
-### [REVIEW] TESTIMONIAL (body) — Youth Lab, Claremont
-`content/destinations/clinics/youth-lab-claremont/youth-lab-claremont.mdx:88` · 2026-01-15 · Tess Schlink
-
-Restricted term: **Light Therapy** · matched: **my favourite**
-
-> …laremont/20201123_youthlab_ng_dr-41_lr-1.jpg) ## Healite II LED Light Therapy And then, my favourite part of the facial: [the Healite II LED](https://www.youthlab.com.au/treatment/healite-ii…
-
-### [REVIEW] TESTIMONIAL (body) — The Girl You Love, Glebe
-`content/destinations/spas-retreats/the-girl-you-love-glebe/the-girl-you-love-glebe.mdx:75` · 2026-01-15 · Beauticate Editorial
-
-Restricted term: **Vitamin C** · matched: **I love**
-
-> …skin gently then soothes it all off with a warm towel before popping me under the steam. I love a good steam, and drift off as she expertly kneads my hands and arms. I wake up briefly…
+> …products promise to continue the benefits of the spa’s treatments long after you’ve left. I take some products home and promptly fall in love with the N.E.O. Nature’s Elixir Oil, aka the…
 
 ### [REVIEW] TESTIMONIAL (body) — My New Zealand Beauty Haul
 `content/destinations/travel/my-new-zealand-beauty-haul/my-new-zealand-beauty-haul.mdx:73` · 2019-11-26 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **I love**
+Restricted term: **sunscreen** · matched: **I love**
 
 > …ese products contain marine collagen and seaweed extracts for maximum hydration and glow. I love the formula of this cleanser, which is an ‘oil to gel’ – it melts off my heavy duty sunsc…
 
@@ -4702,20 +3379,6 @@ Restricted term: **collagen** · matched: **I love**
 Restricted term: **sunscreen** · matched: **I add**
 
 > …e of cleanser, serum, moisturiser and sunscreen, without fail every assistant recommended I add a toner/water and essence to my repertoire to prepare my skin and help it better absorb o…
-
-### [REVIEW] TESTIMONIAL (body) — Winter Weekend Escape to Bells at Killcare, Sigourney’s Edit
-`content/destinations/travel/winter-weekend-escape-to-bells-at-killcare-sigourneys-edit/winter-weekend-escape-to-bells-at-killcare-sigourneys-edit.mdx:83` · 2018-07-25 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **I pop**
-
-> …lone English Pear and Freesia Bath Oil and, once submerged, with a glass of wine in hand, I pop on one of Zoe Foster’s [GO-TO Transformazing Sheet Mask Skincare face masks](http://www.g…
-
-### [REVIEW] TESTIMONIAL (body) — Anna Heinrich on Whether There Can Be Happy Endings After Reality TV
-`content/interviews/actors-presenters/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv.mdx:126` · 2021-06-08 · Zoe Briggs
-
-Restricted term: **supplement** · matched: **my favourite**
-
-> …there are times I don’t want to make cuts at all, like breakfast or brunch out, which is my favourite. In terms of supplements, I really love magnesium, which I started using when I did a ha…
 
 ### [REVIEW] TESTIMONIAL (body) — Anna Heinrich on Whether There Can Be Happy Endings After Reality TV
 `content/interviews/actors-presenters/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv/anna-heinrich-on-whether-there-really-can-be-fairytales-after-reality-tv.mdx:128` · 2021-06-08 · Zoe Briggs
@@ -4730,6 +3393,20 @@ Restricted term: **supplement** · matched: **I started using**
 Restricted term: **supplement** · matched: **I took**
 
 > …ng when I did a half marathon years ago. I find a magnesium bath gives incredible relief. I took magnesium all throughout pregnancy and still take it now to help with sleep; it’s a huge…
+
+### [REVIEW] TESTIMONIAL (body) — Anna Heinrich, Media Personality
+`content/interviews/actors-presenters/anna-heinrich-tv-star-and-lawyer/anna-heinrich-tv-star-and-lawyer.mdx:100` · 2016-02-18 · Chrisanthi Kaliviotis
+
+Restricted term: **supplement** · matched: **I love**
+
+> …nchovies are the only thing I don’t like! I eat pretty well the majority of the time, but I love my lollies, cakes and chocolate – I probably eat chocolate everyday. My lunch will be hea…
+
+### [REVIEW] TESTIMONIAL (body) — Anna Heinrich, Media Personality
+`content/interviews/actors-presenters/anna-heinrich-tv-star-and-lawyer/anna-heinrich-tv-star-and-lawyer.mdx:100` · 2016-02-18 · Chrisanthi Kaliviotis
+
+Restricted term: **supplement** · matched: **I love**
+
+> …t will be healthy and normally dinner is healthy – unless I have some chips on the side – I love chips! I also don’t take any supplements – I think you can get that all from food if you…
 
 ### [REVIEW] TESTIMONIAL (body) — Erika Heynatz, Actor
 `content/interviews/actors-presenters/erika-heynatz-actor/erika-heynatz-actor.mdx:78` · 2015-01-22 · Sigourney Cantelo
@@ -4760,6 +3437,20 @@ Restricted term: **sunscreen** · matched: **my favourite**
 > …m using Dr. Hauschka Rose Day Cream. ## Isabel's Favourite Beauty Products ### A few of my favourite things are these beautiful feathers that I wear in my hair… …and love the [Hourglass Voy…
 
 ### [REVIEW] TESTIMONIAL (body) — James Tobin, TV Presenter
+`content/interviews/actors-presenters/james-tobin-tv-presenter/james-tobin-tv-presenter.mdx:49` · 2015-05-25 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …7282-1.jpg) ## James's Skincare and Sun Protection ### If I come home with make up on… I use Shu Uemura Cleansing Oil. My sister, Julia, who works in Beauty PR gave me that. I don’t…
+
+### [REVIEW] TESTIMONIAL (body) — James Tobin, TV Presenter
+`content/interviews/actors-presenters/james-tobin-tv-presenter/james-tobin-tv-presenter.mdx:51` · 2015-05-25 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …’s dark. When you’re leaving your house in the dark you don’t think about sunscreen. ### I use an Armani moisturiser Kiehl’s Facial Fuel is awesome and I love that it’s a screw top be…
+
+### [REVIEW] TESTIMONIAL (body) — James Tobin, TV Presenter
 `content/interviews/actors-presenters/james-tobin-tv-presenter/james-tobin-tv-presenter.mdx:53` · 2015-05-25 · Sigourney Cantelo
 
 Restricted term: **sunscreen** · matched: **I love**
@@ -4779,6 +3470,13 @@ Restricted term: **sunscreen** · matched: **I love**
 Restricted term: **Probiotic** · matched: **I love**
 
 > …ne for the corners. ## Penelope’s Natural Skincare ### I’m all about natural skincare. I love Epicuren’s Acidophilus Probiotic Facial Cream which I use daily. It has probiotics in it…
+
+### [REVIEW] TESTIMONIAL (body) — Penelope Mitchell, Actress
+`content/interviews/actors-presenters/penelope-mitchell-actress/penelope-mitchell-actress.mdx:55` · 2015-03-12 · Madeleine Boyd
+
+Restricted term: **Probiotic** · matched: **I use**
+
+> …m all about natural skincare. I love Epicuren’s Acidophilus Probiotic Facial Cream which I use daily. It has probiotics in it so it rejuvenates, resurfaces and gives my skin a real glo…
 
 ### [REVIEW] TESTIMONIAL (body) — Poppy Delevingne, Actress & Model
 `content/interviews/actors-presenters/poppy-delevingne-actress-and-model/poppy-delevingne-actress-and-model.mdx:103` · 2018-07-12 · Molly Gay
@@ -4808,13 +3506,6 @@ Restricted term: **magnesium** · matched: **I love**
 
 > …i. My favourite recipe is oven-baked salmon with sweet potato mash and steamed greens and I love Impressed Juices and cold pressed Ginga Ninja juices – made with carrots, apples, ginger…
 
-### [REVIEW] TESTIMONIAL (body) — Sally Obermeder, TV Host & Author
-`content/interviews/actors-presenters/sally-obermeder-tv-host-author/sally-obermeder-tv-host-author.mdx:120` · 2014-09-18 · Sigourney Cantelo
-
-Restricted term: **protein powder** · matched: **I swear by**
-
-> …absolute favourite one is kale, spinach, broccoli, two limes, passionfruit, Vital Greens…I swear by my Vitamix. A little bit of protein powder, either Vital Greens or GoodGreens stuff, and…
-
 ### [REVIEW] TESTIMONIAL (body) — Sami Lukis, TV & Radio Personality
 `content/interviews/actors-presenters/sami-lukis-tv-radio-personality/sami-lukis-tv-radio-personality.mdx:38` · 2015-07-23 · Sigourney Cantelo
 
@@ -4828,6 +3519,27 @@ Restricted term: **zinc** · matched: **I use**
 Restricted term: **sunscreen** · matched: **I love**
 
 > …ow this with a spritz of Divine Woman Soothing Rose Toner to refresh and wake my skin up. I love using it on my décolletage too. I let that dry before applying my Divine Woman Illuminati…
+
+### [REVIEW] TESTIMONIAL (body) — Sophie Falkiner, TV Presenter
+`content/interviews/actors-presenters/sophie-falkiner-tv-presenter/sophie-falkiner-tv-presenter.mdx:53` · 2016-04-28 · Chrisanthi Kaliviotis
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …p. But I think sunscreen, supplements, sleep, water and exfoliation are really important. I use this Garnier 3-in-1 – [I use it] in the shower every second day and people always say I h…
+
+### [REVIEW] TESTIMONIAL (body) — Sophie Falkiner, TV Presenter
+`content/interviews/actors-presenters/sophie-falkiner-tv-presenter/sophie-falkiner-tv-presenter.mdx:53` · 2016-04-28 · Chrisanthi Kaliviotis
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …plements, sleep, water and exfoliation are really important. I use this Garnier 3-in-1 – [I use it] in the shower every second day and people always say I have great texture to my skin.…
+
+### [REVIEW] TESTIMONIAL (body) — Sophie Falkiner, TV Presenter
+`content/interviews/actors-presenters/sophie-falkiner-tv-presenter/sophie-falkiner-tv-presenter.mdx:53` · 2016-04-28 · Chrisanthi Kaliviotis
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …ay and people always say I have great texture to my skin. I’ve been using that for years. I use [Cetaphil](http://bit.ly/26tpTdS) too – my skin is better with products that don’t have t…
 
 ### [REVIEW] TESTIMONIAL (body) — Tessa James, Actress
 `content/interviews/actors-presenters/tessa-james-actress/tessa-james-actress.mdx:91` · 2016-06-02 · Emily Algar
@@ -4853,7 +3565,7 @@ Restricted term: **magnesium** · matched: **I love**
 ### [REVIEW] TESTIMONIAL (body) — Alison Barton Chow, the Coco Ribbon Designer with a Time-Saving Shower Hack
 `content/interviews/creatives/alison-barton-chow-the-coco-ribbon-designer-with-a-time-saving-shower-hack/alison-barton-chow-the-coco-ribbon-designer-with-a-time-saving-shower-hack.mdx:120` · 2021-03-30 · Zoe Briggs
 
-Restricted term: **Elixir** · matched: **I take**
+Restricted term: **capsule** · matched: **I take**
 
 > …ecent early dinner with the children. If I’m going out and I know I’ll be having alcohol, I take two glutamine capsules, both before going and again as soon as I get home. I’ve found thi…
 
@@ -4871,13 +3583,6 @@ Restricted term: **sunscreen** · matched: **I love**
 
 > …after, such as a dry texture for a deep cleanse or milder cleanse with more water added. I love Kiehl’s face cream, just how plain and simple it is. I don’t like fragrance creams for my…
 
-### [REVIEW] TESTIMONIAL (body) — Beck Wadworth, the Hyper-Organised Stationery Designer on Ways She’s Simplifying Her Life
-`content/interviews/creatives/beck-wadworth/beck-wadworth.mdx:96` · 2020-11-17 · Zoe Briggs
-
-Restricted term: **light therapy** · matched: **My go-to**
-
-> …lute favourite place for all types of pampering. They do the best massages and facials._ My go-to splurge treatment is light therapy. It works wonders on evening out skin tone (especially…
-
 ### [REVIEW] TESTIMONIAL (body) — Bonnie Cee, Photographer
 `content/interviews/creatives/bonnie-cee-photographer/bonnie-cee-photographer.mdx:50` · 2018-03-22 · Molly Gay
 
@@ -4893,13 +3598,6 @@ Restricted term: **sunscreen** · matched: **I love**
 > …oh and sunscreen daily, of course! For makeup removal I use Bioderma Micelle water, which I love! And I am obsessed with Lucas Paw Paw ointment for my lips. I dislike all the products wi…
 
 ### [REVIEW] TESTIMONIAL (body) — Darren Palmer & Olivier Duvillard
-`content/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard/darren-palmer-interiors-designer-and-olivier-duvillard.mdx:104` · 2017-08-31 · Rikki Hodge-Smith
-
-Restricted term: **Vitamin A** · matched: **I use**
-
-> …er-duvillard/img_6463-1.jpg) _I am a hardcore Vitamin A user._ I have a mixed approach. I use the six step by Rationale and I’ve been experimenting with the Cosmedix super strong Vita…
-
-### [REVIEW] TESTIMONIAL (body) — Darren Palmer & Olivier Duvillard
 `content/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard/darren-palmer-interiors-designer-and-olivier-duvillard.mdx:106` · 2017-08-31 · Rikki Hodge-Smith
 
 Restricted term: **light therapy** · matched: **my favourite**
@@ -4913,12 +3611,54 @@ Restricted term: **sunscreen** · matched: **I love**
 
 > …] too, which is a New Zealand brand, all organic company that does very unusual products. I love their aesthetic. I like to support brands like that, a bit like my brand are doing amazin…
 
+### [REVIEW] TESTIMONIAL (body) — Filomena Natoli, Makeup Artist
+`content/interviews/creatives/filomena-natoli-makeup-artist/filomena-natoli-makeup-artist.mdx:105` · 2014-07-03 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **I love**
+
+> …kale! I don’t take any supplements or vitamins; a balanced diet seem to be working fine. I love to cook with my girls, which probably goes back to my Italian background. I love chilling…
+
+### [REVIEW] TESTIMONIAL (body) — Filomena Natoli, Makeup Artist
+`content/interviews/creatives/filomena-natoli-makeup-artist/filomena-natoli-makeup-artist.mdx:105` · 2014-07-03 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **I love**
+
+> …ng fine. I love to cook with my girls, which probably goes back to my Italian background. I love chilling at home having friends over with the kids running around, wine, pool, food, musi…
+
 ### [REVIEW] TESTIMONIAL (body) — Fredrika Akander, Fashion Blogger
 `content/interviews/creatives/fredrika-akander-fashion-blogger/fredrika-akander-fashion-blogger.mdx:125` · 2019-11-05 · Zoe Briggs
 
 Restricted term: **collagen** · matched: **I take**
 
 > …hough. I like to cook most of my food at home, and we eat lots of salads, pasta and fish. I take collagen every morning, which has done wonders for my nails. They used to be really britt…
+
+### [REVIEW] TESTIMONIAL (body) — Genevieve Smart, Ginger & Smart
+`content/interviews/creatives/genevieve-smart/genevieve-smart.mdx:38` · 2016-03-10 · Chrisanthi Kaliviotis
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …e onset of a nasty cold. ## Genevieve's Skincare Routine ### “I keep it pretty simple. I use Cosmedix Cleansing Oil which gives a deep cleanse, removing sunscreen and makeup. It’s a…
+
+### [REVIEW] TESTIMONIAL (body) — Genevieve Smart, Ginger & Smart
+`content/interviews/creatives/genevieve-smart/genevieve-smart.mdx:38` · 2016-03-10 · Chrisanthi Kaliviotis
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …unscreen and makeup. It’s a mix of argan and olive oil so it leaves my skin feeling dewy. I use [The Clinic Moisturiser](https://www.theclinic.net.au/collections/moisturisers/products/t…
+
+### [REVIEW] TESTIMONIAL (body) — Genevieve Smart, Ginger & Smart
+`content/interviews/creatives/genevieve-smart/genevieve-smart.mdx:54` · 2016-03-10 · Chrisanthi Kaliviotis
+
+Restricted term: **probiotic** · matched: **I take**
+
+> …ally natural way to age well. ### I try and look after my skin from the inside… …\[so\] I take vitamins for skin. So much of your skin condition is about your gut lining, so I take pro…
+
+### [REVIEW] TESTIMONIAL (body) — Genevieve Smart, Ginger & Smart
+`content/interviews/creatives/genevieve-smart/genevieve-smart.mdx:54` · 2016-03-10 · Chrisanthi Kaliviotis
+
+Restricted term: **probiotic** · matched: **I take**
+
+> …o\] I take vitamins for skin. So much of your skin condition is about your gut lining, so I take probiotics, multivitamins and fish oil. ### Sunscreen is a big thing for my sisters and…
 
 ### [REVIEW] TESTIMONIAL (body) — Heidi Carter, Paddo to Palmy
 `content/interviews/creatives/heidi-carter-fashion-designer/heidi-carter-fashion-designer.mdx:152` · 2016-03-31 · Chrisanthi Kaliviotis
@@ -4927,12 +3667,19 @@ Restricted term: **supplement** · matched: **I love**
 
 > …## Fishing for Compliments: Teapot by [Shanghai Tang](https://www.shanghaitang.com/) ### I love supplements for overall health. If ever I feel a sore throat coming on I take this gland…
 
-### [REVIEW] TESTIMONIAL (body) — Inside the LA Home of Maison Louis Marie Founder Marie Du Petit Thouars
-`content/interviews/creatives/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars/inside-the-la-home-of-maison-louis-marie-founder-marie-du-petit-thouars.mdx:126` · 2023-10-20 · Zoe Briggs
+### [REVIEW] TESTIMONIAL (body) — Heidi Carter, Paddo to Palmy
+`content/interviews/creatives/heidi-carter-fashion-designer/heidi-carter-fashion-designer.mdx:154` · 2016-03-31 · Chrisanthi Kaliviotis
 
-Restricted term: **Vitamin ** · matched: **I love**
+Restricted term: **supplement** · matched: **I take**
 
-> …tamin Splash _\[Ed. note: not available in Australia\]_, which is a refreshing spray that I love to apply during the day or after exercising. It feels revitalising and gives my skin a qu…
+> …com/) ### I love supplements for overall health. If ever I feel a sore throat coming on I take this glandular tonic and the next day I’m good to go, and I take tissue salts for general…
+
+### [REVIEW] TESTIMONIAL (body) — Heidi Carter, Paddo to Palmy
+`content/interviews/creatives/heidi-carter-fashion-designer/heidi-carter-fashion-designer.mdx:154` · 2016-03-31 · Chrisanthi Kaliviotis
+
+Restricted term: **supplement** · matched: **I take**
+
+> …a sore throat coming on I take this glandular tonic and the next day I’m good to go, and I take tissue salts for general health. I also take spirulina and fish oil. ### For my hair I a…
 
 ### [REVIEW] TESTIMONIAL (body) — Isa Tapia, Shoe Designer
 `content/interviews/creatives/isa-tapia-shoe-designer/isa-tapia-shoe-designer.mdx:73` · 2015-05-28 · Jessica Burdon
@@ -4969,40 +3716,12 @@ Restricted term: **Omega 3** · matched: **I take**
 
 > …o holidays and socialising there’s no strict rules – I let my hair down and enjoy myself. I take an Omega 3 and Multi vitamin daily. Story by Rikki Hodge-Smith; Interview by Sigourney C…
 
-### [REVIEW] TESTIMONIAL (body) — Jessica Burdon, Writer
-`content/interviews/creatives/jess-burdon-writer/jess-burdon-writer.mdx:73` · 2015-04-30 · Jessica Burdon
-
-Restricted term: **vitamin ** · matched: **I use**
-
-> …e ### I am naturalist with my beauty products. I try to avoid chemicals where possible. I use coconut oil as body moisturiser, and Solar Recover ‘Save Your Skin Hydrating Mist’ on my…
-
-### [REVIEW] TESTIMONIAL (body) — Jessica Burdon, Writer
-`content/interviews/creatives/jess-burdon-writer/jess-burdon-writer.mdx:73` · 2015-04-30 · Jessica Burdon
-
-Restricted term: **vitamin ** · matched: **my favorite**
-
-> …ser, and Solar Recover ‘Save Your Skin Hydrating Mist’ on my face. Solar Recover but it's my favorite thing ever. It's all natural ingredients like reverse osmosis filtered water, natural vi…
-
 ### [REVIEW] TESTIMONIAL (body) — Josie Taylor, the Fresh Ginger
 `content/interviews/creatives/josie-taylor-blogger-and-food-stylist/josie-taylor-blogger-and-food-stylist.mdx:168` · 2015-09-29 · Josie Taylor
 
 Restricted term: **Omega 3** · matched: **I love**
 
 > …ogger-and-food-stylist/img-124-1.jpg) ### Kale and Pomegranate Never Looked so Sexy ### I love fat. I always take a big dose of high-quality Omega 3 fish oil in the morning with my ju…
-
-### [REVIEW] TESTIMONIAL (body) — Julia Restoin Roitfield, Art Director and Model
-`content/interviews/creatives/julia-restoin-roitfield-art-director-and-model/julia-restoin-roitfield-art-director-and-model.mdx:128` · 2019-10-02 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **I add**
-
-> …https%3A%2F%2Fjuicepress.com%2F&usg=AOvVaw0QjANLcxZcquG3TB2SAQlr) to start the day, which I add collagen powder and flaxseeds to, and an oat latte from Joe The Art of Coffee. I eat a lo…
-
-### [REVIEW] TESTIMONIAL (body) — Kate Waterhouse on the Joy of Dressing Up
-`content/interviews/creatives/kate-waterhouse-style-beauty/kate-waterhouse-style-beauty.mdx:124` · 2026-05-03 · Zoe Briggs
-
-Restricted term: **vitamin C** · matched: **I love**
-
-> …ne lines while using it. It combines retinol, vitamin C, and peptides, and as a busy mum, I love anything that simplifies my routine while delivering results. ![Lancome Energie Triple S…
 
 ### [REVIEW] TESTIMONIAL (body) — Kelly Smythe, Stylist
 `content/interviews/creatives/kelly-smythe-stylist/kelly-smythe-stylist.mdx:73` · 2014-05-15 · Sigourney Cantelo
@@ -5038,6 +3757,13 @@ Restricted term: **magnesium** · matched: **I love**
 Restricted term: **sunscreen** · matched: **I use**
 
 > …een I’m wearing. ### I’ve been avoiding sun… No matter what, especially through winter, I use the Ella Baché Great Facetan Without Sun on my face, you can put it on in the morning bef…
+
+### [REVIEW] TESTIMONIAL (body) — Lorna Jane, Activewear Designer
+`content/interviews/creatives/lorna-jane-designer/lorna-jane-designer.mdx:72` · 2018-01-18 · Danielle de Gail
+
+Restricted term: **Magnesium** · matched: **My favourite**
+
+> …I also love Micro-Dermabrasion to boost my skin (I go to Des at Blow Salon in Brisbane). My favourite spa would have to be Gwinganna on the Gold Coast. I’m not sure if you can book treatments…
 
 ### [REVIEW] TESTIMONIAL (body) — Lorna Jane, Activewear Designer
 `content/interviews/creatives/lorna-jane-designer/lorna-jane-designer.mdx:76` · 2018-01-18 · Danielle de Gail
@@ -5082,6 +3808,13 @@ Restricted term: **Probiotic** · matched: **I use**
 > …I have a beautiful Norwegian friend who makes the most intoxicating roller oil blends, so I use mine every morning, whether it be an immune booster or hormone balancing blend. They are…
 
 ### [REVIEW] TESTIMONIAL (body) — Magdalena Roze, Journalist
+`content/interviews/creatives/magdalena-roze-journalist/magdalena-roze-journalist.mdx:58` · 2019-01-24 · Tess Schlink
+
+Restricted term: **collagen** · matched: **I swear by**
+
+> …as the powerful role of wholefoods in attaining glowing and strong skin, hair and nails. I swear by good fats like bone broth for this as it’s literally packed with collagen, as well as add…
+
+### [REVIEW] TESTIMONIAL (body) — Magdalena Roze, Journalist
 `content/interviews/creatives/magdalena-roze-journalist/magdalena-roze-journalist.mdx:64` · 2019-01-24 · Tess Schlink
 
 Restricted term: **sunscreen** · matched: **I use**
@@ -5095,12 +3828,40 @@ Restricted term: **supplement** · matched: **I swear by**
 
 > …NATURAL PAIN RELIEVING OIL ## Melanie's Natural Pain Relief ### In terms of supplements I swear by ‘Armaforce’ and ‘Ultra Muscle Ease’. I have a back injury from a car accident and for ye…
 
+### [REVIEW] TESTIMONIAL (body) — Natalia Kindler on Leaving Corporate Life for the World of Wellness
+`content/interviews/creatives/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness.mdx:124` · 2020-12-01 · Zoe Briggs
+
+Restricted term: **Supplement** · matched: **I take**
+
+> …f-wellness/natalia-13.jpg) ## Natalia’s Supplement Philosophy _I am a supplement queen! I take many different ones, but each has been recommended to me by my naturopath, as suggested b…
+
+### [REVIEW] TESTIMONIAL (body) — Natalia Kindler on Leaving Corporate Life for the World of Wellness
+`content/interviews/creatives/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness/natalia-kindler-on-leaving-corporate-life-for-the-world-of-wellness.mdx:126` · 2020-12-01 · Zoe Briggs
+
+Restricted term: **Supplement** · matched: **I take**
+
+> …y blood and other tests I’ve had done (such as saliva tests for cortisol levels)._ Daily I take EPA/DHA (fish oil), iron, magnesium, zinc, and calcium. I also take herbs, and use ashwag…
+
 ### [REVIEW] TESTIMONIAL (body) — Paloma Rose Garcia, Hair Stylist
 `content/interviews/creatives/paloma-rose-garcia/paloma-rose-garcia.mdx:105` · 2014-03-05 · Sigourney Cantelo
 
 Restricted term: **fish oil** · matched: **I take**
 
 > …rows so easily. ### Our son Teddy picks the kale every morning to put in our smoothies… I take fish oil for my joints as I am conscious of looking after my wrists, especially with work…
+
+### [REVIEW] TESTIMONIAL (body) — Rae Morris, Makeup Artist
+`content/interviews/creatives/rae-morris/rae-morris.mdx:109` · 2013-12-22 · Sigourney Cantelo
+
+Restricted term: **sachet** · matched: **I use**
+
+> …ely put anything on my body. I'm so white you never see my legs or arms anyway. Sometimes I use QV and I do love putting the [Goe Oil](https://www.mecca.com.au/) on elbows or knees. <d…
+
+### [REVIEW] TESTIMONIAL (body) — Rae Morris, Makeup Artist
+`content/interviews/creatives/rae-morris/rae-morris.mdx:125` · 2013-12-22 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …es and I'm red. When I'm on a shoot, I will put sunscreen on every two hours religiously. I use [Invisible Zinc](https://www.invisiblezinc.com.au/). Even the [Bioderma](https://www.biod…
 
 ### [REVIEW] TESTIMONIAL (body) — Rae Morris on Beauty, Mistakes and the Happy Accident That Changed Her Life
 `content/interviews/creatives/rae-morris-interview/rae-morris-interview.mdx:188` · 2025-12-09 · Zoe Briggs
@@ -5133,7 +3894,14 @@ Restricted term: **vitamin C** · matched: **I am loving**
 ### [REVIEW] TESTIMONIAL (body) — Somer Watson, Watson & Watson
 `content/interviews/creatives/somer-watson/somer-watson.mdx:88` · 2014-04-10 · Sigourney Cantelo
 
-Restricted term: **Fish oil** · matched: **I love**
+Restricted term: **Vitamin B** · matched: **I use**
+
+> …hie. ![Somer Watson](/content/interviews/creatives/somer-watson/Somer-Watson-L-9-1.jpg) I use spinach leaves, chia seeds, coconut oil, cucumber, some almonds, mint, a squeeze of lemon…
+
+### [REVIEW] TESTIMONIAL (body) — Somer Watson, Watson & Watson
+`content/interviews/creatives/somer-watson/somer-watson.mdx:88` · 2014-04-10 · Sigourney Cantelo
+
+Restricted term: **Vitamin B** · matched: **I love**
 
 > …, some almonds, mint, a squeeze of lemon or lime and I mix it all up with coconut water – I love it. I also put Vital Greens in my smoothie, and if I can remember I also take Vitamin B,…
 
@@ -5154,16 +3922,37 @@ Restricted term: **supplement** · matched: **I love**
 ### [REVIEW] TESTIMONIAL (body) — Stephanie Davies, Founder La Boheme Lifestyle
 `content/interviews/creatives/stephanie-davies-founder-la-boheme-lifestyle/stephanie-davies-founder-la-boheme-lifestyle.mdx:118` · 2023-08-02 · Sigourney Cantelo
 
-Restricted term: **supplement** · matched: **I use**
+Restricted term: **vitamin ** · matched: **I use**
 
 > …ong. My new favourite self care is scalp treatments, obsessed with all things scalp care. I use WELLBEL as a vitamin supplement for hair growth and health and once a week do a scalp scr…
 
-### [REVIEW] TESTIMONIAL (body) — Terri Vinson, Synergie Skin
-`content/interviews/creatives/terri-vinson-cosmetic-chemist/terri-vinson-cosmetic-chemist.mdx:81` · 2015-11-03 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — Steve Cordony, Interior Stylist
+`content/interviews/creatives/steve-cordony-interior-stylist/steve-cordony-interior-stylist.mdx:82` · 2024-08-22 · Sigourney Cantelo
 
-Restricted term: **tonic** · matched: **I use**
+Restricted term: **infrared** · matched: **I love**
 
-> …, Tea Included ## Terri’s Morning Skincare Routine ### With skincare, I’m a maximalist! I use a variety of different serums to target specific concerns. I am fortunate to be at the fo…
+> …daily life. We’re going to build a pool pavilion with a spa like elements like a sauna. I love saunas, both infrared and classic. I also find magnesium salt baths ritualistic and sooth…
+
+### [REVIEW] TESTIMONIAL (body) — Steve Cordony, Interior Stylist
+`content/interviews/creatives/steve-cordony-interior-stylist/steve-cordony-interior-stylist.mdx:114` · 2024-08-22 · Sigourney Cantelo
+
+Restricted term: **supplement** · matched: **I love**
+
+> …yourself is a reflection of your soul and encompasses all aspects of life. Skincare wise I love Rationale. I also love nourishing my skin from within with Vida Glow and the Ikari supple…
+
+### [REVIEW] TESTIMONIAL (body) — Tamsin Johnson, Interior Designer
+`content/interviews/creatives/tamsin-johnson-interior-designer/tamsin-johnson-interior-designer.mdx:116` · 2019-10-16 · Zoe Briggs
+
+Restricted term: **infrared** · matched: **I love**
+
+> …in. You leave feeling detoxified and cleansed, and it makes for an amazing night’s sleep. I love [Nimbus & Co. in Bondi](https://www.nimbusco.com.au), which is nice to go to either with…
+
+### [REVIEW] TESTIMONIAL (body) — Tamsin Johnson, Interior Designer
+`content/interviews/creatives/tamsin-johnson-interior-designer/tamsin-johnson-interior-designer.mdx:126` · 2019-10-16 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **I love**
+
+> …than supplements. My days of juice cleanses are behind me and I don’t count calories, as I love food too much. I have greens and protein for dinner a few nights a week, and usually sala…
 
 ### [REVIEW] TESTIMONIAL (body) — The French Fashion Designer with a Balinese Dream Home
 `content/interviews/creatives/the-french-fashion-designer-with-a-balinese-dream-home/the-french-fashion-designer-with-a-balinese-dream-home.mdx:62` · 2020-05-27 · Zoe Briggs
@@ -5172,26 +3961,12 @@ Restricted term: **sunscreen** · matched: **I rely on**
 
 > …beauty routine. When I’m in Bali, as it’s a tropical island, I go as natural as possible. I rely on good cleansing, sunscreen and hydration to keep my skin naturally glowing, and a little b…
 
-### [REVIEW] TESTIMONIAL (body) — The Society Jeweller with a Stylish Loungewear Wardrobe
-`content/interviews/creatives/the-society-jeweller-with-a-stylish-loungewear-wardrobe/the-society-jeweller-with-a-stylish-loungewear-wardrobe.mdx:122` · 2020-04-15 · Zoe Briggs
-
-Restricted term: **collagen** · matched: **I love**
-
-> …and Box classes at Shelter in Double Bay. The feeling in there is so social and fun and I love Eve’s music. You leave feeling amazing!* *I usually make a smoothie for breakfast with…
-
 ### [REVIEW] TESTIMONIAL (body) — Violette, Makeup Artist
 `content/interviews/creatives/violette-makeup-artist/violette-makeup-artist.mdx:145` · 2018-10-04 · Tess Schlink
 
 Restricted term: **supplement** · matched: **I love**
 
 > …times I’ll do a week of aloe vera juice before each meal to help my digestive system, and I love a good turmeric and black pepper supplement to help me with any irritation or inflammatio…
-
-### [REVIEW] TESTIMONIAL (body) — Jocelyn Petroni, the A-Listers' Facialist Who is All About Love
-`content/interviews/creatives/who-jocelyn-petroni-beauty-therapist/who-jocelyn-petroni-beauty-therapist.mdx:103` · 2024-09-20 · Zoe Briggs
-
-Restricted term: **infrared** · matched: **I take**
-
-> …st had one installed in our home for me as a birthday gift! When I travel internationally I take the opportunity to experience facials with renowned skin therapists all over the world.…
 
 ### [REVIEW] TESTIMONIAL (body) — Jodhi Meares, the Upside
 `content/interviews/creatives/who-jodhi-meares/who-jodhi-meares.mdx:38` · 2014-04-17 · Madeleine Boyd
@@ -5207,33 +3982,12 @@ Restricted term: **vitamin c** · matched: **I take**
 
 > …velling a lot I just put myself on a juice cleanse, always using leafy greens as a base. I take also liquid oxygen (it’s an amazing hangover cure) and vitamin c everyday. ## Jodhi’s Yo…
 
-### [REVIEW] TESTIMONIAL (body) — Natalie Imbruglia, Musician
-`content/interviews/creatives/who-natalie-imbruglia/who-natalie-imbruglia.mdx:62` · 2014-12-11 · Sigourney Cantelo
-
-Restricted term: **vitamin C** · matched: **I love**
-
-> …so I was excited about that. There’s also green tea, which is very calming and soothing. I love that we’ve got manuka honey from Tasmania, which I thought was just a New Zealand product…
-
-### [REVIEW] TESTIMONIAL (body) — Sarah Jagger, Makeup Artist
-`content/interviews/creatives/who-sarah-jagger-make-up-artist/who-sarah-jagger-make-up-artist.mdx:134` · 2014-05-01 · Sigourney Cantelo
-
-Restricted term: **capsule** · matched: **I take**
-
-> …s the most jam-packed powdered superfood I’ve found. Ever. I can’t juice when I travel so I take Juice Plus capsules. Then I put my healthy ritual to one side and have a strong black cof…
-
 ### [REVIEW] TESTIMONIAL (body) — Alyce Tran, the Entrepreneur Who Will Persuade You to Bring Colour Into Your Home
 `content/interviews/founders/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home/alyce-tran-the-entrepreneur-who-will-persuade-you-to-bring-colour-into-your-home.mdx:96` · 2022-09-21 · Zoe Briggs
 
 Restricted term: **SPF 50** · matched: **I use**
 
 > …aQuest cleanser, and rotate between a few serums James has prescribed. Every second night I use an SkinBetter Science AlphaRet Exfoliating Peel Pad followed by my [Omnilux at-home LED m…
-
-### [REVIEW] TESTIMONIAL (body) — Anastasia Soare on Turning Perfect Brows Into a Global Empire
-`content/interviews/founders/anastasia-soare-on-turning-perfect-brows-into-a-global-empire/anastasia-soare-on-turning-perfect-brows-into-a-global-empire.mdx:111` · 2023-03-29 · Zoe Briggs
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …dration. I also never skip sunscreen. At night, I’m diligent about taking off my makeup. I use [Tatcha The Camellia Cleansing Oil](https://www.mecca.com.au/tatcha/the-camellia-cleansin…
 
 ### [REVIEW] TESTIMONIAL (body) — Bree Johnson & Jessica Hatzis, Frank Body
 `content/interviews/founders/bree-johnson-and-jessica-hatzis-entrepreneurs/bree-johnson-and-jessica-hatzis-entrepreneurs.mdx:79` · 2017-04-06 · Rikki Hodge-Smith
@@ -5242,13 +3996,6 @@ Restricted term: **SPF 50** · matched: **I add**
 
 > …m/collections/skincare/products/glow-mask) (the best!) and The Everyday Face Moisturiser. I add some actives in too; B serum in the morning, vitamin A at night and always SPF 50. ![Jes…
 
-### [REVIEW] TESTIMONIAL (body) — Canna Campbell, SugarMammaTV
-`content/interviews/founders/canna-campbell-financial-adviser-and-vlogger/canna-campbell-financial-adviser-and-vlogger.mdx:56` · 2016-03-03 · Chrisanthi Kaliviotis
-
-Restricted term: **sunscreen** · matched: **I love**
-
-> …easy for getting ready in the morning because I have Rocco and two dogs. I only buy what I love, value and appreciate. ### I always cleanse twice… …and the good thing about this is yo…
-
 ### [REVIEW] TESTIMONIAL (body) — Carla Oates & the Beauty Chef
 `content/interviews/founders/carla-oates-the-beauty-chef/carla-oates-the-beauty-chef.mdx:108` · 2017-02-08 · Rikki Hodge-Smith
 
@@ -5256,33 +4003,47 @@ Restricted term: **supplement** · matched: **my favourite**
 
 > …om a place called GPA Wholefoods. ## Carla's Fermented Foods and Diet ### Sauerkraut is my favourite thing to eat. ![Carla Oates sauerkraut and fermented foods for skin](/interviews/founder…
 
-### [REVIEW] TESTIMONIAL (body) — Dr Kate Jameson, Youth Lab
-`content/interviews/founders/dr-kate-jameson-cosmetic-physician/dr-kate-jameson-cosmetic-physician.mdx:39` · 2018-08-09 · Zoe Briggs
-
-Restricted term: **vitamin ** · matched: **My go-to**
-
-> …e sort of antioxidant serum, containing vitamin C or a combination of useful ingredients. My go-to at the moment is Affirm by Cosmedix, which is enriched with vitamin E, resveratrol and pe…
-
-### [REVIEW] TESTIMONIAL (body) — Dr Kate Jameson, Youth Lab
-`content/interviews/founders/dr-kate-jameson-cosmetic-physician/dr-kate-jameson-cosmetic-physician.mdx:55` · 2018-08-09 · Zoe Briggs
-
-Restricted term: **zinc** · matched: **I use**
-
-> …an you tell I am obsessed with sunscreen?) If I’m having a day where I need more coverage I use [Nars Sheer Glow foundation](https://www.mecca.com.au/nars/sheer-glow-foundation/V-006868…
-
-### [REVIEW] TESTIMONIAL (body) — Erin Fraser, a Lifelong Beauty Lover on Adult Acne and the Joys of Tom Ford
-`content/interviews/founders/erin-fraser-a-lifelong-beauty-lover-on-adult-acne-and-the-joys-of-tom-ford/erin-fraser-a-lifelong-beauty-lover-on-adult-acne-and-the-joys-of-tom-ford.mdx:90` · 2021-04-27 · Zoe Briggs
-
-Restricted term: **Prebiotic** · matched: **I use**
-
-> …and I apply the Rationale's #6 The Night Crème a couple of times a week. In the morning I use a gentle system from La Roche-Posay: the Effaclar Foaming Gel cleanser, Effaclar Duo (+)…
-
 ### [REVIEW] TESTIMONIAL (body) — Fanny Moizant, Vestiaire Collective
 `content/interviews/founders/fanny-moizant-entrepreneur/fanny-moizant-entrepreneur.mdx:47` · 2018-11-29 · Zoe Briggs
 
 Restricted term: **Zinc** · matched: **I use**
 
 > …not available in Australia]*, which I massage in with a 3mm jade roller. In the evening, I use Joëlle Ciocco makeup remover *[Ed. note: not available in Australia] *or La Roche Posay T…
+
+### [REVIEW] TESTIMONIAL (body) — Hayley Hall & Jayde Hall, the Sisters and Brand Co-Founders Embracing Huge Life Changes
+`content/interviews/founders/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes.mdx:92` · 2022-09-07 · Zoe Briggs
+
+Restricted term: **SPF20** · matched: **I love**
+
+> …r Skin Veil SPF20, depending on the coverage I am wanting.* Due to having such dry skin, I love using my Weleda Skin Food as my primer before makeup as it gives me more of a dewy look.…
+
+### [REVIEW] TESTIMONIAL (body) — Hayley Hall & Jayde Hall, the Sisters and Brand Co-Founders Embracing Huge Life Changes
+`content/interviews/founders/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes.mdx:111` · 2022-09-07 · Zoe Briggs
+
+Restricted term: **Infrared** · matched: **I love**
+
+> …ayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/halls-3.jpg) *J: I love massages and saunas at [Mesa](https://mesabody.com/) too, and Brittany at Mona Vale Skin…
+
+### [REVIEW] TESTIMONIAL (body) — Hayley Hall & Jayde Hall, the Sisters and Brand Co-Founders Embracing Huge Life Changes
+`content/interviews/founders/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes.mdx:113` · 2022-09-07 · Zoe Briggs
+
+Restricted term: **Infrared** · matched: **my favourite**
+
+> …na Vale Skin & Soul makes any treatment feel like absolute heaven.* *Infrared saunas are my favourite way of relaxing and unwinding, and resetting my body and mind. During lockdown I actually…
+
+### [REVIEW] TESTIMONIAL (body) — Hayley Hall & Jayde Hall, the Sisters and Brand Co-Founders Embracing Huge Life Changes
+`content/interviews/founders/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes/hayley-hall-jayde-hall-the-sisters-and-brand-co-founders-embracing-huge-life-changes.mdx:113` · 2022-09-07 · Zoe Briggs
+
+Restricted term: **Infrared** · matched: **My favourite**
+
+> …mind. During lockdown I actually bought one of my own, and started using it almost daily. My favourite form of relaxation is sitting in the sauna and having proper me time. I switch off entire…
+
+### [REVIEW] TESTIMONIAL (body) — Inside the Heavenly Home of Kiwi Cult Brand Founder, Emma Lewisham
+`content/interviews/founders/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder/inside-the-heavenly-auckland-home-of-emma-lewisham-cult-beauty-brand-founder.mdx:150` · 2020-09-29 · Zoe Briggs
+
+Restricted term: **infrared** · matched: **I love**
+
+> …get massages often, which I think are super important for our health and detoxification. I love Spring in Auckland for spa treatments, and [HANA](http://hana.nz/), which has [infrared s…
 
 ### [REVIEW] TESTIMONIAL (body) — Jacqueline Alwill, Nutritionist
 `content/interviews/founders/jacqueline-alwill-nutritionist/jacqueline-alwill-nutritionist.mdx:104` · 2015-01-15 · Lauren Rose Burke
@@ -5294,7 +4055,7 @@ Restricted term: **probiotic** · matched: **I love**
 ### [REVIEW] TESTIMONIAL (body) — Jade Pentony: Founder of Glow Beauty and Crème Skincare
 `content/interviews/founders/jade-pentony-founder-of-glow-beauty-and-creme-skincare/jade-pentony-founder-of-glow-beauty-and-creme-skincare.mdx:104` · 2023-07-06 · Sigourney Cantelo
 
-Restricted term: **Vitamin C** · matched: **I use**
+Restricted term: **sunscreen** · matched: **I use**
 
 > …[my own brand] Crème on my skin and make sure I don't leave the house without sunscreen. I use Crème Clear cleanse, Super Serum, Flawless Face (which has retinol) and then Modern Moist…
 
@@ -5319,12 +4080,19 @@ Restricted term: **sachet** · matched: **my favourite**
 
 > …– I love to cook and usually go with Bill Granger, Donna Hay or Yotam Ottolenghi. Some of my favourite dishes are Yotam’s Courgette and Cob Nut salad and Donna’s Pea and Mint soup. I have a sa…
 
-### [REVIEW] TESTIMONIAL (body) — Kirsten Carriol,  Lanolips
-`content/interviews/founders/kirsten-carriol/kirsten-carriol.mdx:68` · 2014-06-12 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — Katrina Brown, Celebrity Spray Tanner
+`content/interviews/founders/katrina-brown-tanning-guru/katrina-brown-tanning-guru.mdx:88` · 2014-10-16 · Sigourney Cantelo
 
-Restricted term: **tonic** · matched: **I use**
+Restricted term: **sunscreen** · matched: **I take**
 
-> …away most of the moisture, so by the time I get to the office its pretty much always dry. I use a Batiste dry shampoo or Fudge Volumiser Hair Powder to give it some volume and fluff it…
+> …nstead of a liquid so it doesn’t mess up your make up. ## Katrina's Fitness Routine ### I take care of my body by walking… ![I take care of my body by walking…](/content/interviews/fo…
+
+### [REVIEW] TESTIMONIAL (body) — Katrina Brown, Celebrity Spray Tanner
+`content/interviews/founders/katrina-brown-tanning-guru/katrina-brown-tanning-guru.mdx:90` · 2014-10-16 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **I take**
+
+> …up your make up. ## Katrina's Fitness Routine ### I take care of my body by walking… ![I take care of my body by walking…](/content/interviews/founders/katrina-brown-tanning-guru/L-14…
 
 ### [REVIEW] TESTIMONIAL (body) — Kirsten Carriol,  Lanolips
 `content/interviews/founders/kirsten-carriol/kirsten-carriol.mdx:80` · 2014-06-12 · Sigourney Cantelo
@@ -5333,12 +4101,33 @@ Restricted term: **Vitamin C** · matched: **I take**
 
 > …then for dinner lots of pasta, homemade bolognese and fresh Mediterranean-inspired foods. I take Iron and Vitamin C because I’m prone to anaemia. It makes me feel amazing when my iron le…
 
-### [REVIEW] TESTIMONIAL (body) — Lindy Rama-Ellis, Designer
-`content/interviews/founders/lindy-klim-designer-entrepreneur/lindy-klim-designer-entrepreneur.mdx:89` · 2018-08-02 · Zoe Briggs
+### [REVIEW] TESTIMONIAL (body) — Libby Boxall, on How Getting Gorgeous Hair Led to Partnering with a Kardashian
+`content/interviews/founders/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian.mdx:128` · 2021-07-06 · Zoe Briggs
 
-Restricted term: **spf30** · matched: **I love**
+Restricted term: **Collagen** · matched: **I love**
 
-> …l really fortunate to have a lifestyle in which I can indulge in the best of both worlds. I love the carefree lifestyle in Bali. When I'm there, my beauty routine consists almost solely…
+> …a protein smoothie (made with berries, Dose & Co Collagen Protein Powder, and oat milk). I love having plenty of protein at breakfast to keep me energised for the busy day ahead. Lunch…
+
+### [REVIEW] TESTIMONIAL (body) — Libby Boxall, on How Getting Gorgeous Hair Led to Partnering with a Kardashian
+`content/interviews/founders/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian/libby-boxall-on-how-getting-gorgeous-hair-led-to-partnering-with-a-kardashian.mdx:128` · 2021-07-06 · Zoe Briggs
+
+Restricted term: **Collagen** · matched: **I love**
+
+> …ahead. Lunch is usually roasted vegetables with a second protein smoothie. And for dinner I love making a vegetarian lasagne, vegetable fritters or fish, and kumara fries. I also like ma…
+
+### [REVIEW] TESTIMONIAL (body) — Lucy Vincent, Sans [Ceuticals]
+`content/interviews/founders/lucy-vincent-entrepreneur/lucy-vincent-entrepreneur.mdx:83` · 2018-06-07 · Zoe Briggs
+
+Restricted term: **capsule** · matched: **I love**
+
+> …ucy-vincent-entrepreneur/10a-lucy-portrait.jpg) I avoid anything processed, only because I love cooking, I love gardening, and really prefer food in its natural state. My mother always…
+
+### [REVIEW] TESTIMONIAL (body) — Lucy Vincent, Sans [Ceuticals]
+`content/interviews/founders/lucy-vincent-entrepreneur/lucy-vincent-entrepreneur.mdx:83` · 2018-06-07 · Zoe Briggs
+
+Restricted term: **capsule** · matched: **I love**
+
+> …epreneur/10a-lucy-portrait.jpg) I avoid anything processed, only because I love cooking, I love gardening, and really prefer food in its natural state. My mother always said that the ke…
 
 ### [REVIEW] TESTIMONIAL (body) — Montarna McDonald, the Audience Agency
 `content/interviews/founders/montarna-mcdonald-publicist/montarna-mcdonald-publicist.mdx:112` · 2018-02-22 · Zoe Briggs
@@ -5361,26 +4150,33 @@ Restricted term: **SPF50** · matched: **I love**
 
 > …half of the Rationale Essential Six, The Immunologist Serum and Super Antioxidant Serum. I love the Immunologist UltraCreme, it’s so good and leaves my skin feeling really hydrated. A f…
 
-### [REVIEW] TESTIMONIAL (body) — Nadia Rosa, Entrepreneur & Influencer
-`content/interviews/founders/nadia-rose-entrepreneur-infuencer/nadia-rose-entrepreneur-infuencer.mdx:115` · 2018-05-31 · Zoe Briggs
-
-Restricted term: **Elixir** · matched: **I take**
-
-> …y love her recipes. I’m also completely addicted to Pilates and do it three times a week. I take WelleCo Super Elixir Greens daily for nourishment, and take magnesium every night before…
-
-### [REVIEW] TESTIMONIAL (body) — Natalie Fitch, Natalie Marie Jewellery
-`content/interviews/founders/natalie-fitch-natalie-marie-jewellery/natalie-fitch-natalie-marie-jewellery.mdx:101` · 2019-04-24 · Zoe Briggs
-
-Restricted term: **supplement** · matched: **my go-to**
-
-> …and stews, which make for easy weeknight dinners and leftover lunches. Dark chocolate is my go-to treat, along with a glass of red wine. THESEEKE CLEANSE LIQUID WASH ## Natalie's Holist…
-
 ### [REVIEW] TESTIMONIAL (body) — Natalie Fitch, Natalie Marie Jewellery
 `content/interviews/founders/natalie-fitch-natalie-marie-jewellery/natalie-fitch-natalie-marie-jewellery.mdx:107` · 2019-04-24 · Zoe Briggs
 
 Restricted term: **supplement** · matched: **I use**
 
 > …Holistic Wellness Approach ### I am quite passionate about alternative health care, and I use a variety of supplements, homeopathics, herbs and essential oils for the whole family whe…
+
+### [REVIEW] TESTIMONIAL (body) — Ruth Robalino, the Hairdresser Turned Supplement Brand Founder Helping Clients Look and Feel Their Best
+`content/interviews/founders/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best.mdx:42` · 2022-11-16 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **I love**
+
+> …ping-clients-look-and-feel-their-best/ruth-0-1.jpg) _”Hair has always been my passion._ I love it as an art form, but even more important to me is that, as you transform a client’s hai…
+
+### [REVIEW] TESTIMONIAL (body) — Ruth Robalino, the Hairdresser Turned Supplement Brand Founder Helping Clients Look and Feel Their Best
+`content/interviews/founders/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best.mdx:100` · 2022-11-16 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **I love**
+
+> …that’s the best source of inspiration. ![When it comes to organisation, I’m old school. I love a good notebook!](/content/interviews/founders/ruth-robalino-the-hairdresser-turned-suppl…
+
+### [REVIEW] TESTIMONIAL (body) — Ruth Robalino, the Hairdresser Turned Supplement Brand Founder Helping Clients Look and Feel Their Best
+`content/interviews/founders/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best/ruth-robalino-the-hairdresser-turned-supplement-brand-founder-helping-clients-look-and-feel-their-best.mdx:102` · 2022-11-16 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **I love**
+
+> …nts-look-and-feel-their-best/ruth-7.jpg) _When it comes to organisation, I’m old school. I love a good notebook!_ For me, putting pen to paper brings things to life and helps me visual…
 
 ### [REVIEW] TESTIMONIAL (body) — Shelley Barrett, ModelCo
 `content/interviews/founders/shelley-barrett-entrepreneur-3/shelley-barrett-entrepreneur-3.mdx:140` · 2015-10-13 · Sigourney Cantelo
@@ -5399,9 +4195,23 @@ Restricted term: **infrared** · matched: **my favourite**
 ### [REVIEW] TESTIMONIAL (body) — Teresa Cutter, the Healthy Chef
 `content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:75` · 2015-11-24 · Sigourney Cantelo
 
+Restricted term: **spf15** · matched: **I love**
+
+> …###### Byredo and Byterry Are Firm Favourites ### I’m a huge fan of By Terry skincare. I love to apply Crème de Rose moisturiser – it helps my skin look fresh and dewy. I generously a…
+
+### [REVIEW] TESTIMONIAL (body) — Teresa Cutter, the Healthy Chef
+`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:75` · 2015-11-24 · Sigourney Cantelo
+
 Restricted term: **spf15** · matched: **I drink**
 
 > …cara](http://mecca.com.au/by-terry/mascara-terrybly/V-010705.html) over my top eyelashes. I drink a large glass of water with a spoonful of Healthy Chef Cold Pressed Wheatgrass, with a hi…
+
+### [REVIEW] TESTIMONIAL (body) — Teresa Cutter, the Healthy Chef
+`content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:108` · 2015-11-24 · Sigourney Cantelo
+
+Restricted term: **magnesium** · matched: **I love**
+
+> …ancy. She loved olive oil and avocado and it’s what made her skin look fresh and vibrant. I love soaking in a warm bath with candles and essential oils such as sandalwood, lavender or ro…
 
 ### [REVIEW] TESTIMONIAL (body) — Teresa Cutter, the Healthy Chef
 `content/interviews/founders/teresa-cutter-chef-and-nutritionist-1/teresa-cutter-chef-and-nutritionist-1.mdx:108` · 2015-11-24 · Sigourney Cantelo
@@ -5424,13 +4234,6 @@ Restricted term: **supplement** · matched: **I love**
 
 > …all my vitamins and minerals through a healthy diet and plenty of sunshine. *As much as I love glamming up and heading out, there’s something so empowering about a laidback approach to…
 
-### [REVIEW] TESTIMONIAL (body) — The Twenty-Something Entrepreneur Causing Mass Supermarket Sellouts
-`content/interviews/founders/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts/the-twenty-something-entrepreneur-causing-mass-supermarket-sellouts.mdx:58` · 2020-09-02 · Zoe Briggs
-
-Restricted term: **Collagen** · matched: **I love**
-
-> …ng-entrepreneur-causing-mass-supermarket-sellouts/Jaimee-2.jpg) To give my skin a treat, I love visiting Amelia at Room 9 in Auckland for an Osmosis Organic Medi Facial. I fall asleep e…
-
 ### [REVIEW] TESTIMONIAL (body) — Valentina Ferrer, the Powerhouse Influencer Turned Wellness Entrepreneur
 `content/interviews/founders/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur/valentina-ferrer-the-powerhouse-influencer-turned-wellness-entrepreneur.mdx:104` · 2024-04-23 · Zoe Briggs
 
@@ -5446,11 +4249,18 @@ Restricted term: **probiotic** · matched: **my favourite**
 > …steak with veggies… I’m getting hungry just talking about it. And of course I love to use my favourite products from Kapowder, which are Enlighten and our probiotic/biotin Saviour. I also enj…
 
 ### [REVIEW] TESTIMONIAL (body) — Why You Should Copy Jessica Sepel's Sloth Sundays in 2020
-`content/interviews/founders/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2.mdx:87` · 2020-01-29 · Zoe Briggs
+`content/interviews/founders/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2.mdx:41` · 2020-01-29 · Zoe Briggs
 
-Restricted term: **magnesium** · matched: **I love**
+Restricted term: **sunscreen** · matched: **I use**
 
-> …tainably caught fish, veggies, fruits, legumes, grains, nuts and seeds. The truth is that I love food but I don’t love slaving away in the kitchen. I’m also obsessed with vitamins! Feed…
+> …I start my skincare routine in the morning by cleansing my face with natural soap. Then, I use the Kora Organics Vitamin C serum, Trilogy moisturiser and Ultra Violette sunscreen. In…
+
+### [REVIEW] TESTIMONIAL (body) — Why You Should Copy Jessica Sepel's Sloth Sundays in 2020
+`content/interviews/founders/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2/why-you-should-copy-jessica-sepels-sloth-sundays-in-2020-2.mdx:43` · 2020-01-29 · Zoe Briggs
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …a natural soap and a warm towel, which lightly exfoliates without being too harsh. Then, I use [Go-To Face Hero](https://gotoskincare.com/products/face-hero). If I see a pesky pimple,…
 
 ### [REVIEW] TESTIMONIAL (body) — Candice Lake, Photographer & Model
 `content/interviews/models/candice-lake-photographer-blogger-model/candice-lake-photographer-blogger-model.mdx:90` · 2018-05-17 · Zoe Briggs
@@ -5459,13 +4269,6 @@ Restricted term: **SPF 50** · matched: **I rotate**
 
 > …om/en/prodotti/skin-cleanser/) and it changed everything. Afterwards I throw on a serum – I rotate through a lot of them – and then an eye cream, a thick moisturiser and an SPF 50+ face su…
 
-### [REVIEW] TESTIMONIAL (body) — Coco Rocha, Model
-`content/interviews/models/coco-rocha-model/coco-rocha-model.mdx:70` · 2015-10-15 · Sigourney Cantelo
-
-Restricted term: **sunscreen** · matched: **I use**
-
-> …make up with Bioderma Crealine Micellar Water, and I do the Clearasil three-step program. I use any sunscreen that’s over 30+. I’m not one to stay in the sun, I have Celtic skin, but I…
-
 ### [REVIEW] TESTIMONIAL (body) — Erin Holland, Model & Presenter
 `content/interviews/models/erin-holland-model/erin-holland-model.mdx:81` · 2019-02-21 · Zoe Briggs
 
@@ -5473,12 +4276,40 @@ Restricted term: **sunscreen** · matched: **I love**
 
 > …g to use a daily sunscreen that doesn’t work with our lifestyles, which is another reason I love this – it works so well as a base under makeup. Because it’s lightweight and dries matte,…
 
-### [REVIEW] TESTIMONIAL (body) — Erin Holland, Model & Presenter
-`content/interviews/models/erin-holland-model/erin-holland-model.mdx:113` · 2019-02-21 · Zoe Briggs
+### [REVIEW] TESTIMONIAL (body) — Helena Vestergaard on Modelling and Mental Health
+`content/interviews/models/helena-vestergaard-on-modelling-and-mental-health/helena-vestergaard-on-modelling-and-mental-health.mdx:70` · 2023-03-01 · Zoe Briggs
 
-Restricted term: **probiotic** · matched: **I take**
+Restricted term: **SPF50** · matched: **I use**
 
-> …and veggies, fruits and good carbs (whole grains, sweet potato etc). When I am travelling I take a daily probiotic just to stay on top of my gut health, but other than that I try to keep…
+> …cosmetica/to-save-face-spf50-superscreen-oxybenzone-free-formula/V-853272.html). At night I use SkinCeuticals CE Ferulic Vitamin C Serum and Antipodes Manuka Honey Skin-Brightening Eye…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Gomes, Model
+`content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:68` · 2014-09-25 · Sigourney Cantelo
+
+Restricted term: **protein powder** · matched: **I love**
+
+> …greens, protein powders after training. Lots of water, black coffee. No dairy right now. I love dairy though, but just before [the show] I like to keep it all clean foods. My first trea…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Gomes, Model
+`content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:94` · 2014-09-25 · Sigourney Cantelo
+
+Restricted term: **SUNSCREEN** · matched: **I use**
+
+> …oning and helps with dark circles, too. Ultraceuticals Eye Cream is really lightweight so I use it during the day underneath my makeup. SUNSCREEN IN AS ESSENTIAL FOR JESSICA WHEN EXERC…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Gomes, Model
+`content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:100` · 2014-09-25 · Sigourney Cantelo
+
+Restricted term: **SUNSCREEN** · matched: **I love**
+
+> …SCREEN IN AS ESSENTIAL FOR JESSICA WHEN EXERCISING OUTSIDE JESSICA SWEARS BY SK-II. ### I love using SK-II products ![Beauticate Jessica](/content/interviews/models/jessica-gomes-mode…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Gomes, Model
+`content/interviews/models/jessica-gomes-model/jessica-gomes-model.mdx:110` · 2014-09-25 · Sigourney Cantelo
+
+Restricted term: **SPF 50** · matched: **I use**
+
+> …um is handy to keep in your purse when you need a lightweight serum to nourish your skin. I use it when I have a day off and don’t need to apply make up. The Ella Bache lip tint gives c…
 
 ### [REVIEW] TESTIMONIAL (body) — Lara Worthington, Model & Entrepreneur
 `content/interviews/models/lara-bingle/lara-bingle.mdx:168` · 2014-11-20 · Sigourney Cantelo
@@ -5486,6 +4317,20 @@ Restricted term: **probiotic** · matched: **I take**
 Restricted term: **sunscreen** · matched: **I love**
 
 > …venues like sunscreen… but I always kept coming back to the tanning and bronzing because I love the illuminators and the LB cream. I didn’t know how to create a range that also fitted i…
+
+### [REVIEW] TESTIMONIAL (body) — Lucinda Taffs, Model
+`content/interviews/models/lucinda-taffs-model/lucinda-taffs-model.mdx:63` · 2018-11-01 · Zoe Briggs
+
+Restricted term: **infrared** · matched: **I love**
+
+> …o the best blonde. ### I am so lucky with my work that I get to play around with beauty. I love getting my makeup done and being able try out different looks. ![Lucinda Taffs natural b…
+
+### [REVIEW] TESTIMONIAL (body) — Lucinda Taffs, Model
+`content/interviews/models/lucinda-taffs-model/lucinda-taffs-model.mdx:87` · 2018-11-01 · Zoe Briggs
+
+Restricted term: **greens powder** · matched: **I love**
+
+> …green smoothie recipe](/interviews/models/lucinda-taffs-model/LucindaTaffsModel-5.jpeg) I love making healthy smoothies. My favorite right now is: - half a banana - frozen blueberrie…
 
 ### [REVIEW] TESTIMONIAL (body) — Lucinda Taffs, Model
 `content/interviews/models/lucinda-taffs-model/lucinda-taffs-model.mdx:87` · 2018-11-01 · Zoe Briggs
@@ -5509,11 +4354,11 @@ Restricted term: **supplement** · matched: **I take**
 > …n portrait 12](/interviews/models/megan-gale-model-entrepreneur/Megan-Portrait-12-1.jpg) I take chaste tree for hormone balance, vitamin B which helps with energy levels and combatting…
 
 ### [REVIEW] TESTIMONIAL (body) — Miranda Kerr, Model & Entrepreneur
-`content/interviews/models/miranda-kerr-model/miranda-kerr-model.mdx:104` · 2015-10-22 · Sigourney Cantelo
+`content/interviews/models/miranda-kerr-model/miranda-kerr-model.mdx:134` · 2015-10-22 · Sigourney Cantelo
 
-Restricted term: **Sunscreen** · matched: **I use**
+Restricted term: **infrared** · matched: **I love**
 
-> …curl my lashes, make sure my eyebrows are fine, and then if I need a little more coverage I use [RMS Un-Cover Up](http://mecca.com.au/rms-beauty/un-cover-up/V-020196.html?cgpath=brands-…
+> …ml). It’s really very beautiful. ## Miranda's Post-Travel Recovery ### After travelling I love to get into my portable infrared sauna You literally get inside of it and then you can f…
 
 ### [REVIEW] TESTIMONIAL (body) — Ruby Rose, Actor & Musician
 `content/interviews/models/ruby-rose/ruby-rose.mdx:48` · 2014-06-05 · Sigourney Cantelo
@@ -5523,11 +4368,25 @@ Restricted term: **Supplement** · matched: **I use**
 > …e headphones were. I use Kerastase Resistance Double Force Hairspray to keep it in place; I use all their shampoos and conditioners. ![I go to a Barber instead of a hairdresser.](/cont…
 
 ### [REVIEW] TESTIMONIAL (body) — Samantha Harris, Model
+`content/interviews/models/samantha-harris-model/samantha-harris-model.mdx:50` · 2014-06-19 · Madeleine Boyd
+
+Restricted term: **SPF15** · matched: **I use**
+
+> …ur in peony and Becca’s Beach Tint. I kind of mix them together to make this super peach. I use the Stila one on my lips sometimes too – it’s so versatile and fun to wear. I love found…
+
+### [REVIEW] TESTIMONIAL (body) — Samantha Harris, Model
 `content/interviews/models/samantha-harris-model/samantha-harris-model.mdx:52` · 2014-06-19 · Madeleine Boyd
 
 Restricted term: **SPF15** · matched: **I love**
 
 > …peach. I use the Stila one on my lips sometimes too – it’s so versatile and fun to wear. I love foundation. One of my favourites is the Bobbi Brown Skin Foundation with SPF15. It’s so s…
+
+### [REVIEW] TESTIMONIAL (body) — Samantha Harris, Model
+`content/interviews/models/samantha-harris-model/samantha-harris-model.mdx:52` · 2014-06-19 · Madeleine Boyd
+
+Restricted term: **SPF15** · matched: **I use**
+
+> …on with SPF15. It’s so sheer yet I can still build up the level of coverage if I need to. I use a pressed powder by MAC Cosmetics for touch ups throughout the day. ## Samantha's Skinca…
 
 ### [REVIEW] TESTIMONIAL (body) — Tahnee Atkinson, Model
 `content/interviews/models/tahnee-atkinson-model/tahnee-atkinson-model.mdx:105` · 2017-10-26 · Rikki Hodge-Smith
@@ -5546,16 +4405,9 @@ Restricted term: **sunscreen** · matched: **I add**
 ### [REVIEW] TESTIMONIAL (body) — The Top Model Using Her Platform to Promote Body Positivity and Eco Awareness
 `content/interviews/models/the-top-model-using-her-platform-to-promote-body-positivity-and-eco-awareness/the-top-model-using-her-platform-to-promote-body-positivity-and-eco-awareness.mdx:64` · 2020-07-08 · Zoe Briggs
 
-Restricted term: **vitamin D** · matched: **I take**
+Restricted term: **magnesium** · matched: **I take**
 
 > …op-model-using-her-platform-to-promote-body-positivity-and-eco-awareness/Laura-2a-1.jpg) I take an eye mask with me when I travel, which allows me to catch a few extra zzz's when I’m mo…
-
-### [REVIEW] TESTIMONIAL (body) — Why This Model Mum-of-Two Doesn't Own a Hair Dryer
-`content/interviews/models/why-this-model-mum-of-two-doesnt-own-a-hair-dryer/why-this-model-mum-of-two-doesnt-own-a-hair-dryer.mdx:42` · 2020-03-24 · Zoe Briggs
-
-Restricted term: **vitamin C** · matched: **I use**
-
-> …and makes others I’ve tried seem a little less stable and a bit weak. While it sinks in, I use Dermavidual eye cream. Then I pat on Emma Lewisham's Pigmentation Correction Serum. I’m r…
 
 ### [REVIEW] TESTIMONIAL (body) — Zippora Seven, Model
 `content/interviews/models/zippora-seven-model/zippora-seven-model.mdx:69` · 2015-06-18 · Sigourney Cantelo
@@ -5563,20 +4415,6 @@ Restricted term: **vitamin C** · matched: **I use**
 Restricted term: **Sunscreen** · matched: **I use**
 
 > …y natural… I wear sunscreen every day, it’s the first thing that I’ll do in the morning. I use a strong SPF 50 sunscreen as a highlighter for my face. It’s usually quite shiny or quite…
-
-### [REVIEW] TESTIMONIAL (body) — Bachelorette Brooke Blurton on Choosing Real Life Over Picture Perfect
-`content/interviews/tastemakers/bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect/bachelorette-brooke-blurton-on-choosing-real-life-over-picture-perfect.mdx:143` · 2022-06-08 · Zoe Briggs
-
-Restricted term: **Probiotic** · matched: **I swear by**
-
-> …skincare. I will add in other products to try, but theirs are the backbone of my routine. I swear by their Probiotic Mask, which I put on every night as my final step and then sleep in it.…
-
-### [REVIEW] TESTIMONIAL (body) — Bianca Cheah, Fitness Blogger
-`content/interviews/tastemakers/bianca-cheah/bianca-cheah.mdx:50` · 2013-12-18 · Sigourney Cantelo
-
-Restricted term: **Vitamin C** · matched: **I use**
-
-> …the muscles to plump the skin up and keep it glowing. I’ve got oily/combination skin so I use a [Kora clay mask](http://www.koraorganics.com/clay-purifying-mask.html) once a week, it…
 
 ### [REVIEW] TESTIMONIAL (body) — Bianca Cheah, Fitness Blogger
 `content/interviews/tastemakers/bianca-cheah/bianca-cheah.mdx:72` · 2013-12-18 · Sigourney Cantelo
@@ -5588,9 +4426,23 @@ Restricted term: **sunscreen** · matched: **I love**
 ### [REVIEW] TESTIMONIAL (body) — How Fashionista Rozalia Russian Learned to Be Gentler with Herself
 `content/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself.mdx:149` · 2022-05-04 · Zoe Briggs
 
+Restricted term: **light therapy** · matched: **my favourite**
+
+> …a href="https://www.instagram.com/p/CPrbv_eASnK/">@rozalia_russian</a></Caption> _One of my favourite recent beauty finds has been the Dr. Naomi LED it Glow mask. I have been using it for abo…
+
+### [REVIEW] TESTIMONIAL (body) — How Fashionista Rozalia Russian Learned to Be Gentler with Herself
+`content/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself.mdx:149` · 2022-05-04 · Zoe Briggs
+
 Restricted term: **light therapy** · matched: **I have been using**
 
 > …ption> _One of my favourite recent beauty finds has been the Dr. Naomi LED it Glow mask. I have been using it for about six months and have definitely noticed a difference._ It is one of most pow…
+
+### [REVIEW] TESTIMONIAL (body) — How Fashionista Rozalia Russian Learned to Be Gentler with Herself
+`content/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself.mdx:151` · 2022-05-04 · Zoe Briggs
+
+Restricted term: **light therapy** · matched: **my favourite**
+
+> …tation, fine lines and overall brightening. Whenever I have a professional facial, one of my favourite parts is going under the LED lights, so I love being able to do a version of that at home…
 
 ### [REVIEW] TESTIMONIAL (body) — How Fashionista Rozalia Russian Learned to Be Gentler with Herself
 `content/interviews/tastemakers/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself/how-fashionista-rozalia-russian-learned-to-be-gentler-with-herself.mdx:151` · 2022-05-04 · Zoe Briggs
@@ -5600,11 +4452,39 @@ Restricted term: **light therapy** · matched: **I love**
 > …I have a professional facial, one of my favourite parts is going under the LED lights, so I love being able to do a version of that at home as well. ![Instagram @rozaliarussian](/conten…
 
 ### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
+`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:76` · 2014-07-24 · Madeleine Boyd
+
+Restricted term: **probiotic** · matched: **I use**
+
+> …ud; it’s really antimicrobial and works every time. I also love doing homemade facemasks. I use oats (because they contain a specific ingredient that is really moisturising for the skin…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
+`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:90` · 2014-07-24 · Madeleine Boyd
+
+Restricted term: **supplement** · matched: **I use**
+
+> …when I feel like going more botanical. I love the Aesop Coriander Seed Body Cleanser too. I use Morrocanoil Oil Hydrating Styling Cream on my hair after I shower. I wait for my hair to…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
 `content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:90` · 2014-07-24 · Madeleine Boyd
 
 Restricted term: **supplement** · matched: **I take**
 
 > …ore putting it in before I go to sleep. When it comes to hair you want to take minerals. I take an array of supplements morning and night and among them are zinc, iron and silica, all o…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
+`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:92` · 2014-07-24 · Madeleine Boyd
+
+Restricted term: **supplement** · matched: **I love**
+
+> …ht and among them are zinc, iron and silica, all of which are really great for hair. ### I love the Tom Ford’s Black Orchid – I find it so sexy ![I love the Tom Ford’s Black Orchid – I…
+
+### [REVIEW] TESTIMONIAL (body) — Jessica Sepel, Nutritionist & Health Blogger
+`content/interviews/tastemakers/jessica-sepel-nutritionist-health-blogger/jessica-sepel-nutritionist-health-blogger.mdx:94` · 2014-07-24 · Madeleine Boyd
+
+Restricted term: **supplement** · matched: **I love**
+
+> …are really great for hair. ### I love the Tom Ford’s Black Orchid – I find it so sexy ![I love the Tom Ford’s Black Orchid – I find it so sexy](/content/interviews/tastemakers/jessica-…
 
 ### [REVIEW] TESTIMONIAL (body) — Kayla Itsines, Fitness Entrepreneur
 `content/interviews/tastemakers/kayla-itsines-fitness-entrepreneur/kayla-itsines-fitness-entrepreneur.mdx:76` · 2019-01-31 · Zoe Briggs
@@ -5613,19 +4493,19 @@ Restricted term: **sunscreen** · matched: **I swear by**
 
 > …it 6b](/interviews/tastemakers/kayla-itsines-fitness-entrepreneur/Kayla-Portrait-6b.jpg) I swear by sunscreen, LED light treatments and exfoliation to remove the build up of dead skin cells…
 
-### [REVIEW] TESTIMONIAL (body) — Laura Enever, Pro Surfer
-`content/interviews/tastemakers/laura-enever-pro-surfer/laura-enever-pro-surfer.mdx:85` · 2015-02-19 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — Laura Enever, the Pro Surfer Putting Mental Health Ahead of Championships
+`content/interviews/tastemakers/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships.mdx:114` · 2022-06-28 · Zoe Briggs
 
-Restricted term: **vitamin C** · matched: **my favourite**
+Restricted term: **supplement** · matched: **I rely on**
 
-> …lso just love anything really natural, like rosehip oils and essential oils – Doterra are my favourite. My friend put me onto them in America but you can go online and order them. I’ve got a s…
+> …little things tie everything together and stop me from unravelling. If I am travelling, I rely on routines to make me feel good while I am in a different environment. I like to have my be…
 
 ### [REVIEW] TESTIMONIAL (body) — Laura Enever, the Pro Surfer Putting Mental Health Ahead of Championships
 `content/interviews/tastemakers/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships.mdx:114` · 2022-06-28 · Zoe Briggs
 
-Restricted term: **elixir** · matched: **I rely on**
+Restricted term: **supplement** · matched: **I love**
 
-> …little things tie everything together and stop me from unravelling. If I am travelling, I rely on routines to make me feel good while I am in a different environment. I like to have my be…
+> …I like to have my beauty products, and all my different powders, elixirs and supplements. I love the idea that all these little vials of different things help me feel like me. I also tra…
 
 ### [REVIEW] TESTIMONIAL (body) — Laura Enever, the Pro Surfer Putting Mental Health Ahead of Championships
 `content/interviews/tastemakers/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships.mdx:152` · 2022-06-28 · Zoe Briggs
@@ -5634,19 +4514,12 @@ Restricted term: **zinc** · matched: **I use**
 
 > …foundation over it, or a tinted one if I’m not, so I just have a little bit of coverage. I use a little Konjac sponge at the end of the day to get everything off. I chop and change a l…
 
-### [REVIEW] TESTIMONIAL (body) — Lola Berry, Nutritionist
-`content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:50` · 2018-02-08 · Sigourney Cantelo
+### [REVIEW] TESTIMONIAL (body) — Laura Enever, the Pro Surfer Putting Mental Health Ahead of Championships
+`content/interviews/tastemakers/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships/laura-enever-the-pro-surfer-putting-mental-health-ahead-of-championships.mdx:172` · 2022-06-28 · Zoe Briggs
 
-Restricted term: **Omega 3** · matched: **I use**
+Restricted term: **Supplement** · matched: **I love**
 
-> …and am always researching the next best thing._ This means I’m always switching up what I use. Every morning I cleanse, tone with the EVOHE Mist, and use a serum or an oil. Right now…
-
-### [REVIEW] TESTIMONIAL (body) — Lola Berry, Nutritionist
-`content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:50` · 2018-02-08 · Sigourney Cantelo
-
-Restricted term: **Omega 3** · matched: **Every morning I**
-
-> …always researching the next best thing._ This means I’m always switching up what I use. Every morning I cleanse, tone with the EVOHE Mist, and use a serum or an oil. Right now I’m using EVOHE’s…
+> …saunas, do cryotherapy and get colonics. A healthy gut is so key to healthy everything!_ I love nothing more than starting my day with a fresh organic juice or smoothie. My diet is pret…
 
 ### [REVIEW] TESTIMONIAL (body) — Lola Berry, Nutritionist
 `content/interviews/tastemakers/lola-berry-nutritionist/lola-berry-nutritionist.mdx:90` · 2018-02-08 · Sigourney Cantelo
@@ -5661,13 +4534,6 @@ Restricted term: **fish oil** · matched: **my favourite**
 Restricted term: **Vitamin ** · matched: **I use**
 
 > …Kora, Kosmea and Cr Formulations ## I’m More of a Skin Care Rather Than Makeup Person… I use the Kora Hydrating Mask once a week. It’s just good to put on for 15 minutes while you’re…
-
-### [REVIEW] TESTIMONIAL (body) — Margaret Zhang – Fashion Blogger, Photographer, Writer & Filmmaker
-`content/interviews/tastemakers/margaret-zhang/margaret-zhang.mdx:52` · 2014-01-11 · Margaret Zhang
-
-Restricted term: **sunscreen** · matched: **I love**
-
-> …’ve made a habit of buying cheap jewellery because I lose them. They fall off my fingers. I love Karen Walker sunnies, and my little M card holder was just from Hong Kong, by this little…
 
 ### [REVIEW] TESTIMONIAL (body) — Maria Thattil, Miss Universe Australia on the Importance of Representation and Great Mascara
 `content/interviews/tastemakers/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara/maria-thattil-miss-universe-australia-on-the-importance-of-representation-and-great-mascara.mdx:127` · 2021-04-13 · Zoe Briggs
@@ -5690,13 +4556,6 @@ Restricted term: **SPF20** · matched: **I am using**
 
 > …(so it works beautifully on my brown skin), is highly moisturising, and contains SPF. If I am using any makeup at all, then I absolutely have to put mascara on. My two favourites are the IT…
 
-### [REVIEW] TESTIMONIAL (body) — Rojin Torabi, the Lawyer and Beauty Skinfluencer.
-`content/interviews/tastemakers/rojin-torabi-the-lawyer-and-beauty-skinfluencer/rojin-torabi-the-lawyer-and-beauty-skinfluencer.mdx:130` · 2023-10-09 · Zoe Briggs
-
-Restricted term: **Collagen** · matched: **my favourite**
-
-> …e concerned about looking tired. They all refresh and tighten, though! ![Sheet masks are my favourite child, but I do still love other masks.](/content/interviews/tastemakers/rojin-torabi-the…
-
 ### [REVIEW] TESTIMONIAL (body) — Stella Kim: Why I Left the KPOP World to Become a Marketing Professional
 `content/interviews/tastemakers/stella-kim/stella-kim.mdx:99` · 2019-11-20 · Kristina Zhou
 
@@ -5711,6 +4570,27 @@ Restricted term: **sunscreen** · matched: **I use**
 
 > …uronic Lotion by Hada Labo](http://bit.ly/31qo0Rv). I wear sunscreen daily, but the brand I use depends on the occasion! I always remove my makeup at the end of the day with the Bioderm…
 
+### [REVIEW] TESTIMONIAL (body) — The Injectable-Free Lip Cheat That Fashion Influencer Pepa Mack Loves
+`content/interviews/tastemakers/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2.mdx:41` · 2020-01-14 · Zoe Briggs
+
+Restricted term: **sunscreen** · matched: **I use**
+
+> …my face in the shower, only ever using a cream face wash because I have a dry complexion. I use tonic, followed by day cream and finish it with 40+ sunscreen. I have quite dry and delic…
+
+### [REVIEW] TESTIMONIAL (body) — The Injectable-Free Lip Cheat That Fashion Influencer Pepa Mack Loves
+`content/interviews/tastemakers/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2.mdx:112` · 2020-01-14 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **I use**
+
+> …o take a class. I also go to an infra sauna to relax and unwind, and when my body is dry I use natural sweet almond oil, which is such a great natural option. And I use natural plant-b…
+
+### [REVIEW] TESTIMONIAL (body) — The Injectable-Free Lip Cheat That Fashion Influencer Pepa Mack Loves
+`content/interviews/tastemakers/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2/the-injectable-free-lip-cheat-that-fashion-influencer-pepa-mack-loves-2.mdx:112` · 2020-01-14 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **I use**
+
+> …my body is dry I use natural sweet almond oil, which is such a great natural option. And I use natural plant-based supplements regularly, to assist my general wellbeing and health. ![…
+
 ### [REVIEW] TESTIMONIAL (body) — Zanita Whittington, Zanita Studio
 `content/interviews/tastemakers/zanita-whittington-fashion-blogger/zanita-whittington-fashion-blogger.mdx:128` · 2015-10-08 · Chrisanthi Kaliviotis
 
@@ -5724,6 +4604,20 @@ Restricted term: **Magnesium** · matched: **I drink**
 Restricted term: **Magnesium** · matched: **my go-to**
 
 > …greens like kale, broccoli, eggs, tomato, sugar snap peas, mozzarella, steak – those are my go-to foods. \[My exercise regime\] is nothing specific right now, I’m never in one place long…
+
+### [REVIEW] TESTIMONIAL (body) — Zoe Bingley-Pullin, Nutritionist & Chef
+`content/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef/zoe-bingley-pullin-nutritionist-and-chef.mdx:44` · 2014-04-24 · Sigourney Cantelo
+
+Restricted term: **Supplement** · matched: **Every day I**
+
+> …Bondi to Bronte a couple of times a week. ## Supplements and Whole Food Philosophy ### Every day I take a probiotic – it’s really important. ![Every day I take a probiotic – it’s really i…
+
+### [REVIEW] TESTIMONIAL (body) — Zoe Bingley-Pullin, Nutritionist & Chef
+`content/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef/zoe-bingley-pullin-nutritionist-and-chef.mdx:46` · 2014-04-24 · Sigourney Cantelo
+
+Restricted term: **Supplement** · matched: **Every day I**
+
+> …s and Whole Food Philosophy ### Every day I take a probiotic – it’s really important. ![Every day I take a probiotic – it’s really important.](/content/interviews/tastemakers/zoe-bingley-pu…
 
 ### [REVIEW] TESTIMONIAL (body) — Do Regular Skin Treatments Really Make a Difference?
 `content/sigourneys-edit/edit/do-regular-skin-treatments-really-make-a-difference/do-regular-skin-treatments-really-make-a-difference.mdx:54` · 2022-04-06 · Sigourney Cantelo
@@ -5745,13 +4639,6 @@ Restricted term: **SPF 30** · matched: **I love**
 Restricted term: **SPF 30** · matched: **my favourite**
 
 > …hole lot of mini products that I love like O&M minis; a baby Crealine; Chanel Les Beiges; my favourite tinted moisturizer/SPF 30 Dermaquest mineral sunscreen; Pure Tan Coconut Cream to keep th…
-
-### [REVIEW] TESTIMONIAL (body) — Our New Daily Routine – Sigourney's Edit
-`content/sigourneys-edit/edit/our-new-daily-routine-sigourneys-edit/our-new-daily-routine-sigourneys-edit.mdx:50` · 2020-04-07 · Sigourney Cantelo
-
-Restricted term: **vitamin D** · matched: **I drink**
-
-> …appen but when it does it helps immensely with my mood (and ability to handle the kids!) I drink my coffee while I watch the kids on the trampoline or bike riding in our street. If the s…
 
 ### [REVIEW] TESTIMONIAL (body) — Prevage 2.0 Review – Sigourney Road Tests the Antioxidant All-in-One.
 `content/sigourneys-edit/edit/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one/prevage-2-0-review-sigourney-road-tests-the-antioxidant-all-in-one.mdx:71` · 2021-06-15 · Sigourney Cantelo
@@ -5781,13 +4668,6 @@ Restricted term: **Sunscreen** · matched: **My favourite**
 
 > …ivine-baby/). I have hand sanitizers by Dr. Bronners, Aesop and L’Occitane in every bag. My favourite nappy cream is Desitin – my earth mother friend Mands (who has three boys) put me onto it…
 
-### [REVIEW] TESTIMONIAL (body) — Jess Sepel on Ocd, Healing from Disordered Eating, Grief and Building Jshealth with Heart
-`content/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit.mdx:33` · 2025-05-14 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **I love**
-
-> …st-selling author, clinical nutritionist and the founder of a global wellness brand. What I love about Jess is that the bigger she has grown, the more honest she has become. This is one…
-
 ### [REVIEW] TESTIMONIAL (body) — Sacred Six for Stress and Sanity
 `content/vodcast/episodes/sacred-six-on-on-stress-sanity-and-sacred-rituals/sacred-six-on-on-stress-sanity-and-sacred-rituals.mdx:49` · 2026-06-17 · Sigourney Cantelo
 
@@ -5795,36 +4675,8 @@ Restricted term: **infrared** · matched: **I use**
 
 > …better that night. It has become my reset for stress, sleep and chronic pain all at once. I use the [Nook Infrared Sauna](https://nooksaunas.com.au/BEAUTICATE) at home, and the code BEA…
 
-### [REVIEW] TESTIMONIAL (body) — Sigourney's Sacred Six for Ultimate Wellness
-`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:59` · 2024-08-27 · Sigourney Cantelo
-
-Restricted term: **Supplement** · matched: **The ones I trust**
-
-> …number="5" title="Supplements" /> I am picky about supplements because most do nothing. The ones I trust come from [SynTernals by Synergie Skin](https://synergieskin.com/6609868), the new scienc…
-
-### [REVIEW] TESTIMONIAL (body) — Sigourney's Sacred Six for Ultimate Wellness
-`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:59` · 2024-08-27 · Sigourney Cantelo
-
-Restricted term: **Supplement** · matched: **I have used**
-
-> …Synergie Skin](https://synergieskin.com/6609868), the new science-led range from a brand I have used and respected for years. Founder Terri Vinson is one of the most rigorous people in this…
-
-### [REVIEW] TESTIMONIAL (body) — Sigourney's Sacred Six for Ultimate Wellness
-`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:59` · 2024-08-27 · Sigourney Cantelo
-
-Restricted term: **Vitamin B** · matched: **I take**
-
-> …/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth). I take UltraCleanse, Vitamin B, HyalaVive, RetiFol, UberZinc and NRgize+. Code SYN10 for ten per…
-
 ### [REVIEW] TESTIMONIAL (body) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:44` · 2023-05-10 · Sigourney Cantelo
-
-Restricted term: **LED mask** · matched: **I use**
-
-> …s get profoundly relaxing. You can wear it while you do stuff but I like to meditate when I use it and take a little Time Out. The red light behind your eyelids actually helps lull you…
-
-### [REVIEW] TESTIMONIAL (body) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:52` · 2023-05-10 · Sigourney Cantelo
+`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:51` · 2023-05-10 · Sigourney Cantelo
 
 Restricted term: **Light Therapy** · matched: **I love**
 
@@ -5837,19 +4689,26 @@ Restricted term: **Infrared** · matched: **my favourite**
 
 > …in the chaos of daily life. It’s where I keep my Infraredi Pro Max panel, nestled beside my favourite body oils, incense, and fragrances. There's a softness to the ritual: light, scent, textu…
 
-### [REVIEW] TESTIMONIAL (body) — Which Wellness Gadgets Are Worth Your Money?
-`content/wellness/biohacking/wellness-tech-red-light-sauna-sleep-tracker-review/wellness-tech-red-light-sauna-sleep-tracker-review.mdx:74` · 2026-06-21 · Camilla Thompson
+### [REVIEW] TESTIMONIAL (body) — Get Ready with… Rachael Finch
+`content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx:92` · 2017-06-07 · Sigourney Cantelo
 
-Restricted term: **Infrared** · matched: **I use**
+Restricted term: **protein powder** · matched: **I love**
 
-> …de="right" /> ## Red Light Therapy My red light therapy device would be a close second. I use it regularly and love that it's simple, accessible and easy to integrate into daily life.…
+> …loved ones are a regular Sunday ritual in my house, especially if pancakes are involved! I love healthy toppings on mine, like berries and fruit. On a regular, super busy work day, my B…
 
 ### [REVIEW] TESTIMONIAL (body) — Get Ready with… Rachael Finch
 `content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx:96` · 2017-06-07 · Sigourney Cantelo
 
-Restricted term: **protein powder** · matched: **I drink**
+Restricted term: **protein powder** · matched: **I love**
 
-> …I love a bulletproof coffee to kick start my day, but when I need to relax and wind down, I drink hot herbal tea. I love peppermint or Camomile before bed. ### Any supplements? I take m…
+> …feeling full right through until lunch! ### Tea or coffee? Coffee at day, tea at night. I love a bulletproof coffee to kick start my day, but when I need to relax and wind down, I drin…
+
+### [REVIEW] TESTIMONIAL (body) — Get Ready with… Rachael Finch
+`content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx:96` · 2017-06-07 · Sigourney Cantelo
+
+Restricted term: **protein powder** · matched: **I love**
+
+> …fee to kick start my day, but when I need to relax and wind down, I drink hot herbal tea. I love peppermint or Camomile before bed. ### Any supplements? I take magnesium and a probioti…
 
 ### [REVIEW] TESTIMONIAL (body) — Get Ready with… Rachael Finch
 `content/wellness/fitness/get-ready-with-rachael-finch/get-ready-with-rachael-finch.mdx:100` · 2017-06-07 · Sigourney Cantelo
@@ -5865,33 +4724,12 @@ Restricted term: **Elixir** · matched: **I love**
 
 > …ozen banana, a cup of almond milk, a handful of ice and a scoop of good pure pea protein (I love Welleco Super Elixir Nourishing Plant Protein, The Beauty Chef Body Inner Beauty Powder a…
 
-### [REVIEW] TESTIMONIAL (body) — Why I Swapped My Whoop for an Ultrahuman Ring (and What It's Taught Me About Stress, Sleep, and Bio-Age)
-`content/wellness/fitness/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy.mdx:73` · 2025-12-17 · Sigourney Cantelo
-
-Restricted term: **magnesium** · matched: **I use**
-
-> …heck** I still track my sleep most days – but I no longer spiral if I don't hit 8 hours. I use it more like a weather report: am I running on reserves or fully charged? It's especially…
-
 ### [REVIEW] TESTIMONIAL (body) — 6 Reasons You're Feeling Exhausted and How to Fix It
 `content/wellness/health/f257idrsg86cqyawj8durejzgkzivw/f257idrsg86cqyawj8durejzgkzivw.mdx:37` · 2017-07-11 · Catherine Barnes
 
 Restricted term: **supplement** · matched: **I started taking**
 
 > …ably tired, and what to do to combat them.* I had an iron deficiency and found that once I started taking supplements, I had so much more energy and wasn’t exhuasted 24/7. If you can’t seem to ge…
-
-### [REVIEW] TESTIMONIAL (body) — How to Detox in Winter: Prodjuice Cleanse Review
-`content/wellness/health/how-to-detox-in-winter-prodjuice-cleanse-review/how-to-detox-in-winter-prodjuice-cleanse-review.mdx:61` · 2016-07-27 · Sigourney Cantelo
-
-Restricted term: **Tonic** · matched: **I pop**
-
-> …’re meant to heat it gently. It tastes good and I finish it fast and feel sated. At 11am I pop the top on my green juice. It’s the perfect balance of kale, spinach, celery, cucumber, p…
-
-### [REVIEW] TESTIMONIAL (body) — How to Detox in Winter: Prodjuice Cleanse Review
-`content/wellness/health/how-to-detox-in-winter-prodjuice-cleanse-review/how-to-detox-in-winter-prodjuice-cleanse-review.mdx:74` · 2016-07-27 · Sigourney Cantelo
-
-Restricted term: **Tonic** · matched: **I drink**
-
-> …ic flavour. Since I have a busy morning ahead I decide to drink the green juice now too – I drink it quickly as I’m running around the house getting ready. So much for being mindful. I g…
 
 ### [REVIEW] TESTIMONIAL (body) — Superfoods Bloggers Swear By
 `content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:46` · 2017-07-11 · Madeleine Boyd
@@ -5900,26 +4738,26 @@ Restricted term: **electrolyte** · matched: **I love**
 
 > …mazing for rehydration and therefore, excellent for keeping the skin supple and hydrated. I love putting coconut water in smoothies and mixing it with hazelnuts, organic vanilla protein…
 
-### [REVIEW] TESTIMONIAL (body) — Superfoods Bloggers Swear By
-`content/wellness/health/superfoods-bloggers-swear-by/superfoods-bloggers-swear-by.mdx:66` · 2017-07-11 · Madeleine Boyd
+### [REVIEW] CONSIDERATION (frontmatter) — The LA Effect: What Beverly Hills Taught Our Style Editor About Dressing
+`content/beauty-style/beauty-tips/the-la-effect-beverly-hills-style-lessons/the-la-effect-beverly-hills-style-lessons.mdx:43` · 2026-07-21 · Kate Waterhouse
 
-Restricted term: **collagen** · matched: **I add**
+Restricted term: **sachet** · matched: **affiliate**
 
-> …also assist in moisturising and hydrating the skin, leaving it nourished and regenerated. I add avocado to all of my smoothies as it adds a really rich and creamy texture along with an…
+> …arine-collagen-berry-30-sachets" - type: "shop" handle: "no-7-soft-glam" - type: "affiliate" name: "Henne Soraia Long Sleeve Dress" brand: "Henne" url: "https://bit.ly/4…
 
 ### [REVIEW] CONSIDERATION (frontmatter) — Are At-Home LED Masks Worth the Cost?
-`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:18` · 2023-05-10 · Sigourney Cantelo · +1 more in file
+`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:18` · 2023-05-10 · Sigourney Cantelo
 
 Restricted term: **LED Mask** · matched: **discount code**
 
 > …asks Worth the Cost? | Beauticate" meta_description: "The good news is that I also have a discount code for you that, combined with the Cost Per Wear concept I’ll explain will more than justify…
 
-### [REVIEW] CONSIDERATION (frontmatter) — The LA Effect: What Beverly Hills Taught Our Style Editor About Dressing
-`content/beauty-style/beauty-tips/the-la-effect-beverly-hills-style-lessons/the-la-effect-beverly-hills-style-lessons.mdx:43` · 2026-07-21 · Kate Waterhouse
+### [REVIEW] CONSIDERATION (frontmatter) — Are At-Home LED Masks Worth the Cost?
+`content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:27` · 2023-05-10 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **affiliate**
+Restricted term: **LED mask** · matched: **discount code**
 
-> …arine-collagen-berry-30-sachets" - type: "shop" handle: "no-7-soft-glam" - type: "affiliate" name: "Henne Soraia Long Sleeve Dress" brand: "Henne" url: "https://bit.ly/4…
+> …arance of pigmentation and skin that felt bouncier and firmer." - question: "Is there a discount code for the CurrentBody LED mask?" answer: "Yes - the code BEAUTICATE gives 15% off the C…
 
 ### [REVIEW] CONSIDERATION (frontmatter) — Are At-Home LED Masks Worth the Cost?
 `content/wellness/biohacking/are-at-home-led-masks-worth-the-cost/are-at-home-led-masks-worth-the-cost.mdx:28` · 2023-05-10 · Sigourney Cantelo
@@ -5934,20 +4772,6 @@ Restricted term: **LED mask** · matched: **code BEAUTICATE**
 Restricted term: **LED mask** · matched: **15% off**
 
 > …discount code for the CurrentBody LED mask?" answer: "Yes - the code BEAUTICATE gives 15% off the CurrentBody LED range at time of publication."
-
-### [REVIEW] THIRD_PARTY (frontmatter) — Margaret Zhang – Fashion Blogger, Photographer, Writer & Filmmaker
-`content/interviews/tastemakers/margaret-zhang/margaret-zhang.mdx:23` · 2014-01-11 · Margaret Zhang · +2 more in file
-
-Restricted term: **sunscreen** · matched: **She uses**
-
-> …e?" answer: "She describes herself as more of a skincare person than a makeup person. She uses the Kora Hydrating Mask weekly, Clean Skin Co tissue masks and always carries cleansing w…
-
-### [REVIEW] THIRD_PARTY (frontmatter) — Hayley Bonham, Entrepreneur
-`content/interviews/founders/hayley-bonham-stylist-publicist-entrepreneur/hayley-bonham-stylist-publicist-entrepreneur.mdx:21` · 2018-08-23 · Zoe Briggs · +1 more in file
-
-Restricted term: **supplement** · matched: **she uses**
-
-> …mmunologist Serum and Super Antioxidant Serum applied with a jade roller. In the evenings she uses Rationale ProCeramide Cleanser, Catalyst Serum and DNA Night Cream. She supplements with…
 
 ### [REVIEW] THIRD_PARTY (frontmatter) — Get Ready with Elyse Taylor
 `content/beauty-style/beauty-tips/get-ready-with-elyse-taylor/get-ready-with-elyse-taylor.mdx:28` · 2017-08-16 · Beauticate Editorial
@@ -5991,13 +4815,6 @@ Restricted term: **sunscreen** · matched: **She uses**
 
 > …ion: "Which products does Sigourney use for pigmentation and skin radiance?" answer: "She uses Rationale Immunologist serum (which contains niacinamide to protect against pigmentation)…
 
-### [REVIEW] THIRD_PARTY (frontmatter) — Cate Blanchett
-`content/interviews/actors-presenters/cate-blanchett-actress-and-director/cate-blanchett-actress-and-director.mdx:27` · 2015-11-19 · Sigourney Cantelo
-
-Restricted term: **supplement** · matched: **She takes**
-
-> …- question: "What supplements does Cate Blanchett take for hair and lashes?" answer: "She takes Viviscal supplements for hair growth and uses Lipocils Lash Enhancer to help regrow lashe…
-
 ### [REVIEW] THIRD_PARTY (frontmatter) — Penelope Mitchell, Actress
 `content/interviews/actors-presenters/penelope-mitchell-actress/penelope-mitchell-actress.mdx:27` · 2015-03-12 · Madeleine Boyd
 
@@ -6031,14 +4848,7 @@ Restricted term: **supplement** · matched: **She uses**
 
 Restricted term: **collagen** · matched: **She takes**
 
-> …" answer: "She cooks most of her food at home, eating lots of salads, pasta and fish. She takes collagen every morning, which she credits with strengthening her previously brittle nails…
-
-### [REVIEW] THIRD_PARTY (frontmatter) — Gail Elliott, Little Joe Woman
-`content/interviews/creatives/gail-elliott-model-designer/gail-elliott-model-designer.mdx:25` · 2018-04-19 · Molly Gay
-
-Restricted term: **Elixir** · matched: **She takes**
-
-> …on: "How does Gail Elliott maintain her health while travelling frequently?" answer: "She takes The Super Elixir, an alkalised greens daily supplement, does Pilates twice a week, gets a…
+> …" answer: "She cooks most of her food at home, eating lots of salads, pasta and fish. She takes collagen every morning. At the time of the interview she was running on coffee and dark c…
 
 ### [REVIEW] THIRD_PARTY (frontmatter) — Kate Bucceri, Tiffany & Co.
 `content/interviews/creatives/kate-bucceri-tiffany-co/kate-bucceri-tiffany-co.mdx:24` · 2019-09-11 · Zoe Briggs
@@ -6047,12 +4857,12 @@ Restricted term: **sunscreen** · matched: **she uses**
 
 > …tion daily, preferring a tinted sunscreen under BB cream as her base. For special events, she uses Armani Luminous Silk Foundation in shade 5.5 to look more polished, paired with NARS Orga…
 
-### [REVIEW] THIRD_PARTY (frontmatter) — Michelle Bridges, Personal Trainer & Author
-`content/interviews/creatives/michelle-bridges-personal-trainer-author/michelle-bridges-personal-trainer-author.mdx:21` · 2015-02-05 · Sigourney Cantelo
+### [REVIEW] THIRD_PARTY (frontmatter) — Magdalena Roze, Journalist
+`content/interviews/creatives/magdalena-roze-journalist/magdalena-roze-journalist.mdx:25` · 2019-01-24 · Tess Schlink
 
-Restricted term: **vitamin ** · matched: **She uses**
+Restricted term: **collagen** · matched: **She swears by**
 
-> …aqs: - question: "What skincare range does Michelle Bridges use at night?" answer: "She uses Ultraceuticals A+ and Ultra Brightening Face Cream and Eye Cream at night, after cleansin…
+> …- question: "What does Magdalena Roze eat for healthy skin, hair and nails?" answer: "She swears by good fats for skin health, particularly bone broth for its high collagen content, along w…
 
 ### [REVIEW] THIRD_PARTY (frontmatter) — The French Fashion Designer with a Balinese Dream Home
 `content/interviews/creatives/the-french-fashion-designer-with-a-balinese-dream-home/the-french-fashion-designer-with-a-balinese-dream-home.mdx:23` · 2020-05-27 · Zoe Briggs
@@ -6081,6 +4891,20 @@ Restricted term: **magnesium** · matched: **she uses**
 Restricted term: **Zinc** · matched: **she uses**
 
 > …otion and a Joëlle Ciocco cream, which she massages in with a jade roller. In the evening she uses a makeup remover, exfoliates with an AHA glycolic acid, and finishes with Caudalie Premie…
+
+### [REVIEW] THIRD_PARTY (frontmatter) — Hayley Bonham, Entrepreneur
+`content/interviews/founders/hayley-bonham-stylist-publicist-entrepreneur/hayley-bonham-stylist-publicist-entrepreneur.mdx:21` · 2018-08-23 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **she uses**
+
+> …mmunologist Serum and Super Antioxidant Serum applied with a jade roller. In the evenings she uses Rationale ProCeramide Cleanser, Catalyst Serum and DNA Night Cream. She supplements with…
+
+### [REVIEW] THIRD_PARTY (frontmatter) — Hayley Bonham, Entrepreneur
+`content/interviews/founders/hayley-bonham-stylist-publicist-entrepreneur/hayley-bonham-stylist-publicist-entrepreneur.mdx:23` · 2018-08-23 · Zoe Briggs
+
+Restricted term: **supplement** · matched: **She uses**
+
+> …oes Hayley Bonham wear?" answer: "Hayley prefers light coverage and a natural finish. She uses RMS \"Un\" Cover-Up in shade 33, NARS Sheer Glow Foundation in Barcelona for fuller cover…
 
 ### [REVIEW] THIRD_PARTY (frontmatter) — Candice Lake, Photographer & Model
 `content/interviews/models/candice-lake-photographer-blogger-model/candice-lake-photographer-blogger-model.mdx:23` · 2018-05-17 · Zoe Briggs
@@ -6131,13 +4955,6 @@ Restricted term: **infrared** · matched: **She uses**
 
 > …dinner." - question: "What wellness practices does Monika Radulovic use?" answer: "She uses an infrared sauna for around 30 minutes most days to assist with detoxification, and atte…
 
-### [REVIEW] THIRD_PARTY (frontmatter) — Rebecca Burrow, Model
-`content/interviews/models/rebecca-burrow-entrepreneur-and-model/rebecca-burrow-entrepreneur-and-model.mdx:25` · 2019-02-14 · Zoe Briggs
-
-Restricted term: **infrared** · matched: **she uses**
-
-> …eliac gene and has reduced her dairy intake. She also has an infrared sauna at home which she uses for detoxification, relaxation and collagen production." - question: "What is Rebecca B…
-
 ### [REVIEW] THIRD_PARTY (frontmatter) — Ruby Rose, Actor & Musician
 `content/interviews/models/ruby-rose/ruby-rose.mdx:23` · 2014-06-05 · Sigourney Cantelo
 
@@ -6150,7 +4967,7 @@ Restricted term: **supplement** · matched: **She uses**
 
 Restricted term: **supplement** · matched: **She takes**
 
-> …dizzo." - question: "What supplements does Ruby Rose take for her health?" answer: "She takes zinc for the brain, vitamin C for immunity, magnesium and vitamin B shots. She also uses…
+> …dizzo." - question: "What supplements does Ruby Rose take for her health?" answer: "She takes zinc, vitamin C, magnesium and vitamin B shots. She also uses an Ultra Detox product when…
 
 ### [REVIEW] THIRD_PARTY (frontmatter) — Cheyenne Tozzi, Model & Musician
 `content/interviews/models/who-cheyenne-tozzi/who-cheyenne-tozzi.mdx:25` · 2014-11-27 · Sigourney Cantelo
@@ -6158,6 +4975,27 @@ Restricted term: **supplement** · matched: **She takes**
 Restricted term: **supplement** · matched: **she takes**
 
 > …for wellness treatments?" answer: "She visits the Last Resort Day Spa in Bondi, where she takes herbal supplements and sees a practitioner who helps keep her feeling calm and balanced."…
+
+### [REVIEW] THIRD_PARTY (frontmatter) — Margaret Zhang – Fashion Blogger, Photographer, Writer & Filmmaker
+`content/interviews/tastemakers/margaret-zhang/margaret-zhang.mdx:23` · 2014-01-11 · Margaret Zhang
+
+Restricted term: **sunscreen** · matched: **She uses**
+
+> …e?" answer: "She describes herself as more of a skincare person than a makeup person. She uses the Kora Hydrating Mask weekly, Clean Skin Co tissue masks and always carries cleansing w…
+
+### [REVIEW] THIRD_PARTY (frontmatter) — Margaret Zhang – Fashion Blogger, Photographer, Writer & Filmmaker
+`content/interviews/tastemakers/margaret-zhang/margaret-zhang.mdx:27` · 2014-01-11 · Margaret Zhang
+
+Restricted term: **sunscreen** · matched: **She uses**
+
+> …screen in her bag." - question: "What does Margaret do on a bad hair day?" answer: "She uses a strong gel, noting that shiny hair tends to look intentional regardless of style. She u…
+
+### [REVIEW] THIRD_PARTY (frontmatter) — Margaret Zhang – Fashion Blogger, Photographer, Writer & Filmmaker
+`content/interviews/tastemakers/margaret-zhang/margaret-zhang.mdx:27` · 2014-01-11 · Margaret Zhang
+
+Restricted term: **sunscreen** · matched: **She uses**
+
+> …uses a strong gel, noting that shiny hair tends to look intentional regardless of style. She uses Kerastase shampoo and the Initialiste treatment, finding that Moroccan Oil is too heavy f…
 
 ### [REVIEW] THIRD_PARTY (frontmatter) — Zoe Bingley-Pullin, Nutritionist & Chef
 `content/interviews/tastemakers/zoe-bingley-pullin-nutritionist-and-chef/zoe-bingley-pullin-nutritionist-and-chef.mdx:23` · 2014-04-24 · Sigourney Cantelo
@@ -6169,7 +5007,7 @@ Restricted term: **supplement** · matched: **She takes**
 ### [REVIEW] THIRD_PARTY (frontmatter) — Sacred Six: 6 Ways I'm Going to Live Longer
 `content/vodcast/episodes/sacred-six-6-ways-im-going-to-live-longer/sacred-six-6-ways-im-going-to-live-longer.mdx:24` · 2024-11-02 · Sigourney Cantelo
 
-Restricted term: **vitamin D** · matched: **she took**
+Restricted term: **supplement** · matched: **she took**
 
 > …lo's Sacred Six on living longer?" answer: "It is six evidence-based longevity habits she took away from a comprehensive Longevity Assessment with Dr Adam Brown: diversifying exercise…
 
@@ -6180,34 +5018,6 @@ Restricted term: **infrared** · matched: **she uses**
 
 > …Hydrator, infrared sauna, daily baths, Lashify underlash segments, and castor oil, which she uses for hair growth, lashes, brows, digestion, and melasma."
 
-### [REVIEW] CONSIDERATION (body) — Sigourney Road Tests a Hair-Loss Preventing Strand-Boosting Elixir
-`content/beauty-style/hair/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir/sigourney-road-tests-a-hair-loss-preventing-strand-boosting-elixir.mdx:108` · 2018-07-05 · Sigourney Cantelo · +2 more in file
-
-Restricted term: **elixir** · matched: **affiliate**
-
-> …n&awc=11212_1551102783_61f51e83a07ad1793ada3552c05015f3&utm_source=AWin-136348&utm_medium=affiliate&utm_campaign=AffiliateWin) ###### [Nioxin System Kit 3](http://bit.ly/2tT3EBK) [![NIOXI…
-
-### [REVIEW] CONSIDERATION (body) — Sun Safety, but Make it Chic
-`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:72` · 2026-03-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **SPF50** · matched: **sjv.io**
-
-> …is your skin, but better. - [ **SkinCeuticals Ultra Facial Defense SPF50**](https://myer.sjv.io/k4V2WV) A dermatologist-backed daily shield that blends seamlessly and sits perfectly un…
-
-### [REVIEW] CONSIDERATION (body) — Sun Safety, but Make it Chic
-`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:80` · 2026-03-16 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **SPF50** · matched: **sca_ref=**
-
-> …pt to reluctant users. - [**Naked Sundays SPF50+ Glow Crème**](https://nakedsundays.com/?sca_ref=7651714.UOUoIf6n9z) The Australian SPF brand that made sunscreen genuinely covetable. The…
-
-### [REVIEW] CONSIDERATION (body) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
-`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:40` · 2025-08-28 · Sigourney Cantelo · +1 more in file
-
-Restricted term: **Infrared** · matched: **discount code**
-
-> …and filled with meaning. ### What’s inside my sacred space - **Infraredi red light** ( [discount code)](https://infraredi.com/?sca_ref=6635739.8kg23hwHHr) - [ **Dyson Supersonic R**](/beauty…
-
 ### [REVIEW] CONSIDERATION (body) — Everything We're Buying for Winter
 `content/beauty-style/fragrance/beauticate-team-winter-edit/beauticate-team-winter-edit.mdx:169` · 2026-06-01 · Sigourney Cantelo
 
@@ -6215,12 +5025,33 @@ Restricted term: **Red Light Therapy** · matched: **sjv.io**
 
 > …34318.png" name="Cultiver Linen Duvet Cover Natural" price="$380" url="https://cultiverau.sjv.io/VORGV3" /> <ShopItem image="/content/beauty-style/beauty-tips/beauticate-team-winter-ed…
 
-### [REVIEW] CONSIDERATION (body) — New Year New Skin: 6 Quick Ways to a Glow Up
-`content/beauty-style/skin-care/6-quick-ways-to-a-glow-up/6-quick-ways-to-a-glow-up.mdx:58` · 2024-01-30 · Sigourney Cantelo
+### [REVIEW] CONSIDERATION (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:72` · 2026-03-16 · Sigourney Cantelo
 
-Restricted term: **collagen** · matched: **discount code**
+Restricted term: **SPF50** · matched: **sjv.io**
 
-> …like some dermarollers can. Here’s a video I made about it. And the best news is I have a discount code for you! **Use this link to buy and it will apply a 10% discount.** ![Qure DIY Dermastam…
+> …is your skin, but better. - [ **SkinCeuticals Ultra Facial Defense SPF50**](https://myer.sjv.io/k4V2WV) A dermatologist-backed daily shield that blends seamlessly and sits perfectly un…
+
+### [REVIEW] CONSIDERATION (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:80` · 2026-03-16 · Sigourney Cantelo
+
+Restricted term: **SPF50** · matched: **sca_ref=**
+
+> …pt to reluctant users. - [**Naked Sundays SPF50+ Glow Crème**](https://nakedsundays.com/?sca_ref=7651714.UOUoIf6n9z) The Australian SPF brand that made sunscreen genuinely covetable. The…
+
+### [REVIEW] CONSIDERATION (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:89` · 2026-03-16 · Sigourney Cantelo
+
+Restricted term: **sunscreen** · matched: **sjv.io**
+
+> …4.51.54-pm.png" brand="SkinCeuticals" name="Ultra Facial Defense SPF50" url="https://myer.sjv.io/k4V2WV" /> <ShopItem image="/content/beauty-style/skin-care/chic-sunscreens-hats/mesopr…
+
+### [REVIEW] CONSIDERATION (body) — Sun Safety, but Make it Chic
+`content/beauty-style/skin-care/chic-sunscreens-hats/chic-sunscreens-hats.mdx:90` · 2026-03-16 · Sigourney Cantelo
+
+Restricted term: **SPF50** · matched: **sca_ref=**
+
+> …tura-1.jpg" brand="Naked Sundays" name="SPF50+ Glow Crème" url="https://nakedsundays.com/?sca_ref=7651714.UOUoIf6n9z" /> <ShopItem image="/content/beauty-style/skin-care/chic-sunscreens-…
 
 ### [REVIEW] CONSIDERATION (body) — Do Overnight Wrinkle Patches Really Work?
 `content/beauty-style/skin-care/do-overnight-wrinkle-patches-really-work/do-overnight-wrinkle-patches-really-work.mdx:34` · 2024-10-03 · Sigourney Cantelo
@@ -6250,13 +5081,6 @@ Restricted term: **LED Mask** · matched: **55% off**
 
 > …g as well as the Neck & Décolletage LED Device for $446 – a discount from $985 so that’s 55% off. The neck device is my third favourite product – because, well we can NEVER have too much…
 
-### [REVIEW] CONSIDERATION (body) — Top 50 Skincare Products for Every Age
-`content/beauty-style/skin-care/top-50-skincare-products/top-50-skincare-products.mdx:36` · 2026-01-15 · Sigourney Cantelo
-
-Restricted term: **collagen** · matched: **affiliate**
-
-> …invitation to refine, upgrade and enjoy your skincare routine a little more. *This is an affiliate edit — when you shop via these links, you're supporting Beauticate at no extra cost to yo…
-
 ### [REVIEW] CONSIDERATION (body) — Why Your Tap Water Might Be Ruining Your Skin (and What to Do About It)
 `content/beauty-style/skin-care/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it.mdx:119` · 2025-02-26 · Jayde Balderston
 
@@ -6270,13 +5094,6 @@ Restricted term: **LED MASK** · matched: **10% off**
 Restricted term: **tincture** · matched: **affiliate**
 
 > …fe Cykel](https://www.lifecykel.com/?rfsn=8767047.e684643&utm_source=refersion&utm_medium=affiliate&utm_campaign=8767047.e684643)** functional mushroom tinctures for a little content creati…
-
-### [REVIEW] CONSIDERATION (body) — Darren Palmer & Olivier Duvillard
-`content/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard/darren-palmer-interiors-designer-and-olivier-duvillard.mdx:98` · 2017-08-31 · Rikki Hodge-Smith
-
-Restricted term: **Vitamin A** · matched: **sjv.io**
-
-> …ives/darren-palmer-interiors-designer-and-olivier-duvillard/img_6454-2.jpg)](https://myer.sjv.io/enaQr1) ![Olivier Duvillard Vitamin A skincare routine](/content/interviews/creatives/da…
 
 ### [REVIEW] CONSIDERATION (body) — Struggling to Sleep? This Mattress Changed Everything for Me
 `content/living/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me/struggling-to-sleep-this-mattress-changed-everything-for-me.mdx:126` · 2025-03-28 · Sigourney Cantelo
@@ -6330,9 +5147,23 @@ Restricted term: **Infrared** · matched: **code BEAUTICATE**
 ### [REVIEW] CONSIDERATION (body) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
 `content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:40` · 2025-08-28 · Sigourney Cantelo
 
+Restricted term: **Infrared** · matched: **discount code**
+
+> …and filled with meaning. ### What’s inside my sacred space - **Infraredi red light** ( [discount code)](https://infraredi.com/?sca_ref=6635739.8kg23hwHHr) - [ **Dyson Supersonic R**](/beauty…
+
+### [REVIEW] CONSIDERATION (body) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
+`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:40` · 2025-08-28 · Sigourney Cantelo
+
 Restricted term: **Infrared** · matched: **sca_ref=**
 
 > …side my sacred space - **Infraredi red light** ( [discount code)](https://infraredi.com/?sca_ref=6635739.8kg23hwHHr) - [ **Dyson Supersonic R**](/beauty-style/beauty-tips/dyson-supersoni…
+
+### [REVIEW] CONSIDERATION (body) — Sacred Six: The Rituals & Practices Helping Me Heal from Burnout
+`content/vodcast/episodes/sacred-six-the-rituals-practices-helping-me-heal-from-burnout/sacred-six-the-rituals-practices-helping-me-heal-from-burnout.mdx:46` · 2025-08-28 · Sigourney Cantelo
+
+Restricted term: **infrared** · matched: **discount code**
+
+> …son-supersonic-r-hair-dryer-review) - **The 5 Minute Journal** - **Pulsetto device** ( [discount code](https://pulsetto-gb.myshopify.com/?sca_ref=7074273.5OdIohWvEy2&utm_source=uppromote&utm_…
 
 ### [REVIEW] CONSIDERATION (body) — Sigourney on Career, Social Media and Mental Health Struggles (Part 1)
 `content/vodcast/episodes/sigourney-on-career-social-media-and-mental-health-struggles-part-1/sigourney-on-career-social-media-and-mental-health-struggles-part-1.mdx:61` · 2024-07-01 · Sigourney Cantelo
@@ -6363,23 +5194,44 @@ Restricted term: **supplement** · matched: **10% off**
 > …brand Synternals by [Synergie Skin](https://synergieskin.com/). Use the code SYN10 to get 10% off Synergie UltraCleanse, Vitamin B, HyalaVive, RetiFol, UberZinc and Synternals NRgize+. Te…
 
 ### [REVIEW] CONSIDERATION (body) — Sigourney's Sacred Six for Ultimate Wellness
+`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:49` · 2024-08-27 · Sigourney Cantelo
+
+Restricted term: **Light Therapy** · matched: **code BEAUTICATE10**
+
+> …ed-led-light-therapy-facial-mask-pre-order-6a3a0cc33da42e584cde6b4a) is the one we stock, code BEAUTICATE10 for ten per cent off. It suits a slower morning, when there is time to sit while it runs.…
+
+### [REVIEW] CONSIDERATION (body) — Sigourney's Sacred Six for Ultimate Wellness
+`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:49` · 2024-08-27 · Sigourney Cantelo
+
+Restricted term: **LED mask** · matched: **per cent off**
+
+> …l-mask-pre-order-6a3a0cc33da42e584cde6b4a) is the one we stock, code BEAUTICATE10 for ten per cent off. It suits a slower morning, when there is time to sit while it runs. These are designed t…
+
+### [REVIEW] CONSIDERATION (body) — Sigourney's Sacred Six for Ultimate Wellness
 `content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:59` · 2024-08-27 · Sigourney Cantelo
 
-Restricted term: **Vitamin B** · matched: **Code SYN10**
+Restricted term: **Zinc** · matched: **Code SYN10**
 
-> …nd-self-worth). I take UltraCleanse, Vitamin B, HyalaVive, RetiFol, UberZinc and NRgize+. Code SYN10 for ten per cent off the range. ## Longevity as a Guiding Philosophy <NumberedSection n…
+> …h). The range includes UltraCleanse, Vitamin B, HyalaVive, RetiFol, UberZinc and NRgize+. Code SYN10 for ten per cent off. Always read the label and follow the directions for use. ## Longev…
+
+### [REVIEW] CONSIDERATION (body) — Sigourney's Sacred Six for Ultimate Wellness
+`content/vodcast/episodes/sigourneys-sacred-six-for-ultimate-wellness/sigourneys-sacred-six-for-ultimate-wellness.mdx:59` · 2024-08-27 · Sigourney Cantelo
+
+Restricted term: **Zinc** · matched: **per cent off**
+
+> …des UltraCleanse, Vitamin B, HyalaVive, RetiFol, UberZinc and NRgize+. Code SYN10 for ten per cent off. Always read the label and follow the directions for use. ## Longevity as a Guiding Phil…
 
 ### [REVIEW] CONSIDERATION (body) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
-`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:162` · 2025-05-14 · Sigourney Cantelo
+`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:158` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **Infrared** · matched: **10% off**
+Restricted term: **red light therapy** · matched: **10% off**
 
-> …y-**effective**. If you’re tempted to try these and frankly, you should be-you can get **10% off** by using my affiliate link. Your mitochondria (and your mirror) will thank you. Story…
+> …place to start. If you’re tempted to try these and frankly, you should be-you can get **10% off** by using my affiliate link. Your mitochondria (and your mirror) will thank you. Story…
 
 ### [REVIEW] CONSIDERATION (body) — My Red Light Rituals: Serotonin, Skincare & a Slow Roast Glow Up
-`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:162` · 2025-05-14 · Sigourney Cantelo
+`content/wellness/biohacking/red-light-therapy-infraredi-review/red-light-therapy-infraredi-review.mdx:158` · 2025-05-14 · Sigourney Cantelo
 
-Restricted term: **Infrared** · matched: **affiliate**
+Restricted term: **red light therapy** · matched: **affiliate**
 
 > …ou’re tempted to try these and frankly, you should be-you can get **10% off** by using my affiliate link. Your mitochondria (and your mirror) will thank you. Story by Sigourney Cantelo.
 
@@ -6388,7 +5240,14 @@ Restricted term: **Infrared** · matched: **affiliate**
 
 Restricted term: **LED mask** · matched: **discount code**
 
-> …s LED masks, I was cautiously optimistic and decided to give it a go... (read on I have a discount code for you!) ## How an LED Mask Helped Heal Burns I had already been using my mask for sev…
+> …s LED masks, I was cautiously optimistic and decided to give it a go... (read on I have a discount code for you!) ![San Lueur](/content/beauty-style/beauty-tips/the-led-mask-the-industry-is-bu…
+
+### [REVIEW] CONSIDERATION (body) — The LED Mask the Industry is Buzzing About
+`content/wellness/biohacking/the-led-mask-the-industry-is-buzzing-about/the-led-mask-the-industry-is-buzzing-about.mdx:118` · 2023-11-23 · Sigourney Cantelo
+
+Restricted term: **Light Therapy** · matched: **10% off**
+
+> …r-6a3a0cc33da42e584cde6b4a) in our shop. For a limited time Beauticate readers can claim 10% off using code: Beauticate10 ![> Story by Sigourney Cantelo. In partnership with San Lueur L…
 
 ### [REVIEW] THIRD_PARTY (body) — Inside Kym Ellery's Beauty Bag
 `content/beauty-style/beauty-tips/inside-kym-ellerys-beauty-bag/inside-kym-ellerys-beauty-bag.mdx:34` · 2014-09-10 · Sigourney Cantelo
@@ -6411,12 +5270,12 @@ Restricted term: **sunscreen** · matched: **He took**
 
 > …ourno we were in our early stages of dating and I started to throw products Damien’s way. He took to being my grooming guinea pig like a duck to water and was soon requesting “oil-free su…
 
-### [REVIEW] THIRD_PARTY (body) — Going Outside? Don’t Without Applying This.
-`content/beauty-style/skin-care/going-outside-dont-without-applying-this/going-outside-dont-without-applying-this.mdx:68` · 2017-09-20 · Sigourney Cantelo
+### [REVIEW] THIRD_PARTY (body) — Clear Skincare, Clarence Street Sydney
+`content/destinations/clinics/clear-skincare-clinic-clarence-street-sydney/clear-skincare-clinic-clarence-street-sydney.mdx:84` · 2026-01-15 · Beauticate Editorial
 
-Restricted term: **vitamin C** · matched: **they use**
+Restricted term: **Light Therapy** · matched: **they use**
 
-> …ngredients are no longer very active. What I like about Alpha-H’s Vitamin C Serum is that they use stable forms of Vitamin C that are much more resistant to oxidisation from the environmen…
+> …tailored to individual skin concerns LED Light Therapy. Ask the clinic which wavelengths they use and what the treatment involves. - **Microdermabrasion**, mechanical exfoliation for a sm…
 
 ### [REVIEW] THIRD_PARTY (body) — Youth Lab, Joondalup
 `content/destinations/clinics/youth-lab-joondalup/youth-lab-joondalup.mdx:89` · 2026-01-15 · Sigourney Cantelo
@@ -6453,20 +5312,6 @@ Restricted term: **collagen** · matched: **They used**
 
 > …lads, pasta and fish. I take collagen every morning, which has done wonders for my nails. They used to be really brittle and weak but I think I’ve finally got them back on track. [ELKE COL…
 
-### [REVIEW] THIRD_PARTY (body) — Samantha Harris is Celebrating the Freedom She’s Finding in Her Thirties
-`content/interviews/models/samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties/samantha-harris-is-celebrating-the-freedom-shes-finding-in-her-thirties.mdx:139` · 2022-02-23 · Zoe Briggs
-
-Restricted term: **Collagen** · matched: **they use**
-
-> …get them noticed and make sure they’re not overlooked. I also think it’s really cool that they use native Australian ingredients, like finger lime and Kakadu plum. ![Locako Beauty Collage…
-
-### [REVIEW] THIRD_PARTY (body) — Hannah English Shares the Exact Products She Uses to Get That Glow
-`content/interviews/tastemakers/hannah-english-shares-the-exact-products-she-uses-to-get-that-glow/hannah-english-shares-the-exact-products-she-uses-to-get-that-glow.mdx:80` · 2022-02-16 · Zoe Briggs
-
-Restricted term: **vitamin C** · matched: **they use**
-
-> …new product, I need to know about the brand’s reputation, technology, and the ingredients they use._ Glo Skin Beauty is a clinical brand that includes some really brilliant ingredients in…
-
 ### [REVIEW] THIRD_PARTY (body) — Kate Waterhouse, Journalist
 `content/interviews/tastemakers/kate-waterhouse/kate-waterhouse.mdx:46` · 2014-01-12 · Sigourney Cantelo
 
@@ -6488,13 +5333,6 @@ Restricted term: **infrared** · matched: **she swears by**
 
 > …a, daily baths, [Lashify](https://lashify.com/) underlash segments, and castor oil, which she swears by for hair growth, lashes, brows, digestion and melasma. A special thank you to [Dermalogi…
 
-### [REVIEW] THIRD_PARTY (body) — You're Doing Everything Right for Your Face, but Are You Neglecting This Area?
-`content/wellness/biohacking/qure-neck-decolletage-led-device/qure-neck-decolletage-led-device.mdx:83` · 2025-09-05 · Jayde Balderston
-
-Restricted term: **collagen** · matched: **they use**
-
-> …l=SIGOURNEY57027)** for its collagen-boosting, anti-ageing benefits. The same wavelengths they use in clinic, now available at home. Women around the world report: - Faded sunspots -…
-
 ### [REVIEW] THIRD_PARTY (body) — The Best Instagram Workouts for Every Type of Exerciser
 `content/wellness/fitness/the-best-instagram-workouts-for-every-type-of-exerciser/the-best-instagram-workouts-for-every-type-of-exerciser.mdx:259` · 2020-04-28 · Tess Schlink
 
@@ -6505,6 +5343,6 @@ Restricted term: **supplement** · matched: **she swears by**
 ### [REVIEW] THIRD_PARTY (body) — Beauty Secrets from the Happiest Kingdom on Earth – Bhutan.
 `content/wellness/mindset/beauty-secrets-from-the-happiest-kingdom-on-earth/beauty-secrets-from-the-happiest-kingdom-on-earth.mdx:92` · 2023-06-15 · Kristina Zhou
 
-Restricted term: **vitamin ** · matched: **she swore by**
+Restricted term: **zinc** · matched: **she swore by**
 
 > …store (Ugyen) what she did to maintain her dewy skin and she said a favourite DIY remedy she swore by was a **lentil and tofu face mask**. She told me this recipe was apparently a tried-and-…
