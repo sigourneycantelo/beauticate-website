@@ -5,8 +5,8 @@ import {
   RESTRICTED_QUERY_DIRECTIVE,
   isRestrictedQuery,
 } from '@/lib/chat/guardrails'
-import { sanitiseInternalLinks, safeFlushBoundary } from '@/lib/chat/links'
-import { appendToSheet } from '@/lib/sheets'
+import { sanitiseInternalLinks, sanitiseInternalLinksCounted, safeFlushBoundary } from '@/lib/chat/links'
+import { logQuery } from '@/lib/chat/query-log'
 
 export const runtime = 'nodejs'
 export const maxDuration = 30
@@ -163,7 +163,10 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { messages } = (await req.json()) as { messages: ChatMessage[] }
+    const { messages, pageContext } = (await req.json()) as {
+      messages: ChatMessage[]
+      pageContext?: string
+    }
 
     if (!messages || messages.length === 0) {
       return Response.json({ error: 'No messages provided' }, { status: 400 })
@@ -172,13 +175,6 @@ export async function POST(req: Request) {
     const lastUserMessage = messages.filter(m => m.role === 'user').pop()
     const queryText = lastUserMessage?.content || ''
 
-    if (queryText) {
-      appendToSheet('Ask Sig Queries', [
-        new Date().toISOString(),
-        queryText.slice(0, 500),
-        'ask-sig-chat',
-      ]).catch(() => {})
-    }
 
     const relevant = queryText ? searchArticles(queryText, 6) : []
     const relevantProducts = queryText ? searchProducts(queryText, 4) : []
@@ -274,6 +270,24 @@ export async function POST(req: Request) {
           }
 
           const final = cleanText(fullText)
+
+          // Logged here rather than up front so the entry carries what actually
+          // happened: how much grounding we had, how long the answer was, and
+          // whether any invented link had to be stripped out of it.
+          if (queryText) {
+            logQuery({
+              ts: new Date().toISOString(),
+              question: queryText.slice(0, 500),
+              restricted,
+              articleCount: relevant.length,
+              productCount: relevantProducts.length,
+              topArticle: relevant[0]?.title,
+              responseChars: final.length,
+              strippedLinks: sanitiseInternalLinksCounted(fullText).stripped,
+              pageContext: pageContext?.slice(0, 200),
+            })
+          }
+
           if (final.length > flushed) {
             controller.enqueue(
               encoder.encode(`data: ${JSON.stringify({ text: final.slice(flushed) })}\n\n`)

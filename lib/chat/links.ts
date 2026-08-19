@@ -60,9 +60,18 @@ export function isValidPath(href: string): boolean {
  * `The Complete Guide to Sunscreen`.
  */
 export function sanitiseInternalLinks(text: string): string {
-  return text.replace(/\[([^\]\n]+)\]\(([^)\s]+)\)/g, (whole, label: string, href: string) =>
-    isValidPath(href) ? whole : label
-  )
+  return sanitiseInternalLinksCounted(text).text
+}
+
+/** Same, but reports how many dead links were removed, for the query log. */
+export function sanitiseInternalLinksCounted(text: string): { text: string; stripped: number } {
+  let stripped = 0
+  const out = text.replace(/\[([^\]\n]+)\]\(([^)\s]+)\)/g, (whole, label: string, href: string) => {
+    if (isValidPath(href)) return whole
+    stripped++
+    return label
+  })
+  return { text: out, stripped }
 }
 
 /**
