@@ -50,6 +50,7 @@ fixer is **dry-run by default** and only writes with `--apply` (or `--save`).
 | `audit-wp-vs-vercel.mjs` | The detector. Diffs MDX vs WP REST API, writes ranked reports. Changes nothing. | `--category <cat> [--limit N] [--slug s] [--no-cache]` |
 | `fix-glue-batch.mjs` | Fixes "glue" (italic intro merged into prior paragraph at a `.*Capital` boundary). Balance-guarded. | `[--cat <cat>] [--apply]` |
 | `fix-bold-batch.mjs` | Fixes mismatched-bold / space-close-bold / stray star runs. Only rewrites lines that become balanced. Skips censored swears. | `[--cat <cat>] [--apply]` |
+| `fix-space-close-emphasis.mjs` | Site-wide (not audit-driven). Moves whitespace sitting just inside a closing `*`/`**` back outside it, so the marker pairs. Verifies each rewrite on its own against the parser and keeps it only if literal asterisks drop, no emphasis is lost and the prose is unchanged. | `[--apply] [--report]` |
 | `restore-images.mjs` | For one article, finds WP body images **genuinely** absent locally (perceptual content-match, not filename), downloads the truly-missing, prints a placement worklist. | `<slug> [--save]` |
 | `find-shop-grids.mjs` | Scans all cached WP for articles that had an affiliate shop grid (≥3 anchor>img tiles) but whose MDX has no `<ShopGrid>`/`<ShopItem>`/`<CollectionEmbed>`. | (no args) |
 | `map-shop-images.mjs` | For one article, maps each WP shop tile to its local image (content-match), destination URL, and a guessed name — drives a `<ShopGrid>` rebuild. | `<slug>` |
@@ -298,6 +299,12 @@ Some fixes are component-level, not content-level:
   detector strips both before counting.
 - **Censored swears** (`f***`) trip the mismatched-bold heuristic — recognise and
   skip them.
+- **A regex cannot tell an opening `*` from a closing one.** `*a*, to *b*` is
+  already correct, but a "move the space out" pattern happily rewrites the gap
+  between the two into `*a*, to* b*` and breaks both. Verify emphasis fixes by
+  re-parsing after each single rewrite: require literal asterisks to drop AND
+  the emphasis/strong node count not to fall. A whole-file check is not enough,
+  since genuine fixes elsewhere in the file mask the regression.
 - **Rogue "Save" text.** WordPress's Pinterest "Save" button migrated as a bare
   `Save` line, usually after the byline. Batch-strip with:
   `python3 -c "..."` (regex `\n\nSave\n` → `\n`). 461 articles had this.
