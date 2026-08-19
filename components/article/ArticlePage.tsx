@@ -41,6 +41,7 @@ import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 import rehypePortraitImages from '@/lib/rehype-portrait-images'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
 import rehypeVenueContact from '@/lib/rehype-venue-contact'
+import rehypePortraitFloat from '@/lib/rehype-portrait-float'
 import NearbyVenues from './NearbyVenues'
 import ShopEditRail from './ShopEditRail'
 import VenueCTA from './VenueCTA'
@@ -216,7 +217,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypePortraitImages, rehypeShopGrid, rehypeVenueContact] } }}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypePortraitImages, rehypeShopGrid, rehypeVenueContact, rehypePortraitFloat] } }}
           />
         </div>
 

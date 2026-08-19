@@ -565,6 +565,28 @@
   margin-right: auto;
 }
 
+/* ── Portrait float groups ─────────────────────────────────────
+   .article-body is a grid, and float is inert on a grid item, so a <Portrait>
+   can never wrap the prose beside it on its own. rehype-portrait-float wraps
+   each portrait with the paragraphs it should wrap in one of these blocks;
+   flow-root re-establishes normal flow for the float and contains it, so a
+   tall portrait can't spill past its own prose into the next section. */
+.article-body > .article-float-group {
+  display: flow-root;
+}
+/* A portrait with no prose after it has nothing to wrap — centre it rather
+   than leave it floated hard against one edge. */
+.article-body > .article-float-group--solo {
+  display: flex;
+  justify-content: center;
+}
+/* The float's gutter margin has nothing to clear in solo mode, and would
+   throw the centring out by half its width. */
+.article-body > .article-float-group--solo > * {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* ── Venue attribution ("Review by …") ─────────────────────── */
 .venue-attribution {
   font-family: var(--font-sans);

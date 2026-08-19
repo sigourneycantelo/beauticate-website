@@ -7,10 +7,23 @@ interface Props {
   side?: 'left' | 'right'
 }
 
+/**
+ * Portrait holding shot the body prose wraps around.
+ *
+ * The float only works because rehype-portrait-float wraps this and the
+ * paragraphs it belongs to in a `flow-root` block — `.article-body` is a grid,
+ * and float does nothing to a grid item.
+ *
+ * Both class strings are written out in full: Tailwind scans source text, so an
+ * interpolated class name like `sm:clear-${side}` is never generated.
+ */
 export default function Portrait({ src, alt, caption, side = 'left' }: Props) {
-  const float = side === 'left' ? 'sm:float-left sm:mr-8 mb-4' : 'sm:float-right sm:ml-8 mb-4'
+  const float =
+    side === 'left'
+      ? 'sm:float-left sm:mr-8 sm:clear-left'
+      : 'sm:float-right sm:ml-8 sm:clear-right'
   return (
-    <span className={`${float} w-full sm:w-[45%] max-w-[360px] block sm:clear-${side}`}>
+    <span className={`${float} mb-4 w-full sm:w-[45%] max-w-[360px] block`}>
       <Image
         src={src}
         alt={alt}
