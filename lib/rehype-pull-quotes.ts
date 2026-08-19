@@ -12,6 +12,12 @@ import type { Plugin } from 'unified'
  */
 const CREDIT_PATTERN = /^(story by|photography by|words by|images? by|interview by|hair by|makeup by|styled by|produced by|directed by|shot by|written by|videography by)/i
 
+/** Longest an italic paragraph can be and still read as a pull quote. */
+const PULL_QUOTE_MAX_CHARS = 180
+
+/** Italic paragraphs this early in the body are the intro standfirst. */
+const LEAD_BLOCKS = 3
+
 function getTextContent(node: Node): string {
   if (node.type === 'text') return (node as Text).value
   if (node.type === 'element') {
@@ -69,11 +75,17 @@ const rehypePullQuotes: Plugin<[], Root> = () => {
         const prev = i > 0 ? elements[i - 1] : null
         if (prev && isImageParagraph(prev)) continue
 
+        // A fully-italic paragraph is one of two very different things:
+        // a short quote pulled out of the interview, or the long italic
+        // standfirst that opens the article. They need different type,
+        // so classify rather than styling both as a pull-quote.
+        const isStandfirst = text.length > PULL_QUOTE_MAX_CHARS || i <= LEAD_BLOCKS
+
         el.properties = {
           ...el.properties,
           className: [
             ...((el.properties?.className as string[]) ?? []),
-            'interview-pull-quote',
+            isStandfirst ? 'interview-standfirst' : 'interview-pull-quote',
           ],
         }
       }
