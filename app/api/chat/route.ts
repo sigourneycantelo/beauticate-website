@@ -11,6 +11,12 @@ import { logQuery } from '@/lib/chat/query-log'
 export const runtime = 'nodejs'
 export const maxDuration = 30
 
+// Retrieval budget. Six full article bodies cost ~5k input tokens per question
+// and most of it never reaches the answer. Four, truncated, keeps the grounding
+// that matters and pays for the move to a better model.
+const ARTICLE_COUNT = 4
+const ARTICLE_BODY_CHARS = 1400
+
 const SYSTEM_PREAMBLE = `You are "Sig" - Sigourney Cantelo, founder and editor of Beauticate. You are chatting directly with a visitor to your website. You are warm, knowledgeable, specific and personal. You speak like a brilliant friend who happens to be a 25-year beauty and wellness expert.
 
 ABSOLUTE RULES (break any of these and the response fails):
@@ -97,16 +103,19 @@ function buildSystemPrompt(
   articles: ReturnType<typeof searchArticles>,
   products: ReturnType<typeof searchProducts>,
   restricted: boolean,
-): string {
+): { stable: string; volatile: string } {
   const voice = getVoicePrompt()
-  const parts = [SYSTEM_PREAMBLE]
 
-  if (voice) {
-    parts.push(`\n\n## Voice guidance\n${voice}`)
-  }
+  // Byte-identical on every request: persona, voice, compliance. This is the
+  // half we pay for over and over, so it is sent as its own cached block.
+  // Nothing per-question may leak in here or the cache misses every time.
+  const stable = [
+    SYSTEM_PREAMBLE,
+    voice ? `\n\n## Voice guidance\n${voice}` : '',
+    `\n\n${COMPLIANCE_PROMPT}`,
+  ].join('')
 
-  // Australian regulatory guardrails. See docs/ask-sig-compliance.md.
-  parts.push(`\n\n${COMPLIANCE_PROMPT}`)
+  const parts: string[] = []
 
   if (products.length > 0) {
     const productContext = products.map(p => {
@@ -130,7 +139,7 @@ function buildSystemPrompt(
       // then instructing the model not to repeat it does not work: it repeated
       // the burn story to a real reader. Removing the source is the only
       // reliable fix while the archive is being remediated.
-      const body = restricted ? '' : `\n\n${a.body}`
+      const body = restricted ? '' : `\n\n${a.body.slice(0, ARTICLE_BODY_CHARS)}`
       return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}\n${a.excerpt}${body}${articleProducts}`
     }).join('\n\n---\n\n')
 
@@ -153,7 +162,7 @@ function buildSystemPrompt(
   // Last, so it sits closest to the question being asked.
   if (restricted) parts.push(`\n\n${RESTRICTED_QUERY_DIRECTIVE}`)
 
-  return parts.join('')
+  return { stable, volatile: parts.join('') }
 }
 
 export async function POST(req: Request) {
@@ -176,14 +185,14 @@ export async function POST(req: Request) {
     const queryText = lastUserMessage?.content || ''
 
 
-    const relevant = queryText ? searchArticles(queryText, 6) : []
+    const relevant = queryText ? searchArticles(queryText, ARTICLE_COUNT) : []
     const relevantProducts = queryText ? searchProducts(queryText, 4) : []
 
     // Check the whole conversation, not just the latest turn: "what about the
     // other one?" is a restricted question when the turn before it was.
     const restricted = messages.some(m => m.role === 'user' && isRestrictedQuery(m.content))
 
-    const systemPrompt = buildSystemPrompt(relevant, relevantProducts, restricted)
+    const { stable, volatile } = buildSystemPrompt(relevant, relevantProducts, restricted)
 
     const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -196,7 +205,18 @@ export async function POST(req: Request) {
         model: 'claude-haiku-4-5',
         max_tokens: 1024,
         stream: true,
-        system: systemPrompt,
+        // The prompt is already split so caching is a one-line change:
+        //   system: [
+        //     { type: 'text', text: stable, cache_control: { type: 'ephemeral' } },
+        //     { type: 'text', text: volatile },
+        //   ]
+        // Measured on Sonnet 5: 9,531 of ~11,400 input tokens are cacheable
+        // (83%). Warm that is 1.13x today's bill; cold it is 3.71x, because a
+        // miss pays a 1.25x write on the whole block. The 5-minute TTL means
+        // "warm" needs roughly a question every five minutes, sustained.
+        // We have no traffic data yet (query logging only just started), so
+        // this stays on Haiku uncached until the log says which we are.
+        system: stable + volatile,
         messages: messages.map(m => ({
           role: m.role,
           content: m.content,
