@@ -10,7 +10,7 @@ export default function PullQuote({ children }: Props) {
     >
       <p
         className="font-serif italic text-chocolate"
-        style={{ fontSize: 'clamp(30px, 4.4vw, 46px)', lineHeight: 1.15, letterSpacing: '-0.01em' }}
+        style={{ fontSize: 'clamp(24px, 2.9vw, 31px)', lineHeight: 1.15, letterSpacing: '-0.01em' }}
       >
         {children}
       </p>
