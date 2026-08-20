@@ -108,7 +108,7 @@ export default function ProductBuyBox({ product: p, availability }: {
         </p>
       ) : (
         <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/70 text-center mt-3">
-          Free shipping over $99
+          Shipping calculated at checkout
         </p>
       )}
       <p className="text-center mt-2">
