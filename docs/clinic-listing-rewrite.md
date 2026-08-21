@@ -27,7 +27,44 @@ is the cautionary example: an earlier pass swapped one sentence and left
 15 minutes of bliss under the Healite. The clinic offers LED light treatments as
 part of its menu." These listings need rewriting, not editing.
 
-## What replaces it
+## The line, and how I got it wrong the first time
+
+**The prohibition attaches to the treatment, not to the listing.** First person
+is out where the thing being described is a *regulated health service*
+(injectables, laser, IPL, skin needling, PRP, anything performed by or under a
+registered practitioner) or a *therapeutic good* (LED and light therapy,
+ingestibles, supplements, patches). It is not out anywhere else.
+
+A facial is not a regulated health service. Neither is a massage, a brow shape,
+a lash lift, a manicure, a wax, a spray tan or a haircut. Neither is the room,
+the tea, the person doing the treatment, or the writer's own day. The Code says
+this plainly under a heading that exists, in its own words, "so the guardrails
+don't flatten the product".
+
+The first pass through these listings flattened the product. Whole pieces were
+converted to third person because the *venue* offered injectables, when the
+*appointment* was a facial. That is the wrong test. Nine listings were restored
+from their original bodies afterwards, and in one of them, The Girl You Love,
+the number of lines that actually had to go was zero.
+
+So the question to ask of every sentence is not "is this first person" but:
+
+> Is the writer claiming personal experience of a regulated health service or a
+> therapeutic good?
+
+If yes, it goes. If no, it stays, in her voice, exactly as she wrote it.
+
+**Corollary: restore from the original, not from your own rewrite.** Editing a
+sanitised version back towards warmth produces a pastiche of the writer. Take
+the pre-rewrite body out of git and remove only the offending lines.
+
+**Corollary: a menu mention is not a treatment.** "Injectables are available
+from a visiting cosmetic doctor" in a hair salon listing is a fact about the
+menu. It does not make the haircut a regulated health service, and it does not
+put the whole piece into third person. The detector cannot tell these apart, so
+those listings get screened with a written reason rather than rewritten.
+
+## What replaces it, where a rewrite IS needed
 
 A factual editorial listing. Closer to a good directory entry than to a review:
 what the clinic does, who runs it, what the space is like, what's on the menu,
