@@ -92,10 +92,14 @@ FIRST_PERSON = re.compile(
         r"\bmy (?:skin|face|therapist|appointment|treatment|consultation|"
         r"practitioner|session|visit|results?|complexion|concerns?|brows?|lips?)\b",
         r"\bI'?(?:ve|d|ll|m)\b",
-        r"\bme\b(?=[^.]*(?:treatment|skin|face|therapist))",
     ]),
     re.I,
 )
+
+# Bare "me" is a first-person signal, but only in lower case. Case-insensitive
+# matching hit the venue name in "Me Skin & Body, South Yarra", so this clause
+# is deliberately cased while everything above stays case-insensitive.
+FIRST_PERSON_CASED = re.compile(r"\bme\b(?=[^.]*(?:treatment|skin|face|therapist))")
 
 # Someone else's first-hand account being relayed — equally caught by s133.
 THIRD_PARTY = re.compile(
@@ -162,11 +166,17 @@ def audit_file(path):
     plain = strip_markdown(body)
 
     subcategory = fm_value(fm, "subcategory") or path.split(os.sep)[-3]
+    # lib/content.ts publishes on `published !== false`, so a listing with no
+    # `published` key at all is LIVE. Mirror that here rather than reading a
+    # missing key as a draft, which would sort a live breach down the list.
+    published = fm_value(fm, "published")
+    is_live = published != "false"
     rec = {
         "file": os.path.relpath(path, os.getcwd()),
         "title": fm_value(fm, "title"),
         "subcategory": subcategory,
-        "published": fm_value(fm, "published"),
+        "published": published or "(unset, live)",
+        "is_live": is_live,
         "author": fm_value(fm, "author"),
         "date": fm_value(fm, "date_published"),
         "words": len(plain.split()),
@@ -174,7 +184,7 @@ def audit_file(path):
 
     fp_hits, tp_hits, claim_hits, fp_clinical = [], [], [], []
     for s in sentences(plain):
-        if FIRST_PERSON.search(s):
+        if FIRST_PERSON.search(s) or FIRST_PERSON_CASED.search(s):
             fp_hits.append(s)
             # The sharpest hit: the narrated experience IS the clinical service,
             # rather than the listing merely naming one on the treatment menu
@@ -261,14 +271,14 @@ def main():
     # running. (Draft status here is editorial and sticky — see CLAUDE.md — so
     # this only orders the work, it never changes `published`.)
     rows.sort(key=lambda r: (order[r["priority"]],
-                             0 if r["published"] == "true" else 1,
+                             0 if r["is_live"] else 1,
                              -r.get("n_fp_clinical", 0),
                              -r["n_first_person"], r["subcategory"], r["file"]))
 
     os.makedirs(OUT_DIR, exist_ok=True)
     out = os.path.join(OUT_DIR, "directory-ahpra.csv")
     cols = ["priority", "reason", "subcategory", "title", "published", "author",
-            "date", "words", "n_clinical", "strong_terms", "device_terms",
+            "date", "is_live", "words", "n_clinical", "strong_terms", "device_terms",
             "clinical_terms", "n_fp_clinical", "fp_clinical_sample", "n_first_person",
             "screened",
             "n_third_party", "n_claim", "first_person_sample",
@@ -292,7 +302,7 @@ def main():
         for r in hits:
             print(f"  [{r['subcategory']:14}] {r['title'][:44]:44} "
                   f"fp+clin={r.get('n_fp_clinical', 0):3} fp={r['n_first_person']:3} "
-                  f"claim={r['n_claim']:2}  pub={r['published'] or '(unset)'}")
+                  f"claim={r['n_claim']:2}  {'LIVE ' if r['is_live'] else 'draft'}")
         print()
     print(f"wrote {out}")
 
