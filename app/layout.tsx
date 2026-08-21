@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { EB_Garamond, Hanken_Grotesk, Italiana, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
+import GeoProvider from '@/components/geo/GeoProvider'
 import './globals.css'
 import MastheadData from '@/components/layout/MastheadData'
 
@@ -163,15 +164,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
-        <CartProvider>
-          <ScrollReveal />
-          <BetaTicker />
-          <MastheadData />
-          <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
-          <Footer />
-          <CartDrawer />
-          <AskSigLauncher />
-        </CartProvider>
+        <GeoProvider>
+          <CartProvider>
+            <ScrollReveal />
+            <BetaTicker />
+            <MastheadData />
+            <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
+            <Footer />
+            <CartDrawer />
+            <AskSigLauncher />
+          </CartProvider>
+        </GeoProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
@@ -183,6 +186,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script
           id="klaviyo-sdk"
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
+          strategy="afterInteractive"
+        />
+        {/*
+          Skimlinks / Sovrn, publisher 265664X1750758. Site-wide catch-all that
+          auto-monetises bare retailer links — the long tail we haven't
+          hand-mapped. It deliberately does NOT replace the money links:
+          Partnerize (Adore Beauty, Sephora AU) and the direct brand programmes
+          pay better and stay exactly as they are.
+        */}
+        <Script
+          id="skimlinks"
+          src="https://s.skimresources.com/js/265664X1750758.skimlinks.js"
           strategy="afterInteractive"
         />
         {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (

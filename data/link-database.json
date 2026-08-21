@@ -1,0 +1,79 @@
+{
+  "_readme": [
+    "Machine-readable export of the Beauticate Affiliate Vault. Humans edit the",
+    "Google Sheet ('Beauticate Affiliate Vault — Master'); this file mirrors it and",
+    "is what the geo link resolver (lib/product-links.ts) reads at build time.",
+    "",
+    "Resolution order for a given AU link, first hit wins:",
+    "  1. products[..]  — hand-picked per-product intl link (hero tier).",
+    "  2. brands[..]    — brand-level intl store, keyed by the AU link's host.",
+    "  3. retailerMap[..] — AU retailer -> intl retailer search, keyed by AU host.",
+    "  4. nothing       — leave the AU link bare; Skimlinks monetises the long tail.",
+    "",
+    "IMPORTANT: retailerMap and brands entries are only used when \"verified\": true.",
+    "An unverified entry is inert — it falls through to the next layer. This keeps",
+    "un-checked search-URL patterns from shipping to readers. Verify with:",
+    "  node scripts/verify-intl-links.mjs",
+    "which loads each URL and flags anything that 404s or bounces to a homepage."
+  ],
+  "version": 1,
+  "updated": "2026-08-21",
+
+  "retailerMap": {
+    "mecca.com": {
+      "_note": "Mecca is a swap, not a destination — no affiliate value. AU readers should go to brand DTC or a Skimlinks-monetised retailer; intl readers to Sephora US / Dermstore.",
+      "US": { "retailer": "Sephora", "searchUrl": "https://www.sephora.com/search?keyword={q}", "verified": false },
+      "GB": { "retailer": "Cult Beauty", "searchUrl": "https://www.cultbeauty.co.uk/search?q={q}", "verified": false }
+    },
+    "adorebeauty.com.au": {
+      "_note": "Partnerize — keep AU links exactly as they are, they pay better than Skimlinks. Geo-gate to AU/NZ only.",
+      "US": { "retailer": "Dermstore", "searchUrl": "https://www.dermstore.com/search?q={q}", "verified": false },
+      "GB": { "retailer": "Look Fantastic", "searchUrl": "https://www.lookfantastic.com/elysium.search?search={q}", "verified": false }
+    },
+    "sephora.com.au": {
+      "US": { "retailer": "Sephora", "searchUrl": "https://www.sephora.com/search?keyword={q}", "verified": false },
+      "GB": { "retailer": "Cult Beauty", "searchUrl": "https://www.cultbeauty.co.uk/search?q={q}", "verified": false }
+    },
+    "chemistwarehouse.com.au": {
+      "US": { "retailer": "Ulta", "searchUrl": "https://www.ulta.com/search?Ntt={q}", "verified": false },
+      "GB": { "retailer": "Look Fantastic", "searchUrl": "https://www.lookfantastic.com/elysium.search?search={q}", "verified": false }
+    },
+    "priceline.com.au": {
+      "US": { "retailer": "Ulta", "searchUrl": "https://www.ulta.com/search?Ntt={q}", "verified": false },
+      "GB": { "retailer": "Boots", "searchUrl": "https://www.boots.com/sitesearch?searchTerm={q}", "verified": false }
+    },
+    "davidjones.com": {
+      "US": { "retailer": "Nordstrom", "searchUrl": "https://www.nordstrom.com/sr?keyword={q}", "verified": false },
+      "GB": { "retailer": "Selfridges", "searchUrl": "https://www.selfridges.com/GB/en/search?q={q}", "verified": false }
+    },
+    "myer.com.au": {
+      "_note": "Myer links are confirmed working — do not rewrite the AU side.",
+      "US": { "retailer": "Nordstrom", "searchUrl": "https://www.nordstrom.com/sr?keyword={q}", "verified": false },
+      "GB": { "retailer": "Selfridges", "searchUrl": "https://www.selfridges.com/GB/en/search?q={q}", "verified": false }
+    },
+    "theiconic.com.au": {
+      "US": { "retailer": "Revolve", "searchUrl": "https://www.revolve.com/r/Search.jsp?search={q}", "verified": false },
+      "GB": { "retailer": "Net-a-Porter", "searchUrl": "https://www.net-a-porter.com/en-gb/search/{q}", "verified": false }
+    }
+  },
+
+  "brands": {},
+
+  "products": {},
+
+  "_shopReadme": [
+    "Option A: the Beauticate Shop can only ship within Australia (single General",
+    "shipping profile, fulfilment routed to partner brands via Modern Dropship).",
+    "Rather than show international visitors a checkout that cannot fulfil, the",
+    "buy action is substituted for an affiliate link to a stockist that ships to",
+    "them. Same country signal as editorial, one system.",
+    "",
+    "byHandle wins over byVendor. Both honour \"verified\": true. With no entry,",
+    "the buy box tells the reader plainly that we ship AU/NZ only rather than",
+    "letting them fill a cart they cannot check out."
+  ],
+  "shop": {
+    "byHandle": {},
+    "byVendor": {}
+  }
+}

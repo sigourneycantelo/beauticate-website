@@ -138,6 +138,31 @@ When the publication needs to add its own words to someone else's first-person s
 
 Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
 
+## Geo dual-link system (AU/NZ vs everyone else)
+
+> **Full detail:** [`docs/geo-dual-link-system.md`](docs/geo-dual-link-system.md)
+
+Product links and the shop run two lanes: **Home** (AU/NZ) keeps the shop, Adore
+and direct margin; **Intl** (everyone else) goes to a retailer that ships to
+them. Country comes from Vercel's `x-vercel-ip-country`, written to a
+`bc-country` cookie by `middleware.ts` and applied on the client by
+`components/geo/GeoProvider.tsx`.
+
+Rules that matter when touching any of this:
+
+- **Never read the country with `headers()` in a page.** Article pages are
+  CDN-cached and must stay country-agnostic. The swap happens on the client.
+- **`data/link-database.json` mirrors the Affiliate Vault sheet.** Humans edit
+  the sheet, code reads the JSON. Products match on destination URL, so a link
+  resolves the same bare or wrapped in Skimlinks/Commission Factory/Partnerize.
+- **`"verified": true` is a safety gate, not decoration.** Unverified retailer
+  and brand entries are inert and fall through. Never flip one by hand without
+  running `node scripts/verify-intl-links.mjs` — a deep link that bounces to a
+  retailer's homepage is worse than leaving the AU link alone.
+- **Do not touch the Partnerize links** on Adore Beauty and Sephora AU, or the
+  Myer links. They work and pay better than Skimlinks. Geo-gate Adore to AU/NZ
+  rather than rewriting it.
+
 ## Links — open in a new tab
 
 Readers should never be navigated away from what they're reading.
