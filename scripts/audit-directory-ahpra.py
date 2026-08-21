@@ -23,12 +23,14 @@ Nothing here is a legal determination. Every hit needs a human read.
 """
 
 import csv
+import json
 import os
 import re
 import sys
 
 ROOT = os.path.join(os.getcwd(), "content", "destinations")
 OUT_DIR = os.path.join(os.getcwd(), "docs", "audit")
+SCREENED_PATH = os.path.join(OUT_DIR, "directory-ahpra-screened.json")
 
 # Services with a "clinical aspect" in AHPRA's sense — performed by, or under
 # the supervision of, a registered health practitioner. This is the test that
@@ -226,14 +228,33 @@ def audit_file(path):
     return rec
 
 
+def load_screened():
+    """Listings already read in full and cleared, with the reason why.
+
+    The detector is high-recall by design, so the same false positives surface
+    on every run. Recording the decision here keeps them out of the working
+    list without loosening a regex and losing real hits somewhere else.
+    """
+    if not os.path.exists(SCREENED_PATH):
+        return {}
+    data = json.load(open(SCREENED_PATH, encoding="utf-8"))
+    return {k: v for k, v in data.items() if not k.startswith("_")}
+
+
 def main():
+    screened = load_screened()
     rows = []
     for dirpath, _dirs, files in os.walk(ROOT):
         for f in files:
             if f.endswith(".mdx"):
                 rows.append(audit_file(os.path.join(dirpath, f)))
 
-    order = {"P1": 0, "P2": 1, "P3": 2, "P4": 3, "OK": 4}
+    for r in rows:
+        r["screened"] = screened.get(r["file"], "")
+        if r["screened"] and r["priority"] != "OK":
+            r["priority"] = "SCREENED"
+
+    order = {"P1": 0, "P2": 1, "P3": 2, "P4": 3, "SCREENED": 4, "OK": 5}
     # Live listings first inside each band. The TGA's position is that every
     # day a contravention stays up may be a fresh contravention, so a published
     # breach is the urgent one; a draft is exposure that has not started
@@ -249,6 +270,7 @@ def main():
     cols = ["priority", "reason", "subcategory", "title", "published", "author",
             "date", "words", "n_clinical", "strong_terms", "device_terms",
             "clinical_terms", "n_fp_clinical", "fp_clinical_sample", "n_first_person",
+            "screened",
             "n_third_party", "n_claim", "first_person_sample",
             "third_party_sample", "claim_sample", "file"]
     with open(out, "w", newline="", encoding="utf-8") as fh:

@@ -1,0 +1,4 @@
+{
+  "_comment": "Listings a human or Claude has read in full and cleared, with the reason. The detector is high-recall and will keep flagging these on every run, so record the screening decision here rather than loosening the regexes and losing real hits elsewhere. Keyed by file path.",
+  "content/destinations/clinics/amy-jean-eye-couture-sydney/amy-jean-eye-couture-sydney.mdx": "First-person hit is inside Amy Jean's own quote about being an artist. A practitioner describing her philosophy is not a testimonial about a good or service, and brow and lash work is not a regulated health service. Laser and LED appear on the menu only."
+}
