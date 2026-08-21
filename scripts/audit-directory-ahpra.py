@@ -60,6 +60,10 @@ CLINICAL_STRONG = re.compile(
         r"coolsculpt", r"fat dissolv", r"cryolipo", r"\bultherapy\b", r"\bhifu\b",
         r"\bsculptra\b", r"\bmesotherapy\b", r"skin booster",
         r"cosmetic (?:medicine|physician|surgeon|nurse|doctor|practitioner)",
+        # "Aesthetic physician" is the title All Saints Skin Clinic uses, and
+        # the cosmetic-* patterns above missed it entirely, so a clinic doing
+        # injectables scored clean. Same registration, different word.
+        r"aesthetic (?:physician|practitioner|doctor|nurse)",
         r"dermatologis", r"plastic surge", r"\bregistered nurse\b",
         r"nurse injector", r"medical director", r"\bparamedical\b",
         r"prescription[\s-](?:skincare|strength|only)", r"\bcosmeceutical prescri",
@@ -128,6 +132,21 @@ CLAIM = re.compile(
         r"\byears? younger\b", r"\bturn back the clock\b",
         r"\bresults? (?:are )?(?:guaranteed|instant|immediate)",
         r"\bsafe(?:ly)? and effective", r"\bmedical[\s-]grade\b",
+        # Promise-of-outcome phrasing. AHPRA prohibits creating an expectation
+        # of beneficial treatment, and the promise is usually made in second
+        # person rather than as an adjective, so the patterns above miss it.
+        # Found by a human read of All Saints Skin Clinic, whose founder was
+        # quoted saying "You will walk out ... looking more beautiful".
+        r"\byou will (?:walk|leave|look|feel|see|notice|love)",
+        r"\byou'?ll (?:walk out|leave|look|feel) ",
+        r"\bleaves? you (?:looking|feeling)",
+        r"\bmore (?:beautiful|radiant|youthful|confident)\b",
+        # Celebrity or high-profile clientele used as evidence of the work.
+        # Same prohibition as a testimonial: it is making use of a client to
+        # promote the service.
+        r"\bwho'?s who\b", r"\bto the a[\s-]?list\b", r"\ba[\s-]?list(?:er)?s?\b",
+        r"\bcelebrity (?:client|clientele|following)", r"\bclient list\b",
+        r"\bred carpet regular", r"\bfavoured by (?:celebrities|models)",
     ]),
     re.I,
 )
