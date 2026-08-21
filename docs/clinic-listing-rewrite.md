@@ -99,9 +99,42 @@ Leave `published` alone. Draft status in this directory is a sticky editorial
 decision (see CLAUDE.md) and compliance work is not a reason to publish
 something that was hidden for a different reason.
 
-## Worked example
+## Status
 
-`content/destinations/clinics/blanc-wa/blanc-wa.mdx`. The before is in git.
+All 22 clinic listings are rewritten. `content/destinations/clinics/blanc-wa/blanc-wa.mdx`
+is the worked example; the before of every one is in git.
+
+## Things the 22 taught us
+
+Each of these came out of a real listing and is worth checking for on the next
+tranche.
+
+- **The frontmatter is where the claims hide.** Roughly half the breaches were
+  in an excerpt, a `seo_title` or an auto-generated FAQ rather than the body.
+  "Perth's Premier Cosmetic Clinic" was a superiority claim in a title tag.
+- **A claim about typical results is worse than one person's account.** La Belle
+  Peau's FAQ said what "most clients notice" in the first week. That reads as
+  evidence rather than as one experience.
+- **Practitioners get held out as more than they are.** Dermal therapists
+  described as "qualified to diagnose", a herbalist crediting herself with
+  treating psoriasis. Diagnosis is the first item on the TGA's list of what
+  makes something a medical purpose.
+- **Prescription-only medicines cannot be advertised to the public at all.**
+  Assure named a prescription Vitamin A as a reason to choose them. This is a
+  separate prohibition from anything about testimonials.
+- **Relayed praise is still a testimonial.** Reve quoted a client in the
+  doorway. Me Skin & Body used a celebrity's patronage. Liberty Belle described
+  clients' before and after photographs on the walls.
+- **Undated offers and prices go stale.** A "20% off for Beauticate readers"
+  with no terms and no date, and a $45 blow dry at a neighbouring salon. Neither
+  is verifiable now, and advertising a discount nobody will honour is an
+  Australian Consumer Law problem in its own right.
+- **Some listings are stale rather than non-compliant.** The Facial Hub's body
+  described the previous business at the previous address. Fix that in the same
+  pass and record it in `draft_reason`.
+- **Downtime and contraindications are the best thing on the page.** They are
+  not claims, they cut against the advertising, and they are what a reader
+  actually needs. Promote them rather than cutting them.
 
 ## Finding the work
 
