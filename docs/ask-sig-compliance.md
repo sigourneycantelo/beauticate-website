@@ -1,10 +1,15 @@
 # Ask Sig — TGA / AHPRA / ACL guardrails
 
-**Status: DRAFT — needs human review before it ships.** This was researched and
-written by Claude from the primary sources linked below. It is not legal advice
-and nobody at Beauticate has signed it off yet. The rules in
-`lib/chat/guardrails.ts` are derived from this document; change this first, then
-the code.
+**Status: decisions settled by Sigourney, 21 Aug 2026. See "Decisions" below.**
+
+Researched and written by Claude from the primary sources linked at the bottom.
+**This is not legal advice.** Sig has read it, answered the open questions and
+chosen to act on this analysis plus her own judgement rather than engage a
+lawyer. That is a deliberate decision, recorded here so the basis for it is not
+lost later.
+
+The rules in `lib/chat/guardrails.ts` are derived from this document; change
+this first, then the code.
 
 Jurisdiction: Australia. Beauticate is operated by Cantelo Corporation Pty Ltd
 (NSW).
@@ -95,7 +100,8 @@ Two direct consequences for Ask Sig:
   testimonials about therapeutic goods out of the archive.
 - **The web-search fallback cannot link out when a therapeutic good is in play.**
   Linked material becomes part of Beauticate's advertising, and a live search
-  result cannot be vetted before the model cites it. See "Open questions".
+  result cannot be vetted before the model cites it. Decided: beauticate.com
+  links only, and the web-search fallback is not to be built. See "Decisions".
 
 ---
 
@@ -233,23 +239,68 @@ efficacy claim.
 
 ---
 
-## Open questions for human review
+## Decisions (settled by Sigourney, 21 Aug 2026)
 
-1. **Web search fallback.** Given that linked material becomes part of the
-   advertisement, is any external linking acceptable? Recommendation: Ask Sig
-   links only to beauticate.com, and the web tool is either dropped or used for
-   background understanding without citation. Needs a decision.
-2. **Archive exposure.** These rules apply to the 1,749 existing articles too,
-   and "each day is a fresh contravention." Is anyone auditing the back
-   catalogue for practitioner testimonials about supplements? That is a bigger
-   job than the chatbot.
-3. **Gifting register.** The testimonial ban turns on whether valuable
-   consideration was received. Is there a record of what was gifted? Without one,
-   the only safe assumption is "everything", which is what the guardrails assume.
-4. **Directory listings.** Do any clinic listings currently carry patient
-   testimonials or purported testimonials?
-5. Should Sig's *own* pre-existing published reviews of supplements be
-   retired or reworded?
+These were the open questions. Sig has answered them and decided to proceed on
+this analysis plus her own judgement rather than engage a lawyer. That is a
+deliberate, informed choice and it is recorded here so the reasoning is not
+lost. Nothing in this document is legal advice; it is a careful reading of the
+legislation by someone who is not a lawyer.
+
+**1. External linking — DECIDED: beauticate.com only.**
+Linked material becomes part of the advertisement and a live search result
+cannot be vetted before it is cited. Ask Sig links only to our own pages.
+Implemented: `lib/chat/links.ts` strips any link whose target is not in the
+index, and the restricted-query directive forbids external links outright. The
+web-search fallback from the original brief is **not to be built** as specced.
+
+**2. Archive exposure — IN PROGRESS.**
+35 articles remediated, 244 flagged and untouched. `scripts/audit-testimonials.mjs`
+finds candidates; it points at articles rather than at every issue inside one,
+so each flagged article needs a human read.
+
+**3. Gifting — DECIDED: assume everything is gifted.**
+Sig: "almost everything I write about is gifted." Valuable consideration is
+therefore the norm, not the exception, which means the testimonial prohibition
+applies across the board and no relaxation is available. The guardrails already
+assume this. There is no gifting register to consult.
+
+**4. Directory listings — DECIDED: the reviews must be rewritten.**
+Sig: "almost all of them. We sent reviewers to write the reviews and they wrote
+first person testimonial style reviews. Many of these were paid for."
+
+This is now the highest-risk area on the site, above the article backlog:
+
+- s133(1)(c) of the National Law prohibits advertising a **regulated health
+  service** using testimonials or purported testimonials. Unlike a TGA
+  endorsement, disclosure does not cure it. There is no compliant way to publish
+  a paid first-person account of a clinic that performs injectables, laser or
+  skin needling.
+- Payment is an aggravating fact under the TGA Code too: a paid testimonial is
+  prohibited outright, not merely disclosable.
+- The whole format is the problem, not a line within it. These need rewriting as
+  editorial descriptions, not trimming.
+
+Indicative scale (counts are from a regex sweep, not an audit):
+271 listings, 122 with first-person narration. Of 100 clinic listings, 52 are
+first person and **22 are first person and name a clinical service**. Start
+there. Note some first-person hits are the salon owner speaking rather than a
+customer, which is not a testimonial; each needs reading.
+
+**5. Sig's own supplement reviews — DECIDED: retire or reword.**
+Includes retitling "Sigourney Road Tests a Hair Loss Preventing Strand Boosting
+Elixir", where the therapeutic claim is in the headline and the URL slug.
+Retitling affects SEO and inbound links, so slugs need a redirect.
+
+---
+
+## Priority order
+
+1. **Clinic directory listings.** Absolute prohibition, paid, whole-format. 22
+   worst, 52 to read, 271 in total.
+2. **The 244 flagged articles.** Mostly claims rather than testimonials.
+3. **Sig's supplement reviews and the hair-loss headline** (item 5).
+4. Re-run the audit after each pass; it under-reports by design.
 
 ---
 
