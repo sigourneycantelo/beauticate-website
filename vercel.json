@@ -32,6 +32,11 @@
       "source": "/destinations/spas-retreats/karpatimedispa-double-bay",
       "destination": "/destinations/clinics/karpatimedispa-double-bay",
       "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/amy-jean-eye-couture-sydney",
+      "destination": "/destinations/salons/amy-jean-eye-couture-sydney",
+      "permanent": true
     }
   ]
 }
