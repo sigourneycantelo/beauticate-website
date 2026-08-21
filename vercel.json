@@ -27,6 +27,11 @@
       "source": "/destinations/spas-retreats/the-girl-you-love-glebe",
       "destination": "/destinations/clinics/the-girl-you-love-glebe",
       "permanent": true
+    },
+    {
+      "source": "/destinations/spas-retreats/karpatimedispa-double-bay",
+      "destination": "/destinations/clinics/karpatimedispa-double-bay",
+      "permanent": true
     }
   ]
 }
