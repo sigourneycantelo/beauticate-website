@@ -233,6 +233,32 @@ efficacy claim.
 
 ---
 
+## Classification calls reviewed by Sig
+
+Reviewed and agreed by Sigourney Cantelo, 23 August 2026. Editorial sign-off on
+how two treatment types are classified, not legal sign-off on this document,
+which is still a draft and still unreviewed as a whole.
+
+1. **A superficial peel is a cosmetic treatment, not a regulated health
+   service.** A SkinCeuticals glycolic and salicylic facial, an Ultraceuticals
+   A-Zyme, an Ultra Lactic Acid 30%, performed by a dermal or beauty therapist
+   in a salon, day spa or medispa, is beauty therapy. First-person accounts of
+   having one are not caught by s133(1)(c), and the listings that narrate one
+   keep the writer in them. This does not extend to medium-depth or
+   physician-administered peels.
+
+2. **A Hydrafacial is a facial, not a therapeutic device.** It is a
+   device-assisted cosmetic treatment making no therapeutic claim, so a
+   first-person account of one is not a testimonial about a therapeutic good.
+
+LED and light therapy sit on the other side of the line and were not part of
+this call. They stay out of any personal account, because the Code names them
+directly and Beauticate sells an ARTG-listed device.
+
+Both calls are also recorded against the individual listings in
+`docs/audit/directory-ahpra-screened.json`, so anyone re-running the detector
+can see which listings rest on them.
+
 ## Open questions for human review
 
 1. **Web search fallback.** Given that linked material becomes part of the
@@ -247,7 +273,10 @@ efficacy claim.
    consideration was received. Is there a record of what was gifted? Without one,
    the only safe assumption is "everything", which is what the guardrails assume.
 4. **Directory listings.** Do any clinic listings currently carry patient
-   testimonials or purported testimonials?
+   testimonials or purported testimonials? **Answered: yes, 22 of them, plus
+   nine more across spas-retreats and travel.** All rewritten in
+   August 2026; see `docs/clinic-listing-rewrite.md` and
+   `scripts/audit-directory-ahpra.py`.
 5. Should Sig's *own* pre-existing published reviews of supplements be
    retired or reworded?
 
