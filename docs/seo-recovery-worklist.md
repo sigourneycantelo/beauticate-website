@@ -87,8 +87,8 @@ restructuring.
 ## Part B — the seven buying-intent pages
 
 Eleven striking-distance query/page pairs roll up to these seven pages. These are
-the only genuine striking-distance opportunities on the site: the other 89 are
-celebrity name lookups converting at 0.21%, which no refresh will fix.
+the buying-intent opportunities. For the interview and profile archive, which is a
+larger prize, see Part D.
 
 ### B1. Olaplex review
 `/beauty-style/hair/olaplex-review-is-it-worth-the-hype`
@@ -164,3 +164,80 @@ celebrity name lookups converting at 0.21%, which no refresh will fix.
   copies serve 200 and neither can redirect. Six are salon/clinic listings,
   four are vodcast cross-posts. None are on this list, but they should be
   `git mv`-ed rather than left duplicated.
+
+---
+
+## Part D - the interview archive: answer the questions people ask
+
+An earlier read of this data concluded that celebrity name queries were
+unwinnable and that no refresh would fix them. That was wrong. It inferred
+searcher intent from a low click-through rate, which the numbers do not support.
+
+### What the data actually shows
+
+Splitting the bare-name queries by volume breaks the average apart:
+
+| Bare-name queries | Pairs | Impressions | Clicks | CTR |
+|---|---|---|---|---|
+| 80 to 500 impressions | 75 | 17,200 | 164 | 0.95% |
+| 500 to 3,000 | 29 | 34,041 | 249 | 0.73% |
+| **3,000+** | **10** | **157,250** | **96** | **0.06%** |
+
+Ten rows carry three quarters of the impressions at 0.06%, and they were dragging
+everything else down with them. The rest convert at roughly 0.8%, which is normal
+for the positions they hold.
+
+Those ten rows are almost certainly not standard search results. `elsa pataky`
+logs 2,505 impressions at **position 1.1** with a 0.04% click-through rate, and
+`helena vestergaard` 6,211 impressions at **position 1.3** at 0.05%. A real number
+one blue link returns 25 to 30%. Impressions at that volume and that rank with
+almost no clicks come from a carousel, an entity module or a similar SERP feature
+that reports impressions and is rarely clicked. Treat them as a measurement
+artefact, not as evidence about what readers want.
+
+Plenty of name queries convert perfectly well: `alyce tran` returns 12.4% at
+position 4.2, `darren palmer husband` 6.9% at 1.9, `david mallett hair` 6.4%,
+`riley minford` 5.2%.
+
+### The pattern worth acting on
+
+| Query shape | Pairs | Impressions | Clicks | CTR |
+|---|---|---|---|---|
+| Bare name only | 114 | 208,491 | 509 | 0.24% |
+| Name **plus a question** | 1,438 | 25,110 | 505 | **2.01%** |
+
+People asking something specific about an interviewee convert roughly eight times
+better than people typing a bare name. That is the opening, and it is the opposite
+of the earlier conclusion.
+
+### What they ask
+
+Ranked by impressions: **age** (3,297 across 48 queries), **wife** (2,247),
+**husband** (1,631), **partner** (937), **married** (703), **son** (699),
+**parents** (414), **family** (394), then nationality, and specific professional
+questions like `melanie grant skin` and `kristin fisher eyebrows reviews`.
+
+### The size of it
+
+65 query/page pairs sit at positions 3 to 20 with 60+ impressions, drawing 10,731
+impressions and returning just 145 clicks. At the 5.9% our best-performing name
+pages already achieve, that pool is worth roughly 630 clicks per six weeks. Treat
+that as an upper bound, since the benchmark comes from our strongest rows.
+
+Concentrated in: Darren Palmer (1,874 impressions across two URLs), Rachael Finch
+(924), Silvana Philippoussis (812), Kristen Fisher (633), Abbey Gelmi (488),
+David Mallet (404), Julia Stone (787), Nathalie Kelley (385).
+
+### How to work it
+
+The `faqs` frontmatter array already renders through `<FAQPanel>` and emits
+FAQPage schema, so this needs no new template work. Add two or three real
+questions to each interview, phrased the way people search them, answered
+factually in a sentence or two.
+
+**One editorial judgement for Sig, not for Claude.** Some of these queries are
+gossip-adjacent: `is darren palmer gay`, `darren palmer ex wife`, `brooke blurton
+dad`. Answering them would lift clicks and would also change what Beauticate is.
+The professional and biographical ones (age, nationality, family, career, their
+actual expertise) are the safer and more on-brand half. Decide the line before
+briefing this out, rather than working down the list.
