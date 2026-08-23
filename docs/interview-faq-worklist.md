@@ -22,43 +22,47 @@ cheapest lane is the one nobody would have predicted.
 
 ---
 
-## Lane 1 - name variants (mechanical, do these first)
+## Lane 1 - name variants: mostly a false alarm
 
-**This is the surprise.** A large share of the "questions" turn out to be people
-searching a name we do not use on the page: a married name, a nickname, or a
-spelling we got wrong. No FAQ needed. The variant just has to appear in the copy.
+**This lane was largely wrong when first written, and the correction matters.**
 
-| Query | Pos | Impr | Clicks | Article uses | What it is |
-|---|---|---|---|---|---|
-| rachael finch | 11.7 | 924 | 1 | `rachel-finch` | **our slug misspells her name** |
-| silvana lovin | 7.3 | 694 | 1 | `silvana-philippoussis` | alternate surname |
-| kristin fisher (x2) | 9.6, 11.1 | 512 | 5 | `kristen-fisher` | **our spelling is wrong** |
-| deborah symond o'neil (x2) | 4.9, 7.4 | 452 | 4 | `deborah-symond` | married name |
-| lindy rama-ellis (x2) | 6.4, 7.7 | 444 | 3 | `lindy-klim` | married name |
-| jen hawkins | 8.7 | 314 | 4 | `jennifer-hawkins` | nickname |
-| abby / abbie gelmi | 5.5, 7.5 | 199 | 0 | `abbey-gelmi` | spelling variants |
-| abigail o'neill / o neill | 7.8, 8.3 | 232 | 2 | `abigail-oneill` | apostrophe variant |
-| david mallett | 5.7 | 232 | 10 | `david-mallet` | **our spelling is wrong** |
-| rebecca jobson | 10.6 | 65 | 1 | `rebecca-burrow` | married name |
-| terry de gunzburg | 3.0 | 63 | 0 | `terry-de-gunzberg` | **our spelling is wrong** |
+It inferred from the article *slugs* that our copy used the wrong name. It does
+not. Checking the actual bodies and titles:
 
-**About 3,900 impressions returning 31 clicks.** Four of these are our own
-spelling errors, which is worth knowing on its own.
+| Person | Slug says | Copy actually says | Verdict |
+|---|---|---|---|
+| Rachael Finch | `rachel-finch` | Rachael x29, Rachel x0 | already correct |
+| Kristin Fisher | `kristen-fisher` | Kristin x32, Kristen x0 | already correct |
+| Deborah Symond O'Neil | `deborah-symond` | O'Neil x12 | already correct |
+| Lindy Rama-Ellis | `lindy-klim` | Rama-Ellis x9, Klim x3 | already correct |
+| Abbey Gelmi | `abbey-gelmi` | Abbey x34 | correct; Abby/Abbie are searcher typos |
+| Jennifer Hawkins | `jennifer-hawkins` | Jennifer x31 | correct; "Jen" is a nickname, not an error |
+| **David Mallett** | `david-mallet` | **Mallet x18, Mallett x7** | **genuinely wrong, fixed** |
+| **Terry de Gunzburg** | `terry-de-gunzberg` | **Gunzberg x2** | **genuinely wrong, fixed** |
 
-**The job:** work the variant into the body copy naturally, once, in a sentence
-that reads like editorial rather than a keyword ("Rachael Finch, who competed as
-Rachael Finch before...", or simply using her current name where it is accurate).
-Fix the misspellings in the title and copy. **Do not change the slugs.** These
-articles have live URLs and the redirect map is only just settling after the
-migration.
+Only two were real, and in both cases the misspelling sat in the metadata and the
+existing FAQ entries while the body prose was already correct. Both are fixed:
+`Mallet` to `Mallett` (11 places, verified against david-mallett.com) and
+`Gunzberg` to `Gunzburg` (2 places, verified against byterry.com).
 
----
+**No slug was changed.** The redirect map is still settling after the migration.
+
+The consequence: spelling is *not* why these queries under-click. `rachael finch`
+sits at position 11.7 on 924 impressions with one click while the page already
+says Rachael 29 times. That is a position or SERP-feature problem, not a copy
+problem, and it belongs with the position-1.1 anomalies described in Part D of
+`seo-recovery-worklist.md`. Do not spend more effort here.
 
 ## Lane 2 - genuine questions (FAQ entries)
 
-The `faqs` frontmatter array already renders through `<FAQPanel>` and emits
-FAQPage schema, so no template work is needed. Two or three per article, phrased
-the way people search, answered factually in a sentence or two.
+**The articles already have FAQs. Every one of the 26 checked carries three to
+five.** The problem is that they all answer what Beauticate wants to talk about,
+"What skincare does she use", "What is her makeup philosophy", while the queries
+people actually type are biographical: age, wife, husband, parents, nationality,
+sister, son.
+
+So the job is not to add an FAQ block. It is to add the biographical questions
+alongside the beauty ones, and only where the article itself supports the answer.
 
 ### Darren Palmer - `/interviews/creatives/darren-palmer-interiors-designer-and-olivier-duvillard`
 `darren palmer son` (pos 9.2, 359 impr), `darren palmer son` (5.4, 148),
