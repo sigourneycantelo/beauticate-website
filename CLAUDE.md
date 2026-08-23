@@ -77,9 +77,17 @@ paid_placement_until: '2027-08-23'   # last day of the placement, inclusive
 ```
 
 While that date is in the future, the listing shows a "Paid listing" chip in
-the byline and a line under it: *"This venue has paid for its place in the
-Beauticate directory. What we write about it is our own."* When the date
-passes, both disappear on their own.
+the byline and a line at the foot of the page: *"This is a paid listing. The
+venue has paid to appear in the Beauticate directory."* When the date passes,
+both disappear on their own.
+
+This mirrors how `affiliate_disclosure` already works: a small chip in the
+byline as the top-of-page signal, the full sentence at the bottom. Don't put a
+disclosure paragraph above the body. Nothing in Australian law requires
+top-of-article placement, the house pattern is foot-of-article, and the chip
+already does the upfront work. Keep the wording plain and factual: the
+requirement is to disclose the relationship, not to assert editorial
+independence alongside it.
 
 **It is a date, not a boolean, on purpose.** A boolean rots. The year ends,
 nobody clears the flag, and the page keeps declaring a commercial relationship

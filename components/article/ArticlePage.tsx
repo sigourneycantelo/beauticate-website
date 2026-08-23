@@ -202,13 +202,6 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />
 
-            {isPaidPlacement(f) && (
-              <p className="text-xs text-charcoal-light mt-4 pt-4 border-t border-cream-200">
-                This venue has paid for its place in the Beauticate directory. What we
-                write about it is our own.
-              </p>
-            )}
-
             {f.venueType && (
               <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} />
             )}
@@ -285,6 +278,15 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {f.affiliate_disclosure && (
           <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
             This article contains affiliate links. Beauticate may receive a small commission on purchases made through these links at no extra cost to you.
+          </p>
+        )}
+
+        {/* Paid placement disclosure — foot of the page, matching the affiliate
+            line above. The byline carries a "Paid listing" chip as the
+            top-of-page signal, which is the same pattern affiliate links use. */}
+        {isPaidPlacement(f) && (
+          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
+            This is a paid listing. The venue has paid to appear in the Beauticate directory.
           </p>
         )}
 
