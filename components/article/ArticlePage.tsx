@@ -201,7 +201,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
             />
 
             {f.venueType && (
-              <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} />
+              <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} website={f.website} />
             )}
           </>
         )}

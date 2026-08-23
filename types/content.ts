@@ -93,6 +93,12 @@ export interface ArticleFrontmatter {
   telephone?: string            // phone number for LocalBusiness schema
   instagram?: string            // Instagram handle (without @), e.g. "auroraspaandbathhouse"
   booking_url?: string          // direct booking/enquiry URL
+  /**
+   * The venue's own site. Kept separate from booking_url because that often
+   * points at Fresha, Kitomba or Timely, and the "Visit Website" button must
+   * not send readers to a booking platform's homepage.
+   */
+  website?: string
   state?: 'NSW' | 'VIC' | 'QLD' | 'WA' | 'SA' | 'TAS' | 'ACT' | 'NT'
   feeling?: string[]
   feeling_images?: Record<string, string>
