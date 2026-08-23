@@ -143,7 +143,7 @@ const nextConfig: NextConfig = {
       { source: '/destinations/travel/valonz-paddington', destination: '/destinations/clinics/valonz-paddington', permanent: true },
       { source: '/destinations/travel/spa-by-jw-jw-marriott-gold-coast', destination: '/destinations/spas-retreats/spa-by-jw-jw-marriott-gold-coast', permanent: true },
       { source: '/destinations/travel/spa-q-qt-resort-gold-coast', destination: '/destinations/spas-retreats/spa-q-qt-resort-gold-coast', permanent: true },
-      { source: '/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers', destination: '/destinations/spas-retreats/stables-day-spa-at-mount-lofty-house-crafers', permanent: true },
+      { source: '/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers', destination: '/destinations/spas-retreats/gatekeepers-day-spa-mount-lofty-house-crafers', permanent: true },
       { source: '/destinations/travel/loccitane-petit-spa', destination: '/destinations/spas-retreats/loccitane-petit-spa', permanent: true },
       { source: '/destinations/travel/spaq-qt-sydney', destination: '/destinations/spas-retreats/spaq-qt-sydney', permanent: true },
       { source: '/destinations/travel/crown-spa-melbourne', destination: '/destinations/spas-retreats/crown-spa-melbourne', permanent: true },

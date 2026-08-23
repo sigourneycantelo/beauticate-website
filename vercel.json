@@ -37,6 +37,21 @@
       "source": "/destinations/clinics/amy-jean-eye-couture-sydney",
       "destination": "/destinations/salons/amy-jean-eye-couture-sydney",
       "permanent": true
+    },
+    {
+      "source": "/destinations/spas-retreats/stables-day-spa-at-mount-lofty-house-crafers",
+      "destination": "/destinations/spas-retreats/gatekeepers-day-spa-mount-lofty-house-crafers",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/spaq-qt-gold-coast",
+      "destination": "/destinations/spas-retreats/spa-q-qt-resort-gold-coast",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/follow-hair-studio-surfers-paradise",
+      "destination": "/destinations/salons/edwards-and-co-gold-coast",
+      "permanent": true
     }
   ]
 }
