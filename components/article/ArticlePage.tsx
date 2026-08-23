@@ -197,7 +197,6 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               date={f.date_published}
               readingTime={f.reading_time}
               affiliateDisclosure={f.affiliate_disclosure}
-              paidPlacement={isPaidPlacement(f)}
               showDate={resolveSchemaType(f) === 'NewsArticle'}
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />
@@ -281,9 +280,10 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           </p>
         )}
 
-        {/* Paid placement disclosure — foot of the page, matching the affiliate
-            line above. The byline carries a "Paid listing" chip as the
-            top-of-page signal, which is the same pattern affiliate links use. */}
+        {/* Paid placement disclosure — foot of the page, beside the affiliate
+            line above, and deliberately the only place it appears. No byline
+            marker, nothing above the body: Australian law sets no
+            top-of-article requirement and the house pattern is foot-of-page. */}
         {isPaidPlacement(f) && (
           <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
             This is a paid listing. The venue has paid to appear in the Beauticate directory.

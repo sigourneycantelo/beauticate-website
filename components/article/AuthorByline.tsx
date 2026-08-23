@@ -7,13 +7,12 @@ interface Props {
   date: string
   readingTime?: number
   affiliateDisclosure?: boolean
-  paidPlacement?: boolean
   showDate?: boolean
   /** ISO date — when set, surfaces a visible "Last updated {Month Year}" freshness cue. */
   lastUpdated?: string
 }
 
-export default function AuthorByline({ name, date, readingTime, affiliateDisclosure, paidPlacement, showDate = false, lastUpdated }: Props) {
+export default function AuthorByline({ name, date, readingTime, affiliateDisclosure, showDate = false, lastUpdated }: Props) {
   const author = getAuthor(name)
   const displayName = author?.name ?? name
   const role = author?.role
@@ -69,7 +68,6 @@ export default function AuthorByline({ name, date, readingTime, affiliateDisclos
           {formattedUpdated && <span>Last updated {formattedUpdated}</span>}
           {readingTime && <span>{readingTime} min read</span>}
           {affiliateDisclosure && <span className="text-wine">Affiliate links</span>}
-          {paidPlacement && <span className="text-wine">Paid listing</span>}
         </div>
       </div>
     </div>

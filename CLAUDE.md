@@ -76,16 +76,15 @@ frontmatter field:
 paid_placement_until: '2027-08-23'   # last day of the placement, inclusive
 ```
 
-While that date is in the future, the listing shows a "Paid listing" chip in
-the byline and a line at the foot of the page: *"This is a paid listing. The
-venue has paid to appear in the Beauticate directory."* When the date passes,
-both disappear on their own.
+While that date is in the future, the listing carries one line at the foot of
+the page, beside the affiliate disclosure: *"This is a paid listing. The venue
+has paid to appear in the Beauticate directory."* When the date passes, it
+disappears on its own.
 
-This mirrors how `affiliate_disclosure` already works: a small chip in the
-byline as the top-of-page signal, the full sentence at the bottom. Don't put a
-disclosure paragraph above the body. Nothing in Australian law requires
-top-of-article placement, the house pattern is foot-of-article, and the chip
-already does the upfront work. Keep the wording plain and factual: the
+That single line is the whole disclosure. There is no marker in the byline and
+nothing above the body. Nothing in Australian law requires top-of-article
+placement; the ACL test is whether the overall impression misleads, and the
+house pattern is foot-of-article. Keep the wording plain and factual: the
 requirement is to disclose the relationship, not to assert editorial
 independence alongside it.
 

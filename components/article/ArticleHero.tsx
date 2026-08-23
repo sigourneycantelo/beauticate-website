@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { isPaidPlacement } from '@/lib/content'
 import Link from 'next/link'
 import type { ArticleFrontmatter } from '@/types/content'
 import AuthorByline from './AuthorByline'
@@ -137,7 +136,6 @@ export default function ArticleHero({ frontmatter: f }: Props) {
           date={f.date_published}
           readingTime={f.reading_time}
           affiliateDisclosure={f.affiliate_disclosure}
-          paidPlacement={isPaidPlacement(f)}
           showDate={resolveSchemaType(f) === 'NewsArticle'}
           lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
         />
