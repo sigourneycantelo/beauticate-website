@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { isPaidPlacement } from '@/lib/content'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
@@ -196,9 +197,17 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               date={f.date_published}
               readingTime={f.reading_time}
               affiliateDisclosure={f.affiliate_disclosure}
+              paidPlacement={isPaidPlacement(f)}
               showDate={resolveSchemaType(f) === 'NewsArticle'}
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />
+
+            {isPaidPlacement(f) && (
+              <p className="text-xs text-charcoal-light mt-4 pt-4 border-t border-cream-200">
+                This venue has paid for its place in the Beauticate directory. What we
+                write about it is our own.
+              </p>
+            )}
 
             {f.venueType && (
               <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} />

@@ -111,8 +111,16 @@ export interface ArticleFrontmatter {
   featured?: boolean
   editorial_flag?: string
   sigourneys_edit?: boolean
-  sponsored?: boolean
+  sponsored?: boolean          // declared but never rendered; see paid_placement_until
   affiliate_disclosure?: boolean
+  /**
+   * Directory listings are sold as annual placements. This is the date the
+   * current placement lapses, NOT a boolean, because a boolean rots: the year
+   * ends, nobody clears the flag, and the page keeps declaring a commercial
+   * relationship that no longer exists. Disclosure has to be accurate in both
+   * directions. Set it when a slot is sold; the label disappears on its own.
+   */
+  paid_placement_until?: string  // ISO date, e.g. '2027-08-23'
   contributors?: string[]        // collective members featured in team/collaborative articles
 }
 
