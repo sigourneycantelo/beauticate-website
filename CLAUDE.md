@@ -67,6 +67,49 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 - **Re-filing a listing to a new subcategory means `git mv`, not copy-and-leave-the-original.** Several listings exist twice — once at a stale `clinics/` (or similar) path and once at the corrected path — because a re-file copied the file instead of moving it. When you copy content to a new path, delete or draft the old one in the same change; don't leave an orphaned duplicate.
 - **Before publishing or unpublishing any listing, check for near-duplicates first** — same venue name filed under a different subcategory/slug is the recurring failure mode here. `scripts/audit-directory-duplicates.py` does this check; run it before any bulk directory work.
 
+## Paid directory placements
+
+Directory slots are sold as annual placements. Disclosure is handled by one
+frontmatter field:
+
+```yaml
+paid_placement_until: '2027-08-23'   # last day of the placement, inclusive
+```
+
+While that date is in the future, the listing carries one line at the foot of
+the page, beside the affiliate disclosure: *"This is a paid listing. The venue
+has paid to appear in the Beauticate directory."* When the date passes, it
+disappears on its own.
+
+That single line is the whole disclosure. There is no marker in the byline and
+nothing above the body. Nothing in Australian law requires top-of-article
+placement; the ACL test is whether the overall impression misleads, and the
+house pattern is foot-of-article. Keep the wording plain and factual: the
+requirement is to disclose the relationship, not to assert editorial
+independence alongside it.
+
+The same applies to `affiliate_disclosure`. It renders one line at the foot of
+the article and nothing in the byline. Don't add a marker to either.
+
+**It is a date, not a boolean, on purpose.** A boolean rots. The year ends,
+nobody clears the flag, and the page keeps declaring a commercial relationship
+that ended. Disclosure has to be accurate in both directions: telling readers a
+listing is paid when it isn't is its own misrepresentation, and it is the
+reason the existing listings carry no label at all. Every historical placement
+has lapsed, so as of August 2026 nothing in the directory is under a paid
+arrangement, and nothing is labelled.
+
+**Set the field at the point of sale, as part of invoicing.** Not afterwards,
+not in a bulk pass. If it isn't set when the money is taken it will not get set.
+
+The general position is stated on `/terms` under "Our directory", including
+that venues have hosted us for treatments. Don't add a blanket "listings may be
+paid" line anywhere: applied across a directory where none currently are, that
+statement is false about the majority of it.
+
+`sponsored: boolean` also exists in `ArticleFrontmatter`. It is rendered
+nowhere and set on nothing. Don't reach for it.
+
 ## Git workflow
 
 **Open a pull request. Do not push straight to `main`.** The repo has branch

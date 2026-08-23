@@ -275,3 +275,25 @@ export function getVodcastEpisode(slug: string): { frontmatter: VodcastFrontmatt
   const { data, content } = matter(raw)
   return { frontmatter: data as VodcastFrontmatter, content }
 }
+
+/**
+ * True while a directory listing's paid placement is still running.
+ *
+ * Placements are sold by the year. Reading the expiry date rather than a
+ * boolean means a lapsed placement stops being disclosed automatically, which
+ * matters because an inaccurate disclosure cuts both ways: telling readers a
+ * listing is paid when the arrangement ended is its own misrepresentation.
+ */
+export function isPaidPlacement(
+  f: { paid_placement_until?: string },
+  now: Date = new Date()
+): boolean {
+  if (!f.paid_placement_until) return false
+  const until = new Date(f.paid_placement_until)
+  if (Number.isNaN(until.getTime())) return false
+  // The date is the last day of the placement, inclusive. Parsing a bare
+  // yyyy-mm-dd gives midnight, so without this the label would vanish at the
+  // start of the day it is supposed to cover.
+  until.setHours(23, 59, 59, 999)
+  return until >= now
+}

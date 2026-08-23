@@ -69,6 +69,22 @@ export default function TermsPage() {
         </section>
 
         <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Our directory</h2>
+          <p>
+            Our directory of clinics, salons, spas and bathhouses has, at various times, included
+            listings a venue paid to appear in, usually as a placement running for a year. Where a
+            listing is currently part of a paid placement, we label it on the page itself, and that
+            label comes off when the placement ends. A listing without that label is not part of a
+            paid arrangement.
+          </p>
+          <p className="mt-4">
+            Venues have also hosted us for treatments we have written about. Whether or not a venue
+            has paid or hosted us, what we write is our own judgement, and we do not give anyone
+            approval over it.
+          </p>
+        </section>
+
+        <section>
           <h2 className="font-serif text-xl text-ink mb-4">Orders and payment</h2>
           <p>
             Placing an order is an offer to buy. Your order is accepted when we send you an order

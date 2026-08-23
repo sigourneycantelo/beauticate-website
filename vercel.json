@@ -17,6 +17,41 @@
       "destination": "https://beauticate.com/shop",
       "permanent": true,
       "has": [{ "type": "host", "value": "beauticate.shop" }]
+    },
+    {
+      "source": "/destinations/spas-retreats/melanie-grant-skin-health-double-bay",
+      "destination": "/destinations/clinics/melanie-grant-skin-health-double-bay",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/spas-retreats/the-girl-you-love-glebe",
+      "destination": "/destinations/clinics/the-girl-you-love-glebe",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/spas-retreats/karpatimedispa-double-bay",
+      "destination": "/destinations/clinics/karpatimedispa-double-bay",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/amy-jean-eye-couture-sydney",
+      "destination": "/destinations/salons/amy-jean-eye-couture-sydney",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/spas-retreats/stables-day-spa-at-mount-lofty-house-crafers",
+      "destination": "/destinations/spas-retreats/gatekeepers-day-spa-mount-lofty-house-crafers",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/spaq-qt-gold-coast",
+      "destination": "/destinations/spas-retreats/spa-q-qt-resort-gold-coast",
+      "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/follow-hair-studio-surfers-paradise",
+      "destination": "/destinations/salons/edwards-and-co-gold-coast",
+      "permanent": true
     }
   ]
 }
