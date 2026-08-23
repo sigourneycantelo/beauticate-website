@@ -88,6 +88,9 @@ house pattern is foot-of-article. Keep the wording plain and factual: the
 requirement is to disclose the relationship, not to assert editorial
 independence alongside it.
 
+The same applies to `affiliate_disclosure`. It renders one line at the foot of
+the article and nothing in the byline. Don't add a marker to either.
+
 **It is a date, not a boolean, on purpose.** A boolean rots. The year ends,
 nobody clears the flag, and the page keeps declaring a commercial relationship
 that ended. Disclosure has to be accurate in both directions: telling readers a

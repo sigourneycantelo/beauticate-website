@@ -196,7 +196,6 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               name={f.author ?? 'Beauticate Editorial'}
               date={f.date_published}
               readingTime={f.reading_time}
-              affiliateDisclosure={f.affiliate_disclosure}
               showDate={resolveSchemaType(f) === 'NewsArticle'}
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />
