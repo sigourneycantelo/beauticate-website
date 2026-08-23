@@ -12,6 +12,15 @@ import type { Plugin } from 'unified'
  */
 const CREDIT_PATTERN = /^(story by|photography by|words by|images? by|interview by|hair by|makeup by|styled by|produced by|directed by|shot by|written by|videography by)/i
 
+/**
+ * Disclosure / housekeeping lines — paid partnership, affiliate, gifting,
+ * medical and "originally published" notes. These are italicised the same way
+ * as an interview pull-quote but are legal/editorial small print, not a quote,
+ * so they get their own quiet treatment instead.
+ */
+const DISCLOSURE_PATTERN =
+  /^(paid partnership|in paid partnership|sponsored (by|content)|advertis(ing|ement) feature|this (article|story|post|piece|trial|feature|review|edit) (was|is|contains)|some( of the)? links|all links|links (in this|marked)|affiliate link|this (article|post) contains affiliate|products? (were|was)? ?gifted|gifted (by|product)|we (were|was) gifted|with thanks to)/i
+
 /** Longest an italic paragraph can be and still read as a pull quote. */
 const PULL_QUOTE_MAX_CHARS = 180
 
@@ -72,6 +81,17 @@ const rehypePullQuotes: Plugin<[], Root> = () => {
         const text = getTextContent(meaningful[0]).trim()
         if (CREDIT_PATTERN.test(text)) continue
 
+        if (DISCLOSURE_PATTERN.test(text)) {
+          el.properties = {
+            ...el.properties,
+            className: [
+              ...((el.properties?.className as string[]) ?? []),
+              'article-disclosure',
+            ],
+          }
+          continue
+        }
+
         const prev = i > 0 ? elements[i - 1] : null
         if (prev && isImageParagraph(prev)) continue
 
@@ -87,6 +107,23 @@ const rehypePullQuotes: Plugin<[], Root> = () => {
             ...((el.properties?.className as string[]) ?? []),
             isStandfirst ? 'interview-standfirst' : 'interview-pull-quote',
           ],
+        }
+        continue
+      }
+
+      // Plain (non-italic) disclosure lines sitting at the very end of the
+      // article — e.g. "Paid partnership with Samsung." — read as small print
+      // too, so they join the same block rather than looking like body copy.
+      if (i >= elements.length - 3) {
+        const text = getTextContent(el).trim()
+        if (text.length < 300 && DISCLOSURE_PATTERN.test(text)) {
+          el.properties = {
+            ...el.properties,
+            className: [
+              ...((el.properties?.className as string[]) ?? []),
+              'article-disclosure',
+            ],
+          }
         }
       }
     }
