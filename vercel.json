@@ -52,6 +52,11 @@
       "source": "/destinations/clinics/follow-hair-studio-surfers-paradise",
       "destination": "/destinations/salons/edwards-and-co-gold-coast",
       "permanent": true
+    },
+    {
+      "source": "/destinations/clinics/edwards-and-co-surry-hills",
+      "destination": "/destinations/clinics/edwards-co-surry-hills",
+      "permanent": true
     }
   ]
 }
