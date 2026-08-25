@@ -101,7 +101,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     ? `/shop/moments/${f.slug}`
     : null
 
-  function InlineProduct({ handle }: { handle: string }) {
+  /**
+   * An own-shop product card in the article body. On its own it floats left
+   * with the copy wrapping beside it; pass `inline` to get the bare tile so
+   * several can sit side by side inside a grid wrapper — same convention as
+   * <ProductInset inline> uses for affiliate cards.
+   */
+  function InlineProduct({ handle, inline }: { handle: string; inline?: boolean }) {
     const sp = shopProductMap[handle]
     if (!sp) {
       const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
@@ -111,20 +117,24 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     const imgs = sp.images?.nodes ?? []
     const primary = imgs[0] ?? sp.featuredImage
     const secondary = imgs[1]
+    const tile = (
+      <ProductTile
+        href={`/shop/products/${sp.handle}`}
+        useNextImage
+        primarySrc={primary?.url}
+        primaryAlt={primary?.altText ?? sp.title}
+        secondarySrc={secondary?.url}
+        secondaryAlt={secondary?.altText ?? sp.title}
+        cornerLabel="In our shop"
+        brand={sp.vendor}
+        name={sp.title}
+        price={formatted}
+      />
+    )
+    if (inline) return tile
     return (
       <span className="not-prose sm:float-left sm:mr-7 sm:clear-left mb-5 w-full sm:w-[42%] max-w-[260px] block mx-auto sm:mx-0">
-        <ProductTile
-          href={`/shop/products/${sp.handle}`}
-          useNextImage
-          primarySrc={primary?.url}
-          primaryAlt={primary?.altText ?? sp.title}
-          secondarySrc={secondary?.url}
-          secondaryAlt={secondary?.altText ?? sp.title}
-          cornerLabel="In our shop"
-          brand={sp.vendor}
-          name={sp.title}
-          price={formatted}
-        />
+        {tile}
       </span>
     )
   }

@@ -206,6 +206,31 @@ All product cards use the single `ProductTile` component (`components/shared/Pro
 
 The white text strip is the constant across both modes. The image area is the variable. This consistency is what makes a grid of mixed product shots look curated. Reference: SheerLuxe product cards.
 
+**No orphan products — place them in pairs.** A single product card sitting on
+its own in an article body looks like something failed to load. Default to a
+two-up:
+
+```
+<div className="not-prose grid grid-cols-2 gap-4 my-8" style={{clear:'both'}}>
+<ProductInset inline ... />
+<InlineProduct inline handle="..." />
+</div>
+```
+
+`inline` on either component drops its float wrapper and hands the grid a bare
+tile, so own-shop and affiliate cards pair with each other freely. The only
+acceptable solo placement is one that is deliberately full-width or centred —
+never a lone floated card. If there's only one product for a section, either
+find it a partner or move it into a pair elsewhere rather than leaving it
+stranded.
+
+**A shop handle that stops resolving renders nothing, not a blank tile.** When
+a Shopify product is archived or unpublished it drops out of the Storefront
+API, and the card has no image, name, price or URL left to draw. `ProductEmbed`
+returns `null` in that case. So an archived product doesn't leave a hole — it
+leaves a gap in the pair, which is the visible symptom to look for. Check the
+handle in Shopify (`status: ACTIVE`) before assuming a card is a layout bug.
+
 **Image rule:** Product images in ShopItem cards must always be de-etched product shots — the product on a neutral or transparent background, outside its retail packaging. Never use retail box or packaging shots. This applies to all product cards site-wide.
 
 ## Editorial category layout
