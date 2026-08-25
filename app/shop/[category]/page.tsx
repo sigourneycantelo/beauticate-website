@@ -65,6 +65,12 @@ const CATEGORY_FAQS: Record<string, { q: string; a: string }[]> = {
   ],
 }
 
+// Shopify data on this page is baked at build time by generateStaticParams, so
+// without this it stays frozen until someone redeploys — a product that gets
+// archived, relisted, restocked or repriced shows stale indefinitely. 300s
+// matches the revalidate already used on the Shopify fetches in lib/shopify.ts.
+export const revalidate = 300
+
 export function generateStaticParams() {
   return BROAD_CATEGORIES.map(b => ({ category: b.slug }))
 }
