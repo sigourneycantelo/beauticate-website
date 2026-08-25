@@ -68,6 +68,9 @@ const PRODUCT_FRAGMENT = `
         price { amount currencyCode }
         compareAtPrice { amount currencyCode }
         selectedOptions { name value }
+        # Per-colourway shot, so an editorial card pinned to one variant
+        # (e.g. Blush Pink) shows that colour rather than the product's default.
+        image { url altText width height }
       }
     }
   }

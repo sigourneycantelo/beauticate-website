@@ -4,6 +4,10 @@ export interface ProductLink {
   name: string
   type: ProductLinkType
   handle?: string        // for type: 'shop' — matches Shopify product handle
+  variant?: string       // for type: 'shop' — pin the card to one colourway, by variant
+                         // title ("Blush Pink") or variant id. Without it the card shows
+                         // the listing's default variant, which on a multi-colour product
+                         // is often not the colour the article means.
   url?: string           // for type: 'affiliate' | 'external'
   retailer?: string      // e.g. 'MECCA', 'Sephora', 'Brand direct'
   note?: string          // e.g. "Sigourney's Edit", "Reader favourite"
