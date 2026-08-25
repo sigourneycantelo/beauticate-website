@@ -93,6 +93,12 @@ export interface ArticleFrontmatter {
   telephone?: string            // phone number for LocalBusiness schema
   instagram?: string            // Instagram handle (without @), e.g. "auroraspaandbathhouse"
   booking_url?: string          // direct booking/enquiry URL
+  /**
+   * The venue's own site. Kept separate from booking_url because that often
+   * points at Fresha, Kitomba or Timely, and the "Visit Website" button must
+   * not send readers to a booking platform's homepage.
+   */
+  website?: string
   state?: 'NSW' | 'VIC' | 'QLD' | 'WA' | 'SA' | 'TAS' | 'ACT' | 'NT'
   feeling?: string[]
   feeling_images?: Record<string, string>
@@ -111,8 +117,16 @@ export interface ArticleFrontmatter {
   featured?: boolean
   editorial_flag?: string
   sigourneys_edit?: boolean
-  sponsored?: boolean
+  sponsored?: boolean          // declared but never rendered; see paid_placement_until
   affiliate_disclosure?: boolean
+  /**
+   * Directory listings are sold as annual placements. This is the date the
+   * current placement lapses, NOT a boolean, because a boolean rots: the year
+   * ends, nobody clears the flag, and the page keeps declaring a commercial
+   * relationship that no longer exists. Disclosure has to be accurate in both
+   * directions. Set it when a slot is sold; the label disappears on its own.
+   */
+  paid_placement_until?: string  // ISO date, e.g. '2027-08-23'
   contributors?: string[]        // collective members featured in team/collaborative articles
 }
 
