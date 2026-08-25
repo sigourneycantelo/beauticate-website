@@ -3,6 +3,7 @@ import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
 import { formatCardPrice } from '@/lib/product-format'
+import { findVariant, variantHref } from '@/lib/shop-variant'
 
 interface Props {
   product: ProductLink
@@ -18,20 +19,24 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
       ? formatCardPrice(shopProduct)
       : undefined
     const imgs = shopProduct.images?.nodes ?? []
-    const primary = imgs[0] ?? shopProduct.featuredImage
-    const secondary = imgs[1]
+    // Honour a pinned colourway (product_links `variant`) so this tile matches
+    // the one in the article body instead of showing the listing's default.
+    const v = findVariant(shopProduct, product.variant)
+    const primary = v?.image ?? imgs[0] ?? shopProduct.featuredImage
+    const secondary = v?.image ? imgs[0] : imgs[1]
+    const label = product.name || shopProduct.title
 
     return (
       <div className="not-prose my-8">
         <ProductTile
-          href={`/shop/products/${shopProduct.handle}`}
+          href={variantHref(shopProduct.handle, v)}
           useNextImage
           primarySrc={primary?.url}
-          primaryAlt={primary?.altText ?? shopProduct.title}
+          primaryAlt={primary?.altText ?? label}
           secondarySrc={secondary?.url}
-          secondaryAlt={secondary?.altText ?? shopProduct.title}
+          secondaryAlt={secondary?.altText ?? label}
           brand={shopProduct.vendor}
-          name={shopProduct.title}
+          name={label}
           price={formatted}
         />
       </div>
