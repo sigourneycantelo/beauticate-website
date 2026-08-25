@@ -277,6 +277,9 @@ const nextConfig: NextConfig = {
       { source: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2', destination: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will', permanent: true },
       { source: '/beauty-style/beauty-tips/go-tos-launch-2', destination: '/beauty-style/beauty-tips/go-tos-launch', permanent: true },
 
+      // ── Editorial re-filing (Aug 2026) ───────────────────────────────────────────
+      { source: '/beauty-style/beauty-tips/the-la-effect-beverly-hills-style-lessons', destination: '/beauty-style/style/the-la-effect-beverly-hills-style-lessons', permanent: true },
+
       // ── SEO priority list: high-traffic old paths needing redirects ──────────────
       { source: '/reviews/luxury-skincare-review', destination: '/beauty-style/skin-care/luxury-skincare-review', permanent: true },
       { source: '/ask/should-you-apply-fake-tan-on-top-of-an-existing-tan', destination: '/beauty-style/beauty-tips/should-you-apply-fake-tan-on-top-of-an-existing-tan', permanent: true },
