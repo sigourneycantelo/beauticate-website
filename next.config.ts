@@ -12,6 +12,22 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // CSP deliberately excluded — it's the one header that breaks sites when set
+  // carelessly (embeds, analytics, Shopify checkout) and needs its own pass
+  // with Content-Security-Policy-Report-Only first, not bundled in here.
+  async headers() {
+    return [{
+      source: '/:path*',
+      headers: [
+        { key: 'X-Content-Type-Options', value: 'nosniff' },
+        { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+        { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+        { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      ],
+    }]
+  },
+
   async redirects() {
     return [
       // ── Old WP competitions landing → competition T&Cs ───────────────────
@@ -29,6 +45,10 @@ const nextConfig: NextConfig = {
       // Exclude cart/checkout paths so Shopify's hosted checkout still works.
       { source: '/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
+
+      // ── Canonical host: www.beauticate.com. Both bare and www resolved
+      // with no redirect between them, splitting link/ranking signal in two.
+      { source: '/:path*', has: [{ type: 'host', value: 'beauticate.com' }], destination: 'https://www.beauticate.com/:path*', permanent: true },
 
       // ── Refreshed article: "I'm 41" → "I'm 44" skincare routine ──────────
       { source: '/beauty-style/skin-care/im-41-this-is-everything-i-do-for-my-skin', destination: '/beauty-style/skin-care/im-44-everything-i-use-on-my-skin', permanent: true },
@@ -123,7 +143,7 @@ const nextConfig: NextConfig = {
       { source: '/destinations/travel/valonz-paddington', destination: '/destinations/clinics/valonz-paddington', permanent: true },
       { source: '/destinations/travel/spa-by-jw-jw-marriott-gold-coast', destination: '/destinations/spas-retreats/spa-by-jw-jw-marriott-gold-coast', permanent: true },
       { source: '/destinations/travel/spa-q-qt-resort-gold-coast', destination: '/destinations/spas-retreats/spa-q-qt-resort-gold-coast', permanent: true },
-      { source: '/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers', destination: '/destinations/spas-retreats/stables-day-spa-at-mount-lofty-house-crafers', permanent: true },
+      { source: '/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers', destination: '/destinations/spas-retreats/gatekeepers-day-spa-mount-lofty-house-crafers', permanent: true },
       { source: '/destinations/travel/loccitane-petit-spa', destination: '/destinations/spas-retreats/loccitane-petit-spa', permanent: true },
       { source: '/destinations/travel/spaq-qt-sydney', destination: '/destinations/spas-retreats/spaq-qt-sydney', permanent: true },
       { source: '/destinations/travel/crown-spa-melbourne', destination: '/destinations/spas-retreats/crown-spa-melbourne', permanent: true },
@@ -274,9 +294,7 @@ const nextConfig: NextConfig = {
 
       // ── Duplicate consolidation map (GA Jun 2026 research) ──────────────────
       { source: '/beauty-style/beauty-tips/these-are-the-beauty-brands-working-towards-better-packaging', destination: '/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging', permanent: true },
-      { source: '/living/lifestyle/best-ai-image-generator-app-review-glam-ai', destination: '/beauty-style/beauty-tips/best-ai-image-generator-app-review-glam-ai', permanent: true },
       { source: '/news/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy', destination: '/beauty-style/beauty-tips/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy', permanent: true },
-      { source: '/interviews/actors-presenters/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', destination: '/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', permanent: true },
       { source: '/beauty-style/magnesium-pools-wellness-design-australia', destination: '/beauty-style/beauty-tips/magnesium-pools-wellness-design-australia', permanent: true },
       { source: '/destination/travel/family-ski-holiday-to-japan', destination: '/beauty-style/beauty-tips/family-ski-holiday-to-japan', permanent: true },
       { source: '/sigourneys-edit/last-minute-christmas-gifts', destination: '/beauty-style/beauty-tips/last-minute-christmas-gifts', permanent: true },
@@ -293,7 +311,6 @@ const nextConfig: NextConfig = {
       { source: '/beauty-style/best-korean-beauty-products-2025', destination: '/beauty-style/skin-care/best-korean-beauty-products-2025', permanent: true },
       { source: '/interviews/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame', destination: '/interviews/actors-presenters/celeste-barber-on-body-shaming-fame-and-wanking-i-have-no-interest-in-fame', permanent: true },
       { source: '/beauty-style/the-art-of-tablescaping-the-chic-trend-taking-over-instagram', destination: '/living/entertaining/the-art-of-tablescaping-the-chic-trend-taking-over-instagram', permanent: true },
-      { source: '/living/interiors/living-room-transformation', destination: '/beauty-style/beauty-tips/living-room-transformation', permanent: true },
       { source: '/destination/beauty-wellness/clinics/the-girl-you-love-glebe', destination: '/destinations/spas-retreats/the-girl-you-love-glebe', permanent: true },
       { source: '/living/sustainability/video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty', destination: '/interviews/creatives/video-loreals-guive-balooch-on-wearable-technology-and-the-sustainable-future-of-beauty', permanent: true },
       { source: '/beauty-style/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it', destination: '/beauty-style/skin-care/why-your-tap-water-might-be-ruining-your-skin-and-what-to-do-about-it', permanent: true },
@@ -303,7 +320,6 @@ const nextConfig: NextConfig = {
       { source: '/how-to/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful', destination: '/living/interiors/jade-yarbrough-the-merci-maison-designers-six-styling-hacks-to-make-small-spaces-beautiful', permanent: true },
       { source: '/destination/beauty-wellness/skin-salons/youth-lab-joondalup', destination: '/destinations/clinics/youth-lab-joondalup', permanent: true },
       { source: '/wellness/health/elyse-taylor-on-how-to-be-happy', destination: '/beauty-style/beauty-tips/elyse-taylor-on-how-to-be-happy', permanent: true },
-      { source: '/living/sustainability/our-top-six-tips-for-how-to-shop-your-beauty-stash', destination: '/beauty-style/beauty-tips/our-top-six-tips-for-how-to-shop-your-beauty-stash', permanent: true },
       { source: '/destination/beauty-wellness/clinics/me-skin-and-body-south-yarra', destination: '/destinations/clinics/me-skin-and-body-south-yarra', permanent: true },
       { source: '/beauty-style/the-exact-products-a-beauty-editor-packs-for-europe', destination: '/beauty-style/beauty-tips/the-exact-products-a-beauty-editor-packs-for-europe', permanent: true },
       { source: '/beauty-style/skin-care/skincare-mecca-why-you-need-to-visit-myeongdong', destination: '/destinations/travel/skincare-mecca-why-you-need-to-visit-myeongdong', permanent: true },
@@ -316,11 +332,9 @@ const nextConfig: NextConfig = {
       { source: '/destination/beauty-wellness/clinics/elements-day-spa-darwin', destination: '/destinations/clinics/elements-day-spa-darwin', permanent: true },
       { source: '/beauty-style/cosmetic/does-eyeliner-tattoo-hurt', destination: '/beauty-style/makeup/does-eyeliner-tattoo-hurt', permanent: true },
       { source: '/sigourneys-edit/struggling-to-sleep-this-mattress-changed-everything-for-me', destination: '/beauty-style/beauty-tips/struggling-to-sleep-this-mattress-changed-everything-for-me', permanent: true },
-      { source: '/living/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me', destination: '/beauty-style/beauty-tips/struggling-to-sleep-this-mattress-changed-everything-for-me', permanent: true },
       { source: '/beauty-style/christmas-led-skincare-gift', destination: '/beauty-style/skin-care/christmas-led-skincare-gift', permanent: true },
       { source: '/beauty-style/beauty-tips/video-elle-ferguson-shows-us-her-beauty-stash', destination: '/beauty-style/skin-care/video-elle-ferguson-shows-us-her-beauty-stash', permanent: true },
       { source: '/beauty-style/beauty-tips/how-to-do-french-girl-beauty-like-an-icon', destination: '/beauty-style/makeup/how-to-do-french-girl-beauty-like-an-icon', permanent: true },
-      { source: '/living/interiors/the-new-interiors-trends-and-how-to-work-them', destination: '/beauty-style/beauty-tips/the-new-interiors-trends-and-how-to-work-them', permanent: true },
       { source: '/destination/discover-beauty-at-melbournes-most-luxurious-spa', destination: '/destinations/clinics/discover-beauty-at-melbournes-most-luxurious-spa', permanent: true },
       { source: '/destination/beauty-wellness/clinics/chakana-day-spa-wellbeing-avalon-2', destination: '/destinations/spas-retreats/chakana-day-spa-wellbeing-avalon-2', permanent: true },
       { source: '/destination/beauty-wellness/clinics/go-tos-natures-energy-glebe', destination: '/destinations/travel/go-tos-natures-energy-glebe', permanent: true },
@@ -332,11 +346,9 @@ const nextConfig: NextConfig = {
       { source: '/sigourneys-edit/escape-here-the-south-coast-sanctuary-for-self-care', destination: '/destinations/travel/escape-here-the-south-coast-sanctuary-for-self-care', permanent: true },
       { source: '/destination/travel/hotels-resorts/mondrian-gold-coast-review', destination: '/destinations/travel/mondrian-gold-coast-review', permanent: true },
       { source: '/beauty-style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style', destination: '/beauty-style/style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style', permanent: true },
-      { source: '/living/interiors/built-by-damo-the-best-deck-on-the-block', destination: '/beauty-style/beauty-tips/built-by-damo-the-best-deck-on-the-block', permanent: true },
       { source: '/destination/travel/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw', destination: '/destinations/spas-retreats/chateau-elan-spa-the-hunter-valley-nsw', permanent: true },
       { source: '/destination/beauty-wellness/clinics/paddington-beauty-room-paddington', destination: '/destinations/clinics/paddington-beauty-room-paddington', permanent: true },
       { source: '/beauty-style/beauty-tips/how-to-tint-your-brows-without-a-beauty-diploma', destination: '/beauty-style/makeup/how-to-tint-your-brows-without-a-beauty-diploma', permanent: true },
-      { source: '/living/interiors/home-apartment', destination: '/beauty-style/beauty-tips/home-apartment', permanent: true },
       { source: '/interviews/founders/lucy-folk-jeweller-designer', destination: '/interviews/creatives/lucy-folk-jeweller-designer', permanent: true },
       { source: '/how-to/interiors/struggling-to-sleep-this-mattress-changed-everything-for-me', destination: '/beauty-style/beauty-tips/struggling-to-sleep-this-mattress-changed-everything-for-me', permanent: true },
       { source: '/beauty-style/timeless-beauty-the-effortless-no-makeup-makeup-look', destination: '/beauty-style/beauty-tips/timeless-beauty-the-effortless-no-makeup-makeup-look', permanent: true },
@@ -761,7 +773,6 @@ const nextConfig: NextConfig = {
       { source: '/who/tash-sefton-fashion-entrepreneur', destination: '/interviews/founders/tash-sefton-fashion-entrepreneur', permanent: true },
       { source: '/who/creatives/jessica-mauboy', destination: '/interviews/creatives/jessica-mauboy', permanent: true },
       { source: '/how-to/makeup-tutorials/the-best-strobing-products-reader-review-1', destination: '/beauty-style/makeup/the-best-strobing-products-reader-review-1', permanent: true },
-      { source: '/beauty-style/makeup/ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards', destination: '/beauty-style/beauty-tips/ive-tried-hundreds-but-these-are-the-3-mascaras-that-meet-my-high-standards', permanent: true },
       { source: '/destination/beauty-wellness/skin-salons/elements-day-spa-darwin', destination: '/destinations/clinics/elements-day-spa-darwin', permanent: true },
       { source: '/who/creatives/atong-atem-the-colour-loving-artist-on-beauty-as-self-expression-and-self-care', destination: '/interviews/creatives/atong-atem-the-colour-loving-artist-on-beauty-as-self-expression-and-self-care', permanent: true },
       { source: '/how-to/go-green/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2', destination: '/living/sustainability/we-tried-period-cups-and-undies-here-are-our-honest-thoughts-2', permanent: true },
@@ -812,22 +823,20 @@ const nextConfig: NextConfig = {
       { source: '/how-tos/interiors/:path*', destination: '/living/interiors', permanent: true },
       { source: '/how-tos/:path*', destination: '/beauty-style', permanent: true },
 
-      // ── GO-TOs directory (old venue listings) ──────────────────────────────
-      { source: '/the-go-tos/beauty-maintenance/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/the-go-tos/high-tech-treatments/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/the-go-tos/:path*', destination: '/destinations/directory', permanent: true },
-
       // ── Vodcast-by-beauticate bare path ────────────────────────────────────
       { source: '/vodcast-by-beauticate', destination: '/vodcast', permanent: true },
 
-      // ── /destination/ (singular) parent paths ──────────────────────────────
-      { source: '/destination/beauty-wellness/clinics/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/destination/beauty-wellness/skin-salons/:path*', destination: '/destinations/directory', permanent: true },
-      { source: '/destination/beauty-wellness/:path*', destination: '/destinations/directory', permanent: true },
+      // ── /destination/ (singular) parent path — travel keeps its own section
+      // fallback since it's still topically specific. The old blanket
+      // "/the-go-tos/*" and "/destination/beauty-wellness/*" → /destinations/directory
+      // rules were removed: they fired before middleware.ts's slug-based lookup
+      // ever got a chance, so real venues with a real current page (confirmed via
+      // Doug's Search Console "Page with redirect" export, e.g. mr-burrows-newtown,
+      // brad-ngata-darlinghurst) were being sent to the generic directory instead
+      // of their actual page. Removing them lets the middleware fallback resolve
+      // the ones that exist and 404 honestly on the ones that don't — a genuine
+      // 404 beats a redirect to an irrelevant page (per Doug's brief).
       { source: '/destination/travel/:path*', destination: '/destinations/travel', permanent: true },
-      { source: '/destination/:path*', destination: '/destinations/directory', permanent: true },
-
-      { source: '/tag/:path*', destination: '/', permanent: false },
       { source: '/offers/:path*', destination: '/', permanent: false },
       { source: '/product/:path*', destination: '/', permanent: false },
     ]

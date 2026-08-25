@@ -45,7 +45,7 @@ export default function TheCollective() {
 
       <div className="mt-8">
         <Link
-          href="/about-beauticate"
+          href="/about"
           className="font-sans text-[11px] tracking-[0.18em] uppercase font-medium border-b pb-0.5"
           style={{ borderColor: '#1C1A17', opacity: 0.65 }}
         >

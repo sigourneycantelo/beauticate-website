@@ -3,16 +3,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import StoryTimeline from '@/components/about/StoryTimeline'
 import PressLogoBar from '@/components/shared/PressLogoBar'
-import { getAuthor } from '@/lib/authors'
+import { getAuthor, SIGOURNEY_SAMEAS, SIGOURNEY_DESCRIPTION } from '@/lib/authors'
 
 export const metadata: Metadata = {
   title: 'About | Sigourney Cantelo, Founder & Editor-in-Chief',
   description: 'Beauticate is Australia\'s most trusted beauty, wellness and lifestyle editorial brand. Founded in 2014 by Sigourney Cantelo, former Vogue Australia Beauty & Health Director.',
-  alternates: { canonical: 'https://www.beauticate.com/about-beauticate' },
+  // Self-referencing canonical. This previously pointed at /about-beauticate,
+  // which 301s straight back here (next.config.ts) — a canonical aimed at a
+  // redirect, on the site's primary entity page.
+  alternates: { canonical: 'https://www.beauticate.com/about' },
   openGraph: {
     title: 'About Beauticate | Founded by Sigourney Cantelo',
     description: 'Twelve years of trusted beauty, wellness and lifestyle editorial. Meet the founder, the team, and the story behind Australia\'s most-cited beauty brand.',
-    url: 'https://www.beauticate.com/about-beauticate',
+    url: 'https://www.beauticate.com/about',
     type: 'website',
   },
 }
@@ -26,8 +29,8 @@ const sigourneySchema = {
   givenName: 'Sigourney',
   familyName: 'Cantelo',
   jobTitle: 'Founder & Editor-in-Chief',
-  description: 'Sigourney Cantelo is an Australian beauty journalist, author and digital publisher with 25 years of experience. She is the founder of Beauticate and former Beauty & Health Director at Vogue Australia.',
-  url: 'https://www.beauticate.com/about-beauticate',
+  description: SIGOURNEY_DESCRIPTION,
+  url: 'https://www.beauticate.com/about',
   image: 'https://www.beauticate.com/images/sigourney-cantelo.jpg',
   worksFor: {
     '@type': 'Organization',
@@ -48,7 +51,7 @@ const sigourneySchema = {
   },
   subjectOf: {
     '@type': 'WebPage',
-    '@id': 'https://www.beauticate.com/press#in-the-media',
+    '@id': 'https://www.beauticate.com/press',
     url: 'https://www.beauticate.com/press',
     name: 'Sigourney Cantelo — In the Media',
   },
@@ -56,10 +59,7 @@ const sigourneySchema = {
     'Beauty', 'Skincare', 'Wellness', 'Lifestyle', 'Health', 'Fashion', 'Cosmetics',
     'Anti-ageing', 'Beauty Journalism', 'Content Strategy',
   ],
-  sameAs: [
-    'https://www.instagram.com/sigourney.cantelo/',
-    'https://www.linkedin.com/in/sigourneycantelo/',
-  ],
+  sameAs: [...SIGOURNEY_SAMEAS],
   nationality: { '@type': 'Country', name: 'Australia' },
 }
 
@@ -148,12 +148,12 @@ export default function AboutPage() {
               <p className="font-serif text-base text-charcoal">Sigourney Cantelo</p>
               <p className="font-sans text-[11px] tracking-widest uppercase text-charcoal/40 mt-0.5">Founder &amp; Editor-in-Chief</p>
               <a
-                href="https://www.instagram.com/sigourney.cantelo/"
+                href="https://www.instagram.com/sigourneycantelo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-sans text-[11px] tracking-widest uppercase text-wine hover:text-charcoal transition-colors mt-2 inline-block"
               >
-                @sigourney.cantelo
+                @sigourneycantelo
               </a>
               <Link
                 href="/sigourneys-edit"
@@ -193,7 +193,7 @@ export default function AboutPage() {
         <section className="max-w-6xl mx-auto px-6 pb-16">
           <div className="bg-gray-100 border-t-2 border-wine/30 rounded-lg p-7 md:p-10 space-y-4">
             <p className="font-serif text-sm md:text-base text-charcoal/75 leading-relaxed">
-              <strong className="font-semibold">Sigourney Cantelo</strong> is the founder and publisher of Beauticate. With over 25 years across print, digital and broadcast, including her tenure as Beauty &amp; Health Director at Vogue Australia and regular appearances on Sunrise and the Today show as a beauty and style commentator, she is one of Australia&apos;s most recognised voices in beauty, health and wellness media. Her work has appeared in Body + Soul, marie claire, Sunday Life and numerous Australian and international publications. She is a six-time Star Beauty Award winner and a five-time Jasmine Award recipient, including twice winning the Jasmine Award for Journalistic Excellence.
+              <strong className="font-semibold">Sigourney Cantelo</strong> is the founder and publisher of Beauticate. With over 25 years across print, digital and broadcast, including her tenure as Beauty &amp; Health Director at Vogue Australia and regular appearances on Sunrise and the Today show as a beauty and style commentator, she is one of Australia&apos;s most recognised voices in beauty, health and wellness media. Her work has appeared in Body + Soul, marie claire, Sunday Life and numerous Australian and international publications. She is a six-time Star Beauty Award winner and a six-time Jasmine Award recipient, including twice winning the Jasmine Award for Journalistic Excellence.
             </p>
             <p className="font-serif text-sm md:text-base text-charcoal/75 leading-relaxed">
               She founded Beauticate in 2014 as an independent editorial platform, with the depth and rigour of a major masthead and the freedom of something entirely her own. Today it spans editorial, podcast, newsletter, Instagram and e-commerce.

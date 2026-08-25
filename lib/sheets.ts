@@ -1,3 +1,22 @@
+// Appends leads via a Google Apps Script "Web App" deployment that has access
+// to both real destination spreadsheets (see the script pasted into that
+// deployment — it hardcodes the two spreadsheet IDs and routes by
+// `destination`). No Cloud Console project, no service account, no key file.
+const SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL
+
+// Neutralise spreadsheet formula/CSV injection. A cell value beginning with
+// = + - @ (or a leading tab/CR) is executed as a formula when entered as if
+// typed by a human. Prefixing such values with a single quote forces them to
+// be treated as literal text.
+function neutraliseCell(value: string): string {
+  if (typeof value !== 'string' || value.length === 0) return value
+  return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value
+}
+
+// --- Unrelated to the above: generic sheet logging used by chat/query-log/
+// reader-question/reviews-submissions. Kept as-is (service-account approach,
+// currently unconfigured/dormant same as it's always been) — out of scope
+// for the lead-capture work above; not touching it today.
 const SHEET_ID = process.env.GOOGLE_SHEET_ID
 const CLIENT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL
 const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
@@ -62,16 +81,6 @@ function pemToBuffer(pem: string): ArrayBuffer {
   return bytes.buffer
 }
 
-// Neutralise spreadsheet formula/CSV injection. Cells written with
-// valueInputOption=USER_ENTERED are parsed by Sheets as if typed by a human,
-// so any value beginning with = + - @ (or a leading tab/CR) is executed as a
-// formula. Prefixing such values with a single quote forces them to be treated
-// as literal text. Applied to every cell so all callers are covered.
-function neutraliseCell(value: string): string {
-  if (typeof value !== 'string' || value.length === 0) return value
-  return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value
-}
-
 export async function appendToSheet(
   sheetName: string,
   row: string[]
@@ -96,4 +105,35 @@ export async function appendToSheet(
   })
 
   return res.ok
+}
+
+export type SheetDestination = 'contacts' | 'shop_pipeline'
+
+/**
+ * Appends one row to a real, hand-maintained spreadsheet, matched by column
+ * header name (not position) so it survives the sheet's columns being
+ * reordered. `fields` keys must match that spreadsheet's header text exactly;
+ * unmatched headers are left blank, unmatched fields are dropped.
+ */
+export async function appendLead(
+  destination: SheetDestination,
+  fields: Record<string, string>
+): Promise<boolean> {
+  if (!SCRIPT_URL) return false
+
+  const cleaned: Record<string, string> = {}
+  for (const [key, value] of Object.entries(fields)) {
+    cleaned[key] = neutraliseCell(value)
+  }
+
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ destination, fields: cleaned }),
+    })
+    return res.ok
+  } catch {
+    return false
+  }
 }

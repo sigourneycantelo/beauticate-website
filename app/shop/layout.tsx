@@ -13,12 +13,15 @@ const shopOrgSchema = {
   url: SITE,
   logo: { '@type': 'ImageObject', url: `${SITE}/logo-dark.png` },
   description: 'Australia\'s most trusted independent beauty publisher. Beauticate Shop is the curated beauty and wellness edit, chosen by editors and experts.',
-  founder: { '@type': 'Person', name: 'Sigourney Cantelo', url: `${SITE}/about-beauticate` },
+  // @id ties this back to the canonical Person node declared sitewide in
+  // app/layout.tsx, rather than asserting a second, separate Sigourney.
+  founder: { '@type': 'Person', '@id': `${SITE}/#sigourney-cantelo`, name: 'Sigourney Cantelo', url: `${SITE}/about` },
   sameAs: [
     'https://www.instagram.com/beauticate/',
     'https://www.facebook.com/beauticate',
     'https://www.linkedin.com/company/beauticate.com',
-    'https://www.youtube.com/@beauticate',
+    // @beauticate 404s — see app/layout.tsx. Canonical channel-ID form.
+    'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
     'https://au.pinterest.com/beauticate/',
     'https://www.wikidata.org/wiki/Q139643093',
   ],

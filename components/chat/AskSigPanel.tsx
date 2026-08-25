@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import ChatMessage from './ChatMessage'
+import { UI_DISCLAIMER } from '@/lib/chat/guardrails'
 
 interface Message {
   id: string
@@ -50,6 +51,9 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          // What the reader was looking at when they asked. Logged so we can
+          // see which pages prompt which questions.
+          pageContext: typeof window !== 'undefined' ? window.location.pathname : undefined,
           messages: updated.map(m => ({ role: m.role, content: m.content })),
         }),
       })
@@ -178,6 +182,10 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
             </svg>
           </button>
         </div>
+        <p className="mt-2 text-[11px] leading-snug font-sans text-muted">
+          {UI_DISCLAIMER}{' '}
+          <a href="/terms" className="underline hover:text-ink transition-colors">Terms</a>
+        </p>
       </div>
     </div>
   )

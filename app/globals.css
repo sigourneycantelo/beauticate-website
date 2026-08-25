@@ -107,8 +107,24 @@
   color: #3d3d3d;
 }
 
-/* Interview pull-quotes — indented editorial style with left border */
+/* Interview pull-quotes — scale carries the quote, no rule.
+   Matches components/mdx/PullQuote.tsx and the template pages
+   (app/templates/{essay,interview,review}); keep the two in sync. */
 .prose .interview-pull-quote {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: clamp(24px, 2.9vw, 31px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-chocolate, #3d3d3d);
+  margin-top: 4.5rem;
+  margin-bottom: 4.5rem;
+}
+/* Intro standfirsts — the long italic paragraph that opens an article.
+   Same job as before, minus the rule and the indent; deliberately NOT
+   scaled up like a pull-quote, because these run to 1,000+ characters. */
+.prose .interview-standfirst {
   font-family: var(--font-serif, Georgia, serif);
   font-size: clamp(22px, 2.8vw, 28px);
   line-height: 1.45;
@@ -117,12 +133,35 @@
   color: var(--color-chocolate, #3d3d3d);
   margin-top: 3rem;
   margin-bottom: 3rem;
-  padding-left: clamp(24px, 4vw, 48px);
-  border-left: 2px solid var(--color-charcoal, #2c2c2c);
-  max-width: 600px;
 }
-.prose .interview-pull-quote em {
+.prose .interview-pull-quote em,
+.prose .interview-standfirst em {
   font-style: inherit;
+}
+
+/* Disclosure small print — paid partnership, affiliate, gifting notes.
+   Quiet but legible, and consecutive lines read as one block. */
+.prose .article-disclosure {
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  font-style: italic;
+  font-weight: 400;
+  color: #7a7268;
+  max-width: 600px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 0;
+  border-left: none;
+}
+.prose .article-disclosure em {
+  font-style: inherit;
+}
+/* First line of a disclosure run: separate it from the story above. */
+.prose :not(.article-disclosure) + .article-disclosure {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-cream-200, #ece7e1);
 }
 
 @layer components {
@@ -518,10 +557,12 @@
   line-height: 1.7;
   color: #7a7268;
 }
-.article-body > hr ~ p.interview-pull-quote {
+.article-body > hr ~ p.interview-pull-quote,
+.article-body > hr ~ p.interview-standfirst {
   font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1.7;
+  letter-spacing: normal;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
@@ -563,6 +604,28 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* ── Portrait float groups ─────────────────────────────────────
+   .article-body is a grid, and float is inert on a grid item, so a <Portrait>
+   can never wrap the prose beside it on its own. rehype-portrait-float wraps
+   each portrait with the paragraphs it should wrap in one of these blocks;
+   flow-root re-establishes normal flow for the float and contains it, so a
+   tall portrait can't spill past its own prose into the next section. */
+.article-body > .article-float-group {
+  display: flow-root;
+}
+/* A portrait with no prose after it has nothing to wrap — centre it rather
+   than leave it floated hard against one edge. */
+.article-body > .article-float-group--solo {
+  display: flex;
+  justify-content: center;
+}
+/* The float's gutter margin has nothing to clear in solo mode, and would
+   throw the centring out by half its width. */
+.article-body > .article-float-group--solo > * {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* ── Venue attribution ("Review by …") ─────────────────────── */

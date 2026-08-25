@@ -123,8 +123,8 @@ export default function AdvertisePage() {
   return (
     <div className="bg-paper">
 
-      {/* Hero image — full bleed */}
-      <section>
+      {/* Hero image — full bleed (breaks out of the site-wrap max-width) */}
+      <section className="relative w-screen left-1/2 -translate-x-1/2">
         <Image
           src="/images/advertise/advertise-hero.jpg"
           alt="Sigourney Cantelo writing at a café table"
@@ -214,16 +214,19 @@ export default function AdvertisePage() {
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Podcaster, content creator and e-commerce founder</span></li>
               <li className="flex gap-2"><span className="text-wine/60 mt-0.5">&bull;</span><span>Six Jasmine Awards &middot; Six Star Beauty Awards</span></li>
             </ul>
-            <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 inline-block">
+            <Link href="/archive" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-6 block">
+              See Sigourney&rsquo;s work &rarr;
+            </Link>
+            <Link href="/about" className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors mt-2 inline-block">
               Read the full story &rarr;
             </Link>
           </div>
           <div className="relative aspect-[4/5] bg-ink/5 overflow-hidden">
             <Image
-              src="/images/advertise/advertise-hero-new.jpg"
+              src="/images/sigourney-about.jpg"
               alt="Sigourney Cantelo, Founder & Publisher of Beauticate"
               fill
-              className="object-cover object-[center_20%] scale-x-[-1]"
+              className="object-cover object-top"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
@@ -232,8 +235,8 @@ export default function AdvertisePage() {
 
       {/* As seen in */}
       <section className="border-t border-b border-camel/20 py-10">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal/40 mb-7">As seen in</p>
+        <Link href="/press" className="group block max-w-5xl mx-auto px-6 text-center">
+          <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-charcoal/40 mb-7 group-hover:text-wine transition-colors">As seen in</p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
             {[
               { src: '/images/press/vogue.png', alt: 'Vogue' },
@@ -243,12 +246,12 @@ export default function AdvertisePage() {
               { src: '/images/press/mumbrella.png', alt: 'Mumbrella' },
               { src: '/images/press/beauty-directory.png', alt: 'Beauty Directory' },
             ].map(logo => (
-              <div key={logo.src} className="relative h-7 w-[120px] grayscale opacity-45">
+              <div key={logo.src} className="relative h-7 w-[120px] grayscale opacity-45 group-hover:opacity-70 transition-opacity">
                 <Image src={logo.src} alt={logo.alt} fill className="object-contain" sizes="120px" />
               </div>
             ))}
           </div>
-        </div>
+        </Link>
       </section>
 
       {/* Audience insights — on beige after white Sigourney section */}
@@ -283,9 +286,9 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Beautiful Inside podcast — full image, text below */}
+      {/* Beautiful Inside podcast — full image, text below (breaks out of the site-wrap max-width) */}
       <section className="bg-paper">
-        <div className="relative w-full aspect-[2/1]">
+        <div className="relative w-screen left-1/2 -translate-x-1/2 aspect-[2/1]">
           <Image
             src="/images/advertise/8.jpg"
             alt="Behind the scenes filming the Beautiful Inside podcast"
@@ -372,8 +375,8 @@ export default function AdvertisePage() {
         </div>
       </section>
 
-      {/* Editorial divider — mood */}
-      <section>
+      {/* Editorial divider — mood (breaks out of the site-wrap max-width) */}
+      <section className="relative w-screen left-1/2 -translate-x-1/2">
         <Image
           src="/images/advertise/advertise-mood.jpg"
           alt="Sigourney Cantelo laughing candidly"

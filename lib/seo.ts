@@ -104,7 +104,7 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
   const authorData = f.author ? getAuthor(f.author) : undefined
   const authorSchema = authorData
     ? buildPersonSchema(authorData, SITE_URL)
-    : { '@type': 'Person', name: f.author ?? 'Beauticate Editorial', url: `${SITE_URL}/about-beauticate` }
+    : { '@type': 'Person', name: f.author ?? 'Beauticate Editorial', url: `${SITE_URL}/about` }
 
   const articleNode = {
     '@type': schemaType,

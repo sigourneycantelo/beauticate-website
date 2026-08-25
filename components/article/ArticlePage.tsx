@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { isPaidPlacement } from '@/lib/content'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
@@ -41,6 +42,7 @@ import rehypePullQuotes from '@/lib/rehype-pull-quotes'
 import rehypePortraitImages from '@/lib/rehype-portrait-images'
 import rehypeShopGrid from '@/lib/rehype-shop-grid'
 import rehypeVenueContact from '@/lib/rehype-venue-contact'
+import rehypePortraitFloat from '@/lib/rehype-portrait-float'
 import NearbyVenues from './NearbyVenues'
 import ShopEditRail from './ShopEditRail'
 import VenueCTA from './VenueCTA'
@@ -194,13 +196,12 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               name={f.author ?? 'Beauticate Editorial'}
               date={f.date_published}
               readingTime={f.reading_time}
-              affiliateDisclosure={f.affiliate_disclosure}
               showDate={resolveSchemaType(f) === 'NewsArticle'}
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />
 
             {f.venueType && (
-              <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} />
+              <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} website={f.website} />
             )}
           </>
         )}
@@ -216,7 +217,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           <MDXRemote
             source={bodyContent}
             components={mdxComponents}
-            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypePortraitImages, rehypeShopGrid, rehypeVenueContact] } }}
+            options={{ mdxOptions: { rehypePlugins: [rehypeImageGrid, rehypePullQuotes, rehypePortraitImages, rehypeShopGrid, rehypeVenueContact, rehypePortraitFloat] } }}
           />
         </div>
 
@@ -275,6 +276,16 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {f.affiliate_disclosure && (
           <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
             This article contains affiliate links. Beauticate may receive a small commission on purchases made through these links at no extra cost to you.
+          </p>
+        )}
+
+        {/* Paid placement disclosure — foot of the page, beside the affiliate
+            line above, and deliberately the only place it appears. No byline
+            marker, nothing above the body: Australian law sets no
+            top-of-article requirement and the house pattern is foot-of-page. */}
+        {isPaidPlacement(f) && (
+          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
+            This is a paid listing. The venue has paid to appear in the Beauticate directory.
           </p>
         )}
 
