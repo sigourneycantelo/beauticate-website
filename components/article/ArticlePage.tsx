@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { isPaidPlacement } from '@/lib/content'
+import { hasArticleMoment } from '@/lib/article-moments'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
@@ -92,6 +93,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
   const isLandscape = !!(f.hero_image || f.featured_image)
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
+
+  // Shopping stories get an auto-generated /shop/moments/<slug> page holding the
+  // full product mix in one place. It has always linked back to the story; this
+  // is the link forward to it, so readers can shop the whole edit in one spot.
+  const momentHref = hasArticleMoment(f, productLinks.filter(p => p.type !== 'dead'))
+    ? `/shop/moments/${f.slug}`
+    : null
 
   function InlineProduct({ handle }: { handle: string }) {
     const sp = shopProductMap[handle]
@@ -245,6 +253,16 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
                 />
               ))}
             </div>
+            {momentHref && (
+              <div className="mt-7">
+                <Link
+                  href={momentHref}
+                  className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase px-7 py-3 rounded-[1px] transition-colors hover:bg-ink hover:text-white border border-ink"
+                >
+                  Shop the full edit
+                </Link>
+              </div>
+            )}
             <p className="mt-6 font-serif text-charcoal-light/60 text-sm">
               Not finding what you&apos;re after?{' '}
               <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>

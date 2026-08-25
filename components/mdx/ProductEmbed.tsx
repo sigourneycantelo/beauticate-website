@@ -38,6 +38,13 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
     )
   }
 
+  // ── Own shop product whose handle no longer resolves ──────────────
+  // Archived/unpublished products drop out of the Storefront API, leaving a
+  // shop link with no image, name, price or URL of its own. Rendering it below
+  // produces an empty greige tile with a "shop from brand" badge and no text —
+  // worse than showing nothing. Drop it instead.
+  if (product.type === 'shop' && !product.image && !product.url) return null
+
   // ── Affiliate / external product — self-hosted de-etched image ────
   const href = product.url ?? '#'
   const brand = product.brand || product.retailer || retailerFromUrl(product.url) || product.name?.split(' ')[0] || ''
