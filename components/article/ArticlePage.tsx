@@ -14,6 +14,7 @@ import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
 import ShareButtons from './ShareButtons'
 import { resolveSchemaType } from '@/lib/seo'
+import { usesSplitHero } from '@/lib/hero-layout'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import CollectionRail from '@/components/mdx/CollectionRail'
 import PullQuote from '@/components/mdx/PullQuote'
@@ -89,7 +90,7 @@ function withSubscribeBand(content: string): string {
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
-  const isLandscape = !!(f.hero_image || f.featured_image)
+  const splitHero = usesSplitHero(f)
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
   function InlineProduct({ handle }: { handle: string }) {
@@ -167,8 +168,8 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       <ArticleHero frontmatter={f} />
 
       <div className="max-w-wide mx-auto px-[clamp(20px,3vw,34px)] py-10">
-        {/* Title / meta — only in landscape mode; split mode has them in the hero panel */}
-        {isLandscape && (
+        {/* Title / meta — split mode already carries these in the hero panel */}
+        {!splitHero && (
           <>
             <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-3 flex-wrap items-center">
               <Link href={`/${f.category}`} className="hover:text-charcoal transition-colors">
