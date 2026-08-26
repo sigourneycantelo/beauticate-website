@@ -89,6 +89,7 @@ export interface ArticleFrontmatter {
   nav_image_position?: string  // CSS object-position for mega-menu thumbnail crop, e.g. "left top"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
   hero_aspect?: string         // CSS aspect-ratio for hero image, e.g. "16/9"; defaults to 16/9
+  hero_layout?: 'full' | 'split' // 'split' = editorial split hero (image one side, greige headline panel the other); defaults to 'full'
 
   // Destinations taxonomy
   travelType?: 'guide' | 'hotel-review' | 'travel-beauty' | 'sigs-edit'

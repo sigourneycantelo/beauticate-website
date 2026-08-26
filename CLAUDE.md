@@ -163,6 +163,12 @@ The site surfaces each article in two shapes, and there are two frontmatter fiel
 - **`hero_image`** = the **landscape** holding shot (~2:1). Used full-bleed for the home hero (`HeroWide`) and the article's own top banner (`ArticleHero`). A triptych works well.
 - **`featured_image`** = the **portrait** thumbnail (~3:4). Used for every grid card / thumbnail site-wide (`StoriesTrio`, `DuoLeft`, `DuoStagger`, `HeroSplit`, `ArticleCard`, …).
 
+**Two hero layouts.** The article's own banner is full-bleed by default, which
+crops to 16:9 on desktop. When there's no landscape holding shot, set
+`hero_layout: "split"` instead of letting a portrait get hard-cropped - that
+gives the SheerLuxe-style split: image one side, greige panel with the headline
+the other. See `docs/article-layout-tiers.md`.
+
 **Always set both.** The code falls back to `featured_image` when `hero_image` is missing (`HeroWide.tsx`, `ArticleHero.tsx`) — which silently stretches the portrait thumbnail into the wide hero slot and crops it badly. That fallback is a safety net, **not** the intended state: if a landscape holding shot exists in the article directory (e.g. `holding.jpg`), wire it to `hero_image`. Never leave a real holding shot orphaned while the hero renders a cropped portrait.
 
 ### Image orientation — bake it in
