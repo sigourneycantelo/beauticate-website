@@ -3,47 +3,44 @@ import Link from 'next/link'
 import { pastCompetitions } from '../pastCompetitions'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   ⚠ OPEN ITEMS — RESOLVE BEFORE THIS PROMOTION GOES LIVE
-   ─────────────────────────────────────────────────────────────────────────
-   1. TRADE PROMOTION PERMITS — checked August 2026, looks clear. The figures
-      below come from permit agencies and law-firm guides, not the regulators
-      direct, so have legal confirm before relying on them.
-      Total prize pool is A$1,050. Thresholds as at August 2026:
-        ACT  — permit if pool over A$3,000   <- lowest, so this is the one that binds
-        SA   — permit if pool over A$5,000, OR any instant-win element at ANY value
-        NT   — permit if pool over A$5,000 (waived if permitted in another state)
-        NSW  — permit if pool over A$10,000
-        Everywhere else — no permit for a standard trade promotion
-      A$1,050 sits under all of them, so no permit is required and
-      `permitNumbers` stays empty. That leaves roughly A$1,950 of headroom
-      before ACT bites. Two things would change the answer: raising the prize
-      value, or switching the mechanic to instant-win — SA then requires a
-      permit at any value, even a A$50 prize. If a permit ever is required its
-      number must be printed in the terms; add it to `permitNumbers` and it
-      renders in the summary box automatically.
-   2. PROMOTER STREET ADDRESS. `promoterAddress` currently carries locality
-      only. House policy (legal-copy/0-BRIEF-for-claude-code.md) is that no
-      street address appears anywhere on the site — but permit conditions
-      generally require the Promoter's full business address in the terms.
-      Sig to supply if a permit is required; the two rules conflict and legal
-      decides which wins.
-   3. PACK CONTENTS — CONFIRM WITH WELEDA BEFORE PUBLISHING. The list now
-      rendered in "The prize" is read off the campaign artwork, which shows the
-      full Skin Food range. It has NOT been confirmed against what Weleda will
-      actually ship. A prize description that promises more than turns up is
-      worse under the ACL than a vague one, so check it and cut the list back
-      if the real pack is narrower. Sizes are deliberately omitted: the artwork
-      showed two sizes of both Skin Food and Skin Food Light, so which size
-      goes in the pack is unknown.
-   4. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
+   STATUS — this promotion is LIVE. Entries opened 27 August 2026 and close
+   11:59pm AEST on 10 September 2026. The winner must be drawn and notified
+   on or before 17 September 2026.
+   ──────────────────────────────────────────────────────────────────────
+   STILL OPEN
+   1. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
       Confirm the registered entity name for the ineligibility and prize
       partner clauses.
-   5. PRIVACY POLICY DOES NOT LIST MANYCHAT. These terms now name ManyChat as
-      the service handling entry DMs and storing entrant email addresses, but
-      legal-copy/1-privacy-policy.md and /privacy list only Shopify, Stripe,
-      Klaviyo and Google under service providers and overseas storage. Add
-      ManyChat to both so the two documents agree — a processor named in the
-      competition terms but absent from the privacy policy is a real gap.
+
+   SETTLED — kept because the reasoning is what the next competition needs
+   • TRADE PROMOTION PERMITS — none required. Checked August 2026; figures
+     come from permit agencies and law-firm guides, not the regulators direct.
+     Total prize pool A$1,050. Thresholds:
+       ACT  — permit if pool over A$3,000   <- lowest, so this is the one that binds
+       SA   — permit if pool over A$5,000, OR any instant-win element at ANY value
+       NT   — permit if pool over A$5,000 (waived if permitted in another state)
+       NSW  — permit if pool over A$10,000
+       Everywhere else — no permit for a standard trade promotion
+     A$1,050 sits under all of them, so `permitNumbers` stays empty — roughly
+     A$1,950 of headroom before ACT bites. Two things would change the answer:
+     raising the prize value, or switching to an instant-win mechanic, which
+     SA treats as permit-requiring at any value, even a A$50 prize. If a permit
+     is ever required its number must be printed in the terms; add it to
+     `permitNumbers` and it renders in the summary box automatically.
+   • PROMOTER STREET ADDRESS — locality only, and that stands. The full
+     address was only ever needed as a permit condition, and no permit is
+     required, so the house rule in legal-copy/0-BRIEF-for-claude-code.md ("no
+     street address anywhere, this is intentional") wins. Revisit only if a
+     future promotion crosses a permit threshold.
+   • PACK CONTENTS — confirmed with Weleda 27 August 2026. The eleven products
+     listed in "The prize" are what actually ships. Sizes stay omitted on
+     purpose: the campaign artwork showed two sizes of both Skin Food and Skin
+     Food Light, and naming a size we are not certain of is the kind of small
+     error that draws a complaint. An out-of-stock item is covered by the
+     equal-value substitution clause under the list.
+   • PRIVACY POLICY — ManyChat is named in /privacy and
+     legal-copy/1-privacy-policy.md, under both service providers and overseas
+     transfer, so the two documents agree about who handles entrant email.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════════════════
