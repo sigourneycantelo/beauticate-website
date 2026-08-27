@@ -1,4 +1,4 @@
-import { SITE, NEWS_WINDOW_MS, getFeedArticles, escapeXml, toPlainText } from '@/lib/feed'
+import { SITE, NEWS_WINDOW_MS, getFeedCandidates, escapeXml, toPlainText } from '@/lib/feed'
 
 /**
  * Google News sitemap: every article published in the last 48 hours.
@@ -35,9 +35,11 @@ export function GET() {
   const now = new Date()
   const cutoff = now.getTime() - NEWS_WINDOW_MS
 
-  // getFeedArticles already drops drafts, directory venue listings and
-  // future-dated (scheduled) articles, and orders newest-first.
-  const recent = getFeedArticles(0, now).filter(a => a.publishedAt.getTime() >= cutoff)
+  // getFeedCandidates already drops drafts, un-updated directory listings and
+  // future-dated (scheduled) articles, and orders newest-first. Candidates
+  // rather than getFeedArticles: a news sitemap carries no image, so there is
+  // no reason to pay for the image check on every article in the archive.
+  const recent = getFeedCandidates(now).filter(a => a.publishedAt.getTime() >= cutoff)
 
   const urls = recent.map(({ parts, frontmatter, publishedAt }) => `  <url>
     <loc>${escapeXml(`${SITE}/${parts.join('/')}`)}</loc>

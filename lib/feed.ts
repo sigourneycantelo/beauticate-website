@@ -481,10 +481,6 @@ function feedDate(contentType: FeedContentType, published: Date, modified?: Date
  *    do not, and would otherwise swamp a 50-item feed with one day's migration.
  *  • A `date_published` in the future — scheduled, not yet published.
  *  • An unparseable or missing `date_published` — nothing to sort or stamp it by.
- *  • Anything with no usable image. Every consumer of this feed turns the image
- *    into a post, so an item whose artwork 404s cannot be acted on. These are
- *    warned about at build time rather than dropped in silence — a listing
- *    reaching this state means its holding shot is broken on the site too.
  *
  * Vodcast episodes ARE included: they are published editorial with a title,
  * date, excerpt, byline and image, they live at their own article-shaped URL,
@@ -498,7 +494,7 @@ function feedDate(contentType: FeedContentType, published: Date, modified?: Date
  * without the second key the order within a day would be filesystem-dependent
  * and the feed would reshuffle itself between builds for no reason.
  */
-export function getFeedArticles(limit = FEED_LIMIT, now: Date = new Date()): FeedArticle[] {
+export function getFeedCandidates(now: Date = new Date()): FeedArticle[] {
   const articles: FeedArticle[] = []
   const epoch = parsePublishDate(DIRECTORY_IMPORT_EPOCH)!.getTime()
 
@@ -517,15 +513,6 @@ export function getFeedArticles(limit = FEED_LIMIT, now: Date = new Date()): Fee
     if (publishedAt.getTime() > now.getTime()) continue
     if (contentType === 'venue' && publishedAt.getTime() <= epoch) continue
 
-    if (!resolveImage(f.hero_image) && !resolveImage(f.featured_image) && !resolveImage(f.thumbnailPortrait)) {
-      console.warn(
-        `[feed] skipping /${parts.join('/')} — no usable image. ` +
-        `featured_image is ${f.featured_image ? `"${f.featured_image}", which is not on disk` : 'unset'}. ` +
-        `It is published, so this is broken on the site too.`
-      )
-      continue
-    }
-
     articles.push({ parts, frontmatter: f, body: article.content, publishedAt, originalPublishedAt, modifiedAt, contentType })
   }
 
@@ -535,7 +522,42 @@ export function getFeedArticles(limit = FEED_LIMIT, now: Date = new Date()): Fee
     return a.parts.join('/').localeCompare(b.parts.join('/'))
   })
 
-  return limit > 0 ? articles.slice(0, limit) : articles
+  return articles
+}
+
+/**
+ * The newest `limit` candidates that actually have an image to post.
+ *
+ * Every consumer of the feed turns the image into a post, so an item whose
+ * artwork 404s cannot be acted on. Two published venue listings are in that
+ * state — re-filed to a new path with the photo left behind at the old one —
+ * and they are broken on the live site too, so they are warned about rather
+ * than dropped in silence.
+ *
+ * The image check runs lazily, walking the sorted list and stopping as soon as
+ * `limit` items have been taken. That matters: resolving an image reads the
+ * file off disk, and content/ is a 2.8GB tree of nearly two thousand of them.
+ * Checking every candidate up front to return fifty would read the lot on every
+ * render.
+ */
+export function getFeedArticles(limit = FEED_LIMIT, now: Date = new Date()): FeedArticle[] {
+  const taken: FeedArticle[] = []
+
+  for (const candidate of getFeedCandidates(now)) {
+    if (taken.length >= limit) break
+    const f = candidate.frontmatter
+    if (!resolveImage(f.hero_image) && !resolveImage(f.featured_image) && !resolveImage(f.thumbnailPortrait)) {
+      console.warn(
+        `[feed] skipping /${candidate.parts.join('/')} — no usable image. ` +
+        `featured_image is ${f.featured_image ? `"${f.featured_image}", which is not on disk` : 'unset'}. ` +
+        `It is published, so this is broken on the site too.`
+      )
+      continue
+    }
+    taken.push(candidate)
+  }
+
+  return taken
 }
 
 // ─── Item shape ──────────────────────────────────────────────────────────────
