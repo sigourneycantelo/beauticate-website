@@ -5,20 +5,36 @@ import { pastCompetitions } from '../pastCompetitions'
 /* ══════════════════════════════════════════════════════════════════════════
    ⚠ OPEN ITEMS — RESOLVE BEFORE THIS PROMOTION GOES LIVE
    ─────────────────────────────────────────────────────────────────────────
-   1. TRADE PROMOTION PERMITS. Total prize pool is A$1,050. Confirm the
-      current permit thresholds and lodgement requirements for SA, ACT and
-      NSW before the entry period opens. NOT RESOLVED — needs legal sign-off,
-      not a desk assumption. If a permit is granted, its number must be added
-      to `permitNumbers` below and will render in the summary box.
+   1. TRADE PROMOTION PERMITS — checked August 2026, looks clear. The figures
+      below come from permit agencies and law-firm guides, not the regulators
+      direct, so have legal confirm before relying on them.
+      Total prize pool is A$1,050. Thresholds as at August 2026:
+        ACT  — permit if pool over A$3,000   <- lowest, so this is the one that binds
+        SA   — permit if pool over A$5,000, OR any instant-win element at ANY value
+        NT   — permit if pool over A$5,000 (waived if permitted in another state)
+        NSW  — permit if pool over A$10,000
+        Everywhere else — no permit for a standard trade promotion
+      A$1,050 sits under all of them, so no permit is required and
+      `permitNumbers` stays empty. That leaves roughly A$1,950 of headroom
+      before ACT bites. Two things would change the answer: raising the prize
+      value, or switching the mechanic to instant-win — SA then requires a
+      permit at any value, even a A$50 prize. If a permit ever is required its
+      number must be printed in the terms; add it to `permitNumbers` and it
+      renders in the summary box automatically.
    2. PROMOTER STREET ADDRESS. `promoterAddress` currently carries locality
       only. House policy (legal-copy/0-BRIEF-for-claude-code.md) is that no
       street address appears anywhere on the site — but permit conditions
       generally require the Promoter's full business address in the terms.
       Sig to supply if a permit is required; the two rules conflict and legal
       decides which wins.
-   3. PACK CONTENTS. Confirm the final Skin Food pack line-up with Weleda and
-      write it into `prize` — "pack" alone is thin as a prize description
-      under the ACL. A plain contents list is enough; no per-item pricing.
+   3. PACK CONTENTS — CONFIRM WITH WELEDA BEFORE PUBLISHING. The list now
+      rendered in "The prize" is read off the campaign artwork, which shows the
+      full Skin Food range. It has NOT been confirmed against what Weleda will
+      actually ship. A prize description that promises more than turns up is
+      worse under the ACL than a vague one, so check it and cut the list back
+      if the real pack is narrower. Sizes are deliberately omitted: the artwork
+      showed two sizes of both Skin Food and Skin Food Light, so which size
+      goes in the pack is unknown.
    4. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
       Confirm the registered entity name for the ineligibility and prize
       partner clauses.
@@ -228,6 +244,20 @@ export default function CompetitionTermsPage() {
             There is one prize, consisting of three Weleda Skin Food packs.
             Each pack is valued at A$350, giving a total prize value of A$1,050.
           </p>
+          <p className="mt-4">Each pack contains:</p>
+          <ul className="mt-3 space-y-1 list-disc pl-5 marker:text-charcoal/40">
+            <li>Skin Food</li>
+            <li>Skin Food Light</li>
+            <li>Skin Food Body Butter</li>
+            <li>Skin Food Body Lotion</li>
+            <li>Skin Food Shower Cream</li>
+            <li>Skin Food Ultra-Light Dry Oil</li>
+            <li>Skin Food Lip Balm</li>
+            <li>Skin Food Super Serum</li>
+            <li>Skin Food Face Care Nourishing Day Cream</li>
+            <li>Skin Food Face Care Nourishing Night Cream</li>
+            <li>Skin Food Face Care Nourishing Cleansing Balm</li>
+          </ul>
           <p className="mt-4">
             All three packs are sent to the winner. The prize is meant to be
             shared: one pack for the winner, and one for each of the two friends
