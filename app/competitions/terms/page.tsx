@@ -166,9 +166,8 @@ export default function CompetitionTermsPage() {
           <p className="mt-4">
             Entrants must have an Instagram account, and that account must be
             public or otherwise accessible to the Promoter, so that a winning
-            entry can be verified and the winner contacted. If an account
-            cannot be viewed or messaged by the Promoter, the entry cannot be
-            verified and is not eligible.
+            entry can be verified. If an account cannot be viewed or messaged by
+            the Promoter, the entry cannot be verified and is not eligible.
           </p>
           <p className="mt-4">
             Employees, contractors and the immediate families of the Promoter
@@ -259,6 +258,10 @@ export default function CompetitionTermsPage() {
             <li>Skin Food Face Care Nourishing Cleansing Balm</li>
           </ul>
           <p className="mt-4">
+            If any product listed above is out of stock at the time of the draw,
+            it will be replaced with another Weleda product of equal value.
+          </p>
+          <p className="mt-4">
             All three packs are sent to the winner. The prize is meant to be
             shared: one pack for the winner, and one for each of the two friends
             they tagged in their winning entry. Passing on those two packs is up
@@ -290,11 +293,12 @@ export default function CompetitionTermsPage() {
             conducted electronically and no physical draw location applies.
           </p>
           <p className="mt-4">
-            The winner will be notified by Instagram direct message and must
-            respond within 48 hours of that message being sent. If the winner
-            does not respond within 48 hours, cannot be contacted, or is found
-            to be ineligible, that entry is forfeited and a new winner will be
-            drawn by the same method.
+            The winner will be notified by email and must respond within 48
+            hours of that email being sent. The Promoter may also follow up by
+            Instagram direct message, but the email is the notification and the
+            48 hours run from it. If the winner does not respond within 48
+            hours, cannot be contacted, or is found to be ineligible, that entry
+            is forfeited and a new winner will be drawn by the same method.
           </p>
         </section>
 
@@ -368,9 +372,8 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Notifying the winner</h3>
           <p>
-            The winner is notified by Instagram direct message, and by email
-            where an email address has been provided, within two business days
-            of the draw.
+            The winner is notified by email within two business days of the
+            draw. The Promoter may also follow up by Instagram direct message.
           </p>
           <p className="mt-4">
             The winner&apos;s Instagram handle, first name and general location
