@@ -67,6 +67,15 @@ export const metadata: Metadata = {
     images: ['/og-default.jpg'],
   },
   robots: { index: true, follow: true },
+  // RSS autodiscovery. Renders
+  //   <link rel="alternate" type="application/rss+xml" title="Beauticate" href="/feed.xml">
+  // into <head> on every page, which is how feed readers and the Instagram
+  // carousel automation find the feed without being told its URL.
+  alternates: {
+    types: {
+      'application/rss+xml': [{ url: '/feed.xml', title: 'Beauticate' }],
+    },
+  },
   // Meta (Facebook) domain verification for beauticate.com — renders
   // <meta name="facebook-domain-verification" ...> into <head> on every page.
   verification: {
