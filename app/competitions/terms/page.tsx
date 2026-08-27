@@ -22,11 +22,12 @@ import { pastCompetitions } from '../pastCompetitions'
    4. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
       Confirm the registered entity name for the ineligibility and prize
       partner clauses.
-   5. CAMPAIGN IMAGE. Sig's artwork ("Skin Food Giveaway - $350.png") is in
-      Google Drive but could not be committed from the session that wrote this
-      page — drive.google.com is blocked by the egress proxy. To add it: drop
-      the file at public/images/competitions/skin-food-giveaway.jpg and wire it
-      into this page with next/image.
+   5. PRIVACY POLICY DOES NOT LIST MANYCHAT. These terms now name ManyChat as
+      the service handling entry DMs and storing entrant email addresses, but
+      legal-copy/1-privacy-policy.md and /privacy list only Shopify, Stripe,
+      Klaviyo and Google under service providers and overseas storage. Add
+      ManyChat to both so the two documents agree — a processor named in the
+      competition terms but absent from the privacy policy is a real gap.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -44,7 +45,7 @@ const comp = {
   drawBy: '17 September 2026',
   partner: 'Weleda Australia',
   entryMethod:
-    'Follow @beauticate and @weledaaustralia on Instagram, tag two friends in the comments of the competition post, and comment the word ICON. One bonus entry for sharing the post to your Instagram story',
+    'Follow @beauticate and @weledaaustralia on Instagram, tag two friends in the comments of the competition post, and comment the word ICON. One bonus entry for sharing the post to your Instagram story. We then ask for your email address by direct message so we can contact you if you win',
   prize:
     'One prize of three Weleda Skin Food packs — one for the winner and one for each of the two friends they tagged',
   prizeValue: 'A$350 per pack · A$1,050 total prize value',
@@ -272,26 +273,35 @@ export default function CompetitionTermsPage() {
             Your email address and what we do with it
           </h3>
           <p>
-            To arrange delivery of the prize, the Promoter may ask an entrant
-            for their email address and a postal address by Instagram direct
-            message. Giving them is voluntary, but the Promoter cannot send the
-            prize without them.
+            When you comment to enter, we reply by Instagram direct message and
+            ask for your email address. Those messages are handled by ManyChat,
+            an automated messaging service, and your email address is stored
+            there and in our email platform. We collect it so that we can
+            contact you if you win.
           </p>
           <p className="mt-4">
-            If you give us your email address, we will use it to run this
-            promotion and send you your prize —{' '}
+            Giving us your email address is voluntary, but we cannot tell you
+            that you have won without it.
+          </p>
+          <p className="mt-4">
             <strong className="font-normal text-ink">
-              and we will also add you to the Beauticate mailing list
+              Giving us your email address also subscribes you to The Edit
             </strong>
-            , which is our newsletter. You can unsubscribe at any time using the
-            link at the bottom of any email we send you, and we will stop. Your
-            entry in this promotion does not depend on staying subscribed.
+            , the Beauticate newsletter. You can unsubscribe at any time using
+            the link at the bottom of any email we send you, and we will stop.
+            Your entry in this promotion does not depend on staying subscribed.
           </p>
           <p className="mt-4">
-            Delivery details are shared with {comp.partner} only for the purpose
-            of fulfilling the prize. Because all three packs go to the winner,
-            the Promoter does not collect any details for the tagged friends. We handle personal information in
-            accordance with the Australian Privacy Principles and our{' '}
+            If you win, we will also ask for a postal address so that the prize
+            can be sent to you. Delivery details are shared with {comp.partner}{' '}
+            only for the purpose of fulfilling the prize. Because all three packs
+            go to the winner, the Promoter does not collect any details for the
+            tagged friends.
+          </p>
+          <p className="mt-4">
+            ManyChat and our email platform both store data outside Australia.
+            We handle personal information in accordance with the Australian
+            Privacy Principles and our{' '}
             <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">privacy policy</a>,
             and we do not sell it.
           </p>
