@@ -24,7 +24,6 @@ import { getFeedArticles, toFeedItem, type FeedItem } from '@/lib/feed-items'
  * both correct and, per the brief, free.
  */
 export const dynamic = 'force-static'
-export const revalidate = 3600
 
 const BC_NS = 'https://www.beauticate.com/ns/rss'
 
