@@ -846,7 +846,41 @@ const nextConfig: NextConfig = {
   },
 
   outputFileTracingExcludes: {
-    '*': ['./content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif'],
+    // Uppercase variants matter: these globs are case-sensitive, and a handful
+    // of migrated files are .JPG. Without them ~8MB of vodcast stills leak into
+    // every single bundle.
+    '*': [
+      './content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif',
+      './content/**/*.JPG', './content/**/*.JPEG', './content/**/*.PNG', './content/**/*.WEBP', './content/**/*.GIF',
+    ],
+
+    /**
+     * /feed.xml and /sitemap-news.xml must not carry public/ into their bundles.
+     *
+     * lib/feed-images.ts reads an image whose path is only known at runtime.
+     * @vercel/nft cannot resolve that statically, so it conservatively traces
+     * the whole public/ tree — 3.3GB — into the bundle of any route that can
+     * reach it. Adding a third such bundle alongside the two article routes
+     * (which carry it for a real reason, see below) took the build from 7.6GB
+     * to 10.9GB and it died with `ENOSPC: no space left on device`.
+     *
+     * Excluding is safe for these two ONLY because neither reads an image at
+     * request time. /feed.xml is force-static with no revalidate: it renders
+     * once during the build, from the real filesystem, before any of this
+     * applies. /sitemap-news.xml carries no images at all.
+     *
+     * DO NOT widen this to '*'. The article routes read public/ per request
+     * through lib/rehype-portrait-images.ts, which sizes body images to lay
+     * them out. Excluding public/ there would not fail the build — it would
+     * quietly stop portrait images rendering correctly in production.
+     *
+     * DO NOT add `revalidate` back to /feed.xml while this exclude stands. A
+     * revalidating lambda would re-render without the images in its bundle,
+     * every item would fail the image guard, and the feed would come back
+     * empty — silently, an hour after any deploy.
+     */
+    '/feed.xml': ['./public/**'],
+    '/sitemap-news.xml': ['./public/**'],
   },
 
   webpack(config, { dev }) {
