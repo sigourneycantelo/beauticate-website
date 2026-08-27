@@ -16,29 +16,17 @@ import { pastCompetitions } from '../pastCompetitions'
       generally require the Promoter's full business address in the terms.
       Sig to supply if a permit is required; the two rules conflict and legal
       decides which wins.
-   3. PRIZE VALUE — THE PROSE BELOW IS PROBABLY WRONG. UNRESOLVED.
-      The brief said "three winners, each winner and their two tagged friends
-      receive one Skin Food pack, total pack value $350 each, total prize pool
-      $1,050". Those three figures cannot all be true at once:
-        (a) 3 winners x 3 people x A$350/pack        = A$3,150  ✗ not A$1,050
-        (b) 3 prizes of 3 packs, A$350 per PRIZE     = A$1,050  ✓ arithmetic
-        (c) 3 packs, one per winner, A$350 per PACK  = A$1,050  ✓ arithmetic
-      The page currently states (b). Retail pricing points at (c) instead:
-      the full Skin Food range in the campaign artwork (13 items, 11 distinct
-      products) comes to roughly A$340-375 at Australian RRP — i.e. ONE full
-      range pack is worth about A$350 on its own, which makes "A$350 per pack"
-      far more likely than "A$350 for three packs" (that would be ~A$117 each).
-      If (c) is right, only the three winners receive a pack and the tagged
-      friends do not — which contradicts the brief's own description of who
-      gets what. Get Weleda to confirm both the pack value AND whether the
-      tagged friends receive one, then rewrite "The prize" section and
-      `prize` / `prizeValue` to match. Do not publish on the current wording.
-   4. PACK CONTENTS. Confirm the final Skin Food pack line-up with Weleda and
-      write it into `prize` — "pack" alone is too vague to be a prize
-      description under the ACL.
-   5. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
+   3. PACK CONTENTS. Confirm the final Skin Food pack line-up with Weleda and
+      write it into `prize` — "pack" alone is thin as a prize description
+      under the ACL. A plain contents list is enough; no per-item pricing.
+   4. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
       Confirm the registered entity name for the ineligibility and prize
       partner clauses.
+   5. CAMPAIGN IMAGE. Sig's artwork ("Skin Food Giveaway - $350.png") is in
+      Google Drive but could not be committed from the session that wrote this
+      page — drive.google.com is blocked by the egress proxy. To add it: drop
+      the file at public/images/competitions/skin-food-giveaway.jpg and wire it
+      into this page with next/image.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -58,8 +46,8 @@ const comp = {
   entryMethod:
     'Follow @beauticate and @weledaaustralia on Instagram, tag two friends in the comments of the competition post, and comment the word ICON. One bonus entry for sharing the post to your Instagram story',
   prize:
-    'Three prizes. Each prize is three Weleda Skin Food packs — one for the winner and one for each of the two friends they tagged',
-  prizeValue: 'A$350 per prize · A$1,050 total prize pool',
+    'One prize of three Weleda Skin Food packs — one for the winner and one for each of the two friends they tagged',
+  prizeValue: 'A$350 per pack · A$1,050 total prize value',
   /** Locality only — see open item 2 above. */
   promoterAddress: 'Sydney, New South Wales, Australia',
   /** Add permit numbers here once granted, e.g. ['NSW: TP/00000', 'SA: T00/000']. */
@@ -128,7 +116,7 @@ export default function CompetitionTermsPage() {
               <dd>{comp.prize}</dd>
             </div>
             <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Total prize value</dt>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Prize value</dt>
               <dd>{comp.prizeValue}</dd>
             </div>
             <div>
@@ -137,7 +125,7 @@ export default function CompetitionTermsPage() {
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Draw</dt>
-              <dd>Drawn at random on or before {comp.drawBy} (game of chance)</dd>
+              <dd>One winner, drawn at random on or before {comp.drawBy} (game of chance)</dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">How to enter</dt>
@@ -236,26 +224,22 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">The prize</h3>
           <p>
-            There are three prizes. Each prize consists of three Weleda Skin
-            Food packs: one for the winner, and one for each of the two friends
-            that winner tagged in their entry. Each prize is valued at A$350,
-            giving a total prize pool of A$1,050.
+            There is one prize, consisting of three Weleda Skin Food packs.
+            Each pack is valued at A$350, giving a total prize value of A$1,050.
           </p>
           <p className="mt-4">
-            Prizes are awarded to the winner. It is a condition of the prize
-            that the two remaining packs go to the two friends named in the
-            winning entry. If either tagged friend is not contactable, is not a
-            resident of Australia, is under 18, or declines the prize, the
-            Promoter may award the remaining pack to the winner or withhold it,
-            at the Promoter&apos;s discretion.
+            All three packs are sent to the winner. The prize is meant to be
+            shared: one pack for the winner, and one for each of the two friends
+            they tagged in their winning entry. Passing on those two packs is up
+            to the winner, and the Promoter has no part in it.
           </p>
           <p className="mt-4">
-            Prizes are not transferable, not exchangeable, and cannot be
-            redeemed for cash. Prizes are delivered to an Australian postal
-            address only.
+            The prize is not transferable, not exchangeable, and cannot be
+            redeemed for cash. The prize is delivered to a single Australian
+            postal address.
           </p>
           <p className="mt-4">
-            If a prize becomes unavailable for reasons beyond the
+            If the prize becomes unavailable for reasons beyond the
             Promoter&apos;s control, the Promoter reserves the right to
             substitute a prize of equal or greater value, subject to any written
             directions from a relevant regulatory authority.
@@ -263,23 +247,23 @@ export default function CompetitionTermsPage() {
         </section>
 
         <section>
-          <h3 className="font-serif text-xl text-ink mb-4">How the winners are chosen</h3>
+          <h3 className="font-serif text-xl text-ink mb-4">How the winner is chosen</h3>
           <p>
             This is a game of chance. Skill plays no part in determining the
-            winners.
+            winner.
           </p>
           <p className="mt-4">
-            Three winners will be drawn at random from all valid entries within
+            One winner will be drawn at random from all valid entries within
             7 days of the entry period closing, being on or before{' '}
             {comp.drawBy}, using a random number generator. The draw will be
             conducted electronically and no physical draw location applies.
           </p>
           <p className="mt-4">
-            Winners will be notified by Instagram direct message. A winner must
-            respond within 48 hours of that message being sent. If a winner does
-            not respond within 48 hours, cannot be contacted, or is found to be
-            ineligible, that winner&apos;s entry is forfeited and a new winner
-            will be drawn by the same method.
+            The winner will be notified by Instagram direct message and must
+            respond within 48 hours of that message being sent. If the winner
+            does not respond within 48 hours, cannot be contacted, or is found
+            to be ineligible, that entry is forfeited and a new winner will be
+            drawn by the same method.
           </p>
         </section>
 
@@ -288,9 +272,9 @@ export default function CompetitionTermsPage() {
             Your email address and what we do with it
           </h3>
           <p>
-            To arrange delivery of a prize, the Promoter may ask an entrant for
-            their email address and a postal address by Instagram direct
-            message. Giving them is voluntary, but the Promoter cannot send a
+            To arrange delivery of the prize, the Promoter may ask an entrant
+            for their email address and a postal address by Instagram direct
+            message. Giving them is voluntary, but the Promoter cannot send the
             prize without them.
           </p>
           <p className="mt-4">
@@ -304,12 +288,9 @@ export default function CompetitionTermsPage() {
             entry in this promotion does not depend on staying subscribed.
           </p>
           <p className="mt-4">
-            Where a prize is being sent to a tagged friend, we will ask that
-            person for their own details directly, and the same applies to them.
-          </p>
-          <p className="mt-4">
             Delivery details are shared with {comp.partner} only for the purpose
-            of fulfilling the prize. We handle personal information in
+            of fulfilling the prize. Because all three packs go to the winner,
+            the Promoter does not collect any details for the tagged friends. We handle personal information in
             accordance with the Australian Privacy Principles and our{' '}
             <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">privacy policy</a>,
             and we do not sell it.
@@ -347,17 +328,17 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Notifying the winner</h3>
           <p>
-            Winners are notified by Instagram direct message, and by email where
-            an email address has been provided, within two business days of the
-            draw.
+            The winner is notified by Instagram direct message, and by email
+            where an email address has been provided, within two business days
+            of the draw.
           </p>
           <p className="mt-4">
-            A winner&apos;s Instagram handle, first name and general location
+            The winner&apos;s Instagram handle, first name and general location
             may be announced on Beauticate&apos;s Instagram account and in the
             Beauticate newsletter.
           </p>
           <p className="mt-4">
-            Where a winner does not respond within the period stated in Part
+            Where the winner does not respond within the period stated in Part
             One, cannot be contacted, or is found to be ineligible, the Promoter
             reserves the right to redraw. Any redraw will be conducted
             electronically by the same method within 5 business days, and the
