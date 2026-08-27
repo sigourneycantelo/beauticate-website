@@ -16,11 +16,23 @@ import { pastCompetitions } from '../pastCompetitions'
       generally require the Promoter's full business address in the terms.
       Sig to supply if a permit is required; the two rules conflict and legal
       decides which wins.
-   3. PRIZE VALUE. The brief read two ways. Taken here as: three prizes, each
-      prize being three Skin Food packs (winner + their two tagged friends),
-      each PRIZE valued at A$350 → A$1,050 total. The alternative reading
-      (A$350 per PACK) would make the pool A$3,150 and change the permit
-      position entirely. Confirm before publishing.
+   3. PRIZE VALUE — THE PROSE BELOW IS PROBABLY WRONG. UNRESOLVED.
+      The brief said "three winners, each winner and their two tagged friends
+      receive one Skin Food pack, total pack value $350 each, total prize pool
+      $1,050". Those three figures cannot all be true at once:
+        (a) 3 winners x 3 people x A$350/pack        = A$3,150  ✗ not A$1,050
+        (b) 3 prizes of 3 packs, A$350 per PRIZE     = A$1,050  ✓ arithmetic
+        (c) 3 packs, one per winner, A$350 per PACK  = A$1,050  ✓ arithmetic
+      The page currently states (b). Retail pricing points at (c) instead:
+      the full Skin Food range in the campaign artwork (13 items, 11 distinct
+      products) comes to roughly A$340-375 at Australian RRP — i.e. ONE full
+      range pack is worth about A$350 on its own, which makes "A$350 per pack"
+      far more likely than "A$350 for three packs" (that would be ~A$117 each).
+      If (c) is right, only the three winners receive a pack and the tagged
+      friends do not — which contradicts the brief's own description of who
+      gets what. Get Weleda to confirm both the pack value AND whether the
+      tagged friends receive one, then rewrite "The prize" section and
+      `prize` / `prizeValue` to match. Do not publish on the current wording.
    4. PACK CONTENTS. Confirm the final Skin Food pack line-up with Weleda and
       write it into `prize` — "pack" alone is too vague to be a prize
       description under the ACL.
