@@ -8,11 +8,19 @@ so they can never disagree about what counts as a published article.
 | --- | --- | --- |
 | `/feed.xml` | `app/feed.xml/route.ts` | static, `revalidate = 3600` |
 | `/sitemap-news.xml` | `app/sitemap-news.xml/route.ts` | `force-dynamic` |
-| `/robots.txt` | `app/robots.txt/route.ts` | static |
+| `/robots.txt` | `app/robots.ts` (Next metadata) | static |
 
-Discovery: `<link rel="alternate" type="application/rss+xml">` in `<head>` on
-every page (`app/layout.tsx` → `metadata.alternates.types`), plus an
-`# RSS feed:` line in `robots.txt`.
+Discovery is the `<link rel="alternate" type="application/rss+xml">` in `<head>`
+on every page (`app/layout.tsx` → `metadata.alternates.types`). That is the
+standard RSS autodiscovery mechanism and the one feed readers actually use.
+
+> **`robots.txt` carries no feed line.** It briefly did — `app/robots.ts` was
+> converted to a route handler so it could emit an `# RSS feed:` comment, since
+> robots.txt has no feed directive and listing the feed under `Sitemap:` would
+> hand Google a URL that fails sitemap validation. That conversion was reverted
+> while bisecting a Vercel build failure on this PR, and the metadata convention
+> restored. If the deploy goes green with this reverted, the route handler was
+> the cause and the feed line should not come back in that form.
 
 ## What the feed contains
 
