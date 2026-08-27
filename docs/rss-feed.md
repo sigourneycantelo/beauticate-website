@@ -6,21 +6,26 @@ so they can never disagree about what counts as a published article.
 
 | URL | Route | Rendering |
 | --- | --- | --- |
-| `/feed.xml` | `app/feed.xml/route.ts` | static, `revalidate = 3600` |
+| `/feed.xml` | `app/feed.xml/route.ts` | static, build-time only |
 | `/sitemap-news.xml` | `app/sitemap-news.xml/route.ts` | `force-dynamic` |
-| `/robots.txt` | `app/robots.ts` (Next metadata) | static |
+| `/robots.txt` | `app/robots.txt/route.ts` | static |
 
 Discovery is the `<link rel="alternate" type="application/rss+xml">` in `<head>`
-on every page (`app/layout.tsx` → `metadata.alternates.types`). That is the
-standard RSS autodiscovery mechanism and the one feed readers actually use.
+on every page (`app/layout.tsx` → `metadata.alternates.types`) — the standard
+autodiscovery mechanism, and the one feed readers and Pinterest actually use —
+plus an `# RSS feed:` comment line in `robots.txt`.
 
-> **`robots.txt` carries no feed line.** It briefly did — `app/robots.ts` was
-> converted to a route handler so it could emit an `# RSS feed:` comment, since
-> robots.txt has no feed directive and listing the feed under `Sitemap:` would
-> hand Google a URL that fails sitemap validation. That conversion was reverted
-> while bisecting a Vercel build failure on this PR, and the metadata convention
-> restored. If the deploy goes green with this reverted, the route handler was
-> the cause and the feed line should not come back in that form.
+robots.txt has no directive for a feed, so a comment is the only honest way to
+put it there: listing `/feed.xml` under `Sitemap:` would hand Google a URL that
+is not a sitemap and fails Search Console validation. That is why `/robots.txt` is
+`app/robots.txt/route.ts` rather than Next's `MetadataRoute.Robots` helper, which
+emits only the directives it knows about.
+
+> **That route computes `SITE` inline, and must keep doing so.** Importing it
+> from `lib/feed` once pulled the image-reading code into this route's bundle,
+> and with it a 3.3GB `@vercel/nft` trace of the whole `public/` tree — one of
+> the bundles behind the `ENOSPC` build failure on #84. See the note at the top
+> of `lib/feed-images.ts`.
 
 ## What the feed contains
 
@@ -189,14 +194,19 @@ for those rather than fabricated — the `handle` and `url` are always present.
 
 ## Caching
 
-`/feed.xml` renders once per build and is then served from the edge with an
-hourly revalidation.
+`/feed.xml` renders once per build and is then served static. There is no
+revalidation, and **there must not be** — see the DO NOT in `next.config.ts`.
 
-Content lives in this repo, so **publishing an article is a deploy** — the
-article is in the feed the moment that deploy goes live, without waiting for the
-hour. The hourly revalidation only covers the one case a deploy cannot: an
-article whose `date_published` is in the future crossing its own date. Cost is
-one filesystem walk an hour instead of one per reader.
+Content lives in this repo, so **publishing an article is a deploy**: the
+article is in the feed the moment that deploy goes live. The only case a deploy
+cannot cover is an article whose `date_published` is in the future crossing its
+own date with nobody deploying, and any later deploy fixes that.
+
+Adding `revalidate` back would be worse than useless. `public/` is excluded from
+this route's function bundle (the ENOSPC fix on #84), so a revalidating lambda
+would wake an hour after each deploy, find no images, drop every item on the
+image guard, and serve a valid, parseable, **empty** feed — which to the
+carousel automation is indistinguishable from "nothing published".
 
 `/sitemap-news.xml` is the opposite and must stay `force-dynamic`: its 48-hour
 window slides continuously, so a copy generated at build time starts advertising
