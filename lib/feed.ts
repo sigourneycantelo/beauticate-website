@@ -23,6 +23,25 @@ export const FEED_LIMIT = 50
 /** Google News only accepts articles published in the last 48 hours. */
 export const NEWS_WINDOW_MS = 48 * 60 * 60 * 1000
 
+/**
+ * The date the directory was bulk-imported.
+ *
+ * 146 of the 148 published venue listings carry `date_published: 2026-01-15`.
+ * That is not 146 things being published on a Thursday, it is one import, and
+ * treating it as a publication event would put the entire directory into the
+ * feed at once — 146 Instagram carousels and Pinterest pins for venues that
+ * have been live for months. So a listing only reaches the feed when something
+ * actually happened to it after this date: it was added, or it was updated.
+ *
+ * Delete this constant the day the directory carries real per-listing dates.
+ * Until then it is the only thing separating a genuine listing update from an
+ * artefact of the migration.
+ */
+const DIRECTORY_IMPORT_EPOCH = '2026-01-15'
+
+/** What kind of thing an item is. The social treatment differs for each. */
+export type FeedContentType = 'article' | 'podcast' | 'venue'
+
 const PUBLIC_DIR = path.join(process.cwd(), 'public')
 
 // ─── Timezone ────────────────────────────────────────────────────────────────
@@ -164,16 +183,40 @@ export function countBodyImages(mdx: string): number {
 
 // ─── Images ──────────────────────────────────────────────────────────────────
 
-export interface FeedImage { url: string; width?: number; height?: number }
+export interface FeedImage {
+  url: string
+  width?: number
+  height?: number
+  /** File size in bytes — RSS <enclosure> requires a length attribute. */
+  bytes?: number
+  /** MIME type, for <enclosure type>. */
+  mimeType?: string
+}
 
-const dimensionCache = new Map<string, { width: number; height: number } | null>()
+type ImageFacts = { width: number; height: number; bytes: number; mimeType: string }
+
+const MIME_BY_EXT: Record<string, string> = {
+  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
+  '.webp': 'image/webp', '.gif': 'image/gif', '.avif': 'image/avif',
+}
+
+const imageFactsCache = new Map<string, ImageFacts | null>()
 
 /**
  * Absolute URL plus intrinsic pixel dimensions for an image referenced from
- * frontmatter. Article images are repo files under public/, so the size is read
- * straight off disk — no network, and no guessing at an aspect ratio. A remote
- * URL (legacy WordPress CDN) or a file that has gone missing yields a URL with
- * no dimensions rather than nothing at all.
+ * frontmatter. Content images are repo files under public/, so size and byte
+ * length are read straight off disk — no network, and no guessing at an aspect
+ * ratio.
+ *
+ * A local path with no file behind it returns undefined, NOT a URL. Some
+ * published listings point at a hero.jpg that was left behind when the listing
+ * was re-filed to a new path, and a feed item whose only image 404s is worse
+ * than no item: Pinterest and the carousel automation both exist to turn that
+ * image into a post. Callers fall through to the next candidate, and
+ * getFeedArticles drops the item if nothing resolves.
+ *
+ * A remote URL (legacy WordPress CDN) is returned as-is and unverified —
+ * checking it would mean a network call per item.
  */
 export function resolveImage(src: string | undefined): FeedImage | undefined {
   if (!src || typeof src !== 'string') return undefined
@@ -183,23 +226,27 @@ export function resolveImage(src: string | undefined): FeedImage | undefined {
   if (!trimmed.startsWith('/')) return undefined
 
   const url = `${SITE}${trimmed}`
-  if (!dimensionCache.has(trimmed)) {
-    let dims: { width: number; height: number } | null = null
+  if (!imageFactsCache.has(trimmed)) {
+    let facts: ImageFacts | null = null
     try {
       const filePath = path.join(PUBLIC_DIR, decodeURIComponent(trimmed))
       // Keep the lookup inside public/ — a frontmatter path is content, and
       // content should never be able to point the reader at another directory.
       if (filePath.startsWith(PUBLIC_DIR) && fs.existsSync(filePath)) {
-        const { width, height } = imageSize(fs.readFileSync(filePath))
-        if (width && height) dims = { width, height }
+        const buffer = fs.readFileSync(filePath)
+        const { width, height } = imageSize(buffer)
+        const mimeType = MIME_BY_EXT[path.extname(filePath).toLowerCase()]
+        if (width && height && mimeType) {
+          facts = { width, height, bytes: buffer.byteLength, mimeType }
+        }
       }
     } catch {
-      dims = null
+      facts = null
     }
-    dimensionCache.set(trimmed, dims)
+    imageFactsCache.set(trimmed, facts)
   }
-  const cached = dimensionCache.get(trimmed)
-  return cached ? { url, ...cached } : { url }
+  const cached = imageFactsCache.get(trimmed)
+  return cached ? { url, ...cached } : undefined
 }
 
 // ─── Products ────────────────────────────────────────────────────────────────
@@ -392,7 +439,34 @@ export interface FeedArticle {
   parts: string[]
   frontmatter: ArticleFrontmatter
   body: string
+  /** The date the feed orders and stamps this item by. See feedDate(). */
   publishedAt: Date
+  /** Original publication date, which for an updated venue listing is earlier. */
+  originalPublishedAt: Date
+  modifiedAt?: Date
+  contentType: FeedContentType
+}
+
+export function contentTypeOf(frontmatter: ArticleFrontmatter, parts: string[]): FeedContentType {
+  if (frontmatter.venueType) return 'venue'
+  if (parts[0] === 'vodcast') return 'podcast'
+  return 'article'
+}
+
+/**
+ * The date an item enters the feed by.
+ *
+ * For an article and a podcast episode this is `date_published`, never
+ * `date_modified`: the site does not treat an edit as a republish (app/sitemap.ts
+ * and the article pages both read `date_published`), so neither does the feed.
+ *
+ * A venue listing is the exception, and deliberately so. Re-visiting a venue and
+ * refreshing its listing IS the editorial event — that is the thing worth a
+ * social post — so a listing is dated by whichever of the two is later.
+ */
+function feedDate(contentType: FeedContentType, published: Date, modified?: Date): Date {
+  if (contentType !== 'venue' || !modified) return published
+  return modified.getTime() > published.getTime() ? modified : published
 }
 
 /**
@@ -401,16 +475,20 @@ export interface FeedArticle {
  * Excluded, and why:
  *  • `published: false` — drafts, and the deliberately-hidden directory
  *    listings described in CLAUDE.md.
- *  • Anything with a `venueType` — a directory venue listing, not an article.
- *    These also share a single bulk `date_published` (2026-01-15 for well over
- *    a hundred of them), so including them would swamp a 50-item feed with one
- *    day's import and push genuine editorial out of it.
+ *  • A venue listing that has not been added or updated since the directory was
+ *    bulk-imported — see DIRECTORY_IMPORT_EPOCH. New and freshly-updated
+ *    listings DO belong in the feed; the 146 that merely carry the import date
+ *    do not, and would otherwise swamp a 50-item feed with one day's migration.
  *  • A `date_published` in the future — scheduled, not yet published.
  *  • An unparseable or missing `date_published` — nothing to sort or stamp it by.
+ *  • Anything with no usable image. Every consumer of this feed turns the image
+ *    into a post, so an item whose artwork 404s cannot be acted on. These are
+ *    warned about at build time rather than dropped in silence — a listing
+ *    reaching this state means its holding shot is broken on the site too.
  *
  * Vodcast episodes ARE included: they are published editorial with a title,
  * date, excerpt, byline and image, they live at their own article-shaped URL,
- * and the automation would otherwise silently never see a new episode.
+ * and new episodes need to reach social like anything else.
  *
  * Nothing else in the tree can reach this list — index pages, static pages, the
  * shop and the homepage are app routes, not content/ directories, and
@@ -422,17 +500,33 @@ export interface FeedArticle {
  */
 export function getFeedArticles(limit = FEED_LIMIT, now: Date = new Date()): FeedArticle[] {
   const articles: FeedArticle[] = []
+  const epoch = parsePublishDate(DIRECTORY_IMPORT_EPOCH)!.getTime()
 
   for (const parts of getArticleSlugs()) {
     const article = getArticleBySlug(parts)
     if (!article) continue
     const f = article.frontmatter
     if (f.published === false) continue
-    if (f.venueType) continue
-    const publishedAt = parsePublishDate(f.date_published)
-    if (!publishedAt) continue
+
+    const originalPublishedAt = parsePublishDate(f.date_published)
+    if (!originalPublishedAt) continue
+    const modifiedAt = parsePublishDate(f.date_modified) ?? undefined
+    const contentType = contentTypeOf(f, parts)
+    const publishedAt = feedDate(contentType, originalPublishedAt, modifiedAt)
+
     if (publishedAt.getTime() > now.getTime()) continue
-    articles.push({ parts, frontmatter: f, body: article.content, publishedAt })
+    if (contentType === 'venue' && publishedAt.getTime() <= epoch) continue
+
+    if (!resolveImage(f.hero_image) && !resolveImage(f.featured_image) && !resolveImage(f.thumbnailPortrait)) {
+      console.warn(
+        `[feed] skipping /${parts.join('/')} — no usable image. ` +
+        `featured_image is ${f.featured_image ? `"${f.featured_image}", which is not on disk` : 'unset'}. ` +
+        `It is published, so this is broken on the site too.`
+      )
+      continue
+    }
+
+    articles.push({ parts, frontmatter: f, body: article.content, publishedAt, originalPublishedAt, modifiedAt, contentType })
   }
 
   articles.sort((a, b) => {
@@ -459,6 +553,9 @@ export interface FeedItem {
   imageCount: number
   wordCount: number
   isGuestPost: boolean
+  contentType: FeedContentType
+  /** Set only when it differs from publishedAt, i.e. an updated venue listing. */
+  originalPublishedAt?: Date
   shopProducts: FeedProduct[]
   affiliateProducts: FeedProduct[]
   shopCollections: FeedCollection[]
@@ -483,7 +580,7 @@ export function feedGuid(frontmatter: ArticleFrontmatter, parts: string[]): stri
 }
 
 export function toFeedItem(article: FeedArticle): FeedItem {
-  const { frontmatter: f, parts, body, publishedAt } = article
+  const { frontmatter: f, parts, body, publishedAt, originalPublishedAt, contentType } = article
   const products = extractProducts(f, body)
 
   const category = f.category || parts[0]
@@ -513,6 +610,8 @@ export function toFeedItem(article: FeedArticle): FeedItem {
     imageCount: countBodyImages(body),
     wordCount: countWords(body),
     isGuestPost: isGuestByline(f.author),
+    contentType,
+    originalPublishedAt: originalPublishedAt.getTime() === publishedAt.getTime() ? undefined : originalPublishedAt,
     shopProducts: products.shop,
     affiliateProducts: products.affiliate,
     shopCollections: products.collections,

@@ -16,25 +16,48 @@ every page (`app/layout.tsx` → `metadata.alternates.types`), plus an
 
 ## What the feed contains
 
-The 50 most recently published articles, newest first by `date_published`.
+The 50 most recent items, newest first. Three kinds of thing, mixed together and
+distinguished by `<bc:contentType>`:
+
+| `bc:contentType` | What | Dated by |
+| --- | --- | --- |
+| `article` | editorial | `date_published` |
+| `podcast` | a vodcast episode | `date_published` |
+| `venue` | a directory listing | later of `date_published` / `date_modified` |
 
 **Excluded, deliberately:**
 
 - `published: false` — drafts and hidden directory listings.
-- Anything with a `venueType` — a directory venue listing, not an article. Well
-  over a hundred of them share one bulk `date_published` (`2026-01-15`), so
-  including them would swamp the feed with a single day's import.
 - `date_published` in the future — scheduled, not published.
-
-**Included, deliberately:** vodcast episodes. They are published editorial with a
-title, date, excerpt, byline and image at their own article-shaped URL, and the
-automation would otherwise never see a new episode. Their `<category>` elements
-come from the path (`vodcast` / `episodes`) since their frontmatter has no
-`category` field.
+- A **venue listing not added or updated since the directory was bulk-imported**
+  — see below.
+- Anything with **no usable image**. Every consumer turns the image into a post,
+  so an item whose artwork 404s cannot be acted on. These are `console.warn`ed
+  at build time, never dropped silently: a listing in this state is broken on
+  the live site too.
 
 Index pages, static pages, the shop and the homepage cannot reach the feed at
 all: they are app routes, and `getArticleSlugs()` only yields a `content/`
 directory that contains its own `<name>.mdx`.
+
+### Venue listings: new or updated only
+
+146 of the 148 published venue listings carry `date_published: 2026-01-15`. That
+is not 146 venues published on a Thursday, it is one bulk import — and treating
+it as a publication event would put the whole directory into the feed at once.
+
+So a listing reaches the feed only when something actually happened to it after
+`DIRECTORY_IMPORT_EPOCH` (`lib/feed.ts`): it was added, or it was updated. A
+re-visited listing is dated by its `date_modified`, because refreshing a venue
+*is* the editorial event worth posting; `<bc:datePublished>` then carries the
+original date so nothing is ambiguous.
+
+**Delete that constant the day the directory carries real per-listing dates.**
+Until then it is the only thing separating a genuine listing update from a
+migration artefact.
+
+Articles and podcasts are never dated by `date_modified` — the site does not
+treat an edit as a republish, and neither does the feed.
 
 ## Fields that need explaining
 
@@ -69,11 +92,45 @@ so a story published on the 20th would syndicate as the 19th.
 `heroImage` is the landscape holding shot (`hero_image`), `thumbnail` the
 portrait (`thumbnailPortrait`). Only 11 articles carry a dedicated `hero_image`
 and one a `thumbnailPortrait`, so both fall back to `featured_image` exactly as
-`HeroWide` / `ArticleHero` do. That means the two can be the same URL.
+`HeroWide` / `ArticleHero` do. That means the two are often the same URL — read
+the dimensions, not the element name.
 
-Both carry `width` and `height` read off the file in `public/`, so the consumer
-can tell which shape it actually got rather than trusting the element name. A
-remote (legacy WordPress CDN) image yields a URL with no dimensions.
+A local path with no file behind it resolves to *nothing*, not to a URL, so a
+broken holding shot falls through to the next candidate and, failing that, drops
+the item with a build warning. A remote (legacy WordPress CDN) URL is passed
+through unverified — checking it would mean a network call per item.
+
+### Images, and Pinterest
+
+Each item carries the same artwork four ways, because different consumers look
+in different places:
+
+| Element | Image | For |
+| --- | --- | --- |
+| `<enclosure>` | portrait | Pinterest — one per item, with `type` and byte `length` |
+| `<media:content>` (first) | portrait | generic MRSS readers |
+| `<media:content>` (second) | landscape | generic MRSS readers (omitted when identical) |
+| `<media:thumbnail>` | portrait | generic MRSS readers |
+| `<bc:heroImage>` / `<bc:thumbnail>` | landscape / portrait | **the automation — use these** |
+
+The portrait leads everywhere a third party takes a single image. That is for
+Pinterest, which wants 2:3 and would otherwise centre-crop a wide banner into a
+tall pin. RSS 2.0 allows exactly one `<enclosure>`, so the portrait gets it, and
+the portrait is also the first `<media:content>` — [Pinterest's docs][pin] say it
+reads both, and either way it lands on the portrait.
+
+Pinterest also needs each `<link>` to point at a **claimed** domain, publishes
+within 24 hours of a feed change, and caps at 200 Pins/day. One connected feed
+publishes to **one board**, so articles, podcasts and venue listings would all
+land together — split the feed by `bc:contentType` into separate routes if they
+need separate boards.
+
+[pin]: https://help.pinterest.com/en/business/article/auto-publish-pins-from-your-rss-feed
+
+Every image carries real `width` and `height` read off the file, so a consumer
+can check the shape rather than trusting the element name — which matters
+because most items have only one image and the "portrait" is then the same file
+as the landscape.
 
 ### `<bc:isGuestPost>`
 

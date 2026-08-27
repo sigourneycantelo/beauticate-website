@@ -61,6 +61,45 @@ function collectionTag(collection: FeedCollection, indent = '      '): string {
   return `${indent}<bc:shopCollection>\n${inner}\n${indent}</bc:shopCollection>\n`
 }
 
+/**
+ * Images, in the order third-party consumers look for them.
+ *
+ * The PORTRAIT comes first and is marked isDefault, and it is the one attached
+ * as <enclosure>. That is for Pinterest: its RSS auto-publish takes one image
+ * per item and it wants 2:3 portrait — handed our landscape hero it would
+ * centre-crop a wide banner into a tall pin. RSS 2.0 allows exactly one
+ * enclosure, so the portrait gets it.
+ *
+ * The Instagram automation should keep reading bc:heroImage and bc:thumbnail,
+ * which say which shape they are rather than leaving it to be inferred.
+ */
+function mediaTags(item: FeedItem): string {
+  const out: string[] = []
+  const portrait = item.thumbnail
+  const landscape = item.hero
+
+  if (portrait?.bytes && portrait.mimeType) {
+    out.push(`    <enclosure url="${escapeXml(portrait.url)}" type="${portrait.mimeType}" length="${portrait.bytes}" />\n`)
+  }
+  // Portrait first. Pinterest's docs say it reads <enclosure> and
+  // <media:content>; whichever it picks, the portrait is what it finds. No
+  // isDefault attribute — that is media:group-scoped in MRSS and would be a
+  // validator wart out here for no gain.
+  const seen = new Set<string>()
+  for (const image of [portrait, landscape]) {
+    if (!image || seen.has(image.url)) continue
+    seen.add(image.url)
+    const dims = image.width && image.height ? ` width="${image.width}" height="${image.height}"` : ''
+    const type = image.mimeType ? ` type="${image.mimeType}"` : ''
+    out.push(`    <media:content url="${escapeXml(image.url)}" medium="image"${type}${dims} />\n`)
+  }
+  if (portrait) {
+    const dims = portrait.width && portrait.height ? ` width="${portrait.width}" height="${portrait.height}"` : ''
+    out.push(`    <media:thumbnail url="${escapeXml(portrait.url)}"${dims} />\n`)
+  }
+  return out.join('')
+}
+
 function imageTag(name: string, image: { url: string; width?: number; height?: number } | undefined): string {
   if (!image) return ''
   const dims = image.width && image.height
@@ -82,18 +121,18 @@ function renderItem(item: FeedItem): string {
   }
   parts.push(`    <dc:creator>${cdata(item.author)}</dc:creator>\n`)
 
-  // The landscape holding shot, published under both the widely-understood
-  // media:content name and our own, so a generic reader and the automation can
-  // each take the one they know.
-  if (item.hero) {
-    const dims = item.hero.width && item.hero.height
-      ? ` width="${item.hero.width}" height="${item.hero.height}"`
-      : ''
-    parts.push(`    <media:content url="${escapeXml(item.hero.url)}" medium="image"${dims} />\n`)
-  }
+  parts.push(mediaTags(item))
   parts.push(imageTag('bc:heroImage', item.hero))
   parts.push(imageTag('bc:thumbnail', item.thumbnail))
 
+  // article | podcast | venue — the social treatment differs for each, and the
+  // three are mixed together in one feed.
+  parts.push(tag('bc:contentType', item.contentType))
+  if (item.originalPublishedAt) {
+    // A venue listing that has been re-visited. pubDate carries the update,
+    // because that is the editorial event worth posting; this is the original.
+    parts.push(tag('bc:datePublished', item.originalPublishedAt.toISOString()))
+  }
   parts.push(tag('bc:imageCount', item.imageCount))
   parts.push(tag('bc:wordCount', item.wordCount))
   parts.push(tag('bc:isGuestPost', String(item.isGuestPost)))
