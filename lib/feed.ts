@@ -1,6 +1,3 @@
-import fs from 'fs'
-import path from 'path'
-import { imageSize } from 'image-size'
 import { getArticleSlugs, getArticleBySlug } from '@/lib/content'
 import { getAuthor } from '@/lib/authors'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
@@ -13,6 +10,10 @@ import type { ArticleFrontmatter, ProductLink } from '@/types/content'
  * about what counts as a published article. It reads the same content layer
  * as app/sitemap.ts (lib/content.ts walking content/), does no network I/O of
  * its own, and is safe to call during a static render.
+ *
+ * This module must never touch the filesystem outside content/. Reading images
+ * lives in lib/feed-images.ts, and the reason it is a separate file is load
+ * bearing — see the note there before importing it from anything.
  */
 
 export const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com').replace(/\/$/, '')
@@ -41,8 +42,6 @@ const DIRECTORY_IMPORT_EPOCH = '2026-01-15'
 
 /** What kind of thing an item is. The social treatment differs for each. */
 export type FeedContentType = 'article' | 'podcast' | 'venue'
-
-const PUBLIC_DIR = path.join(process.cwd(), 'public')
 
 // ─── Timezone ────────────────────────────────────────────────────────────────
 
@@ -179,74 +178,6 @@ export function countBodyImages(mdx: string): number {
   return count(/!\[[^\]]*\]\([^)]+\)/g)
     + count(/<(?:Portrait|PortraitQuote|InlineImage|CarouselSlide|img|Image)\b/g)
     + count(/<BeforeAfterSlider\b/g) * 2
-}
-
-// ─── Images ──────────────────────────────────────────────────────────────────
-
-export interface FeedImage {
-  url: string
-  width?: number
-  height?: number
-  /** File size in bytes — RSS <enclosure> requires a length attribute. */
-  bytes?: number
-  /** MIME type, for <enclosure type>. */
-  mimeType?: string
-}
-
-type ImageFacts = { width: number; height: number; bytes: number; mimeType: string }
-
-const MIME_BY_EXT: Record<string, string> = {
-  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png',
-  '.webp': 'image/webp', '.gif': 'image/gif', '.avif': 'image/avif',
-}
-
-const imageFactsCache = new Map<string, ImageFacts | null>()
-
-/**
- * Absolute URL plus intrinsic pixel dimensions for an image referenced from
- * frontmatter. Content images are repo files under public/, so size and byte
- * length are read straight off disk — no network, and no guessing at an aspect
- * ratio.
- *
- * A local path with no file behind it returns undefined, NOT a URL. Some
- * published listings point at a hero.jpg that was left behind when the listing
- * was re-filed to a new path, and a feed item whose only image 404s is worse
- * than no item: Pinterest and the carousel automation both exist to turn that
- * image into a post. Callers fall through to the next candidate, and
- * getFeedArticles drops the item if nothing resolves.
- *
- * A remote URL (legacy WordPress CDN) is returned as-is and unverified —
- * checking it would mean a network call per item.
- */
-export function resolveImage(src: string | undefined): FeedImage | undefined {
-  if (!src || typeof src !== 'string') return undefined
-  const trimmed = src.trim()
-  if (!trimmed) return undefined
-  if (/^https?:\/\//i.test(trimmed)) return { url: trimmed }
-  if (!trimmed.startsWith('/')) return undefined
-
-  const url = `${SITE}${trimmed}`
-  if (!imageFactsCache.has(trimmed)) {
-    let facts: ImageFacts | null = null
-    try {
-      const filePath = path.join(PUBLIC_DIR, decodeURIComponent(trimmed))
-      // Keep the lookup inside public/ — a frontmatter path is content, and
-      // content should never be able to point the reader at another directory.
-      if (filePath.startsWith(PUBLIC_DIR) && fs.existsSync(filePath)) {
-        const buffer = fs.readFileSync(filePath)
-        const { width, height } = imageSize(buffer)
-        const mimeType = MIME_BY_EXT[path.extname(filePath).toLowerCase()]
-        if (width && height && mimeType) {
-          facts = { width, height, bytes: buffer.byteLength, mimeType }
-        }
-      }
-    } catch {
-      facts = null
-    }
-    imageFactsCache.set(trimmed, facts)
-  }
-  const cached = imageFactsCache.get(trimmed)
-  return cached ? { url, ...cached } : undefined
 }
 
 // ─── Products ────────────────────────────────────────────────────────────────
@@ -523,119 +454,4 @@ export function getFeedCandidates(now: Date = new Date()): FeedArticle[] {
   })
 
   return articles
-}
-
-/**
- * The newest `limit` candidates that actually have an image to post.
- *
- * Every consumer of the feed turns the image into a post, so an item whose
- * artwork 404s cannot be acted on. Two published venue listings are in that
- * state — re-filed to a new path with the photo left behind at the old one —
- * and they are broken on the live site too, so they are warned about rather
- * than dropped in silence.
- *
- * The image check runs lazily, walking the sorted list and stopping as soon as
- * `limit` items have been taken. That matters: resolving an image reads the
- * file off disk, and content/ is a 2.8GB tree of nearly two thousand of them.
- * Checking every candidate up front to return fifty would read the lot on every
- * render.
- */
-export function getFeedArticles(limit = FEED_LIMIT, now: Date = new Date()): FeedArticle[] {
-  const taken: FeedArticle[] = []
-
-  for (const candidate of getFeedCandidates(now)) {
-    if (taken.length >= limit) break
-    const f = candidate.frontmatter
-    if (!resolveImage(f.hero_image) && !resolveImage(f.featured_image) && !resolveImage(f.thumbnailPortrait)) {
-      console.warn(
-        `[feed] skipping /${candidate.parts.join('/')} — no usable image. ` +
-        `featured_image is ${f.featured_image ? `"${f.featured_image}", which is not on disk` : 'unset'}. ` +
-        `It is published, so this is broken on the site too.`
-      )
-      continue
-    }
-    taken.push(candidate)
-  }
-
-  return taken
-}
-
-// ─── Item shape ──────────────────────────────────────────────────────────────
-
-export interface FeedItem {
-  url: string
-  guid: string
-  title: string
-  description: string
-  publishedAt: Date
-  author: string
-  categories: string[]
-  hero?: FeedImage
-  thumbnail?: FeedImage
-  imageCount: number
-  wordCount: number
-  isGuestPost: boolean
-  contentType: FeedContentType
-  /** Set only when it differs from publishedAt, i.e. an updated venue listing. */
-  originalPublishedAt?: Date
-  shopProducts: FeedProduct[]
-  affiliateProducts: FeedProduct[]
-  shopCollections: FeedCollection[]
-}
-
-/**
- * A stable, non-URL item id (RFC 4151 tag URI).
- *
- * Built on the slug, not the URL, because the URL is the part that moves: this
- * site re-files articles between subcategories, which rewrites the path and
- * leaves the slug untouched — middleware.ts exists to catch exactly that, and
- * data/redirect-slug-map.json keys off the slug for the same reason. A
- * URL-based guid would make every re-filed article look brand new to the
- * automation and get it posted a second time.
- *
- * Note there is no immutable id in the content model; the slug is the most
- * stable identifier that exists today. See the report accompanying this work.
- */
-export function feedGuid(frontmatter: ArticleFrontmatter, parts: string[]): string {
-  const slug = frontmatter.slug || parts[parts.length - 1]
-  return `tag:beauticate.com,2026:article/${slug}`
-}
-
-export function toFeedItem(article: FeedArticle): FeedItem {
-  const { frontmatter: f, parts, body, publishedAt, originalPublishedAt, contentType } = article
-  const products = extractProducts(f, body)
-
-  const category = f.category || parts[0]
-  const subcategory = f.subcategory || (parts.length >= 3 ? parts[1] : undefined)
-
-  const description = toPlainText(
-    f.excerpt || f.seo_description || f.meta_description || f.og_description || ''
-  )
-
-  // hero_image is the landscape holding shot and featured_image the portrait
-  // thumbnail (CLAUDE.md). Only 11 articles carry a dedicated hero_image, so
-  // the hero falls back to featured_image exactly as HeroWide/ArticleHero do.
-  // The emitted width/height let the consumer see which shape it actually got.
-  const hero = resolveImage(f.hero_image) ?? resolveImage(f.featured_image)
-  const thumbnail = resolveImage(f.thumbnailPortrait) ?? resolveImage(f.featured_image)
-
-  return {
-    url: `${SITE}/${parts.join('/')}`,
-    guid: feedGuid(f, parts),
-    title: toPlainText(f.title ?? ''),
-    description,
-    publishedAt,
-    author: (f.author ?? '').trim() || FALLBACK_AUTHOR,
-    categories: [category, subcategory].filter((c): c is string => !!c),
-    hero,
-    thumbnail,
-    imageCount: countBodyImages(body),
-    wordCount: countWords(body),
-    isGuestPost: isGuestByline(f.author),
-    contentType,
-    originalPublishedAt: originalPublishedAt.getTime() === publishedAt.getTime() ? undefined : originalPublishedAt,
-    shopProducts: products.shop,
-    affiliateProducts: products.affiliate,
-    shopCollections: products.collections,
-  }
 }

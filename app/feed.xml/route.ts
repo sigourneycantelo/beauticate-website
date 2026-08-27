@@ -1,9 +1,11 @@
 import {
   SITE, FEED_LIMIT,
-  getFeedArticles, toFeedItem,
   escapeXml, cdata, toRfc822,
-  type FeedItem, type FeedProduct, type FeedCollection,
+  type FeedProduct, type FeedCollection,
 } from '@/lib/feed'
+// Image reading lives here, and only a force-static route may import it — see
+// the note at the top of lib/feed-images.ts.
+import { getFeedArticles, toFeedItem, type FeedItem } from '@/lib/feed-items'
 
 /**
  * RSS 2.0 feed of the 50 most recently published articles.
