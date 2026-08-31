@@ -41,6 +41,22 @@ const ACKNOWLEDGED = new Map([
    'Excerpt frames Sigourney as the subject of a Shopbox partnership. She does not recall writing it, so the house byline is the honest answer until someone knows otherwise.'],
 ])
 
+/**
+ * Real people who wrote one or two pieces and are not on the masthead. They
+ * carry their own byline, which is correct, but they get no author page and no
+ * bio — so they sit outside lib/authors.ts on purpose, and the feed reports
+ * them as guest posts, which is also correct.
+ *
+ * Confirmed one-offs by Sig, 31 Aug 2026. A name here is a decision, not an
+ * oversight; a name that is NOT here and not in the registry is worth asking
+ * about, which is the whole point of the warning.
+ */
+const ONE_OFF_CONTRIBUTORS = new Set([
+  "Abigail O'Neill",
+  'Carla Caruso',
+  'Angie Vida',
+])
+
 const registry = new Set(
   [...fs.readFileSync('lib/authors.ts', 'utf8').matchAll(/^\s*name: '([^']+)'/gm)].map(m => m[1])
 )
@@ -95,7 +111,7 @@ const warn = []
     } else {
       // 2. A byline that resolves to nobody: no bio, no author page, and the
       //    feed reports it as a guest post by default.
-      if (!registry.has(f.author) && !HOUSE.has(f.author)) {
+      if (!registry.has(f.author) && !HOUSE.has(f.author) && !ONE_OFF_CONTRIBUTORS.has(f.author)) {
         warn.push(`${rel} — byline "${f.author}" is not in lib/authors.ts.`)
       }
       // 3. The house byline on a piece whose own standfirst names a contributor.

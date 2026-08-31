@@ -146,6 +146,22 @@ because it records which fixes were approved. `data/chat-index.json` stays
 tracked deliberately: Ask Sig reads it at runtime and it has not been verified
 to survive as a build-only artefact.
 
+`data/image-dimensions.json` is rebuilt by `scripts/build-image-dimensions.mjs`
+on every `npm run build` and is **also tracked deliberately**, for the same kind
+of reason: `npm run dev` does not run the prebuild scripts, and without the file
+every lone portrait image silently loses its centring and width cap. A dev/prod
+mismatch on layout you review by eye is worse than 2MB in git. It is written one
+entry per line so a diff shows the images that actually changed.
+
+**Do not replace that manifest with a direct image read.** It exists because
+`lib/rehype-portrait-images.ts` used to read `public/<src>` at request time, and
+@vercel/nft — unable to resolve a runtime path — traced the entire 3.3GB
+`public/` tree into every dynamic route's function bundle. That put the repo at
+~7.3GB of build output on an 8GB build machine and eventually failed a deploy
+with `ENOSPC: no space left on device`, an error raised while collecting build
+traces and pointing nowhere near the cause. The manifest is read from one
+literal path. Keep it literal; see `docs/build-output.md`.
+
 ## Home page hero curation
 
 The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.
