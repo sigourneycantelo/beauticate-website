@@ -187,6 +187,14 @@ When the publication needs to add its own words to someone else's first-person s
 
 Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
 
+### The byline is checked on every build
+
+`scripts/check-editorial-integrity.mjs` runs at the top of `npm run build`. A published article with **no author fails the build** — that one is never a judgement call. It also warns, without failing, about a byline that resolves to nobody in `lib/authors.ts` (no bio, no author page, and the RSS feed reports it as a guest post by default); the house byline on a piece whose own standfirst names a contributor; a published article whose URL permanently redirects away, which is what leaving the original behind after a re-file looks like; and a `featured_image` over 2MB, which is the card image on every archive page.
+
+All four were found the hard way. Colette Harvey's first-person account of her cancer treatment went out credited to "Beauticate Editorial". One story sat in the feed twice because a re-file added the redirect but never deleted the original. Three articles carried thumbnails of 20.4MB, 11.4MB and 9.4MB. Nothing errored and nothing 404'd — they surfaced only because `/feed.xml` put every article's metadata into one document a human could read.
+
+Genuinely ambiguous cases are listed in `ACKNOWLEDGED` in that script, each with a written reason, rather than warned about forever. A check nobody can get to zero is a check everybody learns to ignore.
+
 ## Links — open in a new tab
 
 Readers should never be navigated away from what they're reading.
