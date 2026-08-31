@@ -37,6 +37,8 @@ const ACKNOWLEDGED = new Map([
    'Reader review, same pattern as above.'],
   ['beauty-style/nails/how-to-give-yourself-a-vinylux-manicure',
    'Jocelyn Petroni is named as the expert consulted; the excerpt is an SEO keyword list.'],
+  ['beauty-style/beauty-tips/how-to-get-around-shipping-restrictions-and-more-online-shopping-hacks',
+   'Excerpt frames Sigourney as the subject of a Shopbox partnership. She does not recall writing it, so the house byline is the honest answer until someone knows otherwise.'],
 ])
 
 const registry = new Set(
