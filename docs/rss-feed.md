@@ -55,6 +55,29 @@ Index pages, static pages, the shop and the homepage cannot reach the feed at
 all: they are app routes, and `getArticleSlugs()` only yields a `content/`
 directory that contains its own `<name>.mdx`.
 
+### What counts as a venue listing
+
+A listing carries `venueType` **and** sits in one of the five directory
+subcategories (`clinics`, `salons`, `spas-retreats`, `bathhouses`, `wellness`).
+Both halves are needed, because each alone gets real content wrong:
+
+- `venueType` alone misfiles four editorial travel features. A hotel or spa
+  review carries `venueType` so `lib/seo.ts` can give it `Hotel` schema and it
+  can show in the directory index — not because it is a listing. The
+  InterContinental Coogee review was the home page hero and was being withheld
+  from Pinterest on this basis.
+- The path alone misfiles two editorial roundups filed under `salons/` that
+  have no `venueType` because they are not about one venue.
+
+This is deliberately **not** the same test as `getDirectoryListings()` in
+`lib/content.ts`, which keys on `venueType` alone. "Appears in the directory"
+and "is a listing rather than an article" are different questions; only the
+second is the feed's.
+
+Getting it wrong is not just a mislabel. A listing is dated by `date_modified`,
+is held to the import epoch below, and is dropped from `/feed-editorial.xml`
+entirely — so a misfiled article can vanish from the feed silently.
+
 ### Venue listings: new or updated only
 
 146 of the 148 published venue listings carry `date_published: 2026-01-15`. That

@@ -378,9 +378,54 @@ export interface FeedArticle {
   contentType: FeedContentType
 }
 
+/**
+ * The subcategories of `destinations` that hold the venue directory. Everything
+ * under them is a listing; `destinations/travel` beside them is editorial.
+ *
+ * This list is the half of the venue test that `venueType` cannot supply — see
+ * contentTypeOf().
+ */
+const DIRECTORY_SUBCATEGORIES = new Set([
+  'clinics',
+  'salons',
+  'spas-retreats',
+  'bathhouses',
+  'wellness',
+])
+
+/**
+ * A listing is a piece of content that carries `venueType` AND sits in one of
+ * the directory subcategories. Both halves are load bearing, because each one
+ * alone gets real content in the repo wrong:
+ *
+ *  • `venueType` alone misfiles four editorial travel features. A hotel or spa
+ *    review carries `venueType` so that lib/seo.ts can give it Hotel schema and
+ *    it can appear in the directory index — not because it is a listing. One of
+ *    them is the InterContinental Coogee review, which was the home page hero on
+ *    the day this was written and was being withheld from Pinterest as a
+ *    directory listing.
+ *
+ *  • The path alone misfiles two editorial roundups filed under `salons/`
+ *    ("The best Sydney beauty treatments…", "Three new Sydney beauty
+ *    destinations we love"). They have no `venueType` because they are not
+ *    about one venue.
+ *
+ * The distinction matters twice over: a listing is dated by `date_modified` and
+ * is held to DIRECTORY_IMPORT_EPOCH, and /feed-editorial.xml — the feed Pinterest
+ * publishes from — drops listings entirely. Misfiling an article as a listing
+ * therefore does not just mislabel it, it can silently remove it from the feed.
+ *
+ * Note this is deliberately NOT the same test as getDirectoryListings() in
+ * lib/content.ts, which keys on `venueType` alone. That is correct for the
+ * directory index, where a hotel review genuinely does belong. "Appears in the
+ * directory" and "is a directory listing rather than an article" are different
+ * questions, and only the second one is this function's.
+ */
 export function contentTypeOf(frontmatter: ArticleFrontmatter, parts: string[]): FeedContentType {
-  if (frontmatter.venueType) return 'venue'
   if (parts[0] === 'vodcast') return 'podcast'
+  if (frontmatter.venueType && parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1])) {
+    return 'venue'
+  }
   return 'article'
 }
 
