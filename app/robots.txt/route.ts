@@ -44,6 +44,7 @@ Sitemap: ${SITE}/sitemap.xml
 Sitemap: ${SITE}/sitemap-news.xml
 
 # RSS feed: ${SITE}/feed.xml
+# RSS feed (editorial only, no directory listings): ${SITE}/feed-editorial.xml
 `
   return new Response(body, {
     headers: {
