@@ -501,6 +501,13 @@ const nextConfig: NextConfig = {
       { source: '/wellness/health/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life', destination: '/wellness/mindset/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life', permanent: true },
       { source: '/wellness/health/how-to-break-up-with-a-negative-insta-feed', destination: '/wellness/mindset/how-to-break-up-with-a-negative-insta-feed', permanent: true },
       { source: '/wellness/health/drastically-reduce-your-chances-of-developing-dementia', destination: '/wellness/mindset/drastically-reduce-your-chances-of-developing-dementia', permanent: true },
+      // Jess Sepel ran as both a vodcast episode and a wellness/mindset article,
+      // the only episode on the site with both versions live. The episode is the
+      // canonical version; the article is drafted, so its URL forwards here.
+      // Needed explicitly: generate-redirect-map.mjs skips unpublished articles,
+      // so the slug map no longer carries this one.
+      { source: '/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
+      { source: '/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
       { source: '/wellness/health/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it', destination: '/wellness/mindset/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it', permanent: true },
       { source: '/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', destination: '/interviews/creatives/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', permanent: true },
       { source: '/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', destination: '/interviews/creatives/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', permanent: true },
