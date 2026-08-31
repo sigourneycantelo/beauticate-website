@@ -248,7 +248,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {/* Venue contact — structured component replaces the old markdown ## CONTACT */}
         {f.venueType && (
           <VenueContact
-            name={f.title}
+            name={f.venue_name ?? f.title}
             address={f.address}
             telephone={f.telephone}
             instagram={f.instagram}
