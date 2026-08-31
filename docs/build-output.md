@@ -43,9 +43,22 @@ assume.
 ## The fix, and the rule
 
 `scripts/build-image-dimensions.mjs` indexes every image under `public/` into
-`data/image-dimensions.json` (~21,000 entries, 2.26MB, ~3s). Consumers look
+`data/image-dimensions.json` (~21,000 entries, 2.26MB). Consumers look
 dimensions up in that manifest, read from **one literal path**, which nft
 resolves to a single file.
+
+**That step costs about 155s on a cold page cache**, which is what CI always
+has. An earlier note here said ~3s; that was measured immediately after another
+pass had already read all 21,000 files, so it timed the cache rather than the
+work. Reading 2.8GB of image headers is inherently I/O-bound and the concurrency
+in that script does not change much about it.
+
+It is still a large net win — the build went from ~11 minutes to ~3m43s, because
+copying 6.6GB into two lambdas cost far more than reading the headers once — but
+be aware that **the manifest step is now the single largest item in the build**.
+If it needs to come down, the lever is incremental work (persist the manifest
+across builds via the Vercel build cache and re-stat only what changed), not
+more parallelism.
 
 **The rule: never assemble a filesystem path from a runtime value in code a
 dynamic route can reach.** Literal paths are fine — `app/.well-known/llms.txt`
