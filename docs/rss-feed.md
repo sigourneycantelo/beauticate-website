@@ -1,12 +1,14 @@
 # RSS feed and news sitemap
 
 Machine-readable listings of recent articles, built for the Instagram carousel
-automation. Both read the same selection logic in [`lib/feed.ts`](../lib/feed.ts),
-so they can never disagree about what counts as a published article.
+automation. They all read the same selection logic in
+[`lib/feed.ts`](../lib/feed.ts), so they can never disagree about what counts as
+a published article.
 
 | URL | Route | Rendering |
 | --- | --- | --- |
 | `/feed.xml` | `app/feed.xml/route.ts` | static, build-time only |
+| `/feed-editorial.xml` | `app/feed-editorial.xml/route.ts` | static, build-time only |
 | `/sitemap-news.xml` | `app/sitemap-news.xml/route.ts` | `force-dynamic` |
 | `/robots.txt` | `app/robots.txt/route.ts` | static |
 
@@ -72,6 +74,26 @@ migration artefact.
 Articles and podcasts are never dated by `date_modified` — the site does not
 treat an edit as a republish, and neither does the feed.
 
+### The two feeds
+
+`/feed.xml` is the complete one and the automation's input. `/feed-editorial.xml`
+is the same rendering (`lib/feed-rss.ts` builds both, so they cannot drift) over
+the same 50 candidates with `bc:contentType` of `venue` filtered out — features,
+interviews and podcast episodes only. It is a strict subset of `/feed.xml`, item
+for item and guid for guid.
+
+It exists for Pinterest. One connected feed publishes to **one board**, and on
+connect Pinterest **backfills the whole feed, oldest item first** — so pointing
+it at `/feed.xml` today would open the account with a run of directory listings.
+Nor can that be waited out: at the current publishing rate the listings sitting
+in `/feed.xml` take roughly eight months to fall off the end of a 50-item
+window, and the backfill would reach them anyway.
+
+If venue listings ever want a Pinterest board of their own, add a third route
+filtering the other way, rather than reaching for `/feed.xml`. Whatever it is,
+**give it an `outputFileTracingExcludes` entry in the same commit** — see
+[`build-output.md`](build-output.md).
+
 ## Fields that need explaining
 
 ### `<guid isPermaLink="false">`
@@ -133,10 +155,8 @@ the portrait is also the first `<media:content>` — [Pinterest's docs][pin] say
 reads both, and either way it lands on the portrait.
 
 Pinterest also needs each `<link>` to point at a **claimed** domain, publishes
-within 24 hours of a feed change, and caps at 200 Pins/day. One connected feed
-publishes to **one board**, so articles, podcasts and venue listings would all
-land together — split the feed by `bc:contentType` into separate routes if they
-need separate boards.
+within 24 hours of a feed change, and caps at 200 Pins/day. Connect it to
+`/feed-editorial.xml`, not `/feed.xml` — see "The two feeds" above for why.
 
 [pin]: https://help.pinterest.com/en/business/article/auto-publish-pins-from-your-rss-feed
 

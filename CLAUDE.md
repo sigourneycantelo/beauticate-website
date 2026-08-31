@@ -162,6 +162,14 @@ with `ENOSPC: no space left on device`, an error raised while collecting build
 traces and pointing nowhere near the cause. The manifest is read from one
 literal path. Keep it literal; see `docs/build-output.md`.
 
+`scripts/check-bundle-sizes.mjs` runs at the end of `npm run build` and fails it
+if any one function bundle passes 250MB, so the next version of that mistake
+breaks the build locally in seconds instead of surfacing as an `ENOSPC` ten
+minutes into a Vercel deploy. If it fires on a route you just added, the route
+can reach a runtime-path filesystem read — usually `lib/feed-images.ts` — and
+needs its own `outputFileTracingExcludes` entry in `next.config.ts`. Never widen
+that exclude to `'*'`.
+
 ## Home page hero curation
 
 The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.

@@ -9,7 +9,7 @@ import { buildRssFeed, rssResponse } from '@/lib/feed-rss'
  * Why a second route rather than a filter on /feed.xml. Pinterest **backfills
  * the entire feed when you connect it**, oldest first, so every item present
  * at connection time becomes a Pin. At the time of writing that would have
- * meant 19 venue listings — a batch whose `date_modified` was refreshed in one
+ * meant 17 venue listings — a batch whose `date_modified` was refreshed in one
  * pass in August — going out alongside the editorial.
  *
  * Waiting for them to leave the feed was not an option either. Items drop out
@@ -22,7 +22,9 @@ import { buildRssFeed, rssResponse } from '@/lib/feed-rss'
  *
  * If venue listings should ever get their own Pinterest board, add a third
  * route filtering to 'venue' rather than widening this one — Pinterest maps
- * one feed to one board.
+ * one feed to one board. Give it an `outputFileTracingExcludes` entry in
+ * `next.config.ts` in the same commit; this route cost 3.4GB of build output
+ * for want of one.
  */
 export const dynamic = 'force-static'
 

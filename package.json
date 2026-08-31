@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/check-editorial-integrity.mjs && npx tsx scripts/build-pagefind-index.mts && node scripts/build-image-dimensions.mjs && node scripts/build-chat-index.mjs && node scripts/generate-redirect-map.mjs && next build",
+    "build": "node scripts/check-editorial-integrity.mjs && npx tsx scripts/build-pagefind-index.mts && node scripts/build-image-dimensions.mjs && node scripts/build-chat-index.mjs && node scripts/generate-redirect-map.mjs && next build && node scripts/check-bundle-sizes.mjs",
     "build:search": "npx tsx scripts/build-pagefind-index.mts",
     "build:chat": "node scripts/build-chat-index.mjs",
     "build:redirect-map": "node scripts/generate-redirect-map.mjs",

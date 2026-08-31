@@ -35,6 +35,8 @@ dynamic route able to reach that code gets its own 3.3GB copy.
 | Two article routes reading `public/` per request | 7.32 GB |
 | A third route added (the RSS feed, #84) | 10.91 GB → **ENOSPC** |
 | After precomputing dimensions (#89) | **0.58 GB** |
+| A fourth route added (`/feed-editorial.xml`) | **3.97 GB** |
+| That route added to the excludes | **0.58 GB** |
 
 The article routes were never *doing* anything wrong at request time. They
 genuinely needed image dimensions. The cost was entirely in what nft had to
@@ -67,30 +69,29 @@ file it means.
 
 Where a runtime path is genuinely unavoidable, the escape hatch is an
 `outputFileTracingExcludes` entry **scoped to that route** (see
-`next.config.ts`, where `/feed.xml` and `/sitemap-news.xml` use it). Never widen
+`next.config.ts`, where the feed and news-sitemap routes use it). Never widen
 that to `'*'` — it would strip files that other routes really do read at request
 time, and that breaks quietly in production rather than loudly at build.
 
+That list is hand-maintained, which is its own trap: a new route does not fall
+off it noisily, it falls off it silently. Adding `/feed-editorial.xml` — two
+hours after this file was written, by the person who wrote it — took the build
+from 0.58GB to 3.97GB with nothing in the output to say so. **Any new route that
+reads `lib/feed-images.ts` needs an entry here at the same time.**
+
 ## How to check before you ship
 
-Function bundle sizes are in the build output:
+`scripts/check-bundle-sizes.mjs` runs at the end of `npm run build` and fails it
+if any single bundle exceeds 250MB — Vercel's own documented function limit, not
+a number fitted to today's output. It also warns if the total passes 2GB. That
+is the backstop for the hand-maintained excludes above: an omission now breaks
+the build in seconds, locally, naming the route, instead of surfacing as ENOSPC
+ten minutes into a deploy.
 
-```bash
-npm run build
-python3 - <<'EOF'
-import json, os, glob
-rows = []
-for p in glob.glob('.next/server/**/*.nft.json', recursive=True):
-    base = os.path.dirname(p); total = 0
-    for f in json.load(open(p))['files']:
-        try: total += os.path.getsize(os.path.normpath(os.path.join(base, f)))
-        except OSError: pass
-    rows.append((total / 1e6, p))
-rows.sort(reverse=True)
-for mb, p in rows[:5]:
-    print(f'{mb:9.1f} MB  {p}')
-print(f'TOTAL {sum(r[0] for r in rows) / 1000:.2f} GB')
-EOF
+It prints the shape of the output on every build:
+
+```
+[bundles] 63 bundles, 0.58GB total, largest 23MB ([category]/[subcategory]/page).
 ```
 
 Healthy today is well under 1GB total, with no single bundle above ~25MB. If one
