@@ -13,11 +13,12 @@ const SOCIAL_LINKS = [
 ]
 
 const FOOTER_NAV = [
-  { label: 'About', href: '/about-beauticate' },
+  { label: 'About', href: '/about' },
   { label: "Sigourney's Edit", href: '/sigourneys-edit' },
   { label: 'Press', href: '/press' },
   { label: 'From the Archive', href: '/archive' },
   { label: 'Advertise With Us', href: '/advertise-with-us' },
+  { label: 'How We Review', href: '/how-we-review' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
   { label: 'Competitions', href: '/competitions/terms' },

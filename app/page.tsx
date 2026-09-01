@@ -9,6 +9,7 @@ import DuoLeft from '@/components/home/DuoLeft'
 import ShopGrid from '@/components/home/ShopGrid'
 import ProductRail from '@/components/shared/ProductRail'
 import TheCollective from '@/components/shared/TheCollective'
+import ReviewsTeaser from '@/components/home/ReviewsTeaser'
 import InstagramFeed from '@/components/home/InstagramFeed'
 import StoriesTrio from '@/components/home/StoriesTrio'
 import PodcastSection from '@/components/home/PodcastSection'
@@ -103,6 +104,9 @@ export default async function HomePage() {
 
       {/* 4 — Voices line */}
       <TheCollective />
+
+      {/* 4b — Reviews / submissions teaser */}
+      <ReviewsTeaser />
 
       {/* 7 — Duo (most recent two stories) */}
       {duo1Articles.length > 0 && <DuoLeft articles={duo1Articles as any} eager />}

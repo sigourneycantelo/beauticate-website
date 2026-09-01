@@ -1,6 +1,6 @@
 import { subscribeToListWithProperties } from '@/lib/klaviyo'
 import { addProspect } from '@/lib/woodpecker'
-import { appendToSheet } from '@/lib/sheets'
+import { appendLead } from '@/lib/sheets'
 import { NextResponse } from 'next/server'
 
 // Dedicated "Shop Partner Interest" list — kept separate from the consumer
@@ -22,14 +22,18 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Email required' }, { status: 400 })
   }
 
-  const submittedAt = new Date().toISOString()
-
-  // Fan out to the Google Sheet (source of truth for contacts), Klaviyo (tagged on
-  // the dedicated list) and Woodpecker (cold-outreach prospect). Independent — one
-  // failing must not lose the lead.
+  // Fan out to the Contacts sheet (source of truth for contacts — a quick
+  // interest ping doesn't have enough brand detail for the Shop pipeline
+  // sheet), Klaviyo (tagged on the dedicated list) and Woodpecker
+  // (cold-outreach prospect). Independent — one failing must not lose the lead.
   const tasks: Promise<unknown>[] = [
-    appendToSheet('Partner Interest', [submittedAt, email, 'partners_page']),
-    addProspect(email),
+    appendLead('contacts', {
+      Email: email,
+      'Type: Brand': 'Yes',
+      'Contact Group': 'Shop Partner Interest (Web)',
+      'Appears In (sources)': 'Website - Shop Partners',
+    }),
+    addProspect(email, { tags: '#shop_partner_lead' }),
   ]
 
   if (PARTNER_LIST_ID) {

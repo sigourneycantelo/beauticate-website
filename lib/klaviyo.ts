@@ -17,7 +17,7 @@ const HEADERS = {
  * with a 400. So any name or custom data (partner application fields, etc.)
  * must be written here first, against the `/profiles/` resource.
  */
-async function upsertProfile(
+export async function upsertProfile(
   email: string,
   firstName?: string,
   properties?: Record<string, unknown>

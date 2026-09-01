@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import { cookies } from 'next/headers'
 import { EB_Garamond, Hanken_Grotesk, Italiana, Playfair_Display } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
@@ -47,6 +46,7 @@ import CartDrawer from '@/components/shop/CartDrawer'
 import AskSigLauncher from '@/components/chat/AskSigLauncher'
 import MetaPixel from '@/components/analytics/MetaPixel'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { SIGOURNEY_SAMEAS } from '@/lib/authors'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'),
@@ -97,9 +97,16 @@ const orgSchema = {
         'https://www.instagram.com/beauticate/',
         'https://www.facebook.com/beauticate',
         'https://www.linkedin.com/company/beauticate.com',
-        'https://www.youtube.com/@beauticate',
+        // @beauticate is a DEAD channel handle (404). The real channel is
+        // Sigourney's, which is where the Beautiful Inside podcast publishes.
+        // Channel-ID form is canonical and cannot break on a handle rename.
+        'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
         'https://www.pinterest.com.au/beauticate/',
         'https://www.wikidata.org/wiki/Q139643093',
+        // Beautiful Inside podcast — same reasoning as the sitelinks above:
+        // nothing previously told a machine this podcast belongs to Beauticate.
+        'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
+        'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
       ],
     },
     {
@@ -108,13 +115,19 @@ const orgSchema = {
       name: 'Sigourney Cantelo',
       jobTitle: 'Founder & Editor-in-Chief',
       worksFor: { '@id': 'https://www.beauticate.com/#organization' },
-      url: 'https://www.beauticate.com/about-beauticate',
-      sameAs: [
-        'https://www.instagram.com/sigourneycantelo/',
-        'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
-        'https://www.wikidata.org/wiki/Q139644159',
+      url: 'https://www.beauticate.com/about',
+      // Imported, not inlined — see SIGOURNEY_SAMEAS in lib/authors.ts for why.
+      sameAs: [...SIGOURNEY_SAMEAS],
+      // Matches app/about/page.tsx's fuller Person block — this one renders
+      // sitewide, that one only on /about, so the two had drifted apart.
+      knowsAbout: [
+        'Beauty', 'Skincare', 'Wellness', 'Lifestyle', 'Health', 'Fashion', 'Cosmetics',
+        'Anti-ageing', 'Beauty Journalism', 'Content Strategy',
       ],
-      knowsAbout: ['Beauty', 'Wellness', 'Lifestyle', 'Skincare', 'Fashion'],
+      award: [
+        'Jasmine Award for Journalistic Excellence, Vogue Australia (The Ultimate Guide to Fragrance)',
+        'Jasmine Award, Vogue Australia (Distilling Provence)',
+      ],
       alumniOf: 'Vogue Australia',
       description: 'Sigourney Cantelo is the founder of Beauticate and a 25-year veteran beauty journalist, former Vogue Australia Beauty & Health Director.',
     },
@@ -133,58 +146,51 @@ const orgSchema = {
   ],
 }
 
-// Early-access gate — matches middleware.ts. Set false for full public launch.
-const EARLY_ACCESS_GATE = false
-
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = await cookies()
-  const showChrome = !EARLY_ACCESS_GATE || cookieStore.has('early_access')
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" className={`${ebGaramond.variable} ${hankenGrotesk.variable} ${playfairDisplay.variable} ${italiana.variable}`}>
       <body>
-        <Script
-          id="schema-org"
+        {/*
+          Plain <script>, NOT next/script. next/script queues the tag for
+          client-side injection, so the served HTML contained zero
+          `<script type="application/ld+json">` elements — the entire sitewide
+          entity graph (Organization + Wikidata ID + Person + SearchAction) was
+          invisible to any crawler that doesn't execute JavaScript, which is
+          most AI crawlers. This is Next's own documented approach for JSON-LD,
+          and matches how app/about/page.tsx already emits its schema.
+        */}
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-          strategy="beforeInteractive"
         />
-        {showChrome ? (
-          <CartProvider>
-            <ScrollReveal />
-            <BetaTicker />
-            <MastheadData />
-            <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
-            <Footer />
-            <CartDrawer />
-            <AskSigLauncher />
-          </CartProvider>
-        ) : (
-          children
+        <CartProvider>
+          <ScrollReveal />
+          <BetaTicker />
+          <MastheadData />
+          <main id="main" data-pagefind-body><div className="site-wrap">{children}</div></main>
+          <Footer />
+          <CartDrawer />
+          <AskSigLauncher />
+        </CartProvider>
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
-        {showChrome && (
-          <>
-            {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-              <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
-            )}
-            {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
-              <Suspense fallback={null}>
-                <MetaPixel />
-              </Suspense>
-            )}
-            <Script
-              id="klaviyo-sdk"
-              src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
-              strategy="afterInteractive"
-            />
-            {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (
-              <Script
-                id="travelpayouts-sdk"
-                src={`https://tp.media/content?marker=${process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER}`}
-                strategy="afterInteractive"
-              />
-            )}
-          </>
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          <Suspense fallback={null}>
+            <MetaPixel />
+          </Suspense>
+        )}
+        <Script
+          id="klaviyo-sdk"
+          src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
+          strategy="afterInteractive"
+        />
+        {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (
+          <Script
+            id="travelpayouts-sdk"
+            src={`https://tp.media/content?marker=${process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER}`}
+            strategy="afterInteractive"
+          />
         )}
       </body>
     </html>

@@ -1,5 +1,56 @@
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 
+/**
+ * Canonical entity constants for Sigourney Cantelo.
+ *
+ * These exist because four separate Person schema blocks (here, app/layout.tsx,
+ * app/about/page.tsx, app/shop/layout.tsx) had drifted apart, carrying three
+ * different Instagram handles and two different LinkedIn URLs between them.
+ * One of those — instagram.com/sigourney.cantelo — is a DEAD PROFILE, which
+ * silently breaks the sameAs entity chain: no error, no warning, and it shows up
+ * in no standard SEO audit. Every consumer must import from here, never inline
+ * its own copy.
+ *
+ * Verified against Wikidata Q139644159 (the authoritative anchor) and by
+ * fetching each URL. Do not edit without re-verifying both.
+ */
+export const SIGOURNEY_PERSON_ID = `${SITE_URL}/#sigourney-cantelo`
+
+export const SIGOURNEY_SAMEAS = [
+  'https://www.instagram.com/sigourneycantelo/',
+  'https://www.linkedin.com/in/sigourney-cantelo/',
+  'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
+  'https://www.facebook.com/sigourneycantelobeauticate',
+  'https://www.marieclaire.com.au/author/sigourney-cantelo/',
+  'https://www.wikidata.org/wiki/Q139644159',
+] as const
+
+/**
+ * Canonical one-line identity. SIGNED OFF 18 Aug 2026.
+ *
+ * Reused verbatim across schema, llms.txt, Wikidata and off-site profiles.
+ * Consistency across properties is what entity resolution actually reads, so
+ * change it here and nowhere else.
+ *
+ * Why it reads the way it does:
+ *  - "journalist" is deliberate. It is the trust word that separates a trained
+ *    reporter from a content creator, which is the distinction E-E-A-T is
+ *    assessing and the one Sigourney's own positioning rests on.
+ *  - "beauty" is the category anchor. Dropping it for breadth would put her in
+ *    a field of thousands of generic journalists.
+ *  - "editorial e-commerce" is her own coined framework, used consistently
+ *    across her writing. A distinctive ownable phrase is what AI answer engines
+ *    latch onto; a generic one gives them nothing to hold.
+ *  - Vogue is a credential, not a title. It lives in the bio and in Wikidata
+ *    (P108 employer), never in the identity line.
+ */
+export const SIGOURNEY_IDENTITY_LINE =
+  'Beauty journalist and publisher. Founder of Beauticate, Australia\'s first editorial e-commerce platform.'
+
+/** Longer form, for schema `description` and bios. */
+export const SIGOURNEY_DESCRIPTION =
+  'Sigourney Cantelo is an Australian beauty journalist and publisher with 25 years across print, digital and broadcast. She is the founder of Beauticate, Australia\'s first editorial e-commerce platform, and former Beauty & Health Director at Vogue Australia.'
+
 export interface Author {
   name: string
   slug: string
@@ -17,16 +68,11 @@ export const AUTHORS: Author[] = [
     name: 'Sigourney Cantelo',
     slug: 'sigourney-cantelo',
     role: 'Founder & Editor-in-Chief',
-    bio: 'Sigourney Cantelo is an Australian beauty journalist, author and digital publisher with 25 years of experience. She is the founder of Beauticate and former Beauty & Health Director at Vogue Australia.',
+    bio: SIGOURNEY_DESCRIPTION,
     photo: '/images/authors/sigourney-cantelo.png',
     instagram: 'https://www.instagram.com/sigourneycantelo/',
-    linkedin: 'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
-    sameAs: [
-      'https://www.instagram.com/sigourneycantelo/',
-      'https://www.linkedin.com/in/sigourney-cantelo-027a38b/',
-      'https://www.wikidata.org/wiki/Q139644159',
-      `${SITE_URL}/about-beauticate`,
-    ],
+    linkedin: 'https://www.linkedin.com/in/sigourney-cantelo/',
+    sameAs: [...SIGOURNEY_SAMEAS, `${SITE_URL}/about`],
   },
   {
     name: 'Kate Waterhouse',
@@ -565,7 +611,7 @@ export const AUTHORS: Author[] = [
     slug: 'beauticate-editorial',
     role: 'Editorial Team',
     sameAs: [
-      `${SITE_URL}/about-beauticate`,
+      `${SITE_URL}/about`,
     ],
   },
   {
@@ -773,7 +819,10 @@ export function buildPersonSchema(author: Author, siteUrl: string) {
     '@type': 'Person',
     name: author.name,
     jobTitle: author.role,
-    url: author.photo ? `${siteUrl}/author/${author.slug}` : `${siteUrl}/about-beauticate`,
+    // /about-beauticate is a permanent 301 to /about (next.config.ts). Pointing
+    // schema at a redirecting URL makes every article's author node resolve
+    // through a hop, so link straight to the destination.
+    url: author.photo ? `${siteUrl}/author/${author.slug}` : `${siteUrl}/about`,
     ...(author.photo ? { image: `${siteUrl}${author.photo}` } : {}),
     ...(author.sameAs && author.sameAs.length > 0 ? { sameAs: author.sameAs } : {}),
     worksFor: {

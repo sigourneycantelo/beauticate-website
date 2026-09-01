@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx tsx scripts/build-pagefind-index.mts && node scripts/build-chat-index.mjs && next build",
+    "build": "npx tsx scripts/build-pagefind-index.mts && node scripts/build-chat-index.mjs && node scripts/generate-redirect-map.mjs && next build",
     "build:search": "npx tsx scripts/build-pagefind-index.mts",
     "build:chat": "node scripts/build-chat-index.mjs",
+    "build:redirect-map": "node scripts/generate-redirect-map.mjs",
     "start": "next start",
     "lint": "next lint",
     "sync-shopify": "npx tsx scripts/sync-shopify.ts",
     "send-email": "npx tsx scripts/send-email.ts",
-    "test-gift-webhook": "npx tsx scripts/test-gift-webhook.ts"
+    "test-gift-webhook": "npx tsx scripts/test-gift-webhook.ts",
+    "verify:entity": "node scripts/verify-entity-graph.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.105.0",

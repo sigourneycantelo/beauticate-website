@@ -67,19 +67,84 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 - **Re-filing a listing to a new subcategory means `git mv`, not copy-and-leave-the-original.** Several listings exist twice — once at a stale `clinics/` (or similar) path and once at the corrected path — because a re-file copied the file instead of moving it. When you copy content to a new path, delete or draft the old one in the same change; don't leave an orphaned duplicate.
 - **Before publishing or unpublishing any listing, check for near-duplicates first** — same venue name filed under a different subcategory/slug is the recurring failure mode here. `scripts/audit-directory-duplicates.py` does this check; run it before any bulk directory work.
 
+## Paid directory placements
+
+Directory slots are sold as annual placements. Disclosure is handled by one
+frontmatter field:
+
+```yaml
+paid_placement_until: '2027-08-23'   # last day of the placement, inclusive
+```
+
+While that date is in the future, the listing carries one line at the foot of
+the page, beside the affiliate disclosure: *"This is a paid listing. The venue
+has paid to appear in the Beauticate directory."* When the date passes, it
+disappears on its own.
+
+That single line is the whole disclosure. There is no marker in the byline and
+nothing above the body. Nothing in Australian law requires top-of-article
+placement; the ACL test is whether the overall impression misleads, and the
+house pattern is foot-of-article. Keep the wording plain and factual: the
+requirement is to disclose the relationship, not to assert editorial
+independence alongside it.
+
+The same applies to `affiliate_disclosure`. It renders one line at the foot of
+the article and nothing in the byline. Don't add a marker to either.
+
+**It is a date, not a boolean, on purpose.** A boolean rots. The year ends,
+nobody clears the flag, and the page keeps declaring a commercial relationship
+that ended. Disclosure has to be accurate in both directions: telling readers a
+listing is paid when it isn't is its own misrepresentation, and it is the
+reason the existing listings carry no label at all. Every historical placement
+has lapsed, so as of August 2026 nothing in the directory is under a paid
+arrangement, and nothing is labelled.
+
+**Set the field at the point of sale, as part of invoicing.** Not afterwards,
+not in a bulk pass. If it isn't set when the money is taken it will not get set.
+
+The general position is stated on `/terms` under "Our directory", including
+that venues have hosted us for treatments. Don't add a blanket "listings may be
+paid" line anywhere: applied across a directory where none currently are, that
+statement is false about the majority of it.
+
+`sponsored: boolean` also exists in `ArticleFrontmatter`. It is rendered
+nowhere and set on nothing. Don't reach for it.
+
 ## Git workflow
 
-- Feature branch: `claude/vercel-article-cleanup-duw0tz`
-- **Always push fixes to BOTH the feature branch AND `main`** — Vercel deploys from `main`.
-- Use cherry-pick via temp branch to push to main (branches have diverged):
-  ```
-  git fetch origin main
-  git checkout -b tmp-main-push origin/main
-  git cherry-pick <commit>
-  git push origin tmp-main-push:main
-  git checkout claude/vercel-article-cleanup-duw0tz
-  git branch -D tmp-main-push
-  ```
+**Open a pull request. Do not push straight to `main`.** The repo has branch
+protection requiring a PR, and bypassing it caused real problems: every push to
+`main` had to be a cherry-pick, which made the feature branch and `main` diverge,
+and a later merge of that branch would have silently reverted the
+shop.beauticate.com redirects in `vercel.json` along with several other files
+that had moved on `main` in the meantime.
+
+```
+git checkout -b claude/<short-description> origin/main   # always branch from main
+# ... work, commit ...
+git push -u origin claude/<short-description>
+gh pr create --fill                                       # then merge in GitHub
+```
+
+Rules that follow from this:
+
+- **Branch from `origin/main`, never from another feature branch.** A branch cut
+  from a stale base is how work gets reverted on merge.
+- **Never cherry-pick to `main` to get something live.** Merge the PR instead.
+  Vercel deploys `main` on merge, so the PR is the deploy.
+- **Check `git diff origin/main <branch> --name-only` before merging.** If files
+  you never touched appear, your base is stale: rebase onto `origin/main` first.
+- If something genuinely must ship before review (a live compliance breach, for
+  example), say so explicitly and get a human to confirm, rather than bypassing
+  the protection rule quietly.
+
+### Generated files
+
+`docs/audit/testimonial-audit.{csv,md}` and `lines-to-fix.json` are rebuilt by
+the audit scripts and are gitignored. `docs/audit/tga-review.xlsx` stays tracked
+because it records which fixes were approved. `data/chat-index.json` stays
+tracked deliberately: Ask Sig reads it at runtime and it has not been verified
+to survive as a build-only artefact.
 
 ## Home page hero curation
 

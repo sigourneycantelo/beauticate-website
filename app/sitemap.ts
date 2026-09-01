@@ -6,6 +6,15 @@ import { getAllAuthorsWithPages } from '@/lib/authors'
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com').replace(/\/$/, '')
 
+// Force fresh generation on every request. As a static/ISR route this shipped
+// 0 articles in production (525 shop + 26 author + 11 static only, confirmed
+// live via x-vercel-cache: STALE) while the same code produced the full 1,846
+// articles in dev and in a local production build — the cached copy from an
+// early, broken revalidation had been served ever since, surviving every
+// later deploy. Dynamic rendering means it can no longer get stuck on a bad
+// cached snapshot; the walk over content/ is cheap enough to pay per request.
+export const dynamic = 'force-dynamic'
+
 const STATIC: { path: string; priority: number }[] = [
   { path: '', priority: 1 },
   { path: '/about', priority: 0.8 },

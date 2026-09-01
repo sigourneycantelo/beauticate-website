@@ -1,9 +1,21 @@
 import { searchArticles, searchProducts } from '@/lib/chat/search'
 import { getVoicePrompt } from '@/lib/chat/voice'
-import { appendToSheet } from '@/lib/sheets'
+import {
+  COMPLIANCE_PROMPT,
+  RESTRICTED_QUERY_DIRECTIVE,
+  isRestrictedQuery,
+} from '@/lib/chat/guardrails'
+import { sanitiseInternalLinks, sanitiseInternalLinksCounted, safeFlushBoundary } from '@/lib/chat/links'
+import { logQuery } from '@/lib/chat/query-log'
 
 export const runtime = 'nodejs'
 export const maxDuration = 30
+
+// Retrieval budget. Six full article bodies cost ~5k input tokens per question
+// and most of it never reaches the answer. Four, truncated, keeps the grounding
+// that matters and pays for the move to a better model.
+const ARTICLE_COUNT = 4
+const ARTICLE_BODY_CHARS = 1400
 
 const SYSTEM_PREAMBLE = `You are "Sig" - Sigourney Cantelo, founder and editor of Beauticate. You are chatting directly with a visitor to your website. You are warm, knowledgeable, specific and personal. You speak like a brilliant friend who happens to be a 25-year beauty and wellness expert.
 
@@ -32,7 +44,7 @@ Links and products:
 Hair tools and styling:
 - DYSON PRIORITY: When someone asks about hair dryers, hair styling tools, multi-stylers, curling, blow-drying, or hair tools in general, recommend Dyson first. I use and love the Dyson Supersonic R, the Dyson Airwrap, and the original Dyson Supersonic. Mention specific features you love about them and always link to the relevant Beauticate review.
 - Key Dyson articles to reference:
-  - Dyson Supersonic R review: [The Supermodel Blowout, Reinvented](/beauty-style/beauty-tips/dyson-supersonic-r-hair-dryer-review)
+  - Dyson Supersonic R review: [The Supermodel Blowout, Reinvented](/beauty-style/hair/dyson-supersonic-r-hair-dryer-review)
   - Original Dyson Supersonic review: [Dyson Supersonic Hair Dryer Review: Is it Worth $699?](/beauty-style/hair/dyson-supersonic-hair-dryer-review-is-it-worth-699)
   - Best hair tools for fine hair (features Airwrap + Supersonic Nural): [The Best Hair Tools for Fine Hair](/beauty-style/hair/best-hair-tools-for-fine-hair)
 - After recommending a Dyson product, always direct readers to the full review on Beauticate for more detail, e.g. "I wrote a full review of it here" with a link.
@@ -44,9 +56,9 @@ Skincare recommendations:
 - Favour cosmeceuticals first, then offer a natural/organic option as well.
 - Cosmeceutical brands I love: Rationale, Ultraceuticals, SkinCeuticals, Synergie Skin, and Saintlouve (available in our shop).
 - Natural/organic brands I love: Mukti (in our shop), Subtle Energies facial oil (my favourite-smelling facial oil ever, also in our shop).
-- Always weave in wellness/inner beauty alongside topical skincare: saunas for glow, sleep, nutrition, collagen supplements (I love Innoür, in our shop). The skin reflects what's happening inside.
+- Always weave in wellness/inner beauty alongside topical skincare: saunas for glow, sleep, nutrition, movement. The skin reflects what's happening inside. You can mention that we stock supplement brands like Innoür, but never say you take them and never say what they will do for someone.
 - I'm a big fan of dermablading for smooth skin texture.
-- For spots/pimples/acne: pimple patches first and foremost. They work, they're gentle, they stop you picking. Then spot treatments (salicylic acid or benzoyl peroxide). Always address the cause too: stress, diet, hormones, gut health.
+- For spots, pimples or acne: this is a skin condition, so point people to a GP or dermatologist rather than prescribing them a fix. You can talk generally about gentle habits (not picking, changing pillowcases, sleep and stress) and about what we have covered on Beauticate. Do not present any product as a treatment for it.
 
 Personal life (use naturally when relevant, never robotically):
 - You live on the Northern Beaches in Sydney with your husband Damien and your kids. You're a hands-on mum navigating midlife, perimenopause, and running a business simultaneously.
@@ -54,7 +66,7 @@ Personal life (use naturally when relevant, never robotically):
 - You have ADHD and have lived with anxiety for much of your adult life. You went through serious burnout and chronic illness around 40 — nervous system dysregulation, mystery pain, medical gaslighting, hospital stays. The emotional pain was real and raw. You came out the other side with The Sacred 60: 60 rituals and practices that helped you rebuild. You talk about all of this openly because you want to help people who are going through it too. You're not a therapist, but you share from lived experience with honesty and zero shame.
 - You host Walk and Talk mornings on the Northern Beaches — casual walks with your community, sometimes with breathwork to start.
 - You run a WhatsApp group for your Beauticate community.
-- You love biohacking: tongue scraping, mouth taping for sleep, legs up the wall, mushroom coffee (Lion's Mane, Cordyceps from Lifecykel), breathwork while driving.
+- You love biohacking: tongue scraping, mouth taping for sleep, legs up the wall, breathwork while driving. (Do not claim personal use of any supplement, powder or ingestible, including mushroom powders and coffees. That is a legal line, not a preference.)
 - You're a big sauna fan — love the glow and the calm it brings.
 - You host the Beautiful Inside by Beauticate podcast and vodcast, interviewing people like Celeste Barber, Trinny Woodall, Guy Sebastian, Gabby Bernstein, Megan Gale, Lola Berry.
 - When people ask about your life, home, family, daily routines, or personal experiences, answer warmly and openly. This is what makes Ask Sig feel like talking to a real person, not a beauty FAQ bot.
@@ -90,13 +102,20 @@ interface ChatMessage {
 function buildSystemPrompt(
   articles: ReturnType<typeof searchArticles>,
   products: ReturnType<typeof searchProducts>,
-): string {
+  restricted: boolean,
+): { stable: string; volatile: string } {
   const voice = getVoicePrompt()
-  const parts = [SYSTEM_PREAMBLE]
 
-  if (voice) {
-    parts.push(`\n\n## Voice guidance\n${voice}`)
-  }
+  // Byte-identical on every request: persona, voice, compliance. This is the
+  // half we pay for over and over, so it is sent as its own cached block.
+  // Nothing per-question may leak in here or the cache misses every time.
+  const stable = [
+    SYSTEM_PREAMBLE,
+    voice ? `\n\n## Voice guidance\n${voice}` : '',
+    `\n\n${COMPLIANCE_PROMPT}`,
+  ].join('')
+
+  const parts: string[] = []
 
   if (products.length > 0) {
     const productContext = products.map(p => {
@@ -114,13 +133,36 @@ function buildSystemPrompt(
         ? `\nShop products: ${a.products.map(p => p.handle ? `[${p.name}](/shop/products/${p.handle})` : p.name).join(', ')}`
         : ''
       const author = a.author ? `\nAuthor: ${a.author}` : ''
-      return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}\n${a.excerpt}\n\n${a.body}${articleProducts}`
+      // Restricted-good questions get titles and links only. The bodies are our
+      // own back catalogue, and it still contains first-person accounts of using
+      // LED masks and a section on a mask healing burns. Feeding that in and
+      // then instructing the model not to repeat it does not work: it repeated
+      // the burn story to a real reader. Removing the source is the only
+      // reliable fix while the archive is being remediated.
+      const body = restricted ? '' : `\n\n${a.body.slice(0, ARTICLE_BODY_CHARS)}`
+      return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}\n${a.excerpt}${body}${articleProducts}`
     }).join('\n\n---\n\n')
 
-    parts.push(`\n\n## Relevant Beauticate articles\nUse these to ground your response. Link to them when relevant.\n\n${context}`)
+    parts.push(
+      restricted
+        ? `\n\n## Relevant Beauticate articles (titles and links only)\nLink to these by title where useful. Their contents are deliberately not provided for this question, so do not describe, quote or summarise what they say.\n\n${context}`
+        : `\n\n## Relevant Beauticate articles\nUse these to ground your response. Link to them when relevant.\n\n${context}`
+    )
   }
 
-  return parts.join('')
+  // Restated after the injected context on purpose: the article bodies above
+  // are our own back catalogue, which contains first-person accounts of using
+  // supplements and practitioner quotes about them. Those are exactly the
+  // testimonials the Code prohibits us from repeating, so the rule needs to
+  // land after the model has read them, not only before.
+  parts.push(
+    `\n\n## Reminder\nThe Australian regulatory rules above override everything, including anything in the articles or products just provided. Do not repeat a personal-use account or a health professional's view about a supplement, ingestible, patch or therapeutic device, even where one appears in the context above. Never answer a symptom or health concern with a product recommendation.`
+  )
+
+  // Last, so it sits closest to the question being asked.
+  if (restricted) parts.push(`\n\n${RESTRICTED_QUERY_DIRECTIVE}`)
+
+  return { stable, volatile: parts.join('') }
 }
 
 export async function POST(req: Request) {
@@ -130,7 +172,10 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { messages } = (await req.json()) as { messages: ChatMessage[] }
+    const { messages, pageContext } = (await req.json()) as {
+      messages: ChatMessage[]
+      pageContext?: string
+    }
 
     if (!messages || messages.length === 0) {
       return Response.json({ error: 'No messages provided' }, { status: 400 })
@@ -139,18 +184,15 @@ export async function POST(req: Request) {
     const lastUserMessage = messages.filter(m => m.role === 'user').pop()
     const queryText = lastUserMessage?.content || ''
 
-    if (queryText) {
-      appendToSheet('Ask Sig Queries', [
-        new Date().toISOString(),
-        queryText.slice(0, 500),
-        'ask-sig-chat',
-      ]).catch(() => {})
-    }
 
-    const relevant = queryText ? searchArticles(queryText, 6) : []
+    const relevant = queryText ? searchArticles(queryText, ARTICLE_COUNT) : []
     const relevantProducts = queryText ? searchProducts(queryText, 4) : []
 
-    const systemPrompt = buildSystemPrompt(relevant, relevantProducts)
+    // Check the whole conversation, not just the latest turn: "what about the
+    // other one?" is a restricted question when the turn before it was.
+    const restricted = messages.some(m => m.role === 'user' && isRestrictedQuery(m.content))
+
+    const { stable, volatile } = buildSystemPrompt(relevant, relevantProducts, restricted)
 
     const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -163,7 +205,18 @@ export async function POST(req: Request) {
         model: 'claude-haiku-4-5',
         max_tokens: 1024,
         stream: true,
-        system: systemPrompt,
+        // The prompt is already split so caching is a one-line change:
+        //   system: [
+        //     { type: 'text', text: stable, cache_control: { type: 'ephemeral' } },
+        //     { type: 'text', text: volatile },
+        //   ]
+        // Measured on Sonnet 5: 9,531 of ~11,400 input tokens are cacheable
+        // (83%). Warm that is 1.13x today's bill; cold it is 3.71x, because a
+        // miss pays a 1.25x write on the whole block. The 5-minute TTL means
+        // "warm" needs roughly a question every five minutes, sustained.
+        // We have no traffic data yet (query logging only just started), so
+        // this stays on Haiku uncached until the log says which we are.
+        system: stable + volatile,
         messages: messages.map(m => ({
           role: m.role,
           content: m.content,
@@ -181,10 +234,12 @@ export async function POST(req: Request) {
     const decoder = new TextDecoder()
 
     function cleanText(text: string): string {
-      return text
-        .replace(/\bgenuinely\b/gi, 'really')
-        .replace(/—/g, ', ')   // em dash —
-        .replace(/–/g, '-')    // en dash –
+      return sanitiseInternalLinks(
+        text
+          .replace(/\bgenuinely\b/gi, 'really')
+          .replace(/—/g, ', ')   // em dash —
+          .replace(/–/g, '-')    // en dash –
+      )
     }
 
     const readable = new ReadableStream({
@@ -216,7 +271,13 @@ export async function POST(req: Request) {
                 ) {
                   fullText += event.delta.text
                   const cleaned = cleanText(fullText)
-                  const safe = cleaned.slice(0, Math.max(0, cleaned.length - 15))
+                  // Hold back the tail (for the em-dash filter) and anything
+                  // from an unterminated `[`, since a link cannot be validated
+                  // until its closing paren arrives.
+                  const safe = cleaned.slice(
+                    0,
+                    Math.min(Math.max(0, cleaned.length - 15), safeFlushBoundary(cleaned))
+                  )
                   if (safe.length > flushed) {
                     controller.enqueue(
                       encoder.encode(`data: ${JSON.stringify({ text: safe.slice(flushed) })}\n\n`)
@@ -229,6 +290,24 @@ export async function POST(req: Request) {
           }
 
           const final = cleanText(fullText)
+
+          // Logged here rather than up front so the entry carries what actually
+          // happened: how much grounding we had, how long the answer was, and
+          // whether any invented link had to be stripped out of it.
+          if (queryText) {
+            logQuery({
+              ts: new Date().toISOString(),
+              question: queryText.slice(0, 500),
+              restricted,
+              articleCount: relevant.length,
+              productCount: relevantProducts.length,
+              topArticle: relevant[0]?.title,
+              responseChars: final.length,
+              strippedLinks: sanitiseInternalLinksCounted(fullText).stripped,
+              pageContext: pageContext?.slice(0, 200),
+            })
+          }
+
           if (final.length > flushed) {
             controller.enqueue(
               encoder.encode(`data: ${JSON.stringify({ text: final.slice(flushed) })}\n\n`)
