@@ -224,6 +224,36 @@ Readers should never be navigated away from what they're reading.
 - **Affiliate / sponsored links**: use `target="_blank" rel="sponsored noopener"` (the existing convention).
 - **Site navigation** (header, footer, nav menus, article cards): stays in the same tab — these are how readers browse, not mid-read departures.
 
+## Video — the embed carries its own schema
+
+Put a video in an article body with the `YouTubeEmbed` component and nothing
+else is needed:
+
+```
+<YouTubeEmbed url="https://www.youtube.com/shorts/XXXXXXXXXXX" caption="..." />
+```
+
+It reads the URL itself: a `/shorts/` link renders 9:16, centred and capped at
+380px, anything else renders 16:9. And `buildArticleSchema` scans the rendered
+body for a YouTube id and emits a `VideoObject` into the page's `@graph`
+automatically, so a page with a video declares one to Google without any
+frontmatter.
+
+**That automatic step is only as good as one regex.** `YOUTUBE_ID_REGEX` in
+`lib/seo.ts` is the single place that decides whether a video is seen. It
+originally matched only `youtube.com/watch?v=` and `youtube.com/embed/`, while
+`YouTubeEmbed` already accepted `/shorts/` and `youtu.be` — so the Coogee review
+shipped a Short that rendered perfectly and was invisible in structured data.
+Nothing errored. It surfaced only because someone went looking at the JSON-LD.
+
+So: if `YouTubeEmbed` ever learns a new URL form, teach that regex the same
+form in the same change, and check the page's `@graph` actually contains
+`VideoObject` before calling it done. The two must never drift again.
+
+`youtube_embed` exists in `ArticleFrontmatter` but only the admin review queue
+reads it. It does not render a video and does not produce schema. Use the
+component.
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.

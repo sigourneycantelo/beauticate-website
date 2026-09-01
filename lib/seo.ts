@@ -90,7 +90,9 @@ function extractHowToSteps(content: string): { name: string; text: string }[] {
   return steps
 }
 
-const YOUTUBE_ID_REGEX = /youtube\.com\/(?:embed\/|watch\?v=)([A-Za-z0-9_-]{11})/
+// Matches every form YouTubeEmbed accepts. A /shorts/ URL used to fall through
+// here, so a page could render a video and still emit no VideoObject.
+const YOUTUBE_ID_REGEX = /(?:youtube\.com\/(?:embed\/|watch\?v=|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
 
 function extractFirstYouTubeId(content: string): string | undefined {
   return content.match(YOUTUBE_ID_REGEX)?.[1]
@@ -213,6 +215,10 @@ const VENUE_TYPE_MAP: Record<string, string> = {
   'skin-clinic': 'HealthAndBeautyBusiness',
   'salon': 'HairSalon',
   'nail-salon': 'NailSalon',
+  'hotel': 'Hotel',
+  'retreat': 'Resort',
+  'bathhouse': 'DaySpa',
+  'wellness': 'HealthAndBeautyBusiness',
 }
 
 export function buildLocalBusinessSchema(f: ArticleFrontmatter, url: string) {
@@ -226,7 +232,7 @@ export function buildLocalBusinessSchema(f: ArticleFrontmatter, url: string) {
     '@context': 'https://schema.org',
     '@type': schemaType,
     '@id': `${pageUrl}#localbusiness`,
-    name: f.title,
+    name: f.venue_name ?? f.title,
     url: pageUrl,
   }
 

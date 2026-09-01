@@ -94,6 +94,14 @@ export interface ArticleFrontmatter {
   // Destinations taxonomy
   travelType?: 'guide' | 'hotel-review' | 'travel-beauty' | 'sigs-edit'
   venueType?: 'spa' | 'salon' | 'skin-clinic' | 'nail-salon' | 'bathhouse' | 'retreat' | 'hotel' | 'wellness'
+  /**
+   * The venue's own name, for LocalBusiness schema and the contact block.
+   * Directory listings are titled with the venue name, so this is unset there
+   * and `title` is used. An editorial review is titled with a headline, and
+   * without this the schema and the contact card would both name the venue
+   * "The Beach Hotel Where We Never Made It to the Beach".
+   */
+  venue_name?: string
   address?: string              // street address for LocalBusiness schema
   telephone?: string            // phone number for LocalBusiness schema
   instagram?: string            // Instagram handle (without @), e.g. "auroraspaandbathhouse"
