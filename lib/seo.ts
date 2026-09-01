@@ -90,7 +90,9 @@ function extractHowToSteps(content: string): { name: string; text: string }[] {
   return steps
 }
 
-const YOUTUBE_ID_REGEX = /youtube\.com\/(?:embed\/|watch\?v=)([A-Za-z0-9_-]{11})/
+// Matches every form YouTubeEmbed accepts. A /shorts/ URL used to fall through
+// here, so a page could render a video and still emit no VideoObject.
+const YOUTUBE_ID_REGEX = /(?:youtube\.com\/(?:embed\/|watch\?v=|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
 
 function extractFirstYouTubeId(content: string): string | undefined {
   return content.match(YOUTUBE_ID_REGEX)?.[1]
