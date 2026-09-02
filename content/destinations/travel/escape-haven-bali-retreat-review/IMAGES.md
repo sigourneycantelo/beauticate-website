@@ -1,48 +1,59 @@
-# Escape Haven Bali — images still needed
+# Escape Haven Bali — image handoff
 
-The article MDX in this folder is finished and references the 14 files below.
-Google Drive is blocked by the egress policy on the machine that wrote this
-article, so the shots could not be pulled from
+The article is written and the SEO work is done. It is waiting on photographs.
+
+Google Drive is blocked by the egress policy on the machine Claude runs on, so
+the 30 shots at
 https://drive.google.com/open?id=1OpA_O_qsFVod2WAqp7xvwxWbw0wNNzSC
-(30 JPEGs, IMG_7102 to IMG_7278).
+could not be fetched, and the Drive connector returns image files empty.
 
-Save each shot into **this folder** under the exact filename below, then set
-`published: true` and delete `draft_reason` in the .mdx. Delete this file once
-the images are in.
+## How the pictures get here
 
-## Required — the article will not publish without these two
+**Nobody renames anything.** Upload the 30 originals as they are, and Claude
+does the selection, renaming, cropping, compressing and alt text.
 
-| Filename | Shape | What it should be |
-|---|---|---|
-| `hero.jpg` | **Landscape ~2:1** | The holding shot. The pool and gardens wide, or the rice paddy sunrise. Full-bleed on the home page and at the top of the article, so it must be wide. |
-| `featured-frangipani-welcome.jpg` | **Portrait ~3:4** | "Welcome Sigourney" spelled in frangipani petals on the bed. This is the thumbnail on every grid card site-wide, and it is the most shareable frame in the set. Keep it under 2MB or the build warns. |
+1. In Drive, open the folder, select all, download. Drive returns a zip.
+2. Unzip it.
+3. Go to
+   https://github.com/sigourneycantelo/beauticate-website/upload/claude/escape-haven-images-raw/content/destinations/travel/escape-haven-bali-retreat-review
+4. Drag all 30 JPEGs onto the page. Commit to `claude/escape-haven-images-raw`,
+   the branch already selected.
+5. Tell Claude they are up.
 
-## Body images, in order of appearance
+Claude then looks at all 30, picks the strongest 14, names them to match the
+slots already written into the MDX, rewrites any alt text that does not match
+what is actually in the frame, compresses them for web, and commits those 14 to
+`claude/escape-haven-bali-seo-edefgh`.
 
-| Filename | Shape | What it should be |
-|---|---|---|
-| `arrival-pool-night.jpg` | Landscape | Arrival at night, the lit pool and gardens |
-| `goddess-room.jpg` | Landscape | The room, soft green walls, palm fronds, shell light fitting |
-| `massage-treatment-room.jpg` | Portrait | Treatment room set for a massage |
-| `one-on-one-yoga.jpg` | Portrait | Yoga in the shala |
-| `ayurveda-consultation.jpg` | Portrait | Dr Raj's consulting room, herbs and oils |
-| `floating-breakfast.jpg` | Landscape | The floating breakfast on the pool |
-| `therapeutic-chef-lunch.jpg` | Portrait | A plated lunch or dessert |
-| `pool-daybed.jpg` | Portrait | A daybed beside the pool |
-| `janine-founder.jpg` | Portrait | Janine, the founder |
-| `rice-paddy-sunrise.jpg` | Landscape | The sunrise bike ride through the paddies |
-| `pool-dusk.jpg` | Landscape | The pool at dusk, closing shot |
+## Why two branches
 
-`therapeutic-chef-lunch.jpg` and `pool-daybed.jpg` sit side by side in a two-up
-grid, so give them a matching portrait crop.
+`claude/escape-haven-images-raw` carries the full-size originals and is **never
+merged**. Delete it once the article is live. Only the 14 optimised files reach
+`main`, so roughly 100MB of camera originals stay out of the repo's history for
+good.
 
-## Two things to check on every file
+## The 14 slots the MDX already references
+
+Two are load-bearing. `hero.jpg` must be **landscape** (~2:1) because it runs
+full-bleed on the home page and at the top of the article.
+`featured-frangipani-welcome.jpg` must be **portrait** (~3:4) because it is the
+card image on every grid site-wide, and it wants to be the petals shot.
+
+The other twelve: `arrival-pool-night`, `goddess-room`,
+`massage-treatment-room`, `one-on-one-yoga`, `ayurveda-consultation`,
+`floating-breakfast`, `therapeutic-chef-lunch`, `pool-daybed`, `janine-founder`,
+`rice-paddy-sunrise`, `pool-dusk`. `therapeutic-chef-lunch` and `pool-daybed`
+sit side by side in a two-up grid and want matching portrait crops.
+
+## Two checks Claude runs on every file
 
 1. **Rotation baked in.** Phone shots carry an EXIF orientation flag that gets
-   stripped in transit, which leaves portraits stored as sideways landscapes.
-   Run each file through `PIL.ImageOps.exif_transpose` (or open and re-save in
-   Preview) and confirm every portrait is taller than it is wide.
-2. **File size.** Keep `featured-frangipani-welcome.jpg` under 2MB. The Drive
-   originals run 1.4MB to 7MB, so most need compressing.
+   stripped in transit, leaving portraits stored as sideways landscapes.
+   Every file goes through `PIL.ImageOps.exif_transpose` and gets eyeballed.
+2. **File size.** `featured_image` over 2MB fails the build's own editorial
+   check. The Drive originals run 1.4MB to 7MB, so all of them get compressed.
 
-Alt text is already written into the MDX for all 14 and does not need changing.
+## When the images are in
+
+Set `published: true` and delete `draft_reason` in the .mdx, delete this file,
+and decide whether it takes the home page hero from the Coogee review.
