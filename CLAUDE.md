@@ -254,6 +254,24 @@ form in the same change, and check the page's `@graph` actually contains
 reads it. It does not render a video and does not produce schema. Use the
 component.
 
+## Review ratings must be visible or absent
+
+`review_rating`, `review_item`, `review_brand`, `review_pros` and `review_cons`
+are read in exactly one place, `lib/seo.ts`, and rendered nowhere. Setting them
+puts a star rating, an itemReviewed and positive/negative notes into the page's
+JSON-LD that no reader can see anywhere on the page.
+
+**That is a policy breach, not just a curiosity.** Google requires structured
+data to reflect content visible to users, and an invisible rating is the
+textbook case its spammy-structured-markup action exists for. A star that wins
+a rich result and then earns a manual action is worse than no star.
+
+So don't set them unless the page also shows the rating to the reader. If we
+ever want stars, the visible verdict block comes first and the markup follows
+it. Removing the fields does not change the schema type: `resolveSchemaType`
+already returns `Review` from a `review` tag or a title, so a review stays a
+Review without them.
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
