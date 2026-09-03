@@ -2,6 +2,7 @@ import { Children, cloneElement, isValidElement, type ReactElement } from 'react
 import Link from 'next/link'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
+import { intlAttrsFor } from '@/lib/product-links'
 
 interface ShopItemProps {
   image: string
@@ -42,10 +43,14 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
     : url
       ? 'shop from brand'
       : undefined
+  // Readers outside AU/NZ get swapped onto a retailer that ships to them —
+  // resolved at build time, applied on the client by GeoProvider.
+  const geo = internal ? {} : intlAttrsFor(url, name)
   return (
     <ProductTile
       href={href}
       external={!internal && !!url}
+      dataAttrs={geo}
       follow={follow}
       cover={cover}
       forceTile={forceTile}
