@@ -52,9 +52,7 @@
       "Bash(git rebase *)",
       "Bash(GIT_EDITOR=true git rebase --continue)",
       "Bash(GIT_EDITOR=\"echo\" git rebase --continue)",
-      "Bash(git -c core.editor=true rebase --continue)",
-      "Bash(node scripts/check-editorial-integrity.mjs)",
-      "Bash(node -e ' *)"
+      "Bash(git -c core.editor=true rebase --continue)"
     ]
   }
 }
