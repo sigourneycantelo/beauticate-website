@@ -277,6 +277,9 @@ const nextConfig: NextConfig = {
       { source: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2', destination: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will', permanent: true },
       { source: '/beauty-style/beauty-tips/go-tos-launch-2', destination: '/beauty-style/beauty-tips/go-tos-launch', permanent: true },
 
+      // ── Editorial re-filing (Aug 2026) ───────────────────────────────────────────
+      { source: '/beauty-style/beauty-tips/the-la-effect-beverly-hills-style-lessons', destination: '/beauty-style/style/the-la-effect-beverly-hills-style-lessons', permanent: true },
+
       // ── SEO priority list: high-traffic old paths needing redirects ──────────────
       { source: '/reviews/luxury-skincare-review', destination: '/beauty-style/skin-care/luxury-skincare-review', permanent: true },
       { source: '/ask/should-you-apply-fake-tan-on-top-of-an-existing-tan', destination: '/beauty-style/beauty-tips/should-you-apply-fake-tan-on-top-of-an-existing-tan', permanent: true },
@@ -501,6 +504,13 @@ const nextConfig: NextConfig = {
       { source: '/wellness/health/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life', destination: '/wellness/mindset/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life', permanent: true },
       { source: '/wellness/health/how-to-break-up-with-a-negative-insta-feed', destination: '/wellness/mindset/how-to-break-up-with-a-negative-insta-feed', permanent: true },
       { source: '/wellness/health/drastically-reduce-your-chances-of-developing-dementia', destination: '/wellness/mindset/drastically-reduce-your-chances-of-developing-dementia', permanent: true },
+      // Jess Sepel ran as both a vodcast episode and a wellness/mindset article,
+      // the only episode on the site with both versions live. The episode is the
+      // canonical version; the article is drafted, so its URL forwards here.
+      // Needed explicitly: generate-redirect-map.mjs skips unpublished articles,
+      // so the slug map no longer carries this one.
+      { source: '/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
+      { source: '/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
       { source: '/wellness/health/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it', destination: '/wellness/mindset/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it', permanent: true },
       { source: '/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', destination: '/interviews/creatives/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', permanent: true },
       { source: '/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', destination: '/interviews/creatives/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', permanent: true },
@@ -843,7 +853,42 @@ const nextConfig: NextConfig = {
   },
 
   outputFileTracingExcludes: {
-    '*': ['./content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif'],
+    // Uppercase variants matter: these globs are case-sensitive, and a handful
+    // of migrated files are .JPG. Without them ~8MB of vodcast stills leak into
+    // every single bundle.
+    '*': [
+      './content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif',
+      './content/**/*.JPG', './content/**/*.JPEG', './content/**/*.PNG', './content/**/*.WEBP', './content/**/*.GIF',
+    ],
+
+    /**
+     * /feed.xml and /sitemap-news.xml must not carry public/ into their bundles.
+     *
+     * lib/feed-images.ts reads an image whose path is only known at runtime.
+     * @vercel/nft cannot resolve that statically, so it conservatively traces
+     * the whole public/ tree — 3.3GB — into the bundle of any route that can
+     * reach it. Adding a third such bundle alongside the two article routes
+     * (which carry it for a real reason, see below) took the build from 7.6GB
+     * to 10.9GB and it died with `ENOSPC: no space left on device`.
+     *
+     * Excluding is safe for these two ONLY because neither reads an image at
+     * request time. /feed.xml is force-static with no revalidate: it renders
+     * once during the build, from the real filesystem, before any of this
+     * applies. /sitemap-news.xml carries no images at all.
+     *
+     * DO NOT widen this to '*'. The article routes read public/ per request
+     * through lib/rehype-portrait-images.ts, which sizes body images to lay
+     * them out. Excluding public/ there would not fail the build — it would
+     * quietly stop portrait images rendering correctly in production.
+     *
+     * DO NOT add `revalidate` back to /feed.xml while this exclude stands. A
+     * revalidating lambda would re-render without the images in its bundle,
+     * every item would fail the image guard, and the feed would come back
+     * empty — silently, an hour after any deploy.
+     */
+    '/feed.xml': ['./public/**'],
+    '/feed-editorial.xml': ['./public/**'],
+    '/sitemap-news.xml': ['./public/**'],
   },
 
   webpack(config, { dev }) {

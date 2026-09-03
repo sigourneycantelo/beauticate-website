@@ -3,22 +3,69 @@ import Link from 'next/link'
 import { pastCompetitions } from '../pastCompetitions'
 
 /* ══════════════════════════════════════════════════════════════════════════
+   STATUS — this promotion is LIVE. Entries opened 27 August 2026 and close
+   11:59pm AEST on 10 September 2026. The winner must be drawn and notified
+   on or before 17 September 2026.
+   ──────────────────────────────────────────────────────────────────────
+   STILL OPEN
+   1. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
+      Confirm the registered entity name for the ineligibility and prize
+      partner clauses.
+
+   SETTLED — kept because the reasoning is what the next competition needs
+   • TRADE PROMOTION PERMITS — none required. Checked August 2026; figures
+     come from permit agencies and law-firm guides, not the regulators direct.
+     Total prize pool A$1,050. Thresholds:
+       ACT  — permit if pool over A$3,000   <- lowest, so this is the one that binds
+       SA   — permit if pool over A$5,000, OR any instant-win element at ANY value
+       NT   — permit if pool over A$5,000 (waived if permitted in another state)
+       NSW  — permit if pool over A$10,000
+       Everywhere else — no permit for a standard trade promotion
+     A$1,050 sits under all of them, so `permitNumbers` stays empty — roughly
+     A$1,950 of headroom before ACT bites. Two things would change the answer:
+     raising the prize value, or switching to an instant-win mechanic, which
+     SA treats as permit-requiring at any value, even a A$50 prize. If a permit
+     is ever required its number must be printed in the terms; add it to
+     `permitNumbers` and it renders in the summary box automatically.
+   • PROMOTER STREET ADDRESS — locality only, and that stands. The full
+     address was only ever needed as a permit condition, and no permit is
+     required, so the house rule in legal-copy/0-BRIEF-for-claude-code.md ("no
+     street address anywhere, this is intentional") wins. Revisit only if a
+     future promotion crosses a permit threshold.
+   • PACK CONTENTS — confirmed with Weleda 27 August 2026. The eleven products
+     listed in "The prize" are what actually ships. Sizes stay omitted on
+     purpose: the campaign artwork showed two sizes of both Skin Food and Skin
+     Food Light, and naming a size we are not certain of is the kind of small
+     error that draws a complaint. An out-of-stock item is covered by the
+     equal-value substitution clause under the list.
+   • PRIVACY POLICY — ManyChat is named in /privacy and
+     legal-copy/1-privacy-policy.md, under both service providers and overseas
+     transfer, so the two documents agree about who handles entrant email.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════
    PART ONE — “This competition”. The variable facts. Update this object each
    time a new competition runs; the summary box and the Part One prose both read
    from it, so dates/prize/draw only change in one place. Everything in Part Two
    (“General terms”) is identical every competition and rarely changes.
    ══════════════════════════════════════════════════════════════════════════ */
 const comp = {
-  name: 'Beauticate x Beauty Expo Australia 2026 Giveaway',
-  lastUpdated: 'July 2026',
-  entryOpen: '9 July 2026',
-  entryClose: '11:59pm AEST on 31 July 2026',
-  drawDate: '3 August 2026',
+  name: '100 Years of Skin Food Giveaway',
+  status: 'open' as 'open' | 'closed',
+  lastUpdated: 'August 2026',
+  entryOpen: '27 August 2026',
+  entryClose: '11:59pm AEST on 10 September 2026',
+  drawBy: '17 September 2026',
+  partner: 'Weleda Australia',
   entryMethod:
-    'Comment on the nominated Beauticate Instagram post or reel, or reply to the nominated story, then provide a valid email address when prompted by direct message',
+    'Follow @beauticate and @weledaaustralia on Instagram, tag two friends in the comments of the competition post, and comment the word ICON. One bonus entry for sharing the post to your Instagram story. We then ask for your email address by direct message so we can contact you if you win',
   prize:
-    'Two passes to Beauty Expo Australia 2026 (15–16 August 2026, ICC Sydney), each including a goodie bag upgrade',
-  prizeValue: 'A$80 minimum (excluding goodie bag contents)',
+    'One prize of three Weleda Skin Food packs — one for the winner and one for each of the two friends they tagged',
+  prizeValue: 'A$350 per pack · A$1,050 total prize value',
+  /** Locality only — see open item 2 above. */
+  promoterAddress: 'Sydney, New South Wales, Australia',
+  /** Add permit numbers here once granted, e.g. ['NSW: TP/00000', 'SA: T00/000']. */
+  permitNumbers: [] as string[],
 }
 
 export const metadata: Metadata = {
@@ -69,96 +116,164 @@ export default function CompetitionTermsPage() {
         <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
           <h3 className="font-serif text-xl text-ink mb-4">
             {comp.name}{' '}
-            <span className="text-charcoal/40 font-normal">(closed)</span>
+            <span className="text-charcoal/40 font-normal">
+              {comp.status === 'open' ? '(now open)' : '(closed)'}
+            </span>
           </h3>
           <dl className="space-y-3 text-[15px]">
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Promoter</dt>
+              <dd>Beauticate, in partnership with {comp.partner}</dd>
+            </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Prize</dt>
               <dd>{comp.prize}</dd>
             </div>
             <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Total prize value</dt>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Prize value</dt>
               <dd>{comp.prizeValue}</dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Entry period</dt>
-              <dd>Opened {comp.entryOpen}, closed {comp.entryClose}</dd>
+              <dd>Opens {comp.entryOpen}, closes {comp.entryClose}</dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Draw</dt>
-              <dd>Drawn at random {comp.drawDate} (game of chance)</dd>
+              <dd>One winner, drawn at random on or before {comp.drawBy} (game of chance)</dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">How to enter</dt>
               <dd>{comp.entryMethod}</dd>
             </div>
+            {comp.permitNumbers.length > 0 && (
+              <div>
+                <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Permits</dt>
+                <dd>{comp.permitNumbers.join(' · ')}</dd>
+              </div>
+            )}
           </dl>
         </section>
 
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Who can enter</h3>
           <p>
-            Entry is open to Australian residents aged 18 years and over who are
-            qualified beauty industry professionals. This includes registered
-            nurses, beauty therapists, dermal clinicians, salon and clinic
-            owners, and other industry practitioners.
+            Entry is open to residents of Australia aged 18 years and over at
+            the time of entry.
           </p>
           <p className="mt-4">
-            Beauty Expo Australia is a trade-only event. Entrants who are not
-            qualified professionals are not eligible to attend and therefore not
-            eligible to win.
+            Entrants must have an Instagram account, and that account must be
+            public or otherwise accessible to the Promoter, so that a winning
+            entry can be verified. If an account cannot be viewed or messaged by
+            the Promoter, the entry cannot be verified and is not eligible.
           </p>
           <p className="mt-4">
-            Employees of the Promoter and of Beauty Expo Australia, and their
-            immediate families, are not eligible to enter.
+            Employees, contractors and the immediate families of the Promoter
+            and of {comp.partner} are not eligible to enter.
           </p>
         </section>
 
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Entry period</h3>
           <p>
-            The promotion opened on {comp.entryOpen} and closed at {comp.entryClose}.
+            The promotion opens on {comp.entryOpen}, being the date the
+            competition post is published, and closes at {comp.entryClose}.
           </p>
           <p className="mt-4">Entries received outside this period will not be accepted.</p>
         </section>
 
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">How to enter</h3>
-          <p>
-            Entry is free. To enter, entrants comment on the nominated Beauticate
-            Instagram post or reel, or reply to the nominated Beauticate
-            Instagram story, and then provide a valid email address when prompted
-            in the resulting direct message conversation.
+          <p>Entry is free. To enter, complete all three steps:</p>
+          <ol className="mt-4 space-y-2 list-decimal pl-5 marker:text-charcoal/40">
+            <li>
+              Follow both{' '}
+              <a
+                href="https://www.instagram.com/beauticate/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink hover:text-eucalypt transition-colors"
+              >
+                @beauticate
+              </a>{' '}
+              and{' '}
+              <a
+                href="https://www.instagram.com/weledaaustralia/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink hover:text-eucalypt transition-colors"
+              >
+                @weledaaustralia
+              </a>{' '}
+              on Instagram.
+            </li>
+            <li>
+              Tag two friends in the comments of the competition post — friends
+              you think need a skin rescue.
+            </li>
+            <li>Comment the word ICON on the competition post.</li>
+          </ol>
+          <p className="mt-4">
+            An entry is only valid once all three steps have been completed. The
+            two tagged friends must be separate Instagram accounts, and must not
+            be the entrant&apos;s own account.
           </p>
           <p className="mt-4">
-            An entry is only valid once a valid email address has been submitted.
+            <strong className="font-normal text-ink">Bonus entry.</strong>{' '}
+            Entrants who also share the competition post to their Instagram
+            story, tagging @beauticate so the share is visible to the Promoter,
+            receive one additional entry in the draw.
           </p>
           <p className="mt-4">
-            One entry per person. The Promoter reserves the right to disqualify
-            duplicate entries.
+            One entry per person, plus a maximum of one bonus entry — so no
+            entrant may hold more than two entries. Commenting more than once
+            does not create additional entries.
+          </p>
+          <p className="mt-4">
+            Entries must not be automated, generated in bulk, or submitted
+            through any account created for the purpose of entering.
           </p>
         </section>
 
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">The prize</h3>
           <p>
-            There is one prize consisting of two passes to Beauty Expo Australia
-            2026, held on 15 and 16 August 2026 at ICC Sydney, each including a
-            goodie bag upgrade. Expo passes are valued at A$40 each. The value of
-            the goodie bag is indeterminate. Total minimum prize value is A$80
-            excluding goodie bag contents.
+            There is one prize, consisting of three Weleda Skin Food packs.
+            Each pack is valued at A$350, giving a total prize value of A$1,050.
+          </p>
+          <p className="mt-4">Each pack contains:</p>
+          <ul className="mt-3 space-y-1 list-disc pl-5 marker:text-charcoal/40">
+            <li>Skin Food</li>
+            <li>Skin Food Light</li>
+            <li>Skin Food Body Butter</li>
+            <li>Skin Food Body Lotion</li>
+            <li>Skin Food Shower Cream</li>
+            <li>Skin Food Ultra-Light Dry Oil</li>
+            <li>Skin Food Lip Balm</li>
+            <li>Skin Food Super Serum</li>
+            <li>Skin Food Face Care Nourishing Day Cream</li>
+            <li>Skin Food Face Care Nourishing Night Cream</li>
+            <li>Skin Food Face Care Nourishing Cleansing Balm</li>
+          </ul>
+          <p className="mt-4">
+            If any product listed above is out of stock at the time of the draw,
+            it will be replaced with another Weleda product of equal value.
+          </p>
+          <p className="mt-4">
+            All three packs are sent to the winner. The prize is meant to be
+            shared: one pack for the winner, and one for each of the two friends
+            they tagged in their winning entry. Passing on those two packs is up
+            to the winner, and the Promoter has no part in it.
           </p>
           <p className="mt-4">
             The prize is not transferable, not exchangeable, and cannot be
-            redeemed for cash. The prize does not include travel, accommodation,
-            parking, meals or any other cost associated with attending the event.
-            All such costs are the responsibility of the winner.
+            redeemed for cash. The prize is delivered to a single Australian
+            postal address.
           </p>
           <p className="mt-4">
-            If the prize becomes unavailable for reasons beyond the Promoter&apos;s
-            control, the Promoter reserves the right to substitute a prize of
-            equal or greater value, subject to any written directions from a
-            relevant regulatory authority.
+            If the prize becomes unavailable for reasons beyond the
+            Promoter&apos;s control, the Promoter reserves the right to
+            substitute a prize of equal or greater value, subject to any written
+            directions from a relevant regulatory authority.
           </p>
         </section>
 
@@ -169,9 +284,57 @@ export default function CompetitionTermsPage() {
             winner.
           </p>
           <p className="mt-4">
-            The winner will be drawn at random from all valid entries on {comp.drawDate},
-            using a random number generator. The draw will be conducted
-            electronically and no physical draw location applies.
+            One winner will be drawn at random from all valid entries within
+            7 days of the entry period closing, being on or before{' '}
+            {comp.drawBy}, using a random number generator. The draw will be
+            conducted electronically and no physical draw location applies.
+          </p>
+          <p className="mt-4">
+            The winner will be notified by email and must respond within 48
+            hours of that email being sent. The Promoter may also follow up by
+            Instagram direct message, but the email is the notification and the
+            48 hours run from it. If the winner does not respond within 48
+            hours, cannot be contacted, or is found to be ineligible, that entry
+            is forfeited and a new winner will be drawn by the same method.
+          </p>
+        </section>
+
+        <section>
+          <h3 className="font-serif text-xl text-ink mb-4">
+            Your email address and what we do with it
+          </h3>
+          <p>
+            When you comment to enter, we reply by Instagram direct message and
+            ask for your email address. Those messages are handled by ManyChat,
+            an automated messaging service, and your email address is stored
+            there and in our email platform. We collect it so that we can
+            contact you if you win.
+          </p>
+          <p className="mt-4">
+            Giving us your email address is voluntary, but we cannot tell you
+            that you have won without it.
+          </p>
+          <p className="mt-4">
+            <strong className="font-normal text-ink">
+              Giving us your email address also subscribes you to The Edit
+            </strong>
+            , the Beauticate newsletter. You can unsubscribe at any time using
+            the link at the bottom of any email we send you, and we will stop.
+            Your entry in this promotion does not depend on staying subscribed.
+          </p>
+          <p className="mt-4">
+            If you win, we will also ask for a postal address so that the prize
+            can be sent to you. Delivery details are shared with {comp.partner}{' '}
+            only for the purpose of fulfilling the prize. Because all three packs
+            go to the winner, the Promoter does not collect any details for the
+            tagged friends.
+          </p>
+          <p className="mt-4">
+            ManyChat and our email platform both store data outside Australia.
+            We handle personal information in accordance with the Australian
+            Privacy Principles and our{' '}
+            <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">privacy policy</a>,
+            and we do not sell it.
           </p>
         </section>
 
@@ -189,28 +352,34 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">The promoter</h3>
           <p>
-            This promotion is conducted by Cantelo Corporation Pty Ltd trading as
-            Beauticate (&ldquo;the Promoter&rdquo;). Enquiries can be directed to{' '}
+            This promotion is conducted by Cantelo Corporation Pty Ltd (ABN 71
+            105 175 317), trading as Beauticate, of {comp.promoterAddress}{' '}
+            (&ldquo;the Promoter&rdquo;). Enquiries can be directed to{' '}
             <a href="mailto:hello@beauticate.com" className="text-ink hover:text-eucalypt transition-colors">
               hello@beauticate.com
             </a>.
+          </p>
+          <p className="mt-4">
+            {comp.partner} is the prize partner for this promotion and supplies
+            the prizes. {comp.partner} is not the Promoter, and questions about
+            the promotion should be directed to the Promoter.
           </p>
         </section>
 
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Notifying the winner</h3>
           <p>
-            The winner will be notified by email and by Instagram direct message
-            within two business days of the draw.
+            The winner is notified by email within two business days of the
+            draw. The Promoter may also follow up by Instagram direct message.
           </p>
           <p className="mt-4">
-            The winner&apos;s first name and general location may be announced on
-            Beauticate&apos;s Instagram account and in the Beauticate newsletter.
+            The winner&apos;s Instagram handle, first name and general location
+            may be announced on Beauticate&apos;s Instagram account and in the
+            Beauticate newsletter.
           </p>
           <p className="mt-4">
-            The winner must respond to confirm acceptance within 7 days of
-            notification. If the winner cannot be contacted, does not respond
-            within that period, or is found to be ineligible, the Promoter
+            Where the winner does not respond within the period stated in Part
+            One, cannot be contacted, or is found to be ineligible, the Promoter
             reserves the right to redraw. Any redraw will be conducted
             electronically by the same method within 5 business days, and the
             redrawn winner will be notified within two business days.
@@ -220,20 +389,16 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Personal information</h3>
           <p>
-            By entering, entrants consent to receiving marketing communications
-            from Beauticate, including the Beauticate newsletter. Entrants may
-            unsubscribe at any time using the link in any email.
-          </p>
-          <p className="mt-4">
-            Personal information collected will be handled in accordance with the
-            Beauticate{' '}
+            Personal information collected will be handled in accordance with
+            the Australian Privacy Principles and the Beauticate{' '}
             <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">privacy policy</a>.
             The Promoter will not sell entrants&apos; personal information.
           </p>
           <p className="mt-4">
-            Entrants&apos; email addresses are stored in the Promoter&apos;s email
-            platform for the purpose of administering this promotion and sending
-            marketing communications.
+            Entrants&apos; email addresses are stored in the Promoter&apos;s
+            email platform for the purpose of administering the promotion and
+            sending marketing communications. Entrants may unsubscribe at any
+            time using the link in any email.
           </p>
         </section>
 
@@ -249,6 +414,14 @@ export default function CompetitionTermsPage() {
             submits an entry that is not in accordance with these terms, or
             engages in conduct that is fraudulent, misleading or damaging to the
             goodwill of the Promoter.
+          </p>
+          <p className="mt-4">
+            The Promoter reserves the right to amend, suspend or cancel the
+            promotion if it cannot be run as planned because of circumstances
+            outside the Promoter&apos;s reasonable control, including technical
+            failure, unauthorised intervention, or the prize becoming
+            unavailable. Any such change is subject to any written directions
+            from a relevant regulatory authority.
           </p>
           <p className="mt-4">
             The Promoter is not responsible for entries that are lost, delayed or

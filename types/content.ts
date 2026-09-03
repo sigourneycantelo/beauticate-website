@@ -4,6 +4,10 @@ export interface ProductLink {
   name: string
   type: ProductLinkType
   handle?: string        // for type: 'shop' — matches Shopify product handle
+  variant?: string       // for type: 'shop' — pin the card to one colourway, by variant
+                         // title ("Blush Pink") or variant id. Without it the card shows
+                         // the listing's default variant, which on a multi-colour product
+                         // is often not the colour the article means.
   url?: string           // for type: 'affiliate' | 'external'
   retailer?: string      // e.g. 'MECCA', 'Sephora', 'Brand direct'
   note?: string          // e.g. "Sigourney's Edit", "Reader favourite"
@@ -85,10 +89,19 @@ export interface ArticleFrontmatter {
   nav_image_position?: string  // CSS object-position for mega-menu thumbnail crop, e.g. "left top"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
   hero_aspect?: string         // CSS aspect-ratio for hero image, e.g. "16/9"; defaults to 16/9
+  hero_layout?: 'full' | 'split' // 'split' = editorial split hero (image one side, greige headline panel the other); defaults to 'full'
 
   // Destinations taxonomy
   travelType?: 'guide' | 'hotel-review' | 'travel-beauty' | 'sigs-edit'
   venueType?: 'spa' | 'salon' | 'skin-clinic' | 'nail-salon' | 'bathhouse' | 'retreat' | 'hotel' | 'wellness'
+  /**
+   * The venue's own name, for LocalBusiness schema and the contact block.
+   * Directory listings are titled with the venue name, so this is unset there
+   * and `title` is used. An editorial review is titled with a headline, and
+   * without this the schema and the contact card would both name the venue
+   * "The Beach Hotel Where We Never Made It to the Beach".
+   */
+  venue_name?: string
   address?: string              // street address for LocalBusiness schema
   telephone?: string            // phone number for LocalBusiness schema
   instagram?: string            // Instagram handle (without @), e.g. "auroraspaandbathhouse"

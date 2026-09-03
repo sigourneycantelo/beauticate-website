@@ -146,6 +146,49 @@ because it records which fixes were approved. `data/chat-index.json` stays
 tracked deliberately: Ask Sig reads it at runtime and it has not been verified
 to survive as a build-only artefact.
 
+**Every tracked generated file is written sorted, one entry per line.** All three
+of them — `chat-index.json`, `redirect-slug-map.json`, `image-dimensions.json` —
+are rebuilt on every `npm run build` and committed, so with two people working
+at once they are the files most likely to collide. Git merges line by line: a
+file written as one long line conflicts on *every* concurrent edit, and the
+conflict is unresolvable by hand because it is one 5.6MB line. Written one entry
+per line, two people adding different articles touch different lines and git
+merges them silently. Verified both ways with a merge test before the change
+landed.
+
+Sorting is the other half, and it is not cosmetic. `redirect-slug-map.json` used
+to be emitted in directory-walk order, which is filesystem-dependent, so two
+people on different machines could generate completely different files from
+identical content. Sorted output is the same everywhere.
+
+If you add another tracked generated file, write it the same way. The line
+breaks cost about a byte per entry and buy a file that two people can edit at
+once.
+
+`data/image-dimensions.json` is rebuilt by `scripts/build-image-dimensions.mjs`
+on every `npm run build` and is **also tracked deliberately**, for the same kind
+of reason: `npm run dev` does not run the prebuild scripts, and without the file
+every lone portrait image silently loses its centring and width cap. A dev/prod
+mismatch on layout you review by eye is worse than 2MB in git. It is written one
+entry per line so a diff shows the images that actually changed.
+
+**Do not replace that manifest with a direct image read.** It exists because
+`lib/rehype-portrait-images.ts` used to read `public/<src>` at request time, and
+@vercel/nft — unable to resolve a runtime path — traced the entire 3.3GB
+`public/` tree into every dynamic route's function bundle. That put the repo at
+~7.3GB of build output on an 8GB build machine and eventually failed a deploy
+with `ENOSPC: no space left on device`, an error raised while collecting build
+traces and pointing nowhere near the cause. The manifest is read from one
+literal path. Keep it literal; see `docs/build-output.md`.
+
+`scripts/check-bundle-sizes.mjs` runs at the end of `npm run build` and fails it
+if any one function bundle passes 250MB, so the next version of that mistake
+breaks the build locally in seconds instead of surfacing as an `ENOSPC` ten
+minutes into a Vercel deploy. If it fires on a route you just added, the route
+can reach a runtime-path filesystem read — usually `lib/feed-images.ts` — and
+needs its own `outputFileTracingExcludes` entry in `next.config.ts`. Never widen
+that exclude to `'*'`.
+
 ## Home page hero curation
 
 The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.
@@ -162,6 +205,12 @@ The site surfaces each article in two shapes, and there are two frontmatter fiel
 
 - **`hero_image`** = the **landscape** holding shot (~2:1). Used full-bleed for the home hero (`HeroWide`) and the article's own top banner (`ArticleHero`). A triptych works well.
 - **`featured_image`** = the **portrait** thumbnail (~3:4). Used for every grid card / thumbnail site-wide (`StoriesTrio`, `DuoLeft`, `DuoStagger`, `HeroSplit`, `ArticleCard`, …).
+
+**Two hero layouts.** The article's own banner is full-bleed by default, which
+crops to 16:9 on desktop. When there's no landscape holding shot, set
+`hero_layout: "split"` instead of letting a portrait get hard-cropped - that
+gives the SheerLuxe-style split: image one side, greige panel with the headline
+the other. See `docs/article-layout-tiers.md`.
 
 **Always set both.** The code falls back to `featured_image` when `hero_image` is missing (`HeroWide.tsx`, `ArticleHero.tsx`) — which silently stretches the portrait thumbnail into the wide hero slot and crops it badly. That fallback is a safety net, **not** the intended state: if a landscape holding shot exists in the article directory (e.g. `holding.jpg`), wire it to `hero_image`. Never leave a real holding shot orphaned while the hero renders a cropped portrait.
 
@@ -180,6 +229,14 @@ When the publication needs to add its own words to someone else's first-person s
 ```
 
 Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
+
+### The byline is checked on every build
+
+`scripts/check-editorial-integrity.mjs` runs at the top of `npm run build`. A published article with **no author fails the build** — that one is never a judgement call. It also warns, without failing, about a byline that resolves to nobody in `lib/authors.ts` (no bio, no author page, and the RSS feed reports it as a guest post by default); the house byline on a piece whose own standfirst names a contributor; a published article whose URL permanently redirects away, which is what leaving the original behind after a re-file looks like; and a `featured_image` over 2MB, which is the card image on every archive page.
+
+All four were found the hard way. Colette Harvey's first-person account of her cancer treatment went out credited to "Beauticate Editorial". One story sat in the feed twice because a re-file added the redirect but never deleted the original. Three articles carried thumbnails of 20.4MB, 11.4MB and 9.4MB. Nothing errored and nothing 404'd — they surfaced only because `/feed.xml` put every article's metadata into one document a human could read.
+
+Genuinely ambiguous cases are listed in `ACKNOWLEDGED` in that script, each with a written reason, rather than warned about forever. A check nobody can get to zero is a check everybody learns to ignore.
 
 ## Geo dual-link system (AU/NZ vs everyone else)
 
@@ -219,6 +276,54 @@ Readers should never be navigated away from what they're reading.
 - **Affiliate / sponsored links**: use `target="_blank" rel="sponsored noopener"` (the existing convention).
 - **Site navigation** (header, footer, nav menus, article cards): stays in the same tab — these are how readers browse, not mid-read departures.
 
+## Video — the embed carries its own schema
+
+Put a video in an article body with the `YouTubeEmbed` component and nothing
+else is needed:
+
+```
+<YouTubeEmbed url="https://www.youtube.com/shorts/XXXXXXXXXXX" caption="..." />
+```
+
+It reads the URL itself: a `/shorts/` link renders 9:16, centred and capped at
+380px, anything else renders 16:9. And `buildArticleSchema` scans the rendered
+body for a YouTube id and emits a `VideoObject` into the page's `@graph`
+automatically, so a page with a video declares one to Google without any
+frontmatter.
+
+**That automatic step is only as good as one regex.** `YOUTUBE_ID_REGEX` in
+`lib/seo.ts` is the single place that decides whether a video is seen. It
+originally matched only `youtube.com/watch?v=` and `youtube.com/embed/`, while
+`YouTubeEmbed` already accepted `/shorts/` and `youtu.be` — so the Coogee review
+shipped a Short that rendered perfectly and was invisible in structured data.
+Nothing errored. It surfaced only because someone went looking at the JSON-LD.
+
+So: if `YouTubeEmbed` ever learns a new URL form, teach that regex the same
+form in the same change, and check the page's `@graph` actually contains
+`VideoObject` before calling it done. The two must never drift again.
+
+`youtube_embed` exists in `ArticleFrontmatter` but only the admin review queue
+reads it. It does not render a video and does not produce schema. Use the
+component.
+
+## Review ratings must be visible or absent
+
+`review_rating`, `review_item`, `review_brand`, `review_pros` and `review_cons`
+are read in exactly one place, `lib/seo.ts`, and rendered nowhere. Setting them
+puts a star rating, an itemReviewed and positive/negative notes into the page's
+JSON-LD that no reader can see anywhere on the page.
+
+**That is a policy breach, not just a curiosity.** Google requires structured
+data to reflect content visible to users, and an invisible rating is the
+textbook case its spammy-structured-markup action exists for. A star that wins
+a rich result and then earns a manual action is worse than no star.
+
+So don't set them unless the page also shows the rating to the reader. If we
+ever want stars, the visible verdict block comes first and the markup follows
+it. Removing the fields does not change the schema type: `resolveSchemaType`
+already returns `Review` from a `review` tag or a title, so a review stays a
+Review without them.
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
@@ -230,6 +335,31 @@ All product cards use the single `ProductTile` component (`components/shared/Pro
 2. **Text area (bottom)** — **always white background**. Brand name (uppercase sans), product name (serif), price (smaller, muted). This must blend into the white page, never sit on greige.
 
 The white text strip is the constant across both modes. The image area is the variable. This consistency is what makes a grid of mixed product shots look curated. Reference: SheerLuxe product cards.
+
+**No orphan products — place them in pairs.** A single product card sitting on
+its own in an article body looks like something failed to load. Default to a
+two-up:
+
+```
+<div className="not-prose grid grid-cols-2 gap-4 my-8" style={{clear:'both'}}>
+<ProductInset inline ... />
+<InlineProduct inline handle="..." />
+</div>
+```
+
+`inline` on either component drops its float wrapper and hands the grid a bare
+tile, so own-shop and affiliate cards pair with each other freely. The only
+acceptable solo placement is one that is deliberately full-width or centred —
+never a lone floated card. If there's only one product for a section, either
+find it a partner or move it into a pair elsewhere rather than leaving it
+stranded.
+
+**A shop handle that stops resolving renders nothing, not a blank tile.** When
+a Shopify product is archived or unpublished it drops out of the Storefront
+API, and the card has no image, name, price or URL left to draw. `ProductEmbed`
+returns `null` in that case. So an archived product doesn't leave a hole — it
+leaves a gap in the pair, which is the visible symptom to look for. Check the
+handle in Shopify (`status: ACTIVE`) before assuming a card is a layout bug.
 
 **Image rule:** Product images in ShopItem cards must always be de-etched product shots — the product on a neutral or transparent background, outside its retail packaging. Never use retail box or packaging shots. This applies to all product cards site-wide.
 
