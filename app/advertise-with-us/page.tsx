@@ -306,7 +306,7 @@ export default function AdvertisePage() {
             Raw, intimate interviews filmed in the homes and spaces of inspiring people &mdash; with elevated editorial polish. Guests include Miranda Kerr, Celeste Barber, Pip Edwards, Trinny Woodall, Lindsay Price and Poppy King.
           </p>
           <Link
-            href="/vodcast"
+            href="/podcast"
             className="font-sans text-[11px] tracking-[0.16em] uppercase text-wine hover:text-charcoal transition-colors"
           >
             Check out our podcast &rarr;

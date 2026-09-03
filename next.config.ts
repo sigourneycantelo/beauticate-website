@@ -833,8 +833,15 @@ const nextConfig: NextConfig = {
       { source: '/how-tos/interiors/:path*', destination: '/living/interiors', permanent: true },
       { source: '/how-tos/:path*', destination: '/beauty-style', permanent: true },
 
+      // ── Podcast hub moved /vodcast → /podcast ──────────────────────────────
+      // The hub page only. Individual episodes stay at /vodcast/episodes/:slug
+      // (that is where external show notes, the sitemap and the WP-era slug map
+      // point), so this must stay an exact-path rule — a /vodcast/:path*
+      // wildcard here would swallow every episode URL on the site.
+      { source: '/vodcast', destination: '/podcast', permanent: true },
+
       // ── Vodcast-by-beauticate bare path ────────────────────────────────────
-      { source: '/vodcast-by-beauticate', destination: '/vodcast', permanent: true },
+      { source: '/vodcast-by-beauticate', destination: '/podcast', permanent: true },
 
       // ── /destination/ (singular) parent path — travel keeps its own section
       // fallback since it's still topically specific. The old blanket

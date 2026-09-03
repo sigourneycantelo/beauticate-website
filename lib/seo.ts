@@ -370,7 +370,7 @@ export function buildCategoryMetadata(category: string, subcategory?: string) {
 
 const PODCAST = {
   series: 'Beautiful Inside by Beauticate',
-  seriesUrl: `${SITE_URL}/vodcast`,
+  seriesUrl: `${SITE_URL}/podcast`,
   sameAs: [
     'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
     'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
@@ -437,7 +437,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
 
   const seriesNode = {
     '@type': 'PodcastSeries',
-    '@id': `${SITE_URL}/vodcast#series`,
+    '@id': `${SITE_URL}/podcast#series`,
     name: PODCAST.series,
     url: PODCAST.seriesUrl,
     sameAs: PODCAST.sameAs,
@@ -453,7 +453,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     url: pageUrl,
     datePublished,
     inLanguage: 'en-AU',
-    partOfSeries: { '@id': `${SITE_URL}/vodcast#series` },
+    partOfSeries: { '@id': `${SITE_URL}/podcast#series` },
     author: person,
     publisher: ORGANIZATION_SCHEMA,
     image: { '@type': 'ImageObject', url: imageUrl },
@@ -516,7 +516,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     '@id': `${pageUrl}#breadcrumb`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Beautiful Inside', item: `${SITE_URL}/vodcast` },
+      { '@type': 'ListItem', position: 2, name: 'Beautiful Inside', item: `${SITE_URL}/podcast` },
       { '@type': 'ListItem', position: 3, name: f.title, item: pageUrl },
     ],
   })
