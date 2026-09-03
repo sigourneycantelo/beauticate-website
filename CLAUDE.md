@@ -146,6 +146,25 @@ because it records which fixes were approved. `data/chat-index.json` stays
 tracked deliberately: Ask Sig reads it at runtime and it has not been verified
 to survive as a build-only artefact.
 
+**Every tracked generated file is written sorted, one entry per line.** All three
+of them — `chat-index.json`, `redirect-slug-map.json`, `image-dimensions.json` —
+are rebuilt on every `npm run build` and committed, so with two people working
+at once they are the files most likely to collide. Git merges line by line: a
+file written as one long line conflicts on *every* concurrent edit, and the
+conflict is unresolvable by hand because it is one 5.6MB line. Written one entry
+per line, two people adding different articles touch different lines and git
+merges them silently. Verified both ways with a merge test before the change
+landed.
+
+Sorting is the other half, and it is not cosmetic. `redirect-slug-map.json` used
+to be emitted in directory-walk order, which is filesystem-dependent, so two
+people on different machines could generate completely different files from
+identical content. Sorted output is the same everywhere.
+
+If you add another tracked generated file, write it the same way. The line
+breaks cost about a byte per entry and buy a file that two people can edit at
+once.
+
 `data/image-dimensions.json` is rebuilt by `scripts/build-image-dimensions.mjs`
 on every `npm run build` and is **also tracked deliberately**, for the same kind
 of reason: `npm run dev` does not run the prebuild scripts, and without the file
