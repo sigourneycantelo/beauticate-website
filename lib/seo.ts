@@ -265,7 +265,21 @@ export function buildBreadcrumbSchema(crumbs: { name: string; url: string }[]) {
 export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
   const title = withBrandSuffix(f.seo_title ?? f.title, 'Beauticate')
   const description = f.meta_description ?? f.excerpt ?? ''
-  const image = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
+  // og_image wins, because featured_image is the PORTRAIT 3:4 card thumbnail while
+  // every social platform crops a share card to roughly 1.91:1. Handed a portrait,
+  // Facebook, LinkedIn and WhatsApp keep a horizontal band out of its middle and
+  // discard about 60% of the picture — on a detail shot that lands as an
+  // unreadable abstract. So an article that cares how it shares sets a landscape
+  // og_image; without one this still falls back to the old behaviour.
+  const image = f.og_image
+    ? `${SITE_URL}${f.og_image}`
+    : f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
+  // The alt has to travel with the image it describes. featured_image_alt is
+  // written about the portrait thumbnail, so it is simply wrong once og_image
+  // points at a different photograph.
+  const imageAlt = f.og_image
+    ? (f.og_image_alt ?? f.title)
+    : (f.featured_image_alt ?? f.title)
   const canonical = `${SITE_URL}${url}`
   const schemaType = resolveSchemaType(f)
 
@@ -283,7 +297,7 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
       publishedTime: f.date_published,
       modifiedTime: f.date_modified ?? f.date_published,
       authors: [f.author ?? 'Beauticate Editorial'],
-      images: [{ url: image, width: 1200, height: 630, alt: f.featured_image_alt ?? f.title }],
+      images: [{ url: image, width: 1200, height: 630, alt: imageAlt }],
       tags: f.tags,
     },
     twitter: {
@@ -291,7 +305,7 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
       site: '@beauticate',
       title,
       description,
-      images: [{ url: image, alt: f.featured_image_alt ?? f.title }],
+      images: [{ url: image, alt: imageAlt }],
     },
     robots: {
       index: true,
