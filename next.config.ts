@@ -887,6 +887,7 @@ const nextConfig: NextConfig = {
      * empty — silently, an hour after any deploy.
      */
     '/feed.xml': ['./public/**'],
+    '/feed-editorial.xml': ['./public/**'],
     '/sitemap-news.xml': ['./public/**'],
   },
 
