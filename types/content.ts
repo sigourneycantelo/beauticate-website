@@ -53,7 +53,14 @@ export interface ArticleFrontmatter {
   canonical_url?: string
   og_title?: string
   og_description?: string
+  /**
+   * Landscape share card, ~1200x630. Set this on anything worth sharing:
+   * `featured_image` is the portrait 3:4 grid thumbnail, and social platforms
+   * crop a share card to roughly 1.91:1, so a portrait loses about 60% of its
+   * height to a centre crop. Falls back to `featured_image` when unset.
+   */
   og_image?: string
+  og_image_alt?: string             // describes og_image; featured_image_alt is a different picture
 
   // AEO
   schema_type?: 'Article' | 'HowTo' | 'FAQPage' | 'Review' | 'NewsArticle'
