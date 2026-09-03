@@ -1,59 +1,72 @@
 # Escape Haven Bali — image handoff
 
-The article is written and the SEO work is done. It is waiting on photographs.
+The article is written, the SEO is done and the layout now follows Sig's brief:
+**professional landscapes full width, Sig's own portraits in pairs throughout.**
+It is waiting on the photograph files themselves.
 
-Google Drive is blocked by the egress policy on the machine Claude runs on, so
-the 30 shots at
+## Where the photos are, and why they are not here yet
+
+They are in Google Drive:
 https://drive.google.com/open?id=1OpA_O_qsFVod2WAqp7xvwxWbw0wNNzSC
-could not be fetched, and the Drive connector returns image files empty.
+36 images — Sig's 30 phone shots plus 6 supplied by Escape Haven.
 
-## How the pictures get here
+Google Drive is blocked by the egress policy on the machine Claude runs on. Not
+a permissions problem: the proxy refuses the connection to drive.google.com
+outright, so sharing settings make no difference. The Drive connector can list
+the folder and read the file names, and returns image files empty.
 
-**Nobody renames anything.** Upload the 30 originals as they are, and Claude
-does the selection, renaming, cropping, compressing and alt text.
+## Getting them across
 
-1. In Drive, open the folder, select all, download. Drive returns a zip.
-2. Unzip it.
-3. Go to
-   https://github.com/sigourneycantelo/beauticate-website/upload/claude/escape-haven-images-raw/content/destinations/travel/escape-haven-bali-retreat-review
-4. Drag all 30 JPEGs onto the page. Commit to `claude/escape-haven-images-raw`,
-   the branch already selected.
-5. Tell Claude they are up.
+Drive for Desktop already syncs this folder to the Mac, so no download is
+needed. In Finder, open the Google Drive folder, select all 36, and drag them
+onto:
 
-Claude then looks at all 30, picks the strongest 14, names them to match the
-slots already written into the MDX, rewrites any alt text that does not match
-what is actually in the frame, compresses them for web, and commits those 14 to
-`claude/escape-haven-bali-seo-edefgh`.
+https://github.com/sigourneycantelo/beauticate-website/upload/claude/escape-haven-images-raw/content/destinations/travel/escape-haven-bali-retreat-review
 
-## Why two branches
+Commit to `claude/escape-haven-images-raw`, the branch already selected. Claude
+then picks, names, crops, compresses and writes the alt text from what is
+actually in each frame.
 
-`claude/escape-haven-images-raw` carries the full-size originals and is **never
-merged**. Delete it once the article is live. Only the 14 optimised files reach
-`main`, so roughly 100MB of camera originals stay out of the repo's history for
-good.
+`claude/escape-haven-images-raw` is never merged, so the camera originals stay
+out of main's history. Delete it once the article is live.
 
-## The 14 slots the MDX already references
+## The running order the MDX already expects
 
-Two are load-bearing. `hero.jpg` must be **landscape** (~2:1) because it runs
-full-bleed on the home page and at the top of the article.
-`featured-frangipani-welcome.jpg` must be **portrait** (~3:4) because it is the
-card image on every grid site-wide, and it wants to be the petals shot.
+Landscape, then a pair, then landscape, then a pair, the whole way down.
 
-The other twelve: `arrival-pool-night`, `goddess-room`,
-`massage-treatment-room`, `one-on-one-yoga`, `ayurveda-consultation`,
-`floating-breakfast`, `therapeutic-chef-lunch`, `pool-daybed`, `janine-founder`,
-`rice-paddy-sunrise`, `pool-dusk`. `therapeutic-chef-lunch` and `pool-daybed`
-sit side by side in a two-up grid and want matching portrait crops.
+| # | File | Shape | Source |
+|---|---|---|---|
+| — | `hero.jpg` | landscape | `Bali-Interoirs-Escape-Haven-Day-2-53_High.jpg` (Sig's pick) |
+| — | `featured-frangipani-welcome.jpg` | portrait | the petals shot, for grid cards site-wide |
+| 1 | `arrival-pool-night.jpg` | landscape | `BaliInteriors-EscapeHavenNightShoot-17` |
+| 2–3 | `welcome-coconut` + `frangipani-petals-bed` | **pair** | Sig |
+| 4 | `goddess-room.jpg` | landscape | `escape-haven-rooms-7` or `escape-haven-bali-accommodation` |
+| 5–6 | `massage-treatment-room` + `one-on-one-yoga` | **pair** | Sig |
+| 7–8 | `ayurveda-consultation` + `coriander-fennel-flask` | **pair** | Sig |
+| 9 | `floating-breakfast.jpg` | landscape | Sig |
+| 10–11 | `therapeutic-chef-lunch` + `pool-daybed` | **pair** | Sig |
+| 12 | `fire-pit-balcony.jpg` | landscape | `Fire-pit-and-micro-view-from-balcony.jpg` |
+| 13–14 | `janine-founder` + `garden-detail` | **pair** | Sig / pro |
+| 15 | `rice-paddy-sunrise.jpg` | landscape | Sig |
+| 16 | `pool-dusk.jpg` | landscape | pro |
 
-## Two checks Claude runs on every file
+Paired images share a two-up grid, so each pair wants a matching portrait crop.
 
-1. **Rotation baked in.** Phone shots carry an EXIF orientation flag that gets
-   stripped in transit, leaving portraits stored as sideways landscapes.
-   Every file goes through `PIL.ImageOps.exif_transpose` and gets eyeballed.
-2. **File size.** `featured_image` over 2MB fails the build's own editorial
-   check. The Drive originals run 1.4MB to 7MB, so all of them get compressed.
+## Three things Claude checks on arrival
+
+1. **Hero resolution.** `hero.jpg` runs full-bleed and wants ~2400px wide.
+   `BaliInteriors-EscapeHavenNightShoot-17-1024x683` is only 1024px, so it
+   cannot be the hero. If the chosen hero is also short, `hero_max_width` caps
+   the display width rather than letting it upscale and go soft.
+2. **Rotation baked in.** Phone shots carry an EXIF orientation flag that gets
+   stripped in transit, leaving portraits stored as sideways landscapes. Every
+   file goes through `PIL.ImageOps.exif_transpose` and gets looked at.
+3. **Format and size.** Four of the supplied shots are `.webp`; the MDX
+   references `.jpg`, so those get converted or the references updated.
+   `featured_image` over 2MB fails the build's own editorial check, and the
+   phone originals run to 7MB, so they all get compressed.
 
 ## When the images are in
 
-Set `published: true` and delete `draft_reason` in the .mdx, delete this file,
-and decide whether it takes the home page hero from the Coogee review.
+Set `published: true`, delete `draft_reason`, delete this file, and decide
+whether it takes the home page hero from the Coogee review.
