@@ -1,12 +1,14 @@
 # RSS feed and news sitemap
 
 Machine-readable listings of recent articles, built for the Instagram carousel
-automation. Both read the same selection logic in [`lib/feed.ts`](../lib/feed.ts),
-so they can never disagree about what counts as a published article.
+automation. They all read the same selection logic in
+[`lib/feed.ts`](../lib/feed.ts), so they can never disagree about what counts as
+a published article.
 
 | URL | Route | Rendering |
 | --- | --- | --- |
 | `/feed.xml` | `app/feed.xml/route.ts` | static, build-time only |
+| `/feed-editorial.xml` | `app/feed-editorial.xml/route.ts` | static, build-time only |
 | `/sitemap-news.xml` | `app/sitemap-news.xml/route.ts` | `force-dynamic` |
 | `/robots.txt` | `app/robots.txt/route.ts` | static |
 
@@ -53,6 +55,29 @@ Index pages, static pages, the shop and the homepage cannot reach the feed at
 all: they are app routes, and `getArticleSlugs()` only yields a `content/`
 directory that contains its own `<name>.mdx`.
 
+### What counts as a venue listing
+
+A listing carries `venueType` **and** sits in one of the five directory
+subcategories (`clinics`, `salons`, `spas-retreats`, `bathhouses`, `wellness`).
+Both halves are needed, because each alone gets real content wrong:
+
+- `venueType` alone misfiles four editorial travel features. A hotel or spa
+  review carries `venueType` so `lib/seo.ts` can give it `Hotel` schema and it
+  can show in the directory index — not because it is a listing. The
+  InterContinental Coogee review was the home page hero and was being withheld
+  from Pinterest on this basis.
+- The path alone misfiles two editorial roundups filed under `salons/` that
+  have no `venueType` because they are not about one venue.
+
+This is deliberately **not** the same test as `getDirectoryListings()` in
+`lib/content.ts`, which keys on `venueType` alone. "Appears in the directory"
+and "is a listing rather than an article" are different questions; only the
+second is the feed's.
+
+Getting it wrong is not just a mislabel. A listing is dated by `date_modified`,
+is held to the import epoch below, and is dropped from `/feed-editorial.xml`
+entirely — so a misfiled article can vanish from the feed silently.
+
 ### Venue listings: new or updated only
 
 146 of the 148 published venue listings carry `date_published: 2026-01-15`. That
@@ -71,6 +96,26 @@ migration artefact.
 
 Articles and podcasts are never dated by `date_modified` — the site does not
 treat an edit as a republish, and neither does the feed.
+
+### The two feeds
+
+`/feed.xml` is the complete one and the automation's input. `/feed-editorial.xml`
+is the same rendering (`lib/feed-rss.ts` builds both, so they cannot drift) over
+the same 50 candidates with `bc:contentType` of `venue` filtered out — features,
+interviews and podcast episodes only. It is a strict subset of `/feed.xml`, item
+for item and guid for guid.
+
+It exists for Pinterest. One connected feed publishes to **one board**, and on
+connect Pinterest **backfills the whole feed, oldest item first** — so pointing
+it at `/feed.xml` today would open the account with a run of directory listings.
+Nor can that be waited out: at the current publishing rate the listings sitting
+in `/feed.xml` take roughly eight months to fall off the end of a 50-item
+window, and the backfill would reach them anyway.
+
+If venue listings ever want a Pinterest board of their own, add a third route
+filtering the other way, rather than reaching for `/feed.xml`. Whatever it is,
+**give it an `outputFileTracingExcludes` entry in the same commit** — see
+[`build-output.md`](build-output.md).
 
 ## Fields that need explaining
 
@@ -133,10 +178,8 @@ the portrait is also the first `<media:content>` — [Pinterest's docs][pin] say
 reads both, and either way it lands on the portrait.
 
 Pinterest also needs each `<link>` to point at a **claimed** domain, publishes
-within 24 hours of a feed change, and caps at 200 Pins/day. One connected feed
-publishes to **one board**, so articles, podcasts and venue listings would all
-land together — split the feed by `bc:contentType` into separate routes if they
-need separate boards.
+within 24 hours of a feed change, and caps at 200 Pins/day. Connect it to
+`/feed-editorial.xml`, not `/feed.xml` — see "The two feeds" above for why.
 
 [pin]: https://help.pinterest.com/en/business/article/auto-publish-pins-from-your-rss-feed
 
