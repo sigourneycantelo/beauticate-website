@@ -54,7 +54,7 @@ const MILESTONES: {
   {
     year: '2022',
     text: 'Beautiful Inside, the video podcast, launches and debuts at #3 on Apple in the Arts & Culture category.',
-    href: '/vodcast',
+    href: '/podcast',
     cta: 'Listen to the Podcast',
   },
   {
