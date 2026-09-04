@@ -72,14 +72,27 @@ that tag in Shopify.
 Set `GWP.enabled = false` in `lib/gwp.ts`. Carts stop gaining the gift and existing
 carts drop it on their next response. Nothing else to unwind.
 
-## Known issue — shipping (needs a Shopify fix, not a code fix)
+## Shipping
 
-The gift product sits in the **General profile**, whose domestic rate is **$11.00**.
-BOOIE's own products are split: 10 of them are in the **Free Shipping** profile, the
-rest in General. Shopify charges the *sum* of the rates for every delivery profile
-represented in a cart, so a customer buying only a free-shipping BOOIE product is
-quoted **$11 at checkout purely because we gave them a free gift** — while the
-product page promises free shipping (`FREE_SHIPPING_VENDORS` includes BOOIE Beauty).
+**Resolved 4 Sep 2026.** All 53 BOOIE Beauty products — the gift SKU included — are
+in the **Free Shipping** delivery profile. The gift can therefore only ever add a
+$0 rate group, so it never changes what the customer is quoted.
 
-**Fix in Shopify admin:** move `Bloody Delicious - Beauticate Gift` into the
-*Free Shipping* delivery profile. Then the gift can only ever add a $0 rate group.
+Before the fix the gift sat in the General profile ($11 domestic) while BOOIE's own
+products were split 10/43 between Free Shipping and General. Shopify charges the
+*sum* of the rates for every profile in a cart, so a customer buying a
+free-shipping BOOIE product would have been quoted **$11 at checkout purely because
+we gave them a free gift** — while the product page promised free shipping
+(`FREE_SHIPPING_VENDORS` includes BOOIE Beauty).
+
+Watch this whenever a gift SKU is added for another brand: **the gift must live in
+the same delivery profile as the products that earn it**, or it silently adds that
+profile's rate.
+
+## Modern Dropship per-order fee
+
+The gift is a line on the same vendor's order, so it is one order to BOOIE and one
+per-order fee — adding a gift does not create a second order or a second fee. With
+BOOIE on free shipping the fee should be nil in any case: the MD per-order fee is
+how we reimburse a brand for shipping, so there is nothing to reimburse. Worth
+eyeballing once on the first real BOOIE order.
