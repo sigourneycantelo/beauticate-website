@@ -216,3 +216,81 @@ This is **currently harmless** — the Storefront API returns `checkoutUrl` on
 routes through `shop.beauticate.com` any more. It is a live trap, not a live breakage:
 if the primary domain ever moves back, the old bug returns and the guard everyone would
 check is the one that has already been overridden.
+
+---
+
+# Update 2 — 4 Sep 2026, with Shopify Admin access
+
+## Is it fixed? No. Nothing has ever sold through Instagram.
+
+Pulled the last 16 orders (#1001–#1016) from the Admin API with
+`customerJourneySummary`. **Every order since #1002 came through the `Headless`
+channel with a `beauticate.com` referrer.** Not one order in the store's history is
+attributed to the Facebook & Instagram channel, and not one landed on a
+`checkout.beauticate.com/products/...` page first. Order #1001 (29 May) came via the
+Online Store on `beauticate.shop`.
+
+Against Meta's own numbers — 4 checkouts initiated on Instagram in 28 days, 6 adds to
+cart on the mascara alone — the conversion rate of the Instagram path is zero. Nicole
+Ford is not an isolated report; she is the only one who wrote in.
+
+## What Redfern actually changed — and why it isn't this
+
+Two commits, both about the legacy shop domains, neither about Instagram:
+
+- **30 Jul, [`c1f419f2b`](../../commit/c1f419f2b) (#63)** — added blanket redirects in
+  `next.config.ts` sending **all paths** on `beauticate.shop` and `shop.beauticate.com`
+  to `/shop`.
+- **6 Aug, [`3070d7c6f`](../../commit/3070d7c6f) (#71)** — added *the same two blanket
+  rules again*, this time in `vercel.json`.
+
+The 30 Jul change is what broke checkout: at that time Shopify's primary domain was
+`shop.beauticate.com`, so `cart.checkoutUrl` pointed there, and the blanket rule caught
+every customer who tapped Checkout and threw them back to `/shop`. That is the incident
+the long comment in `next.config.ts` describes, and the exclusion regex
+`/:path((?!cart|checkout|checkouts).*)` was the repair.
+
+**The 6 Aug `vercel.json` commit silently undid that repair.** Project-level redirects
+run before `next.config.ts`, and the `vercel.json` copy has no exclusion. Verified live:
+`shop.beauticate.com/cart/c/abc123` and `/checkouts/cn/abc123` both 308 to the shop home
+today. The guard everyone would go and check is the one that no longer runs.
+
+What actually saved checkout was a domain move, not the exclusion: Shopify's primary
+domain is now `checkout.beauticate.com` (confirmed in Admin → Domains), and
+`shop.beauticate.com` is listed there as **Invalid DNS** — it no longer resolves to
+Shopify at all. So the dead exclusion is currently harmless. It is a landmine, not a
+live fault: anyone who moves a Shopify domain back onto `shop.beauticate.com` re-breaks
+checkout for every customer, and the code that looks like it prevents that has been
+inert since 6 Aug.
+
+**Redfern doesn't need to be asked anything to diagnose this bug.** He should be told
+that #71 overrode #63's fix, so the duplicated rules get reconciled into one place.
+
+## Confirmed store configuration
+
+From Shopify Admin (4 Sep):
+
+- Primary domain **`checkout.beauticate.com`**; also connected: `1ptawz-uy.myshopify.com`,
+  `beauticateshop.com`, `www.beauticateshop.com`. `shop.beauticate.com` = **Invalid DNS**.
+- Online Store channel is **active** — this is the duplicate storefront Meta links to.
+- Facebook & Instagram channel installed 27 Jul, **Active**, 1 market.
+  Facebook shop → page *Sigourney Cantelo*. Instagram shop → *Sigourney: Beauty from the
+  Inside Out* (`@sigourneycantelo`). Product status: 354 approved, **12 rejected**.
+- The channel's Settings panel renders in a cross-origin iframe that could not be
+  scrolled through automation, so the **checkout method field was not read**. It is the
+  one field still unconfirmed.
+
+## The actual decision
+
+This was never a missing `/cart` route. It is that **Instagram points at a different
+storefront than the one we build**. Two ways out:
+
+1. **Keep Meta on `checkout.beauticate.com`** and make that storefront good enough to
+   convert — it already renders products and takes carts. Cheapest, but it permanently
+   splits the shop in two and leaves the duplicate-content problem in place.
+2. **Repoint Meta at `www.beauticate.com/shop`.** Correct destination, but Shopify's
+   channel derives catalogue links from the online-store domain, so this likely means a
+   standalone feed rather than the Shopify channel — more work, and it takes the
+   Instagram bag handoff with it.
+
+Settle this before writing any code. Building `/cart` on `www` only makes sense under (2).
