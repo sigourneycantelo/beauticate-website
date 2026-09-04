@@ -1,6 +1,7 @@
 # Handoff — Instagram checkout drops the customer into an empty cart
 
-**Status:** diagnosed to the boundary, one decisive fact still missing.
+**Status:** destination domain now confirmed. The original (A)/(B) framing was wrong —
+see "Update, 4 Sep evening" below before acting on anything above it.
 **Reported:** 4 Sep 2026, by a customer (Nicole Ford) via Instagram DM.
 **Not related to** the BOOIE gift-with-purchase work ([`gwp-booie-cart.md`](./gwp-booie-cart.md)) —
 this predates it. Don't let the two get tangled.
@@ -115,3 +116,103 @@ Instagram basket and taps through hits an empty cart. One person DM'd; the rest 
 - Store: `1ptawz-uy.myshopify.com`, storefront `www.beauticate.com`, checkout `checkout.beauticate.com`
 - Cart logic: `components/shop/CartProvider.tsx`, `app/api/cart/route.ts`, `lib/shopify.ts`
 - Instagram sales channel is connected in Shopify (the app list shows the Meta channel)
+
+
+---
+
+# Update — 4 Sep 2026, evening
+
+Commerce Manager was read directly (business ID `1006853379362198`, commerce account
+`Beauticate` `1696430804962273`). **The decisive question above is answered, and the
+answer is neither (A) nor (B).**
+
+## Confirmed: where Meta actually sends people
+
+The catalogue is **`Shopify Product Catalog (1ptawz-uy.myshopify.com) — 2026-07-26
+System User`**, catalog ID `1047332494553193`, 366 products, fed by Shopify's Facebook
+& Instagram sales channel and resyncing daily (last updated 4 Sep, 2:10am).
+
+Read straight off a catalogue item's detail panel, the **Product Link** field is:
+
+```
+https://checkout.beauticate.com/products/the-everything-bundle
+    ?utm_content=Facebook_UA&utm_source=facebook&variant=44656591274053
+```
+
+So Instagram sends shoppers to **`checkout.beauticate.com`** — not `www.beauticate.com`
+and not `shop.beauticate.com`. Catalogue Content IDs are Shopify **variant** IDs
+(`44656591274053`), which is exactly what a cart permalink needs.
+
+## Why that changes the fix
+
+`checkout.beauticate.com` is not a checkout host. It is a **second, fully live Shopify
+storefront** — the online store the headless site was supposed to replace. Verified on
+4 Sep:
+
+| URL | Result |
+| --- | --- |
+| `checkout.beauticate.com/products/<handle>` | **200**, real themed product page, working add-to-cart, `<title>Almighty Volume Thickening Duo</title>` |
+| `checkout.beauticate.com/` | **200**, `<title>Beauticate Shop</title>` |
+| `checkout.beauticate.com/cart` | **200**, `<title>Your Shopping Cart</title>`, "your cart is empty" |
+| `checkout.beauticate.com/cart/45051885551685:1` | **302 → a real Shopify checkout, items loaded** |
+| `1ptawz-uy.myshopify.com/*` | 301 → `checkout.beauticate.com/*` (it is the primary domain) |
+
+**Cart permalinks already work — on the domain Meta actually uses.** So option (A) in
+the original diagnosis, building `app/cart/[[...items]]` on `www`, would not have fixed
+this. It would have built a working route on a domain Instagram never sends anyone to.
+Don't build it on the strength of the section above.
+
+Also ruled out, for completeness:
+
+| URL | Result |
+| --- | --- |
+| `www.beauticate.com/cart`, `/cart/<v>:1`, `/checkout`, `/cart.js` | 404 (unchanged) |
+| `www.beauticate.com/products/<handle>` | 308 → `/shop/products/<handle>`, **200** |
+| `www.beauticate.com/collections/<slug>` | 308 → `/shop/collections/<slug>` |
+| `shop.beauticate.com/<anything, incl. /cart/*>` | 308 → `beauticate.com/shop` (shop home) |
+
+## What is still unknown — one question, much narrower
+
+Meta's catalogue tells us where a **product tap** goes. It does not tell us what
+**"Go to checkout"** does from the Instagram bag. Commerce Manager does not expose a
+checkout-method row for a Shopify-managed shop ("Commerce Manager supplements Shopify"),
+so that setting lives in Shopify's Facebook & Instagram sales channel, not in Meta.
+
+Two remaining possibilities:
+
+- **She was sent to a cart permalink on `checkout.beauticate.com`** → that works today,
+  so something else broke, and we need the exact URL to see what.
+- **She was sent to a plain product or store-home link on `checkout.beauticate.com`**
+  carrying no basket → the bag is lost by design at the handoff. This is the more likely
+  reading: she reported an empty cart rather than a loaded checkout.
+
+**The phone reproduction still settles it**, and now there is one specific thing to read:
+after tapping "Go to checkout", is the domain `checkout.beauticate.com` or
+`www.beauticate.com`, and does the path contain `/cart/`? That single string closes it.
+The in-app webview cannot be emulated on desktop.
+
+Supporting data — Meta shop insights, last 28 days: 4 "checkouts initiated" on Instagram,
+0 on Facebook. `You're Welcome Mascara`: 19 product page views, 4 adds to cart, 1 checkout
+initiated. Low volume, but every one of those four is a customer who tapped through.
+
+## Two things found on the way, both separate from this bug
+
+**1. `checkout.beauticate.com` is an indexable duplicate storefront.** `robots.txt`
+allows crawling, `sitemap.xml` lists every product, pages carry no `noindex`, and each
+one self-canonicals to `checkout.beauticate.com`. It competes with `www.beauticate.com/shop`
+for the same products, and it is where 100% of Instagram shop traffic currently lands —
+bypassing the editorial site entirely. That is a strategy question (should Instagram
+point at the headless site at all?), not a bug, but it is the same decision as this fix.
+
+**2. `vercel.json` silently overrides the cart/checkout exclusion in `next.config.ts`.**
+`next.config.ts` carefully excludes cart paths from the `shop.beauticate.com` redirect,
+with a comment explaining that a blanket rule once sent every checkout back to `/shop`.
+But `vercel.json` also has a blanket `"/:path*"` → `beauticate.com/shop` rule for that
+host **with no exclusion**, and project-level redirects run first. Verified live:
+`shop.beauticate.com/cart/c/abc123` and `/checkouts/cn/abc123` both 308 to the shop home.
+
+This is **currently harmless** — the Storefront API returns `checkoutUrl` on
+`checkout.beauticate.com`, confirmed by a live `cartCreate` call, so no real checkout
+routes through `shop.beauticate.com` any more. It is a live trap, not a live breakage:
+if the primary domain ever moves back, the old bug returns and the guard everyone would
+check is the one that has already been overridden.
