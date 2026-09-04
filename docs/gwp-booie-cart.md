@@ -28,12 +28,40 @@ to $0.00.** The cent is handled presentationally instead:
 - **Cart drawer** — the line renders with a "Free gift" badge and the word *Free*.
   No price, no Remove button.
 - **Checkout** — the line carries a customer-visible line-item property,
-  `Gift with purchase: Free gift — Bloody Delicious illuminator`. The price still
-  reads $0.01 there. Removing that last cent from the customer's view needs a
-  Shopify **automatic discount** (100% off the gift variant when the cart contains
-  a BOOIE product) — that is exactly the job BOGOS's Functions layer would do, and
-  native Shopify does it for free. Not built: nobody has asked for the cent to be
-  discounted, only for it to stop looking like a pricing bug.
+  `Gift with purchase: Free gift — Bloody Delicious illuminator`, and the cent is
+  cancelled out by an automatic discount (below) so the customer's total is round.
+
+### The cent-offset discount
+
+Shopify automatic discount **"Free gift"** — `gid://shopify/DiscountAutomaticNode/1328198615109`,
+a Buy-X-Get-Y created 4 Sep 2026:
+
+- **Buys:** variant `45618557026373` (the gift), quantity 1.
+- **Gets:** $0.01 off one item in the **Booie Beauty** collection.
+- `usesPerOrderLimit: 1`; combines with product, order and shipping discounts so it
+  can never block a customer's own code.
+
+The point of this shape is *where the cent comes off*. It discounts the **paid**
+BOOIE line, not the gift line — so the gift stays at $0.01, which is the price
+Modern Dropship invoices from, while the customer's total lands on a round number.
+Verified live: a $39.00 BOOIE product reconciles to `$38.99 + $0.01 gift = $39.00`.
+
+**Do NOT "simplify" this into 100% off the gift line.** That zeroes the line MD bills
+from, which is the $0.00 case MD cannot process — the very problem the cent exists to
+avoid. For the same reason, never raise the gift's price to full retail and discount
+it back down: MD derives your cost from the line price (order #1016 billed $19.60 on a
+$28.00 line, i.e. the 30% margin), so a $39 line could be invoiced at ~$27.30 per gift.
+
+It fires only when the gift is in the cart, so it can only ever touch a GWP order, and
+it stops on its own when the gift stock runs out and the reconciler stops adding it.
+Delete the discount when the promotion ends.
+
+**Known gap:** two BOOIE products — *Build Your Snazzy Face Bundle* (8095274795077) and
+*Brow Bundle* (8197749702725) — are not in the Booie Beauty collection, so a cart
+containing only one of those gets the gift but not the cent offset, and the total ends
+in .01. Shopify refuses to mix collections and individual products in one BXGY's "gets",
+so the fix is to add those two to the collection — which would also put them back on the
+BOOIE brand page, where they are currently missing for the same reason.
 
 ## Where the logic lives
 
