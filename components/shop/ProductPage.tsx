@@ -11,11 +11,13 @@ interface Props {
   related?: ShopifyProduct[]
   /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
   availability?: Record<string, boolean>
+  /** Gift-with-purchase pitch: this product qualifies AND the gift is in stock. */
+  showGift?: boolean
 }
 
 const SITE = 'https://www.beauticate.com'
 
-export default function ProductPage({ product: p, related = [], availability }: Props) {
+export default function ProductPage({ product: p, related = [], availability, showGift = false }: Props) {
   const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
   const title = cleanProductTitle(p.title)
   const isVariantAvailable = (v: ShopifyProduct['variants']['nodes'][number]) =>
@@ -97,7 +99,7 @@ export default function ProductPage({ product: p, related = [], availability }: 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
         <ProductImageCarousel images={images} vendor={p.vendor} title={p.title} />
 
-        <ProductBuyBox product={p} availability={availability} />
+        <ProductBuyBox product={p} availability={availability} showGift={showGift} />
       </div>
 
       {related.length > 0 && (

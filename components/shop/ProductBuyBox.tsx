@@ -5,15 +5,18 @@ import { useCart } from './CartProvider'
 import type { ShopifyProduct } from '@/types/shopify'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
 import { cleanProductTitle } from '@/lib/product-format'
+import GiftBanner from './GiftBanner'
 
 const fmt = (amount: string, currency: string) =>
   new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(parseFloat(amount))
 
 // Sticky right-hand buy box: brand, title, price, editorial note, variant, qty, add-to-cart.
-export default function ProductBuyBox({ product: p, availability }: {
+export default function ProductBuyBox({ product: p, availability, showGift = false }: {
   product: ShopifyProduct
   /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
   availability?: Record<string, boolean>
+  /** Gift-with-purchase pitch: this product qualifies AND the gift is in stock. */
+  showGift?: boolean
 }) {
   const variants = p.variants.nodes
   // Open on the cheapest in-stock variant so the price shown matches the card's
@@ -86,6 +89,8 @@ export default function ProductBuyBox({ product: p, availability }: {
           </select>
         </div>
       )}
+
+      {showGift && <GiftBanner />}
 
       <div className="flex items-stretch gap-3 mt-6">
         <div className="flex items-center border border-cream-200 rounded-[2px]">
