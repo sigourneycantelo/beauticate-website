@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { gaViewCart, gaBeginCheckout, gidToId, GAItem } from '@/lib/ga/events'
 import { track } from '@/lib/meta/pixel'
+import { GWP, isGiftLine } from '@/lib/gwp'
 
 function cartToGAItems(lines: any[]): GAItem[] {
   return lines.map((line: any) => ({
@@ -86,6 +87,14 @@ export default function CartDrawer() {
                 // why such lines used to render as "$0". Detect it and label the line
                 // truthfully instead of showing a price.
                 const soldOut = (line.quantity ?? 0) < 1
+                // The gift-with-purchase line. It is priced at $0.01 in Shopify
+                // because Modern Dropship cannot process a $0.00 line item, so the
+                // cent is handled here presentationally: the customer is told they
+                // have a free gift, never shown a one-cent price that reads as a
+                // pricing bug. It has no Remove control either — the cart owns it
+                // (lib/gwp-cart.ts), and removing the last BOOIE product is what
+                // takes it away.
+                const gift = isGiftLine(line as any)
                 // Line-level cost is Shopify's canonical figure (already ×quantity);
                 // fall back to per-unit price × quantity only if the line cost is absent.
                 const lineCost = parseFloat(line.cost?.totalAmount?.amount ?? '0')
@@ -99,6 +108,11 @@ export default function CartDrawer() {
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
+                      {gift && (
+                        <span className="inline-block font-sans text-[9px] tracking-[0.18em] uppercase text-eucalypt font-semibold border border-eucalypt/40 rounded-full px-2 py-[2px] mb-1">
+                          {GWP.badge}
+                        </span>
+                      )}
                       <p className="text-xs text-charcoal-light">{line.merchandise.product.vendor}</p>
                       <p className="text-sm font-medium leading-tight line-clamp-2">
                         {line.merchandise.product.title}
@@ -106,16 +120,25 @@ export default function CartDrawer() {
                       {line.merchandise.title !== 'Default Title' && (
                         <p className="text-xs text-charcoal-light">{line.merchandise.title}</p>
                       )}
-                      {soldOut
-                        ? <p className="text-sm mt-1 text-wine">Sold out</p>
-                        : <p className="text-sm mt-1">{price}</p>}
+                      {gift ? (
+                        <>
+                          <p className="text-sm mt-1 text-eucalypt font-semibold">{GWP.freeLabel}</p>
+                          <p className="text-[11px] text-charcoal-light mt-0.5">{GWP.cartNote}</p>
+                        </>
+                      ) : soldOut ? (
+                        <p className="text-sm mt-1 text-wine">Sold out</p>
+                      ) : (
+                        <p className="text-sm mt-1">{price}</p>
+                      )}
                     </div>
-                    <button
-                      onClick={() => removeItem(line.id)}
-                      className="text-xs text-charcoal-light hover:text-charcoal self-start mt-1"
-                    >
-                      Remove
-                    </button>
+                    {!gift && (
+                      <button
+                        onClick={() => removeItem(line.id)}
+                        className="text-xs text-charcoal-light hover:text-charcoal self-start mt-1"
+                      >
+                        Remove
+                      </button>
+                    )}
                   </li>
                 )
               })}

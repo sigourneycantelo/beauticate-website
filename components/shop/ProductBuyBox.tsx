@@ -7,17 +7,20 @@ import { isFreeShipping } from '@/lib/shop-taxonomy'
 import { cleanProductTitle } from '@/lib/product-format'
 import { useGeo } from '@/components/geo/GeoProvider'
 import type { ShopIntlOptions } from '@/lib/shop-intl'
+import GiftBanner from './GiftBanner'
 
 const fmt = (amount: string, currency: string) =>
   new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(parseFloat(amount))
 
 // Sticky right-hand buy box: brand, title, price, editorial note, variant, qty, add-to-cart.
-export default function ProductBuyBox({ product: p, availability, intlOptions }: {
+export default function ProductBuyBox({ product: p, availability, intlOptions, showGift = false }: {
   product: ShopifyProduct
   /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
   availability?: Record<string, boolean>
   /** Stockists that ship outside AU/NZ, resolved server-side (see lib/shop-intl.ts). */
   intlOptions?: ShopIntlOptions
+  /** Gift-with-purchase pitch: this product qualifies AND the gift is in stock. */
+  showGift?: boolean
 }) {
   const variants = p.variants.nodes
   // Open on the cheapest in-stock variant so the price shown matches the card's
@@ -131,20 +134,24 @@ export default function ProductBuyBox({ product: p, availability, intlOptions }:
           </div>
         )
       ) : (
-        <div className="flex items-stretch gap-3 mt-6">
-          <div className="flex items-center border border-cream-200 rounded-[2px]">
-            <button onClick={() => setQty(q => Math.max(1, q - 1))} className="px-3.5 py-3 font-sans text-charcoal-light hover:text-ink transition-colors" aria-label="Decrease quantity">&minus;</button>
-            <span className="px-1 font-sans text-sm w-6 text-center tabular-nums">{qty}</span>
-            <button onClick={() => setQty(q => q + 1)} className="px-3.5 py-3 font-sans text-charcoal-light hover:text-ink transition-colors" aria-label="Increase quantity">+</button>
+  <>
+          {showGift && <GiftBanner />}
+
+          <div className="flex items-stretch gap-3 mt-6">
+            <div className="flex items-center border border-cream-200 rounded-[2px]">
+              <button onClick={() => setQty(q => Math.max(1, q - 1))} className="px-3.5 py-3 font-sans text-charcoal-light hover:text-ink transition-colors" aria-label="Decrease quantity">&minus;</button>
+              <span className="px-1 font-sans text-sm w-6 text-center tabular-nums">{qty}</span>
+              <button onClick={() => setQty(q => q + 1)} className="px-3.5 py-3 font-sans text-charcoal-light hover:text-ink transition-colors" aria-label="Increase quantity">+</button>
+            </div>
+            <button
+              onClick={add}
+              disabled={loading || !available}
+              className="flex-1 bg-ink text-white font-sans text-[11px] tracking-[0.16em] uppercase rounded-[2px] py-3 hover:bg-charcoal-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {!available ? 'Sold out' : loading ? 'Adding…' : 'Add to cart'}
+            </button>
           </div>
-          <button
-            onClick={add}
-            disabled={loading || !available}
-            className="flex-1 bg-ink text-white font-sans text-[11px] tracking-[0.16em] uppercase rounded-[2px] py-3 hover:bg-charcoal-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {!available ? 'Sold out' : loading ? 'Adding…' : 'Add to cart'}
-          </button>
-        </div>
+        </>
       )}
 
       {!intlLane && (isFreeShipping(p.vendor) ? (
