@@ -85,7 +85,24 @@ storefront — not the headless site we build. Verified 4–5 Sep and unchanged 
   `beauticate.com` referrer.
 - Meta shop insights: 4 checkouts initiated on Instagram in 28 days, 0 purchases.
 
-### Do not build `app/cart/[[...items]]` on `www` yet
+### CORRECTION, 5 Sep — the customer was on `www`, not the Shopify store
+
+Since this page was written, two signals show Nicole landed on **`www.beauticate.com`**,
+not `checkout.beauticate.com`: the address bar in her screenshot reads `beauticate.com`,
+and her cart drawer read "Your Cart (0) — Your cart is empty", which is the headless
+`CartDrawer.tsx` copy character for character. The Shopify storefront renders
+"CART / YOUR CART IS EMPTY" instead.
+
+So there are two destinations. Tapping a **product** in the Instagram shop goes to
+`checkout.beauticate.com` (the catalogue Product Link). Tapping **Go to checkout**
+from Meta's bag goes to **`www.beauticate.com`** — where `/cart` and
+`/cart/<variant>:<qty>` both 404.
+
+That puts building the cart permalink route back in scope, contrary to the section
+below. Read Update 3 in [`instagram-checkout-handoff.md`](./instagram-checkout-handoff.md)
+before acting on anything here.
+
+### Still don't build `app/cart/[[...items]]` on `www` until the URL is confirmed
 
 `www.beauticate.com/cart/<variant>:<qty>` 404s, and an earlier draft of the handoff
 proposed building it. **That would be a working route on a domain Instagram never

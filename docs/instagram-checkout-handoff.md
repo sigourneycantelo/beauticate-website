@@ -294,3 +294,88 @@ storefront than the one we build**. Two ways out:
    Instagram bag handoff with it.
 
 Settle this before writing any code. Building `/cart` on `www` only makes sense under (2).
+
+---
+
+# Update 3 — 5 Sep 2026: the customer was on `www`, not the Shopify store
+
+**This corrects Update 1.** The catalogue link finding stands; the conclusion drawn
+from it does not.
+
+## What was tested
+
+Sig pasted the catalogue's exact Product Link into mobile Chrome:
+
+```
+https://checkout.beauticate.com/products/the-everything-bundle?utm_source=facebook&variant=44656591274053
+```
+
+It resolved correctly — the right product page (The Everything Bundle, vendor
+*Lash Armour*, which is why the brand line reads LASH ARMOUR), branded as
+BEAUTICATE.shop with the beta banner. Opening the cart there: **empty**.
+
+That is expected, and it confirms the mechanism from the destination side: a plain
+product link carries no basket. Whatever sits in Instagram's bag, this URL brings
+none of it.
+
+## The part that changes the diagnosis
+
+The cart drawer on `checkout.beauticate.com` reads **"CART" / "YOUR CART IS EMPTY"** —
+uppercase, no item count.
+
+The headless drawer reads something different. From
+`components/shop/CartDrawer.tsx`:
+
+```tsx
+<h2 className="text-base">Your Cart ({lines.length})</h2>
+<p className="text-charcoal-light text-sm">Your cart is empty.</p>
+```
+
+The original report records Nicole's screenshot as **"Your Cart (0) — Your cart is
+empty."** That is the headless string, character for character. It is not what the
+Shopify storefront renders.
+
+Two independent signals now point the same way:
+
+1. The address bar in her screenshot read **`beauticate.com`**, not
+   `checkout.beauticate.com`. Instagram's in-app browser shows the full host — the
+   two are visibly different, as the 4 Sep test screenshots demonstrate.
+2. The cart wording is the headless component's exact copy.
+
+**She landed on `www.beauticate.com`.**
+
+## What that means
+
+There are two destinations, not one:
+
+| Journey | Destination | Evidence |
+| --- | --- | --- |
+| Tapping a **product** in the Instagram shop | `checkout.beauticate.com/products/<handle>` | catalogue Product Link field |
+| Tapping **Go to checkout** from Meta's bag | `www.beauticate.com/…` | address bar + cart drawer copy |
+
+So the handoff we care about does not use the catalogue link. It goes to the headless
+site — where `/cart` and `/cart/<variant>:<qty>` both **404**.
+
+**Option (A) from the original diagnosis is back on the table.** If Meta sends a cart
+permalink to `www.beauticate.com`, it 404s, and building
+`app/cart/[[...items]]/page.tsx` is the fix after all. Update 1 said not to build it;
+that instruction was based on the catalogue link being the handoff URL, which now
+looks wrong for this journey.
+
+Her seeing the shop home rather than a 404 is still consistent with this: a 404 on a
+site with a working header is one tap from home.
+
+## The one fact that settles it, and it is now cheap
+
+**Nicole's original DM screenshots.** Two things to read off them:
+
+1. The full host in the in-app browser's address bar.
+2. Whether the URL bar shows a path containing `/cart/`.
+
+If her screenshots don't show the path, ask her directly — she reported it once and
+will likely answer. Failing that, the phone test in
+[`redfern-handoff.md`](./redfern-handoff.md) does the same job, on a personal
+Instagram account.
+
+Do not build until one of those comes back. The route is small, but building it
+against the wrong journey is exactly the mistake this update is correcting.
