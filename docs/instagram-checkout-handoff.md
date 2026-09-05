@@ -379,3 +379,103 @@ Instagram account.
 
 Do not build until one of those comes back. The route is small, but building it
 against the wrong journey is exactly the mistake this update is correcting.
+
+---
+
+# SOLVED — 5 Sep 2026: Meta hands off a bag reference, and we drop it
+
+Nicole ran the test and sent the URL. This closes the diagnosis.
+
+## The URL Instagram sends people to
+
+```
+https://www.beauticate.com/shop
+  ?attributes[Channel]=Instagram
+  &attributes[cart-id]=2702664226545360
+  &attributes[seller-id]=17841400420810061
+  &country=AU
+  &access_token=<redacted>
+  &cart_origin=instagram
+  &fbclid=<redacted>
+```
+
+Confirmed: the destination is **`www.beauticate.com/shop`** — the headless site, as
+Update 3 predicted. Not `checkout.beauticate.com`.
+
+## Why the cart is empty
+
+**Meta does not send the line items.** There are no variant IDs and no quantities
+anywhere in that URL. What it sends is a *reference* to its own basket:
+
+| Parameter | What it is |
+| --- | --- |
+| `attributes[cart-id]` | Meta's bag id — the basket lives on Meta's side |
+| `attributes[seller-id]` | the Instagram business account (`@beauticate`) |
+| `access_token` | the credential for resolving that bag |
+| `cart_origin=instagram` | marks the journey |
+| `attributes[…]` naming | Shopify's cart-attribute query syntax |
+
+The `attributes[…]` form is the tell: Meta is speaking Shopify. On a normal Shopify
+storefront the Facebook & Instagram channel app receives these, resolves the bag and
+rebuilds the cart. **We are headless. `www.beauticate.com` is not that storefront,
+and nothing on our side reads any of it.**
+
+Verified in the code, 5 Sep — occurrences across `app/`, `components/`, `lib/`,
+`middleware.ts`:
+
+| Parameter | Files reading it |
+| --- | --- |
+| `cart_origin` | 0 |
+| `cart-id` | 0 |
+| `seller-id` | 0 |
+| `attributes[` | 0 |
+
+`app/shop/page.tsx` does not accept `searchParams` at all. Every parameter is
+dropped on the floor, and the customer gets a correctly-rendered, empty shop.
+
+## This kills the cart-permalink idea for good
+
+Option (A) from the original diagnosis — build `app/cart/[[...items]]/page.tsx`
+parsing `variantId:qty` pairs — **would not have fixed this**, and the route would
+never even have been reached. Meta doesn't send a `/cart/` path and doesn't send
+variant ids. Nothing to parse.
+
+That instruction was reversed once (Update 3, on the evidence that the landing was on
+`www`) and is now settled: don't build it. The `www`-landing signal was right; the
+inference that Meta was therefore sending a Shopify permalink was wrong.
+
+## Two viable fixes
+
+1. **Point the Instagram shop's checkout website at `checkout.beauticate.com`.**
+   That *is* the Shopify storefront, and Shopify's channel app already knows how to
+   receive this handoff — it is what the protocol is built for. Almost certainly works
+   without writing any code. Cost: Instagram customers land on the second storefront,
+   away from the editorial site, and the duplicate-storefront problem stays.
+
+2. **Handle the handoff on `www`.** Read `cart_origin=instagram`, resolve
+   `attributes[cart-id]` with the `access_token` into line items, create a cart via
+   `POST /api/cart` and write `beauticate_cart_id`. Keeps Instagram customers on the
+   editorial site.
+
+   **Feasibility is unconfirmed.** This depends on Meta exposing an API to resolve a
+   bag id + token into line items, and on what that token permits. Nobody should
+   estimate this until that's checked against Meta's commerce documentation. If the
+   bag can't be resolved server-side, option 2 is dead and the choice is option 1 or
+   turning the Instagram bag off.
+
+3. *(Fallback)* **Turn off the Instagram bag** so product taps go straight to product
+   pages. No basket exists, so none is lost. Worse UX, but honest — and better than
+   the current state, which loses every basket silently.
+
+## Where the setting lives
+
+Unconfirmed. `www.beauticate.com` is coming from somewhere in the Meta shop or
+Instagram profile configuration — note it differs from the catalogue's Product Link
+host (`checkout.beauticate.com`), so the bag handoff and the product tap use different
+websites. Finding which field holds it is the first step for option 1.
+
+## Credit
+
+Nicole Ford reported the bug, then ran the reproduction that identified it. Four
+customers started an Instagram checkout in 28 days; she is the only one who said
+anything.
