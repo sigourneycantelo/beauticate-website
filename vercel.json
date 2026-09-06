@@ -7,18 +7,6 @@
   },
   "redirects": [
     {
-      "source": "/:path*",
-      "destination": "https://beauticate.com/shop",
-      "permanent": true,
-      "has": [{ "type": "host", "value": "shop.beauticate.com" }]
-    },
-    {
-      "source": "/:path*",
-      "destination": "https://beauticate.com/shop",
-      "permanent": true,
-      "has": [{ "type": "host", "value": "beauticate.shop" }]
-    },
-    {
       "source": "/destinations/spas-retreats/melanie-grant-skin-health-double-bay",
       "destination": "/destinations/clinics/melanie-grant-skin-health-double-bay",
       "permanent": true
