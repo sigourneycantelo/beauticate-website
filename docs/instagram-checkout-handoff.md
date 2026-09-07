@@ -1,6 +1,6 @@
 # Handoff — Instagram checkout drops the customer into an empty cart
 
-**Status:** diagnosed to the boundary, one decisive fact still missing.
+**Status:** RESOLVED to a buildable fix — Meta's handoff URL is confirmed (see below).
 **Reported:** 4 Sep 2026, by a customer (Nicole Ford) via Instagram DM.
 **Not related to** the BOOIE gift-with-purchase work ([`gwp-booie-cart.md`](./gwp-booie-cart.md)) —
 this predates it. Don't let the two get tangled.
@@ -48,29 +48,56 @@ Also confirmed: `middleware.ts` doesn't touch `/cart` (its `ARTICLE_PREFIXES` gu
 excludes it), and there is no `app/cart/` directory. So the 404 is a plain gap, not a
 redirect swallowing the path.
 
-## The missing fact — do this first
+## SETTLED — 7 Sep 2026: Meta sends a cart permalink
 
-We do **not** know which URL Instagram actually sends the customer to. Two candidates,
-and they need different fixes:
+The customer-captured handoff URL, from tapping "Add product" on a BOOIE reel in
+the Instagram app:
 
-- **(A) Meta sends a cart permalink** → it 404s → she navigates home → empty cart.
-  Fix: build the permalink route.
-- **(B) Meta sends a plain catalogue link** (product URL or shop home) carrying no
-  basket at all. Fix: catalogue/checkout configuration in Commerce Manager. Building
-  the route wouldn't help.
+```
+https://shop.beauticate.com/cart/45051889647685:1
+  ?attributes[Channel]=Instagram
+  &attributes[cart-id]=531101109903641
+  &attributes[seller-id]=17841400420810061
+  &country=AU
+  &access_token=...
+  &cart_origin=instagram
+```
 
-Her screenshot shows the shop home rather than a 404 page, which leans (B) — but she
-may have hit a 404 and tapped the logo. **Don't build anything until this is settled.**
+That path is a **standard Shopify cart permalink** — `variantId:quantity`.
+Variant `45051889647685` is You're Welcome Mascara (BOOIE Beauty), the product in
+the reel. One item because one was added; expect comma-separated pairs for a
+multi-item bag.
 
-How to settle it, cheapest first:
-1. **Commerce Manager** (business.facebook.com → Commerce → the Beauticate shop):
-   check the **checkout method** ("checkout on website" vs Meta-native) and what the
-   catalogue's product **link** field points to. Also check how the catalogue is fed —
-   Shopify's Facebook & Instagram sales channel, or a standalone feed.
-2. **Reproduce on a real phone.** Add an item in the Instagram app, tap Go to checkout,
-   then tap the address bar in the in-app browser and read the full URL — including
-   any path and query string. That single string answers the question outright.
-   The in-app webview cannot be emulated in a desktop browser; don't try.
+So this is case (A) below: **Meta hands us a permalink and our app 404s on it.**
+No basket is lost in translation and no Meta bag reference needs resolving — the
+variant and quantity are right there in the path. Everything needed to rebuild the
+cart is in the URL.
+
+Note the domain: **`shop.beauticate.com`**, a Vercel alias of the same Next.js app
+(`/` and `/shop` 308-redirect, `/cart/...` 404s). The route has to answer on that
+host as well as `www` — verify the redirect preserves the path, or the fix works
+on www and still dies coming from Instagram.
+
+Two things worth keeping while you're in there:
+
+- `attributes[Channel]=Instagram` is free attribution. Write it onto the cart with
+  `updateCartAttributes` and Instagram-sourced orders become countable.
+- Ignore `access_token` and the `cart-id`/`seller-id` bag reference. They're
+  Meta's own handles and resolving them needs Shopify's Facebook & Instagram
+  channel. The permalink already carries the goods.
+
+### What this changes
+
+The gift problem for this lane disappears. Land the customer on our storefront
+with the item in the cart and `reconcileGift()` runs exactly as it does for every
+other visitor — the illuminator is added automatically, no app, and no manual
+packing note for BOOIE's warehouse.
+
+Before this was confirmed, the plan was to cover Instagram with the warehouse
+campaign (`lib/gift-campaign.ts`) and ask BOOIE to hand-pack those gifts. That may
+now be unnecessary. Keep the campaign as the safety net for lanes we can't reach,
+but don't commit a partner's warehouse to manual work to solve a problem a route
+fixes.
 
 ## If it turns out to be (A) — implementation notes
 
