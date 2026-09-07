@@ -191,10 +191,10 @@ that exclude to `'*'`.
 
 ## Home page hero curation
 
-The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.
+The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article. It's a rotating carousel of up to **four** hero-flagged articles (`getHeroArticles()` in `lib/content.ts`, sorted by `hero_order`), not a single fixed slide.
 
 When publishing a new story, always ask:
-1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` in the frontmatter. Only one article should have `is_hero: true` at a time; remove the flag from the previous hero.
+1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` and give it `hero_order: 1`, the front of the rotation. Bump every other hero article's `hero_order` up by one (2→3, 3→4, etc.). If that pushes an article past `hero_order: 4`, drop it from the rotation entirely (remove `is_hero` and `hero_order`) — it falls back to appearing in the normal newest-first grid below the hero instead of disappearing. Never leave more than four articles flagged `is_hero: true`, and never leave two with the same `hero_order`.
 2. **"Please provide a landscape holding shot for the hero."** — This is a wide-crop image optimised for the full-bleed `HeroWide` banner. Save it to the article's content directory and set `hero_image: /content/<category>/<subcategory>/<slug>/hero.jpg` in the frontmatter. If no dedicated shot is provided, `featured_image` is used as fallback.
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
