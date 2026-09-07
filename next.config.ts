@@ -50,29 +50,30 @@ const nextConfig: NextConfig = {
       // over a month, caught only because Shopify's primary domain happened to move
       // to checkout.beauticate.com before shop.beauticate.com was reactivated. Do not
       // re-add these rules to vercel.json.
-      // ── Instagram bag handoff → the Shopify storefront ───────────────────
-      // Instagram Shopping's "Go to checkout" sends a Shopify cart permalink:
+      // ── Instagram product-tag handoff → the headless cart ────────────────
+      // Tapping a tagged product on a reel or post sends a Shopify cart permalink,
+      // comma-separated for multiple items:
       //
-      //   https://shop.beauticate.com/cart/45051889647685:1
+      //   https://shop.beauticate.com/cart/45350813564997:1,45009309302853:1
       //     ?attributes[Channel]=Instagram&attributes[cart-id]=...&cart_origin=instagram
       //
-      // Meta still has shop.beauticate.com on record as the store's domain — it was
-      // Shopify's primary domain when the Meta shop was created on 30 Jul 2026. It
-      // isn't any more (Shopify Admin lists it as Invalid DNS; its DNS points here),
-      // so that URL 404s and the customer's basket is lost. Confirmed on a real
-      // device, 7 Sep 2026.
+      // Meta still has shop.beauticate.com on record from when it was Shopify's
+      // primary domain (30 Jul 2026). It isn't any more, so that URL 404s and the
+      // basket is lost. Confirmed on a real device, 7 Sep 2026.
       //
-      // The same permalink on checkout.beauticate.com — Shopify's actual primary
-      // domain — 302s into a live checkout with the items and attributes intact. So
-      // forward cart and checkout paths there rather than 404ing them. Next.js
-      // preserves the query string, which is what carries Meta's attributes.
+      // These forward to www so app/cart/[[...items]] can build the cart on OUR
+      // storefront rather than handing the customer to Shopify's. That matters for
+      // two reasons: reconcileGift() only runs on our cart, so the BOOIE gift is
+      // added; and the cart id lives in localStorage under 'beauticate_cart_id',
+      // which is per-origin — a cart built on shop.beauticate.com is invisible on
+      // www.beauticate.com. The customer must reach the route already on www.
       //
-      // Temporary (302) on purpose: the real fix is for Meta to stop pointing at a
-      // domain we no longer serve from Shopify. This keeps baskets alive until it
-      // does, and stops silently swallowing them if it never does.
-      { source: '/cart/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://checkout.beauticate.com/cart/:path*', permanent: false },
+      // 302, not 301: the destination changes if Meta is ever repointed.
+      { source: '/cart/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://www.beauticate.com/cart/:path*', permanent: false },
+      { source: '/cart/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://www.beauticate.com/cart/:path*', permanent: false },
+
+      // Shopify's own checkout continuation URLs belong on Shopify, not here.
       { source: '/checkouts/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://checkout.beauticate.com/checkouts/:path*', permanent: false },
-      { source: '/cart/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://checkout.beauticate.com/cart/:path*', permanent: false },
       { source: '/checkouts/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://checkout.beauticate.com/checkouts/:path*', permanent: false },
 
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
