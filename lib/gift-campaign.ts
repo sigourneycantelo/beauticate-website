@@ -89,11 +89,12 @@ export const CAMPAIGN: GiftCampaign = {
       vendors: ['BOOIE Beauty'],
       warehouseEmail: 'warehouse@example.com', // ← SET ME (Jasmin's warehouse inbox)
       giftName: 'a Bloody Delicious illuminator',
-      // The headless cart adds the gift itself, so this campaign only catches the
-      // orders it can't reach. Cap counts THIS lane only — the cart lane draws on
-      // the same 22 units BOOIE funded (Shopify stock on the gift SKU), so the two
-      // need reconciling by hand before the total runs past what they agreed.
-      cap: 21,
+      // BOOIE funded 22 units: 20 for customers, 2 for testing (one already spent
+      // on order #1016). The cart lane draws physically on Shopify stock for the
+      // gift SKU; this lane doesn't touch that stock at all, so if both run, the
+      // single honest counter is Shopify inventory — decrement it by one whenever
+      // a warehouse gift is dispatched, or BOOIE ships more than the 22 agreed.
+      cap: 20,
       minSpend: 0,
       cartGiftSkus: ['9361189000023-GWP'],
     },
