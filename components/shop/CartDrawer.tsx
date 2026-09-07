@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { gaViewCart, gaBeginCheckout, gidToId, GAItem } from '@/lib/ga/events'
 import { track } from '@/lib/meta/pixel'
+import { offerForGiftLine } from '@/lib/gwp'
 
 function cartToGAItems(lines: any[]): GAItem[] {
   return lines.map((line: any) => ({
@@ -16,9 +17,42 @@ function cartToGAItems(lines: any[]): GAItem[] {
   }))
 }
 
+// One product can occupy several cart lines. Shopify splits a line whenever a
+// discount applies to only some of its units — the gift-with-purchase cent offset
+// takes $0.01 off exactly one unit, so two of the same BOOIE product arrive as
+// "$39.00" and "$38.99". Rendering that raw looks like a pricing bug, so lines are
+// merged back into one row per variant: quantities summed, costs summed, and every
+// underlying line id kept so Remove takes the whole group out.
+interface CartRow {
+  key: string
+  ids: string[]
+  quantity: number
+  cost: number
+  line: any
+}
+
+function mergeLines(lines: any[]): CartRow[] {
+  const rows = new Map<string, CartRow>()
+  for (const line of lines) {
+    const key = line.merchandise?.id ?? line.id
+    const cost = parseFloat(line.cost?.totalAmount?.amount ?? '0')
+      || parseFloat(line.merchandise?.price?.amount ?? '0') * (line.quantity ?? 1)
+    const existing = rows.get(key)
+    if (existing) {
+      existing.ids.push(line.id)
+      existing.quantity += line.quantity ?? 0
+      existing.cost += cost
+    } else {
+      rows.set(key, { key, ids: [line.id], quantity: line.quantity ?? 0, cost, line })
+    }
+  }
+  return [...rows.values()]
+}
+
 export default function CartDrawer() {
   const { cart, isOpen, closeCart, removeItem } = useCart()
   const lines = cart?.lines?.nodes ?? []
+  const rows = mergeLines(lines)
   const currency = cart?.cost?.totalAmount?.currencyCode ?? 'AUD'
   const cartValue = cart?.cost?.totalAmount ? parseFloat(cart.cost.totalAmount.amount) : 0
 
@@ -67,7 +101,7 @@ export default function CartDrawer() {
       {/* Drawer */}
       <aside className="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-cream shadow-2xl flex flex-col" style={{ zIndex: 1400 }}>
         <div className="flex items-center justify-between px-6 py-4 border-b border-cream-200">
-          <h2 className="text-base">Your Cart ({lines.length})</h2>
+          <h2 className="text-base">Your Cart ({rows.length})</h2>
           <button onClick={closeCart} className="p-1 hover:text-wine transition-colors">✕</button>
         </div>
 
@@ -79,26 +113,39 @@ export default function CartDrawer() {
         ) : (
           <>
             <ul className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
-              {lines.map(line => {
+              {rows.map(row => {
+                const line = row.line
                 const img = line.merchandise.product.featuredImage
                 // Shopify clamps a sold-out line's quantity to 0 (this happens even
                 // when the product query reported availableForSale: true), which is
                 // why such lines used to render as "$0". Detect it and label the line
                 // truthfully instead of showing a price.
-                const soldOut = (line.quantity ?? 0) < 1
-                // Line-level cost is Shopify's canonical figure (already ×quantity);
-                // fall back to per-unit price × quantity only if the line cost is absent.
-                const lineCost = parseFloat(line.cost?.totalAmount?.amount ?? '0')
+                const soldOut = row.quantity < 1
+                // The gift-with-purchase line. It is priced at $0.01 in Shopify
+                // because Modern Dropship cannot process a $0.00 line item, so the
+                // cent is handled here presentationally: the customer is told they
+                // have a free gift, never shown a one-cent price that reads as a
+                // pricing bug. It has no Remove control either — the cart owns it
+                // (lib/gwp-cart.ts), and removing the last BOOIE product is what
+                // takes it away.
+                const giftOffer = offerForGiftLine(line as any)
+                // Cost is summed across every line in the group (see mergeLines), and
+                // Shopify's line cost is already quantity-inclusive.
                 const price = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
-                  .format(lineCost > 0 ? lineCost : parseFloat(line.merchandise.price.amount) * (line.quantity ?? 1))
+                  .format(row.cost)
                 return (
-                  <li key={line.id} className="flex gap-3">
+                  <li key={row.key} className="flex gap-3">
                     {img && (
                       <div className="relative w-16 h-16 flex-none bg-cream-100">
                         <Image src={img.url} alt={img.altText ?? ''} fill className="object-cover" />
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
+                      {giftOffer && (
+                        <span className="inline-block font-sans text-[9px] tracking-[0.18em] uppercase text-eucalypt font-semibold border border-eucalypt/40 rounded-full px-2 py-[2px] mb-1">
+                          {giftOffer.badge}
+                        </span>
+                      )}
                       <p className="text-xs text-charcoal-light">{line.merchandise.product.vendor}</p>
                       <p className="text-sm font-medium leading-tight line-clamp-2">
                         {line.merchandise.product.title}
@@ -106,16 +153,28 @@ export default function CartDrawer() {
                       {line.merchandise.title !== 'Default Title' && (
                         <p className="text-xs text-charcoal-light">{line.merchandise.title}</p>
                       )}
-                      {soldOut
-                        ? <p className="text-sm mt-1 text-wine">Sold out</p>
-                        : <p className="text-sm mt-1">{price}</p>}
+                      {row.quantity > 1 && (
+                        <p className="text-xs text-charcoal-light">Qty {row.quantity}</p>
+                      )}
+                      {giftOffer ? (
+                        <>
+                          <p className="text-sm mt-1 text-eucalypt font-semibold">{giftOffer.freeLabel}</p>
+                          <p className="text-[11px] text-charcoal-light mt-0.5">{giftOffer.cartNote}</p>
+                        </>
+                      ) : soldOut ? (
+                        <p className="text-sm mt-1 text-wine">Sold out</p>
+                      ) : (
+                        <p className="text-sm mt-1">{price}</p>
+                      )}
                     </div>
-                    <button
-                      onClick={() => removeItem(line.id)}
-                      className="text-xs text-charcoal-light hover:text-charcoal self-start mt-1"
-                    >
-                      Remove
-                    </button>
+                    {!giftOffer && (
+                      <button
+                        onClick={() => removeItem(row.ids)}
+                        className="text-xs text-charcoal-light hover:text-charcoal self-start mt-1"
+                      >
+                        Remove
+                      </button>
+                    )}
                   </li>
                 )
               })}

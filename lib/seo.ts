@@ -90,7 +90,9 @@ function extractHowToSteps(content: string): { name: string; text: string }[] {
   return steps
 }
 
-const YOUTUBE_ID_REGEX = /youtube\.com\/(?:embed\/|watch\?v=)([A-Za-z0-9_-]{11})/
+// Matches every form YouTubeEmbed accepts. A /shorts/ URL used to fall through
+// here, so a page could render a video and still emit no VideoObject.
+const YOUTUBE_ID_REGEX = /(?:youtube\.com\/(?:embed\/|watch\?v=|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
 
 function extractFirstYouTubeId(content: string): string | undefined {
   return content.match(YOUTUBE_ID_REGEX)?.[1]
@@ -213,6 +215,10 @@ const VENUE_TYPE_MAP: Record<string, string> = {
   'skin-clinic': 'HealthAndBeautyBusiness',
   'salon': 'HairSalon',
   'nail-salon': 'NailSalon',
+  'hotel': 'Hotel',
+  'retreat': 'Resort',
+  'bathhouse': 'DaySpa',
+  'wellness': 'HealthAndBeautyBusiness',
 }
 
 export function buildLocalBusinessSchema(f: ArticleFrontmatter, url: string) {
@@ -226,7 +232,7 @@ export function buildLocalBusinessSchema(f: ArticleFrontmatter, url: string) {
     '@context': 'https://schema.org',
     '@type': schemaType,
     '@id': `${pageUrl}#localbusiness`,
-    name: f.title,
+    name: f.venue_name ?? f.title,
     url: pageUrl,
   }
 
@@ -259,7 +265,21 @@ export function buildBreadcrumbSchema(crumbs: { name: string; url: string }[]) {
 export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
   const title = withBrandSuffix(f.seo_title ?? f.title, 'Beauticate')
   const description = f.meta_description ?? f.excerpt ?? ''
-  const image = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
+  // og_image wins, because featured_image is the PORTRAIT 3:4 card thumbnail while
+  // every social platform crops a share card to roughly 1.91:1. Handed a portrait,
+  // Facebook, LinkedIn and WhatsApp keep a horizontal band out of its middle and
+  // discard about 60% of the picture — on a detail shot that lands as an
+  // unreadable abstract. So an article that cares how it shares sets a landscape
+  // og_image; without one this still falls back to the old behaviour.
+  const image = f.og_image
+    ? `${SITE_URL}${f.og_image}`
+    : f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
+  // The alt has to travel with the image it describes. featured_image_alt is
+  // written about the portrait thumbnail, so it is simply wrong once og_image
+  // points at a different photograph.
+  const imageAlt = f.og_image
+    ? (f.og_image_alt ?? f.title)
+    : (f.featured_image_alt ?? f.title)
   const canonical = `${SITE_URL}${url}`
   const schemaType = resolveSchemaType(f)
 
@@ -277,7 +297,7 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
       publishedTime: f.date_published,
       modifiedTime: f.date_modified ?? f.date_published,
       authors: [f.author ?? 'Beauticate Editorial'],
-      images: [{ url: image, width: 1200, height: 630, alt: f.featured_image_alt ?? f.title }],
+      images: [{ url: image, width: 1200, height: 630, alt: imageAlt }],
       tags: f.tags,
     },
     twitter: {
@@ -285,7 +305,7 @@ export function buildArticleMetadata(f: ArticleFrontmatter, url: string) {
       site: '@beauticate',
       title,
       description,
-      images: [{ url: image, alt: f.featured_image_alt ?? f.title }],
+      images: [{ url: image, alt: imageAlt }],
     },
     robots: {
       index: true,
@@ -364,7 +384,7 @@ export function buildCategoryMetadata(category: string, subcategory?: string) {
 
 const PODCAST = {
   series: 'Beautiful Inside by Beauticate',
-  seriesUrl: `${SITE_URL}/vodcast`,
+  seriesUrl: `${SITE_URL}/podcast`,
   sameAs: [
     'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
     'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
@@ -431,7 +451,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
 
   const seriesNode = {
     '@type': 'PodcastSeries',
-    '@id': `${SITE_URL}/vodcast#series`,
+    '@id': `${SITE_URL}/podcast#series`,
     name: PODCAST.series,
     url: PODCAST.seriesUrl,
     sameAs: PODCAST.sameAs,
@@ -447,7 +467,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     url: pageUrl,
     datePublished,
     inLanguage: 'en-AU',
-    partOfSeries: { '@id': `${SITE_URL}/vodcast#series` },
+    partOfSeries: { '@id': `${SITE_URL}/podcast#series` },
     author: person,
     publisher: ORGANIZATION_SCHEMA,
     image: { '@type': 'ImageObject', url: imageUrl },
@@ -510,7 +530,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     '@id': `${pageUrl}#breadcrumb`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Beautiful Inside', item: `${SITE_URL}/vodcast` },
+      { '@type': 'ListItem', position: 2, name: 'Beautiful Inside', item: `${SITE_URL}/podcast` },
       { '@type': 'ListItem', position: 3, name: f.title, item: pageUrl },
     ],
   })

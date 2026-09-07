@@ -4,11 +4,13 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import type { ShopifyProduct } from '@/types/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
+import { GIFT_HANDLES, offerForVendor, isGiftProduct } from '@/lib/gwp'
 
 interface Props { params: Promise<{ handle: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
+  if (GIFT_HANDLES.includes(handle)) return {}
   const product = await getProductByHandle(handle)
   if (!product) return {}
   const title = cleanProductTitle(product.title)
@@ -25,8 +27,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductRoute({ params }: Props) {
   const { handle } = await params
+  // A gift SKU has no page of its own. It is a real, purchasable $0.01 product in
+  // Shopify (Modern Dropship can't take $0.00), which without this would let
+  // anyone who found the URL buy the gift for a cent. The cart API refuses to add
+  // it directly too — this just closes the front door.
+  if (GIFT_HANDLES.includes(handle)) notFound()
+
   const product = await getProductByHandle(handle)
-  if (!product) notFound()
+  if (!product || isGiftProduct(product)) notFound()
 
   // Probe real-time stock in parallel with the related-products fetch (see
   // getVariantAvailability — the product query's availableForSale can't be trusted).
@@ -49,5 +57,15 @@ export default async function ProductRoute({ params }: Props) {
 
   const availability = await availabilityPromise
 
-  return <ProductPage product={product} related={related} availability={availability} />
+  // Pitch the gift only when it can actually be given: a live offer for this
+  // product's brand, with stock left. getVariantAvailability probes a throwaway
+  // cart because the product query's availableForSale is unreliable — and it fails
+  // open, so a hiccup shows the offer rather than hiding it (the cart then
+  // reconciles for real, and quietly declines if the gift has run out).
+  const candidate = offerForVendor(product.vendor)
+  const giftStock = candidate ? await getVariantAvailability([candidate.giftVariantId]) : {}
+  const giftOffer =
+    candidate && (giftStock[candidate.giftVariantId] ?? true) ? candidate : undefined
+
+  return <ProductPage product={product} related={related} availability={availability} giftOffer={giftOffer} />
 }

@@ -38,7 +38,7 @@ export function validPaths(): Set<string> {
   // Stable landing pages that are not articles.
   for (const p of [
     '/', '/shop', '/shop/brands', '/shop/collections', '/about', '/contact',
-    '/vodcast', '/interviews', '/beauty-style', '/wellness', '/living',
+    '/podcast', '/interviews', '/beauty-style', '/wellness', '/living',
     '/destinations', '/destinations/directory', '/search', '/subscribe',
     '/terms', '/privacy', '/sacred60', '/members', '/press',
   ]) out.add(p)

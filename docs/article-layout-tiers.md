@@ -10,7 +10,7 @@
 
 ## How it flows top to bottom
 
-1. **Hero** - landscape hero at 1200px wide (or editorial split hero as fallback if no landscape)
+1. **Hero** - landscape hero at 1200px wide, or the editorial split hero (see below)
 2. **Title block** - narrow (720px): breadcrumbs, h1, excerpt, byline
 3. **Standfirst** - narrow: intro paragraph
 4. **Guest Bio** - narrow: parchment box (interviews only)
@@ -23,6 +23,26 @@
 7. **Credits** - narrow
 8. **Shop the Edit** - wide (1200px): 3-across for odd product count, 2-across for even
 9. **FAQs + Share** - narrow
+
+## Hero layouts
+
+Two treatments, chosen per article with `hero_layout`:
+
+| `hero_layout` | What renders |
+|---------------|--------------|
+| *(unset)* / `"full"` | Image full width at 1200px; breadcrumb, headline, standfirst and byline sit underneath it. Desktop uses `hero_aspect` (default `16/9`), mobile uses `featured_image` at 3:4. |
+| `"split"` | SheerLuxe-style two-column: image one side, greige `#F3EFE8` panel the other carrying breadcrumb, headline, standfirst and byline. Stacks vertically on mobile. |
+
+Split mode uses `featured_image` (the portrait) and falls back to `hero_image`.
+`hero_focus` nudges the crop in both layouts.
+
+Reach for `split` when there's no landscape holding shot and the portrait would
+otherwise be hard-cropped to 16:9 - it gives the article a proper banner without
+one. An article with no image at all always gets the split panel.
+
+`ArticleHero` and `ArticlePage` both read this via `usesSplitHero()` in
+`lib/hero-layout.ts` - the second so it can suppress its own title block, since
+the split panel already carries the headline. Change the rule in one place only.
 
 ## The orientation rule
 

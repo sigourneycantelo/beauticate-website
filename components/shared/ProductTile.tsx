@@ -31,6 +31,9 @@ export interface ProductTileProps {
   /** Force the de-etched greige tile treatment regardless of `cover` — used to make
    *  a whole grid share one background colour (see ShopGrid `tile`). */
   forceTile?: boolean
+  /** Extra `data-*` attributes for the outbound anchor — used by the geo resolver
+   *  to carry the intl destination (see lib/product-links.ts). External links only. */
+  dataAttrs?: Record<string, string>
 }
 
 export default function ProductTile({
@@ -38,7 +41,7 @@ export default function ProductTile({
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, cover = true,
   cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
-  forceTile = false,
+  forceTile = false, dataAttrs,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
   // forceTile collapses cover/lifestyle shots into the same de-etched greige treatment
@@ -125,6 +128,7 @@ export default function ProductTile({
         ...(brand ? { 'data-mp-brand': brand } : {}),
         ...(price ? { 'data-mp-price': price.replace(/[^0-9.]/g, '') } : {}),
         'data-mp-currency': 'AUD',
+        ...dataAttrs,
       }
     : {}
 

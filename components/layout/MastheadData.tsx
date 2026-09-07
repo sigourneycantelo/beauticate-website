@@ -139,9 +139,11 @@ export default async function MastheadData() {
     ['Models', 'models'], ['Tastemakers', 'tastemakers'],
   ])
 
-  // Podcast: real route is still /vodcast until the vodcast->podcast migration runs.
+  // Podcast: the hub lives at /podcast (/vodcast 301s to it). Individual
+  // episodes still sit under /vodcast/episodes/ — those URLs are what external
+  // show notes and the WP-era redirect map point at, so they stay put.
   const podcast: Pillar = {
-    key: 'podcast', label: 'Podcast', href: '/vodcast', eyebrow: 'Beautiful Inside',
+    key: 'podcast', label: 'Podcast', href: '/podcast', eyebrow: 'Beautiful Inside',
     allLabel: 'All episodes', allHref: '/vodcast/episodes',
     subs: [{ label: 'Episodes', href: '/vodcast/episodes', cards: cards('vodcast', 'episodes', 'Beautiful Inside') }],
   }

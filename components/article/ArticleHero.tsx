@@ -3,17 +3,18 @@ import Link from 'next/link'
 import type { ArticleFrontmatter } from '@/types/content'
 import AuthorByline from './AuthorByline'
 import { resolveSchemaType } from '@/lib/seo'
+import { usesSplitHero } from '@/lib/hero-layout'
 
 interface Props {
   frontmatter: ArticleFrontmatter
 }
 
 export default function ArticleHero({ frontmatter: f }: Props) {
-  const isLandscape = !!(f.hero_image || f.featured_image)
+  const splitMode = usesSplitHero(f)
   const heroSrc = f.hero_image || f.featured_image
   const isGif = heroSrc?.toLowerCase().endsWith('.gif')
 
-  if (isLandscape) {
+  if (!splitMode) {
     if (isGif) {
       // Animated GIF — use native <img> so the animation plays
       return (
@@ -63,19 +64,23 @@ export default function ArticleHero({ frontmatter: f }: Props) {
     )
   }
 
-  // Editorial split mode — fallback only when no image exists at all
+  // Editorial split mode — opt in with `hero_layout: "split"`, and the default
+  // when an article has no image at all.
+  const splitSrc = f.featured_image || f.hero_image
+
   return (
     <div className="flex flex-col md:grid md:grid-cols-2 min-h-[480px] md:min-h-[580px]">
       {/* Image */}
-      {f.featured_image && (
+      {splitSrc && (
         <div className="relative aspect-[4/5] md:aspect-auto order-1">
           <Image
-            src={f.featured_image}
+            src={splitSrc}
             alt={f.featured_image_alt ?? f.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={90}
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: f.hero_focus ?? 'center center' }}
             priority
           />
         </div>

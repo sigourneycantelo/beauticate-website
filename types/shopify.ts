@@ -19,6 +19,7 @@ export interface ShopifyProductVariant {
   price: ShopifyPrice
   compareAtPrice: ShopifyPrice | null
   selectedOptions: { name: string; value: string }[]
+  image?: ShopifyImage | null
 }
 
 export interface ShopifyProduct {

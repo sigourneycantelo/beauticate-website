@@ -153,7 +153,22 @@ async function fetchShopifyProducts() {
 const products = await fetchShopifyProducts()
 
 const index = { articles, products }
-fs.writeFileSync(outPath, JSON.stringify(index, null, 0))
+
+// One entry per line. This file is committed, so it wants a diff that shows the
+// articles that actually changed rather than rewriting a single 5.6MB line every
+// time anyone builds. That matters the moment two people have branches open at
+// once: git merges line by line, so a one-line file collides on every concurrent
+// edit and the conflict is unresolvable by hand. Same reasoning, and the same
+// shape, as data/image-dimensions.json. Still ordinary JSON — JSON.parse does
+// not care where the newlines are.
+//
+// `articles` is already sorted (see above) and `products` comes back in a fixed
+// sort order from Shopify, so the line order is stable between machines.
+const rows = list => (list.length ? `\n${list.map(o => JSON.stringify(o)).join(',\n')}\n` : '')
+fs.writeFileSync(
+  outPath,
+  `{\n"articles":[${rows(articles)}],\n"products":[${rows(products)}]\n}\n`
+)
 
 const sizeMB = (Buffer.byteLength(JSON.stringify(index)) / 1024 / 1024).toFixed(2)
 console.log(`Chat index: ${articles.length} articles, ${products.length} products, ${sizeMB} MB → ${outPath}`)

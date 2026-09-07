@@ -33,6 +33,38 @@ export interface Attribution {
   fbp?: string
   fbc?: string
   user_agent?: string
+  /** 'Instagram' when the visit began on an Instagram Shopping handoff. */
+  Channel?: string
+  /** Meta's own bag id, when it sent one. Useful for reconciling with Meta's side. */
+  ig_cart_id?: string
+}
+
+// Instagram Shopping hands off with ?attributes[Channel]=Instagram&attributes[cart-id]=...
+// on the landing URL only. Stash it the first time we see it so the marker survives
+// the hop to /shop and any later cart write. sessionStorage, not local: this is one
+// visit's provenance, not a durable preference.
+const IG_KEY = 'beauticate_ig_handoff'
+
+function readInstagramHandoff(): { Channel?: string; ig_cart_id?: string } {
+  if (typeof window === 'undefined') return {}
+  try {
+    const params = new URLSearchParams(window.location.search)
+    const channel = params.get('attributes[Channel]')
+    const bagId = params.get('attributes[cart-id]')
+    const origin = params.get('cart_origin')
+    if (channel || origin === 'instagram') {
+      const found = {
+        Channel: channel || 'Instagram',
+        ...(bagId ? { ig_cart_id: bagId } : {}),
+      }
+      sessionStorage.setItem(IG_KEY, JSON.stringify(found))
+      return found
+    }
+    const stored = sessionStorage.getItem(IG_KEY)
+    return stored ? JSON.parse(stored) : {}
+  } catch {
+    return {}
+  }
 }
 
 export function readAttribution(): Attribution {
@@ -44,6 +76,10 @@ export function readAttribution(): Attribution {
   if (fbp) attribution.fbp = fbp
   if (fbc) attribution.fbc = fbc
   if (typeof navigator !== 'undefined' && navigator.userAgent) attribution.user_agent = navigator.userAgent
+  // Merged into the same write rather than sent separately: cartAttributesUpdate
+  // REPLACES the whole attribute set, so a second call carrying only the Instagram
+  // keys would silently wipe ga_client_id / fbp / user_agent off the cart.
+  Object.assign(attribution, readInstagramHandoff())
   return attribution
 }
 

@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { isPaidPlacement } from '@/lib/content'
+import { hasArticleMoment } from '@/lib/article-moments'
+import { findVariant, variantHref } from '@/lib/shop-variant'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 import type { ShopifyProduct } from '@/types/shopify'
@@ -15,6 +17,7 @@ import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
 import ShareButtons from './ShareButtons'
 import { resolveSchemaType } from '@/lib/seo'
+import { usesSplitHero } from '@/lib/hero-layout'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
 import CollectionRail from '@/components/mdx/CollectionRail'
 import PullQuote from '@/components/mdx/PullQuote'
@@ -90,10 +93,23 @@ function withSubscribeBand(content: string): string {
 
 export default function ArticlePage({ frontmatter: f, content, productLinks, shopProducts, relatedArticles }: Props) {
   const shopProductMap = Object.fromEntries(shopProducts.map(p => [p.handle, p]))
-  const isLandscape = !!(f.hero_image || f.featured_image)
+  const splitHero = usesSplitHero(f)
   const articleUrl = `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 
-  function InlineProduct({ handle }: { handle: string }) {
+  // Shopping stories get an auto-generated /shop/moments/<slug> page holding the
+  // full product mix in one place. It has always linked back to the story; this
+  // is the link forward to it, so readers can shop the whole edit in one spot.
+  const momentHref = hasArticleMoment(f, productLinks.filter(p => p.type !== 'dead'))
+    ? `/shop/moments/${f.slug}`
+    : null
+
+  /**
+   * An own-shop product card in the article body. On its own it floats left
+   * with the copy wrapping beside it; pass `inline` to get the bare tile so
+   * several can sit side by side inside a grid wrapper — same convention as
+   * <ProductInset inline> uses for affiliate cards.
+   */
+  function InlineProduct({ handle, inline, variant, name }: { handle: string; inline?: boolean; variant?: string; name?: string }) {
     const sp = shopProductMap[handle]
     if (!sp) {
       const productLink = productLinks.find(p => p.handle === handle) ?? { name: handle, type: 'shop' as const, handle }
@@ -101,22 +117,30 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     }
     const formatted = sp.priceRange?.minVariantPrice ? formatCardPrice(sp) : undefined
     const imgs = sp.images?.nodes ?? []
-    const primary = imgs[0] ?? sp.featuredImage
-    const secondary = imgs[1]
+    // A pinned colourway shows its own shot and links straight to that variant;
+    // otherwise fall back to the listing's default images.
+    const v = findVariant(sp, variant)
+    const primary = v?.image ?? imgs[0] ?? sp.featuredImage
+    const secondary = v?.image ? imgs[0] : imgs[1]
+    const label = name ?? sp.title
+    const tile = (
+      <ProductTile
+        href={variantHref(sp.handle, v)}
+        useNextImage
+        primarySrc={primary?.url}
+        primaryAlt={primary?.altText ?? label}
+        secondarySrc={secondary?.url}
+        secondaryAlt={secondary?.altText ?? label}
+        cornerLabel="In our shop"
+        brand={sp.vendor}
+        name={label}
+        price={formatted}
+      />
+    )
+    if (inline) return tile
     return (
       <span className="not-prose sm:float-left sm:mr-7 sm:clear-left mb-5 w-full sm:w-[42%] max-w-[260px] block mx-auto sm:mx-0">
-        <ProductTile
-          href={`/shop/products/${sp.handle}`}
-          useNextImage
-          primarySrc={primary?.url}
-          primaryAlt={primary?.altText ?? sp.title}
-          secondarySrc={secondary?.url}
-          secondaryAlt={secondary?.altText ?? sp.title}
-          cornerLabel="In our shop"
-          brand={sp.vendor}
-          name={sp.title}
-          price={formatted}
-        />
+        {tile}
       </span>
     )
   }
@@ -168,8 +192,8 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       <ArticleHero frontmatter={f} />
 
       <div className="max-w-wide mx-auto px-[clamp(20px,3vw,34px)] py-10">
-        {/* Title / meta — only in landscape mode; split mode has them in the hero panel */}
-        {isLandscape && (
+        {/* Title / meta — split mode already carries these in the hero panel */}
+        {!splitHero && (
           <>
             <nav className="text-[11.5px] font-sans font-medium tracking-[0.12em] uppercase text-charcoal-light mb-6 flex gap-3 flex-wrap items-center">
               <Link href={`/${f.category}`} className="hover:text-charcoal transition-colors">
@@ -224,7 +248,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {/* Venue contact — structured component replaces the old markdown ## CONTACT */}
         {f.venueType && (
           <VenueContact
-            name={f.title}
+            name={f.venue_name ?? f.title}
             address={f.address}
             telephone={f.telephone}
             instagram={f.instagram}
@@ -245,6 +269,16 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
                 />
               ))}
             </div>
+            {momentHref && (
+              <div className="mt-7">
+                <Link
+                  href={momentHref}
+                  className="inline-block font-sans text-[10.5px] tracking-[0.2em] uppercase px-7 py-3 rounded-[1px] transition-colors hover:bg-ink hover:text-white border border-ink"
+                >
+                  Shop the full edit
+                </Link>
+              </div>
+            )}
             <p className="mt-6 font-serif text-charcoal-light/60 text-sm">
               Not finding what you&apos;re after?{' '}
               <a href="/shop/suggest" className="text-wine hover:text-wine/70 transition-colors">Tell us what we should be stocking.</a>

@@ -178,7 +178,7 @@ export default async function EpisodePage({ params }: Props) {
 
       {/* Podcast masthead — logo + jump-to-your-platform logos */}
       <div className="text-center pt-10 pb-8 px-6">
-        <Link href="/vodcast" aria-label="Beautiful Inside by Beauticate">
+        <Link href="/podcast" aria-label="Beautiful Inside by Beauticate">
           <Image
             src="/images/podcast/beautiful-inside-logo.png"
             alt="Beautiful Inside by Beauticate"
@@ -211,7 +211,7 @@ export default async function EpisodePage({ params }: Props) {
         style={{ borderBottom: '1px solid rgba(28,26,23,.08)' }}
       >
         <nav className="font-sans font-medium text-[11.5px] tracking-[0.12em] uppercase text-charcoal-light">
-          <Link href="/vodcast" className="hover:opacity-100 transition-opacity">Beautiful Inside</Link>
+          <Link href="/podcast" className="hover:opacity-100 transition-opacity">Beautiful Inside</Link>
           <span className="mx-2">/</span>
           <span>{f.title}</span>
         </nav>
@@ -302,7 +302,7 @@ export default async function EpisodePage({ params }: Props) {
       {/* Back to podcast */}
       <div className="max-w-wide mx-auto px-6 pb-20">
         <Link
-          href="/vodcast"
+          href="/podcast"
           className="font-sans text-[10.5px] tracking-[.18em] uppercase transition-opacity"
           style={{ opacity: 0.55 }}
         >

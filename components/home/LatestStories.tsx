@@ -117,7 +117,7 @@ export default function LatestStories({ stories, vodcastEpisodes }: Props) {
           <div className="flex justify-between items-baseline mb-4">
             <p className="font-sans text-[11px] tracking-[0.34em] uppercase opacity-50">Watch</p>
             <Link
-              href="/vodcast"
+              href="/podcast"
               className="font-sans text-[10px] tracking-[0.18em] uppercase opacity-60 hover:opacity-100 transition-opacity"
             >
               All episodes →
