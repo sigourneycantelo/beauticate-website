@@ -547,3 +547,71 @@ The reliable signal is the cart attributes. Meta sends `attributes[Channel]=Inst
 handoff properly those land on the order as custom attributes. #1017 has
 `customAttributes: []`, so it is not one. **A genuine Instagram handoff order will carry
 `Channel: Instagram`.** That is the test — not the channel attribution.
+
+---
+
+# Update 5 — 7 Sep 2026: there are TWO Instagram flows, and only one was tested
+
+Damien ran a different journey from the one Nicole ran: **tapping "Add product" on a
+BOOIE reel**, rather than filling the Instagram bag and checking out. It produces a
+completely different URL.
+
+```
+https://shop.beauticate.com/cart/45051889647685:1
+  ?attributes[Channel]=Instagram
+  &attributes[cart-id]=531101109903641
+  &attributes[seller-id]=17841400420810061
+  &country=AU
+  &access_token=<redacted>
+  &cart_origin=instagram
+```
+
+Two things differ from the bag handoff documented above, and both matter.
+
+**It carries the line item.** The path is `/cart/45051889647685:1` — a standard
+Shopify cart permalink, `variantId:quantity`. Variant `45051889647685` is You're
+Welcome Mascara (BOOIE Beauty), the product tagged in the reel. Confirmed against
+Shopify. So for this flow the claim above — "Meta does not send the line items" —
+does not hold. It does. The bag reference is *also* present, but it is redundant:
+everything needed to rebuild the cart is in the path.
+
+**It is a third domain.** `shop.beauticate.com`, not `www` and not
+`checkout.beauticate.com`. It is a Vercel alias of the same Next.js app: `/` and
+`/shop` 308-redirect, and `/cart/…` returns **404** — the customer sees the
+Next.js not-found page. Verified live on 7 Sep.
+
+## What this changes
+
+The section above concludes that this "kills the cart-permalink idea for good."
+That is right for the **bag** flow and wrong for the **product-tag** flow. Both
+exist and they behave differently:
+
+| Journey | URL shape | Carries line items? |
+| --- | --- | --- |
+| Fill the IG bag → checkout | `www.beauticate.com/shop?attributes[cart-id]=…` | No — a reference only |
+| Tap "Add product" on a post/reel | `shop.beauticate.com/cart/<variant>:<qty>?…` | **Yes** |
+
+So a `/cart/<variant>:<qty>` route is not redundant. It fixes the product-tag
+journey outright, on the headless site, with no Meta bag resolution and no
+dependency on the Facebook & Instagram channel. Given Beauticate's Instagram
+traffic comes largely from tagged reels and posts, this may be the higher-volume
+lane of the two.
+
+It must answer on **`shop.beauticate.com`** as well as `www` — a route that only
+works on `www` still 404s for everyone arriving from a reel.
+
+## And it fixes the gift on that lane
+
+Update 4 notes that the working fix drops the gift. That does not apply here.
+Land the customer on the headless storefront with the item in the cart and
+`reconcileGift()` runs exactly as it does for any other visitor — the illuminator
+is added automatically, no app, and no manual packing note for BOOIE.
+
+`attributes[Channel]=Instagram` is also worth keeping: write it onto the cart with
+`updateCartAttributes` and Instagram-sourced orders become countable.
+
+## Still unverified
+
+Whether a **multi-item** bag produces comma-separated pairs
+(`/cart/v1:1,v2:1`) as standard Shopify permalinks do. Damien's test added a
+single product. Worth one more tap before building for the multi-item case.
