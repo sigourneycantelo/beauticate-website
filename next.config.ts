@@ -43,7 +43,14 @@ const nextConfig: NextConfig = {
       // caught those paths before they reached Shopify, sending every customer who
       // tapped "Checkout" straight back to /shop instead of completing their order.
       // Exclude cart/checkout paths so Shopify's hosted checkout still works.
-      { source: '/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
+      //
+      // This is the ONLY place these two rules should exist. A vercel.json project
+      // redirect runs before this file's redirects() and would silently override the
+      // exclusion above — that exact mistake (PR #71, 6 Aug 2026) undid this fix for
+      // over a month, caught only because Shopify's primary domain happened to move
+      // to checkout.beauticate.com before shop.beauticate.com was reactivated. Do not
+      // re-add these rules to vercel.json.
+      { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
 
       // ── Canonical host: www.beauticate.com. Both bare and www resolved
