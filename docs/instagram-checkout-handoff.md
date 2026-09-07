@@ -610,8 +610,24 @@ is added automatically, no app, and no manual packing note for BOOIE.
 `attributes[Channel]=Instagram` is also worth keeping: write it onto the cart with
 `updateCartAttributes` and Instagram-sourced orders become countable.
 
-## Still unverified
+## Multi-item confirmed — 7 Sep, second test
 
-Whether a **multi-item** bag produces comma-separated pairs
-(`/cart/v1:1,v2:1`) as standard Shopify permalinks do. Damien's test added a
-single product. Worth one more tap before building for the multi-item case.
+Two products added from reels produce comma-separated pairs, exactly as a standard
+Shopify permalink does:
+
+```
+https://shop.beauticate.com/cart/45350813564997:1,45009309302853:1?attributes[Channel]=Instagram&...
+```
+
+`45350813564997` is Aura Protection Body Mist 50ml (Subtle Energies) and
+`45009309302853` is Natural Marine Collagen – Natural 30 Sachets (Innour) — two
+different brands, so the lane is not BOOIE-specific and this is not a
+gift-with-purchase quirk. Both still 404.
+
+So the multi-item case does **not** degrade into the bag flow: adding products from
+posts and reels stays on the permalink path however many are added. One route
+handles the whole product-tag journey.
+
+Parse `variantId:quantity` pairs separated by commas, tolerate a trailing comma,
+and ignore any pair that doesn't resolve rather than failing the whole cart — one
+delisted product shouldn't cost you the other three.
