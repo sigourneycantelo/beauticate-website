@@ -1,6 +1,6 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
-import { GWP, stripHidden } from './gwp'
+import { GIFT_HANDLES, stripHidden } from './gwp'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
@@ -488,8 +488,8 @@ export async function getAllProductHandles(): Promise<{ handle: string; updatedA
     `, { cursor })
     const conn: ProductHandleConn | undefined = data?.products
     if (!conn) break
-    // The gift-with-purchase SKU is seo.hidden in Shopify and must not be indexed.
-    for (const n of conn.nodes ?? []) if (n?.handle && n.handle !== GWP.giftHandle) out.push({ handle: n.handle, updatedAt: n.updatedAt })
+    // Gift-with-purchase SKUs are seo.hidden in Shopify and must not be indexed.
+    for (const n of conn.nodes ?? []) if (n?.handle && !GIFT_HANDLES.includes(n.handle)) out.push({ handle: n.handle, updatedAt: n.updatedAt })
     if (!conn.pageInfo?.hasNextPage) break
     cursor = conn.pageInfo.endCursor
   }

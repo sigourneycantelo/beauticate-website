@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { gaViewCart, gaBeginCheckout, gidToId, GAItem } from '@/lib/ga/events'
 import { track } from '@/lib/meta/pixel'
-import { GWP, isGiftLine } from '@/lib/gwp'
+import { offerForGiftLine } from '@/lib/gwp'
 
 function cartToGAItems(lines: any[]): GAItem[] {
   return lines.map((line: any) => ({
@@ -128,7 +128,7 @@ export default function CartDrawer() {
                 // pricing bug. It has no Remove control either — the cart owns it
                 // (lib/gwp-cart.ts), and removing the last BOOIE product is what
                 // takes it away.
-                const gift = isGiftLine(line as any)
+                const giftOffer = offerForGiftLine(line as any)
                 // Cost is summed across every line in the group (see mergeLines), and
                 // Shopify's line cost is already quantity-inclusive.
                 const price = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
@@ -141,9 +141,9 @@ export default function CartDrawer() {
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      {gift && (
+                      {giftOffer && (
                         <span className="inline-block font-sans text-[9px] tracking-[0.18em] uppercase text-eucalypt font-semibold border border-eucalypt/40 rounded-full px-2 py-[2px] mb-1">
-                          {GWP.badge}
+                          {giftOffer.badge}
                         </span>
                       )}
                       <p className="text-xs text-charcoal-light">{line.merchandise.product.vendor}</p>
@@ -156,10 +156,10 @@ export default function CartDrawer() {
                       {row.quantity > 1 && (
                         <p className="text-xs text-charcoal-light">Qty {row.quantity}</p>
                       )}
-                      {gift ? (
+                      {giftOffer ? (
                         <>
-                          <p className="text-sm mt-1 text-eucalypt font-semibold">{GWP.freeLabel}</p>
-                          <p className="text-[11px] text-charcoal-light mt-0.5">{GWP.cartNote}</p>
+                          <p className="text-sm mt-1 text-eucalypt font-semibold">{giftOffer.freeLabel}</p>
+                          <p className="text-[11px] text-charcoal-light mt-0.5">{giftOffer.cartNote}</p>
                         </>
                       ) : soldOut ? (
                         <p className="text-sm mt-1 text-wine">Sold out</p>
@@ -167,7 +167,7 @@ export default function CartDrawer() {
                         <p className="text-sm mt-1">{price}</p>
                       )}
                     </div>
-                    {!gift && (
+                    {!giftOffer && (
                       <button
                         onClick={() => removeItem(row.ids)}
                         className="text-xs text-charcoal-light hover:text-charcoal self-start mt-1"

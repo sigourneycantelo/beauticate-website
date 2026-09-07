@@ -4,6 +4,7 @@ import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
 import type { ShopifyProduct } from '@/types/shopify'
+import type { GiftOffer } from '@/lib/gwp'
 import { cleanProductTitle } from '@/lib/product-format'
 import { resolveShopIntl } from '@/lib/shop-intl'
 
@@ -12,13 +13,13 @@ interface Props {
   related?: ShopifyProduct[]
   /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
   availability?: Record<string, boolean>
-  /** Gift-with-purchase pitch: this product qualifies AND the gift is in stock. */
-  showGift?: boolean
+  /** The gift offer this product qualifies for, when its gift is in stock. */
+  giftOffer?: GiftOffer
 }
 
 const SITE = 'https://www.beauticate.com'
 
-export default function ProductPage({ product: p, related = [], availability, showGift = false }: Props) {
+export default function ProductPage({ product: p, related = [], availability, giftOffer }: Props) {
   const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
   const title = cleanProductTitle(p.title)
   const isVariantAvailable = (v: ShopifyProduct['variants']['nodes'][number]) =>
@@ -104,7 +105,7 @@ export default function ProductPage({ product: p, related = [], availability, sh
           product={p}
           availability={availability}
           intlOptions={resolveShopIntl(p.handle, p.vendor)}
-          showGift={showGift}
+          giftOffer={giftOffer}
         />
       </div>
 

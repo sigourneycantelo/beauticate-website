@@ -8,19 +8,20 @@ import { cleanProductTitle } from '@/lib/product-format'
 import { useGeo } from '@/components/geo/GeoProvider'
 import type { ShopIntlOptions } from '@/lib/shop-intl'
 import GiftBanner from './GiftBanner'
+import type { GiftOffer } from '@/lib/gwp'
 
 const fmt = (amount: string, currency: string) =>
   new Intl.NumberFormat('en-AU', { style: 'currency', currency }).format(parseFloat(amount))
 
 // Sticky right-hand buy box: brand, title, price, editorial note, variant, qty, add-to-cart.
-export default function ProductBuyBox({ product: p, availability, intlOptions, showGift = false }: {
+export default function ProductBuyBox({ product: p, availability, intlOptions, giftOffer }: {
   product: ShopifyProduct
   /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
   availability?: Record<string, boolean>
   /** Stockists that ship outside AU/NZ, resolved server-side (see lib/shop-intl.ts). */
   intlOptions?: ShopIntlOptions
-  /** Gift-with-purchase pitch: this product qualifies AND the gift is in stock. */
-  showGift?: boolean
+  /** The gift offer this product qualifies for, when its gift is in stock. */
+  giftOffer?: GiftOffer
 }) {
   const variants = p.variants.nodes
   // Open on the cheapest in-stock variant so the price shown matches the card's
@@ -135,7 +136,7 @@ export default function ProductBuyBox({ product: p, availability, intlOptions, s
         )
       ) : (
   <>
-          {showGift && <GiftBanner />}
+          {giftOffer && <GiftBanner offer={giftOffer} />}
 
           <div className="flex items-stretch gap-3 mt-6">
             <div className="flex items-center border border-cream-200 rounded-[2px]">

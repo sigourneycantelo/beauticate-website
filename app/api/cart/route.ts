@@ -1,6 +1,6 @@
 import { createCart, getCart, addToCart, removeFromCart, updateCartAttributes } from '@/lib/shopify'
 import { reconcileGift } from '@/lib/gwp-cart'
-import { GWP } from '@/lib/gwp'
+import { isGiftVariantId } from '@/lib/gwp'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
@@ -8,10 +8,10 @@ export async function POST(req: Request) {
   try {
     if (action === 'create') return NextResponse.json(await createCart())
 
-    // The gift is never added by request — only by reconcileGift, off the back of a
+    // A gift is never added by request — only by reconcileGift, off the back of a
     // qualifying cart. This blocks the one-cent buy: a crafted add, or a stale
-    // client, gets the cart back untouched rather than a $0.01 illuminator.
-    if (action === 'add' && variantId === GWP.giftVariantId) {
+    // client, gets the cart back untouched rather than a $0.01 gift.
+    if (action === 'add' && isGiftVariantId(variantId)) {
       return NextResponse.json(await reconcileGift(await getCart(cartId)))
     }
 

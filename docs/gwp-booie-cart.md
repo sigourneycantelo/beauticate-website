@@ -95,10 +95,59 @@ The gift SKU is also filtered out of every product listing, related rail, tag qu
 and the sitemap — driven by its `gwp-hidden` tag, so a future gift SKU only needs
 that tag in Shopify.
 
+## Rotating to the next brand
+
+`lib/gwp.ts` holds a **list** of offers, so the fortnightly rotation is a config
+edit and nothing else in the codebase changes. Each offer carries its own vendor,
+gift ids, copy and an optional date window:
+
+```ts
+{ key: 'brand-slug', enabled: true, vendor: 'Brand Name',
+  giftVariantId: 'gid://shopify/ProductVariant/…',
+  giftProductId: 'gid://shopify/Product/…',
+  giftHandle: '…', giftName: 'a travel-size serum',
+  badge: 'Free gift', freeLabel: 'Free', pitch: '…', cartNote: '…',
+  lineAttributes: [{ key: 'Gift with purchase', value: '…' }],
+  startsAt: '2026-09-21T00:00:00+10:00',
+  endsAt:   '2026-10-05T00:00:00+10:00' }
+```
+
+Windows do the work: outside them the gift is never added, the product-page pitch
+withdraws itself, and any gift still sitting in a cart from the finished offer is
+removed on that cart's next response — so a rotation can't leave last fortnight's
+gift behind. Two offers may overlap; a cart qualifying for both gets both gifts,
+reconciled independently.
+
+Verified 7 Sep by back-dating `endsAt`: no gift added, pitch gone from the PDP.
+
+### Per-brand setup, outside the code
+
+Every one of these was a real failure during the BOOIE launch.
+
+1. **The brand creates the gift SKU at $0.01, never $0.00** — Modern Dropship
+   cannot process a zero-priced line. It must sync through MD so it carries a
+   Convictional product id; a SKU invented in our Shopify has nothing for MD to
+   route to the brand.
+2. **Tag the gift product `gwp-hidden`** so `stripHidden()` keeps it out of
+   listings, tag queries and the sitemap, and its own PDP 404s.
+3. **Create a BXGY automatic discount taking $0.01 off one of the BRAND's
+   products** — never off the gift line. See the warning above for why.
+4. **Put the gift in the same delivery profile as the brand's products.** BOOIE's
+   sat in General at $11 while its products shipped free, which would have added
+   $11 to a cart whose page promised free delivery.
+5. **Check stock and the cap.** The cart lane draws on Shopify inventory for the
+   gift SKU; agree the number with the brand and let inventory be the counter.
+
+Nothing needs the gift's own vendor excluded by hand — `qualifyingLinesFor`
+already ignores every offer's gift line, which matters because a gift normally
+carries its own brand's vendor and would otherwise qualify for its own offer and
+never leave the cart.
+
 ## Ending the promotion
 
-Set `GWP.enabled = false` in `lib/gwp.ts`. Carts stop gaining the gift and existing
-carts drop it on their next response. Nothing else to unwind.
+Set that offer's `enabled: false` (or let its `endsAt` pass) in `lib/gwp.ts`.
+Carts stop gaining the gift and existing carts drop it on their next response.
+Delete the BXGY discount in Shopify. Nothing else to unwind.
 
 ## Shipping
 
