@@ -597,8 +597,21 @@ dependency on the Facebook & Instagram channel. Given Beauticate's Instagram
 traffic comes largely from tagged reels and posts, this may be the higher-volume
 lane of the two.
 
-It must answer on **`shop.beauticate.com`** as well as `www` — a route that only
-works on `www` still 404s for everyone arriving from a reel.
+**Correction (7 Sep):** an earlier version of this section said the route must
+answer on `shop.beauticate.com` as well as `www`. That is wrong, and building it
+that way would have reproduced the original bug.
+
+`localStorage` is per-origin. The cart id lives in `beauticate_cart_id`, so a cart
+built on `shop.beauticate.com` is **invisible** once the customer is on
+`www.beauticate.com` — they would land, see an empty cart, and it would look
+exactly like the fault we are fixing.
+
+The customer must reach the route already on `www`. PR #107 forwards
+`shop.beauticate.com/cart/*` (and `beauticate.shop/cart/*`) to
+`www.beauticate.com/cart/*` for precisely this reason, so the route is built for
+`www` only and the redirect does the host hop. Verify the query string survives
+that hop, or `attributes[Channel]=Instagram` is lost and Instagram orders stop
+being countable.
 
 ## And it fixes the gift on that lane
 
