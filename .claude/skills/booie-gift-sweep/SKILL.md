@@ -27,8 +27,10 @@ is the cheaper path and every email is approved by a human before it sends.
 - **Stop at the cap.** BOOIE funded 22 units: 20 for customers, 2 for testing
   (one spent on order #1016). If Shopify stock on the gift variant is 0, or 20
   customer gifts have gone, stop and say so rather than promising more.
-- **Never invent the warehouse address.** If it isn't known, draft to Sigourney
-  with a note instead of guessing.
+- **Never invent the warehouse address.** BOOIE's is `jasmin@booie.com`, cc
+  `tayla@booie.com` (Monika, `monika@booie.com`, is the relationship contact — not
+  for per-order notes). For any other brand, if the address isn't known, draft to
+  Sigourney with a note instead of guessing.
 
 ## Constants
 
@@ -39,6 +41,7 @@ is the cheaper path and every email is approved by a human before it sends.
 | Gift variant | `gid://shopify/ProductVariant/45618557026373` |
 | Tag applied when drafted | `gift-booie-drafted` |
 | Campaign start | 2026-09-04 |
+| BOOIE warehouse | `jasmin@booie.com`, cc `tayla@booie.com` |
 
 ## Step 1 — find orders owed a gift
 
@@ -74,6 +77,10 @@ One email per order, drafted in Gmail to BOOIE's warehouse (Jasmin). Subject
 names the Shopify order. Keep it short and warm; this is a note to a partner, not
 a system alert. State the order number, the customer name and suburb, the gift,
 and that it should go in that parcel.
+
+Check `displayFulfillmentStatus` first. If the order is already **FULFILLED** the
+parcel has gone, so ask for the gift to be sent **separately** and give the full
+shipping address — don't ask them to add it to a box that has already shipped.
 
 Do not send. Do not fabricate a shipping address — take it from the query.
 

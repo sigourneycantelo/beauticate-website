@@ -87,7 +87,7 @@ export const CAMPAIGN: GiftCampaign = {
       key: 'booie-beauty',
       label: 'BOOIE Beauty',
       vendors: ['BOOIE Beauty'],
-      warehouseEmail: 'warehouse@example.com', // ← SET ME (Jasmin's warehouse inbox)
+      warehouseEmail: 'jasmin@booie.com',
       giftName: 'a Bloody Delicious illuminator',
       // BOOIE funded 22 units: 20 for customers, 2 for testing (one already spent
       // on order #1016). The cart lane draws physically on Shopify stock for the
