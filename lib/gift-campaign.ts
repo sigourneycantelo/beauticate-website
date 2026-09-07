@@ -40,6 +40,16 @@ export type GiftBrand = {
   minSpendBasis?: 'brand' | 'order'
   /** Optional per-brand launch date override (ISO). Falls back to CAMPAIGN.launchDate. */
   launchDate?: string
+  /**
+   * SKUs the *storefront* adds to the cart itself for this brand's gift
+   * (lib/gwp-cart.ts). If any of these is already on the order, the customer has
+   * their gift as a real line item and the warehouse must NOT be asked to add
+   * another — see `hasCartGift`. This is the seam between the two gift systems:
+   * the headless cart covers www.beauticate.com, this campaign covers the lanes
+   * it can't reach (Instagram hands customers straight into Shopify checkout,
+   * where no cart code of ours runs).
+   */
+  cartGiftSkus?: string[]
 }
 
 export type GiftCampaign = {
@@ -74,6 +84,20 @@ export const CAMPAIGN: GiftCampaign = {
       minSpend: 0,
     },
     {
+      key: 'booie-beauty',
+      label: 'BOOIE Beauty',
+      vendors: ['BOOIE Beauty'],
+      warehouseEmail: 'warehouse@example.com', // ← SET ME (Jasmin's warehouse inbox)
+      giftName: 'a Bloody Delicious illuminator',
+      // The headless cart adds the gift itself, so this campaign only catches the
+      // orders it can't reach. Cap counts THIS lane only — the cart lane draws on
+      // the same 22 units BOOIE funded (Shopify stock on the gift SKU), so the two
+      // need reconciling by hand before the total runs past what they agreed.
+      cap: 21,
+      minSpend: 0,
+      cartGiftSkus: ['9361189000023-GWP'],
+    },
+    {
       key: 'subtle-energies',
       label: 'Subtle Energies',
       vendors: ['Subtle Energies'],
@@ -102,11 +126,22 @@ export function getBrandByKey(key: string): GiftBrand | undefined {
 
 const normalize = (s: string) => s.trim().toLowerCase()
 
+/**
+ * Did the storefront already put this brand's gift on the order as a real line?
+ * If so the customer has it, and asking the warehouse for another would send two.
+ */
+export function hasCartGift(brand: GiftBrand, lineItems: OrderLineItem[]): boolean {
+  const skus = (brand.cartGiftSkus ?? []).map(normalize)
+  if (skus.length === 0) return false
+  return lineItems.some(li => li.sku && skus.includes(normalize(li.sku)))
+}
+
 // A minimal shape of a Shopify webhook line item (only the fields we use).
 export type OrderLineItem = {
   vendor?: string | null
   quantity?: number | null
   price?: string | null // per-unit price as a decimal string, e.g. "49.00"
+  sku?: string | null
 }
 
 /**

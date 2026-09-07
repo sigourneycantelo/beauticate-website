@@ -15,6 +15,9 @@ export type GiftEvent =
   | 'received'
   | 'invalid_hmac'
   | 'duplicate'
+  // The storefront's cart already added this brand's gift to the order, so the
+  // warehouse must not be asked for a second one (see gift-campaign hasCartGift).
+  | 'cart_gift_present'
   | 'no_match'
   | 'below_min_spend'
   | 'over_cap'

@@ -16,6 +16,7 @@ import {
   matchBrandsInOrder,
   meetsMinSpend,
   capFor,
+  hasCartGift,
   orderTagFor,
   PROCESSED_TAG,
   type OrderLineItem,
@@ -237,6 +238,17 @@ export async function POST(req: Request) {
       if (existingTags.includes(brandTag)) {
         giftLog('duplicate', { order: orderName, brand: brand.key, reason: 'already tagged' })
         results[brand.key] = 'duplicate'
+        continue
+      }
+
+      // The storefront's own cart already added this brand's gift as a line item
+      // (lib/gwp-cart.ts), so the customer is getting it in this very parcel.
+      // Emailing the warehouse as well would send them two. This campaign exists
+      // only to cover the lanes the cart can't reach — chiefly Instagram, which
+      // hands customers straight into Shopify checkout where our code never runs.
+      if (hasCartGift(brand, order.line_items ?? [])) {
+        giftLog('cart_gift_present', { order: orderName, brand: brand.key, skus: brand.cartGiftSkus })
+        results[brand.key] = 'cart_gift_present'
         continue
       }
 
