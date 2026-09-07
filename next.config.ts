@@ -50,6 +50,31 @@ const nextConfig: NextConfig = {
       // over a month, caught only because Shopify's primary domain happened to move
       // to checkout.beauticate.com before shop.beauticate.com was reactivated. Do not
       // re-add these rules to vercel.json.
+      // ── Instagram bag handoff → the Shopify storefront ───────────────────
+      // Instagram Shopping's "Go to checkout" sends a Shopify cart permalink:
+      //
+      //   https://shop.beauticate.com/cart/45051889647685:1
+      //     ?attributes[Channel]=Instagram&attributes[cart-id]=...&cart_origin=instagram
+      //
+      // Meta still has shop.beauticate.com on record as the store's domain — it was
+      // Shopify's primary domain when the Meta shop was created on 30 Jul 2026. It
+      // isn't any more (Shopify Admin lists it as Invalid DNS; its DNS points here),
+      // so that URL 404s and the customer's basket is lost. Confirmed on a real
+      // device, 7 Sep 2026.
+      //
+      // The same permalink on checkout.beauticate.com — Shopify's actual primary
+      // domain — 302s into a live checkout with the items and attributes intact. So
+      // forward cart and checkout paths there rather than 404ing them. Next.js
+      // preserves the query string, which is what carries Meta's attributes.
+      //
+      // Temporary (302) on purpose: the real fix is for Meta to stop pointing at a
+      // domain we no longer serve from Shopify. This keeps baskets alive until it
+      // does, and stops silently swallowing them if it never does.
+      { source: '/cart/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://checkout.beauticate.com/cart/:path*', permanent: false },
+      { source: '/checkouts/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://checkout.beauticate.com/checkouts/:path*', permanent: false },
+      { source: '/cart/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://checkout.beauticate.com/cart/:path*', permanent: false },
+      { source: '/checkouts/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://checkout.beauticate.com/checkouts/:path*', permanent: false },
+
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
 
