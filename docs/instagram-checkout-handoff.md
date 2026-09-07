@@ -479,3 +479,71 @@ websites. Finding which field holds it is the first step for option 1.
 Nicole Ford reported the bug, then ran the reproduction that identified it. Four
 customers started an Instagram checkout in 28 days; she is the only one who said
 anything.
+
+---
+
+# Update 4 — 7 Sep 2026: the fix works, but it drops the gift
+
+Redfern's proposal is option 1: point Meta's checkout at `checkout.beauticate.com`,
+where Shopify's Facebook & Instagram channel resolves `attributes[cart-id]` into
+line items using Shopify's own partner-level access to Meta's API. His reading of the
+failure matches this document exactly — "the component declares no searchParams, every
+one of those query params is simply never read". That answers the open question from
+Update 3: the resolution is Shopify's to do, not ours to call, so option 2 is off the
+table. Option 1 is the right call.
+
+**But it has a cost nobody has priced, and it lands the day the GWP promotion goes live.**
+
+## The gift is added by the headless storefront only
+
+`reconcileGift()` runs in `app/api/cart/route.ts` — our API, on `www`. Per
+[`gwp-booie-cart.md`](./gwp-booie-cart.md), the alternatives were considered and ruled
+out: a theme app embed "only runs on a Shopify-rendered theme … enabling it in the
+Theme Editor affects only the invisible `checkout.beauticate.com` theme", and a Shopify
+Function "can only *discount* a line, never *add* one". The doc's conclusion: "Adding a
+line is always the storefront's job, and the storefront is ours."
+
+`checkout.beauticate.com` is a Shopify-rendered theme. `reconcileGift()` never runs
+there. The active `DiscountAutomaticBxgy` "Free gift" only discounts the gift line if
+it is already in the cart — Shopify's Buy-X-Get-Y does not add it.
+
+## This is observed, not predicted
+
+Two real orders, four days apart:
+
+| Order | Route | Line items | Gift |
+| --- | --- | --- | --- |
+| **#1016** (4 Sep) | Headless (`www`) | Dot to Dot $28.00 + **Bloody Delicious – Beauticate Gift $0.01** | ✅ |
+| **#1017** (5 Sep) | Online Store (`checkout.beauticate.com`) | You're Welcome Mascara $31.00 + Almighty Volume Thickening Duo $50.00 | ❌ **none** |
+
+#1017 is Nicole's — placed through the cart permalink she was sent after reporting the
+bug. She bought a BOOIE Beauty product and received no gift, because she checked out on
+the Shopify storefront.
+
+**Routing all Instagram traffic to that storefront means every Instagram customer buying
+a BOOIE product gets no gift — on the day a BOOIE gift-with-purchase is promoted on
+Instagram.**
+
+## Options
+
+1. **Add the gift by hand on affected orders.** Volume is 4 Instagram checkouts in 28
+   days. Watch Online Store orders containing a BOOIE product with no gift line and add
+   it at fulfilment. Unblocks the launch today, costs nothing, doesn't scale — and
+   doesn't need to at this volume.
+2. **Get the gift line added on the Shopify theme.** The theme app embed ruled out in
+   `gwp-booie-cart.md` was ruled out *because that theme was invisible*. It isn't any
+   more. Check whether an app providing it is installed and can be enabled on that theme.
+3. **Ship the fix, accept no gift for Instagram, say nothing.** Not recommended — the
+   promotion is the reason those customers are arriving.
+
+## How to verify the fix actually works
+
+No order has ever been attributed to the Facebook & Instagram channel, and after this
+change one still may not be — checkout happens on the Online Store, so an Instagram
+order will look like #1017 did.
+
+The reliable signal is the cart attributes. Meta sends `attributes[Channel]=Instagram`,
+`attributes[cart-id]` and `attributes[seller-id]`; if Shopify's channel receives the
+handoff properly those land on the order as custom attributes. #1017 has
+`customAttributes: []`, so it is not one. **A genuine Instagram handoff order will carry
+`Channel: Instagram`.** That is the test — not the channel attribution.
