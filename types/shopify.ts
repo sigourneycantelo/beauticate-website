@@ -1,4 +1,7 @@
 export interface ShopifyImage {
+  /** Shopify media GID. Only requested where images have to be matched to
+   *  variants — URLs carry cache-busting query strings, ids don't. */
+  id?: string
   url: string
   altText: string | null
   width: number
@@ -19,6 +22,9 @@ export interface ShopifyProductVariant {
   price: ShopifyPrice
   compareAtPrice: ShopifyPrice | null
   selectedOptions: { name: string; value: string }[]
+  /** The variant's own photo. Only fetched by getProductDetail — grid queries
+   *  don't need it and 400+ products' worth would bloat the RSC payload. */
+  image?: ShopifyImage | null
 }
 
 export interface ShopifyProduct {
