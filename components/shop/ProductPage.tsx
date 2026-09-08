@@ -3,10 +3,12 @@ import MetaViewContent from '@/components/analytics/MetaViewContent'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
+import VariantSelectionProvider from './VariantSelectionProvider'
 import type { ShopifyProduct } from '@/types/shopify'
 import type { GiftOffer } from '@/lib/gwp'
 import { cleanProductTitle } from '@/lib/product-format'
 import { resolveShopIntl } from '@/lib/shop-intl'
+import { buildGallery, findVariant, pickDefaultVariant } from '@/lib/shop-variant'
 
 interface Props {
   product: ShopifyProduct
@@ -15,12 +17,18 @@ interface Props {
   availability?: Record<string, boolean>
   /** The gift offer this product qualifies for, when its gift is in stock. */
   giftOffer?: GiftOffer
+  /** Raw `?variant=` off the URL — the id an editorial card's variantHref writes. */
+  variantParam?: string
 }
 
 const SITE = 'https://www.beauticate.com'
 
-export default function ProductPage({ product: p, related = [], availability, giftOffer }: Props) {
-  const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
+export default function ProductPage({ product: p, related = [], availability, giftOffer, variantParam }: Props) {
+  // Resolve the opening variant here, on the server, so the buy box and the gallery
+  // agree on it from the first paint — including on the `?variant=` links editorial
+  // product cards already write (see variantHref).
+  const openingVariant = findVariant(p, variantParam) ?? pickDefaultVariant(p.variants.nodes, availability)
+  const { images, variantImageIndex, fallbackIndex } = buildGallery(p, openingVariant?.id)
   const title = cleanProductTitle(p.title)
   const isVariantAvailable = (v: ShopifyProduct['variants']['nodes'][number]) =>
     availability?.[v.id] ?? v.availableForSale
@@ -98,16 +106,27 @@ export default function ProductPage({ product: p, related = [], availability, gi
         <span className="text-ink">{title}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
-        <ProductImageCarousel images={images} vendor={p.vendor} title={p.title} />
+      <VariantSelectionProvider
+        initialVariantId={openingVariant?.id}
+        variantIds={p.variants.nodes.map(v => v.id)}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
+          <ProductImageCarousel
+            images={images}
+            vendor={p.vendor}
+            title={p.title}
+            variantImageIndex={variantImageIndex}
+            fallbackIndex={fallbackIndex}
+          />
 
-        <ProductBuyBox
-          product={p}
-          availability={availability}
-          intlOptions={resolveShopIntl(p.handle, p.vendor)}
-          giftOffer={giftOffer}
-        />
-      </div>
+          <ProductBuyBox
+            product={p}
+            availability={availability}
+            intlOptions={resolveShopIntl(p.handle, p.vendor)}
+            giftOffer={giftOffer}
+          />
+        </div>
+      </VariantSelectionProvider>
 
       {related.length > 0 && (
         <section className="mt-[clamp(48px,7vw,96px)]">

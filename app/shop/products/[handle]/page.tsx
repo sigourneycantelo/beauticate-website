@@ -6,7 +6,14 @@ import type { ShopifyProduct } from '@/types/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { GIFT_HANDLES, offerForVendor, isGiftProduct } from '@/lib/gwp'
 
-interface Props { params: Promise<{ handle: string }> }
+// `searchParams` makes this route render per request rather than being served from
+// the full route cache — the price of landing a `?variant=` link on the right image
+// on first paint. The Shopify fetches underneath stay cached (revalidate 300), so
+// this costs a render, not extra API calls.
+interface Props {
+  params: Promise<{ handle: string }>
+  searchParams: Promise<{ variant?: string }>
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
@@ -25,8 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProductRoute({ params }: Props) {
-  const { handle } = await params
+export default async function ProductRoute({ params, searchParams }: Props) {
+  const [{ handle }, { variant }] = await Promise.all([params, searchParams])
   // A gift SKU has no page of its own. It is a real, purchasable $0.01 product in
   // Shopify (Modern Dropship can't take $0.00), which without this would let
   // anyone who found the URL buy the gift for a cent. The cart API refuses to add
@@ -67,5 +74,13 @@ export default async function ProductRoute({ params }: Props) {
   const giftOffer =
     candidate && (giftStock[candidate.giftVariantId] ?? true) ? candidate : undefined
 
-  return <ProductPage product={product} related={related} availability={availability} giftOffer={giftOffer} />
+  return (
+    <ProductPage
+      product={product}
+      related={related}
+      availability={availability}
+      giftOffer={giftOffer}
+      variantParam={variant}
+    />
+  )
 }

@@ -53,13 +53,15 @@ const PRODUCT_FRAGMENT = `
     vendor
     productType
     tags
-    featuredImage { url altText width height }
-    images(first: 10) { nodes { url altText width height } }
+    featuredImage { id url altText width height }
+    images(first: 10) { nodes { id url altText width height } }
     priceRange {
       minVariantPrice { amount currencyCode }
       maxVariantPrice { amount currencyCode }
     }
-    variants(first: 10) {
+    # 50, not 10: Basics By B's Alter Ego Concealer has 11 shades, and the 11th was
+    # being cut off — unselectable on the product page and unbuyable anywhere.
+    variants(first: 50) {
       nodes {
         id
         title
@@ -70,8 +72,9 @@ const PRODUCT_FRAGMENT = `
         compareAtPrice { amount currencyCode }
         selectedOptions { name value }
         # Per-colourway shot, so an editorial card pinned to one variant
-        # (e.g. Blush Pink) shows that colour rather than the product's default.
-        image { url altText width height }
+        # (e.g. Blush Pink) shows that colour rather than the product's default —
+        # and so the product page's gallery can follow the variant selector.
+        image { id url altText width height }
       }
     }
   }
