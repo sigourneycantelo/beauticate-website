@@ -14,6 +14,7 @@
  */
 import fs from 'node:fs'
 import path from 'node:path'
+import { imageSize } from 'image-size'
 
 const CONTENT = 'content'
 const PUBLIC = 'public'
@@ -23,6 +24,45 @@ const HOUSE = new Set(['Beauticate', 'Beauticate Editorial'])
 
 /** A featured_image heavier than this is a problem for readers, not just feeds. */
 const MAX_FEATURED_BYTES = 2_000_000
+
+/**
+ * The WordPress migration date (CLAUDE.md). The import set `featured_image` to
+ * the landscape `hero.jpg` on 1,653 of the 1,723 articles that predate it, so
+ * the card-shape check below only looks at articles written for this site.
+ *
+ * That scoping is the whole reason the check is worth having. Run across the
+ * archive it would warn 1,672 times on a decision nobody is going to revisit,
+ * and a check nobody can get to zero is a check everybody learns to ignore.
+ */
+const MIGRATION = Date.parse('2026-06-18')
+
+/**
+ * Dimensions, from the manifest where possible and from the file where not.
+ *
+ * This script runs FIRST in `npm run build`, before build-image-dimensions.mjs
+ * regenerates the manifest, so a brand-new article's brand-new thumbnail is
+ * exactly the thing the manifest does not know about yet — and exactly the
+ * thing this check exists to catch. Hence the fallback.
+ *
+ * Reading the file here is fine, and is not the pattern CLAUDE.md forbids: that
+ * rule is about a *runtime* path read in lib/rehype-portrait-images.ts, which
+ * made @vercel/nft trace all 3.3GB of public/ into every function bundle. A
+ * build script reading a handful of files is never traced into a bundle, which
+ * is why build-image-dimensions.mjs reads all 20,000 of them.
+ */
+const manifest = (() => {
+  try { return JSON.parse(fs.readFileSync('data/image-dimensions.json', 'utf8')) }
+  catch { return {} }
+})()
+
+function dimensionsOf(src) {
+  const cached = manifest[src]
+  if (cached) return { width: cached[0], height: cached[1] }
+  try {
+    const { width, height } = imageSize(fs.readFileSync(path.join(PUBLIC, src)))
+    return width && height ? { width, height } : undefined
+  } catch { return undefined }
+}
 
 /**
  * Known and deliberately left alone. Each needs a reason, so that removing an
@@ -139,6 +179,26 @@ const warn = []
       try { size = fs.statSync(file).size } catch { /* missing images are the feed's warning, not this one's */ }
       if (size > MAX_FEATURED_BYTES) {
         warn.push(`${rel} — featured_image is ${(size / 1e6).toFixed(1)}MB. It is the card image on every archive page.`)
+      }
+    }
+
+    // 6. A card image that is not portrait. Every grid on the site puts this in
+    //    a portrait slot and centre-crops it, and it is also the image the RSS
+    //    feed hands Pinterest as <enclosure>, where landscape is the weakest
+    //    shape there is. Mirrors lib/feed-items.ts: thumbnailPortrait wins.
+    //
+    //    Warns on the unambiguous case only. Portrait-but-not-quite-2:3 is a
+    //    nudge, not a defect, and warning on it would make this noisy enough to
+    //    ignore — so the ideal size is in the message instead.
+    const published = Date.parse(f.date_published)
+    const card = f.thumbnailPortrait || f.featured_image
+    if (card?.startsWith('/') && Number.isFinite(published) && published >= MIGRATION) {
+      const d = dimensionsOf(card)
+      if (d && d.width >= d.height) {
+        warn.push(
+          `${rel} — card image is ${d.width}x${d.height}, landscape. Every grid crops it to portrait, ` +
+          `and it is what the feed pins. Set thumbnailPortrait to a 1000x1500 image.`
+        )
       }
     }
   }
