@@ -277,6 +277,55 @@ export function getVodcastEpisode(slug: string): { frontmatter: VodcastFrontmatt
 }
 
 /**
+ * The "watch or listen" block for an article, resolved from its frontmatter.
+ *
+ * `podcast_episode` names a vodcast slug and everything else is read from that
+ * episode, so a companion article needs one line rather than a copy of the
+ * video id and three URLs that then drift. Explicit `podcast_*` fields win, for
+ * the episodes that have no vodcast entry.
+ *
+ * Returns null when the article isn't a podcast story, and never links to an
+ * unpublished episode page.
+ */
+export function resolveArticleEpisode(f: {
+  podcast_episode?: string
+  podcast_youtube_id?: string
+  podcast_spotify_url?: string
+  podcast_apple_url?: string
+  podcast_heading?: string
+  podcast_strip?: 'full' | 'compact'
+}): {
+  youtubeId?: string
+  spotifyUrl?: string
+  appleUrl?: string
+  episodeHref?: string
+  heading?: string
+  variant: 'full' | 'compact'
+} | null {
+  if (!f.podcast_episode && !f.podcast_youtube_id) return null
+
+  const ep = f.podcast_episode ? getVodcastEpisode(f.podcast_episode) : null
+  const epf = ep?.frontmatter as (VodcastFrontmatter & { published?: boolean }) | undefined
+
+  const youtubeId = f.podcast_youtube_id ?? epf?.youtube_video_id
+  const spotifyUrl = f.podcast_spotify_url ?? epf?.spotify_episode_url
+  const appleUrl = f.podcast_apple_url ?? epf?.apple_episode_url
+
+  // Only offer the episode page when there is a live one to send readers to.
+  const episodeHref =
+    epf && epf.published !== false ? `/vodcast/episodes/${f.podcast_episode}` : undefined
+
+  return {
+    youtubeId,
+    spotifyUrl,
+    appleUrl,
+    episodeHref,
+    heading: f.podcast_heading,
+    variant: f.podcast_strip ?? 'full',
+  }
+}
+
+/**
  * True while a directory listing's paid placement is still running.
  *
  * Placements are sold by the year. Reading the expiry date rather than a
