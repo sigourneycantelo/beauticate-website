@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 import type { ShopifyProduct } from '@/types/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { GIFT_HANDLES, offerForVendor, isGiftProduct } from '@/lib/gwp'
+import { metaDescription } from '@/lib/product-description'
 
 // `searchParams` makes this route render per request rather than being served from
 // the full route cache — the price of landing a `?variant=` link on the right image
@@ -23,10 +24,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = cleanProductTitle(product.title)
   return {
     title: `${title} — ${product.vendor}`,
-    description: product.description.slice(0, 160),
+    description: metaDescription(product.description),
     alternates: { canonical: `https://www.beauticate.com/shop/products/${handle}` },
     openGraph: {
       title: `${title} — ${product.vendor}`,
+      description: metaDescription(product.description),
       images: product.featuredImage ? [product.featuredImage.url] : [],
     },
   }

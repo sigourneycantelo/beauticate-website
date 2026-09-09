@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { withoutOfferPreamble } from '@/lib/product-description'
 import MetaViewContent from '@/components/analytics/MetaViewContent'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
@@ -44,7 +45,7 @@ export default function ProductPage({ product: p, related = [], availability, gi
     '@type': 'Product',
     name: title,
     image: images.map(i => i.url),
-    description: p.description,
+    description: withoutOfferPreamble(p.description),
     brand: { '@type': 'Brand', name: p.vendor },
     ...(p.productType ? { category: p.productType } : {}),
     ...(variants[0]?.sku ? { sku: variants[0].sku } : {}),
