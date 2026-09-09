@@ -48,6 +48,7 @@ import rehypeVenueContact from '@/lib/rehype-venue-contact'
 import rehypePortraitFloat from '@/lib/rehype-portrait-float'
 import NearbyVenues from './NearbyVenues'
 import ShopEditRail from './ShopEditRail'
+import GiftNote from '@/components/mdx/GiftNote'
 import VenueCTA from './VenueCTA'
 import VenueContact from './VenueContact'
 
@@ -168,6 +169,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, CollectionRail,
     InlineProduct, PullQuote, ImageCarousel, CarouselSlide, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
+    GiftNote,
     ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')

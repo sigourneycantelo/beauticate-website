@@ -95,7 +95,11 @@ export const CAMPAIGN: GiftCampaign = {
       // single honest counter is Shopify inventory — decrement it by one whenever
       // a warehouse gift is dispatched, or BOOIE ships more than the 22 agreed.
       cap: 20,
-      minSpend: 0,
+      // Matches GWP_OFFERS['booie-beauty'].minSpend in lib/gwp.ts. Same promotion,
+      // so the two lanes must agree: a $21 order that earns nothing in our cart
+      // must not earn a warehouse gift email via Instagram Shopping either.
+      minSpend: 45,
+      minSpendBasis: 'brand',
       cartGiftSkus: ['9361189000023-GWP'],
     },
     {

@@ -23,7 +23,7 @@ export default function GiftBanner({ offer }: { offer: GiftOffer }) {
           never runs our cart code and receives the gift in the parcel instead
           (see lib/gift-campaign.ts). This wording is true on both lanes. */}
       <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/70 mt-1.5">
-        Yours free with any BOOIE Beauty order. While stocks last.
+        While stocks last.
       </p>
     </div>
   )
