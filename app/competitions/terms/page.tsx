@@ -182,12 +182,13 @@ export default function CompetitionTermsPage() {
             unavailable we may substitute one of equal or greater value.
           </p>
           <p className="mt-4">
-            If you change your mind and return items so that your order no longer meets the minimum,
-            please send the gift back with them. If you keep it, we may deduct its value from your
-            refund — but never more than the refund itself, so a return will never leave you owing
-            us money. This applies to change-of-mind returns only. If something is faulty, not as
-            described, or otherwise covered by the Australian Consumer Law, your refund is unaffected
-            and you keep the gift.
+            Returns are handled under our{' '}
+            <a href="/shop/refund-policy" className="text-ink hover:text-eucalypt transition-colors">Returns &amp; Refunds Policy</a>.
+            If a return leaves your order below the minimum, please send the gift back with it. If
+            you keep the gift, we may deduct its value from your refund — but never more than the
+            refund itself, so a return will never leave you owing us money. This does not apply where
+            an item is faulty, not as described, or your return is otherwise covered by the
+            Australian Consumer Law: in those cases your refund is unaffected and you keep the gift.
           </p>
           <p className="mt-4">
             We may change or end the promotion at any time. Orders already placed are not
