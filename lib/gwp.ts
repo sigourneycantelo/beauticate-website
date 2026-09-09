@@ -66,6 +66,23 @@ export type GiftOffer = {
    * does NOT change the $0.01 (that's the BXGY discount's job).
    */
   lineAttributes: { key: string; value: string }[]
+  /**
+   * Minimum spend (AUD) on THIS BRAND's products before the gift is earned.
+   * 0 or absent means no minimum.
+   *
+   * Measured on the brand's own subtotal, never the order total — otherwise a
+   * customer could reach the threshold with another brand's products and take
+   * this brand's gift, which is not what the brand funded. The gift line itself
+   * is excluded from the sum.
+   */
+  minSpend?: number
+  /**
+   * Products of this vendor that do NOT count toward minSpend and never earn the
+   * gift. Gift cards belong here: they are deferred revenue, not a sale of goods,
+   * so a gift card purchase would send out real product against money the customer
+   * hasn't spent yet.
+   */
+  excludedProductIds?: string[]
   /** Optional rotation window, ISO 8601. Absent means "no bound on that end". */
   startsAt?: string
   endsAt?: string
@@ -82,8 +99,12 @@ export const GWP_OFFERS: GiftOffer[] = [
     giftName: 'a Bloody Delicious illuminator',
     badge: 'Free gift',
     freeLabel: 'Free',
-    pitch: 'Buy any BOOIE Beauty product and we’ll add a Bloody Delicious illuminator to your order, free.',
+    pitch: 'Spend $45 on BOOIE Beauty and we’ll add a Bloody Delicious illuminator to your order, free.',
     cartNote: 'Added free with your BOOIE Beauty order',
+    minSpend: 45,
+    // BOOIE Gift Card — starts at $50, so without this it would clear the
+    // threshold on its own and earn a $39 illuminator against deferred revenue.
+    excludedProductIds: ['gid://shopify/Product/8095275155525'],
     lineAttributes: [{ key: 'Gift with purchase', value: 'Free gift — Bloody Delicious illuminator' }],
   },
 ]
@@ -167,11 +188,40 @@ export function allGiftLines(cart?: Cart | null): CartLine[] {
  * would qualify for its own offer and never leave the cart.
  */
 export function qualifyingLinesFor(offer: GiftOffer, cart?: Cart | null): CartLine[] {
+  const excluded = offer.excludedProductIds ?? []
   return (cart?.lines?.nodes ?? []).filter(
-    l => !isGiftLine(l) && norm(l.merchandise?.product?.vendor) === norm(offer.vendor) && (l.quantity ?? 0) >= 1
+    l =>
+      !isGiftLine(l) &&
+      norm(l.merchandise?.product?.vendor) === norm(offer.vendor) &&
+      !excluded.includes(l.merchandise?.product?.id ?? '') &&
+      (l.quantity ?? 0) >= 1
   )
 }
 
+/**
+ * What the customer has spent on this brand, gift line excluded. Uses Shopify's
+ * line-level cost, which is already quantity-inclusive and reflects any discount
+ * actually applied — so the threshold is measured against what they really pay,
+ * not the list price.
+ */
+export function brandSubtotalFor(offer: GiftOffer, cart?: Cart | null): number {
+  return qualifyingLinesFor(offer, cart).reduce((sum, l) => {
+    const lineTotal = parseFloat(l.cost?.totalAmount?.amount ?? '0')
+    const fallback = parseFloat(l.merchandise?.price?.amount ?? '0') * (l.quantity ?? 1)
+    return sum + (lineTotal > 0 ? lineTotal : fallback)
+  }, 0)
+}
+
 export function cartQualifiesFor(offer: GiftOffer, cart?: Cart | null): boolean {
-  return qualifyingLinesFor(offer, cart).length > 0
+  if (qualifyingLinesFor(offer, cart).length === 0) return false
+  const min = offer.minSpend ?? 0
+  if (min <= 0) return true
+  return brandSubtotalFor(offer, cart) >= min
+}
+
+/** How much more this brand's products are needed to earn the gift. 0 when earned. */
+export function amountToGiftFor(offer: GiftOffer, cart?: Cart | null): number {
+  const min = offer.minSpend ?? 0
+  if (min <= 0) return 0
+  return Math.max(0, min - brandSubtotalFor(offer, cart))
 }
