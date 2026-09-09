@@ -1,4 +1,4 @@
-import { getArticleBySlug, getRelatedArticles } from '@/lib/content'
+import { getArticleBySlug, getRelatedArticles, resolveArticleEpisode } from '@/lib/content'
 import { getProductsByHandles } from '@/lib/shopify'
 import ArticlePage from '@/components/article/ArticlePage'
 import { notFound } from 'next/navigation'
@@ -34,7 +34,15 @@ export default async function ArticleRoute({ params }: Props) {
   const related = getRelatedArticles(slug, category, f.tags ?? [])
 
   const url = `/${category}/${subcategory}/${slug}`
-  const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })), content)
+  // A Beautiful Inside companion episode is embedded from frontmatter, not from
+  // the body, so the schema has to be told about it explicitly.
+  const articleSchema = buildArticleSchema(
+    f,
+    url,
+    f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })),
+    content,
+    resolveArticleEpisode(f)?.youtubeId,
+  )
   const localBusinessSchema = buildLocalBusinessSchema(f, url)
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: '/' },
