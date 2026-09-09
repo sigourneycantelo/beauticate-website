@@ -58,19 +58,13 @@ export default function TermsPage() {
         </section>
 
         <section>
-          <h2 className="font-serif text-xl text-ink mb-4">Promotions and gifts with purchase</h2>
+          <h2 className="font-serif text-xl text-ink mb-4">Promotions, competitions and gifts with purchase</h2>
           <p>
-            From time to time we run a gift with purchase with one of our partner brands. Where one
-            is running, the gift is added to your cart automatically once your order meets the
-            conditions shown on that brand&apos;s product pages. Any minimum spend applies to that
-            brand&apos;s products only, not to your order total, and gift cards do not count towards
-            it.
-          </p>
-          <p className="mt-4">
-            Gifts are limited and offered while stocks last, so a promotion may end before any date
-            we have advertised. One gift per order. A gift cannot be exchanged, returned for credit
-            or bought separately, and has no cash value. We may change or end a promotion at any
-            time; orders already placed are not affected.
+            From time to time we run a gift with purchase with one of our partner brands, or a
+            competition or giveaway. Each promotion has its own terms — the gift, any minimum spend,
+            how many are available and how long it runs — and those are published on our{' '}
+            <a href="/competitions/terms" className="text-ink hover:text-eucalypt transition-colors">Competition &amp; Promotion Terms</a>{' '}
+            page. Where a promotion is running, those terms apply in addition to these.
           </p>
         </section>
 
