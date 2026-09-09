@@ -179,10 +179,18 @@ export default function CompetitionTermsPage() {
             The gift has no cash value and cannot be exchanged or returned for credit. The{' '}
             {gwp.gift} is also sold on its own at full price — it is the gift version, given free
             with a qualifying order, that is limited to this promotion. If the gift becomes
-            unavailable we may substitute one of equal or greater value. Returning items from a
-            qualifying order may mean the order no longer meets the minimum; where that happens we
-            may deduct the value of the gift from your refund unless the gift is returned with the
-            order. We may change or end the promotion at any time. Orders already placed are not
+            unavailable we may substitute one of equal or greater value.
+          </p>
+          <p className="mt-4">
+            If you change your mind and return items so that your order no longer meets the minimum,
+            please send the gift back with them. If you keep it, we may deduct its value from your
+            refund — but never more than the refund itself, so a return will never leave you owing
+            us money. This applies to change-of-mind returns only. If something is faulty, not as
+            described, or otherwise covered by the Australian Consumer Law, your refund is unaffected
+            and you keep the gift.
+          </p>
+          <p className="mt-4">
+            We may change or end the promotion at any time. Orders already placed are not
             affected.
           </p>
           <p className="mt-4">
