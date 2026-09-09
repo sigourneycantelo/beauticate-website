@@ -199,17 +199,23 @@ export function qualifyingLinesFor(offer: GiftOffer, cart?: Cart | null): CartLi
 }
 
 /**
- * What the customer has spent on this brand, gift line excluded. Uses Shopify's
- * line-level cost, which is already quantity-inclusive and reflects any discount
- * actually applied — so the threshold is measured against what they really pay,
- * not the list price.
+ * What the customer has spent on this brand, gift line excluded.
+ *
+ * Deliberately measured on LIST price, not the discounted line cost. The gift's
+ * own cent-offset discount takes $0.01 off one of this brand's products, so a
+ * basket of exactly the threshold ($45.00 of BB Cream) reads as $44.99 the moment
+ * the gift is granted — which would disqualify it, remove the gift, remove the
+ * discount, requalify it, and add the gift again. An exact-threshold basket would
+ * flip between states on every cart read.
+ *
+ * Using list price breaks that loop: qualification is decided by what the customer
+ * chose to buy, and our own gift mechanic can't feed back into it.
  */
 export function brandSubtotalFor(offer: GiftOffer, cart?: Cart | null): number {
-  return qualifyingLinesFor(offer, cart).reduce((sum, l) => {
-    const lineTotal = parseFloat(l.cost?.totalAmount?.amount ?? '0')
-    const fallback = parseFloat(l.merchandise?.price?.amount ?? '0') * (l.quantity ?? 1)
-    return sum + (lineTotal > 0 ? lineTotal : fallback)
-  }, 0)
+  return qualifyingLinesFor(offer, cart).reduce(
+    (sum, l) => sum + parseFloat(l.merchandise?.price?.amount ?? '0') * (l.quantity ?? 1),
+    0
+  )
 }
 
 export function cartQualifiesFor(offer: GiftOffer, cart?: Cart | null): boolean {
