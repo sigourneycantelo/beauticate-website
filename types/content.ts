@@ -80,6 +80,11 @@ export interface ArticleFrontmatter {
   shop_collection?: string
   shop_products?: ShopProduct[]
   product_links?: ProductLink[]
+  // Suppress the "Shop the Edit" grid at the foot WITHOUT dropping product_links —
+  // the links still feed the auto-generated /shop/moments/<slug> page. Use when the
+  // body already sells the same products (e.g. an in-body ShopGrid plus a
+  // <CollectionRail>), so the foot would just repeat them a third time.
+  hide_shop_edit?: boolean
   moment_title?: string             // display name for the auto-generated Shop-by-Moment page (defaults to article title)
   moment_image?: string             // tile/hero image for the moment page (defaults to hero_image → featured_image)
   moment_exclude?: boolean          // opt OUT of auto-moment generation even with 6+ products

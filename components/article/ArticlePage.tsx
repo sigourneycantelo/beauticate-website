@@ -257,7 +257,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         )}
 
         {/* Shop the Edit */}
-        {productLinks.length > 0 && (
+        {!f.hide_shop_edit && productLinks.length > 0 && (
           <div className="mt-12 pt-10 border-t border-cream-200">
             <h4 className="font-sans text-xs tracking-[0.34em] uppercase mb-6">Shop the Edit</h4>
             <div className={`grid gap-4 ${productLinks.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 md:grid-cols-3'}`}>
