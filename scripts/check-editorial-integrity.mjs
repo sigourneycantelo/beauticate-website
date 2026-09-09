@@ -201,6 +201,43 @@ const warn = []
         )
       }
     }
+
+    // 7. A price typed into the prose of an article that sells our own shop
+    //    products. The product card beside it already pulls price live from
+    //    Shopify, so the number in the sentence is duplication that can only
+    //    ever drift out of date — and it drifts silently, because nothing
+    //    errors when a $50 in the copy meets a $44 on the product page.
+    //
+    //    Found on the breathwork feature, which promised the Subtle Energies
+    //    Aura Protection Body Mist at $50 from publication in July. The mist
+    //    was never $50. Anyone who clicked through met a different number.
+    //
+    //    Scoped to post-migration articles and to articles carrying our own
+    //    products, for the same reason check 6 is: a price in prose is often
+    //    perfectly legitimate — a treatment cost, a hotel rate, the value of a
+    //    gifted item, "the $22 hairbrush" in a headline — and the archive has
+    //    ~500 of them. Warning on all of those is how a check gets ignored.
+    if (Number.isFinite(published) && published >= MIGRATION) {
+      const raw = fs.readFileSync(mdx, 'utf8')
+      const body = raw.replace(/^---\n[\s\S]*?\n---/, '')
+      const sellsOurs = /type:\s*["']shop["']/.test(raw) || /<(ShopItem|InlineProduct)\b/.test(body)
+      if (sellsOurs) {
+        const priced = body.split('\n').filter(line => {
+          const t = line.trim()
+          // Component tags carry price/handle attributes; those are the source
+          // of truth, not the duplication this is looking for.
+          if (!t || t.startsWith('<') || /\b(price|handle|productPrice|src|url)=/.test(t)) return false
+          return /(?<![A-Za-z0-9])(?:A?\$|AUD\s*\$?)\s?\d[\d,]*(?:\.\d{2})?/i.test(t)
+        })
+        if (priced.length) {
+          warn.push(
+            `${rel} — ${priced.length} price(s) typed into the prose of an article that sells our own ` +
+            `products. The card pulls price live from Shopify; the sentence cannot. Drop the number: ` +
+            priced[0].trim().slice(0, 80) + '…'
+          )
+        }
+      }
+    }
   }
 })(CONTENT)
 
