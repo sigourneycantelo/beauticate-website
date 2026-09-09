@@ -296,7 +296,10 @@ const nextConfig: NextConfig = {
       { source: '/beauty-style/beauty-tips/these-are-the-beauty-brands-working-towards-better-packaging', destination: '/living/sustainability/these-are-the-beauty-brands-working-towards-better-packaging', permanent: true },
       { source: '/living/lifestyle/best-ai-image-generator-app-review-glam-ai', destination: '/beauty-style/beauty-tips/best-ai-image-generator-app-review-glam-ai', permanent: true },
       { source: '/news/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy', destination: '/beauty-style/beauty-tips/why-i-swapped-my-whoop-for-an-ultrahuman-ring-and-what-its-taught-me-about-stress-sleep-and-bio-age-copy', permanent: true },
-      { source: '/interviews/actors-presenters/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', destination: '/vodcast/episodes/celeste-barber-on-adhd-bullying-boundaries-and-the-battle-with-social-media', permanent: true },
+      // The ADHD/Celeste duplicate is consolidated by the middleware slug map, not here.
+      // A rule pointing /interviews/... at /vodcast/... deadlocked: the vodcast copy is
+      // published: false, so redirect-slug-map.json resolves that slug to the interviews
+      // copy and sent it straight back — an infinite 308 loop on a live article.
       { source: '/beauty-style/magnesium-pools-wellness-design-australia', destination: '/beauty-style/beauty-tips/magnesium-pools-wellness-design-australia', permanent: true },
       { source: '/destination/travel/family-ski-holiday-to-japan', destination: '/beauty-style/beauty-tips/family-ski-holiday-to-japan', permanent: true },
       { source: '/sigourneys-edit/last-minute-christmas-gifts', destination: '/beauty-style/beauty-tips/last-minute-christmas-gifts', permanent: true },
