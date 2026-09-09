@@ -2,6 +2,7 @@ import { getArticleBySlug, getArticlesBySubcategory, getRelatedArticles } from '
 import { getProductsByHandles, getProductsByTag } from '@/lib/shopify'
 import { buildCategoryMetadata } from '@/lib/seo'
 import ArticlePage from '@/components/article/ArticlePage'
+import ArticleJsonLd from '@/components/article/ArticleJsonLd'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -45,13 +46,20 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
     )
     const related = getRelatedArticles(subcategory, category, article.frontmatter.tags ?? [])
     return (
-      <ArticlePage
-        frontmatter={article.frontmatter}
-        content={article.content}
-        productLinks={article.products}
-        shopProducts={shopProducts}
-        relatedArticles={related as any}
-      />
+      <>
+        <ArticleJsonLd
+          frontmatter={article.frontmatter}
+          segments={[category, subcategory]}
+          content={article.content}
+        />
+        <ArticlePage
+          frontmatter={article.frontmatter}
+          content={article.content}
+          productLinks={article.products}
+          shopProducts={shopProducts}
+          relatedArticles={related as any}
+        />
+      </>
     )
   }
 
