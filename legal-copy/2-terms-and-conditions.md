@@ -14,6 +14,12 @@ This model does not reduce your rights. Under the Australian Consumer Law you ar
 
 Prices are shown in Australian dollars and include GST. We work hard to keep listings accurate, but from time to time an error in price, description or availability may slip through. Where that happens we may correct it, or decline or cancel an affected order, and we will let you know. Stock depends on each brand's availability, so a product may sell out or be withdrawn.
 
+## Promotions and gifts with purchase
+
+From time to time we run a gift with purchase with one of our partner brands. Where one is running, the gift is added to your cart automatically once your order meets the conditions shown on that brand's product pages. Any minimum spend applies to that brand's products only, not to your order total, and gift cards do not count towards it.
+
+Gifts are limited and offered while stocks last, so a promotion may end before any date we have advertised. One gift per order. A gift cannot be exchanged, returned for credit or bought separately, and has no cash value. We may change or end a promotion at any time; orders already placed are not affected.
+
 ## Affiliate and sponsored content
 
 Beauticate is an editorial platform. Some of our content contains affiliate links, and some content is sponsored or produced in paid partnership with a brand. Where content is sponsored or contains affiliate links, we aim to make this clear. If you buy through an affiliate link, we may earn a commission at no extra cost to you. Products in our shop are selected by our team, and we choose what to feature on merit.

@@ -13,7 +13,7 @@ export default function TermsPage() {
         <p className="label-editorial mb-2">Legal</p>
         <h1 className="font-serif text-3xl md:text-4xl text-ink">Terms &amp; Conditions</h1>
         <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
-          Last updated: July 2026
+          Last updated: September 2026
         </p>
       </header>
 
@@ -54,6 +54,23 @@ export default function TermsPage() {
             through. Where that happens we may correct it, or decline or cancel an affected order,
             and we will let you know. Stock depends on each brand&apos;s availability, so a product
             may sell out or be withdrawn.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Promotions and gifts with purchase</h2>
+          <p>
+            From time to time we run a gift with purchase with one of our partner brands. Where one
+            is running, the gift is added to your cart automatically once your order meets the
+            conditions shown on that brand&apos;s product pages. Any minimum spend applies to that
+            brand&apos;s products only, not to your order total, and gift cards do not count towards
+            it.
+          </p>
+          <p className="mt-4">
+            Gifts are limited and offered while stocks last, so a promotion may end before any date
+            we have advertised. One gift per order. A gift cannot be exchanged, returned for credit
+            or bought separately, and has no cash value. We may change or end a promotion at any
+            time; orders already placed are not affected.
           </p>
         </section>
 
