@@ -176,12 +176,14 @@ export default function CompetitionTermsPage() {
             the gift is removed from your cart.
           </p>
           <p className="mt-4">
-            The gift has no cash value, cannot be exchanged or returned for credit, and cannot be
-            bought separately. If a gift is unavailable we may substitute one of equal or greater
-            value. Returning items from a qualifying order may mean the order no longer meets the
-            minimum; where that happens we may deduct the value of the gift from your refund unless
-            the gift is returned with the order. We may change or end the promotion at any time.
-            Orders already placed are not affected.
+            The gift has no cash value and cannot be exchanged or returned for credit. The{' '}
+            {gwp.gift} is also sold on its own at full price — it is the gift version, given free
+            with a qualifying order, that is limited to this promotion. If the gift becomes
+            unavailable we may substitute one of equal or greater value. Returning items from a
+            qualifying order may mean the order no longer meets the minimum; where that happens we
+            may deduct the value of the gift from your refund unless the gift is returned with the
+            order. We may change or end the promotion at any time. Orders already placed are not
+            affected.
           </p>
           <p className="mt-4">
             This is a gift with purchase, not a competition or prize draw. There is no element of
