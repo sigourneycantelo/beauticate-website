@@ -1,9 +1,10 @@
 import { getArticleBySlug, getRelatedArticles } from '@/lib/content'
 import { getProductsByHandles } from '@/lib/shopify'
 import ArticlePage from '@/components/article/ArticlePage'
+import ArticleJsonLd from '@/components/article/ArticleJsonLd'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import { buildArticleMetadata, buildArticleSchema, buildBreadcrumbSchema, buildLocalBusinessSchema } from '@/lib/seo'
+import { buildArticleMetadata } from '@/lib/seo'
 
 interface Props { params: Promise<{ category: string; subcategory: string; slug: string }> }
 
@@ -33,35 +34,9 @@ export default async function ArticleRoute({ params }: Props) {
 
   const related = getRelatedArticles(slug, category, f.tags ?? [])
 
-  const url = `/${category}/${subcategory}/${slug}`
-  const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })), content)
-  const localBusinessSchema = buildLocalBusinessSchema(f, url)
-  const breadcrumbSchema = buildBreadcrumbSchema([
-    { name: 'Home', url: '/' },
-    { name: category.replace(/-/g, ' '), url: `/${category}` },
-    ...(subcategory ? [{ name: subcategory.replace(/-/g, ' '), url: `/${category}/${subcategory}` }] : []),
-    { name: f.title, url },
-  ])
-
   return (
     <>
-      {/* JSON-LD rendered as plain <script> in this server component so it is
-          present in the initial SSR HTML (next/script's afterInteractive default
-          injects client-side only, which is less reliably crawled). */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      {localBusinessSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-        />
-      )}
+      <ArticleJsonLd frontmatter={f} segments={[category, subcategory, slug]} content={content} />
       <ArticlePage
         frontmatter={f}
         content={content}
