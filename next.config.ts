@@ -304,9 +304,18 @@ const nextConfig: NextConfig = {
       { source: '/vodcast/episodes/dr-shefali-tsabary-the-truth-about-conscious-parenting-screens-and-shame', destination: '/interviews/creatives/dr-shefali-conscious-parenting-podcast', permanent: true },
       { source: '/beauty-style/fragrance/fathers-day-fragrance-gifts', destination: '/beauty-style/fragrance/fathers-day-fragrance', permanent: true },
       { source: '/wellness/mindset/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak', destination: '/vodcast/episodes/lola-berry-on-ivf-trauma-cancel-culture-finding-peace-after-heartbreak', permanent: true },
-      { source: '/wellness/mindset/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth', destination: '/vodcast/episodes/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth', permanent: true },
+      { source: '/wellness/mindset/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth', destination: '/vodcast/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth', permanent: true },
       { source: '/wellness/mindset/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected', destination: '/vodcast/episodes/jessica-maguire-on-why-anxiety-gut-issues-and-chronic-pain-are-all-connected', permanent: true },
       { source: '/wellness/mindset/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep', destination: '/vodcast/episodes/miranda-kerr-on-faith-family-and-that-first-date-where-he-fell-asleep', permanent: true },
+      // These three episodes had a longer slug as WordPress posts than they do
+      // now, so neither the :slug rule below nor the middleware slug map can
+      // find them. Keep them above that rule: first match wins.
+      { source: '/vodcast-by-beauticate/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth', destination: '/vodcast/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth', permanent: true },
+      { source: '/vodcast/episodes/i-thought-i-wasnt-enough-terri-vinson-jones-on-body-image-anxiety-and-self-worth', destination: '/vodcast/episodes/synergie-skin-founder-terri-vinson-jones-on-body-image-anxiety-and-self-worth', permanent: true },
+      { source: '/vodcast-by-beauticate/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
+      { source: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
+      { source: '/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', destination: '/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo', permanent: true },
+      { source: '/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', destination: '/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo', permanent: true },
       { source: '/destinations/clinics/que-colour-darlinghurst-2', destination: '/destinations/clinics/que-colour-darlinghurst', permanent: true },
       { source: '/interviews/actors-presenters/gail-elliott-designer-and-model', destination: '/interviews/creatives/gail-elliott-model-designer', permanent: true },
       { source: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2', destination: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will', permanent: true },
@@ -325,7 +334,7 @@ const nextConfig: NextConfig = {
       { source: '/how-to/beauty-tips/how-to-remove-fake-tan-from-white-clothes', destination: '/beauty-style/beauty-tips/how-to-remove-fake-tan-from-white-clothes', permanent: true },
       { source: '/reviews/products/byredo-hand-cream-review-is-it-worth-it', destination: '/beauty-style/skin-care/byredo-hand-cream-review-is-it-worth-it', permanent: true },
       { source: '/vodcast-by-beauticate/david-the-medium-on-intuition-healing-and-life-after-death', destination: '/vodcast/episodes/david-the-medium-on-intuition-healing-and-life-after-death', permanent: true },
-      { source: '/vodcast-by-beauticate/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', destination: '/wellness/mindset/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', permanent: true },
+      { source: '/vodcast-by-beauticate/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywood-journey', destination: '/vodcast/episodes/lindsay-price-on-healing-childhood-trauma-life-with-curtis-stone-and-her-hollywo', permanent: true },
       { source: '/ask/q-how-can-i-keep-powders-ruining-my-flawless-foundation', destination: '/beauty-style/makeup/q-how-can-i-keep-powders-ruining-my-flawless-foundation', permanent: true },
       // Wildcard: all other vodcast-by-beauticate paths → vodcast/episodes (specific overrides above)
       { source: '/vodcast-by-beauticate/:slug', destination: '/vodcast/episodes/:slug', permanent: true },
