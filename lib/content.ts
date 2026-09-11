@@ -142,8 +142,31 @@ export function getArticlesByTravelType(travelType: string) {
     })
 }
 
+/**
+ * The subcategories of `destinations` that hold the venue directory. Everything
+ * under them is a listing; `destinations/travel` beside them is editorial.
+ */
+export const DIRECTORY_SUBCATEGORIES = new Set([
+  'clinics',
+  'salons',
+  'spas-retreats',
+  'bathhouses',
+  'wellness',
+])
+
+/**
+ * The directory index: published content that carries `venueType` AND is filed
+ * under a directory subcategory. The same test lib/feed.ts uses for "is a
+ * listing".
+ *
+ * `venueType` alone used to be enough, which put editorial travel features in
+ * the directory: the InterContinental Coogee review showed up as a HOTEL card.
+ * Those features keep `venueType` for their Hotel schema and venue details;
+ * the path is what keeps them out of the index.
+ */
 export function getDirectoryListings(filters?: { state?: string; venueType?: string }) {
   return getArticleSlugs()
+    .filter(parts => parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1]))
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
     .filter(a => !!a?.frontmatter.venueType)
