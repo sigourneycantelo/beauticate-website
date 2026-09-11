@@ -42,10 +42,8 @@ async function shopifyFetch<T>(query: string, variables?: object, opts?: { noSto
 
 // ─── Fragments ───────────────────────────────────────────────────────────────
 
-// Everything a product needs except its images and variants — those are selected
-// per query, because a grid of 40 products and a single product page want very
-// different amounts of them.
-const PRODUCT_CORE_FIELDS = `
+const PRODUCT_FRAGMENT = `
+  fragment ProductFields on Product {
     id
     handle
     title
@@ -55,15 +53,14 @@ const PRODUCT_CORE_FIELDS = `
     vendor
     productType
     tags
-    featuredImage { id url altText width height }
-    images(first: 10) { nodes { id url altText width height } }
+    featuredImage { url altText width height }
+    images(first: 10) { nodes { url altText width height } }
     priceRange {
       minVariantPrice { amount currencyCode }
       maxVariantPrice { amount currencyCode }
     }
-`
-
-const VARIANT_CORE_FIELDS = `
+    variants(first: 10) {
+      nodes {
         id
         title
         availableForSale
@@ -72,32 +69,6 @@ const VARIANT_CORE_FIELDS = `
         price { amount currencyCode }
         compareAtPrice { amount currencyCode }
         selectedOptions { name value }
-`
-
-const PRODUCT_FRAGMENT = `
-  fragment ProductFields on Product {
-    ${PRODUCT_CORE_FIELDS}
-    variants(first: 10) {
-      nodes {
-        ${VARIANT_CORE_FIELDS}
-      }
-    }
-  }
-`
-
-// The product page needs more than a grid card does, and only the product page:
-//   • each variant's own photo, so choosing a colourway swaps the gallery;
-//   • every variant, not the first 10 — Basics By B's Alter Ego Concealer has 11
-//     shades, so the 11th was previously unselectable.
-// Deliberately kept off PRODUCT_FRAGMENT: a 40-card grid carrying this for every
-// product would blow up the RSC payload for data no card renders.
-const PRODUCT_DETAIL_FRAGMENT = `
-  fragment ProductDetailFields on Product {
-    ${PRODUCT_CORE_FIELDS}
-    variants(first: 100) {
-      nodes {
-        ${VARIANT_CORE_FIELDS}
-        image { id url altText width height }
       }
     }
   }
@@ -145,19 +116,6 @@ export async function getProductByHandle(handle: string): Promise<ShopifyProduct
     ${PRODUCT_FRAGMENT}
     query GetProduct($handle: String!) {
       product(handle: $handle) { ...ProductFields }
-    }
-  `, { handle })
-  return (data as any)?.product ?? null
-}
-
-/** Product-page fetch: same product, plus every variant and each variant's photo.
- *  Use this wherever a variant selector is rendered; getProductByHandle stays lean
- *  for cards, embeds and metadata. */
-export async function getProductDetail(handle: string): Promise<ShopifyProduct | null> {
-  const data = await shopifyFetch<{ product: ShopifyProduct | null }>(`
-    ${PRODUCT_DETAIL_FRAGMENT}
-    query GetProductDetail($handle: String!) {
-      product(handle: $handle) { ...ProductDetailFields }
     }
   `, { handle })
   return (data as any)?.product ?? null

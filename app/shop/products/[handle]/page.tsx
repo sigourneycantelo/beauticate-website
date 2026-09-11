@@ -1,4 +1,4 @@
-import { getProductByHandle, getProductDetail, getProductsByType, getProducts, getVariantAvailability } from '@/lib/shopify'
+import { getProductByHandle, getProductsByType, getProducts, getVariantAvailability } from '@/lib/shopify'
 import ProductPage from '@/components/shop/ProductPage'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -6,14 +6,7 @@ import type { ShopifyProduct } from '@/types/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { GWP, isGiftProduct } from '@/lib/gwp'
 
-// `searchParams` makes this route render per request rather than being served from
-// the full route cache — the price of getting a `?variant=` deep link onto the right
-// image on first paint. The Shopify fetches underneath stay cached (revalidate 300),
-// so this costs a render, not extra API calls.
-interface Props {
-  params: Promise<{ handle: string }>
-  searchParams: Promise<{ variant?: string }>
-}
+interface Props { params: Promise<{ handle: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params
@@ -32,17 +25,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function ProductRoute({ params, searchParams }: Props) {
-  const [{ handle }, { variant }] = await Promise.all([params, searchParams])
+export default async function ProductRoute({ params }: Props) {
+  const { handle } = await params
   // The gift-with-purchase SKU has no page of its own. It is a real, purchasable
   // $0.01 product in Shopify (Modern Dropship can't take $0.00), which without this
   // would let anyone who found the URL buy the illuminator for a cent. The cart API
   // refuses to add it directly too — this just closes the front door.
   if (handle === GWP.giftHandle) notFound()
 
-  // getProductDetail, not getProductByHandle: the page needs every variant and each
-  // variant's own photo so the gallery can follow the selector.
-  const product = await getProductDetail(handle)
+  const product = await getProductByHandle(handle)
   if (!product || isGiftProduct(product)) notFound()
 
   // Probe real-time stock in parallel with the related-products fetch (see
@@ -75,13 +66,5 @@ export default async function ProductRoute({ params, searchParams }: Props) {
   const giftStock = qualifiesForGift ? await getVariantAvailability([GWP.giftVariantId]) : {}
   const showGift = qualifiesForGift && (giftStock[GWP.giftVariantId] ?? true)
 
-  return (
-    <ProductPage
-      product={product}
-      related={related}
-      availability={availability}
-      showGift={showGift}
-      variantParam={variant}
-    />
-  )
+  return <ProductPage product={product} related={related} availability={availability} showGift={showGift} />
 }

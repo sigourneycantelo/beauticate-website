@@ -1,8 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useCallback, useMemo, useRef, useState, useEffect } from 'react'
-import { useVariantSelection } from './VariantSelectionProvider'
+import { useCallback, useRef, useState, useEffect } from 'react'
 
 interface ProductImage {
   url: string
@@ -13,32 +12,12 @@ interface Props {
   images: ProductImage[]
   vendor: string
   title: string
-  /** variant id → index of that variant's own photo (see buildGallery). */
-  variantImageIndex?: Record<string, number>
-  /** Where a variant with no photo of its own sends the gallery.
-   *  Undefined ⇒ no variant on this product has one, so leave the reader be. */
-  fallbackIndex?: number
 }
 
-export default function ProductImageCarousel({
-  images,
-  vendor,
-  title,
-  variantImageIndex,
-  fallbackIndex,
-}: Props) {
+export default function ProductImageCarousel({ images, vendor, title }: Props) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
   const count = images.length
-  const { variantId } = useVariantSelection()
-
-  // Any photo a variant can jump to loads eagerly. They're one click away and the
-  // jump is instant, so leaving them lazy shows an empty frame for a beat — exactly
-  // the "no image" impression this whole fix exists to remove.
-  const variantTargets = useMemo(
-    () => new Set(Object.values(variantImageIndex ?? {})),
-    [variantImageIndex],
-  )
 
   useEffect(() => {
     const track = trackRef.current
@@ -51,23 +30,9 @@ export default function ProductImageCarousel({
     return () => track.removeEventListener('scroll', onScroll)
   }, [])
 
-  const goTo = useCallback((i: number, instant = false) => {
-    const track = trackRef.current
-    if (!track) return
-    track.scrollTo({ left: i * track.clientWidth, behavior: instant ? 'auto' : 'smooth' })
+  const goTo = useCallback((i: number) => {
+    trackRef.current?.scrollTo({ left: i * trackRef.current.clientWidth, behavior: 'smooth' })
   }, [])
-
-  // Follow the buy box: choosing a colourway brings that colourway's photo up.
-  // A variant with no photo of its own falls back to the product's featured shot
-  // rather than blanking the gallery. The jump is instant, not animated — a
-  // variant's photo can be a dozen frames away (Blush Pink is the 14th shot on the
-  // HOMEE bag) and whipping through the others reads as a glitch. Arrows and dots
-  // keep their glide; they only ever move one frame.
-  useEffect(() => {
-    const target = variantId ? variantImageIndex?.[variantId] ?? fallbackIndex : undefined
-    if (target === undefined) return
-    goTo(target, true)
-  }, [variantId, variantImageIndex, fallbackIndex, goTo])
 
   const goPrev = useCallback(() => goTo((active - 1 + count) % count), [active, count, goTo])
   const goNext = useCallback(() => goTo((active + 1) % count), [active, count, goTo])
@@ -110,7 +75,6 @@ export default function ProductImageCarousel({
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
                   priority={i === 0}
-                  loading={i !== 0 && variantTargets.has(i) ? 'eager' : undefined}
                 />
               </div>
             </div>

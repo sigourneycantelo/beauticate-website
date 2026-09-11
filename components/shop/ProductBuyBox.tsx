@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useCart } from './CartProvider'
-import { useVariantSelection } from './VariantSelectionProvider'
 import type { ShopifyProduct } from '@/types/shopify'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
 import { cleanProductTitle } from '@/lib/product-format'
@@ -20,10 +19,17 @@ export default function ProductBuyBox({ product: p, availability, showGift = fal
   showGift?: boolean
 }) {
   const variants = p.variants.nodes
-  // Which variant is selected lives one level up (VariantSelectionProvider), so the
-  // gallery can follow it — and the opening variant is chosen on the server, where
-  // the gallery order is decided too. See pickDefaultVariant.
-  const { variantId, select } = useVariantSelection()
+  // Open on the cheapest in-stock variant so the price shown matches the card's
+  // "From $X" (Shopify's first variant is often not the cheapest). Falls back to
+  // cheapest overall, then the first variant.
+  const cheapestFirst = [...variants].sort(
+    (a, b) => parseFloat(a.price.amount) - parseFloat(b.price.amount)
+  )
+  const defaultVariant =
+    cheapestFirst.find(v => (availability?.[v.id] ?? v.availableForSale)) ??
+    cheapestFirst[0] ??
+    variants[0]
+  const [variantId, setVariantId] = useState(defaultVariant?.id)
   const [qty, setQty] = useState(1)
   const [loading, setLoading] = useState(false)
   const { addItem } = useCart()
@@ -69,7 +75,7 @@ export default function ProductBuyBox({ product: p, availability, showGift = fal
           <select
             id="variant"
             value={variantId}
-            onChange={e => select(e.target.value)}
+            onChange={e => setVariantId(e.target.value)}
             className="w-full border border-cream-200 rounded-[2px] px-3 py-2.5 font-sans text-sm bg-white"
           >
             {variants.map(v => {
