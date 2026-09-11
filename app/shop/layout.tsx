@@ -3,6 +3,7 @@ import ShopSubNav, { type SubNavItem } from '@/components/shop/ShopSubNav'
 import { getCollections, brandsFromCollections } from '@/lib/shopify'
 import { BROAD_CATEGORIES, MOOD_MOMENTS } from '@/lib/shop-taxonomy'
 import { getArticleMoments } from '@/lib/article-moments'
+import { getCuratorCollections } from '@/lib/curator-collections'
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 
@@ -42,6 +43,9 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
     soon: b.comingSoon,
   }))
   const brands: SubNavItem[] = brandsFromCollections(collections).map(b => ({ label: b.name, href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle) }))
+  const curators: SubNavItem[] = getCuratorCollections().map(c => ({
+    label: `${c.name}'s Favourites`, href: `/shop/curators/${c.slug}`, image: c.photo,
+  }))
   const moments: SubNavItem[] = [
     ...MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) })),
     ...getArticleMoments().map(m => ({ label: m.title, href: `/shop/moments/${m.slug}`, image: m.image })),
@@ -52,7 +56,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
       <Script id="shop-org-schema" type="application/ld+json" strategy="beforeInteractive">
         {JSON.stringify(shopOrgSchema)}
       </Script>
-      <ShopSubNav category={category} brands={brands} moments={moments} />
+      <ShopSubNav category={category} brands={brands} moments={moments} curators={curators} />
       {children}
     </>
   )
