@@ -39,7 +39,7 @@ interface CartContextType {
   openCart: () => void
   closeCart: () => void
   addItem: (variantId: string, quantity?: number) => Promise<void>
-  removeItem: (lineId: string) => Promise<void>
+  removeItem: (lineId: string | string[]) => Promise<void>
 }
 
 const CartContext = createContext<CartContextType | null>(null)
@@ -239,13 +239,19 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [getOrCreateCart])
 
-  const removeItem = useCallback(async (lineId: string) => {
+  // Accepts several line ids because one product can occupy more than one cart
+  // line: Shopify splits a line when a discount applies to only some of its units
+  // (the gift-with-purchase cent offset does exactly that). The drawer shows such
+  // lines merged, so Remove has to take the whole group out at once.
+  const removeItem = useCallback(async (lineId: string | string[]) => {
     if (!cart?.id) return
+    const lineIds = Array.isArray(lineId) ? lineId : [lineId]
+    if (!lineIds.length) return
     mutatingRef.current = true
     try {
       const updated = await fetch('/api/cart', {
         method: 'POST',
-        body: JSON.stringify({ action: 'remove', cartId: cart.id, lineIds: [lineId] }),
+        body: JSON.stringify({ action: 'remove', cartId: cart.id, lineIds }),
         headers: { 'Content-Type': 'application/json' },
       }).then(r => r.json())
       if (updated?.id) {

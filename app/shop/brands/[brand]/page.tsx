@@ -8,6 +8,9 @@ import { sortProducts } from '@/lib/product-sort'
 import CollectionHero from '@/components/shop/CollectionHero'
 import { BRAND_HEROES } from '@/data/brand-heroes'
 import { SHOP_FOUNDERS } from '@/data/shop-founders'
+import { brandEpisode } from '@/data/brand-episodes'
+import { resolveArticleEpisode } from '@/lib/content'
+import EpisodeStrip from '@/components/vodcast/EpisodeStrip'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -36,6 +39,13 @@ export default async function BrandPage({ params, searchParams }: Props) {
   if (!collection) notFound()
 
   const products = sortProducts(collection.products.nodes, sort)
+
+  // The founder interview, where there is one. Many of these brands are in the
+  // shop *because* of the conversation, and the brand page never said so.
+  const be = brandEpisode(brand)
+  const episode = be
+    ? resolveArticleEpisode({ podcast_episode: be.episode, podcast_heading: be.heading, podcast_strip: 'compact' })
+    : null
   const crumbs = [
     { name: 'Home', url: `${SITE}/` },
     { name: 'Shop', url: `${SITE}/shop` },
@@ -74,6 +84,12 @@ export default async function BrandPage({ params, searchParams }: Props) {
           return f ? { name: f.name, image: f.image, brand: f.brand } : undefined
         })()}
       />
+
+      {episode && (
+        <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] pt-[clamp(20px,3vw,32px)]">
+          <EpisodeStrip {...episode} />
+        </div>
+      )}
 
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
         <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-5">

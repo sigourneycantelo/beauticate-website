@@ -1,5 +1,6 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
+import { GIFT_HANDLES, stripHidden } from './gwp'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
@@ -52,13 +53,15 @@ const PRODUCT_FRAGMENT = `
     vendor
     productType
     tags
-    featuredImage { url altText width height }
-    images(first: 10) { nodes { url altText width height } }
+    featuredImage { id url altText width height }
+    images(first: 10) { nodes { id url altText width height } }
     priceRange {
       minVariantPrice { amount currencyCode }
       maxVariantPrice { amount currencyCode }
     }
-    variants(first: 10) {
+    # 50, not 10: Basics By B's Alter Ego Concealer has 11 shades, and the 11th was
+    # being cut off — unselectable on the product page and unbuyable anywhere.
+    variants(first: 50) {
       nodes {
         id
         title
@@ -68,6 +71,10 @@ const PRODUCT_FRAGMENT = `
         price { amount currencyCode }
         compareAtPrice { amount currencyCode }
         selectedOptions { name value }
+        # Per-colourway shot, so an editorial card pinned to one variant
+        # (e.g. Blush Pink) shows that colour rather than the product's default —
+        # and so the product page's gallery can follow the variant selector.
+        image { id url altText width height }
       }
     }
   }
@@ -134,7 +141,7 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
       }
     }
   `, { first })
-  return (data as any)?.products?.nodes ?? []
+  return stripHidden((data as any)?.products?.nodes ?? [])
 }
 
 // Round-robin interleave: take up to `perBrand` products from each of the last
@@ -149,7 +156,7 @@ export async function getNewArrivals(maxBrands = 6, perBrand = 4): Promise<Shopi
       }
     }
   `, { first: 200 })
-  const all = (data as any)?.products?.nodes ?? []
+  const all = stripHidden<ShopifyProduct>((data as any)?.products?.nodes ?? [])
   const buckets = new Map<string, ShopifyProduct[]>()
   const brandOrder: string[] = []
   for (const p of all) {
@@ -210,7 +217,7 @@ export async function getProductsByTag(tag: string, first = 20): Promise<Shopify
       }
     }
   `, { query: `tag:${tag}`, first })
-  return (data as any)?.products?.nodes ?? []
+  return stripHidden((data as any)?.products?.nodes ?? [])
 }
 
 // ─── Collections ─────────────────────────────────────────────────────────────
@@ -248,7 +255,7 @@ export async function getProductsByType(type: string, first = 8, vendor?: string
     }
     ${PRODUCT_FRAGMENT}
   `, { query, first })
-  return data.products?.nodes ?? []
+  return stripHidden(data.products?.nodes ?? [])
 }
 
 export async function getCollections(first = 20): Promise<ShopifyCollection[]> {
@@ -307,7 +314,7 @@ export async function getProductsByVendor(vendor: string, first = 250): Promise<
       }
     }
   `, { query: `vendor:"${vendor.replace(/"/g, '\\"')}"`, first })
-  return (data as any)?.products?.nodes ?? []
+  return stripHidden((data as any)?.products?.nodes ?? [])
 }
 
 // A brand page's collection resolved leniently: the real Shopify collection for the
@@ -365,7 +372,12 @@ export async function getCart(cartId: string): Promise<Cart | null> {
   return (data as any)?.cart ?? null
 }
 
-export async function addToCart(cartId: string, variantId: string, quantity = 1): Promise<Cart> {
+export async function addToCart(
+  cartId: string,
+  variantId: string,
+  quantity = 1,
+  attributes?: { key: string; value: string }[]
+): Promise<Cart> {
   const data = await shopifyFetch<{ cartLinesAdd: { cart: Cart } }>(`
     ${CART_FRAGMENT}
     mutation AddToCart($cartId: ID!, $lines: [CartLineInput!]!) {
@@ -373,8 +385,26 @@ export async function addToCart(cartId: string, variantId: string, quantity = 1)
         cart { ...CartFields }
       }
     }
-  `, { cartId, lines: [{ merchandiseId: variantId, quantity }] }, { noStore: true })
+  `, {
+    cartId,
+    lines: [{ merchandiseId: variantId, quantity, ...(attributes?.length ? { attributes } : {}) }],
+  }, { noStore: true })
   return data.cartLinesAdd.cart
+}
+
+// Set an existing line's quantity. Used to clamp the gift-with-purchase line back
+// to one if anything ever pushes it higher; the storefront has no other quantity
+// control on a cart line.
+export async function updateCartLineQuantity(cartId: string, lineId: string, quantity: number): Promise<Cart> {
+  const data = await shopifyFetch<{ cartLinesUpdate: { cart: Cart } }>(`
+    ${CART_FRAGMENT}
+    mutation UpdateCartLine($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+      cartLinesUpdate(cartId: $cartId, lines: $lines) {
+        cart { ...CartFields }
+      }
+    }
+  `, { cartId, lines: [{ id: lineId, quantity }] }, { noStore: true })
+  return data.cartLinesUpdate.cart
 }
 
 export async function removeFromCart(cartId: string, lineIds: string[]): Promise<Cart> {
@@ -461,7 +491,8 @@ export async function getAllProductHandles(): Promise<{ handle: string; updatedA
     `, { cursor })
     const conn: ProductHandleConn | undefined = data?.products
     if (!conn) break
-    for (const n of conn.nodes ?? []) if (n?.handle) out.push({ handle: n.handle, updatedAt: n.updatedAt })
+    // Gift-with-purchase SKUs are seo.hidden in Shopify and must not be indexed.
+    for (const n of conn.nodes ?? []) if (n?.handle && !GIFT_HANDLES.includes(n.handle)) out.push({ handle: n.handle, updatedAt: n.updatedAt })
     if (!conn.pageInfo?.hasNextPage) break
     cursor = conn.pageInfo.endCursor
   }

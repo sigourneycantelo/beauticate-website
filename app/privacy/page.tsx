@@ -13,7 +13,7 @@ export default function PrivacyPage() {
         <p className="label-editorial mb-2">Legal</p>
         <h1 className="font-serif text-3xl md:text-4xl text-ink">Privacy Policy</h1>
         <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
-          Last updated: July 2026
+          Last updated: August 2026
         </p>
       </header>
 
@@ -51,6 +51,7 @@ export default function PrivacyPage() {
             <li><strong>Contact and order details.</strong> Your name, email address, delivery and billing address, phone number if you give it, and the details of what you have ordered.</li>
             <li><strong>Payment information.</strong> Processed securely by our payment provider. We do not see or store your full card number.</li>
             <li><strong>Account and marketing preferences.</strong> Newsletter subscriptions and your communication choices.</li>
+            <li><strong>Competition entries.</strong> If you enter one of our competitions on Instagram, the email address you give us when we message you, and your delivery details if you win.</li>
             <li><strong>Site and usage data.</strong> Cookies, IP address and how you browse the site, so we can keep it working well.</li>
           </ul>
           <p className="mt-4">
@@ -82,6 +83,7 @@ export default function PrivacyPage() {
             <li><strong>The fulfilling brand or supplier.</strong> Receives your name and delivery address so it can pick, pack and post your order. An order with items from more than one brand is shared with each of those brands.</li>
             <li><strong>Stripe.</strong> Processes your payment securely.</li>
             <li><strong>Klaviyo.</strong> Manages our order emails and newsletters.</li>
+            <li><strong>ManyChat.</strong> Handles the Instagram messages we send when you enter a competition, and stores the email address you give us in reply.</li>
             <li><strong>Google.</strong> Provides analytics that help us understand how the site is used.</li>
             <li><strong>Meta (Facebook &amp; Instagram).</strong> We use the Meta Pixel and Conversions API to measure how our advertising performs and to show more relevant ads. This may involve sharing limited data such as your IP address, browser information and the pages you view. You can control ad personalisation in your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener noreferrer" className="underline">Meta ad preferences</a>.</li>
             <li><strong>Couriers and Australia Post.</strong> Deliver your parcel, arranged by the brand that ships it.</li>
@@ -92,7 +94,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-serif text-xl text-ink mb-4">Overseas transfer</h2>
           <p>
-            Some of our providers, including Shopify, Stripe, Klaviyo, Google and Meta, store data on
+            Some of our providers, including Shopify, Stripe, Klaviyo, ManyChat, Google and Meta, store data on
             servers outside Australia, including in the United States. Where your information is
             handled overseas, we take reasonable steps to ensure it is protected consistent with
             the Australian Privacy Principles.

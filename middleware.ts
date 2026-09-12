@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import redirectSlugMap from './data/redirect-slug-map.json'
+import { COUNTRY_COOKIE, normaliseCountry } from './lib/geo'
 
 // Only the production domain should be indexable. Every other host
 // (Vercel preview URLs, *.vercel.app, local) gets X-Robots-Tag: noindex
@@ -49,6 +50,19 @@ export function middleware(req: NextRequest) {
   if (!PROD_HOSTS.has(host)) {
     res.headers.set('X-Robots-Tag', 'noindex, nofollow')
   }
+
+  // Geo lane. Vercel resolves the visitor's country at the edge; we hand it to
+  // the client as a cookie rather than reading it inside pages, because
+  // `headers()` in a page would opt every article out of static generation.
+  // The HTML stays country-agnostic and cacheable; GeoProvider does the swap.
+  const country = normaliseCountry(req.headers.get('x-vercel-ip-country'))
+  res.cookies.set(COUNTRY_COOKIE, country, {
+    path: '/',
+    maxAge: 60 * 60 * 12,
+    sameSite: 'lax',
+    httpOnly: false, // read by GeoProvider on the client
+  })
+
   return res
 }
 

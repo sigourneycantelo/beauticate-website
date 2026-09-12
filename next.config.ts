@@ -43,7 +43,40 @@ const nextConfig: NextConfig = {
       // caught those paths before they reached Shopify, sending every customer who
       // tapped "Checkout" straight back to /shop instead of completing their order.
       // Exclude cart/checkout paths so Shopify's hosted checkout still works.
-      { source: '/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
+      //
+      // This is the ONLY place these two rules should exist. A vercel.json project
+      // redirect runs before this file's redirects() and would silently override the
+      // exclusion above — that exact mistake (PR #71, 6 Aug 2026) undid this fix for
+      // over a month, caught only because Shopify's primary domain happened to move
+      // to checkout.beauticate.com before shop.beauticate.com was reactivated. Do not
+      // re-add these rules to vercel.json.
+      // ── Instagram product-tag handoff → the headless cart ────────────────
+      // Tapping a tagged product on a reel or post sends a Shopify cart permalink,
+      // comma-separated for multiple items:
+      //
+      //   https://shop.beauticate.com/cart/45350813564997:1,45009309302853:1
+      //     ?attributes[Channel]=Instagram&attributes[cart-id]=...&cart_origin=instagram
+      //
+      // Meta still has shop.beauticate.com on record from when it was Shopify's
+      // primary domain (30 Jul 2026). It isn't any more, so that URL 404s and the
+      // basket is lost. Confirmed on a real device, 7 Sep 2026.
+      //
+      // These forward to www so app/cart/[[...items]] can build the cart on OUR
+      // storefront rather than handing the customer to Shopify's. That matters for
+      // two reasons: reconcileGift() only runs on our cart, so the BOOIE gift is
+      // added; and the cart id lives in localStorage under 'beauticate_cart_id',
+      // which is per-origin — a cart built on shop.beauticate.com is invisible on
+      // www.beauticate.com. The customer must reach the route already on www.
+      //
+      // 302, not 301: the destination changes if Meta is ever repointed.
+      { source: '/cart/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://www.beauticate.com/cart/:path*', permanent: false },
+      { source: '/cart/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://www.beauticate.com/cart/:path*', permanent: false },
+
+      // Shopify's own checkout continuation URLs belong on Shopify, not here.
+      { source: '/checkouts/:path*', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://checkout.beauticate.com/checkouts/:path*', permanent: false },
+      { source: '/checkouts/:path*', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://checkout.beauticate.com/checkouts/:path*', permanent: false },
+
+      { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'beauticate.shop' }], destination: 'https://beauticate.com/shop', permanent: true },
       { source: '/:path((?!cart|checkout|checkouts).*)', has: [{ type: 'host', value: 'shop.beauticate.com' }], destination: 'https://beauticate.com/shop', permanent: true },
 
       // ── Canonical host: www.beauticate.com. Both bare and www resolved
@@ -117,6 +150,8 @@ const nextConfig: NextConfig = {
       { source: '/destinations/clinics/peninsula-life-medi-spa-mornington-peninsula', destination: '/destinations/spas-retreats/peninsula-life-medi-spa-mornington-peninsula', permanent: true },
       { source: '/destinations/clinics/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour', destination: '/destinations/spas-retreats/sydneys-newest-hotel-spa-is-an-oasis-in-the-heart-of-darling-harbour', permanent: true },
       { source: '/destinations/clinics/five-star-day-spa-erina', destination: '/destinations/spas-retreats/five-star-day-spa-erina', permanent: true },
+      { source: '/destinations/travel/go-tos-natures-energy-glebe', destination: '/destinations/spas-retreats/go-tos-natures-energy-glebe', permanent: true },
+      { source: '/destinations/travel/injidup-spa-retreat-yalingup', destination: '/destinations/spas-retreats/injidup-spa-retreat-yalingup', permanent: true },
       { source: '/destinations/travel/the-youth-lab-perth', destination: '/destinations/clinics/the-youth-lab-perth', permanent: true },
       { source: '/destinations/travel/joey-scandizzo-south-yarra', destination: '/destinations/clinics/joey-scandizzo-south-yarra', permanent: true },
       { source: '/destinations/travel/yots-hair-north-adelaide', destination: '/destinations/clinics/yots-hair-north-adelaide', permanent: true },
@@ -143,7 +178,7 @@ const nextConfig: NextConfig = {
       { source: '/destinations/travel/valonz-paddington', destination: '/destinations/clinics/valonz-paddington', permanent: true },
       { source: '/destinations/travel/spa-by-jw-jw-marriott-gold-coast', destination: '/destinations/spas-retreats/spa-by-jw-jw-marriott-gold-coast', permanent: true },
       { source: '/destinations/travel/spa-q-qt-resort-gold-coast', destination: '/destinations/spas-retreats/spa-q-qt-resort-gold-coast', permanent: true },
-      { source: '/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers', destination: '/destinations/spas-retreats/stables-day-spa-at-mount-lofty-house-crafers', permanent: true },
+      { source: '/destinations/travel/stables-day-spa-at-mount-lofty-house-crafers', destination: '/destinations/spas-retreats/gatekeepers-day-spa-mount-lofty-house-crafers', permanent: true },
       { source: '/destinations/travel/loccitane-petit-spa', destination: '/destinations/spas-retreats/loccitane-petit-spa', permanent: true },
       { source: '/destinations/travel/spaq-qt-sydney', destination: '/destinations/spas-retreats/spaq-qt-sydney', permanent: true },
       { source: '/destinations/travel/crown-spa-melbourne', destination: '/destinations/spas-retreats/crown-spa-melbourne', permanent: true },
@@ -277,6 +312,9 @@ const nextConfig: NextConfig = {
       { source: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will-2', destination: '/living/lifestyle/video-how-to-style-your-sleepwear-with-jasmine-will', permanent: true },
       { source: '/beauty-style/beauty-tips/go-tos-launch-2', destination: '/beauty-style/beauty-tips/go-tos-launch', permanent: true },
 
+      // ── Editorial re-filing (Aug 2026) ───────────────────────────────────────────
+      { source: '/beauty-style/beauty-tips/the-la-effect-beverly-hills-style-lessons', destination: '/beauty-style/style/the-la-effect-beverly-hills-style-lessons', permanent: true },
+
       // ── SEO priority list: high-traffic old paths needing redirects ──────────────
       { source: '/reviews/luxury-skincare-review', destination: '/beauty-style/skin-care/luxury-skincare-review', permanent: true },
       { source: '/ask/should-you-apply-fake-tan-on-top-of-an-existing-tan', destination: '/beauty-style/beauty-tips/should-you-apply-fake-tan-on-top-of-an-existing-tan', permanent: true },
@@ -337,7 +375,7 @@ const nextConfig: NextConfig = {
       { source: '/beauty-style/beauty-tips/how-to-do-french-girl-beauty-like-an-icon', destination: '/beauty-style/makeup/how-to-do-french-girl-beauty-like-an-icon', permanent: true },
       { source: '/destination/discover-beauty-at-melbournes-most-luxurious-spa', destination: '/destinations/clinics/discover-beauty-at-melbournes-most-luxurious-spa', permanent: true },
       { source: '/destination/beauty-wellness/clinics/chakana-day-spa-wellbeing-avalon-2', destination: '/destinations/spas-retreats/chakana-day-spa-wellbeing-avalon-2', permanent: true },
-      { source: '/destination/beauty-wellness/clinics/go-tos-natures-energy-glebe', destination: '/destinations/travel/go-tos-natures-energy-glebe', permanent: true },
+      { source: '/destination/beauty-wellness/clinics/go-tos-natures-energy-glebe', destination: '/destinations/spas-retreats/go-tos-natures-energy-glebe', permanent: true },
       { source: '/beauty-style/how-to-get-nice-hair', destination: '/beauty-style/hair/how-to-get-nice-hair', permanent: true },
       { source: '/destination/travel/why-the-central-coast-is-worth-revisiting', destination: '/beauty-style/beauty-tips/why-the-central-coast-is-worth-revisiting', permanent: true },
       { source: '/beauty-style/megan-gale-on-being-an-earth-mother', destination: '/beauty-style/beauty-tips/megan-gale-on-being-an-earth-mother', permanent: true },
@@ -501,6 +539,13 @@ const nextConfig: NextConfig = {
       { source: '/wellness/health/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life', destination: '/wellness/mindset/i-learned-vedic-meditation-and-this-is-how-it-changed-my-life', permanent: true },
       { source: '/wellness/health/how-to-break-up-with-a-negative-insta-feed', destination: '/wellness/mindset/how-to-break-up-with-a-negative-insta-feed', permanent: true },
       { source: '/wellness/health/drastically-reduce-your-chances-of-developing-dementia', destination: '/wellness/mindset/drastically-reduce-your-chances-of-developing-dementia', permanent: true },
+      // Jess Sepel ran as both a vodcast episode and a wellness/mindset article,
+      // the only episode on the site with both versions live. The episode is the
+      // canonical version; the article is drafted, so its URL forwards here.
+      // Needed explicitly: generate-redirect-map.mjs skips unpublished articles,
+      // so the slug map no longer carries this one.
+      { source: '/wellness/mindset/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
+      { source: '/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-with-heart', destination: '/vodcast/episodes/jess-sepel-on-ocd-healing-from-disordered-eating-grief-and-building-jshealth-wit', permanent: true },
       { source: '/wellness/health/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it', destination: '/wellness/mindset/how-to-have-a-girls-weekend-away-without-the-fuss-your-health-demands-it', permanent: true },
       { source: '/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', destination: '/interviews/creatives/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', permanent: true },
       { source: '/interviews/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', destination: '/interviews/creatives/hilary-holmes-the-makeup-artist-using-beauty-to-change-hearts-and-minds', permanent: true },
@@ -719,7 +764,7 @@ const nextConfig: NextConfig = {
       { source: '/how-to/timeless-beauty-the-effortless-no-makeup-makeup-look', destination: '/beauty-style/beauty-tips/timeless-beauty-the-effortless-no-makeup-makeup-look', permanent: true },
       { source: '/how-to/beauty-tips/revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet', destination: '/beauty-style/beauty-tips/revealing-the-must-have-apps-for-your-most-amazing-self-portrait-yet', permanent: true },
       { source: '/how-to/lifestyle/the-5-chic-podcasts-were-currently-streaming', destination: '/living/lifestyle/the-5-chic-podcasts-were-currently-streaming', permanent: true },
-      { source: '/the-go-tos/beauty-maintenance/go-tos-natures-energy-glebe', destination: '/destinations/travel/go-tos-natures-energy-glebe', permanent: true },
+      { source: '/the-go-tos/beauty-maintenance/go-tos-natures-energy-glebe', destination: '/destinations/spas-retreats/go-tos-natures-energy-glebe', permanent: true },
       { source: '/how-to/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style', destination: '/beauty-style/style/your-ultimate-guide-to-mini-bags-10-mini-bags-to-elevate-your-style', permanent: true },
       { source: '/how-to/skin-care/how-to-magically-de-bloat-your-face', destination: '/beauty-style/skin-care/how-to-magically-de-bloat-your-face', permanent: true },
       { source: '/sigourneys-edit/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict', destination: '/destinations/travel/we-visited-trip-advisors-best-luxury-fiji-hotel-heres-our-verdict', permanent: true },
@@ -823,8 +868,15 @@ const nextConfig: NextConfig = {
       { source: '/how-tos/interiors/:path*', destination: '/living/interiors', permanent: true },
       { source: '/how-tos/:path*', destination: '/beauty-style', permanent: true },
 
+      // ── Podcast hub moved /vodcast → /podcast ──────────────────────────────
+      // The hub page only. Individual episodes stay at /vodcast/episodes/:slug
+      // (that is where external show notes, the sitemap and the WP-era slug map
+      // point), so this must stay an exact-path rule — a /vodcast/:path*
+      // wildcard here would swallow every episode URL on the site.
+      { source: '/vodcast', destination: '/podcast', permanent: true },
+
       // ── Vodcast-by-beauticate bare path ────────────────────────────────────
-      { source: '/vodcast-by-beauticate', destination: '/vodcast', permanent: true },
+      { source: '/vodcast-by-beauticate', destination: '/podcast', permanent: true },
 
       // ── /destination/ (singular) parent path — travel keeps its own section
       // fallback since it's still topically specific. The old blanket
@@ -843,7 +895,42 @@ const nextConfig: NextConfig = {
   },
 
   outputFileTracingExcludes: {
-    '*': ['./content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif'],
+    // Uppercase variants matter: these globs are case-sensitive, and a handful
+    // of migrated files are .JPG. Without them ~8MB of vodcast stills leak into
+    // every single bundle.
+    '*': [
+      './content/**/*.jpg', './content/**/*.jpeg', './content/**/*.png', './content/**/*.webp', './content/**/*.gif',
+      './content/**/*.JPG', './content/**/*.JPEG', './content/**/*.PNG', './content/**/*.WEBP', './content/**/*.GIF',
+    ],
+
+    /**
+     * /feed.xml and /sitemap-news.xml must not carry public/ into their bundles.
+     *
+     * lib/feed-images.ts reads an image whose path is only known at runtime.
+     * @vercel/nft cannot resolve that statically, so it conservatively traces
+     * the whole public/ tree — 3.3GB — into the bundle of any route that can
+     * reach it. Adding a third such bundle alongside the two article routes
+     * (which carry it for a real reason, see below) took the build from 7.6GB
+     * to 10.9GB and it died with `ENOSPC: no space left on device`.
+     *
+     * Excluding is safe for these two ONLY because neither reads an image at
+     * request time. /feed.xml is force-static with no revalidate: it renders
+     * once during the build, from the real filesystem, before any of this
+     * applies. /sitemap-news.xml carries no images at all.
+     *
+     * DO NOT widen this to '*'. The article routes read public/ per request
+     * through lib/rehype-portrait-images.ts, which sizes body images to lay
+     * them out. Excluding public/ there would not fail the build — it would
+     * quietly stop portrait images rendering correctly in production.
+     *
+     * DO NOT add `revalidate` back to /feed.xml while this exclude stands. A
+     * revalidating lambda would re-render without the images in its bundle,
+     * every item would fail the image guard, and the feed would come back
+     * empty — silently, an hour after any deploy.
+     */
+    '/feed.xml': ['./public/**'],
+    '/feed-editorial.xml': ['./public/**'],
+    '/sitemap-news.xml': ['./public/**'],
   },
 
   webpack(config, { dev }) {

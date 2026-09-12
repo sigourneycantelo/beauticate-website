@@ -82,7 +82,7 @@ const NAV_ITEMS = [
   { label: 'Wellness', href: '/wellness', megaKey: 'wellness' as const },
   { label: 'Destinations', href: '/destinations', megaKey: 'destinations' as const },
   { label: 'Living', href: '/living', megaKey: 'living' as const },
-  { label: 'Podcast', href: '/vodcast' },
+  { label: 'Podcast', href: '/podcast' },
   { label: 'Interviews', href: '/interviews', megaKey: 'interviews' as const },
 ]
 

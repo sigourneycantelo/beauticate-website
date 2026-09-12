@@ -19,4 +19,11 @@ export type PastCompetition = {
  * The "Past competitions" link and the archive index appear automatically
  * once this array has at least one entry.
  */
-export const pastCompetitions: PastCompetition[] = []
+export const pastCompetitions: PastCompetition[] = [
+  {
+    slug: 'beauty-expo-australia-2026',
+    name: 'Beauticate x Beauty Expo Australia 2026 Giveaway',
+    period: 'July 2026',
+    drawn: '3 August 2026',
+  },
+]

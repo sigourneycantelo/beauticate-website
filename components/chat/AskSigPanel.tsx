@@ -51,6 +51,9 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          // What the reader was looking at when they asked. Logged so we can
+          // see which pages prompt which questions.
+          pageContext: typeof window !== 'undefined' ? window.location.pathname : undefined,
           messages: updated.map(m => ({ role: m.role, content: m.content })),
         }),
       })

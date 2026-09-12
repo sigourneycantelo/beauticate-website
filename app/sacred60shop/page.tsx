@@ -180,7 +180,7 @@ export default function Sacred60ShopPage() {
                 Explore Beauticate
               </Link>
               <Link
-                href="/vodcast"
+                href="/podcast"
                 className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70"
                 style={{ border: '1px solid #1C1A17', color: '#1C1A17' }}
               >
