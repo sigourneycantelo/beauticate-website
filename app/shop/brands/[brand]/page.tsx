@@ -85,12 +85,6 @@ export default async function BrandPage({ params, searchParams }: Props) {
         })()}
       />
 
-      {episode && (
-        <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] pt-[clamp(20px,3vw,32px)]">
-          <EpisodeStrip {...episode} />
-        </div>
-      )}
-
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
         <nav aria-label="Breadcrumb" className="font-sans text-[11px] tracking-[0.08em] text-charcoal-light mb-5">
           <Link href="/" className="hover:text-ink transition-colors">Home</Link>
@@ -113,6 +107,15 @@ export default async function BrandPage({ params, searchParams }: Props) {
           <ProductGrid products={products} />
         ) : (
           <p className="font-serif text-charcoal-light/60 py-16 text-center">Nothing in this edit just yet.</p>
+        )}
+
+        {/* The founder interview sits under the products, not above them. At the
+            top of a phone screen it read as an ad you had to scroll past to
+            reach the thing you came for. */}
+        {episode && (
+          <div className="mt-[clamp(32px,5vw,64px)]">
+            <EpisodeStrip {...episode} />
+          </div>
         )}
       </div>
     </div>
