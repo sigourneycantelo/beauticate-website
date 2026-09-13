@@ -31,7 +31,10 @@ export default async function ArticleRoute({ params }: Props) {
   ])]
   const shopProducts = await getProductsByHandles(shopHandles)
 
-  const related = getRelatedArticles(slug, category, f.tags ?? [])
+  // Directory listings relate to other listings, not to the travel features that
+  // share the `destinations` category — passing the subcategory is what switches
+  // that on.
+  const related = getRelatedArticles(slug, category, f.tags ?? [], 6, subcategory)
 
   const url = `/${category}/${subcategory}/${slug}`
   // A Beautiful Inside companion episode is embedded from frontmatter, not from

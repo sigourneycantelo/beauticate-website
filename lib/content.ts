@@ -248,12 +248,57 @@ export function getArticlesByAuthor(authorName: string) {
     })
 }
 
+/**
+ * "You might also like" for a directory listing: other venue listings only.
+ *
+ * The general related-articles pass filters on the top-level category, and
+ * `destinations` also holds the editorial travel features — so a spa listing
+ * was being given hotel reviews, and five of its six cards were photographs of
+ * somewhere else entirely. That is an SEO problem as much as an editorial one:
+ * Google Images has been attributing those unrelated photos to the thin listing
+ * page they sit on.
+ *
+ * Same subcategory first, then the rest of the directory, tag-ranked within
+ * each band and newest-first as the tiebreak. Drafted listings stay out — see
+ * CLAUDE.md, `published: false` in the directory is a deliberate editorial
+ * decision.
+ */
+function getRelatedDirectoryListings(
+  currentSlug: string,
+  subcategory: string,
+  tags: string[],
+  limit: number
+) {
+  return getArticleSlugs()
+    .filter(parts => parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1]))
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.slug !== currentSlug)
+    .sort((a, b) => {
+      const aSame = a?.frontmatter.subcategory === subcategory ? 1 : 0
+      const bSame = b?.frontmatter.subcategory === subcategory ? 1 : 0
+      if (aSame !== bSame) return bSame - aSame
+      const aMatches = (a?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
+      const bMatches = (b?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
+      if (aMatches !== bMatches) return bMatches - aMatches
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+    .slice(0, limit)
+}
+
 export function getRelatedArticles(
   currentSlug: string,
   category: string,
   tags: string[],
-  limit = 6
+  limit = 6,
+  subcategory?: string
 ) {
+  if (category === 'destinations' && subcategory && DIRECTORY_SUBCATEGORIES.has(subcategory)) {
+    return getRelatedDirectoryListings(currentSlug, subcategory, tags, limit)
+  }
+
   return getArticlesByCategory(category)
     .filter(isPublished)
     .filter(a => a?.frontmatter.slug !== currentSlug)
