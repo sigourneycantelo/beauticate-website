@@ -46,6 +46,22 @@ export function middleware(req: NextRequest) {
     }
   }
 
+  // Instagram checkout handoff (docs/instagram-checkout-handoff.md). Meta hands the
+  // customer to /shop carrying a reference to its own bag (attributes[cart-id] +
+  // access_token) instead of line items — nothing on this site reads it, so the
+  // customer lands on a correctly-rendered, empty cart. There's no fix live yet
+  // (pending a direction call), so this only counts how often it happens. Never log
+  // access_token itself — it's a credential, not a diagnostic.
+  if (pathname === '/shop' && (req.nextUrl.searchParams.get('cart_origin') === 'instagram' || req.nextUrl.searchParams.has('attributes[cart-id]'))) {
+    console.log('[instagram-cart-handoff]', {
+      cartId: req.nextUrl.searchParams.get('attributes[cart-id]'),
+      sellerId: req.nextUrl.searchParams.get('attributes[seller-id]'),
+      hasAccessToken: req.nextUrl.searchParams.has('access_token'),
+      host,
+      ts: new Date().toISOString(),
+    })
+  }
+
   const res = NextResponse.next()
   if (!PROD_HOSTS.has(host)) {
     res.headers.set('X-Robots-Tag', 'noindex, nofollow')
