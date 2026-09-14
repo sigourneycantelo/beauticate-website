@@ -215,7 +215,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "LED light boosts collagen, calms inflammation and helps reset stressed skin. Just three minutes a day with customisable wavelengths can help brighten and smooth skin. I use blue light on breakouts and red on fine lines.",
         product: "Qure Rejuvalite LED Mask",
         brand: 'Qure',
-        url: 'https://www.qureskincare.com/SIGOURNEY57027',
+        url: 'https://qureskincare.com/products/q-rejuvalight-pro-facewear?snowball=SIGOURNEY57027',
         image: `${IMG}/item21_quremask.png`,
       },
       {
@@ -260,7 +260,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "The Qure Micro-Infusion System was a total game-changer for my skin. The serum-filled vial uses ultrafine micro-channels to press active ingredients into the skin, delivering them deeper for visible glow and firmness.",
         product: 'Qure Micro-Infusion System',
         brand: 'Qure',
-        url: 'https://www.qureskincare.com/SIGOURNEY57027',
+        url: 'https://qureskincare.com/pages/microinfusion?snowball=SIGOURNEY57027',
         image: `${IMG}/item26_quremicroinfusion.png`,
       },
       {
@@ -287,7 +287,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "The neck and chest show age fastest. I clip on this hands-free LED to treat my décolletage while cooking dinner. Effective, easy to use and genuinely brilliant.",
         product: "Qure Neck & Décolletage LED Light Therapy",
         brand: 'Qure',
-        url: 'https://www.qureskincare.com/SIGOURNEY57027',
+        url: 'https://qureskincare.com/products/neck-decolletage-led?snowball=SIGOURNEY57027',
         image: `${IMG}/item29_qureneckled.png`,
       },
       {
