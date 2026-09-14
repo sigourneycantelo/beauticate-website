@@ -56,10 +56,17 @@ are driven through Chrome, or staged as a dated pending-updates file in
 | 13 Jan | Sunescape | full-size Instant Self Tan Mousse |
 
 **Check two columns before every slot.** As at Sept 2026 only BOOIE has confirmed
-its timing, and **every future row has an empty Gift SKU / Variant ID**. That
-column is the bottleneck: the SKU has to exist in Modern Dropship before the slot
-can run, and the setup below takes about a week. Chase it a fortnight out, not
-the week of.
+its timing, and **every future row has an empty Gift SKU / Variant ID**.
+
+That column is the bottleneck, but not because the work is hard. Our side is
+minutes: the `GWP_OFFERS` entry, the terms page, the BXGY discount and the
+delivery profile are all quick, and steps 1 to 6 below can be done in one sitting.
+**The lead time is entirely the brand.** They have to create the $0.01 gift SKU
+their end and let it sync through Modern Dropship before any of it can be wired
+up, and that is a favour being asked of someone else's warehouse team.
+
+So chase the SKU a fortnight out. Not because it takes a fortnight, but because
+the brand might.
 
 ### When a new brand is onboarded
 
