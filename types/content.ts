@@ -153,6 +153,29 @@ export interface ArticleFrontmatter {
    */
   paid_placement_until?: string  // ISO date, e.g. '2027-08-23'
   contributors?: string[]        // collective members featured in team/collaborative articles
+
+  /**
+   * Beautiful Inside by Beauticate — the companion episode for this article.
+   *
+   * A companion article talks about an episode; without these it offered the
+   * reader no way to actually watch or hear it, which is how every podcast
+   * story on the site shipped for a year. Set `podcast_episode` to the vodcast
+   * slug under content/vodcast/episodes/ and the video id and platform links
+   * are read from the episode itself — one line per article, nothing to keep in
+   * sync. The remaining fields are for episodes that have no vodcast entry, or
+   * for a per-episode Spotify/Apple deep link the episode file doesn't carry.
+   */
+  podcast_episode?: string        // vodcast slug, e.g. "celeste-barber-on-adhd-..."
+  podcast_youtube_id?: string     // YouTube id, when there is no vodcast entry to read it from
+  podcast_spotify_url?: string    // per-episode Spotify link; falls back to the show
+  podcast_apple_url?: string      // per-episode Apple Podcasts link; falls back to the show
+  podcast_heading?: string        // line above the buttons, e.g. "Sigourney interviews Celeste Barber"
+  /**
+   * 'full' (default) embeds the player at the top of the article; 'compact'
+   * renders a slim band with a thumbnail, for a story the episode supports
+   * rather than *is*.
+   */
+  podcast_strip?: 'full' | 'compact'
 }
 
 export interface VodcastFrontmatter {
@@ -170,6 +193,7 @@ export interface VodcastFrontmatter {
   spotify_episode_id?: string
   apple_episode_url?: string
   youtube_video_id?: string
+  spotify_episode_url?: string   // full per-episode Spotify URL, when we have one
   guests?: string[]
   topics?: string[]
   faqs?: FAQ[]

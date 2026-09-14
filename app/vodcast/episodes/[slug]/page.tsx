@@ -14,6 +14,7 @@ import PullQuote from '@/components/mdx/PullQuote'
 import { getProductsByHandles } from '@/lib/shopify'
 import { formatCardPrice } from '@/lib/product-format'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
+import { episodePlatforms } from '@/lib/podcast'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -82,12 +83,12 @@ const mdxComponents = {
   ShopCTA,
 }
 
-// Subscribe destinations, rendered as clickable platform logos at the top of
-// each episode so listeners can jump to their preferred app.
+// Platform logos at the top of each episode, so a listener can jump straight
+// to it in their own app. Only the icons live here — the destinations come from
+// lib/podcast, which prefers this episode's own link over the show's.
 const PLATFORMS = [
   {
     name: 'YouTube',
-    href: 'https://www.youtube.com/@sigourneycantelo',
     color: '#FF0000',
     icon: (
       <svg width="22" height="16" viewBox="0 0 24 17" fill="currentColor" aria-hidden="true">
@@ -97,7 +98,6 @@ const PLATFORMS = [
   },
   {
     name: 'Spotify',
-    href: 'https://open.spotify.com/show/5su7l0yO5Ue0706K2Lzd8q',
     color: '#1DB954',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -107,7 +107,6 @@ const PLATFORMS = [
   },
   {
     name: 'Apple Podcasts',
-    href: 'https://podcasts.apple.com/au/podcast/beautiful-inside-by-beauticate/id1754804721',
     color: '#9933CC',
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -167,6 +166,15 @@ export default async function EpisodePage({ params }: Props) {
   // ── Structured data: PodcastEpisode + Article + Video + FAQ + Breadcrumb ──
   const episodeSchema = buildVodcastSchema(f, `/vodcast/episodes/${f.slug}`, anchorUrl)
 
+  // Per-episode links where the episode carries them, the show otherwise.
+  const platformHrefs = Object.fromEntries(
+    episodePlatforms({
+      youtubeId: f.youtube_video_id,
+      spotifyUrl: f.spotify_episode_url,
+      appleUrl: f.apple_episode_url,
+    }).map(pl => [pl.name, pl.href]),
+  )
+
   return (
     <>
     <Script
@@ -192,7 +200,7 @@ export default async function EpisodePage({ params }: Props) {
           {PLATFORMS.map(p => (
             <a
               key={p.name}
-              href={p.href}
+              href={platformHrefs[p.name]}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={p.name}
@@ -222,7 +230,7 @@ export default async function EpisodePage({ params }: Props) {
         {f.featured_image && (
           <div className="relative mx-auto mb-8 rounded-[2px] overflow-hidden" style={{ aspectRatio: f.hero_aspect ?? '16/9', maxWidth: f.hero_aspect ? '560px' : '100%' }}>
             <Image
-              src={f.featured_image}
+              src={f.hero_image ?? f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
               className="object-cover"

@@ -50,6 +50,30 @@ Ask in one short list. Usual gaps: the price, the link, the retailer name for af
 
 > Add three products to the Selfcare Sunday edit. The buj Uplifter and the Tulita Agati are in our shop. The Theragun Mini is an Amazon affiliate at $299. Use the deep-etched shots for ours and the Instagram shot for the Theragun, credit @therabody.
 
+## Shop by Curator (automatic)
+
+Collective members each get a page at `/shop/curators/<slug>` gathering every
+product they have recommended. It builds itself from the articles, so there is
+nothing to create in Shopify and nothing to maintain by hand:
+
+- Articles they wrote contribute their `product_links` and every in-body
+  `<ShopItem>`.
+- Team articles (the seasonal edits) contribute only the products under that
+  curator's own `<PortraitQuote name="...">` block.
+
+Two things to get right, because both fail silently:
+
+1. **Spell the name exactly as it appears in `lib/authors.ts`.** Punctuation is
+   forgiven ("Dr. Amy Chahal" matches "Dr Amy Chahal"), spelling is not. A
+   mismatch means that curator's picks quietly go nowhere.
+2. **A curator only qualifies if `authors.ts` gives them a `shopCollection`
+   handle.** That field is what marks someone as Collective.
+
+An article by a Collective member should carry `moment_exclude: true` so its
+products feed the curator page instead of spawning a Shop by Moment page.
+
+See `lib/curator-collections.ts`.
+
 ---
 
 *Built on the playbook template in `updating-stories.md`.*

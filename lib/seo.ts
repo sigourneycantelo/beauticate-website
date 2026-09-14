@@ -98,7 +98,13 @@ function extractFirstYouTubeId(content: string): string | undefined {
   return content.match(YOUTUBE_ID_REGEX)?.[1]
 }
 
-export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { q: string; a: string }[], content?: string) {
+/**
+ * `videoId` is for a video the page renders from frontmatter rather than from
+ * the body — a Beautiful Inside companion episode, via `podcast_episode`. The
+ * body scan below cannot see it, and a rendered video with no VideoObject is
+ * exactly the drift the regex comment above warns about.
+ */
+export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { q: string; a: string }[], content?: string, videoId?: string) {
   const schemaType = resolveSchemaType(f)
   const articleUrl = `${SITE_URL}${url}`
   const imageUrl = f.featured_image ? `${SITE_URL}${f.featured_image}` : `${SITE_URL}/og-default.jpg`
@@ -192,7 +198,7 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
     })
   }
 
-  const youtubeId = content ? extractFirstYouTubeId(content) : undefined
+  const youtubeId = videoId ?? (content ? extractFirstYouTubeId(content) : undefined)
   if (youtubeId) {
     graph.push({
       '@type': 'VideoObject',

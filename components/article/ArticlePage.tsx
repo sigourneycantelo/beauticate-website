@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { isPaidPlacement } from '@/lib/content'
+import { isPaidPlacement, resolveArticleEpisode } from '@/lib/content'
 import { hasArticleMoment } from '@/lib/article-moments'
 import { findVariant, variantHref } from '@/lib/shop-variant'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -16,6 +16,7 @@ import ReaderQuestion from './ReaderQuestion'
 import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
 import ShareButtons from './ShareButtons'
+import EpisodeStrip from '@/components/vodcast/EpisodeStrip'
 import { resolveSchemaType } from '@/lib/seo'
 import { usesSplitHero } from '@/lib/hero-layout'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
@@ -181,6 +182,10 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
 
   const bodyContent = withSubscribeBand(content)
 
+  // Beautiful Inside companion: the episode this story was written about, so
+  // the reader can watch or listen without leaving to go hunting for it.
+  const episode = resolveArticleEpisode(f)
+
   return (
     <article className="pb-16 md:pb-0">
       {/* Meta Pixel + CAPI: ViewContent for this article */}
@@ -230,6 +235,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               <VenueCTA instagram={f.instagram} bookingUrl={f.booking_url} website={f.website} />
             )}
           </>
+        )}
+
+        {/* Watch or listen — the companion episode, above the story */}
+        {episode && (
+          <div className="mx-auto mb-10 max-w-[720px]">
+            <EpisodeStrip {...episode} />
+          </div>
         )}
 
         {/* Body — three-tier width system: narrow (720px) default, wide (1200px) breakout */}

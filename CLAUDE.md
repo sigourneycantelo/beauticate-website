@@ -306,6 +306,43 @@ form in the same change, and check the page's `@graph` actually contains
 reads it. It does not render a video and does not produce schema. Use the
 component.
 
+## Podcast stories carry the episode
+
+A story about a Beautiful Inside episode must give the reader somewhere to
+watch or listen. One frontmatter line does it:
+
+```yaml
+podcast_episode: "celeste-barber-on-adhd-bullying-boundaries-..."  # vodcast slug
+podcast_heading: "Sigourney interviews Celeste Barber on Beautiful Inside"
+podcast_strip: "compact"   # optional; default "full"
+```
+
+`full` embeds the episode above the story with Watch / Spotify / Apple beneath
+it. `compact` is a slim band with a thumbnail, for an article the episode
+*supports* rather than *is* — an older interview with the same guest, say.
+
+**The slug is the only thing you write down.** The video id and the platform
+links are read from `content/vodcast/episodes/<slug>/`, so there is no second
+copy to drift, and the strip never links to an episode page that isn't
+published. Per-episode links live on the episode: `youtube_video_id`,
+`apple_episode_url`, `spotify_episode_url`. Anything missing falls back to the
+show, which lands the reader in the right app with the feed in front of them.
+
+Shop brand pages get the same band when Sig has interviewed the founder — add
+a row to `data/brand-episodes.ts`, keyed by the Shopify brand collection handle.
+The interview is why several of those brands are in the shop, and the brand
+page said nothing about it for a year.
+
+**Adding the strip means telling the schema.** `buildArticleSchema` finds
+videos by scanning the *body*, and this one comes from frontmatter, so the
+article route passes `resolveArticleEpisode(f)?.youtubeId` in explicitly. A
+rendered player with no `VideoObject` is the same drift the `YOUTUBE_ID_REGEX`
+note above warns about — keep the two together.
+
+Destinations live in `lib/podcast.ts` and nowhere else. They used to be
+declared inline in the vodcast episode page, which is precisely why every
+companion article shipped without them.
+
 ## Review ratings must be visible or absent
 
 `review_rating`, `review_item`, `review_brand`, `review_pros` and `review_cons`
