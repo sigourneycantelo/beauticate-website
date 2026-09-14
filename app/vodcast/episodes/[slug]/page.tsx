@@ -230,7 +230,7 @@ export default async function EpisodePage({ params }: Props) {
         {f.featured_image && (
           <div className="relative mx-auto mb-8 rounded-[2px] overflow-hidden" style={{ aspectRatio: f.hero_aspect ?? '16/9', maxWidth: f.hero_aspect ? '560px' : '100%' }}>
             <Image
-              src={f.featured_image}
+              src={f.hero_image ?? f.featured_image}
               alt={f.featured_image_alt ?? f.title}
               fill
               className="object-cover"
