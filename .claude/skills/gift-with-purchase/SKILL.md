@@ -46,14 +46,27 @@ are driven through Chrome, or staged as a dated pending-updates file in
 |---|---|---|
 | 9 Sep | BOOIE Beauty | Bloody Delicious illuminator, Champagne — **ran** |
 | 23 Sep | Saint Louve | 30ml Vitamin B3/B5/HA Hydrating Serum |
-| 7 Oct | St. Louis Says | Resurrection Repair Treatment Mask |
-| 21 Oct | buj | full-size body product — timed to Breast Cancer Awareness Month |
-| 4 Nov | BonWellness | assorted full-size pack, TBD |
-| 18 Nov | Estetika | Burgundy MINEE with Gold Chain |
-| 2 Dec | Subtle Energies | Aura Balancing Mist |
-| 16 Dec | Lash Armour | lash and liner combo — timed to party season |
-| 30 Dec | Tulita | Discovery Kit |
-| 13 Jan | Sunescape | full-size Instant Self Tan Mousse |
+| 7 Oct | Rest | an eye mask — menopause month |
+| 21 Oct | buj | full-size body product — Breast Cancer Awareness Month |
+| 4 Nov | St. Louis Says | Resurrection Repair Treatment Mask |
+| 18 Nov | BonWellness | assorted full-size pack, TBD |
+| 2 Dec | Estetika | Burgundy MINEE with Gold Chain |
+| 16 Dec | Subtle Energies | Aura Balancing Mist |
+| 30 Dec | Lash Armour | lash and liner combo — party season |
+| 13 Jan 2027 | Tulita | Discovery Kit |
+| 27 Jan 2027 | Sunescape | full-size Instant Self Tan Mousse |
+
+**Inserting a brand mid-rotation: move the unanchored ones, never the anchored
+ones.** Rest was added at 7 Oct for menopause month. The instinct is to push
+everything below down a slot, but that would have dragged buj out of Breast
+Cancer Awareness Month, which is the only reason it sat on 21 Oct. So buj held
+its date and St. Louis Says moved back instead. Check for a seasonal anchor
+before shifting anyone, and remember three slots in three weeks breaks the
+fortnightly rhythm partners were promised.
+
+**Watch the year when typing dates.** Every row was entered with the current
+year defaulted in, so the January slot was stored as 13/01/**2026** rather than
+2027 — a year in the past, sorting and reading wrong. Type the full date.
 
 **Check two columns before every slot.** As at Sept 2026 only BOOIE has confirmed
 its timing, and **every future row has an empty Gift SKU / Variant ID**.
