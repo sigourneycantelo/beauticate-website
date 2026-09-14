@@ -21,6 +21,16 @@ if (fs.existsSync(envPath)) {
 const contentDir = path.join(root, 'content')
 const outPath = path.join(root, 'data', 'chat-index.json')
 
+// The products already published in the committed index, used as the fallback
+// when this build cannot reach Shopify.
+const existingProducts = (() => {
+  try {
+    return JSON.parse(fs.readFileSync(outPath, 'utf-8')).products ?? []
+  } catch {
+    return []
+  }
+})()
+
 const MAX_BODY_WORDS = 600
 
 function stripMdx(body) {
@@ -102,12 +112,15 @@ articles.sort((a, b) => {
 
 // ─── Shopify products ───────────────────────────────────────────────────────
 
+// Returns null when the products could not be fetched, which is different from
+// an empty shop. The caller keeps whatever is already in the committed file
+// rather than publishing an empty list — see the note at the call site.
 async function fetchShopifyProducts() {
   const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
   const token = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
   if (!domain || !token) {
     console.log('  Shopify: no credentials, skipping product fetch')
-    return []
+    return null
   }
 
   const query = `{
@@ -129,8 +142,15 @@ async function fetchShopifyProducts() {
       },
       body: JSON.stringify({ query }),
     })
-    const { data } = await res.json()
-    const products = (data?.products?.nodes || []).map(p => ({
+    const { data, errors } = await res.json()
+    // A bad token does not throw: the response parses fine and simply carries no
+    // `data`. Without this check that path looks identical to a shop with no
+    // products, which is how the list silently emptied in the first place.
+    if (errors?.length || !data?.products?.nodes) {
+      console.warn('  Shopify: no product data returned', errors?.[0]?.message ?? `(HTTP ${res.status})`)
+      return null
+    }
+    const products = (data.products.nodes || []).map(p => ({
       handle: p.handle,
       title: p.title,
       description: (p.description || '').slice(0, 300),
@@ -146,11 +166,25 @@ async function fetchShopifyProducts() {
     return products
   } catch (err) {
     console.warn('  Shopify fetch failed:', err.message)
-    return []
+    return null
   }
 }
 
-const products = await fetchShopifyProducts()
+// This file is committed and Ask Sig reads it at runtime, so a build that cannot
+// reach Shopify must not publish an empty product list. It already happened once:
+// the products went 250 -> 0 in August and stayed there for eight PRs, because
+// every path above returned [] and this line wrote it out. Anyone building
+// without credentials would have done the same. Keep what is already on disk and
+// say so loudly instead.
+const fetched = await fetchShopifyProducts()
+let products = fetched ?? []
+if (fetched === null || (fetched.length === 0 && existingProducts.length > 0)) {
+  products = existingProducts
+  console.warn(
+    `  Shopify: keeping the ${existingProducts.length} products already in the index. ` +
+    'Run a build with Shopify credentials to refresh them.'
+  )
+}
 
 const index = { articles, products }
 

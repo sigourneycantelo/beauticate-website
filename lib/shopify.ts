@@ -1,6 +1,6 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
-import { GWP, stripHidden } from './gwp'
+import { GIFT_HANDLES, stripHidden } from './gwp'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
@@ -53,13 +53,15 @@ const PRODUCT_FRAGMENT = `
     vendor
     productType
     tags
-    featuredImage { url altText width height }
-    images(first: 10) { nodes { url altText width height } }
+    featuredImage { id url altText width height }
+    images(first: 10) { nodes { id url altText width height } }
     priceRange {
       minVariantPrice { amount currencyCode }
       maxVariantPrice { amount currencyCode }
     }
-    variants(first: 10) {
+    # 50, not 10: Basics By B's Alter Ego Concealer has 11 shades, and the 11th was
+    # being cut off — unselectable on the product page and unbuyable anywhere.
+    variants(first: 50) {
       nodes {
         id
         title
@@ -70,8 +72,9 @@ const PRODUCT_FRAGMENT = `
         compareAtPrice { amount currencyCode }
         selectedOptions { name value }
         # Per-colourway shot, so an editorial card pinned to one variant
-        # (e.g. Blush Pink) shows that colour rather than the product's default.
-        image { url altText width height }
+        # (e.g. Blush Pink) shows that colour rather than the product's default —
+        # and so the product page's gallery can follow the variant selector.
+        image { id url altText width height }
       }
     }
   }
@@ -488,8 +491,8 @@ export async function getAllProductHandles(): Promise<{ handle: string; updatedA
     `, { cursor })
     const conn: ProductHandleConn | undefined = data?.products
     if (!conn) break
-    // The gift-with-purchase SKU is seo.hidden in Shopify and must not be indexed.
-    for (const n of conn.nodes ?? []) if (n?.handle && n.handle !== GWP.giftHandle) out.push({ handle: n.handle, updatedAt: n.updatedAt })
+    // Gift-with-purchase SKUs are seo.hidden in Shopify and must not be indexed.
+    for (const n of conn.nodes ?? []) if (n?.handle && !GIFT_HANDLES.includes(n.handle)) out.push({ handle: n.handle, updatedAt: n.updatedAt })
     if (!conn.pageInfo?.hasNextPage) break
     cursor = conn.pageInfo.endCursor
   }

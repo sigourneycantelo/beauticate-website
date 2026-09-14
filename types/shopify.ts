@@ -1,4 +1,7 @@
 export interface ShopifyImage {
+  /** Shopify media GID. Used to match a variant's photo to the product's own
+   *  image list — URLs carry cache-busting query strings, ids don't. */
+  id?: string
   url: string
   altText: string | null
   width: number

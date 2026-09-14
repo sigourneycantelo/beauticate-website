@@ -68,6 +68,27 @@ const comp = {
   permitNumbers: [] as string[],
 }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   THE RUNNING GIFT WITH PURCHASE. Newest promotion sits at the top of this
+   page, above the competition; when it finishes it moves to the past list the
+   same way competitions do.
+
+   A gift with purchase is NOT a trade promotion: there is no element of chance,
+   no draw and no prize, so none of the permit thresholds in the block above
+   apply to it however large the total value gets. It is a conditional discount
+   on a purchase, which is why the terms below are about spend, stock and
+   substitution rather than entry and eligibility.
+   ══════════════════════════════════════════════════════════════════════════ */
+const gwp = {
+  brand: 'BOOIE Beauty',
+  status: 'open' as 'open' | 'closed',
+  gift: 'Bloody Delicious Hydrating Tinted Illuminator in Champagne',
+  giftValue: 'A$39',
+  minSpend: 'A$45',
+  allocation: '20 gifts',
+  started: '9 September 2026',
+}
+
 export const metadata: Metadata = {
   title: `${comp.name} Terms & Conditions | Beauticate`,
   description:
@@ -81,7 +102,7 @@ export default function CompetitionTermsPage() {
       <header className="mb-10 border-b border-camel/30 pb-8">
         <p className="label-editorial mb-2">Legal</p>
         <h1 className="font-serif text-3xl md:text-4xl text-ink">
-          Competition Terms &amp; Conditions
+          Competition &amp; Promotion Terms
         </h1>
         <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
           Last updated: {comp.lastUpdated}
@@ -91,7 +112,9 @@ export default function CompetitionTermsPage() {
       <div className="font-serif text-charcoal/80 leading-relaxed space-y-8">
 
         <p>
-          These terms have two parts. <strong className="font-normal text-ink">This competition</strong>{' '}
+          This page covers the promotions Beauticate is running now — a gift with purchase, and a
+          competition — followed by the general terms that apply to every competition we run.{' '}
+          <strong className="font-normal text-ink">This competition</strong>{' '}
           covers the specific details of the giveaway currently running.{' '}
           <strong className="font-normal text-ink">General terms</strong> apply to
           every Beauticate competition. By entering you accept both, together with
@@ -100,6 +123,83 @@ export default function CompetitionTermsPage() {
           and{' '}
           <a href="/terms" className="text-ink hover:text-eucalypt transition-colors">Terms &amp; Conditions</a>.
         </p>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            THIS GIFT WITH PURCHASE (edit per brand; newest promotion first)
+           ══════════════════════════════════════════════════════════════════ */}
+        <div className="pt-4 border-t border-camel/30">
+          <p className="label-editorial mb-2">Running now</p>
+          <h2 className="font-serif text-2xl text-ink">This gift with purchase</h2>
+          <p className="text-sm text-charcoal/50 mt-1">
+            The details specific to the gift with purchase currently running.
+          </p>
+        </div>
+
+        <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
+          <h3 className="font-serif text-xl text-ink mb-4">
+            {gwp.brand} gift with purchase{' '}
+            <span className="text-charcoal/40 font-normal">
+              {gwp.status === 'open' ? '(now running)' : '(ended)'}
+            </span>
+          </h3>
+          <dl className="space-y-3 text-[15px]">
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Promoter</dt>
+              <dd>Beauticate, in partnership with {gwp.brand}</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">The gift</dt>
+              <dd>{gwp.gift} ({gwp.giftValue})</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">To qualify</dt>
+              <dd>Spend {gwp.minSpend} or more on {gwp.brand} products in a single order</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Available</dt>
+              <dd>{gwp.allocation}, while stocks last, from {gwp.started}</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <p>
+            The gift is added to your cart automatically once your order meets the minimum. You do
+            not need a code. The minimum spend is measured on {gwp.brand} products only, not on your
+            order total, so other brands in the same order do not count towards it. Gift cards do not
+            count towards the minimum.
+          </p>
+          <p className="mt-4">
+            One gift per order. Gifts are limited to the allocation above and offered while stocks
+            last, so the promotion may end before any date we have advertised. If your order no
+            longer meets the minimum — because you remove or reduce an item before checking out —
+            the gift is removed from your cart.
+          </p>
+          <p className="mt-4">
+            The gift has no cash value and cannot be exchanged or returned for credit. The{' '}
+            {gwp.gift} is also sold on its own at full price — it is the gift version, given free
+            with a qualifying order, that is limited to this promotion. If the gift becomes
+            unavailable we may substitute one of equal or greater value.
+          </p>
+          <p className="mt-4">
+            Returns are handled under our{' '}
+            <a href="/shop/refund-policy" className="text-ink hover:text-eucalypt transition-colors">Returns &amp; Refunds Policy</a>.
+            If a return leaves your order below the minimum, please send the gift back with it. If
+            you keep the gift, we may deduct its value from your refund — but never more than the
+            refund itself, so a return will never leave you owing us money. This does not apply where
+            an item is faulty, not as described, or your return is otherwise covered by the
+            Australian Consumer Law: in those cases your refund is unaffected and you keep the gift.
+          </p>
+          <p className="mt-4">
+            We may change or end the promotion at any time. Orders already placed are not
+            affected.
+          </p>
+          <p className="mt-4">
+            This is a gift with purchase, not a competition or prize draw. There is no element of
+            chance and no entry: every order meeting the conditions above receives the gift while
+            stocks last.
+          </p>
+        </section>
 
         {/* ══════════════════════════════════════════════════════════════════
             PART ONE — THIS COMPETITION (edit per competition)

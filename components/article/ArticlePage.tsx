@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { isPaidPlacement } from '@/lib/content'
+import { isPaidPlacement, resolveArticleEpisode } from '@/lib/content'
 import { hasArticleMoment } from '@/lib/article-moments'
 import { findVariant, variantHref } from '@/lib/shop-variant'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -16,6 +16,7 @@ import ReaderQuestion from './ReaderQuestion'
 import AuthorByline from './AuthorByline'
 import ArticleHero from './ArticleHero'
 import ShareButtons from './ShareButtons'
+import EpisodeStrip from '@/components/vodcast/EpisodeStrip'
 import { resolveSchemaType } from '@/lib/seo'
 import { usesSplitHero } from '@/lib/hero-layout'
 import CollectionEmbed from '@/components/mdx/CollectionEmbed'
@@ -48,6 +49,7 @@ import rehypeVenueContact from '@/lib/rehype-venue-contact'
 import rehypePortraitFloat from '@/lib/rehype-portrait-float'
 import NearbyVenues from './NearbyVenues'
 import ShopEditRail from './ShopEditRail'
+import GiftNote from '@/components/mdx/GiftNote'
 import VenueCTA from './VenueCTA'
 import VenueContact from './VenueContact'
 
@@ -168,6 +170,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   const mdxComponents = {
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, CollectionRail,
     InlineProduct, PullQuote, ImageCarousel, CarouselSlide, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
+    GiftNote,
     ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
@@ -178,6 +181,10 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
   }
 
   const bodyContent = withSubscribeBand(content)
+
+  // Beautiful Inside companion: the episode this story was written about, so
+  // the reader can watch or listen without leaving to go hunting for it.
+  const episode = resolveArticleEpisode(f)
 
   return (
     <article className="pb-16 md:pb-0">
@@ -230,6 +237,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           </>
         )}
 
+        {/* Watch or listen — the companion episode, above the story */}
+        {episode && (
+          <div className="mx-auto mb-10 max-w-[720px]">
+            <EpisodeStrip {...episode} />
+          </div>
+        )}
+
         {/* Body — three-tier width system: narrow (720px) default, wide (1200px) breakout */}
         <div
           className="prose prose-lg max-w-none article-body"
@@ -257,7 +271,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         )}
 
         {/* Shop the Edit */}
-        {productLinks.length > 0 && (
+        {!f.hide_shop_edit && productLinks.length > 0 && (
           <div className="mt-12 pt-10 border-t border-cream-200">
             <h4 className="font-sans text-xs tracking-[0.34em] uppercase mb-6">Shop the Edit</h4>
             <div className={`grid gap-4 ${productLinks.length <= 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 md:grid-cols-3'}`}>

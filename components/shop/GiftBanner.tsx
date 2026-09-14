@@ -1,4 +1,4 @@
-import { GWP } from '@/lib/gwp'
+import type { GiftOffer } from '@/lib/gwp'
 
 /**
  * The gift-with-purchase pitch, shown on a qualifying brand's product pages
@@ -9,17 +9,21 @@ import { GWP } from '@/lib/gwp'
  * offer disappears the moment the 22 units are gone rather than promising
  * something the cart will then quietly decline to add.
  */
-export default function GiftBanner() {
+export default function GiftBanner({ offer }: { offer: GiftOffer }) {
   return (
     <div className="mt-5 border border-eucalypt/30 bg-eucalypt/[0.06] rounded-[2px] px-4 py-3">
       <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-eucalypt font-semibold">
-        {GWP.badge}
+        {offer.badge}
       </p>
       <p className="font-serif text-charcoal mt-1.5" style={{ fontSize: '14px', lineHeight: 1.45 }}>
-        {GWP.pitch}
+        {offer.pitch}
       </p>
+      {/* Deliberately does NOT promise "added to your cart automatically". That is
+          only true on this storefront; a customer arriving via Instagram Shopping
+          never runs our cart code and receives the gift in the parcel instead
+          (see lib/gift-campaign.ts). This wording is true on both lanes. */}
       <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/70 mt-1.5">
-        Added to your cart automatically. While stocks last.
+        While stocks last.
       </p>
     </div>
   )

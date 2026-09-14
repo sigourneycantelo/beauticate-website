@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { gaViewCart, gaBeginCheckout, gidToId, GAItem } from '@/lib/ga/events'
 import { track } from '@/lib/meta/pixel'
-import { GWP, isGiftLine } from '@/lib/gwp'
+import { offerForGiftLine, liveOffers, amountToGiftFor, qualifyingLinesFor } from '@/lib/gwp'
 
 function cartToGAItems(lines: any[]): GAItem[] {
   return lines.map((line: any) => ({
@@ -53,6 +53,15 @@ export default function CartDrawer() {
   const { cart, isOpen, closeCart, removeItem } = useCart()
   const lines = cart?.lines?.nodes ?? []
   const rows = mergeLines(lines)
+
+  // Minimum-spend nudge. A gift-with-purchase threshold only works if the customer
+  // is told how close they are — otherwise it reads as "no gift" and they leave.
+  // Shown only when they already have that brand in the cart and are short of the
+  // minimum, so it's a nudge rather than an advert.
+  const pendingOffer = liveOffers().find(
+    o => qualifyingLinesFor(o, cart).length > 0 && amountToGiftFor(o, cart) > 0
+  )
+  const shortfall = pendingOffer ? amountToGiftFor(pendingOffer, cart) : 0
   const currency = cart?.cost?.totalAmount?.currencyCode ?? 'AUD'
   const cartValue = cart?.cost?.totalAmount ? parseFloat(cart.cost.totalAmount.amount) : 0
 
@@ -128,7 +137,7 @@ export default function CartDrawer() {
                 // pricing bug. It has no Remove control either — the cart owns it
                 // (lib/gwp-cart.ts), and removing the last BOOIE product is what
                 // takes it away.
-                const gift = isGiftLine(line as any)
+                const giftOffer = offerForGiftLine(line as any)
                 // Cost is summed across every line in the group (see mergeLines), and
                 // Shopify's line cost is already quantity-inclusive.
                 const price = new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' })
@@ -141,9 +150,9 @@ export default function CartDrawer() {
                       </div>
                     )}
                     <div className="flex-1 min-w-0">
-                      {gift && (
+                      {giftOffer && (
                         <span className="inline-block font-sans text-[9px] tracking-[0.18em] uppercase text-eucalypt font-semibold border border-eucalypt/40 rounded-full px-2 py-[2px] mb-1">
-                          {GWP.badge}
+                          {giftOffer.badge}
                         </span>
                       )}
                       <p className="text-xs text-charcoal-light">{line.merchandise.product.vendor}</p>
@@ -156,10 +165,10 @@ export default function CartDrawer() {
                       {row.quantity > 1 && (
                         <p className="text-xs text-charcoal-light">Qty {row.quantity}</p>
                       )}
-                      {gift ? (
+                      {giftOffer ? (
                         <>
-                          <p className="text-sm mt-1 text-eucalypt font-semibold">{GWP.freeLabel}</p>
-                          <p className="text-[11px] text-charcoal-light mt-0.5">{GWP.cartNote}</p>
+                          <p className="text-sm mt-1 text-eucalypt font-semibold">{giftOffer.freeLabel}</p>
+                          <p className="text-[11px] text-charcoal-light mt-0.5">{giftOffer.cartNote}</p>
                         </>
                       ) : soldOut ? (
                         <p className="text-sm mt-1 text-wine">Sold out</p>
@@ -167,7 +176,7 @@ export default function CartDrawer() {
                         <p className="text-sm mt-1">{price}</p>
                       )}
                     </div>
-                    {!gift && (
+                    {!giftOffer && (
                       <button
                         onClick={() => removeItem(row.ids)}
                         className="text-xs text-charcoal-light hover:text-charcoal self-start mt-1"
@@ -179,6 +188,19 @@ export default function CartDrawer() {
                 )
               })}
             </ul>
+            {pendingOffer && shortfall > 0 && (
+              <div className="border-t border-cream-200 px-6 pt-4">
+                <div className="border border-eucalypt/30 bg-eucalypt/[0.06] rounded-[2px] px-4 py-3">
+                  <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-eucalypt font-semibold">
+                    {pendingOffer.badge}
+                  </p>
+                  <p className="font-serif text-charcoal mt-1.5" style={{ fontSize: '14px', lineHeight: 1.45 }}>
+                    You’re {new Intl.NumberFormat('en-AU', { style: 'currency', currency: 'AUD' }).format(shortfall)} away
+                    from {pendingOffer.giftName}, free.
+                  </p>
+                </div>
+              </div>
+            )}
             <div className="border-t border-cream-200 px-6 py-4 space-y-3">
               {total && (
                 <div className="flex justify-between text-sm">

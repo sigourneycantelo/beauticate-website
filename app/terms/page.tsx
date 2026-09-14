@@ -13,7 +13,7 @@ export default function TermsPage() {
         <p className="label-editorial mb-2">Legal</p>
         <h1 className="font-serif text-3xl md:text-4xl text-ink">Terms &amp; Conditions</h1>
         <p className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40 mt-3">
-          Last updated: July 2026
+          Last updated: September 2026
         </p>
       </header>
 
@@ -54,6 +54,17 @@ export default function TermsPage() {
             through. Where that happens we may correct it, or decline or cancel an affected order,
             and we will let you know. Stock depends on each brand&apos;s availability, so a product
             may sell out or be withdrawn.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-xl text-ink mb-4">Promotions, competitions and gifts with purchase</h2>
+          <p>
+            From time to time we run a gift with purchase with one of our partner brands, or a
+            competition or giveaway. Each promotion has its own terms — the gift, any minimum spend,
+            how many are available and how long it runs — and those are published on our{' '}
+            <a href="/competitions/terms" className="text-ink hover:text-eucalypt transition-colors">Competition &amp; Promotion Terms</a>{' '}
+            page. Where a promotion is running, those terms apply in addition to these.
           </p>
         </section>
 

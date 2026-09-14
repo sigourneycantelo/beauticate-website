@@ -21,7 +21,7 @@ const FOOTER_NAV = [
   { label: 'How We Review', href: '/how-we-review' },
   { label: 'Privacy Policy', href: '/privacy' },
   { label: 'Terms & Conditions', href: '/terms' },
-  { label: 'Competitions', href: '/competitions/terms' },
+  { label: 'Competition & Promotion Terms', href: '/competitions/terms' },
   { label: 'Exclusive Offers', href: '/offers' },
   { label: 'How the Shop Works', href: '/shop/how-it-works' },
   { label: 'Shipping Policy', href: '/shop/shipping' },

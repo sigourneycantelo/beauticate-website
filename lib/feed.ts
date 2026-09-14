@@ -1,4 +1,4 @@
-import { getArticleSlugs, getArticleBySlug } from '@/lib/content'
+import { getArticleSlugs, getArticleBySlug, DIRECTORY_SUBCATEGORIES } from '@/lib/content'
 import { getAuthor } from '@/lib/authors'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
 
@@ -379,28 +379,13 @@ export interface FeedArticle {
 }
 
 /**
- * The subcategories of `destinations` that hold the venue directory. Everything
- * under them is a listing; `destinations/travel` beside them is editorial.
- *
- * This list is the half of the venue test that `venueType` cannot supply — see
- * contentTypeOf().
- */
-const DIRECTORY_SUBCATEGORIES = new Set([
-  'clinics',
-  'salons',
-  'spas-retreats',
-  'bathhouses',
-  'wellness',
-])
-
-/**
  * A listing is a piece of content that carries `venueType` AND sits in one of
  * the directory subcategories. Both halves are load bearing, because each one
  * alone gets real content in the repo wrong:
  *
  *  • `venueType` alone misfiles four editorial travel features. A hotel or spa
- *    review carries `venueType` so that lib/seo.ts can give it Hotel schema and
- *    it can appear in the directory index — not because it is a listing. One of
+ *    review carries `venueType` so that lib/seo.ts can give it Hotel schema —
+ *    not because it is a listing. One of
  *    them is the InterContinental Coogee review, which was the home page hero on
  *    the day this was written and was being withheld from Pinterest as a
  *    directory listing.
@@ -415,11 +400,11 @@ const DIRECTORY_SUBCATEGORIES = new Set([
  * publishes from — drops listings entirely. Misfiling an article as a listing
  * therefore does not just mislabel it, it can silently remove it from the feed.
  *
- * Note this is deliberately NOT the same test as getDirectoryListings() in
- * lib/content.ts, which keys on `venueType` alone. That is correct for the
- * directory index, where a hotel review genuinely does belong. "Appears in the
- * directory" and "is a directory listing rather than an article" are different
- * questions, and only the second one is this function's.
+ * getDirectoryListings() in lib/content.ts now uses this same test, and
+ * DIRECTORY_SUBCATEGORIES lives there. It used to key on `venueType` alone so
+ * that hotel reviews appeared in the directory index; as of September 2026
+ * editorial travel features are kept out of the directory, pending a separate
+ * spa story.
  */
 export function contentTypeOf(frontmatter: ArticleFrontmatter, parts: string[]): FeedContentType {
   if (parts[0] === 'vodcast') return 'podcast'

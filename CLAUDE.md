@@ -191,10 +191,10 @@ that exclude to `'*'`.
 
 ## Home page hero curation
 
-The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.
+The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article. It's a rotating carousel of up to **four** hero-flagged articles (`getHeroArticles()` in `lib/content.ts`, sorted by `hero_order`), not a single fixed slide.
 
 When publishing a new story, always ask:
-1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` in the frontmatter. Only one article should have `is_hero: true` at a time; remove the flag from the previous hero.
+1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` and give it `hero_order: 1`, the front of the rotation. Bump every other hero article's `hero_order` up by one (2→3, 3→4, etc.). If that pushes an article past `hero_order: 4`, drop it from the rotation entirely (remove `is_hero` and `hero_order`) — it falls back to appearing in the normal newest-first grid below the hero instead of disappearing. Never leave more than four articles flagged `is_hero: true`, and never leave two with the same `hero_order`.
 2. **"Please provide a landscape holding shot for the hero."** — This is a wide-crop image optimised for the full-bleed `HeroWide` banner. Save it to the article's content directory and set `hero_image: /content/<category>/<subcategory>/<slug>/hero.jpg` in the frontmatter. If no dedicated shot is provided, `featured_image` is used as fallback.
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
@@ -305,6 +305,43 @@ form in the same change, and check the page's `@graph` actually contains
 `youtube_embed` exists in `ArticleFrontmatter` but only the admin review queue
 reads it. It does not render a video and does not produce schema. Use the
 component.
+
+## Podcast stories carry the episode
+
+A story about a Beautiful Inside episode must give the reader somewhere to
+watch or listen. One frontmatter line does it:
+
+```yaml
+podcast_episode: "celeste-barber-on-adhd-bullying-boundaries-..."  # vodcast slug
+podcast_heading: "Sigourney interviews Celeste Barber on Beautiful Inside"
+podcast_strip: "compact"   # optional; default "full"
+```
+
+`full` embeds the episode above the story with Watch / Spotify / Apple beneath
+it. `compact` is a slim band with a thumbnail, for an article the episode
+*supports* rather than *is* — an older interview with the same guest, say.
+
+**The slug is the only thing you write down.** The video id and the platform
+links are read from `content/vodcast/episodes/<slug>/`, so there is no second
+copy to drift, and the strip never links to an episode page that isn't
+published. Per-episode links live on the episode: `youtube_video_id`,
+`apple_episode_url`, `spotify_episode_url`. Anything missing falls back to the
+show, which lands the reader in the right app with the feed in front of them.
+
+Shop brand pages get the same band when Sig has interviewed the founder — add
+a row to `data/brand-episodes.ts`, keyed by the Shopify brand collection handle.
+The interview is why several of those brands are in the shop, and the brand
+page said nothing about it for a year.
+
+**Adding the strip means telling the schema.** `buildArticleSchema` finds
+videos by scanning the *body*, and this one comes from frontmatter, so the
+article route passes `resolveArticleEpisode(f)?.youtubeId` in explicitly. A
+rendered player with no `VideoObject` is the same drift the `YOUTUBE_ID_REGEX`
+note above warns about — keep the two together.
+
+Destinations live in `lib/podcast.ts` and nowhere else. They used to be
+declared inline in the vodcast episode page, which is precisely why every
+companion article shipped without them.
 
 ## Review ratings must be visible or absent
 
