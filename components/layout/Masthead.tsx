@@ -41,11 +41,16 @@ function Wordmark({ className = '', priority = false, shop = false }: { classNam
 }
 
 
-function Card({ c }: { c: MegaCard }) {
+// `showImage` is false until the reader first opens this pillar. The link and
+// title always render on the server; the image is left out of the HTML because
+// Google Images was crediting these article thumbnails to whichever page they
+// appeared on (every page, since the masthead is site-wide), most visibly thin
+// directory listings. The greige `.mh-card-img` box keeps the layout meanwhile.
+function Card({ c, showImage }: { c: MegaCard; showImage: boolean }) {
   return (
     <Link href={c.href} className={`mh-card${c.soon ? ' mh-card-soon' : ''}`}>
       <span className="mh-card-img">
-        {c.image ? <Image src={c.image} alt={c.imageAlt || c.title} fill sizes="(max-width:1080px) 22vw, 220px" className="mh-card-obj" style={c.imagePosition ? { objectPosition: c.imagePosition } : undefined} /> : null}
+        {c.image && showImage ? <Image src={c.image} alt={c.imageAlt || c.title} fill sizes="(max-width:1080px) 22vw, 220px" className="mh-card-obj" style={c.imagePosition ? { objectPosition: c.imagePosition } : undefined} /> : null}
         {c.soon && <span className="mh-card-badge">Coming Soon</span>}
       </span>
       <span className="mh-card-title">{c.title}</span>
@@ -64,9 +69,13 @@ function PillarItem({ p }: { p: Pillar }) {
   // pillars, and a close grace period lets the cursor travel diagonally from the pillar
   // to a card without the menu snapping shut.
   const [open, setOpen] = useState(false)
+  // Card images mount on first hover or focus and then stay mounted. Priming on
+  // enter, ahead of the open delay, gives the images a head start. See `Card`.
+  const [primed, setPrimed] = useState(false)
   const openT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const closeT = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const onEnter = () => {
+    setPrimed(true)
     clearTimeout(closeT.current)
     openT.current = setTimeout(() => {
       setOpen(true)
@@ -90,7 +99,7 @@ function PillarItem({ p }: { p: Pillar }) {
   }, [pathname])
 
   return (
-    <li className={`mh-pillar${p.isShop ? ' is-shop' : ''}${open ? ' open' : ''}`} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+    <li className={`mh-pillar${p.isShop ? ' is-shop' : ''}${open ? ' open' : ''}`} onMouseEnter={onEnter} onMouseLeave={onLeave} onFocus={() => setPrimed(true)}>
       <Link href={p.href} className="mh-pillar-link">{p.label}</Link>
       {hasMega && (
         <div className="mh-mega">
@@ -141,7 +150,7 @@ function PillarItem({ p }: { p: Pillar }) {
               <div className="mh-cards"><p className="mh-soon-note">Our {activeSub.label} edit is coming soon.</p></div>
             ) : activeSub?.children && cards.length > 0 ? (
               <div className="mh-cards">
-                {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)}
+                {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} showImage={primed} />)}
               </div>
             ) : activeSub?.children ? (
               <div className="mh-cards"><p className="mh-soon-note">Browse our curated directory of salons, spas, clinics &amp; wellness destinations.</p></div>
@@ -158,7 +167,7 @@ function PillarItem({ p }: { p: Pillar }) {
               </div>
             ) : (
               <div className="mh-cards">
-                {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} />)}
+                {cards.map((c, i) => <Card key={`${active}-${i}`} c={c} showImage={primed} />)}
               </div>
             )}
           </div>
