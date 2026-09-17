@@ -144,6 +144,49 @@ statement is false about the majority of it.
 `sponsored: boolean` also exists in `ArticleFrontmatter`. It is rendered
 nowhere and set on nothing. Don't reach for it.
 
+## A byline is not an endorsement — `curator_exclude`
+
+Every Beauticate Collective member gets an auto-built page at
+`/shop/curators/<slug>`. `getCuratorCollections()` fills it from two places, and
+the first one is the trap: **every** `product_links` entry and every
+`<ShopItem>` in any article they are bylined on, republished under their name as
+their own pick.
+
+That is right for a shopping piece someone wrote. It is wrong for the far more
+common shape — a contributor's expertise, with products *we* chose placed
+alongside it. The writer never saw those products, and the page says they
+recommend them.
+
+One frontmatter line opts an article out:
+
+```yaml
+curator_exclude: true
+```
+
+The products still render in the foot "Shop the Edit" grid and still feed
+`/shop/moments/<slug>`. The only thing that changes is that they stop being
+attributed to the author. It governs step 1 (authored articles) and deliberately
+not step 2: products under a curator's own `<PortraitQuote>` in a team edit are
+theirs by construction, so the seasonal Winter/Summer Edit needs no flag.
+
+**Set it whenever the shop products in a bylined piece are the team's picks
+rather than the writer's.** Michelle Bridges' strength training article is the
+case that produced the flag: five protein, creatine and recovery products, none
+of them hers, all of them heading for `/shop/curators/michelle-bridges` as
+"Michelle Bridges' favourites" — an endorsement she had not agreed to. The fix
+before the flag existed was to strip `product_links` from the article entirely
+and lose the editorial-to-shop cross-link, because **an Ed's note on the article
+never reaches the curator page.** That is the whole point: the disclosure lives
+on one page and the attribution on another, so the article's framing cannot
+correct it.
+
+Pair the flag with the Ed's note anyway — the note tells the reader whose picks
+they are, the flag tells the build. Both, or the piece is only half honest.
+
+Same family of rule as `paid_placement_until` above and the Ed's note rule
+below: don't let the site assert a commercial relationship, or an endorsement,
+that the person never agreed to.
+
 ## Git workflow
 
 **Open a pull request. Do not push straight to `main`.** The repo has branch
