@@ -11,6 +11,16 @@ current AI-search landscape.
 
 ---
 
+## Where this sits
+
+| | |
+|---|---|
+| **This file** | Strategy and policy. Why each signal matters, what the templates do for free, what is still outstanding. Read it once, then refer back. |
+| [`article-optimisation-pass.md`](./article-optimisation-pass.md) | The mechanical per-article pass. Read it while working on a specific article. |
+| `.claude/skills/beauticate-article-seo` | The working checklist. **Loads automatically** when writing, uploading or optimising a story — start there. |
+| `.claude/agents/article-upload.md` | The full upload flow, which runs this pass as one of its steps. |
+| [`../CLAUDE.md`](../CLAUDE.md) | Durable house rules. **Where CLAUDE.md and this file disagree, CLAUDE.md wins** — it is loaded into every session and is kept closer to the code. |
+
 ## How to read this document
 
 Three layers:
@@ -131,22 +141,21 @@ listing against it.
 - Write a 750-character business description
 - Respond to any unanswered reviews
 
-### 3.5 Author pages — [TODO: Redfern]
+### 3.5 Author pages — [DONE]
 
-Build `/author/[slug]` pages. Each page should have:
-- Photo, name, role, short bio
-- sameAs links (social profiles, Wikidata for Sig)
-- Person JSON-LD with all entity signals
-- A list of all their articles, newest first
-- The URL becomes the `url` in every article's Person schema (replacing the
-  current hard-coded `/about-beauticate`)
+`/author/[slug]` is live (`app/author/[slug]/page.tsx`) and carries photo, name,
+role, bio, sameAs links and Person JSON-LD via `buildPersonSchema`, plus the
+author's articles newest-first.
 
-Data already exists in `lib/authors.ts`. The route and template need building.
-Update `buildPersonSchema` in `lib/authors.ts` to use
-`${siteUrl}/author/${author.slug}` instead of `${siteUrl}/about-beauticate`.
+**A page exists only for an author with a photo.** `buildPersonSchema` points
+`url` at `/author/<slug>` when `author.photo` is set and falls back to `/about`
+otherwise — deliberately, so schema never links to a page that was never built.
+It links to `/about` rather than `/about-beauticate` because the latter is a
+permanent 301 and pointing schema at a redirect makes every author node resolve
+through a hop.
 
-Only build pages for authors with photos and bios (the core editorial team plus
-active contributors). Minor one-off contributors can remain name-only.
+So: to give a contributor an author page, add a photo in `lib/authors.ts`. To
+leave them name-only, don't. Minor one-off contributors can stay name-only.
 
 ---
 
@@ -236,7 +245,7 @@ add any special frontmatter.
 |-------------|-------------|----------------|
 | Standard article | Article | Yes (default) |
 | Interview, destination, trend piece | NewsArticle | Yes (category/tags) |
-| Review / "we tried" | Review | Yes (title/tags) — add `review_rating`, `review_item`, `review_brand` |
+| Review / "we tried" | Review | Yes (title/tags) — nothing to add; do **not** set `review_rating` (see 9.2) |
 | How-to guide | HowTo | Yes (title/tags) — steps auto-extracted from H2s |
 | Listicle | Article + ItemList | Partially — Article auto, ItemList manual |
 | Clinic/venue review | Review + LocalBusiness | Yes — add `venueType`, `address`, `telephone` |
@@ -384,18 +393,41 @@ per-article work:
 | LocalBusiness | `lib/seo.ts` | `venueType` in frontmatter |
 | Product + Offer | `components/shop/ProductPage.tsx` | Every product detail page |
 | PodcastSeries + PodcastEpisode | `lib/seo.ts` | Vodcast template |
-| VideoObject | `lib/seo.ts` | Vodcast with `youtube_video_id` |
+| VideoObject | `lib/seo.ts` | Any YouTube URL in the body (watch, embed, shorts, youtu.be), a vodcast `youtube_video_id`, or a `podcast_episode` strip |
 | SpeakableSpecification | `lib/seo.ts` | Every article |
 | WebSite + SearchAction | `app/layout.tsx` | Every page |
 
 ### 9.2 What needs per-article input
 
-For Review articles, add to frontmatter:
-```yaml
-review_rating: 4.5
-review_item: "Qure Micro-Infusion Device"
-review_brand: "Qure Skincare"
-```
+**Do not set `review_rating`, `review_item`, `review_brand`, `review_pros` or
+`review_cons`.** These fields are read in exactly one place, `lib/seo.ts`, and
+rendered nowhere. Setting them puts a star rating, an itemReviewed and
+positive/negative notes into the page's JSON-LD that no reader can see anywhere
+on the page.
+
+That is a policy breach, not just a curiosity. Google requires structured data
+to reflect content visible to users, and an invisible rating is the textbook
+case its spammy-structured-markup action exists for. A star that wins a rich
+result and then earns a manual action is worse than no star.
+
+If we ever want stars, the **visible verdict block comes first** and the markup
+follows it. Leaving the fields unset does not change the schema type:
+`resolveSchemaType` already returns `Review` from a `review` tag or a title
+containing "review"/"we tried"/"i tried"/"we visited"/"we tested"/"road test"/
+"we put"/"beauty on trial"/"tried and tested", so a review stays a Review
+without them. This supersedes an earlier version of this section that told
+writers to add a rating to every review.
+
+> **Open issue, September 2026 — 69 published articles currently set
+> `review_rating`.** The earlier advice was followed. There is no visible rating
+> anywhere in the codebase (no rating component exists), so all 69 emit a
+> `reviewRating` into JSON-LD that no reader can see. Note the trigger is
+> circular: `review_rating != null` is itself one of the conditions that makes
+> `resolveSchemaType` return `Review`, so setting the field guarantees the
+> rating is emitted — there is no article where it sits harmlessly unused.
+> The fix is a decision, not a sweep: either strip the field from all 69 (the
+> schema type survives on title/tags alone), or build the visible verdict block
+> and keep them. Until then this is a live risk, not a theoretical one.
 
 For venue/clinic reviews, add:
 ```yaml
@@ -404,13 +436,18 @@ address: "123 Oxford St, Paddington NSW 2021"
 telephone: "+61 2 9999 0000"
 ```
 
-### 9.3 What is still to build — [TODO: Redfern]
+### 9.3 What is still to build
 
 | Schema | Impact | Detail |
 |--------|--------|--------|
-| VideoObject on regular articles | Medium | Any article embedding a YouTube video should output VideoObject JSON-LD, not just vodcasts |
 | AggregateRating on products | Medium | Requires Judge.me/Stamped integration first — add `aggregateRating` to Product schema when reviews are live |
 | ItemList on listicles | Low | For "best of" roundups — manual per article for now |
+
+**VideoObject on regular articles is done.** `YOUTUBE_ID_REGEX` in `lib/seo.ts`
+scans the rendered body and matches `watch?v=`, `/embed/`, `/shorts/` and
+`youtu.be`. If `YouTubeEmbed` ever learns a new URL form, teach that regex the
+same form **in the same change** — the two drifting apart is how a Short once
+shipped rendering perfectly and invisible to structured data.
 
 ### 9.4 Validation
 
@@ -501,15 +538,34 @@ These replace the old Yoast fields. The rules are the same.
 Slug and focus keyphrase do not need to match exactly. A tighter slug can sit
 alongside a broader keyphrase.
 
-**Current coverage (1,745 articles):**
-- seo_title: 1,709 (98%) ✓
-- meta_description: 1,715 (98%) ✓
-- date_modified: 1,716 (98%) ✓
-- featured_image_alt: 1,745 (100%) ✓
-- faqs: 1,574 (90%) ✓
-- focus_keyphrase: 2 (0.1%) — gap, but not blocking for launch
-- QuickAnswer: 2 (0.1%) — add to high-traffic articles as a priority
-- review_rating: 1 — add to all review articles over time
+**Current coverage (1,848 articles, recounted September 2026):**
+
+| Field | Count | | |
+|-------|------:|---|---|
+| `featured_image_alt` | 1,848 | 100% | ✓ |
+| `meta_description` | 1,835 | 99% | ✓ |
+| `seo_title` | 1,831 | 99% | ✓ |
+| `faqs` | 1,845 | 99% | ✓ |
+| `date_modified` | 1,824 | 98% | ✓ |
+| `focus_keyphrase` | 4 | 0.2% | **gap** |
+| `<QuickAnswer>` in body | 6 | 0.3% | **gap** |
+| `review_rating` | 69 | 3.7% | **should be 0** — see 9.2 |
+
+**Be honest about what that table says.** The metadata layer is effectively
+complete, and it got there because it is mechanical — `scripts/enrich-seo.mjs`
+can generate a title, a description and alt text at scale. The AEO layer is
+not: the direct-answer box this playbook calls for on every article exists on
+**six** of 1,848, and the focus keyphrase on four.
+
+That is the single biggest gap between this document and the site. Everything in
+Part 6 about being the source an AI quotes depends on the QuickAnswer box, and
+it is functionally unused. Two consequences worth stating plainly:
+
+- Do not read "98% coverage" as "the SEO work is done". The cheap half is done.
+- A QuickAnswer cannot be bulk-generated the way a meta description can — it is
+  a 40-60 word factual answer that has to be *right*. It gets added one article
+  at a time, which is why it needs to be part of the writing process rather
+  than a later pass. Start with the highest-traffic evergreen pieces.
 
 ---
 
@@ -538,23 +594,29 @@ goldmine, but only if it reads current.
 
 Beauticate is registered for Google News. Requirements:
 
-### Technical — [DONE / TODO]
+### Technical — [DONE]
 
 | Requirement | Status |
 |------------|--------|
 | NewsArticle schema for news/trend/interview content | **Done** — auto-detected |
 | `news_keywords` meta tag | **Done** — added for NewsArticle types |
 | `datePublished` accuracy (must match real publication time) | **Done** |
-| Transparent named authorship with bio page | **Partial** — author pages TODO |
+| Transparent named authorship with bio page | **Done** — `/author/[slug]` (authors with a photo) |
 | No paywalls or interstitials on news content | **Done** |
-| News sitemap (`sitemap-news.xml`) | **TODO: Redfern** |
+| News sitemap (`sitemap-news.xml`) | **Done** — `app/sitemap-news.xml/route.ts` |
 
-### News sitemap — [TODO: Redfern]
+### News sitemap — [DONE]
 
 A dedicated news sitemap with only articles from the last 48 hours, separate from
-the main sitemap. Required fields: `publication name`, `language`, `title`,
-`publication_date`. Only include articles tagged or auto-detected as
-NewsArticle.
+the main sitemap, carrying `publication name`, `language`, `title` and
+`publication_date` for articles auto-detected as NewsArticle.
+
+It is `force-dynamic` on purpose: the 48-hour window slides continuously, so a
+build-time copy is a snapshot of whichever two days surrounded the last deploy
+and can never list anything published after it.
+
+**An empty `<urlset>` is the correct answer most weeks.** Beauticate publishes a
+few times a month, not a few times a day. Don't "fix" it.
 
 ### Editorial
 
@@ -580,10 +642,22 @@ Disallows `/admin`, `/api/`, `/account` only. All AI bots (GPTBot, ClaudeBot,
 PerplexityBot, Google-Extended) are implicitly allowed — this is correct for a
 citation-first strategy.
 
-### 14.3 llms.txt — [TODO: Redfern]
+### 14.3 llms.txt — [DONE, but hand-maintained]
 
 A file at the site root that summarises the site structure and key content for AI
-engines. Spec:
+engines. Three files ship it:
+
+| File | What it is |
+|------|------------|
+| `public/llms.txt` | The short summary, served at `/llms.txt` |
+| `public/llms-full.txt` | The expanded version with more detail |
+| `app/.well-known/llms.txt` | The `.well-known` location some crawlers check |
+
+**Nothing generates these.** There is no build script behind them, so unlike the
+sitemap they do not follow the content — they drift the moment the masthead, the
+sections or the shop change, and nothing errors when they do. Re-read them
+whenever an editor joins or leaves, a section is added, or the shop moves. The
+spec they were written to:
 
 ```
 # Beauticate
@@ -689,7 +763,7 @@ answers — ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews.
 All major AI bots are allowed in robots.txt. This is correct. Being crawlable is
 a prerequisite for being cited.
 
-### 16.2 llms.txt — [TODO: Redfern]
+### 16.2 llms.txt — [DONE, hand-maintained]
 
 See Part 14.3 above.
 
@@ -806,7 +880,7 @@ the right type is applied.
 |-------------|---------------------|-----------------|
 | Standard article | Article | Default — no special trigger needed |
 | Interview, destination, trend piece | NewsArticle | Category is `interviews` or `destinations`, OR subcategory is `travel`, OR tags include `news`, `trending`, or `interview`, OR `is_news: true` in frontmatter |
-| Product review, "we tried" | Review | Title contains "review" or "we tried", OR tags include `review` — also add `review_rating`, `review_item`, `review_brand` to frontmatter |
+| Product review, "we tried" | Review | Title contains "review" or "we tried", OR tags include `review`. Nothing to add — the type is derived from the title/tags alone, and `review_rating` must stay unset (see 9.2) |
 | Tutorial or guide | HowTo | Title contains "how to" or "guide", OR tags include `how-to` — steps auto-extracted from H2 headings |
 | Any article with FAQs | FAQPage (appended) | `faqs` array present in frontmatter |
 | Spa, salon, clinic write-up | LocalBusiness | `venueType` set in frontmatter (`spa`, `skin-clinic`, `salon`, `nail-salon`) |
@@ -942,22 +1016,22 @@ For Redfern / Claude Code. Items pulled into one list.
 | Item | Status | Detail |
 |------|--------|--------|
 | QuickAnswer component | **Done** | Optional per article, degrades when empty |
-| Top byline linked to author page | **Partial** | Byline exists; author pages not built yet |
+| Top byline linked to author page | **Done** | Author pages are live; a byline that resolves to nobody in `lib/authors.ts` is warned about by `check-editorial-integrity.mjs` |
 | Article JSON-LD (Article, NewsArticle, Review, HowTo) | **Done** | Auto-detected |
 | FAQPage schema from frontmatter | **Done** | |
 | Person schema with sameAs | **Done** | Wikidata ID corrected to Q139644159 |
 | Organisation schema on every page | **Done** | With Wikidata Q139643093 |
 | VideoObject on vodcasts | **Done** | |
-| VideoObject on regular articles | **TODO** | Detect YouTube embeds in MDX body |
+| VideoObject on regular articles | **Done** | `YOUTUBE_ID_REGEX` in `lib/seo.ts` — watch, embed, shorts, youtu.be |
 | Visible "last updated" date | **Done** | From dateModified |
 | Responsive images + lazy loading | **Done** | Next.js Image component |
 | BreadcrumbList | **Done** | Articles, products, collections, vodcasts |
 | Product + Offer schema | **Done** | On product detail pages |
 | SpeakableSpecification | **Done** | On articles |
 | LocalBusiness schema | **Done** | On venue articles |
-| Author pages (`/author/[slug]`) | **TODO** | Route + template + Person schema |
-| News sitemap (`sitemap-news.xml`) | **TODO** | Last 48 hours, NewsArticle only |
-| llms.txt | **TODO** | Site-root summary for AI crawlers |
+| Author pages (`/author/[slug]`) | **Done** | `app/author/[slug]/page.tsx`, with `buildPersonSchema` |
+| News sitemap (`sitemap-news.xml`) | **Done** | `app/sitemap-news.xml/route.ts`, `force-dynamic`, 48-hour window. An empty `<urlset>` is the correct answer most weeks, not a bug |
+| llms.txt | **Done** | `public/llms.txt` + `public/llms-full.txt` + `app/.well-known/llms.txt`. **Hand-maintained — no generator script, so it goes stale silently.** Check it when the shop, sections or masthead change |
 | AggregateRating on products | **TODO** | After reviews integration |
 | Homepage OG image | **TODO** | Branded landscape share image |
 

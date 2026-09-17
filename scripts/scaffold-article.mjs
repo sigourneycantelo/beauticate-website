@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * scaffold-article.mjs — front-load the MECHANICAL parts of the optimisation pass
- * for one already-migrated article (see docs/article-seo-optimization.md).
+ * for one already-migrated article (see docs/article-optimisation-pass.md).
  *
  * It does NOT make editorial decisions. It:
  *   1. pulls the WordPress REST source (cached under .cache/wp/<slug>.json),

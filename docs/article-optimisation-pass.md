@@ -1,4 +1,19 @@
-# Article SEO / AEO / Conversion Optimisation Playbook
+# Article optimisation pass (SEO / AEO / conversion)
+
+> **Renamed September 2026.** This file was `article-seo-optimization (1).md` —
+> a download artefact of a name that made it look like a stray copy of
+> [`article-seo-optimization.md`](./article-seo-optimization.md). It is not a
+> copy. That file is the **strategy playbook** (why, and what the site does for
+> you); this one is the **per-article mechanical pass**. Read that one for
+> policy, this one for procedure.
+
+> **⚠️ The WordPress source is gone.** As of September 2026
+> `www.beauticate.com/wp-json/...` and `/wp-content/uploads/...` both return
+> **403**. Step A below, and `scripts/scaffold-article.mjs` which automates it,
+> cannot fetch anything — the script still works only for slugs already cached
+> under `.cache/wp/`. Missing body images must now be re-sourced by hand (brand
+> sites, Shopify CDN, Canva originals in Drive) rather than pulled from the old
+> site. Do not spend time debugging a 403 here; it is not a network problem.
 
 The **optimisation pass**: taking a single, already-migrated article and doing the
 back-end SEO, answer-engine (AEO) and conversion work on it. This is distinct
@@ -59,11 +74,18 @@ dashes, no Oxford commas.** En dashes are fine.
 > prints a frontmatter skeleton + the redirect lines. It does **no** editorial work —
 > you still rename the images, write alt text, and fill the `TODO`s from the brief.
 
-### A. Source of truth — [mechanic]
-Pull the WordPress REST source for the original order and full content:
-`https://www.beauticate.com/wp-json/wp/v2/posts?slug=<old-slug>` (cached under
-`.cache/wp/`). Resolve image IDs via `/wp-json/wp/v2/media/<id>`. (The scaffold
-script above does this for you.)
+### A. Source of truth — [mechanic] — **no longer available**
+This step used to pull the WordPress REST source for the original order and full
+content: `https://www.beauticate.com/wp-json/wp/v2/posts?slug=<old-slug>`
+(cached under `.cache/wp/`), resolving image IDs via `/wp-json/wp/v2/media/<id>`.
+
+**That endpoint now 403s**, as does `/wp-content/uploads/`. What still works:
+- anything already cached in `.cache/wp/` from an earlier session
+- the Wayback Machine, for body copy and image *order* on a high-value piece
+- re-sourcing images from the brand, the Shopify CDN, or the Canva originals in
+  Drive (see the `lead-magnet-drive-source` note)
+
+Treat the live MDX as the source of truth now, not WordPress.
 
 ### B. Slug, redirects, canonical — [mechanic] (decision to rename is [editorial])
 - The **URL is the directory name**, not frontmatter `slug`. To rename: `git mv`

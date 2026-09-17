@@ -15,6 +15,18 @@ the team git workflow (branches, PRs, reviewing previews) see
 | [`shoppable-story.md`](./shoppable-story.md) | Building a single-brand or product-led story that converts. |
 | [`adding-products.md`](./adding-products.md) | Adding/featuring a product so it renders as a Beauticate card. |
 
+## SEO / AEO / GEO
+
+> **Start with the skill, not these docs.** `.claude/skills/beauticate-article-seo`
+> is the per-article working checklist and loads automatically when you write,
+> upload or optimise a story. These two are the reference behind it.
+
+| Doc | Use it when |
+|-----|-------------|
+| [`article-seo-optimization.md`](./article-seo-optimization.md) | **Master playbook** — strategy, entity/brand authority, what the templates generate for free, schema policy, freshness, Google News, competitor landscape. Read for *policy*. |
+| [`article-optimisation-pass.md`](./article-optimisation-pass.md) | The per-article mechanical pass on one already-migrated article. Read for *procedure*. (Was `article-seo-optimization (1).md`.) |
+| [`seo-recovery-worklist.md`](./seo-recovery-worklist.md) | Working through the ranked SEO recovery list. |
+
 ## Article audit & fix (WordPress → Vercel reconciliation)
 
 | Doc | Use it when |

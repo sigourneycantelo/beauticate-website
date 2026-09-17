@@ -29,12 +29,46 @@ If port 3000 shows "in use" from a hung server: `lsof -tiTCP:3000 | xargs kill -
 
 **Any article with `date_published` before `2026-06-18` originated on the WordPress site and may have body images or content that was not fully migrated.**
 
-When working on such articles:
-1. Fetch the original WordPress page at `https://www.beauticate.com/<category>/<subcategory>/<slug>/` to check for body images and full content that might be missing from the MDX file.
-2. Download any missing body images to the article's content directory (`content/<category>/<subcategory>/<slug>/`) and reference them with local paths (`/content/...`).
-3. For articles with `/wp-content/uploads/` image paths already in the body, those images are served directly from the old WordPress CDN and do not need to be re-hosted unless broken.
+**The WordPress source is gone — verified 403 in September 2026.** Both
+`https://www.beauticate.com/wp-json/wp/v2/...` and
+`https://www.beauticate.com/wp-content/uploads/...` return HTTP 403. There is no
+longer any way to fetch the original page or re-download a missing body image
+from the old site, and no amount of retrying or changing user-agent will fix it.
+Don't debug it; it is not a network fault.
+
+What this changes:
+
+1. **Do not try to fetch the original WordPress page.** The old step 1 of this
+   rule (fetch `/<category>/<subcategory>/<slug>/` to compare) no longer works.
+   Treat the MDX file as the source of truth.
+2. **Missing body images are re-sourced by hand**, not re-downloaded: the brand's
+   own site, the Shopify CDN, or the Canva originals in Drive. For a high-value
+   piece the Wayback Machine can still show the original body copy and image
+   order. Save them into the article's directory and reference `/content/...`.
+3. **No article references `/wp-content/uploads/` any more** (checked: zero of
+   1,848). Anything already cached under `.cache/wp/` from an earlier session is
+   still usable. If a `/wp-content/` path ever reappears in a body, it is a
+   broken image, not a working CDN link — replace it.
 
 The migration date was June 18, 2026. Articles dated on or after that date were written directly for the Vercel site and will not have a WordPress source.
+
+## SEO, AEO and GEO
+
+The per-article checklist lives in the **`beauticate-article-seo` skill**, which
+loads when you write, upload, optimise or refresh a story. It covers what the
+templates generate for free, what to apply without being asked, and the
+decisions that must come from the writer.
+
+Behind it: [`docs/article-seo-optimization.md`](docs/article-seo-optimization.md)
+for strategy and policy, and
+[`docs/article-optimisation-pass.md`](docs/article-optimisation-pass.md) for the
+mechanical pass on one article.
+
+The short version of the gap: metadata coverage is ~99%, because a script can
+generate a title and a description. `<QuickAnswer>` — the 40-60 word direct
+answer that wins AI Overview citations — is on **6 of 1,848 articles**. That one
+box is the highest-leverage thing on any new story, and it has to be written,
+not generated.
 
 ## Ongoing article cleanup
 
@@ -360,6 +394,17 @@ ever want stars, the visible verdict block comes first and the markup follows
 it. Removing the fields does not change the schema type: `resolveSchemaType`
 already returns `Review` from a `review` tag or a title, so a review stays a
 Review without them.
+
+Note the trigger is circular — `review_rating != null` is *itself* one of the
+conditions that makes `resolveSchemaType` return `Review`. There is no article
+where the field sits set but unused: setting it guarantees the rating is
+emitted.
+
+**69 published articles currently set `review_rating`** (checked September
+2026), following older advice in the SEO playbook that has since been corrected.
+They are all emitting an invisible rating today. Fixing them is a decision, not
+a sweep — either strip the field from all 69, or build the visible verdict block
+first and keep them. Don't add a 70th.
 
 ## Product card design rules
 
