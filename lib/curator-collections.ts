@@ -17,7 +17,8 @@
 //      quote are attributed to them.
 //
 // An article can opt out of (1) with `curator_exclude: true` in its frontmatter,
-// for the case where the products are ours rather than the author's.
+// for the case where the products are ours rather than the author's. Which
+// articles want it is an editorial decision, not a derivable one — see CLAUDE.md.
 //
 // Like article moments this is fully build-time: no Shopify write, no manual
 // step. It deliberately captures affiliate links as well as own-shop products,
@@ -177,12 +178,12 @@ export function getCuratorCollections(): CuratorCollection[] {
 
     // 1. Articles written by a curator — frontmatter links plus body cards.
     //
-    // `curator_exclude` opts an article out of this step. A byline is not
-    // consent to recommend: plenty of contributor pieces carry products the
-    // Beauticate team chose to sit alongside the writing, and without the flag
-    // every one of them is republished here as that person's own pick. Step 2
-    // is deliberately unaffected — those products sit under the curator's own
-    // <PortraitQuote>, so they are theirs by construction.
+    // `curator_exclude` opts an article out of this step, for the pieces where
+    // the products are ours and only the expertise is the writer's. Whether a
+    // given contributor wants their name on shop products is a per-person, per-
+    // article editorial call — ask Sig, don't infer it. Step 2 is deliberately
+    // unaffected: those products sit under the curator's own <PortraitQuote>,
+    // so they are theirs by construction.
     const author = f.author ? byName.get(normaliseName(f.author)) : undefined
     if (author && !f.curator_exclude) {
       const own = [...(article.products ?? []), ...parseShopItems(article.content)]
