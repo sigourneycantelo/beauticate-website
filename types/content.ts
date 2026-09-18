@@ -136,6 +136,25 @@ export interface ArticleFrontmatter {
   draft_reason?: string        // why this is unpublished — required context before ever republishing.
                                 // Never bulk-flip `published` back to true without checking this per-listing;
                                 // see "Directory listings" in CLAUDE.md.
+  /**
+   * Published, indexable, reachable by its own URL and present in the sitemap —
+   * but never surfaced as a card in any grid: not the directory index, not the
+   * category or subcategory archives, not the home page, not related listings.
+   *
+   * This exists for the directory listings whose only blocker is photography.
+   * Unpublishing them threw away pages that still earn real impressions (QUE
+   * Colour 920, Rêve 1,069, Edwards & Co 1,112 over ten weeks) and handed Google
+   * a wall of 404s. `unlisted` keeps the page and the rankings while keeping the
+   * photo-less card out of the grid, which is what drafting them was actually
+   * for. Clear the flag when a holding shot lands.
+   *
+   * Author archives deliberately still list these, so the pages keep an internal
+   * link and don't become orphans.
+   */
+  unlisted?: boolean
+  unlisted_reason?: string     // why this page is live but held out of the grids — the same
+                                // per-listing record `draft_reason` keeps, for the same reason.
+                                // Clear both when the blocker (usually a holding shot) is fixed.
   reviewed?: boolean           // true = SEO/AEO review done; used by /admin/review-queue
   is_featured?: boolean
   is_news?: boolean            // true = NewsArticle schema + Google News signals

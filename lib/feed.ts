@@ -464,6 +464,9 @@ export function getFeedCandidates(now: Date = new Date()): FeedArticle[] {
     if (!article) continue
     const f = article.frontmatter
     if (f.published === false) continue
+    // `unlisted` pages are live for search but are not new stories — keep the
+    // restored directory listings out of the RSS/news feeds. See types/content.ts.
+    if (f.unlisted === true) continue
 
     const originalPublishedAt = parsePublishDate(f.date_published)
     if (!originalPublishedAt) continue

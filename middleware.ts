@@ -33,9 +33,27 @@ const ARTICLE_PREFIXES = new Set([
   'the-go-tos',
 ])
 
+// Venues that have closed for good. There is no equivalent page to redirect to,
+// and a redirect to the directory index would just read as a soft 404, so these
+// answer 410 Gone: the same "this is not here" as the 404 they serve today, but
+// an explicit, permanent one that Google drops from the index far faster.
+// Keep the drafted MDX in content/ — it's the record of why the URL is dead.
+const GONE_PATHS = new Set([
+  // King Street salon shut; Teneale Farrington now works from inside Mane
+  // Societe, Applecross. That studio would be a new listing, not this one.
+  '/destinations/clinics/head-studio-perth',
+  // Port Elliot retreat shut (confirmed by Sig, Aug 2026). No current website,
+  // only aggregator listings remain.
+  '/destinations/spas-retreats/b4eqvwiwqul60j621kycw4iod8mzx4',
+])
+
 export function middleware(req: NextRequest) {
   const host = (req.headers.get('host') ?? '').split(':')[0]
   const { pathname } = req.nextUrl
+
+  if (GONE_PATHS.has(pathname.replace(/\/$/, ''))) {
+    return new NextResponse(null, { status: 410 })
+  }
 
   const segments = pathname.split('/').filter(Boolean)
   if (segments.length >= 2 && ARTICLE_PREFIXES.has(segments[0])) {

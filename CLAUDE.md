@@ -101,6 +101,31 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 - **Re-filing a listing to a new subcategory means `git mv`, not copy-and-leave-the-original.** Several listings exist twice — once at a stale `clinics/` (or similar) path and once at the corrected path — because a re-file copied the file instead of moving it. When you copy content to a new path, delete or draft the old one in the same change; don't leave an orphaned duplicate.
 - **Before publishing or unpublishing any listing, check for near-duplicates first** — same venue name filed under a different subcategory/slug is the recurring failure mode here. `scripts/audit-directory-duplicates.py` does this check; run it before any bulk directory work.
 
+### `unlisted: true` — live for search, absent from the grid
+
+Unpublishing a listing deletes a URL Google already ranks. The photo-less listings
+were earning real impressions at good positions (QUE Colour 920, Rêve 1,069,
+Edwards & Co 1,112 over ten weeks) and drafting them handed Search Console a wall
+of "Not found (404)". But the reason they were drafted is also real: a photo-less
+card looks broken in the directory.
+
+`unlisted: true` is the setting in between. The page is published, indexable, in
+the sitemap and reachable by its URL; it never appears as a card in the directory
+index, the category or subcategory archives, the home page grid, related listings
+or the RSS feed. Author archives still list it, deliberately, so it keeps an
+internal link instead of becoming an orphan. `lib/content.ts` enforces this in one
+place — `isListed()`, which every list-of-cards query filters on.
+
+- Use it when the **only** blocker is photography. Record the blocker in
+  `unlisted_reason`, the same way `draft_reason` records why a draft is a draft.
+- Keep `published: false` when the content itself is wrong or unverified — a closed
+  venue, a body describing the previous business, an unconfirmed trading name. An
+  unlisted page is still a live page making claims to readers.
+- A closed venue gets neither: delete nothing, but add its path to `GONE_PATHS` in
+  `middleware.ts` so the URL answers **410 Gone**. There is no equivalent page to
+  redirect to, and redirecting to the directory index just reads as a soft 404.
+- Clear `unlisted` and `unlisted_reason` together the moment a holding shot lands.
+
 ## Paid directory placements
 
 Directory slots are sold as annual placements. Disclosure is handled by one

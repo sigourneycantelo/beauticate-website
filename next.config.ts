@@ -131,6 +131,18 @@ const nextConfig: NextConfig = {
       { source: '/living/giving-back-became-non-negotiable', destination: '/wellness/mindset/why-giving-back-became-non-negotiable-by-shentel-lee', permanent: true },
       { source: '/destinations/where-family-memories-are-made', destination: '/destinations/travel/sustainable-luxury-travel-australia-wild-luxury-review', permanent: true },
 
+      // ── Re-filed venues that left a duplicate behind ─────────────────────────────
+      // Each of these was a second copy of a venue that already has a live listing
+      // under another slug. The leftover MDX is deleted; these send its URL (and the
+      // impressions it still earns) to the copy that is actually maintained.
+      // The same-slug leftovers — brad-ngata, joh-bailey, headcase-hair, koda-cutters,
+      // valonz, oscar-oscar — need no rule here: middleware's redirect-slug-map
+      // already resolves a bare slug to wherever that slug lives today.
+      { source: '/destinations/clinics/roji-canberra', destination: '/destinations/salons/roji-canberra-3', permanent: true },
+      { source: '/destinations/clinics/que-colour-darlinghurst-2', destination: '/destinations/clinics/que-colour-darlinghurst', permanent: true },
+      { source: '/destinations/clinics/edwards-and-co-surry-hills', destination: '/destinations/clinics/edwards-co-surry-hills', permanent: true },
+      { source: '/destinations/spas-retreats/loccitane-petit-spa', destination: '/destinations/spas-retreats/loccitane-petit-spa-subiaco-wa', permanent: true },
+
       // ── Venue recategorization redirects (53 venues moved Jul 2026) ──────────────
       { source: '/destinations/clinics/stephanies-vintage-spa-cleveland', destination: '/destinations/spas-retreats/stephanies-vintage-spa-cleveland', permanent: true },
       { source: '/destinations/clinics/hepburn-spa-and-bathhouse-daylesford', destination: '/destinations/spas-retreats/hepburn-spa-and-bathhouse-daylesford', permanent: true },

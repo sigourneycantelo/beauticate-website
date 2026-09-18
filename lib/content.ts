@@ -66,6 +66,26 @@ function isPublished(a: { frontmatter: ArticleFrontmatter } | null): boolean {
   return a.frontmatter.published !== false
 }
 
+/**
+ * Published AND allowed to appear as a card in a grid.
+ *
+ * `unlisted: true` is the middle setting between published and drafted: the page
+ * is live, indexable and in the sitemap, but it never shows up in the directory
+ * index, the category or subcategory archives, the home page grid or related
+ * listings. It is how a listing whose only problem is a missing photograph keeps
+ * its rankings without putting a photo-less card in front of a reader.
+ *
+ * Every list-of-cards query filters on this. Two deliberate exceptions:
+ * `app/sitemap.ts` (Google should still have the URL) and `getArticlesByAuthor`
+ * (the author archive is a complete body of work, and it keeps these pages
+ * internally linked rather than orphaned — it already renders a text-only card
+ * when there is no image).
+ */
+function isListed(a: { frontmatter: ArticleFrontmatter } | null): boolean {
+  if (!isPublished(a)) return false
+  return a!.frontmatter.unlisted !== true
+}
+
 export function getArticlesByCategory(category: string, subcategory?: string) {
   const allSlugs = getArticleSlugs()
   const inFolder = allSlugs
@@ -74,14 +94,14 @@ export function getArticlesByCategory(category: string, subcategory?: string) {
       return parts[0] === category
     })
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
 
   // Also include cross-listed articles (via also_in) at the category level
   if (!subcategory) {
     const seen = new Set(inFolder.map(a => a?.frontmatter.slug))
     const crossListed = allSlugs
       .map(parts => getArticleBySlug(parts))
-      .filter(isPublished)
+      .filter(isListed)
       .filter(a => (a?.frontmatter.also_in ?? []).some(ai => ai.startsWith(`${category}/`)))
       .filter(a => !seen.has(a?.frontmatter.slug))
     return [...inFolder, ...crossListed].sort((a, b) => {
@@ -108,7 +128,7 @@ export function getArticlesBySubcategory(category: string, subcategory: string) 
   const seen = new Set(inFolder.map(a => a?.frontmatter.slug))
   const crossListed = getArticleSlugs()
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => (a?.frontmatter.also_in ?? []).includes(key))
     .filter(a => !seen.has(a?.frontmatter.slug))
   return [...inFolder, ...crossListed].sort((a, b) => {
@@ -121,7 +141,7 @@ export function getArticlesBySubcategory(category: string, subcategory: string) 
 export function getArticlesByFeeling(feeling: string) {
   return getArticleSlugs()
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => (a?.frontmatter.feeling ?? []).includes(feeling))
     .sort((a, b) => {
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
@@ -133,7 +153,7 @@ export function getArticlesByFeeling(feeling: string) {
 export function getArticlesByTravelType(travelType: string) {
   return getArticleSlugs()
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => a?.frontmatter.travelType === travelType)
     .sort((a, b) => {
       const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
@@ -168,7 +188,7 @@ export function getDirectoryListings(filters?: { state?: string; venueType?: str
   return getArticleSlugs()
     .filter(parts => parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1]))
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => !!a?.frontmatter.venueType)
     .filter(a => !filters?.state || a?.frontmatter.state === filters.state)
     .filter(a => !filters?.venueType || a?.frontmatter.venueType === filters.venueType)
@@ -186,7 +206,7 @@ export function getHeroArticle() {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .find(a => a?.frontmatter.is_hero) ?? null
 }
 
@@ -194,7 +214,7 @@ export function getHeroArticles() {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => a?.frontmatter.is_hero)
     .sort((a, b) => (a!.frontmatter.hero_order ?? 99) - (b!.frontmatter.hero_order ?? 99))
 }
@@ -203,7 +223,7 @@ export function getFeaturedArticles(limit = 6) {
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => a?.frontmatter.is_featured)
     .slice(0, limit)
 }
@@ -217,7 +237,7 @@ export function getAllArticles(limit = 20, excludeSlugs: string[] = [], excludeS
   const allSlugs = getArticleSlugs()
   return allSlugs
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => a?.frontmatter.featured_image)
     .filter(a => !excludeSlugs.includes(a!.frontmatter.slug))
     .filter(a => !excludeSubcategories.includes(a!.frontmatter.subcategory ?? ''))
@@ -272,7 +292,7 @@ function getRelatedDirectoryListings(
   return getArticleSlugs()
     .filter(parts => parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1]))
     .map(parts => getArticleBySlug(parts))
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => a?.frontmatter.slug !== currentSlug)
     .sort((a, b) => {
       const aSame = a?.frontmatter.subcategory === subcategory ? 1 : 0
@@ -300,7 +320,7 @@ export function getRelatedArticles(
   }
 
   return getArticlesByCategory(category)
-    .filter(isPublished)
+    .filter(isListed)
     .filter(a => a?.frontmatter.slug !== currentSlug)
     .sort((a, b) => {
       const aMatches = (a?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
