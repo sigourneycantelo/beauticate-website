@@ -69,6 +69,14 @@ function parseShopItem(attrs: string): ProductLink | null {
   const name = attr('name')
   if (!handle && !url) return null // a card with neither is not shoppable
 
+  // `curator="none"` — one card the byline did not choose, inside an article
+  // that is otherwise genuinely theirs. The case this exists for: an editor's
+  // pick dropped into someone else's story under an Ed's note, where excluding
+  // the whole article with `curator_exclude` would also throw away the author's
+  // own picks. Opting out of attribution is the only thing it does; the card
+  // renders, and still feeds /shop/moments/<slug>, exactly as before.
+  if (attr('curator') === 'none') return null
+
   return {
     name: name ?? handle ?? url!,
     type: handle ? 'shop' : 'affiliate',
@@ -187,7 +195,7 @@ export function getCuratorCollections(): CuratorCollection[] {
     const author = f.author ? byName.get(normaliseName(f.author)) : undefined
     if (author && !f.curator_exclude) {
       const own = [...(article.products ?? []), ...parseShopItems(article.content)]
-        .filter(p => p.type !== 'dead')
+        .filter(p => p.type !== 'dead' && p.curator !== 'none')
         .map(withFallbackName)
       add(author.slug, own, meta)
     }
@@ -199,7 +207,7 @@ export function getCuratorCollections(): CuratorCollection[] {
         const curator = byName.get(name)
         // Skip the author's own quote; it was already taken in full above.
         if (!curator || curator.slug === author?.slug) continue
-        add(curator.slug, products.filter(p => p.type !== 'dead').map(withFallbackName), meta)
+        add(curator.slug, products.filter(p => p.type !== 'dead' && p.curator !== 'none').map(withFallbackName), meta)
       }
     }
   }

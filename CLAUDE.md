@@ -186,9 +186,33 @@ attributed to the author. It governs step 1 (authored articles) and deliberately
 not step 2: products under a curator's own `<PortraitQuote>` in a team edit are
 theirs by construction, so the seasonal Winter/Summer Edit needs no flag.
 
+When it's only one or two products in an article that is otherwise genuinely the
+writer's, use the per-card opt-out instead of the whole-article flag:
+
+```
+<ShopItem handle="..." curator="none" />
+```
+
+```yaml
+product_links:
+  - type: "shop"
+    handle: "..."
+    curator: "none"
+```
+
+**Set it in both places if the product appears in both** — frontmatter
+`product_links` and body `<ShopItem>` feed the curator page independently, so
+tagging only one leaves the product attributed. Nothing about the card changes;
+it renders and feeds `/shop/moments/<slug>` exactly as before.
+
+The live case is Kerrie Gentle's makeup piece: the BOOIE BB cream and
+illuminator sit under an *"Ed's note from Sigourney"* in which Sig says she
+wears them. Four of the six products there are genuinely Kerrie's, so excluding
+the article would have thrown those away too.
+
 An Ed's note is the other half of the toolkit, for telling the reader whose picks
-they are. Whether a piece wants the flag, the note, both or neither is Sig's
-call — that's what question 2 above is for.
+they are. Whether a piece wants the flag, a per-card opt-out, the note, some
+combination or none of it is Sig's call — that's what question 2 above is for.
 
 ### Why the flag exists
 
