@@ -117,7 +117,7 @@ export const AUTHORS: Author[] = [
   {
     name: 'Michelle Bridges',
     slug: 'michelle-bridges',
-    role: 'Fitness Expert',
+    role: 'Fitness Editor',
     bio: "Michelle Bridges is one of Australia's most recognised voices in health and fitness, known for translating science-backed training into practical, sustainable habits. She has helped millions rethink their relationship with movement, strength and longevity.",
     photo: '/images/authors/michelle-bridges.png',
     instagram: 'https://www.instagram.com/mishbridges/',
