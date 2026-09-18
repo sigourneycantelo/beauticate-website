@@ -35,13 +35,21 @@ export const MARKER = process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER ?? ''
  * map the widget's controls onto the tailwind brand colours so a search box
  * reads as part of the article rather than an ad unit.
  */
+/**
+ * The one accent colour every widget uses — button, icons, active states.
+ *
+ * Swapping the house accent is this single line. Wine is the current choice;
+ * ink ('#2a2621') is the quieter alternative that was trialled beside it.
+ */
+const ACCENT = '#7a2733' // wine
+
 export const THEME: Record<string, string> = {
-  primary_override: '#2a2621', // ink — the button and active states
-  color_button: '#2a2621',
-  color_icons: '#2a2621',
+  primary_override: ACCENT,
+  color_button: ACCENT,
+  color_icons: ACCENT,
   color_focused: '#8E9A82', // eucalypt — the focus ring, as links use on hover
   color_border: '#d8d3ca',
-  dark: '#2a2621', // body text
+  dark: '#2a2621', // body text stays ink regardless of the accent
   border_radius: '0', // square corners, like everything else on the site
   plain: 'false',
 }
