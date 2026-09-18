@@ -48,3 +48,5 @@ migration/
 docs/audit/testimonial-audit.csv
 docs/audit/testimonial-audit.md
 docs/audit/lines-to-fix.json
+docs/audit/optimisation-worklist.csv
+docs/audit/quick-answer-drafts.md

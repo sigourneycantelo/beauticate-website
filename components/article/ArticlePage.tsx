@@ -28,6 +28,7 @@ import ProductInset from '@/components/mdx/ProductInset'
 import EditorNote from '@/components/mdx/EditorNote'
 import EditorIntro from '@/components/mdx/EditorIntro'
 import QuickAnswer from '@/components/mdx/QuickAnswer'
+import Verdict from '@/components/mdx/Verdict'
 import AffiliateCTA from '@/components/mdx/AffiliateCTA'
 import SplitRow from '@/components/mdx/SplitRow'
 import StickyScroll from '@/components/mdx/StickyScroll'
@@ -171,7 +172,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, CollectionRail,
     InlineProduct, PullQuote, ImageCarousel, CarouselSlide, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
     GiftNote,
-    ProductInset, EditorNote, EditorIntro, QuickAnswer, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
+    ProductInset, EditorNote, EditorIntro, QuickAnswer, Verdict, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
       return (
