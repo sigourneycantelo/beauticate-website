@@ -221,6 +221,14 @@ run, not because the gift had.
   shoppable landing page per article.
 - **Ed's note rule applies.** In a bylined first-person interview the offer is
   Beauticate's voice, never the subject's.
+- **Ask Sig before putting shop products in anyone else's bylined article.** It is
+  a case-by-case call, every time — some contributors are happy to have products
+  under their name, some have not agreed to recommend anything. Name the products
+  and ask whether they're happy, and whether it should read as theirs or as the
+  team's. A takeover is not a licence to make every byline shoppable. If the
+  answer is "ours, not theirs", set `curator_exclude: true` as well as the Ed's
+  note — without it the products land on `/shop/curators/<author>` as that
+  person's own picks, where no Ed's note can reach them.
 - **`hero_title` and `hero_eyebrow` are temporary carousel overrides**, leaving the
   article's real headline alone. Deleting two lines ends it.
 - **Don't put the brand in a headline the story doesn't support.** The Celeste

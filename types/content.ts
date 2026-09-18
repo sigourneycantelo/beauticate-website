@@ -88,6 +88,12 @@ export interface ArticleFrontmatter {
   moment_title?: string             // display name for the auto-generated Shop-by-Moment page (defaults to article title)
   moment_image?: string             // tile/hero image for the moment page (defaults to hero_image → featured_image)
   moment_exclude?: boolean          // opt OUT of auto-moment generation even with 6+ products
+  // Keep this article's products OUT of the author's /shop/curators/<slug> page.
+  // They still render in the foot "Shop the Edit" grid and still feed
+  // /shop/moments/<slug> — this only stops the curator builder republishing them
+  // as that person's own picks. Whether a contributor wants their name on shop
+  // products varies by person and by article: ask before setting or omitting it.
+  curator_exclude?: boolean
   related_products?: string[]
   related_collections?: string[]
   youtube_embed?: string

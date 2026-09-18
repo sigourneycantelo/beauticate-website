@@ -144,6 +144,67 @@ statement is false about the majority of it.
 `sponsored: boolean` also exists in `ArticleFrontmatter`. It is rendered
 nowhere and set on nothing. Don't reach for it.
 
+## Shop products in someone else's article — ask, every time
+
+**This is a case-by-case editorial call, and it is Sigourney's to make. There is
+no default and no rule to apply on autopilot.**
+
+Some of the editors and contributors don't mind at all having shop products sit
+in their piece and carry their name. Others have not agreed to recommend
+anything and would be unhappy to find they had. It depends on the person, on
+their commercial arrangements, and often on the specific products.
+
+So whenever you're building or editing an article with a byline that isn't
+Beauticate's own, **ask Sig before it goes up:**
+
+1. Is this writer or editor happy for us to include shop products in their
+   article?
+2. If so, how do they want it handled — attributed to them, or clearly marked as
+   the team's picks?
+
+Ask it as a question with the products named. "Happy for these five to sit under
+Michelle's byline?" gets a real answer; "should we add products?" doesn't.
+
+### The mechanism, once she's told you
+
+Every Beauticate Collective member gets an auto-built page at
+`/shop/curators/<slug>`. `getCuratorCollections()` fills it from two places, and
+the first one is the one to know about: **every** `product_links` entry and every
+`<ShopItem>` in any article they are bylined on, republished under their name as
+their own pick.
+
+That is exactly right when the writer chose the products. When we chose them, it
+puts an endorsement in someone's mouth. One frontmatter line turns it off:
+
+```yaml
+curator_exclude: true
+```
+
+The products still render in the foot "Shop the Edit" grid and still feed
+`/shop/moments/<slug>`. The only thing that changes is that they stop being
+attributed to the author. It governs step 1 (authored articles) and deliberately
+not step 2: products under a curator's own `<PortraitQuote>` in a team edit are
+theirs by construction, so the seasonal Winter/Summer Edit needs no flag.
+
+An Ed's note is the other half of the toolkit, for telling the reader whose picks
+they are. Whether a piece wants the flag, the note, both or neither is Sig's
+call — that's what question 2 above is for.
+
+### Why the flag exists
+
+Michelle Bridges' strength training article. Five protein, creatine and recovery
+products, none of them hers, all heading for `/shop/curators/michelle-bridges` as
+"Michelle Bridges' favourites" — an endorsement she had not agreed to. Before the
+flag the only fix was to strip `product_links` from the article entirely and lose
+the editorial-to-shop cross-link, because **an Ed's note on the article never
+reaches the curator page.** The disclosure lives on one page and the attribution
+on another, so the article's framing cannot correct it.
+
+Worth knowing when you ask the question: a writer saying yes to products in their
+article is not automatically saying yes to a shop page in their name. They are
+two different things, on two different pages, and it's worth separating them if
+the answer isn't obvious.
+
 ## Git workflow
 
 **Open a pull request. Do not push straight to `main`.** The repo has branch

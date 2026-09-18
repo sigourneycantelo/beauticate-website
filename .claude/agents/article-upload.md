@@ -15,6 +15,7 @@ The user will provide:
 3. **Shop Catalogue CSV path** — the local path to the Beauticate Shopify product export (columns: Handle, Product Name, Image URL, Shop Link). Ask for this if the article mentions Beauticate Shop products.
 4. **Author** — must match an entry in `lib/authors.ts`. If unsure, leave the field blank.
 5. **Featured/holding image** — which image goes at the top. Ask if not specified.
+6. **Sign-off on shop products, if the byline isn't Beauticate's own** — see below. Never assume it.
 
 ## Category mapping
 
@@ -72,6 +73,7 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 - `published: true`
 - `reading_time` — estimated minutes
 - `product_links` — array of `{type: "shop", handle: "..."}` for Beauticate products
+- `curator_exclude: true` — only if Sig has said the products are the team's picks rather than the bylined writer's (see the shop-products question below)
 
 **Body content standards:**
 - Proper heading hierarchy: h2 sections only, no level jumps
@@ -89,6 +91,36 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 
 Look up products in the Shop Catalogue CSV by handle. If a product isn't in the CSV but exists on the Shopify store, fetch the product page at `https://beauticate.shop/products/HANDLE` to get the CDN image URL.
 
+**Before you add any shop product to an article bylined to someone other than
+Beauticate, ask Sigourney.** This is a case-by-case editorial call every time —
+there is no default, and you cannot infer it from the author, the category, or
+what a previous article did. Some contributors are perfectly happy to have shop
+products in their piece under their name; others have not agreed to recommend
+anything.
+
+Ask two questions, with the products named:
+
+1. Is this writer or editor happy for us to include these products in their
+   article?
+2. If so, how should it be handled — attributed to them, or clearly the team's
+   picks?
+
+Name the actual products. "Happy for these five to sit under Michelle's byline?"
+gets a real answer; "should we add products?" doesn't.
+
+What the answers turn into:
+
+- **Yes, attributed to them** — nothing special. Products go in as normal.
+- **Yes, but they're our picks** — set `curator_exclude: true` in the frontmatter
+  and say so in an Ed's note at the foot. Without the flag, every product in the
+  article is republished on `/shop/curators/<author-slug>` as that person's own
+  recommendation, and the Ed's note never reaches that page to correct it.
+- **No** — no shop products in the article at all.
+
+Ask even when the answer seems obvious, and ask again for a new article rather
+than carrying an earlier answer across. It's one question and it's cheap; getting
+it wrong puts an endorsement in someone's mouth on a page they'll never see.
+
 ### 3. Copy images to both directories
 
 Images must exist in BOTH locations or they won't render on the live site:
@@ -104,6 +136,7 @@ Start the dev server (`npm run dev` via `.claude/launch.json`) and verify:
 - ShopGrid product cards show with images and prices
 - Internal links resolve to published articles (a `published: false` target 404s)
 - Any editorial insertions in a first-person piece are marked as an Ed's note, not written in the author's voice
+- If the piece carries shop products under someone else's byline, Sig has actually answered the two questions above — and the answer is reflected in the frontmatter, not just in the conversation
 - Heading hierarchy and italic captions look correct
 
 Ask the user to confirm before committing.
