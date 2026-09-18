@@ -209,13 +209,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://s.skimresources.com/js/265664X1750758.skimlinks.js"
           strategy="afterInteractive"
         />
-        {process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER && (
-          <Script
-            id="travelpayouts-sdk"
-            src={`https://tp.media/content?marker=${process.env.NEXT_PUBLIC_TRAVELPAYOUTS_MARKER}`}
-            strategy="afterInteractive"
-          />
-        )}
       </body>
     </html>
   )
