@@ -87,9 +87,11 @@ live site, check `lib/travelpayouts.ts` before assuming it's a layout bug.
 
 Out of the box these widgets are Travelpayouts blue — blue button, blue border,
 blue calendar icons, rounded corners. `THEME` in `lib/travelpayouts.ts` maps
-them onto the house palette instead: ink button, soft greige border, square
-corners, eucalypt focus ring. Change them there and every widget on the site
-changes at once. Never restyle one widget in an article.
+them onto the house palette instead: wine button and icons, soft greige border,
+square corners, eucalypt focus ring. The accent is a single `ACCENT` constant at
+the top of `THEME` — change that one line and every widget on the site changes
+at once. (Ink, `#2a2621`, is the quieter alternative if wine proves too loud.)
+Never restyle one widget in an article.
 
 The brand's own logo keeps its colours — that part isn't ours to change.
 
