@@ -15,6 +15,12 @@ export interface ProductLink {
   image?: string         // REQUIRED for affiliate/external — de-etched product shot self-hosted in the repo
                          // (e.g. /content/<cat>/<sub>/<slug>/<product>.jpg). Shop products get images from Shopify.
   brand?: string         // display brand for affiliate cards (falls back to retailer)
+  // `curator: 'none'` keeps this one product out of the article author's
+  // /shop/curators/<slug> page, for something the byline didn't choose — an
+  // editor's pick inside someone else's story. Read only by
+  // lib/curator-collections.ts; changes nothing about how the card renders or
+  // feeds /shop/moments/<slug>. For a whole article, use `curator_exclude`.
+  curator?: 'none'
 }
 
 export interface ShopProduct {
