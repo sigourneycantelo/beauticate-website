@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 interface Props {
   title?: string
@@ -50,8 +51,8 @@ export default function EditorNote({
         {productImage && href && (
           <a
             href={href}
-            {...(!isInternal && { target: '_blank', rel: 'sponsored noopener' })}
-            className="group block w-full sm:w-[180px] flex-none text-center"
+            {...(!isInternal && { target: '_blank', rel: withNoskim('sponsored noopener', href) })}
+            className={withNoskimClass('group block w-full sm:w-[180px] flex-none text-center', href)}
           >
             <div className={`relative ${handle ? 'aspect-square' : 'aspect-[3/4]'} bg-white rounded-sm overflow-hidden mb-2`}>
               <Image

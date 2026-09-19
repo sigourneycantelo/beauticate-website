@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { retailerFromUrl } from '@/lib/retailer'
+import { withNoskim } from '@/lib/affiliate-links'
 
 export const metadata: Metadata = {
   title: 'Top 50 Skincare Products for Every Age | Beauticate',
@@ -174,7 +175,7 @@ function ProductOnSpread({ product, pos }: { product: Product; pos: PlacedProduc
       <Link
         href={product.url}
         target="_blank"
-        rel="noopener noreferrer sponsored"
+        rel={withNoskim('noopener noreferrer sponsored', product.url)}
         className="absolute block group"
         style={{ top: pos.imgTop, left: pos.imgLeft, width: pos.imgW, zIndex: pos.imgZ }}
       >
@@ -218,7 +219,7 @@ function ProductOnSpread({ product, pos }: { product: Product; pos: PlacedProduc
         <Link
           href={product.url}
           target="_blank"
-          rel="noopener noreferrer sponsored"
+          rel={withNoskim('noopener noreferrer sponsored', product.url)}
           className="inline-flex items-center font-sans text-[9px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border transition-colors hover:bg-charcoal hover:text-white"
           style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
         >
@@ -254,7 +255,7 @@ function MobileProduct({ product }: { product: Product }) {
       <Link
         href={product.url}
         target="_blank"
-        rel="noopener noreferrer sponsored"
+        rel={withNoskim('noopener noreferrer sponsored', product.url)}
         className="block group -mt-2 mb-3"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -278,7 +279,7 @@ function MobileProduct({ product }: { product: Product }) {
       <Link
         href={product.url}
         target="_blank"
-        rel="noopener noreferrer sponsored"
+        rel={withNoskim('noopener noreferrer sponsored', product.url)}
         className="inline-flex items-center font-sans text-[9px] tracking-[0.12em] uppercase font-bold px-3 py-1.5 border mt-1.5 transition-colors hover:bg-charcoal hover:text-white self-start"
         style={{ borderColor: '#1C1A17', color: '#1C1A17' }}
       >
