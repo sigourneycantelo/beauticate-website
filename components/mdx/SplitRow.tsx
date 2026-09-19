@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 interface Props {
   /** Image path, e.g. /content/<cat>/<sub>/<slug>/foo.jpg (served from public/) */
@@ -30,7 +31,7 @@ export default function SplitRow({ image, alt, side = 'right', imageWidth = 320,
   const maxW = typeof imageWidth === 'number' ? imageWidth : parseInt(String(imageWidth), 10) || 320
   const img = <img src={image} alt={alt} className="w-full h-auto" style={{ maxWidth: maxW }} />
   const imageBlock = href ? (
-    <a href={href} target="_blank" rel="sponsored noopener" className="block">
+    <a href={href} target="_blank" rel={withNoskim('sponsored noopener', href)} className={withNoskimClass('block', href)}>
       {img}
     </a>
   ) : img

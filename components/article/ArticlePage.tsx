@@ -53,6 +53,7 @@ import ShopEditRail from './ShopEditRail'
 import GiftNote from '@/components/mdx/GiftNote'
 import VenueCTA from './VenueCTA'
 import VenueContact from './VenueContact'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -175,8 +176,19 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     ProductInset, EditorNote, EditorIntro, QuickAnswer, Verdict, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
+      // Keep whatever rel the author wrote - raw <a rel="sponsored noopener"> in MDX
+      // reaches this component, and rebuilding rel from scratch silently dropped the
+      // `sponsored` disclosure that paid links are required to carry.
+      const rel = new Set((props.rel ?? '').split(/\s+/).filter(Boolean))
+      rel.add('noopener')
+      if (isExternal && !rel.has('sponsored')) rel.add('noreferrer')
       return (
-        <a {...props} target="_blank" rel={isExternal ? 'noopener noreferrer' : 'noopener'} />
+        <a
+          {...props}
+          target="_blank"
+          rel={withNoskim(Array.from(rel).join(' '), props.href)}
+          className={withNoskimClass(props.className, props.href)}
+        />
       )
     },
   }

@@ -15,6 +15,7 @@ import { getProductsByHandles } from '@/lib/shopify'
 import { formatCardPrice } from '@/lib/product-format'
 import { buildVodcastMetadata, buildVodcastSchema } from '@/lib/seo'
 import { episodePlatforms } from '@/lib/podcast'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -51,9 +52,12 @@ const mdxComponents = {
     return (
       <a
         {...props}
-        className="underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity"
+        className={withNoskimClass(
+          'underline underline-offset-2 decoration-1 hover:opacity-70 transition-opacity',
+          href,
+        )}
         target="_blank"
-        rel={external ? 'noopener noreferrer' : 'noopener'}
+        rel={withNoskim(external ? 'noopener noreferrer' : 'noopener', href)}
       />
     )
   },
