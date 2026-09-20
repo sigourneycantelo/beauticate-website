@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { cleanProductTitle } from '@/lib/product-format'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 function HeartIcon() {
   return (
@@ -133,7 +134,7 @@ export default function ProductTile({
     : {}
 
   return external ? (
-    <a href={href} target="_blank" rel={follow ? 'noopener' : 'sponsored noopener'} className={cls} {...trackAttrs}>
+    <a href={href} target="_blank" rel={withNoskim(follow ? 'noopener' : 'sponsored noopener', href)} className={withNoskimClass(cls, href)} {...trackAttrs}>
       {inner}
     </a>
   ) : (

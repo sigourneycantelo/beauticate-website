@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 export interface SacredSixProduct {
   number: number
@@ -46,7 +47,7 @@ export default function SacredSix({ products, headline, description }: Props) {
                   key={i}
                   href={p.url}
                   target={p.url.startsWith('http') ? '_blank' : undefined}
-                  rel={p.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  rel={withNoskim(p.url.startsWith('http') ? 'noopener noreferrer' : undefined, p.url)}
                   className="absolute group"
                   style={{
                     left: slot.left,
@@ -84,7 +85,13 @@ export default function SacredSix({ products, headline, description }: Props) {
           {/* Mobile: horizontal scroll strip */}
           <div className="flex md:hidden gap-4 overflow-x-auto py-6 pb-2 -mx-4 px-4 scrollbar-none">
             {items.map((p, i) => (
-              <Link key={i} href={p.url} className="flex-none w-28 text-center group">
+              <Link
+                key={i}
+                href={p.url}
+                target={p.url.startsWith('http') ? '_blank' : undefined}
+                rel={withNoskim(p.url.startsWith('http') ? 'sponsored noopener' : undefined, p.url)}
+                className={withNoskimClass('flex-none w-28 text-center group', p.url)}
+              >
                 <div className="relative w-28 h-28 mb-2">
                   <span className="absolute -top-4 left-0 font-serif text-3xl leading-none">{p.number}.</span>
                   <Image src={p.image} alt={p.name} fill className="object-contain" sizes="112px" />
