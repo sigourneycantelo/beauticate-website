@@ -202,40 +202,61 @@ const warn = []
       }
     }
 
-    // 7. A price typed into the prose of an article that sells our own shop
-    //    products. The product card beside it already pulls price live from
-    //    Shopify, so the number in the sentence is duplication that can only
-    //    ever drift out of date — and it drifts silently, because nothing
-    //    errors when a $50 in the copy meets a $44 on the product page.
+    // 7. A price for one of our own shop products, typed into the prose. The
+    //    product card and the product page both pull price live from Shopify,
+    //    so the number in the sentence is duplication that can only ever drift
+    //    out of date — and it drifts silently, because nothing errors when a
+    //    $50 in the copy meets a $44 on the product page.
     //
     //    Found on the breathwork feature, which promised the Subtle Energies
     //    Aura Protection Body Mist at $50 from publication in July. The mist
     //    was never $50. Anyone who clicked through met a different number.
     //
-    //    Scoped to post-migration articles and to articles carrying our own
-    //    products, for the same reason check 6 is: a price in prose is often
-    //    perfectly legitimate — a treatment cost, a hotel rate, the value of a
-    //    gifted item, "the $22 hairbrush" in a headline — and the archive has
-    //    ~500 of them. Warning on all of those is how a check gets ignored.
-    if (Number.isFinite(published) && published >= MIGRATION) {
-      const raw = fs.readFileSync(mdx, 'utf8')
-      const body = raw.replace(/^---\n[\s\S]*?\n---/, '')
+    //    A price in prose is often perfectly legitimate — a treatment cost, a
+    //    hotel rate, the value of a gifted item, "the $22 hairbrush" in a
+    //    headline — and the archive holds ~430 of them. Warning on all of
+    //    those is how a check gets ignored, so this looks for the two shapes
+    //    where the number is genuinely a second copy of Shopify's own data.
+    const raw = fs.readFileSync(mdx, 'utf8')
+    const body = raw.replace(/^---\n[\s\S]*?\n---/, '')
+
+    // Component tags carry price/handle attributes; those ARE the source of
+    // truth, not the duplication this is looking for.
+    const prose = body.split('\n').map(l => l.trim()).filter(
+      t => t && !t.startsWith('<') && !/\b(price|handle|productPrice|src|url)=/.test(t)
+    )
+    const PRICE = /(?<![A-Za-z0-9])(?:A?\$|AUD\s*\$?)\s?\d[\d,]*(?:\.\d{2})?/i
+
+    // (a) A price on the same line as a link into our own shop, or as the shop
+    //     named in prose. Unambiguous at any age: the linked page shows the
+    //     live price one click away. The link must be root-relative or on our
+    //     own domain — a third-party URL that merely contains "/shop/products/"
+    //     (jamberry.com/au/en/shop/products/…) is somebody else's price.
+    const OUR_SHOP = /\((?:\/shop\/|https?:\/\/(?:www\.)?(?:shop\.)?beauticate\.com\/shop\/)|Beauticate Shop/i
+    const linked = prose.filter(t => PRICE.test(t) && OUR_SHOP.test(t))
+    if (linked.length) {
+      warn.push(
+        `${rel} — ${linked.length} price(s) for our own shop products typed into the prose. ` +
+        `The product page pulls price live from Shopify; the sentence cannot. Drop the number: ` +
+        linked[0].slice(0, 80) + '…'
+      )
+    }
+
+    // (b) A price anywhere in the prose of a post-migration article that
+    //     carries our own product cards, even with no link on the line. This
+    //     is the breathwork shape: "…Body Mist, $50." with the <InlineProduct>
+    //     on the next line. Restricted to articles written for this site,
+    //     because across the archive every ShopItem added to a 2015 reader
+    //     review would drag its third-party retail prices in with it.
+    if (!linked.length && Number.isFinite(published) && published >= MIGRATION) {
       const sellsOurs = /type:\s*["']shop["']/.test(raw) || /<(ShopItem|InlineProduct)\b/.test(body)
-      if (sellsOurs) {
-        const priced = body.split('\n').filter(line => {
-          const t = line.trim()
-          // Component tags carry price/handle attributes; those are the source
-          // of truth, not the duplication this is looking for.
-          if (!t || t.startsWith('<') || /\b(price|handle|productPrice|src|url)=/.test(t)) return false
-          return /(?<![A-Za-z0-9])(?:A?\$|AUD\s*\$?)\s?\d[\d,]*(?:\.\d{2})?/i.test(t)
-        })
-        if (priced.length) {
-          warn.push(
-            `${rel} — ${priced.length} price(s) typed into the prose of an article that sells our own ` +
-            `products. The card pulls price live from Shopify; the sentence cannot. Drop the number: ` +
-            priced[0].trim().slice(0, 80) + '…'
-          )
-        }
+      const priced = sellsOurs ? prose.filter(t => PRICE.test(t)) : []
+      if (priced.length) {
+        warn.push(
+          `${rel} — ${priced.length} price(s) typed into the prose of an article that sells our own ` +
+          `products. The card pulls price live from Shopify; the sentence cannot. Drop the number: ` +
+          priced[0].slice(0, 80) + '…'
+        )
       }
     }
   }
