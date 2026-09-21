@@ -29,20 +29,46 @@ Booking's 3–5%, and — the deciding factor — Booking's widget offers no col
 or destination options at all, so it can only render as a blue box that opens
 on an empty search.
 
-### `city` — write it as "City, Country"
+### `city` — look it up, never type it
 
-The widget matches against Agoda's own place list, so give it the full form:
+**Always run the resolver first:**
 
-    city="Sydney, Australia"
-    city="Ubud, Indonesia"
-    city="Byron Bay, Australia"
+```bash
+node scripts/resolve-travel-destination.mjs "Byron Bay"
+```
 
-A bare `"Sydney"` may still resolve, but the two-part form is the one that's
-been checked. Leave `city` off entirely and the reader gets an empty search
-box, which converts far worse — always set it.
+Use one of the strings it prints, verbatim. Then check the whole site still
+resolves:
 
-Where an article isn't about one place (a packing guide, a round-up), use the
-nearest real destination it does discuss rather than forcing one in.
+```bash
+node scripts/resolve-travel-destination.mjs --check
+```
+
+This is not belt-and-braces. The widget passes your string to Agoda, which
+matches it against its own place list — and **a string Agoda doesn't recognise
+does not error.** It quietly resolves to whatever is nearest. Real examples from
+building this rollout, every one of which would have shipped a perfectly
+good-looking widget:
+
+| Typed | Reader would have got |
+|---|---|
+| Salt at Shoal Bay | Salta, **Argentina** |
+| Bells at Killcare | Belfast, **United Kingdom** |
+| QT Port Douglas | QT **Perth** |
+| Santa Monica CA | Santa Mónica, **Uruguay** |
+| Kerala, India | Kochi (Agoda has no Kerala) |
+
+Two rules that fall out of it:
+
+- **Shorter is often righter.** `"Nusa Lembongan"` resolves to the area;
+  `"Nusa Lembongan, Indonesia"` resolves to a hotel *inside* it. The resolver
+  tells you which.
+- **If the venue isn't on Agoda, use the town.** Bells at Killcare isn't listed,
+  so that article uses `"Killcare"`. Honest, and it still converts.
+
+Point at the most specific thing that is genuinely right: the **hotel** for a
+hotel review, the **area or city** for a destination guide. Never a Landmark —
+that's a monument, not somewhere to sleep.
 
 ### Optional extras
 
@@ -97,6 +123,8 @@ The brand's own logo keeps its colours — that part isn't ours to change.
 
 ## Disclosure
 
-These are affiliate placements. An article carrying one should have
+These are affiliate placements, so an article carrying one **must** have
 `affiliate_disclosure: true` in its frontmatter, which prints the standard line
-at the foot of the page.
+at the foot of the page. Adding the widget and leaving the flag at `false` is a
+disclosure failure, not an oversight — four articles in the first rollout had
+`affiliate_disclosure: false` and had to be flipped.
