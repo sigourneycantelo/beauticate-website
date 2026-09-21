@@ -233,7 +233,11 @@ export default function AboutPage() {
                     )}
                     <h3 className="font-serif text-lg text-charcoal">{hasPage ? <Link href={`/author/${author!.slug}`} className="hover:text-wine transition-colors">{p.name}</Link> : p.name}</h3>
                     <p className="font-sans text-[11px] tracking-widest uppercase text-muted mt-0.5 mb-2">{p.role}</p>
-                    <p className="font-serif text-sm text-charcoal/70 leading-relaxed">{p.bio}</p>
+                    <p className="font-serif text-sm text-charcoal/70 leading-relaxed">
+                      {hasPage && p.bio.startsWith(p.name) ? (
+                        <><Link href={`/author/${author!.slug}`} className="text-charcoal/70 underline underline-offset-2 decoration-wine/30 hover:text-wine transition-colors">{p.name}</Link>{p.bio.slice(p.name.length)}</>
+                      ) : p.bio}
+                    </p>
                   </div>
                 )
               })}
@@ -263,7 +267,11 @@ export default function AboutPage() {
                   )}
                   <h3 className="font-serif text-lg text-charcoal">{hasPage ? <Link href={`/author/${author!.slug}`} className="hover:text-wine transition-colors">{p.name}</Link> : p.name}</h3>
                   <p className="font-sans text-[11px] tracking-widest uppercase text-muted mt-0.5 mb-2">{p.role}</p>
-                  <p className="font-serif text-sm text-charcoal/70 leading-relaxed">{p.bio}</p>
+                  <p className="font-serif text-sm text-charcoal/70 leading-relaxed">
+                    {hasPage && p.bio.startsWith(p.name) ? (
+                      <><Link href={`/author/${author!.slug}`} className="text-charcoal/70 underline underline-offset-2 decoration-wine/30 hover:text-wine transition-colors">{p.name}</Link>{p.bio.slice(p.name.length)}</>
+                    ) : p.bio}
+                  </p>
                 </div>
               )
             })}
