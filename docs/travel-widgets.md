@@ -76,8 +76,10 @@ that's a monument, not somewhere to sleep.
 <TravelWidget type="hotel_search" city="Ubud" caption="Where we stayed in Ubud" />
 ```
 
-- `caption` — the line under the widget. Defaults to something sensible
-  ("Search hotels in Ubud"), so only set it if you want different words.
+- `caption` — the line under the widget. It defaults to something sensible and
+  knows the difference between a hotel and a place: a three-part destination is
+  a hotel, so it reads *"Check availability at Saffire Freycinet"*, while a
+  place reads *"Search hotels in Ubud"*. Only set it if you want other words.
 - `subid` — a label for reporting, so Travelpayouts shows which article earned
   what. Defaults to the city. Set it when one article carries several widgets.
 - `height` — reserved height in px. Rarely needed; the defaults are tuned per type.

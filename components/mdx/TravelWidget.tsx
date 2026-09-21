@@ -64,7 +64,7 @@ export default function TravelWidget({ type, city, caption, subid, height, src }
   if (!url) return null
 
   const reserved = height ?? (type ? WIDGETS[type].height : 400)
-  const text = caption ?? (type ? `${WIDGETS[type].label}${city ? ` in ${city}` : ''}` : undefined)
+  const text = caption ?? autoCaption(type, city)
 
   return (
     <figure className="not-prose my-8">
@@ -76,4 +76,28 @@ export default function TravelWidget({ type, city, caption, subid, height, src }
       )}
     </figure>
   )
+}
+
+/**
+ * The line under the widget, when the editor hasn't written one.
+ *
+ * Agoda names a hotel as "Venue, Town, Country" and a place as "Town, Country"
+ * or just "Town", so the number of commas is what tells them apart. It matters
+ * because "Search hotels in Saffire Freycinet, Coles Bay, Australia" reads as
+ * though you could search for hotels inside a hotel — which is what the first
+ * version of this said on all seventeen hotel reviews.
+ *
+ * The parenthetical is dropped too: Agoda writes "Los Angeles (CA)", and the
+ * state code helps its matcher but does nothing for a reader.
+ */
+function autoCaption(type?: WidgetType, city?: string) {
+  if (!type) return undefined
+  if (!city) return WIDGETS[type].label
+
+  const parts = city.split(',').map((s) => s.trim())
+  const name = parts[0].replace(/\s*\([^)]*\)/g, '').trim()
+
+  return parts.length >= 3
+    ? `Check availability at ${name}`
+    : `${WIDGETS[type].label} in ${name}`
 }
