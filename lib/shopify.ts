@@ -77,8 +77,38 @@ const PRODUCT_FRAGMENT = `
         image { id url altText width height }
       }
     }
+    # Sig's editor's note, rendered as the italic wine quote in the buy box.
+    # The Storefront API only returns a metafield whose DEFINITION grants
+    # storefront access — an undefined metafield comes back null even when the
+    # product holds a value. The custom.editorial_note definition was created
+    # with PUBLIC_READ for exactly this. Read it via editorialNote() below,
+    # never by reaching into this array at a call site.
+    metafields(identifiers: [{ namespace: "custom", key: "editorial_note" }]) {
+      key
+      value
+    }
   }
 `
+
+/**
+ * Sig's editor's note for a product, or '' when there isn't one.
+ *
+ * Products are returned from ~8 different query functions here, so this reads
+ * the metafield at the point of USE rather than mapping it into a flat field at
+ * every fetch site. One reader cannot drift; eight mappers would.
+ *
+ * `editorial_note` is checked first because scripts/sync-shopify.ts writes that
+ * flat shape into data/shopify-products.json. Live pages get the array.
+ */
+export function editorialNote(product?: {
+  editorial_note?: string
+  metafields?: ({ key: string; value: string } | null)[]
+} | null): string {
+  if (!product) return ''
+  if (product.editorial_note) return product.editorial_note.trim()
+  const hit = product.metafields?.find(m => m?.key === 'editorial_note')
+  return hit?.value?.trim() ?? ''
+}
 
 // Cart line prices are resolved in the cart's market context, so a cart is always
 // created with an AU buyer identity to match the AUD storefront pricing shown on
