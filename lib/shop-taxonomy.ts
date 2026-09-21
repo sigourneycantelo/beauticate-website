@@ -205,6 +205,7 @@ export const GIFTING_MOMENTS: ShopMoment[] = GIFTING_ORDER
 // The latest brands to onboard, curated by hand (Shopify's Storefront API exposes no
 // collection creation date). Update this list when a new brand comes on board.
 export const NEW_IN_BRANDS: ShopBrand[] = [
+  { name: 'IMBIBE', handle: 'imbibe' },
   { name: 'WaterRower', handle: 'waterrower' },
   { name: 'NOHRD', handle: 'nohrd' },
   { name: 'Kiicity', handle: 'kiicity' },
