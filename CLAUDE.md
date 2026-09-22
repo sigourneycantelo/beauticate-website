@@ -526,6 +526,28 @@ node scripts/audit-cart-availability.mjs
 One cart probe per brand — a profile covers a whole brand, so one probe answers
 for all of it. Non-zero exit names the brands.
 
+## A product not published to any sales channel looks identical to one that is
+
+Check this before the delivery profile, not after — it's the more common
+cause. `resourcePublicationsV2` coming back `[]` means the product isn't on
+Point of Sale, isn't on Beauticate Shop, isn't anywhere — the Storefront API
+can't see it, so the page 404s (or serves a stale cached render). This hit
+all 18 of IMBIBE's products and all 20 of the NOHRD/WaterRower products a
+live EDM depended on, both within 24 hours of onboarding. Publish to the same
+seven channels every working product uses (Point of Sale, Shop, Buy Button,
+Sell on WordPress, **Beauticate Shop**, Facebook & Instagram, Pinterest) —
+Beauticate Shop is the one the site actually reads from, not Online Store.
+
+A freshly-synced product can also land on a **suffixed handle**
+(`…-6aa8ecf2706ec16bbff96ec3`) instead of the clean one everyone assumes,
+when the clean handle was already taken by an old drafted/deleted record.
+Query by SKU to get the real handle before it goes in an EDM or anywhere
+else customer-facing — the product page is fine, the hardcoded link isn't.
+
+**Full checklist, and the handoff contract with the `beauticate-shop-onboarding`
+skill (what it hands Claude Code, what Claude Code checks on its own):**
+[`docs/shop-onboarding-technical-handoff.md`](docs/shop-onboarding-technical-handoff.md)
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
