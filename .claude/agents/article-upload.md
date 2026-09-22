@@ -16,7 +16,7 @@ The user will provide:
 4. **Author** — must match an entry in `lib/authors.ts`. If unsure, leave the field blank.
 5. **Featured/holding image** — which image goes at the top. Ask if not specified.
 6. **Sign-off on shop products, if the byline isn't Beauticate's own** — see below. Never assume it.
-7. **The Asana card link** — every article starts life as a card Sig drafts on the **Editorial Calendar** board; the uploader works from that card. **Always ask for its Asana URL if it isn't given** before you finish the upload — see step 6. Never create a new Asana task for an article; one already exists.
+7. **Nothing — find the Asana card yourself.** Every article starts life as a card Sig drafts on the **Editorial Calendar** board; the uploader works from that card. Don't ask for its link — search the board for it (see step 6). Only ask if the search is genuinely ambiguous. Never create a new Asana task for an article; one already exists.
 
 ## Category mapping
 
@@ -153,7 +153,8 @@ Ask the user to confirm before committing.
 
 Every article already has an Asana card by the time it reaches upload: Sig drafts it on the **Editorial Calendar** board, and the uploader (Rikki or otherwise) works from that card. Full detail: [`docs/asana-editorial-linking.md`](../../docs/asana-editorial-linking.md). In short:
 
-- If the card link/GID wasn't given at the start, **ask for it before you finish** — don't guess and don't skip this step. Do not fall back to creating a new task; searching Asana by title is a last resort only if the uploader genuinely doesn't have the link handy.
+- **Find the card yourself — don't ask for the link.** Search the Editorial Calendar project for it: incomplete tasks assigned to the uploader, narrowed by title/keyword match against the article's title and slug, is usually all it takes and is normally unambiguous. Do this after you know the article's working title, so you can search early rather than leaving it to the end.
+- **Only ask if the search is genuinely ambiguous** — more than one plausible open card, or none at all. Don't guess between two candidates, and don't fall back to creating a new task just because the search came back empty; that's a signal the card wasn't drafted yet, and it's worth flagging rather than papering over.
 - After the PR is open, poll `gh pr view <number> --json comments` (Vercel's bot comment takes ~1-2 min to land) for the preview URL — it's base64-encoded inside the `[vc]:` comment body; decode it, or grep the rendered comment for the `vercel.app` deployment link.
 - Build the **direct article link**, not the bare preview domain: `https://<preview-domain>/<category>/<subcategory>/<slug>`. The bare domain only loads the homepage — this is the single biggest source of confusion, so never hand over just the root preview URL.
 - **Comment on the existing card** (don't overwrite its notes) with the direct article preview link, the PR URL, and any open editorial questions from the PR body (disclosure status, hero placement, etc.). Reassign it to Sigourney (`sigourney@beauticate.com`) — the card moves to her once it's ready for review.

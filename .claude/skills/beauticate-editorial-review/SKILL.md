@@ -13,9 +13,12 @@ that got missed:
 
 1. **There is already an Asana card for this article.** Sig drafts it on
    Editorial Calendar before anyone writes a word, and the uploader works
-   from it. Find that card — ask for its link if you don't have it, or search
-   Editorial Calendar by title — and **never create a new one**. A duplicate
-   card is the failure mode this skill exists to prevent.
+   from it. Find it yourself — search Editorial Calendar for incomplete
+   tasks assigned to the uploader, narrowed by title/keyword match against
+   the article — it's usually obvious and rarely needs asking. Only ask if
+   the search turns up more than one plausible card or none at all. **Never
+   create a new one** — a duplicate card is the failure mode this skill
+   exists to prevent.
 2. **Get the direct article link**, not the bare preview domain. Vercel's PR
    comment links to the deployment root, which only renders the homepage.
    Pull the preview domain from that comment and append
