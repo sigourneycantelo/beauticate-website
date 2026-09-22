@@ -16,6 +16,7 @@ The user will provide:
 4. **Author** — must match an entry in `lib/authors.ts`. If unsure, leave the field blank.
 5. **Featured/holding image** — which image goes at the top. Ask if not specified.
 6. **Sign-off on shop products, if the byline isn't Beauticate's own** — see below. Never assume it.
+7. **The Asana card link** — every article starts life as a card Sig drafts on the **Editorial Calendar** board; the uploader works from that card. **Always ask for its Asana URL if it isn't given** before you finish the upload — see step 6. Never create a new Asana task for an article; one already exists.
 
 ## Category mapping
 
@@ -148,7 +149,18 @@ Ask the user to confirm before committing.
 - Create a PR against `main` with summary, test plan, and checklist
 - **NEVER auto-merge** — all PRs wait for human editorial review
 
-### 6. Homepage hero check
+### 6. Link the existing Asana card — never create a new one
+
+Every article already has an Asana card by the time it reaches upload: Sig drafts it on the **Editorial Calendar** board, and the uploader (Rikki or otherwise) works from that card. Full detail: [`docs/asana-editorial-linking.md`](../../docs/asana-editorial-linking.md). In short:
+
+- If the card link/GID wasn't given at the start, **ask for it before you finish** — don't guess and don't skip this step. Do not fall back to creating a new task; searching Asana by title is a last resort only if the uploader genuinely doesn't have the link handy.
+- After the PR is open, poll `gh pr view <number> --json comments` (Vercel's bot comment takes ~1-2 min to land) for the preview URL — it's base64-encoded inside the `[vc]:` comment body; decode it, or grep the rendered comment for the `vercel.app` deployment link.
+- Build the **direct article link**, not the bare preview domain: `https://<preview-domain>/<category>/<subcategory>/<slug>`. The bare domain only loads the homepage — this is the single biggest source of confusion, so never hand over just the root preview URL.
+- **Comment on the existing card** (don't overwrite its notes) with the direct article preview link, the PR URL, and any open editorial questions from the PR body (disclosure status, hero placement, etc.). Reassign it to Sigourney (`sigourney@beauticate.com`) — the card moves to her once it's ready for review.
+- Leave the task incomplete — she marks it complete herself once she's happy to merge, or comments on it with requested changes.
+- If asked to push a fix to an already-open PR, commit and push directly to that PR's branch (same-repo branches only push cleanly — check `gh pr view --json isCrossRepository` first) rather than routing the change back through the original uploader.
+
+### 7. Homepage hero check
 
 The homepage hero is editorially curated. Do NOT set `is_hero: true` unless the user explicitly says the article should be the homepage hero. New articles appear in the regular feed sorted by `date_published` by default.
 
