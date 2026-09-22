@@ -350,6 +350,16 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
           </p>
         )}
 
+        {/* Hosted-stay disclosure — same foot-of-page pattern as the two
+            blocks above. The stay, meal or experience reviewed here was
+            complimentary, which is a material connection worth disclosing
+            near the content itself rather than only in the site terms. */}
+        {f.hosted_stay && (
+          <p className="text-xs text-charcoal-light mt-8 pt-6 border-t border-cream-200">
+            {f.venue_name ? `Beauticate was hosted by ${f.venue_name} for this stay.` : 'Beauticate was hosted for this stay.'}
+          </p>
+        )}
+
         {/* Share */}
         <div className="max-w-[680px]">
           <ShareButtons
