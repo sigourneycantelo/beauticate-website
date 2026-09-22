@@ -491,6 +491,63 @@ They are all emitting an invisible rating today. Fixing them is a decision, not
 a sweep — either strip the field from all 69, or build the visible verdict block
 first and keep them. Don't add a 70th.
 
+## A brand's location must be an origin in its delivery profile
+
+> **Full detail:** [`docs/shop-delivery-profiles.md`](docs/shop-delivery-profiles.md)
+
+If it isn't, every product from that brand shows **SOLD OUT** no matter what the
+stock says — and everything in Shopify's product admin reads healthy while it
+happens. ACTIVE, 99 in stock, `availableForSale: true`, location active and
+fulfilling online orders, and still a sold-out button.
+
+The page is not lying. `getVariantAvailability()` in `lib/shopify.ts` probes a
+throwaway cart instead of trusting `variant.availableForSale`, and Shopify's
+cart only counts stock it can actually ship. Every partner brand fulfils from
+its own Modern Dropship location (`booie-com`, `waterrower-com`…) — the default
+"Shop location" stocks nothing. So a delivery profile whose only shipping origin
+is "Shop location" can ship from nowhere that holds stock.
+
+`originLocationCount: 1` on a brand profile is the tell; a healthy one is 32+.
+The fix is in Shopify, never in code: add the brand's fulfilment location as an
+origin on the profile's rate. Same zone, same price to the customer.
+
+**This breaks at onboarding, and it looks fine afterwards.** It has hit NOHRD
+and WaterRower (twenty-odd `$N Shipping` freight tiers, each created with one
+origin — the whole mid-range of that partnership, unbuyable), Christophe Robin
+and IBIZA HAIR (`quecolour-com` never added to the General profile), and the
+brand-new `Imbibe $15 flat` profile, which was created the same way. So after
+onboarding a brand, creating a freight tier, or moving products between
+profiles, run:
+
+```bash
+node scripts/audit-cart-availability.mjs
+```
+
+One cart probe per brand — a profile covers a whole brand, so one probe answers
+for all of it. Non-zero exit names the brands.
+
+## A product not published to any sales channel looks identical to one that is
+
+Check this before the delivery profile, not after — it's the more common
+cause. `resourcePublicationsV2` coming back `[]` means the product isn't on
+Point of Sale, isn't on Beauticate Shop, isn't anywhere — the Storefront API
+can't see it, so the page 404s (or serves a stale cached render). This hit
+all 18 of IMBIBE's products and all 20 of the NOHRD/WaterRower products a
+live EDM depended on, both within 24 hours of onboarding. Publish to the same
+seven channels every working product uses (Point of Sale, Shop, Buy Button,
+Sell on WordPress, **Beauticate Shop**, Facebook & Instagram, Pinterest) —
+Beauticate Shop is the one the site actually reads from, not Online Store.
+
+A freshly-synced product can also land on a **suffixed handle**
+(`…-6aa8ecf2706ec16bbff96ec3`) instead of the clean one everyone assumes,
+when the clean handle was already taken by an old drafted/deleted record.
+Query by SKU to get the real handle before it goes in an EDM or anywhere
+else customer-facing — the product page is fine, the hardcoded link isn't.
+
+**Full checklist, and the handoff contract with the `beauticate-shop-onboarding`
+skill (what it hands Claude Code, what Claude Code checks on its own):**
+[`docs/shop-onboarding-technical-handoff.md`](docs/shop-onboarding-technical-handoff.md)
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
