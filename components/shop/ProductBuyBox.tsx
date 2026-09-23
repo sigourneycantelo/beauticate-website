@@ -5,6 +5,7 @@ import { useCart } from './CartProvider'
 import { useVariantSelection } from './VariantSelectionProvider'
 import type { ShopifyProduct } from '@/types/shopify'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
+import { editorialNote } from '@/lib/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { useGeo } from '@/components/geo/GeoProvider'
 import type { ShopIntlOptions } from '@/lib/shop-intl'
@@ -54,6 +55,7 @@ export default function ProductBuyBox({ product: p, availability, intlOptions, g
   const available = selected ? isVariantAvailable(selected) : false
   const onSale = compareAt && parseFloat(compareAt.amount) > parseFloat(price.amount)
   const hasOptions = variants.length > 1
+  const note = editorialNote(p)
 
   const add = async () => {
     if (!variantId || !available) return
@@ -74,8 +76,8 @@ export default function ProductBuyBox({ product: p, availability, intlOptions, g
         )}
       </div>
 
-      {p.editorial_note && (
-        <p className="font-serif italic text-wine mt-4" style={{ fontSize: 'clamp(15px,1.6vw,18px)', lineHeight: 1.4 }}>&ldquo;{p.editorial_note}&rdquo;</p>
+      {note && (
+        <p className="font-serif italic text-wine mt-4" style={{ fontSize: 'clamp(15px,1.6vw,18px)', lineHeight: 1.4 }}>&ldquo;{note}&rdquo;</p>
       )}
 
       {hasOptions && (
