@@ -165,6 +165,16 @@ function normalise(r: RawReview): Review {
   }
 }
 
+/**
+ * Mean and count for an arbitrary set of reviews. Exported so a caller can
+ * aggregate a SUBSET — the product page aggregates verified-purchase reviews
+ * on their own for the JSON-LD, which must describe exactly the reviews it
+ * marks up rather than the wider set shown on the page.
+ */
+export function aggregateOf(reviews: Review[]): Rating | null {
+  return reviews.length > 0 ? aggregate(reviews) : null
+}
+
 function aggregate(reviews: Review[]): Rating {
   if (reviews.length === 0) return { average: 0, count: 0 }
   const total = reviews.reduce((sum, r) => sum + r.rating, 0)

@@ -8,6 +8,7 @@ import VariantSelectionProvider from './VariantSelectionProvider'
 import ProductReviews from './ProductReviews'
 import type { ShopifyProduct } from '@/types/shopify'
 import type { Review, Rating } from '@/lib/judgeme'
+import { aggregateOf } from '@/lib/judgeme'
 import type { GiftOffer } from '@/lib/gwp'
 import { cleanProductTitle } from '@/lib/product-format'
 import { resolveShopIntl } from '@/lib/shop-intl'
@@ -48,6 +49,11 @@ export default function ProductPage({ product: p, related = [], availability, gi
   const maxPrice = p.priceRange.maxVariantPrice
   const hasMultipleVariants = variants.length > 1
 
+  // Schema describes only reviews from confirmed buyers — see the note inside
+  // productSchema below. The page itself still shows everything published.
+  const verifiedReviews = reviews.filter(r => r.verified)
+  const verifiedRating = aggregateOf(verifiedReviews)
+
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -63,16 +69,30 @@ export default function ProductPage({ product: p, related = [], availability, gi
     // visible to the user, and an invisible star rating is exactly what its
     // spammy-markup manual action exists for — see the "Review ratings must be
     // visible or absent" note in CLAUDE.md, which this follows deliberately.
-    ...(rating && reviews.length > 0
+    //
+    // Only VERIFIED-PURCHASE reviews are marked up, which is stricter than what
+    // the page displays. Judge.me's moderation is a 14-day window, not a gate:
+    // a pending review nobody moderates is auto-published after 14 days to meet
+    // Shopify's policy. So an injected review that slipped past the guards in
+    // app/api/reviews and went unnoticed for a fortnight would publish itself.
+    // Keeping unverified reviews out of the schema means such a review can reach
+    // the page but never the star rating in Google's results — the thing with by
+    // far the slowest recovery time, since it outlives the review that caused it.
+    //
+    // Marking up a SUBSET of what is displayed is compliant; marking up more than
+    // is displayed is the violation. The aggregate is therefore recomputed over
+    // the verified subset rather than reusing the page's own average, so the
+    // ratingValue always describes exactly the reviews listed beneath it.
+    ...(verifiedRating && verifiedReviews.length > 0
       ? {
           aggregateRating: {
             '@type': 'AggregateRating',
-            ratingValue: rating.average.toFixed(1),
-            reviewCount: rating.count,
+            ratingValue: verifiedRating.average.toFixed(1),
+            reviewCount: verifiedRating.count,
             bestRating: 5,
             worstRating: 1,
           },
-          review: reviews.slice(0, 10).map(r => ({
+          review: verifiedReviews.slice(0, 10).map(r => ({
             '@type': 'Review',
             reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
             author: { '@type': 'Person', name: r.author },
