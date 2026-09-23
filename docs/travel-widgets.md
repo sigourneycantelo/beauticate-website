@@ -19,10 +19,28 @@ That's the whole job. No URL, no dashboard, no code.
 
 | `type` | What the reader sees | Status |
 |---|---|---|
-| `hotel_search` | Agoda search form — destination, dates, Search | **Live.** Use this |
+| `hotel_search` | Agoda search form — destination, dates, Search | **Live** |
+| `tours` | GetYourGuide card — city, copy, photo, "Find Things to Do" | **Live** |
 | `flights` | Flight search form | Not configured — renders nothing |
 | `map` | — | Not configured; Travelpayouts has no hotel map widget |
 | `calendar` | — | Not configured; the calendar widgets are for tours, not hotels |
+
+### Hotels or tours? One or the other, never both
+
+**Only one Travelpayouts widget renders reliably per page** — see the hard limit
+below. So this is a choice, not a stack:
+
+| | Rate | Cookie |
+|---|---|---|
+| `hotel_search` (Agoda) | 6% | **1 day** |
+| `tours` (GetYourGuide) | 8% | **31 days** |
+
+- **A review of one hotel → `hotel_search`**, pointed at that hotel. Nothing
+  converts better than the exact property the reader just read about.
+- **A destination guide → `tours`.** Better rate, and a cookie 31 times longer,
+  which matters because almost nobody books a trip the day they read about it.
+
+`tours` also needs the city to be one GetYourGuide actually covers — see below.
 
 `hotel_search` uses Agoda rather than Booking.com. Agoda pays 6% against
 Booking's 3–5%, and — the deciding factor — Booking's widget offers no colour
@@ -70,6 +88,28 @@ Point at the most specific thing that is genuinely right: the **hotel** for a
 hotel review, the **area or city** for a destination guide. Never a Landmark —
 that's a monument, not somewhere to sleep.
 
+### `city` for `tours` — it must be on the list
+
+Tours are addressed by **IATA city code**, not by name, and the component maps
+your `city` through `TOURS_CITIES` in `lib/travelpayouts.ts`. A city that isn't
+on that list renders **nothing at all**, deliberately.
+
+That list is explicit because **an airport code is not proof of coverage.**
+Mudgee has a code (DGE) and no GetYourGuide tours whatsoever: the widget falls
+back to a generic "View activities at GetYourGuide" panel with a blurry stock
+photo and no button. It looks broken and earns nothing.
+
+To add a city:
+
+```bash
+node scripts/resolve-travel-destination.mjs --iata "Lisbon"
+```
+
+Then **render it and look at it** before adding it to `TOURS_CITIES`. If the card
+shows the city's own name, its own copy and a "Find Things to Do" button, it's
+good. If it shows the generic GetYourGuide panel, it isn't — use `hotel_search`
+for that article instead.
+
 ### Optional extras
 
 ```
@@ -90,11 +130,16 @@ Mid-article, after the section that makes the reader want to go — usually just
 after the hotel or neighbourhood you've described. Not in the intro, before
 they're sold, and not stranded at the very end.
 
-**One per page — this is a hard limit, not taste.** Two `hotel_search` widgets
-on the same page and *neither* renders: Travelpayouts serves one instance of a
-widget per document, and the second silently kills the first. Checked in the
-browser. If a guide covers two cities, pick the one the reader is most likely
-to book and link the other in prose.
+**One per page — this is a hard limit, not taste, and it applies across types.**
+Two widgets on one page race each other. Two `hotel_search` widgets and
+*neither* renders. A `hotel_search` and a `tours` together is worse: on one load
+the hotel widget silently failed and only the tours card appeared; on a reload
+of the identical page, both appeared. Same page, different outcome.
+
+An intermittent failure is worse than a clean one — it passes review and breaks
+for some readers — so put **one** widget on a page and choose which. If a guide
+covers two cities, pick the one the reader is most likely to book and link the
+other in prose.
 
 ## If it doesn't show up
 
@@ -113,7 +158,11 @@ live site, check `lib/travelpayouts.ts` before assuming it's a layout bug.
 
 ## Colours
 
-Out of the box these widgets are Travelpayouts blue — blue button, blue border,
+Only `hotel_search` is themeable. `tours` is a GetYourGuide-branded editorial
+card with no colour parameters at all, so it keeps their look — which is fine,
+because it reads as a piece of content rather than a form.
+
+Out of the box the hotel widget is Travelpayouts blue — blue button, blue border,
 blue calendar icons, rounded corners. `THEME` in `lib/travelpayouts.ts` maps
 them onto the house palette instead: wine button and icons, soft greige border,
 square corners, eucalypt focus ring. The accent is a single `ACCENT` constant at
