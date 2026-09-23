@@ -99,6 +99,48 @@ function extractFirstYouTubeId(content: string): string | undefined {
 }
 
 /**
+ * Pulls the <QuickAnswer question="..."> pair out of the raw MDX body.
+ *
+ * The box is the article's direct answer to the query, so it belongs in the
+ * FAQPage graph alongside the frontmatter `faqs` — but it lives in the body,
+ * not in frontmatter, so it has to be scanned for. Same arrangement as the
+ * YouTube id above, and the same warning applies: this regex and
+ * `components/mdx/QuickAnswer.tsx` are one unit. Change the component's props
+ * and change this in the same commit, or the box renders and declares nothing.
+ *
+ * Reading the answer out of the rendered body rather than a second frontmatter
+ * field is deliberate: the markup then cannot say anything the page does not
+ * also show, which is the rule `review_rating` broke on 69 articles.
+ *
+ * Returns undefined when there is no box, or when it carries no `question` —
+ * an answer with nothing to be the answer *to* is not a Q&A pair, and inventing
+ * the question here would put words on the page's behalf that the page never
+ * shows.
+ */
+const QUICK_ANSWER_REGEX = /<QuickAnswer\b([^>]*)>([\s\S]*?)<\/QuickAnswer>/
+const QUESTION_PROP_REGEX = /question=(?:"([^"]*)"|'([^']*)'|\{\s*["'`]([^"'`]*)["'`]\s*\})/
+
+export function extractQuickAnswer(content: string): { q: string; a: string } | undefined {
+  const box = content.match(QUICK_ANSWER_REGEX)
+  if (!box) return undefined
+
+  const question = box[1].match(QUESTION_PROP_REGEX)
+  const q = (question?.[1] ?? question?.[2] ?? question?.[3])?.trim()
+  if (!q) return undefined
+
+  // Schema wants plain text: strip the markdown the body renders as formatting,
+  // and collapse the newlines an MDX block introduces.
+  const a = box[2]
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')   // links -> their text
+    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1') // bold / italic
+    .replace(/<[^>]+>/g, '')                      // any stray tags
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  return a ? { q, a } : undefined
+}
+
+/**
  * `videoId` is for a video the page renders from frontmatter rather than from
  * the body — a Beautiful Inside companion episode, via `podcast_episode`. The
  * body scan below cannot see it, and a rendered video with no VideoObject is
@@ -186,11 +228,18 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
 
   const graph: object[] = [articleNode]
 
-  if (faqs && faqs.length > 0) {
+  // The QuickAnswer box is the article's direct answer to the query it targets,
+  // so it leads the FAQPage rather than sitting after the frontmatter FAQs.
+  // One FAQPage node, not two: a second would be a competing declaration about
+  // the same page.
+  const quickAnswer = content ? extractQuickAnswer(content) : undefined
+  const questions = [...(quickAnswer ? [quickAnswer] : []), ...(faqs ?? [])]
+
+  if (questions.length > 0) {
     graph.push({
       '@type': 'FAQPage',
       '@id': `${articleUrl}#faq`,
-      mainEntity: faqs.map(({ q, a }) => ({
+      mainEntity: questions.map(({ q, a }) => ({
         '@type': 'Question',
         name: q,
         acceptedAnswer: { '@type': 'Answer', text: a },

@@ -115,7 +115,9 @@ Review schema; see §E). `author` must match a name in `lib/authors.ts`.
   to the affiliate URL; leave editorial photos unlinked.
 
 ### E. Structure & AEO — [mechanic] components, [editorial] copy
-- Lead with a **`<QuickAnswer>`** box (concise answer, high on the page).
+- Lead with a **`<QuickAnswer question="...">`** box (concise answer, high on
+  the page). The `question` is required in practice: it renders the `<h2>` a
+  snippet matches against, and it is what emits the FAQPage pair.
 - Use **question-style H2s** so each section can be lifted out and still read.
 - Place an **`<AffiliateCTA>`** near the top and another at the end (it forces
   `rel="sponsored noopener" target="_blank"` on the button).
@@ -174,7 +176,7 @@ files explicitly; keep churn (`.claude/settings.local.json`, `.claude/launch.jso
 
 | Component | Use | Notes |
 |-----------|-----|-------|
-| `<QuickAnswer>` | Featured answer box high on the page | Eyebrow + copy |
+| `<QuickAnswer question>` | Featured answer box high on the page | Question renders an `<h2>` and emits FAQPage schema — always set it |
 | `<AffiliateCTA href label>` | Boxed CTA with a tracked button | Forces `rel="sponsored noopener"` |
 | `<SplitRow image alt side imageWidth>` | Text beside a smaller image (2-col) | `side` left/right; `imageWidth` is a **string** (`"260"`) — MDX drops `{expression}` props |
 | `<EditorNote …>` | Boxed Beauticate-Shop cross-sell | Pair beside an image via `SplitRow` |

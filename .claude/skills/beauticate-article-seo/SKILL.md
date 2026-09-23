@@ -80,9 +80,29 @@ generate it; this layer is not, and it is the half that wins AI citations.
 
 So on every new article:
 
-- **Lead with `<QuickAnswer>`** — a 40-60 word direct answer, high on the page.
-  This is the single highest-leverage element for AI Overviews. It cannot be
-  bulk-generated later, because it has to be *right*.
+- **Lead with `<QuickAnswer>`, and always give it a `question`:**
+
+  ```mdx
+  <QuickAnswer question="How much strength training do women over 40 actually need?">
+  Three well-designed strength sessions a week, 30 to 45 minutes each, built
+  around six movement patterns: squatting, hinging, pushing, pulling, lunging
+  and carrying...
+  </QuickAnswer>
+  ```
+
+  40-60 words, and the question phrased the way a reader would type it. This is
+  the single highest-leverage element for AI Overviews, and it cannot be
+  bulk-generated later because it has to be *right*.
+
+  **The `question` is not decoration.** Snippet and AI extraction both look for
+  a heading matching the query with a concise answer directly beneath it, and
+  the prop renders a real `<h2>`. It is also what puts the pair into the page's
+  FAQPage schema — `extractQuickAnswer` in `lib/seo.ts` scans the body for it,
+  the same way the YouTube scan works. Omit it and the box renders but declares
+  nothing, matching no query.
+
+  An interview takes the same shape, answering the name people searched:
+  `question="Who is Rae Morris?"`
 - **Fact density**: a concrete fact, number, price or result every 150-200 words.
 - **Citation engineering (GEO)**: state claims as attributable facts — "According
   to Beauticate's testing…", "Beauticate's Sigourney Cantelo recommends…". Use
@@ -125,6 +145,9 @@ So on every new article:
   don't invent sentences to carry an internal link. Weave the link onto words
   the author actually wrote, or mark it as Beauticate's voice:
   `> *Ed's note: If you're drawn to this, our [guide to X](/link) is a good place to start.*`
+- **`QuickAnswer` and `extractQuickAnswer` are one unit.** The component's
+  props and the regex in `lib/seo.ts` that reads them must change together, or
+  the box renders and emits no schema. Same failure as the Shorts one below.
 - **`YouTubeEmbed` and `YOUTUBE_ID_REGEX` must learn new URL forms together.** A
   Short once shipped rendering perfectly and invisible to structured data.
   Adding a `podcast_episode` strip means passing the id to `buildArticleSchema`
@@ -144,7 +167,8 @@ So on every new article:
 
 ## 5. Before publish
 
-- [ ] `<QuickAnswer>` — 40-60 word direct answer near the top
+- [ ] `<QuickAnswer question="...">` — 40-60 word direct answer near the top,
+      **with the question set** (no question, no schema, no query match)
 - [ ] A concrete fact or number every 150-200 words
 - [ ] Sections that read correctly if extracted alone
 - [ ] 2-4 FAQs in frontmatter

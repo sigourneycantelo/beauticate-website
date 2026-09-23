@@ -262,6 +262,26 @@ Answer the core question within the first 40 to 60 words, before the
 scene-setting and storytelling. This is the single most extracted, most cited
 part of a page. On Vercel this lives in the **QuickAnswer** component.
 
+**Always set its `question` prop**, phrased the way a reader would type it:
+
+```mdx
+<QuickAnswer question="How much strength training do women over 40 actually need?">
+Three well-designed strength sessions a week, 30 to 45 minutes each...
+</QuickAnswer>
+```
+
+The question does two jobs a bare answer cannot. It renders a real `<h2>`, and
+snippet and AI extraction both look for a heading matching the query with a
+concise answer directly beneath it — the box's eyebrow reads "Quick answer",
+which matches no search anyone runs. And it is what puts the pair into the
+page's FAQPage schema: `extractQuickAnswer` in `lib/seo.ts` scans the body for
+it, leading the frontmatter `faqs`. Without a question the box renders and
+declares nothing.
+
+Reading the answer from the body rather than a second frontmatter field is
+deliberate: the markup then cannot claim anything the page does not also show,
+which is exactly the rule `review_rating` broke (see 9.2).
+
 You do not sacrifice voice. Front-load one tight, quotable answer, then let the
 piece breathe.
 
