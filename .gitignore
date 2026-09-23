@@ -5,6 +5,10 @@ node_modules/
 
 # next.js
 .next/
+# Build output from `next build --distDir .next-preview`, used to preview a
+# branch locally. Untracked but unignored it sat in `git status` at 113MB,
+# which is how a `git add -A` swept the whole thing into a commit once.
+.next-preview/
 out/
 
 # env files — never commit real secrets
