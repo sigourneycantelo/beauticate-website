@@ -357,6 +357,30 @@ All four were found the hard way. Colette Harvey's first-person account of her c
 
 Genuinely ambiguous cases are listed in `ACKNOWLEDGED` in that script, each with a written reason, rather than warned about forever. A check nobody can get to zero is a check everybody learns to ignore.
 
+## Travel affiliates — one widget per article, and look it up
+
+Travel articles earn through Travelpayouts. The playbook lives in the
+**`beauticate-travel-affiliates` skill**; the editor's page is
+[`docs/travel-widgets.md`](docs/travel-widgets.md).
+
+Three things that will bite anyone touching it:
+
+- **One widget per page.** Two Travelpayouts widgets race each other and the
+  loser renders nothing — intermittently, so it passes review and breaks for
+  some readers. Hotel review gets `hotel_search` pointed at the hotel; a
+  destination guide gets `tours` (8% on a 31-day cookie against Agoda's 6% on
+  one day). Never both.
+- **Destinations are looked up, never typed.** A string the partner doesn't
+  recognise does not error, it silently resolves to something else — "Bells at
+  Killcare" became Belfast, "Kerala, India" became Kochi. Run
+  `node scripts/resolve-travel-destination.mjs --check` before merging anything
+  that touches a travel article.
+- **It fails silently and beautifully.** The whole integration sat dead for two
+  months returning HTTP 400 with no error anywhere. Render it and look at it
+  before believing it works.
+
+An article carrying a widget must set `affiliate_disclosure: true`.
+
 ## Geo dual-link system (AU/NZ vs everyone else)
 
 > **Full detail:** [`docs/geo-dual-link-system.md`](docs/geo-dual-link-system.md)
