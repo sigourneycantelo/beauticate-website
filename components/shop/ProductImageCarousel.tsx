@@ -74,6 +74,13 @@ export default function ProductImageCarousel({
 
   if (!images.length) return null
 
+  // `contain`, not `cover`. The frame is square because most of the shop ships
+  // square pack shots, but not every brand does: IMBIBE supplies 864x1080 (4:5)
+  // for every single product and Estetika's carousels are largely 4:3, so
+  // `cover` scaled them up to fill the square and cropped 20-25% away — the top
+  // and bottom of the bottle, which on a PDP is the thing being sold. A square
+  // source fills the frame identically either way, so this only changes the
+  // images that were being cropped.
   if (images.length === 1) {
     return (
       <div className="relative bg-white rounded-[2px] overflow-hidden" style={{ aspectRatio: '1/1' }}>
@@ -82,7 +89,7 @@ export default function ProductImageCarousel({
           alt={images[0].altText ?? `${vendor} ${title}`}
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
-          className="object-cover"
+          className="object-contain"
           priority
         />
       </div>
@@ -108,7 +115,7 @@ export default function ProductImageCarousel({
                   alt={img.altText ?? `${vendor} ${title}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-contain"
                   priority={i === 0}
                   loading={i !== 0 && variantTargets.has(i) ? 'eager' : undefined}
                 />
