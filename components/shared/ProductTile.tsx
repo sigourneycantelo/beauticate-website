@@ -71,9 +71,14 @@ export default function ProductTile({
   const inner = (
     <>
       {/* Image area — square so the (mostly square) product shots fill full-bleed
-          with no crop. Full-bleed (cover) sits on white so transparent shots blend
-          into the card; de-etched (contain) keeps the greige backdrop. */}
-      <div className={`relative aspect-[3/4] overflow-hidden ${effCover ? 'bg-white' : 'bg-tile'}`}>
+          with no crop. Always sits on the greige tile, cover or de-etched: a
+          transparent PNG under object-cover isn't always crop-filled edge to
+          edge (a narrow bottle scaled to fill height leaves transparent slivers
+          left/right), so a white container showed through inconsistently next
+          to legacy images with grey baked into the pixels. Greige everywhere
+          makes every card read the same regardless of which pipeline made the
+          shot transparent-with-slivers or opaque-with-baked-background. */}
+      <div className="relative aspect-[3/4] overflow-hidden bg-tile">
         {primarySrc
           ? renderImg(primarySrc, primaryAlt, `transition-opacity duration-500 ${hasHover ? 'group-hover:opacity-0' : ''}`)
           : (
