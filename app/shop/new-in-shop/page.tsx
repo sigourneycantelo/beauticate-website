@@ -3,6 +3,7 @@ import { getNewArrivals } from '@/lib/shopify'
 import ProductGrid from '@/components/shop/ProductGrid'
 import CollectionHero from '@/components/shop/CollectionHero'
 import type { Metadata } from 'next'
+import { getRatingMap } from '@/lib/judgeme'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -20,6 +21,10 @@ export const dynamic = 'force-dynamic'
 
 export default async function NewInShopPage() {
   const products = await getNewArrivals(6, 4)
+
+  // One bulk call for the whole grid — getRatingMap reads the cached, shop-wide
+  // review index, so a page of cards costs no request per card.
+  const ratings = await getRatingMap(products)
 
   const crumbs = [
     { name: 'Home', url: `${SITE}/` },
@@ -56,7 +61,7 @@ export default async function NewInShopPage() {
           {products.length} {products.length === 1 ? 'piece' : 'pieces'}
         </p>
 
-        <ProductGrid products={products} />
+        <ProductGrid products={products} ratings={ratings} />
       </div>
     </div>
   )

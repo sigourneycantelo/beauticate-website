@@ -6,6 +6,7 @@ import type { ShopifyProduct } from '@/types/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { GIFT_HANDLES, offerForVendor, isGiftProduct } from '@/lib/gwp'
 import { metaDescription } from '@/lib/product-description'
+import { getProductReviews, getProductRating, getRatingMap } from '@/lib/judgeme'
 
 // `searchParams` makes this route render per request rather than being served from
 // the full route cache — the price of landing a `?variant=` link on the right image
@@ -64,6 +65,15 @@ export default async function ProductRoute({ params, searchParams }: Props) {
     return true
   }).slice(0, 4)
 
+  // Reviews come off one cached, shop-wide index (see lib/judgeme.ts), so this
+  // costs no request of its own once warm — and returns empty rather than
+  // throwing if Judge.me is slow or down.
+  const [reviews, rating] = await Promise.all([
+    getProductReviews(product.id, product.handle),
+    getProductRating(product.id, product.handle),
+  ])
+  const relatedRatings = await getRatingMap(related)
+
   const availability = await availabilityPromise
 
   // Pitch the gift only when it can actually be given: a live offer for this
@@ -83,6 +93,9 @@ export default async function ProductRoute({ params, searchParams }: Props) {
       availability={availability}
       giftOffer={giftOffer}
       variantParam={variant}
+      reviews={reviews}
+      rating={rating}
+      relatedRatings={relatedRatings}
     />
   )
 }
