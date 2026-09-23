@@ -4,15 +4,24 @@ import MetaViewContent from '@/components/analytics/MetaViewContent'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
+import PDPEditorNote from './PDPEditorNote'
 import VariantSelectionProvider from './VariantSelectionProvider'
 import ProductReviews from './ProductReviews'
 import type { ShopifyProduct } from '@/types/shopify'
 import type { Review, Rating } from '@/lib/judgeme'
 import { aggregateOf } from '@/lib/judgeme'
 import type { GiftOffer } from '@/lib/gwp'
+import type { EditorNote } from '@/data/pdp-editors-notes'
 import { cleanProductTitle } from '@/lib/product-format'
 import { resolveShopIntl } from '@/lib/shop-intl'
 import { buildGallery, findVariant, pickDefaultVariant } from '@/lib/shop-variant'
+
+interface ArticleThumb {
+  title: string
+  slug: string
+  type: 'interview' | 'editorial' | 'vodcast'
+  image?: string
+}
 
 interface Props {
   product: ShopifyProduct
@@ -29,11 +38,15 @@ interface Props {
   relatedRatings?: Record<string, Rating>
   /** Aggregate for those reviews, or null when there are none. */
   rating?: Rating | null
+  /** Editor's note for this product, resolved by handle in the route. */
+  editorNote?: EditorNote
+  /** Resolved article thumbnails for the "As seen in" cards. */
+  editorArticles?: ArticleThumb[]
 }
 
 const SITE = 'https://www.beauticate.com'
 
-export default function ProductPage({ product: p, related = [], availability, giftOffer, variantParam, reviews = [], rating = null, relatedRatings }: Props) {
+export default function ProductPage({ product: p, related = [], availability, giftOffer, variantParam, reviews = [], rating = null, relatedRatings, editorNote, editorArticles = [] }: Props) {
   // Resolve the opening variant here, on the server, so the buy box and the gallery
   // agree on it from the first paint — including on the `?variant=` links editorial
   // product cards already write (see variantHref).
@@ -180,6 +193,10 @@ export default function ProductPage({ product: p, related = [], availability, gi
           />
         </div>
       </VariantSelectionProvider>
+
+      {editorNote && (
+        <PDPEditorNote note={editorNote} articles={editorArticles} />
+      )}
 
       <ProductReviews reviews={reviews} rating={rating} handle={p.handle} />
 

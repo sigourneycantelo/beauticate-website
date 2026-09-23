@@ -7,6 +7,8 @@ import { cleanProductTitle } from '@/lib/product-format'
 import { GIFT_HANDLES, offerForVendor, isGiftProduct } from '@/lib/gwp'
 import { metaDescription } from '@/lib/product-description'
 import { getProductReviews, getProductRating, getRatingMap } from '@/lib/judgeme'
+import { editorNoteForHandle } from '@/data/pdp-editors-notes'
+import { getArticleBySlug } from '@/lib/content'
 
 // `searchParams` makes this route render per request rather than being served from
 // the full route cache — the price of landing a `?variant=` link on the right image
@@ -86,6 +88,22 @@ export default async function ProductRoute({ params, searchParams }: Props) {
   const giftOffer =
     candidate && (giftStock[candidate.giftVariantId] ?? true) ? candidate : undefined
 
+  const editorNote = editorNoteForHandle(handle)
+  const editorArticles = editorNote
+    ? editorNote.cards
+        .map(c => {
+          const article = getArticleBySlug(c.slug.split('/'))
+          if (!article || article.frontmatter.published === false) return null
+          return {
+            title: c.title,
+            slug: c.slug,
+            type: c.type,
+            image: article.frontmatter.featured_image,
+          }
+        })
+        .filter((a): a is NonNullable<typeof a> => a !== null)
+    : []
+
   return (
     <ProductPage
       product={product}
@@ -96,6 +114,8 @@ export default async function ProductRoute({ params, searchParams }: Props) {
       reviews={reviews}
       rating={rating}
       relatedRatings={relatedRatings}
+      editorNote={editorNote}
+      editorArticles={editorArticles}
     />
   )
 }

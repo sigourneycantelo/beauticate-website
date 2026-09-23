@@ -638,6 +638,14 @@ All category and subcategory archive pages use the same **editorial magazine lay
 
 **Image crop:** All editorial components use `object-[50%_20%]` (not `object-top`) so portrait crops keep headroom and don't chop off the top of heads.
 
+## Voice guides
+
+When writing any product copy — Editor's Notes on PDPs, product reviews, ShopItem descriptions, or editorial mentions of physical products — always consult:
+
+- [`docs/voice/beauticate-voice.md`](docs/voice/beauticate-voice.md) — house editorial voice and article-writing SOP
+- [`docs/Sigourney_Cantelo_Voice_Reference (1).md`](docs/Sigourney_Cantelo_Voice_Reference%20(1).md) — Sigourney's personal writing DNA
+- [`docs/voice/sigourney-voice.md`](docs/voice/sigourney-voice.md) — Sigourney's voice patterns and preferences
+
 ## Category page order
 
 Articles appear on category pages sorted newest-first by `date_published`. The "first 12 stories" on each page are the 12 most recent articles by date.
