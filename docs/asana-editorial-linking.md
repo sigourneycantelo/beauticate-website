@@ -40,17 +40,25 @@ Once the PR is open and Vercel has deployed a preview:
 4. **Leave the task incomplete.** Sig marks it complete herself once she's
    happy to merge, or comments back with what needs changing.
 
-## Finding the card when the link wasn't given
+## Finding the card: search first, don't ask
 
-Always ask for the Asana card link/GID up front rather than guessing — see
-the `article-upload` agent's intake list. If someone genuinely doesn't have
-it to hand:
+Don't ask the uploader for the Asana card link — it's usually obvious enough
+to find on your own, and asking every time is friction Rikki shouldn't have
+to carry. As soon as you know the article's working title, search the
+**Editorial Calendar** project (`search_tasks`, scoped to that project):
 
-- Search the **Editorial Calendar** project by article title
-  (`search_tasks`, scoped to that project). Titles are hand-typed by Sig and
-  won't always match the eventual slug or SEO title exactly — use judgement,
-  and if more than one card plausibly matches, ask which one rather than
-  guessing.
+- Favour **incomplete tasks assigned to the current uploader** — that alone
+  usually narrows it to one card, since Sig assigns each drafted card to
+  whoever's writing/uploading it.
+- Within that, match on title/keyword similarity to the article's title and
+  slug. Titles are hand-typed by Sig and won't always match the eventual SEO
+  title exactly (e.g. a card called "The Royce Hotel Review" for an article
+  titled "The Royce Hotel, Melbourne: Where Business Trips Get a Dose of Old
+  Hollywood") — a shared distinctive keyword (venue name, subject, brand) is
+  normally enough.
+- **Only ask when it's genuinely ambiguous** — two or more open cards that
+  could plausibly be the same article, or nothing came back at all. Don't
+  guess between candidates.
 - If nothing matches at all, that's a signal the workflow was skipped
   upstream (no card was drafted before upload) — flag it to Sig rather than
   silently creating one. Creating a task is the one action this doc asks you
