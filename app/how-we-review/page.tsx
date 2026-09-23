@@ -86,17 +86,17 @@ export default function HowWeReviewPage() {
           <p className="font-serif text-base text-charcoal/75 leading-relaxed">
             For brands wanting more than an editor&rsquo;s opinion, we run Trial Teams: real Beauticate
             readers, not staff, using your product in their own homes over real time and reporting back
-            honestly. It&rsquo;s the same rigour Byrdie and GLOW publish a methodology for, we&rsquo;ve
-            just never written ours down until now.
+            honestly.
           </p>
         </div>
 
         <div>
           <h2 className="font-serif text-2xl text-ink mb-3">Where to send it</h2>
           <p className="font-serif text-base text-charcoal/75 leading-relaxed">
-            {/* TODO: replace with the real PO Box once Sig confirms it */}
-            [PO Box address to be confirmed] &mdash; please include a note with your brand name, contact
-            details and what you&rsquo;d like us to know about the product.
+            We don&rsquo;t publish an open postal address. Start with the form below and tell us what
+            you&rsquo;ve got &mdash; brand, contact details, and what you&rsquo;d like us to know about
+            the product. If we want to see it in person, we&rsquo;ll reply with somewhere to send it.
+            It saves you the postage on something we were never going to test.
           </p>
         </div>
 
