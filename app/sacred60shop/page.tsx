@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import Link from 'next/link'
 import Sacred60Gate from './Sacred60Gate'
 import { SACRED_60 } from '@/data/sacred60'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 export const metadata: Metadata = {
   title: 'The Sacred 60 | Self-Care & Wellness Guide',
@@ -99,7 +100,7 @@ export default function Sacred60ShopPage() {
                         <Link
                           href={item.url}
                           target={item.url.startsWith('http') ? '_blank' : undefined}
-                          rel={item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined}
+                          rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
                           className="relative group"
                         >
                           {/* Number */}
@@ -132,7 +133,7 @@ export default function Sacred60ShopPage() {
                           <Link
                             href={item.url}
                             target={item.url.startsWith('http') ? '_blank' : undefined}
-                            rel={item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined}
+                            rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
                             className="inline-block font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70"
                             style={{
                               background: item.isShop ? '#2D5A3D' : '#1C1A17',
@@ -180,7 +181,7 @@ export default function Sacred60ShopPage() {
                 Explore Beauticate
               </Link>
               <Link
-                href="/vodcast"
+                href="/podcast"
                 className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70"
                 style={{ border: '1px solid #1C1A17', color: '#1C1A17' }}
               >

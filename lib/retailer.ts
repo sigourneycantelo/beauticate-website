@@ -27,21 +27,41 @@ const NAMES: Record<string, string> = {
 
 const SHORTENERS = /^(bit\.ly|tinyurl\.com|t\.co|rebrand\.ly|go\.redirectingat\.com)$/i
 
-/** Returns a readable retailer name, or '' when it can't be determined (e.g. a shortener). */
-export function retailerFromUrl(url?: string): string {
-  if (!url) return ''
+/**
+ * Unwrap an affiliate wrapper to the retailer URL it actually points at.
+ * Handles Skimlinks (`?url=`), Commission Factory (`?Url=`), Impact (`?u=`),
+ * Awin (`?ued=`) and Partnerize (`/destination:<encoded>`). Returns the input
+ * unchanged when it isn't a wrapper.
+ */
+export function destinationUrl(url: string): string {
   let dest = url
-  // Unwrap skim / affiliate wrappers that carry the real URL in a param or path.
   try {
     const u = new URL(url)
-    const enc = u.searchParams.get('url') || u.searchParams.get('u')
+    const enc =
+      u.searchParams.get('url') ||
+      u.searchParams.get('Url') ||
+      u.searchParams.get('u') ||
+      u.searchParams.get('ued')
     if (enc) dest = decodeURIComponent(enc)
   } catch { /* not a full URL */ }
   const destMatch = url.match(/destination:([^?#\s]+)/i) // e.g. prf.hn/click/.../destination:ENCODED
   if (destMatch) { try { dest = decodeURIComponent(destMatch[1]) } catch { /* ignore */ } }
+  return dest
+}
 
-  let host: string
-  try { host = new URL(dest).hostname.replace(/^www\./, '').toLowerCase() } catch { return '' }
+/** Bare lowercase hostname of a URL's true destination, or '' if unparseable. */
+export function destinationHost(url?: string): string {
+  if (!url) return ''
+  try {
+    return new URL(destinationUrl(url)).hostname.replace(/^www\./, '').toLowerCase()
+  } catch { return '' }
+}
+
+/** Returns a readable retailer name, or '' when it can't be determined (e.g. a shortener). */
+export function retailerFromUrl(url?: string): string {
+  if (!url) return ''
+  const host = destinationHost(url)
+  if (!host) return ''
   if (SHORTENERS.test(host)) return ''
   if (NAMES[host]) return NAMES[host]
   // Fallback: title-case the first domain label (e.g. "simka.com" -> "Simka").

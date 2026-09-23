@@ -29,6 +29,19 @@ export interface ArticleMoment {
   date_published: string
 }
 
+/**
+ * The single rule for "does this article get its own /shop/moments page?".
+ * Shared with ArticlePage so the article can link forward to its moment page
+ * without the two ever disagreeing about whether that page exists.
+ * `products` must already have dead links filtered out.
+ */
+export function hasArticleMoment(
+  f: { moment_exclude?: boolean },
+  products: ProductLink[],
+): boolean {
+  return !f.moment_exclude && products.length >= MOMENT_MIN_PRODUCTS
+}
+
 /** All qualifying article moments, newest-first. */
 export function getArticleMoments(): ArticleMoment[] {
   return getArticleSlugs()
@@ -39,7 +52,7 @@ export function getArticleMoments(): ArticleMoment[] {
       const products = (a.products ?? []).filter(p => p.type !== 'dead')
       return { f, products }
     })
-    .filter(({ f, products }) => !f.moment_exclude && products.length >= MOMENT_MIN_PRODUCTS)
+    .filter(({ f, products }) => hasArticleMoment(f, products))
     .map(({ f, products }): ArticleMoment => ({
       slug: f.slug,
       title: f.moment_title ?? f.title,

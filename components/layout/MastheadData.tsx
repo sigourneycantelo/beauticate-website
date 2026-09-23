@@ -1,7 +1,8 @@
 import Masthead, { type Pillar, type MegaCard, type MegaSub, type MegaLink } from './Masthead'
 import { getArticlesByCategory } from '@/lib/content'
 import { getCollections, brandsFromCollections } from '@/lib/shopify'
-import { BROAD_CATEGORIES, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS, CURATOR_EDITS } from '@/lib/shop-taxonomy'
+import { BROAD_CATEGORIES, SHOP_MOMENTS, MOOD_MOMENTS, GIFTING_MOMENTS, NEW_IN_BRANDS } from '@/lib/shop-taxonomy'
+import { getCuratorCollections } from '@/lib/curator-collections'
 import type { ShopifyCollection } from '@/types/shopify'
 
 // Latest 4 real stories for a subcategory, shaped into mega-menu cards.
@@ -75,10 +76,15 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     title: brandName(b.handle, b.name), href: `/shop/brands/${b.handle}`, image: imgByHandle.get(b.handle), imageAlt: brandName(b.handle, b.name), eyebrow: 'New In',
   }))
 
-  // Editor's Picks — curator edits shown as previews (becomes "Shop by Curator").
-  const curatorCards: MegaCard[] = CURATOR_EDITS.map((c): MegaCard => ({
-    title: c.name, href: `/shop/collections/${c.handle}`, image: imgByHandle.get(c.handle), imageAlt: c.name, eyebrow: 'Curated',
+  // Shop by Curator — one page per Collective member, auto-built from the
+  // products they have recommended across their own stories and the team edits.
+  // Previews are the three curators with the most picks; the full list is the
+  // dropdown's link column.
+  const curators = getCuratorCollections()
+  const curatorCards: MegaCard[] = curators.slice(0, 3).map((c): MegaCard => ({
+    title: `${c.name}'s Favourites`, href: `/shop/curators/${c.slug}`, image: c.photo, imageAlt: c.name, eyebrow: 'Curated',
   }))
+  const curatorList: MegaLink[] = curators.map(c => ({ label: c.name, href: `/shop/curators/${c.slug}` }))
 
   // Free Shipping — brands that ship free on every order.
   const FREE_SHIP_FEATURED = ['subtle-energies', 'bon-patch', 'archer-farrar-perfume-atelier']
@@ -100,7 +106,7 @@ function buildShopPillar(collections: ShopifyCollection[]): Pillar {
     { label: 'Shop by Moment', href: '/shop/by-moment', cards: momentCards, list: momentList },
     { label: 'New In Shop', href: '/shop/new-in-shop', cards: newInCards },
     { label: 'Free Shipping', href: '/shop/free-shipping', cards: freeShipCards },
-    { label: "Editor's Picks", href: '/shop/collections/editors-essentials', cards: curatorCards },
+    { label: 'Shop by Curator', href: '/shop/by-curator', cards: curatorCards, list: curatorList },
     { label: 'Gifting', href: '/shop/gifting', cards: giftingCards, list: giftingList },
   ]
   return {
@@ -139,9 +145,11 @@ export default async function MastheadData() {
     ['Models', 'models'], ['Tastemakers', 'tastemakers'],
   ])
 
-  // Podcast: real route is still /vodcast until the vodcast->podcast migration runs.
+  // Podcast: the hub lives at /podcast (/vodcast 301s to it). Individual
+  // episodes still sit under /vodcast/episodes/ — those URLs are what external
+  // show notes and the WP-era redirect map point at, so they stay put.
   const podcast: Pillar = {
-    key: 'podcast', label: 'Podcast', href: '/vodcast', eyebrow: 'Beautiful Inside',
+    key: 'podcast', label: 'Podcast', href: '/podcast', eyebrow: 'Beautiful Inside',
     allLabel: 'All episodes', allHref: '/vodcast/episodes',
     subs: [{ label: 'Episodes', href: '/vodcast/episodes', cards: cards('vodcast', 'episodes', 'Beautiful Inside') }],
   }

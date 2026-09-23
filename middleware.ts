@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import redirectSlugMap from './data/redirect-slug-map.json'
+import { COUNTRY_COOKIE, normaliseCountry } from './lib/geo'
 
 // Only the production domain should be indexable. Every other host
 // (Vercel preview URLs, *.vercel.app, local) gets X-Robots-Tag: noindex
@@ -45,10 +46,39 @@ export function middleware(req: NextRequest) {
     }
   }
 
+  // Instagram checkout handoff (docs/instagram-checkout-handoff.md). Meta hands the
+  // customer to /shop carrying a reference to its own bag (attributes[cart-id] +
+  // access_token) instead of line items — nothing on this site reads it, so the
+  // customer lands on a correctly-rendered, empty cart. There's no fix live yet
+  // (pending a direction call), so this only counts how often it happens. Never log
+  // access_token itself — it's a credential, not a diagnostic.
+  if (pathname === '/shop' && (req.nextUrl.searchParams.get('cart_origin') === 'instagram' || req.nextUrl.searchParams.has('attributes[cart-id]'))) {
+    console.log('[instagram-cart-handoff]', {
+      cartId: req.nextUrl.searchParams.get('attributes[cart-id]'),
+      sellerId: req.nextUrl.searchParams.get('attributes[seller-id]'),
+      hasAccessToken: req.nextUrl.searchParams.has('access_token'),
+      host,
+      ts: new Date().toISOString(),
+    })
+  }
+
   const res = NextResponse.next()
   if (!PROD_HOSTS.has(host)) {
     res.headers.set('X-Robots-Tag', 'noindex, nofollow')
   }
+
+  // Geo lane. Vercel resolves the visitor's country at the edge; we hand it to
+  // the client as a cookie rather than reading it inside pages, because
+  // `headers()` in a page would opt every article out of static generation.
+  // The HTML stays country-agnostic and cacheable; GeoProvider does the swap.
+  const country = normaliseCountry(req.headers.get('x-vercel-ip-country'))
+  res.cookies.set(COUNTRY_COOKIE, country, {
+    path: '/',
+    maxAge: 60 * 60 * 12,
+    sameSite: 'lax',
+    httpOnly: false, // read by GeoProvider on the client
+  })
+
   return res
 }
 

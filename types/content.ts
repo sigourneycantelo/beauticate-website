@@ -4,6 +4,10 @@ export interface ProductLink {
   name: string
   type: ProductLinkType
   handle?: string        // for type: 'shop' — matches Shopify product handle
+  variant?: string       // for type: 'shop' — pin the card to one colourway, by variant
+                         // title ("Blush Pink") or variant id. Without it the card shows
+                         // the listing's default variant, which on a multi-colour product
+                         // is often not the colour the article means.
   url?: string           // for type: 'affiliate' | 'external'
   retailer?: string      // e.g. 'MECCA', 'Sephora', 'Brand direct'
   note?: string          // e.g. "Sigourney's Edit", "Reader favourite"
@@ -11,6 +15,12 @@ export interface ProductLink {
   image?: string         // REQUIRED for affiliate/external — de-etched product shot self-hosted in the repo
                          // (e.g. /content/<cat>/<sub>/<slug>/<product>.jpg). Shop products get images from Shopify.
   brand?: string         // display brand for affiliate cards (falls back to retailer)
+  // `curator: 'none'` keeps this one product out of the article author's
+  // /shop/curators/<slug> page, for something the byline didn't choose — an
+  // editor's pick inside someone else's story. Read only by
+  // lib/curator-collections.ts; changes nothing about how the card renders or
+  // feeds /shop/moments/<slug>. For a whole article, use `curator_exclude`.
+  curator?: 'none'
 }
 
 export interface ShopProduct {
@@ -49,7 +59,14 @@ export interface ArticleFrontmatter {
   canonical_url?: string
   og_title?: string
   og_description?: string
+  /**
+   * Landscape share card, ~1200x630. Set this on anything worth sharing:
+   * `featured_image` is the portrait 3:4 grid thumbnail, and social platforms
+   * crop a share card to roughly 1.91:1, so a portrait loses about 60% of its
+   * height to a centre crop. Falls back to `featured_image` when unset.
+   */
   og_image?: string
+  og_image_alt?: string             // describes og_image; featured_image_alt is a different picture
 
   // AEO
   schema_type?: 'Article' | 'HowTo' | 'FAQPage' | 'Review' | 'NewsArticle'
@@ -69,9 +86,20 @@ export interface ArticleFrontmatter {
   shop_collection?: string
   shop_products?: ShopProduct[]
   product_links?: ProductLink[]
+  // Suppress the "Shop the Edit" grid at the foot WITHOUT dropping product_links —
+  // the links still feed the auto-generated /shop/moments/<slug> page. Use when the
+  // body already sells the same products (e.g. an in-body ShopGrid plus a
+  // <CollectionRail>), so the foot would just repeat them a third time.
+  hide_shop_edit?: boolean
   moment_title?: string             // display name for the auto-generated Shop-by-Moment page (defaults to article title)
   moment_image?: string             // tile/hero image for the moment page (defaults to hero_image → featured_image)
   moment_exclude?: boolean          // opt OUT of auto-moment generation even with 6+ products
+  // Keep this article's products OUT of the author's /shop/curators/<slug> page.
+  // They still render in the foot "Shop the Edit" grid and still feed
+  // /shop/moments/<slug> — this only stops the curator builder republishing them
+  // as that person's own picks. Whether a contributor wants their name on shop
+  // products varies by person and by article: ask before setting or omitting it.
+  curator_exclude?: boolean
   related_products?: string[]
   related_collections?: string[]
   youtube_embed?: string
@@ -85,14 +113,29 @@ export interface ArticleFrontmatter {
   nav_image_position?: string  // CSS object-position for mega-menu thumbnail crop, e.g. "left top"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
   hero_aspect?: string         // CSS aspect-ratio for hero image, e.g. "16/9"; defaults to 16/9
+  hero_layout?: 'full' | 'split' // 'split' = editorial split hero (image one side, greige headline panel the other); defaults to 'full'
 
   // Destinations taxonomy
   travelType?: 'guide' | 'hotel-review' | 'travel-beauty' | 'sigs-edit'
   venueType?: 'spa' | 'salon' | 'skin-clinic' | 'nail-salon' | 'bathhouse' | 'retreat' | 'hotel' | 'wellness'
+  /**
+   * The venue's own name, for LocalBusiness schema and the contact block.
+   * Directory listings are titled with the venue name, so this is unset there
+   * and `title` is used. An editorial review is titled with a headline, and
+   * without this the schema and the contact card would both name the venue
+   * "The Beach Hotel Where We Never Made It to the Beach".
+   */
+  venue_name?: string
   address?: string              // street address for LocalBusiness schema
   telephone?: string            // phone number for LocalBusiness schema
   instagram?: string            // Instagram handle (without @), e.g. "auroraspaandbathhouse"
   booking_url?: string          // direct booking/enquiry URL
+  /**
+   * The venue's own site. Kept separate from booking_url because that often
+   * points at Fresha, Kitomba or Timely, and the "Visit Website" button must
+   * not send readers to a booking platform's homepage.
+   */
+  website?: string
   state?: 'NSW' | 'VIC' | 'QLD' | 'WA' | 'SA' | 'TAS' | 'ACT' | 'NT'
   feeling?: string[]
   feeling_images?: Record<string, string>
@@ -111,9 +154,50 @@ export interface ArticleFrontmatter {
   featured?: boolean
   editorial_flag?: string
   sigourneys_edit?: boolean
-  sponsored?: boolean
+  sponsored?: boolean          // declared but never rendered; see paid_placement_until
   affiliate_disclosure?: boolean
+  /**
+   * Directory listings are sold as annual placements. This is the date the
+   * current placement lapses, NOT a boolean, because a boolean rots: the year
+   * ends, nobody clears the flag, and the page keeps declaring a commercial
+   * relationship that no longer exists. Disclosure has to be accurate in both
+   * directions. Set it when a slot is sold; the label disappears on its own.
+   */
+  paid_placement_until?: string  // ISO date, e.g. '2027-08-23'
+  /**
+   * A material connection for a hotel/travel review: the stay, meal or
+   * experience being reviewed was complimentary. A simple boolean is right
+   * here (unlike paid_placement_until) because a hosted stay doesn't lapse
+   * the way an annual placement does — it happened once, at the time of the
+   * visit, and stays true forever. Defaults to true for new hotel/travel
+   * reviews (see the article-upload agent) since most of them are hosted;
+   * set it false explicitly for a stay that was booked and paid for.
+   */
+  hosted_stay?: boolean
   contributors?: string[]        // collective members featured in team/collaborative articles
+
+  /**
+   * Beautiful Inside by Beauticate — the companion episode for this article.
+   *
+   * A companion article talks about an episode; without these it offered the
+   * reader no way to actually watch or hear it, which is how every podcast
+   * story on the site shipped for a year. Set `podcast_episode` to the vodcast
+   * slug under content/vodcast/episodes/ and the video id and platform links
+   * are read from the episode itself — one line per article, nothing to keep in
+   * sync. The remaining fields are for episodes that have no vodcast entry, or
+   * for a per-episode Spotify/Apple deep link the episode file doesn't carry.
+   */
+  podcast_episode?: string        // vodcast slug, e.g. "celeste-barber-on-adhd-..."
+  podcast_youtube_id?: string     // YouTube id, when there is no vodcast entry to read it from
+  podcast_spotify_url?: string    // per-episode Spotify link; falls back to the show
+  podcast_apple_url?: string      // per-episode Apple Podcasts link; falls back to the show
+  podcast_heading?: string        // line above the buttons, e.g. "Sigourney interviews Celeste Barber"
+  /**
+   * 'full' (default) embeds the player at the top of the article; 'compact'
+   * renders a slim band with a thumbnail, for a story the episode supports
+   * rather than *is*.
+   */
+  podcast_strip?: 'full' | 'compact'
 }
 
 export interface VodcastFrontmatter {
@@ -123,6 +207,7 @@ export interface VodcastFrontmatter {
   excerpt: string
   featured_image: string
   featured_image_alt: string
+  hero_image?: string         // landscape holding shot for the episode banner; falls back to featured_image
   hero_aspect?: string        // CSS aspect-ratio for the hero, e.g. "4/5" for portrait shots; defaults to "16/9"
   hero_focus?: string         // CSS object-position for cropping the holding shot (e.g. "50% 12%"); defaults to a face-friendly top bias
   card_position?: string      // CSS object-position for the listing card image (e.g. "50% 18%"); defaults to top
@@ -131,6 +216,7 @@ export interface VodcastFrontmatter {
   spotify_episode_id?: string
   apple_episode_url?: string
   youtube_video_id?: string
+  spotify_episode_url?: string   // full per-episode Spotify URL, when we have one
   guests?: string[]
   topics?: string[]
   faqs?: FAQ[]

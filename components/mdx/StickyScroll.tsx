@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 
 interface Props {
   src: string
@@ -21,7 +22,7 @@ export default function StickyScroll({ src, alt, side = 'right', href, caption, 
   )
 
   const imageBlock = href ? (
-    <a href={href} target="_blank" rel="sponsored noopener" className="block">
+    <a href={href} target="_blank" rel={withNoskim('sponsored noopener', href)} className={withNoskimClass('block', href)}>
       {imgEl}
     </a>
   ) : imgEl

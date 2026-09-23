@@ -142,8 +142,31 @@ export function getArticlesByTravelType(travelType: string) {
     })
 }
 
+/**
+ * The subcategories of `destinations` that hold the venue directory. Everything
+ * under them is a listing; `destinations/travel` beside them is editorial.
+ */
+export const DIRECTORY_SUBCATEGORIES = new Set([
+  'clinics',
+  'salons',
+  'spas-retreats',
+  'bathhouses',
+  'wellness',
+])
+
+/**
+ * The directory index: published content that carries `venueType` AND is filed
+ * under a directory subcategory. The same test lib/feed.ts uses for "is a
+ * listing".
+ *
+ * `venueType` alone used to be enough, which put editorial travel features in
+ * the directory: the InterContinental Coogee review showed up as a HOTEL card.
+ * Those features keep `venueType` for their Hotel schema and venue details;
+ * the path is what keeps them out of the index.
+ */
 export function getDirectoryListings(filters?: { state?: string; venueType?: string }) {
   return getArticleSlugs()
+    .filter(parts => parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1]))
     .map(parts => getArticleBySlug(parts))
     .filter(isPublished)
     .filter(a => !!a?.frontmatter.venueType)
@@ -225,12 +248,57 @@ export function getArticlesByAuthor(authorName: string) {
     })
 }
 
+/**
+ * "You might also like" for a directory listing: other venue listings only.
+ *
+ * The general related-articles pass filters on the top-level category, and
+ * `destinations` also holds the editorial travel features — so a spa listing
+ * was being given hotel reviews, and five of its six cards were photographs of
+ * somewhere else entirely. That is an SEO problem as much as an editorial one:
+ * Google Images has been attributing those unrelated photos to the thin listing
+ * page they sit on.
+ *
+ * Same subcategory first, then the rest of the directory, tag-ranked within
+ * each band and newest-first as the tiebreak. Drafted listings stay out — see
+ * CLAUDE.md, `published: false` in the directory is a deliberate editorial
+ * decision.
+ */
+function getRelatedDirectoryListings(
+  currentSlug: string,
+  subcategory: string,
+  tags: string[],
+  limit: number
+) {
+  return getArticleSlugs()
+    .filter(parts => parts[0] === 'destinations' && DIRECTORY_SUBCATEGORIES.has(parts[1]))
+    .map(parts => getArticleBySlug(parts))
+    .filter(isPublished)
+    .filter(a => a?.frontmatter.slug !== currentSlug)
+    .sort((a, b) => {
+      const aSame = a?.frontmatter.subcategory === subcategory ? 1 : 0
+      const bSame = b?.frontmatter.subcategory === subcategory ? 1 : 0
+      if (aSame !== bSame) return bSame - aSame
+      const aMatches = (a?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
+      const bMatches = (b?.frontmatter.tags ?? []).filter(t => tags.includes(t)).length
+      if (aMatches !== bMatches) return bMatches - aMatches
+      const dateA = new Date(a?.frontmatter.date_published ?? '2000-01-01').getTime()
+      const dateB = new Date(b?.frontmatter.date_published ?? '2000-01-01').getTime()
+      return dateB - dateA
+    })
+    .slice(0, limit)
+}
+
 export function getRelatedArticles(
   currentSlug: string,
   category: string,
   tags: string[],
-  limit = 6
+  limit = 6,
+  subcategory?: string
 ) {
+  if (category === 'destinations' && subcategory && DIRECTORY_SUBCATEGORIES.has(subcategory)) {
+    return getRelatedDirectoryListings(currentSlug, subcategory, tags, limit)
+  }
+
   return getArticlesByCategory(category)
     .filter(isPublished)
     .filter(a => a?.frontmatter.slug !== currentSlug)
@@ -274,4 +342,75 @@ export function getVodcastEpisode(slug: string): { frontmatter: VodcastFrontmatt
   const raw = fs.readFileSync(mdxPath, 'utf-8')
   const { data, content } = matter(raw)
   return { frontmatter: data as VodcastFrontmatter, content }
+}
+
+/**
+ * The "watch or listen" block for an article, resolved from its frontmatter.
+ *
+ * `podcast_episode` names a vodcast slug and everything else is read from that
+ * episode, so a companion article needs one line rather than a copy of the
+ * video id and three URLs that then drift. Explicit `podcast_*` fields win, for
+ * the episodes that have no vodcast entry.
+ *
+ * Returns null when the article isn't a podcast story, and never links to an
+ * unpublished episode page.
+ */
+export function resolveArticleEpisode(f: {
+  podcast_episode?: string
+  podcast_youtube_id?: string
+  podcast_spotify_url?: string
+  podcast_apple_url?: string
+  podcast_heading?: string
+  podcast_strip?: 'full' | 'compact'
+}): {
+  youtubeId?: string
+  spotifyUrl?: string
+  appleUrl?: string
+  episodeHref?: string
+  heading?: string
+  variant: 'full' | 'compact'
+} | null {
+  if (!f.podcast_episode && !f.podcast_youtube_id) return null
+
+  const ep = f.podcast_episode ? getVodcastEpisode(f.podcast_episode) : null
+  const epf = ep?.frontmatter as (VodcastFrontmatter & { published?: boolean }) | undefined
+
+  const youtubeId = f.podcast_youtube_id ?? epf?.youtube_video_id
+  const spotifyUrl = f.podcast_spotify_url ?? epf?.spotify_episode_url
+  const appleUrl = f.podcast_apple_url ?? epf?.apple_episode_url
+
+  // Only offer the episode page when there is a live one to send readers to.
+  const episodeHref =
+    epf && epf.published !== false ? `/vodcast/episodes/${f.podcast_episode}` : undefined
+
+  return {
+    youtubeId,
+    spotifyUrl,
+    appleUrl,
+    episodeHref,
+    heading: f.podcast_heading,
+    variant: f.podcast_strip ?? 'full',
+  }
+}
+
+/**
+ * True while a directory listing's paid placement is still running.
+ *
+ * Placements are sold by the year. Reading the expiry date rather than a
+ * boolean means a lapsed placement stops being disclosed automatically, which
+ * matters because an inaccurate disclosure cuts both ways: telling readers a
+ * listing is paid when the arrangement ended is its own misrepresentation.
+ */
+export function isPaidPlacement(
+  f: { paid_placement_until?: string },
+  now: Date = new Date()
+): boolean {
+  if (!f.paid_placement_until) return false
+  const until = new Date(f.paid_placement_until)
+  if (Number.isNaN(until.getTime())) return false
+  // The date is the last day of the placement, inclusive. Parsing a bare
+  // yyyy-mm-dd gives midnight, so without this the label would vanish at the
+  // start of the day it is supposed to cover.
+  until.setHours(23, 59, 59, 999)
+  return until >= now
 }

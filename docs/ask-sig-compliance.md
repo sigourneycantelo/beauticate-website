@@ -265,11 +265,11 @@ therefore the norm, not the exception, which means the testimonial prohibition
 applies across the board and no relaxation is available. The guardrails already
 assume this. There is no gifting register to consult.
 
-**4. Directory listings — DECIDED: the reviews must be rewritten.**
+**4. Directory listings — DECIDED: the reviews must be rewritten. Done, August 2026.**
 Sig: "almost all of them. We sent reviewers to write the reviews and they wrote
 first person testimonial style reviews. Many of these were paid for."
 
-This is now the highest-risk area on the site, above the article backlog:
+Why the whole format had to go, not just a line within it:
 
 - s133(1)(c) of the National Law prohibits advertising a **regulated health
   service** using testimonials or purported testimonials. Unlike a TGA
@@ -278,26 +278,54 @@ This is now the highest-risk area on the site, above the article backlog:
   skin needling.
 - Payment is an aggravating fact under the TGA Code too: a paid testimonial is
   prohibited outright, not merely disclosable.
-- The whole format is the problem, not a line within it. These need rewriting as
-  editorial descriptions, not trimming.
+- The whole format is the problem, not a line within it. These needed rewriting
+  as editorial descriptions, not trimming.
 
-Indicative scale (counts are from a regex sweep, not an audit):
-271 listings, 122 with first-person narration. Of 100 clinic listings, 52 are
-first person and **22 are first person and name a clinical service**. Start
-there. Note some first-person hits are the salon owner speaking rather than a
-customer, which is not a testimonial; each needs reading.
+Scale as first estimated (a regex sweep, not an audit): 271 listings, 122 with
+first-person narration; of 100 clinic listings, 52 first person and 22 first
+person naming a clinical service.
+
+**Outcome:** 22 clinic listings, plus nine more across spas-retreats and travel,
+were rewritten in August 2026. See `docs/clinic-listing-rewrite.md` and
+`scripts/audit-directory-ahpra.py`.
 
 **5. Sig's own supplement reviews — DECIDED: retire or reword.**
 Includes retitling "Sigourney Road Tests a Hair Loss Preventing Strand Boosting
 Elixir", where the therapeutic claim is in the headline and the URL slug.
 Retitling affects SEO and inbound links, so slugs need a redirect.
 
+## Classification calls reviewed by Sig
+
+Reviewed and agreed by Sigourney Cantelo, 23 August 2026. Editorial sign-off on
+how two treatment types are classified, not legal sign-off on this document,
+which is still a draft and still unreviewed as a whole.
+
+1. **A superficial peel is a cosmetic treatment, not a regulated health
+   service.** A SkinCeuticals glycolic and salicylic facial, an Ultraceuticals
+   A-Zyme, an Ultra Lactic Acid 30%, performed by a dermal or beauty therapist
+   in a salon, day spa or medispa, is beauty therapy. First-person accounts of
+   having one are not caught by s133(1)(c), and the listings that narrate one
+   keep the writer in them. This does not extend to medium-depth or
+   physician-administered peels.
+
+2. **A Hydrafacial is a facial, not a therapeutic device.** It is a
+   device-assisted cosmetic treatment making no therapeutic claim, so a
+   first-person account of one is not a testimonial about a therapeutic good.
+
+LED and light therapy sit on the other side of the line and were not part of
+this call. They stay out of any personal account, because the Code names them
+directly and Beauticate sells an ARTG-listed device.
+
+Both calls are also recorded against the individual listings in
+`docs/audit/directory-ahpra-screened.json`, so anyone re-running the detector
+can see which listings rest on them.
+
 ---
 
 ## Priority order
 
-1. **Clinic directory listings.** Absolute prohibition, paid, whole-format. 22
-   worst, 52 to read, 271 in total.
+1. ~~**Clinic directory listings.**~~ Done, August 2026 — 22 clinic listings
+   rewritten, plus nine across spas-retreats and travel.
 2. **The 244 flagged articles.** Mostly claims rather than testimonials.
 3. **Sig's supplement reviews and the hair-loss headline** (item 5).
 4. Re-run the audit after each pass; it under-reports by design.

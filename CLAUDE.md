@@ -29,12 +29,46 @@ If port 3000 shows "in use" from a hung server: `lsof -tiTCP:3000 | xargs kill -
 
 **Any article with `date_published` before `2026-06-18` originated on the WordPress site and may have body images or content that was not fully migrated.**
 
-When working on such articles:
-1. Fetch the original WordPress page at `https://www.beauticate.com/<category>/<subcategory>/<slug>/` to check for body images and full content that might be missing from the MDX file.
-2. Download any missing body images to the article's content directory (`content/<category>/<subcategory>/<slug>/`) and reference them with local paths (`/content/...`).
-3. For articles with `/wp-content/uploads/` image paths already in the body, those images are served directly from the old WordPress CDN and do not need to be re-hosted unless broken.
+**The WordPress source is gone — verified 403 in September 2026.** Both
+`https://www.beauticate.com/wp-json/wp/v2/...` and
+`https://www.beauticate.com/wp-content/uploads/...` return HTTP 403. There is no
+longer any way to fetch the original page or re-download a missing body image
+from the old site, and no amount of retrying or changing user-agent will fix it.
+Don't debug it; it is not a network fault.
+
+What this changes:
+
+1. **Do not try to fetch the original WordPress page.** The old step 1 of this
+   rule (fetch `/<category>/<subcategory>/<slug>/` to compare) no longer works.
+   Treat the MDX file as the source of truth.
+2. **Missing body images are re-sourced by hand**, not re-downloaded: the brand's
+   own site, the Shopify CDN, or the Canva originals in Drive. For a high-value
+   piece the Wayback Machine can still show the original body copy and image
+   order. Save them into the article's directory and reference `/content/...`.
+3. **No article references `/wp-content/uploads/` any more** (checked: zero of
+   1,848). Anything already cached under `.cache/wp/` from an earlier session is
+   still usable. If a `/wp-content/` path ever reappears in a body, it is a
+   broken image, not a working CDN link — replace it.
 
 The migration date was June 18, 2026. Articles dated on or after that date were written directly for the Vercel site and will not have a WordPress source.
+
+## SEO, AEO and GEO
+
+The per-article checklist lives in the **`beauticate-article-seo` skill**, which
+loads when you write, upload, optimise or refresh a story. It covers what the
+templates generate for free, what to apply without being asked, and the
+decisions that must come from the writer.
+
+Behind it: [`docs/article-seo-optimization.md`](docs/article-seo-optimization.md)
+for strategy and policy, and
+[`docs/article-optimisation-pass.md`](docs/article-optimisation-pass.md) for the
+mechanical pass on one article.
+
+The short version of the gap: metadata coverage is ~99%, because a script can
+generate a title and a description. `<QuickAnswer>` — the 40-60 word direct
+answer that wins AI Overview citations — is on **6 of 1,848 articles**. That one
+box is the highest-leverage thing on any new story, and it has to be written,
+not generated.
 
 ## Ongoing article cleanup
 
@@ -66,6 +100,134 @@ For pre-migration articles missing body images, fetch from WordPress (see rule a
 - **Always check `draft_reason`** before changing a listing's `published` status. It's required whenever `published: false` — record *why*, not just that it's hidden, so the next person (human or Claude) doesn't have to guess or re-discover it.
 - **Re-filing a listing to a new subcategory means `git mv`, not copy-and-leave-the-original.** Several listings exist twice — once at a stale `clinics/` (or similar) path and once at the corrected path — because a re-file copied the file instead of moving it. When you copy content to a new path, delete or draft the old one in the same change; don't leave an orphaned duplicate.
 - **Before publishing or unpublishing any listing, check for near-duplicates first** — same venue name filed under a different subcategory/slug is the recurring failure mode here. `scripts/audit-directory-duplicates.py` does this check; run it before any bulk directory work.
+
+## Paid directory placements
+
+Directory slots are sold as annual placements. Disclosure is handled by one
+frontmatter field:
+
+```yaml
+paid_placement_until: '2027-08-23'   # last day of the placement, inclusive
+```
+
+While that date is in the future, the listing carries one line at the foot of
+the page, beside the affiliate disclosure: *"This is a paid listing. The venue
+has paid to appear in the Beauticate directory."* When the date passes, it
+disappears on its own.
+
+That single line is the whole disclosure. There is no marker in the byline and
+nothing above the body. Nothing in Australian law requires top-of-article
+placement; the ACL test is whether the overall impression misleads, and the
+house pattern is foot-of-article. Keep the wording plain and factual: the
+requirement is to disclose the relationship, not to assert editorial
+independence alongside it.
+
+The same applies to `affiliate_disclosure`. It renders one line at the foot of
+the article and nothing in the byline. Don't add a marker to either.
+
+**It is a date, not a boolean, on purpose.** A boolean rots. The year ends,
+nobody clears the flag, and the page keeps declaring a commercial relationship
+that ended. Disclosure has to be accurate in both directions: telling readers a
+listing is paid when it isn't is its own misrepresentation, and it is the
+reason the existing listings carry no label at all. Every historical placement
+has lapsed, so as of August 2026 nothing in the directory is under a paid
+arrangement, and nothing is labelled.
+
+**Set the field at the point of sale, as part of invoicing.** Not afterwards,
+not in a bulk pass. If it isn't set when the money is taken it will not get set.
+
+The general position is stated on `/terms` under "Our directory", including
+that venues have hosted us for treatments. Don't add a blanket "listings may be
+paid" line anywhere: applied across a directory where none currently are, that
+statement is false about the majority of it.
+
+`sponsored: boolean` also exists in `ArticleFrontmatter`. It is rendered
+nowhere and set on nothing. Don't reach for it.
+
+## Shop products in someone else's article — ask, every time
+
+**This is a case-by-case editorial call, and it is Sigourney's to make. There is
+no default and no rule to apply on autopilot.**
+
+Some of the editors and contributors don't mind at all having shop products sit
+in their piece and carry their name. Others have not agreed to recommend
+anything and would be unhappy to find they had. It depends on the person, on
+their commercial arrangements, and often on the specific products.
+
+So whenever you're building or editing an article with a byline that isn't
+Beauticate's own, **ask Sig before it goes up:**
+
+1. Is this writer or editor happy for us to include shop products in their
+   article?
+2. If so, how do they want it handled — attributed to them, or clearly marked as
+   the team's picks?
+
+Ask it as a question with the products named. "Happy for these five to sit under
+Michelle's byline?" gets a real answer; "should we add products?" doesn't.
+
+### The mechanism, once she's told you
+
+Every Beauticate Collective member gets an auto-built page at
+`/shop/curators/<slug>`. `getCuratorCollections()` fills it from two places, and
+the first one is the one to know about: **every** `product_links` entry and every
+`<ShopItem>` in any article they are bylined on, republished under their name as
+their own pick.
+
+That is exactly right when the writer chose the products. When we chose them, it
+puts an endorsement in someone's mouth. One frontmatter line turns it off:
+
+```yaml
+curator_exclude: true
+```
+
+The products still render in the foot "Shop the Edit" grid and still feed
+`/shop/moments/<slug>`. The only thing that changes is that they stop being
+attributed to the author. It governs step 1 (authored articles) and deliberately
+not step 2: products under a curator's own `<PortraitQuote>` in a team edit are
+theirs by construction, so the seasonal Winter/Summer Edit needs no flag.
+
+When it's only one or two products in an article that is otherwise genuinely the
+writer's, use the per-card opt-out instead of the whole-article flag:
+
+```
+<ShopItem handle="..." curator="none" />
+```
+
+```yaml
+product_links:
+  - type: "shop"
+    handle: "..."
+    curator: "none"
+```
+
+**Set it in both places if the product appears in both** — frontmatter
+`product_links` and body `<ShopItem>` feed the curator page independently, so
+tagging only one leaves the product attributed. Nothing about the card changes;
+it renders and feeds `/shop/moments/<slug>` exactly as before.
+
+The live case is Kerrie Gentle's makeup piece: the BOOIE BB cream and
+illuminator sit under an *"Ed's note from Sigourney"* in which Sig says she
+wears them. Four of the six products there are genuinely Kerrie's, so excluding
+the article would have thrown those away too.
+
+An Ed's note is the other half of the toolkit, for telling the reader whose picks
+they are. Whether a piece wants the flag, a per-card opt-out, the note, some
+combination or none of it is Sig's call — that's what question 2 above is for.
+
+### Why the flag exists
+
+Michelle Bridges' strength training article. Five protein, creatine and recovery
+products, none of them hers, all heading for `/shop/curators/michelle-bridges` as
+"Michelle Bridges' favourites" — an endorsement she had not agreed to. Before the
+flag the only fix was to strip `product_links` from the article entirely and lose
+the editorial-to-shop cross-link, because **an Ed's note on the article never
+reaches the curator page.** The disclosure lives on one page and the attribution
+on another, so the article's framing cannot correct it.
+
+Worth knowing when you ask the question: a writer saying yes to products in their
+article is not automatically saying yes to a shop page in their name. They are
+two different things, on two different pages, and it's worth separating them if
+the answer isn't obvious.
 
 ## Git workflow
 
@@ -103,12 +265,55 @@ because it records which fixes were approved. `data/chat-index.json` stays
 tracked deliberately: Ask Sig reads it at runtime and it has not been verified
 to survive as a build-only artefact.
 
+**Every tracked generated file is written sorted, one entry per line.** All three
+of them — `chat-index.json`, `redirect-slug-map.json`, `image-dimensions.json` —
+are rebuilt on every `npm run build` and committed, so with two people working
+at once they are the files most likely to collide. Git merges line by line: a
+file written as one long line conflicts on *every* concurrent edit, and the
+conflict is unresolvable by hand because it is one 5.6MB line. Written one entry
+per line, two people adding different articles touch different lines and git
+merges them silently. Verified both ways with a merge test before the change
+landed.
+
+Sorting is the other half, and it is not cosmetic. `redirect-slug-map.json` used
+to be emitted in directory-walk order, which is filesystem-dependent, so two
+people on different machines could generate completely different files from
+identical content. Sorted output is the same everywhere.
+
+If you add another tracked generated file, write it the same way. The line
+breaks cost about a byte per entry and buy a file that two people can edit at
+once.
+
+`data/image-dimensions.json` is rebuilt by `scripts/build-image-dimensions.mjs`
+on every `npm run build` and is **also tracked deliberately**, for the same kind
+of reason: `npm run dev` does not run the prebuild scripts, and without the file
+every lone portrait image silently loses its centring and width cap. A dev/prod
+mismatch on layout you review by eye is worse than 2MB in git. It is written one
+entry per line so a diff shows the images that actually changed.
+
+**Do not replace that manifest with a direct image read.** It exists because
+`lib/rehype-portrait-images.ts` used to read `public/<src>` at request time, and
+@vercel/nft — unable to resolve a runtime path — traced the entire 3.3GB
+`public/` tree into every dynamic route's function bundle. That put the repo at
+~7.3GB of build output on an 8GB build machine and eventually failed a deploy
+with `ENOSPC: no space left on device`, an error raised while collecting build
+traces and pointing nowhere near the cause. The manifest is read from one
+literal path. Keep it literal; see `docs/build-output.md`.
+
+`scripts/check-bundle-sizes.mjs` runs at the end of `npm run build` and fails it
+if any one function bundle passes 250MB, so the next version of that mistake
+breaks the build locally in seconds instead of surfacing as an `ENOSPC` ten
+minutes into a Vercel deploy. If it fires on a route you just added, the route
+can reach a runtime-path filesystem read — usually `lib/feed-images.ts` — and
+needs its own `outputFileTracingExcludes` entry in `next.config.ts`. Never widen
+that exclude to `'*'`.
+
 ## Home page hero curation
 
-The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article.
+The home page hero (`HeroWide`) is **editorially curated** — it is not automatically the most recent article. It's a rotating carousel of up to **four** hero-flagged articles (`getHeroArticles()` in `lib/content.ts`, sorted by `hero_order`), not a single fixed slide.
 
 When publishing a new story, always ask:
-1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` in the frontmatter. Only one article should have `is_hero: true` at a time; remove the flag from the previous hero.
+1. **"Should this article be the home page hero?"** — If yes, set `is_hero: true` and give it `hero_order: 1`, the front of the rotation. Bump every other hero article's `hero_order` up by one (2→3, 3→4, etc.). If that pushes an article past `hero_order: 4`, drop it from the rotation entirely (remove `is_hero` and `hero_order`) — it falls back to appearing in the normal newest-first grid below the hero instead of disappearing. Never leave more than four articles flagged `is_hero: true`, and never leave two with the same `hero_order`.
 2. **"Please provide a landscape holding shot for the hero."** — This is a wide-crop image optimised for the full-bleed `HeroWide` banner. Save it to the article's content directory and set `hero_image: /content/<category>/<subcategory>/<slug>/hero.jpg` in the frontmatter. If no dedicated shot is provided, `featured_image` is used as fallback.
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
@@ -119,6 +324,12 @@ The site surfaces each article in two shapes, and there are two frontmatter fiel
 
 - **`hero_image`** = the **landscape** holding shot (~2:1). Used full-bleed for the home hero (`HeroWide`) and the article's own top banner (`ArticleHero`). A triptych works well.
 - **`featured_image`** = the **portrait** thumbnail (~3:4). Used for every grid card / thumbnail site-wide (`StoriesTrio`, `DuoLeft`, `DuoStagger`, `HeroSplit`, `ArticleCard`, …).
+
+**Two hero layouts.** The article's own banner is full-bleed by default, which
+crops to 16:9 on desktop. When there's no landscape holding shot, set
+`hero_layout: "split"` instead of letting a portrait get hard-cropped - that
+gives the SheerLuxe-style split: image one side, greige panel with the headline
+the other. See `docs/article-layout-tiers.md`.
 
 **Always set both.** The code falls back to `featured_image` when `hero_image` is missing (`HeroWide.tsx`, `ArticleHero.tsx`) — which silently stretches the portrait thumbnail into the wide hero slot and crops it badly. That fallback is a safety net, **not** the intended state: if a landscape holding shot exists in the article directory (e.g. `holding.jpg`), wire it to `hero_image`. Never leave a real holding shot orphaned while the hero renders a cropped portrait.
 
@@ -138,6 +349,63 @@ When the publication needs to add its own words to someone else's first-person s
 
 Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
 
+### The byline is checked on every build
+
+`scripts/check-editorial-integrity.mjs` runs at the top of `npm run build`. A published article with **no author fails the build** — that one is never a judgement call. It also warns, without failing, about a byline that resolves to nobody in `lib/authors.ts` (no bio, no author page, and the RSS feed reports it as a guest post by default); the house byline on a piece whose own standfirst names a contributor; a published article whose URL permanently redirects away, which is what leaving the original behind after a re-file looks like; and a `featured_image` over 2MB, which is the card image on every archive page.
+
+All four were found the hard way. Colette Harvey's first-person account of her cancer treatment went out credited to "Beauticate Editorial". One story sat in the feed twice because a re-file added the redirect but never deleted the original. Three articles carried thumbnails of 20.4MB, 11.4MB and 9.4MB. Nothing errored and nothing 404'd — they surfaced only because `/feed.xml` put every article's metadata into one document a human could read.
+
+Genuinely ambiguous cases are listed in `ACKNOWLEDGED` in that script, each with a written reason, rather than warned about forever. A check nobody can get to zero is a check everybody learns to ignore.
+
+## Travel affiliates — one widget per article, and look it up
+
+Travel articles earn through Travelpayouts. The playbook lives in the
+**`beauticate-travel-affiliates` skill**; the editor's page is
+[`docs/travel-widgets.md`](docs/travel-widgets.md).
+
+Three things that will bite anyone touching it:
+
+- **One widget per page.** Two Travelpayouts widgets race each other and the
+  loser renders nothing — intermittently, so it passes review and breaks for
+  some readers. Hotel review gets `hotel_search` pointed at the hotel; a
+  destination guide gets `tours` (8% on a 31-day cookie against Agoda's 6% on
+  one day). Never both.
+- **Destinations are looked up, never typed.** A string the partner doesn't
+  recognise does not error, it silently resolves to something else — "Bells at
+  Killcare" became Belfast, "Kerala, India" became Kochi. Run
+  `node scripts/resolve-travel-destination.mjs --check` before merging anything
+  that touches a travel article.
+- **It fails silently and beautifully.** The whole integration sat dead for two
+  months returning HTTP 400 with no error anywhere. Render it and look at it
+  before believing it works.
+
+An article carrying a widget must set `affiliate_disclosure: true`.
+
+## Geo dual-link system (AU/NZ vs everyone else)
+
+> **Full detail:** [`docs/geo-dual-link-system.md`](docs/geo-dual-link-system.md)
+
+Product links and the shop run two lanes: **Home** (AU/NZ) keeps the shop, Adore
+and direct margin; **Intl** (everyone else) goes to a retailer that ships to
+them. Country comes from Vercel's `x-vercel-ip-country`, written to a
+`bc-country` cookie by `middleware.ts` and applied on the client by
+`components/geo/GeoProvider.tsx`.
+
+Rules that matter when touching any of this:
+
+- **Never read the country with `headers()` in a page.** Article pages are
+  CDN-cached and must stay country-agnostic. The swap happens on the client.
+- **`data/link-database.json` mirrors the Affiliate Vault sheet.** Humans edit
+  the sheet, code reads the JSON. Products match on destination URL, so a link
+  resolves the same bare or wrapped in Skimlinks/Commission Factory/Partnerize.
+- **`"verified": true` is a safety gate, not decoration.** Unverified retailer
+  and brand entries are inert and fall through. Never flip one by hand without
+  running `node scripts/verify-intl-links.mjs` — a deep link that bounces to a
+  retailer's homepage is worse than leaving the AU link alone.
+- **Do not touch the Partnerize links** on Adore Beauty and Sephora AU, or the
+  Myer links. They work and pay better than Skimlinks. Geo-gate Adore to AU/NZ
+  rather than rewriting it.
+
 ## Links — open in a new tab
 
 Readers should never be navigated away from what they're reading.
@@ -151,6 +419,159 @@ Readers should never be navigated away from what they're reading.
 - **Affiliate / sponsored links**: use `target="_blank" rel="sponsored noopener"` (the existing convention).
 - **Site navigation** (header, footer, nav menus, article cards): stays in the same tab — these are how readers browse, not mid-read departures.
 
+## Video — the embed carries its own schema
+
+Put a video in an article body with the `YouTubeEmbed` component and nothing
+else is needed:
+
+```
+<YouTubeEmbed url="https://www.youtube.com/shorts/XXXXXXXXXXX" caption="..." />
+```
+
+It reads the URL itself: a `/shorts/` link renders 9:16, centred and capped at
+380px, anything else renders 16:9. And `buildArticleSchema` scans the rendered
+body for a YouTube id and emits a `VideoObject` into the page's `@graph`
+automatically, so a page with a video declares one to Google without any
+frontmatter.
+
+**That automatic step is only as good as one regex.** `YOUTUBE_ID_REGEX` in
+`lib/seo.ts` is the single place that decides whether a video is seen. It
+originally matched only `youtube.com/watch?v=` and `youtube.com/embed/`, while
+`YouTubeEmbed` already accepted `/shorts/` and `youtu.be` — so the Coogee review
+shipped a Short that rendered perfectly and was invisible in structured data.
+Nothing errored. It surfaced only because someone went looking at the JSON-LD.
+
+So: if `YouTubeEmbed` ever learns a new URL form, teach that regex the same
+form in the same change, and check the page's `@graph` actually contains
+`VideoObject` before calling it done. The two must never drift again.
+
+`youtube_embed` exists in `ArticleFrontmatter` but only the admin review queue
+reads it. It does not render a video and does not produce schema. Use the
+component.
+
+## Podcast stories carry the episode
+
+A story about a Beautiful Inside episode must give the reader somewhere to
+watch or listen. One frontmatter line does it:
+
+```yaml
+podcast_episode: "celeste-barber-on-adhd-bullying-boundaries-..."  # vodcast slug
+podcast_heading: "Sigourney interviews Celeste Barber on Beautiful Inside"
+podcast_strip: "compact"   # optional; default "full"
+```
+
+`full` embeds the episode above the story with Watch / Spotify / Apple beneath
+it. `compact` is a slim band with a thumbnail, for an article the episode
+*supports* rather than *is* — an older interview with the same guest, say.
+
+**The slug is the only thing you write down.** The video id and the platform
+links are read from `content/vodcast/episodes/<slug>/`, so there is no second
+copy to drift, and the strip never links to an episode page that isn't
+published. Per-episode links live on the episode: `youtube_video_id`,
+`apple_episode_url`, `spotify_episode_url`. Anything missing falls back to the
+show, which lands the reader in the right app with the feed in front of them.
+
+Shop brand pages get the same band when Sig has interviewed the founder — add
+a row to `data/brand-episodes.ts`, keyed by the Shopify brand collection handle.
+The interview is why several of those brands are in the shop, and the brand
+page said nothing about it for a year.
+
+**Adding the strip means telling the schema.** `buildArticleSchema` finds
+videos by scanning the *body*, and this one comes from frontmatter, so the
+article route passes `resolveArticleEpisode(f)?.youtubeId` in explicitly. A
+rendered player with no `VideoObject` is the same drift the `YOUTUBE_ID_REGEX`
+note above warns about — keep the two together.
+
+Destinations live in `lib/podcast.ts` and nowhere else. They used to be
+declared inline in the vodcast episode page, which is precisely why every
+companion article shipped without them.
+
+## Review ratings must be visible or absent
+
+`review_rating`, `review_item`, `review_brand`, `review_pros` and `review_cons`
+are read in exactly one place, `lib/seo.ts`, and rendered nowhere. Setting them
+puts a star rating, an itemReviewed and positive/negative notes into the page's
+JSON-LD that no reader can see anywhere on the page.
+
+**That is a policy breach, not just a curiosity.** Google requires structured
+data to reflect content visible to users, and an invisible rating is the
+textbook case its spammy-structured-markup action exists for. A star that wins
+a rich result and then earns a manual action is worse than no star.
+
+So don't set them unless the page also shows the rating to the reader. If we
+ever want stars, the visible verdict block comes first and the markup follows
+it. Removing the fields does not change the schema type: `resolveSchemaType`
+already returns `Review` from a `review` tag or a title, so a review stays a
+Review without them.
+
+Note the trigger is circular — `review_rating != null` is *itself* one of the
+conditions that makes `resolveSchemaType` return `Review`. There is no article
+where the field sits set but unused: setting it guarantees the rating is
+emitted.
+
+**69 published articles currently set `review_rating`** (checked September
+2026), following older advice in the SEO playbook that has since been corrected.
+They are all emitting an invisible rating today. Fixing them is a decision, not
+a sweep — either strip the field from all 69, or build the visible verdict block
+first and keep them. Don't add a 70th.
+
+## A brand's location must be an origin in its delivery profile
+
+> **Full detail:** [`docs/shop-delivery-profiles.md`](docs/shop-delivery-profiles.md)
+
+If it isn't, every product from that brand shows **SOLD OUT** no matter what the
+stock says — and everything in Shopify's product admin reads healthy while it
+happens. ACTIVE, 99 in stock, `availableForSale: true`, location active and
+fulfilling online orders, and still a sold-out button.
+
+The page is not lying. `getVariantAvailability()` in `lib/shopify.ts` probes a
+throwaway cart instead of trusting `variant.availableForSale`, and Shopify's
+cart only counts stock it can actually ship. Every partner brand fulfils from
+its own Modern Dropship location (`booie-com`, `waterrower-com`…) — the default
+"Shop location" stocks nothing. So a delivery profile whose only shipping origin
+is "Shop location" can ship from nowhere that holds stock.
+
+`originLocationCount: 1` on a brand profile is the tell; a healthy one is 32+.
+The fix is in Shopify, never in code: add the brand's fulfilment location as an
+origin on the profile's rate. Same zone, same price to the customer.
+
+**This breaks at onboarding, and it looks fine afterwards.** It has hit NOHRD
+and WaterRower (twenty-odd `$N Shipping` freight tiers, each created with one
+origin — the whole mid-range of that partnership, unbuyable), Christophe Robin
+and IBIZA HAIR (`quecolour-com` never added to the General profile), and the
+brand-new `Imbibe $15 flat` profile, which was created the same way. So after
+onboarding a brand, creating a freight tier, or moving products between
+profiles, run:
+
+```bash
+node scripts/audit-cart-availability.mjs
+```
+
+One cart probe per brand — a profile covers a whole brand, so one probe answers
+for all of it. Non-zero exit names the brands.
+
+## A product not published to any sales channel looks identical to one that is
+
+Check this before the delivery profile, not after — it's the more common
+cause. `resourcePublicationsV2` coming back `[]` means the product isn't on
+Point of Sale, isn't on Beauticate Shop, isn't anywhere — the Storefront API
+can't see it, so the page 404s (or serves a stale cached render). This hit
+all 18 of IMBIBE's products and all 20 of the NOHRD/WaterRower products a
+live EDM depended on, both within 24 hours of onboarding. Publish to the same
+seven channels every working product uses (Point of Sale, Shop, Buy Button,
+Sell on WordPress, **Beauticate Shop**, Facebook & Instagram, Pinterest) —
+Beauticate Shop is the one the site actually reads from, not Online Store.
+
+A freshly-synced product can also land on a **suffixed handle**
+(`…-6aa8ecf2706ec16bbff96ec3`) instead of the clean one everyone assumes,
+when the clean handle was already taken by an old drafted/deleted record.
+Query by SKU to get the real handle before it goes in an EDM or anywhere
+else customer-facing — the product page is fine, the hardcoded link isn't.
+
+**Full checklist, and the handoff contract with the `beauticate-shop-onboarding`
+skill (what it hands Claude Code, what Claude Code checks on its own):**
+[`docs/shop-onboarding-technical-handoff.md`](docs/shop-onboarding-technical-handoff.md)
+
 ## Product card design rules
 
 All product cards use the single `ProductTile` component (`components/shared/ProductTile.tsx`). Never create alternative product card components.
@@ -162,6 +583,31 @@ All product cards use the single `ProductTile` component (`components/shared/Pro
 2. **Text area (bottom)** — **always white background**. Brand name (uppercase sans), product name (serif), price (smaller, muted). This must blend into the white page, never sit on greige.
 
 The white text strip is the constant across both modes. The image area is the variable. This consistency is what makes a grid of mixed product shots look curated. Reference: SheerLuxe product cards.
+
+**No orphan products — place them in pairs.** A single product card sitting on
+its own in an article body looks like something failed to load. Default to a
+two-up:
+
+```
+<div className="not-prose grid grid-cols-2 gap-4 my-8" style={{clear:'both'}}>
+<ProductInset inline ... />
+<InlineProduct inline handle="..." />
+</div>
+```
+
+`inline` on either component drops its float wrapper and hands the grid a bare
+tile, so own-shop and affiliate cards pair with each other freely. The only
+acceptable solo placement is one that is deliberately full-width or centred —
+never a lone floated card. If there's only one product for a section, either
+find it a partner or move it into a pair elsewhere rather than leaving it
+stranded.
+
+**A shop handle that stops resolving renders nothing, not a blank tile.** When
+a Shopify product is archived or unpublished it drops out of the Storefront
+API, and the card has no image, name, price or URL left to draw. `ProductEmbed`
+returns `null` in that case. So an archived product doesn't leave a hole — it
+leaves a gap in the pair, which is the visible symptom to look for. Check the
+handle in Shopify (`status: ACTIVE`) before assuming a card is a layout bug.
 
 **Image rule:** Product images in ShopItem cards must always be de-etched product shots — the product on a neutral or transparent background, outside its retail packaging. Never use retail box or packaging shots. This applies to all product cards site-wide.
 

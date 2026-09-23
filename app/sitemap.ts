@@ -32,7 +32,7 @@ const STATIC: { path: string; priority: number }[] = [
   { path: '/shop/refund-policy', priority: 0.3 },
   { path: '/interviews', priority: 0.6 },
   { path: '/sigourneys-edit', priority: 0.6 },
-  { path: '/vodcast', priority: 0.6 },
+  { path: '/podcast', priority: 0.6 },
   { path: '/advertise-with-us', priority: 0.4 },
   { path: '/contact', priority: 0.4 },
   { path: '/subscribe', priority: 0.4 },

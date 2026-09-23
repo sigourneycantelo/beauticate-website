@@ -1,22 +1,44 @@
 import Link from 'next/link'
+import { withoutOfferPreamble } from '@/lib/product-description'
 import MetaViewContent from '@/components/analytics/MetaViewContent'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
+import VariantSelectionProvider from './VariantSelectionProvider'
+import ProductReviews from './ProductReviews'
 import type { ShopifyProduct } from '@/types/shopify'
+import type { Review, Rating } from '@/lib/judgeme'
+import { aggregateOf } from '@/lib/judgeme'
+import type { GiftOffer } from '@/lib/gwp'
 import { cleanProductTitle } from '@/lib/product-format'
+import { resolveShopIntl } from '@/lib/shop-intl'
+import { buildGallery, findVariant, pickDefaultVariant } from '@/lib/shop-variant'
 
 interface Props {
   product: ShopifyProduct
   related?: ShopifyProduct[]
   /** Real-time per-variant stock from getVariantAvailability; missing id ⇒ fall back to availableForSale. */
   availability?: Record<string, boolean>
+  /** The gift offer this product qualifies for, when its gift is in stock. */
+  giftOffer?: GiftOffer
+  /** Raw `?variant=` off the URL — the id an editorial card's variantHref writes. */
+  variantParam?: string
+  /** Displayable Judge.me reviews for this product, newest first. */
+  reviews?: Review[]
+  /** Aggregates for the "Complete the ritual" cards, by handle. */
+  relatedRatings?: Record<string, Rating>
+  /** Aggregate for those reviews, or null when there are none. */
+  rating?: Rating | null
 }
 
 const SITE = 'https://www.beauticate.com'
 
-export default function ProductPage({ product: p, related = [], availability }: Props) {
-  const images = p.images?.nodes?.length ? p.images.nodes : p.featuredImage ? [p.featuredImage] : []
+export default function ProductPage({ product: p, related = [], availability, giftOffer, variantParam, reviews = [], rating = null, relatedRatings }: Props) {
+  // Resolve the opening variant here, on the server, so the buy box and the gallery
+  // agree on it from the first paint — including on the `?variant=` links editorial
+  // product cards already write (see variantHref).
+  const openingVariant = findVariant(p, variantParam) ?? pickDefaultVariant(p.variants.nodes, availability)
+  const { images, variantImageIndex, fallbackIndex } = buildGallery(p, openingVariant?.id)
   const title = cleanProductTitle(p.title)
   const isVariantAvailable = (v: ShopifyProduct['variants']['nodes'][number]) =>
     availability?.[v.id] ?? v.availableForSale
@@ -27,16 +49,59 @@ export default function ProductPage({ product: p, related = [], availability }: 
   const maxPrice = p.priceRange.maxVariantPrice
   const hasMultipleVariants = variants.length > 1
 
+  // Schema describes only reviews from confirmed buyers — see the note inside
+  // productSchema below. The page itself still shows everything published.
+  const verifiedReviews = reviews.filter(r => r.verified)
+  const verifiedRating = aggregateOf(verifiedReviews)
+
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: title,
     image: images.map(i => i.url),
-    description: p.description,
+    description: withoutOfferPreamble(p.description),
     brand: { '@type': 'Brand', name: p.vendor },
     ...(p.productType ? { category: p.productType } : {}),
     ...(variants[0]?.sku ? { sku: variants[0].sku } : {}),
     ...(variants[0]?.barcode ? { gtin: variants[0].barcode } : {}),
+    // Ratings are emitted ONLY when the same reviews are rendered on this page,
+    // below. Google's structured-data policy requires markup to reflect content
+    // visible to the user, and an invisible star rating is exactly what its
+    // spammy-markup manual action exists for — see the "Review ratings must be
+    // visible or absent" note in CLAUDE.md, which this follows deliberately.
+    //
+    // Only VERIFIED-PURCHASE reviews are marked up, which is stricter than what
+    // the page displays. Judge.me's moderation is a 14-day window, not a gate:
+    // a pending review nobody moderates is auto-published after 14 days to meet
+    // Shopify's policy. So an injected review that slipped past the guards in
+    // app/api/reviews and went unnoticed for a fortnight would publish itself.
+    // Keeping unverified reviews out of the schema means such a review can reach
+    // the page but never the star rating in Google's results — the thing with by
+    // far the slowest recovery time, since it outlives the review that caused it.
+    //
+    // Marking up a SUBSET of what is displayed is compliant; marking up more than
+    // is displayed is the violation. The aggregate is therefore recomputed over
+    // the verified subset rather than reusing the page's own average, so the
+    // ratingValue always describes exactly the reviews listed beneath it.
+    ...(verifiedRating && verifiedReviews.length > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: verifiedRating.average.toFixed(1),
+            reviewCount: verifiedRating.count,
+            bestRating: 5,
+            worstRating: 1,
+          },
+          review: verifiedReviews.slice(0, 10).map(r => ({
+            '@type': 'Review',
+            reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+            author: { '@type': 'Person', name: r.author },
+            datePublished: r.createdAt.slice(0, 10),
+            ...(r.title ? { name: r.title } : {}),
+            ...(r.body ? { reviewBody: r.body } : {}),
+          })),
+        }
+      : {}),
     offers: hasMultipleVariants
       ? {
           '@type': 'AggregateOffer',
@@ -94,18 +159,36 @@ export default function ProductPage({ product: p, related = [], availability }: 
         <span className="text-ink">{title}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
-        <ProductImageCarousel images={images} vendor={p.vendor} title={p.title} />
+      <VariantSelectionProvider
+        initialVariantId={openingVariant?.id}
+        variantIds={p.variants.nodes.map(v => v.id)}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[clamp(24px,4vw,64px)]">
+          <ProductImageCarousel
+            images={images}
+            vendor={p.vendor}
+            title={p.title}
+            variantImageIndex={variantImageIndex}
+            fallbackIndex={fallbackIndex}
+          />
 
-        <ProductBuyBox product={p} availability={availability} />
-      </div>
+          <ProductBuyBox
+            product={p}
+            availability={availability}
+            intlOptions={resolveShopIntl(p.handle, p.vendor)}
+            giftOffer={giftOffer}
+          />
+        </div>
+      </VariantSelectionProvider>
+
+      <ProductReviews reviews={reviews} rating={rating} handle={p.handle} />
 
       {related.length > 0 && (
         <section className="mt-[clamp(48px,7vw,96px)]">
           <p className="font-sans text-[11px] tracking-[0.34em] uppercase text-eucalypt font-semibold text-center mb-8">
             Complete the ritual
           </p>
-          <ProductGrid products={related.slice(0, 4)} />
+          <ProductGrid products={related.slice(0, 4)} ratings={relatedRatings} />
         </section>
       )}
     </div>

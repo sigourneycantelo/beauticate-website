@@ -26,4 +26,5 @@ export const SHOP_FOUNDERS: ShopFounder[] = [
   { name: 'Jayde Houndalas', brand: 'Sontse.', image: '/images/founders/jayde_houndalas_sontse.jpg', href: '/shop/brands/sontse' },
   { name: 'Bonnie Gillies', brand: 'Basics by B', image: '/images/founders/bonnie_gillies_basics_by_b.jpg', href: '/shop/brands/basics-by-b' },
   { name: 'K Orford', brand: 'OiTO Haircare', image: '/images/founders/k_orford_oito.jpg', href: '/shop/brands/oito-haircare' },
+  { name: 'Felicity Evans', brand: 'IMBIBE', image: '/images/founders/felicity_evans_imbibe.jpg', href: '/shop/brands/imbibe' },
 ]

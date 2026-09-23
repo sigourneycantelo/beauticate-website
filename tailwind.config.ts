@@ -22,6 +22,9 @@ const config: Config = {
         line:      'rgba(42,38,33,0.14)',
         // product-card tile — sampled from actual Shopify product-photo backgrounds
         tile:      '#ECEAE8',
+        // review stars — the exact star colour configured in the Judge.me account,
+        // so on-site stars and the stars in review-request emails match.
+        berry:     '#8C1F3B',
         eucalypt:  '#8E9A82',
         teal:      '#104760',
         chocolate:  '#3a2a22',

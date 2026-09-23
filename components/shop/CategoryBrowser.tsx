@@ -9,6 +9,7 @@ import ProductGrid from './ProductGrid'
 import SortSelect from './SortSelect'
 import { sortProducts } from '@/lib/product-sort'
 import type { ShopifyProduct } from '@/types/shopify'
+import type { Rating } from '@/lib/judgeme'
 
 export type BrowsableProduct = ShopifyProduct & { subSlugs?: string[] }
 
@@ -19,9 +20,12 @@ interface Props {
   subs: SubTile[]
   initialSub?: string
   allImage?: string
+  /** Judge.me aggregates by handle. Fetched by the server page and passed in —
+   *  this is a client component, so it cannot fetch them itself. */
+  ratings?: Record<string, Rating>
 }
 
-export default function CategoryBrowser({ products, subs, initialSub, allImage }: Props) {
+export default function CategoryBrowser({ products, subs, initialSub, allImage, ratings }: Props) {
   const valid = initialSub && subs.some(s => s.slug === initialSub && !s.comingSoon) ? initialSub : 'all'
   const [active, setActive] = useState(valid)
   const [activeType, setActiveType] = useState('all')
@@ -111,7 +115,7 @@ export default function CategoryBrowser({ products, subs, initialSub, allImage }
       </div>
 
       {sorted.length > 0 ? (
-        <ProductGrid products={sorted} />
+        <ProductGrid products={sorted} ratings={ratings} />
       ) : (
         <p className="font-serif text-charcoal-light/60 py-16 text-center">Nothing in this edit just yet.</p>
       )}

@@ -19,7 +19,14 @@ SUBCATEGORIES = ['clinics', 'salons', 'spas-retreats', 'bathhouses', 'wellness']
 
 
 def normalize(title: str) -> str:
-    return re.sub(r'[^a-z0-9]', '', title.lower())
+    """Collapse a title to a comparison key.
+
+    '&' becomes 'and' before the strip, because stripping punctuation alone
+    leaves 'Edwards & Co' as 'edwardsco' and 'Edwards and Co' as
+    'edwardsandco' — two spellings of one venue that never match. That pair
+    sat undetected in the directory as a live/draft duplicate.
+    """
+    return re.sub(r'[^a-z0-9]', '', title.lower().replace('&', ' and '))
 
 
 def main():

@@ -1,3 +1,4 @@
+import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
 interface Props {
   href: string
   label?: string
@@ -18,8 +19,8 @@ export default function AffiliateCTA({ href, label = 'Shop now', children }: Pro
       <a
         href={href}
         target="_blank"
-        rel="sponsored noopener"
-        className="btn-gold inline-block"
+        rel={withNoskim('sponsored noopener', href)}
+        className={withNoskimClass('btn-gold inline-block', href)}
       >
         {label}
       </a>

@@ -1,5 +1,6 @@
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
+import { intlAttrsFor } from '@/lib/product-links'
 
 interface Props {
   image: string
@@ -25,6 +26,7 @@ export default function ProductInset({ image, name, url, price, brand, retailer,
     <ProductTile
       href={url}
       external
+      dataAttrs={intlAttrsFor(url, name)}
       cover={cover}
       primarySrc={image}
       primaryAlt={name}

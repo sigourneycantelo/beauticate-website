@@ -2,6 +2,7 @@ import { Children, cloneElement, isValidElement, type ReactElement } from 'react
 import Link from 'next/link'
 import ProductTile from '@/components/shared/ProductTile'
 import { retailerFromUrl } from '@/lib/retailer'
+import { intlAttrsFor } from '@/lib/product-links'
 
 interface ShopItemProps {
   image: string
@@ -24,6 +25,14 @@ interface ShopItemProps {
   cover?: boolean
   /** Injected by a `<ShopGrid tile>` parent — forces the de-etched greige treatment. */
   forceTile?: boolean
+  /**
+   * `curator="none"` keeps this one card out of the article author's
+   * /shop/curators/<slug> page, for a product the byline didn't choose — an
+   * editor's pick inside someone else's story, typically under an Ed's note.
+   * Read only by lib/curator-collections.ts; changes nothing about rendering.
+   * For a whole article, use `curator_exclude` in frontmatter instead.
+   */
+  curator?: 'none'
 }
 
 /**
@@ -33,6 +42,9 @@ interface ShopItemProps {
  * no hover state.
  */
 export function ShopItem({ image, alt, name, price, url, handle, brand, retailer, follow, cover, forceTile }: ShopItemProps) {
+  // `curator` is deliberately not destructured into the render path — it is
+  // build-time attribution metadata, parsed out of the MDX source text, and must
+  // never reach the DOM.
   const internal = !!handle
   const href = internal ? `/shop/products/${handle}` : url
   const detected = !internal && url ? (retailer ?? retailerFromUrl(url)) : ''
@@ -42,10 +54,14 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
     : url
       ? 'shop from brand'
       : undefined
+  // Readers outside AU/NZ get swapped onto a retailer that ships to them —
+  // resolved at build time, applied on the client by GeoProvider.
+  const geo = internal ? {} : intlAttrsFor(url, name)
   return (
     <ProductTile
       href={href}
       external={!internal && !!url}
+      dataAttrs={geo}
       follow={follow}
       cover={cover}
       forceTile={forceTile}

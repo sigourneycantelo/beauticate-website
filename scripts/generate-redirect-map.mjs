@@ -81,6 +81,16 @@ for (const [slug, count] of slugCounts) {
 }
 
 fs.mkdirSync(path.dirname(outPath), { recursive: true })
-fs.writeFileSync(outPath, JSON.stringify(map))
+
+// Sorted, one entry per line — see the note in scripts/build-chat-index.mjs for
+// why. Sorting is the half that matters here: the keys were previously emitted
+// in directory-walk order, which is filesystem-dependent, so two people on
+// different machines could produce completely different files from identical
+// content. Sorted output is the same everywhere.
+const body = Object.keys(map)
+  .sort()
+  .map(slug => `${JSON.stringify(slug)}:${JSON.stringify(map[slug])}`)
+  .join(',\n')
+fs.writeFileSync(outPath, `{\n${body}\n}\n`)
 
 console.log(`Redirect slug map: ${Object.keys(map).length} slugs (${skippedAmbiguous} ambiguous slugs skipped — same slug used in >1 place) -> ${path.relative(root, outPath)}`)

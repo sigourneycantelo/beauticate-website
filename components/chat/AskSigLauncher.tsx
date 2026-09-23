@@ -14,7 +14,7 @@ const SECTION_PROMPTS: Record<string, string> = {
   '/wellness': "What's your wellness goal?",
   '/destinations': 'Where do you want to go?',
   '/interviews': "Ask me about anyone I've interviewed",
-  '/vodcast': 'Ask me about any episode',
+  '/podcast': 'Ask me about any episode',
   '/living': 'Need a home or lifestyle tip?',
 }
 const DEFAULT_PROMPT = 'Go on, ask me anything'

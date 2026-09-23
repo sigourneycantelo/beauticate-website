@@ -7,12 +7,13 @@ import { Fragment, useState, useRef, useEffect } from 'react'
 // Secondary shop navigation — a centred, dot-separated row that opens preview
 // dropdowns on hover (Category / Brand / Moment), mirroring the main shop mega.
 export type SubNavItem = { label: string; href: string; image?: string; soon?: boolean }
-interface Props { category: SubNavItem[]; brands: SubNavItem[]; moments: SubNavItem[] }
+interface Props { category: SubNavItem[]; brands: SubNavItem[]; moments: SubNavItem[]; curators: SubNavItem[] }
 
 const TABS = [
   { key: 'category', label: 'Shop by Category', shortLabel: 'Category', href: '/shop/by-category', match: (p: string) => p === '/shop/by-category' || /^\/shop\/(beauty|wellness|living|style)/.test(p) },
   { key: 'brand', label: 'Shop by Brand', shortLabel: 'Brand', href: '/shop/brands', match: (p: string) => p.startsWith('/shop/brands') },
   { key: 'moment', label: 'Shop by Moment', shortLabel: 'Moment', href: '/shop/by-moment', match: (p: string) => p.startsWith('/shop/by-moment') || p.startsWith('/shop/collections') },
+  { key: 'curator', label: 'Shop by Curator', shortLabel: 'Curator', href: '/shop/by-curator', match: (p: string) => p.startsWith('/shop/by-curator') || p.startsWith('/shop/curators') },
   { key: 'freeship', label: 'Free Shipping', shortLabel: 'Free Shipping', href: '/shop/free-shipping', match: (p: string) => p === '/shop/free-shipping' },
 ] as const
 
@@ -28,7 +29,7 @@ function Card({ label, href, image, soon }: SubNavItem) {
   )
 }
 
-export default function ShopSubNav({ category, brands, moments }: Props) {
+export default function ShopSubNav({ category, brands, moments, curators }: Props) {
   const path = usePathname()
   const [open, setOpen] = useState<string | null>(null)
   const [mastheadHidden, setMastheadHidden] = useState(false)
@@ -73,7 +74,7 @@ export default function ShopSubNav({ category, brands, moments }: Props) {
   // for a long set (>4, e.g. Shop by Brand) — thumbnails there make the mega menu
   // too tall next to the list.
   const itemsFor = (k: string | null): SubNavItem[] =>
-    k === 'category' ? category : k === 'brand' ? brands : k === 'moment' ? moments : []
+    k === 'category' ? category : k === 'brand' ? brands : k === 'moment' ? moments : k === 'curator' ? curators : []
   const openItems = itemsFor(open)
 
   return (
