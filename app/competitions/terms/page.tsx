@@ -85,7 +85,6 @@ const gwp = {
   gift: 'Bloody Delicious Hydrating Tinted Illuminator in Champagne',
   giftValue: 'A$39',
   minSpend: 'A$45',
-  allocation: '20 gifts',
   started: '9 September 2026',
 }
 
@@ -157,7 +156,7 @@ export default function CompetitionTermsPage() {
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Available</dt>
-              <dd>{gwp.allocation}, while stocks last, from {gwp.started}</dd>
+              <dd>While stocks last, from {gwp.started}</dd>
             </div>
           </dl>
         </section>
@@ -170,8 +169,8 @@ export default function CompetitionTermsPage() {
             count towards the minimum.
           </p>
           <p className="mt-4">
-            One gift per order. Gifts are limited to the allocation above and offered while stocks
-            last, so the promotion may end before any date we have advertised. If your order no
+            One gift per order. Gifts are limited to the number the brand has funded and offered
+            while stocks last, so the promotion may end before any date we have advertised. If your order no
             longer meets the minimum — because you remove or reduce an item before checking out —
             the gift is removed from your cart.
           </p>
