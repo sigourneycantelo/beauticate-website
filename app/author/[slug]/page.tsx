@@ -50,25 +50,26 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <section className="max-w-3xl mx-auto px-5 pt-16 pb-12">
-        <div className="flex flex-col items-center text-center">
-          <div className="relative w-24 h-24 rounded-full overflow-hidden border border-cream-200 mb-5">
-            <Image
-              src={author.photo}
-              alt={author.name}
-              fill
-              className="object-cover"
-              sizes="96px"
-            />
-          </div>
+      <section className="max-w-5xl mx-auto px-5 pt-10 pb-12 md:grid md:grid-cols-[minmax(0,360px)_1fr] md:gap-12 items-start">
+        <div className="relative w-full aspect-[4/5] bg-gray-100 overflow-hidden mb-6 md:mb-0">
+          <Image
+            src={author.photo}
+            alt={author.name}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 100vw, 360px"
+            priority
+          />
+        </div>
+        <div className="md:pt-8">
           <h1 className="font-serif text-[28px] md:text-[34px] leading-[1.15] mb-1.5">
             {author.name}
           </h1>
-          <p className="font-sans text-[11px] tracking-[.22em] uppercase text-charcoal-light mb-3">
+          <p className="font-sans text-[11px] tracking-[.22em] uppercase text-charcoal-light mb-4">
             {author.role}
           </p>
           {author.bio && (
-            <p className="text-[14px] leading-[1.7] text-charcoal-light max-w-[52ch] mb-4">
+            <p className="font-serif text-[14px] leading-[1.75] text-charcoal/70 mb-4">
               {author.bio}
             </p>
           )}
