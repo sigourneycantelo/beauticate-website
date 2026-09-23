@@ -89,9 +89,10 @@ export default function TermsPage() {
             paid arrangement.
           </p>
           <p className="mt-4">
-            Venues have also hosted us for treatments we have written about. Whether or not a venue
-            has paid or hosted us, what we write is our own judgement, and we do not give anyone
-            approval over it.
+            Venues have also hosted us for treatments, stays and experiences we have written about —
+            this is common practice for our hotel and travel coverage in particular. Where a specific
+            article was hosted, we say so at the foot of that page. Whether or not a venue has paid or
+            hosted us, what we write is our own judgement, and we do not give anyone approval over it.
           </p>
         </section>
 

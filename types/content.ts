@@ -164,6 +164,16 @@ export interface ArticleFrontmatter {
    * directions. Set it when a slot is sold; the label disappears on its own.
    */
   paid_placement_until?: string  // ISO date, e.g. '2027-08-23'
+  /**
+   * A material connection for a hotel/travel review: the stay, meal or
+   * experience being reviewed was complimentary. A simple boolean is right
+   * here (unlike paid_placement_until) because a hosted stay doesn't lapse
+   * the way an annual placement does — it happened once, at the time of the
+   * visit, and stays true forever. Defaults to true for new hotel/travel
+   * reviews (see the article-upload agent) since most of them are hosted;
+   * set it false explicitly for a stay that was booked and paid for.
+   */
+  hosted_stay?: boolean
   contributors?: string[]        // collective members featured in team/collaborative articles
 
   /**
