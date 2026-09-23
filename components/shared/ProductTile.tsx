@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { cleanProductTitle } from '@/lib/product-format'
 import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
+import StarRating from '@/components/shop/StarRating'
 
 function HeartIcon() {
   return (
@@ -29,6 +30,11 @@ export interface ProductTileProps {
   priceSuffix?: string
   className?: string
   hideMeta?: boolean
+  /** Mean Judge.me rating. Stars render only when this is set, so an unreviewed
+   *  card shows nothing rather than a row of empty stars. */
+  rating?: number
+  /** Review count shown beside the stars. */
+  reviewCount?: number
   /** Force the de-etched greige tile treatment regardless of `cover` — used to make
    *  a whole grid share one background colour (see ShopGrid `tile`). */
   forceTile?: boolean
@@ -42,6 +48,7 @@ export default function ProductTile({
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, cover = true,
   cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
+  rating, reviewCount,
   forceTile = false, dataAttrs,
 }: ProductTileProps) {
   const hasHover = !!secondarySrc
@@ -103,6 +110,9 @@ export default function ProductTile({
               {price}
               {priceSuffix && <span className="italic opacity-80">{priceSuffix}</span>}
             </p>
+          )}
+          {typeof rating === 'number' && rating > 0 && (
+            <StarRating rating={rating} count={reviewCount} size="sm" className="mt-1.5" />
           )}
           {badge && (
             <p className="font-sans text-[9px] tracking-[0.14em] uppercase text-eucalypt font-semibold mt-1.5">

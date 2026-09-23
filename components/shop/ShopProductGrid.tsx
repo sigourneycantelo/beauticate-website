@@ -2,15 +2,19 @@ import Link from 'next/link'
 import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
 import { formatCardPrice } from '@/lib/product-format'
+import type { Rating } from '@/lib/judgeme'
 
 export default function ShopProductGrid({
   products,
   heading,
   maxProducts = 16,
+  ratings,
 }: {
   products: ShopifyProduct[]
   heading?: React.ReactNode
   maxProducts?: number
+  /** Judge.me aggregates by handle, fetched once per page by getRatingMap. */
+  ratings?: Record<string, Rating>
 }) {
   if (!products.length) return null
 
@@ -44,6 +48,8 @@ export default function ShopProductGrid({
               brand={p.vendor}
               name={p.title}
               price={formatCardPrice(p)}
+              rating={ratings?.[p.handle]?.average}
+              reviewCount={ratings?.[p.handle]?.count}
             />
           )
         })}

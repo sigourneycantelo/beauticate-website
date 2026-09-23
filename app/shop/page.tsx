@@ -16,6 +16,7 @@ import PodcastSection from '@/components/home/PodcastSection'
 import FreeShippingStrip from '@/components/shop/FreeShippingStrip'
 import type { ShopifyCollection } from '@/types/shopify'
 import type { Metadata } from 'next'
+import { getRatingMap } from '@/lib/judgeme'
 
 const MOMENT_TITLES = ['deepest sleep', 'the winter edit', 'fit girl glow', 'selfcare sunday']
 const FEATURED_COLLECTIONS = ['deepest-sleep', 'fit-girl-glow']
@@ -64,6 +65,10 @@ export default async function ShopPage() {
     return true
   })
   const shopProducts = curatedProducts.slice(0, 16)
+
+  // One bulk call for every card on the page — getRatingMap reads the cached,
+  // shop-wide review index, so this costs no request per card.
+  const ratings = await getRatingMap([...shopProducts, ...newArrivals])
 
   const seenFS = new Set<string>()
   const freeShipProducts = freeShipCols.flatMap(c => (c as any)?.products?.nodes ?? []).filter((p: any) => {
@@ -116,6 +121,7 @@ export default async function ShopPage() {
       {/* Product grid — 16 products immediately visible */}
       <ShopProductGrid
         products={shopProducts}
+        ratings={ratings}
         heading={
           <>
             <p className="font-sans text-[11px] tracking-[0.34em] uppercase font-semibold" style={{ color: '#8E9A82' }}>
@@ -132,6 +138,7 @@ export default async function ShopPage() {
       {newArrivals.length > 0 && (
         <ShopProductGrid
           products={newArrivals}
+          ratings={ratings}
           maxProducts={24}
           heading={
             <>

@@ -5,6 +5,7 @@ import { getCollectionFull, getCollectionProductHandles } from '@/lib/shopify'
 import { BROAD_CATEGORIES, getBroad, classifySub } from '@/lib/shop-taxonomy'
 import CategoryBrowser, { type BrowsableProduct } from '@/components/shop/CategoryBrowser'
 import CollectionHero from '@/components/shop/CollectionHero'
+import { getRatingMap } from '@/lib/judgeme'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -172,6 +173,10 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
     return { ...p, subSlugs: filed?.length ? filed : auto ? [auto] : [] }
   })
 
+  // One bulk call for every card on the page — getRatingMap reads the cached,
+  // shop-wide review index, so this costs no request per card.
+  const ratings = await getRatingMap(products)
+
   // Visual sub-category tiles: use the sub-collection's own image, falling back to the
   // first product shot in that bucket (covers Living's code-only filters that have no
   // Shopify collection image).
@@ -228,6 +233,7 @@ export default async function BroadCategoryPage({ params, searchParams }: Props)
 
         <CategoryBrowser
           products={products}
+          ratings={ratings}
           subs={subTiles}
           initialSub={cat}
           allImage={collection.image?.url}

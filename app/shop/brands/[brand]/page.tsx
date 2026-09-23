@@ -11,6 +11,7 @@ import { SHOP_FOUNDERS } from '@/data/shop-founders'
 import { brandEpisode } from '@/data/brand-episodes'
 import { resolveArticleEpisode } from '@/lib/content'
 import EpisodeStrip from '@/components/vodcast/EpisodeStrip'
+import { getRatingMap } from '@/lib/judgeme'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -39,6 +40,10 @@ export default async function BrandPage({ params, searchParams }: Props) {
   if (!collection) notFound()
 
   const products = sortProducts(collection.products.nodes, sort)
+
+  // One bulk call for the whole grid — getRatingMap reads the cached, shop-wide
+  // review index, so a page of cards costs no request per card.
+  const ratings = await getRatingMap(products)
 
   // The founder interview, where there is one. Many of these brands are in the
   // shop *because* of the conversation, and the brand page never said so.
@@ -104,7 +109,7 @@ export default async function BrandPage({ params, searchParams }: Props) {
         </div>
 
         {products.length > 0 ? (
-          <ProductGrid products={products} />
+          <ProductGrid products={products} ratings={ratings} />
         ) : (
           <p className="font-serif text-charcoal-light/60 py-16 text-center">Nothing in this edit just yet.</p>
         )}

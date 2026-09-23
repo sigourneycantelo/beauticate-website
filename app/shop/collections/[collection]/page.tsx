@@ -8,6 +8,7 @@ import ArticleGrid from '@/components/article/ArticleGrid'
 import CollectionHero from '@/components/shop/CollectionHero'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { getRatingMap } from '@/lib/judgeme'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -36,6 +37,10 @@ export default async function CollectionPage({ params, searchParams }: Props) {
   if (!collection) notFound()
 
   const products = sortProducts(collection.products.nodes, sort)
+
+  // One bulk call for the whole grid — getRatingMap reads the cached, shop-wide
+  // review index, so a page of cards costs no request per card.
+  const ratings = await getRatingMap(products)
   const relatedArticles = getArticlesByCategory('sigourneys-edit').slice(0, 3)
 
   const crumbs = [
@@ -83,7 +88,7 @@ export default async function CollectionPage({ params, searchParams }: Props) {
           {products.length > 1 && <SortSelect />}
         </div>
 
-        <ProductGrid products={products} />
+        <ProductGrid products={products} ratings={ratings} />
 
         {relatedArticles.length > 0 && (
           <section className="mt-[clamp(48px,7vw,96px)]">

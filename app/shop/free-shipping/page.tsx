@@ -5,6 +5,7 @@ import CollectionHero from '@/components/shop/CollectionHero'
 import type { Metadata } from 'next'
 import type { ShopifyProduct } from '@/types/shopify'
 import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
+import { getRatingMap } from '@/lib/judgeme'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -50,6 +51,10 @@ export default async function FreeShippingPage() {
     }
   }
 
+  // One bulk call for the whole grid — getRatingMap reads the cached, shop-wide
+  // review index, so a page of cards costs no request per card.
+  const ratings = await getRatingMap(products)
+
   const crumbs = [
     { name: 'Home', url: `${SITE}/` },
     { name: 'Shop', url: `${SITE}/shop` },
@@ -85,7 +90,7 @@ export default async function FreeShippingPage() {
           {products.length} {products.length === 1 ? 'piece' : 'pieces'}
         </p>
 
-        <ProductGrid products={products} />
+        <ProductGrid products={products} ratings={ratings} />
       </div>
     </div>
   )
