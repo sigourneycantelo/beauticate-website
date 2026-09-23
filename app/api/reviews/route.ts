@@ -50,18 +50,36 @@ const RATE_WINDOW_MS = 60 * 60 * 1000
  */
 const hits = new Map<string, number[]>()
 
-function rateLimited(ip: string): boolean {
+function recentHits(ip: string): number[] {
   const now = Date.now()
-  const recent = (hits.get(ip) ?? []).filter(t => now - t < RATE_WINDOW_MS)
-  if (recent.length >= RATE_LIMIT) {
-    hits.set(ip, recent)
-    return true
-  }
+  return (hits.get(ip) ?? []).filter(t => now - t < RATE_WINDOW_MS)
+}
+
+/** Read-only check. Does NOT consume quota — see recordSubmission. */
+function overLimit(ip: string): boolean {
+  return recentHits(ip).length >= RATE_LIMIT
+}
+
+/**
+ * Counts one ACCEPTED submission against the limit.
+ *
+ * Deliberately separate from the check, and called only once a review has
+ * actually reached Judge.me. Counting rejected attempts instead means someone
+ * who mistypes their email three times is locked out for an hour having never
+ * submitted anything — which is what the first version did, and it showed up
+ * the moment the validation cases were tested back to back.
+ *
+ * A flood of invalid requests therefore goes uncounted. That is the right way
+ * round: invalid requests create nothing, while the thing worth capping is how
+ * many reviews one source can actually file.
+ */
+function recordSubmission(ip: string): void {
+  const now = Date.now()
+  const recent = recentHits(ip)
   recent.push(now)
   hits.set(ip, recent)
   // Keep the map from growing without bound on a long-lived instance.
   if (hits.size > 5000) for (const [k, v] of hits) if (v.every(t => now - t > RATE_WINDOW_MS)) hits.delete(k)
-  return false
 }
 
 function isEmail(value: string): boolean {
@@ -91,7 +109,7 @@ export async function POST(request: Request) {
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
     request.headers.get('x-real-ip') ||
     'unknown'
-  if (rateLimited(ip)) {
+  if (overLimit(ip)) {
     return NextResponse.json(
       { error: 'You have submitted a few reviews already. Please try again later.' },
       { status: 429 },
@@ -148,6 +166,10 @@ export async function POST(request: Request) {
       console.warn(`Judge.me submission failed: ${res.status} ${res.statusText}`)
       return NextResponse.json({ error: 'We could not save your review. Please try again.' }, { status: 502 })
     }
+    // Counted only now that Judge.me has accepted it — a rejected attempt must
+    // not spend someone's quota.
+    recordSubmission(ip)
+
     // Judge.me answers 201 and processes asynchronously — the review is not
     // readable back immediately, and with moderation on it stays unpublished
     // until approved. Both are why the UI says "thank you", not "it's live".
