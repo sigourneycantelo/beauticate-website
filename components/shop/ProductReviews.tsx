@@ -9,10 +9,31 @@ import type { Review, Rating } from '@/lib/judgeme'
  *  pushing "Complete the ritual" off the bottom of a long page. */
 const INITIAL = 4
 
+/**
+ * The timeZone is mandatory, not a nicety.
+ *
+ * Without it this formats in whatever zone the renderer happens to be in — UTC
+ * on the server, the reader's own zone in the browser. Jade's review is stamped
+ * 2026-09-22T23:44:27Z, which is the 22nd in UTC and the 23rd in Australia, so
+ * server and client produced different text for the same instant. React treats
+ * that as a hydration mismatch (error #418), discards the subtree, and takes the
+ * rest of the page down with it — the reviews block AND "Complete the ritual"
+ * below it both vanished, while the JSON-LD written further up survived.
+ *
+ * That failure mode is worse than a wrong date: a page with an aggregateRating
+ * in its schema and no visible reviews is precisely the invisible-rating breach
+ * the verified-only gate in ProductPage exists to avoid. Pinning the zone makes
+ * both renders agree, and Sydney is the right editorial zone for the masthead.
+ */
 function formatDate(iso: string): string {
   const d = new Date(iso)
   if (Number.isNaN(d.getTime())) return ''
-  return d.toLocaleDateString('en-AU', { day: 'numeric', month: 'long', year: 'numeric' })
+  return d.toLocaleDateString('en-AU', {
+    timeZone: 'Australia/Sydney',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
 }
 
 function ReviewItem({ review }: { review: Review }) {
