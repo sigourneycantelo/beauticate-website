@@ -54,7 +54,7 @@ export const THEME: Record<string, string> = {
   plain: 'false',
 }
 
-export type WidgetType = 'hotel_search' | 'map' | 'calendar' | 'flights'
+export type WidgetType = 'hotel_search' | 'tours' | 'map' | 'calendar' | 'flights'
 
 interface WidgetConfig {
   /** Travelpayouts promo id — the widget itself. No id, no widget. */
@@ -65,16 +65,58 @@ interface WidgetConfig {
   trs: string
   /**
    * Query parameter this widget uses to preset the destination. Differs per
-   * widget: the hotel forms take a place name, the flight form takes IATA
-   * codes. Read it off a real embed code built for a known city — do not
+   * widget, and not cosmetically: the Agoda hotel form takes a place NAME
+   * ("Byron Bay"), the GetYourGuide tours card takes an IATA CITY CODE
+   * ("PAR"). Read it off a real embed code built for a known city — do not
    * assume, a wrong name is silently ignored and the widget opens unfiltered.
    */
   destinationParam: string
+  /**
+   * Turns what an editor writes into what the widget's parameter wants.
+   * Returning null means this widget cannot serve that destination, and the
+   * component renders nothing rather than something wrong.
+   */
+  toDestination: (city: string) => string | null
+  /** Whether the widget accepts the house colour parameters. Tours does not. */
+  themed: boolean
+  locale: string
   /** Reserved height, so the article doesn't reflow when the widget paints. */
   height: number
   /** Fallback caption when the editor doesn't write one. */
   label: string
 }
+
+/**
+ * Cities GetYourGuide will actually serve a tours card for.
+ *
+ * This list is explicit because an IATA code is NOT proof of coverage. Mudgee
+ * has a code (DGE) and no tours: the widget renders a generic "View activities
+ * at GetYourGuide" panel with a blurry stock photo and no button. It looks
+ * broken and earns nothing. Every entry below was checked by rendering it in a
+ * browser and confirming the card shows the city's own name, its own copy and
+ * a working "Find Things to Do" button.
+ *
+ * Adding one: `node scripts/resolve-travel-destination.mjs --iata "<city>"`
+ * gives the code, then render it and look before adding it here.
+ */
+export const TOURS_CITIES: Record<string, string> = {
+  bangkok: 'BKK',
+  denpasar: 'DPS',
+  'gold coast': 'OOL',
+  'ho chi minh city': 'SGN',
+  ibiza: 'IBZ',
+  kochi: 'COK',
+  'los angeles': 'LAX',
+  melbourne: 'MEL',
+  paris: 'PAR',
+  'phu quoc': 'PQC',
+  seoul: 'SEL',
+  sydney: 'SYD',
+}
+
+/** The place itself, without the country Agoda appends or a state code. */
+const placeKey = (s: string) =>
+  s.split(',')[0].replace(/\s*\([^)]*\)/g, '').trim().toLowerCase()
 
 export const WIDGETS: Record<WidgetType, WidgetConfig> = {
   // Agoda Hotels Search Form. Chosen over Booking.com's form, which pays less
@@ -86,23 +128,44 @@ export const WIDGETS: Record<WidgetType, WidgetConfig> = {
     campaignId: '104',
     trs: TRS,
     destinationParam: 'default_destination',
+    toDestination: (city) => city,
+    themed: true,
+    locale: 'en',
     height: 220,
     label: 'Search hotels',
   },
-  // Not configured yet — these render nothing until a promo id is filled in.
-  // The catalogue has no hotel map or hotel price calendar; the nearest
-  // equivalents are tour widgets from Viator and GetYourGuide. See
-  // docs/travel-widgets.md.
-  map:      { promoId: '', campaignId: '', trs: TRS, destinationParam: 'default_destination', height: 500, label: 'Hotels on the map' },
-  calendar: { promoId: '', campaignId: '', trs: TRS, destinationParam: 'default_destination', height: 420, label: 'Best prices by month' },
-  flights:  { promoId: '', campaignId: '', trs: TRS, destinationParam: 'default_destination', height: 350, label: 'Find flights' },
+  // GetYourGuide "Things to Do in a City". Pays 8% on a 31-day cookie against
+  // Agoda's 6% on ONE day, so on a destination guide it is the better of the
+  // two — but only one Travelpayouts widget renders reliably per page, so it
+  // replaces the hotel widget rather than joining it. See docs/travel-widgets.md.
+  tours: {
+    promoId: '4040',
+    campaignId: '108',
+    trs: TRS,
+    destinationParam: 'iata',
+    toDestination: (city) => TOURS_CITIES[placeKey(city)] ?? null,
+    // No colour parameters exist for this widget; it is a GetYourGuide-branded
+    // editorial card, not a form. Passing THEME to it does nothing.
+    themed: false,
+    locale: 'en-US',
+    height: 320,
+    label: 'Things to do',
+  },
+  // Not configured — these render nothing until a promo id is filled in. The
+  // catalogue has no hotel map and no hotel price calendar; its calendars are
+  // tour-availability widgets. See docs/travel-widgets.md.
+  map:      { promoId: '', campaignId: '', trs: TRS, destinationParam: 'default_destination', toDestination: (c) => c, themed: true, locale: 'en', height: 500, label: 'Hotels on the map' },
+  calendar: { promoId: '', campaignId: '', trs: TRS, destinationParam: 'default_destination', toDestination: (c) => c, themed: true, locale: 'en', height: 420, label: 'Best prices by month' },
+  flights:  { promoId: '', campaignId: '', trs: TRS, destinationParam: 'default_destination', toDestination: (c) => c, themed: true, locale: 'en', height: 350, label: 'Find flights' },
 }
 
 /**
  * Build the widget script URL, or null if it can't be built correctly.
  *
- * Null is the important case: no marker (local dev, an unconfigured preview)
- * or an unfilled promo id must render nothing, never a broken empty box.
+ * Null is the important case, and there are now three routes to it: no marker
+ * (local dev, an unconfigured preview), an unfilled promo id, and a
+ * destination this widget cannot serve. All three render nothing rather than
+ * a broken box or a card pointing at the wrong place.
  */
 export function buildWidgetUrl(
   type: WidgetType,
@@ -112,6 +175,9 @@ export function buildWidgetUrl(
   const config = WIDGETS[type]
   if (!MARKER || !config?.promoId) return null
 
+  const resolved = destination ? config.toDestination(destination) : null
+  if (destination && !resolved) return null
+
   const params = new URLSearchParams({
     trs: config.trs,
     // shmarker carries the marker plus an optional SubID, which is how a
@@ -119,12 +185,11 @@ export function buildWidgetUrl(
     shmarker: subId ? `${MARKER}.${subId}` : MARKER,
     promo_id: config.promoId,
     campaign_id: config.campaignId,
-    locale: 'en',
-    currency: 'aud',
+    locale: config.locale,
     powered_by: 'true',
-    ...THEME,
+    ...(config.themed ? { currency: 'aud', ...THEME } : {}),
   })
-  if (destination) params.set(config.destinationParam, destination)
+  if (resolved) params.set(config.destinationParam, resolved)
 
   return `https://tpemb.com/content?${params.toString()}`
 }

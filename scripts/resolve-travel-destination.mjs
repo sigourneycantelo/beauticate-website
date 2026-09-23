@@ -29,7 +29,25 @@
 
 import { readFileSync, globSync } from 'node:fs'
 
+/**
+ * TOURS_CITIES, read out of lib/travelpayouts.ts rather than imported.
+ *
+ * Importing a .ts module from a .mjs script leans on Node's type stripping and
+ * warns on every run. The list is a flat literal, so reading it keeps one
+ * source of truth without the import.
+ */
+function toursCities() {
+  const src = readFileSync('lib/travelpayouts.ts', 'utf8')
+  const block = src.match(/export const TOURS_CITIES[^{]*\{([^}]*)\}/)
+  if (!block) throw new Error('TOURS_CITIES not found in lib/travelpayouts.ts')
+  return Object.fromEntries(
+    [...block[1].matchAll(/'?([a-z][a-z ]*)'?\s*:\s*'([A-Z]{3})'/g)].map((m) => [m[1].trim(), m[2]]),
+  )
+}
+const TOURS_CITIES = toursCities()
+
 const ENDPOINT = 'https://suggest.apistp.com/search'
+const IATA_ENDPOINT = 'https://suggest.travelpayouts.com/uaca/v1/search_terms_forward'
 
 export async function resolve(term, limit = 5) {
   const url = `${ENDPOINT}?term=${encodeURIComponent(term)}&service=agoda&locale=en`
@@ -38,6 +56,21 @@ export async function resolve(term, limit = 5) {
   const body = await res.json()
   if (!Array.isArray(body)) throw new Error(`lookup returned no list for "${term}"`)
   return body.slice(0, limit).map((r) => ({ title: r.title, kind: r.subtitle }))
+}
+
+/**
+ * IATA city code for a place, which is what the tours widget takes.
+ *
+ * Note this only tells you a code EXISTS, not that GetYourGuide sells tours
+ * there. Mudgee returns DGE and has no tours at all. Render it before you
+ * trust it, then add it to TOURS_CITIES.
+ */
+export async function iata(term) {
+  const url = `${IATA_ENDPOINT}?term=${encodeURIComponent(term)}&locale=en&service=aviasales`
+  const res = await fetch(url)
+  if (!res.ok) throw new Error(`IATA lookup failed for "${term}": HTTP ${res.status}`)
+  const body = await res.json()
+  return Array.isArray(body) ? body.slice(0, 5).map((r) => ({ code: r.slug, title: r.title, where: r.subtitle })) : []
 }
 
 /** The place itself, without the country/region Agoda appends. */
@@ -62,37 +95,62 @@ async function check() {
   const uses = []
   for (const f of files) {
     const text = readFileSync(f, 'utf8')
-    for (const m of text.matchAll(/<TravelWidget[^>]*city="([^"]+)"/g)) {
-      uses.push({ file: f, city: m[1] })
+    for (const m of text.matchAll(/<TravelWidget[^>]*?type="([a-z_]+)"[^>]*?city="([^"]+)"/g)) {
+      uses.push({ file: f, type: m[1], city: m[2] })
     }
   }
   if (!uses.length) return console.log('No TravelWidget destinations found.')
 
   let bad = 0
   for (const u of uses) {
+    // Tours are checked against TOURS_CITIES, not Agoda. The two widgets
+    // address places completely differently — a name vs an IATA code — so
+    // checking a tours city against Agoda's list proves nothing either way.
+    if (u.type === 'tours') {
+      const key = place(u.city)
+      if (TOURS_CITIES[key]) {
+        console.log(`  ok    tours  ${u.city} -> ${TOURS_CITIES[key]}`)
+      } else {
+        bad++
+        console.log(`  WRONG tours  ${u.city}  (${u.file})`)
+        console.log(`        not in TOURS_CITIES, so this renders nothing.`)
+        const hits = await iata(u.city)
+        console.log(`        IATA lookup says: ${hits.map((h) => `${h.code} ${h.title}`).join(' | ') || '(nothing)'}`)
+        console.log(`        Render it before adding it — a code is not proof of coverage.`)
+      }
+      continue
+    }
+
     const hits = await resolve(u.city, 5)
     const exact = hits.length > 0 && place(hits[0].title) === place(u.city)
     if (exact) {
-      console.log(`  ok    ${u.city}`)
+      console.log(`  ok    hotel  ${u.city}`)
     } else {
       bad++
-      console.log(`  WRONG ${u.city}  (${u.file})`)
+      console.log(`  WRONG hotel  ${u.city}  (${u.file})`)
       console.log(`        Agoda would use: ${hits[0]?.title ?? '(nothing)'}`)
       console.log(`        did you mean: ${hits.map((h) => `${h.title} [${h.kind}]`).join(' | ')}`)
     }
   }
-  console.log(`\n${uses.length} destination(s), ${bad} not resolving to themselves.`)
+  console.log(`\n${uses.length} destination(s), ${bad} not resolving correctly.`)
   if (bad) process.exitCode = 1
 }
 
 const args = process.argv.slice(2)
 if (args[0] === '--check') {
   await check()
+} else if (args[0] === '--iata') {
+  for (const term of args.slice(1)) {
+    console.log(`\n▸ ${term}`)
+    for (const h of await iata(term)) console.log(`   ${h.code}  ${h.title} (${h.where})`)
+  }
 } else if (args.length) {
   for (const term of args) {
     console.log(`\n▸ ${term}`)
     for (const h of await resolve(term)) console.log(`   ${h.title}  [${h.kind}]`)
   }
 } else {
-  console.log('usage: resolve-travel-destination.mjs "<place>" [...]  |  --check')
+  console.log('usage: resolve-travel-destination.mjs "<place>" [...]   hotel destinations (Agoda)')
+  console.log('       resolve-travel-destination.mjs --iata "<city>"    tours city codes (GetYourGuide)')
+  console.log('       resolve-travel-destination.mjs --check            verify every destination on the site')
 }
