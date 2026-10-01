@@ -159,8 +159,9 @@ So on every new article:
 - **No orphan product cards** — place them in pairs.
 - **No wall of text, and no orphan body image either.** Never leave three
   paragraphs running without a picture, and default to a *pair* of portraits in
-  an equal two-up grid rather than one floated shot. Put each pair under the
-  paragraph it illustrates. Full rule and markup in
+  an equal two-up grid rather than one floated shot, using
+  `grid-cols-1 md:grid-cols-2` so it stacks full width on a phone. Put each pair
+  under the paragraph it illustrates. Full rule and markup in
   [`docs/article-layout-tiers.md`](../../../docs/article-layout-tiers.md).
 - **Never repeat a pull quote** that also sits word for word in the paragraph
   beside it. Break the sentence across the quote instead.
