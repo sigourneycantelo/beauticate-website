@@ -62,11 +62,17 @@ the paragraph about the floating breakfast, not three paragraphs later next to
 something else. If a section is long enough to need two breaks, use two pairs
 rather than stretching one across the whole section.
 
+**On a phone the pair stacks.** Two portraits side by side on a 390px screen
+gives each about 170px of width, which is too small to read a face or a detail
+in. `grid-cols-1 md:grid-cols-2` stacks them full width on mobile and pairs them
+from tablet up, so the spread survives on desktop and the phone gets images big
+enough to look at. Most readers are on the phone.
+
 The markup is an explicit grid of `InlineImage`, which opts out of the automatic
 orientation handling below and keeps both shots the same size and uncropped:
 
 ```jsx
-<div className="not-prose grid grid-cols-2 gap-4 my-8" style={{clear:'both'}}>
+<div className="not-prose grid grid-cols-1 md:grid-cols-2 gap-4 my-8" style={{clear:'both'}}>
 <InlineImage src="/content/<cat>/<sub>/<slug>/left.jpg" alt="..." width="1350" height="1800" />
 <InlineImage src="/content/<cat>/<sub>/<slug>/right.jpg" alt="..." width="1350" height="1800" />
 </div>
