@@ -157,6 +157,13 @@ So on every new article:
 - **`published: false` on a directory listing is deliberate and sticky.** Check
   `draft_reason` before changing it. Never run a blanket publish pass.
 - **No orphan product cards** — place them in pairs.
+- **No wall of text, and no orphan body image either.** Never leave three
+  paragraphs running without a picture, and default to a *pair* of portraits in
+  an equal two-up grid rather than one floated shot. Put each pair under the
+  paragraph it illustrates. Full rule and markup in
+  [`docs/article-layout-tiers.md`](../../../docs/article-layout-tiers.md).
+- **Never repeat a pull quote** that also sits word for word in the paragraph
+  beside it. Break the sentence across the quote instead.
 - **Bake in EXIF orientation** and *view* the result. A portrait must end up
   taller than it is wide.
 - **`llms.txt` is hand-maintained** — `public/llms.txt`, `public/llms-full.txt`,
@@ -174,6 +181,9 @@ So on every new article:
 - [ ] 2-4 FAQs in frontmatter
 - [ ] Both crops set: landscape `hero_image` **and** portrait `featured_image`
 - [ ] Alt text everywhere; `featured_image` under 2MB
+- [ ] No run of three paragraphs without an image; body images placed as equal
+      pairs, each under the copy it illustrates
+- [ ] No pull quote repeating a sentence printed beside it
 - [ ] ≥1 internal link (verified published) and ≥1 external link
 - [ ] `seo_title` <60, `meta_description` <155, slug, `focus_keyphrase`
 - [ ] Correct author, resolving in `lib/authors.ts`
