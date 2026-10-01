@@ -21,6 +21,12 @@ export type PastCompetition = {
  */
 export const pastCompetitions: PastCompetition[] = [
   {
+    slug: 'weleda-skin-food-2026',
+    name: '100 Years of Skin Food Giveaway',
+    period: 'August to September 2026',
+    drawn: 'September 2026',
+  },
+  {
     slug: 'beauty-expo-australia-2026',
     name: 'Beauticate x Beauty Expo Australia 2026 Giveaway',
     period: 'July 2026',
