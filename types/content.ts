@@ -152,6 +152,7 @@ export interface ArticleFrontmatter {
    */
   competition_until?: string          // ISO timestamp with offset, e.g. '2026-10-31T23:59:59+11:00'
   title_after_competition?: string    // headline once competition_until has passed
+  excerpt_after_competition?: string  // standfirst once competition_until has passed
 
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published

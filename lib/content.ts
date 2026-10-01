@@ -77,8 +77,9 @@ const COMPETITION_BLOCK =
  *
  * Two opt-in frontmatter fields, and no effect on any article without them:
  *
- *   competition_until: '2026-10-31T23:59:59+11:00'   # the close timestamp
- *   title_after_competition: '8 Reasons Why You...'  # the headline to revert to
+ *   competition_until: '2026-10-31T23:59:59+11:00'     # the close timestamp
+ *   title_after_competition: '8 Reasons Why You...'    # headline to revert to
+ *   excerpt_after_competition: 'A few days at...'      # standfirst to revert to
  *
  * Body copy is fenced with `{/* competition:start *\/}` and
  * `{/* competition:end *\/}`, which are JSX comments, so they render as
@@ -97,6 +98,7 @@ function closeCompetition(frontmatter: ArticleFrontmatter, content: string) {
     frontmatter: {
       ...frontmatter,
       title: frontmatter.title_after_competition ?? frontmatter.title,
+      excerpt: frontmatter.excerpt_after_competition ?? frontmatter.excerpt,
     },
     content: content.replace(COMPETITION_BLOCK, ''),
   }
