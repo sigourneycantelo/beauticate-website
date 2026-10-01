@@ -44,6 +44,40 @@ one. An article with no image at all always gets the split panel.
 `lib/hero-layout.ts` - the second so it can suppress its own title block, since
 the split panel already carries the headline. Change the rule in one place only.
 
+## Text needs breaking up, and a pair does it best
+
+**No reader should meet three paragraphs in a row without a picture.** A wall of
+body copy is where people leave, and on a phone a wall arrives much sooner than
+it does on the desktop preview you are checking it in. Work down the finished
+piece and break every run of long paragraphs with an image, the same way a
+magazine does.
+
+**Default to a pair, not a single shot.** Two portraits side by side at equal
+size is the house treatment, and it beats one floated image for the same reason
+a two-up product grid beats an orphan card: it reads as a deliberate spread
+rather than something that failed to load.
+
+Place the pair where the copy earns it. The floating-breakfast shot goes under
+the paragraph about the floating breakfast, not three paragraphs later next to
+something else. If a section is long enough to need two breaks, use two pairs
+rather than stretching one across the whole section.
+
+The markup is an explicit grid of `InlineImage`, which opts out of the automatic
+orientation handling below and keeps both shots the same size and uncropped:
+
+```jsx
+<div className="not-prose grid grid-cols-2 gap-4 my-8" style={{clear:'both'}}>
+<InlineImage src="/content/<cat>/<sub>/<slug>/left.jpg" alt="..." width="1350" height="1800" />
+<InlineImage src="/content/<cat>/<sub>/<slug>/right.jpg" alt="..." width="1350" height="1800" />
+</div>
+```
+
+A single landscape image is still right on its own when it is a proper
+establishing shot and spans the wide tier. The pair rule is for portraits.
+
+Reference: `destinations/travel/escape-haven-bali-retreat-review`, which runs a
+pair inside almost every numbered section.
+
 ## The orientation rule
 
 - Landscape image -> wide tier, centred, `aspect-[2/1]`
@@ -71,3 +105,19 @@ grid-template-columns: 1fr min(720px, 100%) 1fr
 ```
 All prose children default to the narrow centre column (grid-column: 2).
 Wide-tier and split-tier components use `grid-column: 1 / -1` to break out.
+
+
+## Don't repeat a pull quote
+
+A pull quote that also appears, word for word, in the paragraph beside it reads
+as a mistake. Either lift the line out of the body entirely, or break the
+sentence across the quote so the body runs up to it and picks up afterwards:
+
+> ...And then he stopped and looked at me.
+>
+> **"I also want to say something about your pitta," he said. "Your mind."**
+>
+> I was, at this point, quietly unravelling about a work situation.
+
+Three per article is the cap, under about fifteen words each, and each one sits
+where the moment actually happens rather than floated in near it.
