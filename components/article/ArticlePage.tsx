@@ -36,6 +36,7 @@ import NumberedSection from '@/components/mdx/NumberedSection'
 import BeforeAfterSlider from '@/components/mdx/BeforeAfterSlider'
 import Caption from '@/components/mdx/Caption'
 import InlineImage from '@/components/mdx/InlineImage'
+import CallToAction from '@/components/mdx/CallToAction'
 import TravelWidget from '@/components/mdx/TravelWidget'
 import FoundersPanel from '@/components/shop/FoundersPanel'
 import StatBand, { Stat } from '@/components/mdx/StatBand'
@@ -173,7 +174,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
     YouTubeEmbed, ProductEmbed, Portrait, PortraitQuote, CollectionEmbed, CollectionRail,
     InlineProduct, PullQuote, ImageCarousel, CarouselSlide, ShopGrid, ShopItem: ShopItemCard, ShopCTA,
     GiftNote,
-    ProductInset, EditorNote, EditorIntro, QuickAnswer, Verdict, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel,
+    ProductInset, EditorNote, EditorIntro, QuickAnswer, Verdict, AffiliateCTA, SplitRow, StickyScroll, NumberedSection, StatBand, Stat, SubscribeBand, Caption, InlineImage, BeforeAfterSlider, TravelWidget, FoundersPanel, CallToAction,
     a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
       const isExternal = props.href && !props.href.startsWith('/') && !props.href.startsWith('#')
       // Keep whatever rel the author wrote - raw <a rel="sponsored noopener"> in MDX
