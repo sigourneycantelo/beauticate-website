@@ -3,47 +3,51 @@ import Link from 'next/link'
 import { pastCompetitions } from '../pastCompetitions'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   STATUS — this promotion is NOT YET LIVE. Entries open on the go-live date
-   below and close 11:59pm AEDT on 31 October 2026. Judging 1–5 November 2026.
+   STATUS — this promotion is LIVE from 1 October 2026. Entry closes 11:59pm
+   AEDT on 31 October 2026. Judging 1–5 November 2026.
+
+   The competition sits ABOVE the gift with purchase on this page, because
+   almost everyone who lands here arrives from the competition post.
+
+   `status` is no longer hand-set. `compIsOpen` derives it from
+   `comp.entryCloseISO` and the page revalidates hourly, so a closed
+   competition stops advertising itself as open without anyone deploying. That
+   is the bug this page actually had: the Weleda competition closed on 10
+   September and was still rendering "now open" three weeks later.
    ──────────────────────────────────────────────────────────────────────
-   STILL OPEN — must be settled before this page goes live
-   1. GO-LIVE DATE. `entryOpen` below reads "[go-live date] 2026". The terms
-      cannot publish with a placeholder in them; a competition has to state
-      when entry opens. Set it to the date the Instagram post publishes.
-   2. LEGAL SENSE-CHECK, and this one is not a formality. See the permit
-      reasoning below: the answer changed when the prize value went up.
-   3. ESCAPE HAVEN LEGAL ENTITY. "Escape Haven" is the trading name used
-      here. Confirm the registered entity for the ineligibility and prize
-      partner clauses, the same open item the Weleda comp carried.
+   STILL OPEN
+   1. ESCAPE HAVEN LEGAL ENTITY. "Escape Haven" is the trading name used here.
+      Confirm the registered entity for the ineligibility and prize partner
+      clauses, the same open item the Weleda competition carried.
 
-   TRADE PROMOTION PERMITS — the reasoning changed, read this before copying it
-   The thresholds recorded during the Weleda comp (ACT over A$3,000; SA over
-   A$5,000 or ANY instant-win; NT over A$5,000; NSW over A$10,000) are for
-   trade promotion LOTTERIES, meaning games of CHANCE. Weleda's A$1,050 pool
-   sat under all of them, so the question never had to be answered properly.
-   This prize is A$4,200, which is over the ACT threshold. What keeps it out of
-   permit territory is not the value, it is that this is a game of SKILL:
-   entries are judged on the answer given, and chance plays no part. Skill
-   competitions sit outside the trade promotion lottery permit schemes.
-   That makes the skill framing load bearing rather than cosmetic. It has to be
-   true in practice as well as on the page: a real judging criterion, real
-   judges, judging dates that are kept, and a winner chosen on the merit of
-   the answer. If the mechanic is ever softened back towards a random draw,
-   the ACT threshold bites at this prize value and a permit is required, and
-   its number must be printed in the terms via `permitNumbers`.
-   This is exactly the point to put in front of a lawyer rather than settle
-   from a code comment.
-
-   WORLDWIDE ENTRY — new, no precedent on this site
-   Every previous Beauticate competition was open to Australian residents only.
-   This one is open worldwide, which brings in three things the Australian-only
-   terms never had to address: entrants in jurisdictions where the promotion is
-   prohibited (handled by the "except where prohibited by law" carve-out),
-   entrant data leaving Australia to a prize partner in Indonesia (disclosed in
-   "Your email address and what we do with it"), and a winner who must arrange
-   their own passport, visa and flights (stated in "The prize"). Part Two still
-   invokes the Australian Privacy Principles and the Australian Consumer Law,
-   which is correct: those bind the Promoter wherever the entrant lives.
+   SETTLED — kept because the reasoning is what the next competition needs
+   • TRADE PROMOTION PERMITS — none required, BUT only because this is a game
+     of SKILL. Confirmed by Sig, 1 October 2026.
+     The thresholds recorded during the Weleda competition (ACT over A$3,000;
+     SA over A$5,000 or ANY instant-win; NT over A$5,000; NSW over A$10,000)
+     are for trade promotion LOTTERIES, meaning games of CHANCE. Weleda's
+     A$1,050 pool sat under all of them, so the question never had to be
+     answered properly. This prize is A$4,200, which is OVER the ACT
+     threshold. What keeps it outside the permit schemes is not the value, it
+     is that entries are judged on the answer given and chance plays no part.
+     So the skill framing is load bearing, not cosmetic. It has to hold in
+     practice as well as on the page: a real judging criterion, real judges,
+     judging dates that are kept, and a winner chosen on the merit of the
+     answer. If the mechanic is ever softened back towards a random draw at
+     this prize value, a permit IS required and its number must be printed in
+     the terms via `permitNumbers`. Do not copy "no permit needed" forward
+     without re-checking which kind of competition it is.
+   • WORLDWIDE ENTRY — the first on this site. Every previous Beauticate
+     competition was open to Australian residents only. Three things follow,
+     all handled below: entrants where the promotion is prohibited (the
+     "except where prohibited by law" carve-out), entrant data going to a
+     prize partner in Indonesia (disclosed under "Your email address and what
+     we do with it"), and a winner arranging their own passport, visa and
+     flights (stated under "The prize"). Part Two still invokes the Australian
+     Privacy Principles and the Australian Consumer Law, which is correct:
+     those bind the Promoter wherever the entrant lives.
+   • PROMOTER STREET ADDRESS — locality only, per the house rule in
+     legal-copy/0-BRIEF-for-claude-code.md. Unchanged.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -54,9 +58,15 @@ import { pastCompetitions } from '../pastCompetitions'
    ══════════════════════════════════════════════════════════════════════════ */
 const comp = {
   name: 'Escape Haven Giveaway',
-  status: 'open' as 'open' | 'closed',
+  /**
+   * The moment entry closes, as a real timestamp. `status` is DERIVED from
+   * this, not hand-set, because a hand-set flag is exactly what left the
+   * Weleda competition rendering as "now open" for three weeks after it had
+   * closed. AEDT is UTC+11.
+   */
+  entryCloseISO: '2026-10-31T23:59:59+11:00',
   lastUpdated: 'October 2026',
-  entryOpen: '[go-live date] 2026',
+  entryOpen: '1 October 2026',
   entryClose: '11:59pm AEDT on 31 October 2026',
   drawBy: '5 November 2026',
   partner: 'Escape Haven',
@@ -99,6 +109,16 @@ const gwp = {
   started: '9 September 2026',
 }
 
+/**
+ * Re-rendered hourly so a competition closes on time without anyone deploying.
+ * Without this the page is static and `isOpen` would freeze at whatever it was
+ * when the site was last built.
+ */
+export const revalidate = 3600
+
+/** True until the close timestamp passes. Never hand-set. */
+const compIsOpen = Date.now() < Date.parse(comp.entryCloseISO)
+
 export const metadata: Metadata = {
   title: `${comp.name} Terms & Conditions | Beauticate`,
   description:
@@ -122,8 +142,9 @@ export default function CompetitionTermsPage() {
       <div className="font-serif text-charcoal/80 leading-relaxed space-y-8">
 
         <p>
-          This page covers the promotions Beauticate is running now — a gift with purchase, and a
-          competition — followed by the general terms that apply to every competition we run.{' '}
+          This page covers the promotions Beauticate is running now, the competition
+          first and then a gift with purchase, followed by the general terms that
+          apply to every competition we run.{' '}
           <strong className="font-normal text-ink">This competition</strong>{' '}
           covers the specific details of the giveaway currently running.{' '}
           <strong className="font-normal text-ink">General terms</strong> apply to
@@ -133,83 +154,6 @@ export default function CompetitionTermsPage() {
           and{' '}
           <a href="/terms" className="text-ink hover:text-eucalypt transition-colors">Terms &amp; Conditions</a>.
         </p>
-
-        {/* ══════════════════════════════════════════════════════════════════
-            THIS GIFT WITH PURCHASE (edit per brand; newest promotion first)
-           ══════════════════════════════════════════════════════════════════ */}
-        <div className="pt-4 border-t border-camel/30">
-          <p className="label-editorial mb-2">Running now</p>
-          <h2 className="font-serif text-2xl text-ink">This gift with purchase</h2>
-          <p className="text-sm text-charcoal/50 mt-1">
-            The details specific to the gift with purchase currently running.
-          </p>
-        </div>
-
-        <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
-          <h3 className="font-serif text-xl text-ink mb-4">
-            {gwp.brand} gift with purchase{' '}
-            <span className="text-charcoal/40 font-normal">
-              {gwp.status === 'open' ? '(now running)' : '(ended)'}
-            </span>
-          </h3>
-          <dl className="space-y-3 text-[15px]">
-            <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Promoter</dt>
-              <dd>Beauticate, in partnership with {gwp.brand}</dd>
-            </div>
-            <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">The gift</dt>
-              <dd>{gwp.gift} ({gwp.giftValue})</dd>
-            </div>
-            <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">To qualify</dt>
-              <dd>Spend {gwp.minSpend} or more on {gwp.brand} products in a single order</dd>
-            </div>
-            <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Available</dt>
-              <dd>While stocks last, from {gwp.started}</dd>
-            </div>
-          </dl>
-        </section>
-
-        <section>
-          <p>
-            The gift is added to your cart automatically once your order meets the minimum. You do
-            not need a code. The minimum spend is measured on {gwp.brand} products only, not on your
-            order total, so other brands in the same order do not count towards it. Gift cards do not
-            count towards the minimum.
-          </p>
-          <p className="mt-4">
-            One gift per order. Gifts are limited to the number the brand has funded and offered
-            while stocks last, so the promotion may end before any date we have advertised. If your order no
-            longer meets the minimum — because you remove or reduce an item before checking out —
-            the gift is removed from your cart.
-          </p>
-          <p className="mt-4">
-            The gift has no cash value and cannot be exchanged or returned for credit. The{' '}
-            {gwp.gift} is also sold on its own at full price — it is the gift version, given free
-            with a qualifying order, that is limited to this promotion. If the gift becomes
-            unavailable we may substitute one of equal or greater value.
-          </p>
-          <p className="mt-4">
-            Returns are handled under our{' '}
-            <a href="/shop/refund-policy" className="text-ink hover:text-eucalypt transition-colors">Returns &amp; Refunds Policy</a>.
-            If a return leaves your order below the minimum, please send the gift back with it. If
-            you keep the gift, we may deduct its value from your refund — but never more than the
-            refund itself, so a return will never leave you owing us money. This does not apply where
-            an item is faulty, not as described, or your return is otherwise covered by the
-            Australian Consumer Law: in those cases your refund is unaffected and you keep the gift.
-          </p>
-          <p className="mt-4">
-            We may change or end the promotion at any time. Orders already placed are not
-            affected.
-          </p>
-          <p className="mt-4">
-            This is a gift with purchase, not a competition or prize draw. There is no element of
-            chance and no entry: every order meeting the conditions above receives the gift while
-            stocks last.
-          </p>
-        </section>
 
         {/* ══════════════════════════════════════════════════════════════════
             PART ONE — THIS COMPETITION (edit per competition)
@@ -227,7 +171,7 @@ export default function CompetitionTermsPage() {
           <h3 className="font-serif text-xl text-ink mb-4">
             {comp.name}{' '}
             <span className="text-charcoal/40 font-normal">
-              {comp.status === 'open' ? '(now open)' : '(closed)'}
+              {compIsOpen ? '(now open)' : '(now closed)'}
             </span>
           </h3>
           <dl className="space-y-3 text-[15px]">
@@ -377,9 +321,10 @@ export default function CompetitionTermsPage() {
             offered in that event.
           </p>
           <p className="mt-4">
-            The prize is redeemable on selected Escape Haven retreat dates and is
-            subject to availability. {comp.partner} will give the winner a choice
-            of eligible dates and work with her to confirm one that suits.
+            The retreat must be taken within 12 months of the winner being
+            notified. It is redeemable on selected Escape Haven retreat dates and
+            is subject to availability. {comp.partner} will give the winner a
+            choice of eligible dates and work with her to find one that suits.
           </p>
           <p className="mt-4">
             The prize is for one woman. Escape Haven is a women-only retreat, so
@@ -469,6 +414,83 @@ export default function CompetitionTermsPage() {
             If you win, we will also share what {comp.partner} needs in order to
             book and run your retreat. We collect nothing for the two friends you
             tag.
+          </p>
+        </section>
+
+        {/* ══════════════════════════════════════════════════════════════════
+            THIS GIFT WITH PURCHASE (edit per brand; newest promotion first)
+           ══════════════════════════════════════════════════════════════════ */}
+        <div className="pt-4 border-t border-camel/30">
+          <p className="label-editorial mb-2">Running now</p>
+          <h2 className="font-serif text-2xl text-ink">This gift with purchase</h2>
+          <p className="text-sm text-charcoal/50 mt-1">
+            The details specific to the gift with purchase currently running.
+          </p>
+        </div>
+
+        <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
+          <h3 className="font-serif text-xl text-ink mb-4">
+            {gwp.brand} gift with purchase{' '}
+            <span className="text-charcoal/40 font-normal">
+              {gwp.status === 'open' ? '(now running)' : '(ended)'}
+            </span>
+          </h3>
+          <dl className="space-y-3 text-[15px]">
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Promoter</dt>
+              <dd>Beauticate, in partnership with {gwp.brand}</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">The gift</dt>
+              <dd>{gwp.gift} ({gwp.giftValue})</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">To qualify</dt>
+              <dd>Spend {gwp.minSpend} or more on {gwp.brand} products in a single order</dd>
+            </div>
+            <div>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Available</dt>
+              <dd>While stocks last, from {gwp.started}</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <p>
+            The gift is added to your cart automatically once your order meets the minimum. You do
+            not need a code. The minimum spend is measured on {gwp.brand} products only, not on your
+            order total, so other brands in the same order do not count towards it. Gift cards do not
+            count towards the minimum.
+          </p>
+          <p className="mt-4">
+            One gift per order. Gifts are limited to the number the brand has funded and offered
+            while stocks last, so the promotion may end before any date we have advertised. If your order no
+            longer meets the minimum — because you remove or reduce an item before checking out —
+            the gift is removed from your cart.
+          </p>
+          <p className="mt-4">
+            The gift has no cash value and cannot be exchanged or returned for credit. The{' '}
+            {gwp.gift} is also sold on its own at full price — it is the gift version, given free
+            with a qualifying order, that is limited to this promotion. If the gift becomes
+            unavailable we may substitute one of equal or greater value.
+          </p>
+          <p className="mt-4">
+            Returns are handled under our{' '}
+            <a href="/shop/refund-policy" className="text-ink hover:text-eucalypt transition-colors">Returns &amp; Refunds Policy</a>.
+            If a return leaves your order below the minimum, please send the gift back with it. If
+            you keep the gift, we may deduct its value from your refund — but never more than the
+            refund itself, so a return will never leave you owing us money. This does not apply where
+            an item is faulty, not as described, or your return is otherwise covered by the
+            Australian Consumer Law: in those cases your refund is unaffected and you keep the gift.
+          </p>
+          <p className="mt-4">
+            We may change or end the promotion at any time. Orders already placed are not
+            affected.
+          </p>
+          <p className="mt-4">
+            This is a gift with purchase, not a competition or prize draw. There is no element of
+            chance and no entry: every order meeting the conditions above receives the gift while
+            stocks last.
           </p>
         </section>
 
