@@ -55,9 +55,50 @@ export function getArticleBySlug(slugParts: string[]): {
     ?? (fs.existsSync(productsPath) ? JSON.parse(fs.readFileSync(productsPath, 'utf-8')) : [])
 
   return {
-    frontmatter: parsed.data as ArticleFrontmatter,
-    content: parsed.content,
+    ...closeCompetition(parsed.data as ArticleFrontmatter, parsed.content),
     products,
+  }
+}
+
+/** Everything between these two markers is competition copy, and only that. */
+const COMPETITION_BLOCK =
+  /[ \t]*\{\/\* competition:start \*\/\}[\s\S]*?\{\/\* competition:end \*\/\}\n*/g
+
+/**
+ * Takes an article out of competition mode once its competition has closed.
+ *
+ * A story written around a live giveaway reads badly the day after entries
+ * shut: a headline promising you can win one, and three paragraphs telling you
+ * how to enter something that has finished. Both are set to expire here rather
+ * than relying on someone remembering to come back and strip them out. Nobody
+ * remembers. The Weleda competition page sat declaring itself open for three
+ * weeks after it closed, for exactly that reason, which is why the terms page
+ * now derives its own status from a date too.
+ *
+ * Two opt-in frontmatter fields, and no effect on any article without them:
+ *
+ *   competition_until: '2026-10-31T23:59:59+11:00'   # the close timestamp
+ *   title_after_competition: '8 Reasons Why You...'  # the headline to revert to
+ *
+ * Body copy is fenced with `{/* competition:start *\/}` and
+ * `{/* competition:end *\/}`, which are JSX comments, so they render as
+ * nothing while the competition is live.
+ *
+ * This runs inside getArticleBySlug deliberately. Every card, archive page,
+ * feed, sitemap, schema graph and the article route itself read through that
+ * one function, so the headline reverts everywhere at once and the entry
+ * instructions leave the body before anything downstream can quote them.
+ */
+function closeCompetition(frontmatter: ArticleFrontmatter, content: string) {
+  const until = frontmatter.competition_until
+  if (!until || Date.now() <= Date.parse(until)) return { frontmatter, content }
+
+  return {
+    frontmatter: {
+      ...frontmatter,
+      title: frontmatter.title_after_competition ?? frontmatter.title,
+    },
+    content: content.replace(COMPETITION_BLOCK, ''),
   }
 }
 

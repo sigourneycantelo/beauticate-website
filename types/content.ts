@@ -143,6 +143,16 @@ export interface ArticleFrontmatter {
   showNearbyVenues?: boolean
   isTravelHero?: boolean
 
+  /**
+   * A competition running on this article. Past this timestamp the headline
+   * reverts to `title_after_competition` and every `competition:start` /
+   * `competition:end` block is stripped from the body, so the story stops
+   * advertising a giveaway that has closed. Applied in `getArticleBySlug`,
+   * which every reader of an article goes through.
+   */
+  competition_until?: string          // ISO timestamp with offset, e.g. '2026-10-31T23:59:59+11:00'
+  title_after_competition?: string    // headline once competition_until has passed
+
   // Editorial flags
   published?: boolean          // false = draft/hidden; omitting defaults to published
   draft_reason?: string        // why this is unpublished — required context before ever republishing.
