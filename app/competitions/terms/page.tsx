@@ -3,44 +3,47 @@ import Link from 'next/link'
 import { pastCompetitions } from '../pastCompetitions'
 
 /* ══════════════════════════════════════════════════════════════════════════
-   STATUS — this promotion is LIVE. Entries opened 27 August 2026 and close
-   11:59pm AEST on 10 September 2026. The winner must be drawn and notified
-   on or before 17 September 2026.
+   STATUS — this promotion is NOT YET LIVE. Entries open on the go-live date
+   below and close 11:59pm AEDT on 31 October 2026. Judging 1–5 November 2026.
    ──────────────────────────────────────────────────────────────────────
-   STILL OPEN
-   1. WELEDA LEGAL ENTITY. "Weleda Australia" is the trading name used here.
-      Confirm the registered entity name for the ineligibility and prize
-      partner clauses.
+   STILL OPEN — must be settled before this page goes live
+   1. GO-LIVE DATE. `entryOpen` below reads "[go-live date] 2026". The terms
+      cannot publish with a placeholder in them; a competition has to state
+      when entry opens. Set it to the date the Instagram post publishes.
+   2. LEGAL SENSE-CHECK, and this one is not a formality. See the permit
+      reasoning below: the answer changed when the prize value went up.
+   3. ESCAPE HAVEN LEGAL ENTITY. "Escape Haven" is the trading name used
+      here. Confirm the registered entity for the ineligibility and prize
+      partner clauses, the same open item the Weleda comp carried.
 
-   SETTLED — kept because the reasoning is what the next competition needs
-   • TRADE PROMOTION PERMITS — none required. Checked August 2026; figures
-     come from permit agencies and law-firm guides, not the regulators direct.
-     Total prize pool A$1,050. Thresholds:
-       ACT  — permit if pool over A$3,000   <- lowest, so this is the one that binds
-       SA   — permit if pool over A$5,000, OR any instant-win element at ANY value
-       NT   — permit if pool over A$5,000 (waived if permitted in another state)
-       NSW  — permit if pool over A$10,000
-       Everywhere else — no permit for a standard trade promotion
-     A$1,050 sits under all of them, so `permitNumbers` stays empty — roughly
-     A$1,950 of headroom before ACT bites. Two things would change the answer:
-     raising the prize value, or switching to an instant-win mechanic, which
-     SA treats as permit-requiring at any value, even a A$50 prize. If a permit
-     is ever required its number must be printed in the terms; add it to
-     `permitNumbers` and it renders in the summary box automatically.
-   • PROMOTER STREET ADDRESS — locality only, and that stands. The full
-     address was only ever needed as a permit condition, and no permit is
-     required, so the house rule in legal-copy/0-BRIEF-for-claude-code.md ("no
-     street address anywhere, this is intentional") wins. Revisit only if a
-     future promotion crosses a permit threshold.
-   • PACK CONTENTS — confirmed with Weleda 27 August 2026. The eleven products
-     listed in "The prize" are what actually ships. Sizes stay omitted on
-     purpose: the campaign artwork showed two sizes of both Skin Food and Skin
-     Food Light, and naming a size we are not certain of is the kind of small
-     error that draws a complaint. An out-of-stock item is covered by the
-     equal-value substitution clause under the list.
-   • PRIVACY POLICY — ManyChat is named in /privacy and
-     legal-copy/1-privacy-policy.md, under both service providers and overseas
-     transfer, so the two documents agree about who handles entrant email.
+   TRADE PROMOTION PERMITS — the reasoning changed, read this before copying it
+   The thresholds recorded during the Weleda comp (ACT over A$3,000; SA over
+   A$5,000 or ANY instant-win; NT over A$5,000; NSW over A$10,000) are for
+   trade promotion LOTTERIES, meaning games of CHANCE. Weleda's A$1,050 pool
+   sat under all of them, so the question never had to be answered properly.
+   This prize is A$4,200, which is over the ACT threshold. What keeps it out of
+   permit territory is not the value, it is that this is a game of SKILL:
+   entries are judged on the answer given, and chance plays no part. Skill
+   competitions sit outside the trade promotion lottery permit schemes.
+   That makes the skill framing load bearing rather than cosmetic. It has to be
+   true in practice as well as on the page: a real judging criterion, real
+   judges, judging dates that are kept, and a winner chosen on the merit of
+   the answer. If the mechanic is ever softened back towards a random draw,
+   the ACT threshold bites at this prize value and a permit is required, and
+   its number must be printed in the terms via `permitNumbers`.
+   This is exactly the point to put in front of a lawyer rather than settle
+   from a code comment.
+
+   WORLDWIDE ENTRY — new, no precedent on this site
+   Every previous Beauticate competition was open to Australian residents only.
+   This one is open worldwide, which brings in three things the Australian-only
+   terms never had to address: entrants in jurisdictions where the promotion is
+   prohibited (handled by the "except where prohibited by law" carve-out),
+   entrant data leaving Australia to a prize partner in Indonesia (disclosed in
+   "Your email address and what we do with it"), and a winner who must arrange
+   their own passport, visa and flights (stated in "The prize"). Part Two still
+   invokes the Australian Privacy Principles and the Australian Consumer Law,
+   which is correct: those bind the Promoter wherever the entrant lives.
    ══════════════════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -50,22 +53,30 @@ import { pastCompetitions } from '../pastCompetitions'
    (“General terms”) is identical every competition and rarely changes.
    ══════════════════════════════════════════════════════════════════════════ */
 const comp = {
-  name: '100 Years of Skin Food Giveaway',
+  name: 'Escape Haven Giveaway',
   status: 'open' as 'open' | 'closed',
-  lastUpdated: 'August 2026',
-  entryOpen: '27 August 2026',
-  entryClose: '11:59pm AEST on 10 September 2026',
-  drawBy: '17 September 2026',
-  partner: 'Weleda Australia',
+  lastUpdated: 'October 2026',
+  entryOpen: '[go-live date] 2026',
+  entryClose: '11:59pm AEDT on 31 October 2026',
+  drawBy: '5 November 2026',
+  partner: 'Escape Haven',
   entryMethod:
-    'Follow @beauticate and @weledaaustralia on Instagram, tag two friends in the comments of the competition post, and comment the word ICON. One bonus entry for sharing the post to your Instagram story. We then ask for your email address by direct message so we can contact you if you win',
+    'Follow @beauticate, @sigourneycantelo and @escapehaven on Instagram, comment the word ESCAPE on the competition post together with your answer to why you need this escape, and tag two friends in the comments. We then ask for your email address so we can contact you if you win',
   prize:
-    'One prize of three Weleda Skin Food packs — one for the winner and one for each of the two friends they tagged',
-  prizeValue: 'A$350 per pack · A$1,050 total prize value',
-  /** Locality only — see open item 2 above. */
+    'One 6-night Escape Essentials Retreat for one woman at Escape Haven, Canggu, Bali, in a private Heritage Room',
+  prizeValue: 'A$4,200',
+  /** Locality only — the house rule in legal-copy/0-BRIEF-for-claude-code.md. */
   promoterAddress: 'Sydney, New South Wales, Australia',
-  /** Add permit numbers here once granted, e.g. ['NSW: TP/00000', 'SA: T00/000']. */
+  /**
+   * Empty because this is a game of skill, which sits outside the trade
+   * promotion lottery permit schemes. See the STATUS block: at A$4,200 this
+   * is over the ACT chance threshold, so if the mechanic ever becomes a
+   * random draw a permit is required and its number belongs here.
+   */
   permitNumbers: [] as string[],
+  /** 'skill' or 'chance'. Drives the summary box and the winner section. */
+  winnerChosenBy: 'skill' as 'skill' | 'chance',
+  judgingWindow: '1 and 5 November 2026',
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -237,8 +248,14 @@ export default function CompetitionTermsPage() {
               <dd>Opens {comp.entryOpen}, closes {comp.entryClose}</dd>
             </div>
             <div>
-              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">Draw</dt>
-              <dd>One winner, drawn at random on or before {comp.drawBy} (game of chance)</dd>
+              <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">
+                {comp.winnerChosenBy === 'skill' ? 'Judging' : 'Draw'}
+              </dt>
+              <dd>
+                {comp.winnerChosenBy === 'skill'
+                  ? `One winner, judged on the merit of their answer between ${comp.judgingWindow} (game of skill)`
+                  : `One winner, drawn at random on or before ${comp.drawBy} (game of chance)`}
+              </dd>
             </div>
             <div>
               <dt className="font-sans text-[11px] tracking-[0.15em] uppercase text-charcoal/40">How to enter</dt>
@@ -256,8 +273,9 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">Who can enter</h3>
           <p>
-            Entry is open to residents of Australia aged 18 years and over at
-            the time of entry.
+            Entry is open worldwide to anyone aged 18 years and over at the time
+            of entry, except where entry is prohibited by the law of the place
+            the entrant lives.
           </p>
           <p className="mt-4">
             Entrants must have an Instagram account, and that account must be
@@ -285,47 +303,37 @@ export default function CompetitionTermsPage() {
           <p>Entry is free. To enter, complete all three steps:</p>
           <ol className="mt-4 space-y-2 list-decimal pl-5 marker:text-charcoal/40">
             <li>
-              Follow both{' '}
-              <a
-                href="https://www.instagram.com/beauticate/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-ink hover:text-eucalypt transition-colors"
-              >
-                @beauticate
-              </a>{' '}
+              Follow{' '}
+              <a href="https://www.instagram.com/beauticate/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-eucalypt transition-colors">@beauticate</a>,{' '}
+              <a href="https://www.instagram.com/sigourneycantelo/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-eucalypt transition-colors">@sigourneycantelo</a>{' '}
               and{' '}
-              <a
-                href="https://www.instagram.com/weledaaustralia/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-ink hover:text-eucalypt transition-colors"
-              >
-                @weledaaustralia
-              </a>{' '}
+              <a href="https://www.instagram.com/escapehaven/" target="_blank" rel="noopener noreferrer" className="text-ink hover:text-eucalypt transition-colors">@escapehaven</a>{' '}
               on Instagram.
             </li>
             <li>
-              Tag two friends in the comments of the competition post — friends
-              you think need a skin rescue.
+              Comment the word ESCAPE on the competition post, together with
+              your answer to why you need this escape. The answer is what the
+              judges read, so it is the part that decides the winner.
             </li>
-            <li>Comment the word ICON on the competition post.</li>
+            <li>
+              Tag two friends in the comments who need it too.
+            </li>
           </ol>
           <p className="mt-4">
             An entry is only valid once all three steps have been completed. The
             two tagged friends must be separate Instagram accounts, and must not
-            be the entrant&apos;s own account.
+            be the entrant&apos;s own account. Entrants must also provide a valid
+            email address when prompted.
           </p>
           <p className="mt-4">
-            <strong className="font-normal text-ink">Bonus entry.</strong>{' '}
-            Entrants who also share the competition post to their Instagram
-            story, tagging @beauticate so the share is visible to the Promoter,
-            receive one additional entry in the draw.
+            Sharing the post to an Instagram story is welcome but entirely
+            optional. It earns no additional entry and has no bearing on
+            judging.
           </p>
           <p className="mt-4">
-            One entry per person, plus a maximum of one bonus entry — so no
-            entrant may hold more than two entries. Commenting more than once
-            does not create additional entries.
+            One entry per person. Commenting more than once does not create
+            additional entries, and where someone enters more than once only
+            their first entry is judged.
           </p>
           <p className="mt-4">
             Entries must not be automated, generated in bulk, or submitted
@@ -336,37 +344,51 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">The prize</h3>
           <p>
-            There is one prize, consisting of three Weleda Skin Food packs.
-            Each pack is valued at A$350, giving a total prize value of A$1,050.
+            There is one prize: a 6-night Escape Essentials Retreat for one
+            woman at Escape Haven in Canggu, Bali, staying in a private Heritage
+            Room. The total prize value is A$4,200.
           </p>
-          <p className="mt-4">Each pack contains:</p>
+          <p className="mt-4">The prize includes:</p>
           <ul className="mt-3 space-y-1 list-disc pl-5 marker:text-charcoal/40">
-            <li>Skin Food</li>
-            <li>Skin Food Light</li>
-            <li>Skin Food Body Butter</li>
-            <li>Skin Food Body Lotion</li>
-            <li>Skin Food Shower Cream</li>
-            <li>Skin Food Ultra-Light Dry Oil</li>
-            <li>Skin Food Lip Balm</li>
-            <li>Skin Food Super Serum</li>
-            <li>Skin Food Face Care Nourishing Day Cream</li>
-            <li>Skin Food Face Care Nourishing Night Cream</li>
-            <li>Skin Food Face Care Nourishing Cleansing Balm</li>
+            <li>Six nights&apos; private accommodation in a Heritage Room</li>
+            <li>The Escape Essentials retreat package</li>
+            <li>All nourishing meals, snacks and non-alcoholic drinks</li>
+            <li>The spa and wellness treatments included in that package</li>
+            <li>
+              18 signature wellness experiences, including Pilates, yoga,
+              breathwork, meditation, floating sound healing, wellness
+              workshops, cooking lessons, cultural ceremonies and the sunset
+              beach cacao ceremony
+            </li>
+            <li>Bali airport transfers</li>
           </ul>
           <p className="mt-4">
-            If any product listed above is out of stock at the time of the draw,
-            it will be replaced with another Weleda product of equal value.
+            <strong className="font-normal text-ink">The prize does not include flights.</strong>{' '}
+            Travel to and from Bali, travel insurance, and any treatments,
+            activities or purchases outside the Escape Essentials package are
+            the winner&apos;s own responsibility and at the winner&apos;s own
+            cost.
           </p>
           <p className="mt-4">
-            All three packs are sent to the winner. The prize is meant to be
-            shared: one pack for the winner, and one for each of the two friends
-            they tagged in their winning entry. Passing on those two packs is up
-            to the winner, and the Promoter has no part in it.
+            The winner is responsible for their own passport, visa and any other
+            requirement for entry to Indonesia, and for arranging their own
+            travel. The Promoter and {comp.partner} are not responsible for a
+            winner who cannot travel, and no alternative prize or compensation is
+            offered in that event.
+          </p>
+          <p className="mt-4">
+            The prize is redeemable on selected Escape Haven retreat dates and is
+            subject to availability. {comp.partner} will give the winner a choice
+            of eligible dates and work with her to confirm one that suits.
+          </p>
+          <p className="mt-4">
+            The prize is for one woman. Escape Haven is a women-only retreat, so
+            the prize cannot be taken by a man, and this is a condition of the
+            prize partner rather than of the Promoter.
           </p>
           <p className="mt-4">
             The prize is not transferable, not exchangeable, and cannot be
-            redeemed for cash. The prize is delivered to a single Australian
-            postal address.
+            redeemed for cash.
           </p>
           <p className="mt-4">
             If the prize becomes unavailable for reasons beyond the
@@ -379,22 +401,34 @@ export default function CompetitionTermsPage() {
         <section>
           <h3 className="font-serif text-xl text-ink mb-4">How the winner is chosen</h3>
           <p>
-            This is a game of chance. Skill plays no part in determining the
-            winner.
+            <strong className="font-normal text-ink">This is a game of skill.</strong>{' '}
+            Chance plays no part in determining the winner.
           </p>
           <p className="mt-4">
-            One winner will be drawn at random from all valid entries within
-            7 days of the entry period closing, being on or before{' '}
-            {comp.drawBy}, using a random number generator. The draw will be
-            conducted electronically and no physical draw location applies.
+            Every valid entry is read and judged by the Beauticate team. The
+            winning entry will be the one that, in the judges&apos; opinion, most
+            honestly and movingly answers why the entrant needs this escape.
+            Judging takes place between {comp.judgingWindow}.
           </p>
           <p className="mt-4">
-            The winner will be notified by email and must respond within 48
-            hours of that email being sent. The Promoter may also follow up by
-            Instagram direct message, but the email is the notification and the
-            48 hours run from it. If the winner does not respond within 48
-            hours, cannot be contacted, or is found to be ineligible, that entry
-            is forfeited and a new winner will be drawn by the same method.
+            One winner and two reserve entries are selected on the same basis and
+            at the same time. The reserves are used, in the order they were
+            selected, if the winner forfeits under the paragraph below.
+          </p>
+          <p className="mt-4">
+            Before the prize is awarded, the Promoter will check that the winner
+            met the entry conditions, including that they are following all
+            three accounts and tagged two separate friends. The Promoter checks
+            this for the winner and the reserves only, not for every entrant.
+          </p>
+          <p className="mt-4">
+            The winner will be notified by email within two business days of
+            being selected, and must respond within 48 hours of that email being
+            sent. The Promoter may also follow up by Instagram direct message,
+            but the email is the notification and the 48 hours run from it. If
+            the winner does not respond within 48 hours, cannot be contacted, or
+            is found to be ineligible, that entry is forfeited and the prize goes
+            to the first reserve, then the second.
           </p>
         </section>
 
@@ -403,11 +437,10 @@ export default function CompetitionTermsPage() {
             Your email address and what we do with it
           </h3>
           <p>
-            When you comment to enter, we reply by Instagram direct message and
-            ask for your email address. Those messages are handled by ManyChat,
-            an automated messaging service, and your email address is stored
-            there and in our email platform. We collect it so that we can
-            contact you if you win.
+            Entering asks for your email address, so that we can tell you if you
+            have won. Those messages are handled by ManyChat, an automated
+            messaging service, and your email address is stored there and in our
+            email platform.
           </p>
           <p className="mt-4">
             Giving us your email address is voluntary, but we cannot tell you
@@ -415,25 +448,27 @@ export default function CompetitionTermsPage() {
           </p>
           <p className="mt-4">
             <strong className="font-normal text-ink">
-              Giving us your email address also subscribes you to The Edit
+              Entering subscribes you to email marketing from both Beauticate and
+              Escape Haven
             </strong>
-            , the Beauticate newsletter. You can unsubscribe at any time using
-            the link at the bottom of any email we send you, and we will stop.
-            Your entry in this promotion does not depend on staying subscribed.
+            , and your email address is given to {comp.partner} for that purpose.
+            You can unsubscribe from either at any time using the link at the
+            bottom of any email, and we will stop. Your entry does not depend on
+            staying subscribed to either.
           </p>
           <p className="mt-4">
-            If you win, we will also ask for a postal address so that the prize
-            can be sent to you. Delivery details are shared with {comp.partner}{' '}
-            only for the purpose of fulfilling the prize. Because all three packs
-            go to the winner, the Promoter does not collect any details for the
-            tagged friends.
-          </p>
-          <p className="mt-4">
-            ManyChat and our email platform both store data outside Australia.
-            We handle personal information in accordance with the Australian
-            Privacy Principles and our{' '}
+            {comp.partner} is based in Indonesia, so entering means your email
+            address is disclosed to a recipient outside Australia. ManyChat and
+            our email platform also store data outside Australia. We handle
+            personal information in accordance with the Australian Privacy
+            Principles and our{' '}
             <a href="/privacy" className="text-ink hover:text-eucalypt transition-colors">privacy policy</a>,
             and we do not sell it.
+          </p>
+          <p className="mt-4">
+            If you win, we will also share what {comp.partner} needs in order to
+            book and run your retreat. We collect nothing for the two friends you
+            tag.
           </p>
         </section>
 
@@ -478,10 +513,13 @@ export default function CompetitionTermsPage() {
           </p>
           <p className="mt-4">
             Where the winner does not respond within the period stated in Part
-            One, cannot be contacted, or is found to be ineligible, the Promoter
-            reserves the right to redraw. Any redraw will be conducted
-            electronically by the same method within 5 business days, and the
-            redrawn winner will be notified within two business days.
+            One, cannot be contacted, or is found to be ineligible, that entry is
+            forfeited and the prize passes to another entrant by whichever method
+            Part One sets out for that competition, being a reserve where
+            reserves were selected, or a redraw conducted electronically by the
+            same method where the winner was drawn at random. Either way it
+            happens within 5 business days, and the new winner is notified within
+            two business days.
           </p>
         </section>
 
