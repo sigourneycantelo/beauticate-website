@@ -70,6 +70,8 @@ const comp = {
   entryClose: '11:59pm AEDT on 31 October 2026',
   drawBy: '5 November 2026',
   partner: 'Escape Haven',
+  /** The Instagram post entries are made on. Entry happens there, so the terms link to it. */
+  entryPostUrl: 'https://www.instagram.com/p/Dd81W89y7Cb/',
   entryMethod:
     'Follow @beauticate, @sigourneycantelo and @escapehaven on Instagram, comment the word ESCAPE on the competition post together with your answer to why you need this escape, and tag two friends in the comments. We then ask for your email address so we can contact you if you win',
   prize:
@@ -255,7 +257,8 @@ export default function CompetitionTermsPage() {
               on Instagram.
             </li>
             <li>
-              Comment the word ESCAPE on the competition post, together with
+              Comment the word ESCAPE on{' '}
+              <a href={comp.entryPostUrl} target="_blank" rel="noopener noreferrer" className="text-ink hover:text-eucalypt transition-colors">the competition post</a>, together with
               your answer to why you need this escape. The answer is what the
               judges read, so it is the part that decides the winner.
             </li>
