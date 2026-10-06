@@ -237,6 +237,49 @@ const warn = []
       }
     }
 
+    // 9. An italic intro that repeats the standfirst. The header already prints
+    //    `excerpt` as the standfirst under the headline, so a body that then
+    //    opens with an italic paragraph saying the same thing shows the reader
+    //    one sentence twice, back to back, in the two most prominent slots on
+    //    the page. It happens when the excerpt is lifted from the intro. The
+    //    italic intro is a long-standing convention (95 pre-migration articles
+    //    carry one) and is fine when it adds something: context, a disclosure,
+    //    who is speaking. Post-migration articles only, for the same reason as
+    //    check 6: the archive's overlaps are old and nobody is going to revisit them.
+    if (Number.isFinite(Date.parse(f.date_published)) && Date.parse(f.date_published) >= MIGRATION && f.excerpt) {
+      const firstPara = body.trim().split(/\n\s*\n/).map(p => p.trim()).find(p => p && !/^[<!{]/.test(p)) ?? ''
+      const italic = /^\*[^*][\s\S]*\*$/.test(firstPara) && firstPara.split('\n').length < 4
+      if (italic) {
+        const tokens = s => s.toLowerCase().replace(/[^a-z0-9\s']/g, ' ').split(/\s+/).filter(Boolean)
+        const a = tokens(f.excerpt), b = tokens(firstPara)
+        // Two ways to repeat. Either the intro is mostly the excerpt's words
+        // (share of the INTRO's words already in the excerpt: a long intro that
+        // merely contains the excerpt's vocabulary still adds plenty, as Colette
+        // Harvey's does), or it lifts a run of the excerpt word for word and
+        // then pads it, which is how the Nook review did it.
+        const inExcerpt = new Set(a)
+        const share = b.filter(w => inExcerpt.has(w)).length / Math.max(1, b.length)
+        let run = 0
+        const prev = new Array(b.length + 1).fill(0)
+        for (let i = 1; i <= a.length; i++) {
+          let diag = 0
+          for (let j = 1; j <= b.length; j++) {
+            const keep = prev[j]
+            prev[j] = a[i - 1] === b[j - 1] ? diag + 1 : 0
+            if (prev[j] > run) run = prev[j]
+            diag = keep
+          }
+        }
+        const overlap = Math.max(share, run >= 8 ? 1 : 0)
+        if (overlap >= 0.6) {
+          warn.push(
+            `${rel} — the italic intro repeats the standfirst (${run >= 8 ? `${run} words in a row are identical` : `${Math.round(share * 100)}% of its words are already in it`}). ` +
+            `The header already shows the excerpt, so the intro has to add something it does not.`
+          )
+        }
+      }
+    }
+
     const prose = body.split('\n').map(l => l.trim()).filter(
       t => t && !t.startsWith('<') && !/\b(price|handle|productPrice|src|url)=/.test(t)
     )

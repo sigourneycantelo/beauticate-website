@@ -60,7 +60,7 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 - `title` — the article headline
 - `slug` — URL-safe, matches directory name
 - `category` and `subcategory` — from category mapping
-- `excerpt` — 1-2 sentence summary for cards/feeds
+- `excerpt` — 1-2 sentence summary for cards/feeds. **It is also printed as the standfirst under the headline.** If the body opens with an italic intro (a disclosure, a "who is speaking" line, an editor's framing), the excerpt must not be that sentence lifted out, and the intro must add something the standfirst doesn't. The same line twice in a row, in the two most prominent slots on the page, is the failure. No italic intro is needed if there is nothing to add.
 - `featured_image` — **portrait** thumbnail (~3:4), used for grid cards site-wide: `/content/<category>/<subcategory>/<slug>/<portrait-crop>.jpg`
 - `featured_image_alt` — descriptive alt text for the portrait thumbnail
 - `featured_image_caption` — format: `"Article Title - subcategory feature on Beauticate"`

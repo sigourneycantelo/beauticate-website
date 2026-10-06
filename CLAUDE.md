@@ -356,6 +356,8 @@ When the publication needs to add its own words to someone else's first-person s
 
 Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
 
+**An italic opening paragraph must add to the header standfirst, never repeat it.** The header prints `excerpt` under the headline, so an intro that says the same thing shows the reader one sentence twice in a row. The italic intro is an old convention (95 pre-migration articles carry one), not a new feature; the repeat only appears when the excerpt is lifted from the intro. Give the intro something new (context, a disclosure, who is speaking) or drop it. `check-editorial-integrity.mjs` warns on post-migration overlaps.
+
 ### The byline is checked on every build
 
 `scripts/check-editorial-integrity.mjs` runs at the top of `npm run build`. A published article with **no author fails the build** — that one is never a judgement call. It also warns, without failing, about a byline that resolves to nobody in `lib/authors.ts` (no bio, no author page, and the RSS feed reports it as a guest post by default); the house byline on a piece whose own standfirst names a contributor; a published article whose URL permanently redirects away, which is what leaving the original behind after a re-file looks like; and a `featured_image` over 2MB, which is the card image on every archive page.

@@ -150,6 +150,7 @@ So on every new article:
   guarantees it is emitted. The type survives fine without it, off title and
   tags. **69 published articles currently set it** — an open issue, not a
   pattern to copy.
+- **The italic intro must add to the standfirst, never repeat it.** `excerpt` is printed as the standfirst under the headline, so an italic opening paragraph that says the same thing shows it twice back to back. Write the excerpt as its own sentence; give the intro something new (context, disclosure, who is speaking) or leave it out. `check-editorial-integrity.mjs` warns on post-migration articles where they overlap.
 - **Never put words in the author's mouth.** In a bylined first-person piece,
   don't invent sentences to carry an internal link. Weave the link onto words
   the author actually wrote, or mark it as Beauticate's voice:
