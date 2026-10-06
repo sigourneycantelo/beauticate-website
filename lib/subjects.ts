@@ -50,6 +50,7 @@ export function buildSubjectNodes(subjects: Subject[], siteUrl: string): Record<
     '@type': 'Person',
     '@id': subjectId(s.name, siteUrl),
     name: s.name,
+    ...(s.alternate_name?.length ? { alternateName: s.alternate_name } : {}),
     ...(s.job_title ? { jobTitle: s.job_title } : {}),
     ...(s.same_as?.length ? { sameAs: s.same_as } : {}),
   }))
