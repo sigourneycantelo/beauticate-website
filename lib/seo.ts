@@ -1,5 +1,6 @@
 import type { ArticleFrontmatter, VodcastFrontmatter } from '@/types/content'
 import { getAuthor, buildPersonSchema } from '@/lib/authors'
+import { resolveSubjects, buildSubjectNodes, subjectId } from '@/lib/subjects'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
 const SITE_NAME = 'Beauticate'
@@ -156,6 +157,8 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
     ? buildPersonSchema(authorData, SITE_URL)
     : { '@type': 'Person', name: f.author ?? 'Beauticate Editorial', url: `${SITE_URL}/about` }
 
+  const subjects = resolveSubjects(f)
+
   const articleNode = {
     '@type': schemaType,
     '@id': `${articleUrl}#article`,
@@ -175,6 +178,9 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
       '@type': 'SpeakableSpecification',
       cssSelector: ['h1', '.article-excerpt', '.article-body p:first-of-type'],
     },
+    // Who the story is about. `about`, not `interviewee`: true of an interview
+    // and equally of a beauty-icon profile of someone we never spoke to.
+    ...(subjects.length ? { about: subjects.map(s => ({ '@id': subjectId(s.name, SITE_URL) })) } : {}),
     ...(schemaType === 'NewsArticle' ? { dateline: 'Sydney, Australia', printEdition: SITE_NAME } : {}),
     // Review-specific fields (only emitted when the article supplies a rating)
     ...(schemaType === 'Review' && f.review_rating
@@ -226,7 +232,7 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
       : {}),
   }
 
-  const graph: object[] = [articleNode]
+  const graph: object[] = [articleNode, ...buildSubjectNodes(subjects, SITE_URL)]
 
   // The QuickAnswer box is the article's direct answer to the query it targets,
   // so it leads the FAQPage rather than sitting after the frontmatter FAQs.
@@ -488,6 +494,31 @@ export function buildVodcastMetadata(f: VodcastFrontmatter, url: string) {
   }
 }
 
+function buildPodcastSeriesNode(person: object) {
+  return {
+    '@type': 'PodcastSeries',
+    '@id': `${SITE_URL}/podcast#series`,
+    name: PODCAST.series,
+    url: PODCAST.seriesUrl,
+    description: 'Sigourney Cantelo in conversation with the experts, founders and thought leaders shaping how we live.',
+    inLanguage: 'en-AU',
+    sameAs: PODCAST.sameAs,
+    author: person,
+    publisher: ORGANIZATION_SCHEMA,
+  }
+}
+
+// JSON-LD for the /podcast hub. Episode pages already point partOfSeries at
+// this @id; until the hub declared the node itself, the series was only ever
+// defined inside each episode.
+export function buildPodcastSeriesSchema() {
+  const host = getAuthor('Sigourney Cantelo')
+  const person = host
+    ? buildPersonSchema(host, SITE_URL)
+    : { '@type': 'Person', name: 'Sigourney Cantelo', url: `${SITE_URL}/about` }
+  return { '@context': 'https://schema.org', '@graph': [buildPodcastSeriesNode(person)] }
+}
+
 // JSON-LD @graph for a podcast episode: PodcastSeries + PodcastEpisode +
 // Article (the written write-up) + VideoObject + FAQPage + BreadcrumbList,
 // all carrying author Person + publisher Organization for E-E-A-T / AEO / GEO.
@@ -504,15 +535,12 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     ? buildPersonSchema(host, SITE_URL)
     : { '@type': 'Person', name: 'Sigourney Cantelo', url: `${SITE_URL}/about` }
 
-  const seriesNode = {
-    '@type': 'PodcastSeries',
-    '@id': `${SITE_URL}/podcast#series`,
-    name: PODCAST.series,
-    url: PODCAST.seriesUrl,
-    sameAs: PODCAST.sameAs,
-    author: person,
-    publisher: ORGANIZATION_SCHEMA,
-  }
+  const seriesNode = buildPodcastSeriesNode(person)
+
+  // Guests, from data/article-subjects.json (key: vodcast/episodes/<slug>).
+  // `actor` is schema.org's own property for the people who appear in an
+  // episode; the host stays `author`.
+  const guests = resolveSubjects({ category: 'vodcast', subcategory: 'episodes', slug: f.slug, subjects: f.subjects })
 
   const episodeNode: Record<string, unknown> = {
     '@type': 'PodcastEpisode',
@@ -526,6 +554,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     author: person,
     publisher: ORGANIZATION_SCHEMA,
     image: { '@type': 'ImageObject', url: imageUrl },
+    ...(guests.length ? { actor: guests.map(g => ({ '@id': subjectId(g.name, SITE_URL) })) } : {}),
   }
   if (audioUrl) {
     episodeNode.associatedMedia = { '@type': 'AudioObject', contentUrl: audioUrl, encodingFormat: 'audio/mpeg' }
@@ -552,7 +581,7 @@ export function buildVodcastSchema(f: VodcastFrontmatter, url: string, audioUrl?
     },
   }
 
-  const graph: object[] = [seriesNode, episodeNode, articleNode]
+  const graph: object[] = [seriesNode, episodeNode, articleNode, ...buildSubjectNodes(guests, SITE_URL)]
 
   if (f.youtube_video_id) {
     graph.push({

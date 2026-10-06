@@ -3,6 +3,7 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 import type { VodcastFrontmatter } from '@/types/content'
 import { getVodcastEpisodes } from '@/lib/content'
+import { buildPodcastSeriesSchema } from '@/lib/seo'
 import styles from './podcast.module.css'
 import PodcastReveal from '@/components/vodcast/PodcastReveal'
 import StickyPlayer from '@/components/vodcast/StickyPlayer'
@@ -165,6 +166,11 @@ export default function VodcastPage() {
 
   return (
     <div className={styles.podcastPage}>
+      {/* Plain <script>, not next/script: next/script withholds JSON-LD from the served HTML. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildPodcastSeriesSchema()) }}
+      />
       <PodcastReveal revClass={styles.rev} inClass={styles.in} />
 
       {/* ===== HERO (latest episode) ===== */}

@@ -54,7 +54,7 @@ it was cross-checking against the Wikidata item, which also turned up a Facebook
 profile and a YouTube channel ID our codebase didn't know about. We've automated
 that check so it can't drift again.
 
-**Where we're stuck:** my 6 Jasmine and 6 Star Beauty Awards can't go on
+**Where we're stuck:** my 2 Jasmine and 6 Star Beauty Awards can't go on
 Wikidata. P166 needs an item value and neither award exists as a Wikidata item —
 both would have to be created and independently sourced first. Carrying them in
 the site's own Person schema for now.

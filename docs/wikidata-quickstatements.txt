@@ -18,7 +18,7 @@
 ### notability review, which is what deleted Doug Lord's entry.
 ###
 ### NOT INCLUDED, and why:
-###   - P166 (award received) for the 6 Jasmine and 6 Star Beauty Awards.
+###   - P166 (award received) for the 2 Jasmine and 6 Star Beauty Awards.
 ###     P166 requires an ITEM value, and no Wikidata items exist for either
 ###     award. They must be created first, each needing independent sourcing.
 ###     See the notes at the bottom of this file.
@@ -136,13 +136,12 @@ Q139644159	P106	Q106568011	S854	"https://www.beautydirectory.com.au/news/magazin
 ### STAR BEAUTY AWARDS: no comparable sourcing found yet. Leave in site schema
 ### only until something citable turns up.
 ###
-### AWARD COUNT -- SETTLED: SIX.
-### Confirmed by Sigourney, 17 Aug 2026, against her original bio. Some
-### secondary coverage still says FIVE; that is out of date and should not be
-### treated as authoritative. app/about/page.tsx already says six (corrected in
-### commit aeb062d3e), so the site and the source of truth now agree.
-### Canonical wording: six Jasmine Awards, two of them for Journalistic
-### Excellence (2010 and 2014), plus six Star Beauty Awards.
+### AWARD COUNT -- SETTLED: TWO JASMINE, SIX STAR BEAUTY.
+### Corrected by Sigourney, 6 Oct 2026: she has TWO Jasmine Awards (2010 and
+### 2014). An earlier version of this note said six, "confirmed 17 Aug 2026";
+### that was wrong and the site copy that followed it has been corrected.
+### Canonical wording: two Jasmine Awards (2010 and 2014), plus six Star
+### Beauty Awards.
 ###
 ### RECOMMENDATION: site schema now (already done, zero risk); create the
 ### Jasmine Awards item as a separate, unhurried piece of work. Do not rush it
