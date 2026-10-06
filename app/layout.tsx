@@ -99,7 +99,7 @@ const orgSchema = {
       url: 'https://www.beauticate.com',
       logo: { '@type': 'ImageObject', url: 'https://www.beauticate.com/logo-dark.png' },
       foundingDate: '2014',
-      description: 'Beauticate is an Australian beauty, wellness and lifestyle publisher founded by Sigourney Cantelo.',
+      description: 'Beauticate is an Australian beauty, wellness and lifestyle publisher founded in 2014 by Sigourney Cantelo, former Beauty & Health Director of Vogue Australia.',
       inLanguage: 'en-AU',
       areaServed: 'AU',
       taxID: '71 105 175 317',
