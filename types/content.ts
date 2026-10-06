@@ -50,6 +50,8 @@ export interface Subject {
   name: string
   same_as?: string[]
   job_title?: string
+  /** Maiden or former names the archive uses for the same person (e.g. Heinrich / Robards). */
+  alternate_name?: string[]
 }
 
 export interface ArticleFrontmatter {
