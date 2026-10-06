@@ -1,32 +1,14 @@
-import Script from 'next/script'
 import ShopSubNav, { type SubNavItem } from '@/components/shop/ShopSubNav'
 import { getCollections, brandsFromCollections } from '@/lib/shopify'
 import { BROAD_CATEGORIES, MOOD_MOMENTS } from '@/lib/shop-taxonomy'
 import { getArticleMoments } from '@/lib/article-moments'
 import { getCuratorCollections } from '@/lib/curator-collections'
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com'
-
-const shopOrgSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Beauticate',
-  url: SITE,
-  logo: { '@type': 'ImageObject', url: `${SITE}/logo-dark.png` },
-  description: 'Australia\'s most trusted independent beauty publisher. Beauticate Shop is the curated beauty and wellness edit, chosen by editors and experts.',
-  // @id ties this back to the canonical Person node declared sitewide in
-  // app/layout.tsx, rather than asserting a second, separate Sigourney.
-  founder: { '@type': 'Person', '@id': `${SITE}/#sigourney-cantelo`, name: 'Sigourney Cantelo', url: `${SITE}/about` },
-  sameAs: [
-    'https://www.instagram.com/beauticate/',
-    'https://www.facebook.com/beauticate',
-    'https://www.linkedin.com/company/beauticate.com',
-    // @beauticate 404s — see app/layout.tsx. Canonical channel-ID form.
-    'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
-    'https://au.pinterest.com/beauticate/',
-    'https://www.wikidata.org/wiki/Q139643093',
-  ],
-}
+// No Organization JSON-LD here. This layout used to declare a second Organization
+// (no @id, different description) through next/script, which never reached the
+// served HTML. Emitting it properly would have put two competing declarations of
+// Beauticate on every /shop page; the one sitewide graph in app/layout.tsx is the
+// single source of truth for the entity.
 
 export default async function ShopLayout({ children }: { children: React.ReactNode }) {
   const collections = await getCollections(100)
@@ -53,9 +35,6 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
 
   return (
     <>
-      <Script id="shop-org-schema" type="application/ld+json" strategy="beforeInteractive">
-        {JSON.stringify(shopOrgSchema)}
-      </Script>
       <ShopSubNav category={category} brands={brands} moments={moments} curators={curators} />
       {children}
     </>
