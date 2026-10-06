@@ -66,9 +66,16 @@ mechanical pass on one article.
 
 The short version of the gap: metadata coverage is ~99%, because a script can
 generate a title and a description. `<QuickAnswer>` — the 40-60 word direct
-answer that wins AI Overview citations — is on **6 of 1,848 articles**. That one
+answer that wins AI Overview citations — is on **8 of ~1,860 articles**. That one
 box is the highest-leverage thing on any new story, and it has to be written,
 not generated.
+
+**It must carry a `question`.** `<QuickAnswer question="...">` renders the
+question as a heading and is what turns the box into a Q&A pair in the page's
+FAQPage schema (`extractQuickAnswer` in `lib/seo.ts`). Without it the box is an
+unlabelled callout that declares nothing to answer engines. MDX props are not
+type-checked, so `check-editorial-integrity.mjs` fails the build on a published
+article whose box has none.
 
 ## Ongoing article cleanup
 
