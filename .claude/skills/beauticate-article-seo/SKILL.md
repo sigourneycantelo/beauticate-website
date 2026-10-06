@@ -126,7 +126,16 @@ So on every new article:
    is a date set at point of sale, never a bulk pass.
 5. **Focus keyphrase**, and whether this is a refresh (bumps `date_modified`).
 6. **Shop products** to feature, by handle.
-7. **Is this a top performer?** If so, **do not change the URL** without a
+7. **Who is the story about?** For an interview, a profile or a beauty-icon
+   piece, ask for the person's full name as they want it written, and set
+   `subjects:` in frontmatter (`- name: "…"`, optional `same_as:` with their
+   Wikidata / IMDb / own Instagram URL, and only a URL you have opened and
+   confirmed is *them*). That emits a Person node linked from the article.
+   Never infer it from the title, and never assume an `interviews/` story is
+   an interview: the beauty-icon series (Diana, Stevie Nicks...) are profiles
+   of people we never spoke to. `subjects` says who it is about, not how we
+   know them. The back catalogue lives in `data/article-subjects.json`.
+8. **Is this a top performer?** If so, **do not change the URL** without a
    redirect and explicit sign-off.
 
 ---

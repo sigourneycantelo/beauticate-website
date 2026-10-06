@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
@@ -181,8 +180,10 @@ export default async function EpisodePage({ params }: Props) {
 
   return (
     <>
-    <Script
-      id="schema-vodcast-episode"
+    {/* Plain <script>, NOT next/script: next/script queues the tag for client-side
+        injection, so the served HTML carried no PodcastEpisode/PodcastSeries/Video/FAQ
+        markup at all. See app/layout.tsx for the same fix on the sitewide graph. */}
+    <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(episodeSchema) }}
     />

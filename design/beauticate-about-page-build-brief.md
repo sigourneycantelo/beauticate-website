@@ -38,7 +38,7 @@ Do not hyperlink the whole panel. It is a credentials block, so a whole-block li
 
 Cleaned panel copy (em dashes removed to match house style):
 
-> Sigourney Cantelo is the founder and publisher of Beauticate. With over 25 years across print, digital and broadcast, including her tenure as Beauty & Health Director at Vogue Australia and regular appearances on Sunrise and the Today show as a beauty and style commentator, she is one of Australia's most recognised voices in beauty, health and wellness media. Her work has appeared in Body + Soul, marie claire, Sunday Life and numerous Australian and international publications. She is a six-time Star Beauty Award winner and a five-time Jasmine Award recipient, including twice winning the Jasmine Award for Journalistic Excellence.
+> Sigourney Cantelo is the founder and publisher of Beauticate. With over 25 years across print, digital and broadcast, including her tenure as Beauty & Health Director at Vogue Australia and regular appearances on Sunrise and the Today show as a beauty and style commentator, she is one of Australia's most recognised voices in beauty, health and wellness media. Her work has appeared in Body + Soul, marie claire, Sunday Life and numerous Australian and international publications. She is a six-time Star Beauty Award winner and a two-time Jasmine Award winner.
 >
 > She founded Beauticate in 2014 as an independent editorial platform, with the depth and rigour of a major masthead and the freedom of something entirely her own. Today it reaches 3.1 million monthly touchpoints across editorial, podcast, newsletter, Instagram and e-commerce.
 

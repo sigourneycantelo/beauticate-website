@@ -126,7 +126,7 @@ Supporting facts, all verifiable and all worth designing around:
 - 25 years across print, digital and broadcast
 - Former **Beauty & Health Director, Vogue Australia** (approx. six years)
 - Founder of **Beauticate** (2014), reaching ~3.1 million monthly touchpoints
-- **Six Jasmine Awards**, including twice winning the Jasmine Award for Journalistic Excellence (2010 and 2014)
+- **Two Jasmine Awards** (2010 and 2014). Corrected by Sig 6 Oct 2026: two, not six
 - **Six Star Beauty Awards**
 - Regular TV commentator: Sunrise, the Today show, A Current Affair, Nine News, Channel 10's The Circle (resident beauty expert)
 - Has hosted events for Chanel and Dior at Vogue's Fashion's Night Out, plus Myer, Clinique and Bobbi Brown
@@ -134,7 +134,7 @@ Supporting facts, all verifiable and all worth designing around:
 - BA Communications, UTS, graduated with a Distinction average
 - Host of the podcast *Beautiful Inside by Beauticate*, 44 episodes
 
-Tone: warm, expert, unstuffy. She is genuinely senior and genuinely approachable, and the design should not pick only one of those. Avoid clinical-luxury minimalism (reads cold, and Beauticate already owns restrained) and avoid influencer-bright (undersells 25 years and six Jasmine Awards).
+Tone: warm, expert, unstuffy. She is genuinely senior and genuinely approachable, and the design should not pick only one of those. Avoid clinical-luxury minimalism (reads cold, and Beauticate already owns restrained) and avoid influencer-bright (undersells 25 years and two Jasmine Awards).
 
 ---
 

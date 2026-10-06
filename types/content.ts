@@ -36,7 +36,25 @@ export interface FAQ {
   answer: string
 }
 
+/**
+ * A person a story is about. Declared once per story and emitted as a Person
+ * node linked from the article. `about` is true of an interview AND of a
+ * profile of someone who was never interviewed (the beauty-icon pieces), so
+ * this deliberately says nothing about HOW we know them.
+ *
+ * `same_as` takes only URLs that unambiguously identify this person (Wikidata,
+ * IMDb, their own Instagram). A wrong one silently merges our subject into a
+ * stranger's entity, which is worse than none.
+ */
+export interface Subject {
+  name: string
+  same_as?: string[]
+  job_title?: string
+}
+
 export interface ArticleFrontmatter {
+  /** Overrides data/article-subjects.json for this story. */
+  subjects?: Subject[]
   title: string
   slug: string
   author: string
@@ -212,6 +230,8 @@ export interface ArticleFrontmatter {
 }
 
 export interface VodcastFrontmatter {
+  /** Overrides data/article-subjects.json for this episode's guests. */
+  subjects?: Subject[]
   title: string
   slug: string
   date_published: string
