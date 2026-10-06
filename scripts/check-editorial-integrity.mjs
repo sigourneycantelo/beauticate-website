@@ -270,10 +270,10 @@ const warn = []
             diag = keep
           }
         }
-        const overlap = Math.max(share, run >= 8 ? 1 : 0)
+        const overlap = Math.max(share, run >= 12 ? 1 : 0)
         if (overlap >= 0.6) {
           warn.push(
-            `${rel} — the italic intro repeats the standfirst (${run >= 8 ? `${run} words in a row are identical` : `${Math.round(share * 100)}% of its words are already in it`}). ` +
+            `${rel} — the italic intro repeats the standfirst (${run >= 12 ? `${run} words in a row are identical` : `${Math.round(share * 100)}% of its words are already in it`}). ` +
             `The header already shows the excerpt, so the intro has to add something it does not.`
           )
         }
