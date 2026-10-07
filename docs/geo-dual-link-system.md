@@ -53,7 +53,7 @@ Resolution order, first hit wins:
 1. `products` — a hand-picked intl link for that exact product (hero tier).
 2. `brands` — the brand's own intl store, keyed by the AU link's host.
 3. `retailerMap` — AU retailer to intl retailer search, keyed by AU host.
-4. nothing — the AU link is left bare and Skimlinks monetises it.
+4. nothing — the AU link is left as it is. It earns nothing unless it is a tracked link.
 
 ```jsonc
 "products": {
@@ -72,7 +72,7 @@ Resolution order, first hit wins:
 ```
 
 Matching is by **destination URL**, not by slug, so the same product resolves
-whether the article links to it bare or through a Skimlinks, Commission Factory,
+whether the article links to it bare or through a Skimlinks (legacy), Commission Factory,
 Impact, Awin or Partnerize wrapper. Use `auUrls: []` when one product is linked
 several different ways.
 
@@ -98,7 +98,7 @@ US/UK mapping (Mecca and Adore to Sephora US or Dermstore, Chemist Warehouse and
 Priceline to Ulta, David Jones and Myer to Nordstrom, The Iconic to Revolve) but
 **none of them are verified yet**. Until someone runs the script on an
 unrestricted network, every one of them is inert and the long tail simply stays
-on its AU link for Skimlinks.
+on its AU link.
 
 ## The shop for international visitors
 
@@ -118,11 +118,19 @@ The shop is never hidden. `shop.byHandle` wins over `shop.byVendor`.
 
 ## Skimlinks
 
-The Skimlinks/Sovrn script (publisher `265664X1750758`) is loaded site-wide in
-`app/layout.tsx`. It auto-monetises bare retailer links, which is the long tail
-we have not hand-mapped. It deliberately does **not** replace the money links:
-Partnerize on Adore Beauty and Sephora AU, and the direct brand programmes, pay
-better and stay exactly as they are.
+**Removed in October 2026.** The Skimlinks/Sovrn script (publisher
+`265664X1750758`) used to load site-wide as a catch-all for bare retailer links.
+It earned nothing, and it was a standing risk: any direct-deal link it did not
+recognise as already tracked got rewritten to `go.skimresources.com` (the Nook
+review's `nooksaunas.com.au/BEAUTICATE` was). With the script gone nothing
+rewrites our links, so a direct link stays direct.
+
+To bring it back, restore the `<Script id="skimlinks" …>` tag in
+`app/layout.tsx`. The `noskim` helpers in `lib/affiliate-links.ts` are now inert
+and can be deleted in a later cleanup; `isDirectDeal` still puts
+`rel="sponsored"` on inline links to direct-deal brands, which is still wanted.
+Hand-wrapped `go.skimresources.com` links already inside three articles are
+ordinary links and are unaffected.
 
 ## Testing a country locally
 
