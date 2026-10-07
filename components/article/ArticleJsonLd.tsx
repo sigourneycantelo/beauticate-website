@@ -1,5 +1,6 @@
 import type { ArticleFrontmatter } from '@/types/content'
 import { buildArticleSchema, buildBreadcrumbSchema, buildLocalBusinessSchema } from '@/lib/seo'
+import { resolveArticleEpisode } from '@/lib/content'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -24,7 +25,17 @@ interface Props {
  */
 export default function ArticleJsonLd({ frontmatter: f, segments, content }: Props) {
   const url = `/${segments.join('/')}`
-  const articleSchema = buildArticleSchema(f, url, f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })), content)
+  // A companion episode strip is a video the body never embeds, so the body scan
+  // cannot see it. Pass its id explicitly or the page renders a player and
+  // declares no VideoObject (the drift CLAUDE.md warns about; it was lost when
+  // this component was split out of the 3-level route).
+  const articleSchema = buildArticleSchema(
+    f,
+    url,
+    f.faqs?.map(faq => ({ q: faq.question, a: faq.answer })),
+    content,
+    resolveArticleEpisode(f)?.youtubeId,
+  )
   const localBusinessSchema = buildLocalBusinessSchema(f, url)
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: '/' },
