@@ -85,6 +85,14 @@ export default async function AuthorPage({ params }: { params: Promise<{ slug: s
                   LinkedIn
                 </a>
               )}
+              {/* A visible outbound link carries more weight than a sameAs
+                  entry alone, and this is the only place on the site that
+                  points at the author's own domain. */}
+              {author.website && (
+                <a href={author.website} target="_blank" rel="noopener noreferrer" className="hover:text-charcoal transition-colors">
+                  Personal site
+                </a>
+              )}
             </div>
           )}
         </div>
