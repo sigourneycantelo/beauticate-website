@@ -117,6 +117,52 @@ export const HUBS: Record<string, Hub> = {
       },
     ],
   },
+
+  'beauty-style/skin-care': {
+    path: 'beauty-style/skin-care',
+    eyebrow: 'The skincare edit',
+    answer:
+      "Beauticate's skincare coverage is honest reviews, readers' trials and expert advice on what is worth your money, from at-home micro-infusion and La Mer to French pharmacy brands and rules for older skin, with guidance from facialist Jocelyn Petroni, Beauticate's Skin Editor, and cosmetic physician Dr Leanne Girgis.",
+    body: [
+      'Skincare is easy to overspend on, so we try to tell you plainly what is worth it and what is not.',
+      "Here you will find our reviews of luxury and pharmacy-shelf products, at-home treatments such as micro-infusion, and readers' trials, where a Beauticate Trial Team uses a product in their own bathrooms over a real testing period and reports back honestly.",
+      "When a question needs more than a reviewer's opinion, we ask our Skin Editor, [Jocelyn Petroni](/author/jocelyn-petroni), a facialist with more than 25 years of experience, or [Dr Leanne Girgis](/author/dr-leanne-girgis), a general practitioner and cosmetic physician.",
+      'We accept products for consideration but not payment for a positive review. How we decide what to review, and how brands can submit a product, is on the [How We Review](/how-we-review) page.',
+    ],
+    startHereTitle: 'Start here',
+    startHere: [
+      'beauty-style/skin-care/micro-infusion-at-home',
+      'beauty-style/skin-care/qure-micro-infusion-system-review',
+      'beauty-style/skin-care/i-tried-chanels-new-range-for-a-month',
+      'beauty-style/skin-care/byredo-hand-cream-review-is-it-worth-it',
+      'beauty-style/skin-care/rose-marie-swifts-10-beauty-rules-for-older-skin',
+      'beauty-style/skin-care/la-mer-the-concentrate-reviews',
+      'beauty-style/skin-care/luxury-skincare-review',
+      'beauty-style/skin-care/i-was-about-to-get-botox-and-tried-this-instead-2',
+    ],
+    faqs: [
+      {
+        question: 'Who advises on skincare at Beauticate?',
+        answer:
+          "[Jocelyn Petroni](/author/jocelyn-petroni), Beauticate's Skin Editor and a facialist with more than 25 years of experience, and [Dr Leanne Girgis](/author/dr-leanne-girgis), a general practitioner and cosmetic physician.",
+      },
+      {
+        question: 'How does Beauticate review skincare?',
+        answer:
+          "Products go through the editorial team and, where relevant, Beauticate's contributing experts before anything is written. We do not accept payment for a positive review. Details are on the [How We Review](/how-we-review) page.",
+      },
+      {
+        question: 'What are Beauticate Trial Teams?',
+        answer:
+          'Panels of real Beauticate readers, not staff, who use a product in their own homes over a real testing period and report back honestly. See [Real Results: 4 Beauticate Readers Trial the Qure Micro-Infusion System](/beauty-style/skin-care/qure-micro-infusion-system-review).',
+      },
+      {
+        question: 'How often should you use at-home micro-infusion?',
+        answer:
+          'Most at-home micro-infusion systems are made for once every two to four weeks, not daily, because skin needs time to recover between sessions. Read [our honest review](/beauty-style/skin-care/micro-infusion-at-home).',
+      },
+    ],
+  },
 }
 
 export function getHub(...parts: string[]): Hub | undefined {
