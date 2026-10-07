@@ -2,6 +2,8 @@ import { getArticlesByCategory } from '@/lib/content'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import EditorialSections from '@/components/shared/EditorialSections'
+import HubIntro from '@/components/hubs/HubIntro'
+import { HUBS } from '@/lib/hubs'
 
 export const metadata: Metadata = {
   title: 'Interviews',
@@ -36,6 +38,8 @@ export default async function InterviewsPage() {
           Browse A–Z index
         </Link>
       </section>
+
+      <HubIntro hub={HUBS.interviews} />
 
       <EditorialSections articles={articles} />
     </>

@@ -7,6 +7,8 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
 import EditorialSections from '@/components/shared/EditorialSections'
+import HubIntro from '@/components/hubs/HubIntro'
+import { getHub } from '@/lib/hubs'
 
 interface Props { params: Promise<{ category: string; subcategory: string }> }
 
@@ -108,6 +110,11 @@ export default async function SubcategoryOrArticlePage({ params }: Props) {
           {subcategory.replace(/-/g, ' ')}
         </h1>
       </div>
+
+      {(() => {
+        const hub = getHub(category, subcategory)
+        return hub ? <HubIntro hub={hub} /> : null
+      })()}
 
       <EditorialSections articles={articles as any} shopProducts={shopProducts} />
     </>
