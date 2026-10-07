@@ -94,6 +94,20 @@ So on every new article:
   the single highest-leverage element for AI Overviews, and it cannot be
   bulk-generated later because it has to be *right*.
 
+  **How to write one** (the uploader doesn't; Claude does, from the article):
+  1. **Pick the question.** Use the query Sig or the uploader named if there is
+     one; otherwise the one the article's `focus_keyphrase` is really asking,
+     phrased the way a reader would type it ("How much does an infrared sauna
+     cost to run at home?", not "Nook Elite running costs").
+  2. **Answer that question, and only that.** The answer must actually answer
+     the question as asked, in plain prose, in the first sentence. Facts that are
+     already in the article; nothing new, nothing invented.
+  3. **No promotion and no personal testimonial in the box.** No discount codes,
+     no "I loved it", no efficacy or health claims for a therapeutic good. It is
+     also copied into the page's Q&A schema, so it is quoted out of context.
+  4. **Count the words (40-60)** and check it doesn't just restate the excerpt,
+     which the header already prints.
+
   **The `question` is not decoration.** Snippet and AI extraction both look for
   a heading matching the query with a concise answer directly beneath it, and
   the prop renders a real `<h2>`. It is also what puts the pair into the page's
