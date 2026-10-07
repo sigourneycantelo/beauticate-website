@@ -568,7 +568,7 @@ alongside a broader keyphrase.
 | `faqs` | 1,845 | 99% | ✓ |
 | `date_modified` | 1,824 | 98% | ✓ |
 | `focus_keyphrase` | 4 | 0.2% | **gap** |
-| `<QuickAnswer>` in body | 6 | 0.3% | **gap** |
+| `<QuickAnswer>` in body | 8 | 0.4% | **gap** |
 | `review_rating` | 69 | 3.7% | **should be 0** — see 9.2 |
 
 **Be honest about what that table says.** The metadata layer is effectively
@@ -1035,7 +1035,7 @@ For Redfern / Claude Code. Items pulled into one list.
 
 | Item | Status | Detail |
 |------|--------|--------|
-| QuickAnswer component | **Done** | Optional per article, degrades when empty |
+| QuickAnswer component | **Done** | The box is optional per article, but `question` is required: the build fails on a box without one |
 | Top byline linked to author page | **Done** | Author pages are live; a byline that resolves to nobody in `lib/authors.ts` is warned about by `check-editorial-integrity.mjs` |
 | Article JSON-LD (Article, NewsArticle, Review, HowTo) | **Done** | Auto-detected |
 | FAQPage schema from frontmatter | **Done** | |

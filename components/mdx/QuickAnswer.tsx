@@ -11,10 +11,11 @@ interface Props {
    * the eyebrow below says "Quick answer", which matches no search anyone has
    * ever run.
    *
-   * Optional only so the six boxes written before this prop existed keep
-   * rendering. Always set it on anything new.
+   * Required. `scripts/check-editorial-integrity.mjs` fails the build on a
+   * published article whose box has none, because MDX props are not
+   * type-checked and an omission would otherwise fail silently.
    */
-  question?: string
+  question: string
   /** Eyebrow above the question. */
   label?: string
   /** The answer: 40-60 words, plain prose, facts from the article only. */
@@ -39,11 +40,9 @@ export default function QuickAnswer({ question, label = 'Quick answer', children
         matches the query against. `not-prose` on the wrapper means the
         typography plugin styles nothing in here, hence the explicit classes.
       */}
-      {question ? (
-        <h2 className="font-serif text-[20px] sm:text-[22px] leading-snug text-charcoal mb-3">
-          {question}
-        </h2>
-      ) : null}
+      <h2 className="font-serif text-[20px] sm:text-[22px] leading-snug text-charcoal mb-3">
+        {question}
+      </h2>
 
       <div className="text-[15px] sm:text-base text-charcoal leading-relaxed [&_p]:mb-3 [&_p:last-child]:mb-0">
         {children}

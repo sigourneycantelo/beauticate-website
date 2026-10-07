@@ -222,6 +222,21 @@ const warn = []
 
     // Component tags carry price/handle attributes; those ARE the source of
     // truth, not the duplication this is looking for.
+    // 8. A QuickAnswer box with no question. It renders as an unlabelled
+    //    callout (the eyebrow says "Quick answer", which matches no search) and
+    //    emits no Q&A schema, so the one element built for answer engines does
+    //    nothing for them while still taking up the top of the page. It came
+    //    from the upload flow writing the box and leaving the prop off.
+    //    Unambiguous, so it fails the build.
+    for (const box of body.matchAll(/<QuickAnswer\b([^>]*)>/g)) {
+      if (!/question=(?:"[^"]+"|'[^']+'|\{\s*["'`][^"'`]+["'`]\s*\})/.test(box[1])) {
+        fatal.push(
+          `${rel} — <QuickAnswer> has no question. Add question="..." phrased the way a reader would ` +
+          `search it, or remove the box. Without it the box declares nothing to answer engines.`
+        )
+      }
+    }
+
     const prose = body.split('\n').map(l => l.trim()).filter(
       t => t && !t.startsWith('<') && !/\b(price|handle|productPrice|src|url)=/.test(t)
     )
@@ -266,7 +281,7 @@ for (const w of warn) console.warn(`[editorial] ${w}`)
 for (const e of fatal) console.error(`[editorial] ERROR ${e}`)
 
 if (fatal.length) {
-  console.error(`\n[editorial] ${fatal.length} error(s). Fix the byline, or set published: false.`)
+  console.error(`\n[editorial] ${fatal.length} error(s). Fix them above, or set published: false on the article.`)
   process.exit(1)
 }
 console.log(`[editorial] ${warn.length} warning(s), 0 errors.`)

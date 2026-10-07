@@ -74,7 +74,7 @@ Apply during writing, not as a later pass:
 
 ### The AEO layer, which is the actual gap
 
-`<QuickAnswer>` appears on **6 of 1,848 articles**. `focus_keyphrase` on **4**.
+`<QuickAnswer>` appears on **8 of ~1,860 articles**. `focus_keyphrase` on **4**.
 The metadata layer is ~99% complete because it is mechanical and a script can
 generate it; this layer is not, and it is the half that wins AI citations.
 
