@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { getImageProps } from 'next/image'
 import Link from 'next/link'
 import type { ArticleFrontmatter } from '@/types/content'
 import AuthorByline from './AuthorByline'
@@ -29,38 +29,33 @@ export default function ArticleHero({ frontmatter: f }: Props) {
       )
     }
 
-    // Full-bleed landscape mode — used for all articles with any image
+    // Full-bleed landscape mode: used for all articles with any image.
+    //
+    // ONE <picture>, not a desktop <Image> and a mobile <Image> toggled with
+    // `hidden md:block` / `md:hidden`. Both were `priority`, and CSS display
+    // does not stop an <img> downloading, so every phone fetched (and preloaded)
+    // the desktop hero it never showed, and every desktop fetched the mobile
+    // one. That doubled the hero bytes on the critical path for the page's LCP.
+    // getImageProps keeps next/image's optimisation and gives us the srcSets for
+    // art direction: the browser picks one source by media query and fetches only
+    // that, at high priority.
+    const heroAlt = f.featured_image_alt ?? f.title
+    const { props: desktop } = getImageProps({ src: heroSrc!, alt: heroAlt, fill: true, sizes: '1200px', priority: true })
+    const { props: mobile } = getImageProps({ src: f.featured_image || f.hero_image!, alt: heroAlt, fill: true, sizes: '100vw', quality: 90, priority: true })
+    const focus = f.hero_focus ?? 'center center'
     return (
-      <>
-        {/* Desktop: use hero_aspect if set, default 16:9, capped at 1200px */}
-        <div className="hidden md:block max-w-[1200px] mx-auto">
-          <div className="relative w-full" style={{ aspectRatio: f.hero_aspect ?? '16/9' }}>
-            <Image
-              src={heroSrc}
-              alt={f.featured_image_alt ?? f.title}
-              fill
-              sizes="1200px"
-
-              className="object-cover"
-              style={{ objectPosition: f.hero_focus ?? 'center center' }}
-              priority
-            />
-          </div>
-        </div>
-        {/* Mobile: portrait/square at 3:4, prefer featured_image */}
-        <div className="md:hidden relative w-full aspect-[3/4]">
-          <Image
-            src={f.featured_image || f.hero_image!}
-            alt={f.featured_image_alt ?? f.title}
-            fill
-            sizes="100vw"
-            quality={90}
-            className="object-cover"
-            style={{ objectPosition: f.hero_focus ?? 'center center' }}
-            priority
-          />
-        </div>
-      </>
+      <div
+        className="relative w-full aspect-[3/4] md:aspect-[var(--hero-aspect)] md:max-w-[1200px] md:mx-auto"
+        style={{ '--hero-aspect': f.hero_aspect ?? '16/9' } as React.CSSProperties}
+      >
+        <picture>
+          {/* Desktop: hero_aspect if set, default 16:9, capped at 1200px */}
+          <source media="(min-width: 768px)" srcSet={desktop.srcSet} sizes={desktop.sizes} />
+          {/* Mobile: portrait 3:4, prefer featured_image */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img {...mobile} alt={heroAlt} fetchPriority="high" className="object-cover" style={{ ...mobile.style, objectPosition: focus }} />
+        </picture>
+      </div>
     )
   }
 

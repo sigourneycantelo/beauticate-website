@@ -29,6 +29,7 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
     return (
       <div className="not-prose my-8">
         <ProductTile
+          lazy
           href={variantHref(shopProduct.handle, v)}
           useNextImage
           primarySrc={primary?.url}
@@ -57,6 +58,7 @@ export default function ProductEmbed({ product, shopProduct }: Props) {
   return (
     <div className="not-prose my-8">
       <ProductTile
+        lazy
         href={href}
         external
         primarySrc={product.image}

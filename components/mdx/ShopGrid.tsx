@@ -59,6 +59,7 @@ export function ShopItem({ image, alt, name, price, url, handle, brand, retailer
   const geo = internal ? {} : intlAttrsFor(url, name)
   return (
     <ProductTile
+      lazy
       href={href}
       external={!internal && !!url}
       dataAttrs={geo}

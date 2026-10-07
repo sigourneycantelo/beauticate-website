@@ -26,6 +26,10 @@ export default function YouTubeEmbed({ url, caption }: Props) {
           title={caption ?? 'Video'}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          // An embed in an article body is almost never the first thing on screen.
+          // Without this every embed pulled its whole player (~1.2 MB of JS) at page
+          // load, ahead of the hero image that is the page's LCP.
+          loading="lazy"
           className="absolute inset-0 w-full h-full"
         />
       </div>
