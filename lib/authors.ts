@@ -17,6 +17,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.beauticate.com
 export const SIGOURNEY_PERSON_ID = `${SITE_URL}/#sigourney-cantelo`
 
 export const SIGOURNEY_SAMEAS = [
+  // Her own site. This is the other half of the cross-domain bridge:
+  // sigourneycantelo.com already links here, in its nav and its own Person
+  // sameAs, but nothing here pointed back, so the two properties resolved as
+  // two unrelated entities rather than one person who runs a publisher.
+  // Live since 7 Oct 2026.
+  'https://sigourneycantelo.com',
   'https://www.instagram.com/sigourneycantelo/',
   'https://www.linkedin.com/in/sigourney-cantelo/',
   'https://www.youtube.com/channel/UCfuyyVnNfbiwovULXTRQiVA',
@@ -59,6 +65,7 @@ export interface Author {
   photo?: string          // path under /images/authors/
   instagram?: string      // full URL
   linkedin?: string       // full URL
+  website?: string        // the author's own site, rendered as a visible link
   sameAs?: string[]       // all known profile URLs for Person schema
   shopCollection?: string // Shopify collection handle for "Shop {Name}'s Favourites"
 }
@@ -72,6 +79,7 @@ export const AUTHORS: Author[] = [
     photo: '/images/authors/sigourney-cantelo.png',
     instagram: 'https://www.instagram.com/sigourneycantelo/',
     linkedin: 'https://www.linkedin.com/in/sigourney-cantelo/',
+    website: 'https://sigourneycantelo.com',
     sameAs: [...SIGOURNEY_SAMEAS, `${SITE_URL}/about`],
   },
   {
