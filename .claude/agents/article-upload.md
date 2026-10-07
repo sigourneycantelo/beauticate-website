@@ -16,6 +16,7 @@ The user will provide:
 4. **Author** — must match an entry in `lib/authors.ts`. If unsure, leave the field blank.
 5. **Which image(s) they like best, if they want to say** — helpful but optional; a starred/`holding`-named file in Drive (see above) already tells you this without asking.
 6. **Sign-off on shop products, if the byline isn't Beauticate's own** — see below. Never assume it.
+   **Optional: the question they'd like the article to rank for.** The uploader is not expected to write the QuickAnswer, and shouldn't be asked to; you write it. But if they or Sig have a query in mind ("how much does an infrared sauna cost to run"), use it as the `question`. Otherwise choose it yourself from the article's focus keyphrase, the way a reader would type it.
 7. **Nothing — find the Asana card yourself.** Every article starts life as a card Sig drafts on the **Editorial Calendar** board; the uploader works from that card. Don't ask for its link — search the board for it (see step 6). Only ask if the search is genuinely ambiguous. Never create a new Asana task for an article; one already exists.
 
 That's it — a title, the body copy, and some images is enough to start. Everything else below is what you do with it, not a checklist to put in front of the uploader.
