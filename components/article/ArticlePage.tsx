@@ -54,7 +54,7 @@ import ShopEditRail from './ShopEditRail'
 import GiftNote from '@/components/mdx/GiftNote'
 import VenueCTA from './VenueCTA'
 import VenueContact from './VenueContact'
-import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
+import { withNoskim, withNoskimClass, isDirectDeal } from '@/lib/affiliate-links'
 
 interface Props {
   frontmatter: ArticleFrontmatter
@@ -182,6 +182,8 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
       // `sponsored` disclosure that paid links are required to carry.
       const rel = new Set((props.rel ?? '').split(/\s+/).filter(Boolean))
       rel.add('noopener')
+      // A plain inline link to a brand we have a direct deal with is still a paid link.
+      if (isDirectDeal(props.href)) rel.add('sponsored')
       if (isExternal && !rel.has('sponsored')) rel.add('noreferrer')
       return (
         <a
