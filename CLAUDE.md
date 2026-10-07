@@ -518,11 +518,13 @@ conditions that makes `resolveSchemaType` return `Review`. There is no article
 where the field sits set but unused: setting it guarantees the rating is
 emitted.
 
-**69 published articles currently set `review_rating`** (checked September
-2026), following older advice in the SEO playbook that has since been corrected.
-They are all emitting an invisible rating today. Fixing them is a decision, not
-a sweep — either strip the field from all 69, or build the visible verdict block
-first and keep them. Don't add a 70th.
+**The 69 published articles that set `review_rating` were stripped in October
+2026** (Doug Lord agreed: remove the hidden markup first, and restore a rating
+only where a genuine, visible review supports it and the schema type is
+appropriate). Seven of them stop being typed `Review` and become `Article`,
+because the hidden rating was the only thing making them one; the other 62 stay
+`Review` through their tag or title. Don't add a 70th, and don't set any of the
+five fields without building the visible verdict block in the same change.
 
 ## A brand's location must be an origin in its delivery profile
 
