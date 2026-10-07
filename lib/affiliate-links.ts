@@ -35,11 +35,40 @@ const NETWORK_HOSTS = [
 ]
 
 /**
+ * Brands we have a direct deal with, where our own code lives in the URL PATH
+ * (`nooksaunas.com.au/BEAUTICATE`, `5minuteblinds.com.au/ref/Beauticate`)
+ * rather than in a query parameter. Nothing in TRACKING_PARAMS can see a code
+ * in the path, so Skimlinks treated these as bare merchant links and wrapped
+ * them in go.skimresources.com: the click goes through Skimlinks instead of our
+ * direct deal, and the brand's own attribution is bypassed.
+ *
+ * Found on the Nook Elite review. A host belongs here only when we hold our own
+ * code or link for it. Add one when a new direct deal is signed.
+ */
+const DIRECT_DEAL_HOSTS = ['nooksaunas.com.au', '5minuteblinds.com.au']
+
+function hostOf(href?: string): string | undefined {
+  if (!href || !/^https?:\/\//i.test(href)) return undefined
+  try {
+    return new URL(href).hostname.toLowerCase()
+  } catch {
+    return undefined
+  }
+}
+
+/** A link to a brand we have a direct deal with. These are paid links. */
+export function isDirectDeal(href?: string): boolean {
+  const host = hostOf(href)
+  return !!host && DIRECT_DEAL_HOSTS.some((h) => host === h || host.endsWith(`.${h}`))
+}
+
+/**
  * True when a URL already carries affiliate tracking and Skimlinks must leave it
  * alone. Untracked links return false so the catch-all can still monetise them.
  */
 export function hasOwnTracking(href?: string): boolean {
   if (!href || !/^https?:\/\//i.test(href)) return false
+  if (isDirectDeal(href)) return true
   let url: URL
   try {
     url = new URL(href)
