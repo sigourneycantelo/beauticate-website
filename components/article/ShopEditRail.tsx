@@ -32,6 +32,7 @@ export default function ShopEditRail({ products, collectionHandle, collectionTit
           return (
             <div key={`${p.name}-${i}`} className="snap-start shrink-0" style={{ width: '200px' }}>
               <ProductTile
+                lazy
                 href={p.url}
                 external
                 primarySrc={p.image}

@@ -24,6 +24,7 @@ export default function ProductInset({ image, name, url, price, brand, retailer,
 
   const tile = (
     <ProductTile
+      lazy
       href={url}
       external
       dataAttrs={intlAttrsFor(url, name)}

@@ -21,6 +21,12 @@ export interface ProductTileProps {
   secondarySrc?: string
   secondaryAlt?: string
   useNextImage?: boolean
+  /** Below-the-fold card (article body, foot rails): render a plain <img> as
+   *  loading="lazy". Without it React 19 auto-preloads the first few <img> it
+   *  renders, so product shots deep in a story were fetched at high priority and
+   *  competed with the hero image for the LCP. Off by default: on shop pages the
+   *  first row of tiles can be the LCP and must not be deferred. */
+  lazy?: boolean
   cover?: boolean
   cornerLabel?: string
   badge?: string
@@ -46,7 +52,7 @@ export interface ProductTileProps {
 export default function ProductTile({
   href, external = false, follow = false,
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
-  useNextImage = false, cover = true,
+  useNextImage = false, lazy = false, cover = true,
   cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
   rating, reviewCount,
   forceTile = false, dataAttrs,
@@ -64,7 +70,7 @@ export default function ProductTile({
       <Image src={src} alt={alt} fill sizes="(max-width: 768px) 50vw, 320px" className={cls} />
     ) : (
       // eslint-disable-next-line @next/next/no-img-element
-      <img src={src} alt={alt} className={cls} />
+      <img src={src} alt={alt} className={cls} {...(lazy ? { loading: 'lazy' as const, decoding: 'async' as const } : {})} />
     )
   }
 

@@ -16,6 +16,7 @@ function RailCard({ p }: { p: ShopifyProduct }) {
   const secondary = imgs[1]
   return (
     <ProductTile
+      lazy
       href={`/shop/products/${p.handle}`}
       useNextImage
       primarySrc={primary?.url}
