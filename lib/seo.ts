@@ -253,7 +253,10 @@ export function buildArticleSchema(f: ArticleFrontmatter, url: string, faqs?: { 
     })
   }
 
-  const youtubeId = videoId ?? (content ? extractFirstYouTubeId(content) : undefined)
+  // The body's own embedded video wins; `videoId` (a companion episode strip, whose
+  // video the body never embeds) is the fallback. Never the other way round, or a
+  // "Video:" story would declare the podcast episode instead of its own video.
+  const youtubeId = (content ? extractFirstYouTubeId(content) : undefined) ?? videoId
   if (youtubeId) {
     graph.push({
       '@type': 'VideoObject',
