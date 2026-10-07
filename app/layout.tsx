@@ -197,18 +197,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=WSuntA"
           strategy="afterInteractive"
         />
-        {/*
-          Skimlinks / Sovrn, publisher 265664X1750758. Site-wide catch-all that
-          auto-monetises bare retailer links — the long tail we haven't
-          hand-mapped. It deliberately does NOT replace the money links:
-          Partnerize (Adore Beauty, Sephora AU) and the direct brand programmes
-          pay better and stay exactly as they are.
-        */}
-        <Script
-          id="skimlinks"
-          src="https://s.skimresources.com/js/265664X1750758.skimlinks.js"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   )
