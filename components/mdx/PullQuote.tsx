@@ -1,12 +1,14 @@
 interface Props {
   children: React.ReactNode
+  /** Tighter vertical margin, for a piece with several quotes close together. */
+  compact?: boolean
 }
 
-export default function PullQuote({ children }: Props) {
+export default function PullQuote({ children, compact }: Props) {
   return (
     <blockquote
       className="not-prose"
-      style={{ margin: '4.5rem 0' }}
+      style={{ margin: compact ? '2.25rem 0' : '4.5rem 0' }}
     >
       <p
         className="font-serif italic text-chocolate"
