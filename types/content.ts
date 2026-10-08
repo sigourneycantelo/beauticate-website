@@ -129,6 +129,7 @@ export interface ArticleFrontmatter {
   hero_order?: number
   home_rank?: number           // pin to the top of the home grid (1 = position 2 on the page); unranked = newest-first
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
+  hero_video?: string          // looping muted MP4 for the article banner (animated holding shot); hero_image is its still poster. Beats a GIF: ~1.5MB, no colour banding
   hero_focus?: string          // CSS object-position for hero crop, e.g. "50% 12%"; defaults to "center center"
   nav_image_position?: string  // CSS object-position for mega-menu thumbnail crop, e.g. "left top"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
