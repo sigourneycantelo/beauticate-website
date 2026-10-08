@@ -188,6 +188,7 @@ export interface ArticleFrontmatter {
   sigourneys_edit?: boolean
   sponsored?: boolean          // declared but never rendered; see paid_placement_until
   affiliate_disclosure?: boolean
+  partnership_with?: string       // brand named in a quiet 'In partnership with …' line under the byline; the foot-of-article disclosure still goes in the body
   /**
    * Directory listings are sold as annual placements. This is the date the
    * current placement lapses, NOT a boolean, because a boolean rots: the year
