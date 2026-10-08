@@ -9,9 +9,11 @@ interface Props {
   showDate?: boolean
   /** ISO date — when set, surfaces a visible "Last updated {Month Year}" freshness cue. */
   lastUpdated?: string
+  /** Brand in a paid partnership. Renders one quiet small-caps line under the date row. */
+  partnership?: string
 }
 
-export default function AuthorByline({ name, date, readingTime, showDate = false, lastUpdated }: Props) {
+export default function AuthorByline({ name, date, readingTime, showDate = false, lastUpdated, partnership }: Props) {
   const author = getAuthor(name)
   const displayName = author?.name ?? name
   const role = author?.role
@@ -67,6 +69,11 @@ export default function AuthorByline({ name, date, readingTime, showDate = false
           {formattedUpdated && <span>Last updated {formattedUpdated}</span>}
           {readingTime && <span>{readingTime} min read</span>}
         </div>
+        {partnership && (
+          <span className="text-[10px] font-light uppercase tracking-[0.14em] text-charcoal-light/70 mt-0.5">
+            In partnership with {partnership}
+          </span>
+        )}
       </div>
     </div>
   )
