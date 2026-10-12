@@ -9,7 +9,7 @@ import { editorialNote } from '@/lib/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { useGeo } from '@/components/geo/GeoProvider'
 import type { ShopIntlOptions } from '@/lib/shop-intl'
-import { hasPaidPartnership, PAID_PARTNERSHIP_LABEL, isExclusiveBundle, EXCLUSIVE_BADGE } from '@/lib/shop-partners'
+import { isExclusiveBundle, EXCLUSIVE_BADGE } from '@/lib/shop-partners'
 import GiftBanner from './GiftBanner'
 import type { GiftOffer } from '@/lib/gwp'
 
@@ -169,10 +169,6 @@ export default function ProductBuyBox({ product: p, availability, intlOptions, g
           How Beauticate Shop works
         </Link>
       </p>
-
-      {hasPaidPartnership(p) && (
-        <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/60 text-center mt-2">{PAID_PARTNERSHIP_LABEL}</p>
-      )}
 
       {p.descriptionHtml && (
         <div

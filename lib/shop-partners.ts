@@ -6,19 +6,10 @@
 export const isRestVendor = (vendor?: string | null): boolean =>
   /^rest(\s*\(au\))?$/i.test((vendor ?? '').trim())
 
-/** Brand collection handles that carry the paid-partnership line. */
-const PAID_PARTNERSHIP_BRAND_HANDLES = new Set(['rest'])
-
-export const PAID_PARTNERSHIP_LABEL = 'Paid partnership'
-
-export const hasPaidPartnership = (p: { vendor?: string | null }): boolean => isRestVendor(p.vendor)
-export const brandHasPaidPartnership = (handle: string): boolean =>
-  PAID_PARTNERSHIP_BRAND_HANDLES.has(handle)
-
 // ─── Colour allowlist ────────────────────────────────────────────────────────
 // Modern Dropship cannot select colours on our side, so every colour syncs.
-// Comforter and sheet set show White + Ivory only; pyjamas keep every colour.
-const REST_ALLOWED_COLOURS = ['arctic white', 'snow ivory']
+// Comforter and sheet set show White, Ivory, Grey and Green only; pyjamas keep every colour.
+const REST_ALLOWED_COLOURS = ['arctic white', 'snow ivory', 'cool grey', 'nordic green']
 const REST_COLOUR_RESTRICTED = /comforter|sheet set/i
 const COLOUR_OPTION = /^colou?r$/i
 

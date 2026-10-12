@@ -12,7 +12,6 @@ import { brandEpisode } from '@/data/brand-episodes'
 import { resolveArticleEpisode } from '@/lib/content'
 import EpisodeStrip from '@/components/vodcast/EpisodeStrip'
 import { getRatingMap } from '@/lib/judgeme'
-import { brandHasPaidPartnership, PAID_PARTNERSHIP_LABEL } from '@/lib/shop-partners'
 
 const SITE = 'https://www.beauticate.com'
 
@@ -113,10 +112,6 @@ export default async function BrandPage({ params, searchParams }: Props) {
           <ProductGrid products={products} ratings={ratings} />
         ) : (
           <p className="font-serif text-charcoal-light/60 py-16 text-center">Nothing in this edit just yet.</p>
-        )}
-
-        {brandHasPaidPartnership(brand) && (
-          <p className="font-sans text-[10px] tracking-[0.06em] text-charcoal-light/60 text-center mt-10">{PAID_PARTNERSHIP_LABEL}</p>
         )}
 
         {/* The founder interview sits under the products, not above them. At the
