@@ -9,6 +9,7 @@ import { editorialNote } from '@/lib/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { useGeo } from '@/components/geo/GeoProvider'
 import type { ShopIntlOptions } from '@/lib/shop-intl'
+import { isExclusiveBundle, EXCLUSIVE_BADGE } from '@/lib/shop-partners'
 import GiftBanner from './GiftBanner'
 import type { GiftOffer } from '@/lib/gwp'
 
@@ -67,6 +68,9 @@ export default function ProductBuyBox({ product: p, availability, intlOptions, g
   return (
     <div className="lg:sticky lg:top-28 self-start">
       <p className="font-sans text-[10px] tracking-[0.28em] uppercase text-eucalypt font-semibold">{p.vendor}</p>
+      {isExclusiveBundle(p) && (
+        <p className="font-sans text-[10px] tracking-[0.2em] uppercase text-wine font-semibold mt-1.5">{EXCLUSIVE_BADGE}</p>
+      )}
       <h1 className="font-serif font-normal mt-1.5" style={{ fontSize: 'clamp(24px,3vw,34px)', lineHeight: 1.15 }}>{cleanProductTitle(p.title)}</h1>
 
       <div className="flex items-baseline gap-3 mt-3">

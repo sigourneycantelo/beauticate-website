@@ -3,6 +3,7 @@ import ProductTile from '@/components/shared/ProductTile'
 import { isFreeShipping } from '@/lib/shop-taxonomy'
 import { formatCardPrice } from '@/lib/product-format'
 import type { Rating } from '@/lib/judgeme'
+import { isExclusiveBundle, EXCLUSIVE_BADGE } from '@/lib/shop-partners'
 
 interface Props {
   product: ShopifyProduct
@@ -29,7 +30,7 @@ export default function ProductCard({ product: p, rating }: Props) {
       primaryAlt={primary?.altText ?? p.title}
       secondarySrc={secondary?.url}
       secondaryAlt={secondary?.altText ?? p.title}
-      badge={isFreeShipping(p.vendor) ? 'Free Shipping' : undefined}
+      badge={isExclusiveBundle(p) ? EXCLUSIVE_BADGE : isFreeShipping(p.vendor) ? 'Free Shipping' : undefined}
       brand={p.vendor}
       name={p.title}
       price={formatCardPrice(p)}
