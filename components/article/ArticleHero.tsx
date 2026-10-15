@@ -15,6 +15,27 @@ export default function ArticleHero({ frontmatter: f }: Props) {
   const isGif = heroSrc?.toLowerCase().endsWith('.gif')
 
   if (!splitMode) {
+    if (f.hero_video) {
+      // Looping holding shot. A video, not a GIF: a GIF is capped at 256 colours,
+      // which bands skin tones, and is ~4x the bytes. The poster is the finished
+      // composition, so a slow connection never shows an empty background.
+      return (
+        <div className="max-w-[1200px] mx-auto">
+          <video
+            src={f.hero_video}
+            poster={f.hero_image}
+            aria-label={f.featured_image_alt ?? f.title}
+            className="w-full h-auto"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
+        </div>
+      )
+    }
+
     if (isGif) {
       // Animated GIF — use native <img> so the animation plays
       return (

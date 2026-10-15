@@ -129,6 +129,7 @@ export interface ArticleFrontmatter {
   hero_order?: number
   home_rank?: number           // pin to the top of the home grid (1 = position 2 on the page); unranked = newest-first
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
+  hero_video?: string          // looping muted MP4 for the article banner (animated holding shot); hero_image is its still poster. Beats a GIF: ~1.5MB, no colour banding
   hero_focus?: string          // CSS object-position for hero crop, e.g. "50% 12%"; defaults to "center center"
   nav_image_position?: string  // CSS object-position for mega-menu thumbnail crop, e.g. "left top"
   hero_max_width?: number      // cap the in-article hero display width (px) to avoid upscaling a low-res shot; defaults to 1200
@@ -187,6 +188,7 @@ export interface ArticleFrontmatter {
   sigourneys_edit?: boolean
   sponsored?: boolean          // declared but never rendered; see paid_placement_until
   affiliate_disclosure?: boolean
+  partnership_with?: string       // brand named in a quiet 'In partnership with …' line under the byline; the foot-of-article disclosure still goes in the body
   /**
    * Directory listings are sold as annual placements. This is the date the
    * current placement lapses, NOT a boolean, because a boolean rots: the year
