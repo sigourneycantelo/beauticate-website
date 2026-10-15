@@ -9,7 +9,7 @@ import { editorialNote } from '@/lib/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
 import { useGeo } from '@/components/geo/GeoProvider'
 import type { ShopIntlOptions } from '@/lib/shop-intl'
-import { isExclusiveBundle, EXCLUSIVE_BADGE } from '@/lib/shop-partners'
+import { isExclusiveBundle, EXCLUSIVE_BADGE, variantLabel } from '@/lib/shop-partners'
 import GiftBanner from './GiftBanner'
 import type { GiftOffer } from '@/lib/gwp'
 
@@ -97,7 +97,7 @@ export default function ProductBuyBox({ product: p, availability, intlOptions, g
               const vAvailable = isVariantAvailable(v)
               return (
                 <option key={v.id} value={v.id} disabled={!vAvailable}>
-                  {v.title}{vAvailable ? '' : ' — sold out'}
+                  {variantLabel(p, v)}{vAvailable ? '' : ' — sold out'}
                 </option>
               )
             })}

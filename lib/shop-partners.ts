@@ -50,6 +50,29 @@ export function scrubVariantAllowlist<T>(data: T): T {
   return walk(data)
 }
 
+// ─── Size dimensions ─────────────────────────────────────────────────────────
+// Rest supplied dimensions for the bedding sizes (16 Oct 2026). Shopify's option
+// values stay Double / Queen / King, because renaming them breaks the Modern
+// Dropship variant mapping, so the dimensions are appended to the dropdown label
+// here and nowhere else.
+const REST_SIZE_DIMENSIONS: { match: RegExp; sizes: Record<string, string> }[] = [
+  { match: /comforter/i, sizes: { double: '173 x 229 cm', queen: '229 x 229 cm', king: '269 x 229 cm' } },
+  { match: /sheet set/i, sizes: { double: '130 x 180 x 38 cm', queen: '142 x 193 x 46 cm', king: '183 x 193 x 46 cm' } },
+]
+const SIZE_OPTION = /^size$/i
+
+/** The text shown for a variant in the PDP dropdown. Untouched unless it is a Rest comforter or sheet set. */
+export function variantLabel(
+  p: { vendor?: string | null; title?: string | null },
+  v: VariantLike & { title: string },
+): string {
+  if (!isRestVendor(p.vendor)) return v.title
+  const rule = REST_SIZE_DIMENSIONS.find(r => r.match.test(p.title ?? ''))
+  const size = v.selectedOptions?.find(o => SIZE_OPTION.test(o.name))?.value
+  const dims = rule && size ? rule.sizes[size.trim().toLowerCase()] : undefined
+  return dims ? `${v.title} (${dims})` : v.title
+}
+
 // ─── Exclusive bundles ───────────────────────────────────────────────────────
 const EXCLUSIVE_BUNDLE = /^\s*the (whole night|skin layer)\b/i
 export const EXCLUSIVE_BADGE = 'Exclusive to Beauticate'
