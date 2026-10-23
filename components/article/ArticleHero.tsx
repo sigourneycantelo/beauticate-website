@@ -156,6 +156,8 @@ export default function ArticleHero({ frontmatter: f }: Props) {
           name={f.author ?? 'Beauticate Editorial'}
           date={f.date_published}
           readingTime={f.reading_time}
+          partnership={f.partnership_with}
+          partnershipNote={f.partnership_note}
           showDate={resolveSchemaType(f) === 'NewsArticle'}
           lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
         />
