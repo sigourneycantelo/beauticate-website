@@ -8,4 +8,6 @@ export const BRAND_HEROES: Record<string, string> = {
   // Beauty Renewal — Sigourney's pick of the range, sourced from the brand's
   // own shop/brand-content Drive folder (Imbibe/beauty-renewal-...-2000x.webp).
   'imbibe': '/images/brands/imbibe_beauty_renewal.jpg',
+  // From Drive: Shop > Brand Content > Wildcrafted Organics (3000x2000, 25 Oct 2026).
+  'wildcrafted-organics': '/images/brands/wildcrafted_organics.jpg',
 }
