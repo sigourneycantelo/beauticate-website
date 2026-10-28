@@ -42,7 +42,12 @@ export function middleware(req: NextRequest) {
     const slug = segments[segments.length - 1]
     const canonicalPath = (redirectSlugMap as Record<string, string>)[slug]
     if (canonicalPath && canonicalPath !== segments.join('/')) {
-      return NextResponse.redirect(new URL(`/${canonicalPath}`, req.url), 308)
+      // Carry the query string across: Klaviyo email links arrive with ?_kx=… and
+      // that parameter is how an email clicker is identified. `new URL(path, base)`
+      // drops it, so the redirect would anonymise every visitor on a moved article.
+      const target = new URL(`/${canonicalPath}`, req.url)
+      target.search = req.nextUrl.search
+      return NextResponse.redirect(target, 308)
     }
   }
 

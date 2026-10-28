@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { withoutOfferPreamble } from '@/lib/product-description'
 import MetaViewContent from '@/components/analytics/MetaViewContent'
+import KlaviyoViewedProduct from '@/components/analytics/KlaviyoViewedProduct'
 import ProductBuyBox from './ProductBuyBox'
 import ProductGrid from './ProductGrid'
 import ProductImageCarousel from './ProductImageCarousel'
@@ -147,6 +148,18 @@ export default function ProductPage({ product: p, related = [], availability, gi
         contentBrand={p.vendor}
         value={minPrice.amount}
         currency={minPrice.currencyCode}
+      />
+      {/* Klaviyo "Viewed Product" — the Shopify theme never renders, so this is the only source */}
+      <KlaviyoViewedProduct
+        id={p.id}
+        handle={p.handle}
+        title={title}
+        vendor={p.vendor}
+        productType={p.productType}
+        imageUrl={p.featuredImage?.url}
+        sku={openingVariant?.sku ?? variants[0]?.sku}
+        price={openingVariant?.price.amount ?? minPrice.amount}
+        compareAtPrice={openingVariant?.compareAtPrice?.amount}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
