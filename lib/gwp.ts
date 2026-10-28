@@ -121,11 +121,12 @@ export const GWP_OFFERS: GiftOffer[] = [
     giftName: 'a full-size Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum',
     badge: 'Free gift',
     freeLabel: 'Free',
-    pitch: 'Spend $150 on Saint Louve and we’ll add a full-size 30ml Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum to your order, free.',
+    pitch: 'Buy any Saint Louve product and we’ll add a full-size 30ml Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum to your order, free. Limited stock.',
     cartNote: 'Added free with your Saint Louve order',
-    // TO CONFIRM with Elly. The gift retails at $129.95, so a threshold near it
-    // protects her margin; without one a single cheap item would earn it.
-    minSpend: 150,
+    // No minimum spend: a deliberate trial (Sig, 28 Oct 2026). Elly never named a
+    // threshold in the briefing emails. The gift retails at $129.95 and only ~20
+    // units are funded, so watch how fast they go; if they go on small baskets,
+    // add a minSpend here.
     lineAttributes: [{ key: 'Gift with purchase', value: 'Free gift — Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum' }],
     // startsAt / endsAt: set once the window is agreed.
   },
