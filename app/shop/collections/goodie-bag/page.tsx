@@ -71,7 +71,12 @@ export default async function GoodieBagPage() {
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
-      <CollectionHero eyebrow="The Beauticate Collective Goodie Bag" title={TITLE} description={DESCRIPTION} />
+      <CollectionHero
+        image={{ url: '/content/shop/goodie-bag/hero.jpg', altText: 'Collage of the Beauticate Collective lunch goodie bag: Kate holding a blush pink Estetika makeup bag, the table at Lua set with pink bags, and the products that went home in the tote' }}
+        eyebrow="The Beauticate Collective Goodie Bag"
+        title={TITLE}
+        description={DESCRIPTION}
+      />
 
       {/* Lead strip: the lunch, with the products in use. Kate first. */}
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] mt-[clamp(20px,3vw,40px)]">
