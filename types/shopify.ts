@@ -80,6 +80,7 @@ export interface CartLine {
   merchandise: {
     id: string
     title: string
+    sku?: string | null
     product: Pick<ShopifyProduct, 'id' | 'handle' | 'title' | 'featuredImage' | 'vendor'>
     price: ShopifyPrice
     selectedOptions: { name: string; value: string }[]

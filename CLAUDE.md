@@ -264,6 +264,14 @@ Rules that follow from this:
   example), say so explicitly and get a human to confirm, rather than bypassing
   the protection rule quietly.
 
+### Always hand over the preview link to the story
+
+Whenever you open or update a PR that adds or changes an article (or any page), **give Sig the Vercel preview URL of that page, first, in your reply.** She reviews the story as a reader, not the diff, and a PR link alone makes her ask how to see it. Don't wait to be asked.
+
+- Build the **direct page link**, not the bare preview domain (the root only loads the homepage): `https://<preview-domain>/<category>/<subcategory>/<slug>`. List every page the PR touches.
+- The preview domain is in the Vercel bot's PR comment (`gh pr view <n> --comments`); it follows `beauticate-website-git-<branch-with-slashes-as-dashes>-beauticate.vercel.app` (long branch names get truncated with a hash, so read it from the comment).
+- The GitHub PR link can follow, never lead. The Vercel bot takes 1-2 minutes to comment, so wait for it rather than skipping the link.
+
 ### Generated files
 
 `docs/audit/testimonial-audit.{csv,md}` and `lines-to-fix.json` are rebuilt by
@@ -356,7 +364,9 @@ When the publication needs to add its own words to someone else's first-person s
 
 Prefer weaving internal links onto words the author actually wrote; fall back to an Ed's note only when there's no natural anchor. The italicised intro standfirst and closing resource lines are already understood as editorial framing and don't need the label.
 
-**An italic opening paragraph must add to the header standfirst, never repeat it.** The header prints `excerpt` under the headline, so an intro that says the same thing shows the reader one sentence twice in a row. The italic intro is an old convention (95 pre-migration articles carry one), not a new feature; the repeat only appears when the excerpt is lifted from the intro. Give the intro something new (context, a disclosure, who is speaking) or drop it. `check-editorial-integrity.mjs` warns on post-migration overlaps.
+**No second standfirst. The header's `excerpt` is the only one, and an italic opening paragraph is the exception, not the default.** The header prints `excerpt` under the headline, so an italic intro that restates it shows the reader the same thing twice in a row, in the two most prominent slots on the page. Sigourney's call (Oct 2026): keep an italic intro **only where the voice changes**, i.e. we introduce a person and then hand over to them (Colette Harvey's pieces, Beauticate Collective profiles, a disclosure such as Nook). Otherwise leave it out. The italic intro is an old WordPress convention (98 articles carried one, 94 pre-migration), and the migration then filled `excerpt` into the header too, which is how the doubling happened. Seven pure repeats were removed in Oct 2026; the rest add context and were left. Don't write a new italic intro without a voice change, and don't lift the excerpt from one. `check-editorial-integrity.mjs` warns on post-migration overlaps.
+
+**Collective pieces always name the contributor's title.** When a Beauticate Collective member writes or is quoted in a story, the page must say what they are *to the Collective*, not just what they do elsewhere: "Dr Leanne Girgis, a Sydney GP and the health expert in the Beauticate Collective". Put it in the italic intro where there is one (that is a genuine voice change), otherwise in the first paragraph the reader sees. Never leave it only in a tag, the byline or a note at the foot of the page. Sigourney's rule (Oct 2026), after Dr Girgis's blood tests piece went up with the title only in an Ed's note at the end.
 
 ### The byline is checked on every build
 

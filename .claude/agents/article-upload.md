@@ -61,7 +61,7 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 - `title` — the article headline
 - `slug` — URL-safe, matches directory name
 - `category` and `subcategory` — from category mapping
-- `excerpt` — 1-2 sentence summary for cards/feeds. **It is also printed as the standfirst under the headline.** If the body opens with an italic intro (a disclosure, a "who is speaking" line, an editor's framing), the excerpt must not be that sentence lifted out, and the intro must add something the standfirst doesn't. The same line twice in a row, in the two most prominent slots on the page, is the failure. No italic intro is needed if there is nothing to add.
+- `excerpt` — 1-2 sentence summary for cards/feeds. **It is also printed as the standfirst under the headline.** If the body opens with an italic intro (a disclosure, a "who is speaking" line, an editor's framing), the excerpt must not be that sentence lifted out, and the intro must add something the standfirst doesn't. The same line twice in a row, in the two most prominent slots on the page, is the failure. **Default to no italic intro**: add one only where the voice changes (we introduce someone, then hand over to them) or a disclosure is needed. Sigourney does not want a second standfirst.
 - `featured_image` — **portrait** thumbnail (~3:4), used for grid cards site-wide: `/content/<category>/<subcategory>/<slug>/<portrait-crop>.jpg`
 - `featured_image_alt` — descriptive alt text for the portrait thumbnail
 - `featured_image_caption` — format: `"Article Title - subcategory feature on Beauticate"`
@@ -85,6 +85,7 @@ Create the MDX at `content/<category>/<subcategory>/<slug>/<slug>.mdx` with thes
 - **`<QuickAnswer question="...">` near the top, always with the `question`.** 40-60 words, the question phrased the way a reader would search it, facts from the article only. The question renders as a heading and is what puts the pair into the page's FAQPage schema; a box without one is an unlabelled paragraph that declares nothing. The build fails on a published article whose box has no question, so this is not optional. Details: the `beauticate-article-seo` skill.
 - Proper heading hierarchy: h2 sections only, no level jumps
 - 2-3 internal links to other Beauticate articles (search the `content/` directory to find topically relevant articles)
+- **Collective contributors: always state their title.** If the byline or a quoted expert is a Beauticate Collective member, say what they are to the Collective (e.g. "Dr Leanne Girgis, a Sydney GP and the health expert in the Beauticate Collective") in the italic intro, or in the opening paragraph if there is none. Not just in a tag and not in an Ed's note at the end.
 - **Never put words in the author's mouth.** In a bylined first-person piece, do NOT invent sentences and slip them into the author's voice — not even to carry an internal link. The author will notice words they never wrote. When you add an editorial aside or an SEO internal-link bridge to someone else's first-person story, mark it explicitly as the publication's voice with an **Ed's note**, e.g. a blockquote: `> *Ed's note: If you're drawn to this, our [guide to X](/link) is a good place to start.*` The intro standfirst and closing resource lines (already italicised editorial framing) are fine as-is. Prefer weaving internal links onto words the author DID write; only fall back to an Ed's note when there's no natural anchor. Verify every internal link resolves to a **published** article before inserting it.
 - Descriptive alt text on every body image
 - Image captions in italics below each image
@@ -154,6 +155,7 @@ Ask the user to confirm before committing.
 - Push to remote
 - Create a PR against `main` with summary, test plan, and checklist
 - **NEVER auto-merge** — all PRs wait for human editorial review
+- **Always give Sig the direct preview URL of the article** (`https://<preview-domain>/<category>/<subcategory>/<slug>`) at the top of your final report, before the PR link. See "Always hand over the preview link" in CLAUDE.md.
 
 ### 6. Link the existing Asana card — never create a new one
 

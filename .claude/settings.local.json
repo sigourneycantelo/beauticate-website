@@ -52,7 +52,9 @@
       "Bash(git rebase *)",
       "Bash(GIT_EDITOR=true git rebase --continue)",
       "Bash(GIT_EDITOR=\"echo\" git rebase --continue)",
-      "Bash(git -c core.editor=true rebase --continue)"
+      "Bash(git -c core.editor=true rebase --continue)",
+      "mcp__f95a4de1-fdfa-4e62-ae2f-17b2accef24c__graphql_query",
+      "mcp__3c972103-1d4e-417b-81a8-c3eb7bf5350b__search_threads"
     ]
   }
 }

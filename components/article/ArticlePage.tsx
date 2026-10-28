@@ -4,7 +4,7 @@ import { hasArticleMoment } from '@/lib/article-moments'
 import { findVariant, variantHref } from '@/lib/shop-variant'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import type { ArticleFrontmatter, ProductLink } from '@/types/content'
-import type { ShopifyProduct } from '@/types/shopify'
+import type { ShopifyProduct, ShopifyProductVariant } from '@/types/shopify'
 import { formatCardPrice } from '@/lib/product-format'
 import FAQPanel from '@/components/shared/FAQPanel'
 import ProductEmbed from '@/components/mdx/ProductEmbed'
@@ -137,6 +137,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         secondarySrc={secondary?.url}
         secondaryAlt={secondary?.altText ?? label}
         cornerLabel="In our shop"
+        badge={soldOutBadge(sp, v)}
         brand={sp.vendor}
         name={label}
         price={formatted}
@@ -148,6 +149,13 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         {tile}
       </span>
     )
+  }
+
+  // Out of stock stays on the page and says so, rather than selling nothing quietly.
+  const soldOutBadge = (sp: ShopifyProduct, v?: ShopifyProductVariant) => {
+    const nodes = sp.variants?.nodes ?? []
+    if (!nodes.length) return undefined
+    return (v ? !v.availableForSale : !nodes.some(x => x.availableForSale)) ? 'Sold out' : undefined
   }
 
   function ShopItemCard(props: React.ComponentProps<typeof ShopItem>) {
@@ -163,6 +171,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
         primarySrc={props.image ?? (imgs[0] ?? sp.featuredImage)?.url}
         primaryAlt={props.name ?? sp.title}
         secondarySrc={usingShopImage ? imgs[1]?.url : undefined}
+        badge={soldOutBadge(sp)}
         brand={props.brand}
         name={props.name ?? sp.title}
         price={price}
@@ -243,6 +252,7 @@ export default function ArticlePage({ frontmatter: f, content, productLinks, sho
               name={f.author ?? 'Beauticate Editorial'}
               date={f.date_published}
               readingTime={f.reading_time}
+              partnership={f.partnership_with}
               showDate={resolveSchemaType(f) === 'NewsArticle'}
               lastUpdated={f.date_modified && f.date_modified > f.date_published ? f.date_modified : undefined}
             />

@@ -1,6 +1,7 @@
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
 import { GIFT_HANDLES, stripHidden } from './gwp'
+import { scrubVariantAllowlist } from './shop-partners'
 
 const STORE_DOMAIN = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
 const PRIVATE_TOKEN = process.env.SHOPIFY_STOREFRONT_PRIVATE_TOKEN
@@ -33,7 +34,7 @@ async function shopifyFetch<T>(query: string, variables?: object, opts?: { noSto
       console.warn('Shopify GraphQL errors:', errors[0]?.message)
       return { data: null } as T
     }
-    return data
+    return scrubVariantAllowlist(data)
   } catch (err) {
     console.warn('Shopify fetch failed (build will continue without shop data):', err)
     return { data: null } as T
@@ -135,6 +136,7 @@ const CART_FRAGMENT = `
           ... on ProductVariant {
             id
             title
+            sku
             price { amount currencyCode }
             selectedOptions { name value }
             product { id handle title vendor featuredImage { url altText width height } }
