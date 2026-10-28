@@ -155,6 +155,7 @@ Ask the user to confirm before committing.
 - Push to remote
 - Create a PR against `main` with summary, test plan, and checklist
 - **NEVER auto-merge** — all PRs wait for human editorial review
+- **Always give Sig the direct preview URL of the article** (`https://<preview-domain>/<category>/<subcategory>/<slug>`) at the top of your final report, before the PR link. See "Always hand over the preview link" in CLAUDE.md.
 
 ### 6. Link the existing Asana card — never create a new one
 

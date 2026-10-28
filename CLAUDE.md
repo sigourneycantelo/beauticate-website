@@ -264,6 +264,14 @@ Rules that follow from this:
   example), say so explicitly and get a human to confirm, rather than bypassing
   the protection rule quietly.
 
+### Always hand over the preview link to the story
+
+Whenever you open or update a PR that adds or changes an article (or any page), **give Sig the Vercel preview URL of that page, first, in your reply.** She reviews the story as a reader, not the diff, and a PR link alone makes her ask how to see it. Don't wait to be asked.
+
+- Build the **direct page link**, not the bare preview domain (the root only loads the homepage): `https://<preview-domain>/<category>/<subcategory>/<slug>`. List every page the PR touches.
+- The preview domain is in the Vercel bot's PR comment (`gh pr view <n> --comments`); it follows `beauticate-website-git-<branch-with-slashes-as-dashes>-beauticate.vercel.app` (long branch names get truncated with a hash, so read it from the comment).
+- The GitHub PR link can follow, never lead. The Vercel bot takes 1-2 minutes to comment, so wait for it rather than skipping the link.
+
 ### Generated files
 
 `docs/audit/testimonial-audit.{csv,md}` and `lines-to-fix.json` are rebuilt by
