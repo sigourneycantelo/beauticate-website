@@ -115,20 +115,8 @@ export default async function GoodieBagPage() {
               })}
             </div>
 
-            {g.photos && g.photos.length > 0 && (
-              <div
-                className={`grid grid-cols-2 gap-x-3 md:gap-x-4 gap-y-2 mx-auto mt-[clamp(28px,4vw,48px)] ${
-                  g.photos.length === 1 ? 'max-w-[300px] md:max-w-[340px] !grid-cols-1' : 'max-w-[640px]'
-                }`}
-              >
-                {g.photos.map(ph => (
-                  <InlineImage key={ph.src} src={ph.src} alt={ph.alt} width={1200} height={1800} caption={ph.caption} />
-                ))}
-              </div>
-            )}
-
             {g.quote && (
-              <blockquote className="not-prose text-center max-w-[22ch] md:max-w-[30ch] mx-auto mt-[clamp(40px,7vw,88px)]">
+              <blockquote className="not-prose text-center max-w-[22ch] md:max-w-[30ch] mx-auto mt-[clamp(40px,7vw,88px)] mb-0">
                 <p
                   className="font-serif italic text-chocolate"
                   style={{ fontSize: 'clamp(28px,4.2vw,48px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}
@@ -136,6 +124,18 @@ export default async function GoodieBagPage() {
                   {g.quote}
                 </p>
               </blockquote>
+            )}
+
+            {g.photos && g.photos.length > 0 && (
+              <div
+                className={`grid grid-cols-2 gap-x-3 md:gap-x-4 gap-y-2 mx-auto mt-[clamp(20px,3vw,32px)] ${
+                  g.photos.length === 1 ? 'max-w-[300px] md:max-w-[340px] !grid-cols-1' : 'max-w-[640px]'
+                }`}
+              >
+                {g.photos.map(ph => (
+                  <InlineImage key={ph.src} src={ph.src} alt={ph.alt} width={1200} height={1800} caption={ph.caption} />
+                ))}
+              </div>
             )}
           </section>
         ))}
