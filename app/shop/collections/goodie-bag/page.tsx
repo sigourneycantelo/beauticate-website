@@ -23,6 +23,23 @@ export const metadata: Metadata = {
   openGraph: { title: TITLE, description: DESCRIPTION },
 }
 
+function quote(text: string, above = false) {
+  return (
+    <blockquote
+      className={`not-prose text-center max-w-[22ch] md:max-w-[30ch] mx-auto ${
+        above ? 'mt-0 mb-[clamp(28px,4vw,48px)]' : 'mt-[clamp(40px,7vw,88px)]'
+      }`}
+    >
+      <p
+        className="font-serif italic text-chocolate"
+        style={{ fontSize: 'clamp(28px,4.2vw,48px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}
+      >
+        {text}
+      </p>
+    </blockquote>
+  )
+}
+
 export default async function GoodieBagPage() {
   const products = await getProductsByHandles(GOODIE_BAG_HANDLES)
   const byHandle = Object.fromEntries(products.map(p => [p.handle, p]))
@@ -79,6 +96,8 @@ export default async function GoodieBagPage() {
               {g.title}
             </h2>
 
+            {g.quote && g.quoteAbove && quote(g.quote, true)}
+
             <div className="grid grid-cols-2 gap-x-4 md:gap-x-8 gap-y-8 max-w-[860px] mx-auto">
               {g.items.map(i => {
                 const sp = byHandle[i.handle]
@@ -115,16 +134,7 @@ export default async function GoodieBagPage() {
               })}
             </div>
 
-            {g.quote && (
-              <blockquote className="not-prose text-center max-w-[22ch] md:max-w-[30ch] mx-auto mt-[clamp(40px,7vw,88px)] mb-0">
-                <p
-                  className="font-serif italic text-chocolate"
-                  style={{ fontSize: 'clamp(28px,4.2vw,48px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}
-                >
-                  {g.quote}
-                </p>
-              </blockquote>
-            )}
+            {g.quote && !g.quoteAbove && quote(g.quote)}
 
             {g.photos && g.photos.length > 0 && (
               <div

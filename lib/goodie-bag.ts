@@ -25,6 +25,8 @@ export interface GoodieBagGroup {
   items: GoodieBagItem[]
   /** Large line set between this group and the next. */
   quote?: string
+  /** Open the group with the quote instead of closing it with one. */
+  quoteAbove?: boolean
   /** Lunch photos shown under the products, so the reader sees them being used. */
   photos?: GoodieBagPhoto[]
 }
@@ -80,6 +82,7 @@ export const GOODIE_BAG_GROUPS: GoodieBagGroup[] = [
       photo('place-setting-mirror-and-menu.jpg', 'A small mirror and menu at a place setting on the table at Lua', 'One of the little mirrors'),
     ],
     quote: 'Blush holder, blue brushes.',
+    quoteAbove: true,
     items: [
       { handle: 'luxury-10-piece-vegan-brush-set', note: 'Ten vegan brushes. Everything covered.' },
       { handle: 'blush-pink-makeup-brush-holder-69320164541cad1b4f33df6d', variant: 'Blush Pink', note: 'A quilted roll that keeps bristles clean and safe.' },
