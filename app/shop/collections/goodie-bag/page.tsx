@@ -3,12 +3,13 @@ import type { Metadata } from 'next'
 import CollectionHero from '@/components/shop/CollectionHero'
 import ProductTile from '@/components/shared/ProductTile'
 import { getProductsByHandles } from '@/lib/shopify'
-import { GOODIE_BAG_GROUPS, GOODIE_BAG_HANDLES } from '@/lib/goodie-bag'
+import { GOODIE_BAG_GROUPS, GOODIE_BAG_HANDLES, GOODIE_BAG_LEAD } from '@/lib/goodie-bag'
+import InlineImage from '@/components/mdx/InlineImage'
 import { formatCardPrice } from '@/lib/product-format'
 import { findVariant, variantHref } from '@/lib/shop-variant'
 
 const SITE = 'https://www.beauticate.com'
-const TITLE = 'The Beauticate Collective Goodie Bag'
+const TITLE = 'Shop the Products Our Editors Are Using'
 const DESCRIPTION =
   'Hair tools, cult glow, collagen lips and a candle that smells like an Italian summer. Everything our editors took home from the first Beauticate Collective lunch, shoppable in one place.'
 const ARTICLE = '/sigourneys-edit/edit/beauticate-collective-lunch-lua-sydney-fish-market'
@@ -53,7 +54,16 @@ export default async function GoodieBagPage() {
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
-      <CollectionHero eyebrow="Shop" title={TITLE} description={DESCRIPTION} />
+      <CollectionHero eyebrow="The Beauticate Collective Goodie Bag" title={TITLE} description={DESCRIPTION} />
+
+      {/* Lead strip: the lunch, with the products in use. Kate first. */}
+      <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] mt-[clamp(20px,3vw,40px)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 md:gap-x-4 gap-y-2">
+          {GOODIE_BAG_LEAD.map(ph => (
+            <InlineImage key={ph.src} src={ph.src} alt={ph.alt} width={1200} height={1800} caption={ph.caption} />
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-wide mx-auto px-[clamp(16px,5vw,64px)] py-[clamp(28px,4vw,56px)]">
         <p className="font-sans text-[11px] tracking-[0.2em] uppercase text-charcoal-light text-center">
@@ -74,8 +84,10 @@ export default async function GoodieBagPage() {
                 const sp = byHandle[i.handle]
                 const v = findVariant(sp, i.variant)
                 const imgs = sp.images?.nodes ?? []
-                const primary = v?.image ?? imgs[0] ?? sp.featuredImage
-                const secondary = v?.image ? imgs[0] : imgs[1]
+                // One clean pack shot per tile: no hover swap to a lifestyle or
+                // badged image, and an explicit `image` where the listing's own
+                // photos carry award medals or NEW badges.
+                const primarySrc = i.image ?? (v?.image ?? imgs[0] ?? sp.featuredImage)?.url
                 const soldOut = v
                   ? !v.availableForSale
                   : !(sp.variants?.nodes ?? []).some(x => x.availableForSale)
@@ -89,10 +101,9 @@ export default async function GoodieBagPage() {
                     <ProductTile
                       href={variantHref(sp.handle, v)}
                       useNextImage
-                      primarySrc={primary?.url}
-                      primaryAlt={primary?.altText ?? sp.title}
-                      secondarySrc={secondary?.url}
-                      secondaryAlt={secondary?.altText ?? sp.title}
+                      primarySrc={primarySrc}
+                      primaryAlt={sp.title}
+                      cover={false}
                       brand={sp.vendor}
                       name={sp.title}
                       price={price}
@@ -103,6 +114,18 @@ export default async function GoodieBagPage() {
                 )
               })}
             </div>
+
+            {g.photos && g.photos.length > 0 && (
+              <div
+                className={`grid grid-cols-2 gap-x-3 md:gap-x-4 gap-y-2 mx-auto mt-[clamp(28px,4vw,48px)] ${
+                  g.photos.length === 1 ? 'max-w-[300px] md:max-w-[340px] !grid-cols-1' : 'max-w-[640px]'
+                }`}
+              >
+                {g.photos.map(ph => (
+                  <InlineImage key={ph.src} src={ph.src} alt={ph.alt} width={1200} height={1800} caption={ph.caption} />
+                ))}
+              </div>
+            )}
 
             {g.quote && (
               <blockquote className="not-prose text-center max-w-[22ch] md:max-w-[30ch] mx-auto mt-[clamp(40px,7vw,88px)]">
