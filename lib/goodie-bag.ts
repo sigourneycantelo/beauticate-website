@@ -36,7 +36,7 @@ const photo = (file: string, alt: string, caption: string): GoodieBagPhoto => ({
 export const GOODIE_BAG_LEAD: GoodieBagPhoto[] = [
   photo('collective-member-with-estetika-bag.jpg', 'Kate holding a blush pink quilted Estetika makeup bag at Lua', 'Kate with her Estetika bag'),
   photo('lua-table-set-with-estetika-makeup-bags.jpg', 'The table at Lua set with pink quilted makeup bags at every place', 'Estetika bags at every place'),
-  photo('guest-at-lua-entrance-with-gift-bags.jpg', 'Michelle holding a pink quilted bag and a tote of gifts at the entrance of Lua', 'Michelle'),
+  photo('estetika-makeup-bag-detail.jpg', 'A pink quilted Estetika makeup bag with its leather zip pull on a green marble table', 'The Estetika makeup bag'),
   photo('guest-unpacking-gift-bag.jpg', 'Shentel unpacking her gift bag at the table at Lua', 'Shentel unpacking hers'),
 ]
 
@@ -105,7 +105,7 @@ export const GOODIE_BAG_GROUPS: GoodieBagGroup[] = [
     title: 'The bag and the BB',
     photos: [
       photo('open-estetika-makeup-bag-with-products.jpg', 'An open pink Estetika makeup bag on the table, filled with products', 'Inside the Estetika bags'),
-      photo('estetika-makeup-bag-detail.jpg', 'A pink quilted Estetika makeup bag with its leather zip pull on a green marble table', 'The Estetika makeup bag'),
+      photo('guest-at-lua-entrance-with-gift-bags.jpg', 'Michelle holding a pink quilted bag and a tote of gifts at the entrance of Lua', 'Michelle'),
     ],
     quote: 'The bag you keep long after what’s inside runs out.',
     items: [
