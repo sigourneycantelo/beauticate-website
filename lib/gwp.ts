@@ -107,6 +107,28 @@ export const GWP_OFFERS: GiftOffer[] = [
     excludedProductIds: ['gid://shopify/Product/8095275155525'],
     lineAttributes: [{ key: 'Gift with purchase', value: 'Free gift — Bloody Delicious illuminator' }],
   },
+  {
+    key: 'saint-louve',
+    // OFF until the setup outside this file is done (see the checklist above):
+    // gift tagged gwp-hidden, a Saint Louve BXGY discount created, the gift in the
+    // brand's delivery profile, and Elly confirming minSpend and the window.
+    enabled: false,
+    // Retail products carry vendor "Saint Louve"; the synced gift carries "Saintlouve".
+    vendor: 'Saint Louve',
+    giftVariantId: 'gid://shopify/ProductVariant/46158948859973',
+    giftProductId: 'gid://shopify/Product/8363355963461',
+    giftHandle: 'vitamin-b3-b5-hyaluronic-acid-hydrating-serum-6abe350c3b919f31cc41c8b3',
+    giftName: 'a full-size Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum',
+    badge: 'Free gift',
+    freeLabel: 'Free',
+    pitch: 'Spend $150 on Saint Louve and we’ll add a full-size 30ml Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum to your order, free.',
+    cartNote: 'Added free with your Saint Louve order',
+    // TO CONFIRM with Elly. The gift retails at $129.95, so a threshold near it
+    // protects her margin; without one a single cheap item would earn it.
+    minSpend: 150,
+    lineAttributes: [{ key: 'Gift with purchase', value: 'Free gift — Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum' }],
+    // startsAt / endsAt: set once the window is agreed.
+  },
 ]
 
 const norm = (s?: string | null) => (s ?? '').trim().toLowerCase()
