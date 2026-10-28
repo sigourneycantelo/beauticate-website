@@ -45,9 +45,6 @@ export const GOODIE_BAG_LEAD: GoodieBagPhoto[] = [
 export const GOODIE_BAG_GROUPS: GoodieBagGroup[] = [
   {
     title: 'The hair duo',
-    photos: [
-      photo('st-louis-says-tote-of-gifts.jpg', 'A St. Louis Says tote filled with gifts from the shop brands beside a pink quilted bag', 'St. Louis Says in the tote'),
-    ],
     quote: 'Heat damage is a tax. This brush lowers it.',
     items: [
       { handle: 'infrared-thermal-brush', note: 'Your shape with less heat. Start low, go up only if you need to.' },

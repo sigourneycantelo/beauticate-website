@@ -26,13 +26,13 @@ export const metadata: Metadata = {
 function quote(text: string, above = false) {
   return (
     <blockquote
-      className={`not-prose text-center max-w-[22ch] md:max-w-[30ch] mx-auto ${
+      className={`not-prose text-center max-w-[860px] mx-auto ${
         above ? 'mt-0 mb-[clamp(28px,4vw,48px)]' : 'mt-[clamp(40px,7vw,88px)]'
       }`}
     >
       <p
-        className="font-serif italic text-chocolate"
-        style={{ fontSize: 'clamp(28px,4.2vw,48px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}
+        className="font-serif italic text-chocolate md:whitespace-nowrap"
+        style={{ fontSize: 'clamp(20px,2.4vw,30px)', lineHeight: 1.2, letterSpacing: '-0.01em' }}
       >
         {text}
       </p>
@@ -92,7 +92,7 @@ export default async function GoodieBagPage() {
 
         {groups.map(g => (
           <section key={g.title} className="mt-[clamp(36px,6vw,72px)]">
-            <h2 className="font-serif font-normal text-center mb-6" style={{ fontSize: 'clamp(22px,2.6vw,30px)' }}>
+            <h2 className="font-serif font-normal text-center mb-6" style={{ fontSize: 'clamp(28px,4.2vw,48px)', lineHeight: 1.1, letterSpacing: '-0.01em' }}>
               {g.title}
             </h2>
 
