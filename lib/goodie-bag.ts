@@ -36,7 +36,7 @@ const photo = (file: string, alt: string, caption: string): GoodieBagPhoto => ({
 export const GOODIE_BAG_LEAD: GoodieBagPhoto[] = [
   photo('collective-member-with-estetika-bag.jpg', 'Kate holding a blush pink quilted Estetika makeup bag at Lua', 'Kate with her Estetika bag'),
   photo('lua-table-set-with-estetika-makeup-bags.jpg', 'The table at Lua set with pink quilted makeup bags at every place', 'Estetika bags at every place'),
-  photo('estetika-makeup-bag-detail.jpg', 'A pink quilted Estetika makeup bag with its leather zip pull on a green marble table', 'The Estetika makeup bag'),
+  photo('gift-bag-flat-lay-brands.jpg', 'A St. Louis Says tote spilling gift products including LAMAV, buj and hair care, beside a pink quilted makeup bag', 'The goodie bag, unpacked'),
   photo('guest-unpacking-gift-bag.jpg', 'Shentel unpacking her gift bag at the table at Lua', 'Shentel unpacking hers'),
 ]
 
