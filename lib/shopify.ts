@@ -136,6 +136,7 @@ const CART_FRAGMENT = `
           ... on ProductVariant {
             id
             title
+            sku
             price { amount currencyCode }
             selectedOptions { name value }
             product { id handle title vendor featuredImage { url altText width height } }

@@ -4,6 +4,7 @@ import type { Cart } from '@/types/shopify'
 import { track } from '@/lib/meta/pixel'
 import { gaAddToCart, gidToId } from '@/lib/ga/events'
 import { syncAttributionToCart } from '@/lib/attribution'
+import { klaviyoAddedToCart } from '@/lib/klaviyo-browser'
 
 const STORAGE_KEY = 'beauticate_cart_id'
 const STORAGE_TTL = 30 * 24 * 60 * 60 * 1000 // 30 days
@@ -230,6 +231,16 @@ export default function CartProvider({ children }: { children: ReactNode }) {
             },
             price?.currencyCode ?? 'AUD'
           )
+        } catch {
+          // analytics must never break add-to-cart
+        }
+
+        // Klaviyo "Added to Cart" — the Shopify theme never renders, so Klaviyo's
+        // own integration can't send it. Only reached once the API has returned the
+        // updated cart; compares against `c` so a gift line or a stock-clamped add
+        // never fires (see klaviyoAddedToCart).
+        try {
+          klaviyoAddedToCart(c, updated, variantId)
         } catch {
           // analytics must never break add-to-cart
         }
