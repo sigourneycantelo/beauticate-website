@@ -333,6 +333,10 @@ When publishing a new story, always ask:
 
 The most recent articles (by `date_published`) appear directly below the hero in `DuoLeft`, `DuoStagger`, `StoriesTrio`, etc. The hero article is excluded from those sections automatically.
 
+### Collections and pages can hold a hero slide too
+
+The carousel is not articles only. `data/hero-slides.ts` holds slides for a shop collection or any page with its own URL (the goodie bag is the first). They share one rotation with the `is_hero` articles, use the same order scale as `hero_order`, and `getHeroSlides()` in `lib/hero.ts` merges and caps the lot at **four**. So the four-slide rule counts both: a new collection slide pushes the highest order out. To retire one, set `active: false`. Use a landscape (~2:1) image.
+
 ### Every article needs BOTH a landscape holding shot and a portrait thumbnail
 
 The site surfaces each article in two shapes, and there are two frontmatter fields to match:
