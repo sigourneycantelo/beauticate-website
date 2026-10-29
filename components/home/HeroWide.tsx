@@ -18,10 +18,13 @@ interface Article {
     hero_eyebrow?: string
     hero_aspect?: string
     hero_focus?: string
+    href?: string
+    hero_cta?: string
   }
 }
 
 function articleHref(f: Article['frontmatter']) {
+  if (f.href) return f.href
   return `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
 }
 
@@ -104,7 +107,7 @@ function Slide({
           className="inline-block mt-4 font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium"
           style={{ color: 'rgba(255,255,255,.85)', borderBottom: '1px solid rgba(255,255,255,.5)', paddingBottom: '2px' }}
         >
-          Read the story
+          {f.hero_cta ?? 'Read the story'}
         </span>
       </div>
     </Link>
