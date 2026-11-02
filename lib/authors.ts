@@ -193,6 +193,22 @@ export const AUTHORS: Author[] = [
     shopCollection: 'amys-favourites',
   },
   {
+    name: 'Dr Nel Wijetunga',
+    slug: 'dr-nel-wijetunga',
+    role: 'Aesthetics Expert',
+    bio: "Dr Nel Wijetunga is a medical doctor with a longstanding passion for health, aesthetics and lifestyle. Her philosophy favours prevention over treatment, drawing on preventative health, regenerative medicine, skin health and nutrition, alongside a pro-age approach that celebrates every stage of life.",
+    photo: '/images/collective/dr-nel.png',
+    instagram: 'https://www.instagram.com/drnel.belleage/',
+    sameAs: ['https://www.instagram.com/drnel.belleage/', 'https://www.belleage.com.au'],
+  },
+  {
+    name: 'Elle Halliwell',
+    slug: 'elle-halliwell',
+    role: 'Contributing Editor',
+    bio: "Elle Halliwell is a Sydney-based journalist, writer and wellness enthusiast with more than 20 years of experience covering beauty, health, fashion and travel. A former fashion editor turned naturopath and wellness entrepreneur, she is also the founder of wellness brand Auricle.",
+    photo: '/images/collective/elle-halliwell.jpg',
+  },
+  {
     name: 'Dr Leanne Girgis',
     slug: 'dr-leanne-girgis',
     role: 'Health Expert',
