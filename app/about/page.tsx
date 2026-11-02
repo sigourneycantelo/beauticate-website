@@ -231,7 +231,7 @@ export default function AboutPage() {
                         <Image src={p.image} alt={p.name} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, 360px" />
                       </div>
                     )}
-                    <h3 className="font-serif text-lg text-charcoal">{hasPage ? <Link href={`/author/${author!.slug}`} className="hover:text-wine transition-colors">{p.name}</Link> : p.name}</h3>
+                    <h3 className="font-serif text-lg text-charcoal">{p.instagram ? <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-wine transition-colors">{p.name}</a> : hasPage ? <Link href={`/author/${author!.slug}`} className="hover:text-wine transition-colors">{p.name}</Link> : p.name}</h3>
                     <p className="font-sans text-[11px] tracking-widest uppercase text-muted mt-0.5 mb-2">{p.role}</p>
                     <p className="font-serif text-sm text-charcoal/70 leading-relaxed">
                       {hasPage && p.bio.startsWith(p.name) ? (
@@ -265,7 +265,7 @@ export default function AboutPage() {
                       <Image src={p.image} alt={p.name} fill className="object-cover object-top" sizes="(max-width: 640px) 100vw, 360px" />
                     </div>
                   )}
-                  <h3 className="font-serif text-lg text-charcoal">{hasPage ? <Link href={`/author/${author!.slug}`} className="hover:text-wine transition-colors">{p.name}</Link> : p.name}</h3>
+                  <h3 className="font-serif text-lg text-charcoal">{p.instagram ? <a href={p.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-wine transition-colors">{p.name}</a> : hasPage ? <Link href={`/author/${author!.slug}`} className="hover:text-wine transition-colors">{p.name}</Link> : p.name}</h3>
                   <p className="font-sans text-[11px] tracking-widest uppercase text-muted mt-0.5 mb-2">{p.role}</p>
                   <p className="font-serif text-sm text-charcoal/70 leading-relaxed">
                     {hasPage && p.bio.startsWith(p.name) ? (
