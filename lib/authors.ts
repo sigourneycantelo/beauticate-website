@@ -207,6 +207,8 @@ export const AUTHORS: Author[] = [
     role: 'Contributing Editor',
     bio: "Elle Halliwell is a Sydney-based journalist, writer and wellness enthusiast with more than 20 years of experience covering beauty, health, fashion and travel. A former fashion editor turned naturopath and wellness entrepreneur, she is also the founder of wellness brand Auricle.",
     photo: '/images/collective/elle-halliwell.jpg',
+    instagram: 'https://www.instagram.com/ellehalliwell/',
+    sameAs: ['https://www.instagram.com/ellehalliwell/'],
   },
   {
     name: 'Dr Leanne Girgis',
