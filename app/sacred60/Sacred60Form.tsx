@@ -72,7 +72,7 @@ export default function Sacred60Form({ className }: { className?: string }) {
           type="submit"
           disabled={status === 'loading'}
           className="font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium px-6 py-3.5 rounded-[1px] transition-opacity hover:opacity-80 disabled:opacity-50"
-          style={{ background: '#1C1A17', color: '#fff', border: '1px solid #1C1A17' }}
+          style={{ background: '#5C4A3A', color: '#fff', border: '1px solid #5C4A3A' }}
         >
           {status === 'loading' ? 'Sending...' : 'Send Me the Guide'}
         </button>

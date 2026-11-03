@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import Link from 'next/link'
 import Sacred60Gate from './Sacred60Gate'
 import { SACRED_60 } from '@/data/sacred60'
-import { withNoskim, withNoskimClass } from '@/lib/affiliate-links'
+import { withNoskim } from '@/lib/affiliate-links'
 
 export const metadata: Metadata = {
   title: 'The Sacred 60 | Self-Care & Wellness Guide',
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 function ShopBadge() {
   return (
     <span
-      className="inline-block font-sans text-[9px] tracking-[0.15em] uppercase font-semibold px-2 py-0.5 rounded-sm ml-2"
-      style={{ background: '#2D5A3D', color: '#fff', verticalAlign: 'middle' }}
+      className="inline-block font-sans text-[8px] tracking-[0.15em] uppercase font-semibold px-1.5 py-0.5 rounded-sm"
+      style={{ background: '#2D5A3D', color: '#fff' }}
     >
       Shop
     </span>
@@ -27,118 +27,143 @@ export default function Sacred60ShopPage() {
   return (
     <Suspense>
       <Sacred60Gate>
-        <main className="bg-cream-50 text-charcoal">
+        <main className="text-[#5C4A3A]">
           {/* ─── Header ────────────────────────────────────── */}
-          <header
-            className="relative overflow-hidden text-center py-16 md:py-24"
-            style={{ background: '#F5F0E8' }}
-          >
-            <p
-              className="font-sans text-[10px] tracking-[0.35em] uppercase font-medium mb-4"
-              style={{ opacity: 0.4 }}
-            >
-              Self Care & Wellness Guide
-            </p>
-            <h1 className="font-serif font-normal leading-[0.9]" style={{ fontSize: 'clamp(48px,8vw,88px)' }}>
-              Sacred
-            </h1>
-            <span
-              className="block font-serif font-normal leading-none mt-1"
-              style={{ fontSize: 'clamp(90px,16vw,180px)', opacity: 0.1 }}
-              aria-hidden
-            >
-              60
-            </span>
-
-            <div className="max-w-2xl mx-auto px-6 mt-6">
-              <p className="font-serif text-base leading-relaxed" style={{ opacity: 0.65 }}>
-                After years of interviewing doctors, scientists, nutritionists and wellness experts, and doing my
-                own healing work, I realised the biggest problem isn't knowing what to do. It's the overwhelm.
-                The Sacred 60 is my calm edit of what actually helps. Not trends. Not "do more". Just practical
-                rituals, tips and tools that support your nervous system, skin, energy, sleep and home, in real
-                life.
+          <header className="relative overflow-hidden text-center" style={{ background: '#FAF7F2' }}>
+            <div className="py-20 md:py-28 px-6">
+              <h1 className="font-serif font-normal tracking-[0.15em] uppercase" style={{ fontSize: 'clamp(36px,6vw,64px)' }}>
+                Sacred
+              </h1>
+              <span
+                className="block font-serif font-light leading-none -mt-4 md:-mt-6"
+                style={{ fontSize: 'clamp(100px,18vw,200px)', opacity: 0.1 }}
+                aria-hidden
+              >
+                60
+              </span>
+              <p className="font-serif italic text-base md:text-lg -mt-2" style={{ opacity: 0.6 }}>
+                Self Care &amp; Wellness Guide
               </p>
-              <p className="font-serif italic mt-4" style={{ opacity: 0.5 }}>— Sigourney x</p>
             </div>
           </header>
+
+          {/* ─── Why I Made This ───────────────────────────── */}
+          <section style={{ background: '#FAF7F2' }}>
+            <div className="max-w-4xl mx-auto px-6 pb-16 md:pb-24">
+              <div className="grid md:grid-cols-2 gap-8 md:gap-14">
+                <div className="font-serif text-[15px] leading-[1.8] space-y-5" style={{ opacity: 0.75 }}>
+                  <p>
+                    What if beauty wasn't just about what you put on your face, but how you lived your day?
+                  </p>
+                  <p>
+                    For years, I believed that if I worked harder, optimised better, or found the right product, everything would fall into place. It didn't.
+                  </p>
+                  <p>
+                    What changed things wasn't a breakthrough or a single treatment.
+                  </p>
+                </div>
+                <div>
+                  <div className="font-serif text-[15px] leading-[1.8] space-y-5" style={{ opacity: 0.75 }}>
+                    <p>
+                      It was a handful of small, repeatable rituals that helped steady my nervous system, restore my energy, and bring me back into my body, and my life.
+                    </p>
+                    <p>
+                      The Sacred Sixty is a calm edit of what genuinely supports me, drawn from decades of reporting and lived experience. It isn't about doing more. It isn't about perfection. And it certainly isn't about trends. Take what resonates. Leave what doesn't.
+                    </p>
+                  </div>
+                  <p className="font-serif italic text-[15px] mt-6" style={{ opacity: 0.55 }}>
+                    — Sigourney
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ─── Quote Divider ─────────────────────────────── */}
+          <div className="py-12 md:py-16 text-center border-y" style={{ background: '#FAF7F2', borderColor: 'rgba(92,74,58,0.08)' }}>
+            <p className="font-serif italic text-lg md:text-xl px-6 max-w-2xl mx-auto" style={{ opacity: 0.6 }}>
+              It wasn't a breakthrough. It was small, repeatable rituals.
+            </p>
+          </div>
 
           {/* ─── Sections ──────────────────────────────────── */}
           {SACRED_60.map((section, si) => (
             <section key={si}>
-              {/* Section header */}
-              <div
-                className="text-center py-12 md:py-16"
-                style={{ background: si % 2 === 0 ? '#fff' : '#F5F0E8' }}
-              >
-                <h2
-                  className="font-sans text-[11px] tracking-[0.35em] uppercase font-semibold mb-3"
-                  style={{ opacity: 0.5 }}
-                >
-                  {section.title}
-                </h2>
-                <p
-                  className="font-serif italic text-base md:text-lg px-6"
-                  style={{ opacity: 0.55, maxWidth: '44ch', margin: '0 auto' }}
-                >
-                  {section.subtitle}
-                </p>
+              {/* Section header — editorial style */}
+              <div className="py-14 md:py-20" style={{ background: '#FAF7F2' }}>
+                <div className="max-w-4xl mx-auto px-6 text-center">
+                  <h2
+                    className="font-serif font-normal tracking-[0.08em] uppercase"
+                    style={{ fontSize: 'clamp(28px,5vw,48px)' }}
+                  >
+                    {section.title}
+                  </h2>
+                  <p className="font-serif text-base md:text-lg mt-4 max-w-lg mx-auto leading-relaxed" style={{ opacity: 0.7 }}>
+                    {section.description}
+                  </p>
+                </div>
               </div>
 
-              {/* Products */}
-              <div className="max-w-4xl mx-auto px-6">
-                {section.items.map((item, ii) => {
-                  const isEven = ii % 2 === 0
-                  return (
-                    <article
-                      key={item.number}
-                      className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12 py-12 md:py-16 ${
-                        ii < section.items.length - 1 ? 'border-b border-cream-200' : ''
-                      }`}
-                    >
-                      {/* Image */}
-                      <div className="w-full md:w-2/5 shrink-0 flex justify-center">
-                        <Link
-                          href={item.url}
-                          target={item.url.startsWith('http') ? '_blank' : undefined}
-                          rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                          className="relative group"
-                        >
-                          {/* Number */}
+              {/* Products — editorial scattered layout */}
+              <div className="max-w-5xl mx-auto px-6 py-8 md:py-12" style={{ background: '#fff' }}>
+                <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
+                  {section.items.map((item, ii) => {
+                    const isRight = ii % 2 !== 0
+                    return (
+                      <article
+                        key={item.number}
+                        className="py-10 md:py-14"
+                        style={{ textAlign: isRight ? 'left' : 'right' }}
+                      >
+                        {/* Large decorative number */}
+                        <div className="flex items-start gap-3" style={{ justifyContent: isRight ? 'flex-start' : 'flex-end' }}>
                           <span
-                            className="absolute -top-6 -left-2 font-serif text-5xl md:text-6xl leading-none select-none"
-                            style={{ opacity: 0.1 }}
+                            className="font-serif font-light leading-none select-none shrink-0"
+                            style={{ fontSize: 'clamp(56px,8vw,80px)', opacity: 0.15, order: isRight ? -1 : 1 }}
                             aria-hidden
                           >
                             {item.number}.
                           </span>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={item.image}
-                            alt={item.product}
-                            className="w-48 md:w-56 h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                            loading="lazy"
-                          />
-                        </Link>
-                      </div>
+                          <div className="pt-2" style={{ order: isRight ? 1 : -1 }}>
+                            <h3 className="font-sans text-[11px] tracking-[0.2em] uppercase font-bold mb-1" style={{ opacity: 0.7 }}>
+                              {item.title}
+                            </h3>
+                          </div>
+                        </div>
 
-                      {/* Copy */}
-                      <div className="flex-1 text-center md:text-left">
-                        <h3 className="font-sans text-xs tracking-[0.25em] uppercase font-semibold mb-3" style={{ opacity: 0.45 }}>
-                          {item.number}. {item.title}
-                        </h3>
-                        <p className="font-serif text-base leading-relaxed mb-4" style={{ opacity: 0.7 }}>
-                          {item.description}
-                        </p>
-                        <div className="flex flex-col sm:flex-row items-center md:items-start gap-2">
+                        {/* Product image */}
+                        <div className="my-4 flex" style={{ justifyContent: isRight ? 'flex-start' : 'flex-end' }}>
                           <Link
                             href={item.url}
                             target={item.url.startsWith('http') ? '_blank' : undefined}
                             rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                            className="inline-block font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70"
+                            className="group"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={item.image}
+                              alt={item.product}
+                              className="w-36 md:w-44 h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          </Link>
+                        </div>
+
+                        {/* Description */}
+                        <p className="font-serif text-[14px] leading-[1.7] mb-3 max-w-xs" style={{ opacity: 0.7, marginLeft: isRight ? '0' : 'auto', marginRight: isRight ? 'auto' : '0' }}>
+                          {item.description}
+                        </p>
+
+                        {/* CTA */}
+                        <div className="flex items-center gap-2" style={{ justifyContent: isRight ? 'flex-start' : 'flex-end' }}>
+                          <Link
+                            href={item.url}
+                            target={item.url.startsWith('http') ? '_blank' : undefined}
+                            rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+                            className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
                             style={{
-                              background: item.isShop ? '#2D5A3D' : '#1C1A17',
+                              background: item.isShop ? '#2D5A3D' : '#5C4A3A',
                               color: '#fff',
-                              border: 'none',
                             }}
                           >
                             {item.isShop ? 'Shop on Beauticate' : 'Shop'}
@@ -146,53 +171,79 @@ export default function Sacred60ShopPage() {
                           {item.isShop && <ShopBadge />}
                         </div>
                         {item.discount && (
-                          <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.45 }}>
+                          <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
                             {item.discount}
                           </p>
                         )}
-                        {item.brand && (
-                          <p className="font-sans text-[11px] mt-1" style={{ opacity: 0.35 }}>
-                            {item.brand}
-                          </p>
-                        )}
-                      </div>
-                    </article>
-                  )
-                })}
+                      </article>
+                    )
+                  })}
+                </div>
               </div>
+
+              {/* Pull quote between sections */}
+              {si < SACRED_60.length - 1 && (
+                <div className="py-12 md:py-16 text-center" style={{ background: '#FAF7F2' }}>
+                  <p className="font-serif italic text-base md:text-lg px-6 max-w-xl mx-auto" style={{ opacity: 0.55 }}>
+                    &ldquo;{section.pullQuote}&rdquo;
+                  </p>
+                </div>
+              )}
             </section>
           ))}
 
-          {/* ─── Footer ────────────────────────────────────── */}
-          <footer className="text-center py-16 md:py-24 px-6" style={{ background: '#F5F0E8' }}>
-            <p className="font-serif text-base leading-relaxed max-w-xl mx-auto mb-6" style={{ opacity: 0.6 }}>
-              You don't need to overhaul your life to feel better. Start with one ritual. One habit. One small
-              shift that feels doable. Return to this guide whenever you need grounding, clarity, or inspiration.
-            </p>
-            <p className="font-serif italic mb-8" style={{ opacity: 0.5 }}>
-              Self-care doesn't need to be perfect. It just needs to be considered.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/"
-                className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70"
-                style={{ background: '#1C1A17', color: '#fff' }}
-              >
-                Explore Beauticate
-              </Link>
-              <Link
-                href="/podcast"
-                className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70"
-                style={{ border: '1px solid #1C1A17', color: '#1C1A17' }}
-              >
-                Listen to the Podcast
-              </Link>
+          {/* ─── Closing ──────────────────────────────────── */}
+          <footer className="py-20 md:py-28 px-6" style={{ background: '#FAF7F2' }}>
+            <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/content/sacred60/hero.jpg"
+                  alt="Sigourney"
+                  className="w-full max-w-sm mx-auto object-cover"
+                  style={{ aspectRatio: '3/4' }}
+                  loading="lazy"
+                />
+              </div>
+              <div className="font-serif text-lg md:text-xl leading-[1.7] space-y-5" style={{ opacity: 0.75 }}>
+                <p>
+                  <strong>You don't need to overhaul your life to feel better.</strong>
+                </p>
+                <p>
+                  Start with one ritual. One habit. One small shift that feels doable.
+                </p>
+                <p>
+                  Return to this guide whenever you need grounding, clarity, or inspiration: it's designed to meet you where you are.
+                </p>
+                <p>
+                  For deeper conversations, expert interviews, and ongoing edits of what actually works, you'll find more on Beauticate and on the Beautiful Inside podcast.
+                </p>
+              </div>
             </div>
 
-            <p className="font-sans text-[10px] mt-12" style={{ opacity: 0.3 }}>
-              The practices and products featured in this guide are shared from personal experience and general
-              wellbeing research. They are not a substitute for professional medical advice.
-            </p>
+            <div className="text-center mt-16">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  href="/"
+                  className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-6 py-3 transition-opacity hover:opacity-70"
+                  style={{ background: '#5C4A3A', color: '#fff' }}
+                >
+                  Explore Beauticate
+                </Link>
+                <Link
+                  href="/podcast"
+                  className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-6 py-3 transition-opacity hover:opacity-70"
+                  style={{ border: '1px solid #5C4A3A', color: '#5C4A3A' }}
+                >
+                  Listen to the Podcast
+                </Link>
+              </div>
+
+              <p className="font-sans text-[10px] mt-14 max-w-lg mx-auto" style={{ opacity: 0.3 }}>
+                A note: The practices and products featured in this guide are shared from personal experience and general
+                wellbeing research. They are not a substitute for professional medical advice.
+              </p>
+            </div>
           </footer>
         </main>
       </Sacred60Gate>
