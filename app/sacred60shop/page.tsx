@@ -121,7 +121,7 @@ export default function Sacred60ShopPage() {
                   return pairs.map((pair, pi) => {
                     const layout = layouts[pi % layouts.length]
                     return (
-                      <div key={pi} className="relative md:flex md:gap-0 md:items-start mb-4 md:mb-0">
+                      <div key={pi} className="relative md:flex md:gap-0 md:items-start mb-4 md:mb-8">
                         {pair.map((item, ii) => {
                           const isRight = ii === 1
                           const padClass = isRight ? layout.rightPad : layout.leftPad
