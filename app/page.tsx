@@ -1,4 +1,5 @@
-import { getAllArticles, getHeroArticles, getVodcastEpisodes } from '@/lib/content'
+import { getAllArticles, getVodcastEpisodes } from '@/lib/content'
+import { getHeroSlides } from '@/lib/hero'
 import { getProducts, getCollections, getCollectionFull, getTeamRailProducts } from '@/lib/shopify'
 import { SHOP_BRANDS, FREE_SHIPPING_VENDORS } from '@/lib/shop-taxonomy'
 import type { ShopifyCollection } from '@/types/shopify'
@@ -80,8 +81,8 @@ export default async function HomePage() {
     return articles.filter(Boolean) as NonNullable<typeof articles[number]>[]
   }
 
-  const heroArticles = getHeroArticles()
-  heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
+  const heroSlides = getHeroSlides()
+  heroSlides.forEach(s => s.key.startsWith('article:') && shownSlugs.add(s.key.slice('article:'.length)))
   const duo1Articles = take(2)
   const trio1Articles = take(3)
   const [splitArticle] = take(1)
@@ -91,7 +92,7 @@ export default async function HomePage() {
   return (
     <>
       {/* 1 — Cycling hero */}
-      {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
+      {heroSlides.length > 0 && <HeroWide slides={heroSlides} />}
 
       {/* 2 — Trust + press logos (one credibility moment under the hero) */}
       <PressLogoBar className="py-12" />

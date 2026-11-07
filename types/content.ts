@@ -127,6 +127,8 @@ export interface ArticleFrontmatter {
   // Hero
   is_hero?: boolean            // true = this article is the curated home page hero
   hero_order?: number
+  hero_title?: string          // headline on the home hero slide, if different from the title
+  hero_eyebrow?: string        // small caps line above the home hero headline; defaults to the category name
   home_rank?: number           // pin to the top of the home grid (1 = position 2 on the page); unranked = newest-first
   hero_image?: string          // dedicated landscape/holding shot for HeroWide; falls back to featured_image
   hero_video?: string          // looping muted MP4 for the article banner (animated holding shot); hero_image is its still poster. Beats a GIF: ~1.5MB, no colour banding

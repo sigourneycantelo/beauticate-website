@@ -4,62 +4,30 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
-interface Article {
-  frontmatter: {
-    title: string
-    slug: string
-    category: string
-    subcategory?: string
-    excerpt?: string
-    featured_image?: string
-    featured_image_alt?: string
-    hero_image?: string
-    hero_title?: string
-    hero_eyebrow?: string
-    hero_aspect?: string
-    hero_focus?: string
-  }
-}
-
-function articleHref(f: Article['frontmatter']) {
-  return `/${f.category}${f.subcategory ? `/${f.subcategory}` : ''}/${f.slug}`
-}
-
-const CATEGORY_LABELS: Record<string, string> = {
-  'beauty-style': 'Beauty & Style',
-  'sigourneys-edit': "Sigourney's Edit",
-  wellness: 'Wellness',
-  living: 'Living',
-  destinations: 'Destinations',
-  interviews: 'Interviews',
-  vodcast: 'Podcast',
-}
+import type { HeroSlide } from '@/lib/hero'
 
 function Slide({
-  article,
+  slide,
   isActive,
   index,
 }: {
-  article: Article
+  slide: HeroSlide
   isActive: boolean
   index: number
 }) {
-  const f = article.frontmatter
-  const heroImage = f.hero_image ?? f.featured_image ?? '/images/hero-home.png'
-  const heroTitle = f.hero_title ?? f.title
-  const eyebrow = f.hero_eyebrow ?? CATEGORY_LABELS[f.category] ?? f.category
-  const focus = f.hero_focus ?? 'center 25%'
+  const heroImage = slide.image
+  const focus = slide.focus ?? 'center 25%'
 
   return (
     <Link
-      href={articleHref(f)}
+      href={slide.href}
       className={`hero-slide block${isActive ? ' is-active' : ''}`}
       aria-hidden={!isActive}
       tabIndex={isActive ? 0 : -1}
     >
       <Image
         src={heroImage}
-        alt={f.featured_image_alt ?? f.title}
+        alt={slide.imageAlt}
         fill
         priority={index === 0}
         loading={index === 0 ? 'eager' : 'lazy'}
@@ -80,7 +48,7 @@ function Slide({
           className="block font-sans text-[11px] tracking-[0.34em] uppercase mb-3 font-medium"
           style={{ color: 'rgba(255,255,255,.85)' }}
         >
-          {eyebrow}
+          {slide.eyebrow}
         </span>
         <h2
           className="font-serif font-normal leading-[1.15]"
@@ -90,35 +58,35 @@ function Slide({
             textShadow: '0 1px 20px rgba(0,0,0,.35)',
           }}
         >
-          {heroTitle}
+          {slide.title}
         </h2>
-        {f.excerpt && (
+        {slide.excerpt && (
           <p
             className="hidden sm:block font-sans mt-3 overflow-hidden whitespace-nowrap text-ellipsis"
             style={{ fontSize: '13px', opacity: 0.88, maxWidth: '52ch' }}
           >
-            {f.excerpt}
+            {slide.excerpt}
           </p>
         )}
         <span
           className="inline-block mt-4 font-sans text-[10.5px] tracking-[0.2em] uppercase font-medium"
           style={{ color: 'rgba(255,255,255,.85)', borderBottom: '1px solid rgba(255,255,255,.5)', paddingBottom: '2px' }}
         >
-          Read the story
+          {slide.cta}
         </span>
       </div>
     </Link>
   )
 }
 
-export default function HeroWide({ articles }: { articles: Article[] }) {
+export default function HeroWide({ slides }: { slides: HeroSlide[] }) {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
   const [mounted, setMounted] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined)
   const touchStartX = useRef(0)
   const touchDelta = useRef(0)
-  const count = articles.length
+  const count = slides.length
   const prefersReducedMotion = useRef(false)
 
   useEffect(() => {
@@ -168,7 +136,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
     touchDelta.current = 0
   }, [goNext, goPrev])
 
-  if (!articles.length) return null
+  if (!slides.length) return null
 
   return (
     <section
@@ -221,11 +189,11 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
       `}</style>
 
       {/* First slide always renders (SSR + priority preload) */}
-      <Slide article={articles[0]} isActive={active === 0} index={0} />
+      <Slide slide={slides[0]} isActive={active === 0} index={0} />
 
       {/* Remaining slides deferred until hydration to avoid competing for bandwidth */}
-      {mounted && articles.slice(1).map((article, i) => (
-        <Slide key={article.frontmatter.slug} article={article} isActive={active === i + 1} index={i + 1} />
+      {mounted && slides.slice(1).map((slide, i) => (
+        <Slide key={slide.key} slide={slide} isActive={active === i + 1} index={i + 1} />
       ))}
 
       <div className="invisible" aria-hidden>
@@ -249,7 +217,7 @@ export default function HeroWide({ articles }: { articles: Article[] }) {
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4L13 10L7 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
           <div className="hero-dots">
-            {articles.map((_, i) => (
+            {slides.map((_, i) => (
               <button
                 key={i}
                 className={`hero-dot${i === active ? ' is-active' : ''}`}
