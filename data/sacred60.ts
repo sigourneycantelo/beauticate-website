@@ -1,6 +1,8 @@
 export type Sacred60Section = {
   title: string
   subtitle: string
+  description: string
+  pullQuote: string
   items: Sacred60Item[]
 }
 
@@ -23,6 +25,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Mind & Mood',
     subtitle: 'These rituals soothe stress, sharpen clarity and help you glow from the inside out.',
+    description: "Although the brain isn't the first place we think to treat when we want to look better, it's where everything starts. Mood, sleep, hormones and even skin quality are shaped by the nervous system.",
+    pullQuote: 'These rituals soothe stress, sharpen clarity and help you glow from the inside out.',
     items: [
       {
         number: 1,
@@ -115,6 +119,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Body & Balance',
     subtitle: 'Small shifts in your physical body can create huge ripple effects in energy, confidence and emotional release.',
+    description: 'This is your daily dose of embodiment. From lymphatic drainage to dancing in the kitchen, these rituals are about movement, touch, and restoring balance.',
+    pullQuote: 'Small shifts in your physical body can create huge ripple effects in energy, confidence and emotional release.',
     items: [
       {
         number: 11,
@@ -208,6 +214,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Skin & Glow',
     subtitle: "These are the glow rituals I reach for time and again, from red light to castor oil, gua sha to SPF.",
+    description: "Great skin isn't just about products — it's the result of daily habits and high-tech tools that support circulation, collagen and cellular health.",
+    pullQuote: 'These are the glow rituals I reach for time and again, from red light to castor oil, gua sha to SPF.',
     items: [
       {
         number: 21,
@@ -304,6 +312,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Energy & Sleep',
     subtitle: 'These rituals are my go-tos for winding down, recharging, and resetting from the inside out.',
+    description: "Sleep and energy are two sides of the same coin. A good night's rest sets the stage for hormonal balance, mood, metabolism and mental clarity.",
+    pullQuote: 'These rituals are my go-tos for winding down, recharging, and resetting from the inside out.',
     items: [
       {
         number: 31,
@@ -397,6 +407,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Space & Soul',
     subtitle: 'From pop-up saunas to pretty pill containers, these tools turn your home into a sanctuary that works with your wellness goals.',
+    description: "Our homes shape our habits — and the right environment can make self-care feel effortless. This section is about habit-stacking, sensory rituals, and designing your space to support calm, creativity, and consistency.",
+    pullQuote: 'From Airgardens to incense, these tools turn your home into a sanctuary that works with your wellness goals.',
     items: [
       {
         number: 41,
@@ -489,6 +501,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Nourish & Nurture',
     subtitle: 'Glow starts in the gut, and beauty — true beauty — is built from the inside out.',
+    description: "What we put into our bodies is just as powerful as what we do to them. From functional supplements to conscious cookware, this section is about fuelling your body with care, clarity and intention.",
+    pullQuote: 'Because glow starts in the gut, and beauty — true beauty — is built from the inside out.',
     items: [
       {
         number: 51,
