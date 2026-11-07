@@ -104,81 +104,93 @@ export default function Sacred60ShopPage() {
                 </div>
               </div>
 
-              {/* Products — editorial scattered layout */}
-              <div className="max-w-5xl mx-auto px-6 py-8 md:py-12" style={{ background: '#fff' }}>
-                <div className="grid md:grid-cols-2 gap-x-12 lg:gap-x-20">
-                  {section.items.map((item, ii) => {
-                    const isRight = ii % 2 !== 0
-                    return (
-                      <article
-                        key={item.number}
-                        className="py-10 md:py-14"
-                        style={{ textAlign: isRight ? 'left' : 'right' }}
-                      >
-                        {/* Large decorative number */}
-                        <div className="flex items-start gap-3" style={{ justifyContent: isRight ? 'flex-start' : 'flex-end' }}>
-                          <span
-                            className="font-serif font-light leading-none select-none shrink-0"
-                            style={{ fontSize: 'clamp(56px,8vw,80px)', opacity: 0.15, order: isRight ? -1 : 1 }}
-                            aria-hidden
+              {/* Products — magazine scatter layout */}
+              <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12" style={{ background: '#fff' }}>
+                {(() => {
+                  const pairs: (typeof section.items)[] = []
+                  for (let i = 0; i < section.items.length; i += 2) {
+                    pairs.push(section.items.slice(i, i + 2))
+                  }
+                  return pairs.map((pair, pi) => (
+                    <div key={pi} className="relative md:grid md:grid-cols-12 md:items-start" style={{ marginBottom: '-2rem' }}>
+                      {pair.map((item, ii) => {
+                        const isRight = ii === 1
+                        return (
+                          <article
+                            key={item.number}
+                            className={`relative py-6 md:py-4 ${
+                              isRight
+                                ? 'md:col-start-7 md:col-span-6 md:pt-28'
+                                : 'md:col-start-1 md:col-span-6'
+                            }`}
+                            style={{ zIndex: isRight ? 1 : 0 }}
                           >
-                            {item.number}.
-                          </span>
-                          <div className="pt-2" style={{ order: isRight ? 1 : -1 }}>
-                            <h3 className="font-sans text-[11px] tracking-[0.2em] uppercase font-bold mb-1" style={{ opacity: 0.7 }}>
-                              {item.title}
-                            </h3>
-                          </div>
-                        </div>
+                            <div className="flex items-start gap-2">
+                              <span
+                                className="font-serif font-light leading-none select-none shrink-0"
+                                style={{ fontSize: 'clamp(48px,7vw,72px)', opacity: 0.12 }}
+                                aria-hidden
+                              >
+                                {item.number}.
+                              </span>
+                              <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase font-bold pt-3" style={{ opacity: 0.7 }}>
+                                {item.title}
+                              </h3>
+                            </div>
 
-                        {/* Product image */}
-                        <div className="my-4 flex" style={{ justifyContent: isRight ? 'flex-start' : 'flex-end' }}>
-                          <Link
-                            href={item.url}
-                            target={item.url.startsWith('http') ? '_blank' : undefined}
-                            rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                            className="group"
-                          >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={item.image}
-                              alt={item.product}
-                              className="w-36 md:w-44 h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                              loading="lazy"
-                            />
-                          </Link>
-                        </div>
+                            <div
+                              className="relative my-3"
+                              style={{
+                                marginLeft: isRight ? '-3rem' : '0',
+                                marginRight: isRight ? '0' : '-3rem',
+                              }}
+                            >
+                              <Link
+                                href={item.url}
+                                target={item.url.startsWith('http') ? '_blank' : undefined}
+                                rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+                                className="group inline-block"
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                  src={item.image}
+                                  alt={item.product}
+                                  className="w-48 md:w-60 lg:w-72 h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                                  loading="lazy"
+                                />
+                              </Link>
+                            </div>
 
-                        {/* Description */}
-                        <p className="font-serif text-[14px] leading-[1.7] mb-3 max-w-xs" style={{ opacity: 0.7, marginLeft: isRight ? '0' : 'auto', marginRight: isRight ? 'auto' : '0' }}>
-                          {item.description}
-                        </p>
+                            <p className="font-serif text-[13px] leading-[1.7] mb-3 max-w-[280px]" style={{ opacity: 0.7 }}>
+                              {item.description}
+                            </p>
 
-                        {/* CTA */}
-                        <div className="flex items-center gap-2" style={{ justifyContent: isRight ? 'flex-start' : 'flex-end' }}>
-                          <Link
-                            href={item.url}
-                            target={item.url.startsWith('http') ? '_blank' : undefined}
-                            rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                            className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
-                            style={{
-                              background: item.isShop ? '#2D5A3D' : '#5C4A3A',
-                              color: '#fff',
-                            }}
-                          >
-                            {item.isShop ? 'Shop on Beauticate' : 'Shop'}
-                          </Link>
-                          {item.isShop && <ShopBadge />}
-                        </div>
-                        {item.discount && (
-                          <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
-                            {item.discount}
-                          </p>
-                        )}
-                      </article>
-                    )
-                  })}
-                </div>
+                            <div className="flex items-center gap-2">
+                              <Link
+                                href={item.url}
+                                target={item.url.startsWith('http') ? '_blank' : undefined}
+                                rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+                                className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
+                                style={{
+                                  background: item.isShop ? '#2D5A3D' : '#5C4A3A',
+                                  color: '#fff',
+                                }}
+                              >
+                                {item.isShop ? 'Shop on Beauticate' : 'Shop'}
+                              </Link>
+                              {item.isShop && <ShopBadge />}
+                            </div>
+                            {item.discount && (
+                              <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
+                                {item.discount}
+                              </p>
+                            )}
+                          </article>
+                        )
+                      })}
+                    </div>
+                  ))
+                })()}
               </div>
 
               {/* Pull quote between sections */}
