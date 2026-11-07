@@ -158,6 +158,7 @@ export default function Sacred60ShopPage() {
                                   src={item.image}
                                   alt={item.product}
                                   className={`w-full ${maxImg} h-auto object-contain transition-transform duration-500 group-hover:scale-105`}
+                                  style={{ maxHeight: '420px' }}
                                   loading="lazy"
                                 />
                               </Link>
