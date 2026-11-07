@@ -112,18 +112,15 @@ export default function Sacred60ShopPage() {
                     pairs.push(section.items.slice(i, i + 2))
                   }
                   return pairs.map((pair, pi) => (
-                    <div key={pi} className="relative md:grid md:grid-cols-12 md:items-start" style={{ marginBottom: '-2rem' }}>
+                    <div key={pi} className="relative md:flex md:gap-0 md:items-start" style={{ marginBottom: '-1rem' }}>
                       {pair.map((item, ii) => {
                         const isRight = ii === 1
                         return (
                           <article
                             key={item.number}
-                            className={`relative py-6 md:py-4 ${
-                              isRight
-                                ? 'md:col-start-7 md:col-span-6 md:pt-28'
-                                : 'md:col-start-1 md:col-span-6'
+                            className={`relative py-6 md:py-4 md:w-1/2 ${
+                              isRight ? 'md:pt-32 md:pl-6' : 'md:pr-6'
                             }`}
-                            style={{ zIndex: isRight ? 1 : 0 }}
                           >
                             <div className="flex items-start gap-2">
                               <span
@@ -138,30 +135,22 @@ export default function Sacred60ShopPage() {
                               </h3>
                             </div>
 
-                            <div
-                              className="relative my-3"
-                              style={{
-                                marginLeft: isRight ? '-3rem' : '0',
-                                marginRight: isRight ? '0' : '-3rem',
-                              }}
+                            <Link
+                              href={item.url}
+                              target={item.url.startsWith('http') ? '_blank' : undefined}
+                              rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+                              className="group block my-3"
                             >
-                              <Link
-                                href={item.url}
-                                target={item.url.startsWith('http') ? '_blank' : undefined}
-                                rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                                className="group inline-block"
-                              >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  src={item.image}
-                                  alt={item.product}
-                                  className="w-48 md:w-60 lg:w-72 h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                                  loading="lazy"
-                                />
-                              </Link>
-                            </div>
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={item.image}
+                                alt={item.product}
+                                className="w-full max-w-[280px] h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
+                              />
+                            </Link>
 
-                            <p className="font-serif text-[13px] leading-[1.7] mb-3 max-w-[280px]" style={{ opacity: 0.7 }}>
+                            <p className="font-serif text-[13px] leading-[1.7] mb-3 max-w-[300px]" style={{ opacity: 0.7 }}>
                               {item.description}
                             </p>
 
