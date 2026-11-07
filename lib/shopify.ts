@@ -1,3 +1,4 @@
+import { GOODIE_BAG_HANDLES } from './goodie-bag'
 import type { ShopifyProduct, ShopifyCollection, Cart } from '@/types/shopify'
 import { NON_BRAND_COLLECTION_HANDLES, type ShopBrand } from './shop-taxonomy'
 import { GIFT_HANDLES, stripHidden } from './gwp'
@@ -543,6 +544,7 @@ export async function getAllCollectionHandles(): Promise<string[]> {
 // (home page ShopGrid) and "What the team is buying this week" (shop home page).
 // BOTH pages must feed from this one function so the two rails never drift apart.
 // Feeds from three levels, deduped by handle and capped at TEAM_RAIL_MAX:
+//   • TEAM_RAIL_HANDLES     — individual products by handle, shown first
 //   • TEAM_RAIL_TAG         — any PRODUCT carrying this Shopify product tag
 //   • TEAM_RAIL_VENDORS     — whole BRANDS, by exact Shopify vendor name
 //   • TEAM_RAIL_COLLECTIONS — whole COLLECTIONS, by Shopify collection handle
@@ -552,9 +554,13 @@ export const TEAM_RAIL_TAG = 'team'
 export const TEAM_RAIL_VENDORS: string[] = []
 export const TEAM_RAIL_COLLECTIONS = ['team-picks', 'editors-essentials', 'autumn-edit']
 export const TEAM_RAIL_MAX = 48
+// The Collective goodie bag, hand-placed at the front of the rail (shop page
+// /shop/collections/goodie-bag). Lives in lib/goodie-bag.ts so the two can't drift.
+export const TEAM_RAIL_HANDLES: string[] = GOODIE_BAG_HANDLES
 
 export async function getTeamRailProducts(max = TEAM_RAIL_MAX): Promise<ShopifyProduct[]> {
-  const [taggedProducts, vendorProductLists, curatedCollections] = await Promise.all([
+  const [pinnedProducts, taggedProducts, vendorProductLists, curatedCollections] = await Promise.all([
+    getProductsByHandles(TEAM_RAIL_HANDLES),
     getProductsByTag(TEAM_RAIL_TAG, max),
     Promise.all(TEAM_RAIL_VENDORS.map(v => getProductsByVendor(v, max))),
     Promise.all(TEAM_RAIL_COLLECTIONS.map(h => getCollectionFull(h, max))),
@@ -562,7 +568,7 @@ export async function getTeamRailProducts(max = TEAM_RAIL_MAX): Promise<ShopifyP
   const vendorProducts = vendorProductLists.flat()
   const collectionProducts = curatedCollections.flatMap(c => c?.products?.nodes ?? [])
   const seen = new Set<string>()
-  return [...taggedProducts, ...vendorProducts, ...collectionProducts]
+  return [...pinnedProducts, ...taggedProducts, ...vendorProducts, ...collectionProducts]
     .filter(p => {
       if (seen.has(p.handle)) return false
       seen.add(p.handle)

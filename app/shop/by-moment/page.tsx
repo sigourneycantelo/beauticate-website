@@ -26,7 +26,7 @@ export default async function ShopByMomentPage() {
 
   // Shopify "mood" moments + article moments, rendered in one grid.
   const tiles = [
-    ...MOOD_MOMENTS.map(m => ({ key: m.handle, name: m.name, href: `/shop/collections/${m.handle}`, img: imgByHandle.get(m.handle) })),
+    ...MOOD_MOMENTS.map(m => ({ key: m.handle, name: m.name, href: `/shop/collections/${m.handle}`, img: imgByHandle.get(m.handle) ?? m.image })),
     ...articleMoments.map(m => ({ key: `article-${m.slug}`, name: m.title, href: `/shop/moments/${m.slug}`, img: m.image })),
   ]
 
