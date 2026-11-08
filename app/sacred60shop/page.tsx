@@ -35,13 +35,6 @@ type Sacred60Item = {
   isShop?: boolean
 }
 
-const IMG_SIZES = {
-  feature: { maxW: 360, maxH: 420 },
-  large: { maxW: 340, maxH: 400 },
-  medium: { maxW: 280, maxH: 340 },
-  small: { maxW: 240, maxH: 300 },
-}
-
 function ProductCard({
   item,
   size = 'medium',
@@ -51,14 +44,11 @@ function ProductCard({
   size?: 'feature' | 'large' | 'medium' | 'small'
   align?: 'left' | 'right' | 'center'
 }) {
-  const dims = IMG_SIZES[size]
-  const alignClass = align === 'right' ? 'md:ml-auto' : align === 'center' ? 'mx-auto' : ''
-  const textAlign = align === 'right' ? 'md:text-right md:ml-auto' : align === 'center' ? 'text-center mx-auto' : ''
-  const flexJustify = align === 'right' ? 'md:justify-end' : align === 'center' ? 'justify-center' : ''
+  const imgMax = size === 'feature' ? 480 : size === 'large' ? 440 : size === 'medium' ? 380 : 320
 
   return (
-    <article className={alignClass} style={{ maxWidth: dims.maxW + 80 }}>
-      <div className={`flex items-start gap-2 mb-1 ${flexJustify}`}>
+    <article>
+      <div className="flex items-start gap-2 mb-2">
         <span
           className="font-serif font-light leading-none select-none shrink-0"
           style={{ fontSize: size === 'feature' ? 'clamp(56px,8vw,80px)' : 'clamp(40px,6vw,64px)', opacity: 0.06 }}
@@ -75,23 +65,23 @@ function ProductCard({
         href={item.url}
         target={item.url.startsWith('http') ? '_blank' : undefined}
         rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-        className={`group block my-3 ${alignClass}`}
+        className="group block my-4"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={item.image}
           alt={item.product}
-          className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-          style={{ maxWidth: dims.maxW, maxHeight: dims.maxH }}
+          className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+          style={{ maxWidth: imgMax, maxHeight: 500, width: '100%' }}
           loading="lazy"
         />
       </Link>
 
-      <p className={`font-serif text-[13px] leading-[1.7] mb-3 ${textAlign}`} style={{ opacity: 0.6, maxWidth: 320 }}>
+      <p className="font-serif text-[14px] leading-[1.75] mb-4" style={{ opacity: 0.6, maxWidth: 420 }}>
         {item.description}
       </p>
 
-      <div className={`flex items-center gap-2 ${flexJustify}`}>
+      <div className="flex items-center gap-2">
         <Link
           href={item.url}
           target={item.url.startsWith('http') ? '_blank' : undefined}
@@ -107,7 +97,7 @@ function ProductCard({
         {item.isShop && <ShopBadge />}
       </div>
       {item.discount && (
-        <p className={`font-sans text-[11px] mt-2 ${textAlign}`} style={{ opacity: 0.4 }}>
+        <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
           {item.discount}
         </p>
       )}
@@ -197,7 +187,7 @@ export default function Sacred60ShopPage() {
               </div>
 
               {/* Products — magazine layout */}
-              <div className="max-w-5xl mx-auto px-4 md:px-8 py-8 md:py-16" style={{ background: '#fff' }}>
+              <div className="max-w-6xl mx-auto px-4 md:px-12 py-8 md:py-16" style={{ background: '#fff' }}>
                 {(() => {
                   const items = section.items
                   const rows: React.ReactNode[] = []
@@ -208,57 +198,53 @@ export default function Sacred60ShopPage() {
                     const pattern = rowIndex % 3
 
                     if (pattern === 0 && i + 1 < items.length) {
-                      // Pattern A: large left, small right pushed down
                       const left = items[i]
                       const right = items[i + 1]
                       rows.push(
-                        <div key={`row-${rowIndex}`} className="grid md:grid-cols-2 gap-6 md:gap-10 mb-16 md:mb-24">
+                        <div key={`row-${rowIndex}`} className="grid md:grid-cols-2 gap-8 md:gap-16 mb-20 md:mb-32">
                           <ProductCard item={left} size="large" />
-                          <div className="md:pt-20">
-                            <ProductCard item={right} size="medium" align="right" />
+                          <div className="md:pt-24">
+                            <ProductCard item={right} size="medium" />
                           </div>
                         </div>
                       )
                       i += 2
                     } else if (pattern === 1 && i + 1 < items.length) {
-                      // Pattern B: small left pushed down, large right
                       const left = items[i]
                       const right = items[i + 1]
                       rows.push(
-                        <div key={`row-${rowIndex}`} className="grid md:grid-cols-2 gap-6 md:gap-10 mb-16 md:mb-24">
-                          <div className="md:pt-12">
+                        <div key={`row-${rowIndex}`} className="grid md:grid-cols-2 gap-8 md:gap-16 mb-20 md:mb-32">
+                          <div className="md:pt-16">
                             <ProductCard item={left} size="medium" />
                           </div>
-                          <ProductCard item={right} size="large" align="right" />
+                          <ProductCard item={right} size="large" />
                         </div>
                       )
                       i += 2
                     } else if (pattern === 2 && i + 2 < items.length) {
-                      // Pattern C: one featured center, then two side by side
                       const featured = items[i]
                       const left = items[i + 1]
                       const right = items[i + 2]
                       rows.push(
-                        <div key={`row-${rowIndex}`} className="mb-16 md:mb-24">
-                          <div className="max-w-md mx-auto mb-14">
-                            <ProductCard item={featured} size="feature" align="center" />
+                        <div key={`row-${rowIndex}`} className="mb-20 md:mb-32">
+                          <div className="max-w-lg mx-auto mb-16">
+                            <ProductCard item={featured} size="feature" />
                           </div>
-                          <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-                            <ProductCard item={left} size="small" />
-                            <div className="md:pt-10">
-                              <ProductCard item={right} size="small" align="right" />
+                          <div className="grid md:grid-cols-2 gap-8 md:gap-16">
+                            <ProductCard item={left} size="medium" />
+                            <div className="md:pt-12">
+                              <ProductCard item={right} size="medium" />
                             </div>
                           </div>
                         </div>
                       )
                       i += 3
                     } else {
-                      // Fallback: single item or remaining items
                       const item = items[i]
                       rows.push(
-                        <div key={`row-${rowIndex}`} className="mb-16 md:mb-24">
-                          <div className="max-w-md mx-auto">
-                            <ProductCard item={item} size="large" align="center" />
+                        <div key={`row-${rowIndex}`} className="mb-20 md:mb-32">
+                          <div className="max-w-lg mx-auto">
+                            <ProductCard item={item} size="large" />
                           </div>
                         </div>
                       )
