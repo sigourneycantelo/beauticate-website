@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
+import React, { Suspense } from 'react'
 import Link from 'next/link'
 import Sacred60Gate from './Sacred60Gate'
 import { SACRED_60 } from '@/data/sacred60'
@@ -20,6 +20,98 @@ function ShopBadge() {
     >
       Shop
     </span>
+  )
+}
+
+type Sacred60Item = {
+  number: number
+  title: string
+  description: string
+  product: string
+  brand?: string
+  url: string
+  image: string
+  discount?: string
+  isShop?: boolean
+}
+
+const IMG_SIZES = {
+  feature: { maxW: 360, maxH: 420 },
+  large: { maxW: 340, maxH: 400 },
+  medium: { maxW: 280, maxH: 340 },
+  small: { maxW: 240, maxH: 300 },
+}
+
+function ProductCard({
+  item,
+  size = 'medium',
+  align = 'left',
+}: {
+  item: Sacred60Item
+  size?: 'feature' | 'large' | 'medium' | 'small'
+  align?: 'left' | 'right' | 'center'
+}) {
+  const dims = IMG_SIZES[size]
+  const alignClass = align === 'right' ? 'md:ml-auto' : align === 'center' ? 'mx-auto' : ''
+  const textAlign = align === 'right' ? 'md:text-right md:ml-auto' : align === 'center' ? 'text-center mx-auto' : ''
+  const flexJustify = align === 'right' ? 'md:justify-end' : align === 'center' ? 'justify-center' : ''
+
+  return (
+    <article className={alignClass} style={{ maxWidth: dims.maxW + 80 }}>
+      <div className={`flex items-start gap-2 mb-1 ${flexJustify}`}>
+        <span
+          className="font-serif font-light leading-none select-none shrink-0"
+          style={{ fontSize: size === 'feature' ? 'clamp(56px,8vw,80px)' : 'clamp(40px,6vw,64px)', opacity: 0.06 }}
+          aria-hidden
+        >
+          {item.number}.
+        </span>
+        <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase font-bold pt-2" style={{ opacity: 0.55 }}>
+          {item.title}
+        </h3>
+      </div>
+
+      <Link
+        href={item.url}
+        target={item.url.startsWith('http') ? '_blank' : undefined}
+        rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+        className={`group block my-3 ${alignClass}`}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={item.image}
+          alt={item.product}
+          className="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+          style={{ maxWidth: dims.maxW, maxHeight: dims.maxH }}
+          loading="lazy"
+        />
+      </Link>
+
+      <p className={`font-serif text-[13px] leading-[1.7] mb-3 ${textAlign}`} style={{ opacity: 0.6, maxWidth: 320 }}>
+        {item.description}
+      </p>
+
+      <div className={`flex items-center gap-2 ${flexJustify}`}>
+        <Link
+          href={item.url}
+          target={item.url.startsWith('http') ? '_blank' : undefined}
+          rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+          className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
+          style={{
+            background: item.isShop ? '#2D5A3D' : '#5C4A3A',
+            color: '#fff',
+          }}
+        >
+          {item.isShop ? 'Shop on Beauticate' : 'Shop'}
+        </Link>
+        {item.isShop && <ShopBadge />}
+      </div>
+      {item.discount && (
+        <p className={`font-sans text-[11px] mt-2 ${textAlign}`} style={{ opacity: 0.4 }}>
+          {item.discount}
+        </p>
+      )}
+    </article>
   )
 }
 
@@ -105,73 +197,77 @@ export default function Sacred60ShopPage() {
               </div>
 
               {/* Products — magazine layout */}
-              <div className="max-w-5xl mx-auto px-4 md:px-8 py-8 md:py-12" style={{ background: '#fff' }}>
-                <div className="md:columns-2 md:gap-12">
-                  {section.items.map((item) => {
-                    const imgSizes = ['max-w-[260px]', 'max-w-[300px]', 'max-w-[240px]', 'max-w-[280px]', 'max-w-[320px]']
-                    const sizeClass = imgSizes[(item.number - 1) % imgSizes.length]
-                    return (
-                      <article
-                        key={item.number}
-                        className="break-inside-avoid mb-10 md:mb-14"
-                      >
-                        <div className="flex items-start gap-2 mb-1">
-                          <span
-                            className="font-serif font-light leading-none select-none shrink-0"
-                            style={{ fontSize: 'clamp(40px,6vw,64px)', opacity: 0.08 }}
-                            aria-hidden
-                          >
-                            {item.number}.
-                          </span>
-                          <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase font-bold pt-2" style={{ opacity: 0.6 }}>
-                            {item.title}
-                          </h3>
+              <div className="max-w-5xl mx-auto px-4 md:px-8 py-8 md:py-16" style={{ background: '#fff' }}>
+                {(() => {
+                  const items = section.items
+                  const rows: React.ReactNode[] = []
+                  let i = 0
+
+                  while (i < items.length) {
+                    const rowIndex = rows.length
+                    const pattern = rowIndex % 3
+
+                    if (pattern === 0 && i + 1 < items.length) {
+                      // Pattern A: large left, small right pushed down
+                      const left = items[i]
+                      const right = items[i + 1]
+                      rows.push(
+                        <div key={`row-${rowIndex}`} className="grid md:grid-cols-2 gap-6 md:gap-10 mb-16 md:mb-24">
+                          <ProductCard item={left} size="large" />
+                          <div className="md:pt-20">
+                            <ProductCard item={right} size="medium" align="right" />
+                          </div>
                         </div>
-
-                        <Link
-                          href={item.url}
-                          target={item.url.startsWith('http') ? '_blank' : undefined}
-                          rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                          className="group block my-3"
-                        >
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={item.image}
-                            alt={item.product}
-                            className={`w-full ${sizeClass} h-auto object-contain transition-transform duration-500 group-hover:scale-105`}
-                            style={{ maxHeight: '380px' }}
-                            loading="lazy"
-                          />
-                        </Link>
-
-                        <p className="font-serif text-[13px] leading-[1.7] mb-3 max-w-[320px]" style={{ opacity: 0.65 }}>
-                          {item.description}
-                        </p>
-
-                        <div className="flex items-center gap-2">
-                          <Link
-                            href={item.url}
-                            target={item.url.startsWith('http') ? '_blank' : undefined}
-                            rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                            className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
-                            style={{
-                              background: item.isShop ? '#2D5A3D' : '#5C4A3A',
-                              color: '#fff',
-                            }}
-                          >
-                            {item.isShop ? 'Shop on Beauticate' : 'Shop'}
-                          </Link>
-                          {item.isShop && <ShopBadge />}
+                      )
+                      i += 2
+                    } else if (pattern === 1 && i + 1 < items.length) {
+                      // Pattern B: small left pushed down, large right
+                      const left = items[i]
+                      const right = items[i + 1]
+                      rows.push(
+                        <div key={`row-${rowIndex}`} className="grid md:grid-cols-2 gap-6 md:gap-10 mb-16 md:mb-24">
+                          <div className="md:pt-12">
+                            <ProductCard item={left} size="medium" />
+                          </div>
+                          <ProductCard item={right} size="large" align="right" />
                         </div>
-                        {item.discount && (
-                          <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
-                            {item.discount}
-                          </p>
-                        )}
-                      </article>
-                    )
-                  })}
-                </div>
+                      )
+                      i += 2
+                    } else if (pattern === 2 && i + 2 < items.length) {
+                      // Pattern C: one featured center, then two side by side
+                      const featured = items[i]
+                      const left = items[i + 1]
+                      const right = items[i + 2]
+                      rows.push(
+                        <div key={`row-${rowIndex}`} className="mb-16 md:mb-24">
+                          <div className="max-w-md mx-auto mb-14">
+                            <ProductCard item={featured} size="feature" align="center" />
+                          </div>
+                          <div className="grid md:grid-cols-2 gap-6 md:gap-10">
+                            <ProductCard item={left} size="small" />
+                            <div className="md:pt-10">
+                              <ProductCard item={right} size="small" align="right" />
+                            </div>
+                          </div>
+                        </div>
+                      )
+                      i += 3
+                    } else {
+                      // Fallback: single item or remaining items
+                      const item = items[i]
+                      rows.push(
+                        <div key={`row-${rowIndex}`} className="mb-16 md:mb-24">
+                          <div className="max-w-md mx-auto">
+                            <ProductCard item={item} size="large" align="center" />
+                          </div>
+                        </div>
+                      )
+                      i += 1
+                    }
+                  }
+
+                  return rows
+                })()}
               </div>
 
               {/* Pull quote between sections */}
