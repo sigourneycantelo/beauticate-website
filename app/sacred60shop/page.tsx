@@ -104,96 +104,74 @@ export default function Sacred60ShopPage() {
                 </div>
               </div>
 
-              {/* Products — magazine scatter layout */}
-              <div className="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12" style={{ background: '#fff' }}>
-                {(() => {
-                  const pairs: (typeof section.items)[] = []
-                  for (let i = 0; i < section.items.length; i += 2) {
-                    pairs.push(section.items.slice(i, i + 2))
-                  }
-                  const layouts = [
-                    { leftPad: '', rightPad: 'md:pt-24', leftMax: 'max-w-[300px]', rightMax: 'max-w-[240px]', leftWidth: 'md:w-[55%]', rightWidth: 'md:w-[45%]' },
-                    { leftPad: 'md:pt-16', rightPad: '', leftMax: 'max-w-[220px]', rightMax: 'max-w-[320px]', leftWidth: 'md:w-[42%]', rightWidth: 'md:w-[58%]' },
-                    { leftPad: '', rightPad: 'md:pt-36', leftMax: 'max-w-[280px]', rightMax: 'max-w-[260px]', leftWidth: 'md:w-[50%]', rightWidth: 'md:w-[50%]' },
-                    { leftPad: 'md:pt-20', rightPad: '', leftMax: 'max-w-[240px]', rightMax: 'max-w-[300px]', leftWidth: 'md:w-[45%]', rightWidth: 'md:w-[55%]' },
-                    { leftPad: '', rightPad: 'md:pt-28', leftMax: 'max-w-[320px]', rightMax: 'max-w-[220px]', leftWidth: 'md:w-[58%]', rightWidth: 'md:w-[42%]' },
-                  ]
-                  return pairs.map((pair, pi) => {
-                    const layout = layouts[pi % layouts.length]
+              {/* Products — magazine layout */}
+              <div className="max-w-5xl mx-auto px-4 md:px-8 py-8 md:py-12" style={{ background: '#fff' }}>
+                <div className="md:columns-2 md:gap-12">
+                  {section.items.map((item) => {
+                    const imgSizes = ['max-w-[260px]', 'max-w-[300px]', 'max-w-[240px]', 'max-w-[280px]', 'max-w-[320px]']
+                    const sizeClass = imgSizes[(item.number - 1) % imgSizes.length]
                     return (
-                      <div key={pi} className="relative md:flex md:gap-0 md:items-start mb-4 md:mb-8">
-                        {pair.map((item, ii) => {
-                          const isRight = ii === 1
-                          const padClass = isRight ? layout.rightPad : layout.leftPad
-                          const maxImg = isRight ? layout.rightMax : layout.leftMax
-                          const widthClass = isRight ? layout.rightWidth : layout.leftWidth
-                          return (
-                            <article
-                              key={item.number}
-                              className={`relative py-6 md:py-4 ${widthClass} ${padClass} ${
-                                isRight ? 'md:pl-8' : 'md:pr-8'
-                              }`}
-                            >
-                              <div className="flex items-start gap-2">
-                                <span
-                                  className="font-serif font-light leading-none select-none shrink-0"
-                                  style={{ fontSize: 'clamp(48px,7vw,72px)', opacity: 0.1 }}
-                                  aria-hidden
-                                >
-                                  {item.number}.
-                                </span>
-                                <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase font-bold pt-3" style={{ opacity: 0.7 }}>
-                                  {item.title}
-                                </h3>
-                              </div>
+                      <article
+                        key={item.number}
+                        className="break-inside-avoid mb-10 md:mb-14"
+                      >
+                        <div className="flex items-start gap-2 mb-1">
+                          <span
+                            className="font-serif font-light leading-none select-none shrink-0"
+                            style={{ fontSize: 'clamp(40px,6vw,64px)', opacity: 0.08 }}
+                            aria-hidden
+                          >
+                            {item.number}.
+                          </span>
+                          <h3 className="font-sans text-[10px] tracking-[0.2em] uppercase font-bold pt-2" style={{ opacity: 0.6 }}>
+                            {item.title}
+                          </h3>
+                        </div>
 
-                              <Link
-                                href={item.url}
-                                target={item.url.startsWith('http') ? '_blank' : undefined}
-                                rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                                className="group block my-3"
-                              >
-                                {/* eslint-disable-next-line @next/next/no-img-element */}
-                                <img
-                                  src={item.image}
-                                  alt={item.product}
-                                  className={`w-full ${maxImg} h-auto object-contain transition-transform duration-500 group-hover:scale-105`}
-                                  style={{ maxHeight: '420px' }}
-                                  loading="lazy"
-                                />
-                              </Link>
+                        <Link
+                          href={item.url}
+                          target={item.url.startsWith('http') ? '_blank' : undefined}
+                          rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+                          className="group block my-3"
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.image}
+                            alt={item.product}
+                            className={`w-full ${sizeClass} h-auto object-contain transition-transform duration-500 group-hover:scale-105`}
+                            style={{ maxHeight: '380px' }}
+                            loading="lazy"
+                          />
+                        </Link>
 
-                              <p className="font-serif text-[13px] leading-[1.7] mb-3 max-w-[300px]" style={{ opacity: 0.7 }}>
-                                {item.description}
-                              </p>
+                        <p className="font-serif text-[13px] leading-[1.7] mb-3 max-w-[320px]" style={{ opacity: 0.65 }}>
+                          {item.description}
+                        </p>
 
-                              <div className="flex items-center gap-2">
-                                <Link
-                                  href={item.url}
-                                  target={item.url.startsWith('http') ? '_blank' : undefined}
-                                  rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
-                                  className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
-                                  style={{
-                                    background: item.isShop ? '#2D5A3D' : '#5C4A3A',
-                                    color: '#fff',
-                                  }}
-                                >
-                                  {item.isShop ? 'Shop on Beauticate' : 'Shop'}
-                                </Link>
-                                {item.isShop && <ShopBadge />}
-                              </div>
-                              {item.discount && (
-                                <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
-                                  {item.discount}
-                                </p>
-                              )}
-                            </article>
-                          )
-                        })}
-                      </div>
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={item.url}
+                            target={item.url.startsWith('http') ? '_blank' : undefined}
+                            rel={withNoskim(item.url.startsWith('http') && !item.isShop ? 'noopener noreferrer sponsored' : undefined, item.url)}
+                            className="inline-block font-sans text-[10px] tracking-[0.15em] uppercase font-medium px-4 py-2 transition-opacity hover:opacity-70"
+                            style={{
+                              background: item.isShop ? '#2D5A3D' : '#5C4A3A',
+                              color: '#fff',
+                            }}
+                          >
+                            {item.isShop ? 'Shop on Beauticate' : 'Shop'}
+                          </Link>
+                          {item.isShop && <ShopBadge />}
+                        </div>
+                        {item.discount && (
+                          <p className="font-sans text-[11px] mt-2" style={{ opacity: 0.4 }}>
+                            {item.discount}
+                          </p>
+                        )}
+                      </article>
                     )
-                  })
-                })()}
+                  })}
+                </div>
               </div>
 
               {/* Pull quote between sections */}
