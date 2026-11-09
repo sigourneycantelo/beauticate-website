@@ -4,6 +4,30 @@ GA4 (`properties/378911319`) recorded ~909 `view_item`, 46 `add_to_cart`, 24
 `begin_checkout` and **zero `purchase`** over a year, while Shopify had real
 orders. This is a measurement fault, not zero sales.
 
+## Update, 9 Nov 2026 (read this first)
+
+After looking inside GA4, the "zero purchases" premise was wrong, and parts of
+this runbook below are superseded.
+
+- The property has **three** web streams: `Beauticate - GA4`
+  (`G-D452CZN2J7`, the storefront tag in this repo), `MonsterInsights`
+  (`G-QDCB8GTV2Z`) and `Beauticate Shop` (`G-M7PRGLDX9B`, checkout.beauticate.com).
+- **`purchase` already arrives, on the Beauticate Shop stream**, from Shopify's
+  native Google integration (server-side, "Checkout complete" sent as `purchase`).
+  Last 28 days: GA4 shows 2 purchases (US$99.55); Shopify has 3 real orders
+  (#1043 to #1045, A$226). So it captures most, not all. Earlier "zero" readings
+  were almost certainly from the storefront stream.
+- **Do NOT add the custom Customer Events pixel, and do NOT set
+  `GA_MEASUREMENT_PROTOCOL_API_SECRET` on Vercel.** Either would send a second
+  `purchase` for the same order from a different source, and the
+  `transaction_id` is not guaranteed to match the native integration's. With the
+  secret unset, `sendPurchase` is a no-op, which is what we want. (The webhook
+  still needs `SHOPIFY_WEBHOOK_SECRET` for gift-with-purchase and Meta CAPI.)
+- Still open in GA4 admin: no domains configured on any stream (add
+  `beauticate.com` and `checkout.beauticate.com`; ignore the
+  `*.vercel.app` suggestions); the main stream has MonsterInsights' tag
+  connected (possible double-counted page views); the stream URL is `http://`.
+
 ## What was actually wrong
 
 1. **The repo already has a `purchase` path, and it is dead.** The Shopify
@@ -46,8 +70,9 @@ Item schema to keep identical in the storefront, webhook and pixel:
 
 ## Part B: Shopify admin (Sig or dev)
 
-Pick **one** source of truth for `purchase`. Recommended: the Customer Events
-pixel below. Both it and the webhook send `transaction_id` = numeric Shopify
+**Superseded: see the 9 Nov update at the top. Do not install this pixel while
+the native Shopify integration is sending `purchase`.** Pick **one** source of
+truth for `purchase`; the pixel below is kept only as a fallback. Both it and the webhook send `transaction_id` = numeric Shopify
 order id, and GA4 drops a repeat `purchase` with the same `transaction_id`, so
 leaving both on will not double-count. Still, do not install the Google &
 YouTube channel's GA4 purchase on top of these.
