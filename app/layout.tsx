@@ -46,7 +46,7 @@ import BetaTicker from '@/components/home/BetaTicker'
 import CartDrawer from '@/components/shop/CartDrawer'
 import AskSigLauncher from '@/components/chat/AskSigLauncher'
 import MetaPixel from '@/components/analytics/MetaPixel'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import GoogleAnalyticsTag from '@/components/analytics/GoogleAnalyticsTag'
 import { SIGOURNEY_SAMEAS } from '@/lib/authors'
 
 export const metadata: Metadata = {
@@ -185,7 +185,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </CartProvider>
         </GeoProvider>
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          <GoogleAnalyticsTag gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <Suspense fallback={null}>
