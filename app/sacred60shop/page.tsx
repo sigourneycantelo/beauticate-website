@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 }
 
 const SECTION_IMAGES: Record<string, string | null> = {
-  'Mind & Mood': '/content/sacred60/section_mind_mood.png',
-  'Body & Balance': '/content/sacred60/section_body_balance.png',
-  'Skin & Glow': '/content/sacred60/section_skin_glow.png',
-  'Energy & Sleep': '/content/sacred60/section_space_soul.png',
-  'Space & Soul': '/content/sacred60/section_space_soul.png',
-  'Nourish & Nurture': '/content/sacred60/section_nourish_nurture.png',
+  'Mind & Mood': '/content/sacred60/section_mind_mood.jpg',
+  'Body & Balance': '/content/sacred60/section_body_balance.jpg',
+  'Skin & Glow': '/content/sacred60/section_skin_glow.jpg',
+  'Energy & Sleep': '/content/sacred60/section_energy_sleep.jpg',
+  'Space & Soul': '/content/sacred60/section_space_soul.jpg',
+  'Nourish & Nurture': '/content/sacred60/section_nourish_nurture.jpg',
 }
 
 function ShopBadge() {
@@ -58,7 +58,7 @@ function ItemCard({
     <article className={`relative ${className}`} style={style}>
       <span
         className={`block font-serif select-none leading-[0.85] ${textAlign === 'right' ? 'text-right' : ''}`}
-        style={{ fontSize: numberSize, color: '#8C7B6B', opacity: 0.3, fontWeight: 300 }}
+        style={{ fontSize: numberSize, color: '#8C7B6B', opacity: 0.45, fontWeight: 700 }}
         aria-hidden
       >
         {item.number}.
@@ -190,8 +190,8 @@ function AbsoluteSpread({
           <ItemCard
             key={item.number}
             item={item}
-            imgW={320}
-            numberSize={90}
+            imgW={380}
+            numberSize={120}
             textW={300}
             textAlign={i % 2 === 0 ? 'left' : 'right'}
             className={i % 2 === 1 ? 'ml-auto' : ''}
@@ -206,39 +206,39 @@ function AbsoluteSpread({
 const SPREAD_LAYOUTS: Placement[][] = [
   // Layout A — hero top-left, stagger right, overlap center
   [
-    { left: '0%', top: 0, imgW: 420, numberSize: 160, textW: 280, textAlign: 'right', z: 2, width: '48%' },
-    { right: '0%', top: 40, imgW: 360, numberSize: 140, textW: 260, textAlign: 'left', z: 3, width: '45%' },
-    { left: '5%', top: 680, imgW: 340, numberSize: 130, textW: 260, textAlign: 'right', z: 2, width: '44%' },
-    { right: '2%', top: 600, imgW: 380, numberSize: 150, textW: 280, textAlign: 'left', z: 4, width: '48%' },
-    { left: '15%', top: 1250, imgW: 400, numberSize: 140, textW: 280, textAlign: 'left', z: 3, width: '50%' },
+    { left: '-2%', top: 0, imgW: 600, numberSize: 220, textW: 300, textAlign: 'right', z: 2, width: '55%' },
+    { right: '-2%', top: 60, imgW: 550, numberSize: 200, textW: 280, textAlign: 'left', z: 3, width: '52%' },
+    { left: '3%', top: 900, imgW: 520, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '50%' },
+    { right: '0%', top: 820, imgW: 560, numberSize: 220, textW: 300, textAlign: 'left', z: 4, width: '54%' },
+    { left: '10%', top: 1700, imgW: 580, numberSize: 210, textW: 300, textAlign: 'left', z: 3, width: '56%' },
   ],
   // Layout B — right hero, left offsets
   [
-    { right: '0%', top: 0, imgW: 440, numberSize: 160, textW: 280, textAlign: 'left', z: 3, width: '50%' },
-    { left: '0%', top: 80, imgW: 340, numberSize: 130, textW: 260, textAlign: 'right', z: 2, width: '44%' },
-    { left: '20%', top: 650, imgW: 400, numberSize: 150, textW: 280, textAlign: 'left', z: 4, width: '48%' },
-    { left: '0%', top: 1100, imgW: 320, numberSize: 130, textW: 240, textAlign: 'right', z: 2, width: '42%' },
-    { right: '0%', top: 1050, imgW: 380, numberSize: 140, textW: 260, textAlign: 'left', z: 3, width: '46%' },
+    { right: '-2%', top: 0, imgW: 620, numberSize: 230, textW: 300, textAlign: 'left', z: 3, width: '56%' },
+    { left: '-2%', top: 100, imgW: 520, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '50%' },
+    { left: '15%', top: 880, imgW: 580, numberSize: 210, textW: 300, textAlign: 'left', z: 4, width: '54%' },
+    { left: '-2%', top: 1500, imgW: 500, numberSize: 200, textW: 260, textAlign: 'right', z: 2, width: '48%' },
+    { right: '-2%', top: 1420, imgW: 560, numberSize: 210, textW: 280, textAlign: 'left', z: 3, width: '52%' },
   ],
   // Layout C — center-left hero, cascade right
   [
-    { left: '2%', top: 0, imgW: 400, numberSize: 150, textW: 280, textAlign: 'right', z: 3, width: '48%' },
-    { right: '0%', top: 200, imgW: 380, numberSize: 140, textW: 260, textAlign: 'left', z: 2, width: '46%' },
-    { left: '10%', top: 700, imgW: 360, numberSize: 130, textW: 260, textAlign: 'right', z: 4, width: '45%' },
-    { right: '2%', top: 750, imgW: 400, numberSize: 150, textW: 280, textAlign: 'left', z: 3, width: '48%' },
-    { left: '5%', top: 1350, imgW: 380, numberSize: 140, textW: 260, textAlign: 'left', z: 2, width: '46%' },
+    { left: '0%', top: 0, imgW: 580, numberSize: 220, textW: 300, textAlign: 'right', z: 3, width: '54%' },
+    { right: '-2%', top: 250, imgW: 560, numberSize: 200, textW: 280, textAlign: 'left', z: 2, width: '52%' },
+    { left: '5%', top: 950, imgW: 540, numberSize: 200, textW: 280, textAlign: 'right', z: 4, width: '52%' },
+    { right: '0%', top: 1000, imgW: 580, numberSize: 220, textW: 300, textAlign: 'left', z: 3, width: '54%' },
+    { left: '2%', top: 1800, imgW: 560, numberSize: 210, textW: 280, textAlign: 'left', z: 2, width: '52%' },
   ],
   // Layout D — diagonal flow
   [
-    { right: '2%', top: 0, imgW: 420, numberSize: 160, textW: 280, textAlign: 'left', z: 3, width: '48%' },
-    { left: '0%', top: 160, imgW: 380, numberSize: 140, textW: 260, textAlign: 'right', z: 2, width: '46%' },
-    { right: '5%', top: 700, imgW: 360, numberSize: 140, textW: 260, textAlign: 'left', z: 4, width: '45%' },
-    { left: '3%', top: 800, imgW: 340, numberSize: 130, textW: 260, textAlign: 'right', z: 2, width: '44%' },
-    { left: '18%', top: 1350, imgW: 420, numberSize: 150, textW: 280, textAlign: 'left', z: 3, width: '50%' },
+    { right: '0%', top: 0, imgW: 600, numberSize: 230, textW: 300, textAlign: 'left', z: 3, width: '55%' },
+    { left: '-2%', top: 200, imgW: 560, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '52%' },
+    { right: '2%', top: 950, imgW: 540, numberSize: 210, textW: 280, textAlign: 'left', z: 4, width: '52%' },
+    { left: '0%', top: 1050, imgW: 520, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '50%' },
+    { left: '12%', top: 1800, imgW: 600, numberSize: 220, textW: 300, textAlign: 'left', z: 3, width: '56%' },
   ],
 ]
 
-const SPREAD_HEIGHTS = [1800, 1700, 1900, 1850]
+const SPREAD_HEIGHTS = [2400, 2300, 2500, 2450]
 
 function CollageSpread({ items, index }: { items: S60Item[]; index: number }) {
   const li = index % SPREAD_LAYOUTS.length
@@ -280,23 +280,31 @@ function SectionHeader({
           />
         ) : null}
 
-        {/* Overlay text */}
+        {/* Lower-third gradient scrim */}
+        {img && (
+          <div
+            className="absolute inset-x-0 bottom-0 z-[1]"
+            style={{ height: '55%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 60%, transparent 100%)' }}
+          />
+        )}
+
+        {/* Overlay text — white on dark scrim */}
         <div
-          className={`relative z-10 flex items-end md:items-center h-full min-h-[inherit] px-8 md:px-16 py-12 md:py-20 ${isEven ? '' : 'md:justify-end'}`}
+          className={`relative z-10 flex items-end h-full min-h-[inherit] px-8 md:px-16 py-10 md:py-14 ${isEven ? '' : 'md:justify-end'}`}
         >
-          <div className={`max-w-md ${!img ? '' : 'bg-white/70 backdrop-blur-sm p-8 md:p-10'}`}>
+          <div className="max-w-md">
             <h2
               className="font-serif font-normal tracking-[0.1em] uppercase"
               style={{
-                fontSize: 'clamp(32px, 5vw, 56px)',
-                color: '#5C4A3A',
+                fontSize: 'clamp(36px, 6vw, 64px)',
+                color: img ? '#FFFFFF' : '#5C4A3A',
               }}
             >
               {section.title}
             </h2>
             <p
               className="font-serif text-[15px] md:text-[17px] mt-4 leading-relaxed"
-              style={{ color: '#5C4A3A', opacity: 0.75 }}
+              style={{ color: img ? '#FFFFFF' : '#5C4A3A', opacity: img ? 0.85 : 0.75 }}
             >
               {section.description}
             </p>
@@ -325,37 +333,49 @@ export default function Sacred60ShopPage() {
     <Suspense>
       <Sacred60Gate>
         <main style={{ color: '#5C4A3A' }}>
-          {/* ─── Header ────────────────────────────────────── */}
-          <header
-            className="relative overflow-hidden text-center"
-            style={{ background: '#FAF7F2' }}
-          >
-            <div className="py-20 md:py-28 px-6">
-              <p
-                className="font-sans text-[9px] tracking-[0.4em] uppercase font-medium mb-6"
-                style={{ opacity: 0.35 }}
-              >
-                Beauticate
-              </p>
-              <h1
-                className="font-serif font-normal tracking-[0.15em] uppercase"
-                style={{ fontSize: 'clamp(36px,6vw,64px)' }}
-              >
-                Sacred
-              </h1>
-              <span
-                className="block font-serif font-light leading-none -mt-4 md:-mt-6"
-                style={{ fontSize: 'clamp(100px,18vw,200px)', opacity: 0.1 }}
-                aria-hidden
-              >
-                60
-              </span>
-              <p
-                className="font-serif italic text-base md:text-lg -mt-2"
-                style={{ opacity: 0.6 }}
-              >
-                Self Care &amp; Wellness Guide
-              </p>
+          {/* ─── Cover Hero ──────────────────────────────────── */}
+          <header className="relative overflow-hidden" style={{ minHeight: '85vh' }}>
+            <Image
+              src="/content/sacred60/section_cover.jpg"
+              alt="Sigourney Cantelo"
+              fill
+              className="object-cover object-[50%_20%]"
+              sizes="100vw"
+              priority
+            />
+            {/* Lower-third gradient for title text */}
+            <div
+              className="absolute inset-x-0 bottom-0 z-[1]"
+              style={{ height: '50%', background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)' }}
+            />
+            <div className="relative z-10 flex items-end justify-center h-full min-h-[85vh] pb-12 md:pb-16 px-6 text-center">
+              <div>
+                <p
+                  className="font-sans text-[9px] tracking-[0.4em] uppercase font-medium mb-4"
+                  style={{ color: '#FFFFFF', opacity: 0.7 }}
+                >
+                  Beauticate
+                </p>
+                <h1
+                  className="font-serif font-normal tracking-[0.15em] uppercase text-white"
+                  style={{ fontSize: 'clamp(42px,7vw,72px)' }}
+                >
+                  Sacred
+                </h1>
+                <span
+                  className="block font-serif font-light leading-none -mt-2 md:-mt-4 text-white"
+                  style={{ fontSize: 'clamp(100px,18vw,200px)', opacity: 0.25 }}
+                  aria-hidden
+                >
+                  60
+                </span>
+                <p
+                  className="font-serif italic text-base md:text-lg text-white -mt-1"
+                  style={{ opacity: 0.85 }}
+                >
+                  Self Care &amp; Wellness Guide
+                </p>
+              </div>
             </div>
           </header>
 
