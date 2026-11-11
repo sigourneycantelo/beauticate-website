@@ -12,9 +12,11 @@ interface Props {
   title: string
   description?: string | null
   founder?: FounderInset
+  /** 21:9 banner from md up, for brands that supplied a true widescreen banner. */
+  wide?: boolean
 }
 
-export default function CollectionHero({ image, eyebrow, title, description, founder }: Props) {
+export default function CollectionHero({ image, eyebrow, title, description, founder, wide }: Props) {
   if (!image) {
     return (
       <header className="text-center max-w-wide mx-auto px-[clamp(20px,6vw,104px)] pt-[clamp(40px,6vw,80px)] pb-[clamp(4px,2vw,16px)]">
@@ -49,8 +51,8 @@ export default function CollectionHero({ image, eyebrow, title, description, fou
           would have buried the photograph. So the copy moves below the image,
           onto paper, where it reads the same whatever shot sits above it. */}
       <section
-        className="relative w-full overflow-hidden"
-        style={{ aspectRatio: '3 / 2', backgroundColor: '#141210' }}
+        className={`relative w-full overflow-hidden aspect-[3/2]${wide ? ' md:aspect-[21/9]' : ''}`}
+        style={{ backgroundColor: '#141210' }}
       >
         <Image src={image.url} alt={image.altText ?? title} fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.22) 55%, rgba(0,0,0,0.40) 100%)' }} />

@@ -6,7 +6,7 @@ import ProductGrid from '@/components/shop/ProductGrid'
 import SortSelect from '@/components/shop/SortSelect'
 import { sortProducts } from '@/lib/product-sort'
 import CollectionHero from '@/components/shop/CollectionHero'
-import { BRAND_HEROES } from '@/data/brand-heroes'
+import { BRAND_HEROES, WIDE_HEROES } from '@/data/brand-heroes'
 import { SHOP_FOUNDERS } from '@/data/shop-founders'
 import { brandEpisode } from '@/data/brand-episodes'
 import { resolveArticleEpisode } from '@/lib/content'
@@ -78,6 +78,7 @@ export default async function BrandPage({ params, searchParams }: Props) {
 
       <CollectionHero
         image={BRAND_HEROES[brand] ? { url: BRAND_HEROES[brand], altText: collection.title } : collection.image}
+        wide={WIDE_HEROES.has(brand)}
         eyebrow="Brand"
         title={collection.title}
         description={collection.description}
