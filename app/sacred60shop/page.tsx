@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import React, { Suspense } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Sacred60Gate from './Sacred60Gate'
 import { SACRED_60 } from '@/data/sacred60'
 import type { Sacred60Item as S60Item } from '@/data/sacred60'
@@ -11,6 +12,15 @@ export const metadata: Metadata = {
   description:
     'Sixty practical rituals, tools and everyday practices for modern self-care. By Sigourney Cantelo.',
   robots: { index: false, follow: false },
+}
+
+const SECTION_IMAGES: Record<string, string | null> = {
+  'Mind & Mood': '/content/sacred60/section_mind_mood.png',
+  'Body & Balance': '/content/sacred60/section_body_balance.png',
+  'Skin & Glow': '/content/sacred60/section_skin_glow.png',
+  'Energy & Sleep': '/content/sacred60/section_space_soul.png',
+  'Space & Soul': '/content/sacred60/section_space_soul.png',
+  'Nourish & Nurture': '/content/sacred60/section_nourish_nurture.png',
 }
 
 function ShopBadge() {
@@ -24,43 +34,38 @@ function ShopBadge() {
   )
 }
 
-function CollageItem({
+function ItemCard({
   item,
-  imgW = 240,
-  numberSize = 80,
-  textW,
+  imgW = 380,
+  numberSize = 140,
+  textW = 280,
+  textAlign = 'left',
   className = '',
   style,
-  textAlign = 'left',
 }: {
   item: S60Item
   imgW?: number
   numberSize?: number
   textW?: number
+  textAlign?: 'left' | 'right'
   className?: string
   style?: React.CSSProperties
-  textAlign?: 'left' | 'right' | 'center'
 }) {
-  const maxTextW = textW ?? Math.min(imgW + 60, 300)
-  const alignClass =
-    textAlign === 'right'
-      ? 'text-right ml-auto'
-      : textAlign === 'center'
-        ? 'text-center mx-auto'
-        : ''
+  const alignClass = textAlign === 'right' ? 'text-right ml-auto' : ''
+  const btnAlign = textAlign === 'right' ? 'justify-end' : ''
 
   return (
-    <article className={className} style={style}>
+    <article className={`relative ${className}`} style={style}>
       <span
-        className={`block font-serif font-light select-none leading-none ${textAlign === 'right' ? 'text-right' : ''}`}
-        style={{ fontSize: numberSize, color: '#9B8B7A', opacity: 0.25 }}
+        className={`block font-serif select-none leading-[0.85] ${textAlign === 'right' ? 'text-right' : ''}`}
+        style={{ fontSize: numberSize, color: '#8C7B6B', opacity: 0.3, fontWeight: 300 }}
         aria-hidden
       >
         {item.number}.
       </span>
       <h3
-        className={`font-sans text-[9px] tracking-[0.25em] uppercase font-bold mt-0.5 ${alignClass}`}
-        style={{ color: '#5C4A3A', opacity: 0.7, maxWidth: maxTextW }}
+        className={`font-sans text-[10px] tracking-[0.2em] uppercase font-bold mt-1 ${alignClass}`}
+        style={{ color: '#5C4A3A', maxWidth: textW }}
       >
         {item.title}
       </h3>
@@ -74,26 +79,26 @@ function CollageItem({
             : undefined,
           item.url
         )}
-        className="group block mt-3 mb-3"
+        className="group block my-4"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={item.image}
           alt={item.product}
           className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-          style={{ maxWidth: imgW, maxHeight: 420, width: '100%' }}
+          style={{ width: imgW, maxWidth: '100%' }}
           loading="lazy"
         />
       </Link>
 
       <p
-        className={`font-serif text-[13px] leading-[1.75] mb-3 ${alignClass}`}
-        style={{ color: '#5C4A3A', opacity: 0.6, maxWidth: maxTextW }}
+        className={`font-serif text-[13px] leading-[1.7] mb-3 ${alignClass}`}
+        style={{ color: '#5C4A3A', opacity: 0.65, maxWidth: textW }}
       >
         {item.description}
       </p>
 
-      <div className={`flex items-center gap-2 flex-wrap ${textAlign === 'right' ? 'justify-end' : ''}`}>
+      <div className={`flex items-center gap-2 flex-wrap ${btnAlign}`}>
         <Link
           href={item.url}
           target={item.url.startsWith('http') ? '_blank' : undefined}
@@ -114,7 +119,10 @@ function CollageItem({
         {item.isShop && <ShopBadge />}
       </div>
       {item.discount && (
-        <p className={`font-sans text-[10px] mt-1.5 ${alignClass}`} style={{ opacity: 0.4 }}>
+        <p
+          className={`font-sans text-[10px] mt-1.5 ${alignClass}`}
+          style={{ opacity: 0.4 }}
+        >
           {item.discount}
         </p>
       )}
@@ -122,168 +130,128 @@ function CollageItem({
   )
 }
 
-/* ── Collage spread patterns ──────────────────────────────
-   Each takes 5 items and scatters them in a magazine-style
-   layout matching the Sacred 60 website PDF:
-   - 2-column organic placement
-   - Huge light-brown numbers next to titles
-   - Overlapping product images
-   - Narrow text columns
+/* ── Magazine collage spreads ─────────────────────────────
+   Absolute-positioned items create genuine overlap like the
+   Sacred 60 website PDF flat-lay spreads.
    ──────────────────────────────────────────────────────── */
 
-function SpreadA({ items }: { items: S60Item[] }) {
+type Placement = {
+  left?: string
+  right?: string
+  top: number
+  imgW: number
+  numberSize: number
+  textW: number
+  textAlign: 'left' | 'right'
+  z: number
+  width: string
+}
+
+function AbsoluteSpread({
+  items,
+  placements,
+  height,
+}: {
+  items: S60Item[]
+  placements: Placement[]
+  height: number
+}) {
   return (
-    <div className="relative">
-      <div className="hidden md:grid grid-cols-12 gap-x-4" style={{ minHeight: 900 }}>
-        {/* Item 0 — left column, top */}
-        <div className="col-span-5 col-start-1 row-start-1" style={{ marginTop: 0 }}>
-          <CollageItem item={items[0]} imgW={260} numberSize={90} textAlign="right" textW={260} />
-        </div>
-        {/* Item 1 — right column, offset down from top, large number */}
-        <div className="col-span-5 col-start-8 row-start-1" style={{ marginTop: 20 }}>
-          <CollageItem item={items[1]} imgW={220} numberSize={80} textW={240} />
-        </div>
-        {/* Item 2 — left, overlapping into item 0's space */}
-        <div className="col-span-5 col-start-1" style={{ marginTop: -60 }}>
-          <CollageItem item={items[2]} imgW={200} numberSize={75} textAlign="right" textW={240} />
-        </div>
-        {/* Item 3 — right, pulled up */}
-        <div className="col-span-5 col-start-7" style={{ marginTop: -100 }}>
-          <CollageItem item={items[3]} imgW={240} numberSize={85} textW={260} />
-        </div>
-        {/* Item 4 — center-left, bottom */}
-        <div className="col-span-5 col-start-3" style={{ marginTop: -40 }}>
-          <CollageItem item={items[4]} imgW={220} numberSize={80} textW={240} />
-        </div>
+    <div className="relative overflow-visible">
+      {/* Desktop: absolute positioned collage */}
+      <div className="hidden md:block relative" style={{ height }}>
+        {items.map((item, i) => {
+          const p = placements[i]
+          if (!p) return null
+          const pos: React.CSSProperties = {
+            position: 'absolute',
+            top: p.top,
+            width: p.width,
+            zIndex: p.z,
+          }
+          if (p.left !== undefined) pos.left = p.left
+          if (p.right !== undefined) pos.right = p.right
+          return (
+            <div key={item.number} style={pos}>
+              <ItemCard
+                item={item}
+                imgW={p.imgW}
+                numberSize={p.numberSize}
+                textW={p.textW}
+                textAlign={p.textAlign}
+              />
+            </div>
+          )
+        })}
       </div>
-      {/* Mobile: stacked with alternating alignment */}
-      <div className="md:hidden space-y-14 px-2">
-        <CollageItem item={items[0]} imgW={240} numberSize={70} />
-        <CollageItem item={items[1]} imgW={200} numberSize={65} className="ml-auto" style={{ maxWidth: 300 }} textAlign="right" />
-        <CollageItem item={items[2]} imgW={220} numberSize={65} />
-        <CollageItem item={items[3]} imgW={200} numberSize={65} className="ml-auto" style={{ maxWidth: 300 }} textAlign="right" />
-        <CollageItem item={items[4]} imgW={220} numberSize={65} />
+      {/* Mobile: stacked, alternating sides */}
+      <div className="md:hidden space-y-16 px-4">
+        {items.map((item, i) => (
+          <ItemCard
+            key={item.number}
+            item={item}
+            imgW={320}
+            numberSize={90}
+            textW={300}
+            textAlign={i % 2 === 0 ? 'left' : 'right'}
+            className={i % 2 === 1 ? 'ml-auto' : ''}
+            style={i % 2 === 1 ? { maxWidth: '85%' } : undefined}
+          />
+        ))}
       </div>
     </div>
   )
 }
 
-function SpreadB({ items }: { items: S60Item[] }) {
-  return (
-    <div className="relative">
-      <div className="hidden md:grid grid-cols-12 gap-x-4" style={{ minHeight: 900 }}>
-        {/* Item 0 — left, starts high */}
-        <div className="col-span-5 col-start-1 row-start-1" style={{ marginTop: 30 }}>
-          <CollageItem item={items[0]} imgW={220} numberSize={85} textAlign="right" textW={240} />
-        </div>
-        {/* Item 1 — right, large, top */}
-        <div className="col-span-5 col-start-7 row-start-1" style={{ marginTop: 0 }}>
-          <CollageItem item={items[1]} imgW={280} numberSize={95} textW={260} />
-        </div>
-        {/* Item 2 — center, overlapping */}
-        <div className="col-span-6 col-start-4" style={{ marginTop: -80 }}>
-          <CollageItem item={items[2]} imgW={260} numberSize={85} textW={260} />
-        </div>
-        {/* Item 3 — left, lower */}
-        <div className="col-span-5 col-start-1" style={{ marginTop: -30 }}>
-          <CollageItem item={items[3]} imgW={200} numberSize={75} textAlign="right" textW={220} />
-        </div>
-        {/* Item 4 — right, bottom, pulled up */}
-        <div className="col-span-5 col-start-7" style={{ marginTop: -120 }}>
-          <CollageItem item={items[4]} imgW={240} numberSize={80} textW={240} />
-        </div>
-      </div>
-      <div className="md:hidden space-y-14 px-2">
-        <CollageItem item={items[0]} imgW={200} numberSize={65} />
-        <CollageItem item={items[1]} imgW={260} numberSize={70} className="ml-auto" style={{ maxWidth: 340 }} textAlign="right" />
-        <CollageItem item={items[2]} imgW={240} numberSize={65} />
-        <CollageItem item={items[3]} imgW={200} numberSize={65} className="ml-auto" style={{ maxWidth: 300 }} textAlign="right" />
-        <CollageItem item={items[4]} imgW={220} numberSize={65} />
-      </div>
-    </div>
-  )
-}
+const SPREAD_LAYOUTS: Placement[][] = [
+  // Layout A — hero top-left, stagger right, overlap center
+  [
+    { left: '0%', top: 0, imgW: 420, numberSize: 160, textW: 280, textAlign: 'right', z: 2, width: '48%' },
+    { right: '0%', top: 40, imgW: 360, numberSize: 140, textW: 260, textAlign: 'left', z: 3, width: '45%' },
+    { left: '5%', top: 680, imgW: 340, numberSize: 130, textW: 260, textAlign: 'right', z: 2, width: '44%' },
+    { right: '2%', top: 600, imgW: 380, numberSize: 150, textW: 280, textAlign: 'left', z: 4, width: '48%' },
+    { left: '15%', top: 1250, imgW: 400, numberSize: 140, textW: 280, textAlign: 'left', z: 3, width: '50%' },
+  ],
+  // Layout B — right hero, left offsets
+  [
+    { right: '0%', top: 0, imgW: 440, numberSize: 160, textW: 280, textAlign: 'left', z: 3, width: '50%' },
+    { left: '0%', top: 80, imgW: 340, numberSize: 130, textW: 260, textAlign: 'right', z: 2, width: '44%' },
+    { left: '20%', top: 650, imgW: 400, numberSize: 150, textW: 280, textAlign: 'left', z: 4, width: '48%' },
+    { left: '0%', top: 1100, imgW: 320, numberSize: 130, textW: 240, textAlign: 'right', z: 2, width: '42%' },
+    { right: '0%', top: 1050, imgW: 380, numberSize: 140, textW: 260, textAlign: 'left', z: 3, width: '46%' },
+  ],
+  // Layout C — center-left hero, cascade right
+  [
+    { left: '2%', top: 0, imgW: 400, numberSize: 150, textW: 280, textAlign: 'right', z: 3, width: '48%' },
+    { right: '0%', top: 200, imgW: 380, numberSize: 140, textW: 260, textAlign: 'left', z: 2, width: '46%' },
+    { left: '10%', top: 700, imgW: 360, numberSize: 130, textW: 260, textAlign: 'right', z: 4, width: '45%' },
+    { right: '2%', top: 750, imgW: 400, numberSize: 150, textW: 280, textAlign: 'left', z: 3, width: '48%' },
+    { left: '5%', top: 1350, imgW: 380, numberSize: 140, textW: 260, textAlign: 'left', z: 2, width: '46%' },
+  ],
+  // Layout D — diagonal flow
+  [
+    { right: '2%', top: 0, imgW: 420, numberSize: 160, textW: 280, textAlign: 'left', z: 3, width: '48%' },
+    { left: '0%', top: 160, imgW: 380, numberSize: 140, textW: 260, textAlign: 'right', z: 2, width: '46%' },
+    { right: '5%', top: 700, imgW: 360, numberSize: 140, textW: 260, textAlign: 'left', z: 4, width: '45%' },
+    { left: '3%', top: 800, imgW: 340, numberSize: 130, textW: 260, textAlign: 'right', z: 2, width: '44%' },
+    { left: '18%', top: 1350, imgW: 420, numberSize: 150, textW: 280, textAlign: 'left', z: 3, width: '50%' },
+  ],
+]
 
-function SpreadC({ items }: { items: S60Item[] }) {
-  return (
-    <div className="relative">
-      <div className="hidden md:grid grid-cols-12 gap-x-4" style={{ minHeight: 900 }}>
-        {/* Item 0 — large, left */}
-        <div className="col-span-5 col-start-1 row-start-1">
-          <CollageItem item={items[0]} imgW={280} numberSize={95} textAlign="right" textW={260} />
-        </div>
-        {/* Item 1 — right, offset down */}
-        <div className="col-span-5 col-start-8 row-start-1" style={{ marginTop: 160 }}>
-          <CollageItem item={items[1]} imgW={220} numberSize={80} textW={240} />
-        </div>
-        {/* Item 2 — left, overlapping */}
-        <div className="col-span-5 col-start-2" style={{ marginTop: -40 }}>
-          <CollageItem item={items[2]} imgW={200} numberSize={75} textAlign="right" textW={220} />
-        </div>
-        {/* Item 3 — right */}
-        <div className="col-span-5 col-start-7" style={{ marginTop: -80 }}>
-          <CollageItem item={items[3]} imgW={250} numberSize={85} textW={260} />
-        </div>
-        {/* Item 4 — center-left */}
-        <div className="col-span-5 col-start-2" style={{ marginTop: -20 }}>
-          <CollageItem item={items[4]} imgW={220} numberSize={80} textW={240} />
-        </div>
-      </div>
-      <div className="md:hidden space-y-14 px-2">
-        <CollageItem item={items[0]} imgW={260} numberSize={70} />
-        <CollageItem item={items[1]} imgW={200} numberSize={65} className="ml-auto" style={{ maxWidth: 300 }} textAlign="right" />
-        <CollageItem item={items[2]} imgW={200} numberSize={60} />
-        <CollageItem item={items[3]} imgW={240} numberSize={65} className="ml-auto" style={{ maxWidth: 340 }} textAlign="right" />
-        <CollageItem item={items[4]} imgW={220} numberSize={65} />
-      </div>
-    </div>
-  )
-}
-
-function SpreadD({ items }: { items: S60Item[] }) {
-  return (
-    <div className="relative">
-      <div className="hidden md:grid grid-cols-12 gap-x-4" style={{ minHeight: 900 }}>
-        {/* Item 0 — right, large */}
-        <div className="col-span-5 col-start-7 row-start-1">
-          <CollageItem item={items[0]} imgW={270} numberSize={90} textW={260} />
-        </div>
-        {/* Item 1 — left, offset down */}
-        <div className="col-span-5 col-start-1 row-start-1" style={{ marginTop: 100 }}>
-          <CollageItem item={items[1]} imgW={230} numberSize={80} textAlign="right" textW={240} />
-        </div>
-        {/* Item 2 — right, pulled up */}
-        <div className="col-span-5 col-start-7" style={{ marginTop: -60 }}>
-          <CollageItem item={items[2]} imgW={210} numberSize={80} textW={240} />
-        </div>
-        {/* Item 3 — center-left */}
-        <div className="col-span-5 col-start-2" style={{ marginTop: -50 }}>
-          <CollageItem item={items[3]} imgW={200} numberSize={75} textAlign="right" textW={220} />
-        </div>
-        {/* Item 4 — center, bottom */}
-        <div className="col-span-6 col-start-4" style={{ marginTop: -10 }}>
-          <CollageItem item={items[4]} imgW={250} numberSize={85} textW={260} />
-        </div>
-      </div>
-      <div className="md:hidden space-y-14 px-2">
-        <CollageItem item={items[0]} imgW={250} numberSize={70} className="ml-auto" style={{ maxWidth: 340 }} textAlign="right" />
-        <CollageItem item={items[1]} imgW={220} numberSize={65} />
-        <CollageItem item={items[2]} imgW={200} numberSize={65} className="ml-auto" style={{ maxWidth: 300 }} textAlign="right" />
-        <CollageItem item={items[3]} imgW={200} numberSize={60} />
-        <CollageItem item={items[4]} imgW={240} numberSize={65} />
-      </div>
-    </div>
-  )
-}
-
-const SPREAD_COMPONENTS = [SpreadA, SpreadB, SpreadC, SpreadD]
+const SPREAD_HEIGHTS = [1800, 1700, 1900, 1850]
 
 function CollageSpread({ items, index }: { items: S60Item[]; index: number }) {
-  const Spread = SPREAD_COMPONENTS[index % SPREAD_COMPONENTS.length]
-  return <Spread items={items} />
+  const li = index % SPREAD_LAYOUTS.length
+  return (
+    <AbsoluteSpread
+      items={items}
+      placements={SPREAD_LAYOUTS[li]}
+      height={SPREAD_HEIGHTS[li]}
+    />
+  )
 }
 
-/* Section header with holding-shot style layout */
+/* ── Full-bleed section header ────────────────────────── */
 function SectionHeader({
   section,
   index,
@@ -291,39 +259,59 @@ function SectionHeader({
   section: (typeof SACRED_60)[number]
   index: number
 }) {
+  const img = SECTION_IMAGES[section.title]
   const isEven = index % 2 === 0
+
   return (
-    <div className="py-10 md:py-0" style={{ background: '#FAF7F2' }}>
-      <div className={`max-w-6xl mx-auto md:grid md:grid-cols-2 md:min-h-[400px] items-center`}>
-        {/* Text side */}
+    <div className="relative overflow-hidden" style={{ background: '#EDE8E0' }}>
+      {/* Full-bleed holding shot when available */}
+      <div
+        className="relative w-full"
+        style={{ minHeight: img ? 600 : 420 }}
+      >
+        {img ? (
+          <Image
+            src={img}
+            alt={section.title}
+            fill
+            className="object-cover object-[50%_30%]"
+            sizes="100vw"
+            priority={index === 0}
+          />
+        ) : null}
+
+        {/* Overlay text */}
         <div
-          className={`px-6 md:px-14 py-10 md:py-20 ${isEven ? 'md:order-2' : 'md:order-1'}`}
+          className={`relative z-10 flex items-end md:items-center h-full min-h-[inherit] px-8 md:px-16 py-12 md:py-20 ${isEven ? '' : 'md:justify-end'}`}
         >
-          <h2
-            className="font-serif font-normal tracking-[0.08em] uppercase"
-            style={{ fontSize: 'clamp(28px,5vw,48px)', color: '#5C4A3A' }}
-          >
-            {section.title}
-          </h2>
-          <p
-            className="font-serif text-base md:text-lg mt-4 max-w-md leading-relaxed"
-            style={{ color: '#5C4A3A', opacity: 0.7 }}
-          >
-            {section.description}
-          </p>
+          <div className={`max-w-md ${!img ? '' : 'bg-white/70 backdrop-blur-sm p-8 md:p-10'}`}>
+            <h2
+              className="font-serif font-normal tracking-[0.1em] uppercase"
+              style={{
+                fontSize: 'clamp(32px, 5vw, 56px)',
+                color: '#5C4A3A',
+              }}
+            >
+              {section.title}
+            </h2>
+            <p
+              className="font-serif text-[15px] md:text-[17px] mt-4 leading-relaxed"
+              style={{ color: '#5C4A3A', opacity: 0.75 }}
+            >
+              {section.description}
+            </p>
+          </div>
         </div>
-        {/* Image side — greige placeholder until holding shots are added */}
-        <div
-          className={`hidden md:block h-full min-h-[400px] ${isEven ? 'md:order-1' : 'md:order-2'}`}
-          style={{ background: '#EDE8E0' }}
-        />
       </div>
 
-      {/* Pull quote below the header */}
-      <div className="text-center py-8 md:py-12 px-6">
+      {/* Pull quote */}
+      <div
+        className="text-center py-10 md:py-14 px-6"
+        style={{ background: '#FAF7F2' }}
+      >
         <p
-          className="font-serif italic text-base md:text-lg max-w-xl mx-auto"
-          style={{ color: '#5C4A3A', opacity: 0.55 }}
+          className="font-serif italic text-lg md:text-xl max-w-xl mx-auto"
+          style={{ color: '#5C4A3A', opacity: 0.5 }}
         >
           &ldquo;{section.pullQuote}&rdquo;
         </p>
@@ -338,7 +326,10 @@ export default function Sacred60ShopPage() {
       <Sacred60Gate>
         <main style={{ color: '#5C4A3A' }}>
           {/* ─── Header ────────────────────────────────────── */}
-          <header className="relative overflow-hidden text-center" style={{ background: '#FAF7F2' }}>
+          <header
+            className="relative overflow-hidden text-center"
+            style={{ background: '#FAF7F2' }}
+          >
             <div className="py-20 md:py-28 px-6">
               <p
                 className="font-sans text-[9px] tracking-[0.4em] uppercase font-medium mb-6"
@@ -443,14 +434,11 @@ export default function Sacred60ShopPage() {
 
             return (
               <section key={si}>
-                {/* Section header — split layout like the PDF */}
+                {/* Full-bleed section header */}
                 <SectionHeader section={section} index={si} />
 
                 {/* Spread 1 (items 1-5) */}
-                <div
-                  className="max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20"
-                  style={{ background: '#fff' }}
-                >
+                <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16">
                   <CollageSpread items={firstFive} index={spreadBase} />
                 </div>
 
@@ -462,10 +450,7 @@ export default function Sacred60ShopPage() {
                   <Link
                     href={`/shop/moments/sacred-60-${section.title.toLowerCase().replace(/\s*&\s*/g, '-')}`}
                     className="font-sans text-[9px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70 inline-block"
-                    style={{
-                      background: '#5C4A3A',
-                      color: '#fff',
-                    }}
+                    style={{ background: '#5C4A3A', color: '#fff' }}
                   >
                     Shop the Edit
                   </Link>
@@ -473,11 +458,11 @@ export default function Sacred60ShopPage() {
 
                 {/* Spread 2 (items 6-10) */}
                 {secondFive.length > 0 && (
-                  <div
-                    className="max-w-5xl mx-auto px-6 md:px-12 py-12 md:py-20"
-                    style={{ background: '#fff' }}
-                  >
-                    <CollageSpread items={secondFive} index={spreadBase + 1} />
+                  <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16">
+                    <CollageSpread
+                      items={secondFive}
+                      index={spreadBase + 1}
+                    />
                   </div>
                 )}
               </section>
