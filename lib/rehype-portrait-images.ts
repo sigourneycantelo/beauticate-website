@@ -48,7 +48,8 @@ function dimensionManifest(): Record<string, [number, number]> {
  * Rehype plugin that gives lone portrait/square images a consistent
  * treatment: centred, capped at MAX_WIDTH (never upscaled past the file's
  * own width), caption centred beneath. Landscape images are left untouched
- * so they keep filling the body measure.
+ * so they keep filling the body measure. An odd leftover image from a gallery
+ * run arrives here as a lone image and gets the same treatment.
  *
  * Must run after rehype-image-grid — that plugin claims runs of 2+
  * consecutive images into galleries first, so any `<p><img></p>` still
