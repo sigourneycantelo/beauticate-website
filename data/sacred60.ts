@@ -1,6 +1,8 @@
 export type Sacred60Section = {
   title: string
   subtitle: string
+  description: string
+  pullQuote: string
   items: Sacred60Item[]
 }
 
@@ -23,6 +25,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Mind & Mood',
     subtitle: 'These rituals soothe stress, sharpen clarity and help you glow from the inside out.',
+    description: "Although the brain isn't the first place we think to treat when we want to look better, it's where everything starts. Mood, sleep, hormones and even skin quality are shaped by the nervous system.",
+    pullQuote: 'These rituals soothe stress, sharpen clarity and help you glow from the inside out.',
     items: [
       {
         number: 1,
@@ -107,6 +111,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Body & Balance',
     subtitle: 'Small shifts in your physical body can create huge ripple effects in energy, confidence and emotional release.',
+    description: 'This is your daily dose of embodiment. From lymphatic drainage to dancing in the kitchen, these rituals are about movement, touch, and restoring balance.',
+    pullQuote: 'Small shifts in your physical body can create huge ripple effects in energy, confidence and emotional release.',
     items: [
       {
         number: 11,
@@ -127,10 +133,12 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 13,
         title: 'Hot, Cold & Salty',
-        description: 'Contrast therapy (sauna + cold plunge) activates heat shock proteins, improves circulation and supports mitochondria. Try magnesium bath flakes post-sauna to support detox and sleep.',
-        product: 'Salts & CO. Pure Magnesium Bath Flakes',
-        url: 'https://amzn.to/4jJmsL9',
+        description: 'Contrast therapy (sauna + cold plunge) activates heat shock proteins, improves circulation and supports mitochondria. Follow it with a warm bath using Subtle Energies Tranquility Bath Soak — an Ayurvedic blend of Himalayan salts, lavender and chamomile to calm the nervous system and ease you into sleep.',
+        product: 'Subtle Energies Tranquility Bath Soak',
+        brand: 'Subtle Energies',
+        url: `${SHOP}/products/tranquility-bath-soak-6a3a88e23da42e584cfcbc3c`,
         image: `${IMG}/item13_magflakes.png`,
+        isShop: true,
       },
       {
         number: 14,
@@ -200,6 +208,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Skin & Glow',
     subtitle: "These are the glow rituals I reach for time and again, from red light to castor oil, gua sha to SPF.",
+    description: "Great skin isn't just about products — it's the result of daily habits and high-tech tools that support circulation, collagen and cellular health.",
+    pullQuote: 'These are the glow rituals I reach for time and again, from red light to castor oil, gua sha to SPF.',
     items: [
       {
         number: 21,
@@ -270,7 +280,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: "When skin is truly dry, nothing beats Weleda Skin Food: my all-time favourite rescue cream: rich, comforting and instantly nourishing, with a cult-status herbal scent that feels like skincare aromatherapy.",
         product: 'Weleda Skin Food',
         brand: 'Weleda',
-        url: 'https://amzn.to/451Ykh0',
+        url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fweleda%2Fweleda-skin-food.html',
         image: `${IMG}/item28-weleda.jpg`,
       },
       {
@@ -296,6 +306,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Energy & Sleep',
     subtitle: 'These rituals are my go-tos for winding down, recharging, and resetting from the inside out.',
+    description: "Sleep and energy are two sides of the same coin. A good night's rest sets the stage for hormonal balance, mood, metabolism and mental clarity.",
+    pullQuote: 'These rituals are my go-tos for winding down, recharging, and resetting from the inside out.',
     items: [
       {
         number: 31,
@@ -318,9 +330,10 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 33,
         title: 'Tape Your Way to Deep Sleep',
-        description: 'Mouth taping overnight encourages nasal breathing, which supports oxygen flow and better rest.',
-        product: 'Mouth Tape',
-        url: 'https://amzn.to/4pByoAe',
+        description: 'Mouth taping overnight encourages nasal breathing, which supports oxygen flow and better rest. MUTE Sleep Tape is hypoallergenic and designed to stay put all night.',
+        product: 'MUTE Mouth Tape for Sleeping',
+        brand: 'MUTE',
+        url: 'https://www.amazon.com.au/MUTE-Mouth-Tape-Sleeping-Breathing/dp/B0D2M75QSS',
         image: `${IMG}/item33_mouthtape.png`,
       },
       {
@@ -335,18 +348,20 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 35,
         title: 'Legs Up the Wall: Your Sleep Secret Weapon',
-        description: "This simple yoga pose reduces swelling, eases lower back pain, and sends a gentle \"all is well\" signal to your body. Hold for 5–10 minutes before bed, ideally in a dark room with soft music with a weighted eye mask.",
-        product: 'Weighted Eye Mask',
-        url: 'https://amzn.to/4pByoAe',
+        description: "This simple yoga pose reduces swelling, eases lower back pain, and sends a gentle \"all is well\" signal to your body. Hold for 5–10 minutes before bed, ideally in a dark room with soft music and a cooling silk eye mask draped over your eyes.",
+        product: 'Estetika Cooling Red Silk Wide Eye Mask',
+        brand: 'Estetika',
+        url: `${SHOP}/products/cooling-red-silk-wide-eye-mask-with-gift-box`,
         image: `${IMG}/item35-eyepillow.jpg`,
+        isShop: true,
       },
       {
         number: 36,
         title: 'Pillows That Change Your Sleep',
-        description: "I didn't realise how much my pillow was sabotaging my sleep until I swapped it. Bedgear Performance Pillows are so soft yet supportive. The cuddle contour is great for side sleepers.",
-        product: 'Bedgear Performance Pillows',
+        description: "I didn't realise how much my pillow was sabotaging my sleep until I swapped it. Bedgear Performance Pillows are so soft yet supportive. The Cuddle Contour is great for side sleepers.",
+        product: 'Bedgear Level Cuddle Performance Pillow',
         brand: 'Bedgear',
-        url: 'https://amzn.to/4pByoAe',
+        url: 'https://www.amazon.com.au/Bedgear-Level-Cuddle-Performance-Pillow/dp/B0D1841J7Z',
         image: `${IMG}/item36-bedgear.jpg`,
       },
       {
@@ -389,6 +404,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Space & Soul',
     subtitle: 'From pop-up saunas to pretty pill containers, these tools turn your home into a sanctuary that works with your wellness goals.',
+    description: "Our homes shape our habits — and the right environment can make self-care feel effortless. This section is about habit-stacking, sensory rituals, and designing your space to support calm, creativity, and consistency.",
+    pullQuote: 'From Airgardens to incense, these tools turn your home into a sanctuary that works with your wellness goals.',
     items: [
       {
         number: 41,
@@ -444,19 +461,23 @@ export const SACRED_60: Sacred60Section[] = [
       },
       {
         number: 47,
-        title: 'Try a Pop-Up Sauna',
-        description: "This Portable Steam Sauna heats to 60°C in under 10 minutes, packs away neatly, and turns stress, sore muscles and sluggish skin into a nightly ritual you can do at home.",
-        product: 'Portable Steam Sauna',
-        url: 'https://amzn.to/3NdEwRD',
+        title: 'The Home Infrared Sauna',
+        description: "I installed a Nook Elite infrared sauna half expecting it to sit, virtuously, unused. I was wrong. I use it about three times a week — my back feels better, my skin looks clearer, and the nook beside my front door finally makes sense. Seven carbon-mica FAR infrared heaters, ultra-low EMF, beautiful Canadian Hemlock timber.",
+        product: 'Nook Elite Infrared Sauna',
+        brand: 'Nook',
+        url: 'https://nooksaunas.com.au/BEAUTICATE',
         image: `${IMG}/item47-sauna.jpg`,
+        discount: '$100 off with code BEAUTICATE',
       },
       {
         number: 48,
         title: 'Wind Down with Support',
         description: "I leave my LED mask in a ceramic bowl on the coffee table. Part art piece, part habit nudge. Beautiful enough to live on display, powerful enough to become a habit.",
-        product: 'LED Face Mask',
-        url: 'https://amzn.to/416FfId',
+        product: 'San Lueur Advanced LED Light Therapy Facial Mask',
+        brand: 'San Lueur',
+        url: `${SHOP}/products/advanced-led-light-therapy-facial-mask-pre-order-6a3a0cc33da42e584cde6b4a`,
         image: `${IMG}/item48_ledmaskbox.png`,
+        isShop: true,
       },
       {
         number: 49,
@@ -481,6 +502,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Nourish & Nurture',
     subtitle: 'Glow starts in the gut, and beauty — true beauty — is built from the inside out.',
+    description: "What we put into our bodies is just as powerful as what we do to them. From functional supplements to conscious cookware, this section is about fuelling your body with care, clarity and intention.",
+    pullQuote: 'Because glow starts in the gut, and beauty — true beauty — is built from the inside out.',
     items: [
       {
         number: 51,
