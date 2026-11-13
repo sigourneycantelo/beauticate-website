@@ -50,6 +50,20 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
+const GOODIE_BAG_SLIDE = {
+  frontmatter: {
+    title: 'Shop the Products Our Editors Are Using',
+    slug: 'goodie-bag',
+    category: 'shop',
+    excerpt: 'Everything that went home in the bag from the first Beauticate Collective lunch, in one place.',
+    hero_image: '/content/shop/goodie-bag/hero.jpg',
+    hero_eyebrow: 'The Collective goodie bag',
+    hero_focus: 'center 20%',
+    href: '/shop/collections/goodie-bag',
+    hero_cta: 'Shop the bag',
+  },
+}
+
 export default async function HomePage() {
   const [curatedProducts, allProducts, vodcastEpisodes, allCollections, freeShipCols] = await Promise.all([
     getTeamRailProducts(),
@@ -82,6 +96,10 @@ export default async function HomePage() {
 
   const heroArticles = getHeroArticles()
   heroArticles.forEach(a => a && shownSlugs.add(a.frontmatter.slug))
+  // The goodie bag shop page rides the carousel as its second slide, right
+  // behind the Lua lunch story it belongs to. Hero is capped at four slides.
+  const heroSlides = [...heroArticles]
+  heroSlides.splice(1, 0, GOODIE_BAG_SLIDE as any)
   const duo1Articles = take(2)
   const trio1Articles = take(3)
   const [splitArticle] = take(1)
@@ -91,7 +109,7 @@ export default async function HomePage() {
   return (
     <>
       {/* 1 — Cycling hero */}
-      {heroArticles.length > 0 && <HeroWide articles={heroArticles as any} />}
+      {heroArticles.length > 0 && <HeroWide articles={heroSlides as any} />}
 
       {/* 2 — Trust + press logos (one credibility moment under the hero) */}
       <PressLogoBar className="py-12" />
