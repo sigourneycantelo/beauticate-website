@@ -11,9 +11,11 @@ interface Props {
   lastUpdated?: string
   /** Brand in a paid partnership. Renders one quiet small-caps line under the date row. */
   partnership?: string
+  /** Optional sentence run on after the partnership line, in the same quiet style. */
+  partnershipNote?: string
 }
 
-export default function AuthorByline({ name, date, readingTime, showDate = false, lastUpdated, partnership }: Props) {
+export default function AuthorByline({ name, date, readingTime, showDate = false, lastUpdated, partnership, partnershipNote }: Props) {
   const author = getAuthor(name)
   const displayName = author?.name ?? name
   const role = author?.role
@@ -70,8 +72,8 @@ export default function AuthorByline({ name, date, readingTime, showDate = false
           {readingTime && <span>{readingTime} min read</span>}
         </div>
         {partnership && (
-          <span className="text-[10px] font-light uppercase tracking-[0.14em] text-charcoal-light/70 mt-0.5">
-            In partnership with {partnership}
+          <span className="text-[10px] font-light uppercase tracking-[0.14em] leading-snug text-charcoal-light/70 mt-0.5">
+            In partnership with {partnership}.{partnershipNote ? ` ${partnershipNote}` : ''}
           </span>
         )}
       </div>
