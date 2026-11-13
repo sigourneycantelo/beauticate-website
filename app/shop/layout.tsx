@@ -29,7 +29,7 @@ export default async function ShopLayout({ children }: { children: React.ReactNo
     label: `${c.name}'s Favourites`, href: `/shop/curators/${c.slug}`, image: c.photo,
   }))
   const moments: SubNavItem[] = [
-    ...MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) })),
+    ...MOOD_MOMENTS.map(m => ({ label: m.name, href: `/shop/collections/${m.handle}`, image: imgByHandle.get(m.handle) ?? m.image })),
     ...getArticleMoments().map(m => ({ label: m.title, href: `/shop/moments/${m.slug}`, image: m.image })),
   ]
 
