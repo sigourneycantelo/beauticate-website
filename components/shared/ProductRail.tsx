@@ -5,7 +5,7 @@ import Link from 'next/link'
 import type { ShopifyProduct } from '@/types/shopify'
 import ProductTile from '@/components/shared/ProductTile'
 
-import { formatCardPrice } from '@/lib/product-format'
+import { formatCardPrice, formatShadeLine } from '@/lib/product-format'
 
 // Canonical product rail for the whole site. This is the "team favourites"
 // format from the home page hero: a slow, self-scrolling rail that pauses on
@@ -145,6 +145,7 @@ export default function ProductRail({
                       badge={badge}
                       brand={p.vendor}
                       name={p.title}
+                      shades={formatShadeLine(p)}
                       price={formatCardPrice(p)}
                     />
                   </div>

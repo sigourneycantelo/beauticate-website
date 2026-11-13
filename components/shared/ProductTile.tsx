@@ -32,6 +32,8 @@ export interface ProductTileProps {
   badge?: string
   brand?: string
   name: string
+  /** Second line under the name, e.g. "8 shades · Napier, Boston…" (see formatShadeLine). */
+  shades?: string
   price?: string
   priceSuffix?: string
   className?: string
@@ -53,7 +55,7 @@ export default function ProductTile({
   href, external = false, follow = false,
   primarySrc, primaryAlt = '', secondarySrc, secondaryAlt = '',
   useNextImage = false, lazy = false, cover = true,
-  cornerLabel, badge, brand, name, price, priceSuffix, className = '', hideMeta = false,
+  cornerLabel, badge, brand, name, shades, price, priceSuffix, className = '', hideMeta = false,
   rating, reviewCount,
   forceTile = false, dataAttrs,
 }: ProductTileProps) {
@@ -116,6 +118,11 @@ export default function ProductTile({
           <h3 className={`font-serif text-[19px] leading-[1.2] ${hasHover ? 'group-hover:underline group-hover:[text-decoration-thickness:0.5px] group-hover:[text-underline-offset:3px]' : ''}`}>
             {displayName}
           </h3>
+          {shades && (
+            <p className="font-sans text-[11px] leading-snug opacity-60 mt-1 truncate" title={shades}>
+              {shades}
+            </p>
+          )}
           {price && (
             <p className="font-serif text-[13px] opacity-65 mt-1">
               {price}
