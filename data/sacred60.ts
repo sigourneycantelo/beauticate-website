@@ -68,14 +68,6 @@ export const SACRED_60: Sacred60Section[] = [
         image: `${IMG}/item5_lionsmane.png`,
       },
       {
-        number: 6,
-        title: 'Tune Your Vagus Nerve',
-        description: 'The Pulsetto stimulates your vagus nerve via gentle, non-invasive impulses, helping shift you from fight-or-flight into a grounded, relaxed state.',
-        product: 'Pulsetto',
-        url: 'https://pulsetto-gb.myshopify.com/?sca_ref=7074273.5OdIohWvEy2',
-        image: `${IMG}/item6_pulsetto.png`,
-      },
-      {
         number: 7,
         title: 'Let Light Shift Your Mood',
         description: "Red light therapy isn't just for skin: it's a powerful mood and energy enhancer. By stimulating mitochondrial ATP production, it helps regulate your circadian rhythm, boost serotonin, and even ease seasonal lows. I sit in front of my Infraredi Pro Max each morning while journalling or sipping tea.",
