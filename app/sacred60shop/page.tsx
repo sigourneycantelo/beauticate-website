@@ -56,15 +56,21 @@ function ItemCard({
 
   return (
     <article className={`relative ${className}`} style={style}>
-      <span
-        className={`block font-serif select-none leading-[0.85] ${textAlign === 'right' ? 'text-right' : ''}`}
-        style={{ fontSize: numberSize, color: '#8C7B6B', opacity: 0.45, fontWeight: 700 }}
-        aria-hidden
-      >
-        {item.number}.
-      </span>
+      <div className={textAlign === 'right' ? 'text-right' : ''}>
+        <span
+          className="font-numeral text-chocolate block select-none leading-none"
+          style={{ fontSize: numberSize, letterSpacing: '-0.03em' }}
+          aria-hidden
+        >
+          {item.number}
+        </span>
+        <div
+          className={`mt-1.5 ${textAlign === 'right' ? 'ml-auto' : ''}`}
+          style={{ width: '46px', height: '1px', background: '#7A7570' }}
+        />
+      </div>
       <h3
-        className={`font-sans text-[10px] tracking-[0.2em] uppercase font-bold mt-1 ${alignClass}`}
+        className={`font-sans text-[10px] tracking-[0.2em] uppercase font-bold mt-2 ${alignClass}`}
         style={{ color: '#5C4A3A', maxWidth: textW }}
       >
         {item.title}
