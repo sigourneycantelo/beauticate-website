@@ -257,6 +257,28 @@ function CollageSpread({ items, index }: { items: S60Item[]; index: number }) {
   )
 }
 
+/* ── Colour-grouped spread assignments ────────────────────
+   Items within each section are reordered so visually similar
+   products (by packaging colour) sit in the same collage spread,
+   matching Sig's original Canva flat-lay compositions.
+   Each pair is [spread1Indices, spread2Indices] into that
+   section's items[].
+   ──────────────────────────────────────────────────────── */
+const COLOUR_GROUPS: [number[], number[]][] = [
+  // Mind & Mood — warm golds + naturals | dark tech + moody
+  [[0,1,2,9,4], [3,5,6,7,8]],
+  // Body & Balance — warm/light organics | dark navy charcoal gear
+  [[0,2,4,8,1], [3,5,6,7,9]],
+  // Skin & Glow — green/teal palette | warm neutrals + amber
+  [[0,1,7,3,4], [2,5,6,8,9]],
+  // Energy & Sleep — warm blush/pink/gold | cool purple + dark
+  [[0,3,4,1,6], [2,5,7,8,9]],
+  // Space & Soul — warm wood/amber/gold | clean white/cream
+  [[0,6,8,3,4], [5,1,7,2,9]],
+  // Nourish & Nurture — warm pink/copper/gold | green + dark
+  [[0,1,2,5,8], [3,4,6,7,9]],
+]
+
 /* ── Full-bleed section header ────────────────────────── */
 function SectionHeader({
   section,
@@ -454,8 +476,11 @@ export default function Sacred60ShopPage() {
 
           {/* ─── Sections ──────────────────────────────────── */}
           {SACRED_60.map((section, si) => {
-            const firstFive = section.items.slice(0, 5)
-            const secondFive = section.items.slice(5, 10)
+            const [g1, g2] = COLOUR_GROUPS[si] ?? [
+              [0,1,2,3,4], [5,6,7,8,9],
+            ]
+            const firstFive = g1.map(i => section.items[i])
+            const secondFive = g2.map(i => section.items[i]).filter(Boolean)
             const spreadBase = si * 2
 
             return (
