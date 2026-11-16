@@ -10,4 +10,10 @@ export const BRAND_HEROES: Record<string, string> = {
   'imbibe': '/images/brands/imbibe_beauty_renewal.jpg',
   // From Drive: Shop > Brand Content > Wildcrafted Organics (3000x2000, 25 Oct 2026).
   'wildcrafted-organics': '/images/brands/wildcrafted_organics.jpg',
+  // From Rest (Nilanka, 22 Oct 2026): true 21:9 master banner, 3168x1344.
+  'rest': '/images/brands/rest.jpg',
 }
+
+// Heroes supplied as true 21:9 banners; the brand page renders them widescreen
+// from md up instead of cropping them into the default 3:2 slot.
+export const WIDE_HEROES = new Set(['rest'])

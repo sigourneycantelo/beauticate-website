@@ -21,6 +21,24 @@ const CREDIT_PATTERN = /^(story by|photography by|words by|images? by|interview 
 const DISCLOSURE_PATTERN =
   /^(paid partnership|in paid partnership|sponsored (by|content)|advertis(ing|ement) feature|this (article|story|post|piece|trial|feature|review|edit) (was|is|contains)|some( of the)? links|all links|links (in this|marked)|affiliate link|this (article|post) contains affiliate|products? (were|was)? ?gifted|gifted (by|product)|we (were|was) gifted|with thanks to)/i
 
+/**
+ * Hosted-trip notes: "Sigourney was a guest of X", "Sigourney Cantelo travelled
+ * to the Sunshine Coast as a guest of X", "Sigourney and her family were guests
+ * of X". They open with a name, so DISCLOSURE_PATTERN (anchored on the phrase)
+ * misses them and they rendered as full-size body copy. Kept to the first
+ * sentence, and never a line that opens with or contains a quotation mark, so
+ * a pulled quote that merely mentions a guest is left alone.
+ */
+const GUEST_PATTERN =
+  /^(?!["“‘'])[^.!?"“]{0,120}?\b(guests? of(?! honou?r)|(was|were) hosted by|(was|were) invited by)\b/i
+
+function isDisclosure(text: string): boolean {
+  return (
+    DISCLOSURE_PATTERN.test(text) ||
+    (text.length < 300 && GUEST_PATTERN.test(text))
+  )
+}
+
 /** Longest an italic paragraph can be and still read as a pull quote. */
 const PULL_QUOTE_MAX_CHARS = 180
 
@@ -81,7 +99,7 @@ const rehypePullQuotes: Plugin<[], Root> = () => {
         const text = getTextContent(meaningful[0]).trim()
         if (CREDIT_PATTERN.test(text)) continue
 
-        if (DISCLOSURE_PATTERN.test(text)) {
+        if (isDisclosure(text)) {
           el.properties = {
             ...el.properties,
             className: [
@@ -116,7 +134,7 @@ const rehypePullQuotes: Plugin<[], Root> = () => {
       // too, so they join the same block rather than looking like body copy.
       if (i >= elements.length - 3) {
         const text = getTextContent(el).trim()
-        if (text.length < 300 && DISCLOSURE_PATTERN.test(text)) {
+        if (text.length < 300 && isDisclosure(text)) {
           el.properties = {
             ...el.properties,
             className: [

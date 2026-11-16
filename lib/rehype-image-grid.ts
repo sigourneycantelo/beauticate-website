@@ -59,7 +59,9 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
         )!
         img.properties = {
           ...img.properties,
-          class: 'w-full h-full object-cover',
+          // Natural proportions: never crop. `object-cover` + `h-full` used to
+          // force every cell to the tallest image's height and trim the rest.
+          class: 'w-full h-auto rounded',
         }
         const caption = unit.captionIdx !== undefined
           ? (children[unit.captionIdx] as Element)
@@ -67,13 +69,15 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
         return { img, caption }
       })
 
-      // Chunk into rows: prefer exactly-3 only when the whole run is 3,
-      // otherwise use rows of 2 so we get a 2-column layout.
-      const chunkSize = runLength === 3 ? 3 : 2
+      // Chunk into rows of two: every pair is two equal, normal-sized,
+      // uncropped images. (It used to be a 2fr/1fr split with object-cover,
+      // which cropped portraits into one wide and one narrow sliver.)
+      // An odd leftover is emitted as a plain paragraph with no grid class, so
+      // rehype-portrait-images then treats it as a lone image and centres it.
+      const chunkSize = 2
       const gridNodes: Element[] = []
       for (let k = 0; k < imgUnits.length; k += chunkSize) {
         const chunk = imgUnits.slice(k, k + chunkSize)
-        // A leftover single image is shown full-width — skip wrapping
         if (chunk.length === 1) {
           const cellChildren: Element[] = [
             { type: 'element', tagName: 'p', properties: {}, children: [chunk[0].img] },
@@ -82,16 +86,10 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
           gridNodes.push(...cellChildren)
           continue
         }
-        const cols = chunk.length === 2 ? 2 : 3
-        const gridClass =
-          cols === 2
-            ? 'not-prose grid gap-3 my-6'
-            : 'not-prose grid grid-cols-2 md:grid-cols-3 gap-3 my-6'
-        const gridStyle = cols === 2 ? 'grid-template-columns:2fr 1fr' : undefined
         gridNodes.push({
           type: 'element',
           tagName: 'div',
-          properties: { class: gridClass, style: gridStyle },
+          properties: { class: 'not-prose grid grid-cols-2 items-start gap-3 my-6' },
           children: chunk.map(({ img, caption }) => {
             const cellChildren: ElementContent[] = [img as ElementContent]
             if (caption) {
@@ -104,7 +102,7 @@ const rehypeImageGrid: Plugin<[], Root> = () => {
             return {
               type: 'element' as const,
               tagName: 'div' as const,
-              properties: { class: 'flex flex-col items-center justify-center' },
+              properties: { class: 'flex flex-col items-center' },
               children: cellChildren,
             }
           }),
