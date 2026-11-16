@@ -78,7 +78,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Eir Women Show Up',
         brand: 'Eir Women',
         url: `${SHOP}/products/show-up`,
-        image: `${IMG}/item6_pulsetto.png`,
+        image: `${IMG}/item6-eir-show-up.jpg`,
         isShop: true,
       },
       {
@@ -246,7 +246,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "RAESO Golden Nectar Mānuka Honey Enzyme Cleanser",
         brand: 'RAESO',
         url: 'https://raesoskin.com/products/golden-nectar-manuka-honey-enzyme-cleanser',
-        image: `${IMG}/item23-muji.jpg`,
+        image: `${IMG}/item23-raeso-golden-nectar.jpg`,
         discount: '30% off with code BEAUTICATE30',
       },
       {
@@ -400,7 +400,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Eir Women Reboot',
         brand: 'Eir Women',
         url: `${SHOP}/products/reboot`,
-        image: `${IMG}/item39_sleepjournal.png`,
+        image: `${IMG}/item39-eir-reboot.jpg`,
         isShop: true,
       },
       {
@@ -572,7 +572,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Tropeaka Body Bloom',
         brand: 'Tropeaka',
         url: 'https://tropeaka.com.au/products/body-bloom',
-        image: `${IMG}/item56-hydrogencup.png`,
+        image: `${IMG}/item56-tropeaka-body-bloom.png`,
       },
       {
         number: 57,
@@ -581,7 +581,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Eir Women Flourish Vitality Greens',
         brand: 'Eir Women',
         url: `${SHOP}/products/flourish-vitality-greens`,
-        image: `${IMG}/item57_airgarden.png`,
+        image: `${IMG}/item57-eir-flourish.png`,
         isShop: true,
       },
       {
