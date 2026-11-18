@@ -211,6 +211,14 @@ export async function getNewArrivals(maxBrands = 6, perBrand = 4): Promise<Shopi
   return picks
 }
 
+// A gift-with-purchase SKU sits in its brand's Shopify collection (it is the same
+// vendor), so every collection fetch has to drop `gwp-hidden` products or the $0.01
+// gift shows up on the brand page. Adrian at St. Louis Says spotted it first.
+function withoutHiddenProducts(c: ShopifyCollection | null): ShopifyCollection | null {
+  if (!c?.products?.nodes) return c
+  return { ...c, products: { ...c.products, nodes: stripHidden(c.products.nodes) } }
+}
+
 // A collection with a fuller product list than getCollectionByHandle (which caps at 24) —
 // used by the broad category pages that need every product in the group.
 export async function getCollectionFull(handle: string, first = 250): Promise<ShopifyCollection | null> {
@@ -224,7 +232,7 @@ export async function getCollectionFull(handle: string, first = 250): Promise<Sh
       }
     }
   `, { handle, first })
-  return (data as any)?.collection ?? null
+  return withoutHiddenProducts((data as any)?.collection ?? null)
 }
 
 // Just the product handles in a collection — for cheaply tagging which sub-collection
@@ -265,7 +273,7 @@ export async function getCollectionByHandle(handle: string): Promise<ShopifyColl
       }
     }
   `, { handle })
-  return (data as any)?.collection ?? null
+  return withoutHiddenProducts((data as any)?.collection ?? null)
 }
 
 export async function getProductTypes(): Promise<string[]> {
