@@ -169,9 +169,11 @@ export const SHOP_BRANDS: ShopBrand[] = [
 // Mirrors the beauticate.shop "Shop by Moment" menu. `handle` is the live Shopify
 // collection handle → /shop/collections/<handle>.
 
-export type ShopMoment = { name: string; handle: string }
+export type ShopMoment = { name: string; handle: string; image?: string }
 
 export const SHOP_MOMENTS: ShopMoment[] = [
+  // A local page (app/shop/collections/goodie-bag), not a Shopify collection, so it carries its own tile image.
+  { name: 'The Goodie Bag', handle: 'goodie-bag', image: '/content/shop/goodie-bag/hero.jpg' },
   { name: 'Winter Edit', handle: 'winter-edit' },
   { name: 'Deepest Sleep', handle: 'evening-unwind' },
   { name: 'Fit Girl Glow', handle: 'fit-girl-glow' },
