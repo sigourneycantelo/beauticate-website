@@ -129,6 +129,28 @@ export const GWP_OFFERS: GiftOffer[] = [
     lineAttributes: [{ key: 'Gift with purchase', value: 'Free gift — Vitamin B3, B5 & Hyaluronic Acid Hydrating Serum' }],
     // startsAt / endsAt: set once the window is agreed.
   },
+  {
+    key: 'st-louis-says',
+    enabled: true,
+    // Retail products and the synced gift both carry vendor "St. Louis Says".
+    vendor: 'St. Louis Says',
+    giftVariantId: 'gid://shopify/ProductVariant/46158949810245',
+    giftProductId: 'gid://shopify/Product/8363356061765',
+    giftHandle: 'resurrection-repair-hair-treatment-mask-beauticate-gift-6ad9579aee291a30107eb6f6',
+    giftName: 'a Resurrection Repair Hair Treatment Mask',
+    badge: 'Free gift',
+    freeLabel: 'Free',
+    pitch: 'Spend $50 on St. Louis Says and we’ll add a Resurrection Repair Hair Treatment Mask to your order, free.',
+    cartNote: 'Added free with your St. Louis Says order',
+    // Agreed with Adrian 17 Nov 2026: $50 (about a shampoo and conditioner; the
+    // Duos are $50, either brush qualifies alone). Gift retails at $27, 20 units
+    // funded. The BXGY discount "Free gift - St. Louis Says" takes the $0.01 off.
+    minSpend: 50,
+    lineAttributes: [{ key: 'Gift with purchase', value: 'Free gift — Resurrection Repair Hair Treatment Mask' }],
+    // Midnight Thu 19 Nov 2026 Sydney. No endsAt: the brand is happy for it to
+    // run through their BFCM (23-30 Nov) while stock lasts.
+    startsAt: '2026-11-18T13:00:00Z',
+  },
 ]
 
 const norm = (s?: string | null) => (s ?? '').trim().toLowerCase()
