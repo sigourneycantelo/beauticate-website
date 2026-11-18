@@ -45,37 +45,37 @@ type SpreadPos = {
 }
 
 const SPREAD_LAYOUTS: SpreadPos[][] = [
-  // A — matches the Skin & Glow PDF page
+  // A — PDF Skin & Glow feel: products centre, text in side margins
   [
-    { imgX: 54, imgY: 0,   imgW: 300, z: 2, txtSide: 'right' },
-    { imgX: 30, imgY: 200, imgW: 220, z: 3, txtSide: 'left' },
-    { imgX: 62, imgY: 420, imgW: 180, z: 4, txtSide: 'right' },
-    { imgX: 28, imgY: 560, imgW: 360, z: 1, txtSide: 'left', txtY: 660 },
-    { imgX: 56, imgY: 920, imgW: 240, z: 2, txtSide: 'right' },
+    { imgX: 52, imgY: 0,   imgW: 280, z: 2, txtSide: 'right' },
+    { imgX: 42, imgY: 200, imgW: 220, z: 3, txtSide: 'left' },
+    { imgX: 56, imgY: 420, imgW: 180, z: 4, txtSide: 'right' },
+    { imgX: 48, imgY: 560, imgW: 340, z: 1, txtSide: 'left', txtY: 660 },
+    { imgX: 53, imgY: 920, imgW: 240, z: 2, txtSide: 'right' },
   ],
-  // B — mirror: hero top-left
+  // B — mirror: hero left of centre
   [
-    { imgX: 46, imgY: 0,   imgW: 280, z: 2, txtSide: 'left' },
-    { imgX: 68, imgY: 220, imgW: 210, z: 3, txtSide: 'right' },
-    { imgX: 36, imgY: 440, imgW: 200, z: 4, txtSide: 'left' },
-    { imgX: 66, imgY: 580, imgW: 340, z: 1, txtSide: 'right', txtY: 680 },
-    { imgX: 44, imgY: 940, imgW: 250, z: 2, txtSide: 'left' },
+    { imgX: 48, imgY: 0,   imgW: 260, z: 2, txtSide: 'left' },
+    { imgX: 58, imgY: 220, imgW: 210, z: 3, txtSide: 'right' },
+    { imgX: 44, imgY: 440, imgW: 200, z: 4, txtSide: 'left' },
+    { imgX: 54, imgY: 580, imgW: 320, z: 1, txtSide: 'right', txtY: 680 },
+    { imgX: 46, imgY: 940, imgW: 250, z: 2, txtSide: 'left' },
   ],
   // C — centred hero, stagger
   [
-    { imgX: 50, imgY: 0,   imgW: 320, z: 3, txtSide: 'right' },
-    { imgX: 32, imgY: 250, imgW: 240, z: 2, txtSide: 'left' },
-    { imgX: 60, imgY: 470, imgW: 190, z: 4, txtSide: 'right' },
-    { imgX: 26, imgY: 610, imgW: 300, z: 1, txtSide: 'left', txtY: 700 },
-    { imgX: 54, imgY: 950, imgW: 260, z: 2, txtSide: 'right' },
+    { imgX: 50, imgY: 0,   imgW: 300, z: 3, txtSide: 'right' },
+    { imgX: 44, imgY: 250, imgW: 240, z: 2, txtSide: 'left' },
+    { imgX: 56, imgY: 470, imgW: 190, z: 4, txtSide: 'right' },
+    { imgX: 46, imgY: 610, imgW: 300, z: 1, txtSide: 'left', txtY: 700 },
+    { imgX: 52, imgY: 950, imgW: 260, z: 2, txtSide: 'right' },
   ],
   // D — offset hero, tight overlap
   [
-    { imgX: 48, imgY: 0,   imgW: 260, z: 2, txtSide: 'left' },
-    { imgX: 66, imgY: 190, imgW: 230, z: 3, txtSide: 'right' },
-    { imgX: 34, imgY: 400, imgW: 220, z: 4, txtSide: 'left' },
-    { imgX: 62, imgY: 550, imgW: 350, z: 1, txtSide: 'right', txtY: 650 },
-    { imgX: 42, imgY: 920, imgW: 240, z: 2, txtSide: 'left' },
+    { imgX: 48, imgY: 0,   imgW: 240, z: 2, txtSide: 'left' },
+    { imgX: 56, imgY: 190, imgW: 230, z: 3, txtSide: 'right' },
+    { imgX: 42, imgY: 400, imgW: 220, z: 4, txtSide: 'left' },
+    { imgX: 54, imgY: 550, imgW: 340, z: 1, txtSide: 'right', txtY: 650 },
+    { imgX: 46, imgY: 920, imgW: 240, z: 2, txtSide: 'left' },
   ],
 ]
 
@@ -202,8 +202,8 @@ function FlatLaySpread({
                 top: txtY,
                 zIndex: pos.z,
                 ...(pos.txtSide === 'left'
-                  ? { left: 0, right: '58%', display: 'flex', justifyContent: 'flex-end' }
-                  : { left: '58%', right: 0 }),
+                  ? { left: 0, width: '28%', display: 'flex', justifyContent: 'flex-end' }
+                  : { right: 0, width: '28%' }),
                 padding: '0 12px',
               }}
             >
