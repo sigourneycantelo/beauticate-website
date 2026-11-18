@@ -224,7 +224,7 @@ export async function getCollectionFull(handle: string, first = 250): Promise<Sh
       }
     }
   `, { handle, first })
-  return (data as any)?.collection ?? null
+  return withoutHiddenProducts((data as any)?.collection ?? null)
 }
 
 // Just the product handles in a collection — for cheaply tagging which sub-collection
@@ -252,6 +252,13 @@ export async function getProductsByTag(tag: string, first = 20): Promise<Shopify
   return stripHidden((data as any)?.products?.nodes ?? [])
 }
 
+// Gift-with-purchase SKUs ($0.01, tagged gwp-hidden) sit in their brand's Shopify
+// collection, so every collection fetch must drop them or they list like products.
+function withoutHiddenProducts(c: ShopifyCollection | null): ShopifyCollection | null {
+  if (!c) return c
+  return { ...c, products: { ...c.products, nodes: stripHidden(c.products.nodes) } }
+}
+
 // ─── Collections ─────────────────────────────────────────────────────────────
 
 export async function getCollectionByHandle(handle: string): Promise<ShopifyCollection | null> {
@@ -265,7 +272,7 @@ export async function getCollectionByHandle(handle: string): Promise<ShopifyColl
       }
     }
   `, { handle })
-  return (data as any)?.collection ?? null
+  return withoutHiddenProducts((data as any)?.collection ?? null)
 }
 
 export async function getProductTypes(): Promise<string[]> {

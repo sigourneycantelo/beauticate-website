@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import type { ShopifyProduct } from '@/types/shopify'
 import { cleanProductTitle } from '@/lib/product-format'
-import { GIFT_HANDLES, offerForVendor, isGiftProduct } from '@/lib/gwp'
+import { GIFT_HANDLES, offerForVendor, isHiddenProduct } from '@/lib/gwp'
 import { metaDescription } from '@/lib/product-description'
 import { getProductReviews, getProductRating, getRatingMap } from '@/lib/judgeme'
 
@@ -44,7 +44,7 @@ export default async function ProductRoute({ params, searchParams }: Props) {
   if (GIFT_HANDLES.includes(handle)) notFound()
 
   const product = await getProductByHandle(handle)
-  if (!product || isGiftProduct(product)) notFound()
+  if (!product || isHiddenProduct(product)) notFound()
 
   // Probe real-time stock in parallel with the related-products fetch (see
   // getVariantAvailability — the product query's availableForSale can't be trusted).
