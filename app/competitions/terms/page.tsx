@@ -102,14 +102,25 @@ const comp = {
    on a purchase, which is why the terms below are about spend, stock and
    substitution rather than entry and eligibility.
    ══════════════════════════════════════════════════════════════════════════ */
-const gwp = {
-  brand: 'BOOIE Beauty',
-  status: 'open' as 'open' | 'closed',
-  gift: 'Bloody Delicious Hydrating Tinted Illuminator in Champagne',
-  giftValue: 'A$39',
-  minSpend: 'A$45',
-  started: '9 September 2026',
-}
+/** One entry per offer running now. Add to this list, never overwrite, when two run together. */
+const gwps = [
+  {
+    brand: 'BOOIE Beauty',
+    status: 'open' as 'open' | 'closed',
+    gift: 'Bloody Delicious Hydrating Tinted Illuminator in Champagne',
+    giftValue: 'A$39',
+    minSpend: 'A$45',
+    started: '9 September 2026',
+  },
+  {
+    brand: 'St. Louis Says',
+    status: 'open' as 'open' | 'closed',
+    gift: 'Resurrection Repair Hair Treatment Mask',
+    giftValue: 'A$27',
+    minSpend: 'A$50',
+    started: '19 November 2026',
+  },
+]
 
 /**
  * Re-rendered hourly so a competition closes on time without anyone deploying.
@@ -431,7 +442,8 @@ export default function CompetitionTermsPage() {
           </p>
         </div>
 
-        <section className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
+        {gwps.map((gwp) => (
+        <section key={gwp.brand} className="rounded-lg bg-tile/60 border border-camel/30 p-6 md:p-8">
           <h3 className="font-serif text-xl text-ink mb-4">
             {gwp.brand} gift with purchase{' '}
             <span className="text-charcoal/40 font-normal">
@@ -457,24 +469,24 @@ export default function CompetitionTermsPage() {
             </div>
           </dl>
         </section>
+        ))}
 
         <section>
           <p>
             The gift is added to your cart automatically once your order meets the minimum. You do
-            not need a code. The minimum spend is measured on {gwp.brand} products only, not on your
+            not need a code. Each minimum spend is measured on that brand's products only, not on your
             order total, so other brands in the same order do not count towards it. Gift cards do not
             count towards the minimum.
           </p>
           <p className="mt-4">
-            One gift per order. Gifts are limited to the number the brand has funded and offered
+            One gift per brand per order. Gifts are limited to the number the brand has funded and offered
             while stocks last, so the promotion may end before any date we have advertised. If your order no
             longer meets the minimum — because you remove or reduce an item before checking out —
             the gift is removed from your cart.
           </p>
           <p className="mt-4">
-            The gift has no cash value and cannot be exchanged or returned for credit. The{' '}
-            {gwp.gift} is also sold on its own at full price — it is the gift version, given free
-            with a qualifying order, that is limited to this promotion. If the gift becomes
+            The gift has no cash value and cannot be exchanged or returned for credit. Each gift is also sold on its own at full price — it is the gift version, given free
+            with a qualifying order, that is limited to its promotion. If the gift becomes
             unavailable we may substitute one of equal or greater value.
           </p>
           <p className="mt-4">
