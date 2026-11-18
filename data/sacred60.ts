@@ -78,7 +78,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Eir Women Show Up',
         brand: 'Eir Women',
         url: `${SHOP}/products/show-up`,
-        image: `${IMG}/item6-eir-show-up.jpg`,
+        image: `${IMG}/item6-eir-show-up.png`,
         isShop: true,
       },
       {
@@ -201,7 +201,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'ThermaTouch Body Massager',
         brand: 'Kiicity',
         url: `${SHOP}/products/thermatouch-body-massager`,
-        image: `${IMG}/item19-thermatouch.jpg`,
+        image: `${IMG}/item19-thermatouch.png`,
         isShop: true,
       },
       {
@@ -246,7 +246,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "RAESO Golden Nectar Mānuka Honey Enzyme Cleanser",
         brand: 'RAESO',
         url: 'https://raesoskin.com/products/golden-nectar-manuka-honey-enzyme-cleanser',
-        image: `${IMG}/item23-raeso-golden-nectar.jpg`,
+        image: `${IMG}/item23-raeso-golden-nectar.png`,
         discount: '30% off with code BEAUTICATE30',
       },
       {
@@ -265,7 +265,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Ultra Violette Supreme Screen SPF50+',
         brand: 'Ultra Violette',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https://www.adorebeauty.com.au/p/ultra-violette/ultra-violette-supreme-screen-spf-50-hydrating-facial-sunscreen-75ml.html',
-        image: `${IMG}/item25-ultraviolette.jpg`,
+        image: `${IMG}/item25-ultraviolette.png`,
       },
       {
         number: 26,
@@ -292,7 +292,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Weleda Skin Food',
         brand: 'Weleda',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fweleda%2Fweleda-skin-food.html',
-        image: `${IMG}/item28-weleda.jpg`,
+        image: `${IMG}/item28-weleda.png`,
       },
       {
         number: 29,
@@ -363,7 +363,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Estetika Cooling Red Silk Wide Eye Mask',
         brand: 'Estetika',
         url: `${SHOP}/products/cooling-red-silk-wide-eye-mask-with-gift-box`,
-        image: `${IMG}/item35-eyepillow.jpg`,
+        image: `${IMG}/item35-eyepillow.png`,
         isShop: true,
       },
       {
@@ -373,7 +373,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Bedgear Level Cuddle Performance Pillow',
         brand: 'Bedgear',
         url: 'https://www.amazon.com.au/Bedgear-Level-Cuddle-Performance-Pillow/dp/B0D1841J7Z',
-        image: `${IMG}/item36-bedgear.jpg`,
+        image: `${IMG}/item36-bedgear.png`,
       },
       {
         number: 37,
@@ -400,7 +400,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Eir Women Reboot',
         brand: 'Eir Women',
         url: `${SHOP}/products/reboot`,
-        image: `${IMG}/item39-eir-reboot.jpg`,
+        image: `${IMG}/item39-eir-reboot.png`,
         isShop: true,
       },
       {
@@ -427,7 +427,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Le Soleil Incense',
         brand: 'Maison Balzac',
         url: `${SHOP}/products/le-soleil-incense`,
-        image: `${IMG}/item41-le-soleil-incense.jpg`,
+        image: `${IMG}/item41-le-soleil-incense.png`,
         isShop: true,
       },
       {
@@ -437,7 +437,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'GreenPan Padova Frypan',
         brand: 'GreenPan',
         url: 'https://amzn.to/4sJstf1',
-        image: `${IMG}/item42-greenpan.jpg`,
+        image: `${IMG}/item42-greenpan.png`,
       },
       {
         number: 43,
@@ -462,7 +462,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Plastic chopping boards can shed microplastics into food. This Australian-made camphor laurel board is naturally antibacterial, knife-friendly, and a far healthier, plastic-free choice.',
         product: 'Camphor Laurel Chopping Board',
         url: 'https://amzn.to/4puPDD1',
-        image: `${IMG}/item45-camphorboard.jpg`,
+        image: `${IMG}/item45-camphorboard.png`,
       },
       {
         number: 46,
@@ -479,7 +479,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Nook Elite Infrared Sauna',
         brand: 'Nook',
         url: 'https://nooksaunas.com.au/BEAUTICATE',
-        image: `${IMG}/item47-sauna.jpg`,
+        image: `${IMG}/item47-sauna.png`,
         discount: '$100 off with code BEAUTICATE',
       },
       {
@@ -507,7 +507,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Lumira Balinese Ylang Ylang Candle',
         brand: 'Lumira',
         url: `${SHOP}/products/balinese-ylang-ylang-candle`,
-        image: `${IMG}/item50-lumira-candle.jpg`,
+        image: `${IMG}/item50-lumira-candle.png`,
         isShop: true,
       },
     ],
@@ -525,7 +525,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "J'ai Soif Carafe & Glass",
         brand: 'Maison Balzac',
         url: `${SHOP}/products/jai-soif-carafe-glass-miel`,
-        image: `${IMG}/item51-jai-soif-carafe.jpg`,
+        image: `${IMG}/item51-jai-soif-carafe.png`,
         isShop: true,
       },
       {
@@ -553,7 +553,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Koala Eco Fruit & Vege Wash',
         brand: 'Koala Eco',
         url: 'https://t.cfjump.com/68150/t/77112?Url=https%3a%2f%2fkoala.eco%2fproducts%2fnatural-fruit-vege-wash',
-        image: `${IMG}/item54-koalaeco-wash.jpg`,
+        image: `${IMG}/item54-koalaeco-wash.png`,
       },
       {
         number: 55,
@@ -591,7 +591,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Flame Aromatherapy Diffuser',
         brand: 'Kiicity',
         url: `${SHOP}/products/flame-aromatherapy-diffuser`,
-        image: `${IMG}/item58-flame-diffuser.jpg`,
+        image: `${IMG}/item58-flame-diffuser.png`,
         isShop: true,
       },
       {
@@ -609,7 +609,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Acupressure Massage Mat',
         brand: 'Kiicity',
         url: `${SHOP}/products/acupressure-massage-mat`,
-        image: `${IMG}/item60-acupressure-mat.jpg`,
+        image: `${IMG}/item60-acupressure-mat.png`,
         isShop: true,
       },
     ],
