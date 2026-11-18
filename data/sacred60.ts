@@ -1,6 +1,8 @@
 export type Sacred60Section = {
   title: string
   subtitle: string
+  description: string
+  pullQuote: string
   items: Sacred60Item[]
 }
 
@@ -23,6 +25,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Mind & Mood',
     subtitle: 'These rituals soothe stress, sharpen clarity and help you glow from the inside out.',
+    description: "Although the brain isn't the first place we think to treat when we want to look better, it's where everything starts. Mood, sleep, hormones and even skin quality are shaped by the nervous system.",
+    pullQuote: 'These rituals soothe stress, sharpen clarity and help you glow from the inside out.',
     items: [
       {
         number: 1,
@@ -68,6 +72,16 @@ export const SACRED_60: Sacred60Section[] = [
         image: `${IMG}/item5_lionsmane.png`,
       },
       {
+        number: 6,
+        title: 'Balance Your Hormones, Steady Your Mood',
+        description: "Hormonal shifts can hijack your mood, focus and sleep — especially from your late thirties onward. Show Up by Eir Women supports hormonal balance to ease PMS, perimenopause symptoms and brain fog, helping you feel more centred, steady and like yourself again.",
+        product: 'Eir Women Show Up',
+        brand: 'Eir Women',
+        url: `${SHOP}/products/show-up`,
+        image: `${IMG}/item6-eir-show-up.png`,
+        isShop: true,
+      },
+      {
         number: 7,
         title: 'Let Light Shift Your Mood',
         description: "Red light therapy isn't just for skin: it's a powerful mood and energy enhancer. By stimulating mitochondrial ATP production, it helps regulate your circadian rhythm, boost serotonin, and even ease seasonal lows. I sit in front of my Infraredi Pro Max each morning while journalling or sipping tea.",
@@ -107,6 +121,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Body & Balance',
     subtitle: 'Small shifts in your physical body can create huge ripple effects in energy, confidence and emotional release.',
+    description: 'This is your daily dose of embodiment. From lymphatic drainage to dancing in the kitchen, these rituals are about movement, touch, and restoring balance.',
+    pullQuote: 'Small shifts in your physical body can create huge ripple effects in energy, confidence and emotional release.',
     items: [
       {
         number: 11,
@@ -127,10 +143,12 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 13,
         title: 'Hot, Cold & Salty',
-        description: 'Contrast therapy (sauna + cold plunge) activates heat shock proteins, improves circulation and supports mitochondria. Try magnesium bath flakes post-sauna to support detox and sleep.',
-        product: 'Salts & CO. Pure Magnesium Bath Flakes',
-        url: 'https://amzn.to/4jJmsL9',
+        description: 'Contrast therapy (sauna + cold plunge) activates heat shock proteins, improves circulation and supports mitochondria. Follow it with a warm bath using Subtle Energies Tranquility Bath Soak — an Ayurvedic blend of Himalayan salts, lavender and chamomile to calm the nervous system and ease you into sleep.',
+        product: 'Subtle Energies Tranquility Bath Soak',
+        brand: 'Subtle Energies',
+        url: `${SHOP}/products/tranquility-bath-soak-6a3a88e23da42e584cfcbc3c`,
         image: `${IMG}/item13_magflakes.png`,
+        isShop: true,
       },
       {
         number: 14,
@@ -183,7 +201,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'ThermaTouch Body Massager',
         brand: 'Kiicity',
         url: `${SHOP}/products/thermatouch-body-massager`,
-        image: `${IMG}/item19-thermatouch.jpg`,
+        image: `${IMG}/item19-thermatouch.png`,
         isShop: true,
       },
       {
@@ -200,6 +218,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Skin & Glow',
     subtitle: "These are the glow rituals I reach for time and again, from red light to castor oil, gua sha to SPF.",
+    description: "Great skin isn't just about products — it's the result of daily habits and high-tech tools that support circulation, collagen and cellular health.",
+    pullQuote: 'These are the glow rituals I reach for time and again, from red light to castor oil, gua sha to SPF.',
     items: [
       {
         number: 21,
@@ -222,11 +242,12 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 23,
         title: 'Cleansing as Meditation',
-        description: "I double-cleanse while slowing my breath, treating cleansing as a pause, not a chore. Muji's Mild Cleansing Oil melts away makeup, sunscreen and the day itself, without stripping or stinging.",
-        product: "Muji Mild Cleansing Oil",
-        brand: 'Muji',
-        url: 'https://amzn.to/4sxfzAI',
-        image: `${IMG}/item23-muji.jpg`,
+        description: "I double-cleanse while slowing my breath, treating cleansing as a pause, not a chore. RAESO's Golden Nectar Mānuka Honey Enzyme Cleanser is a luxury New Zealand botanical that melts away the day with raw mānuka honey and gentle enzymes — no stripping, just glow.",
+        product: "RAESO Golden Nectar Mānuka Honey Enzyme Cleanser",
+        brand: 'RAESO',
+        url: 'https://raesoskin.com/products/golden-nectar-manuka-honey-enzyme-cleanser',
+        image: `${IMG}/item23-raeso-golden-nectar.png`,
+        discount: '30% off with code BEAUTICATE30',
       },
       {
         number: 24,
@@ -244,7 +265,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Ultra Violette Supreme Screen SPF50+',
         brand: 'Ultra Violette',
         url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https://www.adorebeauty.com.au/p/ultra-violette/ultra-violette-supreme-screen-spf-50-hydrating-facial-sunscreen-75ml.html',
-        image: `${IMG}/item25-ultraviolette.jpg`,
+        image: `${IMG}/item25-ultraviolette.png`,
       },
       {
         number: 26,
@@ -270,8 +291,8 @@ export const SACRED_60: Sacred60Section[] = [
         description: "When skin is truly dry, nothing beats Weleda Skin Food: my all-time favourite rescue cream: rich, comforting and instantly nourishing, with a cult-status herbal scent that feels like skincare aromatherapy.",
         product: 'Weleda Skin Food',
         brand: 'Weleda',
-        url: 'https://amzn.to/451Ykh0',
-        image: `${IMG}/item28-weleda.jpg`,
+        url: 'https://adorebeauty.prf.hn/click/camref:1011lfsKr/destination:https%3A%2F%2Fwww.adorebeauty.com.au%2Fp%2Fweleda%2Fweleda-skin-food.html',
+        image: `${IMG}/item28-weleda.png`,
       },
       {
         number: 29,
@@ -296,6 +317,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Energy & Sleep',
     subtitle: 'These rituals are my go-tos for winding down, recharging, and resetting from the inside out.',
+    description: "Sleep and energy are two sides of the same coin. A good night's rest sets the stage for hormonal balance, mood, metabolism and mental clarity.",
+    pullQuote: 'These rituals are my go-tos for winding down, recharging, and resetting from the inside out.',
     items: [
       {
         number: 31,
@@ -318,9 +341,10 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 33,
         title: 'Tape Your Way to Deep Sleep',
-        description: 'Mouth taping overnight encourages nasal breathing, which supports oxygen flow and better rest.',
-        product: 'Mouth Tape',
-        url: 'https://amzn.to/4pByoAe',
+        description: 'Mouth taping overnight encourages nasal breathing, which supports oxygen flow and better rest. MUTE Sleep Tape is hypoallergenic and designed to stay put all night.',
+        product: 'MUTE Mouth Tape for Sleeping',
+        brand: 'MUTE',
+        url: 'https://www.amazon.com.au/MUTE-Mouth-Tape-Sleeping-Breathing/dp/B0D2M75QSS',
         image: `${IMG}/item33_mouthtape.png`,
       },
       {
@@ -335,19 +359,21 @@ export const SACRED_60: Sacred60Section[] = [
       {
         number: 35,
         title: 'Legs Up the Wall: Your Sleep Secret Weapon',
-        description: "This simple yoga pose reduces swelling, eases lower back pain, and sends a gentle \"all is well\" signal to your body. Hold for 5–10 minutes before bed, ideally in a dark room with soft music with a weighted eye mask.",
-        product: 'Weighted Eye Mask',
-        url: 'https://amzn.to/4pByoAe',
-        image: `${IMG}/item35-eyepillow.jpg`,
+        description: "This simple yoga pose reduces swelling, eases lower back pain, and sends a gentle \"all is well\" signal to your body. Hold for 5–10 minutes before bed, ideally in a dark room with soft music and a cooling silk eye mask draped over your eyes.",
+        product: 'Estetika Cooling Red Silk Wide Eye Mask',
+        brand: 'Estetika',
+        url: `${SHOP}/products/cooling-red-silk-wide-eye-mask-with-gift-box`,
+        image: `${IMG}/item35-eyepillow.png`,
+        isShop: true,
       },
       {
         number: 36,
         title: 'Pillows That Change Your Sleep',
-        description: "I didn't realise how much my pillow was sabotaging my sleep until I swapped it. Bedgear Performance Pillows are so soft yet supportive. The cuddle contour is great for side sleepers.",
-        product: 'Bedgear Performance Pillows',
+        description: "I didn't realise how much my pillow was sabotaging my sleep until I swapped it. Bedgear Performance Pillows are so soft yet supportive. The Cuddle Contour is great for side sleepers.",
+        product: 'Bedgear Level Cuddle Performance Pillow',
         brand: 'Bedgear',
-        url: 'https://amzn.to/4pByoAe',
-        image: `${IMG}/item36-bedgear.jpg`,
+        url: 'https://www.amazon.com.au/Bedgear-Level-Cuddle-Performance-Pillow/dp/B0D1841J7Z',
+        image: `${IMG}/item36-bedgear.png`,
       },
       {
         number: 37,
@@ -369,11 +395,13 @@ export const SACRED_60: Sacred60Section[] = [
       },
       {
         number: 39,
-        title: 'Ditch the Doom Scroll',
-        description: "Can't sleep? Try a \"brain dump\" journaling session before bed to offload your thoughts. It clears cognitive clutter and helps your mind unwind.",
-        product: 'Sleep: A Restful Mind Journal',
-        url: 'https://amzn.to/4b093fH',
-        image: `${IMG}/item39_sleepjournal.png`,
+        title: 'Ditch the Doom Scroll, Reset Your Sleep',
+        description: "Can't switch off? Reboot by Eir Women helps you fall asleep faster and promotes deep, uninterrupted sleep — so you wake feeling truly rested. It supports sleep quality and patterns with ashwagandha and kava kava, two ingredients I reach for constantly.",
+        product: 'Eir Women Reboot',
+        brand: 'Eir Women',
+        url: `${SHOP}/products/reboot`,
+        image: `${IMG}/item39-eir-reboot.png`,
+        isShop: true,
       },
       {
         number: 40,
@@ -389,6 +417,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Space & Soul',
     subtitle: 'From pop-up saunas to pretty pill containers, these tools turn your home into a sanctuary that works with your wellness goals.',
+    description: "Our homes shape our habits — and the right environment can make self-care feel effortless. This section is about habit-stacking, sensory rituals, and designing your space to support calm, creativity, and consistency.",
+    pullQuote: 'From Airgardens to incense, these tools turn your home into a sanctuary that works with your wellness goals.',
     items: [
       {
         number: 41,
@@ -397,7 +427,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Le Soleil Incense',
         brand: 'Maison Balzac',
         url: `${SHOP}/products/le-soleil-incense`,
-        image: `${IMG}/item41-le-soleil-incense.jpg`,
+        image: `${IMG}/item41-le-soleil-incense.png`,
         isShop: true,
       },
       {
@@ -407,7 +437,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'GreenPan Padova Frypan',
         brand: 'GreenPan',
         url: 'https://amzn.to/4sJstf1',
-        image: `${IMG}/item42-greenpan.jpg`,
+        image: `${IMG}/item42-greenpan.png`,
       },
       {
         number: 43,
@@ -432,7 +462,7 @@ export const SACRED_60: Sacred60Section[] = [
         description: 'Plastic chopping boards can shed microplastics into food. This Australian-made camphor laurel board is naturally antibacterial, knife-friendly, and a far healthier, plastic-free choice.',
         product: 'Camphor Laurel Chopping Board',
         url: 'https://amzn.to/4puPDD1',
-        image: `${IMG}/item45-camphorboard.jpg`,
+        image: `${IMG}/item45-camphorboard.png`,
       },
       {
         number: 46,
@@ -444,19 +474,23 @@ export const SACRED_60: Sacred60Section[] = [
       },
       {
         number: 47,
-        title: 'Try a Pop-Up Sauna',
-        description: "This Portable Steam Sauna heats to 60°C in under 10 minutes, packs away neatly, and turns stress, sore muscles and sluggish skin into a nightly ritual you can do at home.",
-        product: 'Portable Steam Sauna',
-        url: 'https://amzn.to/3NdEwRD',
-        image: `${IMG}/item47-sauna.jpg`,
+        title: 'The Home Infrared Sauna',
+        description: "I installed a Nook Elite infrared sauna half expecting it to sit, virtuously, unused. I was wrong. I use it about three times a week — my back feels better, my skin looks clearer, and the nook beside my front door finally makes sense. Seven carbon-mica FAR infrared heaters, ultra-low EMF, beautiful Canadian Hemlock timber.",
+        product: 'Nook Elite Infrared Sauna',
+        brand: 'Nook',
+        url: 'https://nooksaunas.com.au/BEAUTICATE',
+        image: `${IMG}/item47-sauna.png`,
+        discount: '$100 off with code BEAUTICATE',
       },
       {
         number: 48,
         title: 'Wind Down with Support',
         description: "I leave my LED mask in a ceramic bowl on the coffee table. Part art piece, part habit nudge. Beautiful enough to live on display, powerful enough to become a habit.",
-        product: 'LED Face Mask',
-        url: 'https://amzn.to/416FfId',
+        product: 'San Lueur Advanced LED Light Therapy Facial Mask',
+        brand: 'San Lueur',
+        url: `${SHOP}/products/advanced-led-light-therapy-facial-mask-pre-order-6a3a0cc33da42e584cde6b4a`,
         image: `${IMG}/item48_ledmaskbox.png`,
+        isShop: true,
       },
       {
         number: 49,
@@ -473,7 +507,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Lumira Balinese Ylang Ylang Candle',
         brand: 'Lumira',
         url: `${SHOP}/products/balinese-ylang-ylang-candle`,
-        image: `${IMG}/item50-lumira-candle.jpg`,
+        image: `${IMG}/item50-lumira-candle.png`,
         isShop: true,
       },
     ],
@@ -481,6 +515,8 @@ export const SACRED_60: Sacred60Section[] = [
   {
     title: 'Nourish & Nurture',
     subtitle: 'Glow starts in the gut, and beauty — true beauty — is built from the inside out.',
+    description: "What we put into our bodies is just as powerful as what we do to them. From functional supplements to conscious cookware, this section is about fuelling your body with care, clarity and intention.",
+    pullQuote: 'Because glow starts in the gut, and beauty — true beauty — is built from the inside out.',
     items: [
       {
         number: 51,
@@ -489,7 +525,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: "J'ai Soif Carafe & Glass",
         brand: 'Maison Balzac',
         url: `${SHOP}/products/jai-soif-carafe-glass-miel`,
-        image: `${IMG}/item51-jai-soif-carafe.jpg`,
+        image: `${IMG}/item51-jai-soif-carafe.png`,
         isShop: true,
       },
       {
@@ -517,7 +553,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Koala Eco Fruit & Vege Wash',
         brand: 'Koala Eco',
         url: 'https://t.cfjump.com/68150/t/77112?Url=https%3a%2f%2fkoala.eco%2fproducts%2fnatural-fruit-vege-wash',
-        image: `${IMG}/item54-koalaeco-wash.jpg`,
+        image: `${IMG}/item54-koalaeco-wash.png`,
       },
       {
         number: 55,
@@ -531,19 +567,22 @@ export const SACRED_60: Sacred60Section[] = [
       },
       {
         number: 56,
-        title: 'On-the-Run Hydrogen',
-        description: 'This sleek hydrogen water cup infuses everyday water with antioxidant-rich hydrogen in minutes. A simple, portable ritual for hydration, recovery and cellular support.',
-        product: 'Hydrogen Water Cup',
-        url: 'https://amzn.to/4r24Bli',
-        image: `${IMG}/item56-hydrogencup.png`,
+        title: 'The Gut-Skin Glow Powder',
+        description: "Tropeaka Body Bloom is a daily beauty powder that supports glowing skin, healthy hair and strong nails from the inside out. It blends probiotics, biotin and vitamin C in a berry flavour that tastes genuinely good in a smoothie or water.",
+        product: 'Tropeaka Body Bloom',
+        brand: 'Tropeaka',
+        url: 'https://tropeaka.com.au/products/body-bloom',
+        image: `${IMG}/item56-tropeaka-body-bloom.png`,
       },
       {
         number: 57,
-        title: 'Grow It Yourself',
-        description: 'Fresh herbs, zero effort. This indoor herb garden uses smart LED light to grow basil, mint and parsley on your benchtop year-round. Perfect for renters, cooks and serial plant killers alike.',
-        product: 'Indoor Herb Garden with Grow Light',
-        url: 'https://amzn.to/4sshh6m',
-        image: `${IMG}/item57_airgarden.png`,
+        title: 'Your Daily Greens Ritual',
+        description: "A single scoop of Eir Women Flourish Vitality Greens in water or a smoothie supports energy, immunity and skin health from the inside out. It's alkalising, packed with super greens and tastes clean enough to drink every morning without thinking about it.",
+        product: 'Eir Women Flourish Vitality Greens',
+        brand: 'Eir Women',
+        url: `${SHOP}/products/flourish-vitality-greens`,
+        image: `${IMG}/item57-eir-flourish.png`,
+        isShop: true,
       },
       {
         number: 58,
@@ -552,7 +591,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Flame Aromatherapy Diffuser',
         brand: 'Kiicity',
         url: `${SHOP}/products/flame-aromatherapy-diffuser`,
-        image: `${IMG}/item58-flame-diffuser.jpg`,
+        image: `${IMG}/item58-flame-diffuser.png`,
         isShop: true,
       },
       {
@@ -570,7 +609,7 @@ export const SACRED_60: Sacred60Section[] = [
         product: 'Acupressure Massage Mat',
         brand: 'Kiicity',
         url: `${SHOP}/products/acupressure-massage-mat`,
-        image: `${IMG}/item60-acupressure-mat.jpg`,
+        image: `${IMG}/item60-acupressure-mat.png`,
         isShop: true,
       },
     ],
