@@ -17,65 +17,30 @@ export const metadata: Metadata = {
 const SECTION_IMAGES: Record<string, string | null> = {
   'Mind & Mood': '/content/sacred60/section_mind_mood.jpg',
   'Body & Balance': '/content/sacred60/section_body_balance.jpg',
-  'Skin & Glow': '/content/sacred60/section_skin_glow.jpg',
+  'Skin & Glow': null,
   'Energy & Sleep': '/content/sacred60/section_energy_sleep.jpg',
   'Space & Soul': '/content/sacred60/section_space_soul.jpg',
   'Nourish & Nurture': '/content/sacred60/section_nourish_nurture.jpg',
 }
 
-function ShopBadge() {
-  return (
-    <span
-      className="inline-block font-sans text-[8px] tracking-[0.15em] uppercase font-semibold px-1.5 py-0.5 rounded-sm"
-      style={{ background: '#2D5A3D', color: '#fff' }}
-    >
-      Shop
-    </span>
-  )
-}
+/* Items hidden until replacement images arrive */
+const EXCLUDED_ITEMS = new Set([17, 20])
 
+/* ── Item card — PDF-style: image → number. → title → text ── */
 function ItemCard({
   item,
-  imgW = 380,
-  numberSize = 140,
-  textW = 280,
-  textAlign = 'left',
-  className = '',
-  style,
+  reverse = false,
 }: {
   item: S60Item
-  imgW?: number
-  numberSize?: number
-  textW?: number
-  textAlign?: 'left' | 'right'
-  className?: string
-  style?: React.CSSProperties
+  reverse?: boolean
 }) {
-  const alignClass = textAlign === 'right' ? 'text-right ml-auto' : ''
-  const btnAlign = textAlign === 'right' ? 'justify-end' : ''
+  const align = reverse ? 'items-end text-right' : 'items-start text-left'
+  const btnJustify = reverse ? 'justify-end' : 'justify-start'
+  const textSide = reverse ? 'ml-auto' : ''
 
   return (
-    <article className={`relative ${className}`} style={style}>
-      <div className={textAlign === 'right' ? 'text-right' : ''}>
-        <span
-          className="font-numeral text-chocolate block select-none leading-none"
-          style={{ fontSize: numberSize, letterSpacing: '-0.03em' }}
-          aria-hidden
-        >
-          {item.number}
-        </span>
-        <div
-          className={`mt-1.5 ${textAlign === 'right' ? 'ml-auto' : ''}`}
-          style={{ width: '46px', height: '1px', background: '#7A7570' }}
-        />
-      </div>
-      <h3
-        className={`font-sans text-[10px] tracking-[0.2em] uppercase font-bold mt-2 ${alignClass}`}
-        style={{ color: '#5C4A3A', maxWidth: textW }}
-      >
-        {item.title}
-      </h3>
-
+    <article className={`flex flex-col ${align}`}>
+      {/* Product image */}
       <Link
         href={item.url}
         target={item.url.startsWith('http') ? '_blank' : undefined}
@@ -85,26 +50,45 @@ function ItemCard({
             : undefined,
           item.url
         )}
-        className="group block my-4"
+        className="group block"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={item.image}
           alt={item.product}
           className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-          style={{ width: imgW, maxWidth: '100%' }}
+          style={{ maxWidth: 300, maxHeight: 340 }}
           loading="lazy"
         />
       </Link>
 
+      {/* Number + Title */}
+      <div className="mt-4">
+        <span
+          className="font-numeral text-chocolate block leading-[0.85] select-none"
+          style={{ fontSize: 72, letterSpacing: '-0.03em' }}
+          aria-hidden
+        >
+          {item.number}.
+        </span>
+        <h3
+          className={`font-sans text-[13px] tracking-[0.18em] uppercase font-bold mt-2.5 ${textSide}`}
+          style={{ color: '#5C4A3A', maxWidth: 280 }}
+        >
+          {item.title}
+        </h3>
+      </div>
+
+      {/* Description */}
       <p
-        className={`font-serif text-[13px] leading-[1.7] mb-3 ${alignClass}`}
-        style={{ color: '#5C4A3A', opacity: 0.65, maxWidth: textW }}
+        className={`font-serif text-[15px] leading-[1.75] mt-3 ${textSide}`}
+        style={{ color: '#5C4A3A', opacity: 0.78, maxWidth: 300 }}
       >
         {item.description}
       </p>
 
-      <div className={`flex items-center gap-2 flex-wrap ${btnAlign}`}>
+      {/* Shop button */}
+      <div className={`flex items-center gap-2 flex-wrap mt-4 ${btnJustify}`}>
         <Link
           href={item.url}
           target={item.url.startsWith('http') ? '_blank' : undefined}
@@ -122,13 +106,9 @@ function ItemCard({
         >
           {item.isShop ? 'Shop on Beauticate' : 'Shop'}
         </Link>
-        {item.isShop && <ShopBadge />}
       </div>
       {item.discount && (
-        <p
-          className={`font-sans text-[10px] mt-1.5 ${alignClass}`}
-          style={{ opacity: 0.4 }}
-        >
+        <p className="font-sans text-[10px] mt-1.5" style={{ opacity: 0.4 }}>
           {item.discount}
         </p>
       )}
@@ -136,148 +116,35 @@ function ItemCard({
   )
 }
 
-/* ── Magazine collage spreads ─────────────────────────────
-   Absolute-positioned items create genuine overlap like the
-   Sacred 60 website PDF flat-lay spreads.
-   ──────────────────────────────────────────────────────── */
+/* ── Staggered two-column magazine grid ───────────────── */
+function ProductGrid({ items }: { items: S60Item[] }) {
+  const left = items.filter((_, i) => i % 2 === 0)
+  const right = items.filter((_, i) => i % 2 === 1)
 
-type Placement = {
-  left?: string
-  right?: string
-  top: number
-  imgW: number
-  numberSize: number
-  textW: number
-  textAlign: 'left' | 'right'
-  z: number
-  width: string
-}
-
-function AbsoluteSpread({
-  items,
-  placements,
-  height,
-}: {
-  items: S60Item[]
-  placements: Placement[]
-  height: number
-}) {
   return (
-    <div className="relative overflow-visible">
-      {/* Desktop: absolute positioned collage */}
-      <div className="hidden md:block relative" style={{ height }}>
-        {items.map((item, i) => {
-          const p = placements[i]
-          if (!p) return null
-          const pos: React.CSSProperties = {
-            position: 'absolute',
-            top: p.top,
-            width: p.width,
-            zIndex: p.z,
-          }
-          if (p.left !== undefined) pos.left = p.left
-          if (p.right !== undefined) pos.right = p.right
-          return (
-            <div key={item.number} style={pos}>
-              <ItemCard
-                item={item}
-                imgW={p.imgW}
-                numberSize={p.numberSize}
-                textW={p.textW}
-                textAlign={p.textAlign}
-              />
-            </div>
-          )
-        })}
+    <div className="relative">
+      {/* Desktop: staggered columns */}
+      <div className="hidden md:grid grid-cols-2 gap-x-16 lg:gap-x-24">
+        <div className="space-y-20 lg:space-y-28">
+          {left.map(item => (
+            <ItemCard key={item.number} item={item} />
+          ))}
+        </div>
+        <div className="space-y-20 lg:space-y-28 mt-36">
+          {right.map(item => (
+            <ItemCard key={item.number} item={item} reverse />
+          ))}
+        </div>
       </div>
-      {/* Mobile: stacked, alternating sides */}
-      <div className="md:hidden space-y-16 px-4">
+      {/* Mobile: single column, alternating sides */}
+      <div className="md:hidden space-y-16 px-2">
         {items.map((item, i) => (
-          <ItemCard
-            key={item.number}
-            item={item}
-            imgW={380}
-            numberSize={120}
-            textW={300}
-            textAlign={i % 2 === 0 ? 'left' : 'right'}
-            className={i % 2 === 1 ? 'ml-auto' : ''}
-            style={i % 2 === 1 ? { maxWidth: '85%' } : undefined}
-          />
+          <ItemCard key={item.number} item={item} reverse={i % 2 === 1} />
         ))}
       </div>
     </div>
   )
 }
-
-const SPREAD_LAYOUTS: Placement[][] = [
-  // Layout A — hero top-left, stagger right, overlap center
-  [
-    { left: '-2%', top: 0, imgW: 600, numberSize: 220, textW: 300, textAlign: 'right', z: 2, width: '55%' },
-    { right: '-2%', top: 60, imgW: 550, numberSize: 200, textW: 280, textAlign: 'left', z: 3, width: '52%' },
-    { left: '3%', top: 900, imgW: 520, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '50%' },
-    { right: '0%', top: 820, imgW: 560, numberSize: 220, textW: 300, textAlign: 'left', z: 4, width: '54%' },
-    { left: '10%', top: 1700, imgW: 580, numberSize: 210, textW: 300, textAlign: 'left', z: 3, width: '56%' },
-  ],
-  // Layout B — right hero, left offsets
-  [
-    { right: '-2%', top: 0, imgW: 620, numberSize: 230, textW: 300, textAlign: 'left', z: 3, width: '56%' },
-    { left: '-2%', top: 100, imgW: 520, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '50%' },
-    { left: '15%', top: 880, imgW: 580, numberSize: 210, textW: 300, textAlign: 'left', z: 4, width: '54%' },
-    { left: '-2%', top: 1500, imgW: 500, numberSize: 200, textW: 260, textAlign: 'right', z: 2, width: '48%' },
-    { right: '-2%', top: 1420, imgW: 560, numberSize: 210, textW: 280, textAlign: 'left', z: 3, width: '52%' },
-  ],
-  // Layout C — center-left hero, cascade right
-  [
-    { left: '0%', top: 0, imgW: 580, numberSize: 220, textW: 300, textAlign: 'right', z: 3, width: '54%' },
-    { right: '-2%', top: 250, imgW: 560, numberSize: 200, textW: 280, textAlign: 'left', z: 2, width: '52%' },
-    { left: '5%', top: 950, imgW: 540, numberSize: 200, textW: 280, textAlign: 'right', z: 4, width: '52%' },
-    { right: '0%', top: 1000, imgW: 580, numberSize: 220, textW: 300, textAlign: 'left', z: 3, width: '54%' },
-    { left: '2%', top: 1800, imgW: 560, numberSize: 210, textW: 280, textAlign: 'left', z: 2, width: '52%' },
-  ],
-  // Layout D — diagonal flow
-  [
-    { right: '0%', top: 0, imgW: 600, numberSize: 230, textW: 300, textAlign: 'left', z: 3, width: '55%' },
-    { left: '-2%', top: 200, imgW: 560, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '52%' },
-    { right: '2%', top: 950, imgW: 540, numberSize: 210, textW: 280, textAlign: 'left', z: 4, width: '52%' },
-    { left: '0%', top: 1050, imgW: 520, numberSize: 200, textW: 280, textAlign: 'right', z: 2, width: '50%' },
-    { left: '12%', top: 1800, imgW: 600, numberSize: 220, textW: 300, textAlign: 'left', z: 3, width: '56%' },
-  ],
-]
-
-const SPREAD_HEIGHTS = [2400, 2300, 2500, 2450]
-
-function CollageSpread({ items, index }: { items: S60Item[]; index: number }) {
-  const li = index % SPREAD_LAYOUTS.length
-  return (
-    <AbsoluteSpread
-      items={items}
-      placements={SPREAD_LAYOUTS[li]}
-      height={SPREAD_HEIGHTS[li]}
-    />
-  )
-}
-
-/* ── Colour-grouped spread assignments ────────────────────
-   Items within each section are reordered so visually similar
-   products (by packaging colour) sit in the same collage spread,
-   matching Sig's original Canva flat-lay compositions.
-   Each pair is [spread1Indices, spread2Indices] into that
-   section's items[].
-   ──────────────────────────────────────────────────────── */
-const COLOUR_GROUPS: [number[], number[]][] = [
-  // Mind & Mood — warm golds + naturals | dark tech + moody
-  [[0,1,2,9,4], [3,5,6,7,8]],
-  // Body & Balance — warm/light organics | dark navy charcoal gear
-  [[0,2,4,8,1], [3,5,6,7,9]],
-  // Skin & Glow — green/teal palette | warm neutrals + amber
-  [[0,1,7,3,4], [2,5,6,8,9]],
-  // Energy & Sleep — warm blush/pink/gold | cool purple + dark
-  [[0,3,4,1,6], [2,5,7,8,9]],
-  // Space & Soul — warm wood/amber/gold | clean white/cream
-  [[0,6,8,3,4], [5,1,7,2,9]],
-  // Nourish & Nurture — warm pink/copper/gold | green + dark
-  [[0,1,2,5,8], [3,4,6,7,9]],
-]
 
 /* ── Full-bleed section header ────────────────────────── */
 function SectionHeader({
@@ -292,7 +159,6 @@ function SectionHeader({
 
   return (
     <div className="relative overflow-hidden" style={{ background: '#EDE8E0' }}>
-      {/* Full-bleed holding shot when available */}
       <div
         className="relative w-full"
         style={{ minHeight: img ? 600 : 420 }}
@@ -302,23 +168,27 @@ function SectionHeader({
             src={img}
             alt={section.title}
             fill
-            className="object-cover object-[50%_30%]"
+            className="object-cover object-[50%_20%]"
             sizes="100vw"
             priority={index === 0}
           />
         ) : null}
 
-        {/* Lower-third gradient scrim */}
         {img && (
           <div
             className="absolute inset-x-0 bottom-0 z-[1]"
-            style={{ height: '55%', background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 60%, transparent 100%)' }}
+            style={{
+              height: '55%',
+              background:
+                'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.25) 60%, transparent 100%)',
+            }}
           />
         )}
 
-        {/* Overlay text — white on dark scrim */}
         <div
-          className={`relative z-10 flex items-end h-full min-h-[inherit] px-8 md:px-16 py-10 md:py-14 ${isEven ? '' : 'md:justify-end'}`}
+          className={`relative z-10 flex items-end h-full min-h-[inherit] px-8 md:px-16 py-10 md:py-14 ${
+            isEven ? '' : 'md:justify-end'
+          }`}
         >
           <div className="max-w-md">
             <h2
@@ -332,7 +202,10 @@ function SectionHeader({
             </h2>
             <p
               className="font-serif text-[15px] md:text-[17px] mt-4 leading-relaxed"
-              style={{ color: img ? '#FFFFFF' : '#5C4A3A', opacity: img ? 0.85 : 0.75 }}
+              style={{
+                color: img ? '#FFFFFF' : '#5C4A3A',
+                opacity: img ? 0.85 : 0.75,
+              }}
             >
               {section.description}
             </p>
@@ -340,7 +213,6 @@ function SectionHeader({
         </div>
       </div>
 
-      {/* Pull quote */}
       <div
         className="text-center py-10 md:py-14 px-6"
         style={{ background: '#FAF7F2' }}
@@ -362,7 +234,10 @@ export default function Sacred60ShopPage() {
       <Sacred60Gate>
         <main style={{ color: '#5C4A3A' }}>
           {/* ─── Cover Hero ──────────────────────────────────── */}
-          <header className="relative overflow-hidden" style={{ minHeight: '85vh' }}>
+          <header
+            className="relative overflow-hidden"
+            style={{ minHeight: '85vh' }}
+          >
             <Image
               src="/content/sacred60/section_cover.jpg"
               alt="Sigourney Cantelo"
@@ -371,10 +246,13 @@ export default function Sacred60ShopPage() {
               sizes="100vw"
               priority
             />
-            {/* Lower-third gradient for title text */}
             <div
               className="absolute inset-x-0 bottom-0 z-[1]"
-              style={{ height: '50%', background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)' }}
+              style={{
+                height: '50%',
+                background:
+                  'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)',
+              }}
             />
             <div className="relative z-10 flex items-end justify-center h-full min-h-[85vh] pb-12 md:pb-16 px-6 text-center">
               <div>
@@ -392,7 +270,10 @@ export default function Sacred60ShopPage() {
                 </h1>
                 <span
                   className="block font-serif font-light leading-none -mt-2 md:-mt-4 text-white"
-                  style={{ fontSize: 'clamp(100px,18vw,200px)', opacity: 0.25 }}
+                  style={{
+                    fontSize: 'clamp(100px,18vw,200px)',
+                    opacity: 0.25,
+                  }}
                   aria-hidden
                 >
                   60
@@ -416,16 +297,16 @@ export default function Sacred60ShopPage() {
                   style={{ opacity: 0.75 }}
                 >
                   <p>
-                    What if beauty wasn't just about what you put on your face,
-                    but how you lived your day?
+                    What if beauty wasn&apos;t just about what you put on your
+                    face, but how you lived your day?
                   </p>
                   <p>
                     For years, I believed that if I worked harder, optimised
                     better, or found the right product, everything would fall
-                    into place. It didn't.
+                    into place. It didn&apos;t.
                   </p>
                   <p>
-                    What changed things wasn't a breakthrough or a single
+                    What changed things wasn&apos;t a breakthrough or a single
                     treatment.
                   </p>
                 </div>
@@ -442,9 +323,9 @@ export default function Sacred60ShopPage() {
                     <p>
                       The Sacred Sixty is a calm edit of what genuinely supports
                       me, drawn from decades of reporting and lived experience.
-                      It isn't about doing more. It isn't about perfection. And
-                      it certainly isn't about trends. Take what resonates. Leave
-                      what doesn't.
+                      It isn&apos;t about doing more. It isn&apos;t about
+                      perfection. And it certainly isn&apos;t about trends. Take
+                      what resonates. Leave what doesn&apos;t.
                     </p>
                   </div>
                   <p
@@ -470,52 +351,38 @@ export default function Sacred60ShopPage() {
               className="font-serif italic text-lg md:text-xl px-6 max-w-2xl mx-auto"
               style={{ opacity: 0.6 }}
             >
-              It wasn't a breakthrough. It was small, repeatable rituals.
+              It wasn&apos;t a breakthrough. It was small, repeatable rituals.
             </p>
           </div>
 
           {/* ─── Sections ──────────────────────────────────── */}
           {SACRED_60.map((section, si) => {
-            const [g1, g2] = COLOUR_GROUPS[si] ?? [
-              [0,1,2,3,4], [5,6,7,8,9],
-            ]
-            const firstFive = g1.map(i => section.items[i])
-            const secondFive = g2.map(i => section.items[i]).filter(Boolean)
-            const spreadBase = si * 2
+            const visibleItems = section.items.filter(
+              item => !EXCLUDED_ITEMS.has(item.number)
+            )
 
             return (
               <section key={si}>
-                {/* Full-bleed section header */}
                 <SectionHeader section={section} index={si} />
 
-                {/* Spread 1 (items 1-5) */}
-                <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16">
-                  <CollageSpread items={firstFive} index={spreadBase} />
+                <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
+                  <ProductGrid items={visibleItems} />
                 </div>
 
-                {/* Mid-section divider */}
                 <div
                   className="text-center py-6"
                   style={{ background: '#FAF7F2' }}
                 >
                   <Link
-                    href={`/shop/moments/sacred-60-${section.title.toLowerCase().replace(/\s*&\s*/g, '-')}`}
+                    href={`/shop/moments/sacred-60-${section.title
+                      .toLowerCase()
+                      .replace(/\s*&\s*/g, '-')}`}
                     className="font-sans text-[9px] tracking-[0.2em] uppercase font-medium px-5 py-2.5 transition-opacity hover:opacity-70 inline-block"
                     style={{ background: '#5C4A3A', color: '#fff' }}
                   >
                     Shop the Edit
                   </Link>
                 </div>
-
-                {/* Spread 2 (items 6-10) */}
-                {secondFive.length > 0 && (
-                  <div className="max-w-6xl mx-auto px-6 md:px-16 py-12 md:py-16">
-                    <CollageSpread
-                      items={secondFive}
-                      index={spreadBase + 1}
-                    />
-                  </div>
-                )}
               </section>
             )
           })}
@@ -542,7 +409,7 @@ export default function Sacred60ShopPage() {
               >
                 <p>
                   <strong>
-                    You don't need to overhaul your life to feel better.
+                    You don&apos;t need to overhaul your life to feel better.
                   </strong>
                 </p>
                 <p>
@@ -551,12 +418,12 @@ export default function Sacred60ShopPage() {
                 </p>
                 <p>
                   Return to this guide whenever you need grounding, clarity, or
-                  inspiration: it's designed to meet you where you are.
+                  inspiration: it&apos;s designed to meet you where you are.
                 </p>
                 <p>
                   For deeper conversations, expert interviews, and ongoing edits
-                  of what actually works, you'll find more on Beauticate and on
-                  the Beautiful Inside podcast.
+                  of what actually works, you&apos;ll find more on Beauticate
+                  and on the Beautiful Inside podcast.
                 </p>
               </div>
             </div>
@@ -573,7 +440,10 @@ export default function Sacred60ShopPage() {
                 <Link
                   href="/podcast"
                   className="font-sans text-[10px] tracking-[0.2em] uppercase font-medium px-6 py-3 transition-opacity hover:opacity-70"
-                  style={{ border: '1px solid #5C4A3A', color: '#5C4A3A' }}
+                  style={{
+                    border: '1px solid #5C4A3A',
+                    color: '#5C4A3A',
+                  }}
                 >
                   Listen to the Podcast
                 </Link>
