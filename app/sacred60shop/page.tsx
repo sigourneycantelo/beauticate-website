@@ -26,68 +26,59 @@ const SECTION_IMAGES: Record<string, string | null> = {
 /* Items hidden until replacement images arrive */
 const EXCLUDED_ITEMS = new Set([17, 20])
 
-/* ── Item card — PDF-style: image → number. → title → text ── */
-function ItemCard({
+/*
+ * Product sizes vary — hero items get bigger images like the PDF flat-lay.
+ * Positions within each section: index 0 & 4 are "hero" (large), rest standard.
+ */
+const HERO_INDICES = new Set([0, 4])
+
+function getProductSize(indexInSection: number) {
+  if (HERO_INDICES.has(indexInSection)) return { w: 300, h: 380 }
+  return { w: 220, h: 280 }
+}
+
+/* Alternating horizontal nudge so products cascade down the centre */
+const NUDGE = [0, 30, -20, 40, -10, 15, -30, 25, -5, 20]
+
+/* ── Text block — number beside title (PDF-style), description, button ── */
+function TextBlock({
   item,
-  reverse = false,
+  align,
 }: {
   item: S60Item
-  reverse?: boolean
+  align: 'left' | 'right'
 }) {
-  const align = reverse ? 'items-end text-right' : 'items-start text-left'
-  const btnJustify = reverse ? 'justify-end' : 'justify-start'
-  const textSide = reverse ? 'ml-auto' : ''
+  const side = align === 'right' ? 'text-right' : 'text-left'
+  const btnJustify = align === 'right' ? 'justify-end' : 'justify-start'
 
   return (
-    <article className={`flex flex-col ${align}`}>
-      {/* Product image */}
-      <Link
-        href={item.url}
-        target={item.url.startsWith('http') ? '_blank' : undefined}
-        rel={withNoskim(
-          item.url.startsWith('http') && !item.isShop
-            ? 'noopener noreferrer sponsored'
-            : undefined,
-          item.url
-        )}
-        className="group block"
+    <div className={`flex flex-col ${side}`} style={{ maxWidth: 280 }}>
+      {/* Number + title on same line, PDF-style */}
+      <div
+        className={`flex items-baseline gap-2 ${
+          align === 'right' ? 'justify-end' : 'justify-start'
+        }`}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={item.image}
-          alt={item.product}
-          className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-          style={{ maxWidth: 300, maxHeight: 340 }}
-          loading="lazy"
-        />
-      </Link>
-
-      {/* Number + Title */}
-      <div className="mt-4">
         <span
-          className="font-numeral text-chocolate block leading-[0.85] select-none"
-          style={{ fontSize: 72, letterSpacing: '-0.03em' }}
+          className="font-numeral text-chocolate leading-[0.85] select-none flex-shrink-0"
+          style={{ fontSize: 120, letterSpacing: '-0.03em' }}
           aria-hidden
         >
           {item.number}.
         </span>
         <h3
-          className={`font-sans text-[13px] tracking-[0.18em] uppercase font-bold mt-2.5 ${textSide}`}
-          style={{ color: '#5C4A3A', maxWidth: 280 }}
+          className="font-sans text-[13px] tracking-[0.18em] uppercase font-bold leading-tight"
+          style={{ color: '#5C4A3A', maxWidth: 180 }}
         >
           {item.title}
         </h3>
       </div>
-
-      {/* Description */}
       <p
-        className={`font-serif text-[15px] leading-[1.75] mt-3 ${textSide}`}
-        style={{ color: '#5C4A3A', opacity: 0.78, maxWidth: 300 }}
+        className="font-serif text-[15px] leading-[1.75] mt-3"
+        style={{ color: '#5C4A3A', opacity: 0.78 }}
       >
         {item.description}
       </p>
-
-      {/* Shop button */}
       <div className={`flex items-center gap-2 flex-wrap mt-4 ${btnJustify}`}>
         <Link
           href={item.url}
@@ -112,34 +103,180 @@ function ItemCard({
           {item.discount}
         </p>
       )}
+    </div>
+  )
+}
+
+/* ── Single item: product in centre column, text to one side ── */
+function ItemRow({
+  item,
+  textSide,
+  indexInSection,
+}: {
+  item: S60Item
+  textSide: 'left' | 'right'
+  indexInSection: number
+}) {
+  const size = getProductSize(indexInSection)
+  const nudge = NUDGE[indexInSection % NUDGE.length]
+
+  const productImage = (
+    <Link
+      href={item.url}
+      target={item.url.startsWith('http') ? '_blank' : undefined}
+      rel={withNoskim(
+        item.url.startsWith('http') && !item.isShop
+          ? 'noopener noreferrer sponsored'
+          : undefined,
+        item.url
+      )}
+      className="group block relative z-10"
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={item.image}
+        alt={item.product}
+        className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+        style={{ width: size.w, maxHeight: size.h }}
+        loading="lazy"
+      />
+    </Link>
+  )
+
+  return (
+    <article
+      className="hidden md:grid items-center"
+      style={{
+        gridTemplateColumns: '1fr auto 1fr',
+        gap: '1.5rem',
+      }}
+    >
+      {textSide === 'left' ? (
+        <>
+          <div className="flex justify-end">
+            <TextBlock item={item} align="right" />
+          </div>
+          <div
+            className="flex justify-center"
+            style={{ transform: `translateX(${nudge}px)` }}
+          >
+            {productImage}
+          </div>
+          <div />
+        </>
+      ) : (
+        <>
+          <div />
+          <div
+            className="flex justify-center"
+            style={{ transform: `translateX(${nudge}px)` }}
+          >
+            {productImage}
+          </div>
+          <div className="flex justify-start">
+            <TextBlock item={item} align="left" />
+          </div>
+        </>
+      )}
     </article>
   )
 }
 
-/* ── Staggered two-column magazine grid ───────────────── */
-function ProductGrid({ items }: { items: S60Item[] }) {
-  const left = items.filter((_, i) => i % 2 === 0)
-  const right = items.filter((_, i) => i % 2 === 1)
+/* ── Mobile item card ──────────────────────────────────── */
+function MobileItemCard({ item }: { item: S60Item }) {
+  return (
+    <article className="md:hidden flex flex-col items-center text-center">
+      <Link
+        href={item.url}
+        target={item.url.startsWith('http') ? '_blank' : undefined}
+        rel={withNoskim(
+          item.url.startsWith('http') && !item.isShop
+            ? 'noopener noreferrer sponsored'
+            : undefined,
+          item.url
+        )}
+        className="group block"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={item.image}
+          alt={item.product}
+          className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03] mx-auto"
+          style={{ maxWidth: 200, maxHeight: 240 }}
+          loading="lazy"
+        />
+      </Link>
+      <div className="flex items-baseline gap-1.5 justify-center mt-4">
+        <span
+          className="font-numeral text-chocolate leading-[0.85] select-none"
+          style={{ fontSize: 56, letterSpacing: '-0.03em' }}
+          aria-hidden
+        >
+          {item.number}.
+        </span>
+        <h3
+          className="font-sans text-[11px] tracking-[0.18em] uppercase font-bold leading-tight"
+          style={{ color: '#5C4A3A', maxWidth: 180 }}
+        >
+          {item.title}
+        </h3>
+      </div>
+      <p
+        className="font-serif text-[14px] leading-[1.7] mt-2 px-4"
+        style={{ color: '#5C4A3A', opacity: 0.78, maxWidth: 300 }}
+      >
+        {item.description}
+      </p>
+      <Link
+        href={item.url}
+        target={item.url.startsWith('http') ? '_blank' : undefined}
+        rel={withNoskim(
+          item.url.startsWith('http') && !item.isShop
+            ? 'noopener noreferrer sponsored'
+            : undefined,
+          item.url
+        )}
+        className="inline-block font-sans text-[9px] tracking-[0.15em] uppercase font-medium px-4 py-2 mt-4 transition-opacity hover:opacity-70"
+        style={{
+          background: item.isShop ? '#2D5A3D' : '#5C4A3A',
+          color: '#fff',
+        }}
+      >
+        {item.isShop ? 'Shop on Beauticate' : 'Shop'}
+      </Link>
+      {item.discount && (
+        <p className="font-sans text-[10px] mt-1.5" style={{ opacity: 0.4 }}>
+          {item.discount}
+        </p>
+      )}
+    </article>
+  )
+}
 
+/* ── Flat-lay grid: products cascade down the centre, text alternates ── */
+function ProductGrid({ items }: { items: S60Item[] }) {
   return (
     <div className="relative">
-      {/* Desktop: staggered columns */}
-      <div className="hidden md:grid grid-cols-2 gap-x-16 lg:gap-x-24">
-        <div className="space-y-20 lg:space-y-28">
-          {left.map(item => (
-            <ItemCard key={item.number} item={item} />
-          ))}
-        </div>
-        <div className="space-y-20 lg:space-y-28 mt-36">
-          {right.map(item => (
-            <ItemCard key={item.number} item={item} reverse />
-          ))}
-        </div>
-      </div>
-      {/* Mobile: single column, alternating sides */}
-      <div className="md:hidden space-y-16 px-2">
+      {/* Desktop: products centre, overlapping, text alternates L/R */}
+      <div className="hidden md:block">
         {items.map((item, i) => (
-          <ItemCard key={item.number} item={item} reverse={i % 2 === 1} />
+          <div
+            key={item.number}
+            style={{ marginTop: i === 0 ? 0 : -48 }}
+            className="relative"
+          >
+            <ItemRow
+              item={item}
+              textSide={i % 2 === 0 ? 'left' : 'right'}
+              indexInSection={i}
+            />
+          </div>
+        ))}
+      </div>
+      {/* Mobile: single column, centred */}
+      <div className="md:hidden space-y-14 px-2">
+        {items.map(item => (
+          <MobileItemCard key={item.number} item={item} />
         ))}
       </div>
     </div>
