@@ -26,39 +26,74 @@ const SECTION_IMAGES: Record<string, string | null> = {
 /* Items hidden until replacement images arrive */
 const EXCLUDED_ITEMS = new Set([17, 20])
 
-/*
- * Product sizes vary — hero items get bigger images like the PDF flat-lay.
- * Positions within each section: index 0 & 4 are "hero" (large), rest standard.
- */
-const HERO_INDICES = new Set([0, 4])
-
-function getProductSize(indexInSection: number) {
-  if (HERO_INDICES.has(indexInSection)) return { w: 300, h: 380 }
-  return { w: 220, h: 280 }
+/* ── Spread layout templates ─────────────────────────────
+   Each template places 5 items in a flat-lay composition.
+   imgX: % from left for image centre
+   imgY: px from spread top
+   imgW: product width in px
+   z: stacking order (higher = in front)
+   txtSide: which margin the text floats in
+   txtY: optional override for text Y position
+*/
+type SpreadPos = {
+  imgX: number
+  imgY: number
+  imgW: number
+  z: number
+  txtSide: 'left' | 'right'
+  txtY?: number
 }
 
-/* Alternating horizontal nudge so products cascade down the centre */
-const NUDGE = [0, 30, -20, 40, -10, 15, -30, 25, -5, 20]
+const SPREAD_LAYOUTS: SpreadPos[][] = [
+  // A — matches the Skin & Glow PDF page
+  [
+    { imgX: 54, imgY: 0,   imgW: 300, z: 2, txtSide: 'right' },
+    { imgX: 30, imgY: 200, imgW: 220, z: 3, txtSide: 'left' },
+    { imgX: 62, imgY: 420, imgW: 180, z: 4, txtSide: 'right' },
+    { imgX: 28, imgY: 560, imgW: 360, z: 1, txtSide: 'left', txtY: 660 },
+    { imgX: 56, imgY: 920, imgW: 240, z: 2, txtSide: 'right' },
+  ],
+  // B — mirror: hero top-left
+  [
+    { imgX: 46, imgY: 0,   imgW: 280, z: 2, txtSide: 'left' },
+    { imgX: 68, imgY: 220, imgW: 210, z: 3, txtSide: 'right' },
+    { imgX: 36, imgY: 440, imgW: 200, z: 4, txtSide: 'left' },
+    { imgX: 66, imgY: 580, imgW: 340, z: 1, txtSide: 'right', txtY: 680 },
+    { imgX: 44, imgY: 940, imgW: 250, z: 2, txtSide: 'left' },
+  ],
+  // C — centred hero, stagger
+  [
+    { imgX: 50, imgY: 0,   imgW: 320, z: 3, txtSide: 'right' },
+    { imgX: 32, imgY: 250, imgW: 240, z: 2, txtSide: 'left' },
+    { imgX: 60, imgY: 470, imgW: 190, z: 4, txtSide: 'right' },
+    { imgX: 26, imgY: 610, imgW: 300, z: 1, txtSide: 'left', txtY: 700 },
+    { imgX: 54, imgY: 950, imgW: 260, z: 2, txtSide: 'right' },
+  ],
+  // D — offset hero, tight overlap
+  [
+    { imgX: 48, imgY: 0,   imgW: 260, z: 2, txtSide: 'left' },
+    { imgX: 66, imgY: 190, imgW: 230, z: 3, txtSide: 'right' },
+    { imgX: 34, imgY: 400, imgW: 220, z: 4, txtSide: 'left' },
+    { imgX: 62, imgY: 550, imgW: 350, z: 1, txtSide: 'right', txtY: 650 },
+    { imgX: 42, imgY: 920, imgW: 240, z: 2, txtSide: 'left' },
+  ],
+]
 
-/* ── Text block — number beside title (PDF-style), description, button ── */
-function TextBlock({
+/* ── Text block for spread layout ── */
+function SpreadTextBlock({
   item,
-  align,
+  side,
 }: {
   item: S60Item
-  align: 'left' | 'right'
+  side: 'left' | 'right'
 }) {
-  const side = align === 'right' ? 'text-right' : 'text-left'
-  const btnJustify = align === 'right' ? 'justify-end' : 'justify-start'
+  const txtAlign = side === 'left' ? 'text-center' : 'text-left'
+  const numJustify = side === 'left' ? 'justify-center' : 'justify-start'
+  const btnJustify = side === 'left' ? 'justify-center' : 'justify-start'
 
   return (
-    <div className={`flex flex-col ${side}`} style={{ maxWidth: 280 }}>
-      {/* Number + title on same line, PDF-style */}
-      <div
-        className={`flex items-baseline gap-2 ${
-          align === 'right' ? 'justify-end' : 'justify-start'
-        }`}
-      >
+    <div className={`flex flex-col ${txtAlign}`} style={{ maxWidth: 260 }}>
+      <div className={`flex items-baseline gap-2 ${numJustify} flex-wrap`}>
         <span
           className="font-numeral text-chocolate leading-[0.85] select-none flex-shrink-0"
           style={{ fontSize: 120, letterSpacing: '-0.03em' }}
@@ -68,7 +103,7 @@ function TextBlock({
         </span>
         <h3
           className="font-sans text-[13px] tracking-[0.18em] uppercase font-bold leading-tight"
-          style={{ color: '#5C4A3A', maxWidth: 180 }}
+          style={{ color: '#5C4A3A', maxWidth: 170 }}
         >
           {item.title}
         </h3>
@@ -107,82 +142,81 @@ function TextBlock({
   )
 }
 
-/* ── Single item: product in centre column, text to one side ── */
-function ItemRow({
-  item,
-  textSide,
-  indexInSection,
+/* ── Absolute-positioned flat-lay spread (5 items) ── */
+function FlatLaySpread({
+  items,
+  layoutIndex,
 }: {
-  item: S60Item
-  textSide: 'left' | 'right'
-  indexInSection: number
+  items: S60Item[]
+  layoutIndex: number
 }) {
-  const size = getProductSize(indexInSection)
-  const nudge = NUDGE[indexInSection % NUDGE.length]
-
-  const productImage = (
-    <Link
-      href={item.url}
-      target={item.url.startsWith('http') ? '_blank' : undefined}
-      rel={withNoskim(
-        item.url.startsWith('http') && !item.isShop
-          ? 'noopener noreferrer sponsored'
-          : undefined,
-        item.url
-      )}
-      className="group block relative z-10"
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={item.image}
-        alt={item.product}
-        className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
-        style={{ width: size.w, maxHeight: size.h }}
-        loading="lazy"
-      />
-    </Link>
-  )
+  const layout = SPREAD_LAYOUTS[layoutIndex % SPREAD_LAYOUTS.length]
+  const count = Math.min(items.length, layout.length)
+  const lastPos = layout[count - 1]
+  const containerH = (lastPos?.imgY ?? 0) + 580
 
   return (
-    <article
-      className="hidden md:grid items-center"
-      style={{
-        gridTemplateColumns: '1fr auto 1fr',
-        gap: '1.5rem',
-      }}
-    >
-      {textSide === 'left' ? (
-        <>
-          <div className="flex justify-end">
-            <TextBlock item={item} align="right" />
-          </div>
-          <div
-            className="flex justify-center"
-            style={{ transform: `translateX(${nudge}px)` }}
-          >
-            {productImage}
-          </div>
-          <div />
-        </>
-      ) : (
-        <>
-          <div />
-          <div
-            className="flex justify-center"
-            style={{ transform: `translateX(${nudge}px)` }}
-          >
-            {productImage}
-          </div>
-          <div className="flex justify-start">
-            <TextBlock item={item} align="left" />
-          </div>
-        </>
-      )}
-    </article>
+    <div className="relative w-full" style={{ height: containerH }}>
+      {items.slice(0, count).map((item, i) => {
+        const pos = layout[i]
+        const txtY = pos.txtY ?? pos.imgY
+
+        return (
+          <React.Fragment key={item.number}>
+            {/* Product image — absolute, centred on imgX */}
+            <div
+              className="absolute"
+              style={{
+                left: `${pos.imgX}%`,
+                top: pos.imgY,
+                transform: 'translateX(-50%)',
+                zIndex: pos.z + 10,
+              }}
+            >
+              <Link
+                href={item.url}
+                target={item.url.startsWith('http') ? '_blank' : undefined}
+                rel={withNoskim(
+                  item.url.startsWith('http') && !item.isShop
+                    ? 'noopener noreferrer sponsored'
+                    : undefined,
+                  item.url
+                )}
+                className="group block"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.image}
+                  alt={item.product}
+                  className="h-auto object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                  style={{ width: pos.imgW }}
+                  loading="lazy"
+                />
+              </Link>
+            </div>
+
+            {/* Text block — absolute, in the margin */}
+            <div
+              className="absolute"
+              style={{
+                top: txtY,
+                zIndex: pos.z,
+                ...(pos.txtSide === 'left'
+                  ? { left: 0, right: '58%', display: 'flex', justifyContent: 'flex-end' }
+                  : { left: '58%', right: 0 }),
+                padding: '0 12px',
+              }}
+            >
+              <SpreadTextBlock item={item} side={pos.txtSide} />
+            </div>
+          </React.Fragment>
+        )
+      })}
+    </div>
   )
 }
 
-/* ── Mobile item card ──────────────────────────────────── */
+/* ── Mobile item card ── */
 function MobileItemCard({ item }: { item: S60Item }) {
   return (
     <article className="md:hidden flex flex-col items-center text-center">
@@ -253,27 +287,22 @@ function MobileItemCard({ item }: { item: S60Item }) {
   )
 }
 
-/* ── Flat-lay grid: products cascade down the centre, text alternates ── */
+/* ── Product grid: splits items into spreads of 5 ── */
 function ProductGrid({ items }: { items: S60Item[] }) {
+  const chunks: S60Item[][] = []
+  for (let i = 0; i < items.length; i += 5) {
+    chunks.push(items.slice(i, i + 5))
+  }
+
   return (
     <div className="relative">
-      {/* Desktop: products centre, overlapping, text alternates L/R */}
-      <div className="hidden md:block">
-        {items.map((item, i) => (
-          <div
-            key={item.number}
-            style={{ marginTop: i === 0 ? 0 : -48 }}
-            className="relative"
-          >
-            <ItemRow
-              item={item}
-              textSide={i % 2 === 0 ? 'left' : 'right'}
-              indexInSection={i}
-            />
-          </div>
+      {/* Desktop: absolute-positioned flat-lay spreads */}
+      <div className="hidden md:block" style={{ maxWidth: 1000, margin: '0 auto' }}>
+        {chunks.map((chunk, ci) => (
+          <FlatLaySpread key={ci} items={chunk} layoutIndex={ci} />
         ))}
       </div>
-      {/* Mobile: single column, centred */}
+      {/* Mobile: single column */}
       <div className="md:hidden space-y-14 px-2">
         {items.map(item => (
           <MobileItemCard key={item.number} item={item} />
@@ -283,7 +312,7 @@ function ProductGrid({ items }: { items: S60Item[] }) {
   )
 }
 
-/* ── Full-bleed section header ────────────────────────── */
+/* ── Full-bleed section header ── */
 function SectionHeader({
   section,
   index,
@@ -502,7 +531,7 @@ export default function Sacred60ShopPage() {
               <section key={si}>
                 <SectionHeader section={section} index={si} />
 
-                <div className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
+                <div className="max-w-5xl mx-auto px-4 md:px-8 py-16 md:py-24">
                   <ProductGrid items={visibleItems} />
                 </div>
 
