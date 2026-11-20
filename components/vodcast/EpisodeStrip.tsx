@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { PODCAST_NAME, episodePlatforms } from '@/lib/podcast'
+import EpisodePlayer from './EpisodePlayer'
 
 /**
  * "Watch or listen" strip for Beautiful Inside by Beauticate.
@@ -141,19 +142,11 @@ export default function EpisodeStrip({
       </p>
 
       {youtubeId && (
-        <div
-          className="relative mt-5 w-full overflow-hidden rounded-[2px] bg-black"
-          style={{ aspectRatio: '16/9' }}
-        >
-          <iframe
-            src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`}
-            title={heading ?? PODCAST_NAME}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            className="absolute inset-0 h-full w-full"
-          />
-        </div>
+        <EpisodePlayer
+          youtubeId={youtubeId}
+          title={heading ?? PODCAST_NAME}
+          label={PODCAST_NAME}
+        />
       )}
 
       <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
