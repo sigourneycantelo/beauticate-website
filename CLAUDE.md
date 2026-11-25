@@ -151,6 +151,34 @@ statement is false about the majority of it.
 `sponsored: boolean` also exists in `ArticleFrontmatter`. It is rendered
 nowhere and set on nothing. Don't reach for it.
 
+## Brand partnership disclaimers go in the byline, not the body
+
+For a paid partnership with a brand (a sponsored story, not a directory
+placement), the disclosure is **frontmatter, rendered under the author's
+picture as one tiny grey uppercase line**:
+
+```yaml
+partnership_with: "Hair & Skin Science"
+partnership_note: "Commentary from Dr Min-Qing Lee is general information and not medical advice."
+```
+
+It renders as `IN PARTNERSHIP WITH HAIR & SKIN SCIENCE. COMMENTARY FROM ...` in
+`AuthorByline`. `partnership_note` is optional and holds any extra disclaimer
+(medical, gifted, etc.) that belongs on the same line.
+
+- **Never write the line as an italic paragraph at the top of the body.** It
+  shows up as a second standfirst and doubles the disclosure. Sigourney's call
+  (Oct 2026).
+- Set the field on the article itself, not in a paragraph, so the one line is
+  the only place it appears.
+- Both `ArticlePage` and `ArticleHero` must pass `partnership` and
+  `partnershipNote` through to `AuthorByline`. `ArticleHero` (landscape holding
+  shot) used to drop them, so a partnership piece with a hero image showed no
+  disclosure at all. Nothing errored.
+- Add the `paid partnership` tag as well. This is separate from
+  `paid_placement_until` (directory listings) and `affiliate_disclosure`, which
+  stay at the foot of the article.
+
 ## Shop products in someone else's article — ask, every time
 
 **This is a case-by-case editorial call, and it is Sigourney's to make. There is
