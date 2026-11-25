@@ -27,6 +27,9 @@ export default function InlineImage(props: Props) {
         alt={alt}
         width={w}
         height={h}
+        // Animated GIFs must skip the optimiser, which can flatten them to a
+        // still frame (phones were showing a static image).
+        unoptimized={src.toLowerCase().endsWith('.gif')}
         // Inside .prose an <img> carries a 2em top/bottom margin, which would
         // open a gap between the picture and its caption.
         className={`w-full h-auto rounded${caption ? ' my-0' : ''}`}
