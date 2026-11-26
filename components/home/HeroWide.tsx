@@ -1,6 +1,6 @@
 'use client'
 
-import Image from 'next/image'
+import { getImageProps } from 'next/image'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -49,6 +49,16 @@ function Slide({
   const heroTitle = f.hero_title ?? f.title
   const eyebrow = f.hero_eyebrow ?? CATEGORY_LABELS[f.category] ?? f.category
   const focus = f.hero_focus ?? 'center 25%'
+  const mobileImage = f.featured_image ?? heroImage
+  const common = {
+    alt: f.featured_image_alt ?? f.title,
+    fill: true as const,
+    priority: index === 0,
+    loading: (index === 0 ? 'eager' : 'lazy') as 'eager' | 'lazy',
+    sizes: '(max-width: 1200px) 100vw, 1200px',
+  }
+  const { props: desktop } = getImageProps({ ...common, src: heroImage, unoptimized: heroImage.endsWith('.gif') })
+  const { props: mobile } = getImageProps({ ...common, src: mobileImage, unoptimized: mobileImage.endsWith('.gif') })
 
   return (
     <Link
@@ -57,17 +67,18 @@ function Slide({
       aria-hidden={!isActive}
       tabIndex={isActive ? 0 : -1}
     >
-      <Image
-        src={heroImage}
-        alt={f.featured_image_alt ?? f.title}
-        fill
-        priority={index === 0}
-        loading={index === 0 ? 'eager' : 'lazy'}
-        className="object-cover"
-        style={{ objectPosition: focus }}
-        sizes="(max-width: 1200px) 100vw, 1200px"
-        unoptimized={heroImage.endsWith('.gif')}
-      />
+      {/* One <picture>: phones get the portrait (featured_image), desktop the
+          wide hero_image. The browser fetches only the source it uses. */}
+      <picture>
+        <source media="(min-width: 768px)" srcSet={desktop.srcSet ?? desktop.src} sizes={desktop.sizes} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          {...mobile}
+          alt={f.featured_image_alt ?? f.title}
+          className="object-cover"
+          style={{ ...mobile.style, objectPosition: focus }}
+        />
+      </picture>
       <div
         className="absolute inset-0 z-[1]"
         style={{ background: 'linear-gradient(to top,rgba(10,10,10,.62) 0%,rgba(10,10,10,.38) 25%,rgba(10,10,10,.14) 50%,transparent 75%)' }}
