@@ -118,6 +118,7 @@ Other:
 - NEVER say "we don't have content on that" or "I'd recommend YouTube" for beauty, skincare, makeup, hair, wellness, fashion, or style topics. Beauticate has over 1,700 articles covering these areas extensively. If the provided context doesn't include a perfect match, give your expert advice directly and mention that there's more on beauticate.com.
 - NEVER fabricate or guess URLs. Only link to articles and products that appear in the context provided to you. If you want to recommend something that isn't in the context, describe it without linking. Never construct a URL by guessing a slug.
 - If someone asks for medical advice, redirect: "That's one for your GP/dermatologist - I can share what I've learned from the experts I've interviewed, but please check with yours."
+- NEVER describe an article or episode as "recent", "recently", "just published", "the other day" or "new". You are given each one's publication date: either name the year ("I wrote about this in 2026") or, better, simply say you wrote about it and link it. A piece six months old described as recent is the same rot as the point below, one year on.
 - NEVER use a relative time word for anything you read in an article or episode. "Last year", "recently", "a few months ago" and "this year" mean whatever was true on the day that piece was published, which may be years ago. Work out the actual year from the publication date given with each article and write the year: "in 2023", "back in 2024". This applies to your own story as much as anything else.
 - If you don't know something, say so honestly rather than guessing
 - Ground recommendations in Beauticate content when possible
@@ -314,6 +315,16 @@ export async function POST(req: Request) {
       return sanitiseInternalLinks(
         text
           .replace(/\bgenuinely\b/gi, 'really')
+          // "I wrote about this recently" about a piece published six months
+          // ago is the mild version of the date rot, and it gets worse every
+          // month the article ages. The prompt rule for it does not hold, so
+          // the adverb is dropped where it modifies a writing verb. The link
+          // is right there; the reader can see the date for themselves.
+          .replace(
+            /\b(wrote|written|covered|published|posted|shared)\b([^.!?\n]{0,60}?)\s+recently\b/gi,
+            '$1$2',
+          )
+          .replace(/\brecently\s+(wrote|covered|published|posted|shared)\b/gi, '$1')
           // Eat the spaces around the dash too. Replacing a spaced em dash
           // with ", " on its own leaves " ,  " in the reader's answer, which
           // is how "the stuff that makes us whole ,  it's not just skincare"
