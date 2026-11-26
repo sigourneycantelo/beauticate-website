@@ -30,8 +30,8 @@ Two treatments, chosen per article with `hero_layout`:
 
 | `hero_layout` | What renders |
 |---------------|--------------|
-| *(unset)* / `"full"` | Image full width at 1200px; breadcrumb, headline, standfirst and byline sit underneath it. Desktop uses `hero_aspect` (default `16/9`), mobile uses `featured_image` at 3:4. |
-| `"split"` | SheerLuxe-style two-column: image one side, greige `#F3EFE8` panel the other carrying breadcrumb, headline, standfirst and byline. Stacks vertically on mobile. |
+| `"full"` (or unset, when `hero_image` is set) | Image full width at 1200px; breadcrumb, headline, standfirst and byline sit underneath it. Desktop uses `hero_aspect` (default `16/9`), mobile uses `featured_image` at 3:4. |
+| `"split"` (or unset, when there is no `hero_image`) | SheerLuxe-style two-column: image one side, greige `#F3EFE8` panel the other carrying breadcrumb, headline, standfirst and byline. Stacks vertically on mobile. |
 
 Split mode uses `featured_image` (the portrait) and falls back to `hero_image`.
 `hero_focus` nudges the crop in both layouts.
