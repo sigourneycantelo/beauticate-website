@@ -52,21 +52,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entries.push({ url: `${SITE}${s.path}`, lastModified: now, changeFrequency: 'weekly', priority: s.priority })
   }
 
-  const sections = new Set<string>()
+  // Newest real modified date under each section, so section pages carry the
+  // date of their newest child rather than the build date.
+  const sections = new Map<string, Date>()
+  const bump = (key: string, d: Date) => {
+    const cur = sections.get(key)
+    if (!cur || d > cur) sections.set(key, d)
+  }
   for (const parts of getArticleSlugs()) {
     const article = getArticleBySlug(parts)
     if (!article || article.frontmatter.published === false) continue
-    if (parts.length >= 1) sections.add(parts[0])
-    if (parts.length >= 2) sections.add(`${parts[0]}/${parts[1]}`)
+    const published = safeDate(article.frontmatter.date_published, now)
+    const modified = safeDate(article.frontmatter.date_modified, published)
+    const lastModified = modified > published ? modified : published
+    if (parts.length >= 1) bump(parts[0], lastModified)
+    if (parts.length >= 2) bump(`${parts[0]}/${parts[1]}`, lastModified)
     entries.push({
       url: `${SITE}/${parts.join('/')}`,
-      lastModified: safeDate(article.frontmatter.date_published, now),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
     })
   }
-  for (const s of sections) {
-    entries.push({ url: `${SITE}/${s}`, lastModified: now, changeFrequency: 'weekly', priority: 0.5 })
+  for (const [s, newest] of sections) {
+    entries.push({ url: `${SITE}/${s}`, lastModified: newest, changeFrequency: 'weekly', priority: 0.5 })
   }
 
   for (const m of getArticleMoments()) {

@@ -33,6 +33,10 @@ const nextConfig: NextConfig = {
       // ── Old WP competitions landing → competition T&Cs ───────────────────
       { source: '/competitions', destination: '/competitions/terms', permanent: true },
 
+      // ── Old WordPress feed addresses → the RSS feed ──────────────────────
+      { source: '/feed', destination: '/feed.xml', permanent: true },
+      { source: '/feed/', destination: '/feed.xml', permanent: true },
+
       // ── Legacy shop domains → beauticate.com/shop (all paths except Shopify's own checkout) ─
       // Requires beauticate.shop / shop.beauticate.com to be added as domains
       // on this Vercel project with DNS pointed here.
@@ -938,6 +942,7 @@ const nextConfig: NextConfig = {
      * empty — silently, an hour after any deploy.
      */
     '/feed.xml': ['./public/**'],
+    '/feed.json': ['./public/**'],
     '/feed-editorial.xml': ['./public/**'],
     '/sitemap-news.xml': ['./public/**'],
   },

@@ -75,6 +75,7 @@ export const metadata: Metadata = {
   alternates: {
     types: {
       'application/rss+xml': [{ url: '/feed.xml', title: 'Beauticate' }],
+      'application/feed+json': [{ url: '/feed.json', title: 'Beauticate (JSON Feed)' }],
     },
   },
   // Meta (Facebook) domain verification for beauticate.com — renders
