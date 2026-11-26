@@ -294,6 +294,30 @@ Includes retitling "Sigourney Road Tests a Hair Loss Preventing Strand Boosting
 Elixir", where the therapeutic claim is in the headline and the URL slug.
 Retitling affects SEO and inbound links, so slugs need a redirect.
 
+## In-chat affiliate and partnership disclosure (settled by Sigourney, 26 Nov 2026)
+
+**No separate in-chat disclosure. The label on the article is enough.**
+
+Ask Sig recommends products that sit in articles labelled as paid partnerships.
+In a November 2026 test she recommended two Wildcrafted Organics products and
+linked a retinol article that carries a paid partnership label with Wildcrafted
+Organics. The disclosure is on that article, at the foot, as the house pattern
+requires.
+
+Sig was told the obvious gap before deciding: a reader who takes the
+recommendation and never clicks the article never sees the label. She decided
+the article label still stands, and that no extra line belongs in the chat.
+
+**Record this as her decision, not an oversight.** Do not add an in-chat paid
+partnership or affiliate disclosure, and do not raise it again as a finding
+unless the facts change, for example if Ask Sig starts recommending a partner
+product without linking the article that carries the label. That case has not
+been tested and is the one worth watching.
+
+This is separate from, and does not weaken, the TGA rules above. The therapeutic
+goods restrictions are law and are not Sig's to waive; this is a commercial
+disclosure judgement under the ACL, which is hers.
+
 ## Classification calls reviewed by Sig
 
 Reviewed and agreed by Sigourney Cantelo, 23 August 2026. Editorial sign-off on
