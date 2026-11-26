@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { SHOP_BRANDS } from '@/lib/shop-taxonomy'
 
 /**
  * Server-side link validation for Ask Sig.
@@ -36,12 +37,28 @@ export function validPaths(): Set<string> {
     // would be worse than leaving them. isValidPath falls open in that case.
   }
   // Stable landing pages that are not articles.
+  //
+  // These have to be listed or they are stripped. Ask Sig was told to send
+  // shoppers to the shipping and how-it-works pages and linked a single lip
+  // product as "BOOIE Beauty" instead of the brand page, partly because the
+  // brand pages were not linkable at all.
   for (const p of [
     '/', '/shop', '/shop/brands', '/shop/collections', '/about', '/contact',
     '/podcast', '/interviews', '/beauty-style', '/wellness', '/living',
     '/destinations', '/destinations/directory', '/search', '/subscribe',
     '/terms', '/privacy', '/sacred60', '/members', '/press',
+    // Shopper-facing shop pages.
+    '/shop/how-it-works', '/shop/shipping', '/shop/free-shipping',
+    '/shop/refund-policy', '/shop/gifting', '/shop/new-in-shop',
+    '/shop/reviews', '/shop/by-brand', '/shop/by-category', '/shop/by-moment',
+    '/shop/curators', '/shop/moments', '/shop/suggest',
+    // Brand enquiries only.
+    '/shop/partners', '/shop/partners/apply',
   ]) out.add(p)
+
+  // Every brand page, so a brand can be linked as a brand rather than as one
+  // of its products.
+  for (const b of SHOP_BRANDS) out.add(`/shop/brands/${b.handle}`)
   _valid = out
   return out
 }

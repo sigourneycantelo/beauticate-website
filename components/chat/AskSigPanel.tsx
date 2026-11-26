@@ -13,6 +13,15 @@ interface Message {
 
 const GREETING = 'Ask me anything about beauty, wellness or style.'
 
+// Shown on first open only. A visitor landing on an empty box with a bare
+// "Type a question..." placeholder has nothing to go on, so these say what she
+// is actually good at. Each one maps to strong content on the site.
+const SUGGESTED = [
+  'What should I put on my skin at night?',
+  'Best hair tools for fine hair',
+  'Where do I start with Beautiful Inside?',
+]
+
 export default function AskSigPanel({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -34,8 +43,8 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
     inputRef.current?.focus()
   }, [])
 
-  async function handleSend() {
-    const text = input.trim()
+  async function handleSend(preset?: string) {
+    const text = (typeof preset === 'string' ? preset : input).trim()
     if (!text || streaming) return
 
     const userMsg: Message = { id: crypto.randomUUID(), role: 'user', content: text }
@@ -145,6 +154,18 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
           <div className="text-center py-8">
             <p className="font-serif text-xl text-ink mb-2">{GREETING}</p>
             <p className="text-sm font-sans text-muted">I draw on 25 years of beauty journalism and everything on Beauticate.</p>
+            <div className="mt-6 flex flex-col items-stretch gap-2">
+              {SUGGESTED.map(q => (
+                <button
+                  key={q}
+                  onClick={() => handleSend(q)}
+                  disabled={streaming}
+                  className="w-full text-left px-4 py-2.5 rounded-full border border-line bg-white font-sans text-sm text-ink hover:bg-greige transition-colors disabled:opacity-40"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
           </div>
         )}
         {messages.map(msg => (
@@ -172,7 +193,7 @@ export default function AskSigPanel({ onClose }: { onClose: () => void }) {
             className="flex-1 resize-none bg-transparent font-sans text-sm text-ink placeholder:text-muted outline-none max-h-24 py-2"
           />
           <button
-            onClick={handleSend}
+            onClick={() => handleSend()}
             disabled={!input.trim() || streaming}
             className="w-8 h-8 rounded-full bg-wine text-white flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity"
             aria-label="Send"
