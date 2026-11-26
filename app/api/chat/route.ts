@@ -139,6 +139,27 @@ Other:
  * date is the anchor, which is the only correct reading of a word like "last
  * year" sitting inside it.
  */
+/**
+ * Flattens markdown links inside a retrieved body to their label.
+ *
+ * Article bodies contain their own links, and the model lifts those URLs and
+ * reattaches them to whatever it happens to be naming. That is how three
+ * different episode names, Celeste Barber, Trinny Woodall and Jane Wurwand,
+ * all ended up pointing at one "what to watch over the break" round-up, and
+ * it is the same class of defect as the trailer being linked as the podcast
+ * homepage. The links resolve, so no validator catches it: only the label is
+ * wrong.
+ *
+ * Stripping them leaves the model exactly one source of URLs, the `URL:` line
+ * on each retrieved article plus the canonical paths in the prompt, which are
+ * the only ones it can attach correctly.
+ */
+function flattenBodyLinks(text: string): string {
+  return text
+    .replace(/\[([^\]\n]+)\]\([^)\s]*\)/g, '$1')
+    .replace(/<\/?[A-Z][A-Za-z]*[^>]*>/g, '')
+}
+
 function absolutiseDates(text: string, isoDate: string): string {
   const year = Number((isoDate || '').slice(0, 4))
   if (!year || Number.isNaN(year)) return text
@@ -206,7 +227,7 @@ function buildSystemPrompt(
       // reliable fix while the archive is being remediated.
       const body = restricted
         ? ''
-        : `\n\n${absolutiseDates(a.body.slice(0, ARTICLE_BODY_CHARS), a.date)}`
+        : `\n\n${flattenBodyLinks(absolutiseDates(a.body.slice(0, ARTICLE_BODY_CHARS), a.date))}`
       return `### ${a.title}\nURL: https://www.beauticate.com${a.url}\nCategory: ${a.category}${a.subcategory ? '/' + a.subcategory : ''}${author}${published}\n${absolutiseDates(a.excerpt, a.date)}${body}${articleProducts}`
     }).join('\n\n---\n\n')
 
